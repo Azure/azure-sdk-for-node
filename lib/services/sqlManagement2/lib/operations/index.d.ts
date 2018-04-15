@@ -299,70 +299,6 @@ export interface RestorableDroppedDatabases {
 
 /**
  * @class
- * Capabilities
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the SqlManagementClient.
- */
-export interface Capabilities {
-
-
-    /**
-     * Gets the capabilities available for the specified location.
-     *
-     * @param {string} locationId The location id whose capabilities are retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<LocationCapabilities>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByLocationWithHttpOperationResponse(locationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LocationCapabilities>>;
-
-    /**
-     * Gets the capabilities available for the specified location.
-     *
-     * @param {string} locationId The location id whose capabilities are retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {LocationCapabilities} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {LocationCapabilities} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LocationCapabilities} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByLocation(locationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LocationCapabilities>;
-    listByLocation(locationId: string, callback: ServiceCallback<models.LocationCapabilities>): void;
-    listByLocation(locationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LocationCapabilities>): void;
-}
-
-/**
- * @class
  * Servers
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
@@ -1382,3100 +1318,6 @@ export interface ServerConnectionPolicies {
 
 /**
  * @class
- * Databases
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the SqlManagementClient.
- */
-export interface Databases {
-
-
-    /**
-     * Pauses a data warehouse.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the data warehouse to pause.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    pauseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Pauses a data warehouse.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the data warehouse to pause.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    pause(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    pause(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<void>): void;
-    pause(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Resumes a data warehouse.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the data warehouse to resume.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    resumeWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Resumes a data warehouse.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the data warehouse to resume.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    resume(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    resume(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<void>): void;
-    resume(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Creates a new database or updates an existing database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be operated on
-     * (updated or created).
-     *
-     * @param {object} parameters The required parameters for creating or updating
-     * a database.
-     *
-     * @param {string} [parameters.collation] The collation of the database. If
-     * createMode is not Default, this value is ignored.
-     *
-     * @param {string} [parameters.createMode] Specifies the mode of database
-     * creation.
-     *
-     * Default: regular database creation.
-     *
-     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the source database.
-     *
-     * OnlineSecondary/NonReadableSecondary: creates a database as a (readable or
-     * nonreadable) secondary replica of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the existing primary database.
-     *
-     * PointInTimeRestore: Creates a database by restoring a point in time backup
-     * of an existing database. sourceDatabaseId must be specified as the resource
-     * ID of the existing database, and restorePointInTime must be specified.
-     *
-     * Recovery: Creates a database by restoring a geo-replicated backup.
-     * sourceDatabaseId must be specified as the recoverable database resource ID
-     * to restore.
-     *
-     * Restore: Creates a database by restoring a backup of a deleted database.
-     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
-     * original resource ID, then sourceDatabaseDeletionDate must be specified.
-     * Otherwise sourceDatabaseId must be the restorable dropped database resource
-     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
-     * specified to restore from an earlier point in time.
-     *
-     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
-     * term retention vault. recoveryServicesRecoveryPointResourceId must be
-     * specified as the recovery point resource ID.
-     *
-     * Copy, NonReadableSecondary, OnlineSecondary and
-     * RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
-     * Possible values include: 'Copy', 'Default', 'NonReadableSecondary',
-     * 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore',
-     * 'RestoreLongTermRetentionBackup'
-     *
-     * @param {string} [parameters.sourceDatabaseId] Conditional. If createMode is
-     * Copy, NonReadableSecondary, OnlineSecondary, PointInTimeRestore, Recovery,
-     * or Restore, then this value is required. Specifies the resource ID of the
-     * source database. If createMode is NonReadableSecondary or OnlineSecondary,
-     * the name of the source database must be the same as the new database being
-     * created.
-     *
-     * @param {date} [parameters.sourceDatabaseDeletionDate] Conditional. If
-     * createMode is Restore and sourceDatabaseId is the deleted database's
-     * original resource id when it existed (as opposed to its current restorable
-     * dropped database id), then this value is required. Specifies the time that
-     * the database was deleted.
-     *
-     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
-     * PointInTimeRestore, this value is required. If createMode is Restore, this
-     * value is optional. Specifies the point in time (ISO8601 format) of the
-     * source database that will be restored to create the new database. Must be
-     * greater than or equal to the source database's earliestRestoreDate value.
-     *
-     * @param {string} [parameters.recoveryServicesRecoveryPointResourceId]
-     * Conditional. If createMode is RestoreLongTermRetentionBackup, then this
-     * value is required. Specifies the resource ID of the recovery point to
-     * restore from.
-     *
-     * @param {string} [parameters.edition] The edition of the database. The
-     * DatabaseEditions enumeration contains all the valid editions. If createMode
-     * is NonReadableSecondary or OnlineSecondary, this value is ignored. To see
-     * possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions -l westus --query [].name`. Possible
-     * values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
-     * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
-     *
-     * @param {string} [parameters.maxSizeBytes] The max size of the database
-     * expressed in bytes. If createMode is not Default, this value is ignored. To
-     * see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation."
-     *
-     * @param {uuid} [parameters.requestedServiceObjectiveId] The configured
-     * service level objective ID of the database. This is the service level
-     * objective that is in the process of being applied to the database. Once
-     * successfully updated, it will match the value of currentServiceObjectiveId
-     * property. If requestedServiceObjectiveId and requestedServiceObjectiveName
-     * are both updated, the value of requestedServiceObjectiveId overrides the
-     * value of requestedServiceObjectiveName. To see possible values, query the
-     * capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name` .
-     *
-     * @param {string} [parameters.requestedServiceObjectiveName] The name of the
-     * configured service level objective of the database. This is the service
-     * level objective that is in the process of being applied to the database.
-     * Once successfully updated, it will match the value of serviceLevelObjective
-     * property. To see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name`. Possible values include:
-     * 'System', 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
-     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
-     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
-     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
-     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
-     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
-     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
-     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
-     * 'ElasticPool'
-     *
-     * @param {string} [parameters.elasticPoolName] The name of the elastic pool
-     * the database is in. If elasticPoolName and requestedServiceObjectiveName are
-     * both updated, the value of requestedServiceObjectiveName is ignored. Not
-     * supported for DataWarehouse edition.
-     *
-     * @param {string} [parameters.readScale] Conditional. If the database is a
-     * geo-secondary, readScale indicates whether read-only connections are allowed
-     * to this database or not. Not supported for DataWarehouse edition. Possible
-     * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [parameters.sampleName] Indicates the name of the sample
-     * schema to apply when creating this database. If createMode is not Default,
-     * this value is ignored. Not supported for DataWarehouse edition. Possible
-     * values include: 'AdventureWorksLT'
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
-     * zone redundant, which means the replicas of this database will be spread
-     * across multiple availability zones.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} parameters.location Resource location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
-
-    /**
-     * Creates a new database or updates an existing database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be operated on
-     * (updated or created).
-     *
-     * @param {object} parameters The required parameters for creating or updating
-     * a database.
-     *
-     * @param {string} [parameters.collation] The collation of the database. If
-     * createMode is not Default, this value is ignored.
-     *
-     * @param {string} [parameters.createMode] Specifies the mode of database
-     * creation.
-     *
-     * Default: regular database creation.
-     *
-     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the source database.
-     *
-     * OnlineSecondary/NonReadableSecondary: creates a database as a (readable or
-     * nonreadable) secondary replica of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the existing primary database.
-     *
-     * PointInTimeRestore: Creates a database by restoring a point in time backup
-     * of an existing database. sourceDatabaseId must be specified as the resource
-     * ID of the existing database, and restorePointInTime must be specified.
-     *
-     * Recovery: Creates a database by restoring a geo-replicated backup.
-     * sourceDatabaseId must be specified as the recoverable database resource ID
-     * to restore.
-     *
-     * Restore: Creates a database by restoring a backup of a deleted database.
-     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
-     * original resource ID, then sourceDatabaseDeletionDate must be specified.
-     * Otherwise sourceDatabaseId must be the restorable dropped database resource
-     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
-     * specified to restore from an earlier point in time.
-     *
-     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
-     * term retention vault. recoveryServicesRecoveryPointResourceId must be
-     * specified as the recovery point resource ID.
-     *
-     * Copy, NonReadableSecondary, OnlineSecondary and
-     * RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
-     * Possible values include: 'Copy', 'Default', 'NonReadableSecondary',
-     * 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore',
-     * 'RestoreLongTermRetentionBackup'
-     *
-     * @param {string} [parameters.sourceDatabaseId] Conditional. If createMode is
-     * Copy, NonReadableSecondary, OnlineSecondary, PointInTimeRestore, Recovery,
-     * or Restore, then this value is required. Specifies the resource ID of the
-     * source database. If createMode is NonReadableSecondary or OnlineSecondary,
-     * the name of the source database must be the same as the new database being
-     * created.
-     *
-     * @param {date} [parameters.sourceDatabaseDeletionDate] Conditional. If
-     * createMode is Restore and sourceDatabaseId is the deleted database's
-     * original resource id when it existed (as opposed to its current restorable
-     * dropped database id), then this value is required. Specifies the time that
-     * the database was deleted.
-     *
-     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
-     * PointInTimeRestore, this value is required. If createMode is Restore, this
-     * value is optional. Specifies the point in time (ISO8601 format) of the
-     * source database that will be restored to create the new database. Must be
-     * greater than or equal to the source database's earliestRestoreDate value.
-     *
-     * @param {string} [parameters.recoveryServicesRecoveryPointResourceId]
-     * Conditional. If createMode is RestoreLongTermRetentionBackup, then this
-     * value is required. Specifies the resource ID of the recovery point to
-     * restore from.
-     *
-     * @param {string} [parameters.edition] The edition of the database. The
-     * DatabaseEditions enumeration contains all the valid editions. If createMode
-     * is NonReadableSecondary or OnlineSecondary, this value is ignored. To see
-     * possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions -l westus --query [].name`. Possible
-     * values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
-     * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
-     *
-     * @param {string} [parameters.maxSizeBytes] The max size of the database
-     * expressed in bytes. If createMode is not Default, this value is ignored. To
-     * see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation."
-     *
-     * @param {uuid} [parameters.requestedServiceObjectiveId] The configured
-     * service level objective ID of the database. This is the service level
-     * objective that is in the process of being applied to the database. Once
-     * successfully updated, it will match the value of currentServiceObjectiveId
-     * property. If requestedServiceObjectiveId and requestedServiceObjectiveName
-     * are both updated, the value of requestedServiceObjectiveId overrides the
-     * value of requestedServiceObjectiveName. To see possible values, query the
-     * capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name` .
-     *
-     * @param {string} [parameters.requestedServiceObjectiveName] The name of the
-     * configured service level objective of the database. This is the service
-     * level objective that is in the process of being applied to the database.
-     * Once successfully updated, it will match the value of serviceLevelObjective
-     * property. To see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name`. Possible values include:
-     * 'System', 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
-     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
-     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
-     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
-     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
-     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
-     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
-     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
-     * 'ElasticPool'
-     *
-     * @param {string} [parameters.elasticPoolName] The name of the elastic pool
-     * the database is in. If elasticPoolName and requestedServiceObjectiveName are
-     * both updated, the value of requestedServiceObjectiveName is ignored. Not
-     * supported for DataWarehouse edition.
-     *
-     * @param {string} [parameters.readScale] Conditional. If the database is a
-     * geo-secondary, readScale indicates whether read-only connections are allowed
-     * to this database or not. Not supported for DataWarehouse edition. Possible
-     * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [parameters.sampleName] Indicates the name of the sample
-     * schema to apply when creating this database. If createMode is not Default,
-     * this value is ignored. Not supported for DataWarehouse edition. Possible
-     * values include: 'AdventureWorksLT'
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
-     * zone redundant, which means the replicas of this database will be spread
-     * across multiple availability zones.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} parameters.location Resource location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Database} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Database} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Database} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, callback: ServiceCallback<models.Database>): void;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
-
-
-    /**
-     * Updates an existing database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be updated.
-     *
-     * @param {object} parameters The required parameters for updating a database.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} [parameters.collation] The collation of the database. If
-     * createMode is not Default, this value is ignored.
-     *
-     * @param {string} [parameters.createMode] Specifies the mode of database
-     * creation.
-     *
-     * Default: regular database creation.
-     *
-     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the source database.
-     *
-     * OnlineSecondary/NonReadableSecondary: creates a database as a (readable or
-     * nonreadable) secondary replica of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the existing primary database.
-     *
-     * PointInTimeRestore: Creates a database by restoring a point in time backup
-     * of an existing database. sourceDatabaseId must be specified as the resource
-     * ID of the existing database, and restorePointInTime must be specified.
-     *
-     * Recovery: Creates a database by restoring a geo-replicated backup.
-     * sourceDatabaseId must be specified as the recoverable database resource ID
-     * to restore.
-     *
-     * Restore: Creates a database by restoring a backup of a deleted database.
-     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
-     * original resource ID, then sourceDatabaseDeletionDate must be specified.
-     * Otherwise sourceDatabaseId must be the restorable dropped database resource
-     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
-     * specified to restore from an earlier point in time.
-     *
-     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
-     * term retention vault. recoveryServicesRecoveryPointResourceId must be
-     * specified as the recovery point resource ID.
-     *
-     * Copy, NonReadableSecondary, OnlineSecondary and
-     * RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
-     * Possible values include: 'Copy', 'Default', 'NonReadableSecondary',
-     * 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore',
-     * 'RestoreLongTermRetentionBackup'
-     *
-     * @param {string} [parameters.sourceDatabaseId] Conditional. If createMode is
-     * Copy, NonReadableSecondary, OnlineSecondary, PointInTimeRestore, Recovery,
-     * or Restore, then this value is required. Specifies the resource ID of the
-     * source database. If createMode is NonReadableSecondary or OnlineSecondary,
-     * the name of the source database must be the same as the new database being
-     * created.
-     *
-     * @param {date} [parameters.sourceDatabaseDeletionDate] Conditional. If
-     * createMode is Restore and sourceDatabaseId is the deleted database's
-     * original resource id when it existed (as opposed to its current restorable
-     * dropped database id), then this value is required. Specifies the time that
-     * the database was deleted.
-     *
-     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
-     * PointInTimeRestore, this value is required. If createMode is Restore, this
-     * value is optional. Specifies the point in time (ISO8601 format) of the
-     * source database that will be restored to create the new database. Must be
-     * greater than or equal to the source database's earliestRestoreDate value.
-     *
-     * @param {string} [parameters.recoveryServicesRecoveryPointResourceId]
-     * Conditional. If createMode is RestoreLongTermRetentionBackup, then this
-     * value is required. Specifies the resource ID of the recovery point to
-     * restore from.
-     *
-     * @param {string} [parameters.edition] The edition of the database. The
-     * DatabaseEditions enumeration contains all the valid editions. If createMode
-     * is NonReadableSecondary or OnlineSecondary, this value is ignored. To see
-     * possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions -l westus --query [].name`. Possible
-     * values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
-     * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
-     *
-     * @param {string} [parameters.maxSizeBytes] The max size of the database
-     * expressed in bytes. If createMode is not Default, this value is ignored. To
-     * see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation."
-     *
-     * @param {uuid} [parameters.requestedServiceObjectiveId] The configured
-     * service level objective ID of the database. This is the service level
-     * objective that is in the process of being applied to the database. Once
-     * successfully updated, it will match the value of currentServiceObjectiveId
-     * property. If requestedServiceObjectiveId and requestedServiceObjectiveName
-     * are both updated, the value of requestedServiceObjectiveId overrides the
-     * value of requestedServiceObjectiveName. To see possible values, query the
-     * capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name` .
-     *
-     * @param {string} [parameters.requestedServiceObjectiveName] The name of the
-     * configured service level objective of the database. This is the service
-     * level objective that is in the process of being applied to the database.
-     * Once successfully updated, it will match the value of serviceLevelObjective
-     * property. To see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name`. Possible values include:
-     * 'System', 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
-     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
-     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
-     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
-     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
-     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
-     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
-     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
-     * 'ElasticPool'
-     *
-     * @param {string} [parameters.elasticPoolName] The name of the elastic pool
-     * the database is in. If elasticPoolName and requestedServiceObjectiveName are
-     * both updated, the value of requestedServiceObjectiveName is ignored. Not
-     * supported for DataWarehouse edition.
-     *
-     * @param {string} [parameters.readScale] Conditional. If the database is a
-     * geo-secondary, readScale indicates whether read-only connections are allowed
-     * to this database or not. Not supported for DataWarehouse edition. Possible
-     * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [parameters.sampleName] Indicates the name of the sample
-     * schema to apply when creating this database. If createMode is not Default,
-     * this value is ignored. Not supported for DataWarehouse edition. Possible
-     * values include: 'AdventureWorksLT'
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
-     * zone redundant, which means the replicas of this database will be spread
-     * across multiple availability zones.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
-
-    /**
-     * Updates an existing database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be updated.
-     *
-     * @param {object} parameters The required parameters for updating a database.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} [parameters.collation] The collation of the database. If
-     * createMode is not Default, this value is ignored.
-     *
-     * @param {string} [parameters.createMode] Specifies the mode of database
-     * creation.
-     *
-     * Default: regular database creation.
-     *
-     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the source database.
-     *
-     * OnlineSecondary/NonReadableSecondary: creates a database as a (readable or
-     * nonreadable) secondary replica of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the existing primary database.
-     *
-     * PointInTimeRestore: Creates a database by restoring a point in time backup
-     * of an existing database. sourceDatabaseId must be specified as the resource
-     * ID of the existing database, and restorePointInTime must be specified.
-     *
-     * Recovery: Creates a database by restoring a geo-replicated backup.
-     * sourceDatabaseId must be specified as the recoverable database resource ID
-     * to restore.
-     *
-     * Restore: Creates a database by restoring a backup of a deleted database.
-     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
-     * original resource ID, then sourceDatabaseDeletionDate must be specified.
-     * Otherwise sourceDatabaseId must be the restorable dropped database resource
-     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
-     * specified to restore from an earlier point in time.
-     *
-     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
-     * term retention vault. recoveryServicesRecoveryPointResourceId must be
-     * specified as the recovery point resource ID.
-     *
-     * Copy, NonReadableSecondary, OnlineSecondary and
-     * RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
-     * Possible values include: 'Copy', 'Default', 'NonReadableSecondary',
-     * 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore',
-     * 'RestoreLongTermRetentionBackup'
-     *
-     * @param {string} [parameters.sourceDatabaseId] Conditional. If createMode is
-     * Copy, NonReadableSecondary, OnlineSecondary, PointInTimeRestore, Recovery,
-     * or Restore, then this value is required. Specifies the resource ID of the
-     * source database. If createMode is NonReadableSecondary or OnlineSecondary,
-     * the name of the source database must be the same as the new database being
-     * created.
-     *
-     * @param {date} [parameters.sourceDatabaseDeletionDate] Conditional. If
-     * createMode is Restore and sourceDatabaseId is the deleted database's
-     * original resource id when it existed (as opposed to its current restorable
-     * dropped database id), then this value is required. Specifies the time that
-     * the database was deleted.
-     *
-     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
-     * PointInTimeRestore, this value is required. If createMode is Restore, this
-     * value is optional. Specifies the point in time (ISO8601 format) of the
-     * source database that will be restored to create the new database. Must be
-     * greater than or equal to the source database's earliestRestoreDate value.
-     *
-     * @param {string} [parameters.recoveryServicesRecoveryPointResourceId]
-     * Conditional. If createMode is RestoreLongTermRetentionBackup, then this
-     * value is required. Specifies the resource ID of the recovery point to
-     * restore from.
-     *
-     * @param {string} [parameters.edition] The edition of the database. The
-     * DatabaseEditions enumeration contains all the valid editions. If createMode
-     * is NonReadableSecondary or OnlineSecondary, this value is ignored. To see
-     * possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions -l westus --query [].name`. Possible
-     * values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
-     * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
-     *
-     * @param {string} [parameters.maxSizeBytes] The max size of the database
-     * expressed in bytes. If createMode is not Default, this value is ignored. To
-     * see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation."
-     *
-     * @param {uuid} [parameters.requestedServiceObjectiveId] The configured
-     * service level objective ID of the database. This is the service level
-     * objective that is in the process of being applied to the database. Once
-     * successfully updated, it will match the value of currentServiceObjectiveId
-     * property. If requestedServiceObjectiveId and requestedServiceObjectiveName
-     * are both updated, the value of requestedServiceObjectiveId overrides the
-     * value of requestedServiceObjectiveName. To see possible values, query the
-     * capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name` .
-     *
-     * @param {string} [parameters.requestedServiceObjectiveName] The name of the
-     * configured service level objective of the database. This is the service
-     * level objective that is in the process of being applied to the database.
-     * Once successfully updated, it will match the value of serviceLevelObjective
-     * property. To see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name`. Possible values include:
-     * 'System', 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
-     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
-     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
-     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
-     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
-     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
-     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
-     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
-     * 'ElasticPool'
-     *
-     * @param {string} [parameters.elasticPoolName] The name of the elastic pool
-     * the database is in. If elasticPoolName and requestedServiceObjectiveName are
-     * both updated, the value of requestedServiceObjectiveName is ignored. Not
-     * supported for DataWarehouse edition.
-     *
-     * @param {string} [parameters.readScale] Conditional. If the database is a
-     * geo-secondary, readScale indicates whether read-only connections are allowed
-     * to this database or not. Not supported for DataWarehouse edition. Possible
-     * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [parameters.sampleName] Indicates the name of the sample
-     * schema to apply when creating this database. If createMode is not Default,
-     * this value is ignored. Not supported for DataWarehouse edition. Possible
-     * values include: 'AdventureWorksLT'
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
-     * zone redundant, which means the replicas of this database will be spread
-     * across multiple availability zones.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Database} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Database} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Database} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
-    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, callback: ServiceCallback<models.Database>): void;
-    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
-
-
-    /**
-     * Deletes a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be deleted.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be deleted.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] A comma separated list of child objects to
-     * expand in the response. Possible properties: serviceTierAdvisors,
-     * transparentDataEncryption.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
-
-    /**
-     * Gets a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] A comma separated list of child objects to
-     * expand in the response. Possible properties: serviceTierAdvisors,
-     * transparentDataEncryption.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Database} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Database} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Database} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
-    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.Database>): void;
-    get(resourceGroupName: string, serverName: string, databaseName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
-
-
-    /**
-     * Returns a list of databases in a server.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] A comma separated list of child objects to
-     * expand in the response. Possible properties: serviceTierAdvisors,
-     * transparentDataEncryption.
-     *
-     * @param {string} [options.filter] An OData filter expression that describes a
-     * subset of databases to return.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DatabaseListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseListResult>>;
-
-    /**
-     * Returns a list of databases in a server.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] A comma separated list of child objects to
-     * expand in the response. Possible properties: serviceTierAdvisors,
-     * transparentDataEncryption.
-     *
-     * @param {string} [options.filter] An OData filter expression that describes a
-     * subset of databases to return.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DatabaseListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DatabaseListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DatabaseListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByServer(resourceGroupName: string, serverName: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseListResult>;
-    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.DatabaseListResult>): void;
-    listByServer(resourceGroupName: string, serverName: string, options: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseListResult>): void;
-
-
-    /**
-     * Gets a database inside of an elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be
-     * retrieved.
-     *
-     * @param {string} databaseName The name of the database to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getByElasticPoolWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
-
-    /**
-     * Gets a database inside of an elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be
-     * retrieved.
-     *
-     * @param {string} databaseName The name of the database to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Database} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Database} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Database} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
-    getByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, databaseName: string, callback: ServiceCallback<models.Database>): void;
-    getByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
-
-
-    /**
-     * Returns a list of databases in an elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be
-     * retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DatabaseListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByElasticPoolWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseListResult>>;
-
-    /**
-     * Returns a list of databases in an elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be
-     * retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DatabaseListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DatabaseListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DatabaseListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseListResult>;
-    listByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, callback: ServiceCallback<models.DatabaseListResult>): void;
-    listByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseListResult>): void;
-
-
-    /**
-     * Gets a database inside of a recommented elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} recommendedElasticPoolName The name of the elastic pool to
-     * be retrieved.
-     *
-     * @param {string} databaseName The name of the database to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getByRecommendedElasticPoolWithHttpOperationResponse(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
-
-    /**
-     * Gets a database inside of a recommented elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} recommendedElasticPoolName The name of the elastic pool to
-     * be retrieved.
-     *
-     * @param {string} databaseName The name of the database to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Database} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Database} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Database} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getByRecommendedElasticPool(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
-    getByRecommendedElasticPool(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, databaseName: string, callback: ServiceCallback<models.Database>): void;
-    getByRecommendedElasticPool(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
-
-
-    /**
-     * Returns a list of databases inside a recommented elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} recommendedElasticPoolName The name of the recommended
-     * elastic pool to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DatabaseListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByRecommendedElasticPoolWithHttpOperationResponse(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseListResult>>;
-
-    /**
-     * Returns a list of databases inside a recommented elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} recommendedElasticPoolName The name of the recommended
-     * elastic pool to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DatabaseListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DatabaseListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DatabaseListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByRecommendedElasticPool(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseListResult>;
-    listByRecommendedElasticPool(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, callback: ServiceCallback<models.DatabaseListResult>): void;
-    listByRecommendedElasticPool(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseListResult>): void;
-
-
-    /**
-     * Imports a bacpac into a new database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {object} parameters The required parameters for importing a Bacpac
-     * into a database.
-     *
-     * @param {string} parameters.databaseName The name of the database to import.
-     *
-     * @param {string} parameters.edition The edition for the database being
-     * created. Possible values include: 'Web', 'Business', 'Basic', 'Standard',
-     * 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System',
-     * 'System2'
-     *
-     * @param {string} parameters.serviceObjectiveName The name of the service
-     * objective to assign to the database. Possible values include: 'System',
-     * 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
-     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
-     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
-     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
-     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
-     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
-     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
-     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
-     * 'ElasticPool'
-     *
-     * @param {string} parameters.maxSizeBytes The maximum size for the newly
-     * imported database.
-     *
-     * @param {string} parameters.storageKeyType The type of the storage key to
-     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
-     *
-     * @param {string} parameters.storageKey The storage key to use.  If storage
-     * key type is SharedAccessKey, it must be preceded with a "?."
-     *
-     * @param {string} parameters.storageUri The storage uri to use.
-     *
-     * @param {string} parameters.administratorLogin The name of the SQL
-     * administrator.
-     *
-     * @param {string} parameters.administratorLoginPassword The password of the
-     * SQL administrator.
-     *
-     * @param {string} [parameters.authenticationType] The authentication type.
-     * Possible values include: 'SQL', 'ADPassword'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ImportExportResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    importMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImportExportResponse>>;
-
-    /**
-     * Imports a bacpac into a new database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {object} parameters The required parameters for importing a Bacpac
-     * into a database.
-     *
-     * @param {string} parameters.databaseName The name of the database to import.
-     *
-     * @param {string} parameters.edition The edition for the database being
-     * created. Possible values include: 'Web', 'Business', 'Basic', 'Standard',
-     * 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System',
-     * 'System2'
-     *
-     * @param {string} parameters.serviceObjectiveName The name of the service
-     * objective to assign to the database. Possible values include: 'System',
-     * 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
-     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
-     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
-     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
-     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
-     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
-     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
-     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
-     * 'ElasticPool'
-     *
-     * @param {string} parameters.maxSizeBytes The maximum size for the newly
-     * imported database.
-     *
-     * @param {string} parameters.storageKeyType The type of the storage key to
-     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
-     *
-     * @param {string} parameters.storageKey The storage key to use.  If storage
-     * key type is SharedAccessKey, it must be preceded with a "?."
-     *
-     * @param {string} parameters.storageUri The storage uri to use.
-     *
-     * @param {string} parameters.administratorLogin The name of the SQL
-     * administrator.
-     *
-     * @param {string} parameters.administratorLoginPassword The password of the
-     * SQL administrator.
-     *
-     * @param {string} [parameters.authenticationType] The authentication type.
-     * Possible values include: 'SQL', 'ADPassword'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ImportExportResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ImportExportResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ImportExportResponse} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    importMethod(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImportExportResponse>;
-    importMethod(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, callback: ServiceCallback<models.ImportExportResponse>): void;
-    importMethod(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportExportResponse>): void;
-
-
-    /**
-     * Creates an import operation that imports a bacpac into an existing database.
-     * The existing database must be empty.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to import into
-     *
-     * @param {object} parameters The required parameters for importing a Bacpac
-     * into a database.
-     *
-     * @param {string} [parameters.name] The name of the extension.
-     *
-     * @param {string} [parameters.type] The type of the extension.
-     *
-     * @param {string} parameters.storageKeyType The type of the storage key to
-     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
-     *
-     * @param {string} parameters.storageKey The storage key to use.  If storage
-     * key type is SharedAccessKey, it must be preceded with a "?."
-     *
-     * @param {string} parameters.storageUri The storage uri to use.
-     *
-     * @param {string} parameters.administratorLogin The name of the SQL
-     * administrator.
-     *
-     * @param {string} parameters.administratorLoginPassword The password of the
-     * SQL administrator.
-     *
-     * @param {string} [parameters.authenticationType] The authentication type.
-     * Possible values include: 'SQL', 'ADPassword'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ImportExportResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createImportOperationWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImportExportResponse>>;
-
-    /**
-     * Creates an import operation that imports a bacpac into an existing database.
-     * The existing database must be empty.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to import into
-     *
-     * @param {object} parameters The required parameters for importing a Bacpac
-     * into a database.
-     *
-     * @param {string} [parameters.name] The name of the extension.
-     *
-     * @param {string} [parameters.type] The type of the extension.
-     *
-     * @param {string} parameters.storageKeyType The type of the storage key to
-     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
-     *
-     * @param {string} parameters.storageKey The storage key to use.  If storage
-     * key type is SharedAccessKey, it must be preceded with a "?."
-     *
-     * @param {string} parameters.storageUri The storage uri to use.
-     *
-     * @param {string} parameters.administratorLogin The name of the SQL
-     * administrator.
-     *
-     * @param {string} parameters.administratorLoginPassword The password of the
-     * SQL administrator.
-     *
-     * @param {string} [parameters.authenticationType] The authentication type.
-     * Possible values include: 'SQL', 'ADPassword'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ImportExportResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ImportExportResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ImportExportResponse} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createImportOperation(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImportExportResponse>;
-    createImportOperation(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, callback: ServiceCallback<models.ImportExportResponse>): void;
-    createImportOperation(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportExportResponse>): void;
-
-
-    /**
-     * Exports a database to a bacpac.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be exported.
-     *
-     * @param {object} parameters The required parameters for exporting a database.
-     *
-     * @param {string} parameters.storageKeyType The type of the storage key to
-     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
-     *
-     * @param {string} parameters.storageKey The storage key to use.  If storage
-     * key type is SharedAccessKey, it must be preceded with a "?."
-     *
-     * @param {string} parameters.storageUri The storage uri to use.
-     *
-     * @param {string} parameters.administratorLogin The name of the SQL
-     * administrator.
-     *
-     * @param {string} parameters.administratorLoginPassword The password of the
-     * SQL administrator.
-     *
-     * @param {string} [parameters.authenticationType] The authentication type.
-     * Possible values include: 'SQL', 'ADPassword'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ImportExportResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    exportMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImportExportResponse>>;
-
-    /**
-     * Exports a database to a bacpac.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be exported.
-     *
-     * @param {object} parameters The required parameters for exporting a database.
-     *
-     * @param {string} parameters.storageKeyType The type of the storage key to
-     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
-     *
-     * @param {string} parameters.storageKey The storage key to use.  If storage
-     * key type is SharedAccessKey, it must be preceded with a "?."
-     *
-     * @param {string} parameters.storageUri The storage uri to use.
-     *
-     * @param {string} parameters.administratorLogin The name of the SQL
-     * administrator.
-     *
-     * @param {string} parameters.administratorLoginPassword The password of the
-     * SQL administrator.
-     *
-     * @param {string} [parameters.authenticationType] The authentication type.
-     * Possible values include: 'SQL', 'ADPassword'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ImportExportResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ImportExportResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ImportExportResponse} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    exportMethod(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImportExportResponse>;
-    exportMethod(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, callback: ServiceCallback<models.ImportExportResponse>): void;
-    exportMethod(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportExportResponse>): void;
-
-
-    /**
-     * Returns database metrics.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} filter An OData filter expression that describes a subset of
-     * metrics to return.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<MetricListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listMetricsWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricListResult>>;
-
-    /**
-     * Returns database metrics.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} filter An OData filter expression that describes a subset of
-     * metrics to return.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {MetricListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {MetricListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link MetricListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listMetrics(resourceGroupName: string, serverName: string, databaseName: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricListResult>;
-    listMetrics(resourceGroupName: string, serverName: string, databaseName: string, filter: string, callback: ServiceCallback<models.MetricListResult>): void;
-    listMetrics(resourceGroupName: string, serverName: string, databaseName: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricListResult>): void;
-
-
-    /**
-     * Returns database metric definitions.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<MetricDefinitionListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listMetricDefinitionsWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionListResult>>;
-
-    /**
-     * Returns database metric definitions.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {MetricDefinitionListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {MetricDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link MetricDefinitionListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listMetricDefinitions(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricDefinitionListResult>;
-    listMetricDefinitions(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.MetricDefinitionListResult>): void;
-    listMetricDefinitions(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionListResult>): void;
-
-
-    /**
-     * Renames a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to rename.
-     *
-     * @param {object} parameters The resource move definition for renaming this
-     * database.
-     *
-     * @param {string} parameters.id The target ID for the resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    renameWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Renames a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to rename.
-     *
-     * @param {object} parameters The resource move definition for renaming this
-     * database.
-     *
-     * @param {string} parameters.id The target ID for the resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    rename(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    rename(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, callback: ServiceCallback<void>): void;
-    rename(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Pauses a data warehouse.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the data warehouse to pause.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginPauseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Pauses a data warehouse.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the data warehouse to pause.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginPause(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPause(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<void>): void;
-    beginPause(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Resumes a data warehouse.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the data warehouse to resume.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginResumeWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Resumes a data warehouse.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the data warehouse to resume.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginResume(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginResume(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<void>): void;
-    beginResume(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Creates a new database or updates an existing database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be operated on
-     * (updated or created).
-     *
-     * @param {object} parameters The required parameters for creating or updating
-     * a database.
-     *
-     * @param {string} [parameters.collation] The collation of the database. If
-     * createMode is not Default, this value is ignored.
-     *
-     * @param {string} [parameters.createMode] Specifies the mode of database
-     * creation.
-     *
-     * Default: regular database creation.
-     *
-     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the source database.
-     *
-     * OnlineSecondary/NonReadableSecondary: creates a database as a (readable or
-     * nonreadable) secondary replica of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the existing primary database.
-     *
-     * PointInTimeRestore: Creates a database by restoring a point in time backup
-     * of an existing database. sourceDatabaseId must be specified as the resource
-     * ID of the existing database, and restorePointInTime must be specified.
-     *
-     * Recovery: Creates a database by restoring a geo-replicated backup.
-     * sourceDatabaseId must be specified as the recoverable database resource ID
-     * to restore.
-     *
-     * Restore: Creates a database by restoring a backup of a deleted database.
-     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
-     * original resource ID, then sourceDatabaseDeletionDate must be specified.
-     * Otherwise sourceDatabaseId must be the restorable dropped database resource
-     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
-     * specified to restore from an earlier point in time.
-     *
-     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
-     * term retention vault. recoveryServicesRecoveryPointResourceId must be
-     * specified as the recovery point resource ID.
-     *
-     * Copy, NonReadableSecondary, OnlineSecondary and
-     * RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
-     * Possible values include: 'Copy', 'Default', 'NonReadableSecondary',
-     * 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore',
-     * 'RestoreLongTermRetentionBackup'
-     *
-     * @param {string} [parameters.sourceDatabaseId] Conditional. If createMode is
-     * Copy, NonReadableSecondary, OnlineSecondary, PointInTimeRestore, Recovery,
-     * or Restore, then this value is required. Specifies the resource ID of the
-     * source database. If createMode is NonReadableSecondary or OnlineSecondary,
-     * the name of the source database must be the same as the new database being
-     * created.
-     *
-     * @param {date} [parameters.sourceDatabaseDeletionDate] Conditional. If
-     * createMode is Restore and sourceDatabaseId is the deleted database's
-     * original resource id when it existed (as opposed to its current restorable
-     * dropped database id), then this value is required. Specifies the time that
-     * the database was deleted.
-     *
-     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
-     * PointInTimeRestore, this value is required. If createMode is Restore, this
-     * value is optional. Specifies the point in time (ISO8601 format) of the
-     * source database that will be restored to create the new database. Must be
-     * greater than or equal to the source database's earliestRestoreDate value.
-     *
-     * @param {string} [parameters.recoveryServicesRecoveryPointResourceId]
-     * Conditional. If createMode is RestoreLongTermRetentionBackup, then this
-     * value is required. Specifies the resource ID of the recovery point to
-     * restore from.
-     *
-     * @param {string} [parameters.edition] The edition of the database. The
-     * DatabaseEditions enumeration contains all the valid editions. If createMode
-     * is NonReadableSecondary or OnlineSecondary, this value is ignored. To see
-     * possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions -l westus --query [].name`. Possible
-     * values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
-     * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
-     *
-     * @param {string} [parameters.maxSizeBytes] The max size of the database
-     * expressed in bytes. If createMode is not Default, this value is ignored. To
-     * see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation."
-     *
-     * @param {uuid} [parameters.requestedServiceObjectiveId] The configured
-     * service level objective ID of the database. This is the service level
-     * objective that is in the process of being applied to the database. Once
-     * successfully updated, it will match the value of currentServiceObjectiveId
-     * property. If requestedServiceObjectiveId and requestedServiceObjectiveName
-     * are both updated, the value of requestedServiceObjectiveId overrides the
-     * value of requestedServiceObjectiveName. To see possible values, query the
-     * capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name` .
-     *
-     * @param {string} [parameters.requestedServiceObjectiveName] The name of the
-     * configured service level objective of the database. This is the service
-     * level objective that is in the process of being applied to the database.
-     * Once successfully updated, it will match the value of serviceLevelObjective
-     * property. To see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name`. Possible values include:
-     * 'System', 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
-     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
-     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
-     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
-     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
-     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
-     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
-     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
-     * 'ElasticPool'
-     *
-     * @param {string} [parameters.elasticPoolName] The name of the elastic pool
-     * the database is in. If elasticPoolName and requestedServiceObjectiveName are
-     * both updated, the value of requestedServiceObjectiveName is ignored. Not
-     * supported for DataWarehouse edition.
-     *
-     * @param {string} [parameters.readScale] Conditional. If the database is a
-     * geo-secondary, readScale indicates whether read-only connections are allowed
-     * to this database or not. Not supported for DataWarehouse edition. Possible
-     * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [parameters.sampleName] Indicates the name of the sample
-     * schema to apply when creating this database. If createMode is not Default,
-     * this value is ignored. Not supported for DataWarehouse edition. Possible
-     * values include: 'AdventureWorksLT'
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
-     * zone redundant, which means the replicas of this database will be spread
-     * across multiple availability zones.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} parameters.location Resource location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
-
-    /**
-     * Creates a new database or updates an existing database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be operated on
-     * (updated or created).
-     *
-     * @param {object} parameters The required parameters for creating or updating
-     * a database.
-     *
-     * @param {string} [parameters.collation] The collation of the database. If
-     * createMode is not Default, this value is ignored.
-     *
-     * @param {string} [parameters.createMode] Specifies the mode of database
-     * creation.
-     *
-     * Default: regular database creation.
-     *
-     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the source database.
-     *
-     * OnlineSecondary/NonReadableSecondary: creates a database as a (readable or
-     * nonreadable) secondary replica of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the existing primary database.
-     *
-     * PointInTimeRestore: Creates a database by restoring a point in time backup
-     * of an existing database. sourceDatabaseId must be specified as the resource
-     * ID of the existing database, and restorePointInTime must be specified.
-     *
-     * Recovery: Creates a database by restoring a geo-replicated backup.
-     * sourceDatabaseId must be specified as the recoverable database resource ID
-     * to restore.
-     *
-     * Restore: Creates a database by restoring a backup of a deleted database.
-     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
-     * original resource ID, then sourceDatabaseDeletionDate must be specified.
-     * Otherwise sourceDatabaseId must be the restorable dropped database resource
-     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
-     * specified to restore from an earlier point in time.
-     *
-     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
-     * term retention vault. recoveryServicesRecoveryPointResourceId must be
-     * specified as the recovery point resource ID.
-     *
-     * Copy, NonReadableSecondary, OnlineSecondary and
-     * RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
-     * Possible values include: 'Copy', 'Default', 'NonReadableSecondary',
-     * 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore',
-     * 'RestoreLongTermRetentionBackup'
-     *
-     * @param {string} [parameters.sourceDatabaseId] Conditional. If createMode is
-     * Copy, NonReadableSecondary, OnlineSecondary, PointInTimeRestore, Recovery,
-     * or Restore, then this value is required. Specifies the resource ID of the
-     * source database. If createMode is NonReadableSecondary or OnlineSecondary,
-     * the name of the source database must be the same as the new database being
-     * created.
-     *
-     * @param {date} [parameters.sourceDatabaseDeletionDate] Conditional. If
-     * createMode is Restore and sourceDatabaseId is the deleted database's
-     * original resource id when it existed (as opposed to its current restorable
-     * dropped database id), then this value is required. Specifies the time that
-     * the database was deleted.
-     *
-     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
-     * PointInTimeRestore, this value is required. If createMode is Restore, this
-     * value is optional. Specifies the point in time (ISO8601 format) of the
-     * source database that will be restored to create the new database. Must be
-     * greater than or equal to the source database's earliestRestoreDate value.
-     *
-     * @param {string} [parameters.recoveryServicesRecoveryPointResourceId]
-     * Conditional. If createMode is RestoreLongTermRetentionBackup, then this
-     * value is required. Specifies the resource ID of the recovery point to
-     * restore from.
-     *
-     * @param {string} [parameters.edition] The edition of the database. The
-     * DatabaseEditions enumeration contains all the valid editions. If createMode
-     * is NonReadableSecondary or OnlineSecondary, this value is ignored. To see
-     * possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions -l westus --query [].name`. Possible
-     * values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
-     * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
-     *
-     * @param {string} [parameters.maxSizeBytes] The max size of the database
-     * expressed in bytes. If createMode is not Default, this value is ignored. To
-     * see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation."
-     *
-     * @param {uuid} [parameters.requestedServiceObjectiveId] The configured
-     * service level objective ID of the database. This is the service level
-     * objective that is in the process of being applied to the database. Once
-     * successfully updated, it will match the value of currentServiceObjectiveId
-     * property. If requestedServiceObjectiveId and requestedServiceObjectiveName
-     * are both updated, the value of requestedServiceObjectiveId overrides the
-     * value of requestedServiceObjectiveName. To see possible values, query the
-     * capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name` .
-     *
-     * @param {string} [parameters.requestedServiceObjectiveName] The name of the
-     * configured service level objective of the database. This is the service
-     * level objective that is in the process of being applied to the database.
-     * Once successfully updated, it will match the value of serviceLevelObjective
-     * property. To see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name`. Possible values include:
-     * 'System', 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
-     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
-     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
-     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
-     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
-     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
-     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
-     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
-     * 'ElasticPool'
-     *
-     * @param {string} [parameters.elasticPoolName] The name of the elastic pool
-     * the database is in. If elasticPoolName and requestedServiceObjectiveName are
-     * both updated, the value of requestedServiceObjectiveName is ignored. Not
-     * supported for DataWarehouse edition.
-     *
-     * @param {string} [parameters.readScale] Conditional. If the database is a
-     * geo-secondary, readScale indicates whether read-only connections are allowed
-     * to this database or not. Not supported for DataWarehouse edition. Possible
-     * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [parameters.sampleName] Indicates the name of the sample
-     * schema to apply when creating this database. If createMode is not Default,
-     * this value is ignored. Not supported for DataWarehouse edition. Possible
-     * values include: 'AdventureWorksLT'
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
-     * zone redundant, which means the replicas of this database will be spread
-     * across multiple availability zones.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} parameters.location Resource location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Database} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Database} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Database} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, callback: ServiceCallback<models.Database>): void;
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
-
-
-    /**
-     * Updates an existing database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be updated.
-     *
-     * @param {object} parameters The required parameters for updating a database.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} [parameters.collation] The collation of the database. If
-     * createMode is not Default, this value is ignored.
-     *
-     * @param {string} [parameters.createMode] Specifies the mode of database
-     * creation.
-     *
-     * Default: regular database creation.
-     *
-     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the source database.
-     *
-     * OnlineSecondary/NonReadableSecondary: creates a database as a (readable or
-     * nonreadable) secondary replica of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the existing primary database.
-     *
-     * PointInTimeRestore: Creates a database by restoring a point in time backup
-     * of an existing database. sourceDatabaseId must be specified as the resource
-     * ID of the existing database, and restorePointInTime must be specified.
-     *
-     * Recovery: Creates a database by restoring a geo-replicated backup.
-     * sourceDatabaseId must be specified as the recoverable database resource ID
-     * to restore.
-     *
-     * Restore: Creates a database by restoring a backup of a deleted database.
-     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
-     * original resource ID, then sourceDatabaseDeletionDate must be specified.
-     * Otherwise sourceDatabaseId must be the restorable dropped database resource
-     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
-     * specified to restore from an earlier point in time.
-     *
-     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
-     * term retention vault. recoveryServicesRecoveryPointResourceId must be
-     * specified as the recovery point resource ID.
-     *
-     * Copy, NonReadableSecondary, OnlineSecondary and
-     * RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
-     * Possible values include: 'Copy', 'Default', 'NonReadableSecondary',
-     * 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore',
-     * 'RestoreLongTermRetentionBackup'
-     *
-     * @param {string} [parameters.sourceDatabaseId] Conditional. If createMode is
-     * Copy, NonReadableSecondary, OnlineSecondary, PointInTimeRestore, Recovery,
-     * or Restore, then this value is required. Specifies the resource ID of the
-     * source database. If createMode is NonReadableSecondary or OnlineSecondary,
-     * the name of the source database must be the same as the new database being
-     * created.
-     *
-     * @param {date} [parameters.sourceDatabaseDeletionDate] Conditional. If
-     * createMode is Restore and sourceDatabaseId is the deleted database's
-     * original resource id when it existed (as opposed to its current restorable
-     * dropped database id), then this value is required. Specifies the time that
-     * the database was deleted.
-     *
-     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
-     * PointInTimeRestore, this value is required. If createMode is Restore, this
-     * value is optional. Specifies the point in time (ISO8601 format) of the
-     * source database that will be restored to create the new database. Must be
-     * greater than or equal to the source database's earliestRestoreDate value.
-     *
-     * @param {string} [parameters.recoveryServicesRecoveryPointResourceId]
-     * Conditional. If createMode is RestoreLongTermRetentionBackup, then this
-     * value is required. Specifies the resource ID of the recovery point to
-     * restore from.
-     *
-     * @param {string} [parameters.edition] The edition of the database. The
-     * DatabaseEditions enumeration contains all the valid editions. If createMode
-     * is NonReadableSecondary or OnlineSecondary, this value is ignored. To see
-     * possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions -l westus --query [].name`. Possible
-     * values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
-     * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
-     *
-     * @param {string} [parameters.maxSizeBytes] The max size of the database
-     * expressed in bytes. If createMode is not Default, this value is ignored. To
-     * see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation."
-     *
-     * @param {uuid} [parameters.requestedServiceObjectiveId] The configured
-     * service level objective ID of the database. This is the service level
-     * objective that is in the process of being applied to the database. Once
-     * successfully updated, it will match the value of currentServiceObjectiveId
-     * property. If requestedServiceObjectiveId and requestedServiceObjectiveName
-     * are both updated, the value of requestedServiceObjectiveId overrides the
-     * value of requestedServiceObjectiveName. To see possible values, query the
-     * capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name` .
-     *
-     * @param {string} [parameters.requestedServiceObjectiveName] The name of the
-     * configured service level objective of the database. This is the service
-     * level objective that is in the process of being applied to the database.
-     * Once successfully updated, it will match the value of serviceLevelObjective
-     * property. To see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name`. Possible values include:
-     * 'System', 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
-     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
-     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
-     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
-     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
-     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
-     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
-     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
-     * 'ElasticPool'
-     *
-     * @param {string} [parameters.elasticPoolName] The name of the elastic pool
-     * the database is in. If elasticPoolName and requestedServiceObjectiveName are
-     * both updated, the value of requestedServiceObjectiveName is ignored. Not
-     * supported for DataWarehouse edition.
-     *
-     * @param {string} [parameters.readScale] Conditional. If the database is a
-     * geo-secondary, readScale indicates whether read-only connections are allowed
-     * to this database or not. Not supported for DataWarehouse edition. Possible
-     * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [parameters.sampleName] Indicates the name of the sample
-     * schema to apply when creating this database. If createMode is not Default,
-     * this value is ignored. Not supported for DataWarehouse edition. Possible
-     * values include: 'AdventureWorksLT'
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
-     * zone redundant, which means the replicas of this database will be spread
-     * across multiple availability zones.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
-
-    /**
-     * Updates an existing database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be updated.
-     *
-     * @param {object} parameters The required parameters for updating a database.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} [parameters.collation] The collation of the database. If
-     * createMode is not Default, this value is ignored.
-     *
-     * @param {string} [parameters.createMode] Specifies the mode of database
-     * creation.
-     *
-     * Default: regular database creation.
-     *
-     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the source database.
-     *
-     * OnlineSecondary/NonReadableSecondary: creates a database as a (readable or
-     * nonreadable) secondary replica of an existing database. sourceDatabaseId
-     * must be specified as the resource ID of the existing primary database.
-     *
-     * PointInTimeRestore: Creates a database by restoring a point in time backup
-     * of an existing database. sourceDatabaseId must be specified as the resource
-     * ID of the existing database, and restorePointInTime must be specified.
-     *
-     * Recovery: Creates a database by restoring a geo-replicated backup.
-     * sourceDatabaseId must be specified as the recoverable database resource ID
-     * to restore.
-     *
-     * Restore: Creates a database by restoring a backup of a deleted database.
-     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
-     * original resource ID, then sourceDatabaseDeletionDate must be specified.
-     * Otherwise sourceDatabaseId must be the restorable dropped database resource
-     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
-     * specified to restore from an earlier point in time.
-     *
-     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
-     * term retention vault. recoveryServicesRecoveryPointResourceId must be
-     * specified as the recovery point resource ID.
-     *
-     * Copy, NonReadableSecondary, OnlineSecondary and
-     * RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
-     * Possible values include: 'Copy', 'Default', 'NonReadableSecondary',
-     * 'OnlineSecondary', 'PointInTimeRestore', 'Recovery', 'Restore',
-     * 'RestoreLongTermRetentionBackup'
-     *
-     * @param {string} [parameters.sourceDatabaseId] Conditional. If createMode is
-     * Copy, NonReadableSecondary, OnlineSecondary, PointInTimeRestore, Recovery,
-     * or Restore, then this value is required. Specifies the resource ID of the
-     * source database. If createMode is NonReadableSecondary or OnlineSecondary,
-     * the name of the source database must be the same as the new database being
-     * created.
-     *
-     * @param {date} [parameters.sourceDatabaseDeletionDate] Conditional. If
-     * createMode is Restore and sourceDatabaseId is the deleted database's
-     * original resource id when it existed (as opposed to its current restorable
-     * dropped database id), then this value is required. Specifies the time that
-     * the database was deleted.
-     *
-     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
-     * PointInTimeRestore, this value is required. If createMode is Restore, this
-     * value is optional. Specifies the point in time (ISO8601 format) of the
-     * source database that will be restored to create the new database. Must be
-     * greater than or equal to the source database's earliestRestoreDate value.
-     *
-     * @param {string} [parameters.recoveryServicesRecoveryPointResourceId]
-     * Conditional. If createMode is RestoreLongTermRetentionBackup, then this
-     * value is required. Specifies the resource ID of the recovery point to
-     * restore from.
-     *
-     * @param {string} [parameters.edition] The edition of the database. The
-     * DatabaseEditions enumeration contains all the valid editions. If createMode
-     * is NonReadableSecondary or OnlineSecondary, this value is ignored. To see
-     * possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions -l westus --query [].name`. Possible
-     * values include: 'Web', 'Business', 'Basic', 'Standard', 'Premium',
-     * 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System', 'System2'
-     *
-     * @param {string} [parameters.maxSizeBytes] The max size of the database
-     * expressed in bytes. If createMode is not Default, this value is ignored. To
-     * see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation."
-     *
-     * @param {uuid} [parameters.requestedServiceObjectiveId] The configured
-     * service level objective ID of the database. This is the service level
-     * objective that is in the process of being applied to the database. Once
-     * successfully updated, it will match the value of currentServiceObjectiveId
-     * property. If requestedServiceObjectiveId and requestedServiceObjectiveName
-     * are both updated, the value of requestedServiceObjectiveId overrides the
-     * value of requestedServiceObjectiveName. To see possible values, query the
-     * capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name` .
-     *
-     * @param {string} [parameters.requestedServiceObjectiveName] The name of the
-     * configured service level objective of the database. This is the service
-     * level objective that is in the process of being applied to the database.
-     * Once successfully updated, it will match the value of serviceLevelObjective
-     * property. To see possible values, query the capabilities API
-     * (/subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationID}/capabilities)
-     * referred to by operationId: "Capabilities_ListByLocation." or use the Azure
-     * CLI command `az sql db list-editions --location <location> --query
-     * [].supportedServiceLevelObjectives[].name`. Possible values include:
-     * 'System', 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
-     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
-     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
-     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
-     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
-     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
-     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
-     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
-     * 'ElasticPool'
-     *
-     * @param {string} [parameters.elasticPoolName] The name of the elastic pool
-     * the database is in. If elasticPoolName and requestedServiceObjectiveName are
-     * both updated, the value of requestedServiceObjectiveName is ignored. Not
-     * supported for DataWarehouse edition.
-     *
-     * @param {string} [parameters.readScale] Conditional. If the database is a
-     * geo-secondary, readScale indicates whether read-only connections are allowed
-     * to this database or not. Not supported for DataWarehouse edition. Possible
-     * values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [parameters.sampleName] Indicates the name of the sample
-     * schema to apply when creating this database. If createMode is not Default,
-     * this value is ignored. Not supported for DataWarehouse edition. Possible
-     * values include: 'AdventureWorksLT'
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
-     * zone redundant, which means the replicas of this database will be spread
-     * across multiple availability zones.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Database} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Database} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Database} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
-    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, callback: ServiceCallback<models.Database>): void;
-    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
-
-
-    /**
-     * Imports a bacpac into a new database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {object} parameters The required parameters for importing a Bacpac
-     * into a database.
-     *
-     * @param {string} parameters.databaseName The name of the database to import.
-     *
-     * @param {string} parameters.edition The edition for the database being
-     * created. Possible values include: 'Web', 'Business', 'Basic', 'Standard',
-     * 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System',
-     * 'System2'
-     *
-     * @param {string} parameters.serviceObjectiveName The name of the service
-     * objective to assign to the database. Possible values include: 'System',
-     * 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
-     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
-     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
-     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
-     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
-     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
-     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
-     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
-     * 'ElasticPool'
-     *
-     * @param {string} parameters.maxSizeBytes The maximum size for the newly
-     * imported database.
-     *
-     * @param {string} parameters.storageKeyType The type of the storage key to
-     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
-     *
-     * @param {string} parameters.storageKey The storage key to use.  If storage
-     * key type is SharedAccessKey, it must be preceded with a "?."
-     *
-     * @param {string} parameters.storageUri The storage uri to use.
-     *
-     * @param {string} parameters.administratorLogin The name of the SQL
-     * administrator.
-     *
-     * @param {string} parameters.administratorLoginPassword The password of the
-     * SQL administrator.
-     *
-     * @param {string} [parameters.authenticationType] The authentication type.
-     * Possible values include: 'SQL', 'ADPassword'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ImportExportResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginImportMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImportExportResponse>>;
-
-    /**
-     * Imports a bacpac into a new database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {object} parameters The required parameters for importing a Bacpac
-     * into a database.
-     *
-     * @param {string} parameters.databaseName The name of the database to import.
-     *
-     * @param {string} parameters.edition The edition for the database being
-     * created. Possible values include: 'Web', 'Business', 'Basic', 'Standard',
-     * 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System',
-     * 'System2'
-     *
-     * @param {string} parameters.serviceObjectiveName The name of the service
-     * objective to assign to the database. Possible values include: 'System',
-     * 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
-     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
-     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
-     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
-     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
-     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
-     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
-     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
-     * 'ElasticPool'
-     *
-     * @param {string} parameters.maxSizeBytes The maximum size for the newly
-     * imported database.
-     *
-     * @param {string} parameters.storageKeyType The type of the storage key to
-     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
-     *
-     * @param {string} parameters.storageKey The storage key to use.  If storage
-     * key type is SharedAccessKey, it must be preceded with a "?."
-     *
-     * @param {string} parameters.storageUri The storage uri to use.
-     *
-     * @param {string} parameters.administratorLogin The name of the SQL
-     * administrator.
-     *
-     * @param {string} parameters.administratorLoginPassword The password of the
-     * SQL administrator.
-     *
-     * @param {string} [parameters.authenticationType] The authentication type.
-     * Possible values include: 'SQL', 'ADPassword'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ImportExportResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ImportExportResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ImportExportResponse} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginImportMethod(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImportExportResponse>;
-    beginImportMethod(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, callback: ServiceCallback<models.ImportExportResponse>): void;
-    beginImportMethod(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportExportResponse>): void;
-
-
-    /**
-     * Creates an import operation that imports a bacpac into an existing database.
-     * The existing database must be empty.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to import into
-     *
-     * @param {object} parameters The required parameters for importing a Bacpac
-     * into a database.
-     *
-     * @param {string} [parameters.name] The name of the extension.
-     *
-     * @param {string} [parameters.type] The type of the extension.
-     *
-     * @param {string} parameters.storageKeyType The type of the storage key to
-     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
-     *
-     * @param {string} parameters.storageKey The storage key to use.  If storage
-     * key type is SharedAccessKey, it must be preceded with a "?."
-     *
-     * @param {string} parameters.storageUri The storage uri to use.
-     *
-     * @param {string} parameters.administratorLogin The name of the SQL
-     * administrator.
-     *
-     * @param {string} parameters.administratorLoginPassword The password of the
-     * SQL administrator.
-     *
-     * @param {string} [parameters.authenticationType] The authentication type.
-     * Possible values include: 'SQL', 'ADPassword'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ImportExportResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateImportOperationWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImportExportResponse>>;
-
-    /**
-     * Creates an import operation that imports a bacpac into an existing database.
-     * The existing database must be empty.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to import into
-     *
-     * @param {object} parameters The required parameters for importing a Bacpac
-     * into a database.
-     *
-     * @param {string} [parameters.name] The name of the extension.
-     *
-     * @param {string} [parameters.type] The type of the extension.
-     *
-     * @param {string} parameters.storageKeyType The type of the storage key to
-     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
-     *
-     * @param {string} parameters.storageKey The storage key to use.  If storage
-     * key type is SharedAccessKey, it must be preceded with a "?."
-     *
-     * @param {string} parameters.storageUri The storage uri to use.
-     *
-     * @param {string} parameters.administratorLogin The name of the SQL
-     * administrator.
-     *
-     * @param {string} parameters.administratorLoginPassword The password of the
-     * SQL administrator.
-     *
-     * @param {string} [parameters.authenticationType] The authentication type.
-     * Possible values include: 'SQL', 'ADPassword'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ImportExportResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ImportExportResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ImportExportResponse} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateImportOperation(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImportExportResponse>;
-    beginCreateImportOperation(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, callback: ServiceCallback<models.ImportExportResponse>): void;
-    beginCreateImportOperation(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportExportResponse>): void;
-
-
-    /**
-     * Exports a database to a bacpac.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be exported.
-     *
-     * @param {object} parameters The required parameters for exporting a database.
-     *
-     * @param {string} parameters.storageKeyType The type of the storage key to
-     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
-     *
-     * @param {string} parameters.storageKey The storage key to use.  If storage
-     * key type is SharedAccessKey, it must be preceded with a "?."
-     *
-     * @param {string} parameters.storageUri The storage uri to use.
-     *
-     * @param {string} parameters.administratorLogin The name of the SQL
-     * administrator.
-     *
-     * @param {string} parameters.administratorLoginPassword The password of the
-     * SQL administrator.
-     *
-     * @param {string} [parameters.authenticationType] The authentication type.
-     * Possible values include: 'SQL', 'ADPassword'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ImportExportResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginExportMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImportExportResponse>>;
-
-    /**
-     * Exports a database to a bacpac.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database to be exported.
-     *
-     * @param {object} parameters The required parameters for exporting a database.
-     *
-     * @param {string} parameters.storageKeyType The type of the storage key to
-     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
-     *
-     * @param {string} parameters.storageKey The storage key to use.  If storage
-     * key type is SharedAccessKey, it must be preceded with a "?."
-     *
-     * @param {string} parameters.storageUri The storage uri to use.
-     *
-     * @param {string} parameters.administratorLogin The name of the SQL
-     * administrator.
-     *
-     * @param {string} parameters.administratorLoginPassword The password of the
-     * SQL administrator.
-     *
-     * @param {string} [parameters.authenticationType] The authentication type.
-     * Possible values include: 'SQL', 'ADPassword'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ImportExportResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ImportExportResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ImportExportResponse} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginExportMethod(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImportExportResponse>;
-    beginExportMethod(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, callback: ServiceCallback<models.ImportExportResponse>): void;
-    beginExportMethod(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportExportResponse>): void;
-}
-
-/**
- * @class
  * DatabaseThreatDetectionPolicies
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
@@ -5102,826 +1944,6 @@ export interface DataMaskingRules {
 
 /**
  * @class
- * ElasticPools
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the SqlManagementClient.
- */
-export interface ElasticPools {
-
-
-    /**
-     * Creates a new elastic pool or updates an existing elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be operated
-     * on (updated or created).
-     *
-     * @param {object} parameters The required parameters for creating or updating
-     * an elastic pool.
-     *
-     * @param {string} [parameters.edition] The edition of the elastic pool.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
-     *
-     * @param {number} [parameters.dtu] The total shared DTU for the database
-     * elastic pool.
-     *
-     * @param {number} [parameters.databaseDtuMax] The maximum DTU any one database
-     * can consume.
-     *
-     * @param {number} [parameters.databaseDtuMin] The minimum DTU all databases
-     * are guaranteed.
-     *
-     * @param {number} [parameters.storageMB] Gets storage limit for the database
-     * elastic pool in MB.
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database
-     * elastic pool is zone redundant, which means the replicas of this database
-     * will be spread across multiple availability zones.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} parameters.location Resource location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ElasticPool>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPool>>;
-
-    /**
-     * Creates a new elastic pool or updates an existing elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be operated
-     * on (updated or created).
-     *
-     * @param {object} parameters The required parameters for creating or updating
-     * an elastic pool.
-     *
-     * @param {string} [parameters.edition] The edition of the elastic pool.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
-     *
-     * @param {number} [parameters.dtu] The total shared DTU for the database
-     * elastic pool.
-     *
-     * @param {number} [parameters.databaseDtuMax] The maximum DTU any one database
-     * can consume.
-     *
-     * @param {number} [parameters.databaseDtuMin] The minimum DTU all databases
-     * are guaranteed.
-     *
-     * @param {number} [parameters.storageMB] Gets storage limit for the database
-     * elastic pool in MB.
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database
-     * elastic pool is zone redundant, which means the replicas of this database
-     * will be spread across multiple availability zones.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} parameters.location Resource location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ElasticPool} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ElasticPool} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ElasticPool} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPool>;
-    createOrUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, callback: ServiceCallback<models.ElasticPool>): void;
-    createOrUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPool>): void;
-
-
-    /**
-     * Updates an existing elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be updated.
-     *
-     * @param {object} parameters The required parameters for updating an elastic
-     * pool.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} [parameters.edition] The edition of the elastic pool.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
-     *
-     * @param {number} [parameters.dtu] The total shared DTU for the database
-     * elastic pool.
-     *
-     * @param {number} [parameters.databaseDtuMax] The maximum DTU any one database
-     * can consume.
-     *
-     * @param {number} [parameters.databaseDtuMin] The minimum DTU all databases
-     * are guaranteed.
-     *
-     * @param {number} [parameters.storageMB] Gets storage limit for the database
-     * elastic pool in MB.
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database
-     * elastic pool is zone redundant, which means the replicas of this database
-     * will be spread across multiple availability zones.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ElasticPool>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPool>>;
-
-    /**
-     * Updates an existing elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be updated.
-     *
-     * @param {object} parameters The required parameters for updating an elastic
-     * pool.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} [parameters.edition] The edition of the elastic pool.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
-     *
-     * @param {number} [parameters.dtu] The total shared DTU for the database
-     * elastic pool.
-     *
-     * @param {number} [parameters.databaseDtuMax] The maximum DTU any one database
-     * can consume.
-     *
-     * @param {number} [parameters.databaseDtuMin] The minimum DTU all databases
-     * are guaranteed.
-     *
-     * @param {number} [parameters.storageMB] Gets storage limit for the database
-     * elastic pool in MB.
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database
-     * elastic pool is zone redundant, which means the replicas of this database
-     * will be spread across multiple availability zones.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ElasticPool} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ElasticPool} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ElasticPool} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPool>;
-    update(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, callback: ServiceCallback<models.ElasticPool>): void;
-    update(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPool>): void;
-
-
-    /**
-     * Deletes the elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be deleted.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be deleted.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, serverName: string, elasticPoolName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, serverName: string, elasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets an elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be
-     * retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ElasticPool>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPool>>;
-
-    /**
-     * Gets an elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be
-     * retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ElasticPool} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ElasticPool} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ElasticPool} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPool>;
-    get(resourceGroupName: string, serverName: string, elasticPoolName: string, callback: ServiceCallback<models.ElasticPool>): void;
-    get(resourceGroupName: string, serverName: string, elasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPool>): void;
-
-
-    /**
-     * Returns a list of elastic pools in a server.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ElasticPoolListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPoolListResult>>;
-
-    /**
-     * Returns a list of elastic pools in a server.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ElasticPoolListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ElasticPoolListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ElasticPoolListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPoolListResult>;
-    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.ElasticPoolListResult>): void;
-    listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPoolListResult>): void;
-
-
-    /**
-     * Returns elastic pool  metrics.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool.
-     *
-     * @param {string} filter An OData filter expression that describes a subset of
-     * metrics to return.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<MetricListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listMetricsWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricListResult>>;
-
-    /**
-     * Returns elastic pool  metrics.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool.
-     *
-     * @param {string} filter An OData filter expression that describes a subset of
-     * metrics to return.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {MetricListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {MetricListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link MetricListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listMetrics(resourceGroupName: string, serverName: string, elasticPoolName: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricListResult>;
-    listMetrics(resourceGroupName: string, serverName: string, elasticPoolName: string, filter: string, callback: ServiceCallback<models.MetricListResult>): void;
-    listMetrics(resourceGroupName: string, serverName: string, elasticPoolName: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricListResult>): void;
-
-
-    /**
-     * Returns elastic pool metric definitions.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<MetricDefinitionListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listMetricDefinitionsWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionListResult>>;
-
-    /**
-     * Returns elastic pool metric definitions.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {MetricDefinitionListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {MetricDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link MetricDefinitionListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listMetricDefinitions(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricDefinitionListResult>;
-    listMetricDefinitions(resourceGroupName: string, serverName: string, elasticPoolName: string, callback: ServiceCallback<models.MetricDefinitionListResult>): void;
-    listMetricDefinitions(resourceGroupName: string, serverName: string, elasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionListResult>): void;
-
-
-    /**
-     * Creates a new elastic pool or updates an existing elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be operated
-     * on (updated or created).
-     *
-     * @param {object} parameters The required parameters for creating or updating
-     * an elastic pool.
-     *
-     * @param {string} [parameters.edition] The edition of the elastic pool.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
-     *
-     * @param {number} [parameters.dtu] The total shared DTU for the database
-     * elastic pool.
-     *
-     * @param {number} [parameters.databaseDtuMax] The maximum DTU any one database
-     * can consume.
-     *
-     * @param {number} [parameters.databaseDtuMin] The minimum DTU all databases
-     * are guaranteed.
-     *
-     * @param {number} [parameters.storageMB] Gets storage limit for the database
-     * elastic pool in MB.
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database
-     * elastic pool is zone redundant, which means the replicas of this database
-     * will be spread across multiple availability zones.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} parameters.location Resource location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ElasticPool>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPool>>;
-
-    /**
-     * Creates a new elastic pool or updates an existing elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be operated
-     * on (updated or created).
-     *
-     * @param {object} parameters The required parameters for creating or updating
-     * an elastic pool.
-     *
-     * @param {string} [parameters.edition] The edition of the elastic pool.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
-     *
-     * @param {number} [parameters.dtu] The total shared DTU for the database
-     * elastic pool.
-     *
-     * @param {number} [parameters.databaseDtuMax] The maximum DTU any one database
-     * can consume.
-     *
-     * @param {number} [parameters.databaseDtuMin] The minimum DTU all databases
-     * are guaranteed.
-     *
-     * @param {number} [parameters.storageMB] Gets storage limit for the database
-     * elastic pool in MB.
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database
-     * elastic pool is zone redundant, which means the replicas of this database
-     * will be spread across multiple availability zones.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} parameters.location Resource location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ElasticPool} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ElasticPool} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ElasticPool} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPool>;
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, callback: ServiceCallback<models.ElasticPool>): void;
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPool>): void;
-
-
-    /**
-     * Updates an existing elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be updated.
-     *
-     * @param {object} parameters The required parameters for updating an elastic
-     * pool.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} [parameters.edition] The edition of the elastic pool.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
-     *
-     * @param {number} [parameters.dtu] The total shared DTU for the database
-     * elastic pool.
-     *
-     * @param {number} [parameters.databaseDtuMax] The maximum DTU any one database
-     * can consume.
-     *
-     * @param {number} [parameters.databaseDtuMin] The minimum DTU all databases
-     * are guaranteed.
-     *
-     * @param {number} [parameters.storageMB] Gets storage limit for the database
-     * elastic pool in MB.
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database
-     * elastic pool is zone redundant, which means the replicas of this database
-     * will be spread across multiple availability zones.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ElasticPool>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPool>>;
-
-    /**
-     * Updates an existing elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} elasticPoolName The name of the elastic pool to be updated.
-     *
-     * @param {object} parameters The required parameters for updating an elastic
-     * pool.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} [parameters.edition] The edition of the elastic pool.
-     * Possible values include: 'Basic', 'Standard', 'Premium'
-     *
-     * @param {number} [parameters.dtu] The total shared DTU for the database
-     * elastic pool.
-     *
-     * @param {number} [parameters.databaseDtuMax] The maximum DTU any one database
-     * can consume.
-     *
-     * @param {number} [parameters.databaseDtuMin] The minimum DTU all databases
-     * are guaranteed.
-     *
-     * @param {number} [parameters.storageMB] Gets storage limit for the database
-     * elastic pool in MB.
-     *
-     * @param {boolean} [parameters.zoneRedundant] Whether or not this database
-     * elastic pool is zone redundant, which means the replicas of this database
-     * will be spread across multiple availability zones.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ElasticPool} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ElasticPool} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ElasticPool} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPool>;
-    beginUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, callback: ServiceCallback<models.ElasticPool>): void;
-    beginUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPool>): void;
-}
-
-/**
- * @class
  * FirewallRules
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
@@ -6436,6 +2458,4237 @@ export interface GeoBackupPolicies {
     listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GeoBackupPolicyListResult>;
     listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.GeoBackupPolicyListResult>): void;
     listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GeoBackupPolicyListResult>): void;
+}
+
+/**
+ * @class
+ * Databases
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface Databases {
+
+
+    /**
+     * Imports a bacpac into a new database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The required parameters for importing a Bacpac
+     * into a database.
+     *
+     * @param {string} parameters.databaseName The name of the database to import.
+     *
+     * @param {string} parameters.edition The edition for the database being
+     * created. Possible values include: 'Web', 'Business', 'Basic', 'Standard',
+     * 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System',
+     * 'System2'
+     *
+     * @param {string} parameters.serviceObjectiveName The name of the service
+     * objective to assign to the database. Possible values include: 'System',
+     * 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
+     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
+     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
+     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
+     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
+     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
+     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
+     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
+     * 'ElasticPool'
+     *
+     * @param {string} parameters.maxSizeBytes The maximum size for the newly
+     * imported database.
+     *
+     * @param {string} parameters.storageKeyType The type of the storage key to
+     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+     *
+     * @param {string} parameters.storageKey The storage key to use.  If storage
+     * key type is SharedAccessKey, it must be preceded with a "?."
+     *
+     * @param {string} parameters.storageUri The storage uri to use.
+     *
+     * @param {string} parameters.administratorLogin The name of the SQL
+     * administrator.
+     *
+     * @param {string} parameters.administratorLoginPassword The password of the
+     * SQL administrator.
+     *
+     * @param {string} [parameters.authenticationType] The authentication type.
+     * Possible values include: 'SQL', 'ADPassword'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImportExportResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    importMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImportExportResponse>>;
+
+    /**
+     * Imports a bacpac into a new database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The required parameters for importing a Bacpac
+     * into a database.
+     *
+     * @param {string} parameters.databaseName The name of the database to import.
+     *
+     * @param {string} parameters.edition The edition for the database being
+     * created. Possible values include: 'Web', 'Business', 'Basic', 'Standard',
+     * 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System',
+     * 'System2'
+     *
+     * @param {string} parameters.serviceObjectiveName The name of the service
+     * objective to assign to the database. Possible values include: 'System',
+     * 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
+     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
+     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
+     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
+     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
+     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
+     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
+     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
+     * 'ElasticPool'
+     *
+     * @param {string} parameters.maxSizeBytes The maximum size for the newly
+     * imported database.
+     *
+     * @param {string} parameters.storageKeyType The type of the storage key to
+     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+     *
+     * @param {string} parameters.storageKey The storage key to use.  If storage
+     * key type is SharedAccessKey, it must be preceded with a "?."
+     *
+     * @param {string} parameters.storageUri The storage uri to use.
+     *
+     * @param {string} parameters.administratorLogin The name of the SQL
+     * administrator.
+     *
+     * @param {string} parameters.administratorLoginPassword The password of the
+     * SQL administrator.
+     *
+     * @param {string} [parameters.authenticationType] The authentication type.
+     * Possible values include: 'SQL', 'ADPassword'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImportExportResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImportExportResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImportExportResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    importMethod(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImportExportResponse>;
+    importMethod(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, callback: ServiceCallback<models.ImportExportResponse>): void;
+    importMethod(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportExportResponse>): void;
+
+
+    /**
+     * Creates an import operation that imports a bacpac into an existing database.
+     * The existing database must be empty.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to import into
+     *
+     * @param {object} parameters The required parameters for importing a Bacpac
+     * into a database.
+     *
+     * @param {string} [parameters.name] The name of the extension.
+     *
+     * @param {string} [parameters.type] The type of the extension.
+     *
+     * @param {string} parameters.storageKeyType The type of the storage key to
+     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+     *
+     * @param {string} parameters.storageKey The storage key to use.  If storage
+     * key type is SharedAccessKey, it must be preceded with a "?."
+     *
+     * @param {string} parameters.storageUri The storage uri to use.
+     *
+     * @param {string} parameters.administratorLogin The name of the SQL
+     * administrator.
+     *
+     * @param {string} parameters.administratorLoginPassword The password of the
+     * SQL administrator.
+     *
+     * @param {string} [parameters.authenticationType] The authentication type.
+     * Possible values include: 'SQL', 'ADPassword'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImportExportResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createImportOperationWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImportExportResponse>>;
+
+    /**
+     * Creates an import operation that imports a bacpac into an existing database.
+     * The existing database must be empty.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to import into
+     *
+     * @param {object} parameters The required parameters for importing a Bacpac
+     * into a database.
+     *
+     * @param {string} [parameters.name] The name of the extension.
+     *
+     * @param {string} [parameters.type] The type of the extension.
+     *
+     * @param {string} parameters.storageKeyType The type of the storage key to
+     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+     *
+     * @param {string} parameters.storageKey The storage key to use.  If storage
+     * key type is SharedAccessKey, it must be preceded with a "?."
+     *
+     * @param {string} parameters.storageUri The storage uri to use.
+     *
+     * @param {string} parameters.administratorLogin The name of the SQL
+     * administrator.
+     *
+     * @param {string} parameters.administratorLoginPassword The password of the
+     * SQL administrator.
+     *
+     * @param {string} [parameters.authenticationType] The authentication type.
+     * Possible values include: 'SQL', 'ADPassword'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImportExportResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImportExportResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImportExportResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createImportOperation(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImportExportResponse>;
+    createImportOperation(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, callback: ServiceCallback<models.ImportExportResponse>): void;
+    createImportOperation(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportExportResponse>): void;
+
+
+    /**
+     * Exports a database to a bacpac.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be exported.
+     *
+     * @param {object} parameters The required parameters for exporting a database.
+     *
+     * @param {string} parameters.storageKeyType The type of the storage key to
+     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+     *
+     * @param {string} parameters.storageKey The storage key to use.  If storage
+     * key type is SharedAccessKey, it must be preceded with a "?."
+     *
+     * @param {string} parameters.storageUri The storage uri to use.
+     *
+     * @param {string} parameters.administratorLogin The name of the SQL
+     * administrator.
+     *
+     * @param {string} parameters.administratorLoginPassword The password of the
+     * SQL administrator.
+     *
+     * @param {string} [parameters.authenticationType] The authentication type.
+     * Possible values include: 'SQL', 'ADPassword'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImportExportResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    exportMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImportExportResponse>>;
+
+    /**
+     * Exports a database to a bacpac.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be exported.
+     *
+     * @param {object} parameters The required parameters for exporting a database.
+     *
+     * @param {string} parameters.storageKeyType The type of the storage key to
+     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+     *
+     * @param {string} parameters.storageKey The storage key to use.  If storage
+     * key type is SharedAccessKey, it must be preceded with a "?."
+     *
+     * @param {string} parameters.storageUri The storage uri to use.
+     *
+     * @param {string} parameters.administratorLogin The name of the SQL
+     * administrator.
+     *
+     * @param {string} parameters.administratorLoginPassword The password of the
+     * SQL administrator.
+     *
+     * @param {string} [parameters.authenticationType] The authentication type.
+     * Possible values include: 'SQL', 'ADPassword'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImportExportResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImportExportResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImportExportResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    exportMethod(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImportExportResponse>;
+    exportMethod(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, callback: ServiceCallback<models.ImportExportResponse>): void;
+    exportMethod(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportExportResponse>): void;
+
+
+    /**
+     * Returns database metrics.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricListResult>>;
+
+    /**
+     * Returns database metrics.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, serverName: string, databaseName: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricListResult>;
+    listMetrics(resourceGroupName: string, serverName: string, databaseName: string, filter: string, callback: ServiceCallback<models.MetricListResult>): void;
+    listMetrics(resourceGroupName: string, serverName: string, databaseName: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricListResult>): void;
+
+
+    /**
+     * Returns database metric definitions.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricDefinitionsWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionListResult>>;
+
+    /**
+     * Returns database metric definitions.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetricDefinitions(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricDefinitionListResult>;
+    listMetricDefinitions(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.MetricDefinitionListResult>): void;
+    listMetricDefinitions(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionListResult>): void;
+
+
+    /**
+     * Upgrades a data warehouse.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be upgraded.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    upgradeDataWarehouseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Upgrades a data warehouse.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be upgraded.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    upgradeDataWarehouse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    upgradeDataWarehouse(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<void>): void;
+    upgradeDataWarehouse(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a list of databases.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseListResult>>;
+
+    /**
+     * Gets a list of databases.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseListResult>;
+    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.DatabaseListResult>): void;
+    listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseListResult>): void;
+
+
+    /**
+     * Gets a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
+
+    /**
+     * Gets a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Database} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Database} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Database} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.Database>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
+
+
+    /**
+     * Creates a new database or updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {object} [parameters.sku] The name and tier of the SKU.
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {string} [parameters.createMode] Specifies the mode of database
+     * creation.
+     *
+     * Default: regular database creation.
+     *
+     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
+     * must be specified as the resource ID of the source database.
+     *
+     * Secondary: creates a database as a secondary replica of an existing
+     * database. sourceDatabaseId must be specified as the resource ID of the
+     * existing primary database.
+     *
+     * PointInTimeRestore: Creates a database by restoring a point in time backup
+     * of an existing database. sourceDatabaseId must be specified as the resource
+     * ID of the existing database, and restorePointInTime must be specified.
+     *
+     * Recovery: Creates a database by restoring a geo-replicated backup.
+     * sourceDatabaseId must be specified as the recoverable database resource ID
+     * to restore.
+     *
+     * Restore: Creates a database by restoring a backup of a deleted database.
+     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
+     * original resource ID, then sourceDatabaseDeletionDate must be specified.
+     * Otherwise sourceDatabaseId must be the restorable dropped database resource
+     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
+     * specified to restore from an earlier point in time.
+     *
+     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
+     * term retention vault. recoveryServicesRecoveryPointResourceId must be
+     * specified as the recovery point resource ID.
+     *
+     * Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for
+     * DataWarehouse edition. Possible values include: 'Default', 'Copy',
+     * 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
+     * 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+     * 'RestoreLongTermRetentionBackup', 'OnlineSecondary'
+     *
+     * @param {string} [parameters.collation] The collation of the database.
+     *
+     * @param {number} [parameters.maxSizeBytes] The max size of the database
+     * expressed in bytes.
+     *
+     * @param {string} [parameters.sampleName] The name of the sample schema to
+     * apply when creating this database. Possible values include:
+     * 'AdventureWorksLT', 'WideWorldImportersStd', 'WideWorldImportersFull'
+     *
+     * @param {string} [parameters.elasticPoolId] The resource identifier of the
+     * elastic pool containing this database.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {date} [parameters.restorePointInTime] Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {date} [parameters.sourceDatabaseDeletionDate] Specifies the time
+     * that the database was deleted.
+     *
+     * @param {string} [parameters.recoveryServicesRecoveryPointId] The resource
+     * identifier of the recovery point associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.longTermRetentionBackupResourceId] The resource
+     * identifier of the long term retention backup associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The resource
+     * identifier of the restorable dropped database associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
+     * zone redundant, which means the replicas of this database will be spread
+     * across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * database. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {string} [parameters.readScale] The state of read-only routing. If
+     * enabled, connections that have application intent set to readonly in their
+     * connection string may be routed to a readonly secondary replica in the same
+     * region. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
+
+    /**
+     * Creates a new database or updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {object} [parameters.sku] The name and tier of the SKU.
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {string} [parameters.createMode] Specifies the mode of database
+     * creation.
+     *
+     * Default: regular database creation.
+     *
+     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
+     * must be specified as the resource ID of the source database.
+     *
+     * Secondary: creates a database as a secondary replica of an existing
+     * database. sourceDatabaseId must be specified as the resource ID of the
+     * existing primary database.
+     *
+     * PointInTimeRestore: Creates a database by restoring a point in time backup
+     * of an existing database. sourceDatabaseId must be specified as the resource
+     * ID of the existing database, and restorePointInTime must be specified.
+     *
+     * Recovery: Creates a database by restoring a geo-replicated backup.
+     * sourceDatabaseId must be specified as the recoverable database resource ID
+     * to restore.
+     *
+     * Restore: Creates a database by restoring a backup of a deleted database.
+     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
+     * original resource ID, then sourceDatabaseDeletionDate must be specified.
+     * Otherwise sourceDatabaseId must be the restorable dropped database resource
+     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
+     * specified to restore from an earlier point in time.
+     *
+     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
+     * term retention vault. recoveryServicesRecoveryPointResourceId must be
+     * specified as the recovery point resource ID.
+     *
+     * Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for
+     * DataWarehouse edition. Possible values include: 'Default', 'Copy',
+     * 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
+     * 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+     * 'RestoreLongTermRetentionBackup', 'OnlineSecondary'
+     *
+     * @param {string} [parameters.collation] The collation of the database.
+     *
+     * @param {number} [parameters.maxSizeBytes] The max size of the database
+     * expressed in bytes.
+     *
+     * @param {string} [parameters.sampleName] The name of the sample schema to
+     * apply when creating this database. Possible values include:
+     * 'AdventureWorksLT', 'WideWorldImportersStd', 'WideWorldImportersFull'
+     *
+     * @param {string} [parameters.elasticPoolId] The resource identifier of the
+     * elastic pool containing this database.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {date} [parameters.restorePointInTime] Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {date} [parameters.sourceDatabaseDeletionDate] Specifies the time
+     * that the database was deleted.
+     *
+     * @param {string} [parameters.recoveryServicesRecoveryPointId] The resource
+     * identifier of the recovery point associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.longTermRetentionBackupResourceId] The resource
+     * identifier of the long term retention backup associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The resource
+     * identifier of the restorable dropped database associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
+     * zone redundant, which means the replicas of this database will be spread
+     * across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * database. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {string} [parameters.readScale] The state of read-only routing. If
+     * enabled, connections that have application intent set to readonly in their
+     * connection string may be routed to a readonly secondary replica in the same
+     * region. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Database} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Database} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Database} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, callback: ServiceCallback<models.Database>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
+
+
+    /**
+     * Deletes the database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {object} [parameters.sku] The name and tier of the SKU.
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {string} [parameters.createMode] Specifies the mode of database
+     * creation.
+     *
+     * Default: regular database creation.
+     *
+     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
+     * must be specified as the resource ID of the source database.
+     *
+     * Secondary: creates a database as a secondary replica of an existing
+     * database. sourceDatabaseId must be specified as the resource ID of the
+     * existing primary database.
+     *
+     * PointInTimeRestore: Creates a database by restoring a point in time backup
+     * of an existing database. sourceDatabaseId must be specified as the resource
+     * ID of the existing database, and restorePointInTime must be specified.
+     *
+     * Recovery: Creates a database by restoring a geo-replicated backup.
+     * sourceDatabaseId must be specified as the recoverable database resource ID
+     * to restore.
+     *
+     * Restore: Creates a database by restoring a backup of a deleted database.
+     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
+     * original resource ID, then sourceDatabaseDeletionDate must be specified.
+     * Otherwise sourceDatabaseId must be the restorable dropped database resource
+     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
+     * specified to restore from an earlier point in time.
+     *
+     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
+     * term retention vault. recoveryServicesRecoveryPointResourceId must be
+     * specified as the recovery point resource ID.
+     *
+     * Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for
+     * DataWarehouse edition. Possible values include: 'Default', 'Copy',
+     * 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
+     * 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+     * 'RestoreLongTermRetentionBackup', 'OnlineSecondary'
+     *
+     * @param {string} [parameters.collation] The collation of the database.
+     *
+     * @param {number} [parameters.maxSizeBytes] The max size of the database
+     * expressed in bytes.
+     *
+     * @param {string} [parameters.sampleName] The name of the sample schema to
+     * apply when creating this database. Possible values include:
+     * 'AdventureWorksLT', 'WideWorldImportersStd', 'WideWorldImportersFull'
+     *
+     * @param {string} [parameters.elasticPoolId] The resource identifier of the
+     * elastic pool containing this database.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {date} [parameters.restorePointInTime] Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {date} [parameters.sourceDatabaseDeletionDate] Specifies the time
+     * that the database was deleted.
+     *
+     * @param {string} [parameters.recoveryServicesRecoveryPointId] The resource
+     * identifier of the recovery point associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.longTermRetentionBackupResourceId] The resource
+     * identifier of the long term retention backup associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The resource
+     * identifier of the restorable dropped database associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
+     * zone redundant, which means the replicas of this database will be spread
+     * across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * database. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {string} [parameters.readScale] The state of read-only routing. If
+     * enabled, connections that have application intent set to readonly in their
+     * connection string may be routed to a readonly secondary replica in the same
+     * region. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
+
+    /**
+     * Updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {object} [parameters.sku] The name and tier of the SKU.
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {string} [parameters.createMode] Specifies the mode of database
+     * creation.
+     *
+     * Default: regular database creation.
+     *
+     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
+     * must be specified as the resource ID of the source database.
+     *
+     * Secondary: creates a database as a secondary replica of an existing
+     * database. sourceDatabaseId must be specified as the resource ID of the
+     * existing primary database.
+     *
+     * PointInTimeRestore: Creates a database by restoring a point in time backup
+     * of an existing database. sourceDatabaseId must be specified as the resource
+     * ID of the existing database, and restorePointInTime must be specified.
+     *
+     * Recovery: Creates a database by restoring a geo-replicated backup.
+     * sourceDatabaseId must be specified as the recoverable database resource ID
+     * to restore.
+     *
+     * Restore: Creates a database by restoring a backup of a deleted database.
+     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
+     * original resource ID, then sourceDatabaseDeletionDate must be specified.
+     * Otherwise sourceDatabaseId must be the restorable dropped database resource
+     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
+     * specified to restore from an earlier point in time.
+     *
+     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
+     * term retention vault. recoveryServicesRecoveryPointResourceId must be
+     * specified as the recovery point resource ID.
+     *
+     * Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for
+     * DataWarehouse edition. Possible values include: 'Default', 'Copy',
+     * 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
+     * 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+     * 'RestoreLongTermRetentionBackup', 'OnlineSecondary'
+     *
+     * @param {string} [parameters.collation] The collation of the database.
+     *
+     * @param {number} [parameters.maxSizeBytes] The max size of the database
+     * expressed in bytes.
+     *
+     * @param {string} [parameters.sampleName] The name of the sample schema to
+     * apply when creating this database. Possible values include:
+     * 'AdventureWorksLT', 'WideWorldImportersStd', 'WideWorldImportersFull'
+     *
+     * @param {string} [parameters.elasticPoolId] The resource identifier of the
+     * elastic pool containing this database.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {date} [parameters.restorePointInTime] Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {date} [parameters.sourceDatabaseDeletionDate] Specifies the time
+     * that the database was deleted.
+     *
+     * @param {string} [parameters.recoveryServicesRecoveryPointId] The resource
+     * identifier of the recovery point associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.longTermRetentionBackupResourceId] The resource
+     * identifier of the long term retention backup associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The resource
+     * identifier of the restorable dropped database associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
+     * zone redundant, which means the replicas of this database will be spread
+     * across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * database. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {string} [parameters.readScale] The state of read-only routing. If
+     * enabled, connections that have application intent set to readonly in their
+     * connection string may be routed to a readonly secondary replica in the same
+     * region. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Database} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Database} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Database} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
+    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, callback: ServiceCallback<models.Database>): void;
+    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
+
+
+    /**
+     * Gets a list of databases in an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByElasticPoolWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseListResult>>;
+
+    /**
+     * Gets a list of databases in an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseListResult>;
+    listByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, callback: ServiceCallback<models.DatabaseListResult>): void;
+    listByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseListResult>): void;
+
+
+    /**
+     * Pauses a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be paused.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    pauseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
+
+    /**
+     * Pauses a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be paused.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Database} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Database} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Database} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    pause(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
+    pause(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.Database>): void;
+    pause(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
+
+
+    /**
+     * Resumes a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be resumed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    resumeWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
+
+    /**
+     * Resumes a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be resumed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Database} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Database} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Database} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    resume(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
+    resume(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.Database>): void;
+    resume(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
+
+
+    /**
+     * Renames a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to rename.
+     *
+     * @param {object} parameters The resource move definition for renaming this
+     * database.
+     *
+     * @param {string} parameters.id The target ID for the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    renameWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Renames a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to rename.
+     *
+     * @param {object} parameters The resource move definition for renaming this
+     * database.
+     *
+     * @param {string} parameters.id The target ID for the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    rename(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    rename(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, callback: ServiceCallback<void>): void;
+    rename(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ResourceMoveDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Imports a bacpac into a new database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The required parameters for importing a Bacpac
+     * into a database.
+     *
+     * @param {string} parameters.databaseName The name of the database to import.
+     *
+     * @param {string} parameters.edition The edition for the database being
+     * created. Possible values include: 'Web', 'Business', 'Basic', 'Standard',
+     * 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System',
+     * 'System2'
+     *
+     * @param {string} parameters.serviceObjectiveName The name of the service
+     * objective to assign to the database. Possible values include: 'System',
+     * 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
+     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
+     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
+     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
+     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
+     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
+     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
+     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
+     * 'ElasticPool'
+     *
+     * @param {string} parameters.maxSizeBytes The maximum size for the newly
+     * imported database.
+     *
+     * @param {string} parameters.storageKeyType The type of the storage key to
+     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+     *
+     * @param {string} parameters.storageKey The storage key to use.  If storage
+     * key type is SharedAccessKey, it must be preceded with a "?."
+     *
+     * @param {string} parameters.storageUri The storage uri to use.
+     *
+     * @param {string} parameters.administratorLogin The name of the SQL
+     * administrator.
+     *
+     * @param {string} parameters.administratorLoginPassword The password of the
+     * SQL administrator.
+     *
+     * @param {string} [parameters.authenticationType] The authentication type.
+     * Possible values include: 'SQL', 'ADPassword'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImportExportResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginImportMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImportExportResponse>>;
+
+    /**
+     * Imports a bacpac into a new database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The required parameters for importing a Bacpac
+     * into a database.
+     *
+     * @param {string} parameters.databaseName The name of the database to import.
+     *
+     * @param {string} parameters.edition The edition for the database being
+     * created. Possible values include: 'Web', 'Business', 'Basic', 'Standard',
+     * 'Premium', 'PremiumRS', 'Free', 'Stretch', 'DataWarehouse', 'System',
+     * 'System2'
+     *
+     * @param {string} parameters.serviceObjectiveName The name of the service
+     * objective to assign to the database. Possible values include: 'System',
+     * 'System0', 'System1', 'System2', 'System3', 'System4', 'System2L',
+     * 'System3L', 'System4L', 'Free', 'Basic', 'S0', 'S1', 'S2', 'S3', 'S4', 'S6',
+     * 'S7', 'S9', 'S12', 'P1', 'P2', 'P3', 'P4', 'P6', 'P11', 'P15', 'PRS1',
+     * 'PRS2', 'PRS4', 'PRS6', 'DW100', 'DW200', 'DW300', 'DW400', 'DW500',
+     * 'DW600', 'DW1000', 'DW1200', 'DW1000c', 'DW1500', 'DW1500c', 'DW2000',
+     * 'DW2000c', 'DW3000', 'DW2500c', 'DW3000c', 'DW6000', 'DW5000c', 'DW6000c',
+     * 'DW7500c', 'DW10000c', 'DW15000c', 'DW30000c', 'DS100', 'DS200', 'DS300',
+     * 'DS400', 'DS500', 'DS600', 'DS1000', 'DS1200', 'DS1500', 'DS2000',
+     * 'ElasticPool'
+     *
+     * @param {string} parameters.maxSizeBytes The maximum size for the newly
+     * imported database.
+     *
+     * @param {string} parameters.storageKeyType The type of the storage key to
+     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+     *
+     * @param {string} parameters.storageKey The storage key to use.  If storage
+     * key type is SharedAccessKey, it must be preceded with a "?."
+     *
+     * @param {string} parameters.storageUri The storage uri to use.
+     *
+     * @param {string} parameters.administratorLogin The name of the SQL
+     * administrator.
+     *
+     * @param {string} parameters.administratorLoginPassword The password of the
+     * SQL administrator.
+     *
+     * @param {string} [parameters.authenticationType] The authentication type.
+     * Possible values include: 'SQL', 'ADPassword'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImportExportResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImportExportResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImportExportResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginImportMethod(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImportExportResponse>;
+    beginImportMethod(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, callback: ServiceCallback<models.ImportExportResponse>): void;
+    beginImportMethod(resourceGroupName: string, serverName: string, parameters: models.ImportRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportExportResponse>): void;
+
+
+    /**
+     * Creates an import operation that imports a bacpac into an existing database.
+     * The existing database must be empty.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to import into
+     *
+     * @param {object} parameters The required parameters for importing a Bacpac
+     * into a database.
+     *
+     * @param {string} [parameters.name] The name of the extension.
+     *
+     * @param {string} [parameters.type] The type of the extension.
+     *
+     * @param {string} parameters.storageKeyType The type of the storage key to
+     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+     *
+     * @param {string} parameters.storageKey The storage key to use.  If storage
+     * key type is SharedAccessKey, it must be preceded with a "?."
+     *
+     * @param {string} parameters.storageUri The storage uri to use.
+     *
+     * @param {string} parameters.administratorLogin The name of the SQL
+     * administrator.
+     *
+     * @param {string} parameters.administratorLoginPassword The password of the
+     * SQL administrator.
+     *
+     * @param {string} [parameters.authenticationType] The authentication type.
+     * Possible values include: 'SQL', 'ADPassword'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImportExportResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateImportOperationWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImportExportResponse>>;
+
+    /**
+     * Creates an import operation that imports a bacpac into an existing database.
+     * The existing database must be empty.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to import into
+     *
+     * @param {object} parameters The required parameters for importing a Bacpac
+     * into a database.
+     *
+     * @param {string} [parameters.name] The name of the extension.
+     *
+     * @param {string} [parameters.type] The type of the extension.
+     *
+     * @param {string} parameters.storageKeyType The type of the storage key to
+     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+     *
+     * @param {string} parameters.storageKey The storage key to use.  If storage
+     * key type is SharedAccessKey, it must be preceded with a "?."
+     *
+     * @param {string} parameters.storageUri The storage uri to use.
+     *
+     * @param {string} parameters.administratorLogin The name of the SQL
+     * administrator.
+     *
+     * @param {string} parameters.administratorLoginPassword The password of the
+     * SQL administrator.
+     *
+     * @param {string} [parameters.authenticationType] The authentication type.
+     * Possible values include: 'SQL', 'ADPassword'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImportExportResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImportExportResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImportExportResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateImportOperation(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImportExportResponse>;
+    beginCreateImportOperation(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, callback: ServiceCallback<models.ImportExportResponse>): void;
+    beginCreateImportOperation(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ImportExtensionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportExportResponse>): void;
+
+
+    /**
+     * Exports a database to a bacpac.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be exported.
+     *
+     * @param {object} parameters The required parameters for exporting a database.
+     *
+     * @param {string} parameters.storageKeyType The type of the storage key to
+     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+     *
+     * @param {string} parameters.storageKey The storage key to use.  If storage
+     * key type is SharedAccessKey, it must be preceded with a "?."
+     *
+     * @param {string} parameters.storageUri The storage uri to use.
+     *
+     * @param {string} parameters.administratorLogin The name of the SQL
+     * administrator.
+     *
+     * @param {string} parameters.administratorLoginPassword The password of the
+     * SQL administrator.
+     *
+     * @param {string} [parameters.authenticationType] The authentication type.
+     * Possible values include: 'SQL', 'ADPassword'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ImportExportResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginExportMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImportExportResponse>>;
+
+    /**
+     * Exports a database to a bacpac.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be exported.
+     *
+     * @param {object} parameters The required parameters for exporting a database.
+     *
+     * @param {string} parameters.storageKeyType The type of the storage key to
+     * use. Possible values include: 'StorageAccessKey', 'SharedAccessKey'
+     *
+     * @param {string} parameters.storageKey The storage key to use.  If storage
+     * key type is SharedAccessKey, it must be preceded with a "?."
+     *
+     * @param {string} parameters.storageUri The storage uri to use.
+     *
+     * @param {string} parameters.administratorLogin The name of the SQL
+     * administrator.
+     *
+     * @param {string} parameters.administratorLoginPassword The password of the
+     * SQL administrator.
+     *
+     * @param {string} [parameters.authenticationType] The authentication type.
+     * Possible values include: 'SQL', 'ADPassword'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ImportExportResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ImportExportResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ImportExportResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginExportMethod(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ImportExportResponse>;
+    beginExportMethod(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, callback: ServiceCallback<models.ImportExportResponse>): void;
+    beginExportMethod(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExportRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImportExportResponse>): void;
+
+
+    /**
+     * Upgrades a data warehouse.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be upgraded.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpgradeDataWarehouseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Upgrades a data warehouse.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be upgraded.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpgradeDataWarehouse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginUpgradeDataWarehouse(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<void>): void;
+    beginUpgradeDataWarehouse(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates a new database or updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {object} [parameters.sku] The name and tier of the SKU.
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {string} [parameters.createMode] Specifies the mode of database
+     * creation.
+     *
+     * Default: regular database creation.
+     *
+     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
+     * must be specified as the resource ID of the source database.
+     *
+     * Secondary: creates a database as a secondary replica of an existing
+     * database. sourceDatabaseId must be specified as the resource ID of the
+     * existing primary database.
+     *
+     * PointInTimeRestore: Creates a database by restoring a point in time backup
+     * of an existing database. sourceDatabaseId must be specified as the resource
+     * ID of the existing database, and restorePointInTime must be specified.
+     *
+     * Recovery: Creates a database by restoring a geo-replicated backup.
+     * sourceDatabaseId must be specified as the recoverable database resource ID
+     * to restore.
+     *
+     * Restore: Creates a database by restoring a backup of a deleted database.
+     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
+     * original resource ID, then sourceDatabaseDeletionDate must be specified.
+     * Otherwise sourceDatabaseId must be the restorable dropped database resource
+     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
+     * specified to restore from an earlier point in time.
+     *
+     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
+     * term retention vault. recoveryServicesRecoveryPointResourceId must be
+     * specified as the recovery point resource ID.
+     *
+     * Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for
+     * DataWarehouse edition. Possible values include: 'Default', 'Copy',
+     * 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
+     * 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+     * 'RestoreLongTermRetentionBackup', 'OnlineSecondary'
+     *
+     * @param {string} [parameters.collation] The collation of the database.
+     *
+     * @param {number} [parameters.maxSizeBytes] The max size of the database
+     * expressed in bytes.
+     *
+     * @param {string} [parameters.sampleName] The name of the sample schema to
+     * apply when creating this database. Possible values include:
+     * 'AdventureWorksLT', 'WideWorldImportersStd', 'WideWorldImportersFull'
+     *
+     * @param {string} [parameters.elasticPoolId] The resource identifier of the
+     * elastic pool containing this database.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {date} [parameters.restorePointInTime] Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {date} [parameters.sourceDatabaseDeletionDate] Specifies the time
+     * that the database was deleted.
+     *
+     * @param {string} [parameters.recoveryServicesRecoveryPointId] The resource
+     * identifier of the recovery point associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.longTermRetentionBackupResourceId] The resource
+     * identifier of the long term retention backup associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The resource
+     * identifier of the restorable dropped database associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
+     * zone redundant, which means the replicas of this database will be spread
+     * across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * database. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {string} [parameters.readScale] The state of read-only routing. If
+     * enabled, connections that have application intent set to readonly in their
+     * connection string may be routed to a readonly secondary replica in the same
+     * region. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
+
+    /**
+     * Creates a new database or updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {object} [parameters.sku] The name and tier of the SKU.
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {string} [parameters.createMode] Specifies the mode of database
+     * creation.
+     *
+     * Default: regular database creation.
+     *
+     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
+     * must be specified as the resource ID of the source database.
+     *
+     * Secondary: creates a database as a secondary replica of an existing
+     * database. sourceDatabaseId must be specified as the resource ID of the
+     * existing primary database.
+     *
+     * PointInTimeRestore: Creates a database by restoring a point in time backup
+     * of an existing database. sourceDatabaseId must be specified as the resource
+     * ID of the existing database, and restorePointInTime must be specified.
+     *
+     * Recovery: Creates a database by restoring a geo-replicated backup.
+     * sourceDatabaseId must be specified as the recoverable database resource ID
+     * to restore.
+     *
+     * Restore: Creates a database by restoring a backup of a deleted database.
+     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
+     * original resource ID, then sourceDatabaseDeletionDate must be specified.
+     * Otherwise sourceDatabaseId must be the restorable dropped database resource
+     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
+     * specified to restore from an earlier point in time.
+     *
+     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
+     * term retention vault. recoveryServicesRecoveryPointResourceId must be
+     * specified as the recovery point resource ID.
+     *
+     * Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for
+     * DataWarehouse edition. Possible values include: 'Default', 'Copy',
+     * 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
+     * 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+     * 'RestoreLongTermRetentionBackup', 'OnlineSecondary'
+     *
+     * @param {string} [parameters.collation] The collation of the database.
+     *
+     * @param {number} [parameters.maxSizeBytes] The max size of the database
+     * expressed in bytes.
+     *
+     * @param {string} [parameters.sampleName] The name of the sample schema to
+     * apply when creating this database. Possible values include:
+     * 'AdventureWorksLT', 'WideWorldImportersStd', 'WideWorldImportersFull'
+     *
+     * @param {string} [parameters.elasticPoolId] The resource identifier of the
+     * elastic pool containing this database.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {date} [parameters.restorePointInTime] Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {date} [parameters.sourceDatabaseDeletionDate] Specifies the time
+     * that the database was deleted.
+     *
+     * @param {string} [parameters.recoveryServicesRecoveryPointId] The resource
+     * identifier of the recovery point associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.longTermRetentionBackupResourceId] The resource
+     * identifier of the long term retention backup associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The resource
+     * identifier of the restorable dropped database associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
+     * zone redundant, which means the replicas of this database will be spread
+     * across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * database. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {string} [parameters.readScale] The state of read-only routing. If
+     * enabled, connections that have application intent set to readonly in their
+     * connection string may be routed to a readonly secondary replica in the same
+     * region. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Database} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Database} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Database} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, callback: ServiceCallback<models.Database>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.Database, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
+
+
+    /**
+     * Deletes the database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {object} [parameters.sku] The name and tier of the SKU.
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {string} [parameters.createMode] Specifies the mode of database
+     * creation.
+     *
+     * Default: regular database creation.
+     *
+     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
+     * must be specified as the resource ID of the source database.
+     *
+     * Secondary: creates a database as a secondary replica of an existing
+     * database. sourceDatabaseId must be specified as the resource ID of the
+     * existing primary database.
+     *
+     * PointInTimeRestore: Creates a database by restoring a point in time backup
+     * of an existing database. sourceDatabaseId must be specified as the resource
+     * ID of the existing database, and restorePointInTime must be specified.
+     *
+     * Recovery: Creates a database by restoring a geo-replicated backup.
+     * sourceDatabaseId must be specified as the recoverable database resource ID
+     * to restore.
+     *
+     * Restore: Creates a database by restoring a backup of a deleted database.
+     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
+     * original resource ID, then sourceDatabaseDeletionDate must be specified.
+     * Otherwise sourceDatabaseId must be the restorable dropped database resource
+     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
+     * specified to restore from an earlier point in time.
+     *
+     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
+     * term retention vault. recoveryServicesRecoveryPointResourceId must be
+     * specified as the recovery point resource ID.
+     *
+     * Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for
+     * DataWarehouse edition. Possible values include: 'Default', 'Copy',
+     * 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
+     * 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+     * 'RestoreLongTermRetentionBackup', 'OnlineSecondary'
+     *
+     * @param {string} [parameters.collation] The collation of the database.
+     *
+     * @param {number} [parameters.maxSizeBytes] The max size of the database
+     * expressed in bytes.
+     *
+     * @param {string} [parameters.sampleName] The name of the sample schema to
+     * apply when creating this database. Possible values include:
+     * 'AdventureWorksLT', 'WideWorldImportersStd', 'WideWorldImportersFull'
+     *
+     * @param {string} [parameters.elasticPoolId] The resource identifier of the
+     * elastic pool containing this database.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {date} [parameters.restorePointInTime] Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {date} [parameters.sourceDatabaseDeletionDate] Specifies the time
+     * that the database was deleted.
+     *
+     * @param {string} [parameters.recoveryServicesRecoveryPointId] The resource
+     * identifier of the recovery point associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.longTermRetentionBackupResourceId] The resource
+     * identifier of the long term retention backup associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The resource
+     * identifier of the restorable dropped database associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
+     * zone redundant, which means the replicas of this database will be spread
+     * across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * database. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {string} [parameters.readScale] The state of read-only routing. If
+     * enabled, connections that have application intent set to readonly in their
+     * connection string may be routed to a readonly secondary replica in the same
+     * region. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
+
+    /**
+     * Updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {object} [parameters.sku] The name and tier of the SKU.
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {string} [parameters.createMode] Specifies the mode of database
+     * creation.
+     *
+     * Default: regular database creation.
+     *
+     * Copy: creates a database as a copy of an existing database. sourceDatabaseId
+     * must be specified as the resource ID of the source database.
+     *
+     * Secondary: creates a database as a secondary replica of an existing
+     * database. sourceDatabaseId must be specified as the resource ID of the
+     * existing primary database.
+     *
+     * PointInTimeRestore: Creates a database by restoring a point in time backup
+     * of an existing database. sourceDatabaseId must be specified as the resource
+     * ID of the existing database, and restorePointInTime must be specified.
+     *
+     * Recovery: Creates a database by restoring a geo-replicated backup.
+     * sourceDatabaseId must be specified as the recoverable database resource ID
+     * to restore.
+     *
+     * Restore: Creates a database by restoring a backup of a deleted database.
+     * sourceDatabaseId must be specified. If sourceDatabaseId is the database's
+     * original resource ID, then sourceDatabaseDeletionDate must be specified.
+     * Otherwise sourceDatabaseId must be the restorable dropped database resource
+     * ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be
+     * specified to restore from an earlier point in time.
+     *
+     * RestoreLongTermRetentionBackup: Creates a database by restoring from a long
+     * term retention vault. recoveryServicesRecoveryPointResourceId must be
+     * specified as the recovery point resource ID.
+     *
+     * Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for
+     * DataWarehouse edition. Possible values include: 'Default', 'Copy',
+     * 'Secondary', 'PointInTimeRestore', 'Restore', 'Recovery',
+     * 'RestoreExternalBackup', 'RestoreExternalBackupSecondary',
+     * 'RestoreLongTermRetentionBackup', 'OnlineSecondary'
+     *
+     * @param {string} [parameters.collation] The collation of the database.
+     *
+     * @param {number} [parameters.maxSizeBytes] The max size of the database
+     * expressed in bytes.
+     *
+     * @param {string} [parameters.sampleName] The name of the sample schema to
+     * apply when creating this database. Possible values include:
+     * 'AdventureWorksLT', 'WideWorldImportersStd', 'WideWorldImportersFull'
+     *
+     * @param {string} [parameters.elasticPoolId] The resource identifier of the
+     * elastic pool containing this database.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {date} [parameters.restorePointInTime] Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {date} [parameters.sourceDatabaseDeletionDate] Specifies the time
+     * that the database was deleted.
+     *
+     * @param {string} [parameters.recoveryServicesRecoveryPointId] The resource
+     * identifier of the recovery point associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.longTermRetentionBackupResourceId] The resource
+     * identifier of the long term retention backup associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.recoverableDatabaseId] The resource identifier
+     * of the recoverable database associated with create operation of this
+     * database.
+     *
+     * @param {string} [parameters.restorableDroppedDatabaseId] The resource
+     * identifier of the restorable dropped database associated with create
+     * operation of this database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this database is
+     * zone redundant, which means the replicas of this database will be spread
+     * across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * database. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {string} [parameters.readScale] The state of read-only routing. If
+     * enabled, connections that have application intent set to readonly in their
+     * connection string may be routed to a readonly secondary replica in the same
+     * region. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Database} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Database} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Database} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
+    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, callback: ServiceCallback<models.Database>): void;
+    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
+
+
+    /**
+     * Pauses a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be paused.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginPauseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
+
+    /**
+     * Pauses a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be paused.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Database} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Database} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Database} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPause(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
+    beginPause(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.Database>): void;
+    beginPause(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
+
+
+    /**
+     * Resumes a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be resumed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Database>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginResumeWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Database>>;
+
+    /**
+     * Resumes a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database to be resumed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Database} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Database} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Database} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginResume(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Database>;
+    beginResume(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.Database>): void;
+    beginResume(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Database>): void;
+
+
+    /**
+     * Gets a list of databases.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseListResult>>;
+
+    /**
+     * Gets a list of databases.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseListResult>;
+    listByServerNext(nextPageLink: string, callback: ServiceCallback<models.DatabaseListResult>): void;
+    listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseListResult>): void;
+
+
+    /**
+     * Gets a list of databases in an elastic pool.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByElasticPoolNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseListResult>>;
+
+    /**
+     * Gets a list of databases in an elastic pool.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByElasticPoolNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseListResult>;
+    listByElasticPoolNext(nextPageLink: string, callback: ServiceCallback<models.DatabaseListResult>): void;
+    listByElasticPoolNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseListResult>): void;
+}
+
+/**
+ * @class
+ * ElasticPools
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ElasticPools {
+
+
+    /**
+     * Returns elastic pool  metrics.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricListResult>>;
+
+    /**
+     * Returns elastic pool  metrics.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {string} filter An OData filter expression that describes a subset of
+     * metrics to return.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, serverName: string, elasticPoolName: string, filter: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricListResult>;
+    listMetrics(resourceGroupName: string, serverName: string, elasticPoolName: string, filter: string, callback: ServiceCallback<models.MetricListResult>): void;
+    listMetrics(resourceGroupName: string, serverName: string, elasticPoolName: string, filter: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricListResult>): void;
+
+
+    /**
+     * Returns elastic pool metric definitions.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricDefinitionsWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionListResult>>;
+
+    /**
+     * Returns elastic pool metric definitions.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetricDefinitions(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricDefinitionListResult>;
+    listMetricDefinitions(resourceGroupName: string, serverName: string, elasticPoolName: string, callback: ServiceCallback<models.MetricDefinitionListResult>): void;
+    listMetricDefinitions(resourceGroupName: string, serverName: string, elasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionListResult>): void;
+
+
+    /**
+     * Gets all elastic pools in a server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] The number of elements in the collection to
+     * skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ElasticPoolListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPoolListResult>>;
+
+    /**
+     * Gets all elastic pools in a server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] The number of elements in the collection to
+     * skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ElasticPoolListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ElasticPoolListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ElasticPoolListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServer(resourceGroupName: string, serverName: string, options?: { skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPoolListResult>;
+    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.ElasticPoolListResult>): void;
+    listByServer(resourceGroupName: string, serverName: string, options: { skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPoolListResult>): void;
+
+
+    /**
+     * Gets an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ElasticPool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPool>>;
+
+    /**
+     * Gets an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ElasticPool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ElasticPool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ElasticPool} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPool>;
+    get(resourceGroupName: string, serverName: string, elasticPoolName: string, callback: ServiceCallback<models.ElasticPool>): void;
+    get(resourceGroupName: string, serverName: string, elasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPool>): void;
+
+
+    /**
+     * Creates or updates an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} parameters The elastic pool parameters.
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {number} [parameters.maxSizeBytes] The storage limit for the database
+     * elastic pool in bytes.
+     *
+     * @param {object} [parameters.perDatabaseSettings] The per database settings
+     * for the elastic pool.
+     *
+     * @param {number} [parameters.perDatabaseSettings.minCapacity] The minimum
+     * capacity all databases are guaranteed.
+     *
+     * @param {number} [parameters.perDatabaseSettings.maxCapacity] The maximum
+     * capacity any one database can consume.
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this elastic pool
+     * is zone redundant, which means the replicas of this elastic pool will be
+     * spread across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ElasticPool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPool>>;
+
+    /**
+     * Creates or updates an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} parameters The elastic pool parameters.
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {number} [parameters.maxSizeBytes] The storage limit for the database
+     * elastic pool in bytes.
+     *
+     * @param {object} [parameters.perDatabaseSettings] The per database settings
+     * for the elastic pool.
+     *
+     * @param {number} [parameters.perDatabaseSettings.minCapacity] The minimum
+     * capacity all databases are guaranteed.
+     *
+     * @param {number} [parameters.perDatabaseSettings.maxCapacity] The maximum
+     * capacity any one database can consume.
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this elastic pool
+     * is zone redundant, which means the replicas of this elastic pool will be
+     * spread across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ElasticPool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ElasticPool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ElasticPool} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPool>;
+    createOrUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, callback: ServiceCallback<models.ElasticPool>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPool>): void;
+
+
+    /**
+     * Deletes an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, elasticPoolName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, elasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} parameters The elastic pool update parameters.
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {number} [parameters.maxSizeBytes] The storage limit for the database
+     * elastic pool in bytes.
+     *
+     * @param {object} [parameters.perDatabaseSettings] The per database settings
+     * for the elastic pool.
+     *
+     * @param {number} [parameters.perDatabaseSettings.minCapacity] The minimum
+     * capacity all databases are guaranteed.
+     *
+     * @param {number} [parameters.perDatabaseSettings.maxCapacity] The maximum
+     * capacity any one database can consume.
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this elastic pool
+     * is zone redundant, which means the replicas of this elastic pool will be
+     * spread across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ElasticPool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPool>>;
+
+    /**
+     * Updates an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} parameters The elastic pool update parameters.
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {number} [parameters.maxSizeBytes] The storage limit for the database
+     * elastic pool in bytes.
+     *
+     * @param {object} [parameters.perDatabaseSettings] The per database settings
+     * for the elastic pool.
+     *
+     * @param {number} [parameters.perDatabaseSettings.minCapacity] The minimum
+     * capacity all databases are guaranteed.
+     *
+     * @param {number} [parameters.perDatabaseSettings.maxCapacity] The maximum
+     * capacity any one database can consume.
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this elastic pool
+     * is zone redundant, which means the replicas of this elastic pool will be
+     * spread across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ElasticPool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ElasticPool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ElasticPool} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPool>;
+    update(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, callback: ServiceCallback<models.ElasticPool>): void;
+    update(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPool>): void;
+
+
+    /**
+     * Creates or updates an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} parameters The elastic pool parameters.
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {number} [parameters.maxSizeBytes] The storage limit for the database
+     * elastic pool in bytes.
+     *
+     * @param {object} [parameters.perDatabaseSettings] The per database settings
+     * for the elastic pool.
+     *
+     * @param {number} [parameters.perDatabaseSettings.minCapacity] The minimum
+     * capacity all databases are guaranteed.
+     *
+     * @param {number} [parameters.perDatabaseSettings.maxCapacity] The maximum
+     * capacity any one database can consume.
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this elastic pool
+     * is zone redundant, which means the replicas of this elastic pool will be
+     * spread across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ElasticPool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPool>>;
+
+    /**
+     * Creates or updates an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} parameters The elastic pool parameters.
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {number} [parameters.maxSizeBytes] The storage limit for the database
+     * elastic pool in bytes.
+     *
+     * @param {object} [parameters.perDatabaseSettings] The per database settings
+     * for the elastic pool.
+     *
+     * @param {number} [parameters.perDatabaseSettings.minCapacity] The minimum
+     * capacity all databases are guaranteed.
+     *
+     * @param {number} [parameters.perDatabaseSettings.maxCapacity] The maximum
+     * capacity any one database can consume.
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this elastic pool
+     * is zone redundant, which means the replicas of this elastic pool will be
+     * spread across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ElasticPool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ElasticPool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ElasticPool} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPool>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, callback: ServiceCallback<models.ElasticPool>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPool, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPool>): void;
+
+
+    /**
+     * Deletes an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, elasticPoolName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, elasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} parameters The elastic pool update parameters.
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {number} [parameters.maxSizeBytes] The storage limit for the database
+     * elastic pool in bytes.
+     *
+     * @param {object} [parameters.perDatabaseSettings] The per database settings
+     * for the elastic pool.
+     *
+     * @param {number} [parameters.perDatabaseSettings.minCapacity] The minimum
+     * capacity all databases are guaranteed.
+     *
+     * @param {number} [parameters.perDatabaseSettings.maxCapacity] The maximum
+     * capacity any one database can consume.
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this elastic pool
+     * is zone redundant, which means the replicas of this elastic pool will be
+     * spread across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ElasticPool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPool>>;
+
+    /**
+     * Updates an elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} elasticPoolName The name of the elastic pool.
+     *
+     * @param {object} parameters The elastic pool update parameters.
+     *
+     * @param {object} [parameters.sku]
+     *
+     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
+     * + Number code, e.g. P3.
+     *
+     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
+     * Basic, Premium.
+     *
+     * @param {string} [parameters.sku.size] Size of the particular SKU
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     *
+     * @param {number} [parameters.maxSizeBytes] The storage limit for the database
+     * elastic pool in bytes.
+     *
+     * @param {object} [parameters.perDatabaseSettings] The per database settings
+     * for the elastic pool.
+     *
+     * @param {number} [parameters.perDatabaseSettings.minCapacity] The minimum
+     * capacity all databases are guaranteed.
+     *
+     * @param {number} [parameters.perDatabaseSettings.maxCapacity] The maximum
+     * capacity any one database can consume.
+     *
+     * @param {boolean} [parameters.zoneRedundant] Whether or not this elastic pool
+     * is zone redundant, which means the replicas of this elastic pool will be
+     * spread across multiple availability zones.
+     *
+     * @param {string} [parameters.licenseType] The license type to apply for this
+     * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ElasticPool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ElasticPool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ElasticPool} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPool>;
+    beginUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, callback: ServiceCallback<models.ElasticPool>): void;
+    beginUpdate(resourceGroupName: string, serverName: string, elasticPoolName: string, parameters: models.ElasticPoolUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPool>): void;
+
+
+    /**
+     * Gets all elastic pools in a server.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ElasticPoolListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ElasticPoolListResult>>;
+
+    /**
+     * Gets all elastic pools in a server.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ElasticPoolListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ElasticPoolListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ElasticPoolListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPoolListResult>;
+    listByServerNext(nextPageLink: string, callback: ServiceCallback<models.ElasticPoolListResult>): void;
+    listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPoolListResult>): void;
+}
+
+/**
+ * @class
+ * RecommendedElasticPools
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface RecommendedElasticPools {
+
+
+    /**
+     * Gets a recommented elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} recommendedElasticPoolName The name of the recommended
+     * elastic pool to be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecommendedElasticPool>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPool>>;
+
+    /**
+     * Gets a recommented elastic pool.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} recommendedElasticPoolName The name of the recommended
+     * elastic pool to be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecommendedElasticPool} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecommendedElasticPool} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecommendedElasticPool} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendedElasticPool>;
+    get(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, callback: ServiceCallback<models.RecommendedElasticPool>): void;
+    get(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendedElasticPool>): void;
+
+
+    /**
+     * Returns recommended elastic pools.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecommendedElasticPoolListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPoolListResult>>;
+
+    /**
+     * Returns recommended elastic pools.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecommendedElasticPoolListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecommendedElasticPoolListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecommendedElasticPoolListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendedElasticPoolListResult>;
+    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.RecommendedElasticPoolListResult>): void;
+    listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendedElasticPoolListResult>): void;
+
+
+    /**
+     * Returns recommented elastic pool metrics.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} recommendedElasticPoolName The name of the recommended
+     * elastic pool to be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RecommendedElasticPoolListMetricsResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listMetricsWithHttpOperationResponse(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPoolListMetricsResult>>;
+
+    /**
+     * Returns recommented elastic pool metrics.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} recommendedElasticPoolName The name of the recommended
+     * elastic pool to be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RecommendedElasticPoolListMetricsResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RecommendedElasticPoolListMetricsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RecommendedElasticPoolListMetricsResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listMetrics(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendedElasticPoolListMetricsResult>;
+    listMetrics(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, callback: ServiceCallback<models.RecommendedElasticPoolListMetricsResult>): void;
+    listMetrics(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendedElasticPoolListMetricsResult>): void;
 }
 
 /**
@@ -8058,219 +8311,6 @@ export interface ElasticPoolDatabaseActivities {
     listByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ElasticPoolDatabaseActivityListResult>;
     listByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, callback: ServiceCallback<models.ElasticPoolDatabaseActivityListResult>): void;
     listByElasticPool(resourceGroupName: string, serverName: string, elasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ElasticPoolDatabaseActivityListResult>): void;
-}
-
-/**
- * @class
- * RecommendedElasticPools
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the SqlManagementClient.
- */
-export interface RecommendedElasticPools {
-
-
-    /**
-     * Gets a recommented elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} recommendedElasticPoolName The name of the recommended
-     * elastic pool to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RecommendedElasticPool>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPool>>;
-
-    /**
-     * Gets a recommented elastic pool.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} recommendedElasticPoolName The name of the recommended
-     * elastic pool to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RecommendedElasticPool} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RecommendedElasticPool} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RecommendedElasticPool} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendedElasticPool>;
-    get(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, callback: ServiceCallback<models.RecommendedElasticPool>): void;
-    get(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendedElasticPool>): void;
-
-
-    /**
-     * Returns recommended elastic pools.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RecommendedElasticPoolListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPoolListResult>>;
-
-    /**
-     * Returns recommended elastic pools.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RecommendedElasticPoolListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RecommendedElasticPoolListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RecommendedElasticPoolListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendedElasticPoolListResult>;
-    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.RecommendedElasticPoolListResult>): void;
-    listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendedElasticPoolListResult>): void;
-
-
-    /**
-     * Returns recommented elastic pool metrics.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} recommendedElasticPoolName The name of the recommended
-     * elastic pool to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RecommendedElasticPoolListMetricsResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listMetricsWithHttpOperationResponse(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendedElasticPoolListMetricsResult>>;
-
-    /**
-     * Returns recommented elastic pool metrics.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} recommendedElasticPoolName The name of the recommended
-     * elastic pool to be retrieved.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RecommendedElasticPoolListMetricsResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RecommendedElasticPoolListMetricsResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RecommendedElasticPoolListMetricsResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listMetrics(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendedElasticPoolListMetricsResult>;
-    listMetrics(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, callback: ServiceCallback<models.RecommendedElasticPoolListMetricsResult>): void;
-    listMetrics(resourceGroupName: string, serverName: string, recommendedElasticPoolName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendedElasticPoolListMetricsResult>): void;
 }
 
 /**
@@ -17940,55 +17980,49 @@ export interface ElasticPoolOperations {
 
 /**
  * @class
- * DatabaseVulnerabilityAssessmentScans
+ * Capabilities
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
  */
-export interface DatabaseVulnerabilityAssessmentScans {
+export interface Capabilities {
 
 
     /**
-     * Gets a vulnerability assessment scan record of a database.
+     * Gets the subscription capabilities available for the specified location.
      *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} scanId The vulnerability assessment scan Id of the scan to
-     * retrieve.
+     * @param {string} locationName The location name whose capabilities are
+     * retrieved.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.include] If specified, restricts the response to
+     * only include the selected item. Possible values include:
+     * 'supportedEditions', 'supportedElasticPoolEditions',
+     * 'supportedManagedInstanceVersions'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecord>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<LocationCapabilities>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecord>>;
+    listByLocationWithHttpOperationResponse(locationName: string, options?: { include? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LocationCapabilities>>;
 
     /**
-     * Gets a vulnerability assessment scan record of a database.
+     * Gets the subscription capabilities available for the specified location.
      *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} scanId The vulnerability assessment scan Id of the scan to
-     * retrieve.
+     * @param {string} locationName The location name whose capabilities are
+     * retrieved.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.include] If specified, restricts the response to
+     * only include the selected item. Possible values include:
+     * 'supportedEditions', 'supportedElasticPoolEditions',
+     * 'supportedManagedInstanceVersions'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -18000,7 +18034,7 @@ export interface DatabaseVulnerabilityAssessmentScans {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {VulnerabilityAssessmentScanRecord} - The deserialized result object.
+     *                      @resolve {LocationCapabilities} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -18008,359 +18042,14 @@ export interface DatabaseVulnerabilityAssessmentScans {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {VulnerabilityAssessmentScanRecord} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VulnerabilityAssessmentScanRecord} for more
-     *                      information.
+     *                      {LocationCapabilities} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LocationCapabilities} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecord>;
-    get(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecord>): void;
-    get(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecord>): void;
-
-
-    /**
-     * Executes a Vulnerability Assessment database scan.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} scanId The vulnerability assessment scan Id of the scan to
-     * retrieve.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    executeWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Executes a Vulnerability Assessment database scan.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} scanId The vulnerability assessment scan Id of the scan to
-     * retrieve.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    execute(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    execute(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
-    execute(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Lists the vulnerability assessment scans of a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecordListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecordListResult>>;
-
-    /**
-     * Lists the vulnerability assessment scans of a database.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VulnerabilityAssessmentScanRecordListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VulnerabilityAssessmentScanRecordListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VulnerabilityAssessmentScanRecordListResult}
-     *                      for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
-    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
-
-
-    /**
-     * Convert an existing scan result to a human readable format. If already
-     * exists nothing happens
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the scanned database.
-     *
-     * @param {string} scanId The vulnerability assessment scan Id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentScansExport>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    exportMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentScansExport>>;
-
-    /**
-     * Convert an existing scan result to a human readable format. If already
-     * exists nothing happens
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the scanned database.
-     *
-     * @param {string} scanId The vulnerability assessment scan Id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DatabaseVulnerabilityAssessmentScansExport} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DatabaseVulnerabilityAssessmentScansExport} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DatabaseVulnerabilityAssessmentScansExport}
-     *                      for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    exportMethod(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentScansExport>;
-    exportMethod(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentScansExport>): void;
-    exportMethod(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentScansExport>): void;
-
-
-    /**
-     * Executes a Vulnerability Assessment database scan.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} scanId The vulnerability assessment scan Id of the scan to
-     * retrieve.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginExecuteWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Executes a Vulnerability Assessment database scan.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {string} scanId The vulnerability assessment scan Id of the scan to
-     * retrieve.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginExecute(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginExecute(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
-    beginExecute(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Lists the vulnerability assessment scans of a database.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecordListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecordListResult>>;
-
-    /**
-     * Lists the vulnerability assessment scans of a database.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VulnerabilityAssessmentScanRecordListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VulnerabilityAssessmentScanRecordListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VulnerabilityAssessmentScanRecordListResult}
-     *                      for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
-    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
-    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+    listByLocation(locationName: string, options?: { include? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LocationCapabilities>;
+    listByLocation(locationName: string, callback: ServiceCallback<models.LocationCapabilities>): void;
+    listByLocation(locationName: string, options: { include? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LocationCapabilities>): void;
 }
