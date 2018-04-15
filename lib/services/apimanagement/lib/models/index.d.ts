@@ -1854,8 +1854,13 @@ export interface ApiManagementServiceSkuProperties {
  * 'Developer', 'Standard', 'Premium', 'Basic'
  * @member {number} [sku.capacity] Capacity of the SKU (number of deployed
  * units of the SKU). The default value is 1.
- * @member {array} [publicIPAddresses] Static IP addresses of the location's
- * virtual machines.
+ * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
+ * of the API Management service in the additional location. Available only for
+ * Basic, Standard and Premium SKU.
+ * @member {array} [privateIPAddresses] Private Static Load Balanced IP
+ * addresses of the API Management service which is deployed in an Internal
+ * Virtual Network in a particular additional location. Available only for
+ * Basic, Standard and Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * for the location.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -1872,6 +1877,7 @@ export interface AdditionalLocation {
   location: string;
   sku: ApiManagementServiceSkuProperties;
   readonly publicIPAddresses?: string[];
+  readonly privateIPAddresses?: string[];
   virtualNetworkConfiguration?: VirtualNetworkConfiguration;
   readonly gatewayRegionalUrl?: string;
 }
@@ -1926,11 +1932,12 @@ export interface ApiManagementServiceBackupRestoreParameters {
  * @member {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
  * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service. Available only for Basic, Standard and
- * Premium SKU.
+ * of the API Management service in Primary region. Available only for Basic,
+ * Standard and Premium SKU.
  * @member {array} [privateIPAddresses] Private Static Load Balanced IP
- * addresses of the API Management service which is deployed in an Internal
- * Virtual Network. Available only for Basic, Standard and Premium SKU.
+ * addresses of the API Management service in Primary region which is deployed
+ * in an Internal Virtual Network. Available only for Basic, Standard and
+ * Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * of the API Management service.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -2044,11 +2051,12 @@ export interface ApimResource extends BaseResource {
  * @member {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
  * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service. Available only for Basic, Standard and
- * Premium SKU.
+ * of the API Management service in Primary region. Available only for Basic,
+ * Standard and Premium SKU.
  * @member {array} [privateIPAddresses] Private Static Load Balanced IP
- * addresses of the API Management service which is deployed in an Internal
- * Virtual Network. Available only for Basic, Standard and Premium SKU.
+ * addresses of the API Management service in Primary region which is deployed
+ * in an Internal Virtual Network. Available only for Basic, Standard and
+ * Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * of the API Management service.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -2148,11 +2156,12 @@ export interface ApiManagementServiceResource extends ApimResource {
  * @member {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
  * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service. Available only for Basic, Standard and
- * Premium SKU.
+ * of the API Management service in Primary region. Available only for Basic,
+ * Standard and Premium SKU.
  * @member {array} [privateIPAddresses] Private Static Load Balanced IP
- * addresses of the API Management service which is deployed in an Internal
- * Virtual Network. Available only for Basic, Standard and Premium SKU.
+ * addresses of the API Management service in Primary region which is deployed
+ * in an Internal Virtual Network. Available only for Basic, Standard and
+ * Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * of the API Management service.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
