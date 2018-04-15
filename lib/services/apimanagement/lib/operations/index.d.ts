@@ -5242,11 +5242,11 @@ export interface ApiDiagnosticLogger {
 
 /**
  * @class
- * ApiIssues
+ * ApiIssue
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApiManagementClient.
  */
-export interface ApiIssues {
+export interface ApiIssue {
 
 
     /**
@@ -5338,72 +5338,6 @@ export interface ApiIssues {
     listByService(resourceGroupName: string, serviceName: string, apiId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueCollection>;
     listByService(resourceGroupName: string, serviceName: string, apiId: string, callback: ServiceCallback<models.IssueCollection>): void;
     listByService(resourceGroupName: string, serviceName: string, apiId: string, options: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueCollection>): void;
-
-
-    /**
-     * Lists all issues assosiated with the specified API.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<IssueCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCollection>>;
-
-    /**
-     * Lists all issues assosiated with the specified API.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {IssueCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {IssueCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link IssueCollection} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueCollection>;
-    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.IssueCollection>): void;
-    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueCollection>): void;
-}
-
-/**
- * @class
- * ApiIssue
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ApiManagementClient.
- */
-export interface ApiIssue {
 
 
     /**
@@ -5740,15 +5674,72 @@ export interface ApiIssue {
     deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, ifMatch: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all issues assosiated with the specified API.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCollection>>;
+
+    /**
+     * Lists all issues assosiated with the specified API.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueCollection>;
+    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.IssueCollection>): void;
+    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueCollection>): void;
 }
 
 /**
  * @class
- * ApiIssueComments
+ * ApiIssueComment
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApiManagementClient.
  */
-export interface ApiIssueComments {
+export interface ApiIssueComment {
 
 
     /**
@@ -5846,73 +5837,6 @@ export interface ApiIssueComments {
 
 
     /**
-     * Lists all comments for the Issue assosiated with the specified API.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<IssueCommentCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCommentCollection>>;
-
-    /**
-     * Lists all comments for the Issue assosiated with the specified API.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {IssueCommentCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {IssueCommentCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link IssueCommentCollection} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueCommentCollection>;
-    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.IssueCommentCollection>): void;
-    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueCommentCollection>): void;
-}
-
-/**
- * @class
- * ApiIssuComment
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ApiManagementClient.
- */
-export interface ApiIssuComment {
-
-
-    /**
      * Gets the entity state (Etag) version of the issue Comment for an API
      * specified by its identifier.
      *
@@ -5988,15 +5912,6 @@ export interface ApiIssuComment {
     head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, callback: ServiceCallback<void>): void;
     head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-}
-
-/**
- * @class
- * ApiIssueComment
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ApiManagementClient.
- */
-export interface ApiIssueComment {
 
 
     /**
@@ -6265,15 +6180,73 @@ export interface ApiIssueComment {
     deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, ifMatch: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all comments for the Issue assosiated with the specified API.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueCommentCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCommentCollection>>;
+
+    /**
+     * Lists all comments for the Issue assosiated with the specified API.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueCommentCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueCommentCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueCommentCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueCommentCollection>;
+    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.IssueCommentCollection>): void;
+    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueCommentCollection>): void;
 }
 
 /**
  * @class
- * ApiIssueAttachments
+ * ApiIssueAttachment
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApiManagementClient.
  */
-export interface ApiIssueAttachments {
+export interface ApiIssueAttachment {
 
 
     /**
@@ -6371,73 +6344,6 @@ export interface ApiIssueAttachments {
 
 
     /**
-     * Lists all comments for the Issue assosiated with the specified API.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<IssueAttachmentCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueAttachmentCollection>>;
-
-    /**
-     * Lists all comments for the Issue assosiated with the specified API.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {IssueAttachmentCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {IssueAttachmentCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link IssueAttachmentCollection} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueAttachmentCollection>;
-    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.IssueAttachmentCollection>): void;
-    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueAttachmentCollection>): void;
-}
-
-/**
- * @class
- * ApiIssuAttachment
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ApiManagementClient.
- */
-export interface ApiIssuAttachment {
-
-
-    /**
      * Gets the entity state (Etag) version of the issue Attachment for an API
      * specified by its identifier.
      *
@@ -6513,15 +6419,6 @@ export interface ApiIssuAttachment {
     head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, callback: ServiceCallback<void>): void;
     head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-}
-
-/**
- * @class
- * ApiIssueAttachment
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ApiManagementClient.
- */
-export interface ApiIssueAttachment {
 
 
     /**
@@ -6796,6 +6693,64 @@ export interface ApiIssueAttachment {
     deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, ifMatch: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all comments for the Issue assosiated with the specified API.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueAttachmentCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueAttachmentCollection>>;
+
+    /**
+     * Lists all comments for the Issue assosiated with the specified API.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueAttachmentCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueAttachmentCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueAttachmentCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueAttachmentCollection>;
+    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.IssueAttachmentCollection>): void;
+    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueAttachmentCollection>): void;
 }
 
 /**

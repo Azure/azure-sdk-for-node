@@ -69,13 +69,8 @@ export default class ApiManagementClient extends AzureServiceClient {
   apiSchema: operations.ApiSchema;
   apiDiagnostic: operations.ApiDiagnostic;
   apiDiagnosticLogger: operations.ApiDiagnosticLogger;
-  apiIssues: operations.ApiIssues;
   apiIssue: operations.ApiIssue;
-  apiIssueComments: operations.ApiIssueComments;
-  apiIssuComment: operations.ApiIssuComment;
   apiIssueComment: operations.ApiIssueComment;
-  apiIssueAttachments: operations.ApiIssueAttachments;
-  apiIssuAttachment: operations.ApiIssuAttachment;
   apiIssueAttachment: operations.ApiIssueAttachment;
   authorizationServer: operations.AuthorizationServer;
   backend: operations.Backend;
