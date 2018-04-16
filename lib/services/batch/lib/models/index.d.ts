@@ -859,7 +859,9 @@ export interface AutoUserSpecification {
  * @constructor
  * @summary The definition of the user identity under which the task is run.
  *
- * Specify either the userName or autoUser property, but not both.
+ * Specify either the userName or autoUser property, but not both. The Windows
+ * user logon type will be Interactive mode for Azure PaaS VMs, and be Batch
+ * mode for Azure IaaS VMs.
  *
  * @member {string} [userName] The name of the user identity under which the
  * task is run. The userName and autoUser properties are mutually exclusive;
@@ -966,7 +968,16 @@ export interface UserAccount {
  * limit. For example, if the maximum retry count is 3, Batch tries the task up
  * to 4 times (one initial try and 3 retries). If the maximum retry count is 0,
  * the Batch service does not retry the task. If the maximum retry count is -1,
- * the Batch service retries the task without limit.
+ * the Batch service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  */
 export interface TaskConstraints {
   maxWallClockTime?: moment.Duration;
@@ -1110,12 +1121,13 @@ export interface OutputFile {
  * @member {string} [displayName] The display name of the Job Manager task. It
  * need not be unique and can contain any Unicode characters up to a maximum
  * length of 1024.
- * @member {string} commandLine The command line of the Job Manager task. The
- * command line does not run under a shell, and therefore cannot take advantage
- * of shell features such as environment variable expansion. If you want to
- * take advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * @member {string} commandLine The command line of the Job Manager task. Tasks
+ * should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [containerSettings] The settings for the container under
  * which the Job Manager task runs. If the pool that will run this task has
  * containerConfiguration set, this must be set as well. If the pool that will
@@ -1158,7 +1170,16 @@ export interface OutputFile {
  * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * task without limit. ResourceFiles and AppplicationPackages are only
+ * downloaded again if the task is retried on a new compute node. Batch will
+ * also retry tasks when a recovery operation is triggered on a compute node.
+ * Examples of recovery operations triggers include (but are not limited to)
+ * when an unhealthy compute node is rebooted or a compute node disappeared due
+ * to host failure. Retries due to recovery operation are independent of and
+ * are not counted against maxTaskRetryCount. All tasks should be idempotent,
+ * it means they need to tolerate being interrupted and restarted, without
+ * causing any corruption or duplicate data. Best practices recommended for
+ * long running tasks is to use checkpointing.
  * @member {boolean} [killJobOnCompletion] Whether completion of the Job
  * Manager task signifies completion of the entire job. If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
@@ -1266,11 +1287,12 @@ export interface JobManagerTask {
  * TaskIdSameAsJobPreparationTask; if you are calling the REST API directly,
  * the HTTP status code is 409 (Conflict).
  * @member {string} commandLine The command line of the Job Preparation task.
- * The command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in the
- * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * Tasks should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [containerSettings] The settings for the container under
  * which the Job Preparation task runs. When this is specified, all directories
  * recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch
@@ -1307,7 +1329,16 @@ export interface JobManagerTask {
  * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * task without limit. ResourceFiles and AppplicationPackages are only
+ * downloaded again if the task is retried on a new compute node. Batch will
+ * also retry tasks when a recovery operation is triggered on a compute node.
+ * Examples of recovery operations triggers include (but are not limited to)
+ * when an unhealthy compute node is rebooted or a compute node disappeared due
+ * to host failure. Retries due to recovery operation are independent of and
+ * are not counted against maxTaskRetryCount. All tasks should be idempotent,
+ * it means they need to tolerate being interrupted and restarted, without
+ * causing any corruption or duplicate data. Best practices recommended for
+ * long running tasks is to use checkpointing.
  * @member {boolean} [waitForSuccess] Whether the Batch service should wait for
  * the Job Preparation task to complete successfully before scheduling any
  * other tasks of the job on the compute node. A Job Preparation task has
@@ -1471,12 +1502,13 @@ export interface TaskSchedulingPolicy {
  * @summary A task which is run when a compute node joins a pool in the Azure
  * Batch service, or when the compute node is rebooted or reimaged.
  *
- * @member {string} commandLine The command line of the start task. The command
- * line does not run under a shell, and therefore cannot take advantage of
- * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command line,
- * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * @member {string} commandLine The command line of the start task. Tasks
+ * should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [containerSettings] The settings for the container under
  * which the start task runs. When this is specified, all directories
  * recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch
@@ -2127,11 +2159,13 @@ export interface NetworkConfiguration {
  * @member {object} [startTask] A task to run on each compute node as it joins
  * the pool. The task runs when the node is added to the pool or when the node
  * is restarted.
- * @member {string} [startTask.commandLine] The command line does not run under
- * a shell, and therefore cannot take advantage of shell features such as
- * environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [startTask.commandLine] Tasks should be idempotent. For
+ * more information, please see TaskContainerSettings.maxTaskRetryCount. The
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -2431,11 +2465,13 @@ export interface PoolSpecification {
  * number of inbound NAT pools is exceeded the request fails with HTTP status
  * code 400.
  * @member {object} [pool.startTask]
- * @member {string} [pool.startTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such as
- * environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [pool.startTask.commandLine] Tasks should be idempotent.
+ * For more information, please see TaskContainerSettings.maxTaskRetryCount.
+ * The command line does not run under a shell, and therefore cannot take
+ * advantage of shell features such as environment variable expansion. If you
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * @member {object} [pool.startTask.containerSettings] When this is specified,
  * all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of
  * Azure Batch directories on the node) are mapped into the container, all task
@@ -2750,12 +2786,13 @@ export interface AutoPoolSpecification {
  * number of inbound NAT pools is exceeded the request fails with HTTP status
  * code 400.
  * @member {object} [autoPoolSpecification.pool.startTask]
- * @member {string} [autoPoolSpecification.pool.startTask.commandLine] The
- * command line does not run under a shell, and therefore cannot take advantage
- * of shell features such as environment variable expansion. If you want to
- * take advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * @member {string} [autoPoolSpecification.pool.startTask.commandLine] Tasks
+ * should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -2897,11 +2934,13 @@ export interface PoolInformation {
  * more than 64 characters.
  * @member {string} [jobManagerTask.displayName] It need not be unique and can
  * contain any Unicode characters up to a maximum length of 1024.
- * @member {string} [jobManagerTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such as
- * environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [jobManagerTask.commandLine] Tasks should be idempotent.
+ * For more information, please see TaskContainerSettings.maxTaskRetryCount.
+ * The command line does not run under a shell, and therefore cannot take
+ * advantage of shell features such as environment variable expansion. If you
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * @member {object} [jobManagerTask.containerSettings] If the pool that will
  * run this task has containerConfiguration set, this must be set as well. If
  * the pool that will run this task doesn't have containerConfiguration set,
@@ -2940,7 +2979,16 @@ export interface PoolInformation {
  * the maximum retry count is 3, Batch tries the task up to 4 times (one
  * initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
  * tasks are still running at this time (other than Job Release), those tasks
@@ -3005,11 +3053,13 @@ export interface PoolInformation {
  * submit a task with the same id, the Batch service rejects the request with
  * error code TaskIdSameAsJobPreparationTask; if you are calling the REST API
  * directly, the HTTP status code is 409 (Conflict).
- * @member {string} [jobPreparationTask.commandLine] The command line does not
- * run under a shell, and therefore cannot take advantage of shell features
- * such as environment variable expansion. If you want to take advantage of
- * such features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [jobPreparationTask.commandLine] Tasks should be
+ * idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [jobPreparationTask.containerSettings] When this is
  * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
  * root of Azure Batch directories on the node) are mapped into the container,
@@ -3045,7 +3095,16 @@ export interface PoolInformation {
  * example, if the maximum retry count is 3, Batch tries the task up to 4 times
  * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
  * Preparation task fails on a compute node, the Batch service retries the Job
  * Preparation task up to its maximum retry count (as specified in the
@@ -3382,11 +3441,12 @@ export interface PoolInformation {
  * code 400.
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  * @member {string} [poolInfo.autoPoolSpecification.pool.startTask.commandLine]
- * The command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in the
- * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * Tasks should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -3704,12 +3764,13 @@ export interface JobScheduleStatistics {
  * @member {string} [jobSpecification.jobManagerTask.displayName] It need not
  * be unique and can contain any Unicode characters up to a maximum length of
  * 1024.
- * @member {string} [jobSpecification.jobManagerTask.commandLine] The command
- * line does not run under a shell, and therefore cannot take advantage of
- * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command line,
- * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * @member {string} [jobSpecification.jobManagerTask.commandLine] Tasks should
+ * be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [jobSpecification.jobManagerTask.containerSettings] If the
  * pool that will run this task has containerConfiguration set, this must be
  * set as well. If the pool that will run this task doesn't have
@@ -3757,7 +3818,16 @@ export interface JobScheduleStatistics {
  * the maximum retry count is 3, Batch tries the task up to 4 times (one
  * initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -3826,12 +3896,13 @@ export interface JobScheduleStatistics {
  * you try to submit a task with the same id, the Batch service rejects the
  * request with error code TaskIdSameAsJobPreparationTask; if you are calling
  * the REST API directly, the HTTP status code is 409 (Conflict).
- * @member {string} [jobSpecification.jobPreparationTask.commandLine] The
- * command line does not run under a shell, and therefore cannot take advantage
- * of shell features such as environment variable expansion. If you want to
- * take advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * @member {string} [jobSpecification.jobPreparationTask.commandLine] Tasks
+ * should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [jobSpecification.jobPreparationTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -3874,7 +3945,16 @@ export interface JobScheduleStatistics {
  * example, if the maximum retry count is 3, Batch tries the task up to 4 times
  * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -4234,11 +4314,12 @@ export interface JobScheduleStatistics {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
- * The command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in the
- * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * Tasks should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
@@ -4346,7 +4427,9 @@ export interface JobScheduleStatistics {
  * schedule as metadata. The Batch service does not assign any meaning to
  * metadata; it is solely for the use of user code.
  * @member {object} [stats] The lifetime resource usage statistics for the job
- * schedule.
+ * schedule. The statistics may not be immediately available. The Batch service
+ * performs periodic roll-up of statistics. The typical delay is about 30
+ * minutes.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
  * @member {date} [stats.lastUpdateTime]
@@ -4476,12 +4559,13 @@ export interface CloudJobSchedule {
  * @member {string} [jobSpecification.jobManagerTask.displayName] It need not
  * be unique and can contain any Unicode characters up to a maximum length of
  * 1024.
- * @member {string} [jobSpecification.jobManagerTask.commandLine] The command
- * line does not run under a shell, and therefore cannot take advantage of
- * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command line,
- * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * @member {string} [jobSpecification.jobManagerTask.commandLine] Tasks should
+ * be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [jobSpecification.jobManagerTask.containerSettings] If the
  * pool that will run this task has containerConfiguration set, this must be
  * set as well. If the pool that will run this task doesn't have
@@ -4529,7 +4613,16 @@ export interface CloudJobSchedule {
  * the maximum retry count is 3, Batch tries the task up to 4 times (one
  * initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -4598,12 +4691,13 @@ export interface CloudJobSchedule {
  * you try to submit a task with the same id, the Batch service rejects the
  * request with error code TaskIdSameAsJobPreparationTask; if you are calling
  * the REST API directly, the HTTP status code is 409 (Conflict).
- * @member {string} [jobSpecification.jobPreparationTask.commandLine] The
- * command line does not run under a shell, and therefore cannot take advantage
- * of shell features such as environment variable expansion. If you want to
- * take advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * @member {string} [jobSpecification.jobPreparationTask.commandLine] Tasks
+ * should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [jobSpecification.jobPreparationTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -4646,7 +4740,16 @@ export interface CloudJobSchedule {
  * example, if the maximum retry count is 3, Batch tries the task up to 4 times
  * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -5006,11 +5109,12 @@ export interface CloudJobSchedule {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
- * The command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in the
- * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * Tasks should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
@@ -5241,11 +5345,13 @@ export interface JobExecutionInformation {
  * more than 64 characters.
  * @member {string} [jobManagerTask.displayName] It need not be unique and can
  * contain any Unicode characters up to a maximum length of 1024.
- * @member {string} [jobManagerTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such as
- * environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [jobManagerTask.commandLine] Tasks should be idempotent.
+ * For more information, please see TaskContainerSettings.maxTaskRetryCount.
+ * The command line does not run under a shell, and therefore cannot take
+ * advantage of shell features such as environment variable expansion. If you
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * @member {object} [jobManagerTask.containerSettings] If the pool that will
  * run this task has containerConfiguration set, this must be set as well. If
  * the pool that will run this task doesn't have containerConfiguration set,
@@ -5284,7 +5390,16 @@ export interface JobExecutionInformation {
  * the maximum retry count is 3, Batch tries the task up to 4 times (one
  * initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
  * tasks are still running at this time (other than Job Release), those tasks
@@ -5348,11 +5463,13 @@ export interface JobExecutionInformation {
  * submit a task with the same id, the Batch service rejects the request with
  * error code TaskIdSameAsJobPreparationTask; if you are calling the REST API
  * directly, the HTTP status code is 409 (Conflict).
- * @member {string} [jobPreparationTask.commandLine] The command line does not
- * run under a shell, and therefore cannot take advantage of shell features
- * such as environment variable expansion. If you want to take advantage of
- * such features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [jobPreparationTask.commandLine] Tasks should be
+ * idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [jobPreparationTask.containerSettings] When this is
  * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
  * root of Azure Batch directories on the node) are mapped into the container,
@@ -5388,7 +5505,16 @@ export interface JobExecutionInformation {
  * example, if the maximum retry count is 3, Batch tries the task up to 4 times
  * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
  * Preparation task fails on a compute node, the Batch service retries the Job
  * Preparation task up to its maximum retry count (as specified in the
@@ -5719,11 +5845,12 @@ export interface JobExecutionInformation {
  * code 400.
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  * @member {string} [poolInfo.autoPoolSpecification.pool.startTask.commandLine]
- * The command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in the
- * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * Tasks should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -5853,7 +5980,9 @@ export interface JobExecutionInformation {
  * Any other string is a user-defined reason specified in a call to the
  * 'Terminate a job' operation.
  * @member {object} [stats] Resource usage statistics for the entire lifetime
- * of the job.
+ * of the job. The statistics may not be immediately available. The Batch
+ * service performs periodic roll-up of statistics. The typical delay is about
+ * 30 minutes.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
  * @member {date} [stats.lastUpdateTime]
@@ -5953,11 +6082,13 @@ export interface CloudJob {
  * more than 64 characters.
  * @member {string} [jobManagerTask.displayName] It need not be unique and can
  * contain any Unicode characters up to a maximum length of 1024.
- * @member {string} [jobManagerTask.commandLine] The command line does not run
- * under a shell, and therefore cannot take advantage of shell features such as
- * environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [jobManagerTask.commandLine] Tasks should be idempotent.
+ * For more information, please see TaskContainerSettings.maxTaskRetryCount.
+ * The command line does not run under a shell, and therefore cannot take
+ * advantage of shell features such as environment variable expansion. If you
+ * want to take advantage of such features, you should invoke the shell in the
+ * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * @member {object} [jobManagerTask.containerSettings] If the pool that will
  * run this task has containerConfiguration set, this must be set as well. If
  * the pool that will run this task doesn't have containerConfiguration set,
@@ -5996,7 +6127,16 @@ export interface CloudJob {
  * the maximum retry count is 3, Batch tries the task up to 4 times (one
  * initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobManagerTask.killJobOnCompletion] If true, when the Job
  * Manager task completes, the Batch service marks the job as complete. If any
  * tasks are still running at this time (other than Job Release), those tasks
@@ -6061,11 +6201,13 @@ export interface CloudJob {
  * submit a task with the same id, the Batch service rejects the request with
  * error code TaskIdSameAsJobPreparationTask; if you are calling the REST API
  * directly, the HTTP status code is 409 (Conflict).
- * @member {string} [jobPreparationTask.commandLine] The command line does not
- * run under a shell, and therefore cannot take advantage of shell features
- * such as environment variable expansion. If you want to take advantage of
- * such features, you should invoke the shell in the command line, for example
- * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [jobPreparationTask.commandLine] Tasks should be
+ * idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [jobPreparationTask.containerSettings] When this is
  * specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the
  * root of Azure Batch directories on the node) are mapped into the container,
@@ -6101,7 +6243,16 @@ export interface CloudJob {
  * example, if the maximum retry count is 3, Batch tries the task up to 4 times
  * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobPreparationTask.waitForSuccess] If true and the Job
  * Preparation task fails on a compute node, the Batch service retries the Job
  * Preparation task up to its maximum retry count (as specified in the
@@ -6437,11 +6588,12 @@ export interface CloudJob {
  * code 400.
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  * @member {string} [poolInfo.autoPoolSpecification.pool.startTask.commandLine]
- * The command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in the
- * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * Tasks should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -7155,11 +7307,13 @@ export interface ResizeError {
  * code 400.
  * @member {object} [startTask] A task specified to run on each compute node as
  * it joins the pool.
- * @member {string} [startTask.commandLine] The command line does not run under
- * a shell, and therefore cannot take advantage of shell features such as
- * environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [startTask.commandLine] Tasks should be idempotent. For
+ * more information, please see TaskContainerSettings.maxTaskRetryCount. The
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -7234,7 +7388,9 @@ export interface ResizeError {
  * @member {array} [metadata] A list of name-value pairs associated with the
  * pool as metadata.
  * @member {object} [stats] Utilization and resource usage statistics for the
- * entire lifetime of the pool.
+ * entire lifetime of the pool. The statistics may not be immediately
+ * available. The Batch service performs periodic roll-up of statistics. The
+ * typical delay is about 30 minutes.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
  * @member {date} [stats.lastUpdateTime]
@@ -7486,11 +7642,13 @@ export interface CloudPool {
  * @member {object} [startTask] A task specified to run on each compute node as
  * it joins the pool. The task runs when the node is added to the pool or when
  * the node is restarted.
- * @member {string} [startTask.commandLine] The command line does not run under
- * a shell, and therefore cannot take advantage of shell features such as
- * environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [startTask.commandLine] Tasks should be idempotent. For
+ * more information, please see TaskContainerSettings.maxTaskRetryCount. The
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -7920,14 +8078,16 @@ export interface TaskDependencies {
  * @member {date} [previousStateTransitionTime] The time at which the task
  * entered its previous state. This property is not set if the task is in its
  * initial Active state.
- * @member {string} [commandLine] The command line of the task. For
- * multi-instance tasks, the command line is executed as the primary task,
- * after the primary task and all subtasks have finished executing the
- * coordination command line. The command line does not run under a shell, and
- * therefore cannot take advantage of shell features such as environment
- * variable expansion. If you want to take advantage of such features, you
- * should invoke the shell in the command line, for example using "cmd /c
- * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [commandLine] The command line of the task. Tasks should be
+ * idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. For multi-instance tasks, the
+ * command line is executed as the primary task, after the primary task and all
+ * subtasks have finished executing the coordination command line. The command
+ * line does not run under a shell, and therefore cannot take advantage of
+ * shell features such as environment variable expansion. If you want to take
+ * advantage of such features, you should invoke the shell in the command line,
+ * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+ * Linux.
  * @member {object} [containerSettings] The settings for the container under
  * which the task runs. If the pool that will run this task has
  * containerConfiguration set, this must be set as well. If the pool that will
@@ -7978,7 +8138,16 @@ export interface TaskDependencies {
  * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * task without limit. ResourceFiles and AppplicationPackages are only
+ * downloaded again if the task is retried on a new compute node. Batch will
+ * also retry tasks when a recovery operation is triggered on a compute node.
+ * Examples of recovery operations triggers include (but are not limited to)
+ * when an unhealthy compute node is rebooted or a compute node disappeared due
+ * to host failure. Retries due to recovery operation are independent of and
+ * are not counted against maxTaskRetryCount. All tasks should be idempotent,
+ * it means they need to tolerate being interrupted and restarted, without
+ * causing any corruption or duplicate data. Best practices recommended for
+ * long running tasks is to use checkpointing.
  * @member {object} [userIdentity] The user identity under which the task runs.
  * If omitted, the task runs as a non-administrative user unique to the task.
  * @member {string} [userIdentity.userName] The userName and autoUser
@@ -8158,14 +8327,16 @@ export interface CloudTask {
  * @member {string} [displayName] A display name for the task. The display name
  * need not be unique and can contain any Unicode characters up to a maximum
  * length of 1024.
- * @member {string} commandLine The command line of the task. For
- * multi-instance tasks, the command line is executed as the primary task,
- * after the primary task and all subtasks have finished executing the
- * coordination command line. The command line does not run under a shell, and
- * therefore cannot take advantage of shell features such as environment
- * variable expansion. If you want to take advantage of such features, you
- * should invoke the shell in the command line, for example using "cmd /c
- * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} commandLine The command line of the task. Tasks should be
+ * idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. For multi-instance tasks, the
+ * command line is executed as the primary task, after the primary task and all
+ * subtasks have finished executing the coordination command line. The command
+ * line does not run under a shell, and therefore cannot take advantage of
+ * shell features such as environment variable expansion. If you want to take
+ * advantage of such features, you should invoke the shell in the command line,
+ * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
+ * Linux.
  * @member {object} [containerSettings] The settings for the container under
  * which the task runs. If the pool that will run this task has
  * containerConfiguration set, this must be set as well. If the pool that will
@@ -8275,7 +8446,16 @@ export interface CloudTask {
  * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * task without limit. ResourceFiles and AppplicationPackages are only
+ * downloaded again if the task is retried on a new compute node. Batch will
+ * also retry tasks when a recovery operation is triggered on a compute node.
+ * Examples of recovery operations triggers include (but are not limited to)
+ * when an unhealthy compute node is rebooted or a compute node disappeared due
+ * to host failure. Retries due to recovery operation are independent of and
+ * are not counted against maxTaskRetryCount. All tasks should be idempotent,
+ * it means they need to tolerate being interrupted and restarted, without
+ * causing any corruption or duplicate data. Best practices recommended for
+ * long running tasks is to use checkpointing.
  * @member {object} [userIdentity] The user identity under which the task runs.
  * If omitted, the task runs as a non-administrative user unique to the task.
  * @member {string} [userIdentity.userName] The userName and autoUser
@@ -8822,11 +9002,13 @@ export interface ComputeNodeEndpointConfiguration {
  * node since it was assigned to the pool.
  * @member {object} [startTask] The task specified to run on the compute node
  * as it joins the pool.
- * @member {string} [startTask.commandLine] The command line does not run under
- * a shell, and therefore cannot take advantage of shell features such as
- * environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [startTask.commandLine] Tasks should be idempotent. For
+ * more information, please see TaskContainerSettings.maxTaskRetryCount. The
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -9095,12 +9277,13 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * @member {string} [jobSpecification.jobManagerTask.displayName] It need not
  * be unique and can contain any Unicode characters up to a maximum length of
  * 1024.
- * @member {string} [jobSpecification.jobManagerTask.commandLine] The command
- * line does not run under a shell, and therefore cannot take advantage of
- * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command line,
- * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * @member {string} [jobSpecification.jobManagerTask.commandLine] Tasks should
+ * be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [jobSpecification.jobManagerTask.containerSettings] If the
  * pool that will run this task has containerConfiguration set, this must be
  * set as well. If the pool that will run this task doesn't have
@@ -9148,7 +9331,16 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * the maximum retry count is 3, Batch tries the task up to 4 times (one
  * initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -9217,12 +9409,13 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * you try to submit a task with the same id, the Batch service rejects the
  * request with error code TaskIdSameAsJobPreparationTask; if you are calling
  * the REST API directly, the HTTP status code is 409 (Conflict).
- * @member {string} [jobSpecification.jobPreparationTask.commandLine] The
- * command line does not run under a shell, and therefore cannot take advantage
- * of shell features such as environment variable expansion. If you want to
- * take advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * @member {string} [jobSpecification.jobPreparationTask.commandLine] Tasks
+ * should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [jobSpecification.jobPreparationTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -9265,7 +9458,16 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * example, if the maximum retry count is 3, Batch tries the task up to 4 times
  * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -9625,11 +9827,12 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
- * The command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in the
- * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * Tasks should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
@@ -9816,12 +10019,13 @@ export interface JobSchedulePatchParameter {
  * @member {string} [jobSpecification.jobManagerTask.displayName] It need not
  * be unique and can contain any Unicode characters up to a maximum length of
  * 1024.
- * @member {string} [jobSpecification.jobManagerTask.commandLine] The command
- * line does not run under a shell, and therefore cannot take advantage of
- * shell features such as environment variable expansion. If you want to take
- * advantage of such features, you should invoke the shell in the command line,
- * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
- * Linux.
+ * @member {string} [jobSpecification.jobManagerTask.commandLine] Tasks should
+ * be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [jobSpecification.jobManagerTask.containerSettings] If the
  * pool that will run this task has containerConfiguration set, this must be
  * set as well. If the pool that will run this task doesn't have
@@ -9869,7 +10073,16 @@ export interface JobSchedulePatchParameter {
  * the maximum retry count is 3, Batch tries the task up to 4 times (one
  * initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobSpecification.jobManagerTask.killJobOnCompletion] If
  * true, when the Job Manager task completes, the Batch service marks the job
  * as complete. If any tasks are still running at this time (other than Job
@@ -9938,12 +10151,13 @@ export interface JobSchedulePatchParameter {
  * you try to submit a task with the same id, the Batch service rejects the
  * request with error code TaskIdSameAsJobPreparationTask; if you are calling
  * the REST API directly, the HTTP status code is 409 (Conflict).
- * @member {string} [jobSpecification.jobPreparationTask.commandLine] The
- * command line does not run under a shell, and therefore cannot take advantage
- * of shell features such as environment variable expansion. If you want to
- * take advantage of such features, you should invoke the shell in the command
- * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * @member {string} [jobSpecification.jobPreparationTask.commandLine] Tasks
+ * should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object} [jobSpecification.jobPreparationTask.containerSettings]
  * When this is specified, all directories recursively below the
  * AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are
@@ -9986,7 +10200,16 @@ export interface JobSchedulePatchParameter {
  * example, if the maximum retry count is 3, Batch tries the task up to 4 times
  * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
  * service does not retry the task. If the maximum retry count is -1, the Batch
- * service retries the task without limit.
+ * service retries the task without limit. ResourceFiles and
+ * AppplicationPackages are only downloaded again if the task is retried on a
+ * new compute node. Batch will also retry tasks when a recovery operation is
+ * triggered on a compute node. Examples of recovery operations triggers
+ * include (but are not limited to) when an unhealthy compute node is rebooted
+ * or a compute node disappeared due to host failure. Retries due to recovery
+ * operation are independent of and are not counted against maxTaskRetryCount.
+ * All tasks should be idempotent, it means they need to tolerate being
+ * interrupted and restarted, without causing any corruption or duplicate data.
+ * Best practices recommended for long running tasks is to use checkpointing.
  * @member {boolean} [jobSpecification.jobPreparationTask.waitForSuccess] If
  * true and the Job Preparation task fails on a compute node, the Batch service
  * retries the Job Preparation task up to its maximum retry count (as specified
@@ -10346,11 +10569,12 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask]
  * @member {string}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine]
- * The command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in the
- * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * Tasks should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object}
  * [jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
  * When this is specified, all directories recursively below the
@@ -10759,11 +10983,12 @@ export interface JobTerminateParameter {
  * code 400.
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  * @member {string} [poolInfo.autoPoolSpecification.pool.startTask.commandLine]
- * The command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in the
- * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * Tasks should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -11131,11 +11356,12 @@ export interface JobPatchParameter {
  * code 400.
  * @member {object} [poolInfo.autoPoolSpecification.pool.startTask]
  * @member {string} [poolInfo.autoPoolSpecification.pool.startTask.commandLine]
- * The command line does not run under a shell, and therefore cannot take
- * advantage of shell features such as environment variable expansion. If you
- * want to take advantage of such features, you should invoke the shell in the
- * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
- * MyCommand" in Linux.
+ * Tasks should be idempotent. For more information, please see
+ * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
+ * a shell, and therefore cannot take advantage of shell features such as
+ * environment variable expansion. If you want to take advantage of such
+ * features, you should invoke the shell in the command line, for example using
+ * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
  * @member {object}
  * [poolInfo.autoPoolSpecification.pool.startTask.containerSettings] When this
  * is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR
@@ -11329,11 +11555,13 @@ export interface PoolResizeParameter {
  * the pool. The task runs when the node is added to the pool or when the node
  * is restarted. If this element is present, it overwrites any existing start
  * task. If omitted, any existing start task is removed from the pool.
- * @member {string} [startTask.commandLine] The command line does not run under
- * a shell, and therefore cannot take advantage of shell features such as
- * environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [startTask.commandLine] Tasks should be idempotent. For
+ * more information, please see TaskContainerSettings.maxTaskRetryCount. The
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -11435,11 +11663,13 @@ export interface PoolUpgradeOSParameter {
  * the pool. The task runs when the node is added to the pool or when the node
  * is restarted. If this element is present, it overwrites any existing start
  * task. If omitted, any existing start task is left unchanged.
- * @member {string} [startTask.commandLine] The command line does not run under
- * a shell, and therefore cannot take advantage of shell features such as
- * environment variable expansion. If you want to take advantage of such
- * features, you should invoke the shell in the command line, for example using
- * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+ * @member {string} [startTask.commandLine] Tasks should be idempotent. For
+ * more information, please see TaskContainerSettings.maxTaskRetryCount. The
+ * command line does not run under a shell, and therefore cannot take advantage
+ * of shell features such as environment variable expansion. If you want to
+ * take advantage of such features, you should invoke the shell in the command
+ * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+ * MyCommand" in Linux.
  * @member {object} [startTask.containerSettings] When this is specified, all
  * directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure
  * Batch directories on the node) are mapped into the container, all task
@@ -11540,7 +11770,16 @@ export interface PoolPatchParameter {
  * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
  * retries). If the maximum retry count is 0, the Batch service does not retry
  * the task. If the maximum retry count is -1, the Batch service retries the
- * task without limit.
+ * task without limit. ResourceFiles and AppplicationPackages are only
+ * downloaded again if the task is retried on a new compute node. Batch will
+ * also retry tasks when a recovery operation is triggered on a compute node.
+ * Examples of recovery operations triggers include (but are not limited to)
+ * when an unhealthy compute node is rebooted or a compute node disappeared due
+ * to host failure. Retries due to recovery operation are independent of and
+ * are not counted against maxTaskRetryCount. All tasks should be idempotent,
+ * it means they need to tolerate being interrupted and restarted, without
+ * causing any corruption or duplicate data. Best practices recommended for
+ * long running tasks is to use checkpointing.
  */
 export interface TaskUpdateParameter {
   constraints?: TaskConstraints;
@@ -11708,6 +11947,7 @@ export interface UploadBatchServiceLogsResult {
  * @member {number} starting The number of nodes in the starting state.
  * @member {number} startTaskFailed The number of nodes in the startTaskFailed
  * state.
+ * @member {number} leavingPool The number of nodes in the leavingPool state.
  * @member {number} unknown The number of nodes in the unknown state.
  * @member {number} unusable The number of nodes in the unusable state.
  * @member {number} waitingForStartTask The number of nodes in the
@@ -11724,6 +11964,7 @@ export interface NodeCounts {
   running: number;
   starting: number;
   startTaskFailed: number;
+  leavingPool: number;
   unknown: number;
   unusable: number;
   waitingForStartTask: number;
@@ -11747,6 +11988,7 @@ export interface NodeCounts {
  * @member {number} [dedicated.running]
  * @member {number} [dedicated.starting]
  * @member {number} [dedicated.startTaskFailed]
+ * @member {number} [dedicated.leavingPool]
  * @member {number} [dedicated.unknown]
  * @member {number} [dedicated.unusable]
  * @member {number} [dedicated.waitingForStartTask]
@@ -11762,6 +12004,7 @@ export interface NodeCounts {
  * @member {number} [lowPriority.running]
  * @member {number} [lowPriority.starting]
  * @member {number} [lowPriority.startTaskFailed]
+ * @member {number} [lowPriority.leavingPool]
  * @member {number} [lowPriority.unknown]
  * @member {number} [lowPriority.unusable]
  * @member {number} [lowPriority.waitingForStartTask]
