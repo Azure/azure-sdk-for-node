@@ -921,14 +921,14 @@ export interface TextModeration {
      * Detects profanity in more than 100 languages and match against custom and
      * shared blacklists.
      *
-     * @param {string} language Language of the terms.
-     *
      * @param {string} textContentType The content type. Possible values include:
      * 'text/plain', 'text/html', 'text/xml', 'text/markdown'
      *
      * @param {object} textContent Content to screen.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.language] Language of the text.
      *
      * @param {boolean} [options.autocorrect] Autocorrect text.
      *
@@ -947,7 +947,7 @@ export interface TextModeration {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    screenTextWithHttpOperationResponse(language: string, textContentType: string, textContent: stream.Readable, options?: { autocorrect? : boolean, pII? : boolean, listId? : string, classify? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Screen>>;
+    screenTextWithHttpOperationResponse(textContentType: string, textContent: stream.Readable, options?: { language? : string, autocorrect? : boolean, pII? : boolean, listId? : string, classify? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Screen>>;
 
     /**
      * @summary Detect profanity and match against custom and shared blacklists
@@ -955,14 +955,14 @@ export interface TextModeration {
      * Detects profanity in more than 100 languages and match against custom and
      * shared blacklists.
      *
-     * @param {string} language Language of the terms.
-     *
      * @param {string} textContentType The content type. Possible values include:
      * 'text/plain', 'text/html', 'text/xml', 'text/markdown'
      *
      * @param {object} textContent Content to screen.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.language] Language of the text.
      *
      * @param {boolean} [options.autocorrect] Autocorrect text.
      *
@@ -997,9 +997,9 @@ export interface TextModeration {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    screenText(language: string, textContentType: string, textContent: stream.Readable, options?: { autocorrect? : boolean, pII? : boolean, listId? : string, classify? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Screen>;
-    screenText(language: string, textContentType: string, textContent: stream.Readable, callback: ServiceCallback<models.Screen>): void;
-    screenText(language: string, textContentType: string, textContent: stream.Readable, options: { autocorrect? : boolean, pII? : boolean, listId? : string, classify? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Screen>): void;
+    screenText(textContentType: string, textContent: stream.Readable, options?: { language? : string, autocorrect? : boolean, pII? : boolean, listId? : string, classify? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Screen>;
+    screenText(textContentType: string, textContent: stream.Readable, callback: ServiceCallback<models.Screen>): void;
+    screenText(textContentType: string, textContent: stream.Readable, options: { language? : string, autocorrect? : boolean, pII? : boolean, listId? : string, classify? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Screen>): void;
 
 
     /**
