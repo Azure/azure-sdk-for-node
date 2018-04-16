@@ -10289,6 +10289,66 @@ export interface VirtualMachineScaleSets {
 
 
     /**
+     * Gets list of OS upgrades on a VM scale set instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetListOSUpgradeHistory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getOSUpgradeHistoryWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetListOSUpgradeHistory>>;
+
+    /**
+     * Gets list of OS upgrades on a VM scale set instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} vmScaleSetName The name of the VM scale set.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetListOSUpgradeHistory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetListOSUpgradeHistory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetListOSUpgradeHistory}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getOSUpgradeHistory(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListOSUpgradeHistory>;
+    getOSUpgradeHistory(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.VirtualMachineScaleSetListOSUpgradeHistory>): void;
+    getOSUpgradeHistory(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListOSUpgradeHistory>): void;
+
+
+    /**
      * Power off (stop) one or more virtual machines in a VM scale set. Note that
      * resources are still attached and you are getting charged for the resources.
      * Instead, use deallocate to release resources and avoid charges.
@@ -13301,6 +13361,64 @@ export interface VirtualMachineScaleSets {
     listSkusNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListSkusResult>;
     listSkusNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
     listSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListSkusResult>): void;
+
+
+    /**
+     * Gets list of OS upgrades on a VM scale set instance.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualMachineScaleSetListOSUpgradeHistory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getOSUpgradeHistoryNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualMachineScaleSetListOSUpgradeHistory>>;
+
+    /**
+     * Gets list of OS upgrades on a VM scale set instance.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualMachineScaleSetListOSUpgradeHistory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualMachineScaleSetListOSUpgradeHistory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualMachineScaleSetListOSUpgradeHistory}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getOSUpgradeHistoryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineScaleSetListOSUpgradeHistory>;
+    getOSUpgradeHistoryNext(nextPageLink: string, callback: ServiceCallback<models.VirtualMachineScaleSetListOSUpgradeHistory>): void;
+    getOSUpgradeHistoryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineScaleSetListOSUpgradeHistory>): void;
 }
 
 /**
@@ -17956,13 +18074,6 @@ export interface Disks {
     /**
      * Creates or updates a disk.
      *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
-     *
      * @param {object} disk Disk object supplied in the body of the Put disk
      * operation.
      *
@@ -18054,18 +18165,11 @@ export interface Disks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, diskName: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+    createOrUpdateWithHttpOperationResponse(disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
 
     /**
      * Creates or updates a disk.
      *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
-     *
      * @param {object} disk Disk object supplied in the body of the Put disk
      * operation.
      *
@@ -18173,20 +18277,13 @@ export interface Disks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
-    createOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, callback: ServiceCallback<models.Disk>): void;
-    createOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+    createOrUpdate(disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
+    createOrUpdate(disk: models.Disk, callback: ServiceCallback<models.Disk>): void;
+    createOrUpdate(disk: models.Disk, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
 
 
     /**
      * Updates (patches) a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} disk Disk object supplied in the body of the Patch disk
      * operation.
@@ -18248,17 +18345,10 @@ export interface Disks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+    updateWithHttpOperationResponse(disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
 
     /**
      * Updates (patches) a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} disk Disk object supplied in the body of the Patch disk
      * operation.
@@ -18336,20 +18426,13 @@ export interface Disks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
-    update(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, callback: ServiceCallback<models.Disk>): void;
-    update(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+    update(disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
+    update(disk: models.DiskUpdate, callback: ServiceCallback<models.Disk>): void;
+    update(disk: models.DiskUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
 
 
     /**
      * Gets information about a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18362,17 +18445,10 @@ export interface Disks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+    getWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
 
     /**
      * Gets information about a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18401,20 +18477,13 @@ export interface Disks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
-    get(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.Disk>): void;
-    get(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+    get(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
+    get(callback: ServiceCallback<models.Disk>): void;
+    get(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
 
 
     /**
      * Deletes a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18427,17 +18496,10 @@ export interface Disks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Deletes a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18467,15 +18529,13 @@ export interface Disks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    deleteMethod(callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
      * Lists all the disks under a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18488,12 +18548,10 @@ export interface Disks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiskList>>;
+    listByResourceGroupWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DiskList>>;
 
     /**
      * Lists all the disks under a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18522,9 +18580,9 @@ export interface Disks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiskList>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.DiskList>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
+    listByResourceGroup(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiskList>;
+    listByResourceGroup(callback: ServiceCallback<models.DiskList>): void;
+    listByResourceGroup(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiskList>): void;
 
 
     /**
@@ -18581,13 +18639,6 @@ export interface Disks {
     /**
      * Grants access to a disk.
      *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
-     *
      * @param {object} grantAccessData Access data object supplied in the body of
      * the get disk access operation.
      *
@@ -18608,17 +18659,10 @@ export interface Disks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    grantAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
+    grantAccessWithHttpOperationResponse(grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
 
     /**
      * Grants access to a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} grantAccessData Access data object supplied in the body of
      * the get disk access operation.
@@ -18656,20 +18700,13 @@ export interface Disks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    grantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
-    grantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
-    grantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+    grantAccess(grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
+    grantAccess(grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
+    grantAccess(grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
 
 
     /**
      * Revokes access to a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18682,17 +18719,10 @@ export interface Disks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    revokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    revokeAccessWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Revokes access to a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18722,20 +18752,13 @@ export interface Disks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    revokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    revokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    revokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    revokeAccess(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    revokeAccess(callback: ServiceCallback<models.OperationStatusResponse>): void;
+    revokeAccess(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
      * Creates or updates a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} disk Disk object supplied in the body of the Put disk
      * operation.
@@ -18828,17 +18851,10 @@ export interface Disks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, diskName: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+    beginCreateOrUpdateWithHttpOperationResponse(disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
 
     /**
      * Creates or updates a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} disk Disk object supplied in the body of the Put disk
      * operation.
@@ -18947,20 +18963,13 @@ export interface Disks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
-    beginCreateOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, callback: ServiceCallback<models.Disk>): void;
-    beginCreateOrUpdate(resourceGroupName: string, diskName: string, disk: models.Disk, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+    beginCreateOrUpdate(disk: models.Disk, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
+    beginCreateOrUpdate(disk: models.Disk, callback: ServiceCallback<models.Disk>): void;
+    beginCreateOrUpdate(disk: models.Disk, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
 
 
     /**
      * Updates (patches) a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} disk Disk object supplied in the body of the Patch disk
      * operation.
@@ -19022,17 +19031,10 @@ export interface Disks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
+    beginUpdateWithHttpOperationResponse(disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Disk>>;
 
     /**
      * Updates (patches) a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} disk Disk object supplied in the body of the Patch disk
      * operation.
@@ -19110,20 +19112,13 @@ export interface Disks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
-    beginUpdate(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, callback: ServiceCallback<models.Disk>): void;
-    beginUpdate(resourceGroupName: string, diskName: string, disk: models.DiskUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
+    beginUpdate(disk: models.DiskUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Disk>;
+    beginUpdate(disk: models.DiskUpdate, callback: ServiceCallback<models.Disk>): void;
+    beginUpdate(disk: models.DiskUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Disk>): void;
 
 
     /**
      * Deletes a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19136,17 +19131,10 @@ export interface Disks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Deletes a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19176,20 +19164,13 @@ export interface Disks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    beginDeleteMethod(callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
      * Grants access to a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} grantAccessData Access data object supplied in the body of
      * the get disk access operation.
@@ -19211,17 +19192,10 @@ export interface Disks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginGrantAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
+    beginGrantAccessWithHttpOperationResponse(grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
 
     /**
      * Grants access to a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} grantAccessData Access data object supplied in the body of
      * the get disk access operation.
@@ -19259,20 +19233,13 @@ export interface Disks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginGrantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
-    beginGrantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
-    beginGrantAccess(resourceGroupName: string, diskName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+    beginGrantAccess(grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
+    beginGrantAccess(grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
+    beginGrantAccess(grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
 
 
     /**
      * Revokes access to a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19285,17 +19252,10 @@ export interface Disks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRevokeAccessWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Revokes access to a disk.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} diskName The name of the managed disk that is being created.
-     * The name can't be changed after the disk is created. Supported characters
-     * for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80
-     * characters.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19325,9 +19285,9 @@ export interface Disks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRevokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRevokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRevokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRevokeAccess(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    beginRevokeAccess(callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRevokeAccess(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
@@ -19456,8 +19416,6 @@ export interface Snapshots {
     /**
      * Creates or updates a snapshot.
      *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
      * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
@@ -19553,13 +19511,11 @@ export interface Snapshots {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+    createOrUpdateWithHttpOperationResponse(snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
 
     /**
      * Creates or updates a snapshot.
      *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
      * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
@@ -19671,15 +19627,13 @@ export interface Snapshots {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
-    createOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, callback: ServiceCallback<models.Snapshot>): void;
-    createOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+    createOrUpdate(snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
+    createOrUpdate(snapshotName: string, snapshot: models.Snapshot, callback: ServiceCallback<models.Snapshot>): void;
+    createOrUpdate(snapshotName: string, snapshot: models.Snapshot, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
 
 
     /**
      * Updates (patches) a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -19746,12 +19700,10 @@ export interface Snapshots {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+    updateWithHttpOperationResponse(snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
 
     /**
      * Updates (patches) a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -19834,15 +19786,13 @@ export interface Snapshots {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
-    update(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, callback: ServiceCallback<models.Snapshot>): void;
-    update(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+    update(snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
+    update(snapshotName: string, snapshot: models.SnapshotUpdate, callback: ServiceCallback<models.Snapshot>): void;
+    update(snapshotName: string, snapshot: models.SnapshotUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
 
 
     /**
      * Gets information about a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -19860,12 +19810,10 @@ export interface Snapshots {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+    getWithHttpOperationResponse(snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
 
     /**
      * Gets information about a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -19899,15 +19847,13 @@ export interface Snapshots {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
-    get(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.Snapshot>): void;
-    get(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+    get(snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
+    get(snapshotName: string, callback: ServiceCallback<models.Snapshot>): void;
+    get(snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
 
 
     /**
      * Deletes a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -19925,12 +19871,10 @@ export interface Snapshots {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Deletes a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -19965,15 +19909,13 @@ export interface Snapshots {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    deleteMethod(snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
      * Lists snapshots under a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19986,12 +19928,10 @@ export interface Snapshots {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotList>>;
+    listByResourceGroupWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SnapshotList>>;
 
     /**
      * Lists snapshots under a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -20020,9 +19960,9 @@ export interface Snapshots {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotList>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.SnapshotList>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
+    listByResourceGroup(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SnapshotList>;
+    listByResourceGroup(callback: ServiceCallback<models.SnapshotList>): void;
+    listByResourceGroup(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SnapshotList>): void;
 
 
     /**
@@ -20079,8 +20019,6 @@ export interface Snapshots {
     /**
      * Grants access to a snapshot.
      *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
      * characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80
@@ -20106,12 +20044,10 @@ export interface Snapshots {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    grantAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
+    grantAccessWithHttpOperationResponse(snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
 
     /**
      * Grants access to a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20154,15 +20090,13 @@ export interface Snapshots {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    grantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
-    grantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
-    grantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+    grantAccess(snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
+    grantAccess(snapshotName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
+    grantAccess(snapshotName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
 
 
     /**
      * Revokes access to a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20180,12 +20114,10 @@ export interface Snapshots {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    revokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    revokeAccessWithHttpOperationResponse(snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Revokes access to a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20220,15 +20152,13 @@ export interface Snapshots {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    revokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    revokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    revokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    revokeAccess(snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    revokeAccess(snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    revokeAccess(snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
      * Creates or updates a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20325,12 +20255,10 @@ export interface Snapshots {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+    beginCreateOrUpdateWithHttpOperationResponse(snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
 
     /**
      * Creates or updates a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20443,15 +20371,13 @@ export interface Snapshots {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
-    beginCreateOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, callback: ServiceCallback<models.Snapshot>): void;
-    beginCreateOrUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.Snapshot, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+    beginCreateOrUpdate(snapshotName: string, snapshot: models.Snapshot, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
+    beginCreateOrUpdate(snapshotName: string, snapshot: models.Snapshot, callback: ServiceCallback<models.Snapshot>): void;
+    beginCreateOrUpdate(snapshotName: string, snapshot: models.Snapshot, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
 
 
     /**
      * Updates (patches) a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20518,12 +20444,10 @@ export interface Snapshots {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
+    beginUpdateWithHttpOperationResponse(snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Snapshot>>;
 
     /**
      * Updates (patches) a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20606,15 +20530,13 @@ export interface Snapshots {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
-    beginUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, callback: ServiceCallback<models.Snapshot>): void;
-    beginUpdate(resourceGroupName: string, snapshotName: string, snapshot: models.SnapshotUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
+    beginUpdate(snapshotName: string, snapshot: models.SnapshotUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Snapshot>;
+    beginUpdate(snapshotName: string, snapshot: models.SnapshotUpdate, callback: ServiceCallback<models.Snapshot>): void;
+    beginUpdate(snapshotName: string, snapshot: models.SnapshotUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Snapshot>): void;
 
 
     /**
      * Deletes a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20632,12 +20554,10 @@ export interface Snapshots {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Deletes a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20672,15 +20592,13 @@ export interface Snapshots {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    beginDeleteMethod(snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
      * Grants access to a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20707,12 +20625,10 @@ export interface Snapshots {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginGrantAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
+    beginGrantAccessWithHttpOperationResponse(snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccessUri>>;
 
     /**
      * Grants access to a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20755,15 +20671,13 @@ export interface Snapshots {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginGrantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
-    beginGrantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
-    beginGrantAccess(resourceGroupName: string, snapshotName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
+    beginGrantAccess(snapshotName: string, grantAccessData: models.GrantAccessData, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccessUri>;
+    beginGrantAccess(snapshotName: string, grantAccessData: models.GrantAccessData, callback: ServiceCallback<models.AccessUri>): void;
+    beginGrantAccess(snapshotName: string, grantAccessData: models.GrantAccessData, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccessUri>): void;
 
 
     /**
      * Revokes access to a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20781,12 +20695,10 @@ export interface Snapshots {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRevokeAccessWithHttpOperationResponse(snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Revokes access to a snapshot.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} snapshotName The name of the snapshot that is being created.
      * The name can't be changed after the snapshot is created. Supported
@@ -20821,9 +20733,9 @@ export interface Snapshots {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRevokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRevokeAccess(snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    beginRevokeAccess(snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRevokeAccess(snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
@@ -21023,8 +20935,7 @@ export interface ContainerServices {
      * @param {object} parameters Parameters supplied to the Create or Update a
      * Container Service operation.
      *
-     * @param {object} [parameters.orchestratorProfile] Properties of the
-     * orchestrator.
+     * @param {object} [parameters.orchestratorProfile]
      *
      * @param {string} parameters.orchestratorProfile.orchestratorType The
      * orchestrator to use to manage container service cluster resources. Valid
@@ -21115,8 +21026,7 @@ export interface ContainerServices {
      * @param {object} parameters Parameters supplied to the Create or Update a
      * Container Service operation.
      *
-     * @param {object} [parameters.orchestratorProfile] Properties of the
-     * orchestrator.
+     * @param {object} [parameters.orchestratorProfile]
      *
      * @param {string} parameters.orchestratorProfile.orchestratorType The
      * orchestrator to use to manage container service cluster resources. Valid
@@ -21435,8 +21345,7 @@ export interface ContainerServices {
      * @param {object} parameters Parameters supplied to the Create or Update a
      * Container Service operation.
      *
-     * @param {object} [parameters.orchestratorProfile] Properties of the
-     * orchestrator.
+     * @param {object} [parameters.orchestratorProfile]
      *
      * @param {string} parameters.orchestratorProfile.orchestratorType The
      * orchestrator to use to manage container service cluster resources. Valid
@@ -21527,8 +21436,7 @@ export interface ContainerServices {
      * @param {object} parameters Parameters supplied to the Create or Update a
      * Container Service operation.
      *
-     * @param {object} [parameters.orchestratorProfile] Properties of the
-     * orchestrator.
+     * @param {object} [parameters.orchestratorProfile]
      *
      * @param {string} parameters.orchestratorProfile.orchestratorType The
      * orchestrator to use to manage container service cluster resources. Valid
