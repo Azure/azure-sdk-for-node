@@ -163,15 +163,7 @@ export interface UpdateResource extends BaseResource {
  * Initializes a new instance of the AvailabilitySetUpdate class.
  * @constructor
  * Specifies information about the availability set that the virtual machine
- * should be assigned to. Virtual machines specified in the same availability
- * set are allocated to different nodes to maximize availability. For more
- * information about availability sets, see [Manage the availability of virtual
- * machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
- * <br><br> For more information on Azure planned maintainance, see [Planned
- * maintenance for virtual machines in
- * Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
- * <br><br> Currently, a VM can only be added to availability set at creation
- * time. An existing VM cannot be added to an availability set.
+ * should be assigned to. Only tags may be updated.
  *
  * @member {number} [platformUpdateDomainCount] Update Domain count.
  * @member {number} [platformFaultDomainCount] Fault Domain count.
@@ -1881,7 +1873,7 @@ export interface VirtualMachine extends Resource {
  * @class
  * Initializes a new instance of the VirtualMachineUpdate class.
  * @constructor
- * Describes a Virtual Machine.
+ * Describes a Virtual Machine Update.
  *
  * @member {object} [plan] Specifies information about the marketplace image
  * used to create the virtual machine. This element is only used for
@@ -2522,9 +2514,7 @@ export interface Image extends Resource {
  * @class
  * Initializes a new instance of the ImageUpdate class.
  * @constructor
- * The source user image virtual hard disk. The virtual hard disk will be
- * copied before being attached to the virtual machine. If SourceImage is
- * provided, the destination virtual hard drive must not exist.
+ * The source user image virtual hard disk. Only tags may be updated.
  *
  * @member {object} [sourceVirtualMachine] The source virtual machine from
  * which Image is created.
@@ -3188,7 +3178,7 @@ export interface VirtualMachineScaleSetNetworkConfiguration extends SubResource 
  * Describes a virtual machine scale set network profile's network
  * configurations.
  *
- * @member {string} [name] The network configuration name.
+ * @member {uuid} [name] The network configuration name.
  * @member {boolean} [primary] Whether this is a primary NIC on a virtual
  * machine.
  * @member {boolean} [enableAcceleratedNetworking] Specifies whether the
@@ -3491,7 +3481,7 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * in the scale set. <br><br>Minimum api-version: 2017-10-30-preview. Possible
  * values include: 'Regular', 'Low'
  * @member {string} [evictionPolicy] Specifies the eviction policy for virtual
- * machines in the low priority scale set. <br><br>Minimum api-version:
+ * machines in a low priority scale set. <br><br>Minimum api-version:
  * 2017-10-30-preview. Possible values include: 'Deallocate', 'Delete'
  */
 export interface VirtualMachineScaleSetVMProfile {
@@ -3879,7 +3869,7 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * the virtual machines in the scale set. <br><br>Minimum api-version:
  * 2017-10-30-preview. Possible values include: 'Regular', 'Low'
  * @member {string} [virtualMachineProfile.evictionPolicy] Specifies the
- * eviction policy for virtual machines in the low priority scale set.
+ * eviction policy for virtual machines in a low priority scale set.
  * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
  * 'Deallocate', 'Delete'
  * @member {string} [provisioningState] The provisioning state, which only

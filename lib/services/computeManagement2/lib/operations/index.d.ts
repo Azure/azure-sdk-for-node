@@ -8717,7 +8717,7 @@ export interface VirtualMachineScaleSets {
      * api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
      *
      * @param {string} [parameters.virtualMachineProfile.evictionPolicy] Specifies
-     * the eviction policy for virtual machines in the low priority scale set.
+     * the eviction policy for virtual machines in a low priority scale set.
      * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
      * 'Deallocate', 'Delete'
      *
@@ -9130,7 +9130,7 @@ export interface VirtualMachineScaleSets {
      * api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
      *
      * @param {string} [parameters.virtualMachineProfile.evictionPolicy] Specifies
-     * the eviction policy for virtual machines in the low priority scale set.
+     * the eviction policy for virtual machines in a low priority scale set.
      * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
      * 'Deallocate', 'Delete'
      *
@@ -11342,7 +11342,7 @@ export interface VirtualMachineScaleSets {
      * api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
      *
      * @param {string} [parameters.virtualMachineProfile.evictionPolicy] Specifies
-     * the eviction policy for virtual machines in the low priority scale set.
+     * the eviction policy for virtual machines in a low priority scale set.
      * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
      * 'Deallocate', 'Delete'
      *
@@ -11755,7 +11755,7 @@ export interface VirtualMachineScaleSets {
      * api-version: 2017-10-30-preview. Possible values include: 'Regular', 'Low'
      *
      * @param {string} [parameters.virtualMachineProfile.evictionPolicy] Specifies
-     * the eviction policy for virtual machines in the low priority scale set.
+     * the eviction policy for virtual machines in a low priority scale set.
      * <br><br>Minimum api-version: 2017-10-30-preview. Possible values include:
      * 'Deallocate', 'Delete'
      *
