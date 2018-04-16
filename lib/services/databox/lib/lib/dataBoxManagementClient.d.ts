@@ -59,7 +59,6 @@ export default class DataBoxManagementClient extends AzureServiceClient {
   operations: operations.Operations;
   jobs: operations.Jobs;
   service: operations.Service;
-  listSecrets: operations.ListSecrets;
 }
 
 export { DataBoxManagementClient, models as DataBoxManagementModels };

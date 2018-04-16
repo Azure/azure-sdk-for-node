@@ -158,12 +158,12 @@ export interface AvailableSkuRequest {
  * @constructor
  * The Sku.
  *
- * @member {string} [name] The sku name.
+ * @member {string} name The sku name.
  * @member {string} [displayName] The display name of the sku.
  * @member {string} [family] The sku family.
  */
 export interface Sku {
-  name?: string;
+  name: string;
   displayName?: string;
   family?: string;
 }
@@ -221,7 +221,7 @@ export interface SkuCost {
  * @member {string} [sku.displayName] The display name of the sku.
  * @member {string} [sku.family] The sku family.
  * @member {boolean} enabled The sku is enabled or not.
- * @member {array} destinationToServiceLocationMap The map of destination
+ * @member {array} [destinationToServiceLocationMap] The map of destination
  * location to service location.
  * @member {object} capacity Capacity of the Sku.
  * @member {string} [capacity.usable] Usable capacity in TB.
@@ -233,7 +233,7 @@ export interface SkuCost {
 export interface SkuInformation {
   sku: Sku;
   enabled: boolean;
-  destinationToServiceLocationMap: DestinationToServiceLocationMap[];
+  destinationToServiceLocationMap?: DestinationToServiceLocationMap[];
   capacity: SkuCapacity;
   costs: SkuCost[];
   apiVersions: string[];
@@ -559,7 +559,7 @@ export interface JobErrorDetails {
  * @member {string} stageStatus Status of the job stage. Possible values
  * include: 'None', 'InProgress', 'Succeeded', 'Failed', 'Cancelled',
  * 'Cancelling', 'SucceededWithErrors'
- * @member {date} stageTime Time for the job stage in UTC ISO 8601 format.
+ * @member {date} [stageTime] Time for the job stage in UTC ISO 8601 format.
  * @member {object} [jobStageDetails] Job Stage Details
  * @member {array} [errorDetails] Error details for the stage.
  */
@@ -567,7 +567,7 @@ export interface JobStages {
   stageName: string;
   displayName?: string;
   stageStatus: string;
-  stageTime: Date;
+  stageTime?: Date;
   jobStageDetails?: any;
   errorDetails?: JobErrorDetails[];
 }
@@ -601,7 +601,7 @@ export interface PackageShippingDetails {
  * @member {object} [tags] The list of key value pairs that describe the
  * resource. These tags can be used in viewing and grouping this resource
  * (across resource groups).
- * @member {object} [sku] The sku type.
+ * @member {object} sku The sku type.
  * @member {string} [sku.name] The sku name.
  * @member {string} [sku.displayName] The display name of the sku.
  * @member {string} [sku.family] The sku family.
@@ -609,7 +609,7 @@ export interface PackageShippingDetails {
 export interface Resource extends BaseResource {
   location: string;
   tags?: { [propertyName: string]: string };
-  sku?: Sku;
+  sku: Sku;
 }
 
 /**
@@ -647,8 +647,8 @@ export interface Resource extends BaseResource {
  * @member {string} [returnPackage.trackingUrl] Url where shipment can be
  * tracked.
  * @member {array} destinationAccountDetails Destination account details.
- * @member {object} details Details of a job run. This field will only be sent
- * for expand details filter.
+ * @member {object} [details] Details of a job run. This field will only be
+ * sent for expand details filter.
  * @member {number} [details.expectedDataSizeInTeraBytes] The expected size of
  * the data, which needs to be transfered in this job, in tera bytes.
  * @member {array} [details.jobStages] List of stages that run in the job.
@@ -701,7 +701,7 @@ export interface JobResource extends Resource {
   deliveryPackage?: PackageShippingDetails;
   returnPackage?: PackageShippingDetails;
   destinationAccountDetails: DestinationAccountDetails[];
-  details: JobDetails;
+  details?: JobDetails;
   cancellationReason?: string;
   readonly name?: string;
   readonly id?: string;
@@ -1056,8 +1056,8 @@ export interface JobResourceList extends Array<JobResource> {
  * @constructor
  * The available skus operation response.
  *
- * @member {string} nextLink Link for the next set of skus.
+ * @member {string} [nextLink] Link for the next set of skus.
  */
 export interface AvailableSkusResult extends Array<SkuInformation> {
-  nextLink: string;
+  nextLink?: string;
 }

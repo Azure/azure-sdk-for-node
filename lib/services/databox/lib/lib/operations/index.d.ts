@@ -379,7 +379,7 @@ export interface Jobs {
      * @param {array} jobResource.destinationAccountDetails Destination account
      * details.
      *
-     * @param {object} jobResource.details Details of a job run. This field will
+     * @param {object} [jobResource.details] Details of a job run. This field will
      * only be sent for expand details filter.
      *
      * @param {number} [jobResource.details.expectedDataSizeInTeraBytes] The
@@ -458,9 +458,9 @@ export interface Jobs {
      * the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
      *
-     * @param {object} [jobResource.sku] The sku type.
+     * @param {object} jobResource.sku The sku type.
      *
-     * @param {string} [jobResource.sku.name] The sku name.
+     * @param {string} jobResource.sku.name The sku name.
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
@@ -533,7 +533,7 @@ export interface Jobs {
      * @param {array} jobResource.destinationAccountDetails Destination account
      * details.
      *
-     * @param {object} jobResource.details Details of a job run. This field will
+     * @param {object} [jobResource.details] Details of a job run. This field will
      * only be sent for expand details filter.
      *
      * @param {number} [jobResource.details.expectedDataSizeInTeraBytes] The
@@ -612,9 +612,9 @@ export interface Jobs {
      * the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
      *
-     * @param {object} [jobResource.sku] The sku type.
+     * @param {object} jobResource.sku The sku type.
      *
-     * @param {string} [jobResource.sku.name] The sku name.
+     * @param {string} jobResource.sku.name The sku name.
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
@@ -1216,6 +1216,69 @@ export interface Jobs {
 
 
     /**
+     * This method gets the unencrypted secrets related to the job.
+     *
+     * @param {string} resourceGroupName The Resource Group Name
+     *
+     * @param {string} jobName The name of the job Resource within the specified
+     * resource group. job names must be between 3 and 24 characters in length and
+     * use any alphanumeric and underscore only
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UnencryptedSecrets>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSecretsWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UnencryptedSecrets>>;
+
+    /**
+     * This method gets the unencrypted secrets related to the job.
+     *
+     * @param {string} resourceGroupName The Resource Group Name
+     *
+     * @param {string} jobName The name of the job Resource within the specified
+     * resource group. job names must be between 3 and 24 characters in length and
+     * use any alphanumeric and underscore only
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UnencryptedSecrets} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UnencryptedSecrets} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UnencryptedSecrets} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSecrets(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UnencryptedSecrets>;
+    listSecrets(resourceGroupName: string, jobName: string, callback: ServiceCallback<models.UnencryptedSecrets>): void;
+    listSecrets(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UnencryptedSecrets>): void;
+
+
+    /**
      * Reports an issue.
      *
      * @param {string} resourceGroupName The Resource Group Name
@@ -1353,7 +1416,7 @@ export interface Jobs {
      * @param {array} jobResource.destinationAccountDetails Destination account
      * details.
      *
-     * @param {object} jobResource.details Details of a job run. This field will
+     * @param {object} [jobResource.details] Details of a job run. This field will
      * only be sent for expand details filter.
      *
      * @param {number} [jobResource.details.expectedDataSizeInTeraBytes] The
@@ -1432,9 +1495,9 @@ export interface Jobs {
      * the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
      *
-     * @param {object} [jobResource.sku] The sku type.
+     * @param {object} jobResource.sku The sku type.
      *
-     * @param {string} [jobResource.sku.name] The sku name.
+     * @param {string} jobResource.sku.name The sku name.
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
@@ -1507,7 +1570,7 @@ export interface Jobs {
      * @param {array} jobResource.destinationAccountDetails Destination account
      * details.
      *
-     * @param {object} jobResource.details Details of a job run. This field will
+     * @param {object} [jobResource.details] Details of a job run. This field will
      * only be sent for expand details filter.
      *
      * @param {number} [jobResource.details.expectedDataSizeInTeraBytes] The
@@ -1586,9 +1649,9 @@ export interface Jobs {
      * the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
      *
-     * @param {object} [jobResource.sku] The sku type.
+     * @param {object} jobResource.sku The sku type.
      *
-     * @param {string} [jobResource.sku.name] The sku name.
+     * @param {string} jobResource.sku.name The sku name.
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
@@ -2061,7 +2124,7 @@ export interface Service {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getServiceHealthWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceHealthResponseList>>;
+    getHealthWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceHealthResponseList>>;
 
     /**
      * This method returns the health of partner services.
@@ -2096,9 +2159,9 @@ export interface Service {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getServiceHealth(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceHealthResponseList>;
-    getServiceHealth(location: string, callback: ServiceCallback<models.ServiceHealthResponseList>): void;
-    getServiceHealth(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceHealthResponseList>): void;
+    getHealth(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceHealthResponseList>;
+    getHealth(location: string, callback: ServiceCallback<models.ServiceHealthResponseList>): void;
+    getHealth(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceHealthResponseList>): void;
 
 
     /**
@@ -2286,76 +2349,4 @@ export interface Service {
     listAvailableSkusNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableSkusResult>;
     listAvailableSkusNext(nextPageLink: string, callback: ServiceCallback<models.AvailableSkusResult>): void;
     listAvailableSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableSkusResult>): void;
-}
-
-/**
- * @class
- * ListSecrets
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DataBoxManagementClient.
- */
-export interface ListSecrets {
-
-
-    /**
-     * This method gets the unencrypted secrets related to the job.
-     *
-     * @param {string} resourceGroupName The Resource Group Name
-     *
-     * @param {string} jobName The name of the job Resource within the specified
-     * resource group. job names must be between 3 and 24 characters in length and
-     * use any alphanumeric and underscore only
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<UnencryptedSecrets>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByJobsWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UnencryptedSecrets>>;
-
-    /**
-     * This method gets the unencrypted secrets related to the job.
-     *
-     * @param {string} resourceGroupName The Resource Group Name
-     *
-     * @param {string} jobName The name of the job Resource within the specified
-     * resource group. job names must be between 3 and 24 characters in length and
-     * use any alphanumeric and underscore only
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {UnencryptedSecrets} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {UnencryptedSecrets} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link UnencryptedSecrets} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByJobs(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UnencryptedSecrets>;
-    listByJobs(resourceGroupName: string, jobName: string, callback: ServiceCallback<models.UnencryptedSecrets>): void;
-    listByJobs(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UnencryptedSecrets>): void;
 }
