@@ -464,8 +464,7 @@ export interface Jobs {
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
-     * @param {string} [jobResource.sku.tier] The sku tier. This is based on the
-     * SKU name.
+     * @param {string} [jobResource.sku.family] The sku family.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -619,8 +618,7 @@ export interface Jobs {
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
-     * @param {string} [jobResource.sku.tier] The sku tier. This is based on the
-     * SKU name.
+     * @param {string} [jobResource.sku.family] The sku family.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1440,8 +1438,7 @@ export interface Jobs {
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
-     * @param {string} [jobResource.sku.tier] The sku tier. This is based on the
-     * SKU name.
+     * @param {string} [jobResource.sku.family] The sku family.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1595,8 +1592,7 @@ export interface Jobs {
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
-     * @param {string} [jobResource.sku.tier] The sku tier. This is based on the
-     * SKU name.
+     * @param {string} [jobResource.sku.family] The sku family.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2047,88 +2043,6 @@ export interface Service {
     listAvailableSkus(location: string, availableSkuRequest: models.AvailableSkuRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableSkusResult>;
     listAvailableSkus(location: string, availableSkuRequest: models.AvailableSkuRequest, callback: ServiceCallback<models.AvailableSkusResult>): void;
     listAvailableSkus(location: string, availableSkuRequest: models.AvailableSkuRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableSkusResult>): void;
-
-
-    /**
-     * This method returns the list of supported service regions and regions for
-     * destination storage accounts
-     *
-     * @param {string} location The location of the resource
-     *
-     * @param {object} regionAvailabilityInput Country Code and Device Type.
-     *
-     * @param {string} regionAvailabilityInput.countryCode Country for which the
-     * supported regions are requested. Possible values include: 'US', 'NL', 'IE',
-     * 'AT', 'IT', 'BE', 'LV', 'BG', 'LT', 'HR', 'LU', 'CY', 'MT', 'CZ', 'DK',
-     * 'PL', 'EE', 'PT', 'FI', 'RO', 'FR', 'SK', 'DE', 'SI', 'GR', 'ES', 'HU',
-     * 'SE', 'GB'
-     *
-     * @param {string} regionAvailabilityInput.deviceType Device type for which the
-     * supported regions have to be fetched. Possible values include: 'Pod',
-     * 'Disk', 'Cabinet'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RegionAvailabilityResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    regionAvailabilityWithHttpOperationResponse(location: string, regionAvailabilityInput: models.RegionAvailabilityInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegionAvailabilityResponse>>;
-
-    /**
-     * This method returns the list of supported service regions and regions for
-     * destination storage accounts
-     *
-     * @param {string} location The location of the resource
-     *
-     * @param {object} regionAvailabilityInput Country Code and Device Type.
-     *
-     * @param {string} regionAvailabilityInput.countryCode Country for which the
-     * supported regions are requested. Possible values include: 'US', 'NL', 'IE',
-     * 'AT', 'IT', 'BE', 'LV', 'BG', 'LT', 'HR', 'LU', 'CY', 'MT', 'CZ', 'DK',
-     * 'PL', 'EE', 'PT', 'FI', 'RO', 'FR', 'SK', 'DE', 'SI', 'GR', 'ES', 'HU',
-     * 'SE', 'GB'
-     *
-     * @param {string} regionAvailabilityInput.deviceType Device type for which the
-     * supported regions have to be fetched. Possible values include: 'Pod',
-     * 'Disk', 'Cabinet'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RegionAvailabilityResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RegionAvailabilityResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RegionAvailabilityResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    regionAvailability(location: string, regionAvailabilityInput: models.RegionAvailabilityInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegionAvailabilityResponse>;
-    regionAvailability(location: string, regionAvailabilityInput: models.RegionAvailabilityInput, callback: ServiceCallback<models.RegionAvailabilityResponse>): void;
-    regionAvailability(location: string, regionAvailabilityInput: models.RegionAvailabilityInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegionAvailabilityResponse>): void;
 
 
     /**

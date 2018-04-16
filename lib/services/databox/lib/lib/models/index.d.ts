@@ -160,12 +160,12 @@ export interface AvailableSkuRequest {
  *
  * @member {string} [name] The sku name.
  * @member {string} [displayName] The display name of the sku.
- * @member {string} [tier] The sku tier. This is based on the SKU name.
+ * @member {string} [family] The sku family.
  */
 export interface Sku {
   name?: string;
   displayName?: string;
-  tier?: string;
+  family?: string;
 }
 
 /**
@@ -219,7 +219,7 @@ export interface SkuCost {
  * @member {object} sku The Sku.
  * @member {string} [sku.name] The sku name.
  * @member {string} [sku.displayName] The display name of the sku.
- * @member {string} [sku.tier] The sku tier. This is based on the SKU name.
+ * @member {string} [sku.family] The sku family.
  * @member {boolean} enabled The sku is enabled or not.
  * @member {array} destinationToServiceLocationMap The map of destination
  * location to service location.
@@ -604,7 +604,7 @@ export interface PackageShippingDetails {
  * @member {object} [sku] The sku type.
  * @member {string} [sku.name] The sku name.
  * @member {string} [sku.displayName] The display name of the sku.
- * @member {string} [sku.tier] The sku tier. This is based on the SKU name.
+ * @member {string} [sku.family] The sku family.
  */
 export interface Resource extends BaseResource {
   location: string;
@@ -878,55 +878,6 @@ export interface PodSecret {
  */
 export interface PodJobSecrets extends JobSecrets {
   podSecrets?: PodSecret[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RegionAvailabilityInput class.
- * @constructor
- * Inputs to get list of supported storage regions and service regions for job
- * creation.
- *
- * @member {string} countryCode Country for which the supported regions are
- * requested. Possible values include: 'US', 'NL', 'IE', 'AT', 'IT', 'BE',
- * 'LV', 'BG', 'LT', 'HR', 'LU', 'CY', 'MT', 'CZ', 'DK', 'PL', 'EE', 'PT',
- * 'FI', 'RO', 'FR', 'SK', 'DE', 'SI', 'GR', 'ES', 'HU', 'SE', 'GB'
- * @member {string} deviceType Device type for which the supported regions have
- * to be fetched. Possible values include: 'Pod', 'Disk', 'Cabinet'
- */
-export interface RegionAvailabilityInput {
-  countryCode: string;
-  deviceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SupportedRegions class.
- * @constructor
- * Storage region and service region mapping
- *
- * @member {string} storageRegion Storage Region. Possible values include:
- * 'westus', 'centralus', 'eastus', 'northcentralus', 'southcentralus',
- * 'eastus2', 'westus2', 'westcentralus', 'westeurope', 'northeurope',
- * 'ukwest', 'uksouth', 'germanycentral', 'germanynortheast'
- * @member {string} serviceRegion Service Region. Possible values include:
- * 'westus', 'westeurope', 'eastus2euap', 'centraluseuap'
- */
-export interface SupportedRegions {
-  storageRegion: string;
-  serviceRegion: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RegionAvailabilityResponse class.
- * @constructor
- * List of service regions and storage regions
- *
- * @member {array} supportedRegions List of supported region.
- */
-export interface RegionAvailabilityResponse {
-  supportedRegions: SupportedRegions[];
 }
 
 /**
