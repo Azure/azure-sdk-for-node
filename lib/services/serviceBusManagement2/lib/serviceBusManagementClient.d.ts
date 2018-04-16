@@ -49,6 +49,8 @@ export default class ServiceBusManagementClient extends AzureServiceClient {
 
   apiVersion: string;
 
+  configName: string;
+
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -60,7 +62,6 @@ export default class ServiceBusManagementClient extends AzureServiceClient {
   namespaces: operations.Namespaces;
   disasterRecoveryConfigs: operations.DisasterRecoveryConfigs;
   migrationConfigurations: operations.MigrationConfigurations;
-  migrationConfig: operations.MigrationConfig;
   queues: operations.Queues;
   topics: operations.Topics;
   subscriptions: operations.Subscriptions;

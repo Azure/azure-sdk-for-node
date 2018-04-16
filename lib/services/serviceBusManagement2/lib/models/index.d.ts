@@ -852,18 +852,17 @@ export interface ArmDisasterRecovery extends Resource {
  * @constructor
  * Single item in List or Get Migration Config operation
  *
- * @member {string} [provisioningState] Provisioning state of Migration Config
- * - possible values 'Accepted' or 'Succeeded' or 'Failed'. Possible values
- * include: 'Accepted', 'Succeeded', 'Failed'
- * @member {string} [primaryNamespaceName] Existing premium Namespace name
- * which has no entities, will be used for migration
- * @member {string} [postMigrationName] Name to access connection strings of
- * the Primary Namespace after migration
+ * @member {string} [provisioningState] Provisioning state of Migration
+ * Configuration
+ * @member {string} primaryNamespaceName Existing premium Namespace name which
+ * has no entities, will be used for migration
+ * @member {string} postMigrationName Name to access connection strings of the
+ * Primary Namespace after migration
  */
 export interface MigrationConfigProperties extends Resource {
   readonly provisioningState?: string;
-  primaryNamespaceName?: string;
-  postMigrationName?: string;
+  primaryNamespaceName: string;
+  postMigrationName: string;
 }
 
 
