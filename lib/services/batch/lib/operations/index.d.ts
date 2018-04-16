@@ -841,12 +841,12 @@ export interface Pool {
      * or when the node is restarted.
      *
      * @param {string} pool.startTask.commandLine The command line of the start
-     * task. Tasks should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
-     * a shell, and therefore cannot take advantage of shell features such as
-     * environment variable expansion. If you want to take advantage of such
-     * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * task. The command line does not run under a shell, and therefore cannot take
+     * advantage of shell features such as environment variable expansion. If you
+     * want to take advantage of such features, you should invoke the shell in the
+     * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+     * MyCommand" in Linux. Tasks should be idempotent. For more information,
+     * please see TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object} [pool.startTask.containerSettings] The settings for the
      * container under which the start task runs. When this is specified, all
@@ -1251,12 +1251,12 @@ export interface Pool {
      * or when the node is restarted.
      *
      * @param {string} pool.startTask.commandLine The command line of the start
-     * task. Tasks should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
-     * a shell, and therefore cannot take advantage of shell features such as
-     * environment variable expansion. If you want to take advantage of such
-     * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * task. The command line does not run under a shell, and therefore cannot take
+     * advantage of shell features such as environment variable expansion. If you
+     * want to take advantage of such features, you should invoke the shell in the
+     * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
+     * MyCommand" in Linux. Tasks should be idempotent. For more information,
+     * please see TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object} [pool.startTask.containerSettings] The settings for the
      * container under which the start task runs. When this is specified, all
@@ -1976,12 +1976,12 @@ export interface Pool {
      * existing start task. If omitted, any existing start task is left unchanged.
      *
      * @param {string} poolPatchParameter.startTask.commandLine The command line of
-     * the start task. Tasks should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
-     * a shell, and therefore cannot take advantage of shell features such as
-     * environment variable expansion. If you want to take advantage of such
-     * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * the start task. The command line does not run under a shell, and therefore
+     * cannot take advantage of shell features such as environment variable
+     * expansion. If you want to take advantage of such features, you should invoke
+     * the shell in the command line, for example using "cmd /c MyCommand" in
+     * Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be idempotent. For
+     * more information, please see TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object} [poolPatchParameter.startTask.containerSettings] The
      * settings for the container under which the start task runs. When this is
@@ -2167,12 +2167,12 @@ export interface Pool {
      * existing start task. If omitted, any existing start task is left unchanged.
      *
      * @param {string} poolPatchParameter.startTask.commandLine The command line of
-     * the start task. Tasks should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
-     * a shell, and therefore cannot take advantage of shell features such as
-     * environment variable expansion. If you want to take advantage of such
-     * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * the start task. The command line does not run under a shell, and therefore
+     * cannot take advantage of shell features such as environment variable
+     * expansion. If you want to take advantage of such features, you should invoke
+     * the shell in the command line, for example using "cmd /c MyCommand" in
+     * Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be idempotent. For
+     * more information, please see TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object} [poolPatchParameter.startTask.containerSettings] The
      * settings for the container under which the start task runs. When this is
@@ -3121,13 +3121,13 @@ export interface Pool {
      * removed from the pool.
      *
      * @param {string} poolUpdatePropertiesParameter.startTask.commandLine The
-     * command line of the start task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * command line of the start task. The command line does not run under a shell,
+     * and therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
+     * idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object} [poolUpdatePropertiesParameter.startTask.containerSettings]
      * The settings for the container under which the start task runs. When this is
@@ -3300,13 +3300,13 @@ export interface Pool {
      * removed from the pool.
      *
      * @param {string} poolUpdatePropertiesParameter.startTask.commandLine The
-     * command line of the start task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * command line of the start task. The command line does not run under a shell,
+     * and therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
+     * idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object} [poolUpdatePropertiesParameter.startTask.containerSettings]
      * The settings for the container under which the start task runs. When this is
@@ -5204,13 +5204,13 @@ export interface Job {
      *
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -5794,13 +5794,13 @@ export interface Job {
      *
      * @param {string}
      * jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -6394,13 +6394,13 @@ export interface Job {
      *
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -6989,13 +6989,13 @@ export interface Job {
      *
      * @param {string}
      * jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -7836,12 +7836,13 @@ export interface Job {
      * directly, the HTTP status code is 409 (Conflict).
      *
      * @param {string} job.jobPreparationTask.commandLine The command line of the
-     * Job Preparation task. Tasks should be idempotent. For more information,
-     * please see TaskContainerSettings.maxTaskRetryCount. The command line does
-     * not run under a shell, and therefore cannot take advantage of shell features
-     * such as environment variable expansion. If you want to take advantage of
-     * such features, you should invoke the shell in the command line, for example
-     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * Job Preparation task. The command line does not run under a shell, and
+     * therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
+     * idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object} [job.jobPreparationTask.containerSettings] The settings for
      * the container under which the Job Preparation task runs. When this is
@@ -7878,21 +7879,14 @@ export interface Job {
      * @param {number} [job.jobPreparationTask.constraints.maxTaskRetryCount] The
      * maximum number of times the task may be retried. The Batch service retries a
      * task if its exit code is nonzero. Note that this value specifically controls
-     * the number of retries. The Batch service will try the task once, and may
-     * then retry up to this limit. For example, if the maximum retry count is 3,
-     * Batch tries the task up to 4 times (one initial try and 3 retries). If the
-     * maximum retry count is 0, the Batch service does not retry the task. If the
+     * the number of retries for the task executable due to nonzero exit code. The
+     * Batch service will try the task once, and may then retry up to this limit.
+     * For example, if the maximum retry count is 3, Batch tries the task up to 4
+     * times (one initial try and 3 retries). If the maximum retry count is 0, the
+     * Batch service does not retry the task after the first attempt. If the
      * maximum retry count is -1, the Batch service retries the task without limit.
-     * ResourceFiles and AppplicationPackages are only downloaded again if the task
-     * is retried on a new compute node. Batch will also retry tasks when a
-     * recovery operation is triggered on a compute node. Examples of recovery
-     * operations triggers include (but are not limited to) when an unhealthy
-     * compute node is rebooted or a compute node disappeared due to host failure.
-     * Retries due to recovery operation are independent of and are not counted
-     * against maxTaskRetryCount. All tasks should be idempotent, it means they
-     * need to tolerate being interrupted and restarted, without causing any
-     * corruption or duplicate data. Best practices recommended for long running
-     * tasks is to use checkpointing.
+     * Resource files and application packages are only downloaded again if the
+     * task is retried on a new compute node.
      *
      * @param {boolean} [job.jobPreparationTask.waitForSuccess] Whether the Batch
      * service should wait for the Job Preparation task to complete successfully
@@ -8318,12 +8312,13 @@ export interface Job {
      *
      * @param {string}
      * job.poolInfo.autoPoolSpecification.pool.startTask.commandLine The command
-     * line of the start task. Tasks should be idempotent. For more information,
-     * please see TaskContainerSettings.maxTaskRetryCount. The command line does
-     * not run under a shell, and therefore cannot take advantage of shell features
-     * such as environment variable expansion. If you want to take advantage of
-     * such features, you should invoke the shell in the command line, for example
-     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * line of the start task. The command line does not run under a shell, and
+     * therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
+     * idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.containerSettings] The
@@ -8684,12 +8679,13 @@ export interface Job {
      * directly, the HTTP status code is 409 (Conflict).
      *
      * @param {string} job.jobPreparationTask.commandLine The command line of the
-     * Job Preparation task. Tasks should be idempotent. For more information,
-     * please see TaskContainerSettings.maxTaskRetryCount. The command line does
-     * not run under a shell, and therefore cannot take advantage of shell features
-     * such as environment variable expansion. If you want to take advantage of
-     * such features, you should invoke the shell in the command line, for example
-     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * Job Preparation task. The command line does not run under a shell, and
+     * therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
+     * idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object} [job.jobPreparationTask.containerSettings] The settings for
      * the container under which the Job Preparation task runs. When this is
@@ -8726,21 +8722,14 @@ export interface Job {
      * @param {number} [job.jobPreparationTask.constraints.maxTaskRetryCount] The
      * maximum number of times the task may be retried. The Batch service retries a
      * task if its exit code is nonzero. Note that this value specifically controls
-     * the number of retries. The Batch service will try the task once, and may
-     * then retry up to this limit. For example, if the maximum retry count is 3,
-     * Batch tries the task up to 4 times (one initial try and 3 retries). If the
-     * maximum retry count is 0, the Batch service does not retry the task. If the
+     * the number of retries for the task executable due to nonzero exit code. The
+     * Batch service will try the task once, and may then retry up to this limit.
+     * For example, if the maximum retry count is 3, Batch tries the task up to 4
+     * times (one initial try and 3 retries). If the maximum retry count is 0, the
+     * Batch service does not retry the task after the first attempt. If the
      * maximum retry count is -1, the Batch service retries the task without limit.
-     * ResourceFiles and AppplicationPackages are only downloaded again if the task
-     * is retried on a new compute node. Batch will also retry tasks when a
-     * recovery operation is triggered on a compute node. Examples of recovery
-     * operations triggers include (but are not limited to) when an unhealthy
-     * compute node is rebooted or a compute node disappeared due to host failure.
-     * Retries due to recovery operation are independent of and are not counted
-     * against maxTaskRetryCount. All tasks should be idempotent, it means they
-     * need to tolerate being interrupted and restarted, without causing any
-     * corruption or duplicate data. Best practices recommended for long running
-     * tasks is to use checkpointing.
+     * Resource files and application packages are only downloaded again if the
+     * task is retried on a new compute node.
      *
      * @param {boolean} [job.jobPreparationTask.waitForSuccess] Whether the Batch
      * service should wait for the Job Preparation task to complete successfully
@@ -9166,12 +9155,13 @@ export interface Job {
      *
      * @param {string}
      * job.poolInfo.autoPoolSpecification.pool.startTask.commandLine The command
-     * line of the start task. Tasks should be idempotent. For more information,
-     * please see TaskContainerSettings.maxTaskRetryCount. The command line does
-     * not run under a shell, and therefore cannot take advantage of shell features
-     * such as environment variable expansion. If you want to take advantage of
-     * such features, you should invoke the shell in the command line, for example
-     * using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * line of the start task. The command line does not run under a shell, and
+     * therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
+     * idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.containerSettings] The
@@ -12713,13 +12703,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.jobPreparationTask.commandLine
-     * The command line of the Job Preparation task. Tasks should be idempotent.
-     * For more information, please see TaskContainerSettings.maxTaskRetryCount.
-     * The command line does not run under a shell, and therefore cannot take
-     * advantage of shell features such as environment variable expansion. If you
-     * want to take advantage of such features, you should invoke the shell in the
-     * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux.
+     * The command line of the Job Preparation task. The command line does not run
+     * under a shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -12762,21 +12752,14 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries. The Batch service will try the
-     * task once, and may then retry up to this limit. For example, if the maximum
-     * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
-     * retries). If the maximum retry count is 0, the Batch service does not retry
-     * the task. If the maximum retry count is -1, the Batch service retries the
-     * task without limit. ResourceFiles and AppplicationPackages are only
-     * downloaded again if the task is retried on a new compute node. Batch will
-     * also retry tasks when a recovery operation is triggered on a compute node.
-     * Examples of recovery operations triggers include (but are not limited to)
-     * when an unhealthy compute node is rebooted or a compute node disappeared due
-     * to host failure. Retries due to recovery operation are independent of and
-     * are not counted against maxTaskRetryCount. All tasks should be idempotent,
-     * it means they need to tolerate being interrupted and restarted, without
-     * causing any corruption or duplicate data. Best practices recommended for
-     * long running tasks is to use checkpointing.
+     * specifically controls the number of retries for the task executable due to
+     * nonzero exit code. The Batch service will try the task once, and may then
+     * retry up to this limit. For example, if the maximum retry count is 3, Batch
+     * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+     * retry count is 0, the Batch service does not retry the task after the first
+     * attempt. If the maximum retry count is -1, the Batch service retries the
+     * task without limit. Resource files and application packages are only
+     * downloaded again if the task is retried on a new compute node.
      *
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.waitForSuccess]
@@ -13232,13 +13215,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -13704,13 +13687,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.jobPreparationTask.commandLine
-     * The command line of the Job Preparation task. Tasks should be idempotent.
-     * For more information, please see TaskContainerSettings.maxTaskRetryCount.
-     * The command line does not run under a shell, and therefore cannot take
-     * advantage of shell features such as environment variable expansion. If you
-     * want to take advantage of such features, you should invoke the shell in the
-     * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux.
+     * The command line of the Job Preparation task. The command line does not run
+     * under a shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -13753,21 +13736,14 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries. The Batch service will try the
-     * task once, and may then retry up to this limit. For example, if the maximum
-     * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
-     * retries). If the maximum retry count is 0, the Batch service does not retry
-     * the task. If the maximum retry count is -1, the Batch service retries the
-     * task without limit. ResourceFiles and AppplicationPackages are only
-     * downloaded again if the task is retried on a new compute node. Batch will
-     * also retry tasks when a recovery operation is triggered on a compute node.
-     * Examples of recovery operations triggers include (but are not limited to)
-     * when an unhealthy compute node is rebooted or a compute node disappeared due
-     * to host failure. Retries due to recovery operation are independent of and
-     * are not counted against maxTaskRetryCount. All tasks should be idempotent,
-     * it means they need to tolerate being interrupted and restarted, without
-     * causing any corruption or duplicate data. Best practices recommended for
-     * long running tasks is to use checkpointing.
+     * specifically controls the number of retries for the task executable due to
+     * nonzero exit code. The Batch service will try the task once, and may then
+     * retry up to this limit. For example, if the maximum retry count is 3, Batch
+     * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+     * retry count is 0, the Batch service does not retry the task after the first
+     * attempt. If the maximum retry count is -1, the Batch service retries the
+     * task without limit. Resource files and application packages are only
+     * downloaded again if the task is retried on a new compute node.
      *
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.waitForSuccess]
@@ -14223,13 +14199,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -14715,13 +14691,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.commandLine
-     * The command line of the Job Preparation task. Tasks should be idempotent.
-     * For more information, please see TaskContainerSettings.maxTaskRetryCount.
-     * The command line does not run under a shell, and therefore cannot take
-     * advantage of shell features such as environment variable expansion. If you
-     * want to take advantage of such features, you should invoke the shell in the
-     * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux.
+     * The command line of the Job Preparation task. The command line does not run
+     * under a shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -14764,21 +14740,14 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries. The Batch service will try the
-     * task once, and may then retry up to this limit. For example, if the maximum
-     * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
-     * retries). If the maximum retry count is 0, the Batch service does not retry
-     * the task. If the maximum retry count is -1, the Batch service retries the
-     * task without limit. ResourceFiles and AppplicationPackages are only
-     * downloaded again if the task is retried on a new compute node. Batch will
-     * also retry tasks when a recovery operation is triggered on a compute node.
-     * Examples of recovery operations triggers include (but are not limited to)
-     * when an unhealthy compute node is rebooted or a compute node disappeared due
-     * to host failure. Retries due to recovery operation are independent of and
-     * are not counted against maxTaskRetryCount. All tasks should be idempotent,
-     * it means they need to tolerate being interrupted and restarted, without
-     * causing any corruption or duplicate data. Best practices recommended for
-     * long running tasks is to use checkpointing.
+     * specifically controls the number of retries for the task executable due to
+     * nonzero exit code. The Batch service will try the task once, and may then
+     * retry up to this limit. For example, if the maximum retry count is 3, Batch
+     * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+     * retry count is 0, the Batch service does not retry the task after the first
+     * attempt. If the maximum retry count is -1, the Batch service retries the
+     * task without limit. Resource files and application packages are only
+     * downloaded again if the task is retried on a new compute node.
      *
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.waitForSuccess]
@@ -15236,13 +15205,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -15712,13 +15681,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.commandLine
-     * The command line of the Job Preparation task. Tasks should be idempotent.
-     * For more information, please see TaskContainerSettings.maxTaskRetryCount.
-     * The command line does not run under a shell, and therefore cannot take
-     * advantage of shell features such as environment variable expansion. If you
-     * want to take advantage of such features, you should invoke the shell in the
-     * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux.
+     * The command line of the Job Preparation task. The command line does not run
+     * under a shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -15761,21 +15730,14 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries. The Batch service will try the
-     * task once, and may then retry up to this limit. For example, if the maximum
-     * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
-     * retries). If the maximum retry count is 0, the Batch service does not retry
-     * the task. If the maximum retry count is -1, the Batch service retries the
-     * task without limit. ResourceFiles and AppplicationPackages are only
-     * downloaded again if the task is retried on a new compute node. Batch will
-     * also retry tasks when a recovery operation is triggered on a compute node.
-     * Examples of recovery operations triggers include (but are not limited to)
-     * when an unhealthy compute node is rebooted or a compute node disappeared due
-     * to host failure. Retries due to recovery operation are independent of and
-     * are not counted against maxTaskRetryCount. All tasks should be idempotent,
-     * it means they need to tolerate being interrupted and restarted, without
-     * causing any corruption or duplicate data. Best practices recommended for
-     * long running tasks is to use checkpointing.
+     * specifically controls the number of retries for the task executable due to
+     * nonzero exit code. The Batch service will try the task once, and may then
+     * retry up to this limit. For example, if the maximum retry count is 3, Batch
+     * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+     * retry count is 0, the Batch service does not retry the task after the first
+     * attempt. If the maximum retry count is -1, the Batch service retries the
+     * task without limit. Resource files and application packages are only
+     * downloaded again if the task is retried on a new compute node.
      *
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.waitForSuccess]
@@ -16233,13 +16195,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -17115,13 +17077,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * cloudJobSchedule.jobSpecification.jobPreparationTask.commandLine The command
-     * line of the Job Preparation task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * line of the Job Preparation task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.containerSettings] The
@@ -17164,21 +17126,14 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries. The Batch service will try the
-     * task once, and may then retry up to this limit. For example, if the maximum
-     * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
-     * retries). If the maximum retry count is 0, the Batch service does not retry
-     * the task. If the maximum retry count is -1, the Batch service retries the
-     * task without limit. ResourceFiles and AppplicationPackages are only
-     * downloaded again if the task is retried on a new compute node. Batch will
-     * also retry tasks when a recovery operation is triggered on a compute node.
-     * Examples of recovery operations triggers include (but are not limited to)
-     * when an unhealthy compute node is rebooted or a compute node disappeared due
-     * to host failure. Retries due to recovery operation are independent of and
-     * are not counted against maxTaskRetryCount. All tasks should be idempotent,
-     * it means they need to tolerate being interrupted and restarted, without
-     * causing any corruption or duplicate data. Best practices recommended for
-     * long running tasks is to use checkpointing.
+     * specifically controls the number of retries for the task executable due to
+     * nonzero exit code. The Batch service will try the task once, and may then
+     * retry up to this limit. For example, if the maximum retry count is 3, Batch
+     * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+     * retry count is 0, the Batch service does not retry the task after the first
+     * attempt. If the maximum retry count is -1, the Batch service retries the
+     * task without limit. Resource files and application packages are only
+     * downloaded again if the task is retried on a new compute node.
      *
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.waitForSuccess]
@@ -17631,13 +17586,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -18073,13 +18028,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * cloudJobSchedule.jobSpecification.jobPreparationTask.commandLine The command
-     * line of the Job Preparation task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * line of the Job Preparation task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.containerSettings] The
@@ -18122,21 +18077,14 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries. The Batch service will try the
-     * task once, and may then retry up to this limit. For example, if the maximum
-     * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
-     * retries). If the maximum retry count is 0, the Batch service does not retry
-     * the task. If the maximum retry count is -1, the Batch service retries the
-     * task without limit. ResourceFiles and AppplicationPackages are only
-     * downloaded again if the task is retried on a new compute node. Batch will
-     * also retry tasks when a recovery operation is triggered on a compute node.
-     * Examples of recovery operations triggers include (but are not limited to)
-     * when an unhealthy compute node is rebooted or a compute node disappeared due
-     * to host failure. Retries due to recovery operation are independent of and
-     * are not counted against maxTaskRetryCount. All tasks should be idempotent,
-     * it means they need to tolerate being interrupted and restarted, without
-     * causing any corruption or duplicate data. Best practices recommended for
-     * long running tasks is to use checkpointing.
+     * specifically controls the number of retries for the task executable due to
+     * nonzero exit code. The Batch service will try the task once, and may then
+     * retry up to this limit. For example, if the maximum retry count is 3, Batch
+     * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+     * retry count is 0, the Batch service does not retry the task after the first
+     * attempt. If the maximum retry count is -1, the Batch service retries the
+     * task without limit. Resource files and application packages are only
+     * downloaded again if the task is retried on a new compute node.
      *
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.waitForSuccess]
@@ -18589,13 +18537,13 @@ export interface JobSchedule {
      *
      * @param {string}
      * cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.commandLine
-     * The command line of the start task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * The command line of the start task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
+     * should be idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -19022,16 +18970,16 @@ export interface Task {
      * name need not be unique and can contain any Unicode characters up to a
      * maximum length of 1024.
      *
-     * @param {string} task.commandLine The command line of the task. Tasks should
-     * be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount. For multi-instance tasks, the
-     * command line is executed as the primary task, after the primary task and all
-     * subtasks have finished executing the coordination command line. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * @param {string} task.commandLine The command line of the task. For
+     * multi-instance tasks, the command line is executed as the primary task,
+     * after the primary task and all subtasks have finished executing the
+     * coordination command line. The command line does not run under a shell, and
+     * therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
+     * idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object} [task.containerSettings] The settings for the container
      * under which the task runs. If the pool that will run this task has
@@ -19154,20 +19102,14 @@ export interface Task {
      * @param {number} [task.constraints.maxTaskRetryCount] The maximum number of
      * times the task may be retried. The Batch service retries a task if its exit
      * code is nonzero. Note that this value specifically controls the number of
-     * retries. The Batch service will try the task once, and may then retry up to
-     * this limit. For example, if the maximum retry count is 3, Batch tries the
-     * task up to 4 times (one initial try and 3 retries). If the maximum retry
-     * count is 0, the Batch service does not retry the task. If the maximum retry
-     * count is -1, the Batch service retries the task without limit. ResourceFiles
-     * and AppplicationPackages are only downloaded again if the task is retried on
-     * a new compute node. Batch will also retry tasks when a recovery operation is
-     * triggered on a compute node. Examples of recovery operations triggers
-     * include (but are not limited to) when an unhealthy compute node is rebooted
-     * or a compute node disappeared due to host failure. Retries due to recovery
-     * operation are independent of and are not counted against maxTaskRetryCount.
-     * All tasks should be idempotent, it means they need to tolerate being
-     * interrupted and restarted, without causing any corruption or duplicate data.
-     * Best practices recommended for long running tasks is to use checkpointing.
+     * retries for the task executable due to nonzero exit code. The Batch service
+     * will try the task once, and may then retry up to this limit. For example, if
+     * the maximum retry count is 3, Batch tries the task up to 4 times (one
+     * initial try and 3 retries). If the maximum retry count is 0, the Batch
+     * service does not retry the task after the first attempt. If the maximum
+     * retry count is -1, the Batch service retries the task without limit.
+     * Resource files and application packages are only downloaded again if the
+     * task is retried on a new compute node.
      *
      * @param {object} [task.userIdentity] The user identity under which the task
      * runs. If omitted, the task runs as a non-administrative user unique to the
@@ -19306,16 +19248,16 @@ export interface Task {
      * name need not be unique and can contain any Unicode characters up to a
      * maximum length of 1024.
      *
-     * @param {string} task.commandLine The command line of the task. Tasks should
-     * be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount. For multi-instance tasks, the
-     * command line is executed as the primary task, after the primary task and all
-     * subtasks have finished executing the coordination command line. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * @param {string} task.commandLine The command line of the task. For
+     * multi-instance tasks, the command line is executed as the primary task,
+     * after the primary task and all subtasks have finished executing the
+     * coordination command line. The command line does not run under a shell, and
+     * therefore cannot take advantage of shell features such as environment
+     * variable expansion. If you want to take advantage of such features, you
+     * should invoke the shell in the command line, for example using "cmd /c
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
+     * idempotent. For more information, please see
+     * TaskContainerSettings.maxTaskRetryCount.
      *
      * @param {object} [task.containerSettings] The settings for the container
      * under which the task runs. If the pool that will run this task has
@@ -19438,20 +19380,14 @@ export interface Task {
      * @param {number} [task.constraints.maxTaskRetryCount] The maximum number of
      * times the task may be retried. The Batch service retries a task if its exit
      * code is nonzero. Note that this value specifically controls the number of
-     * retries. The Batch service will try the task once, and may then retry up to
-     * this limit. For example, if the maximum retry count is 3, Batch tries the
-     * task up to 4 times (one initial try and 3 retries). If the maximum retry
-     * count is 0, the Batch service does not retry the task. If the maximum retry
-     * count is -1, the Batch service retries the task without limit. ResourceFiles
-     * and AppplicationPackages are only downloaded again if the task is retried on
-     * a new compute node. Batch will also retry tasks when a recovery operation is
-     * triggered on a compute node. Examples of recovery operations triggers
-     * include (but are not limited to) when an unhealthy compute node is rebooted
-     * or a compute node disappeared due to host failure. Retries due to recovery
-     * operation are independent of and are not counted against maxTaskRetryCount.
-     * All tasks should be idempotent, it means they need to tolerate being
-     * interrupted and restarted, without causing any corruption or duplicate data.
-     * Best practices recommended for long running tasks is to use checkpointing.
+     * retries for the task executable due to nonzero exit code. The Batch service
+     * will try the task once, and may then retry up to this limit. For example, if
+     * the maximum retry count is 3, Batch tries the task up to 4 times (one
+     * initial try and 3 retries). If the maximum retry count is 0, the Batch
+     * service does not retry the task after the first attempt. If the maximum
+     * retry count is -1, the Batch service retries the task without limit.
+     * Resource files and application packages are only downloaded again if the
+     * task is retried on a new compute node.
      *
      * @param {object} [task.userIdentity] The user identity under which the task
      * runs. If omitted, the task runs as a non-administrative user unique to the
@@ -20175,20 +20111,14 @@ export interface Task {
      * @param {number} [options.constraints.maxTaskRetryCount] The maximum number
      * of times the task may be retried. The Batch service retries a task if its
      * exit code is nonzero. Note that this value specifically controls the number
-     * of retries. The Batch service will try the task once, and may then retry up
-     * to this limit. For example, if the maximum retry count is 3, Batch tries the
-     * task up to 4 times (one initial try and 3 retries). If the maximum retry
-     * count is 0, the Batch service does not retry the task. If the maximum retry
-     * count is -1, the Batch service retries the task without limit. ResourceFiles
-     * and AppplicationPackages are only downloaded again if the task is retried on
-     * a new compute node. Batch will also retry tasks when a recovery operation is
-     * triggered on a compute node. Examples of recovery operations triggers
-     * include (but are not limited to) when an unhealthy compute node is rebooted
-     * or a compute node disappeared due to host failure. Retries due to recovery
-     * operation are independent of and are not counted against maxTaskRetryCount.
-     * All tasks should be idempotent, it means they need to tolerate being
-     * interrupted and restarted, without causing any corruption or duplicate data.
-     * Best practices recommended for long running tasks is to use checkpointing.
+     * of retries for the task executable due to nonzero exit code. The Batch
+     * service will try the task once, and may then retry up to this limit. For
+     * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+     * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+     * service does not retry the task after the first attempt. If the maximum
+     * retry count is -1, the Batch service retries the task without limit.
+     * Resource files and application packages are only downloaded again if the
+     * task is retried on a new compute node.
      *
      * @param {object} [options.taskUpdateOptions] Additional parameters for the
      * operation
@@ -20269,20 +20199,14 @@ export interface Task {
      * @param {number} [options.constraints.maxTaskRetryCount] The maximum number
      * of times the task may be retried. The Batch service retries a task if its
      * exit code is nonzero. Note that this value specifically controls the number
-     * of retries. The Batch service will try the task once, and may then retry up
-     * to this limit. For example, if the maximum retry count is 3, Batch tries the
-     * task up to 4 times (one initial try and 3 retries). If the maximum retry
-     * count is 0, the Batch service does not retry the task. If the maximum retry
-     * count is -1, the Batch service retries the task without limit. ResourceFiles
-     * and AppplicationPackages are only downloaded again if the task is retried on
-     * a new compute node. Batch will also retry tasks when a recovery operation is
-     * triggered on a compute node. Examples of recovery operations triggers
-     * include (but are not limited to) when an unhealthy compute node is rebooted
-     * or a compute node disappeared due to host failure. Retries due to recovery
-     * operation are independent of and are not counted against maxTaskRetryCount.
-     * All tasks should be idempotent, it means they need to tolerate being
-     * interrupted and restarted, without causing any corruption or duplicate data.
-     * Best practices recommended for long running tasks is to use checkpointing.
+     * of retries for the task executable due to nonzero exit code. The Batch
+     * service will try the task once, and may then retry up to this limit. For
+     * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+     * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+     * service does not retry the task after the first attempt. If the maximum
+     * retry count is -1, the Batch service retries the task without limit.
+     * Resource files and application packages are only downloaded again if the
+     * task is retried on a new compute node.
      *
      * @param {object} [options.taskUpdateOptions] Additional parameters for the
      * operation
