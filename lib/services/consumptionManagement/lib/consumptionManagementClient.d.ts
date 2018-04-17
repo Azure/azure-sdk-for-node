@@ -76,13 +76,15 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   marketplacesByBillingAccount: operations.MarketplacesByBillingAccount;
   marketplacesByDepartment: operations.MarketplacesByDepartment;
   marketplacesByEnrollmentAccounts: operations.MarketplacesByEnrollmentAccounts;
+  getBalancesByBillingAccount: operations.GetBalancesByBillingAccount;
   reservationsSummaries: operations.ReservationsSummaries;
   reservationsDetails: operations.ReservationsDetails;
   reservationRecommendationsOperations: operations.ReservationRecommendationsOperations;
   budgets: operations.Budgets;
   operations: operations.Operations;
   priceSheet: operations.PriceSheet;
-  costAllocationTagsOperations: operations.CostAllocationTagsOperations;
+  costTagsOperations: operations.CostTagsOperations;
+  tagsOperations: operations.TagsOperations;
 
 
   /**
