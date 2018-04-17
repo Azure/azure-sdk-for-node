@@ -2109,62 +2109,6 @@ export interface Service {
 
 
     /**
-     * This method returns the health of partner services.
-     *
-     * @param {string} location The location of the resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceHealthResponseList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getHealthWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceHealthResponseList>>;
-
-    /**
-     * This method returns the health of partner services.
-     *
-     * @param {string} location The location of the resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceHealthResponseList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceHealthResponseList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceHealthResponseList} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getHealth(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceHealthResponseList>;
-    getHealth(location: string, callback: ServiceCallback<models.ServiceHealthResponseList>): void;
-    getHealth(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceHealthResponseList>): void;
-
-
-    /**
      * This method validates the customer shipping address and provide alternate
      * addresses if any.
      *

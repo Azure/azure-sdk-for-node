@@ -901,38 +901,6 @@ export interface ReportIssueDetails {
 
 /**
  * @class
- * Initializes a new instance of the ServiceHealthResponse class.
- * @constructor
- * Response of the GetServiceHealth api.
- *
- * @member {string} [connectorType] Name of the connector.
- * @member {date} [startTime] Time when the action was triggered.
- * @member {date} [endTime] Time when the action got completed.
- * @member {boolean} [status] Status of the service.
- */
-export interface ServiceHealthResponse {
-  connectorType?: string;
-  startTime?: Date;
-  endTime?: Date;
-  status?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceHealthResponseList class.
- * @constructor
- * List of service health response.
- *
- * @member {array} [dependencies] List of ServiceHealthResponse.
- * @member {string} [serviceVersion] Version of the service.
- */
-export interface ServiceHealthResponseList {
-  dependencies?: ServiceHealthResponse[];
-  serviceVersion?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ShipmentPickUpRequest class.
  * @constructor
  * Shipment pick up request details.
