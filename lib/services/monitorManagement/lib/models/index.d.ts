@@ -2214,7 +2214,7 @@ export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricA
  * is to be run.
  * @member {string} [queryType] Set value to ResultCount if query should be
  * returning search result count. Set it to Number if its a metric query.
- * Possible values include: 'ResultCount', 'Number'
+ * Possible values include: 'ResultCount'
  */
 export interface Source {
   query: string;
@@ -2254,8 +2254,9 @@ export interface Schedule {
  * @member {date} [lastUpdatedTime] Last time the rule was updated in IS08601
  * format.
  * @member {string} [provisioningState] Provisioning state of the
- * scheduledquery rule
- * @member {object} source
+ * scheduledquery rule. Possible values include: 'Succeeded', 'Deploying',
+ * 'Canceled', 'Failed'
+ * @member {object} source Data Source against which rule will Query Data
  * @member {string} [source.query] Log search query.
  * @member {array} [source.authorizedResources] List of  Resource referred into
  * query
@@ -2263,14 +2264,14 @@ export interface Schedule {
  * search query is to be run.
  * @member {string} [source.queryType] Set value to ResultCount if query should
  * be returning search result count. Set it to Number if its a metric query.
- * Possible values include: 'ResultCount', 'Number'
- * @member {object} schedule
+ * Possible values include: 'ResultCount'
+ * @member {object} schedule Schedule (Frequnecy, Time Window) for rule.
  * @member {number} [schedule.frequencyInMinutes] frequency (in minutes) at
  * which rule condition should be evaluated.
  * @member {number} [schedule.timeWindowInMinutes] Time window for which data
  * needs to be fetched for query (should be greater than or equal to
  * frequencyInMinutes).
- * @member {object} action
+ * @member {object} action Action needs to be taken on rule execution.
  * @member {string} [action.actionGroupId] the id of the action group to use.
  * @member {object} [action.webhookProperties]
  * @member {string} [action.odatatype] Polymorphic Discriminator
@@ -2358,12 +2359,10 @@ export interface AzNsActionGroup {
  * @class
  * Initializes a new instance of the AlertingAction class.
  * @constructor
- * @member {string} [lastFiredTime] Last time the rule was fired in IS08601
- * format.
+ * Specifiy action need to be taken when rule type is Alert
+ *
  * @member {string} [severity] Severity of the alert. Possible values include:
- * '1', '2', '3', '4'
- * @member {string} [status] Alert state. Possible values include: 'Active',
- * 'Inactive'
+ * '0', '1', '2', '3', '4'
  * @member {object} aznsAction azns notification group reference.
  * @member {array} [aznsAction.actionGroup] azns notification group reference.
  * @member {string} [aznsAction.emailSubject] Custom subject for Azns email
@@ -2415,9 +2414,7 @@ export interface AzNsActionGroup {
  * on a particular column
  */
 export interface AlertingAction extends Action {
-  readonly lastFiredTime?: string;
   severity?: string;
-  readonly status?: string;
   aznsAction: AzNsActionGroup;
   throttleTillDate?: Date;
   trigger: TriggerCondition;
