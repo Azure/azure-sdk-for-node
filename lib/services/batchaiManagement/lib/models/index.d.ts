@@ -136,14 +136,11 @@ export interface ResourceId extends BaseResource {
  * @member {string} [fileServerPublicIP] Public IP of the File Server VM.
  * @member {string} [fileServerInternalIP] Internal subnet IP which can be used
  * to access the file Server from within the subnet.
- * @member {string} [fileServerType] Type of the fileserver e.g. nfs, glusterfs
- * etc. Possible values include: 'nfs', 'glusterfs'
  */
 export interface MountSettings {
   mountPoint?: string;
   fileServerPublicIP?: string;
   fileServerInternalIP?: string;
-  fileServerType?: string;
 }
 
 /**
@@ -198,8 +195,6 @@ export interface Resource extends BaseResource {
  * @member {string} [mountSettings.mountPoint]
  * @member {string} [mountSettings.fileServerPublicIP]
  * @member {string} [mountSettings.fileServerInternalIP]
- * @member {string} [mountSettings.fileServerType] Possible values include:
- * 'nfs', 'glusterfs'
  * @member {date} [provisioningStateTransitionTime] Time when the status was
  * changed.
  * @member {date} [creationTime] Time when the FileServer was created.
@@ -237,21 +232,6 @@ export interface FileServer extends Resource {
 export interface KeyVaultSecretReference {
   sourceVault: ResourceId;
   secretUrl: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the KeyVaultKeyReference class.
- * @constructor
- * Describes a reference to Key Vault Key.
- *
- * @member {object} sourceVault Fully qualified resource Id for the Key Vault.
- * @member {string} [sourceVault.id] The ID of the resource
- * @member {string} keyUrl The URL referencing a key in a Key Vault.
- */
-export interface KeyVaultKeyReference {
-  sourceVault: ResourceId;
-  keyUrl: string;
 }
 
 /**
@@ -1384,6 +1364,45 @@ export interface CustomToolkitSettings {
 
 /**
  * @class
+ * Initializes a new instance of the CustomMpiSettings class.
+ * @constructor
+ * Specifies the settings for a custom tool kit job.
+ *
+ * @member {string} commandLine The program and program command line parameters
+ * to be executed by mpi runtime.
+ * @member {number} [processCount] Number of processes parameter that is passed
+ * to MPI runtime. The default value for this property is equal to nodeCount
+ * property
+ */
+export interface CustomMpiSettings {
+  commandLine: string;
+  processCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HorovodSettings class.
+ * @constructor
+ * Specifies the settings for Chainer job.
+ *
+ * @member {string} pythonScriptFilePath The path and file name of the python
+ * script to execute the job.
+ * @member {string} [pythonInterpreterPath] The path to python interpreter.
+ * @member {string} [commandLineArgs] Command line arguments that needs to be
+ * passed to the python script.
+ * @member {number} [processCount] Number of processes parameter that is passed
+ * to MPI runtime. The default value for this property is equal to nodeCount
+ * property
+ */
+export interface HorovodSettings {
+  pythonScriptFilePath: string;
+  pythonInterpreterPath?: string;
+  commandLineArgs?: string;
+  processCount?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the JobPreparation class.
  * @constructor
  * Specifies the settings for job preparation.
@@ -1431,21 +1450,11 @@ export interface InputDirectory {
  * E.g. models. You can find the full path to the output directory by combining
  * pathPrefix, jobOutputDirectoryPathSegment (reported by get job) and
  * pathSuffix.
- * @member {string} [type] An enumeration, which specifies the type of job
- * output directory. Default value is Custom. The possible values are Model,
- * Logs, Summary, and Custom. Users can use multiple enums for a single
- * directory. Eg. outPutType='Model,Logs, Summary'. Possible values include:
- * 'model', 'logs', 'summary', 'custom'. Default value: 'custom' .
- * @member {boolean} [createNew] True to create new directory. Default is true.
- * If false, then the directory is not created and can be any directory path
- * that the user specifies. Default value: true .
  */
 export interface OutputDirectory {
   id: string;
   pathPrefix: string;
   pathSuffix?: string;
-  type?: string;
-  createNew?: boolean;
 }
 
 /**
@@ -1467,14 +1476,9 @@ export interface JobBasePropertiesConstraints {
  * @constructor
  * Parameters supplied to the Create operation.
  *
- * @member {string} location The region in which to create the job.
- * @member {object} [tags] The user specified tags associated with the job.
- * @member {string} [experimentName] Describe the experiment information of the
- * job
- * @member {number} [priority] Priority associated with the job. Priority
- * associated with the job. Priority values can range from -1000 to 1000, with
- * -1000 being the lowest priority and 1000 being the highest priority. The
- * default value is 0. Default value: 0 .
+ * @member {string} [priority] Priority associated with the job. Priority
+ * associated with the job. Possible values include: 'low', 'normal', 'high'.
+ * Default value: 'normal' .
  * @member {object} cluster Specifies the Id of the cluster on which this job
  * will run.
  * @member {string} [cluster.id] The ID of the resource
@@ -1577,6 +1581,17 @@ export interface JobBasePropertiesConstraints {
  * @member {object} [customToolkitSettings] Specifies the settings for custom
  * tool kit job.
  * @member {string} [customToolkitSettings.commandLine]
+ * @member {object} [customMpiSettings] Specifies the settings for custom MPI
+ * job.
+ * @member {string} [customMpiSettings.commandLine]
+ * @member {number} [customMpiSettings.processCount] The default value for this
+ * property is equal to nodeCount property
+ * @member {object} [horovodSettings] Specifies the settings for Horovod job.
+ * @member {string} [horovodSettings.pythonScriptFilePath]
+ * @member {string} [horovodSettings.pythonInterpreterPath]
+ * @member {string} [horovodSettings.commandLineArgs]
+ * @member {number} [horovodSettings.processCount] The default value for this
+ * property is equal to nodeCount property
  * @member {object} [jobPreparation] Specifies the command line to be executed
  * before tool kit is launched. The specified actions will run on all the nodes
  * that are part of the job
@@ -1601,10 +1616,7 @@ export interface JobBasePropertiesConstraints {
  * week.
  */
 export interface JobCreateParameters {
-  location: string;
-  tags?: { [propertyName: string]: string };
-  experimentName?: string;
-  priority?: number;
+  priority?: string;
   cluster: ResourceId;
   mountVolumes?: MountVolumes;
   nodeCount: number;
@@ -1616,6 +1628,8 @@ export interface JobCreateParameters {
   caffe2Settings?: Caffe2Settings;
   chainerSettings?: ChainerSettings;
   customToolkitSettings?: CustomToolkitSettings;
+  customMpiSettings?: CustomMpiSettings;
+  horovodSettings?: HorovodSettings;
   jobPreparation?: JobPreparation;
   stdOutErrPathPrefix: string;
   inputDirectories?: InputDirectory[];
@@ -1665,16 +1679,29 @@ export interface JobPropertiesExecutionInfo {
 
 /**
  * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * A definition of an Azure proxy resource.
+ *
+ * @member {string} [id] The ID of the resource.
+ * @member {string} [name] The name of the resource.
+ * @member {string} [type] The type of the resource.
+ */
+export interface ProxyResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Job class.
  * @constructor
- * Contains information about the job.
+ * Contains information about a Job.
  *
- * @member {string} [experimentName] Describe the experiment information of the
- * job
- * @member {number} [priority] Priority associated with the job. Priority
- * associated with the job. Priority values can range from -1000 to 1000, with
- * -1000 being the lowest priority and 1000 being the highest priority. The
- * default value is 0. Default value: 0 .
+ * @member {string} [priority] Priority associated with the job. Priority
+ * associated with the job. Possible values include: 'low', 'normal', 'high'.
+ * Default value: 'normal' .
  * @member {object} [cluster] Specifies the Id of the cluster on which this job
  * will run.
  * @member {string} [cluster.id] The ID of the resource
@@ -1721,8 +1748,9 @@ export interface JobPropertiesExecutionInfo {
  * @member {string}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl]
  * @member {string} [toolType] The toolkit type of this job. Possible values
- * are: cntk, tensorflow, caffe, caffe2, chainer, pytorch, custom. Possible
- * values include: 'cntk', 'tensorflow', 'caffe', 'caffe2', 'chainer', 'custom'
+ * are: cntk, tensorflow, caffe, caffe2, chainer, pytorch, custom, mpi,
+ * horovod. Possible values include: 'cntk', 'tensorflow', 'caffe', 'caffe2',
+ * 'chainer', 'horovod', 'mpi', 'custom'
  * @member {object} [cntkSettings] Specifies the settings for CNTK (aka
  * Microsoft Cognitive Toolkit) job.
  * @member {string} [cntkSettings.languageType] Valid values are 'BrainScript'
@@ -1781,6 +1809,17 @@ export interface JobPropertiesExecutionInfo {
  * @member {object} [customToolkitSettings] Specifies the settings for custom
  * tool kit job.
  * @member {string} [customToolkitSettings.commandLine]
+ * @member {object} [customMpiSettings] Specifies the settings for custom MPI
+ * job.
+ * @member {string} [customMpiSettings.commandLine]
+ * @member {number} [customMpiSettings.processCount] The default value for this
+ * property is equal to nodeCount property
+ * @member {object} [horovodSettings] Specifies the settings for Horovod job.
+ * @member {string} [horovodSettings.pythonScriptFilePath]
+ * @member {string} [horovodSettings.pythonInterpreterPath]
+ * @member {string} [horovodSettings.commandLineArgs]
+ * @member {number} [horovodSettings.processCount] The default value for this
+ * property is equal to nodeCount property
  * @member {object} [jobPreparation] Specifies the actions to be performed
  * before tool kit is launched. The specified actions will run on all the nodes
  * that are part of the job
@@ -1838,9 +1877,8 @@ export interface JobPropertiesExecutionInfo {
  * the job is in completed state.
  * @member {array} [executionInfo.errors]
  */
-export interface Job extends Resource {
-  experimentName?: string;
-  priority?: number;
+export interface Job extends ProxyResource {
+  priority?: string;
   cluster?: ResourceId;
   mountVolumes?: MountVolumes;
   jobOutputDirectoryPathSegment?: string;
@@ -1853,6 +1891,8 @@ export interface Job extends Resource {
   caffeSettings?: CaffeSettings;
   chainerSettings?: ChainerSettings;
   customToolkitSettings?: CustomToolkitSettings;
+  customMpiSettings?: CustomMpiSettings;
+  horovodSettings?: HorovodSettings;
   jobPreparation?: JobPreparation;
   stdOutErrPathPrefix?: string;
   inputDirectories?: InputDirectory[];
@@ -1908,22 +1948,6 @@ export interface File {
 
 /**
  * @class
- * Initializes a new instance of the LocalDataVolume class.
- * @constructor
- * Represents mapping of host directories to directories in the container.
- *
- * @member {string} hostPath The path on the host that is to be mounted as a
- * directory in the container.
- * @member {string} localPath The container local path where the host directory
- * is mounted.
- */
-export interface LocalDataVolume {
-  hostPath: string;
-  localPath: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * The object that describes the operation.
@@ -1970,20 +1994,64 @@ export interface Operation {
 
 /**
  * @class
+ * Initializes a new instance of the Workspace class.
+ * @constructor
+ * Describes Batch AI Workspace.
+ *
+ * @member {string} [provisioningState] The provisioned state of the workspace.
+ * Possible values include: 'creating', 'succeeded', 'failed', 'deleting'
+ * @member {date} [provisioningStateTransitionTime] The time at which the
+ * workspace entered its current provisioning state. The time at which the
+ * workspace entered its current provisioning state.
+ */
+export interface Workspace extends Resource {
+  readonly provisioningState?: string;
+  readonly provisioningStateTransitionTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkspaceCreateParameters class.
+ * @constructor
+ * Parameters supplied to the Create operation.
+ *
+ * @member {string} location The region in which to create the Workspace.
+ * @member {object} [tags] The user specified tags associated with the
+ * Workspace.
+ */
+export interface WorkspaceCreateParameters {
+  location: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Experiment class.
+ * @constructor
+ * Contains information about the experiment.
+ *
+ * @member {string} [provisioningState] The provisioned state of the
+ * experiment. Possible values include: 'creating', 'succeeded', 'failed',
+ * 'deleting'
+ * @member {date} [provisioningStateTransitionTime] The time at which the
+ * experiment entered its current provisioning state. The time at which the
+ * experiment entered its current provisioning state.
+ */
+export interface Experiment extends ProxyResource {
+  readonly provisioningState?: string;
+  readonly provisioningStateTransitionTime?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ClustersListOptions class.
  * @constructor
  * Additional parameters for list operation.
  *
- * @member {string} [filter] An OData $filter clause.. Used to filter results
- * that are returned in the GET respnose.
- * @member {string} [select] An OData $select clause. Used to select the
- * properties to be returned in the GET respnose.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  */
 export interface ClustersListOptions {
-  filter?: string;
-  select?: string;
   maxResults?: number;
 }
 
@@ -1993,54 +2061,114 @@ export interface ClustersListOptions {
  * @constructor
  * Additional parameters for listByResourceGroup operation.
  *
- * @member {string} [filter] An OData $filter clause.. Used to filter results
- * that are returned in the GET respnose.
- * @member {string} [select] An OData $select clause. Used to select the
- * properties to be returned in the GET respnose.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  */
 export interface ClustersListByResourceGroupOptions {
-  filter?: string;
-  select?: string;
   maxResults?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the JobsListOptions class.
+ * Initializes a new instance of the ClustersListByWorkspaceOptions class.
+ * @constructor
+ * Additional parameters for listByWorkspace operation.
+ *
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 files can be returned. Default value: 1000 .
+ */
+export interface ClustersListByWorkspaceOptions {
+  maxResults?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileServersListOptions class.
  * @constructor
  * Additional parameters for list operation.
  *
- * @member {string} [filter] An OData $filter clause.. Used to filter results
- * that are returned in the GET respnose.
- * @member {string} [select] An OData $select clause. Used to select the
- * properties to be returned in the GET respnose.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  */
-export interface JobsListOptions {
-  filter?: string;
-  select?: string;
+export interface FileServersListOptions {
   maxResults?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the JobsListByResourceGroupOptions class.
+ * Initializes a new instance of the FileServersListByResourceGroupOptions class.
  * @constructor
  * Additional parameters for listByResourceGroup operation.
  *
- * @member {string} [filter] An OData $filter clause.. Used to filter results
- * that are returned in the GET respnose.
- * @member {string} [select] An OData $select clause. Used to select the
- * properties to be returned in the GET respnose.
  * @member {number} [maxResults] The maximum number of items to return in the
  * response. A maximum of 1000 files can be returned. Default value: 1000 .
  */
-export interface JobsListByResourceGroupOptions {
-  filter?: string;
-  select?: string;
+export interface FileServersListByResourceGroupOptions {
+  maxResults?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileServersListByWorkspaceOptions class.
+ * @constructor
+ * Additional parameters for listByWorkspace operation.
+ *
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 files can be returned. Default value: 1000 .
+ */
+export interface FileServersListByWorkspaceOptions {
+  maxResults?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkspacesListOptions class.
+ * @constructor
+ * Additional parameters for list operation.
+ *
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 files can be returned. Default value: 1000 .
+ */
+export interface WorkspacesListOptions {
+  maxResults?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkspacesListByResourceGroupOptions class.
+ * @constructor
+ * Additional parameters for listByResourceGroup operation.
+ *
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 files can be returned. Default value: 1000 .
+ */
+export interface WorkspacesListByResourceGroupOptions {
+  maxResults?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExperimentsListByWorkspaceOptions class.
+ * @constructor
+ * Additional parameters for listByWorkspace operation.
+ *
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 files can be returned. Default value: 1000 .
+ */
+export interface ExperimentsListByWorkspaceOptions {
+  maxResults?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobsListByExperimentOptions class.
+ * @constructor
+ * Additional parameters for listByExperiment operation.
+ *
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 files can be returned. Default value: 1000 .
+ */
+export interface JobsListByExperimentOptions {
   maxResults?: number;
 }
 
@@ -2063,44 +2191,6 @@ export interface JobsListOutputFilesOptions {
   outputdirectoryid: string;
   directory?: string;
   linkexpiryinminutes?: number;
-  maxResults?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileServersListOptions class.
- * @constructor
- * Additional parameters for list operation.
- *
- * @member {string} [filter] An OData $filter clause.. Used to filter results
- * that are returned in the GET respnose.
- * @member {string} [select] An OData $select clause. Used to select the
- * properties to be returned in the GET respnose.
- * @member {number} [maxResults] The maximum number of items to return in the
- * response. A maximum of 1000 files can be returned. Default value: 1000 .
- */
-export interface FileServersListOptions {
-  filter?: string;
-  select?: string;
-  maxResults?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileServersListByResourceGroupOptions class.
- * @constructor
- * Additional parameters for listByResourceGroup operation.
- *
- * @member {string} [filter] An OData $filter clause.. Used to filter results
- * that are returned in the GET respnose.
- * @member {string} [select] An OData $select clause. Used to select the
- * properties to be returned in the GET respnose.
- * @member {number} [maxResults] The maximum number of items to return in the
- * response. A maximum of 1000 files can be returned. Default value: 1000 .
- */
-export interface FileServersListByResourceGroupOptions {
-  filter?: string;
-  select?: string;
   maxResults?: number;
 }
 
@@ -2136,6 +2226,18 @@ export interface ListUsagesResult extends Array<Usage> {
 
 /**
  * @class
+ * Initializes a new instance of the ClusterListResult class.
+ * @constructor
+ * Values returned by the List Clusters operation.
+ *
+ * @member {string} [nextLink] The continuation token.
+ */
+export interface ClusterListResult extends Array<Cluster> {
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RemoteLoginInformationListResult class.
  * @constructor
  * Values returned by the List operation.
@@ -2148,13 +2250,37 @@ export interface RemoteLoginInformationListResult extends Array<RemoteLoginInfor
 
 /**
  * @class
- * Initializes a new instance of the ClusterListResult class.
+ * Initializes a new instance of the FileServerListResult class.
  * @constructor
- * Values returned by the List Clusters operation.
+ * Values returned by the List operation.
  *
  * @member {string} [nextLink] The continuation token.
  */
-export interface ClusterListResult extends Array<Cluster> {
+export interface FileServerListResult extends Array<FileServer> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkspaceListResult class.
+ * @constructor
+ * Values returned by the List operation.
+ *
+ * @member {string} [nextLink] The continuation token.
+ */
+export interface WorkspaceListResult extends Array<Workspace> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExperimentListResult class.
+ * @constructor
+ * Values returned by the List operation.
+ *
+ * @member {string} [nextLink] The continuation token.
+ */
+export interface ExperimentListResult extends Array<Experiment> {
   nextLink?: string;
 }
 
@@ -2179,17 +2305,5 @@ export interface JobListResult extends Array<Job> {
  * @member {string} [nextLink] The continuation token.
  */
 export interface FileListResult extends Array<File> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileServerListResult class.
- * @constructor
- * Values returned by the List operation.
- *
- * @member {string} [nextLink] The continuation token.
- */
-export interface FileServerListResult extends Array<FileServer> {
   nextLink?: string;
 }
