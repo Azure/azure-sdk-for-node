@@ -21,12 +21,6 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} billingAccountId - BillingAccount ID
-   *
-   * @param {string} departmentId - Department ID
-   *
-   * @param {string} enrollmentAccountId - EnrollmentAccount ID
-   *
    * @param {string} subscriptionId - Azure Subscription ID.
    *
    * @param {string} [baseUri] - The base URI of the service.
@@ -47,17 +41,11 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, billingAccountId: string, departmentId: string, enrollmentAccountId: string, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
-
-  billingAccountId: string;
-
-  departmentId: string;
-
-  enrollmentAccountId: string;
 
   subscriptionId: string;
 
@@ -91,6 +79,8 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * Gets the balances for a scope by billingAccountId. Balances are available
    * via this API only for May 1, 2014 or later.
    *
+   * @param {string} billingAccountId BillingAccount ID
+   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -102,11 +92,13 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getBalancesByBillingAccountWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Balance>>;
+  getBalancesByBillingAccountWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Balance>>;
 
   /**
    * Gets the balances for a scope by billingAccountId. Balances are available
    * via this API only for May 1, 2014 or later.
+   *
+   * @param {string} billingAccountId BillingAccount ID
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -135,9 +127,9 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getBalancesByBillingAccount(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Balance>;
-  getBalancesByBillingAccount(callback: ServiceCallback<models.Balance>): void;
-  getBalancesByBillingAccount(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Balance>): void;
+  getBalancesByBillingAccount(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Balance>;
+  getBalancesByBillingAccount(billingAccountId: string, callback: ServiceCallback<models.Balance>): void;
+  getBalancesByBillingAccount(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Balance>): void;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };

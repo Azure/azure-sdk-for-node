@@ -371,6 +371,8 @@ export interface UsageDetailsByBillingAccount {
      * period. Usage details are available via this API only for May 1, 2014 or
      * later.
      *
+     * @param {string} billingAccountId BillingAccount ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the
@@ -408,13 +410,15 @@ export interface UsageDetailsByBillingAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+    listWithHttpOperationResponse(billingAccountId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
 
     /**
      * Lists the usage details by billingAccountId for a scope by current billing
      * period. Usage details are available via this API only for May 1, 2014 or
      * later.
      *
+     * @param {string} billingAccountId BillingAccount ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the
@@ -469,15 +473,17 @@ export interface UsageDetailsByBillingAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
-    list(callback: ServiceCallback<models.UsageDetailsListResult>): void;
-    list(options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    list(billingAccountId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    list(billingAccountId: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    list(billingAccountId: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
 
 
     /**
      * Lists the usage details based on billingAccountId for a scope by billing
      * period. Usage details are available via this API only for May 1, 2014 or
      * later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -518,12 +524,14 @@ export interface UsageDetailsByBillingAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingPeriodWithHttpOperationResponse(billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+    listByBillingPeriodWithHttpOperationResponse(billingAccountId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
 
     /**
      * Lists the usage details based on billingAccountId for a scope by billing
      * period. Usage details are available via this API only for May 1, 2014 or
      * later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -581,9 +589,9 @@ export interface UsageDetailsByBillingAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingPeriod(billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
-    listByBillingPeriod(billingPeriodName: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
-    listByBillingPeriod(billingPeriodName: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByBillingPeriod(billingAccountId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listByBillingPeriod(billingAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByBillingPeriod(billingAccountId: string, billingPeriodName: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
 
 
     /**
@@ -724,6 +732,8 @@ export interface UsageDetailsByDepartment {
      * period. Usage details are available via this API only for May 1, 2014 or
      * later.
      *
+     * @param {string} departmentId Department ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the
@@ -761,13 +771,15 @@ export interface UsageDetailsByDepartment {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+    listWithHttpOperationResponse(departmentId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
 
     /**
      * Lists the usage details by departmentId for a scope by current billing
      * period. Usage details are available via this API only for May 1, 2014 or
      * later.
      *
+     * @param {string} departmentId Department ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the
@@ -822,15 +834,17 @@ export interface UsageDetailsByDepartment {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
-    list(callback: ServiceCallback<models.UsageDetailsListResult>): void;
-    list(options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    list(departmentId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    list(departmentId: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    list(departmentId: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
 
 
     /**
      * Lists the usage details  based on departmentId for a scope by billing
      * period. Usage details are available via this API only for May 1, 2014 or
      * later.
+     *
+     * @param {string} departmentId Department ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -871,12 +885,14 @@ export interface UsageDetailsByDepartment {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingPeriodWithHttpOperationResponse(billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+    listByBillingPeriodWithHttpOperationResponse(departmentId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
 
     /**
      * Lists the usage details  based on departmentId for a scope by billing
      * period. Usage details are available via this API only for May 1, 2014 or
      * later.
+     *
+     * @param {string} departmentId Department ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -934,9 +950,9 @@ export interface UsageDetailsByDepartment {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingPeriod(billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
-    listByBillingPeriod(billingPeriodName: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
-    listByBillingPeriod(billingPeriodName: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByBillingPeriod(departmentId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listByBillingPeriod(departmentId: string, billingPeriodName: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByBillingPeriod(departmentId: string, billingPeriodName: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
 
 
     /**
@@ -1077,6 +1093,8 @@ export interface UsageDetailsByEnrollmentAccount {
      * billing period. Usage details are available via this API only for May 1,
      * 2014 or later.
      *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the
@@ -1114,13 +1132,15 @@ export interface UsageDetailsByEnrollmentAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+    listWithHttpOperationResponse(enrollmentAccountId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
 
     /**
      * Lists the usage details by enrollmentAccountId for a scope by current
      * billing period. Usage details are available via this API only for May 1,
      * 2014 or later.
      *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the
@@ -1175,15 +1195,17 @@ export interface UsageDetailsByEnrollmentAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
-    list(callback: ServiceCallback<models.UsageDetailsListResult>): void;
-    list(options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    list(enrollmentAccountId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    list(enrollmentAccountId: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    list(enrollmentAccountId: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
 
 
     /**
      * Lists the usage details based on enrollmentAccountId for a scope by billing
      * period. Usage details are available via this API only for May 1, 2014 or
      * later.
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -1224,12 +1246,14 @@ export interface UsageDetailsByEnrollmentAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingPeriodWithHttpOperationResponse(billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+    listByBillingPeriodWithHttpOperationResponse(enrollmentAccountId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
 
     /**
      * Lists the usage details based on enrollmentAccountId for a scope by billing
      * period. Usage details are available via this API only for May 1, 2014 or
      * later.
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -1287,9 +1311,9 @@ export interface UsageDetailsByEnrollmentAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingPeriod(billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
-    listByBillingPeriod(billingPeriodName: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
-    listByBillingPeriod(billingPeriodName: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByBillingPeriod(enrollmentAccountId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listByBillingPeriod(enrollmentAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByBillingPeriod(enrollmentAccountId: string, billingPeriodName: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
 
 
     /**
@@ -1731,6 +1755,8 @@ export interface MarketplacesByBillingAccount {
      * period. Marketplaces are available via this API only for May 1, 2014 or
      * later.
      *
+     * @param {string} billingAccountId BillingAccount ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] May be used to filter marketplaces by
@@ -1756,13 +1782,15 @@ export interface MarketplacesByBillingAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+    listWithHttpOperationResponse(billingAccountId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
      * Lists the marketplaces for a scope by billingAccountId and current billing
      * period. Marketplaces are available via this API only for May 1, 2014 or
      * later.
      *
+     * @param {string} billingAccountId BillingAccount ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] May be used to filter marketplaces by
@@ -1805,14 +1833,16 @@ export interface MarketplacesByBillingAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
-    list(callback: ServiceCallback<models.MarketplacesListResult>): void;
-    list(options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    list(billingAccountId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    list(billingAccountId: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    list(billingAccountId: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
 
 
     /**
      * Lists the marketplaces for a scope by billing period and billingAccountId.
      * Marketplaces are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -1841,11 +1871,13 @@ export interface MarketplacesByBillingAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingPeriodWithHttpOperationResponse(billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+    listByBillingPeriodWithHttpOperationResponse(billingAccountId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
      * Lists the marketplaces for a scope by billing period and billingAccountId.
      * Marketplaces are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -1891,9 +1923,9 @@ export interface MarketplacesByBillingAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingPeriod(billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
-    listByBillingPeriod(billingPeriodName: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
-    listByBillingPeriod(billingPeriodName: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByBillingPeriod(billingAccountId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByBillingPeriod(billingAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByBillingPeriod(billingAccountId: string, billingPeriodName: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
 
 
     /**
@@ -2032,6 +2064,8 @@ export interface MarketplacesByDepartment {
      * period. Marketplaces are available via this API only for May 1, 2014 or
      * later.
      *
+     * @param {string} departmentId Department ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] May be used to filter marketplaces by
@@ -2057,13 +2091,15 @@ export interface MarketplacesByDepartment {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+    listWithHttpOperationResponse(departmentId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
      * Lists the marketplaces for a scope by departmentId and current billing
      * period. Marketplaces are available via this API only for May 1, 2014 or
      * later.
      *
+     * @param {string} departmentId Department ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] May be used to filter marketplaces by
@@ -2106,14 +2142,16 @@ export interface MarketplacesByDepartment {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
-    list(callback: ServiceCallback<models.MarketplacesListResult>): void;
-    list(options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    list(departmentId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    list(departmentId: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    list(departmentId: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
 
 
     /**
      * Lists the marketplaces for a scope by billing period and departmentId.
      * Marketplaces are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} departmentId Department ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -2142,11 +2180,13 @@ export interface MarketplacesByDepartment {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingPeriodWithHttpOperationResponse(billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+    listByBillingPeriodWithHttpOperationResponse(departmentId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
      * Lists the marketplaces for a scope by billing period and departmentId.
      * Marketplaces are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} departmentId Department ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -2192,9 +2232,9 @@ export interface MarketplacesByDepartment {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingPeriod(billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
-    listByBillingPeriod(billingPeriodName: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
-    listByBillingPeriod(billingPeriodName: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByBillingPeriod(departmentId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByBillingPeriod(departmentId: string, billingPeriodName: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByBillingPeriod(departmentId: string, billingPeriodName: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
 
 
     /**
@@ -2333,6 +2373,8 @@ export interface MarketplacesByEnrollmentAccounts {
      * billing period. Marketplaces are available via this API only for May 1, 2014
      * or later.
      *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] May be used to filter marketplaces by
@@ -2358,13 +2400,15 @@ export interface MarketplacesByEnrollmentAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+    listWithHttpOperationResponse(enrollmentAccountId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
      * Lists the marketplaces for a scope by enrollmentAccountId and current
      * billing period. Marketplaces are available via this API only for May 1, 2014
      * or later.
      *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] May be used to filter marketplaces by
@@ -2407,15 +2451,17 @@ export interface MarketplacesByEnrollmentAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
-    list(callback: ServiceCallback<models.MarketplacesListResult>): void;
-    list(options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    list(enrollmentAccountId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    list(enrollmentAccountId: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    list(enrollmentAccountId: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
 
 
     /**
      * Lists the marketplaces for a scope by billing period and
      * enrollmentAccountId. Marketplaces are available via this API only for May 1,
      * 2014 or later.
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -2444,12 +2490,14 @@ export interface MarketplacesByEnrollmentAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingPeriodWithHttpOperationResponse(billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+    listByBillingPeriodWithHttpOperationResponse(enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
      * Lists the marketplaces for a scope by billing period and
      * enrollmentAccountId. Marketplaces are available via this API only for May 1,
      * 2014 or later.
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -2495,9 +2543,9 @@ export interface MarketplacesByEnrollmentAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingPeriod(billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
-    listByBillingPeriod(billingPeriodName: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
-    listByBillingPeriod(billingPeriodName: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByBillingPeriod(enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByBillingPeriod(enrollmentAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByBillingPeriod(enrollmentAccountId: string, billingPeriodName: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
 
 
     /**
@@ -2637,6 +2685,8 @@ export interface GetBalancesByBillingAccount {
      * Gets the balances for a scope by billing period and billingAccountId.
      * Balances are available via this API only for May 1, 2014 or later.
      *
+     * @param {string} billingAccountId BillingAccount ID
+     *
      * @param {string} billingPeriodName Billing Period Name.
      *
      * @param {object} [options] Optional Parameters.
@@ -2650,11 +2700,13 @@ export interface GetBalancesByBillingAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    byBillingPeriodWithHttpOperationResponse(billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Balance>>;
+    byBillingPeriodWithHttpOperationResponse(billingAccountId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Balance>>;
 
     /**
      * Gets the balances for a scope by billing period and billingAccountId.
      * Balances are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -2685,9 +2737,9 @@ export interface GetBalancesByBillingAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    byBillingPeriod(billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Balance>;
-    byBillingPeriod(billingPeriodName: string, callback: ServiceCallback<models.Balance>): void;
-    byBillingPeriod(billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Balance>): void;
+    byBillingPeriod(billingAccountId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Balance>;
+    byBillingPeriod(billingAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.Balance>): void;
+    byBillingPeriod(billingAccountId: string, billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Balance>): void;
 }
 
 /**
@@ -4396,6 +4448,8 @@ export interface CostTagsOperations {
     /**
      * Get cost tags for a billing account.
      *
+     * @param {string} billingAccountId BillingAccount ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4407,11 +4461,13 @@ export interface CostTagsOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTags>>;
+    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTags>>;
 
     /**
      * Get cost tags for a billing account.
      *
+     * @param {string} billingAccountId BillingAccount ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4439,9 +4495,9 @@ export interface CostTagsOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTags>;
-    get(callback: ServiceCallback<models.CostTags>): void;
-    get(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTags>): void;
+    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTags>;
+    get(billingAccountId: string, callback: ServiceCallback<models.CostTags>): void;
+    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTags>): void;
 
 
     /**
@@ -4449,6 +4505,8 @@ export interface CostTagsOperations {
      * account. Update operation requires latest eTag to be set in the request
      * mandatorily. You may obtain the latest eTag by performing a get operation.
      * Create operation does not require eTag.
+     *
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {object} parameters Parameters supplied to the Create cost tags
      * operation.
@@ -4470,13 +4528,15 @@ export interface CostTagsOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(parameters: models.CostTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTags>>;
+    createOrUpdateWithHttpOperationResponse(billingAccountId: string, parameters: models.CostTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTags>>;
 
     /**
      * The operation to create or update cost tags assiciated with a billing
      * account. Update operation requires latest eTag to be set in the request
      * mandatorily. You may obtain the latest eTag by performing a get operation.
      * Create operation does not require eTag.
+     *
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {object} parameters Parameters supplied to the Create cost tags
      * operation.
@@ -4514,9 +4574,9 @@ export interface CostTagsOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(parameters: models.CostTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTags>;
-    createOrUpdate(parameters: models.CostTags, callback: ServiceCallback<models.CostTags>): void;
-    createOrUpdate(parameters: models.CostTags, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTags>): void;
+    createOrUpdate(billingAccountId: string, parameters: models.CostTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTags>;
+    createOrUpdate(billingAccountId: string, parameters: models.CostTags, callback: ServiceCallback<models.CostTags>): void;
+    createOrUpdate(billingAccountId: string, parameters: models.CostTags, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTags>): void;
 }
 
 /**
@@ -4531,6 +4591,8 @@ export interface TagsOperations {
     /**
      * Get all available tag keys for a billing account.
      *
+     * @param {string} billingAccountId BillingAccount ID
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4542,10 +4604,12 @@ export interface TagsOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Tags>>;
+    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Tags>>;
 
     /**
      * Get all available tag keys for a billing account.
+     *
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4574,7 +4638,7 @@ export interface TagsOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Tags>;
-    get(callback: ServiceCallback<models.Tags>): void;
-    get(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Tags>): void;
+    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Tags>;
+    get(billingAccountId: string, callback: ServiceCallback<models.Tags>): void;
+    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Tags>): void;
 }
