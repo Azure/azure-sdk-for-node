@@ -1294,6 +1294,140 @@ export interface FailoverGroupUpdate {
 
 /**
  * @class
+ * Initializes a new instance of the ResourceIdentity class.
+ * @constructor
+ * Azure Active Directory identity configuration for a resource.
+ *
+ * @member {uuid} [principalId] The Azure Active Directory principal id.
+ * @member {string} [type] The identity type. Set this to 'SystemAssigned' in
+ * order to automatically create and assign an Azure Active Directory principal
+ * for the resource. Possible values include: 'SystemAssigned'
+ * @member {uuid} [tenantId] The Azure Active Directory tenant id.
+ */
+export interface ResourceIdentity {
+  readonly principalId?: string;
+  type?: string;
+  readonly tenantId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Sku class.
+ * @constructor
+ * An ARM Resource SKU.
+ *
+ * @member {string} name The name of the SKU, typically, a letter + Number
+ * code, e.g. P3.
+ * @member {string} [tier] The tier of the particular SKU, e.g. Basic, Premium.
+ * @member {string} [size] Size of the particular SKU
+ * @member {string} [family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [capacity] Capacity of the particular SKU.
+ */
+export interface Sku {
+  name: string;
+  tier?: string;
+  size?: string;
+  family?: string;
+  capacity?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstance class.
+ * @constructor
+ * An Azure SQL managed instance.
+ *
+ * @member {object} [identity] The Azure Active Directory identity of the
+ * managed instance.
+ * @member {uuid} [identity.principalId] The Azure Active Directory principal
+ * id.
+ * @member {string} [identity.type] The identity type. Set this to
+ * 'SystemAssigned' in order to automatically create and assign an Azure Active
+ * Directory principal for the resource. Possible values include:
+ * 'SystemAssigned'
+ * @member {uuid} [identity.tenantId] The Azure Active Directory tenant id.
+ * @member {object} [sku] Managed instance sku
+ * @member {string} [sku.name] The name of the SKU, typically, a letter +
+ * Number code, e.g. P3.
+ * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
+ * Premium.
+ * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {string} [fullyQualifiedDomainName] The fully qualified domain name
+ * of the managed instance.
+ * @member {string} [administratorLogin] Administrator username for the managed
+ * instance. Can only be specified when the managed instance is being created
+ * (and is required for creation).
+ * @member {string} [administratorLoginPassword] The administrator login
+ * password (required for managed instance creation).
+ * @member {string} [subnetId] Subnet resource ID for the managed instance.
+ * @member {string} [state] The state of the managed instance.
+ * @member {string} [licenseType] The license type. Possible values are
+ * 'LicenseIncluded' and 'BasePrice'.
+ * @member {number} [vCores] The number of VCores.
+ * @member {number} [storageSizeInGB] The maximum storage size in GB.
+ */
+export interface ManagedInstance extends TrackedResource {
+  identity?: ResourceIdentity;
+  sku?: Sku;
+  readonly fullyQualifiedDomainName?: string;
+  administratorLogin?: string;
+  administratorLoginPassword?: string;
+  subnetId?: string;
+  readonly state?: string;
+  licenseType?: string;
+  vCores?: number;
+  storageSizeInGB?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstanceUpdate class.
+ * @constructor
+ * An update request for an Azure SQL Database managed instance.
+ *
+ * @member {object} [sku] Managed instance sku
+ * @member {string} [sku.name] The name of the SKU, typically, a letter +
+ * Number code, e.g. P3.
+ * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
+ * Premium.
+ * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {string} [fullyQualifiedDomainName] The fully qualified domain name
+ * of the managed instance.
+ * @member {string} [administratorLogin] Administrator username for the managed
+ * instance. Can only be specified when the managed instance is being created
+ * (and is required for creation).
+ * @member {string} [administratorLoginPassword] The administrator login
+ * password (required for managed instance creation).
+ * @member {string} [subnetId] Subnet resource ID for the managed instance.
+ * @member {string} [state] The state of the managed instance.
+ * @member {string} [licenseType] The license type. Possible values are
+ * 'LicenseIncluded' and 'BasePrice'.
+ * @member {number} [vCores] The number of VCores.
+ * @member {number} [storageSizeInGB] The maximum storage size in GB.
+ * @member {object} [tags] Resource tags.
+ */
+export interface ManagedInstanceUpdate {
+  sku?: Sku;
+  readonly fullyQualifiedDomainName?: string;
+  administratorLogin?: string;
+  administratorLoginPassword?: string;
+  subnetId?: string;
+  readonly state?: string;
+  licenseType?: string;
+  vCores?: number;
+  storageSizeInGB?: number;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * Display metadata associated with the operation.
@@ -1366,24 +1500,6 @@ export interface ServerKey extends ProxyResource {
   uri?: string;
   thumbprint?: string;
   creationDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceIdentity class.
- * @constructor
- * Azure Active Directory identity configuration for a resource.
- *
- * @member {uuid} [principalId] The Azure Active Directory principal id.
- * @member {string} [type] The identity type. Set this to 'SystemAssigned' in
- * order to automatically create and assign an Azure Active Directory principal
- * for the resource. Possible values include: 'SystemAssigned'
- * @member {uuid} [tenantId] The Azure Active Directory tenant id.
- */
-export interface ResourceIdentity {
-  readonly principalId?: string;
-  type?: string;
-  readonly tenantId?: string;
 }
 
 /**
@@ -1811,6 +1927,125 @@ export interface BackupLongTermRetentionPolicy extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the CompleteDatabaseRestoreDefinition class.
+ * @constructor
+ * Contains the information necessary to perform a complete database restore
+ * operation.
+ *
+ * @member {string} lastBackupName The last backup name to apply
+ */
+export interface CompleteDatabaseRestoreDefinition {
+  lastBackupName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedDatabase class.
+ * @constructor
+ * A managed database resource.
+ *
+ * @member {string} [collation] Collation of the managed database.
+ * @member {string} [status] Status for the database. Possible values include:
+ * 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
+ * @member {date} [creationDate] Creation date of the database.
+ * @member {date} [earliestRestorePoint] Earliest restore point in time for
+ * point in time restore.
+ * @member {date} [restorePointInTime] Conditional. If createMode is
+ * PointInTimeRestore, this value is required. Specifies the point in time
+ * (ISO8601 format) of the source database that will be restored to create the
+ * new database.
+ * @member {string} [defaultSecondaryLocation] Geo paired region.
+ * @member {string} [catalogCollation] Collation of the metadata catalog.
+ * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
+ * @member {string} [createMode] Managed database create mode.
+ * PointInTimeRestore: Create a database by restoring a point in time backup of
+ * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+ * PointInTime must be specified. RestoreExternalBackup: Create a database by
+ * restoring from external backup files. Collation, StorageContainerUri and
+ * StorageContainerSasToken must be specified. Possible values include:
+ * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+ * @member {string} [storageContainerUri] Conditional. If createMode is
+ * RestoreExternalBackup, this value is required. Specifies the uri of the
+ * storage container where backups for this restore are stored.
+ * @member {string} [sourceDatabaseId] The resource identifier of the source
+ * database associated with create operation of this database.
+ * @member {string} [storageContainerSasToken] Conditional. If createMode is
+ * RestoreExternalBackup, this value is required. Specifies the storage
+ * container sas token.
+ * @member {string} [failoverGroupId] Instance Failover Group resource
+ * identifier that this managed database belongs to.
+ */
+export interface ManagedDatabase extends TrackedResource {
+  collation?: string;
+  readonly status?: string;
+  readonly creationDate?: Date;
+  readonly earliestRestorePoint?: Date;
+  restorePointInTime?: Date;
+  readonly defaultSecondaryLocation?: string;
+  catalogCollation?: string;
+  createMode?: string;
+  storageContainerUri?: string;
+  sourceDatabaseId?: string;
+  storageContainerSasToken?: string;
+  readonly failoverGroupId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedDatabaseUpdate class.
+ * @constructor
+ * An managed database update.
+ *
+ * @member {string} [collation] Collation of the managed database.
+ * @member {string} [status] Status for the database. Possible values include:
+ * 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
+ * @member {date} [creationDate] Creation date of the database.
+ * @member {date} [earliestRestorePoint] Earliest restore point in time for
+ * point in time restore.
+ * @member {date} [restorePointInTime] Conditional. If createMode is
+ * PointInTimeRestore, this value is required. Specifies the point in time
+ * (ISO8601 format) of the source database that will be restored to create the
+ * new database.
+ * @member {string} [defaultSecondaryLocation] Geo paired region.
+ * @member {string} [catalogCollation] Collation of the metadata catalog.
+ * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
+ * @member {string} [createMode] Managed database create mode.
+ * PointInTimeRestore: Create a database by restoring a point in time backup of
+ * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+ * PointInTime must be specified. RestoreExternalBackup: Create a database by
+ * restoring from external backup files. Collation, StorageContainerUri and
+ * StorageContainerSasToken must be specified. Possible values include:
+ * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+ * @member {string} [storageContainerUri] Conditional. If createMode is
+ * RestoreExternalBackup, this value is required. Specifies the uri of the
+ * storage container where backups for this restore are stored.
+ * @member {string} [sourceDatabaseId] The resource identifier of the source
+ * database associated with create operation of this database.
+ * @member {string} [storageContainerSasToken] Conditional. If createMode is
+ * RestoreExternalBackup, this value is required. Specifies the storage
+ * container sas token.
+ * @member {string} [failoverGroupId] Instance Failover Group resource
+ * identifier that this managed database belongs to.
+ * @member {object} [tags] Resource tags.
+ */
+export interface ManagedDatabaseUpdate {
+  collation?: string;
+  readonly status?: string;
+  readonly creationDate?: Date;
+  readonly earliestRestorePoint?: Date;
+  restorePointInTime?: Date;
+  readonly defaultSecondaryLocation?: string;
+  catalogCollation?: string;
+  createMode?: string;
+  storageContainerUri?: string;
+  sourceDatabaseId?: string;
+  storageContainerSasToken?: string;
+  readonly failoverGroupId?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the AutomaticTuningServerOptions class.
  * @constructor
  * Automatic tuning properties for individual advisors.
@@ -2080,28 +2315,6 @@ export interface MaxSizeRangeCapability {
 export interface PerformanceLevelCapability {
   readonly value?: number;
   readonly unit?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Sku class.
- * @constructor
- * An ARM Resource SKU.
- *
- * @member {string} name The name of the SKU, typically, a letter + Number
- * code, e.g. P3.
- * @member {string} [tier] The tier of the particular SKU, e.g. Basic, Premium.
- * @member {string} [size] Size of the particular SKU
- * @member {string} [family] If the service has different generations of
- * hardware, for the same SKU, then that can be captured here.
- * @member {number} [capacity] Capacity of the particular SKU.
- */
-export interface Sku {
-  name: string;
-  tier?: string;
-  size?: string;
-  family?: string;
-  capacity?: number;
 }
 
 /**
@@ -2853,6 +3066,109 @@ export interface ElasticPoolUpdate {
   tags?: { [propertyName: string]: string };
 }
 
+/**
+ * @class
+ * Initializes a new instance of the InstanceFailoverGroupReadWriteEndpoint class.
+ * @constructor
+ * Read-write endpoint of the failover group instance.
+ *
+ * @member {string} failoverPolicy Failover policy of the read-write endpoint
+ * for the failover group. If failoverPolicy is Automatic then
+ * failoverWithDataLossGracePeriodMinutes is required. Possible values include:
+ * 'Manual', 'Automatic'
+ * @member {number} [failoverWithDataLossGracePeriodMinutes] Grace period
+ * before failover with data loss is attempted for the read-write endpoint. If
+ * failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is
+ * required.
+ */
+export interface InstanceFailoverGroupReadWriteEndpoint {
+  failoverPolicy: string;
+  failoverWithDataLossGracePeriodMinutes?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InstanceFailoverGroupReadOnlyEndpoint class.
+ * @constructor
+ * Read-only endpoint of the failover group instance.
+ *
+ * @member {string} [failoverPolicy] Failover policy of the read-only endpoint
+ * for the failover group. Possible values include: 'Disabled', 'Enabled'
+ */
+export interface InstanceFailoverGroupReadOnlyEndpoint {
+  failoverPolicy?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PartnerRegionInfo class.
+ * @constructor
+ * Partner region information for the failover group.
+ *
+ * @member {string} [location] Geo location of the partner managed instances.
+ * @member {string} [replicationRole] Replication role of the partner managed
+ * instances. Possible values include: 'Primary', 'Secondary'
+ */
+export interface PartnerRegionInfo {
+  location?: string;
+  readonly replicationRole?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedInstancePairInfo class.
+ * @constructor
+ * Pairs of Managed Instances in the failover group.
+ *
+ * @member {string} [primaryManagedInstanceId] Id of Primary Managed Instance
+ * in pair.
+ * @member {string} [partnerManagedInstanceId] Id of Partner Managed Instance
+ * in pair.
+ */
+export interface ManagedInstancePairInfo {
+  primaryManagedInstanceId?: string;
+  partnerManagedInstanceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InstanceFailoverGroup class.
+ * @constructor
+ * An instance failover group.
+ *
+ * @member {object} readWriteEndpoint Read-write endpoint of the failover group
+ * instance.
+ * @member {string} [readWriteEndpoint.failoverPolicy] Failover policy of the
+ * read-write endpoint for the failover group. If failoverPolicy is Automatic
+ * then failoverWithDataLossGracePeriodMinutes is required. Possible values
+ * include: 'Manual', 'Automatic'
+ * @member {number} [readWriteEndpoint.failoverWithDataLossGracePeriodMinutes]
+ * Grace period before failover with data loss is attempted for the read-write
+ * endpoint. If failoverPolicy is Automatic then
+ * failoverWithDataLossGracePeriodMinutes is required.
+ * @member {object} [readOnlyEndpoint] Read-only endpoint of the failover group
+ * instance.
+ * @member {string} [readOnlyEndpoint.failoverPolicy] Failover policy of the
+ * read-only endpoint for the failover group. Possible values include:
+ * 'Disabled', 'Enabled'
+ * @member {string} [replicationRole] Local replication role of the failover
+ * group instance. Possible values include: 'Primary', 'Secondary'
+ * @member {string} [replicationState] Replication state of the failover group
+ * instance.
+ * @member {array} partnerRegions Partner region information for the failover
+ * group.
+ * @member {array} managedInstancePairs List of managed instance pairs in the
+ * failover group.
+ */
+export interface InstanceFailoverGroup extends ProxyResource {
+  readWriteEndpoint: InstanceFailoverGroupReadWriteEndpoint;
+  readOnlyEndpoint?: InstanceFailoverGroupReadOnlyEndpoint;
+  readonly replicationRole?: string;
+  readonly replicationState?: string;
+  partnerRegions: PartnerRegionInfo[];
+  managedInstancePairs: ManagedInstancePairInfo[];
+}
+
 
 /**
  * @class
@@ -3107,6 +3423,18 @@ export interface FailoverGroupListResult extends Array<FailoverGroup> {
 
 /**
  * @class
+ * Initializes a new instance of the ManagedInstanceListResult class.
+ * @constructor
+ * A list of managed instances.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedInstanceListResult extends Array<ManagedInstance> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationListResult class.
  * @constructor
  * Result of the request to list SQL operations.
@@ -3251,6 +3579,18 @@ export interface LongTermRetentionBackupListResult extends Array<LongTermRetenti
 
 /**
  * @class
+ * Initializes a new instance of the ManagedDatabaseListResult class.
+ * @constructor
+ * A list of managed databases.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ServerDnsAliasListResult class.
  * @constructor
  * A list of server DNS aliases.
@@ -3294,5 +3634,17 @@ export interface DatabaseOperationListResult extends Array<DatabaseOperation> {
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ElasticPoolOperationListResult extends Array<ElasticPoolOperation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InstanceFailoverGroupListResult class.
+ * @constructor
+ * A list of instance failover groups.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface InstanceFailoverGroupListResult extends Array<InstanceFailoverGroup> {
   readonly nextLink?: string;
 }
