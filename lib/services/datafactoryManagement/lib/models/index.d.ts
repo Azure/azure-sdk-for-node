@@ -2927,8 +2927,6 @@ export interface AzureMLLinkedService extends LinkedService {
  *
  * @member {object} server Server name for connection. Type: string (or
  * Expression with resultType string).
- * @member {object} [schema] Schema name for connection. Type: string (or
- * Expression with resultType string).
  * @member {string} [authenticationType] AuthenticationType to be used for
  * connection. Possible values include: 'Basic', 'Windows'
  * @member {object} [username] Username for authentication. Type: string (or
@@ -2941,7 +2939,6 @@ export interface AzureMLLinkedService extends LinkedService {
  */
 export interface TeradataLinkedService extends LinkedService {
   server: any;
-  schema?: any;
   authenticationType?: string;
   username?: any;
   password?: SecretBase;
@@ -2958,8 +2955,6 @@ export interface TeradataLinkedService extends LinkedService {
  * Expression with resultType string).
  * @member {object} database Database name for connection. Type: string (or
  * Expression with resultType string).
- * @member {object} [schema] Schema name for connection. Type: string (or
- * Expression with resultType string).
  * @member {string} [authenticationType] AuthenticationType to be used for
  * connection. Possible values include: 'Basic'
  * @member {object} [username] Username for authentication. Type: string (or
@@ -2973,7 +2968,6 @@ export interface TeradataLinkedService extends LinkedService {
 export interface Db2LinkedService extends LinkedService {
   server: any;
   database: any;
-  schema?: any;
   authenticationType?: string;
   username?: any;
   password?: SecretBase;
@@ -3018,26 +3012,14 @@ export interface SybaseLinkedService extends LinkedService {
  * @constructor
  * Linked service for PostgreSQL data source.
  *
- * @member {object} server Server name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} database Database name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} [schema] Schema name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} [username] Username for authentication. Type: string (or
- * Expression with resultType string).
- * @member {object} [password] Password for authentication.
- * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} connectionString The connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface PostgreSqlLinkedService extends LinkedService {
-  server: any;
-  database: any;
-  schema?: any;
-  username?: any;
-  password?: SecretBase;
+  connectionString: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -3047,26 +3029,14 @@ export interface PostgreSqlLinkedService extends LinkedService {
  * @constructor
  * Linked service for MySQL data source.
  *
- * @member {object} server Server name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} database Database name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} [schema] Schema name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} [username] Username for authentication. Type: string (or
- * Expression with resultType string).
- * @member {object} [password] Password for authentication.
- * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} connectionString The connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface MySqlLinkedService extends LinkedService {
-  server: any;
-  database: any;
-  schema?: any;
-  username?: any;
-  password?: SecretBase;
+  connectionString: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -4271,6 +4241,20 @@ export interface AmazonS3Dataset extends Dataset {
 
 /**
  * @class
+ * Initializes a new instance of the TumblingWindowDependency class.
+ * @constructor
+ * Tumbling Window dependency information.
+ *
+ * @member {string} type Reference type 'TriggerReference' for Tumbling Window.
+ * @member {string} referenceName Trigger reference name.
+ */
+export interface TumblingWindowDependency {
+  type: string;
+  referenceName: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RetryPolicy class.
  * @constructor
  * Execution policy for an activity.
@@ -4323,6 +4307,7 @@ export interface RetryPolicy {
  * minimum: 0.
  * @member {number} [retryPolicy.intervalInSeconds] Interval between retries in
  * seconds. Default is 30.
+ * @member {array} [dependsOn] Tumbling Window depends on condition.
  */
 export interface TumblingWindowTrigger extends Trigger {
   pipelineProperty: TriggerPipelineReference;
@@ -4333,6 +4318,7 @@ export interface TumblingWindowTrigger extends Trigger {
   delay?: any;
   maxConcurrency: number;
   retryPolicy?: RetryPolicy;
+  dependsOn?: TumblingWindowDependency[];
 }
 
 /**
@@ -5646,6 +5632,35 @@ export interface CustomActivity extends ExecutionActivity {
 
 /**
  * @class
+ * Initializes a new instance of the SSISPropertyOverride class.
+ * @constructor
+ * SSIS property override.
+ *
+ * @member {object} value SSIS package property override value. Type: string
+ * (or Expression with resultType string).
+ * @member {boolean} [isSensitive] Whether SSIS package property override value
+ * is sensitive data. Value will be encrypted in SSISDB if it is true
+ */
+export interface SSISPropertyOverride {
+  value: any;
+  isSensitive?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SSISExecutionParameter class.
+ * @constructor
+ * SSIS execution parameter.
+ *
+ * @member {object} value SSIS package execution parameter value. Type: string
+ * (or Expression with resultType string).
+ */
+export interface SSISExecutionParameter {
+  value: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SSISPackageLocation class.
  * @constructor
  * SSIS package location.
@@ -5667,12 +5682,22 @@ export interface SSISPackageLocation {
  * @member {string} [runtime] Specifies the runtime to execute SSIS package.
  * Possible values include: 'x64', 'x86'
  * @member {string} [loggingLevel] The logging level of SSIS package execution.
- * @member {string} [environmentPath] The environment path to execution the
- * SSIS package.
+ * @member {string} [environmentPath] The environment path to execute the SSIS
+ * package.
  * @member {object} connectVia The integration runtime reference.
  * @member {string} [connectVia.referenceName] Reference integration runtime
  * name.
  * @member {object} [connectVia.parameters] Arguments for integration runtime.
+ * @member {object} [projectParameters] The project level parameters to execute
+ * the SSIS package.
+ * @member {object} [packageParameters] The package level parameters to execute
+ * the SSIS package.
+ * @member {object} [projectConnectionManagers] The project level connection
+ * managers to execute the SSIS package.
+ * @member {object} [packageConnectionManagers] The package level connection
+ * managers to execute the SSIS package.
+ * @member {object} [propertyOverrides] The property overrides to execute the
+ * SSIS package.
  */
 export interface ExecuteSSISPackageActivity extends ExecutionActivity {
   packageLocation: SSISPackageLocation;
@@ -5680,6 +5705,11 @@ export interface ExecuteSSISPackageActivity extends ExecutionActivity {
   loggingLevel?: string;
   environmentPath?: string;
   connectVia: IntegrationRuntimeReference;
+  projectParameters?: { [propertyName: string]: SSISExecutionParameter };
+  packageParameters?: { [propertyName: string]: SSISExecutionParameter };
+  projectConnectionManagers?: { [propertyName: string]: { [propertyName: string]: SSISExecutionParameter } };
+  packageConnectionManagers?: { [propertyName: string]: { [propertyName: string]: SSISExecutionParameter } };
+  propertyOverrides?: { [propertyName: string]: SSISPropertyOverride };
 }
 
 /**
