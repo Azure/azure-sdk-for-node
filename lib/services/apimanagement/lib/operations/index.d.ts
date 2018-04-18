@@ -5365,7 +5365,7 @@ export interface ApiIssue {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    headWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Gets the entity state (Etag) version of the Issue for an API specified by
@@ -5407,9 +5407,9 @@ export interface ApiIssue {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, callback: ServiceCallback<void>): void;
-    head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5864,7 +5864,7 @@ export interface ApiIssueComment {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    headWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Gets the entity state (Etag) version of the issue Comment for an API
@@ -5909,9 +5909,9 @@ export interface ApiIssueComment {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, callback: ServiceCallback<void>): void;
-    head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -6371,7 +6371,7 @@ export interface ApiIssueAttachment {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    headWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Gets the entity state (Etag) version of the issue Attachment for an API
@@ -6416,9 +6416,9 @@ export interface ApiIssueAttachment {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, callback: ServiceCallback<void>): void;
-    head(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
