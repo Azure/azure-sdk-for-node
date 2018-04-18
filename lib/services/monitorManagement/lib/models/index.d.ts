@@ -2241,6 +2241,19 @@ export interface Schedule {
 
 /**
  * @class
+ * Initializes a new instance of the Sku1 class.
+ * @constructor
+ * SKU of rule
+ *
+ * @member {string} [name] The name of the SKU (L1, L2, L3). Possible values
+ * include: 'L1', 'L2', 'L3'
+ */
+export interface Sku1 {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the LogSearchRuleResource class.
  * @constructor
  * The Log Search Rule resource.
@@ -2249,8 +2262,6 @@ export interface Schedule {
  * @member {string} [enabled] The flag which indicates whether the Log Search
  * rule is enabled. Value should be true or false. Possible values include:
  * 'true', 'false'
- * @member {string} [skuType] SKU Type {L1, L2, L3}. Possible values include:
- * 'L1', 'L2', 'L3'
  * @member {date} [lastUpdatedTime] Last time the rule was updated in IS08601
  * format.
  * @member {string} [provisioningState] Provisioning state of the
@@ -2275,16 +2286,19 @@ export interface Schedule {
  * @member {string} [action.actionGroupId] the id of the action group to use.
  * @member {object} [action.webhookProperties]
  * @member {string} [action.odatatype] Polymorphic Discriminator
+ * @member {object} [sku] Sku of the Log Search Rule
+ * @member {string} [sku.name] The name of the SKU (L1, L2, L3). Possible
+ * values include: 'L1', 'L2', 'L3'
  */
 export interface LogSearchRuleResource extends Resource {
   description?: string;
   enabled?: string;
-  skuType?: string;
   readonly lastUpdatedTime?: Date;
   readonly provisioningState?: string;
   source: Source;
   schedule: Schedule;
   action: Action;
+  sku?: Sku1;
 }
 
 /**

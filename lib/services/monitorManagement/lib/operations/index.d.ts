@@ -4310,9 +4310,6 @@ export interface ScheduledQueryRules {
      * Log Search rule is enabled. Value should be true or false. Possible values
      * include: 'true', 'false'
      *
-     * @param {string} [parameters.skuType] SKU Type {L1, L2, L3}. Possible values
-     * include: 'L1', 'L2', 'L3'
-     *
      * @param {object} parameters.source Data Source against which rule will Query
      * Data
      *
@@ -4347,6 +4344,11 @@ export interface ScheduledQueryRules {
      * @param {object} [parameters.action.webhookProperties]
      *
      * @param {string} parameters.action.odatatype Polymorphic Discriminator
+     *
+     * @param {object} [parameters.sku] Sku of the Log Search Rule
+     *
+     * @param {string} [parameters.sku.name] The name of the SKU (L1, L2, L3).
+     * Possible values include: 'L1', 'L2', 'L3'
      *
      * @param {string} parameters.location Resource location
      *
@@ -4381,9 +4383,6 @@ export interface ScheduledQueryRules {
      * Log Search rule is enabled. Value should be true or false. Possible values
      * include: 'true', 'false'
      *
-     * @param {string} [parameters.skuType] SKU Type {L1, L2, L3}. Possible values
-     * include: 'L1', 'L2', 'L3'
-     *
      * @param {object} parameters.source Data Source against which rule will Query
      * Data
      *
@@ -4418,6 +4417,11 @@ export interface ScheduledQueryRules {
      * @param {object} [parameters.action.webhookProperties]
      *
      * @param {string} parameters.action.odatatype Polymorphic Discriminator
+     *
+     * @param {object} [parameters.sku] Sku of the Log Search Rule
+     *
+     * @param {string} [parameters.sku.name] The name of the SKU (L1, L2, L3).
+     * Possible values include: 'L1', 'L2', 'L3'
      *
      * @param {string} parameters.location Resource location
      *
