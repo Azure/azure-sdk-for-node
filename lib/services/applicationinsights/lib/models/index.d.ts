@@ -629,12 +629,16 @@ export interface ApplicationInsightsComponent extends Resource {
  *
  * @member {string} [column] The column of the table over which the given query
  * should run
- * @member {string} [filter] A query to to run over the provided table and
- * column to purge the corresponding data.
+ * @member {string} [operator] A query operator to evaluate over the provided
+ * column and value(s).
+ * @member {object} [value] the value for the operator to function over. This
+ * can be a number (e.g., > 100), a string (timestamp >= '2017-09-01') or array
+ * of values.
  */
 export interface ComponentPurgeBodyFilters {
   column?: string;
-  filter?: string;
+  operator?: string;
+  value?: any;
 }
 
 /**
@@ -874,6 +878,57 @@ export interface WebTest extends Resource {
   locations: WebTestGeolocation[];
   configuration?: WebTestPropertiesConfiguration;
   readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentAnalyticsItemProperties class.
+ * @constructor
+ * A set of properties that can be defined in the context of a specific item
+ * type. Each type may have its own properties.
+ *
+ * @member {string} [functionAlias] A function alias, used when the type of the
+ * item is Function
+ */
+export interface ApplicationInsightsComponentAnalyticsItemProperties {
+  functionAlias?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentAnalyticsItem class.
+ * @constructor
+ * Properties that define an Analytics item that is associated to an
+ * Application Insights component.
+ *
+ * @member {string} [id] Internally assigned unique id of the item definition.
+ * @member {string} [name] The user-defined name of the item.
+ * @member {string} [content] The content of this item
+ * @member {string} [version] This instance's version of the data model. This
+ * can change as new features are added.
+ * @member {string} [scope] Enum indicating if this item definition is owned by
+ * a specific user or is shared between all users with access to the
+ * Application Insights component. Possible values include: 'shared', 'user'
+ * @member {string} [type] Enum indicating the type of the Analytics item.
+ * Possible values include: 'query', 'function', 'folder', 'recent'
+ * @member {string} [timeCreated] Date and time in UTC when this item was
+ * created.
+ * @member {string} [timeModified] Date and time in UTC of the last
+ * modification that was made to this item.
+ * @member {object} [properties]
+ * @member {string} [properties.functionAlias] A function alias, used when the
+ * type of the item is Function
+ */
+export interface ApplicationInsightsComponentAnalyticsItem {
+  id?: string;
+  name?: string;
+  content?: string;
+  readonly version?: string;
+  scope?: string;
+  type?: string;
+  readonly timeCreated?: string;
+  readonly timeModified?: string;
+  properties?: ApplicationInsightsComponentAnalyticsItemProperties;
 }
 
 /**
