@@ -672,24 +672,23 @@ export interface Factories {
 
 /**
  * @class
- * ConfigureFactoryRepo
+ * ConfigureRepo
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataFactoryManagementClient.
  */
-export interface ConfigureFactoryRepo {
+export interface ConfigureRepo {
 
 
     /**
      * Updates a factory's repo information.
      *
-     * @param {string} locationId The location identifier.
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
      *
      * @param {object} factoryRepoUpdate Update factory repo request definition.
      *
      * @param {string} [factoryRepoUpdate.factoryId] The factory id.
-     *
-     * @param {string} [factoryRepoUpdate.resourceGroupName] The resource group
-     * name.
      *
      * @param {object} [factoryRepoUpdate.vstsConfiguration] VSTS repo information
      * of the factory.
@@ -726,19 +725,18 @@ export interface ConfigureFactoryRepo {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
 
     /**
      * Updates a factory's repo information.
      *
-     * @param {string} locationId The location identifier.
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
      *
      * @param {object} factoryRepoUpdate Update factory repo request definition.
      *
      * @param {string} [factoryRepoUpdate.factoryId] The factory id.
-     *
-     * @param {string} [factoryRepoUpdate.resourceGroupName] The resource group
-     * name.
      *
      * @param {object} [factoryRepoUpdate.vstsConfiguration] VSTS repo information
      * of the factory.
@@ -791,9 +789,9 @@ export interface ConfigureFactoryRepo {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
-    update(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, callback: ServiceCallback<models.Factory>): void;
-    update(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
+    update(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
+    update(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, callback: ServiceCallback<models.Factory>): void;
+    update(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
 }
 
 /**

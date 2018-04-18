@@ -615,7 +615,6 @@ export interface ErrorResponse {
  * Factory's VSTS repo information.
  *
  * @member {string} [factoryId] The factory id.
- * @member {string} [resourceGroupName] The resource group name.
  * @member {object} [vstsConfiguration] VSTS repo information of the factory.
  * @member {string} [vstsConfiguration.accountName] VSTS account name.
  * @member {string} [vstsConfiguration.projectName] VSTS project name.
@@ -628,7 +627,6 @@ export interface ErrorResponse {
  */
 export interface FactoryRepoUpdate {
   factoryId?: string;
-  resourceGroupName?: string;
   vstsConfiguration?: FactoryVSTSConfiguration;
 }
 
