@@ -3162,6 +3162,30 @@ export interface Epoch {
 
 /**
  * @class
+ * Initializes a new instance of the BackupEpoch class.
+ * @constructor
+ * An Epoch is a configuration number for the partition as a whole. When the
+ * configuration of the replica set changes, for example when the Primary
+ * replica changes, the operations that are replicated from the new Primary
+ * replica are said to be a new Epoch from the ones which were sent by the old
+ * Primary replica.
+ *
+ *
+ * @member {string} [configurationNumber] The current configuration number of
+ * this Epoch. The configuration number is an increasing value that is updated
+ * whenever the configuration of this replica set changes.
+ * @member {string} [dataLossNumber] The current dataloss number of this Epoch.
+ * The data loss number property is an increasing value which is updated
+ * whenever data loss is suspected, as when loss of a quorum of replicas in the
+ * replica set that includes the Primary replica.
+ */
+export interface BackupEpoch {
+  configurationNumber?: string;
+  dataLossNumber?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EventHealthEvaluation class.
  * @constructor
  * Represents health evaluation of a HealthEvent that was reported on the
@@ -4823,7 +4847,7 @@ export interface PartitionsHealthEvaluation extends HealthEvaluation {
  * created. The partition ID is unique and does not change for the lifetime of
  * the service. If the same service was deleted and recreated the IDs of its
  * partitions would be different.
- * @member {string} replicaId Id of a stateful service replica. ReplicaId is
+ * @member {number} replicaId Id of a stateful service replica. ReplicaId is
  * used by Service Fabric to uniquely identify a replica of a partition. It is
  * unique within a partition and does not change for the lifetime of the
  * replica. If a replica gets dropped and another replica gets created on the
@@ -4833,7 +4857,7 @@ export interface PartitionsHealthEvaluation extends HealthEvaluation {
  */
 export interface ReplicaEvent extends FabricEvent {
   partitionId: string;
-  replicaId: string;
+  replicaId: number;
 }
 
 /**
@@ -5169,6 +5193,35 @@ export interface ServicesHealthEvaluation extends HealthEvaluation {
 
 /**
  * @class
+ * Initializes a new instance of the ServiceLoadMetricDescription class.
+ * @constructor
+ * Specifies a metric to load balance a service during runtime.
+ *
+ * @member {string} name The name of the metric. If the service chooses to
+ * report load during runtime, the load metric name should match the name that
+ * is specified in Name exactly. Note that metric names are case sensitive.
+ * @member {string} [weight] The service load metric relative weight, compared
+ * to other metrics configured for this service, as a number. Possible values
+ * include: 'Zero', 'Low', 'Medium', 'High'
+ * @member {number} [primaryDefaultLoad] Used only for Stateful services. The
+ * default amount of load, as a number, that this service creates for this
+ * metric when it is a Primary replica.
+ * @member {number} [secondaryDefaultLoad] Used only for Stateful services. The
+ * default amount of load, as a number, that this service creates for this
+ * metric when it is a Secondary replica.
+ * @member {number} [defaultLoad] Used only for Stateless services. The default
+ * amount of load, as a number, that this service creates for this metric.
+ */
+export interface ServiceLoadMetricDescription {
+  name: string;
+  weight?: string;
+  primaryDefaultLoad?: number;
+  secondaryDefaultLoad?: number;
+  defaultLoad?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ServiceTypeExtensionDescription class.
  * @constructor
  * Describes extension of a service type defined in the service manifest.
@@ -5195,6 +5248,8 @@ export interface ServiceTypeExtensionDescription {
  * the service manifest.
  * @member {string} [placementConstraints] The placement constraint to be used
  * when instantiating this service in a Service Fabric cluster.
+ * @member {array} [loadMetrics] The service load metrics is given as an array
+ * of ServiceLoadMetricDescription objects.
  * @member {array} [servicePlacementPolicies] List of service placement policy
  * descriptions.
  * @member {array} [extensions] List of service type extensions.
@@ -5204,6 +5259,7 @@ export interface ServiceTypeDescription {
   isStateful?: boolean;
   serviceTypeName?: string;
   placementConstraints?: string;
+  loadMetrics?: ServiceLoadMetricDescription[];
   servicePlacementPolicies?: ServicePlacementPolicyDescription[];
   extensions?: ServiceTypeExtensionDescription[];
   kind: string;
@@ -5228,6 +5284,8 @@ export interface ServiceTypeDescription {
  * @member {string} [serviceTypeDescription.placementConstraints] The placement
  * constraint to be used when instantiating this service in a Service Fabric
  * cluster.
+ * @member {array} [serviceTypeDescription.loadMetrics] The service load
+ * metrics is given as an array of ServiceLoadMetricDescription objects.
  * @member {array} [serviceTypeDescription.servicePlacementPolicies] List of
  * service placement policy descriptions.
  * @member {array} [serviceTypeDescription.extensions] List of service type
@@ -7966,35 +8024,6 @@ export interface ServiceCorrelationDescription {
 
 /**
  * @class
- * Initializes a new instance of the ServiceLoadMetricDescription class.
- * @constructor
- * Specifies a metric to load balance a service during runtime.
- *
- * @member {string} name The name of the metric. If the service chooses to
- * report load during runtime, the load metric name should match the name that
- * is specified in Name exactly. Note that metric names are case sensitive.
- * @member {string} [weight] The service load metric relative weight, compared
- * to other metrics configured for this service, as a number. Possible values
- * include: 'Zero', 'Low', 'Medium', 'High'
- * @member {number} [primaryDefaultLoad] Used only for Stateful services. The
- * default amount of load, as a number, that this service creates for this
- * metric when it is a Primary replica.
- * @member {number} [secondaryDefaultLoad] Used only for Stateful services. The
- * default amount of load, as a number, that this service creates for this
- * metric when it is a Secondary replica.
- * @member {number} [defaultLoad] Used only for Stateless services. The default
- * amount of load, as a number, that this service creates for this metric.
- */
-export interface ServiceLoadMetricDescription {
-  name: string;
-  weight?: string;
-  primaryDefaultLoad?: number;
-  secondaryDefaultLoad?: number;
-  defaultLoad?: number;
-}
-
-/**
- * @class
  * Initializes a new instance of the PartitionSchemeDescription class.
  * @constructor
  * Describes how the service is partitioned.
@@ -8041,10 +8070,10 @@ export interface SingletonPartitionSchemeDescription extends PartitionSchemeDesc
  * @member {number} count The number of partitions.
  * @member {string} lowKey String indicating the lower bound of the partition
  * key range that
- * should be split between the partition ‘Count’
+ * should be split between the partitions.
  * @member {string} highKey String indicating the upper bound of the partition
  * key range that
- * should be split between the partition ‘Count’
+ * should be split between the partitions.
  */
 export interface UniformInt64RangePartitionSchemeDescription extends PartitionSchemeDescription {
   count: number;
@@ -8922,12 +8951,12 @@ export interface FileInfo {
  *
  * @member {string} [storeRelativePath] The remote location within image store.
  * This path is relative to the image store root.
- * @member {number} [fileCount] The number of files from within the image store
+ * @member {string} [fileCount] The number of files from within the image store
  * folder.
  */
 export interface FolderInfo {
   storeRelativePath?: string;
-  fileCount?: number;
+  fileCount?: string;
 }
 
 /**
@@ -10163,11 +10192,11 @@ export interface RestorePartitionDescription {
  * @member {date} [timeStampUtc] Timestamp when operation succeeded or failed.
  * @member {object} [restoredEpoch] Describes the epoch at which the partition
  * is restored.
- * @member {string} [restoredEpoch.configurationVersion] The current
+ * @member {string} [restoredEpoch.configurationNumber] The current
  * configuration number of this Epoch. The configuration number is an
  * increasing value that is updated whenever the configuration of this replica
  * set changes.
- * @member {string} [restoredEpoch.dataLossVersion] The current dataloss number
+ * @member {string} [restoredEpoch.dataLossNumber] The current dataloss number
  * of this Epoch. The data loss number property is an increasing value which is
  * updated whenever data loss is suspected, as when loss of a quorum of
  * replicas in the replica set that includes the Primary replica.
@@ -10328,7 +10357,7 @@ export interface RestorePartitionDescription {
 export interface RestoreProgressInfo {
   restoreState?: string;
   timeStampUtc?: Date;
-  restoredEpoch?: Epoch;
+  restoredEpoch?: BackupEpoch;
   restoredLsn?: string;
   failureError?: FabricErrorError;
 }
@@ -10379,11 +10408,11 @@ export interface BackupPartitionDescription {
  * . Possible values include: 'Invalid', 'Full', 'Incremental'
  * @member {object} [epochOfLastBackupRecord] Epoch of the last record in this
  * backup.
- * @member {string} [epochOfLastBackupRecord.configurationVersion] The current
+ * @member {string} [epochOfLastBackupRecord.configurationNumber] The current
  * configuration number of this Epoch. The configuration number is an
  * increasing value that is updated whenever the configuration of this replica
  * set changes.
- * @member {string} [epochOfLastBackupRecord.dataLossVersion] The current
+ * @member {string} [epochOfLastBackupRecord.dataLossNumber] The current
  * dataloss number of this Epoch. The data loss number property is an
  * increasing value which is updated whenever data loss is suspected, as when
  * loss of a quorum of replicas in the replica set that includes the Primary
@@ -10552,7 +10581,7 @@ export interface BackupInfo {
   partitionInformation?: PartitionInformation;
   backupLocation?: string;
   backupType?: string;
-  epochOfLastBackupRecord?: Epoch;
+  epochOfLastBackupRecord?: BackupEpoch;
   lsnOfLastBackupRecord?: string;
   creationTimeUtc?: Date;
   failureError?: FabricErrorError;
@@ -10650,7 +10679,8 @@ export interface FrequencyBasedBackupScheduleDescription extends BackupScheduleD
  * is weekly.
  * @member {array} runTimes Represents the list of exact time during the day in
  * ISO8601 format. Like '19:00:00' will represent '7PM' during the day. Date
- * specified along with time will be ignored.
+ * specified along with time will be ignored.In the examples, date is also
+ * specified with time but the date will always be ignored.
  */
 export interface TimeBasedBackupScheduleDescription extends BackupScheduleDescription {
   scheduleFrequencyType: string;
@@ -10675,11 +10705,11 @@ export interface TimeBasedBackupScheduleDescription extends BackupScheduleDescri
  * the newly created backup.
  * @member {object} [epochOfLastBackupRecord] Specifies the epoch of the last
  * record included in backup.
- * @member {string} [epochOfLastBackupRecord.configurationVersion] The current
+ * @member {string} [epochOfLastBackupRecord.configurationNumber] The current
  * configuration number of this Epoch. The configuration number is an
  * increasing value that is updated whenever the configuration of this replica
  * set changes.
- * @member {string} [epochOfLastBackupRecord.dataLossVersion] The current
+ * @member {string} [epochOfLastBackupRecord.dataLossNumber] The current
  * dataloss number of this Epoch. The data loss number property is an
  * increasing value which is updated whenever data loss is suspected, as when
  * loss of a quorum of replicas in the replica set that includes the Primary
@@ -10844,7 +10874,7 @@ export interface BackupProgressInfo {
   timeStampUtc?: Date;
   backupId?: string;
   backupLocation?: string;
-  epochOfLastBackupRecord?: Epoch;
+  epochOfLastBackupRecord?: BackupEpoch;
   lsnOfLastBackupRecord?: string;
   failureError?: FabricErrorError;
 }
