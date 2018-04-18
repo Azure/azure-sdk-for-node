@@ -188,6 +188,121 @@ export interface Factories {
 
 
     /**
+     * Updates a factory's repo information.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} factoryRepoUpdate Update factory repo request definition.
+     *
+     * @param {string} [factoryRepoUpdate.factoryId] The factory id.
+     *
+     * @param {object} [factoryRepoUpdate.vstsConfiguration] VSTS repo information
+     * of the factory.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.accountName] VSTS
+     * account name.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.projectName] VSTS
+     * project name.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.repositoryName] VSTS
+     * repository name.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.collaborationBranch]
+     * VSTS collaboration branch.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.rootFolder] VSTS root
+     * folder.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.lastCommitId] VSTS last
+     * commit id.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.tenantId] VSTS tenant
+     * id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Factory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    configureRepoWithHttpOperationResponse(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
+
+    /**
+     * Updates a factory's repo information.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} factoryRepoUpdate Update factory repo request definition.
+     *
+     * @param {string} [factoryRepoUpdate.factoryId] The factory id.
+     *
+     * @param {object} [factoryRepoUpdate.vstsConfiguration] VSTS repo information
+     * of the factory.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.accountName] VSTS
+     * account name.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.projectName] VSTS
+     * project name.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.repositoryName] VSTS
+     * repository name.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.collaborationBranch]
+     * VSTS collaboration branch.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.rootFolder] VSTS root
+     * folder.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.lastCommitId] VSTS last
+     * commit id.
+     *
+     * @param {string} [factoryRepoUpdate.vstsConfiguration.tenantId] VSTS tenant
+     * id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Factory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Factory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Factory} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    configureRepo(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
+    configureRepo(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, callback: ServiceCallback<models.Factory>): void;
+    configureRepo(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
+
+
+    /**
      * Creates or updates a factory.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -668,130 +783,6 @@ export interface Factories {
     listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.FactoryListResponse>): void;
     listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
-}
-
-/**
- * @class
- * ConfigureRepo
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DataFactoryManagementClient.
- */
-export interface ConfigureRepo {
-
-
-    /**
-     * Updates a factory's repo information.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {object} factoryRepoUpdate Update factory repo request definition.
-     *
-     * @param {string} [factoryRepoUpdate.factoryId] The factory id.
-     *
-     * @param {object} [factoryRepoUpdate.vstsConfiguration] VSTS repo information
-     * of the factory.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.accountName] VSTS
-     * account name.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.projectName] VSTS
-     * project name.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.repositoryName] VSTS
-     * repository name.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.collaborationBranch]
-     * VSTS collaboration branch.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.rootFolder] VSTS root
-     * folder.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.lastCommitId] VSTS last
-     * commit id.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.tenantId] VSTS tenant
-     * id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Factory>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
-
-    /**
-     * Updates a factory's repo information.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {object} factoryRepoUpdate Update factory repo request definition.
-     *
-     * @param {string} [factoryRepoUpdate.factoryId] The factory id.
-     *
-     * @param {object} [factoryRepoUpdate.vstsConfiguration] VSTS repo information
-     * of the factory.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.accountName] VSTS
-     * account name.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.projectName] VSTS
-     * project name.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.repositoryName] VSTS
-     * repository name.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.collaborationBranch]
-     * VSTS collaboration branch.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.rootFolder] VSTS root
-     * folder.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.lastCommitId] VSTS last
-     * commit id.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.tenantId] VSTS tenant
-     * id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Factory} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Factory} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Factory} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
-    update(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, callback: ServiceCallback<models.Factory>): void;
-    update(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
 }
 
 /**
