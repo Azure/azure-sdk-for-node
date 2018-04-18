@@ -609,7 +609,7 @@ export interface Pool {
      * virtual machines in a pool are the same size. For information about
      * available sizes of virtual machines for Cloud Services pools (pools created
      * with cloudServiceConfiguration), see Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -845,8 +845,9 @@ export interface Pool {
      * advantage of shell features such as environment variable expansion. If you
      * want to take advantage of such features, you should invoke the shell in the
      * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux. Tasks should be idempotent. For more information,
-     * please see TaskContainerSettings.maxTaskRetryCount.
+     * MyCommand" in Linux. The command line had better use relativate path of task
+     * execution directory, or use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [pool.startTask.containerSettings] The settings for the
      * container under which the start task runs. When this is specified, all
@@ -1019,7 +1020,7 @@ export interface Pool {
      * virtual machines in a pool are the same size. For information about
      * available sizes of virtual machines for Cloud Services pools (pools created
      * with cloudServiceConfiguration), see Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -1255,8 +1256,9 @@ export interface Pool {
      * advantage of shell features such as environment variable expansion. If you
      * want to take advantage of such features, you should invoke the shell in the
      * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux. Tasks should be idempotent. For more information,
-     * please see TaskContainerSettings.maxTaskRetryCount.
+     * MyCommand" in Linux. The command line had better use relativate path of task
+     * execution directory, or use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [pool.startTask.containerSettings] The settings for the
      * container under which the start task runs. When this is specified, all
@@ -1980,8 +1982,10 @@ export interface Pool {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be idempotent. For
-     * more information, please see TaskContainerSettings.maxTaskRetryCount.
+     * Windows or "/bin/sh -c MyCommand" in Linux. The command line had better use
+     * relativate path of task execution directory, or use the Batch provided
+     * environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolPatchParameter.startTask.containerSettings] The
      * settings for the container under which the start task runs. When this is
@@ -2171,8 +2175,10 @@ export interface Pool {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be idempotent. For
-     * more information, please see TaskContainerSettings.maxTaskRetryCount.
+     * Windows or "/bin/sh -c MyCommand" in Linux. The command line had better use
+     * relativate path of task execution directory, or use the Batch provided
+     * environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolPatchParameter.startTask.containerSettings] The
      * settings for the container under which the start task runs. When this is
@@ -3125,9 +3131,10 @@ export interface Pool {
      * and therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
-     * idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
+     * had better use relativate path of task execution directory, or use the Batch
+     * provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolUpdatePropertiesParameter.startTask.containerSettings]
      * The settings for the container under which the start task runs. When this is
@@ -3304,9 +3311,10 @@ export interface Pool {
      * and therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
-     * idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
+     * had better use relativate path of task execution directory, or use the Batch
+     * provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolUpdatePropertiesParameter.startTask.containerSettings]
      * The settings for the container under which the start task runs. When this is
@@ -4920,7 +4928,7 @@ export interface Job {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -5208,9 +5216,10 @@ export interface Job {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -5510,7 +5519,7 @@ export interface Job {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -5798,9 +5807,10 @@ export interface Job {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -6110,7 +6120,7 @@ export interface Job {
      * same size. For information about available sizes of virtual machines for
      * Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -6398,9 +6408,10 @@ export interface Job {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -6705,7 +6716,7 @@ export interface Job {
      * same size. For information about available sizes of virtual machines for
      * Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -6993,9 +7004,10 @@ export interface Job {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -7732,12 +7744,14 @@ export interface Job {
      * up to a maximum length of 1024.
      *
      * @param {string} job.jobManagerTask.commandLine The command line of the Job
-     * Manager task. Tasks should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
-     * a shell, and therefore cannot take advantage of shell features such as
-     * environment variable expansion. If you want to take advantage of such
-     * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * Manager task. The command line does not run under a shell, and therefore
+     * cannot take advantage of shell features such as environment variable
+     * expansion. If you want to take advantage of such features, you should invoke
+     * the shell in the command line, for example using "cmd /c MyCommand" in
+     * Windows or "/bin/sh -c MyCommand" in Linux. The command line had better use
+     * relativate path of task execution directory, or use the Batch provided
+     * environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobManagerTask.containerSettings] The settings for the
      * container under which the Job Manager task runs. If the pool that will run
@@ -7818,7 +7832,7 @@ export interface Job {
      *
      * @param {boolean} [job.jobManagerTask.allowLowPriorityNode] Whether the Job
      * Manager task may run on a low-priority compute node. The default value is
-     * false.
+     * true.
      *
      * @param {object} [job.jobPreparationTask] The Job Preparation task. If a job
      * has a Job Preparation task, the Batch service will run the Job Preparation
@@ -7840,9 +7854,10 @@ export interface Job {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
-     * idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
+     * had better use relativate path of task execution directory, or use the Batch
+     * provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobPreparationTask.containerSettings] The settings for
      * the container under which the Job Preparation task runs. When this is
@@ -7939,7 +7954,10 @@ export interface Job {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux.
+     * Windows or "/bin/sh -c MyCommand" in Linux. The command line had better use
+     * relativate path of task execution directory, or use the Batch provided
+     * environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobReleaseTask.containerSettings] The settings for the
      * container under which the Job Release task runs. When this is specified, all
@@ -8033,7 +8051,7 @@ export interface Job {
      * same size. For information about available sizes of virtual machines for
      * Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -8316,9 +8334,10 @@ export interface Job {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
-     * idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
+     * had better use relativate path of task execution directory, or use the Batch
+     * provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.containerSettings] The
@@ -8575,12 +8594,14 @@ export interface Job {
      * up to a maximum length of 1024.
      *
      * @param {string} job.jobManagerTask.commandLine The command line of the Job
-     * Manager task. Tasks should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount. The command line does not run under
-     * a shell, and therefore cannot take advantage of shell features such as
-     * environment variable expansion. If you want to take advantage of such
-     * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * Manager task. The command line does not run under a shell, and therefore
+     * cannot take advantage of shell features such as environment variable
+     * expansion. If you want to take advantage of such features, you should invoke
+     * the shell in the command line, for example using "cmd /c MyCommand" in
+     * Windows or "/bin/sh -c MyCommand" in Linux. The command line had better use
+     * relativate path of task execution directory, or use the Batch provided
+     * environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobManagerTask.containerSettings] The settings for the
      * container under which the Job Manager task runs. If the pool that will run
@@ -8661,7 +8682,7 @@ export interface Job {
      *
      * @param {boolean} [job.jobManagerTask.allowLowPriorityNode] Whether the Job
      * Manager task may run on a low-priority compute node. The default value is
-     * false.
+     * true.
      *
      * @param {object} [job.jobPreparationTask] The Job Preparation task. If a job
      * has a Job Preparation task, the Batch service will run the Job Preparation
@@ -8683,9 +8704,10 @@ export interface Job {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
-     * idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
+     * had better use relativate path of task execution directory, or use the Batch
+     * provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobPreparationTask.containerSettings] The settings for
      * the container under which the Job Preparation task runs. When this is
@@ -8782,7 +8804,10 @@ export interface Job {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux.
+     * Windows or "/bin/sh -c MyCommand" in Linux. The command line had better use
+     * relativate path of task execution directory, or use the Batch provided
+     * environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobReleaseTask.containerSettings] The settings for the
      * container under which the Job Release task runs. When this is specified, all
@@ -8876,7 +8901,7 @@ export interface Job {
      * same size. For information about available sizes of virtual machines for
      * Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -9159,9 +9184,10 @@ export interface Job {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
-     * idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
+     * had better use relativate path of task execution directory, or use the Batch
+     * provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.containerSettings] The
@@ -12579,13 +12605,14 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.jobManagerTask.commandLine The
-     * command line of the Job Manager task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * command line of the Job Manager task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.containerSettings]
@@ -12681,7 +12708,7 @@ export interface JobSchedule {
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.allowLowPriorityNode]
      * Whether the Job Manager task may run on a low-priority compute node. The
-     * default value is false.
+     * default value is true.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask] The Job
@@ -12707,9 +12734,10 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -12819,7 +12847,10 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.containerSettings]
@@ -12931,7 +12962,7 @@ export interface JobSchedule {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -13219,9 +13250,10 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -13563,13 +13595,14 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobSchedulePatchParameter.jobSpecification.jobManagerTask.commandLine The
-     * command line of the Job Manager task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * command line of the Job Manager task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.containerSettings]
@@ -13665,7 +13698,7 @@ export interface JobSchedule {
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.allowLowPriorityNode]
      * Whether the Job Manager task may run on a low-priority compute node. The
-     * default value is false.
+     * default value is true.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask] The Job
@@ -13691,9 +13724,10 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -13803,7 +13837,10 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.containerSettings]
@@ -13915,7 +13952,7 @@ export interface JobSchedule {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -14203,9 +14240,10 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -14567,13 +14605,14 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.jobManagerTask.commandLine The
-     * command line of the Job Manager task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * command line of the Job Manager task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.containerSettings]
@@ -14669,7 +14708,7 @@ export interface JobSchedule {
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.allowLowPriorityNode]
      * Whether the Job Manager task may run on a low-priority compute node. The
-     * default value is false.
+     * default value is true.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask] The Job
@@ -14695,9 +14734,10 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -14808,7 +14848,10 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.containerSettings]
@@ -14921,7 +14964,7 @@ export interface JobSchedule {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -15209,9 +15252,10 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -15557,13 +15601,14 @@ export interface JobSchedule {
      *
      * @param {string}
      * jobScheduleUpdateParameter.jobSpecification.jobManagerTask.commandLine The
-     * command line of the Job Manager task. Tasks should be idempotent. For more
-     * information, please see TaskContainerSettings.maxTaskRetryCount. The command
-     * line does not run under a shell, and therefore cannot take advantage of
-     * shell features such as environment variable expansion. If you want to take
-     * advantage of such features, you should invoke the shell in the command line,
-     * for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in
-     * Linux.
+     * command line of the Job Manager task. The command line does not run under a
+     * shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.containerSettings]
@@ -15659,7 +15704,7 @@ export interface JobSchedule {
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.allowLowPriorityNode]
      * Whether the Job Manager task may run on a low-priority compute node. The
-     * default value is false.
+     * default value is true.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask] The Job
@@ -15685,9 +15730,10 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -15798,7 +15844,10 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.containerSettings]
@@ -15911,7 +15960,7 @@ export interface JobSchedule {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -16199,9 +16248,10 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -16956,13 +17006,14 @@ export interface JobSchedule {
      * Unicode characters up to a maximum length of 1024.
      *
      * @param {string} cloudJobSchedule.jobSpecification.jobManagerTask.commandLine
-     * The command line of the Job Manager task. Tasks should be idempotent. For
-     * more information, please see TaskContainerSettings.maxTaskRetryCount. The
-     * command line does not run under a shell, and therefore cannot take advantage
-     * of shell features such as environment variable expansion. If you want to
-     * take advantage of such features, you should invoke the shell in the command
-     * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux.
+     * The command line of the Job Manager task. The command line does not run
+     * under a shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.containerSettings] The
@@ -17057,7 +17108,7 @@ export interface JobSchedule {
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.allowLowPriorityNode]
      * Whether the Job Manager task may run on a low-priority compute node. The
-     * default value is false.
+     * default value is true.
      *
      * @param {object} [cloudJobSchedule.jobSpecification.jobPreparationTask] The
      * Job Preparation task for jobs created under this schedule. If a job has a
@@ -17081,9 +17132,10 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.containerSettings] The
@@ -17192,7 +17244,10 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.containerSettings] The
@@ -17302,7 +17357,7 @@ export interface JobSchedule {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -17590,9 +17645,10 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -17907,13 +17963,14 @@ export interface JobSchedule {
      * Unicode characters up to a maximum length of 1024.
      *
      * @param {string} cloudJobSchedule.jobSpecification.jobManagerTask.commandLine
-     * The command line of the Job Manager task. Tasks should be idempotent. For
-     * more information, please see TaskContainerSettings.maxTaskRetryCount. The
-     * command line does not run under a shell, and therefore cannot take advantage
-     * of shell features such as environment variable expansion. If you want to
-     * take advantage of such features, you should invoke the shell in the command
-     * line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux.
+     * The command line of the Job Manager task. The command line does not run
+     * under a shell, and therefore cannot take advantage of shell features such as
+     * environment variable expansion. If you want to take advantage of such
+     * features, you should invoke the shell in the command line, for example using
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.containerSettings] The
@@ -18008,7 +18065,7 @@ export interface JobSchedule {
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.allowLowPriorityNode]
      * Whether the Job Manager task may run on a low-priority compute node. The
-     * default value is false.
+     * default value is true.
      *
      * @param {object} [cloudJobSchedule.jobSpecification.jobPreparationTask] The
      * Job Preparation task for jobs created under this schedule. If a job has a
@@ -18032,9 +18089,10 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.containerSettings] The
@@ -18143,7 +18201,10 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.containerSettings] The
@@ -18253,7 +18314,7 @@ export interface JobSchedule {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -18541,9 +18602,10 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks
-     * should be idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
+     * command line had better use relativate path of task execution directory, or
+     * use the Batch provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -18977,9 +19039,10 @@ export interface Task {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
-     * idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
+     * had better use relativate path of task execution directory, or use the Batch
+     * provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [task.containerSettings] The settings for the container
      * under which the task runs. If the pool that will run this task has
@@ -19255,9 +19318,10 @@ export interface Task {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Tasks should be
-     * idempotent. For more information, please see
-     * TaskContainerSettings.maxTaskRetryCount.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
+     * had better use relativate path of task execution directory, or use the Batch
+     * provided environment
+     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [task.containerSettings] The settings for the container
      * under which the task runs. If the pool that will run this task has
