@@ -2432,6 +2432,11 @@ export interface DnsNameAvailabilityResult {
  * @constructor
  * A DDoS protection plan in a resource group.
  *
+ * @member {string} [id] Resource ID.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {string} [location] Resource location.
+ * @member {object} [tags] Resource tags.
  * @member {string} [resourceGuid] The resource GUID property of the DDoS
  * protection plan resource. It uniquely identifies the resource, even if the
  * user changes its name or migrate the resource across subscriptions or
@@ -2444,7 +2449,12 @@ export interface DnsNameAvailabilityResult {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
-export interface DdosProtectionPlan extends Resource {
+export interface DdosProtectionPlan extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
   readonly resourceGuid?: string;
   readonly provisioningState?: string;
   readonly virtualNetworks?: SubResource[];
@@ -3164,7 +3174,7 @@ export interface ExpressRouteCrossConnectionPeering extends SubResource {
   vlanId?: number;
   microsoftPeeringConfig?: ExpressRouteCircuitPeeringConfig;
   readonly provisioningState?: string;
-  readonly gatewayManagerEtag?: string;
+  gatewayManagerEtag?: string;
   lastModifiedBy?: string;
   ipv6PeeringConfig?: Ipv6ExpressRouteCircuitPeeringConfig;
   name?: string;
@@ -3203,9 +3213,9 @@ export interface ExpressRouteCrossConnection extends Resource {
   readonly primaryAzurePort?: string;
   readonly secondaryAzurePort?: string;
   readonly sTag?: number;
-  readonly peeringLocation?: string;
-  readonly bandwidthInMbps?: number;
-  readonly expressRouteCircuit?: ExpressRouteCircuitReference;
+  peeringLocation?: string;
+  bandwidthInMbps?: number;
+  expressRouteCircuit?: ExpressRouteCircuitReference;
   serviceProviderProvisioningState?: string;
   serviceProviderNotes?: string;
   readonly provisioningState?: string;
