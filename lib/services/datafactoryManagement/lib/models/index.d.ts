@@ -614,7 +614,7 @@ export interface ErrorResponse {
  * @constructor
  * Factory's VSTS repo information.
  *
- * @member {string} [factoryId] The factory id.
+ * @member {string} [factoryResourceId] The factory resource id.
  * @member {object} [vstsConfiguration] VSTS repo information of the factory.
  * @member {string} [vstsConfiguration.accountName] VSTS account name.
  * @member {string} [vstsConfiguration.projectName] VSTS project name.
@@ -626,7 +626,7 @@ export interface ErrorResponse {
  * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
  */
 export interface FactoryRepoUpdate {
-  factoryId?: string;
+  factoryResourceId?: string;
   vstsConfiguration?: FactoryVSTSConfiguration;
 }
 
@@ -2983,8 +2983,6 @@ export interface AzureMLLinkedService extends LinkedService {
  *
  * @member {object} server Server name for connection. Type: string (or
  * Expression with resultType string).
- * @member {object} [schema] Schema name for connection. Type: string (or
- * Expression with resultType string).
  * @member {string} [authenticationType] AuthenticationType to be used for
  * connection. Possible values include: 'Basic', 'Windows'
  * @member {object} [username] Username for authentication. Type: string (or
@@ -2997,7 +2995,6 @@ export interface AzureMLLinkedService extends LinkedService {
  */
 export interface TeradataLinkedService extends LinkedService {
   server: any;
-  schema?: any;
   authenticationType?: string;
   username?: any;
   password?: SecretBase;
@@ -3014,8 +3011,6 @@ export interface TeradataLinkedService extends LinkedService {
  * Expression with resultType string).
  * @member {object} database Database name for connection. Type: string (or
  * Expression with resultType string).
- * @member {object} [schema] Schema name for connection. Type: string (or
- * Expression with resultType string).
  * @member {string} [authenticationType] AuthenticationType to be used for
  * connection. Possible values include: 'Basic'
  * @member {object} [username] Username for authentication. Type: string (or
@@ -3029,7 +3024,6 @@ export interface TeradataLinkedService extends LinkedService {
 export interface Db2LinkedService extends LinkedService {
   server: any;
   database: any;
-  schema?: any;
   authenticationType?: string;
   username?: any;
   password?: SecretBase;
@@ -3074,26 +3068,14 @@ export interface SybaseLinkedService extends LinkedService {
  * @constructor
  * Linked service for PostgreSQL data source.
  *
- * @member {object} server Server name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} database Database name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} [schema] Schema name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} [username] Username for authentication. Type: string (or
- * Expression with resultType string).
- * @member {object} [password] Password for authentication.
- * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} connectionString The connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface PostgreSqlLinkedService extends LinkedService {
-  server: any;
-  database: any;
-  schema?: any;
-  username?: any;
-  password?: SecretBase;
+  connectionString: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -3103,26 +3085,14 @@ export interface PostgreSqlLinkedService extends LinkedService {
  * @constructor
  * Linked service for MySQL data source.
  *
- * @member {object} server Server name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} database Database name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} [schema] Schema name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} [username] Username for authentication. Type: string (or
- * Expression with resultType string).
- * @member {object} [password] Password for authentication.
- * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} connectionString The connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface MySqlLinkedService extends LinkedService {
-  server: any;
-  database: any;
-  schema?: any;
-  username?: any;
-  password?: SecretBase;
+  connectionString: SecretBase;
   encryptedCredential?: any;
 }
 

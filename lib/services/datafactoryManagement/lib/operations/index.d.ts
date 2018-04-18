@@ -196,7 +196,8 @@ export interface Factories {
      *
      * @param {object} factoryRepoUpdate Update factory repo request definition.
      *
-     * @param {string} [factoryRepoUpdate.factoryId] The factory id.
+     * @param {string} [factoryRepoUpdate.factoryResourceId] The factory resource
+     * id.
      *
      * @param {object} [factoryRepoUpdate.vstsConfiguration] VSTS repo information
      * of the factory.
@@ -244,7 +245,8 @@ export interface Factories {
      *
      * @param {object} factoryRepoUpdate Update factory repo request definition.
      *
-     * @param {string} [factoryRepoUpdate.factoryId] The factory id.
+     * @param {string} [factoryRepoUpdate.factoryResourceId] The factory resource
+     * id.
      *
      * @param {object} [factoryRepoUpdate.vstsConfiguration] VSTS repo information
      * of the factory.
