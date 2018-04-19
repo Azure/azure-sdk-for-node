@@ -49,8 +49,6 @@ export default class ServiceBusManagementClient extends AzureServiceClient {
 
   apiVersion: string;
 
-  configName: string;
-
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;

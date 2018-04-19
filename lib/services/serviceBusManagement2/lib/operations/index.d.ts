@@ -2276,17 +2276,18 @@ export interface MigrationConfigurations {
 
 
     /**
-     * Creates or updates a new Migration Config
+     * Initiate Migration from Standard to Premium
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
      * @param {string} namespaceName The namespace name
      *
-     * @param {object} parameters Parameters required to Migration Config
+     * @param {object} parameters Parameters required to create Migration
+     * Configuration
      *
-     * @param {string} parameters.primaryNamespaceName Existing premium Namespace
-     * name which has no entities, will be used for migration
+     * @param {string} parameters.targetNamespace Existing premium Namespace name
+     * which has no entities, will be used for migration
      *
      * @param {string} parameters.postMigrationName Name to access connection
      * strings of the Primary Namespace after migration
@@ -2302,20 +2303,21 @@ export interface MigrationConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
+    startMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
 
     /**
-     * Creates or updates a new Migration Config
+     * Initiate Migration from Standard to Premium
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
      *
      * @param {string} namespaceName The namespace name
      *
-     * @param {object} parameters Parameters required to Migration Config
+     * @param {object} parameters Parameters required to create Migration
+     * Configuration
      *
-     * @param {string} parameters.primaryNamespaceName Existing premium Namespace
-     * name which has no entities, will be used for migration
+     * @param {string} parameters.targetNamespace Existing premium Namespace name
+     * which has no entities, will be used for migration
      *
      * @param {string} parameters.postMigrationName Name to access connection
      * strings of the Primary Namespace after migration
@@ -2348,9 +2350,9 @@ export interface MigrationConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigProperties>;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, callback: ServiceCallback<models.MigrationConfigProperties>): void;
-    createOrUpdate(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+    startMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigProperties>;
+    startMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+    startMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigProperties>): void;
 
 
     /**
@@ -2476,7 +2478,7 @@ export interface MigrationConfigurations {
 
 
     /**
-     * This operation disables the Migration
+     * This operation Completes Migration
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2494,10 +2496,10 @@ export interface MigrationConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    disableMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    completeMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * This operation disables the Migration
+     * This operation Completes Migration
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2530,13 +2532,13 @@ export interface MigrationConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    disableMigration(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    disableMigration(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<void>): void;
-    disableMigration(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    completeMigration(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    completeMigration(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<void>): void;
+    completeMigration(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Invokes MigrationConfig Revert
+     * This operation reverts Migration
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2557,7 +2559,7 @@ export interface MigrationConfigurations {
     revertWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Invokes MigrationConfig Revert
+     * This operation reverts Migration
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.

@@ -854,14 +854,14 @@ export interface ArmDisasterRecovery extends Resource {
  *
  * @member {string} [provisioningState] Provisioning state of Migration
  * Configuration
- * @member {string} primaryNamespaceName Existing premium Namespace name which
- * has no entities, will be used for migration
+ * @member {string} targetNamespace Existing premium Namespace name which has
+ * no entities, will be used for migration
  * @member {string} postMigrationName Name to access connection strings of the
  * Primary Namespace after migration
  */
 export interface MigrationConfigProperties extends Resource {
   readonly provisioningState?: string;
-  primaryNamespaceName: string;
+  targetNamespace: string;
   postMigrationName: string;
 }
 
