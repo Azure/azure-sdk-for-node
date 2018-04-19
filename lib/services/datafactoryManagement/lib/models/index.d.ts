@@ -4241,15 +4241,13 @@ export interface AmazonS3Dataset extends Dataset {
 
 /**
  * @class
- * Initializes a new instance of the TumblingWindowDependency class.
+ * Initializes a new instance of the TumblingWindowTriggerReference class.
  * @constructor
- * Tumbling Window dependency information.
+ * Tumbling window trigger reference type.
  *
- * @member {string} type Reference type "TriggerReference" for Tumbling Window.
- * @member {string} referenceName Trigger reference name.
+ * @member {string} referenceName Reference TumblingWindowTrigger name.
  */
-export interface TumblingWindowDependency {
-  type: string;
+export interface TumblingWindowTriggerReference {
   referenceName: string;
 }
 
@@ -4307,7 +4305,8 @@ export interface RetryPolicy {
  * minimum: 0.
  * @member {number} [retryPolicy.intervalInSeconds] Interval between retries in
  * seconds. Default is 30.
- * @member {array} [dependsOn] Tumbling Window depends on condition.
+ * @member {array} [dependsOn] Tumbling window triggers that this trigger
+ * depends on.
  */
 export interface TumblingWindowTrigger extends Trigger {
   pipelineProperty: TriggerPipelineReference;
@@ -4318,7 +4317,7 @@ export interface TumblingWindowTrigger extends Trigger {
   delay?: any;
   maxConcurrency: number;
   retryPolicy?: RetryPolicy;
-  dependsOn?: TumblingWindowDependency[];
+  dependsOn?: TumblingWindowTriggerReference[];
 }
 
 /**
