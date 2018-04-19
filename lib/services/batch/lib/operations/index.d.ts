@@ -845,9 +845,10 @@ export interface Pool {
      * advantage of shell features such as environment variable expansion. If you
      * want to take advantage of such features, you should invoke the shell in the
      * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux. The command line had better use relativate path of task
-     * execution directory, or use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * MyCommand" in Linux. If the command line refers to file paths, it should use
+     * a relative path (relative to the task working directory), or use the Batch
+     * provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [pool.startTask.containerSettings] The settings for the
      * container under which the start task runs. When this is specified, all
@@ -1256,9 +1257,10 @@ export interface Pool {
      * advantage of shell features such as environment variable expansion. If you
      * want to take advantage of such features, you should invoke the shell in the
      * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux. The command line had better use relativate path of task
-     * execution directory, or use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * MyCommand" in Linux. If the command line refers to file paths, it should use
+     * a relative path (relative to the task working directory), or use the Batch
+     * provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [pool.startTask.containerSettings] The settings for the
      * container under which the start task runs. When this is specified, all
@@ -1982,10 +1984,10 @@ export interface Pool {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux. The command line had better use
-     * relativate path of task execution directory, or use the Batch provided
-     * environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * Windows or "/bin/sh -c MyCommand" in Linux. If the command line refers to
+     * file paths, it should use a relative path (relative to the task working
+     * directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolPatchParameter.startTask.containerSettings] The
      * settings for the container under which the start task runs. When this is
@@ -2175,10 +2177,10 @@ export interface Pool {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux. The command line had better use
-     * relativate path of task execution directory, or use the Batch provided
-     * environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * Windows or "/bin/sh -c MyCommand" in Linux. If the command line refers to
+     * file paths, it should use a relative path (relative to the task working
+     * directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolPatchParameter.startTask.containerSettings] The
      * settings for the container under which the start task runs. When this is
@@ -3131,10 +3133,10 @@ export interface Pool {
      * and therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
-     * had better use relativate path of task execution directory, or use the Batch
-     * provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolUpdatePropertiesParameter.startTask.containerSettings]
      * The settings for the container under which the start task runs. When this is
@@ -3311,10 +3313,10 @@ export interface Pool {
      * and therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
-     * had better use relativate path of task execution directory, or use the Batch
-     * provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolUpdatePropertiesParameter.startTask.containerSettings]
      * The settings for the container under which the start task runs. When this is
@@ -5216,10 +5218,11 @@ export interface Job {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -5807,10 +5810,11 @@ export interface Job {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -6408,10 +6412,11 @@ export interface Job {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -7004,10 +7009,11 @@ export interface Job {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -7748,10 +7754,10 @@ export interface Job {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux. The command line had better use
-     * relativate path of task execution directory, or use the Batch provided
-     * environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * Windows or "/bin/sh -c MyCommand" in Linux. If the command line refers to
+     * file paths, it should use a relative path (relative to the task working
+     * directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobManagerTask.containerSettings] The settings for the
      * container under which the Job Manager task runs. If the pool that will run
@@ -7854,10 +7860,10 @@ export interface Job {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
-     * had better use relativate path of task execution directory, or use the Batch
-     * provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobPreparationTask.containerSettings] The settings for
      * the container under which the Job Preparation task runs. When this is
@@ -7894,11 +7900,11 @@ export interface Job {
      * @param {number} [job.jobPreparationTask.constraints.maxTaskRetryCount] The
      * maximum number of times the task may be retried. The Batch service retries a
      * task if its exit code is nonzero. Note that this value specifically controls
-     * the number of retries for the task executable due to nonzero exit code. The
-     * Batch service will try the task once, and may then retry up to this limit.
-     * For example, if the maximum retry count is 3, Batch tries the task up to 4
-     * times (one initial try and 3 retries). If the maximum retry count is 0, the
-     * Batch service does not retry the task after the first attempt. If the
+     * the number of retries for the task executable due to a nonzero exit code.
+     * The Batch service will try the task once, and may then retry up to this
+     * limit. For example, if the maximum retry count is 3, Batch tries the task up
+     * to 4 times (one initial try and 3 retries). If the maximum retry count is 0,
+     * the Batch service does not retry the task after the first attempt. If the
      * maximum retry count is -1, the Batch service retries the task without limit.
      * Resource files and application packages are only downloaded again if the
      * task is retried on a new compute node.
@@ -7954,10 +7960,10 @@ export interface Job {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux. The command line had better use
-     * relativate path of task execution directory, or use the Batch provided
-     * environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * Windows or "/bin/sh -c MyCommand" in Linux. If the command line refers to
+     * file paths, it should use a relative path (relative to the task working
+     * directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobReleaseTask.containerSettings] The settings for the
      * container under which the Job Release task runs. When this is specified, all
@@ -8334,10 +8340,10 @@ export interface Job {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
-     * had better use relativate path of task execution directory, or use the Batch
-     * provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.containerSettings] The
@@ -8598,10 +8604,10 @@ export interface Job {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux. The command line had better use
-     * relativate path of task execution directory, or use the Batch provided
-     * environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * Windows or "/bin/sh -c MyCommand" in Linux. If the command line refers to
+     * file paths, it should use a relative path (relative to the task working
+     * directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobManagerTask.containerSettings] The settings for the
      * container under which the Job Manager task runs. If the pool that will run
@@ -8704,10 +8710,10 @@ export interface Job {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
-     * had better use relativate path of task execution directory, or use the Batch
-     * provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobPreparationTask.containerSettings] The settings for
      * the container under which the Job Preparation task runs. When this is
@@ -8744,11 +8750,11 @@ export interface Job {
      * @param {number} [job.jobPreparationTask.constraints.maxTaskRetryCount] The
      * maximum number of times the task may be retried. The Batch service retries a
      * task if its exit code is nonzero. Note that this value specifically controls
-     * the number of retries for the task executable due to nonzero exit code. The
-     * Batch service will try the task once, and may then retry up to this limit.
-     * For example, if the maximum retry count is 3, Batch tries the task up to 4
-     * times (one initial try and 3 retries). If the maximum retry count is 0, the
-     * Batch service does not retry the task after the first attempt. If the
+     * the number of retries for the task executable due to a nonzero exit code.
+     * The Batch service will try the task once, and may then retry up to this
+     * limit. For example, if the maximum retry count is 3, Batch tries the task up
+     * to 4 times (one initial try and 3 retries). If the maximum retry count is 0,
+     * the Batch service does not retry the task after the first attempt. If the
      * maximum retry count is -1, the Batch service retries the task without limit.
      * Resource files and application packages are only downloaded again if the
      * task is retried on a new compute node.
@@ -8804,10 +8810,10 @@ export interface Job {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux. The command line had better use
-     * relativate path of task execution directory, or use the Batch provided
-     * environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * Windows or "/bin/sh -c MyCommand" in Linux. If the command line refers to
+     * file paths, it should use a relative path (relative to the task working
+     * directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobReleaseTask.containerSettings] The settings for the
      * container under which the Job Release task runs. When this is specified, all
@@ -9184,10 +9190,10 @@ export interface Job {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
-     * had better use relativate path of task execution directory, or use the Batch
-     * provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.containerSettings] The
@@ -12609,10 +12615,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.containerSettings]
@@ -12734,10 +12741,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -12780,7 +12788,7 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries for the task executable due to
+     * specifically controls the number of retries for the task executable due to a
      * nonzero exit code. The Batch service will try the task once, and may then
      * retry up to this limit. For example, if the maximum retry count is 3, Batch
      * tries the task up to 4 times (one initial try and 3 retries). If the maximum
@@ -12847,10 +12855,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.containerSettings]
@@ -13250,10 +13259,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -13599,10 +13609,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.containerSettings]
@@ -13724,10 +13735,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -13770,7 +13782,7 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries for the task executable due to
+     * specifically controls the number of retries for the task executable due to a
      * nonzero exit code. The Batch service will try the task once, and may then
      * retry up to this limit. For example, if the maximum retry count is 3, Batch
      * tries the task up to 4 times (one initial try and 3 retries). If the maximum
@@ -13837,10 +13849,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.containerSettings]
@@ -14240,10 +14253,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -14609,10 +14623,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.containerSettings]
@@ -14734,10 +14749,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -14780,7 +14796,7 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries for the task executable due to
+     * specifically controls the number of retries for the task executable due to a
      * nonzero exit code. The Batch service will try the task once, and may then
      * retry up to this limit. For example, if the maximum retry count is 3, Batch
      * tries the task up to 4 times (one initial try and 3 retries). If the maximum
@@ -14848,10 +14864,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.containerSettings]
@@ -15252,10 +15269,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -15605,10 +15623,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.containerSettings]
@@ -15730,10 +15749,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -15776,7 +15796,7 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries for the task executable due to
+     * specifically controls the number of retries for the task executable due to a
      * nonzero exit code. The Batch service will try the task once, and may then
      * retry up to this limit. For example, if the maximum retry count is 3, Batch
      * tries the task up to 4 times (one initial try and 3 retries). If the maximum
@@ -15844,10 +15864,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.containerSettings]
@@ -16248,10 +16269,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -17010,10 +17032,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.containerSettings] The
@@ -17132,10 +17155,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.containerSettings] The
@@ -17178,7 +17202,7 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries for the task executable due to
+     * specifically controls the number of retries for the task executable due to a
      * nonzero exit code. The Batch service will try the task once, and may then
      * retry up to this limit. For example, if the maximum retry count is 3, Batch
      * tries the task up to 4 times (one initial try and 3 retries). If the maximum
@@ -17244,10 +17268,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.containerSettings] The
@@ -17645,10 +17670,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -17967,10 +17993,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.containerSettings] The
@@ -18089,10 +18116,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.containerSettings] The
@@ -18135,7 +18163,7 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries for the task executable due to
+     * specifically controls the number of retries for the task executable due to a
      * nonzero exit code. The Batch service will try the task once, and may then
      * retry up to this limit. For example, if the maximum retry count is 3, Batch
      * tries the task up to 4 times (one initial try and 3 retries). If the maximum
@@ -18201,10 +18229,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.containerSettings] The
@@ -18602,10 +18631,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The
-     * command line had better use relativate path of task execution directory, or
-     * use the Batch provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -19039,10 +19069,10 @@ export interface Task {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
-     * had better use relativate path of task execution directory, or use the Batch
-     * provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [task.containerSettings] The settings for the container
      * under which the task runs. If the pool that will run this task has
@@ -19165,10 +19195,10 @@ export interface Task {
      * @param {number} [task.constraints.maxTaskRetryCount] The maximum number of
      * times the task may be retried. The Batch service retries a task if its exit
      * code is nonzero. Note that this value specifically controls the number of
-     * retries for the task executable due to nonzero exit code. The Batch service
-     * will try the task once, and may then retry up to this limit. For example, if
-     * the maximum retry count is 3, Batch tries the task up to 4 times (one
-     * initial try and 3 retries). If the maximum retry count is 0, the Batch
+     * retries for the task executable due to a nonzero exit code. The Batch
+     * service will try the task once, and may then retry up to this limit. For
+     * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+     * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
      * service does not retry the task after the first attempt. If the maximum
      * retry count is -1, the Batch service retries the task without limit.
      * Resource files and application packages are only downloaded again if the
@@ -19318,10 +19348,10 @@ export interface Task {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. The command line
-     * had better use relativate path of task execution directory, or use the Batch
-     * provided environment
-     * variables(https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [task.containerSettings] The settings for the container
      * under which the task runs. If the pool that will run this task has
@@ -19444,10 +19474,10 @@ export interface Task {
      * @param {number} [task.constraints.maxTaskRetryCount] The maximum number of
      * times the task may be retried. The Batch service retries a task if its exit
      * code is nonzero. Note that this value specifically controls the number of
-     * retries for the task executable due to nonzero exit code. The Batch service
-     * will try the task once, and may then retry up to this limit. For example, if
-     * the maximum retry count is 3, Batch tries the task up to 4 times (one
-     * initial try and 3 retries). If the maximum retry count is 0, the Batch
+     * retries for the task executable due to a nonzero exit code. The Batch
+     * service will try the task once, and may then retry up to this limit. For
+     * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+     * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
      * service does not retry the task after the first attempt. If the maximum
      * retry count is -1, the Batch service retries the task without limit.
      * Resource files and application packages are only downloaded again if the
@@ -20175,7 +20205,7 @@ export interface Task {
      * @param {number} [options.constraints.maxTaskRetryCount] The maximum number
      * of times the task may be retried. The Batch service retries a task if its
      * exit code is nonzero. Note that this value specifically controls the number
-     * of retries for the task executable due to nonzero exit code. The Batch
+     * of retries for the task executable due to a nonzero exit code. The Batch
      * service will try the task once, and may then retry up to this limit. For
      * example, if the maximum retry count is 3, Batch tries the task up to 4 times
      * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
@@ -20263,7 +20293,7 @@ export interface Task {
      * @param {number} [options.constraints.maxTaskRetryCount] The maximum number
      * of times the task may be retried. The Batch service retries a task if its
      * exit code is nonzero. Note that this value specifically controls the number
-     * of retries for the task executable due to nonzero exit code. The Batch
+     * of retries for the task executable due to a nonzero exit code. The Batch
      * service will try the task once, and may then retry up to this limit. For
      * example, if the maximum retry count is 3, Batch tries the task up to 4 times
      * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
