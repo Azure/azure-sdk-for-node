@@ -489,6 +489,8 @@ export interface Pool {
      *
      * Statistics are aggregated across all pools that have ever existed in the
      * account, from account creation to the last update time of the statistics.
+     * The statistics may not be immediately available. The Batch service performs
+     * periodic roll-up of statistics. The typical delay is about 30 minutes.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -529,6 +531,8 @@ export interface Pool {
      *
      * Statistics are aggregated across all pools that have ever existed in the
      * account, from account creation to the last update time of the statistics.
+     * The statistics may not be immediately available. The Batch service performs
+     * periodic roll-up of statistics. The typical delay is about 30 minutes.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -605,7 +609,7 @@ export interface Pool {
      * virtual machines in a pool are the same size. For information about
      * available sizes of virtual machines for Cloud Services pools (pools created
      * with cloudServiceConfiguration), see Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -841,7 +845,10 @@ export interface Pool {
      * advantage of shell features such as environment variable expansion. If you
      * want to take advantage of such features, you should invoke the shell in the
      * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux.
+     * MyCommand" in Linux. If the command line refers to file paths, it should use
+     * a relative path (relative to the task working directory), or use the Batch
+     * provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [pool.startTask.containerSettings] The settings for the
      * container under which the start task runs. When this is specified, all
@@ -1014,7 +1021,7 @@ export interface Pool {
      * virtual machines in a pool are the same size. For information about
      * available sizes of virtual machines for Cloud Services pools (pools created
      * with cloudServiceConfiguration), see Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -1250,7 +1257,10 @@ export interface Pool {
      * advantage of shell features such as environment variable expansion. If you
      * want to take advantage of such features, you should invoke the shell in the
      * command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c
-     * MyCommand" in Linux.
+     * MyCommand" in Linux. If the command line refers to file paths, it should use
+     * a relative path (relative to the task working directory), or use the Batch
+     * provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [pool.startTask.containerSettings] The settings for the
      * container under which the start task runs. When this is specified, all
@@ -1974,7 +1984,10 @@ export interface Pool {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux.
+     * Windows or "/bin/sh -c MyCommand" in Linux. If the command line refers to
+     * file paths, it should use a relative path (relative to the task working
+     * directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolPatchParameter.startTask.containerSettings] The
      * settings for the container under which the start task runs. When this is
@@ -2164,7 +2177,10 @@ export interface Pool {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux.
+     * Windows or "/bin/sh -c MyCommand" in Linux. If the command line refers to
+     * file paths, it should use a relative path (relative to the task working
+     * directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolPatchParameter.startTask.containerSettings] The
      * settings for the container under which the start task runs. When this is
@@ -3117,7 +3133,10 @@ export interface Pool {
      * and therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolUpdatePropertiesParameter.startTask.containerSettings]
      * The settings for the container under which the start task runs. When this is
@@ -3294,7 +3313,10 @@ export interface Pool {
      * and therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [poolUpdatePropertiesParameter.startTask.containerSettings]
      * The settings for the container under which the start task runs. When this is
@@ -4414,6 +4436,8 @@ export interface Job {
      *
      * Statistics are aggregated across all jobs that have ever existed in the
      * account, from account creation to the last update time of the statistics.
+     * The statistics may not be immediately available. The Batch service performs
+     * periodic roll-up of statistics. The typical delay is about 30 minutes.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4454,6 +4478,8 @@ export interface Job {
      *
      * Statistics are aggregated across all jobs that have ever existed in the
      * account, from account creation to the last update time of the statistics.
+     * The statistics may not be immediately available. The Batch service performs
+     * periodic roll-up of statistics. The typical delay is about 30 minutes.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4904,7 +4930,7 @@ export interface Job {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -5192,7 +5218,11 @@ export interface Job {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -5492,7 +5522,7 @@ export interface Job {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -5780,7 +5810,11 @@ export interface Job {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -6090,7 +6124,7 @@ export interface Job {
      * same size. For information about available sizes of virtual machines for
      * Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -6378,7 +6412,11 @@ export interface Job {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -6683,7 +6721,7 @@ export interface Job {
      * same size. For information about available sizes of virtual machines for
      * Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -6971,7 +7009,11 @@ export interface Job {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -7712,7 +7754,10 @@ export interface Job {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux.
+     * Windows or "/bin/sh -c MyCommand" in Linux. If the command line refers to
+     * file paths, it should use a relative path (relative to the task working
+     * directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobManagerTask.containerSettings] The settings for the
      * container under which the Job Manager task runs. If the pool that will run
@@ -7793,7 +7838,7 @@ export interface Job {
      *
      * @param {boolean} [job.jobManagerTask.allowLowPriorityNode] Whether the Job
      * Manager task may run on a low-priority compute node. The default value is
-     * false.
+     * true.
      *
      * @param {object} [job.jobPreparationTask] The Job Preparation task. If a job
      * has a Job Preparation task, the Batch service will run the Job Preparation
@@ -7815,7 +7860,10 @@ export interface Job {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobPreparationTask.containerSettings] The settings for
      * the container under which the Job Preparation task runs. When this is
@@ -7852,11 +7900,14 @@ export interface Job {
      * @param {number} [job.jobPreparationTask.constraints.maxTaskRetryCount] The
      * maximum number of times the task may be retried. The Batch service retries a
      * task if its exit code is nonzero. Note that this value specifically controls
-     * the number of retries. The Batch service will try the task once, and may
-     * then retry up to this limit. For example, if the maximum retry count is 3,
-     * Batch tries the task up to 4 times (one initial try and 3 retries). If the
-     * maximum retry count is 0, the Batch service does not retry the task. If the
+     * the number of retries for the task executable due to a nonzero exit code.
+     * The Batch service will try the task once, and may then retry up to this
+     * limit. For example, if the maximum retry count is 3, Batch tries the task up
+     * to 4 times (one initial try and 3 retries). If the maximum retry count is 0,
+     * the Batch service does not retry the task after the first attempt. If the
      * maximum retry count is -1, the Batch service retries the task without limit.
+     * Resource files and application packages are only downloaded again if the
+     * task is retried on a new compute node.
      *
      * @param {boolean} [job.jobPreparationTask.waitForSuccess] Whether the Batch
      * service should wait for the Job Preparation task to complete successfully
@@ -7909,7 +7960,10 @@ export interface Job {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux.
+     * Windows or "/bin/sh -c MyCommand" in Linux. If the command line refers to
+     * file paths, it should use a relative path (relative to the task working
+     * directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobReleaseTask.containerSettings] The settings for the
      * container under which the Job Release task runs. When this is specified, all
@@ -8003,7 +8057,7 @@ export interface Job {
      * same size. For information about available sizes of virtual machines for
      * Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -8286,7 +8340,10 @@ export interface Job {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.containerSettings] The
@@ -8547,7 +8604,10 @@ export interface Job {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux.
+     * Windows or "/bin/sh -c MyCommand" in Linux. If the command line refers to
+     * file paths, it should use a relative path (relative to the task working
+     * directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobManagerTask.containerSettings] The settings for the
      * container under which the Job Manager task runs. If the pool that will run
@@ -8628,7 +8688,7 @@ export interface Job {
      *
      * @param {boolean} [job.jobManagerTask.allowLowPriorityNode] Whether the Job
      * Manager task may run on a low-priority compute node. The default value is
-     * false.
+     * true.
      *
      * @param {object} [job.jobPreparationTask] The Job Preparation task. If a job
      * has a Job Preparation task, the Batch service will run the Job Preparation
@@ -8650,7 +8710,10 @@ export interface Job {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobPreparationTask.containerSettings] The settings for
      * the container under which the Job Preparation task runs. When this is
@@ -8687,11 +8750,14 @@ export interface Job {
      * @param {number} [job.jobPreparationTask.constraints.maxTaskRetryCount] The
      * maximum number of times the task may be retried. The Batch service retries a
      * task if its exit code is nonzero. Note that this value specifically controls
-     * the number of retries. The Batch service will try the task once, and may
-     * then retry up to this limit. For example, if the maximum retry count is 3,
-     * Batch tries the task up to 4 times (one initial try and 3 retries). If the
-     * maximum retry count is 0, the Batch service does not retry the task. If the
+     * the number of retries for the task executable due to a nonzero exit code.
+     * The Batch service will try the task once, and may then retry up to this
+     * limit. For example, if the maximum retry count is 3, Batch tries the task up
+     * to 4 times (one initial try and 3 retries). If the maximum retry count is 0,
+     * the Batch service does not retry the task after the first attempt. If the
      * maximum retry count is -1, the Batch service retries the task without limit.
+     * Resource files and application packages are only downloaded again if the
+     * task is retried on a new compute node.
      *
      * @param {boolean} [job.jobPreparationTask.waitForSuccess] Whether the Batch
      * service should wait for the Job Preparation task to complete successfully
@@ -8744,7 +8810,10 @@ export interface Job {
      * cannot take advantage of shell features such as environment variable
      * expansion. If you want to take advantage of such features, you should invoke
      * the shell in the command line, for example using "cmd /c MyCommand" in
-     * Windows or "/bin/sh -c MyCommand" in Linux.
+     * Windows or "/bin/sh -c MyCommand" in Linux. If the command line refers to
+     * file paths, it should use a relative path (relative to the task working
+     * directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [job.jobReleaseTask.containerSettings] The settings for the
      * container under which the Job Release task runs. When this is specified, all
@@ -8838,7 +8907,7 @@ export interface Job {
      * same size. For information about available sizes of virtual machines for
      * Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -9121,7 +9190,10 @@ export interface Job {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.containerSettings] The
@@ -12543,7 +12615,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.containerSettings]
@@ -12639,7 +12715,7 @@ export interface JobSchedule {
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.allowLowPriorityNode]
      * Whether the Job Manager task may run on a low-priority compute node. The
-     * default value is false.
+     * default value is true.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask] The Job
@@ -12665,7 +12741,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -12708,12 +12788,14 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries. The Batch service will try the
-     * task once, and may then retry up to this limit. For example, if the maximum
-     * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
-     * retries). If the maximum retry count is 0, the Batch service does not retry
-     * the task. If the maximum retry count is -1, the Batch service retries the
-     * task without limit.
+     * specifically controls the number of retries for the task executable due to a
+     * nonzero exit code. The Batch service will try the task once, and may then
+     * retry up to this limit. For example, if the maximum retry count is 3, Batch
+     * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+     * retry count is 0, the Batch service does not retry the task after the first
+     * attempt. If the maximum retry count is -1, the Batch service retries the
+     * task without limit. Resource files and application packages are only
+     * downloaded again if the task is retried on a new compute node.
      *
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.waitForSuccess]
@@ -12773,7 +12855,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.containerSettings]
@@ -12885,7 +12971,7 @@ export interface JobSchedule {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -13173,7 +13259,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -13519,7 +13609,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.containerSettings]
@@ -13615,7 +13709,7 @@ export interface JobSchedule {
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.allowLowPriorityNode]
      * Whether the Job Manager task may run on a low-priority compute node. The
-     * default value is false.
+     * default value is true.
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask] The Job
@@ -13641,7 +13735,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -13684,12 +13782,14 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries. The Batch service will try the
-     * task once, and may then retry up to this limit. For example, if the maximum
-     * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
-     * retries). If the maximum retry count is 0, the Batch service does not retry
-     * the task. If the maximum retry count is -1, the Batch service retries the
-     * task without limit.
+     * specifically controls the number of retries for the task executable due to a
+     * nonzero exit code. The Batch service will try the task once, and may then
+     * retry up to this limit. For example, if the maximum retry count is 3, Batch
+     * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+     * retry count is 0, the Batch service does not retry the task after the first
+     * attempt. If the maximum retry count is -1, the Batch service retries the
+     * task without limit. Resource files and application packages are only
+     * downloaded again if the task is retried on a new compute node.
      *
      * @param {boolean}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.waitForSuccess]
@@ -13749,7 +13849,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.containerSettings]
@@ -13861,7 +13965,7 @@ export interface JobSchedule {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -14149,7 +14253,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -14515,7 +14623,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.containerSettings]
@@ -14611,7 +14723,7 @@ export interface JobSchedule {
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.allowLowPriorityNode]
      * Whether the Job Manager task may run on a low-priority compute node. The
-     * default value is false.
+     * default value is true.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask] The Job
@@ -14637,7 +14749,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -14680,12 +14796,14 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries. The Batch service will try the
-     * task once, and may then retry up to this limit. For example, if the maximum
-     * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
-     * retries). If the maximum retry count is 0, the Batch service does not retry
-     * the task. If the maximum retry count is -1, the Batch service retries the
-     * task without limit.
+     * specifically controls the number of retries for the task executable due to a
+     * nonzero exit code. The Batch service will try the task once, and may then
+     * retry up to this limit. For example, if the maximum retry count is 3, Batch
+     * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+     * retry count is 0, the Batch service does not retry the task after the first
+     * attempt. If the maximum retry count is -1, the Batch service retries the
+     * task without limit. Resource files and application packages are only
+     * downloaded again if the task is retried on a new compute node.
      *
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.waitForSuccess]
@@ -14746,7 +14864,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.containerSettings]
@@ -14859,7 +14981,7 @@ export interface JobSchedule {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -15147,7 +15269,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -15497,7 +15623,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.containerSettings]
@@ -15593,7 +15723,7 @@ export interface JobSchedule {
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.allowLowPriorityNode]
      * Whether the Job Manager task may run on a low-priority compute node. The
-     * default value is false.
+     * default value is true.
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask] The Job
@@ -15619,7 +15749,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.containerSettings]
@@ -15662,12 +15796,14 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries. The Batch service will try the
-     * task once, and may then retry up to this limit. For example, if the maximum
-     * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
-     * retries). If the maximum retry count is 0, the Batch service does not retry
-     * the task. If the maximum retry count is -1, the Batch service retries the
-     * task without limit.
+     * specifically controls the number of retries for the task executable due to a
+     * nonzero exit code. The Batch service will try the task once, and may then
+     * retry up to this limit. For example, if the maximum retry count is 3, Batch
+     * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+     * retry count is 0, the Batch service does not retry the task after the first
+     * attempt. If the maximum retry count is -1, the Batch service retries the
+     * task without limit. Resource files and application packages are only
+     * downloaded again if the task is retried on a new compute node.
      *
      * @param {boolean}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.waitForSuccess]
@@ -15728,7 +15864,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.containerSettings]
@@ -15841,7 +15981,7 @@ export interface JobSchedule {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -16129,7 +16269,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -16888,7 +17032,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.containerSettings] The
@@ -16983,7 +17131,7 @@ export interface JobSchedule {
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.allowLowPriorityNode]
      * Whether the Job Manager task may run on a low-priority compute node. The
-     * default value is false.
+     * default value is true.
      *
      * @param {object} [cloudJobSchedule.jobSpecification.jobPreparationTask] The
      * Job Preparation task for jobs created under this schedule. If a job has a
@@ -17007,7 +17155,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.containerSettings] The
@@ -17050,12 +17202,14 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries. The Batch service will try the
-     * task once, and may then retry up to this limit. For example, if the maximum
-     * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
-     * retries). If the maximum retry count is 0, the Batch service does not retry
-     * the task. If the maximum retry count is -1, the Batch service retries the
-     * task without limit.
+     * specifically controls the number of retries for the task executable due to a
+     * nonzero exit code. The Batch service will try the task once, and may then
+     * retry up to this limit. For example, if the maximum retry count is 3, Batch
+     * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+     * retry count is 0, the Batch service does not retry the task after the first
+     * attempt. If the maximum retry count is -1, the Batch service retries the
+     * task without limit. Resource files and application packages are only
+     * downloaded again if the task is retried on a new compute node.
      *
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.waitForSuccess]
@@ -17114,7 +17268,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.containerSettings] The
@@ -17224,7 +17382,7 @@ export interface JobSchedule {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -17512,7 +17670,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -17831,7 +17993,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.containerSettings] The
@@ -17926,7 +18092,7 @@ export interface JobSchedule {
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.allowLowPriorityNode]
      * Whether the Job Manager task may run on a low-priority compute node. The
-     * default value is false.
+     * default value is true.
      *
      * @param {object} [cloudJobSchedule.jobSpecification.jobPreparationTask] The
      * Job Preparation task for jobs created under this schedule. If a job has a
@@ -17950,7 +18116,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.containerSettings] The
@@ -17993,12 +18163,14 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.constraints.maxTaskRetryCount]
      * The maximum number of times the task may be retried. The Batch service
      * retries a task if its exit code is nonzero. Note that this value
-     * specifically controls the number of retries. The Batch service will try the
-     * task once, and may then retry up to this limit. For example, if the maximum
-     * retry count is 3, Batch tries the task up to 4 times (one initial try and 3
-     * retries). If the maximum retry count is 0, the Batch service does not retry
-     * the task. If the maximum retry count is -1, the Batch service retries the
-     * task without limit.
+     * specifically controls the number of retries for the task executable due to a
+     * nonzero exit code. The Batch service will try the task once, and may then
+     * retry up to this limit. For example, if the maximum retry count is 3, Batch
+     * tries the task up to 4 times (one initial try and 3 retries). If the maximum
+     * retry count is 0, the Batch service does not retry the task after the first
+     * attempt. If the maximum retry count is -1, the Batch service retries the
+     * task without limit. Resource files and application packages are only
+     * downloaded again if the task is retried on a new compute node.
      *
      * @param {boolean}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.waitForSuccess]
@@ -18057,7 +18229,11 @@ export interface JobSchedule {
      * under a shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.containerSettings] The
@@ -18167,7 +18343,7 @@ export interface JobSchedule {
      * are the same size. For information about available sizes of virtual machines
      * for Cloud Services pools (pools created with cloudServiceConfiguration), see
      * Sizes for Cloud Services
-     * (http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
+     * (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/).
      * Batch supports all Cloud Services VM sizes except ExtraSmall, A1V2 and A2V2.
      * For information about available VM sizes for pools using images from the
      * Virtual Machines Marketplace (pools created with
@@ -18455,7 +18631,11 @@ export interface JobSchedule {
      * shell, and therefore cannot take advantage of shell features such as
      * environment variable expansion. If you want to take advantage of such
      * features, you should invoke the shell in the command line, for example using
-     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the
+     * command line refers to file paths, it should use a relative path (relative
+     * to the task working directory), or use the Batch provided environment
+     * variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.containerSettings]
@@ -18889,7 +19069,10 @@ export interface Task {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [task.containerSettings] The settings for the container
      * under which the task runs. If the pool that will run this task has
@@ -19012,11 +19195,14 @@ export interface Task {
      * @param {number} [task.constraints.maxTaskRetryCount] The maximum number of
      * times the task may be retried. The Batch service retries a task if its exit
      * code is nonzero. Note that this value specifically controls the number of
-     * retries. The Batch service will try the task once, and may then retry up to
-     * this limit. For example, if the maximum retry count is 3, Batch tries the
-     * task up to 4 times (one initial try and 3 retries). If the maximum retry
-     * count is 0, the Batch service does not retry the task. If the maximum retry
-     * count is -1, the Batch service retries the task without limit.
+     * retries for the task executable due to a nonzero exit code. The Batch
+     * service will try the task once, and may then retry up to this limit. For
+     * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+     * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+     * service does not retry the task after the first attempt. If the maximum
+     * retry count is -1, the Batch service retries the task without limit.
+     * Resource files and application packages are only downloaded again if the
+     * task is retried on a new compute node.
      *
      * @param {object} [task.userIdentity] The user identity under which the task
      * runs. If omitted, the task runs as a non-administrative user unique to the
@@ -19162,7 +19348,10 @@ export interface Task {
      * therefore cannot take advantage of shell features such as environment
      * variable expansion. If you want to take advantage of such features, you
      * should invoke the shell in the command line, for example using "cmd /c
-     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux.
+     * MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. If the command
+     * line refers to file paths, it should use a relative path (relative to the
+     * task working directory), or use the Batch provided environment variable
+     * (https://docs.microsoft.com/en-us/azure/batch/batch-compute-node-environment-variables).
      *
      * @param {object} [task.containerSettings] The settings for the container
      * under which the task runs. If the pool that will run this task has
@@ -19285,11 +19474,14 @@ export interface Task {
      * @param {number} [task.constraints.maxTaskRetryCount] The maximum number of
      * times the task may be retried. The Batch service retries a task if its exit
      * code is nonzero. Note that this value specifically controls the number of
-     * retries. The Batch service will try the task once, and may then retry up to
-     * this limit. For example, if the maximum retry count is 3, Batch tries the
-     * task up to 4 times (one initial try and 3 retries). If the maximum retry
-     * count is 0, the Batch service does not retry the task. If the maximum retry
-     * count is -1, the Batch service retries the task without limit.
+     * retries for the task executable due to a nonzero exit code. The Batch
+     * service will try the task once, and may then retry up to this limit. For
+     * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+     * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+     * service does not retry the task after the first attempt. If the maximum
+     * retry count is -1, the Batch service retries the task without limit.
+     * Resource files and application packages are only downloaded again if the
+     * task is retried on a new compute node.
      *
      * @param {object} [task.userIdentity] The user identity under which the task
      * runs. If omitted, the task runs as a non-administrative user unique to the
@@ -20013,11 +20205,14 @@ export interface Task {
      * @param {number} [options.constraints.maxTaskRetryCount] The maximum number
      * of times the task may be retried. The Batch service retries a task if its
      * exit code is nonzero. Note that this value specifically controls the number
-     * of retries. The Batch service will try the task once, and may then retry up
-     * to this limit. For example, if the maximum retry count is 3, Batch tries the
-     * task up to 4 times (one initial try and 3 retries). If the maximum retry
-     * count is 0, the Batch service does not retry the task. If the maximum retry
-     * count is -1, the Batch service retries the task without limit.
+     * of retries for the task executable due to a nonzero exit code. The Batch
+     * service will try the task once, and may then retry up to this limit. For
+     * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+     * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+     * service does not retry the task after the first attempt. If the maximum
+     * retry count is -1, the Batch service retries the task without limit.
+     * Resource files and application packages are only downloaded again if the
+     * task is retried on a new compute node.
      *
      * @param {object} [options.taskUpdateOptions] Additional parameters for the
      * operation
@@ -20098,11 +20293,14 @@ export interface Task {
      * @param {number} [options.constraints.maxTaskRetryCount] The maximum number
      * of times the task may be retried. The Batch service retries a task if its
      * exit code is nonzero. Note that this value specifically controls the number
-     * of retries. The Batch service will try the task once, and may then retry up
-     * to this limit. For example, if the maximum retry count is 3, Batch tries the
-     * task up to 4 times (one initial try and 3 retries). If the maximum retry
-     * count is 0, the Batch service does not retry the task. If the maximum retry
-     * count is -1, the Batch service retries the task without limit.
+     * of retries for the task executable due to a nonzero exit code. The Batch
+     * service will try the task once, and may then retry up to this limit. For
+     * example, if the maximum retry count is 3, Batch tries the task up to 4 times
+     * (one initial try and 3 retries). If the maximum retry count is 0, the Batch
+     * service does not retry the task after the first attempt. If the maximum
+     * retry count is -1, the Batch service retries the task without limit.
+     * Resource files and application packages are only downloaded again if the
+     * task is retried on a new compute node.
      *
      * @param {object} [options.taskUpdateOptions] Additional parameters for the
      * operation
