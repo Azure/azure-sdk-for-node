@@ -2392,13 +2392,16 @@ export interface JobCollectionItem extends ProxyResource {
  * included in the software update configuration. A comma separated string with
  * required values. Possible values include: 'Unclassified', 'Critical',
  * 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition',
- * 'Tools', 'Updates'
+ * 'Tools', 'Updates', 'NotSelected'
  * @member {array} [excludedKbNumbers] KB numbers excluded from the software
+ * update configuration.
+ * @member {array} [includedKbNumbers] KB numbers included from the software
  * update configuration.
  */
 export interface WindowsProperties {
   includedUpdateClassifications?: string;
   excludedKbNumbers?: string[];
+  includedKbNumbers?: string[];
 }
 
 /**
@@ -2409,13 +2412,16 @@ export interface WindowsProperties {
  *
  * @member {string} [includedPackageClassifications] Update classifications
  * included in the software update configuration. Possible values include:
- * 'Unclassified', 'Critical', 'Security', 'Other'
+ * 'Unclassified', 'Critical', 'Security', 'Other', 'NotSelected'
  * @member {array} [excludedPackageNameMasks] packages excluded from the
+ * software update configuration.
+ * @member {array} [includedPackageNameMasks] packages included from the
  * software update configuration.
  */
 export interface LinuxProperties {
   includedPackageClassifications?: string;
   excludedPackageNameMasks?: string[];
+  includedPackageNameMasks?: string[];
 }
 
 /**
@@ -2431,14 +2437,19 @@ export interface LinuxProperties {
  * classification included in the software update configuration. A comma
  * separated string with required values. Possible values include:
  * 'Unclassified', 'Critical', 'Security', 'UpdateRollup', 'FeaturePack',
- * 'ServicePack', 'Definition', 'Tools', 'Updates'
+ * 'ServicePack', 'Definition', 'Tools', 'Updates', 'NotSelected'
  * @member {array} [windows.excludedKbNumbers] KB numbers excluded from the
+ * software update configuration.
+ * @member {array} [windows.includedKbNumbers] KB numbers included from the
  * software update configuration.
  * @member {object} [linux] Linux specific update configuration.
  * @member {string} [linux.includedPackageClassifications] Update
  * classifications included in the software update configuration. Possible
- * values include: 'Unclassified', 'Critical', 'Security', 'Other'
+ * values include: 'Unclassified', 'Critical', 'Security', 'Other',
+ * 'NotSelected'
  * @member {array} [linux.excludedPackageNameMasks] packages excluded from the
+ * software update configuration.
+ * @member {array} [linux.includedPackageNameMasks] packages included from the
  * software update configuration.
  * @member {moment.duration} [duration] Maximum time allowed for the software
  * update configuration run. Duration needs to be specified using the format
@@ -2476,16 +2487,21 @@ export interface UpdateConfiguration {
  * Update classification included in the software update configuration. A comma
  * separated string with required values. Possible values include:
  * 'Unclassified', 'Critical', 'Security', 'UpdateRollup', 'FeaturePack',
- * 'ServicePack', 'Definition', 'Tools', 'Updates'
+ * 'ServicePack', 'Definition', 'Tools', 'Updates', 'NotSelected'
  * @member {array} [updateConfiguration.windows.excludedKbNumbers] KB numbers
  * excluded from the software update configuration.
+ * @member {array} [updateConfiguration.windows.includedKbNumbers] KB numbers
+ * included from the software update configuration.
  * @member {object} [updateConfiguration.linux] Linux specific update
  * configuration.
  * @member {string} [updateConfiguration.linux.includedPackageClassifications]
  * Update classifications included in the software update configuration.
- * Possible values include: 'Unclassified', 'Critical', 'Security', 'Other'
+ * Possible values include: 'Unclassified', 'Critical', 'Security', 'Other',
+ * 'NotSelected'
  * @member {array} [updateConfiguration.linux.excludedPackageNameMasks]
  * packages excluded from the software update configuration.
+ * @member {array} [updateConfiguration.linux.includedPackageNameMasks]
+ * packages included from the software update configuration.
  * @member {moment.duration} [updateConfiguration.duration] Maximum time
  * allowed for the software update configuration run. Duration needs to be
  * specified using the format PT[n]H[n]M[n]S as per ISO8601

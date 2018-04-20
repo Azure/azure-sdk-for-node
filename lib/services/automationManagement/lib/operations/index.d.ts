@@ -7783,10 +7783,13 @@ export interface SoftwareUpdateConfigurations {
      * Update classification included in the software update configuration. A comma
      * separated string with required values. Possible values include:
      * 'Unclassified', 'Critical', 'Security', 'UpdateRollup', 'FeaturePack',
-     * 'ServicePack', 'Definition', 'Tools', 'Updates'
+     * 'ServicePack', 'Definition', 'Tools', 'Updates', 'NotSelected'
      *
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
+     *
+     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
+     * numbers included from the software update configuration.
      *
      * @param {object} [parameters.updateConfiguration.linux] Linux specific update
      * configuration.
@@ -7794,11 +7797,16 @@ export interface SoftwareUpdateConfigurations {
      * @param {string}
      * [parameters.updateConfiguration.linux.includedPackageClassifications] Update
      * classifications included in the software update configuration. Possible
-     * values include: 'Unclassified', 'Critical', 'Security', 'Other'
+     * values include: 'Unclassified', 'Critical', 'Security', 'Other',
+     * 'NotSelected'
      *
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
+     *
+     * @param {array}
+     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
+     * included from the software update configuration.
      *
      * @param {moment.duration} [parameters.updateConfiguration.duration] Maximum
      * time allowed for the software update configuration run. Duration needs to be
@@ -7913,10 +7921,13 @@ export interface SoftwareUpdateConfigurations {
      * Update classification included in the software update configuration. A comma
      * separated string with required values. Possible values include:
      * 'Unclassified', 'Critical', 'Security', 'UpdateRollup', 'FeaturePack',
-     * 'ServicePack', 'Definition', 'Tools', 'Updates'
+     * 'ServicePack', 'Definition', 'Tools', 'Updates', 'NotSelected'
      *
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
+     *
+     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
+     * numbers included from the software update configuration.
      *
      * @param {object} [parameters.updateConfiguration.linux] Linux specific update
      * configuration.
@@ -7924,11 +7935,16 @@ export interface SoftwareUpdateConfigurations {
      * @param {string}
      * [parameters.updateConfiguration.linux.includedPackageClassifications] Update
      * classifications included in the software update configuration. Possible
-     * values include: 'Unclassified', 'Critical', 'Security', 'Other'
+     * values include: 'Unclassified', 'Critical', 'Security', 'Other',
+     * 'NotSelected'
      *
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
+     *
+     * @param {array}
+     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
+     * included from the software update configuration.
      *
      * @param {moment.duration} [parameters.updateConfiguration.duration] Maximum
      * time allowed for the software update configuration run. Duration needs to be
