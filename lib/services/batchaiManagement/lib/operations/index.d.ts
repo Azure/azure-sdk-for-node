@@ -444,7 +444,7 @@ export interface Clusters {
      * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
      * Determines what to do with the job(s) running on compute node if the Cluster
      * size is decreasing. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'waitforjobcompletion', 'unknown'
+     * 'requeue', 'terminate', 'waitforjobcompletion'
      *
      * @param {object} [parameters.scaleSettings.autoScale] The scale for the
      * cluster by autoscale settings
@@ -649,7 +649,7 @@ export interface Clusters {
      * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
      * Determines what to do with the job(s) running on compute node if the Cluster
      * size is decreasing. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'waitforjobcompletion', 'unknown'
+     * 'requeue', 'terminate', 'waitforjobcompletion'
      *
      * @param {object} [parameters.scaleSettings.autoScale] The scale for the
      * cluster by autoscale settings
@@ -858,7 +858,7 @@ export interface Clusters {
      * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
      * Determines what to do with the job(s) running on compute node if the Cluster
      * size is decreasing. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'waitforjobcompletion', 'unknown'
+     * 'requeue', 'terminate', 'waitforjobcompletion'
      *
      * @param {object} [parameters.scaleSettings.autoScale] The scale for the
      * cluster by autoscale settings
@@ -918,7 +918,7 @@ export interface Clusters {
      * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
      * Determines what to do with the job(s) running on compute node if the Cluster
      * size is decreasing. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'waitforjobcompletion', 'unknown'
+     * 'requeue', 'terminate', 'waitforjobcompletion'
      *
      * @param {object} [parameters.scaleSettings.autoScale] The scale for the
      * cluster by autoscale settings
@@ -1316,7 +1316,7 @@ export interface Clusters {
      * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
      * Determines what to do with the job(s) running on compute node if the Cluster
      * size is decreasing. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'waitforjobcompletion', 'unknown'
+     * 'requeue', 'terminate', 'waitforjobcompletion'
      *
      * @param {object} [parameters.scaleSettings.autoScale] The scale for the
      * cluster by autoscale settings
@@ -1521,7 +1521,7 @@ export interface Clusters {
      * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
      * Determines what to do with the job(s) running on compute node if the Cluster
      * size is decreasing. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'waitforjobcompletion', 'unknown'
+     * 'requeue', 'terminate', 'waitforjobcompletion'
      *
      * @param {object} [parameters.scaleSettings.autoScale] The scale for the
      * cluster by autoscale settings
@@ -4264,9 +4264,9 @@ export interface Jobs {
      *
      * @param {object} parameters The parameters to provide for job creation.
      *
-     * @param {string} [parameters.priority] Priority associated with the job.
-     * Priority associated with the job. Possible values include: 'low', 'normal',
-     * 'high'
+     * @param {string} [parameters.schedulingPriority] Scheduling priority
+     * associated with the job. Scheduling priority  associated with the job.
+     * Possible values include: 'low', 'normal', 'high'
      *
      * @param {object} parameters.cluster Specifies the Id of the cluster on which
      * this job will run.
@@ -4568,9 +4568,9 @@ export interface Jobs {
      *
      * @param {object} parameters The parameters to provide for job creation.
      *
-     * @param {string} [parameters.priority] Priority associated with the job.
-     * Priority associated with the job. Possible values include: 'low', 'normal',
-     * 'high'
+     * @param {string} [parameters.schedulingPriority] Scheduling priority
+     * associated with the job. Scheduling priority  associated with the job.
+     * Possible values include: 'low', 'normal', 'high'
      *
      * @param {object} parameters.cluster Specifies the Id of the cluster on which
      * this job will run.
@@ -5345,9 +5345,9 @@ export interface Jobs {
      *
      * @param {object} parameters The parameters to provide for job creation.
      *
-     * @param {string} [parameters.priority] Priority associated with the job.
-     * Priority associated with the job. Possible values include: 'low', 'normal',
-     * 'high'
+     * @param {string} [parameters.schedulingPriority] Scheduling priority
+     * associated with the job. Scheduling priority  associated with the job.
+     * Possible values include: 'low', 'normal', 'high'
      *
      * @param {object} parameters.cluster Specifies the Id of the cluster on which
      * this job will run.
@@ -5649,9 +5649,9 @@ export interface Jobs {
      *
      * @param {object} parameters The parameters to provide for job creation.
      *
-     * @param {string} [parameters.priority] Priority associated with the job.
-     * Priority associated with the job. Possible values include: 'low', 'normal',
-     * 'high'
+     * @param {string} [parameters.schedulingPriority] Scheduling priority
+     * associated with the job. Scheduling priority  associated with the job.
+     * Possible values include: 'low', 'normal', 'high'
      *
      * @param {object} parameters.cluster Specifies the Id of the cluster on which
      * this job will run.

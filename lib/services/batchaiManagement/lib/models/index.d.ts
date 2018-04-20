@@ -287,7 +287,7 @@ export interface FileServerCreateParameters {
  * @member {string} [nodeDeallocationOption] Determines what to do with the
  * job(s) running on compute node if the Cluster size is decreasing. The
  * default value is requeue. Possible values include: 'requeue', 'terminate',
- * 'waitforjobcompletion', 'unknown'. Default value: 'requeue' .
+ * 'waitforjobcompletion'. Default value: 'requeue' .
  */
 export interface ManualScaleSettings {
   targetNodeCount: number;
@@ -330,7 +330,7 @@ export interface AutoScaleSettings {
  * are not specified, then the Cluster starts with this target.
  * @member {string} [manual.nodeDeallocationOption] The default value is
  * requeue. Possible values include: 'requeue', 'terminate',
- * 'waitforjobcompletion', 'unknown'
+ * 'waitforjobcompletion'
  * @member {object} [autoScale] The scale for the cluster by autoscale
  * settings.
  * @member {number} [autoScale.minimumNodeCount]
@@ -807,7 +807,7 @@ export interface NodeStateCounts {
  * target.
  * @member {string} [scaleSettings.manual.nodeDeallocationOption] The default
  * value is requeue. Possible values include: 'requeue', 'terminate',
- * 'waitforjobcompletion', 'unknown'
+ * 'waitforjobcompletion'
  * @member {object} [scaleSettings.autoScale]
  * @member {number} [scaleSettings.autoScale.minimumNodeCount]
  * @member {number} [scaleSettings.autoScale.maximumNodeCount]
@@ -911,7 +911,7 @@ export interface ClusterCreateParameters {
  * target.
  * @member {string} [scaleSettings.manual.nodeDeallocationOption] The default
  * value is requeue. Possible values include: 'requeue', 'terminate',
- * 'waitforjobcompletion', 'unknown'
+ * 'waitforjobcompletion'
  * @member {object} [scaleSettings.autoScale]
  * @member {number} [scaleSettings.autoScale.minimumNodeCount]
  * @member {number} [scaleSettings.autoScale.maximumNodeCount]
@@ -979,7 +979,7 @@ export interface BatchAIError {
  * target.
  * @member {string} [scaleSettings.manual.nodeDeallocationOption] The default
  * value is requeue. Possible values include: 'requeue', 'terminate',
- * 'waitforjobcompletion', 'unknown'
+ * 'waitforjobcompletion'
  * @member {object} [scaleSettings.autoScale]
  * @member {number} [scaleSettings.autoScale.minimumNodeCount]
  * @member {number} [scaleSettings.autoScale.maximumNodeCount]
@@ -1476,9 +1476,9 @@ export interface JobBasePropertiesConstraints {
  * @constructor
  * Parameters supplied to the Create operation.
  *
- * @member {string} [priority] Priority associated with the job. Priority
- * associated with the job. Possible values include: 'low', 'normal', 'high'.
- * Default value: 'normal' .
+ * @member {string} [schedulingPriority] Scheduling priority associated with
+ * the job. Scheduling priority  associated with the job. Possible values
+ * include: 'low', 'normal', 'high'. Default value: 'normal' .
  * @member {object} cluster Specifies the Id of the cluster on which this job
  * will run.
  * @member {string} [cluster.id] The ID of the resource
@@ -1616,7 +1616,7 @@ export interface JobBasePropertiesConstraints {
  * week.
  */
 export interface JobCreateParameters {
-  priority?: string;
+  schedulingPriority?: string;
   cluster: ResourceId;
   mountVolumes?: MountVolumes;
   nodeCount: number;
@@ -1998,6 +1998,7 @@ export interface Operation {
  * @constructor
  * Describes Batch AI Workspace.
  *
+ * @member {date} [creationTime] Time when the Workspace was created.
  * @member {string} [provisioningState] The provisioned state of the workspace.
  * Possible values include: 'creating', 'succeeded', 'failed', 'deleting'
  * @member {date} [provisioningStateTransitionTime] The time at which the
@@ -2005,6 +2006,7 @@ export interface Operation {
  * workspace entered its current provisioning state.
  */
 export interface Workspace extends Resource {
+  readonly creationTime?: Date;
   readonly provisioningState?: string;
   readonly provisioningStateTransitionTime?: Date;
 }
@@ -2030,6 +2032,7 @@ export interface WorkspaceCreateParameters {
  * @constructor
  * Contains information about the experiment.
  *
+ * @member {date} [creationTime] Time when the Experiment was created.
  * @member {string} [provisioningState] The provisioned state of the
  * experiment. Possible values include: 'creating', 'succeeded', 'failed',
  * 'deleting'
@@ -2038,6 +2041,7 @@ export interface WorkspaceCreateParameters {
  * experiment entered its current provisioning state.
  */
 export interface Experiment extends ProxyResource {
+  readonly creationTime?: Date;
   readonly provisioningState?: string;
   readonly provisioningStateTransitionTime?: Date;
 }
@@ -2207,7 +2211,7 @@ export interface JobsListOutputFilesOptions {
  * @member {string} [nextLink]
  */
 export interface OperationListResult extends Array<Operation> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -2221,7 +2225,7 @@ export interface OperationListResult extends Array<Operation> {
  * of compute resource usage information.
  */
 export interface ListUsagesResult extends Array<Usage> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -2233,7 +2237,7 @@ export interface ListUsagesResult extends Array<Usage> {
  * @member {string} [nextLink] The continuation token.
  */
 export interface ClusterListResult extends Array<Cluster> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -2245,7 +2249,7 @@ export interface ClusterListResult extends Array<Cluster> {
  * @member {string} [nextLink] The continuation token.
  */
 export interface RemoteLoginInformationListResult extends Array<RemoteLoginInformation> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -2257,7 +2261,7 @@ export interface RemoteLoginInformationListResult extends Array<RemoteLoginInfor
  * @member {string} [nextLink] The continuation token.
  */
 export interface FileServerListResult extends Array<FileServer> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -2269,7 +2273,7 @@ export interface FileServerListResult extends Array<FileServer> {
  * @member {string} [nextLink] The continuation token.
  */
 export interface WorkspaceListResult extends Array<Workspace> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -2281,7 +2285,7 @@ export interface WorkspaceListResult extends Array<Workspace> {
  * @member {string} [nextLink] The continuation token.
  */
 export interface ExperimentListResult extends Array<Experiment> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -2293,7 +2297,7 @@ export interface ExperimentListResult extends Array<Experiment> {
  * @member {string} [nextLink] The continuation token.
  */
 export interface JobListResult extends Array<Job> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -2305,5 +2309,5 @@ export interface JobListResult extends Array<Job> {
  * @member {string} [nextLink] The continuation token.
  */
 export interface FileListResult extends Array<File> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
