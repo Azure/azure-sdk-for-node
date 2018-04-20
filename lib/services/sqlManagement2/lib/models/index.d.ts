@@ -3169,6 +3169,19 @@ export interface InstanceFailoverGroup extends ProxyResource {
   managedInstancePairs: ManagedInstancePairInfo[];
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ShortTermRetentionPolicy class.
+ * @constructor
+ * A short term retention policy resource.
+ *
+ * @member {number} [retentionDays] The backup retention period in days. This
+ * is how many days Point-in-Time Restore will be supported.
+ */
+export interface ShortTermRetentionPolicy extends ProxyResource {
+  retentionDays?: number;
+}
+
 
 /**
  * @class
