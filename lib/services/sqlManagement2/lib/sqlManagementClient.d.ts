@@ -99,6 +99,7 @@ export default class SqlManagementClient extends AzureServiceClient {
   elasticPoolOperations: operations.ElasticPoolOperations;
   capabilities: operations.Capabilities;
   instanceFailoverGroups: operations.InstanceFailoverGroups;
+  shortTermRetentionPolicies: operations.ShortTermRetentionPolicies;
 }
 
 export { SqlManagementClient, models as SqlManagementModels };
