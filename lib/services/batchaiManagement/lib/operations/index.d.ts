@@ -131,11 +131,11 @@ export interface Operations {
 
 /**
  * @class
- * UsageOperations
+ * Usages
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BatchAIManagementClient.
  */
-export interface UsageOperations {
+export interface Usages {
 
 
     /**
@@ -501,8 +501,10 @@ export interface Clusters {
      * data that is required for all jobs that run on the cluster VMs or to
      * download/install software.
      *
-     * @param {string} parameters.nodeSetup.setupTask.commandLine Command Line to
-     * start Setup process.
+     * @param {string} parameters.nodeSetup.setupTask.commandLine Command line to
+     * be executed on each cluster's node after it being allocated or rebooted.
+     * Command line to be executed on each cluster's node after it being allocated
+     * or rebooted. The command is executed in a bash subshell as a root.
      *
      * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
      * Collection of environment variables to be set for setup task.
@@ -510,11 +512,6 @@ export interface Clusters {
      * @param {array} [parameters.nodeSetup.setupTask.secrets] Collection of
      * environment variables with secret values to be set for setup task. Server
      * will never report values of these variables back.
-     *
-     * @param {boolean} [parameters.nodeSetup.setupTask.runElevated] Specifies
-     * whether to run the setup task under root account. The default value is
-     * false. Note. Non-elevated tasks are run under an account added into sudoer
-     * list and can perform sudo when required.
      *
      * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The
      * prefix of a path where the Batch AI service will upload the stdout and
@@ -706,8 +703,10 @@ export interface Clusters {
      * data that is required for all jobs that run on the cluster VMs or to
      * download/install software.
      *
-     * @param {string} parameters.nodeSetup.setupTask.commandLine Command Line to
-     * start Setup process.
+     * @param {string} parameters.nodeSetup.setupTask.commandLine Command line to
+     * be executed on each cluster's node after it being allocated or rebooted.
+     * Command line to be executed on each cluster's node after it being allocated
+     * or rebooted. The command is executed in a bash subshell as a root.
      *
      * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
      * Collection of environment variables to be set for setup task.
@@ -715,11 +714,6 @@ export interface Clusters {
      * @param {array} [parameters.nodeSetup.setupTask.secrets] Collection of
      * environment variables with secret values to be set for setup task. Server
      * will never report values of these variables back.
-     *
-     * @param {boolean} [parameters.nodeSetup.setupTask.runElevated] Specifies
-     * whether to run the setup task under root account. The default value is
-     * false. Note. Non-elevated tasks are run under an account added into sudoer
-     * list and can perform sudo when required.
      *
      * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The
      * prefix of a path where the Batch AI service will upload the stdout and
@@ -1373,8 +1367,10 @@ export interface Clusters {
      * data that is required for all jobs that run on the cluster VMs or to
      * download/install software.
      *
-     * @param {string} parameters.nodeSetup.setupTask.commandLine Command Line to
-     * start Setup process.
+     * @param {string} parameters.nodeSetup.setupTask.commandLine Command line to
+     * be executed on each cluster's node after it being allocated or rebooted.
+     * Command line to be executed on each cluster's node after it being allocated
+     * or rebooted. The command is executed in a bash subshell as a root.
      *
      * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
      * Collection of environment variables to be set for setup task.
@@ -1382,11 +1378,6 @@ export interface Clusters {
      * @param {array} [parameters.nodeSetup.setupTask.secrets] Collection of
      * environment variables with secret values to be set for setup task. Server
      * will never report values of these variables back.
-     *
-     * @param {boolean} [parameters.nodeSetup.setupTask.runElevated] Specifies
-     * whether to run the setup task under root account. The default value is
-     * false. Note. Non-elevated tasks are run under an account added into sudoer
-     * list and can perform sudo when required.
      *
      * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The
      * prefix of a path where the Batch AI service will upload the stdout and
@@ -1578,8 +1569,10 @@ export interface Clusters {
      * data that is required for all jobs that run on the cluster VMs or to
      * download/install software.
      *
-     * @param {string} parameters.nodeSetup.setupTask.commandLine Command Line to
-     * start Setup process.
+     * @param {string} parameters.nodeSetup.setupTask.commandLine Command line to
+     * be executed on each cluster's node after it being allocated or rebooted.
+     * Command line to be executed on each cluster's node after it being allocated
+     * or rebooted. The command is executed in a bash subshell as a root.
      *
      * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
      * Collection of environment variables to be set for setup task.
@@ -1587,11 +1580,6 @@ export interface Clusters {
      * @param {array} [parameters.nodeSetup.setupTask.secrets] Collection of
      * environment variables with secret values to be set for setup task. Server
      * will never report values of these variables back.
-     *
-     * @param {boolean} [parameters.nodeSetup.setupTask.runElevated] Specifies
-     * whether to run the setup task under root account. The default value is
-     * false. Note. Non-elevated tasks are run under an account added into sudoer
-     * list and can perform sudo when required.
      *
      * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The
      * prefix of a path where the Batch AI service will upload the stdout and

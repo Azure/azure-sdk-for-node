@@ -26,8 +26,8 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} [localizedValue] The localized name of the resource.
  */
 export interface UsageName {
-  value?: string;
-  localizedValue?: string;
+  readonly value?: string;
+  readonly localizedValue?: string;
 }
 
 /**
@@ -36,16 +36,19 @@ export interface UsageName {
  * @constructor
  * Describes Batch AI Resource Usage.
  *
- * @member {number} currentValue The current usage of the resource.
- * @member {number} limit The maximum permitted usage of the resource.
- * @member {object} name The name of the type of usage.
+ * @member {string} [unit] An enum describing the unit of usage measurement.
+ * Possible values include: 'Count'
+ * @member {number} [currentValue] The current usage of the resource.
+ * @member {number} [limit] The maximum permitted usage of the resource.
+ * @member {object} [name] The name of the type of usage.
  * @member {string} [name.value] The name of the resource.
  * @member {string} [name.localizedValue] The localized name of the resource.
  */
 export interface Usage {
-  currentValue: number;
-  limit: number;
-  name: UsageName;
+  readonly unit?: string;
+  readonly currentValue?: number;
+  readonly limit?: number;
+  readonly name?: UsageName;
 }
 
 /**
@@ -440,16 +443,15 @@ export interface EnvironmentVariableWithSecretValue {
  * Specifies a setup task which can be used to customize the compute nodes of
  * the cluster.
  *
- * @member {string} commandLine Command Line to start Setup process.
+ * @member {string} commandLine Command line to be executed on each cluster's
+ * node after it being allocated or rebooted. Command line to be executed on
+ * each cluster's node after it being allocated or rebooted. The command is
+ * executed in a bash subshell as a root.
  * @member {array} [environmentVariables] Collection of environment variables
  * to be set for setup task.
  * @member {array} [secrets] Collection of environment variables with secret
  * values to be set for setup task. Server will never report values of these
  * variables back.
- * @member {boolean} [runElevated] Specifies whether to run the setup task
- * under root account. The default value is false. Note. Non-elevated tasks are
- * run under an account added into sudoer list and can perform sudo when
- * required. Default value: false .
  * @member {string} stdOutErrPathPrefix The prefix of a path where the Batch AI
  * service will upload the stdout and stderr of the setup task.
  * @member {string} [stdOutErrPathSuffix] A path segment appended by Batch AI
@@ -463,7 +465,6 @@ export interface SetupTask {
   commandLine: string;
   environmentVariables?: EnvironmentVariable[];
   secrets?: EnvironmentVariableWithSecretValue[];
-  runElevated?: boolean;
   stdOutErrPathPrefix: string;
   readonly stdOutErrPathSuffix?: string;
 }
@@ -705,12 +706,12 @@ export interface PerformanceCountersSettings {
  * idempotent. Generally it is used to either download static data that is
  * required for all jobs that run on the cluster VMs or to download/install
  * software.
- * @member {string} [setupTask.commandLine]
+ * @member {string} [setupTask.commandLine] Command line to be executed on each
+ * cluster's node after it being allocated or rebooted. The command is executed
+ * in a bash subshell as a root.
  * @member {array} [setupTask.environmentVariables]
  * @member {array} [setupTask.secrets] Server will never report values of these
  * variables back.
- * @member {boolean} [setupTask.runElevated] Note. Non-elevated tasks are run
- * under an account added into sudoer list and can perform sudo when required.
  * @member {string} [setupTask.stdOutErrPathPrefix] The prefix of a path where
  * the Batch AI service will upload the stdout and stderr of the setup task.
  * @member {string} [setupTask.stdOutErrPathSuffix] Batch AI creates the setup
@@ -764,22 +765,22 @@ export interface NodeSetup {
  * @constructor
  * Counts of various compute node states on the cluster.
  *
- * @member {number} idleNodeCount Number of compute nodes in idle state.
- * @member {number} runningNodeCount Number of compute nodes which are running
- * jobs.
- * @member {number} preparingNodeCount Number of compute nodes which are being
- * prepared.
- * @member {number} unusableNodeCount Number of compute nodes which are
+ * @member {number} [idleNodeCount] Number of compute nodes in idle state.
+ * @member {number} [runningNodeCount] Number of compute nodes which are
+ * running jobs.
+ * @member {number} [preparingNodeCount] Number of compute nodes which are
+ * being prepared.
+ * @member {number} [unusableNodeCount] Number of compute nodes which are
  * unusable.
- * @member {number} leavingNodeCount Number of compute nodes which are leaving
- * the cluster.
+ * @member {number} [leavingNodeCount] Number of compute nodes which are
+ * leaving the cluster.
  */
 export interface NodeStateCounts {
-  idleNodeCount: number;
-  runningNodeCount: number;
-  preparingNodeCount: number;
-  unusableNodeCount: number;
-  leavingNodeCount: number;
+  readonly idleNodeCount?: number;
+  readonly runningNodeCount?: number;
+  readonly preparingNodeCount?: number;
+  readonly unusableNodeCount?: number;
+  readonly leavingNodeCount?: number;
 }
 
 /**
@@ -830,13 +831,12 @@ export interface NodeStateCounts {
  * @member {object} [nodeSetup] Setup to be done on all compute nodes in the
  * cluster.
  * @member {object} [nodeSetup.setupTask]
- * @member {string} [nodeSetup.setupTask.commandLine]
+ * @member {string} [nodeSetup.setupTask.commandLine] Command line to be
+ * executed on each cluster's node after it being allocated or rebooted. The
+ * command is executed in a bash subshell as a root.
  * @member {array} [nodeSetup.setupTask.environmentVariables]
  * @member {array} [nodeSetup.setupTask.secrets] Server will never report
  * values of these variables back.
- * @member {boolean} [nodeSetup.setupTask.runElevated] Note. Non-elevated tasks
- * are run under an account added into sudoer list and can perform sudo when
- * required.
  * @member {string} [nodeSetup.setupTask.stdOutErrPathPrefix] The prefix of a
  * path where the Batch AI service will upload the stdout and stderr of the
  * setup task.
@@ -949,9 +949,9 @@ export interface NameValuePair {
  * @member {array} [details] A list of additional details about the error.
  */
 export interface BatchAIError {
-  code?: string;
-  message?: string;
-  details?: NameValuePair[];
+  readonly code?: string;
+  readonly message?: string;
+  readonly details?: NameValuePair[];
 }
 
 /**
@@ -1002,13 +1002,12 @@ export interface BatchAIError {
  * @member {object} [nodeSetup] Setup to be done on all compute nodes in the
  * Cluster.
  * @member {object} [nodeSetup.setupTask]
- * @member {string} [nodeSetup.setupTask.commandLine]
+ * @member {string} [nodeSetup.setupTask.commandLine] Command line to be
+ * executed on each cluster's node after it being allocated or rebooted. The
+ * command is executed in a bash subshell as a root.
  * @member {array} [nodeSetup.setupTask.environmentVariables]
  * @member {array} [nodeSetup.setupTask.secrets] Server will never report
  * values of these variables back.
- * @member {boolean} [nodeSetup.setupTask.runElevated] Note. Non-elevated tasks
- * are run under an account added into sudoer list and can perform sudo when
- * required.
  * @member {string} [nodeSetup.setupTask.stdOutErrPathPrefix] The prefix of a
  * path where the Batch AI service will upload the stdout and stderr of the
  * setup task.
@@ -1101,7 +1100,7 @@ export interface Cluster extends Resource {
   readonly provisioningStateTransitionTime?: Date;
   readonly allocationState?: string;
   readonly allocationStateTransitionTime?: Date;
-  errors?: BatchAIError[];
+  readonly errors?: BatchAIError[];
   readonly currentNodeCount?: number;
   readonly nodeStateCounts?: NodeStateCounts;
 }
@@ -1659,7 +1658,7 @@ export interface JobPropertiesConstraints {
  * Contains information about the execution of a job in the Azure Batch
  * service.
  *
- * @member {date} startTime The time at which the job started running.
+ * @member {date} [startTime] The time at which the job started running.
  * 'Running' corresponds to the running state. If the job has been restarted or
  * retried, this is the most recent time at which the job started running. This
  * property is present only for job that are in the running or completed state.
@@ -1671,10 +1670,10 @@ export interface JobPropertiesConstraints {
  * the service during job execution.
  */
 export interface JobPropertiesExecutionInfo {
-  startTime: Date;
-  endTime?: Date;
-  exitCode?: number;
-  errors?: BatchAIError[];
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly exitCode?: number;
+  readonly errors?: BatchAIError[];
 }
 
 /**
@@ -1881,7 +1880,7 @@ export interface Job extends ProxyResource {
   priority?: string;
   cluster?: ResourceId;
   mountVolumes?: MountVolumes;
-  jobOutputDirectoryPathSegment?: string;
+  readonly jobOutputDirectoryPathSegment?: string;
   nodeCount?: number;
   containerSettings?: ContainerSettings;
   toolType?: string;
@@ -1903,7 +1902,7 @@ export interface Job extends ProxyResource {
   readonly creationTime?: Date;
   readonly provisioningState?: string;
   readonly provisioningStateTransitionTime?: Date;
-  executionState?: string;
+  readonly executionState?: string;
   readonly executionStateTransitionTime?: Date;
   executionInfo?: JobPropertiesExecutionInfo;
 }
@@ -1914,14 +1913,14 @@ export interface Job extends ProxyResource {
  * @constructor
  * Contains remote login details to SSH/RDP to a compute node in cluster.
  *
- * @member {string} nodeId Id of the compute node
- * @member {string} ipAddress ip address
- * @member {number} port port number.
+ * @member {string} [nodeId] Id of the compute node
+ * @member {string} [ipAddress] ip address
+ * @member {number} [port] port number.
  */
 export interface RemoteLoginInformation {
-  nodeId: string;
-  ipAddress: string;
-  port: number;
+  readonly nodeId?: string;
+  readonly ipAddress?: string;
+  readonly port?: number;
 }
 
 /**
@@ -1930,8 +1929,9 @@ export interface RemoteLoginInformation {
  * @constructor
  * Properties of the file or directory.
  *
- * @member {string} name Name of the file.
- * @member {boolean} isDirectory Indicates if the file is a directory.
+ * @member {string} [name] Name of the file.
+ * @member {string} [fileType] Contains information about file type. Possible
+ * values include: 'file', 'directory'
  * @member {string} [downloadUrl] Will contain an URL to download the
  * corresponding file. The downloadUrl is not returned for directories.
  * @member {date} [lastModified] The time at which the file was last modified.
@@ -1939,11 +1939,11 @@ export interface RemoteLoginInformation {
  * @member {number} [contentLength] The file size. The file size.
  */
 export interface File {
-  name: string;
-  isDirectory: boolean;
-  downloadUrl?: string;
-  lastModified?: Date;
-  contentLength?: number;
+  readonly name?: string;
+  readonly fileType?: string;
+  readonly downloadUrl?: string;
+  readonly lastModified?: Date;
+  readonly contentLength?: number;
 }
 
 /**
@@ -1960,10 +1960,10 @@ export interface File {
  * @member {string} [description] The friendly name of the operation.
  */
 export interface OperationDisplay {
-  provider?: string;
-  operation?: string;
-  resource?: string;
-  description?: string;
+  readonly provider?: string;
+  readonly operation?: string;
+  readonly resource?: string;
+  readonly description?: string;
 }
 
 /**
@@ -1986,9 +1986,9 @@ export interface OperationDisplay {
  * @member {object} [properties] Properties of the operation.
  */
 export interface Operation {
-  name?: string;
+  readonly name?: string;
   display?: OperationDisplay;
-  origin?: string;
+  readonly origin?: string;
   properties?: any;
 }
 
