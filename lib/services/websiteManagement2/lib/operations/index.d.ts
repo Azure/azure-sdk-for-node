@@ -5181,6 +5181,300 @@ export interface Diagnostics {
 
 
     /**
+     * @summary List Hosting Environment Detector Responses
+     *
+     * List Hosting Environment Detector Responses
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Site Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DetectorResponseCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listHostingEnvironmentDetectorResponsesWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectorResponseCollection>>;
+
+    /**
+     * @summary List Hosting Environment Detector Responses
+     *
+     * List Hosting Environment Detector Responses
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Site Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DetectorResponseCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DetectorResponseCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DetectorResponseCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listHostingEnvironmentDetectorResponses(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectorResponseCollection>;
+    listHostingEnvironmentDetectorResponses(resourceGroupName: string, name: string, callback: ServiceCallback<models.DetectorResponseCollection>): void;
+    listHostingEnvironmentDetectorResponses(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectorResponseCollection>): void;
+
+
+    /**
+     * @summary Get Hosting Environment Detector Response
+     *
+     * Get Hosting Environment Detector Response
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name App Service Environment Name
+     *
+     * @param {string} detectorName Detector Resource Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DetectorResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getHostingEnvironmentDetectorResponseWithHttpOperationResponse(resourceGroupName: string, name: string, detectorName: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectorResponse>>;
+
+    /**
+     * @summary Get Hosting Environment Detector Response
+     *
+     * Get Hosting Environment Detector Response
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name App Service Environment Name
+     *
+     * @param {string} detectorName Detector Resource Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DetectorResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DetectorResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DetectorResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getHostingEnvironmentDetectorResponse(resourceGroupName: string, name: string, detectorName: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectorResponse>;
+    getHostingEnvironmentDetectorResponse(resourceGroupName: string, name: string, detectorName: string, callback: ServiceCallback<models.DetectorResponse>): void;
+    getHostingEnvironmentDetectorResponse(resourceGroupName: string, name: string, detectorName: string, options: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectorResponse>): void;
+
+
+    /**
+     * @summary List Site Detector Responses
+     *
+     * List Site Detector Responses
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DetectorResponseCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteDetectorResponsesWithHttpOperationResponse(resourceGroupName: string, siteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectorResponseCollection>>;
+
+    /**
+     * @summary List Site Detector Responses
+     *
+     * List Site Detector Responses
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DetectorResponseCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DetectorResponseCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DetectorResponseCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteDetectorResponses(resourceGroupName: string, siteName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectorResponseCollection>;
+    listSiteDetectorResponses(resourceGroupName: string, siteName: string, callback: ServiceCallback<models.DetectorResponseCollection>): void;
+    listSiteDetectorResponses(resourceGroupName: string, siteName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectorResponseCollection>): void;
+
+
+    /**
+     * @summary Get site detector response
+     *
+     * Get site detector response
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} detectorName Detector Resource Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DetectorResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSiteDetectorResponseWithHttpOperationResponse(resourceGroupName: string, siteName: string, detectorName: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectorResponse>>;
+
+    /**
+     * @summary Get site detector response
+     *
+     * Get site detector response
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} detectorName Detector Resource Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DetectorResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DetectorResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DetectorResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSiteDetectorResponse(resourceGroupName: string, siteName: string, detectorName: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectorResponse>;
+    getSiteDetectorResponse(resourceGroupName: string, siteName: string, detectorName: string, callback: ServiceCallback<models.DetectorResponse>): void;
+    getSiteDetectorResponse(resourceGroupName: string, siteName: string, detectorName: string, options: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectorResponse>): void;
+
+
+    /**
      * @summary Get Diagnostics Categories
      *
      * Get Diagnostics Categories
@@ -5771,6 +6065,161 @@ export interface Diagnostics {
     executeSiteDetector(resourceGroupName: string, siteName: string, detectorName: string, diagnosticCategory: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticDetectorResponse>;
     executeSiteDetector(resourceGroupName: string, siteName: string, detectorName: string, diagnosticCategory: string, callback: ServiceCallback<models.DiagnosticDetectorResponse>): void;
     executeSiteDetector(resourceGroupName: string, siteName: string, detectorName: string, diagnosticCategory: string, options: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticDetectorResponse>): void;
+
+
+    /**
+     * @summary List Site Detector Responses
+     *
+     * List Site Detector Responses
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DetectorResponseCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteDetectorResponsesSlotWithHttpOperationResponse(resourceGroupName: string, siteName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectorResponseCollection>>;
+
+    /**
+     * @summary List Site Detector Responses
+     *
+     * List Site Detector Responses
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DetectorResponseCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DetectorResponseCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DetectorResponseCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteDetectorResponsesSlot(resourceGroupName: string, siteName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectorResponseCollection>;
+    listSiteDetectorResponsesSlot(resourceGroupName: string, siteName: string, slot: string, callback: ServiceCallback<models.DetectorResponseCollection>): void;
+    listSiteDetectorResponsesSlot(resourceGroupName: string, siteName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectorResponseCollection>): void;
+
+
+    /**
+     * @summary Get site detector response
+     *
+     * Get site detector response
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} detectorName Detector Resource Name
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DetectorResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSiteDetectorResponseSlotWithHttpOperationResponse(resourceGroupName: string, siteName: string, detectorName: string, slot: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectorResponse>>;
+
+    /**
+     * @summary Get site detector response
+     *
+     * Get site detector response
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} siteName Site Name
+     *
+     * @param {string} detectorName Detector Resource Name
+     *
+     * @param {string} slot Slot Name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.startTime] Start Time
+     *
+     * @param {date} [options.endTime] End Time
+     *
+     * @param {string} [options.timeGrain] Time Grain
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DetectorResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DetectorResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DetectorResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSiteDetectorResponseSlot(resourceGroupName: string, siteName: string, detectorName: string, slot: string, options?: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectorResponse>;
+    getSiteDetectorResponseSlot(resourceGroupName: string, siteName: string, detectorName: string, slot: string, callback: ServiceCallback<models.DetectorResponse>): void;
+    getSiteDetectorResponseSlot(resourceGroupName: string, siteName: string, detectorName: string, slot: string, options: { startTime? : Date, endTime? : Date, timeGrain? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectorResponse>): void;
 
 
     /**
@@ -6399,6 +6848,130 @@ export interface Diagnostics {
 
 
     /**
+     * @summary List Hosting Environment Detector Responses
+     *
+     * List Hosting Environment Detector Responses
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DetectorResponseCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listHostingEnvironmentDetectorResponsesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectorResponseCollection>>;
+
+    /**
+     * @summary List Hosting Environment Detector Responses
+     *
+     * List Hosting Environment Detector Responses
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DetectorResponseCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DetectorResponseCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DetectorResponseCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listHostingEnvironmentDetectorResponsesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectorResponseCollection>;
+    listHostingEnvironmentDetectorResponsesNext(nextPageLink: string, callback: ServiceCallback<models.DetectorResponseCollection>): void;
+    listHostingEnvironmentDetectorResponsesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectorResponseCollection>): void;
+
+
+    /**
+     * @summary List Site Detector Responses
+     *
+     * List Site Detector Responses
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DetectorResponseCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteDetectorResponsesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectorResponseCollection>>;
+
+    /**
+     * @summary List Site Detector Responses
+     *
+     * List Site Detector Responses
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DetectorResponseCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DetectorResponseCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DetectorResponseCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteDetectorResponsesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectorResponseCollection>;
+    listSiteDetectorResponsesNext(nextPageLink: string, callback: ServiceCallback<models.DetectorResponseCollection>): void;
+    listSiteDetectorResponsesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectorResponseCollection>): void;
+
+
+    /**
      * @summary Get Diagnostics Categories
      *
      * Get Diagnostics Categories
@@ -6644,6 +7217,68 @@ export interface Diagnostics {
     getSiteDetectorNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticDetectorCollection>;
     getSiteDetectorNext(nextPageLink: string, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
     getSiteDetectorNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticDetectorCollection>): void;
+
+
+    /**
+     * @summary List Site Detector Responses
+     *
+     * List Site Detector Responses
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DetectorResponseCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSiteDetectorResponsesSlotNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DetectorResponseCollection>>;
+
+    /**
+     * @summary List Site Detector Responses
+     *
+     * List Site Detector Responses
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DetectorResponseCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DetectorResponseCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DetectorResponseCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSiteDetectorResponsesSlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DetectorResponseCollection>;
+    listSiteDetectorResponsesSlotNext(nextPageLink: string, callback: ServiceCallback<models.DetectorResponseCollection>): void;
+    listSiteDetectorResponsesSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DetectorResponseCollection>): void;
 
 
     /**
