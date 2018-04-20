@@ -81,7 +81,6 @@ export default class SqlManagementClient extends AzureServiceClient {
   databaseAutomaticTuningOperations: operations.DatabaseAutomaticTuningOperations;
   encryptionProtectors: operations.EncryptionProtectors;
   failoverGroups: operations.FailoverGroups;
-  managedInstances: operations.ManagedInstances;
   operations: operations.Operations;
   serverKeys: operations.ServerKeys;
   syncAgents: operations.SyncAgents;
@@ -91,14 +90,12 @@ export default class SqlManagementClient extends AzureServiceClient {
   virtualNetworkRules: operations.VirtualNetworkRules;
   longTermRetentionBackups: operations.LongTermRetentionBackups;
   backupLongTermRetentionPolicies: operations.BackupLongTermRetentionPolicies;
-  managedDatabases: operations.ManagedDatabases;
   serverAutomaticTuningOperations: operations.ServerAutomaticTuningOperations;
   serverDnsAliases: operations.ServerDnsAliases;
   restorePoints: operations.RestorePoints;
   databaseOperations: operations.DatabaseOperations;
   elasticPoolOperations: operations.ElasticPoolOperations;
   capabilities: operations.Capabilities;
-  instanceFailoverGroups: operations.InstanceFailoverGroups;
 }
 
 export { SqlManagementClient, models as SqlManagementModels };
