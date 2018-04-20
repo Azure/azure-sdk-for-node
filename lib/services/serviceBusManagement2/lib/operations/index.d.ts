@@ -2206,11 +2206,11 @@ export interface DisasterRecoveryConfigs {
 
 /**
  * @class
- * MigrationConfigurations
+ * MigrationConfigs
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ServiceBusManagementClient.
  */
-export interface MigrationConfigurations {
+export interface MigrationConfigs {
 
 
     /**
@@ -2286,11 +2286,11 @@ export interface MigrationConfigurations {
      * @param {object} parameters Parameters required to create Migration
      * Configuration
      *
-     * @param {string} parameters.targetNamespace Existing premium Namespace name
-     * which has no entities, will be used for migration
+     * @param {string} parameters.targetNamespace Existing premium Namespace ARM Id
+     * name which has no entities, will be used for migration
      *
-     * @param {string} parameters.postMigrationName Name to access connection
-     * strings of the Primary Namespace after migration
+     * @param {string} parameters.postMigrationName Name to access Standard
+     * Namespace after migration
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2316,11 +2316,11 @@ export interface MigrationConfigurations {
      * @param {object} parameters Parameters required to create Migration
      * Configuration
      *
-     * @param {string} parameters.targetNamespace Existing premium Namespace name
-     * which has no entities, will be used for migration
+     * @param {string} parameters.targetNamespace Existing premium Namespace ARM Id
+     * name which has no entities, will be used for migration
      *
-     * @param {string} parameters.postMigrationName Name to access connection
-     * strings of the Primary Namespace after migration
+     * @param {string} parameters.postMigrationName Name to access Standard
+     * Namespace after migration
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2608,11 +2608,11 @@ export interface MigrationConfigurations {
      * @param {object} parameters Parameters required to create Migration
      * Configuration
      *
-     * @param {string} parameters.targetNamespace Existing premium Namespace name
-     * which has no entities, will be used for migration
+     * @param {string} parameters.targetNamespace Existing premium Namespace ARM Id
+     * name which has no entities, will be used for migration
      *
-     * @param {string} parameters.postMigrationName Name to access connection
-     * strings of the Primary Namespace after migration
+     * @param {string} parameters.postMigrationName Name to access Standard
+     * Namespace after migration
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2638,11 +2638,11 @@ export interface MigrationConfigurations {
      * @param {object} parameters Parameters required to create Migration
      * Configuration
      *
-     * @param {string} parameters.targetNamespace Existing premium Namespace name
-     * which has no entities, will be used for migration
+     * @param {string} parameters.targetNamespace Existing premium Namespace ARM Id
+     * name which has no entities, will be used for migration
      *
-     * @param {string} parameters.postMigrationName Name to access connection
-     * strings of the Primary Namespace after migration
+     * @param {string} parameters.postMigrationName Name to access Standard
+     * Namespace after migration
      *
      * @param {object} [options] Optional Parameters.
      *
