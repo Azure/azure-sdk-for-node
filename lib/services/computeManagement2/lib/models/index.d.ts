@@ -3146,7 +3146,7 @@ export interface VirtualMachineScaleSetNetworkConfigurationDnsSettings {
  * Describes a virtual machine scale set network profile's network
  * configurations.
  *
- * @member {string} name The network configuration name.
+ * @member {uuid} name The network configuration name.
  * @member {boolean} [primary] Specifies the primary network interface in case
  * the virtual machine has more than 1 network interface.
  * @member {boolean} [enableAcceleratedNetworking] Specifies whether the
@@ -6002,8 +6002,7 @@ export interface ContainerServiceLinuxProfile {
  *
  * @member {boolean} enabled Whether the VM diagnostic agent is provisioned on
  * the VM.
- * @member {string} [storageUri] The URI of the storage account where
- * diagnostics are stored.
+ * @member {string} [storageUri]
  */
 export interface ContainerServiceVMDiagnostics {
   enabled: boolean;
@@ -6018,8 +6017,7 @@ export interface ContainerServiceVMDiagnostics {
  * diagnostic agent.
  * @member {boolean} [vmDiagnostics.enabled] Whether the VM diagnostic agent is
  * provisioned on the VM.
- * @member {string} [vmDiagnostics.storageUri] The URI of the storage account
- * where diagnostics are stored.
+ * @member {string} [vmDiagnostics.storageUri]
  */
 export interface ContainerServiceDiagnosticsProfile {
   vmDiagnostics: ContainerServiceVMDiagnostics;
@@ -6031,9 +6029,8 @@ export interface ContainerServiceDiagnosticsProfile {
  * @constructor
  * Container service.
  *
- * @member {string} [provisioningState] the current deployment or provisioning
- * state, which only appears in the response.
- * @member {object} [orchestratorProfile] Properties of the orchestrator.
+ * @member {string} [provisioningState]
+ * @member {object} [orchestratorProfile]
  * @member {string} [orchestratorProfile.orchestratorType] The orchestrator to
  * use to manage container service cluster resources. Valid values are Swarm,
  * DCOS, and Custom. Possible values include: 'Swarm', 'DCOS', 'Custom',
@@ -6071,8 +6068,7 @@ export interface ContainerServiceDiagnosticsProfile {
  * container service VM diagnostic agent.
  * @member {boolean} [diagnosticsProfile.vmDiagnostics.enabled] Whether the VM
  * diagnostic agent is provisioned on the VM.
- * @member {string} [diagnosticsProfile.vmDiagnostics.storageUri] The URI of
- * the storage account where diagnostics are stored.
+ * @member {string} [diagnosticsProfile.vmDiagnostics.storageUri]
  */
 export interface ContainerService extends Resource {
   readonly provisioningState?: string;
@@ -6299,8 +6295,7 @@ export interface SnapshotList extends Array<Snapshot> {
  * @constructor
  * The response from the List Container Services operation.
  *
- * @member {string} [nextLink] The URL to get the next set of container service
- * results.
+ * @member {string} [nextLink]
  */
 export interface ContainerServiceListResult extends Array<ContainerService> {
   nextLink?: string;
