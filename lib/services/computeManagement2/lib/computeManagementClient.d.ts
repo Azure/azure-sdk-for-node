@@ -23,6 +23,10 @@ export default class ComputeManagementClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
    *
+   * @param {string} resourceGroupName - The name of the resource group.
+   *
+   * @param {string} diskName - The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -41,11 +45,15 @@ export default class ComputeManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, resourceGroupName: string, diskName: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   subscriptionId: string;
+
+  resourceGroupName: string;
+
+  diskName: string;
 
   acceptLanguage: string;
 
