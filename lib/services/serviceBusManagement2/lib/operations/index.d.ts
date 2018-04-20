@@ -2482,7 +2482,8 @@ export interface MigrationConfigs {
     /**
      * This operation Completes Migration of entities by pointing the connection
      * strings to Premium namespace and any enties created after the operation will
-     * be under Premium Namespace.
+     * be under Premium Namespace. CompleteMigration operation will fail when
+     * entity migration is in-progress.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2505,7 +2506,8 @@ export interface MigrationConfigs {
     /**
      * This operation Completes Migration of entities by pointing the connection
      * strings to Premium namespace and any enties created after the operation will
-     * be under Premium Namespace.
+     * be under Premium Namespace. CompleteMigration operation will fail when
+     * entity migration is in-progress.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
