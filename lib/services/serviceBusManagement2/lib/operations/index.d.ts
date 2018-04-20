@@ -2598,6 +2598,86 @@ export interface MigrationConfigurations {
 
 
     /**
+     * Initiate Migration from Standard to Premium
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} parameters Parameters required to create Migration
+     * Configuration
+     *
+     * @param {string} parameters.targetNamespace Existing premium Namespace name
+     * which has no entities, will be used for migration
+     *
+     * @param {string} parameters.postMigrationName Name to access connection
+     * strings of the Primary Namespace after migration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MigrationConfigProperties>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginStartMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
+
+    /**
+     * Initiate Migration from Standard to Premium
+     *
+     * @param {string} resourceGroupName Name of the Resource group within the
+     * Azure subscription.
+     *
+     * @param {string} namespaceName The namespace name
+     *
+     * @param {object} parameters Parameters required to create Migration
+     * Configuration
+     *
+     * @param {string} parameters.targetNamespace Existing premium Namespace name
+     * which has no entities, will be used for migration
+     *
+     * @param {string} parameters.postMigrationName Name to access connection
+     * strings of the Primary Namespace after migration
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MigrationConfigProperties} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MigrationConfigProperties} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MigrationConfigProperties} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigProperties>;
+    beginStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+    beginStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+
+
+    /**
      * Gets all migrationConfigurations
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
