@@ -2276,7 +2276,8 @@ export interface MigrationConfigs {
 
 
     /**
-     * Initiate Migration from Standard to Premium
+     * Creates Migration configuration and starts migration of enties from Standard
+     * to Premium namespace
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2303,10 +2304,11 @@ export interface MigrationConfigs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
+    createAndStartMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
 
     /**
-     * Initiate Migration from Standard to Premium
+     * Creates Migration configuration and starts migration of enties from Standard
+     * to Premium namespace
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2350,9 +2352,9 @@ export interface MigrationConfigs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    startMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigProperties>;
-    startMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, callback: ServiceCallback<models.MigrationConfigProperties>): void;
-    startMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+    createAndStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigProperties>;
+    createAndStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+    createAndStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigProperties>): void;
 
 
     /**
@@ -2478,7 +2480,9 @@ export interface MigrationConfigs {
 
 
     /**
-     * This operation Completes Migration
+     * This operation Completes Migration of entities by pointing the connection
+     * strings to Premium namespace and any enties created after the operation will
+     * be under Premium Namespace.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2499,7 +2503,9 @@ export interface MigrationConfigs {
     completeMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * This operation Completes Migration
+     * This operation Completes Migration of entities by pointing the connection
+     * strings to Premium namespace and any enties created after the operation will
+     * be under Premium Namespace.
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2598,7 +2604,8 @@ export interface MigrationConfigs {
 
 
     /**
-     * Initiate Migration from Standard to Premium
+     * Creates Migration configuration and starts migration of enties from Standard
+     * to Premium namespace
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2625,10 +2632,11 @@ export interface MigrationConfigs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
+    beginCreateAndStartMigrationWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MigrationConfigProperties>>;
 
     /**
-     * Initiate Migration from Standard to Premium
+     * Creates Migration configuration and starts migration of enties from Standard
+     * to Premium namespace
      *
      * @param {string} resourceGroupName Name of the Resource group within the
      * Azure subscription.
@@ -2672,9 +2680,9 @@ export interface MigrationConfigs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigProperties>;
-    beginStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, callback: ServiceCallback<models.MigrationConfigProperties>): void;
-    beginStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+    beginCreateAndStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MigrationConfigProperties>;
+    beginCreateAndStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, callback: ServiceCallback<models.MigrationConfigProperties>): void;
+    beginCreateAndStartMigration(resourceGroupName: string, namespaceName: string, parameters: models.MigrationConfigProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MigrationConfigProperties>): void;
 
 
     /**
