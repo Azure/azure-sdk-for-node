@@ -95,19 +95,11 @@ export default class SqlManagementClient extends AzureServiceClient {
   serverAutomaticTuningOperations: operations.ServerAutomaticTuningOperations;
   serverDnsAliases: operations.ServerDnsAliases;
   restorePoints: operations.RestorePoints;
-  jobAgents: operations.JobAgents;
-  jobCredentials: operations.JobCredentials;
-  jobExecutions: operations.JobExecutions;
-  jobs: operations.Jobs;
-  jobStepExecutions: operations.JobStepExecutions;
-  jobSteps: operations.JobSteps;
-  jobTargetExecutions: operations.JobTargetExecutions;
-  jobTargetGroups: operations.JobTargetGroups;
-  jobVersions: operations.JobVersions;
   databaseOperations: operations.DatabaseOperations;
   elasticPoolOperations: operations.ElasticPoolOperations;
   capabilities: operations.Capabilities;
   instanceFailoverGroups: operations.InstanceFailoverGroups;
+  shortTermRetentionPolicies: operations.ShortTermRetentionPolicies;
 }
 
 export { SqlManagementClient, models as SqlManagementModels };
