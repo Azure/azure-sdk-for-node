@@ -1671,7 +1671,7 @@ export interface Job extends ProxyResource {
   lastModifiedTime?: Date;
   lastStatusModifiedTime?: Date;
   parameters?: { [propertyName: string]: string };
-  provisioningState?: JobProvisioningStateProperty;
+  readonly provisioningState?: JobProvisioningStateProperty;
 }
 
 /**
@@ -2365,11 +2365,7 @@ export interface WebhookUpdateParameters {
  * @member {date} [startTime] The start time of the job.
  * @member {date} [endTime] The end time of the job.
  * @member {date} [lastModifiedTime] The last modified time of the job.
- * @member {object} [provisioningState] The current provisioning state of the
- * job.
- * @member {string} [provisioningState.provisioningState] The provisioning
- * state of the resource. Possible values include: 'Failed', 'Succeeded',
- * 'Suspended', 'Processing'
+ * @member {string} [provisioningState] The provisioning state of a resource.
  */
 export interface JobCollectionItem extends ProxyResource {
   readonly runbook?: RunbookAssociationProperty;
@@ -2379,7 +2375,7 @@ export interface JobCollectionItem extends ProxyResource {
   readonly startTime?: Date;
   readonly endTime?: Date;
   readonly lastModifiedTime?: Date;
-  provisioningState?: JobProvisioningStateProperty;
+  readonly provisioningState?: string;
 }
 
 /**
@@ -2392,7 +2388,7 @@ export interface JobCollectionItem extends ProxyResource {
  * included in the software update configuration. A comma separated string with
  * required values. Possible values include: 'Unclassified', 'Critical',
  * 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition',
- * 'Tools', 'Updates', 'NotSelected'
+ * 'Tools', 'Updates'
  * @member {array} [excludedKbNumbers] KB numbers excluded from the software
  * update configuration.
  * @member {array} [includedKbNumbers] KB numbers included from the software
@@ -2412,7 +2408,7 @@ export interface WindowsProperties {
  *
  * @member {string} [includedPackageClassifications] Update classifications
  * included in the software update configuration. Possible values include:
- * 'Unclassified', 'Critical', 'Security', 'Other', 'NotSelected'
+ * 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [excludedPackageNameMasks] packages excluded from the
  * software update configuration.
  * @member {array} [includedPackageNameMasks] packages included from the
@@ -2437,7 +2433,7 @@ export interface LinuxProperties {
  * classification included in the software update configuration. A comma
  * separated string with required values. Possible values include:
  * 'Unclassified', 'Critical', 'Security', 'UpdateRollup', 'FeaturePack',
- * 'ServicePack', 'Definition', 'Tools', 'Updates', 'NotSelected'
+ * 'ServicePack', 'Definition', 'Tools', 'Updates'
  * @member {array} [windows.excludedKbNumbers] KB numbers excluded from the
  * software update configuration.
  * @member {array} [windows.includedKbNumbers] KB numbers included from the
@@ -2445,8 +2441,7 @@ export interface LinuxProperties {
  * @member {object} [linux] Linux specific update configuration.
  * @member {string} [linux.includedPackageClassifications] Update
  * classifications included in the software update configuration. Possible
- * values include: 'Unclassified', 'Critical', 'Security', 'Other',
- * 'NotSelected'
+ * values include: 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [linux.excludedPackageNameMasks] packages excluded from the
  * software update configuration.
  * @member {array} [linux.includedPackageNameMasks] packages included from the
@@ -2487,7 +2482,7 @@ export interface UpdateConfiguration {
  * Update classification included in the software update configuration. A comma
  * separated string with required values. Possible values include:
  * 'Unclassified', 'Critical', 'Security', 'UpdateRollup', 'FeaturePack',
- * 'ServicePack', 'Definition', 'Tools', 'Updates', 'NotSelected'
+ * 'ServicePack', 'Definition', 'Tools', 'Updates'
  * @member {array} [updateConfiguration.windows.excludedKbNumbers] KB numbers
  * excluded from the software update configuration.
  * @member {array} [updateConfiguration.windows.includedKbNumbers] KB numbers
@@ -2496,8 +2491,7 @@ export interface UpdateConfiguration {
  * configuration.
  * @member {string} [updateConfiguration.linux.includedPackageClassifications]
  * Update classifications included in the software update configuration.
- * Possible values include: 'Unclassified', 'Critical', 'Security', 'Other',
- * 'NotSelected'
+ * Possible values include: 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [updateConfiguration.linux.excludedPackageNameMasks]
  * packages excluded from the software update configuration.
  * @member {array} [updateConfiguration.linux.includedPackageNameMasks]

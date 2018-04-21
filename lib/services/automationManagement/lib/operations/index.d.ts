@@ -7783,7 +7783,7 @@ export interface SoftwareUpdateConfigurations {
      * Update classification included in the software update configuration. A comma
      * separated string with required values. Possible values include:
      * 'Unclassified', 'Critical', 'Security', 'UpdateRollup', 'FeaturePack',
-     * 'ServicePack', 'Definition', 'Tools', 'Updates', 'NotSelected'
+     * 'ServicePack', 'Definition', 'Tools', 'Updates'
      *
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
@@ -7797,8 +7797,7 @@ export interface SoftwareUpdateConfigurations {
      * @param {string}
      * [parameters.updateConfiguration.linux.includedPackageClassifications] Update
      * classifications included in the software update configuration. Possible
-     * values include: 'Unclassified', 'Critical', 'Security', 'Other',
-     * 'NotSelected'
+     * values include: 'Unclassified', 'Critical', 'Security', 'Other'
      *
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
@@ -7921,7 +7920,7 @@ export interface SoftwareUpdateConfigurations {
      * Update classification included in the software update configuration. A comma
      * separated string with required values. Possible values include:
      * 'Unclassified', 'Critical', 'Security', 'UpdateRollup', 'FeaturePack',
-     * 'ServicePack', 'Definition', 'Tools', 'Updates', 'NotSelected'
+     * 'ServicePack', 'Definition', 'Tools', 'Updates'
      *
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
@@ -7935,8 +7934,7 @@ export interface SoftwareUpdateConfigurations {
      * @param {string}
      * [parameters.updateConfiguration.linux.includedPackageClassifications] Update
      * classifications included in the software update configuration. Possible
-     * values include: 'Unclassified', 'Critical', 'Security', 'Other',
-     * 'NotSelected'
+     * values include: 'Unclassified', 'Critical', 'Security', 'Other'
      *
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
