@@ -4484,8 +4484,6 @@ export interface WorkbooksOperations {
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} location The name of location where workbook is stored.
-     *
      * @param {string} category Category of workbook to return. Possible values
      * include: 'workbook', 'TSG', 'performance', 'retention'
      *
@@ -4506,14 +4504,12 @@ export interface WorkbooksOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, location: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbooks>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbooks>>;
 
     /**
      * Get all Workbooks defined within a specified resource group and category.
      *
      * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} location The name of location where workbook is stored.
      *
      * @param {string} category Category of workbook to return. Possible values
      * include: 'workbook', 'TSG', 'performance', 'retention'
@@ -4551,9 +4547,9 @@ export interface WorkbooksOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, location: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbooks>;
-    listByResourceGroup(resourceGroupName: string, location: string, category: string, callback: ServiceCallback<models.Workbooks>): void;
-    listByResourceGroup(resourceGroupName: string, location: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbooks>): void;
+    listByResourceGroup(resourceGroupName: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbooks>;
+    listByResourceGroup(resourceGroupName: string, category: string, callback: ServiceCallback<models.Workbooks>): void;
+    listByResourceGroup(resourceGroupName: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbooks>): void;
 }
 
 /**
@@ -4573,8 +4569,6 @@ export interface WorkbookOperations {
      * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {string} location The name of location where workbook is stored.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -4586,7 +4580,7 @@ export interface WorkbookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
+    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
 
     /**
      * Get a single workbook by its resourceName.
@@ -4595,8 +4589,6 @@ export interface WorkbookOperations {
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
-     *
-     * @param {string} location The name of location where workbook is stored.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4625,9 +4617,9 @@ export interface WorkbookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, resourceName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
-    get(resourceGroupName: string, resourceName: string, location: string, callback: ServiceCallback<models.Workbook>): void;
-    get(resourceGroupName: string, resourceName: string, location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
+    get(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
+    get(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.Workbook>): void;
+    get(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
 
 
     /**
@@ -4637,8 +4629,6 @@ export interface WorkbookOperations {
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
-     *
-     * @param {string} location The name of location where workbook is stored.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4651,7 +4641,7 @@ export interface WorkbookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete a workbook.
@@ -4660,8 +4650,6 @@ export interface WorkbookOperations {
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
-     *
-     * @param {string} location The name of location where workbook is stored.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4689,9 +4677,9 @@ export interface WorkbookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, resourceName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, resourceName: string, location: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, resourceName: string, location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, resourceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
