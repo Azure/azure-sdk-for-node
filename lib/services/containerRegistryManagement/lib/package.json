@@ -2,9 +2,9 @@
   "name": "azure-arm-containerregistry",
   "author": "Microsoft Corporation",
   "description": "ContainerRegistryManagementClient Library with typescript type definitions for node",
-  "version": "2.1.0-preview",
+  "version": "",
   "dependencies": {
-    "ms-rest": "^2.3.3",
+    "ms-rest": "^2.3.2",
     "ms-rest-azure": "^2.5.5"
   },
   "keywords": [ "node", "azure" ],
