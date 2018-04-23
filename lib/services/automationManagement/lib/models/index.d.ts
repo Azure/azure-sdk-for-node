@@ -667,6 +667,8 @@ export interface DscConfigurationParameter {
  * @member {boolean} [logVerbose] Gets or sets verbose log option.
  * @member {date} [creationTime] Gets or sets the creation time.
  * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {number} [nodeConfigurationCount] Gets the number of compiled node
+ * configurations.
  * @member {string} [description] Gets or sets the description.
  * @member {string} [etag] Gets or sets the etag of the resource.
  */
@@ -679,6 +681,7 @@ export interface DscConfiguration extends TrackedResource {
   logVerbose?: boolean;
   creationTime?: Date;
   lastModifiedTime?: Date;
+  nodeConfigurationCount?: number;
   description?: string;
   etag?: string;
 }
@@ -2996,6 +2999,8 @@ export interface SourceControlSyncJobById {
  * @member {string} [status] Gets or sets the status of the node.
  * @member {string} [nodeId] Gets or sets the node id.
  * @member {string} [etag] Gets or sets the etag of the resource.
+ * @member {number} [totalCount] Gets the total number of records matching
+ * filter criteria.
  * @member {array} [extensionHandler] Gets or sets the list of extensionHandler
  * properties for a Node.
  */
@@ -3008,6 +3013,7 @@ export interface DscNode extends ProxyResource {
   status?: string;
   nodeId?: string;
   etag?: string;
+  totalCount?: number;
   extensionHandler?: DscNodeExtensionHandlerAssociationProperty[];
 }
 
@@ -3309,6 +3315,8 @@ export interface JobListResultV2 extends Array<JobCollectionItem> {
  * The response model for the list dsc nodes operation.
  *
  * @member {string} [nextLink] Gets or sets the next link.
+ * @member {number} [totalCount] Gets the total number of nodes matching filter
+ * criteria.
  */
 export interface DscNodeListResult extends Array<DscNode> {
   nextLink?: string;
@@ -3345,6 +3353,7 @@ export interface DscCompilationJobListResult extends Array<DscCompilationJob> {
  * The response model for the list job operation.
  *
  * @member {string} [nextLink] Gets or sets the next link.
+ * @member {number} [totalCount] Gets or sets the total rows in query.
  */
 export interface DscNodeConfigurationListResult extends Array<DscNodeConfiguration> {
   nextLink?: string;
