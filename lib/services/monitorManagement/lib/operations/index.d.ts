@@ -4345,11 +4345,6 @@ export interface ScheduledQueryRules {
      *
      * @param {string} parameters.action.odatatype Polymorphic Discriminator
      *
-     * @param {object} [parameters.sku] Sku of the Log Search Rule
-     *
-     * @param {string} [parameters.sku.name] The name of the SKU (L1, L2, L3).
-     * Possible values include: 'L1', 'L2', 'L3'
-     *
      * @param {string} parameters.location Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -4417,11 +4412,6 @@ export interface ScheduledQueryRules {
      * @param {object} [parameters.action.webhookProperties]
      *
      * @param {string} parameters.action.odatatype Polymorphic Discriminator
-     *
-     * @param {object} [parameters.sku] Sku of the Log Search Rule
-     *
-     * @param {string} [parameters.sku.name] The name of the SKU (L1, L2, L3).
-     * Possible values include: 'L1', 'L2', 'L3'
      *
      * @param {string} parameters.location Resource location
      *

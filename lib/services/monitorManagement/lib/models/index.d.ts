@@ -2241,19 +2241,6 @@ export interface Schedule {
 
 /**
  * @class
- * Initializes a new instance of the Sku1 class.
- * @constructor
- * SKU of rule
- *
- * @member {string} [name] The name of the SKU (L1, L2, L3). Possible values
- * include: 'L1', 'L2', 'L3'
- */
-export interface Sku1 {
-  name?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the LogSearchRuleResource class.
  * @constructor
  * The Log Search Rule resource.
@@ -2286,9 +2273,6 @@ export interface Sku1 {
  * @member {string} [action.actionGroupId] the id of the action group to use.
  * @member {object} [action.webhookProperties]
  * @member {string} [action.odatatype] Polymorphic Discriminator
- * @member {object} [sku] Sku of the Log Search Rule
- * @member {string} [sku.name] The name of the SKU (L1, L2, L3). Possible
- * values include: 'L1', 'L2', 'L3'
  */
 export interface LogSearchRuleResource extends Resource {
   description?: string;
@@ -2298,7 +2282,6 @@ export interface LogSearchRuleResource extends Resource {
   source: Source;
   schedule: Schedule;
   action: Action;
-  sku?: Sku1;
 }
 
 /**
@@ -2375,15 +2358,15 @@ export interface AzNsActionGroup {
  * @constructor
  * Specifiy action need to be taken when rule type is Alert
  *
- * @member {string} [severity] Severity of the alert. Possible values include:
+ * @member {string} severity Severity of the alert. Possible values include:
  * '0', '1', '2', '3', '4'
  * @member {object} aznsAction azns notification group reference.
  * @member {array} [aznsAction.actionGroup] azns notification group reference.
  * @member {string} [aznsAction.emailSubject] Custom subject for Azns email
  * @member {string} [aznsAction.customWebhookPayload] Custom webhook payload to
  * be send to azns action group
- * @member {date} [throttleTillDate] Time untill alert should not be fired in
- * ISO8601 format.
+ * @member {number} [throttlingInMin] time (in minutes) for which Alerts should
+ * be throttled
  * @member {object} trigger The trigger condition that results in the alert
  * rule being.
  * @member {string} [trigger.thresholdOperator] Evaluation operation for rule -
@@ -2428,9 +2411,9 @@ export interface AzNsActionGroup {
  * on a particular column
  */
 export interface AlertingAction extends Action {
-  severity?: string;
+  severity: string;
   aznsAction: AzNsActionGroup;
-  throttleTillDate?: Date;
+  throttlingInMin?: number;
   trigger: TriggerCondition;
 }
 
