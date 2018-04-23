@@ -7536,9 +7536,12 @@ export interface Job {
      * @summary Terminates the specified job, marking it as completed.
      *
      * When a Terminate Job request is received, the Batch service sets the job to
-     * the terminating state. The Batch service then terminates any active or
-     * running tasks associated with the job, and runs any required Job Release
-     * tasks. The job then moves into the completed state.
+     * the terminating state. The Batch service then terminates any running tasks
+     * associated with the job and runs any required job release tasks. Then the
+     * job moves into the completed state. If there are any tasks in the job in the
+     * active state, they will remain in the active state. Once a job is
+     * terminated, new tasks cannot be added and any remaining active tasks will
+     * not be scheduled.
      *
      * @param {string} jobId The ID of the job to terminate.
      *
@@ -7600,9 +7603,12 @@ export interface Job {
      * @summary Terminates the specified job, marking it as completed.
      *
      * When a Terminate Job request is received, the Batch service sets the job to
-     * the terminating state. The Batch service then terminates any active or
-     * running tasks associated with the job, and runs any required Job Release
-     * tasks. The job then moves into the completed state.
+     * the terminating state. The Batch service then terminates any running tasks
+     * associated with the job and runs any required job release tasks. Then the
+     * job moves into the completed state. If there are any tasks in the job in the
+     * active state, they will remain in the active state. Once a job is
+     * terminated, new tasks cannot be added and any remaining active tasks will
+     * not be scheduled.
      *
      * @param {string} jobId The ID of the job to terminate.
      *
