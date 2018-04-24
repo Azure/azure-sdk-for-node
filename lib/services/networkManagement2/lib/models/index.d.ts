@@ -2432,11 +2432,6 @@ export interface DnsNameAvailabilityResult {
  * @constructor
  * A DDoS protection plan in a resource group.
  *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [location] Resource location.
- * @member {object} [tags] Resource tags.
  * @member {string} [resourceGuid] The resource GUID property of the DDoS
  * protection plan resource. It uniquely identifies the resource, even if the
  * user changes its name or migrate the resource across subscriptions or
@@ -2449,12 +2444,7 @@ export interface DnsNameAvailabilityResult {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
-export interface DdosProtectionPlan extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
+export interface DdosProtectionPlan extends Resource {
   readonly resourceGuid?: string;
   readonly provisioningState?: string;
   readonly virtualNetworks?: SubResource[];

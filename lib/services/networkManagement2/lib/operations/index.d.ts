@@ -2508,6 +2508,8 @@ export interface DdosProtectionPlans {
      * @param {object} parameters Parameters supplied to the create or update
      * operation.
      *
+     * @param {string} [parameters.id] Resource ID.
+     *
      * @param {string} [parameters.location] Resource location.
      *
      * @param {object} [parameters.tags] Resource tags.
@@ -2534,6 +2536,8 @@ export interface DdosProtectionPlans {
      *
      * @param {object} parameters Parameters supplied to the create or update
      * operation.
+     *
+     * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
      *
@@ -2747,6 +2751,8 @@ export interface DdosProtectionPlans {
      * @param {object} parameters Parameters supplied to the create or update
      * operation.
      *
+     * @param {string} [parameters.id] Resource ID.
+     *
      * @param {string} [parameters.location] Resource location.
      *
      * @param {object} [parameters.tags] Resource tags.
@@ -2773,6 +2779,8 @@ export interface DdosProtectionPlans {
      *
      * @param {object} parameters Parameters supplied to the create or update
      * operation.
+     *
+     * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
      *
