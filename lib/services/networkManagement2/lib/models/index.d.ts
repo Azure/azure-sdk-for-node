@@ -4585,7 +4585,7 @@ export interface HTTPHeader {
 
 /**
  * @class
- * Initializes a new instance of the HttpConfiguration class.
+ * Initializes a new instance of the HTTPConfiguration class.
  * @constructor
  * HTTP configuration of the connectivity check.
  *
@@ -4593,7 +4593,7 @@ export interface HTTPHeader {
  * @member {array} [headers] List of HTTP headers.
  * @member {array} [validStatusCodes] Valid status codes.
  */
-export interface HttpConfiguration {
+export interface HTTPConfiguration {
   method?: string;
   headers?: HTTPHeader[];
   validStatusCodes?: number[];
@@ -4605,14 +4605,14 @@ export interface HttpConfiguration {
  * @constructor
  * Configuration of the protocol.
  *
- * @member {object} [httpConfiguration]
- * @member {string} [httpConfiguration.method] HTTP method. Possible values
+ * @member {object} [hTTPConfiguration]
+ * @member {string} [hTTPConfiguration.method] HTTP method. Possible values
  * include: 'Get'
- * @member {array} [httpConfiguration.headers] List of HTTP headers.
- * @member {array} [httpConfiguration.validStatusCodes] Valid status codes.
+ * @member {array} [hTTPConfiguration.headers] List of HTTP headers.
+ * @member {array} [hTTPConfiguration.validStatusCodes] Valid status codes.
  */
 export interface ProtocolConfiguration {
-  httpConfiguration?: HttpConfiguration;
+  hTTPConfiguration?: HTTPConfiguration;
 }
 
 /**
@@ -4636,12 +4636,12 @@ export interface ProtocolConfiguration {
  * @member {string} [protocol] Network protocol. Possible values include:
  * 'Tcp', 'Http', 'Https', 'Icmp'
  * @member {object} [protocolConfiguration]
- * @member {object} [protocolConfiguration.httpConfiguration]
- * @member {string} [protocolConfiguration.httpConfiguration.method] HTTP
+ * @member {object} [protocolConfiguration.hTTPConfiguration]
+ * @member {string} [protocolConfiguration.hTTPConfiguration.method] HTTP
  * method. Possible values include: 'Get'
- * @member {array} [protocolConfiguration.httpConfiguration.headers] List of
+ * @member {array} [protocolConfiguration.hTTPConfiguration.headers] List of
  * HTTP headers.
- * @member {array} [protocolConfiguration.httpConfiguration.validStatusCodes]
+ * @member {array} [protocolConfiguration.hTTPConfiguration.validStatusCodes]
  * Valid status codes.
  */
 export interface ConnectivityParameters {

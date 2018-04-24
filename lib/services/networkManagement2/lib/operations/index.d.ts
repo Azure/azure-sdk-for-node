@@ -15919,16 +15919,16 @@ export interface NetworkWatchers {
      *
      * @param {object} [parameters.protocolConfiguration]
      *
-     * @param {object} [parameters.protocolConfiguration.httpConfiguration]
+     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration]
      *
-     * @param {string} [parameters.protocolConfiguration.httpConfiguration.method]
+     * @param {string} [parameters.protocolConfiguration.hTTPConfiguration.method]
      * HTTP method. Possible values include: 'Get'
      *
-     * @param {array} [parameters.protocolConfiguration.httpConfiguration.headers]
+     * @param {array} [parameters.protocolConfiguration.hTTPConfiguration.headers]
      * List of HTTP headers.
      *
      * @param {array}
-     * [parameters.protocolConfiguration.httpConfiguration.validStatusCodes] Valid
+     * [parameters.protocolConfiguration.hTTPConfiguration.validStatusCodes] Valid
      * status codes.
      *
      * @param {object} [options] Optional Parameters.
@@ -15981,16 +15981,16 @@ export interface NetworkWatchers {
      *
      * @param {object} [parameters.protocolConfiguration]
      *
-     * @param {object} [parameters.protocolConfiguration.httpConfiguration]
+     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration]
      *
-     * @param {string} [parameters.protocolConfiguration.httpConfiguration.method]
+     * @param {string} [parameters.protocolConfiguration.hTTPConfiguration.method]
      * HTTP method. Possible values include: 'Get'
      *
-     * @param {array} [parameters.protocolConfiguration.httpConfiguration.headers]
+     * @param {array} [parameters.protocolConfiguration.hTTPConfiguration.headers]
      * List of HTTP headers.
      *
      * @param {array}
-     * [parameters.protocolConfiguration.httpConfiguration.validStatusCodes] Valid
+     * [parameters.protocolConfiguration.hTTPConfiguration.validStatusCodes] Valid
      * status codes.
      *
      * @param {object} [options] Optional Parameters.
@@ -16924,16 +16924,16 @@ export interface NetworkWatchers {
      *
      * @param {object} [parameters.protocolConfiguration]
      *
-     * @param {object} [parameters.protocolConfiguration.httpConfiguration]
+     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration]
      *
-     * @param {string} [parameters.protocolConfiguration.httpConfiguration.method]
+     * @param {string} [parameters.protocolConfiguration.hTTPConfiguration.method]
      * HTTP method. Possible values include: 'Get'
      *
-     * @param {array} [parameters.protocolConfiguration.httpConfiguration.headers]
+     * @param {array} [parameters.protocolConfiguration.hTTPConfiguration.headers]
      * List of HTTP headers.
      *
      * @param {array}
-     * [parameters.protocolConfiguration.httpConfiguration.validStatusCodes] Valid
+     * [parameters.protocolConfiguration.hTTPConfiguration.validStatusCodes] Valid
      * status codes.
      *
      * @param {object} [options] Optional Parameters.
@@ -16986,16 +16986,16 @@ export interface NetworkWatchers {
      *
      * @param {object} [parameters.protocolConfiguration]
      *
-     * @param {object} [parameters.protocolConfiguration.httpConfiguration]
+     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration]
      *
-     * @param {string} [parameters.protocolConfiguration.httpConfiguration.method]
+     * @param {string} [parameters.protocolConfiguration.hTTPConfiguration.method]
      * HTTP method. Possible values include: 'Get'
      *
-     * @param {array} [parameters.protocolConfiguration.httpConfiguration.headers]
+     * @param {array} [parameters.protocolConfiguration.hTTPConfiguration.headers]
      * List of HTTP headers.
      *
      * @param {array}
-     * [parameters.protocolConfiguration.httpConfiguration.validStatusCodes] Valid
+     * [parameters.protocolConfiguration.hTTPConfiguration.validStatusCodes] Valid
      * status codes.
      *
      * @param {object} [options] Optional Parameters.
