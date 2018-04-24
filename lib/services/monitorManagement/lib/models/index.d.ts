@@ -2341,7 +2341,7 @@ export interface TriggerCondition {
  * @constructor
  * azns notification group
  *
- * @member {array} [actionGroup] azns notification group reference.
+ * @member {array} [actionGroup] Azure Group reference.
  * @member {string} [emailSubject] Custom subject for Azns email
  * @member {string} [customWebhookPayload] Custom webhook payload to be send to
  * azns action group
@@ -2361,7 +2361,7 @@ export interface AzNsActionGroup {
  * @member {string} severity Severity of the alert. Possible values include:
  * '0', '1', '2', '3', '4'
  * @member {object} aznsAction azns notification group reference.
- * @member {array} [aznsAction.actionGroup] azns notification group reference.
+ * @member {array} [aznsAction.actionGroup] Azure Group reference.
  * @member {string} [aznsAction.emailSubject] Custom subject for Azns email
  * @member {string} [aznsAction.customWebhookPayload] Custom webhook payload to
  * be send to azns action group
