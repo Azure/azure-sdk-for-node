@@ -2975,6 +2975,14 @@ export interface DscConfigurationOperations {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2984,7 +2992,7 @@ export interface DscConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfigurationListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfigurationListResult>>;
 
     /**
      * Retrieve a list of configurations.
@@ -2994,6 +3002,14 @@ export interface DscConfigurationOperations {
      * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3021,9 +3037,9 @@ export interface DscConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfigurationListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfigurationListResult>;
     listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscConfigurationListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfigurationListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfigurationListResult>): void;
 
 
     /**

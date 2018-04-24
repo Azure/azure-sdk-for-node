@@ -3149,6 +3149,8 @@ export interface CredentialListResult extends Array<Credential> {
  * The response model for the list configuration operation.
  *
  * @member {string} [nextLink] Gets or sets the next link.
+ * @member {number} [totalCount] Gets the total number of configurations
+ * matching filter criteria.
  */
 export interface DscConfigurationListResult extends Array<DscConfiguration> {
   nextLink?: string;
