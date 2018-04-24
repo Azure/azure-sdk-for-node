@@ -3174,7 +3174,7 @@ export interface ExpressRouteCrossConnectionPeering extends SubResource {
   vlanId?: number;
   microsoftPeeringConfig?: ExpressRouteCircuitPeeringConfig;
   readonly provisioningState?: string;
-  readonly gatewayManagerEtag?: string;
+  gatewayManagerEtag?: string;
   lastModifiedBy?: string;
   ipv6PeeringConfig?: Ipv6ExpressRouteCircuitPeeringConfig;
   name?: string;
@@ -3213,9 +3213,9 @@ export interface ExpressRouteCrossConnection extends Resource {
   readonly primaryAzurePort?: string;
   readonly secondaryAzurePort?: string;
   readonly sTag?: number;
-  readonly peeringLocation?: string;
-  readonly bandwidthInMbps?: number;
-  readonly expressRouteCircuit?: ExpressRouteCircuitReference;
+  peeringLocation?: string;
+  bandwidthInMbps?: number;
+  expressRouteCircuit?: ExpressRouteCircuitReference;
   serviceProviderProvisioningState?: string;
   serviceProviderNotes?: string;
   readonly provisioningState?: string;
