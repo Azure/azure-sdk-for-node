@@ -739,7 +739,7 @@ export interface NewsOperations {
      * 20, 40). It is possible for multiple pages to include some overlap in
      * results. If you do not specify the
      * [category](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-news-api-v7-reference#category)
-     * parameter, Bing ignores this paramter.
+     * parameter, Bing ignores this parameter.
      *
      * @param {number} [options.headlineCount] The number of headline articles to
      * return in the response. The default is 12. Specify this parameter only if
@@ -773,7 +773,7 @@ export interface NewsOperations {
      * page, increment offset by 20 (for example, 0, 20, 40). It is possible for
      * multiple pages to include some overlap in results. If you do not specify the
      * [category](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-news-api-v7-reference#category)
-     * parameter, Bing ignores this paramter.
+     * parameter, Bing ignores this parameter.
      *
      * @param {boolean} [options.originalImage] A Boolean value that determines
      * whether the image's contentUrl contains a URL that points to a thumbnail of
@@ -1007,7 +1007,7 @@ export interface NewsOperations {
      * 20, 40). It is possible for multiple pages to include some overlap in
      * results. If you do not specify the
      * [category](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-news-api-v7-reference#category)
-     * parameter, Bing ignores this paramter.
+     * parameter, Bing ignores this parameter.
      *
      * @param {number} [options.headlineCount] The number of headline articles to
      * return in the response. The default is 12. Specify this parameter only if
@@ -1041,7 +1041,7 @@ export interface NewsOperations {
      * page, increment offset by 20 (for example, 0, 20, 40). It is possible for
      * multiple pages to include some overlap in results. If you do not specify the
      * [category](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-news-api-v7-reference#category)
-     * parameter, Bing ignores this paramter.
+     * parameter, Bing ignores this parameter.
      *
      * @param {boolean} [options.originalImage] A Boolean value that determines
      * whether the image's contentUrl contains a URL that points to a thumbnail of
