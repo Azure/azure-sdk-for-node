@@ -603,21 +603,30 @@ export interface Endpoints {
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * Describes a storage resource.
- *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} [location] Resource location
- * @member {object} [tags] Tags assigned to a resource; can be used for viewing
- * and grouping a resource (across resource groups).
+ * @member {string} [id] Fully qualified resource Id for the resource. Ex -
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+ * @member {string} [name] The name of the resource
+ * @member {string} [type] The type of the resource. Ex-
+ * Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * The resource model definition for a ARM tracked top level resource
+ *
+ * @member {object} [tags] Resource tags.
+ * @member {string} location The geo-location where the resource lives
+ */
+export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
+  location: string;
 }
 
 /**
@@ -760,7 +769,7 @@ export interface Resource extends BaseResource {
  * of allow or deny when no other rules match. Possible values include:
  * 'Allow', 'Deny'
  */
-export interface StorageAccount extends Resource {
+export interface StorageAccount extends TrackedResource {
   readonly sku?: Sku;
   readonly kind?: string;
   identity?: Identity;
@@ -1118,6 +1127,30 @@ export interface ListServiceSasResponse {
 
 /**
  * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The resource model definition for a ARM proxy resource. It will have
+ * everything other than required location and tags
+ *
+ */
+export interface ProxyResource extends Resource {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureEntityResource class.
+ * @constructor
+ * The resource model definition for a Azure Resource Manager resource with an
+ * etag.
+ *
+ * @member {string} [etag] Resource Etag.
+ */
+export interface AzureEntityResource extends Resource {
+  readonly etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the UpdateHistoryProperty class.
  * @constructor
  * An update history of the ImmutabilityPolicy of a blob container.
@@ -1206,37 +1239,6 @@ export interface TagProperty {
 export interface LegalHoldProperties {
   readonly hasLegalHold?: boolean;
   tags?: TagProperty[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureResource class.
- * @constructor
- * An Azure Resource Manager resource.
- *
- * @member {string} [id] Fully qualified resource ID for the resource. Ex -
- * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
- * @member {string} [name] The name of the resource.
- * @member {string} [type] The type of the resource. Ex-
- * Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
- */
-export interface AzureResource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureEntityResource class.
- * @constructor
- * The resource model definition for a Azure Resource Manager resource with an
- * etag.
- *
- * @member {string} [etag] Resource Etag.
- */
-export interface AzureEntityResource extends AzureResource {
-  readonly etag?: string;
 }
 
 /**
