@@ -2391,10 +2391,13 @@ export interface JobCollectionItem extends ProxyResource {
  * 'Tools', 'Updates'
  * @member {array} [excludedKbNumbers] KB numbers excluded from the software
  * update configuration.
+ * @member {string} [rebootSetting] Reboot setting for the software update
+ * configuration.
  */
 export interface WindowsProperties {
   includedUpdateClassifications?: string;
   excludedKbNumbers?: string[];
+  rebootSetting?: string;
 }
 
 /**
@@ -2408,10 +2411,13 @@ export interface WindowsProperties {
  * 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [excludedPackageNameMasks] packages excluded from the
  * software update configuration.
+ * @member {string} [rebootSetting] Reboot setting for the software update
+ * configuration.
  */
 export interface LinuxProperties {
   includedPackageClassifications?: string;
   excludedPackageNameMasks?: string[];
+  rebootSetting?: string;
 }
 
 /**
@@ -2430,12 +2436,16 @@ export interface LinuxProperties {
  * 'ServicePack', 'Definition', 'Tools', 'Updates'
  * @member {array} [windows.excludedKbNumbers] KB numbers excluded from the
  * software update configuration.
+ * @member {string} [windows.rebootSetting] Reboot setting for the software
+ * update configuration.
  * @member {object} [linux] Linux specific update configuration.
  * @member {string} [linux.includedPackageClassifications] Update
  * classifications included in the software update configuration. Possible
  * values include: 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [linux.excludedPackageNameMasks] packages excluded from the
  * software update configuration.
+ * @member {string} [linux.rebootSetting] Reboot setting for the software
+ * update configuration.
  * @member {moment.duration} [duration] Maximum time allowed for the software
  * update configuration run. Duration needs to be specified using the format
  * PT[n]H[n]M[n]S as per ISO8601
@@ -2475,6 +2485,8 @@ export interface UpdateConfiguration {
  * 'ServicePack', 'Definition', 'Tools', 'Updates'
  * @member {array} [updateConfiguration.windows.excludedKbNumbers] KB numbers
  * excluded from the software update configuration.
+ * @member {string} [updateConfiguration.windows.rebootSetting] Reboot setting
+ * for the software update configuration.
  * @member {object} [updateConfiguration.linux] Linux specific update
  * configuration.
  * @member {string} [updateConfiguration.linux.includedPackageClassifications]
@@ -2482,6 +2494,8 @@ export interface UpdateConfiguration {
  * Possible values include: 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [updateConfiguration.linux.excludedPackageNameMasks]
  * packages excluded from the software update configuration.
+ * @member {string} [updateConfiguration.linux.rebootSetting] Reboot setting
+ * for the software update configuration.
  * @member {moment.duration} [updateConfiguration.duration] Maximum time
  * allowed for the software update configuration run. Duration needs to be
  * specified using the format PT[n]H[n]M[n]S as per ISO8601
