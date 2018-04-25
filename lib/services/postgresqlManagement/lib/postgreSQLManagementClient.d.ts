@@ -64,6 +64,7 @@ export default class PostgreSQLManagementClient extends AzureServiceClient {
   locationBasedPerformanceTier: operations.LocationBasedPerformanceTier;
   checkNameAvailability: operations.CheckNameAvailability;
   operations: operations.Operations;
+  serverSecurityAlertPolicies: operations.ServerSecurityAlertPolicies;
 }
 
 export { PostgreSQLManagementClient, models as PostgreSQLManagementModels };
