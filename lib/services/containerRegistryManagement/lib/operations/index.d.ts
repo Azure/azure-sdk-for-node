@@ -22,6 +22,124 @@ export interface Registries {
 
 
     /**
+     * Copies an image to this container registry from the specified container
+     * registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} parameters The parameters specifying the image to copy and
+     * the source container registry.
+     *
+     * @param {object} parameters.source The source of the image.
+     *
+     * @param {string} parameters.source.resourceId The resource identifier of the
+     * target Azure Container Registry.
+     *
+     * @param {string} parameters.source.sourceImage Repository name of the source
+     * image.
+     * Specify an image by repository ('hello-world'). This will use the 'latest'
+     * tag.
+     * Specify an image by tag ('hello-world:latest').
+     * Specify an image by sha256-based manifest digest
+     * ('hello-world@sha256:abc123').
+     *
+     * @param {array} [parameters.targetTags] List of strings of the form
+     * repo[:tag]. When tag is omitted the source will be used (or 'latest' if
+     * source tag is also omitted).
+     *
+     * @param {array} [parameters.untaggedTargetRepositories] List of strings of
+     * repository names to do a manifest only copy. No tag will be created.
+     *
+     * @param {string} [parameters.mode] When Force, any existing target tags will
+     * be overwritten. When NoForce, any existing target tags will fail the
+     * operation before any copying begins. Possible values include: 'NoForce',
+     * 'Force'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    importImageWithHttpOperationResponse(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Copies an image to this container registry from the specified container
+     * registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} parameters The parameters specifying the image to copy and
+     * the source container registry.
+     *
+     * @param {object} parameters.source The source of the image.
+     *
+     * @param {string} parameters.source.resourceId The resource identifier of the
+     * target Azure Container Registry.
+     *
+     * @param {string} parameters.source.sourceImage Repository name of the source
+     * image.
+     * Specify an image by repository ('hello-world'). This will use the 'latest'
+     * tag.
+     * Specify an image by tag ('hello-world:latest').
+     * Specify an image by sha256-based manifest digest
+     * ('hello-world@sha256:abc123').
+     *
+     * @param {array} [parameters.targetTags] List of strings of the form
+     * repo[:tag]. When tag is omitted the source will be used (or 'latest' if
+     * source tag is also omitted).
+     *
+     * @param {array} [parameters.untaggedTargetRepositories] List of strings of
+     * repository names to do a manifest only copy. No tag will be created.
+     *
+     * @param {string} [parameters.mode] When Force, any existing target tags will
+     * be overwritten. When NoForce, any existing target tags will fail the
+     * operation before any copying begins. Possible values include: 'NoForce',
+     * 'Force'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    importImage(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    importImage(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, callback: ServiceCallback<void>): void;
+    importImage(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Checks whether the container registry name is available for use. The name
      * must contain only alphanumeric characters, be globally unique, and between 5
      * and 50 characters in length.
@@ -731,6 +849,124 @@ export interface Registries {
     listUsages(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryUsageListResult>;
     listUsages(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.RegistryUsageListResult>): void;
     listUsages(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryUsageListResult>): void;
+
+
+    /**
+     * Copies an image to this container registry from the specified container
+     * registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} parameters The parameters specifying the image to copy and
+     * the source container registry.
+     *
+     * @param {object} parameters.source The source of the image.
+     *
+     * @param {string} parameters.source.resourceId The resource identifier of the
+     * target Azure Container Registry.
+     *
+     * @param {string} parameters.source.sourceImage Repository name of the source
+     * image.
+     * Specify an image by repository ('hello-world'). This will use the 'latest'
+     * tag.
+     * Specify an image by tag ('hello-world:latest').
+     * Specify an image by sha256-based manifest digest
+     * ('hello-world@sha256:abc123').
+     *
+     * @param {array} [parameters.targetTags] List of strings of the form
+     * repo[:tag]. When tag is omitted the source will be used (or 'latest' if
+     * source tag is also omitted).
+     *
+     * @param {array} [parameters.untaggedTargetRepositories] List of strings of
+     * repository names to do a manifest only copy. No tag will be created.
+     *
+     * @param {string} [parameters.mode] When Force, any existing target tags will
+     * be overwritten. When NoForce, any existing target tags will fail the
+     * operation before any copying begins. Possible values include: 'NoForce',
+     * 'Force'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginImportImageWithHttpOperationResponse(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Copies an image to this container registry from the specified container
+     * registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} parameters The parameters specifying the image to copy and
+     * the source container registry.
+     *
+     * @param {object} parameters.source The source of the image.
+     *
+     * @param {string} parameters.source.resourceId The resource identifier of the
+     * target Azure Container Registry.
+     *
+     * @param {string} parameters.source.sourceImage Repository name of the source
+     * image.
+     * Specify an image by repository ('hello-world'). This will use the 'latest'
+     * tag.
+     * Specify an image by tag ('hello-world:latest').
+     * Specify an image by sha256-based manifest digest
+     * ('hello-world@sha256:abc123').
+     *
+     * @param {array} [parameters.targetTags] List of strings of the form
+     * repo[:tag]. When tag is omitted the source will be used (or 'latest' if
+     * source tag is also omitted).
+     *
+     * @param {array} [parameters.untaggedTargetRepositories] List of strings of
+     * repository names to do a manifest only copy. No tag will be created.
+     *
+     * @param {string} [parameters.mode] When Force, any existing target tags will
+     * be overwritten. When NoForce, any existing target tags will fail the
+     * operation before any copying begins. Possible values include: 'NoForce',
+     * 'Force'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginImportImage(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginImportImage(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, callback: ServiceCallback<void>): void;
+    beginImportImage(resourceGroupName: string, registryName: string, parameters: models.ImportImageParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
