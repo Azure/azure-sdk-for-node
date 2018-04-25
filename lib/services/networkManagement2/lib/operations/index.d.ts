@@ -6781,6 +6781,16 @@ export interface ExpressRouteCrossConnections {
      * @param {object} parameters Parameters supplied to the update express route
      * crossConnection operation.
      *
+     * @param {string} [parameters.peeringLocation] The peering location of the
+     * ExpressRoute circuit.
+     *
+     * @param {number} [parameters.bandwidthInMbps] The circuit bandwidth In Mbps.
+     *
+     * @param {object} [parameters.expressRouteCircuit] The ExpressRouteCircuit
+     *
+     * @param {string} [parameters.expressRouteCircuit.id] Corresponding Express
+     * Route Circuit Id.
+     *
      * @param {string} [parameters.serviceProviderProvisioningState] The
      * provisioning state of the circuit in the connectivity provider system.
      * Possible values are 'NotProvisioned', 'Provisioning', 'Provisioned'.
@@ -6821,6 +6831,16 @@ export interface ExpressRouteCrossConnections {
      *
      * @param {object} parameters Parameters supplied to the update express route
      * crossConnection operation.
+     *
+     * @param {string} [parameters.peeringLocation] The peering location of the
+     * ExpressRoute circuit.
+     *
+     * @param {number} [parameters.bandwidthInMbps] The circuit bandwidth In Mbps.
+     *
+     * @param {object} [parameters.expressRouteCircuit] The ExpressRouteCircuit
+     *
+     * @param {string} [parameters.expressRouteCircuit.id] Corresponding Express
+     * Route Circuit Id.
      *
      * @param {string} [parameters.serviceProviderProvisioningState] The
      * provisioning state of the circuit in the connectivity provider system.
@@ -7170,6 +7190,16 @@ export interface ExpressRouteCrossConnections {
      * @param {object} parameters Parameters supplied to the update express route
      * crossConnection operation.
      *
+     * @param {string} [parameters.peeringLocation] The peering location of the
+     * ExpressRoute circuit.
+     *
+     * @param {number} [parameters.bandwidthInMbps] The circuit bandwidth In Mbps.
+     *
+     * @param {object} [parameters.expressRouteCircuit] The ExpressRouteCircuit
+     *
+     * @param {string} [parameters.expressRouteCircuit.id] Corresponding Express
+     * Route Circuit Id.
+     *
      * @param {string} [parameters.serviceProviderProvisioningState] The
      * provisioning state of the circuit in the connectivity provider system.
      * Possible values are 'NotProvisioned', 'Provisioning', 'Provisioned'.
@@ -7210,6 +7240,16 @@ export interface ExpressRouteCrossConnections {
      *
      * @param {object} parameters Parameters supplied to the update express route
      * crossConnection operation.
+     *
+     * @param {string} [parameters.peeringLocation] The peering location of the
+     * ExpressRoute circuit.
+     *
+     * @param {number} [parameters.bandwidthInMbps] The circuit bandwidth In Mbps.
+     *
+     * @param {object} [parameters.expressRouteCircuit] The ExpressRouteCircuit
+     *
+     * @param {string} [parameters.expressRouteCircuit.id] Corresponding Express
+     * Route Circuit Id.
      *
      * @param {string} [parameters.serviceProviderProvisioningState] The
      * provisioning state of the circuit in the connectivity provider system.
@@ -7900,6 +7940,9 @@ export interface ExpressRouteCrossConnectionPeerings {
      * @param {object} [peeringParameters.microsoftPeeringConfig] The Microsoft
      * peering configuration.
      *
+     * @param {string} [peeringParameters.gatewayManagerEtag] The GatewayManager
+     * Etag.
+     *
      * @param {string} [peeringParameters.lastModifiedBy] Gets whether the provider
      * or the customer last modified the peering.
      *
@@ -8019,6 +8062,9 @@ export interface ExpressRouteCrossConnectionPeerings {
      *
      * @param {object} [peeringParameters.microsoftPeeringConfig] The Microsoft
      * peering configuration.
+     *
+     * @param {string} [peeringParameters.gatewayManagerEtag] The GatewayManager
+     * Etag.
      *
      * @param {string} [peeringParameters.lastModifiedBy] Gets whether the provider
      * or the customer last modified the peering.
@@ -8224,6 +8270,9 @@ export interface ExpressRouteCrossConnectionPeerings {
      * @param {object} [peeringParameters.microsoftPeeringConfig] The Microsoft
      * peering configuration.
      *
+     * @param {string} [peeringParameters.gatewayManagerEtag] The GatewayManager
+     * Etag.
+     *
      * @param {string} [peeringParameters.lastModifiedBy] Gets whether the provider
      * or the customer last modified the peering.
      *
@@ -8343,6 +8392,9 @@ export interface ExpressRouteCrossConnectionPeerings {
      *
      * @param {object} [peeringParameters.microsoftPeeringConfig] The Microsoft
      * peering configuration.
+     *
+     * @param {string} [peeringParameters.gatewayManagerEtag] The GatewayManager
+     * Etag.
      *
      * @param {string} [peeringParameters.lastModifiedBy] Gets whether the provider
      * or the customer last modified the peering.
