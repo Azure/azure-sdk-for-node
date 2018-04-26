@@ -7788,6 +7788,9 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
+     * numbers included from the software update configuration.
+     *
      * @param {string} [parameters.updateConfiguration.windows.rebootSetting]
      * Reboot setting for the software update configuration.
      *
@@ -7802,6 +7805,10 @@ export interface SoftwareUpdateConfigurations {
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
+     *
+     * @param {array}
+     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
+     * included from the software update configuration.
      *
      * @param {string} [parameters.updateConfiguration.linux.rebootSetting] Reboot
      * setting for the software update configuration.
@@ -7924,6 +7931,9 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
+     * numbers included from the software update configuration.
+     *
      * @param {string} [parameters.updateConfiguration.windows.rebootSetting]
      * Reboot setting for the software update configuration.
      *
@@ -7938,6 +7948,10 @@ export interface SoftwareUpdateConfigurations {
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
+     *
+     * @param {array}
+     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
+     * included from the software update configuration.
      *
      * @param {string} [parameters.updateConfiguration.linux.rebootSetting] Reboot
      * setting for the software update configuration.
