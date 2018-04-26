@@ -133,71 +133,17 @@ export interface Factories {
 
 
     /**
-     * Lists factories.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<FactoryListResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FactoryListResponse>>;
-
-    /**
-     * Lists factories.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {FactoryListResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {FactoryListResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FactoryListResponse} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.FactoryListResponse>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
-
-
-    /**
      * Updates a factory's repo information.
      *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
+     * @param {string} locationId The location identifier.
      *
      * @param {object} factoryRepoUpdate Update factory repo request definition.
      *
      * @param {string} [factoryRepoUpdate.factoryResourceId] The factory resource
      * id.
+     *
+     * @param {string} [factoryRepoUpdate.resourceGroupName] The resource group
+     * name.
      *
      * @param {object} [factoryRepoUpdate.vstsConfiguration] VSTS repo information
      * of the factory.
@@ -234,19 +180,20 @@ export interface Factories {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    configureRepoWithHttpOperationResponse(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
+    configureFactoryRepoWithHttpOperationResponse(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
 
     /**
      * Updates a factory's repo information.
      *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
+     * @param {string} locationId The location identifier.
      *
      * @param {object} factoryRepoUpdate Update factory repo request definition.
      *
      * @param {string} [factoryRepoUpdate.factoryResourceId] The factory resource
      * id.
+     *
+     * @param {string} [factoryRepoUpdate.resourceGroupName] The resource group
+     * name.
      *
      * @param {object} [factoryRepoUpdate.vstsConfiguration] VSTS repo information
      * of the factory.
@@ -299,9 +246,64 @@ export interface Factories {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    configureRepo(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
-    configureRepo(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, callback: ServiceCallback<models.Factory>): void;
-    configureRepo(resourceGroupName: string, factoryName: string, factoryRepoUpdate: models.FactoryRepoUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
+    configureFactoryRepo(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
+    configureFactoryRepo(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, callback: ServiceCallback<models.Factory>): void;
+    configureFactoryRepo(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
+
+
+    /**
+     * Lists factories.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FactoryListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FactoryListResponse>>;
+
+    /**
+     * Lists factories.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FactoryListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FactoryListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FactoryListResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.FactoryListResponse>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
 
 
     /**
