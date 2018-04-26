@@ -1671,7 +1671,7 @@ export interface Job extends ProxyResource {
   lastModifiedTime?: Date;
   lastStatusModifiedTime?: Date;
   parameters?: { [propertyName: string]: string };
-  readonly provisioningState?: JobProvisioningStateProperty;
+  provisioningState?: JobProvisioningStateProperty;
 }
 
 /**
@@ -2365,7 +2365,11 @@ export interface WebhookUpdateParameters {
  * @member {date} [startTime] The start time of the job.
  * @member {date} [endTime] The end time of the job.
  * @member {date} [lastModifiedTime] The last modified time of the job.
- * @member {string} [provisioningState] The provisioning state of a resource.
+ * @member {object} [provisioningState] The current provisioning state of the
+ * job.
+ * @member {string} [provisioningState.provisioningState] The provisioning
+ * state of the resource. Possible values include: 'Failed', 'Succeeded',
+ * 'Suspended', 'Processing'
  */
 export interface JobCollectionItem extends ProxyResource {
   readonly runbook?: RunbookAssociationProperty;
@@ -2375,7 +2379,7 @@ export interface JobCollectionItem extends ProxyResource {
   readonly startTime?: Date;
   readonly endTime?: Date;
   readonly lastModifiedTime?: Date;
-  readonly provisioningState?: string;
+  provisioningState?: JobProvisioningStateProperty;
 }
 
 /**
