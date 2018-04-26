@@ -2764,6 +2764,14 @@ export interface Queues {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2773,7 +2781,7 @@ export interface Queues {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBQueueListResult>>;
+    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBQueueListResult>>;
 
     /**
      * Gets the queues within a namespace.
@@ -2784,6 +2792,14 @@ export interface Queues {
      * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2810,9 +2826,9 @@ export interface Queues {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBQueueListResult>;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.SBQueueListResult>;
     listByNamespace(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SBQueueListResult>): void;
-    listByNamespace(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBQueueListResult>): void;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBQueueListResult>): void;
 
 
     /**
@@ -3697,6 +3713,14 @@ export interface Topics {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3706,7 +3730,7 @@ export interface Topics {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBTopicListResult>>;
+    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBTopicListResult>>;
 
     /**
      * Gets all the topics in a namespace.
@@ -3717,6 +3741,14 @@ export interface Topics {
      * @param {string} namespaceName The namespace name
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3743,9 +3775,9 @@ export interface Topics {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBTopicListResult>;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.SBTopicListResult>;
     listByNamespace(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.SBTopicListResult>): void;
-    listByNamespace(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBTopicListResult>): void;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBTopicListResult>): void;
 
 
     /**
@@ -4596,6 +4628,14 @@ export interface Subscriptions {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4605,7 +4645,7 @@ export interface Subscriptions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByTopicWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBSubscriptionListResult>>;
+    listByTopicWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SBSubscriptionListResult>>;
 
     /**
      * List all the subscriptions under a specified topic.
@@ -4618,6 +4658,14 @@ export interface Subscriptions {
      * @param {string} topicName The topic name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4645,9 +4693,9 @@ export interface Subscriptions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SBSubscriptionListResult>;
+    listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.SBSubscriptionListResult>;
     listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, callback: ServiceCallback<models.SBSubscriptionListResult>): void;
-    listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBSubscriptionListResult>): void;
+    listByTopic(resourceGroupName: string, namespaceName: string, topicName: string, options: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SBSubscriptionListResult>): void;
 
 
     /**
@@ -5029,6 +5077,14 @@ export interface Rules {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -5038,7 +5094,7 @@ export interface Rules {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionsWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RuleListResult>>;
+    listBySubscriptionsWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RuleListResult>>;
 
     /**
      * List all the rules within given topic-subscription
@@ -5053,6 +5109,14 @@ export interface Rules {
      * @param {string} subscriptionName The subscription name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5079,9 +5143,9 @@ export interface Rules {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RuleListResult>;
+    listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.RuleListResult>;
     listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, callback: ServiceCallback<models.RuleListResult>): void;
-    listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RuleListResult>): void;
+    listBySubscriptions(resourceGroupName: string, namespaceName: string, topicName: string, subscriptionName: string, options: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RuleListResult>): void;
 
 
     /**
