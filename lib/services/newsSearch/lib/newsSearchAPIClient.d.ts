@@ -9,9 +9,10 @@
  */
 
 import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'ms-rest';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class NewsSearchAPIClient extends ServiceClient {
+export default class NewsSearchAPIClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the NewsSearchAPIClient class.
@@ -39,4 +40,4 @@ declare class NewsSearchAPIClient extends ServiceClient {
   newsOperations: operations.NewsOperations;
 }
 
-export = NewsSearchAPIClient;
+export { NewsSearchAPIClient, models as NewsSearchAPIModels };
