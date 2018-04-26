@@ -495,22 +495,6 @@ export interface NameAvailability {
 
 /**
  * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * ARM resource.
- *
- * @member {string} [id] Resource ID.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ServerSecurityAlertPolicy class.
  * @constructor
  * A server security alert policy.
