@@ -7788,6 +7788,9 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
+     * numbers included from the software update configuration.
+     *
      * @param {object} [parameters.updateConfiguration.linux] Linux specific update
      * configuration.
      *
@@ -7799,6 +7802,10 @@ export interface SoftwareUpdateConfigurations {
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
+     *
+     * @param {array}
+     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
+     * included from the software update configuration.
      *
      * @param {moment.duration} [parameters.updateConfiguration.duration] Maximum
      * time allowed for the software update configuration run. Duration needs to be
@@ -7918,6 +7925,9 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
+     * numbers included from the software update configuration.
+     *
      * @param {object} [parameters.updateConfiguration.linux] Linux specific update
      * configuration.
      *
@@ -7929,6 +7939,10 @@ export interface SoftwareUpdateConfigurations {
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
+     *
+     * @param {array}
+     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
+     * included from the software update configuration.
      *
      * @param {moment.duration} [parameters.updateConfiguration.duration] Maximum
      * time allowed for the software update configuration run. Duration needs to be
