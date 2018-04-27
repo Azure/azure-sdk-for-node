@@ -4258,47 +4258,6 @@ export interface VirtualMachineScaleSetSku {
 
 /**
  * @class
- * Initializes a new instance of the UpgradeOperationHistoryStatus class.
- * @constructor
- * Information about the current running state of the overall upgrade.
- *
- * @member {string} [code] Code indicating the current status of the upgrade.
- * Possible values include: 'RollingForward', 'Cancelled', 'Completed',
- * 'Faulted'
- * @member {date} [startTime] Start time of the upgrade.
- * @member {date} [endTime] End time of the upgrade.
- */
-export interface UpgradeOperationHistoryStatus {
-  readonly code?: string;
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the RollingUpgradeProgressInfo class.
- * @constructor
- * Information about the number of virtual machine instances in each upgrade
- * state.
- *
- * @member {number} [successfulInstanceCount] The number of instances that have
- * been successfully upgraded.
- * @member {number} [failedInstanceCount] The number of instances that have
- * failed to be upgraded successfully.
- * @member {number} [inProgressInstanceCount] The number of instances that are
- * currently being upgraded.
- * @member {number} [pendingInstanceCount] The number of instances that have
- * not yet begun to be upgraded.
- */
-export interface RollingUpgradeProgressInfo {
-  readonly successfulInstanceCount?: number;
-  readonly failedInstanceCount?: number;
-  readonly inProgressInstanceCount?: number;
-  readonly pendingInstanceCount?: number;
-}
-
-/**
- * @class
  * Initializes a new instance of the ApiErrorBase class.
  * @constructor
  * Api error base.
@@ -4352,6 +4311,75 @@ export interface ApiError {
 
 /**
  * @class
+ * Initializes a new instance of the RollbackStatusInfo class.
+ * @constructor
+ * Information about rollback on failed VM instances after a OS Upgrade
+ * operation
+ *
+ * @member {number} [successfullyRolledbackInstanceCount] The number of
+ * instances which have been successfully rolled back.
+ * @member {number} [failedRolledbackInstanceCount] The number of instances
+ * which failed to rollback.
+ * @member {object} [rollbackError] Error Details if OS rollback failed.
+ * @member {array} [rollbackError.details] The Api error details
+ * @member {object} [rollbackError.innererror] The Api inner error
+ * @member {string} [rollbackError.innererror.exceptiontype] The exception
+ * type.
+ * @member {string} [rollbackError.innererror.errordetail] The internal error
+ * message or exception dump.
+ * @member {string} [rollbackError.code] The error code.
+ * @member {string} [rollbackError.target] The target of the particular error.
+ * @member {string} [rollbackError.message] The error message.
+ */
+export interface RollbackStatusInfo {
+  readonly successfullyRolledbackInstanceCount?: number;
+  readonly failedRolledbackInstanceCount?: number;
+  readonly rollbackError?: ApiError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpgradeOperationHistoryStatus class.
+ * @constructor
+ * Information about the current running state of the overall upgrade.
+ *
+ * @member {string} [code] Code indicating the current status of the upgrade.
+ * Possible values include: 'RollingForward', 'Cancelled', 'Completed',
+ * 'Faulted'
+ * @member {date} [startTime] Start time of the upgrade.
+ * @member {date} [endTime] End time of the upgrade.
+ */
+export interface UpgradeOperationHistoryStatus {
+  readonly code?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RollingUpgradeProgressInfo class.
+ * @constructor
+ * Information about the number of virtual machine instances in each upgrade
+ * state.
+ *
+ * @member {number} [successfulInstanceCount] The number of instances that have
+ * been successfully upgraded.
+ * @member {number} [failedInstanceCount] The number of instances that have
+ * failed to be upgraded successfully.
+ * @member {number} [inProgressInstanceCount] The number of instances that are
+ * currently being upgraded.
+ * @member {number} [pendingInstanceCount] The number of instances that have
+ * not yet begun to be upgraded.
+ */
+export interface RollingUpgradeProgressInfo {
+  readonly successfulInstanceCount?: number;
+  readonly failedInstanceCount?: number;
+  readonly inProgressInstanceCount?: number;
+  readonly pendingInstanceCount?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the UpgradeOperationHistoricalStatusInfoProperties class.
  * @constructor
  * Describes each OS upgrade on the Virtual Machine Scale Set.
@@ -4395,6 +4423,23 @@ export interface ApiError {
  * available at deploy time. Even if you use 'latest', the VM image will not
  * automatically update after deploy time even if a new version becomes
  * available.
+ * @member {object} [rollbackInfo] Information about OS rollback if performed
+ * @member {number} [rollbackInfo.successfullyRolledbackInstanceCount] The
+ * number of instances which have been successfully rolled back.
+ * @member {number} [rollbackInfo.failedRolledbackInstanceCount] The number of
+ * instances which failed to rollback.
+ * @member {object} [rollbackInfo.rollbackError] Error Details if OS rollback
+ * failed.
+ * @member {array} [rollbackInfo.rollbackError.details] The Api error details
+ * @member {object} [rollbackInfo.rollbackError.innererror] The Api inner error
+ * @member {string} [rollbackInfo.rollbackError.innererror.exceptiontype] The
+ * exception type.
+ * @member {string} [rollbackInfo.rollbackError.innererror.errordetail] The
+ * internal error message or exception dump.
+ * @member {string} [rollbackInfo.rollbackError.code] The error code.
+ * @member {string} [rollbackInfo.rollbackError.target] The target of the
+ * particular error.
+ * @member {string} [rollbackInfo.rollbackError.message] The error message.
  */
 export interface UpgradeOperationHistoricalStatusInfoProperties {
   readonly runningStatus?: UpgradeOperationHistoryStatus;
@@ -4402,6 +4447,7 @@ export interface UpgradeOperationHistoricalStatusInfoProperties {
   readonly error?: ApiError;
   readonly startedBy?: string;
   readonly targetImageReference?: ImageReference;
+  readonly rollbackInfo?: RollbackStatusInfo;
 }
 
 /**
@@ -4457,6 +4503,31 @@ export interface UpgradeOperationHistoricalStatusInfoProperties {
  * latest version of an image available at deploy time. Even if you use
  * 'latest', the VM image will not automatically update after deploy time even
  * if a new version becomes available.
+ * @member {object} [properties.rollbackInfo] Information about OS rollback if
+ * performed
+ * @member {number}
+ * [properties.rollbackInfo.successfullyRolledbackInstanceCount] The number of
+ * instances which have been successfully rolled back.
+ * @member {number} [properties.rollbackInfo.failedRolledbackInstanceCount] The
+ * number of instances which failed to rollback.
+ * @member {object} [properties.rollbackInfo.rollbackError] Error Details if OS
+ * rollback failed.
+ * @member {array} [properties.rollbackInfo.rollbackError.details] The Api
+ * error details
+ * @member {object} [properties.rollbackInfo.rollbackError.innererror] The Api
+ * inner error
+ * @member {string}
+ * [properties.rollbackInfo.rollbackError.innererror.exceptiontype] The
+ * exception type.
+ * @member {string}
+ * [properties.rollbackInfo.rollbackError.innererror.errordetail] The internal
+ * error message or exception dump.
+ * @member {string} [properties.rollbackInfo.rollbackError.code] The error
+ * code.
+ * @member {string} [properties.rollbackInfo.rollbackError.target] The target
+ * of the particular error.
+ * @member {string} [properties.rollbackInfo.rollbackError.message] The error
+ * message.
  * @member {string} [type] Resource type
  * @member {string} [location] Resource location
  */
