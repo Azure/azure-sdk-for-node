@@ -235,7 +235,7 @@ export interface Operation {
  * @member {string} location Location of the resource
  * @member {object} [tags] Tags of the resource
  */
-export interface TrackedResource extends Resource {
+export interface TrackedResource extends BaseResource {
   location: string;
   tags?: { [propertyName: string]: string };
 }
