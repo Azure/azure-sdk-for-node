@@ -1327,18 +1327,41 @@ export interface DscMetaConfiguration {
  * @member {string} [source.value] Gets or sets the value of the content. This
  * is based on the content source type.
  * @member {string} [source.version] Gets or sets the version of the content.
- * @member {string} name Gets or sets the type of the parameter.
+ * @member {string} name Name of the node configuration.
  * @member {object} configuration Gets or sets the configuration of the node.
  * @member {string} [configuration.name] Gets or sets the name of the Dsc
  * configuration.
  * @member {boolean} [newNodeConfigurationBuildVersionRequired] If a new build
  * version of NodeConfiguration is required.
+ * @member {object} source1 Gets or sets the source.
+ * @member {object} [source1.hash] Gets or sets the hash.
+ * @member {string} [source1.hash.algorithm] Gets or sets the content hash
+ * algorithm used to hash the content.
+ * @member {string} [source1.hash.value] Gets or sets expected hash value of
+ * the content.
+ * @member {string} [source1.type] Gets or sets the content source type.
+ * Possible values include: 'embeddedContent', 'uri'
+ * @member {string} [source1.value] Gets or sets the value of the content. This
+ * is based on the content source type.
+ * @member {string} [source1.version] Gets or sets the version of the content.
+ * @member {string} name1 Gets or sets the type of the parameter.
+ * @member {object} configuration1 Gets or sets the configuration of the node.
+ * @member {string} [configuration1.name] Gets or sets the name of the Dsc
+ * configuration.
+ * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
+ * of NodeConfiguration is required.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
  */
 export interface DscNodeConfigurationCreateOrUpdateParameters {
   source: ContentSource;
   name: string;
   configuration: DscConfigurationAssociationProperty;
   newNodeConfigurationBuildVersionRequired?: boolean;
+  source1: ContentSource;
+  name1: string;
+  configuration1: DscConfigurationAssociationProperty;
+  incrementNodeConfigurationBuild?: boolean;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -1648,7 +1671,7 @@ export interface Job extends ProxyResource {
   lastModifiedTime?: Date;
   lastStatusModifiedTime?: Date;
   parameters?: { [propertyName: string]: string };
-  provisioningState?: JobProvisioningStateProperty;
+  readonly provisioningState?: JobProvisioningStateProperty;
 }
 
 /**
@@ -2342,11 +2365,7 @@ export interface WebhookUpdateParameters {
  * @member {date} [startTime] The start time of the job.
  * @member {date} [endTime] The end time of the job.
  * @member {date} [lastModifiedTime] The last modified time of the job.
- * @member {object} [provisioningState] The current provisioning state of the
- * job.
- * @member {string} [provisioningState.provisioningState] The provisioning
- * state of the resource. Possible values include: 'Failed', 'Succeeded',
- * 'Suspended', 'Processing'
+ * @member {string} [provisioningState] The provisioning state of a resource.
  */
 export interface JobCollectionItem extends ProxyResource {
   readonly runbook?: RunbookAssociationProperty;
@@ -2356,7 +2375,7 @@ export interface JobCollectionItem extends ProxyResource {
   readonly startTime?: Date;
   readonly endTime?: Date;
   readonly lastModifiedTime?: Date;
-  provisioningState?: JobProvisioningStateProperty;
+  readonly provisioningState?: string;
 }
 
 /**
@@ -2372,10 +2391,13 @@ export interface JobCollectionItem extends ProxyResource {
  * 'Tools', 'Updates'
  * @member {array} [excludedKbNumbers] KB numbers excluded from the software
  * update configuration.
+ * @member {array} [includedKbNumbers] KB numbers included from the software
+ * update configuration.
  */
 export interface WindowsProperties {
   includedUpdateClassifications?: string;
   excludedKbNumbers?: string[];
+  includedKbNumbers?: string[];
 }
 
 /**
@@ -2389,10 +2411,13 @@ export interface WindowsProperties {
  * 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [excludedPackageNameMasks] packages excluded from the
  * software update configuration.
+ * @member {array} [includedPackageNameMasks] packages included from the
+ * software update configuration.
  */
 export interface LinuxProperties {
   includedPackageClassifications?: string;
   excludedPackageNameMasks?: string[];
+  includedPackageNameMasks?: string[];
 }
 
 /**
@@ -2411,11 +2436,15 @@ export interface LinuxProperties {
  * 'ServicePack', 'Definition', 'Tools', 'Updates'
  * @member {array} [windows.excludedKbNumbers] KB numbers excluded from the
  * software update configuration.
+ * @member {array} [windows.includedKbNumbers] KB numbers included from the
+ * software update configuration.
  * @member {object} [linux] Linux specific update configuration.
  * @member {string} [linux.includedPackageClassifications] Update
  * classifications included in the software update configuration. Possible
  * values include: 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [linux.excludedPackageNameMasks] packages excluded from the
+ * software update configuration.
+ * @member {array} [linux.includedPackageNameMasks] packages included from the
  * software update configuration.
  * @member {moment.duration} [duration] Maximum time allowed for the software
  * update configuration run. Duration needs to be specified using the format
@@ -2456,6 +2485,8 @@ export interface UpdateConfiguration {
  * 'ServicePack', 'Definition', 'Tools', 'Updates'
  * @member {array} [updateConfiguration.windows.excludedKbNumbers] KB numbers
  * excluded from the software update configuration.
+ * @member {array} [updateConfiguration.windows.includedKbNumbers] KB numbers
+ * included from the software update configuration.
  * @member {object} [updateConfiguration.linux] Linux specific update
  * configuration.
  * @member {string} [updateConfiguration.linux.includedPackageClassifications]
@@ -2463,6 +2494,8 @@ export interface UpdateConfiguration {
  * Possible values include: 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [updateConfiguration.linux.excludedPackageNameMasks]
  * packages excluded from the software update configuration.
+ * @member {array} [updateConfiguration.linux.includedPackageNameMasks]
+ * packages included from the software update configuration.
  * @member {moment.duration} [updateConfiguration.duration] Maximum time
  * allowed for the software update configuration run. Duration needs to be
  * specified using the format PT[n]H[n]M[n]S as per ISO8601
@@ -2906,6 +2939,19 @@ export interface SourceControlSyncJob {
 
 /**
  * @class
+ * Initializes a new instance of the SourceControlSyncJobCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create source control sync job operation.
+ *
+ * @member {string} [commitId] Sets the commit id of the source control sync
+ * job.
+ */
+export interface SourceControlSyncJobCreateParameters {
+  commitId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SourceControlSyncJobByIdErrors class.
  * @constructor
  * Error details of the source control sync job.
@@ -3002,38 +3048,6 @@ export interface DscNodeConfiguration extends ProxyResource {
   configuration?: DscConfigurationAssociationProperty;
   source?: string;
   nodeCount?: number;
-  incrementNodeConfigurationBuild?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParametersProperties class.
- * @constructor
- * The parameters supplied to the create or update node configuration
- * operation.
- *
- * @member {object} source Gets or sets the source.
- * @member {object} [source.hash] Gets or sets the hash.
- * @member {string} [source.hash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [source.hash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [source.type] Gets or sets the content source type.
- * Possible values include: 'embeddedContent', 'uri'
- * @member {string} [source.value] Gets or sets the value of the content. This
- * is based on the content source type.
- * @member {string} [source.version] Gets or sets the version of the content.
- * @member {string} name Gets or sets the type of the parameter.
- * @member {object} configuration Gets or sets the configuration of the node.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
- * of NodeConfiguration is required.
- */
-export interface DscNodeConfigurationCreateOrUpdateParametersProperties {
-  source: ContentSource;
-  name: string;
-  configuration: DscConfigurationAssociationProperty;
   incrementNodeConfigurationBuild?: boolean;
 }
 
