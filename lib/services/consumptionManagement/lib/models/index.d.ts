@@ -213,11 +213,11 @@ export interface Marketplace extends Resource {
  * Initializes a new instance of the BalancePropertiesNewPurchasesDetailsItem class.
  * @constructor
  * @member {string} [name] the name of new purchase.
- * @member {object} [value] the value of new purchase.
+ * @member {number} [value] the value of new purchase.
  */
 export interface BalancePropertiesNewPurchasesDetailsItem {
   readonly name?: string;
-  readonly value?: any;
+  readonly value?: number;
 }
 
 /**
@@ -225,11 +225,11 @@ export interface BalancePropertiesNewPurchasesDetailsItem {
  * Initializes a new instance of the BalancePropertiesAdjustmentDetailsItem class.
  * @constructor
  * @member {string} [name] the name of new adjustment.
- * @member {object} [value] the value of new adjustment.
+ * @member {number} [value] the value of new adjustment.
  */
 export interface BalancePropertiesAdjustmentDetailsItem {
   readonly name?: string;
-  readonly value?: any;
+  readonly value?: number;
 }
 
 /**
@@ -255,8 +255,7 @@ export interface BalancePropertiesAdjustmentDetailsItem {
  * Marketplace.
  * @member {string} [billingFrequency] The billing frequency. Possible values
  * include: 'Month', 'Quarter', 'Year'
- * @member {string} [priceHidden] Price is hidden or not. Possible values
- * include: 'True', 'False'
+ * @member {boolean} [priceHidden] Price is hidden or not.
  * @member {array} [newPurchasesDetails] List of new purchases.
  * @member {array} [adjustmentDetails] List of Adjustments (Promo credit, SIE
  * credit etc.).
@@ -274,7 +273,7 @@ export interface Balance extends Resource {
   readonly totalUsage?: number;
   readonly azureMarketplaceServiceCharges?: number;
   billingFrequency?: string;
-  priceHidden?: string;
+  readonly priceHidden?: boolean;
   readonly newPurchasesDetails?: BalancePropertiesNewPurchasesDetailsItem[];
   readonly adjustmentDetails?: BalancePropertiesAdjustmentDetailsItem[];
 }
