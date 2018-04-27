@@ -7788,6 +7788,9 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
+     * numbers included from the software update configuration.
+     *
      * @param {object} [parameters.updateConfiguration.linux] Linux specific update
      * configuration.
      *
@@ -7799,6 +7802,10 @@ export interface SoftwareUpdateConfigurations {
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
+     *
+     * @param {array}
+     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
+     * included from the software update configuration.
      *
      * @param {moment.duration} [parameters.updateConfiguration.duration] Maximum
      * time allowed for the software update configuration run. Duration needs to be
@@ -7918,6 +7925,9 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
+     * numbers included from the software update configuration.
+     *
      * @param {object} [parameters.updateConfiguration.linux] Linux specific update
      * configuration.
      *
@@ -7929,6 +7939,10 @@ export interface SoftwareUpdateConfigurations {
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
+     *
+     * @param {array}
+     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
+     * included from the software update configuration.
      *
      * @param {moment.duration} [parameters.updateConfiguration.duration] Maximum
      * time allowed for the software update configuration run. Duration needs to be
@@ -9084,6 +9098,12 @@ export interface SourceControlSyncJobOperations {
      *
      * @param {uuid} sourceControlSyncJobId The source control sync job id.
      *
+     * @param {object} parameters The parameters supplied to the create source
+     * control sync job operation.
+     *
+     * @param {string} [parameters.commitId] Sets the commit id of the source
+     * control sync job.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -9095,7 +9115,7 @@ export interface SourceControlSyncJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJob>>;
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, parameters: models.SourceControlSyncJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJob>>;
 
     /**
      * Creates the sync job for a source control.
@@ -9107,6 +9127,12 @@ export interface SourceControlSyncJobOperations {
      * @param {string} sourceControlName The source control name.
      *
      * @param {uuid} sourceControlSyncJobId The source control sync job id.
+     *
+     * @param {object} parameters The parameters supplied to the create source
+     * control sync job operation.
+     *
+     * @param {string} [parameters.commitId] Sets the commit id of the source
+     * control sync job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9135,9 +9161,9 @@ export interface SourceControlSyncJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJob>;
-    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, callback: ServiceCallback<models.SourceControlSyncJob>): void;
-    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, parameters: models.SourceControlSyncJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJob>;
+    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, parameters: models.SourceControlSyncJobCreateParameters, callback: ServiceCallback<models.SourceControlSyncJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, parameters: models.SourceControlSyncJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJob>): void;
 
 
     /**
@@ -11669,33 +11695,46 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {object} parameters.source Gets or sets the source.
      *
-     * @param {object} [parameters.source.hash] Gets or sets the hash.
-     *
-     * @param {string} parameters.source.hash.algorithm Gets or sets the content
-     * hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.source.hash.value Gets or sets expected hash
-     * value of the content.
-     *
-     * @param {string} [parameters.source.type] Gets or sets the content source
-     * type. Possible values include: 'embeddedContent', 'uri'
-     *
-     * @param {string} [parameters.source.value] Gets or sets the value of the
-     * content. This is based on the content source type.
-     *
-     * @param {string} [parameters.source.version] Gets or sets the version of the
-     * content.
-     *
-     * @param {string} parameters.name Gets or sets the type of the parameter.
+     * @param {string} parameters.name Name of the node configuration.
      *
      * @param {object} parameters.configuration Gets or sets the configuration of
      * the node.
      *
-     * @param {string} [parameters.configuration.name] Gets or sets the name of the
-     * Dsc configuration.
+     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
+     * new build version of NodeConfiguration is required.
+     *
+     * @param {object} parameters.source1 Gets or sets the source.
+     *
+     * @param {object} [parameters.source1.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source1.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source1.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source1.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source1.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source1.version] Gets or sets the version of the
+     * content.
+     *
+     * @param {string} parameters.name1 Gets or sets the type of the parameter.
+     *
+     * @param {object} parameters.configuration1 Gets or sets the configuration of
+     * the node.
+     *
+     * @param {string} [parameters.configuration1.name] Gets or sets the name of
+     * the Dsc configuration.
      *
      * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
      * version of NodeConfiguration is required.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11708,7 +11747,7 @@ export interface DscNodeConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
 
     /**
      * Create the node configuration identified by node configuration name.
@@ -11724,33 +11763,46 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {object} parameters.source Gets or sets the source.
      *
-     * @param {object} [parameters.source.hash] Gets or sets the hash.
-     *
-     * @param {string} parameters.source.hash.algorithm Gets or sets the content
-     * hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.source.hash.value Gets or sets expected hash
-     * value of the content.
-     *
-     * @param {string} [parameters.source.type] Gets or sets the content source
-     * type. Possible values include: 'embeddedContent', 'uri'
-     *
-     * @param {string} [parameters.source.value] Gets or sets the value of the
-     * content. This is based on the content source type.
-     *
-     * @param {string} [parameters.source.version] Gets or sets the version of the
-     * content.
-     *
-     * @param {string} parameters.name Gets or sets the type of the parameter.
+     * @param {string} parameters.name Name of the node configuration.
      *
      * @param {object} parameters.configuration Gets or sets the configuration of
      * the node.
      *
-     * @param {string} [parameters.configuration.name] Gets or sets the name of the
-     * Dsc configuration.
+     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
+     * new build version of NodeConfiguration is required.
+     *
+     * @param {object} parameters.source1 Gets or sets the source.
+     *
+     * @param {object} [parameters.source1.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source1.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source1.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source1.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source1.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source1.version] Gets or sets the version of the
+     * content.
+     *
+     * @param {string} parameters.name1 Gets or sets the type of the parameter.
+     *
+     * @param {object} parameters.configuration1 Gets or sets the configuration of
+     * the node.
+     *
+     * @param {string} [parameters.configuration1.name] Gets or sets the name of
+     * the Dsc configuration.
      *
      * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
      * version of NodeConfiguration is required.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11779,9 +11831,9 @@ export interface DscNodeConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, callback: ServiceCallback<models.DscNodeConfiguration>): void;
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
 
 
     /**
@@ -11862,33 +11914,46 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {object} parameters.source Gets or sets the source.
      *
-     * @param {object} [parameters.source.hash] Gets or sets the hash.
-     *
-     * @param {string} parameters.source.hash.algorithm Gets or sets the content
-     * hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.source.hash.value Gets or sets expected hash
-     * value of the content.
-     *
-     * @param {string} [parameters.source.type] Gets or sets the content source
-     * type. Possible values include: 'embeddedContent', 'uri'
-     *
-     * @param {string} [parameters.source.value] Gets or sets the value of the
-     * content. This is based on the content source type.
-     *
-     * @param {string} [parameters.source.version] Gets or sets the version of the
-     * content.
-     *
-     * @param {string} parameters.name Gets or sets the type of the parameter.
+     * @param {string} parameters.name Name of the node configuration.
      *
      * @param {object} parameters.configuration Gets or sets the configuration of
      * the node.
      *
-     * @param {string} [parameters.configuration.name] Gets or sets the name of the
-     * Dsc configuration.
+     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
+     * new build version of NodeConfiguration is required.
+     *
+     * @param {object} parameters.source1 Gets or sets the source.
+     *
+     * @param {object} [parameters.source1.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source1.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source1.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source1.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source1.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source1.version] Gets or sets the version of the
+     * content.
+     *
+     * @param {string} parameters.name1 Gets or sets the type of the parameter.
+     *
+     * @param {object} parameters.configuration1 Gets or sets the configuration of
+     * the node.
+     *
+     * @param {string} [parameters.configuration1.name] Gets or sets the name of
+     * the Dsc configuration.
      *
      * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
      * version of NodeConfiguration is required.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11901,7 +11966,7 @@ export interface DscNodeConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
 
     /**
      * Create the node configuration identified by node configuration name.
@@ -11917,33 +11982,46 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {object} parameters.source Gets or sets the source.
      *
-     * @param {object} [parameters.source.hash] Gets or sets the hash.
-     *
-     * @param {string} parameters.source.hash.algorithm Gets or sets the content
-     * hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.source.hash.value Gets or sets expected hash
-     * value of the content.
-     *
-     * @param {string} [parameters.source.type] Gets or sets the content source
-     * type. Possible values include: 'embeddedContent', 'uri'
-     *
-     * @param {string} [parameters.source.value] Gets or sets the value of the
-     * content. This is based on the content source type.
-     *
-     * @param {string} [parameters.source.version] Gets or sets the version of the
-     * content.
-     *
-     * @param {string} parameters.name Gets or sets the type of the parameter.
+     * @param {string} parameters.name Name of the node configuration.
      *
      * @param {object} parameters.configuration Gets or sets the configuration of
      * the node.
      *
-     * @param {string} [parameters.configuration.name] Gets or sets the name of the
-     * Dsc configuration.
+     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
+     * new build version of NodeConfiguration is required.
+     *
+     * @param {object} parameters.source1 Gets or sets the source.
+     *
+     * @param {object} [parameters.source1.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source1.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source1.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source1.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source1.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source1.version] Gets or sets the version of the
+     * content.
+     *
+     * @param {string} parameters.name1 Gets or sets the type of the parameter.
+     *
+     * @param {object} parameters.configuration1 Gets or sets the configuration of
+     * the node.
+     *
+     * @param {string} [parameters.configuration1.name] Gets or sets the name of
+     * the Dsc configuration.
      *
      * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
      * version of NodeConfiguration is required.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11972,9 +12050,9 @@ export interface DscNodeConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
-    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, callback: ServiceCallback<models.DscNodeConfiguration>): void;
-    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
+    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
 
 
     /**

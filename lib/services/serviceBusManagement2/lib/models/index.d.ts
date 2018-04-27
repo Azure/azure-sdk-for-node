@@ -846,6 +846,25 @@ export interface ArmDisasterRecovery extends Resource {
   readonly role?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the MigrationConfigProperties class.
+ * @constructor
+ * Single item in List or Get Migration Config operation
+ *
+ * @member {string} [provisioningState] Provisioning state of Migration
+ * Configuration
+ * @member {string} targetNamespace Existing premium Namespace ARM Id name
+ * which has no entities, will be used for migration
+ * @member {string} postMigrationName Name to access Standard Namespace after
+ * migration
+ */
+export interface MigrationConfigProperties extends Resource {
+  readonly provisioningState?: string;
+  targetNamespace: string;
+  postMigrationName: string;
+}
+
 
 /**
  * @class
@@ -897,6 +916,19 @@ export interface SBAuthorizationRuleListResult extends Array<SBAuthorizationRule
  * Value contains incomplete list of Alias(Disaster Recovery configuration)
  */
 export interface ArmDisasterRecoveryListResult extends Array<ArmDisasterRecovery> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MigrationConfigListResult class.
+ * @constructor
+ * The result of the List migrationConfigurations operation.
+ *
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains incomplete list of migrationConfigurations
+ */
+export interface MigrationConfigListResult extends Array<MigrationConfigProperties> {
   readonly nextLink?: string;
 }
 

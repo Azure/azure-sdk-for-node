@@ -4,13 +4,10 @@
   "description": "EventGridClient Library with typescript type definitions for node",
   "version": "1.1.0",
   "dependencies": {
-    "ms-rest": "^2.3.3",
+    "ms-rest": "^2.3.2",
     "ms-rest-azure": "^2.5.5"
   },
-  "keywords": [
-    "node",
-    "azure"
-  ],
+  "keywords": [ "node", "azure" ],
   "license": "MIT",
   "main": "./lib/eventGridClient.js",
   "types": "./lib/eventGridClient.d.ts",
