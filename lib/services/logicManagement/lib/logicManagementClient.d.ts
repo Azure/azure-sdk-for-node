@@ -13,7 +13,7 @@ import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
 
-declare class LogicManagementClient extends AzureServiceClient {
+export default class LogicManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the LogicManagementClient class.
    * @constructor
@@ -62,7 +62,12 @@ declare class LogicManagementClient extends AzureServiceClient {
   workflowTriggerHistories: operations.WorkflowTriggerHistories;
   workflowRuns: operations.WorkflowRuns;
   workflowRunActions: operations.WorkflowRunActions;
+  workflowRunActionRepetitions: operations.WorkflowRunActionRepetitions;
+  workflowRunActionScopedRepetitions: operations.WorkflowRunActionScopedRepetitions;
+  workflowRunOperations: operations.WorkflowRunOperations;
   integrationAccounts: operations.IntegrationAccounts;
+  integrationAccountAssemblies: operations.IntegrationAccountAssemblies;
+  integrationAccountBatchConfigurations: operations.IntegrationAccountBatchConfigurations;
   schemas: operations.Schemas;
   maps: operations.Maps;
   partners: operations.Partners;
@@ -179,4 +184,4 @@ declare class LogicManagementClient extends AzureServiceClient {
   listOperationsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
 }
 
-export = LogicManagementClient;
+export { LogicManagementClient, models as LogicManagementModels };

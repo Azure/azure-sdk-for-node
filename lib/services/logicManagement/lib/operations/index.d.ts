@@ -653,6 +653,80 @@ export interface Workflows {
 
 
     /**
+     * Lists workflow callback Url.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {object} listCallbackUrlParameter Which callback url to list.
+     *
+     * @param {date} [listCallbackUrlParameter.notAfter] The expiry time.
+     *
+     * @param {string} [listCallbackUrlParameter.keyType] The key type. Possible
+     * values include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowTriggerCallbackUrl>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listCallbackUrlWithHttpOperationResponse(resourceGroupName: string, workflowName: string, listCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
+
+    /**
+     * Lists workflow callback Url.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {object} listCallbackUrlParameter Which callback url to list.
+     *
+     * @param {date} [listCallbackUrlParameter.notAfter] The expiry time.
+     *
+     * @param {string} [listCallbackUrlParameter.keyType] The key type. Possible
+     * values include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowTriggerCallbackUrl} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowTriggerCallbackUrl} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowTriggerCallbackUrl} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listCallbackUrl(resourceGroupName: string, workflowName: string, listCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowTriggerCallbackUrl>;
+    listCallbackUrl(resourceGroupName: string, workflowName: string, listCallbackUrlParameter: models.GetCallbackUrlParameters, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
+    listCallbackUrl(resourceGroupName: string, workflowName: string, listCallbackUrlParameter: models.GetCallbackUrlParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
+
+
+    /**
      * Gets an OpenAPI definition for the workflow.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -708,6 +782,108 @@ export interface Workflows {
     listSwagger(resourceGroupName: string, workflowName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
     listSwagger(resourceGroupName: string, workflowName: string, callback: ServiceCallback<any>): void;
     listSwagger(resourceGroupName: string, workflowName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * Moves an existing workflow.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {object} moveParameter The workflow id to move.
+     *
+     * @param {string} [moveParameter.state] The state. Possible values include:
+     * 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
+     *
+     * @param {object} [moveParameter.sku] The sku.
+     *
+     * @param {string} moveParameter.sku.name The name. Possible values include:
+     * 'NotSpecified', 'Free', 'Shared', 'Basic', 'Standard', 'Premium'
+     *
+     * @param {object} [moveParameter.sku.plan] The reference to plan.
+     *
+     * @param {object} [moveParameter.integrationAccount] The integration account.
+     *
+     * @param {object} [moveParameter.definition] The definition.
+     *
+     * @param {object} [moveParameter.parameters] The parameters.
+     *
+     * @param {string} [moveParameter.location] The resource location.
+     *
+     * @param {object} [moveParameter.tags] The resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    moveWithHttpOperationResponse(resourceGroupName: string, workflowName: string, moveParameter: models.Workflow, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Moves an existing workflow.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {object} moveParameter The workflow id to move.
+     *
+     * @param {string} [moveParameter.state] The state. Possible values include:
+     * 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
+     *
+     * @param {object} [moveParameter.sku] The sku.
+     *
+     * @param {string} moveParameter.sku.name The name. Possible values include:
+     * 'NotSpecified', 'Free', 'Shared', 'Basic', 'Standard', 'Premium'
+     *
+     * @param {object} [moveParameter.sku.plan] The reference to plan.
+     *
+     * @param {object} [moveParameter.integrationAccount] The integration account.
+     *
+     * @param {object} [moveParameter.definition] The definition.
+     *
+     * @param {object} [moveParameter.parameters] The parameters.
+     *
+     * @param {string} [moveParameter.location] The resource location.
+     *
+     * @param {object} [moveParameter.tags] The resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    move(resourceGroupName: string, workflowName: string, moveParameter: models.Workflow, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    move(resourceGroupName: string, workflowName: string, moveParameter: models.Workflow, callback: ServiceCallback<void>): void;
+    move(resourceGroupName: string, workflowName: string, moveParameter: models.Workflow, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -776,6 +952,108 @@ export interface Workflows {
     regenerateAccessKey(resourceGroupName: string, workflowName: string, keyType: models.RegenerateActionParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     regenerateAccessKey(resourceGroupName: string, workflowName: string, keyType: models.RegenerateActionParameter, callback: ServiceCallback<void>): void;
     regenerateAccessKey(resourceGroupName: string, workflowName: string, keyType: models.RegenerateActionParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Validates the workflow.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {object} validate The workflow.
+     *
+     * @param {string} [validate.state] The state. Possible values include:
+     * 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
+     *
+     * @param {object} [validate.sku] The sku.
+     *
+     * @param {string} validate.sku.name The name. Possible values include:
+     * 'NotSpecified', 'Free', 'Shared', 'Basic', 'Standard', 'Premium'
+     *
+     * @param {object} [validate.sku.plan] The reference to plan.
+     *
+     * @param {object} [validate.integrationAccount] The integration account.
+     *
+     * @param {object} [validate.definition] The definition.
+     *
+     * @param {object} [validate.parameters] The parameters.
+     *
+     * @param {string} [validate.location] The resource location.
+     *
+     * @param {object} [validate.tags] The resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    validateWorkflowWithHttpOperationResponse(resourceGroupName: string, workflowName: string, validate: models.Workflow, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Validates the workflow.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {object} validate The workflow.
+     *
+     * @param {string} [validate.state] The state. Possible values include:
+     * 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
+     *
+     * @param {object} [validate.sku] The sku.
+     *
+     * @param {string} validate.sku.name The name. Possible values include:
+     * 'NotSpecified', 'Free', 'Shared', 'Basic', 'Standard', 'Premium'
+     *
+     * @param {object} [validate.sku.plan] The reference to plan.
+     *
+     * @param {object} [validate.integrationAccount] The integration account.
+     *
+     * @param {object} [validate.definition] The definition.
+     *
+     * @param {object} [validate.parameters] The parameters.
+     *
+     * @param {string} [validate.location] The resource location.
+     *
+     * @param {object} [validate.tags] The resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    validateWorkflow(resourceGroupName: string, workflowName: string, validate: models.Workflow, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    validateWorkflow(resourceGroupName: string, workflowName: string, validate: models.Workflow, callback: ServiceCallback<void>): void;
+    validateWorkflow(resourceGroupName: string, workflowName: string, validate: models.Workflow, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1419,6 +1697,68 @@ export interface WorkflowTriggers {
 
 
     /**
+     * Resets a workflow trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} triggerName The workflow trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    resetWithHttpOperationResponse(resourceGroupName: string, workflowName: string, triggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resets a workflow trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} triggerName The workflow trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    reset(resourceGroupName: string, workflowName: string, triggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    reset(resourceGroupName: string, workflowName: string, triggerName: string, callback: ServiceCallback<void>): void;
+    reset(resourceGroupName: string, workflowName: string, triggerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Runs a workflow trigger.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -1478,6 +1818,139 @@ export interface WorkflowTriggers {
     run(resourceGroupName: string, workflowName: string, triggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
     run(resourceGroupName: string, workflowName: string, triggerName: string, callback: ServiceCallback<any>): void;
     run(resourceGroupName: string, workflowName: string, triggerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * Get the trigger schema as JSON.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} triggerName The workflow trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JsonSchema>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSchemaJsonWithHttpOperationResponse(resourceGroupName: string, workflowName: string, triggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JsonSchema>>;
+
+    /**
+     * Get the trigger schema as JSON.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} triggerName The workflow trigger name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JsonSchema} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JsonSchema} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JsonSchema} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSchemaJson(resourceGroupName: string, workflowName: string, triggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JsonSchema>;
+    getSchemaJson(resourceGroupName: string, workflowName: string, triggerName: string, callback: ServiceCallback<models.JsonSchema>): void;
+    getSchemaJson(resourceGroupName: string, workflowName: string, triggerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JsonSchema>): void;
+
+
+    /**
+     * Sets the state of a workflow trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} triggerName The workflow trigger name.
+     *
+     * @param {object} setStateParameter The workflow trigger state.
+     *
+     * @param {object} setStateParameter.source
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    setStateWithHttpOperationResponse(resourceGroupName: string, workflowName: string, triggerName: string, setStateParameter: models.SetTriggerStateActionDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Sets the state of a workflow trigger.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} triggerName The workflow trigger name.
+     *
+     * @param {object} setStateParameter The workflow trigger state.
+     *
+     * @param {object} setStateParameter.source
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    setState(resourceGroupName: string, workflowName: string, triggerName: string, setStateParameter: models.SetTriggerStateActionDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    setState(resourceGroupName: string, workflowName: string, triggerName: string, setStateParameter: models.SetTriggerStateActionDefinition, callback: ServiceCallback<void>): void;
+    setState(resourceGroupName: string, workflowName: string, triggerName: string, setStateParameter: models.SetTriggerStateActionDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -2292,6 +2765,72 @@ export interface WorkflowRunActions {
 
 
     /**
+     * Lists a workflow run expression trace.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listExpressionTracesWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<{ [propertyName: string]: models.Expression[] }>>;
+
+    /**
+     * Lists a workflow run expression trace.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<{ [propertyName: string]: models.Expression[] }>;
+    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, callback: ServiceCallback<{ [propertyName: string]: models.Expression[] }>): void;
+    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<{ [propertyName: string]: models.Expression[] }>): void;
+
+
+    /**
      * Gets a list of workflow run actions.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -2347,6 +2886,446 @@ export interface WorkflowRunActions {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunActionListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.WorkflowRunActionListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunActionListResult>): void;
+}
+
+/**
+ * @class
+ * WorkflowRunActionRepetitions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the LogicManagementClient.
+ */
+export interface WorkflowRunActionRepetitions {
+
+
+    /**
+     * Get all of a workflow run action repetitions.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowRunActionRepetitionDefinition[]>>;
+
+    /**
+     * Get all of a workflow run action repetitions.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunActionRepetitionDefinition[]>;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinition[]>): void;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinition[]>): void;
+
+
+    /**
+     * Get a workflow run action repetition.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {string} repetitionName The workflow repetition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowRunActionRepetitionDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowRunActionRepetitionDefinition>>;
+
+    /**
+     * Get a workflow run action repetition.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {string} repetitionName The workflow repetition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowRunActionRepetitionDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowRunActionRepetitionDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowRunActionRepetitionDefinition} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunActionRepetitionDefinition>;
+    get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinition>): void;
+    get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinition>): void;
+
+
+    /**
+     * Lists a workflow run expression trace.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {string} repetitionName The workflow repetition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listExpressionTracesWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<{ [propertyName: string]: models.Expression[] }>>;
+
+    /**
+     * Lists a workflow run expression trace.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {string} repetitionName The workflow repetition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<{ [propertyName: string]: models.Expression[] }>;
+    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, callback: ServiceCallback<{ [propertyName: string]: models.Expression[] }>): void;
+    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<{ [propertyName: string]: models.Expression[] }>): void;
+}
+
+/**
+ * @class
+ * WorkflowRunActionScopedRepetitions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the LogicManagementClient.
+ */
+export interface WorkflowRunActionScopedRepetitions {
+
+
+    /**
+     * List the workflow run action scoped repetitions.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowRunActionRepetitionDefinition[]>>;
+
+    /**
+     * List the workflow run action scoped repetitions.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunActionRepetitionDefinition[]>;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinition[]>): void;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinition[]>): void;
+
+
+    /**
+     * Get a workflow run action scoped repetition.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {string} repetitionName The workflow repetition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowRunActionRepetitionDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowRunActionRepetitionDefinition>>;
+
+    /**
+     * Get a workflow run action scoped repetition.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} actionName The workflow action name.
+     *
+     * @param {string} repetitionName The workflow repetition.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowRunActionRepetitionDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowRunActionRepetitionDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowRunActionRepetitionDefinition} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunActionRepetitionDefinition>;
+    get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinition>): void;
+    get(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinition>): void;
+}
+
+/**
+ * @class
+ * WorkflowRunOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the LogicManagementClient.
+ */
+export interface WorkflowRunOperations {
+
+
+    /**
+     * Gets an operation for a run.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} operationId The workflow operation id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowRunProperties>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowRunProperties>>;
+
+    /**
+     * Gets an operation for a run.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} workflowName The workflow name.
+     *
+     * @param {string} runName The workflow run name.
+     *
+     * @param {string} operationId The workflow operation id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowRunProperties} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowRunProperties} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowRunProperties} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, workflowName: string, runName: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunProperties>;
+    get(resourceGroupName: string, workflowName: string, runName: string, operationId: string, callback: ServiceCallback<models.WorkflowRunProperties>): void;
+    get(resourceGroupName: string, workflowName: string, runName: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunProperties>): void;
 }
 
 /**
@@ -2794,7 +3773,7 @@ export interface IntegrationAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CallbackUrl>>;
+    listCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CallbackUrl>>;
 
     /**
      * Gets the integration account callback URL.
@@ -2837,9 +3816,225 @@ export interface IntegrationAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CallbackUrl>;
-    getCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, callback: ServiceCallback<models.CallbackUrl>): void;
-    getCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CallbackUrl>): void;
+    listCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CallbackUrl>;
+    listCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, callback: ServiceCallback<models.CallbackUrl>): void;
+    listCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CallbackUrl>): void;
+
+
+    /**
+     * Gets the integration account's Key Vault keys.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {object} parameters The callback URL parameters.
+     *
+     * @param {object} parameters.keyVault The key vault reference.
+     *
+     * @param {string} [parameters.skipToken] The skip token.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<KeyVaultKeyCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listKeyVaultKeysWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, parameters: models.ListKeyVaultKeysDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyVaultKeyCollection>>;
+
+    /**
+     * Gets the integration account's Key Vault keys.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {object} parameters The callback URL parameters.
+     *
+     * @param {object} parameters.keyVault The key vault reference.
+     *
+     * @param {string} [parameters.skipToken] The skip token.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {KeyVaultKeyCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {KeyVaultKeyCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link KeyVaultKeyCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, parameters: models.ListKeyVaultKeysDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyVaultKeyCollection>;
+    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, parameters: models.ListKeyVaultKeysDefinition, callback: ServiceCallback<models.KeyVaultKeyCollection>): void;
+    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, parameters: models.ListKeyVaultKeysDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyVaultKeyCollection>): void;
+
+
+    /**
+     * Logs the integration account's tracking events.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {object} logTrackingEventsParameter The callback URL parameters.
+     *
+     * @param {string} logTrackingEventsParameter.sourceType
+     *
+     * @param {string} [logTrackingEventsParameter.trackEventsOptions] Possible
+     * values include: 'None', 'DisableSourceInfoEnrich'
+     *
+     * @param {array} logTrackingEventsParameter.events
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    logTrackingEventsWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, logTrackingEventsParameter: models.TrackingEventsDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Logs the integration account's tracking events.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {object} logTrackingEventsParameter The callback URL parameters.
+     *
+     * @param {string} logTrackingEventsParameter.sourceType
+     *
+     * @param {string} [logTrackingEventsParameter.trackEventsOptions] Possible
+     * values include: 'None', 'DisableSourceInfoEnrich'
+     *
+     * @param {array} logTrackingEventsParameter.events
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    logTrackingEvents(resourceGroupName: string, integrationAccountName: string, logTrackingEventsParameter: models.TrackingEventsDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    logTrackingEvents(resourceGroupName: string, integrationAccountName: string, logTrackingEventsParameter: models.TrackingEventsDefinition, callback: ServiceCallback<void>): void;
+    logTrackingEvents(resourceGroupName: string, integrationAccountName: string, logTrackingEventsParameter: models.TrackingEventsDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Regenerates the integration account access key.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {object} regenerateAccessKeyParameter The access key type.
+     *
+     * @param {string} [regenerateAccessKeyParameter.keyType] The key type.
+     * Possible values include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IntegrationAccount>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    regenerateAccessKeyWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, regenerateAccessKeyParameter: models.RegenerateActionParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationAccount>>;
+
+    /**
+     * Regenerates the integration account access key.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {object} regenerateAccessKeyParameter The access key type.
+     *
+     * @param {string} [regenerateAccessKeyParameter.keyType] The key type.
+     * Possible values include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IntegrationAccount} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IntegrationAccount} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationAccount} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    regenerateAccessKey(resourceGroupName: string, integrationAccountName: string, regenerateAccessKeyParameter: models.RegenerateActionParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccount>;
+    regenerateAccessKey(resourceGroupName: string, integrationAccountName: string, regenerateAccessKeyParameter: models.RegenerateActionParameter, callback: ServiceCallback<models.IntegrationAccount>): void;
+    regenerateAccessKey(resourceGroupName: string, integrationAccountName: string, regenerateAccessKeyParameter: models.RegenerateActionParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccount>): void;
 
 
     /**
@@ -2956,6 +4151,831 @@ export interface IntegrationAccounts {
     listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountListResult>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountListResult>): void;
     listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountListResult>): void;
+}
+
+/**
+ * @class
+ * IntegrationAccountAssemblies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the LogicManagementClient.
+ */
+export interface IntegrationAccountAssemblies {
+
+
+    /**
+     * List the assemblies for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AssemblyCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AssemblyCollection>>;
+
+    /**
+     * List the assemblies for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AssemblyCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AssemblyCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AssemblyCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, integrationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AssemblyCollection>;
+    list(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.AssemblyCollection>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AssemblyCollection>): void;
+
+
+    /**
+     * Get an assembly for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} assemblyArtifactName The assembly artifact name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AssemblyDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AssemblyDefinition>>;
+
+    /**
+     * Get an assembly for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} assemblyArtifactName The assembly artifact name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AssemblyDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AssemblyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AssemblyDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AssemblyDefinition>;
+    get(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, callback: ServiceCallback<models.AssemblyDefinition>): void;
+    get(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AssemblyDefinition>): void;
+
+
+    /**
+     * Create or update an assembly for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} assemblyArtifactName The assembly artifact name.
+     *
+     * @param {object} assemblyArtifact The assembly artifact.
+     *
+     * @param {object} assemblyArtifact.properties The assembly properties.
+     *
+     * @param {string} assemblyArtifact.properties.assemblyName The assembly name.
+     *
+     * @param {string} [assemblyArtifact.properties.assemblyVersion] The assembly
+     * version.
+     *
+     * @param {string} [assemblyArtifact.properties.assemblyCulture] The assembly
+     * culture.
+     *
+     * @param {string} [assemblyArtifact.properties.assemblyPublicKeyToken] The
+     * assembly public key token.
+     *
+     * @param {object} [assemblyArtifact.properties.content]
+     *
+     * @param {string} [assemblyArtifact.properties.contentType] The content type.
+     *
+     * @param {object} [assemblyArtifact.properties.contentLink] The content link.
+     *
+     * @param {string} [assemblyArtifact.properties.contentLink.uri] The content
+     * link URI.
+     *
+     * @param {string} [assemblyArtifact.properties.contentLink.contentVersion] The
+     * content version.
+     *
+     * @param {number} [assemblyArtifact.properties.contentLink.contentSize] The
+     * content size.
+     *
+     * @param {object} [assemblyArtifact.properties.contentLink.contentHash] The
+     * content hash.
+     *
+     * @param {string}
+     * [assemblyArtifact.properties.contentLink.contentHash.algorithm] The
+     * algorithm of the content hash.
+     *
+     * @param {string} [assemblyArtifact.properties.contentLink.contentHash.value]
+     * The value of the content hash.
+     *
+     * @param {object} [assemblyArtifact.properties.contentLink.metadata] The
+     * metadata.
+     *
+     * @param {string} [assemblyArtifact.location] The resource location.
+     *
+     * @param {object} [assemblyArtifact.tags] The resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AssemblyDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, assemblyArtifact: models.AssemblyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AssemblyDefinition>>;
+
+    /**
+     * Create or update an assembly for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} assemblyArtifactName The assembly artifact name.
+     *
+     * @param {object} assemblyArtifact The assembly artifact.
+     *
+     * @param {object} assemblyArtifact.properties The assembly properties.
+     *
+     * @param {string} assemblyArtifact.properties.assemblyName The assembly name.
+     *
+     * @param {string} [assemblyArtifact.properties.assemblyVersion] The assembly
+     * version.
+     *
+     * @param {string} [assemblyArtifact.properties.assemblyCulture] The assembly
+     * culture.
+     *
+     * @param {string} [assemblyArtifact.properties.assemblyPublicKeyToken] The
+     * assembly public key token.
+     *
+     * @param {object} [assemblyArtifact.properties.content]
+     *
+     * @param {string} [assemblyArtifact.properties.contentType] The content type.
+     *
+     * @param {object} [assemblyArtifact.properties.contentLink] The content link.
+     *
+     * @param {string} [assemblyArtifact.properties.contentLink.uri] The content
+     * link URI.
+     *
+     * @param {string} [assemblyArtifact.properties.contentLink.contentVersion] The
+     * content version.
+     *
+     * @param {number} [assemblyArtifact.properties.contentLink.contentSize] The
+     * content size.
+     *
+     * @param {object} [assemblyArtifact.properties.contentLink.contentHash] The
+     * content hash.
+     *
+     * @param {string}
+     * [assemblyArtifact.properties.contentLink.contentHash.algorithm] The
+     * algorithm of the content hash.
+     *
+     * @param {string} [assemblyArtifact.properties.contentLink.contentHash.value]
+     * The value of the content hash.
+     *
+     * @param {object} [assemblyArtifact.properties.contentLink.metadata] The
+     * metadata.
+     *
+     * @param {string} [assemblyArtifact.location] The resource location.
+     *
+     * @param {object} [assemblyArtifact.tags] The resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AssemblyDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AssemblyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AssemblyDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, assemblyArtifact: models.AssemblyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AssemblyDefinition>;
+    createOrUpdate(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, assemblyArtifact: models.AssemblyDefinition, callback: ServiceCallback<models.AssemblyDefinition>): void;
+    createOrUpdate(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, assemblyArtifact: models.AssemblyDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AssemblyDefinition>): void;
+
+
+    /**
+     * Delete an assembly for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} assemblyArtifactName The assembly artifact name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete an assembly for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} assemblyArtifactName The assembly artifact name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List the content callback url for an integration account assembly.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} assemblyArtifactName The assembly artifact name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowTriggerCallbackUrl>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listContentCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
+
+    /**
+     * List the content callback url for an integration account assembly.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} assemblyArtifactName The assembly artifact name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowTriggerCallbackUrl} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowTriggerCallbackUrl} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowTriggerCallbackUrl} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowTriggerCallbackUrl>;
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
+}
+
+/**
+ * @class
+ * IntegrationAccountBatchConfigurations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the LogicManagementClient.
+ */
+export interface IntegrationAccountBatchConfigurations {
+
+
+    /**
+     * List the batch configurations for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BatchConfigurationCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BatchConfigurationCollection>>;
+
+    /**
+     * List the batch configurations for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BatchConfigurationCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BatchConfigurationCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BatchConfigurationCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, integrationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BatchConfigurationCollection>;
+    list(resourceGroupName: string, integrationAccountName: string, callback: ServiceCallback<models.BatchConfigurationCollection>): void;
+    list(resourceGroupName: string, integrationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchConfigurationCollection>): void;
+
+
+    /**
+     * Get a batch configuration for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} batchConfigurationName The batch configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BatchConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BatchConfiguration>>;
+
+    /**
+     * Get a batch configuration for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} batchConfigurationName The batch configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BatchConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BatchConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BatchConfiguration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BatchConfiguration>;
+    get(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, callback: ServiceCallback<models.BatchConfiguration>): void;
+    get(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchConfiguration>): void;
+
+
+    /**
+     * Create or update a batch configuration for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} batchConfigurationName The batch configuration name.
+     *
+     * @param {object} assemblyArtifact The assembly artifact.
+     *
+     * @param {object} assemblyArtifact.properties The batch configuration
+     * properties.
+     *
+     * @param {string} assemblyArtifact.properties.batchGroupName The name of the
+     * batch group.
+     *
+     * @param {object} assemblyArtifact.properties.releaseCriteria The batch
+     * release criteria.
+     *
+     * @param {number} [assemblyArtifact.properties.releaseCriteria.messageCount]
+     * The message count.
+     *
+     * @param {number} [assemblyArtifact.properties.releaseCriteria.batchSize] The
+     * batch size in bytes.
+     *
+     * @param {object} [assemblyArtifact.properties.releaseCriteria.recurrence] The
+     * recurrence.
+     *
+     * @param {string}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.frequency] The
+     * frequency. Possible values include: 'NotSpecified', 'Second', 'Minute',
+     * 'Hour', 'Day', 'Week', 'Month', 'Year'
+     *
+     * @param {number}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.interval] The
+     * interval.
+     *
+     * @param {date}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.startTime] The start
+     * time.
+     *
+     * @param {date}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.endTime] The end
+     * time.
+     *
+     * @param {string}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.timeZone] The time
+     * zone.
+     *
+     * @param {object}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule] The
+     * recurrence schedule.
+     *
+     * @param {array}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.minutes]
+     * The minutes.
+     *
+     * @param {array}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.hours] The
+     * hours.
+     *
+     * @param {array}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.weekDays]
+     * The days of the week.
+     *
+     * @param {array}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.monthDays]
+     * The month days.
+     *
+     * @param {array}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.monthlyOccurrences]
+     * The monthly occurrences.
+     *
+     * @param {date} [assemblyArtifact.properties.createdTime] The artifact
+     * creation time.
+     *
+     * @param {date} [assemblyArtifact.properties.changedTime] The artifact changed
+     * time.
+     *
+     * @param {object} [assemblyArtifact.properties.metadata]
+     *
+     * @param {string} [assemblyArtifact.location] The resource location.
+     *
+     * @param {object} [assemblyArtifact.tags] The resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BatchConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, assemblyArtifact: models.BatchConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BatchConfiguration>>;
+
+    /**
+     * Create or update a batch configuration for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} batchConfigurationName The batch configuration name.
+     *
+     * @param {object} assemblyArtifact The assembly artifact.
+     *
+     * @param {object} assemblyArtifact.properties The batch configuration
+     * properties.
+     *
+     * @param {string} assemblyArtifact.properties.batchGroupName The name of the
+     * batch group.
+     *
+     * @param {object} assemblyArtifact.properties.releaseCriteria The batch
+     * release criteria.
+     *
+     * @param {number} [assemblyArtifact.properties.releaseCriteria.messageCount]
+     * The message count.
+     *
+     * @param {number} [assemblyArtifact.properties.releaseCriteria.batchSize] The
+     * batch size in bytes.
+     *
+     * @param {object} [assemblyArtifact.properties.releaseCriteria.recurrence] The
+     * recurrence.
+     *
+     * @param {string}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.frequency] The
+     * frequency. Possible values include: 'NotSpecified', 'Second', 'Minute',
+     * 'Hour', 'Day', 'Week', 'Month', 'Year'
+     *
+     * @param {number}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.interval] The
+     * interval.
+     *
+     * @param {date}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.startTime] The start
+     * time.
+     *
+     * @param {date}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.endTime] The end
+     * time.
+     *
+     * @param {string}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.timeZone] The time
+     * zone.
+     *
+     * @param {object}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule] The
+     * recurrence schedule.
+     *
+     * @param {array}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.minutes]
+     * The minutes.
+     *
+     * @param {array}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.hours] The
+     * hours.
+     *
+     * @param {array}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.weekDays]
+     * The days of the week.
+     *
+     * @param {array}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.monthDays]
+     * The month days.
+     *
+     * @param {array}
+     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.monthlyOccurrences]
+     * The monthly occurrences.
+     *
+     * @param {date} [assemblyArtifact.properties.createdTime] The artifact
+     * creation time.
+     *
+     * @param {date} [assemblyArtifact.properties.changedTime] The artifact changed
+     * time.
+     *
+     * @param {object} [assemblyArtifact.properties.metadata]
+     *
+     * @param {string} [assemblyArtifact.location] The resource location.
+     *
+     * @param {object} [assemblyArtifact.tags] The resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BatchConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BatchConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BatchConfiguration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, assemblyArtifact: models.BatchConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BatchConfiguration>;
+    createOrUpdate(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, assemblyArtifact: models.BatchConfiguration, callback: ServiceCallback<models.BatchConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, assemblyArtifact: models.BatchConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchConfiguration>): void;
+
+
+    /**
+     * Delete a batch configuration for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} batchConfigurationName The batch configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a batch configuration for an integration account.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} batchConfigurationName The batch configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -3267,6 +5287,84 @@ export interface Schemas {
     deleteMethod(resourceGroupName: string, integrationAccountName: string, schemaName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, integrationAccountName: string, schemaName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, integrationAccountName: string, schemaName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List content callback url.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} schemaName The integration account schema name.
+     *
+     * @param {object} listContentCallbackUrlParameter
+     *
+     * @param {date} [listContentCallbackUrlParameter.notAfter] The expiry time.
+     *
+     * @param {string} [listContentCallbackUrlParameter.keyType] The key type.
+     * Possible values include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowTriggerCallbackUrl>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listContentCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, schemaName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
+
+    /**
+     * List content callback url.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} schemaName The integration account schema name.
+     *
+     * @param {object} listContentCallbackUrlParameter
+     *
+     * @param {date} [listContentCallbackUrlParameter.notAfter] The expiry time.
+     *
+     * @param {string} [listContentCallbackUrlParameter.keyType] The key type.
+     * Possible values include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowTriggerCallbackUrl} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowTriggerCallbackUrl} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowTriggerCallbackUrl} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, schemaName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowTriggerCallbackUrl>;
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, schemaName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, schemaName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
 
 
     /**
@@ -3635,6 +5733,84 @@ export interface Maps {
 
 
     /**
+     * List content callback url.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} mapName The integration account map name.
+     *
+     * @param {object} listContentCallbackUrlParameter
+     *
+     * @param {date} [listContentCallbackUrlParameter.notAfter] The expiry time.
+     *
+     * @param {string} [listContentCallbackUrlParameter.keyType] The key type.
+     * Possible values include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowTriggerCallbackUrl>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listContentCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, mapName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
+
+    /**
+     * List content callback url.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} mapName The integration account map name.
+     *
+     * @param {object} listContentCallbackUrlParameter
+     *
+     * @param {date} [listContentCallbackUrlParameter.notAfter] The expiry time.
+     *
+     * @param {string} [listContentCallbackUrlParameter.keyType] The key type.
+     * Possible values include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowTriggerCallbackUrl} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowTriggerCallbackUrl} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowTriggerCallbackUrl} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, mapName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowTriggerCallbackUrl>;
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, mapName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, mapName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
+
+
+    /**
      * Gets a list of integration account maps.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -3995,6 +6171,84 @@ export interface Partners {
     deleteMethod(resourceGroupName: string, integrationAccountName: string, partnerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, integrationAccountName: string, partnerName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, integrationAccountName: string, partnerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List content callback url.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} partnerName The integration account partner name.
+     *
+     * @param {object} listContentCallbackUrlParameter
+     *
+     * @param {date} [listContentCallbackUrlParameter.notAfter] The expiry time.
+     *
+     * @param {string} [listContentCallbackUrlParameter.keyType] The key type.
+     * Possible values include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowTriggerCallbackUrl>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listContentCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, partnerName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
+
+    /**
+     * List content callback url.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} partnerName The integration account partner name.
+     *
+     * @param {object} listContentCallbackUrlParameter
+     *
+     * @param {date} [listContentCallbackUrlParameter.notAfter] The expiry time.
+     *
+     * @param {string} [listContentCallbackUrlParameter.keyType] The key type.
+     * Possible values include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowTriggerCallbackUrl} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowTriggerCallbackUrl} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowTriggerCallbackUrl} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, partnerName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowTriggerCallbackUrl>;
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, partnerName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, partnerName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
 
 
     /**
@@ -6318,6 +8572,84 @@ export interface Agreements {
     deleteMethod(resourceGroupName: string, integrationAccountName: string, agreementName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, integrationAccountName: string, agreementName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, integrationAccountName: string, agreementName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List content callback url.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} agreementName The integration account agreement name.
+     *
+     * @param {object} listContentCallbackUrlParameter
+     *
+     * @param {date} [listContentCallbackUrlParameter.notAfter] The expiry time.
+     *
+     * @param {string} [listContentCallbackUrlParameter.keyType] The key type.
+     * Possible values include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowTriggerCallbackUrl>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listContentCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, agreementName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
+
+    /**
+     * List content callback url.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} integrationAccountName The integration account name.
+     *
+     * @param {string} agreementName The integration account agreement name.
+     *
+     * @param {object} listContentCallbackUrlParameter
+     *
+     * @param {date} [listContentCallbackUrlParameter.notAfter] The expiry time.
+     *
+     * @param {string} [listContentCallbackUrlParameter.keyType] The key type.
+     * Possible values include: 'NotSpecified', 'Primary', 'Secondary'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowTriggerCallbackUrl} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowTriggerCallbackUrl} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowTriggerCallbackUrl} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, agreementName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowTriggerCallbackUrl>;
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, agreementName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
+    listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, agreementName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
 
 
     /**
