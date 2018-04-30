@@ -2887,6 +2887,63 @@ export interface WorkflowRunActions {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunActionListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.WorkflowRunActionListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunActionListResult>): void;
+
+
+    /**
+     * Lists a workflow run expression trace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressionTraces>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listExpressionTracesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressionTraces>>;
+
+    /**
+     * Lists a workflow run expression trace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressionTraces} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressionTraces} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressionTraces} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listExpressionTracesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressionTraces>;
+    listExpressionTracesNext(nextPageLink: string, callback: ServiceCallback<models.ExpressionTraces>): void;
+    listExpressionTracesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressionTraces>): void;
 }
 
 /**
@@ -3108,6 +3165,122 @@ export interface WorkflowRunActionRepetitions {
     listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressionTraces>;
     listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, callback: ServiceCallback<models.ExpressionTraces>): void;
     listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressionTraces>): void;
+
+
+    /**
+     * Get all of a workflow run action repetitions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WorkflowRunActionRepetitionDefinitionCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowRunActionRepetitionDefinitionCollection>>;
+
+    /**
+     * Get all of a workflow run action repetitions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WorkflowRunActionRepetitionDefinitionCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WorkflowRunActionRepetitionDefinitionCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      WorkflowRunActionRepetitionDefinitionCollection} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunActionRepetitionDefinitionCollection>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinitionCollection>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinitionCollection>): void;
+
+
+    /**
+     * Lists a workflow run expression trace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExpressionTraces>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listExpressionTracesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressionTraces>>;
+
+    /**
+     * Lists a workflow run expression trace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExpressionTraces} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExpressionTraces} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressionTraces} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listExpressionTracesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressionTraces>;
+    listExpressionTracesNext(nextPageLink: string, callback: ServiceCallback<models.ExpressionTraces>): void;
+    listExpressionTracesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressionTraces>): void;
 }
 
 /**
@@ -3844,8 +4017,6 @@ export interface IntegrationAccounts {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.skipToken] The skip token.
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3855,7 +4026,7 @@ export interface IntegrationAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeyVaultKeysWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, listKeyVaultKeysParameter: models.ListKeyVaultKeysDefinition, options?: { skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyVaultKeyCollection>>;
+    listKeyVaultKeysWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, listKeyVaultKeysParameter: models.ListKeyVaultKeysDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyVaultKeyCollection>>;
 
     /**
      * Gets the integration account's Key Vault keys.
@@ -3871,8 +4042,6 @@ export interface IntegrationAccounts {
      * @param {string} [listKeyVaultKeysParameter.skipToken] The skip token.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.skipToken] The skip token.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3899,9 +4068,9 @@ export interface IntegrationAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, listKeyVaultKeysParameter: models.ListKeyVaultKeysDefinition, options?: { skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyVaultKeyCollection>;
+    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, listKeyVaultKeysParameter: models.ListKeyVaultKeysDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyVaultKeyCollection>;
     listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, listKeyVaultKeysParameter: models.ListKeyVaultKeysDefinition, callback: ServiceCallback<models.KeyVaultKeyCollection>): void;
-    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, listKeyVaultKeysParameter: models.ListKeyVaultKeysDefinition, options: { skipToken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyVaultKeyCollection>): void;
+    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, listKeyVaultKeysParameter: models.ListKeyVaultKeysDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyVaultKeyCollection>): void;
 
 
     /**
@@ -4163,6 +4332,63 @@ export interface IntegrationAccounts {
     listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationAccountListResult>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationAccountListResult>): void;
     listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationAccountListResult>): void;
+
+
+    /**
+     * Gets the integration account's Key Vault keys.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<KeyVaultKeyCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listKeyVaultKeysNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyVaultKeyCollection>>;
+
+    /**
+     * Gets the integration account's Key Vault keys.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {KeyVaultKeyCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {KeyVaultKeyCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link KeyVaultKeyCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listKeyVaultKeysNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyVaultKeyCollection>;
+    listKeyVaultKeysNext(nextPageLink: string, callback: ServiceCallback<models.KeyVaultKeyCollection>): void;
+    listKeyVaultKeysNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyVaultKeyCollection>): void;
 }
 
 /**

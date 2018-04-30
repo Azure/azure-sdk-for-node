@@ -7933,20 +7933,6 @@ export interface KeyVaultKey {
 
 /**
  * @class
- * Initializes a new instance of the KeyVaultKeyCollection class.
- * @constructor
- * Collection of key vault keys.
- *
- * @member {array} [value] The key vault keys.
- * @member {string} [skipToken] The skip token.
- */
-export interface KeyVaultKeyCollection {
-  value?: KeyVaultKey[];
-  skipToken?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the TrackingEventErrorInfo class.
  * @constructor
  * @member {string} [message]
@@ -8084,16 +8070,6 @@ export interface ExpressionRoot extends Expression {
 
 /**
  * @class
- * Initializes a new instance of the ExpressionTraces class.
- * @constructor
- * @member {array} [inputs]
- */
-export interface ExpressionTraces {
-  inputs?: ExpressionRoot[];
-}
-
-/**
- * @class
  * Initializes a new instance of the ErrorInfo class.
  * @constructor
  * The error info.
@@ -8193,18 +8169,6 @@ export interface WorkflowRunActionRepetitionDefinition extends Resource {
   retryHistory?: RetryHistory[];
   iterationCount?: number;
   repetitionIndexes?: RepetitionIndex[];
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkflowRunActionRepetitionDefinitionCollection class.
- * @constructor
- * A collection of workflow run action repetitions.
- *
- * @member {array} [value]
- */
-export interface WorkflowRunActionRepetitionDefinitionCollection {
-  value?: WorkflowRunActionRepetitionDefinition[];
 }
 
 /**
@@ -8576,6 +8540,25 @@ export interface WorkflowRunActionListResult extends Array<WorkflowRunAction> {
 
 /**
  * @class
+ * Initializes a new instance of the ExpressionTraces class.
+ * @constructor
+ * @member {array} [inputs]
+ */
+export interface ExpressionTraces extends Array<ExpressionRoot> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkflowRunActionRepetitionDefinitionCollection class.
+ * @constructor
+ * A collection of workflow run action repetitions.
+ *
+ */
+export interface WorkflowRunActionRepetitionDefinitionCollection extends Array<WorkflowRunActionRepetitionDefinition> {
+}
+
+/**
+ * @class
  * Initializes a new instance of the IntegrationAccountListResult class.
  * @constructor
  * The list of integration accounts.
@@ -8584,6 +8567,17 @@ export interface WorkflowRunActionListResult extends Array<WorkflowRunAction> {
  */
 export interface IntegrationAccountListResult extends Array<IntegrationAccount> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the KeyVaultKeyCollection class.
+ * @constructor
+ * Collection of key vault keys.
+ *
+ * @member {string} [skipToken] The skip token.
+ */
+export interface KeyVaultKeyCollection extends Array<KeyVaultKey> {
 }
 
 /**
