@@ -241,8 +241,8 @@ export interface RecurrenceSchedule {
  * @member {string} [frequency] The frequency. Possible values include:
  * 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
  * @member {number} [interval] The interval.
- * @member {date} [startTime] The start time.
- * @member {date} [endTime] The end time.
+ * @member {string} [startTime] The start time.
+ * @member {string} [endTime] The end time.
  * @member {string} [timeZone] The time zone.
  * @member {object} [schedule] The recurrence schedule.
  * @member {array} [schedule.minutes] The minutes.
@@ -254,8 +254,8 @@ export interface RecurrenceSchedule {
 export interface WorkflowTriggerRecurrence {
   frequency?: string;
   interval?: number;
-  startTime?: Date;
-  endTime?: Date;
+  startTime?: string;
+  endTime?: string;
   timeZone?: string;
   schedule?: RecurrenceSchedule;
 }
@@ -286,8 +286,8 @@ export interface WorkflowTriggerRecurrence {
  * include: 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month',
  * 'Year'
  * @member {number} [recurrence.interval] The interval.
- * @member {date} [recurrence.startTime] The start time.
- * @member {date} [recurrence.endTime] The end time.
+ * @member {string} [recurrence.startTime] The start time.
+ * @member {string} [recurrence.endTime] The end time.
  * @member {string} [recurrence.timeZone] The time zone.
  * @member {object} [recurrence.schedule] The recurrence schedule.
  * @member {array} [recurrence.schedule.minutes] The minutes.
@@ -583,6 +583,7 @@ export interface WorkflowOutputParameter extends WorkflowParameter {
  * @constructor
  * The workflow run.
  *
+ * @member {date} [waitEndTime] Gets the wait end time.
  * @member {date} [startTime] Gets the start time.
  * @member {date} [endTime] Gets the end time.
  * @member {string} [status] Gets the status. Possible values include:
@@ -677,6 +678,7 @@ export interface WorkflowOutputParameter extends WorkflowParameter {
  * @member {string} [type] Gets the workflow run type.
  */
 export interface WorkflowRun extends SubResource {
+  readonly waitEndTime?: Date;
   readonly startTime?: Date;
   readonly endTime?: Date;
   readonly status?: string;
@@ -7899,9 +7901,11 @@ export interface ListKeyVaultKeysDefinition {
  * Collection of key vault keys.
  *
  * @member {array} [value] The key vault keys.
+ * @member {string} [skipToken] The skip token.
  */
 export interface KeyVaultKeyCollection {
   value?: ListKeyVaultKeysDefinition[];
+  skipToken?: string;
 }
 
 /**
@@ -8025,8 +8029,8 @@ export interface AccessKeyRegenerateActionDefinition {
  * values include: 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week',
  * 'Month', 'Year'
  * @member {number} [source.recurrence.interval] The interval.
- * @member {date} [source.recurrence.startTime] The start time.
- * @member {date} [source.recurrence.endTime] The end time.
+ * @member {string} [source.recurrence.startTime] The start time.
+ * @member {string} [source.recurrence.endTime] The end time.
  * @member {string} [source.recurrence.timeZone] The time zone.
  * @member {object} [source.recurrence.schedule] The recurrence schedule.
  * @member {array} [source.recurrence.schedule.minutes] The minutes.
@@ -8411,8 +8415,8 @@ export interface AssemblyCollection {
  * include: 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month',
  * 'Year'
  * @member {number} [recurrence.interval] The interval.
- * @member {date} [recurrence.startTime] The start time.
- * @member {date} [recurrence.endTime] The end time.
+ * @member {string} [recurrence.startTime] The start time.
+ * @member {string} [recurrence.endTime] The end time.
  * @member {string} [recurrence.timeZone] The time zone.
  * @member {object} [recurrence.schedule] The recurrence schedule.
  * @member {array} [recurrence.schedule.minutes] The minutes.
@@ -8443,8 +8447,8 @@ export interface BatchReleaseCriteria {
  * Possible values include: 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day',
  * 'Week', 'Month', 'Year'
  * @member {number} [releaseCriteria.recurrence.interval] The interval.
- * @member {date} [releaseCriteria.recurrence.startTime] The start time.
- * @member {date} [releaseCriteria.recurrence.endTime] The end time.
+ * @member {string} [releaseCriteria.recurrence.startTime] The start time.
+ * @member {string} [releaseCriteria.recurrence.endTime] The end time.
  * @member {string} [releaseCriteria.recurrence.timeZone] The time zone.
  * @member {object} [releaseCriteria.recurrence.schedule] The recurrence
  * schedule.
@@ -8481,9 +8485,10 @@ export interface BatchConfigurationProperties extends ArtifactProperties {
  * 'Hour', 'Day', 'Week', 'Month', 'Year'
  * @member {number} [properties.releaseCriteria.recurrence.interval] The
  * interval.
- * @member {date} [properties.releaseCriteria.recurrence.startTime] The start
+ * @member {string} [properties.releaseCriteria.recurrence.startTime] The start
  * time.
- * @member {date} [properties.releaseCriteria.recurrence.endTime] The end time.
+ * @member {string} [properties.releaseCriteria.recurrence.endTime] The end
+ * time.
  * @member {string} [properties.releaseCriteria.recurrence.timeZone] The time
  * zone.
  * @member {object} [properties.releaseCriteria.recurrence.schedule] The

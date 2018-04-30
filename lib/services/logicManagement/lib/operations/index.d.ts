@@ -2916,11 +2916,11 @@ export interface WorkflowRunActionRepetitions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<WorkflowRunActionRepetitionDefinitionCollection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowRunActionRepetitionDefinition[]>>;
+    listWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowRunActionRepetitionDefinitionCollection>>;
 
     /**
      * Get all of a workflow run action repetitions.
@@ -2945,7 +2945,7 @@ export interface WorkflowRunActionRepetitions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {WorkflowRunActionRepetitionDefinitionCollection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2953,15 +2953,18 @@ export interface WorkflowRunActionRepetitions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {WorkflowRunActionRepetitionDefinitionCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      WorkflowRunActionRepetitionDefinitionCollection} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunActionRepetitionDefinition[]>;
-    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinition[]>): void;
-    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinition[]>): void;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunActionRepetitionDefinitionCollection>;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinitionCollection>): void;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinitionCollection>): void;
 
 
     /**
@@ -4746,11 +4749,11 @@ export interface IntegrationAccountBatchConfigurations {
      * [assemblyArtifact.properties.releaseCriteria.recurrence.interval] The
      * interval.
      *
-     * @param {date}
+     * @param {string}
      * [assemblyArtifact.properties.releaseCriteria.recurrence.startTime] The start
      * time.
      *
-     * @param {date}
+     * @param {string}
      * [assemblyArtifact.properties.releaseCriteria.recurrence.endTime] The end
      * time.
      *
@@ -4845,11 +4848,11 @@ export interface IntegrationAccountBatchConfigurations {
      * [assemblyArtifact.properties.releaseCriteria.recurrence.interval] The
      * interval.
      *
-     * @param {date}
+     * @param {string}
      * [assemblyArtifact.properties.releaseCriteria.recurrence.startTime] The start
      * time.
      *
-     * @param {date}
+     * @param {string}
      * [assemblyArtifact.properties.releaseCriteria.recurrence.endTime] The end
      * time.
      *
