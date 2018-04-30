@@ -708,9 +708,6 @@ export interface DatabaseAccounts {
      *
      * @param {string} accountName Cosmos DB database account name.
      *
-     * @param {string} region Cosmos DB region, with spaces between words and each
-     * word capitalized.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -722,7 +719,7 @@ export interface DatabaseAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    offlineRegionWithHttpOperationResponse(resourceGroupName: string, accountName: string, region: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    offlineRegionWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Offline the specified region for the specified Azure Cosmos DB database
@@ -732,9 +729,6 @@ export interface DatabaseAccounts {
      *
      * @param {string} accountName Cosmos DB database account name.
      *
-     * @param {string} region Cosmos DB region, with spaces between words and each
-     * word capitalized.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -761,9 +755,9 @@ export interface DatabaseAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    offlineRegion(resourceGroupName: string, accountName: string, region: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    offlineRegion(resourceGroupName: string, accountName: string, region: string, callback: ServiceCallback<void>): void;
-    offlineRegion(resourceGroupName: string, accountName: string, region: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    offlineRegion(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    offlineRegion(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
+    offlineRegion(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -773,9 +767,6 @@ export interface DatabaseAccounts {
      * @param {string} resourceGroupName Name of an Azure resource group.
      *
      * @param {string} accountName Cosmos DB database account name.
-     *
-     * @param {string} region Cosmos DB region, with spaces between words and each
-     * word capitalized.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -788,7 +779,7 @@ export interface DatabaseAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    onlineRegionWithHttpOperationResponse(resourceGroupName: string, accountName: string, region: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    onlineRegionWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Online the specified region for the specified Azure Cosmos DB database
@@ -797,9 +788,6 @@ export interface DatabaseAccounts {
      * @param {string} resourceGroupName Name of an Azure resource group.
      *
      * @param {string} accountName Cosmos DB database account name.
-     *
-     * @param {string} region Cosmos DB region, with spaces between words and each
-     * word capitalized.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -827,9 +815,9 @@ export interface DatabaseAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    onlineRegion(resourceGroupName: string, accountName: string, region: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    onlineRegion(resourceGroupName: string, accountName: string, region: string, callback: ServiceCallback<void>): void;
-    onlineRegion(resourceGroupName: string, accountName: string, region: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    onlineRegion(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    onlineRegion(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
+    onlineRegion(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1616,9 +1604,6 @@ export interface DatabaseAccounts {
      *
      * @param {string} accountName Cosmos DB database account name.
      *
-     * @param {string} region Cosmos DB region, with spaces between words and each
-     * word capitalized.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1630,7 +1615,7 @@ export interface DatabaseAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginOfflineRegionWithHttpOperationResponse(resourceGroupName: string, accountName: string, region: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginOfflineRegionWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Offline the specified region for the specified Azure Cosmos DB database
@@ -1640,9 +1625,6 @@ export interface DatabaseAccounts {
      *
      * @param {string} accountName Cosmos DB database account name.
      *
-     * @param {string} region Cosmos DB region, with spaces between words and each
-     * word capitalized.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1669,9 +1651,9 @@ export interface DatabaseAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginOfflineRegion(resourceGroupName: string, accountName: string, region: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginOfflineRegion(resourceGroupName: string, accountName: string, region: string, callback: ServiceCallback<void>): void;
-    beginOfflineRegion(resourceGroupName: string, accountName: string, region: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginOfflineRegion(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginOfflineRegion(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
+    beginOfflineRegion(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1681,9 +1663,6 @@ export interface DatabaseAccounts {
      * @param {string} resourceGroupName Name of an Azure resource group.
      *
      * @param {string} accountName Cosmos DB database account name.
-     *
-     * @param {string} region Cosmos DB region, with spaces between words and each
-     * word capitalized.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1696,7 +1675,7 @@ export interface DatabaseAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginOnlineRegionWithHttpOperationResponse(resourceGroupName: string, accountName: string, region: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginOnlineRegionWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Online the specified region for the specified Azure Cosmos DB database
@@ -1705,9 +1684,6 @@ export interface DatabaseAccounts {
      * @param {string} resourceGroupName Name of an Azure resource group.
      *
      * @param {string} accountName Cosmos DB database account name.
-     *
-     * @param {string} region Cosmos DB region, with spaces between words and each
-     * word capitalized.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1735,9 +1711,9 @@ export interface DatabaseAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginOnlineRegion(resourceGroupName: string, accountName: string, region: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginOnlineRegion(resourceGroupName: string, accountName: string, region: string, callback: ServiceCallback<void>): void;
-    beginOnlineRegion(resourceGroupName: string, accountName: string, region: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginOnlineRegion(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginOnlineRegion(resourceGroupName: string, accountName: string, callback: ServiceCallback<void>): void;
+    beginOnlineRegion(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
