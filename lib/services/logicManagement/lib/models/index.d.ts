@@ -341,12 +341,14 @@ export interface WorkflowTriggerFilter {
  * @member {string} [sp] The SAS permissions.
  * @member {string} [sv] The SAS version.
  * @member {string} [sig] The SAS signature.
+ * @member {string} [se] The SAS timestamp.
  */
 export interface WorkflowTriggerListCallbackUrlQueries {
   apiVersion?: string;
   sp?: string;
   sv?: string;
   sig?: string;
+  se?: string;
 }
 
 /**
@@ -370,6 +372,7 @@ export interface WorkflowTriggerListCallbackUrlQueries {
  * @member {string} [queries.sp] The SAS permissions.
  * @member {string} [queries.sv] The SAS version.
  * @member {string} [queries.sig] The SAS signature.
+ * @member {string} [queries.se] The SAS timestamp.
  */
 export interface WorkflowTriggerCallbackUrl {
   readonly value?: string;
@@ -8156,6 +8159,44 @@ export interface SetTriggerStateActionDefinition {
 
 /**
  * @class
+ * Initializes a new instance of the Expression class.
+ * @constructor
+ * @member {string} [text]
+ * @member {object} [value]
+ * @member {array} [subexpressions]
+ * @member {object} [error]
+ * @member {string} [error.message] The error message.
+ * @member {array} [error.details] The error details.
+ */
+export interface Expression {
+  text?: string;
+  value?: any;
+  subexpressions?: Expression[];
+  error?: AzureResourceErrorInfo;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressionRoot class.
+ * @constructor
+ * @member {string} [path] The path.
+ */
+export interface ExpressionRoot extends Expression {
+  path?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressionTraces class.
+ * @constructor
+ * @member {array} [inputs]
+ */
+export interface ExpressionTraces {
+  inputs?: ExpressionRoot[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ErrorInfo class.
  * @constructor
  * The error info.
@@ -8178,24 +8219,6 @@ export interface ErrorInfo {
 export interface AzureResourceErrorInfo extends ErrorInfo {
   message: string;
   details?: AzureResourceErrorInfo[];
-}
-
-/**
- * @class
- * Initializes a new instance of the Expression class.
- * @constructor
- * @member {string} [text]
- * @member {object} [value]
- * @member {array} [subexpressions]
- * @member {object} [error]
- * @member {string} [error.message] The error message.
- * @member {array} [error.details] The error details.
- */
-export interface Expression {
-  text?: string;
-  value?: any;
-  subexpressions?: Expression[];
-  error?: AzureResourceErrorInfo;
 }
 
 /**

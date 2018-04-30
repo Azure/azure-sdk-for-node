@@ -2782,11 +2782,11 @@ export interface WorkflowRunActions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ExpressionTraces>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listExpressionTracesWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<{ [propertyName: string]: models.Expression[] }>>;
+    listExpressionTracesWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressionTraces>>;
 
     /**
      * Lists a workflow run expression trace.
@@ -2811,7 +2811,7 @@ export interface WorkflowRunActions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {ExpressionTraces} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2819,15 +2819,16 @@ export interface WorkflowRunActions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {ExpressionTraces} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressionTraces} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<{ [propertyName: string]: models.Expression[] }>;
-    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, callback: ServiceCallback<{ [propertyName: string]: models.Expression[] }>): void;
-    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<{ [propertyName: string]: models.Expression[] }>): void;
+    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressionTraces>;
+    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, callback: ServiceCallback<models.ExpressionTraces>): void;
+    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressionTraces>): void;
 
 
     /**
@@ -3055,11 +3056,11 @@ export interface WorkflowRunActionRepetitions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ExpressionTraces>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listExpressionTracesWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<{ [propertyName: string]: models.Expression[] }>>;
+    listExpressionTracesWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressionTraces>>;
 
     /**
      * Lists a workflow run expression trace.
@@ -3086,7 +3087,7 @@ export interface WorkflowRunActionRepetitions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Object} - The deserialized result object.
+     *                      @resolve {ExpressionTraces} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3094,15 +3095,16 @@ export interface WorkflowRunActionRepetitions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *                      {ExpressionTraces} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExpressionTraces} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<{ [propertyName: string]: models.Expression[] }>;
-    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, callback: ServiceCallback<{ [propertyName: string]: models.Expression[] }>): void;
-    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<{ [propertyName: string]: models.Expression[] }>): void;
+    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExpressionTraces>;
+    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, callback: ServiceCallback<models.ExpressionTraces>): void;
+    listExpressionTraces(resourceGroupName: string, workflowName: string, runName: string, actionName: string, repetitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExpressionTraces>): void;
 }
 
 /**
