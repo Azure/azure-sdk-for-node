@@ -7904,12 +7904,12 @@ export interface ListKeyVaultKeysDefinition {
  * @constructor
  * The key attributes.
  *
- * @member {string} [enabled] Whether the key is enabled or not.
+ * @member {boolean} [enabled] Whether the key is enabled or not.
  * @member {number} [created] When the key was created.
  * @member {number} [updated] When the key was updated.
  */
 export interface KeyVaultKeyAttributes {
-  enabled?: string;
+  enabled?: boolean;
   created?: number;
   updated?: number;
 }
@@ -7922,7 +7922,7 @@ export interface KeyVaultKeyAttributes {
  *
  * @member {string} [kid] The key id.
  * @member {object} [attributes] The key attributes.
- * @member {string} [attributes.enabled] Whether the key is enabled or not.
+ * @member {boolean} [attributes.enabled] Whether the key is enabled or not.
  * @member {number} [attributes.created] When the key was created.
  * @member {number} [attributes.updated] When the key was updated.
  */
