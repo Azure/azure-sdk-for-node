@@ -8396,18 +8396,6 @@ export interface AssemblyDefinition extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the AssemblyCollection class.
- * @constructor
- * A collection of assembly definitions.
- *
- * @member {array} [value]
- */
-export interface AssemblyCollection {
-  value?: AssemblyDefinition[];
-}
-
-/**
- * @class
  * Initializes a new instance of the BatchReleaseCriteria class.
  * @constructor
  * The batch release criteria.
@@ -8513,18 +8501,6 @@ export interface BatchConfiguration extends Resource {
   properties: BatchConfigurationProperties;
 }
 
-/**
- * @class
- * Initializes a new instance of the BatchConfigurationCollection class.
- * @constructor
- * A collection of batch configurations.
- *
- * @member {array} [value]
- */
-export interface BatchConfigurationCollection {
-  value?: BatchConfiguration[];
-}
-
 
 /**
  * @class
@@ -8608,6 +8584,26 @@ export interface WorkflowRunActionListResult extends Array<WorkflowRunAction> {
  */
 export interface IntegrationAccountListResult extends Array<IntegrationAccount> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AssemblyCollection class.
+ * @constructor
+ * A collection of assembly definitions.
+ *
+ */
+export interface AssemblyCollection extends Array<AssemblyDefinition> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BatchConfigurationCollection class.
+ * @constructor
+ * A collection of batch configurations.
+ *
+ */
+export interface BatchConfigurationCollection extends Array<BatchConfiguration> {
 }
 
 /**

@@ -653,7 +653,7 @@ export interface Workflows {
 
 
     /**
-     * Lists workflow callback Url.
+     * Get the workflow callback Url.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -680,7 +680,7 @@ export interface Workflows {
     listCallbackUrlWithHttpOperationResponse(resourceGroupName: string, workflowName: string, listCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
 
     /**
-     * Lists workflow callback Url.
+     * Get the workflow callback Url.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -791,7 +791,7 @@ export interface Workflows {
      *
      * @param {string} workflowName The workflow name.
      *
-     * @param {object} moveParameter The workflow id to move.
+     * @param {object} moveParameter The workflow to move.
      *
      * @param {string} [moveParameter.state] The state. Possible values include:
      * 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
@@ -833,7 +833,7 @@ export interface Workflows {
      *
      * @param {string} workflowName The workflow name.
      *
-     * @param {object} moveParameter The workflow id to move.
+     * @param {object} moveParameter The workflow to move.
      *
      * @param {string} [moveParameter.state] The state. Possible values include:
      * 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
@@ -1415,7 +1415,7 @@ export interface WorkflowVersions {
 
 
     /**
-     * Lists the callback URL for a trigger of a workflow version.
+     * Get the callback url for a trigger of a workflow version.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -1446,7 +1446,7 @@ export interface WorkflowVersions {
     listCallbackUrlWithHttpOperationResponse(resourceGroupName: string, workflowName: string, versionId: string, triggerName: string, options?: { parameters? : models.GetCallbackUrlParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
 
     /**
-     * Lists the callback URL for a trigger of a workflow version.
+     * Get the callback url for a trigger of a workflow version.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -1954,7 +1954,7 @@ export interface WorkflowTriggers {
 
 
     /**
-     * Gets the callback URL for a workflow trigger.
+     * Get the callback URL for a workflow trigger.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -1976,7 +1976,7 @@ export interface WorkflowTriggers {
     listCallbackUrlWithHttpOperationResponse(resourceGroupName: string, workflowName: string, triggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
 
     /**
-     * Gets the callback URL for a workflow trigger.
+     * Get the callback URL for a workflow trigger.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4516,7 +4516,7 @@ export interface IntegrationAccountAssemblies {
 
 
     /**
-     * List the content callback url for an integration account assembly.
+     * Get the content callback url for an integration account assembly.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4538,7 +4538,7 @@ export interface IntegrationAccountAssemblies {
     listContentCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
 
     /**
-     * List the content callback url for an integration account assembly.
+     * Get the content callback url for an integration account assembly.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -4577,6 +4577,63 @@ export interface IntegrationAccountAssemblies {
     listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowTriggerCallbackUrl>;
     listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
     listContentCallbackUrl(resourceGroupName: string, integrationAccountName: string, assemblyArtifactName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowTriggerCallbackUrl>): void;
+
+
+    /**
+     * List the assemblies for an integration account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AssemblyCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AssemblyCollection>>;
+
+    /**
+     * List the assemblies for an integration account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AssemblyCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AssemblyCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AssemblyCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AssemblyCollection>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AssemblyCollection>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AssemblyCollection>): void;
 }
 
 /**
@@ -4988,6 +5045,64 @@ export interface IntegrationAccountBatchConfigurations {
     deleteMethod(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List the batch configurations for an integration account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BatchConfigurationCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BatchConfigurationCollection>>;
+
+    /**
+     * List the batch configurations for an integration account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BatchConfigurationCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BatchConfigurationCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BatchConfigurationCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BatchConfigurationCollection>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.BatchConfigurationCollection>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchConfigurationCollection>): void;
 }
 
 /**
@@ -5302,7 +5417,7 @@ export interface Schemas {
 
 
     /**
-     * List content callback url.
+     * Get the content callback url.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5331,7 +5446,7 @@ export interface Schemas {
     listContentCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, schemaName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
 
     /**
-     * List content callback url.
+     * Get the content callback url.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5745,7 +5860,7 @@ export interface Maps {
 
 
     /**
-     * List content callback url.
+     * Get the content callback url.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -5774,7 +5889,7 @@ export interface Maps {
     listContentCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, mapName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
 
     /**
-     * List content callback url.
+     * Get the content callback url.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -6186,7 +6301,7 @@ export interface Partners {
 
 
     /**
-     * List content callback url.
+     * Get the content callback url.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -6215,7 +6330,7 @@ export interface Partners {
     listContentCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, partnerName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
 
     /**
-     * List content callback url.
+     * Get the content callback url.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -8587,7 +8702,7 @@ export interface Agreements {
 
 
     /**
-     * List content callback url.
+     * Get the content callback url.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -8616,7 +8731,7 @@ export interface Agreements {
     listContentCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, agreementName: string, listContentCallbackUrlParameter: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowTriggerCallbackUrl>>;
 
     /**
-     * List content callback url.
+     * Get the content callback url.
      *
      * @param {string} resourceGroupName The resource group name.
      *
