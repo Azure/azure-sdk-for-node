@@ -168,6 +168,8 @@ export interface ProxyResource extends Resource {
  * the webhook job will run on.
  * @member {date} [creationTime] Gets or sets the creation time.
  * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [lastModifiedBy] Details of the user who last modified the
+ * Webhook
  * @member {string} [description] Gets or sets the description.
  */
 export interface Webhook extends ProxyResource {
@@ -180,6 +182,7 @@ export interface Webhook extends ProxyResource {
   runOn?: string;
   creationTime?: Date;
   lastModifiedTime?: Date;
+  lastModifiedBy?: string;
   description?: string;
 }
 
