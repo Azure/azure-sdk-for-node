@@ -579,117 +579,6 @@ export interface WorkflowOutputParameter extends WorkflowParameter {
 
 /**
  * @class
- * Initializes a new instance of the WorkflowRunProperties class.
- * @constructor
- * The workflow run properties.
- *
- * @member {date} [startTime] Gets the start time.
- * @member {date} [endTime] Gets the end time.
- * @member {string} [status] Gets the status. Possible values include:
- * 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
- * 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
- * 'Ignored'
- * @member {string} [code] Gets the code.
- * @member {object} [error] Gets the error.
- * @member {string} [correlationId] Gets the correlation id.
- * @member {object} [correlation] The run correlation.
- * @member {string} [correlation.clientTrackingId] The client tracking id.
- * @member {object} [workflow] Gets the reference to workflow version.
- * @member {string} [workflow.id] The resource id.
- * @member {string} [workflow.name] Gets the resource name.
- * @member {string} [workflow.type] Gets the resource type.
- * @member {object} [trigger] Gets the fired trigger.
- * @member {string} [trigger.name] Gets the name.
- * @member {object} [trigger.inputs] Gets the inputs.
- * @member {object} [trigger.inputsLink] Gets the link to inputs.
- * @member {string} [trigger.inputsLink.uri] The content link URI.
- * @member {string} [trigger.inputsLink.contentVersion] The content version.
- * @member {number} [trigger.inputsLink.contentSize] The content size.
- * @member {object} [trigger.inputsLink.contentHash] The content hash.
- * @member {string} [trigger.inputsLink.contentHash.algorithm] The algorithm of
- * the content hash.
- * @member {string} [trigger.inputsLink.contentHash.value] The value of the
- * content hash.
- * @member {object} [trigger.inputsLink.metadata] The metadata.
- * @member {object} [trigger.outputs] Gets the outputs.
- * @member {object} [trigger.outputsLink] Gets the link to outputs.
- * @member {string} [trigger.outputsLink.uri] The content link URI.
- * @member {string} [trigger.outputsLink.contentVersion] The content version.
- * @member {number} [trigger.outputsLink.contentSize] The content size.
- * @member {object} [trigger.outputsLink.contentHash] The content hash.
- * @member {string} [trigger.outputsLink.contentHash.algorithm] The algorithm
- * of the content hash.
- * @member {string} [trigger.outputsLink.contentHash.value] The value of the
- * content hash.
- * @member {object} [trigger.outputsLink.metadata] The metadata.
- * @member {date} [trigger.startTime] Gets the start time.
- * @member {date} [trigger.endTime] Gets the end time.
- * @member {string} [trigger.trackingId] Gets the tracking id.
- * @member {object} [trigger.correlation] The run correlation.
- * @member {string} [trigger.correlation.clientTrackingId] The client tracking
- * id.
- * @member {string} [trigger.code] Gets the code.
- * @member {string} [trigger.status] Gets the status. Possible values include:
- * 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
- * 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
- * 'Ignored'
- * @member {object} [trigger.error] Gets the error.
- * @member {object} [trigger.trackedProperties] Gets the tracked properties.
- * @member {object} [outputs] Gets the outputs.
- * @member {object} [response] Gets the response of the flow run.
- * @member {string} [response.name] Gets the name.
- * @member {object} [response.inputs] Gets the inputs.
- * @member {object} [response.inputsLink] Gets the link to inputs.
- * @member {string} [response.inputsLink.uri] The content link URI.
- * @member {string} [response.inputsLink.contentVersion] The content version.
- * @member {number} [response.inputsLink.contentSize] The content size.
- * @member {object} [response.inputsLink.contentHash] The content hash.
- * @member {string} [response.inputsLink.contentHash.algorithm] The algorithm
- * of the content hash.
- * @member {string} [response.inputsLink.contentHash.value] The value of the
- * content hash.
- * @member {object} [response.inputsLink.metadata] The metadata.
- * @member {object} [response.outputs] Gets the outputs.
- * @member {object} [response.outputsLink] Gets the link to outputs.
- * @member {string} [response.outputsLink.uri] The content link URI.
- * @member {string} [response.outputsLink.contentVersion] The content version.
- * @member {number} [response.outputsLink.contentSize] The content size.
- * @member {object} [response.outputsLink.contentHash] The content hash.
- * @member {string} [response.outputsLink.contentHash.algorithm] The algorithm
- * of the content hash.
- * @member {string} [response.outputsLink.contentHash.value] The value of the
- * content hash.
- * @member {object} [response.outputsLink.metadata] The metadata.
- * @member {date} [response.startTime] Gets the start time.
- * @member {date} [response.endTime] Gets the end time.
- * @member {string} [response.trackingId] Gets the tracking id.
- * @member {object} [response.correlation] The run correlation.
- * @member {string} [response.correlation.clientTrackingId] The client tracking
- * id.
- * @member {string} [response.code] Gets the code.
- * @member {string} [response.status] Gets the status. Possible values include:
- * 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
- * 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
- * 'Ignored'
- * @member {object} [response.error] Gets the error.
- * @member {object} [response.trackedProperties] Gets the tracked properties.
- */
-export interface WorkflowRunProperties {
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly status?: string;
-  readonly code?: string;
-  readonly error?: any;
-  readonly correlationId?: string;
-  correlation?: Correlation;
-  readonly workflow?: ResourceReference;
-  readonly trigger?: WorkflowRunTrigger;
-  readonly outputs?: { [propertyName: string]: WorkflowOutputParameter };
-  readonly response?: WorkflowRunTrigger;
-}
-
-/**
- * @class
  * Initializes a new instance of the WorkflowRun class.
  * @constructor
  * The workflow run.
@@ -8296,6 +8185,18 @@ export interface WorkflowRunActionRepetitionDefinition extends Resource {
   retryHistory?: RetryHistory[];
   iterationCount?: number;
   repetitionIndexes?: RepetitionIndex[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkflowRunActionRepetitionDefinitionCollection class.
+ * @constructor
+ * A collection of workflow run action repetitions.
+ *
+ * @member {array} [value]
+ */
+export interface WorkflowRunActionRepetitionDefinitionCollection {
+  value?: WorkflowRunActionRepetitionDefinition[];
 }
 
 /**

@@ -3134,11 +3134,11 @@ export interface WorkflowRunActionScopedRepetitions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<WorkflowRunActionRepetitionDefinitionCollection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowRunActionRepetitionDefinition[]>>;
+    listWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowRunActionRepetitionDefinitionCollection>>;
 
     /**
      * List the workflow run action scoped repetitions.
@@ -3163,7 +3163,7 @@ export interface WorkflowRunActionScopedRepetitions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {WorkflowRunActionRepetitionDefinitionCollection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3171,15 +3171,18 @@ export interface WorkflowRunActionScopedRepetitions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {WorkflowRunActionRepetitionDefinitionCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link
+     *                      WorkflowRunActionRepetitionDefinitionCollection} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunActionRepetitionDefinition[]>;
-    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinition[]>): void;
-    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinition[]>): void;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunActionRepetitionDefinitionCollection>;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinitionCollection>): void;
+    list(resourceGroupName: string, workflowName: string, runName: string, actionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunActionRepetitionDefinitionCollection>): void;
 
 
     /**
@@ -3281,11 +3284,11 @@ export interface WorkflowRunOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WorkflowRunProperties>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<WorkflowRun>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowRunProperties>>;
+    getWithHttpOperationResponse(resourceGroupName: string, workflowName: string, runName: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkflowRun>>;
 
     /**
      * Gets an operation for a run.
@@ -3310,7 +3313,7 @@ export interface WorkflowRunOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WorkflowRunProperties} - The deserialized result object.
+     *                      @resolve {WorkflowRun} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3318,16 +3321,16 @@ export interface WorkflowRunOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WorkflowRunProperties} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WorkflowRunProperties} for more information.
+     *                      {WorkflowRun} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkflowRun} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, workflowName: string, runName: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRunProperties>;
-    get(resourceGroupName: string, workflowName: string, runName: string, operationId: string, callback: ServiceCallback<models.WorkflowRunProperties>): void;
-    get(resourceGroupName: string, workflowName: string, runName: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRunProperties>): void;
+    get(resourceGroupName: string, workflowName: string, runName: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkflowRun>;
+    get(resourceGroupName: string, workflowName: string, runName: string, operationId: string, callback: ServiceCallback<models.WorkflowRun>): void;
+    get(resourceGroupName: string, workflowName: string, runName: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkflowRun>): void;
 }
 
 /**
@@ -3830,13 +3833,15 @@ export interface IntegrationAccounts {
      *
      * @param {string} integrationAccountName The integration account name.
      *
-     * @param {object} parameters The callback URL parameters.
+     * @param {object} listKeyVaultKeysParameter The key vault parameters.
      *
-     * @param {object} parameters.keyVault The key vault reference.
+     * @param {object} listKeyVaultKeysParameter.keyVault The key vault reference.
      *
-     * @param {string} [parameters.skipToken] The skip token.
+     * @param {string} [listKeyVaultKeysParameter.skipToken] The skip token.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.skipToken] The skip token.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3847,7 +3852,7 @@ export interface IntegrationAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listKeyVaultKeysWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, parameters: models.ListKeyVaultKeysDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyVaultKeyCollection>>;
+    listKeyVaultKeysWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, listKeyVaultKeysParameter: models.ListKeyVaultKeysDefinition, options?: { skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.KeyVaultKeyCollection>>;
 
     /**
      * Gets the integration account's Key Vault keys.
@@ -3856,13 +3861,15 @@ export interface IntegrationAccounts {
      *
      * @param {string} integrationAccountName The integration account name.
      *
-     * @param {object} parameters The callback URL parameters.
+     * @param {object} listKeyVaultKeysParameter The key vault parameters.
      *
-     * @param {object} parameters.keyVault The key vault reference.
+     * @param {object} listKeyVaultKeysParameter.keyVault The key vault reference.
      *
-     * @param {string} [parameters.skipToken] The skip token.
+     * @param {string} [listKeyVaultKeysParameter.skipToken] The skip token.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.skipToken] The skip token.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3889,9 +3896,9 @@ export interface IntegrationAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, parameters: models.ListKeyVaultKeysDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyVaultKeyCollection>;
-    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, parameters: models.ListKeyVaultKeysDefinition, callback: ServiceCallback<models.KeyVaultKeyCollection>): void;
-    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, parameters: models.ListKeyVaultKeysDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyVaultKeyCollection>): void;
+    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, listKeyVaultKeysParameter: models.ListKeyVaultKeysDefinition, options?: { skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.KeyVaultKeyCollection>;
+    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, listKeyVaultKeysParameter: models.ListKeyVaultKeysDefinition, callback: ServiceCallback<models.KeyVaultKeyCollection>): void;
+    listKeyVaultKeys(resourceGroupName: string, integrationAccountName: string, listKeyVaultKeysParameter: models.ListKeyVaultKeysDefinition, options: { skipToken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.KeyVaultKeyCollection>): void;
 
 
     /**
