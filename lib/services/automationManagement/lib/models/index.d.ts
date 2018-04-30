@@ -1574,11 +1574,13 @@ export interface DscNodeReport {
  * @member {string} [ip] Gets or sets the assigned machine IP address.
  * @member {date} [registrationTime] Gets or sets the registration time of the
  * worker machine.
+ * @member {date} [lastSeenDateTime] Last Heartbeat from the Worker
  */
 export interface HybridRunbookWorker {
   name?: string;
   ip?: string;
   registrationTime?: Date;
+  lastSeenDateTime?: Date;
 }
 
 /**
@@ -2366,6 +2368,8 @@ export interface WebhookUpdateParameters {
  * @member {date} [endTime] The end time of the job.
  * @member {date} [lastModifiedTime] The last modified time of the job.
  * @member {string} [provisioningState] The provisioning state of a resource.
+ * @member {string} [runOn] Specifies the runOn group name where the job was
+ * executed.
  */
 export interface JobCollectionItem extends ProxyResource {
   readonly runbook?: RunbookAssociationProperty;
@@ -2376,6 +2380,7 @@ export interface JobCollectionItem extends ProxyResource {
   readonly endTime?: Date;
   readonly lastModifiedTime?: Date;
   readonly provisioningState?: string;
+  runOn?: string;
 }
 
 /**
@@ -2393,11 +2398,14 @@ export interface JobCollectionItem extends ProxyResource {
  * update configuration.
  * @member {array} [includedKbNumbers] KB numbers included from the software
  * update configuration.
+ * @member {string} [rebootSetting] Reboot setting for the software update
+ * configuration.
  */
 export interface WindowsProperties {
   includedUpdateClassifications?: string;
   excludedKbNumbers?: string[];
   includedKbNumbers?: string[];
+  rebootSetting?: string;
 }
 
 /**
@@ -2413,11 +2421,14 @@ export interface WindowsProperties {
  * software update configuration.
  * @member {array} [includedPackageNameMasks] packages included from the
  * software update configuration.
+ * @member {string} [rebootSetting] Reboot setting for the software update
+ * configuration.
  */
 export interface LinuxProperties {
   includedPackageClassifications?: string;
   excludedPackageNameMasks?: string[];
   includedPackageNameMasks?: string[];
+  rebootSetting?: string;
 }
 
 /**
@@ -2438,6 +2449,8 @@ export interface LinuxProperties {
  * software update configuration.
  * @member {array} [windows.includedKbNumbers] KB numbers included from the
  * software update configuration.
+ * @member {string} [windows.rebootSetting] Reboot setting for the software
+ * update configuration.
  * @member {object} [linux] Linux specific update configuration.
  * @member {string} [linux.includedPackageClassifications] Update
  * classifications included in the software update configuration. Possible
@@ -2446,6 +2459,8 @@ export interface LinuxProperties {
  * software update configuration.
  * @member {array} [linux.includedPackageNameMasks] packages included from the
  * software update configuration.
+ * @member {string} [linux.rebootSetting] Reboot setting for the software
+ * update configuration.
  * @member {moment.duration} [duration] Maximum time allowed for the software
  * update configuration run. Duration needs to be specified using the format
  * PT[n]H[n]M[n]S as per ISO8601
@@ -2487,6 +2502,8 @@ export interface UpdateConfiguration {
  * excluded from the software update configuration.
  * @member {array} [updateConfiguration.windows.includedKbNumbers] KB numbers
  * included from the software update configuration.
+ * @member {string} [updateConfiguration.windows.rebootSetting] Reboot setting
+ * for the software update configuration.
  * @member {object} [updateConfiguration.linux] Linux specific update
  * configuration.
  * @member {string} [updateConfiguration.linux.includedPackageClassifications]
@@ -2496,6 +2513,8 @@ export interface UpdateConfiguration {
  * packages excluded from the software update configuration.
  * @member {array} [updateConfiguration.linux.includedPackageNameMasks]
  * packages included from the software update configuration.
+ * @member {string} [updateConfiguration.linux.rebootSetting] Reboot setting
+ * for the software update configuration.
  * @member {moment.duration} [updateConfiguration.duration] Maximum time
  * allowed for the software update configuration run. Duration needs to be
  * specified using the format PT[n]H[n]M[n]S as per ISO8601
