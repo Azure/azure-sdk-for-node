@@ -536,6 +536,7 @@ export interface WorkflowTriggerHistoryFilter {
  * @member {string} [outputsLink.contentHash.value] The value of the content
  * hash.
  * @member {object} [outputsLink.metadata] The metadata.
+ * @member {date} [scheduledTime] Gets the scheduled time.
  * @member {date} [startTime] Gets the start time.
  * @member {date} [endTime] Gets the end time.
  * @member {string} [trackingId] Gets the tracking id.
@@ -555,6 +556,7 @@ export interface WorkflowRunTrigger {
   readonly inputsLink?: ContentLink;
   readonly outputs?: any;
   readonly outputsLink?: ContentLink;
+  readonly scheduledTime?: Date;
   readonly startTime?: Date;
   readonly endTime?: Date;
   readonly trackingId?: string;
@@ -623,6 +625,7 @@ export interface WorkflowOutputParameter extends WorkflowParameter {
  * @member {string} [trigger.outputsLink.contentHash.value] The value of the
  * content hash.
  * @member {object} [trigger.outputsLink.metadata] The metadata.
+ * @member {date} [trigger.scheduledTime] Gets the scheduled time.
  * @member {date} [trigger.startTime] Gets the start time.
  * @member {date} [trigger.endTime] Gets the end time.
  * @member {string} [trigger.trackingId] Gets the tracking id.
@@ -661,6 +664,7 @@ export interface WorkflowOutputParameter extends WorkflowParameter {
  * @member {string} [response.outputsLink.contentHash.value] The value of the
  * content hash.
  * @member {object} [response.outputsLink.metadata] The metadata.
+ * @member {date} [response.scheduledTime] Gets the scheduled time.
  * @member {date} [response.startTime] Gets the start time.
  * @member {date} [response.endTime] Gets the end time.
  * @member {string} [response.trackingId] Gets the tracking id.
@@ -7896,20 +7900,6 @@ export interface ListKeyVaultKeysDefinition {
 
 /**
  * @class
- * Initializes a new instance of the KeyVaultKeyCollection class.
- * @constructor
- * Collection of key vault keys.
- *
- * @member {array} [value] The key vault keys.
- * @member {string} [skipToken] The skip token.
- */
-export interface KeyVaultKeyCollection {
-  value?: ListKeyVaultKeysDefinition[];
-  skipToken?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the KeyVaultKeyAttributes class.
  * @constructor
  * The key attributes.
@@ -7939,6 +7929,20 @@ export interface KeyVaultKeyAttributes {
 export interface KeyVaultKey {
   kid?: string;
   attributes?: KeyVaultKeyAttributes;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the KeyVaultKeyCollection class.
+ * @constructor
+ * Collection of key vault keys.
+ *
+ * @member {array} [value] The key vault keys.
+ * @member {string} [skipToken] The skip token.
+ */
+export interface KeyVaultKeyCollection {
+  value?: KeyVaultKey[];
+  skipToken?: string;
 }
 
 /**
