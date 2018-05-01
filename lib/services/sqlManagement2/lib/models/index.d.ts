@@ -3068,6 +3068,109 @@ export interface ElasticPoolUpdate {
 
 /**
  * @class
+ * Initializes a new instance of the VulnerabilityAssessmentRecurringScansProperties class.
+ * @constructor
+ * Properties of a Vulnerability Assessment recurring scans.
+ *
+ * @member {boolean} [isEnabled] Recurring scans state.
+ * @member {boolean} [emailSubscriptionAdmins] Specifies that the schedule scan
+ * notification will be is sent to the subscription administrators. Default
+ * value: true .
+ * @member {array} [emails] Specifies an array of e-mail addresses to which the
+ * scan notification is sent.
+ */
+export interface VulnerabilityAssessmentRecurringScansProperties {
+  isEnabled?: boolean;
+  emailSubscriptionAdmins?: boolean;
+  emails?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseVulnerabilityAssessment class.
+ * @constructor
+ * A database vulnerability assessment.
+ *
+ * @member {string} [storageContainerPath] A blob storage container path to
+ * hold the scan results (e.g.
+ * https://myStorage.blob.core.windows.net/VaScans/).
+ * @member {string} [storageContainerSasKey] A shared access signature (SAS
+ * Key) that has write access to the blob container specified in
+ * 'storageContainerPath' parameter.
+ * @member {object} [recurringScans] The recurring scans settings
+ * @member {boolean} [recurringScans.isEnabled] Recurring scans state.
+ * @member {boolean} [recurringScans.emailSubscriptionAdmins] Specifies that
+ * the schedule scan notification will be is sent to the subscription
+ * administrators.
+ * @member {array} [recurringScans.emails] Specifies an array of e-mail
+ * addresses to which the scan notification is sent.
+ */
+export interface DatabaseVulnerabilityAssessment extends ProxyResource {
+  storageContainerPath?: string;
+  storageContainerSasKey?: string;
+  recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VulnerabilityAssessmentScanError class.
+ * @constructor
+ * Properties of a vulnerability assessment scan error.
+ *
+ * @member {string} [code] The error code.
+ * @member {string} [message] The error message.
+ */
+export interface VulnerabilityAssessmentScanError {
+  readonly code?: string;
+  readonly message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VulnerabilityAssessmentScanRecord class.
+ * @constructor
+ * A vulnerability assessment scan record.
+ *
+ * @member {string} [scanId] The scan ID.
+ * @member {string} [triggerType] The scan trigger type. Possible values
+ * include: 'OnDemand', 'Recurring'
+ * @member {string} [state] The scan status. Possible values include: 'Passed',
+ * 'Failed', 'FailedToRun', 'InProgress'
+ * @member {date} [startTime] The scan start time (UTC).
+ * @member {date} [endTime] The scan end time (UTC).
+ * @member {array} [errors] The scan errors.
+ * @member {string} [storageContainerPath] The scan results storage container
+ * path.
+ * @member {number} [numberOfFailedSecurityChecks] The number of failed
+ * security checks.
+ */
+export interface VulnerabilityAssessmentScanRecord extends ProxyResource {
+  readonly scanId?: string;
+  readonly triggerType?: string;
+  readonly state?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly errors?: VulnerabilityAssessmentScanError[];
+  readonly storageContainerPath?: string;
+  readonly numberOfFailedSecurityChecks?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseVulnerabilityAssessmentScansExport class.
+ * @constructor
+ * A database Vulnerability Assessment scan export resource.
+ *
+ * @member {string} [exportedReportLocation] Location of the exported report
+ * (e.g.
+ * https://myStorage.blob.core.windows.net/VaScans/scans/serverName/databaseName/scan_scanId.xlsx).
+ */
+export interface DatabaseVulnerabilityAssessmentScansExport extends ProxyResource {
+  readonly exportedReportLocation?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the InstanceFailoverGroupReadWriteEndpoint class.
  * @constructor
  * Read-write endpoint of the failover group instance.
@@ -3647,6 +3750,18 @@ export interface DatabaseOperationListResult extends Array<DatabaseOperation> {
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ElasticPoolOperationListResult extends Array<ElasticPoolOperation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VulnerabilityAssessmentScanRecordListResult class.
+ * @constructor
+ * A list of vulnerability assessment scan records.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface VulnerabilityAssessmentScanRecordListResult extends Array<VulnerabilityAssessmentScanRecord> {
   readonly nextLink?: string;
 }
 
