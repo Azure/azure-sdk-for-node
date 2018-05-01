@@ -168,6 +168,8 @@ export interface ProxyResource extends Resource {
  * the webhook job will run on.
  * @member {date} [creationTime] Gets or sets the creation time.
  * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [lastModifiedBy] Details of the user who last modified the
+ * Webhook
  * @member {string} [description] Gets or sets the description.
  */
 export interface Webhook extends ProxyResource {
@@ -180,6 +182,7 @@ export interface Webhook extends ProxyResource {
   runOn?: string;
   creationTime?: Date;
   lastModifiedTime?: Date;
+  lastModifiedBy?: string;
   description?: string;
 }
 
@@ -1574,11 +1577,13 @@ export interface DscNodeReport {
  * @member {string} [ip] Gets or sets the assigned machine IP address.
  * @member {date} [registrationTime] Gets or sets the registration time of the
  * worker machine.
+ * @member {date} [lastSeenDateTime] Last Heartbeat from the Worker
  */
 export interface HybridRunbookWorker {
   name?: string;
   ip?: string;
   registrationTime?: Date;
+  lastSeenDateTime?: Date;
 }
 
 /**
@@ -2366,6 +2371,8 @@ export interface WebhookUpdateParameters {
  * @member {date} [endTime] The end time of the job.
  * @member {date} [lastModifiedTime] The last modified time of the job.
  * @member {string} [provisioningState] The provisioning state of a resource.
+ * @member {string} [runOn] Specifies the runOn group name where the job was
+ * executed.
  */
 export interface JobCollectionItem extends ProxyResource {
   readonly runbook?: RunbookAssociationProperty;
@@ -2376,6 +2383,7 @@ export interface JobCollectionItem extends ProxyResource {
   readonly endTime?: Date;
   readonly lastModifiedTime?: Date;
   readonly provisioningState?: string;
+  runOn?: string;
 }
 
 /**
@@ -2391,13 +2399,10 @@ export interface JobCollectionItem extends ProxyResource {
  * 'Tools', 'Updates'
  * @member {array} [excludedKbNumbers] KB numbers excluded from the software
  * update configuration.
- * @member {array} [includedKbNumbers] KB numbers included from the software
- * update configuration.
  */
 export interface WindowsProperties {
   includedUpdateClassifications?: string;
   excludedKbNumbers?: string[];
-  includedKbNumbers?: string[];
 }
 
 /**
@@ -2411,13 +2416,10 @@ export interface WindowsProperties {
  * 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [excludedPackageNameMasks] packages excluded from the
  * software update configuration.
- * @member {array} [includedPackageNameMasks] packages included from the
- * software update configuration.
  */
 export interface LinuxProperties {
   includedPackageClassifications?: string;
   excludedPackageNameMasks?: string[];
-  includedPackageNameMasks?: string[];
 }
 
 /**
@@ -2436,15 +2438,11 @@ export interface LinuxProperties {
  * 'ServicePack', 'Definition', 'Tools', 'Updates'
  * @member {array} [windows.excludedKbNumbers] KB numbers excluded from the
  * software update configuration.
- * @member {array} [windows.includedKbNumbers] KB numbers included from the
- * software update configuration.
  * @member {object} [linux] Linux specific update configuration.
  * @member {string} [linux.includedPackageClassifications] Update
  * classifications included in the software update configuration. Possible
  * values include: 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [linux.excludedPackageNameMasks] packages excluded from the
- * software update configuration.
- * @member {array} [linux.includedPackageNameMasks] packages included from the
  * software update configuration.
  * @member {moment.duration} [duration] Maximum time allowed for the software
  * update configuration run. Duration needs to be specified using the format
@@ -2485,8 +2483,6 @@ export interface UpdateConfiguration {
  * 'ServicePack', 'Definition', 'Tools', 'Updates'
  * @member {array} [updateConfiguration.windows.excludedKbNumbers] KB numbers
  * excluded from the software update configuration.
- * @member {array} [updateConfiguration.windows.includedKbNumbers] KB numbers
- * included from the software update configuration.
  * @member {object} [updateConfiguration.linux] Linux specific update
  * configuration.
  * @member {string} [updateConfiguration.linux.includedPackageClassifications]
@@ -2494,8 +2490,6 @@ export interface UpdateConfiguration {
  * Possible values include: 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [updateConfiguration.linux.excludedPackageNameMasks]
  * packages excluded from the software update configuration.
- * @member {array} [updateConfiguration.linux.includedPackageNameMasks]
- * packages included from the software update configuration.
  * @member {moment.duration} [updateConfiguration.duration] Maximum time
  * allowed for the software update configuration run. Duration needs to be
  * specified using the format PT[n]H[n]M[n]S as per ISO8601

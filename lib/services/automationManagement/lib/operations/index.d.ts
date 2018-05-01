@@ -3314,6 +3314,8 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3323,7 +3325,7 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroupsListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroupsListResult>>;
 
     /**
      * Retrieve a list of hybrid runbook worker groups.
@@ -3333,6 +3335,8 @@ export interface HybridRunbookWorkerGroupOperations {
      * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3360,9 +3364,9 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroupsListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroupsListResult>;
     listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
 
 
     /**
@@ -3667,6 +3671,8 @@ export interface JobScheduleOperations {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3676,7 +3682,7 @@ export interface JobScheduleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobScheduleListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobScheduleListResult>>;
 
     /**
      * Retrieve a list of job schedules.
@@ -3686,6 +3692,8 @@ export interface JobScheduleOperations {
      * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3712,9 +3720,9 @@ export interface JobScheduleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobScheduleListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobScheduleListResult>;
     listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.JobScheduleListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobScheduleListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobScheduleListResult>): void;
 
 
     /**
@@ -7788,9 +7796,6 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
      *
-     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
-     * numbers included from the software update configuration.
-     *
      * @param {object} [parameters.updateConfiguration.linux] Linux specific update
      * configuration.
      *
@@ -7802,10 +7807,6 @@ export interface SoftwareUpdateConfigurations {
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
-     *
-     * @param {array}
-     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
-     * included from the software update configuration.
      *
      * @param {moment.duration} [parameters.updateConfiguration.duration] Maximum
      * time allowed for the software update configuration run. Duration needs to be
@@ -7925,9 +7926,6 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
      *
-     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
-     * numbers included from the software update configuration.
-     *
      * @param {object} [parameters.updateConfiguration.linux] Linux specific update
      * configuration.
      *
@@ -7939,10 +7937,6 @@ export interface SoftwareUpdateConfigurations {
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
-     *
-     * @param {array}
-     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
-     * included from the software update configuration.
      *
      * @param {moment.duration} [parameters.updateConfiguration.duration] Maximum
      * time allowed for the software update configuration run. Duration needs to be
