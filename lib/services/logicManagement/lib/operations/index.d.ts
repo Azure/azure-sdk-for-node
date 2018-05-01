@@ -3781,7 +3781,7 @@ export interface IntegrationAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CallbackUrl>>;
+    getCallbackUrlWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CallbackUrl>>;
 
     /**
      * Gets the integration account callback URL.
@@ -3824,9 +3824,9 @@ export interface IntegrationAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CallbackUrl>;
-    listCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, callback: ServiceCallback<models.CallbackUrl>): void;
-    listCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CallbackUrl>): void;
+    getCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CallbackUrl>;
+    getCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, callback: ServiceCallback<models.CallbackUrl>): void;
+    getCallbackUrl(resourceGroupName: string, integrationAccountName: string, parameters: models.GetCallbackUrlParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CallbackUrl>): void;
 
 
     /**
