@@ -222,11 +222,11 @@ export interface FailoverPolicies {
  * @constructor
  * Cosmos DB region to online or offline.
  *
- * @member {string} [region] Cosmos DB region, with spaces between words and
- * each word capitalized.
+ * @member {string} region Cosmos DB region, with spaces between words and each
+ * word capitalized.
  */
 export interface RegionForOnlineOffline {
-  readonly region?: string;
+  region: string;
 }
 
 /**
