@@ -1146,7 +1146,7 @@ export interface AS2MessageConnectionSettings {
  * @class
  * Initializes a new instance of the AS2AcknowledgementConnectionSettings class.
  * @constructor
- * The AS2 agreement acknowledegment connection settings.
+ * The AS2 agreement acknowledgement connection settings.
  *
  * @member {boolean} ignoreCertificateNameMismatch The value indicating whether
  * to ignore mismatch in certificate name.
