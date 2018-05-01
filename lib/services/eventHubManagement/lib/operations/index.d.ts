@@ -2309,6 +2309,14 @@ export interface EventHubs {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2318,7 +2326,7 @@ export interface EventHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubListResult>>;
+    listByNamespaceWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventHubListResult>>;
 
     /**
      * Gets all the Event Hubs in a Namespace.
@@ -2329,6 +2337,14 @@ export interface EventHubs {
      * @param {string} namespaceName The Namespace name
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2355,9 +2371,9 @@ export interface EventHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubListResult>;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventHubListResult>;
     listByNamespace(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.EventHubListResult>): void;
-    listByNamespace(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubListResult>): void;
+    listByNamespace(resourceGroupName: string, namespaceName: string, options: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventHubListResult>): void;
 
 
     /**
@@ -3457,6 +3473,14 @@ export interface ConsumerGroups {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3466,7 +3490,7 @@ export interface ConsumerGroups {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByEventHubWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConsumerGroupListResult>>;
+    listByEventHubWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ConsumerGroupListResult>>;
 
     /**
      * Gets all the consumer groups in a Namespace. An empty feed is returned if no
@@ -3480,6 +3504,14 @@ export interface ConsumerGroups {
      * @param {string} eventHubName The Event Hub name
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {number} [options.skip] Skip is only used if a previous operation
+     * returned a partial result. If a previous response contains a nextLink
+     * element, the value of the nextLink element will include a skip parameter
+     * that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3507,9 +3539,9 @@ export interface ConsumerGroups {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByEventHub(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConsumerGroupListResult>;
+    listByEventHub(resourceGroupName: string, namespaceName: string, eventHubName: string, options?: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.ConsumerGroupListResult>;
     listByEventHub(resourceGroupName: string, namespaceName: string, eventHubName: string, callback: ServiceCallback<models.ConsumerGroupListResult>): void;
-    listByEventHub(resourceGroupName: string, namespaceName: string, eventHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConsumerGroupListResult>): void;
+    listByEventHub(resourceGroupName: string, namespaceName: string, eventHubName: string, options: { skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConsumerGroupListResult>): void;
 
 
     /**
