@@ -8440,6 +8440,13 @@ export interface VirtualMachineScaleSets {
      * upgrades should automatically be applied to scale set instances in a rolling
      * fashion when a newer version of the image becomes available.
      *
+     * @param {object} [parameters.upgradePolicy.autoOSUpgradePolicy] Configuration
+     * parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.autoOSUpgradePolicy.disableAutoRollback] whether
+     * OS image rollback feature should be disabled.
+     *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
      *
@@ -8852,6 +8859,13 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.upgradePolicy.automaticOSUpgrade] Whether OS
      * upgrades should automatically be applied to scale set instances in a rolling
      * fashion when a newer version of the image becomes available.
+     *
+     * @param {object} [parameters.upgradePolicy.autoOSUpgradePolicy] Configuration
+     * parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.autoOSUpgradePolicy.disableAutoRollback] whether
+     * OS image rollback feature should be disabled.
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -9281,6 +9295,13 @@ export interface VirtualMachineScaleSets {
      * upgrades should automatically be applied to scale set instances in a rolling
      * fashion when a newer version of the image becomes available.
      *
+     * @param {object} [parameters.upgradePolicy.autoOSUpgradePolicy] Configuration
+     * parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.autoOSUpgradePolicy.disableAutoRollback] whether
+     * OS image rollback feature should be disabled.
+     *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
      *
@@ -9567,6 +9588,13 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.upgradePolicy.automaticOSUpgrade] Whether OS
      * upgrades should automatically be applied to scale set instances in a rolling
      * fashion when a newer version of the image becomes available.
+     *
+     * @param {object} [parameters.upgradePolicy.autoOSUpgradePolicy] Configuration
+     * parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.autoOSUpgradePolicy.disableAutoRollback] whether
+     * OS image rollback feature should be disabled.
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -11065,6 +11093,13 @@ export interface VirtualMachineScaleSets {
      * upgrades should automatically be applied to scale set instances in a rolling
      * fashion when a newer version of the image becomes available.
      *
+     * @param {object} [parameters.upgradePolicy.autoOSUpgradePolicy] Configuration
+     * parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.autoOSUpgradePolicy.disableAutoRollback] whether
+     * OS image rollback feature should be disabled.
+     *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
      *
@@ -11477,6 +11512,13 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.upgradePolicy.automaticOSUpgrade] Whether OS
      * upgrades should automatically be applied to scale set instances in a rolling
      * fashion when a newer version of the image becomes available.
+     *
+     * @param {object} [parameters.upgradePolicy.autoOSUpgradePolicy] Configuration
+     * parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.autoOSUpgradePolicy.disableAutoRollback] whether
+     * OS image rollback feature should be disabled.
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
@@ -11906,6 +11948,13 @@ export interface VirtualMachineScaleSets {
      * upgrades should automatically be applied to scale set instances in a rolling
      * fashion when a newer version of the image becomes available.
      *
+     * @param {object} [parameters.upgradePolicy.autoOSUpgradePolicy] Configuration
+     * parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.autoOSUpgradePolicy.disableAutoRollback] whether
+     * OS image rollback feature should be disabled.
+     *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
      *
@@ -12192,6 +12241,13 @@ export interface VirtualMachineScaleSets {
      * @param {boolean} [parameters.upgradePolicy.automaticOSUpgrade] Whether OS
      * upgrades should automatically be applied to scale set instances in a rolling
      * fashion when a newer version of the image becomes available.
+     *
+     * @param {object} [parameters.upgradePolicy.autoOSUpgradePolicy] Configuration
+     * parameters used for performing automatic OS Upgrade.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.autoOSUpgradePolicy.disableAutoRollback] whether
+     * OS image rollback feature should be disabled.
      *
      * @param {object} [parameters.virtualMachineProfile] The virtual machine
      * profile.
