@@ -2,15 +2,12 @@
   "name": "azure-arm-trafficmanager",
   "author": "Microsoft Corporation",
   "description": "TrafficManagerManagementClient Library with typescript type definitions for node",
-  "version": "3.0.0",
+  "version": "2.0.0-preview",
   "dependencies": {
     "ms-rest": "^2.3.2",
     "ms-rest-azure": "^2.5.5"
   },
-  "keywords": [
-    "node",
-    "azure"
-  ],
+  "keywords": [ "node", "azure" ],
   "license": "MIT",
   "main": "./lib/trafficManagerManagementClient.js",
   "types": "./lib/trafficManagerManagementClient.d.ts",
