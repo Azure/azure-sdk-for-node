@@ -1888,13 +1888,12 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * **Attach**  This value is used when you are using a specialized disk to
+     * create the virtual machine.<br><br> **FromImage**  This value is used when
+     * you are using an image to create the virtual machine. If you are using a
+     * platform image, you also use the imageReference element described above. If
+     * you are using a marketplace image, you  also use the plan element previously
+     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -2286,13 +2285,12 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * **Attach**  This value is used when you are using a specialized disk to
+     * create the virtual machine.<br><br> **FromImage**  This value is used when
+     * you are using an image to create the virtual machine. If you are using a
+     * platform image, you also use the imageReference element described above. If
+     * you are using a marketplace image, you  also use the plan element previously
+     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -2703,13 +2701,12 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * **Attach**  This value is used when you are using a specialized disk to
+     * create the virtual machine.<br><br> **FromImage**  This value is used when
+     * you are using an image to create the virtual machine. If you are using a
+     * platform image, you also use the imageReference element described above. If
+     * you are using a marketplace image, you  also use the plan element previously
+     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -3099,13 +3096,12 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * **Attach**  This value is used when you are using a specialized disk to
+     * create the virtual machine.<br><br> **FromImage**  This value is used when
+     * you are using an image to create the virtual machine. If you are using a
+     * platform image, you also use the imageReference element described above. If
+     * you are using a marketplace image, you  also use the plan element previously
+     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -4528,13 +4524,12 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * **Attach**  This value is used when you are using a specialized disk to
+     * create the virtual machine.<br><br> **FromImage**  This value is used when
+     * you are using an image to create the virtual machine. If you are using a
+     * platform image, you also use the imageReference element described above. If
+     * you are using a marketplace image, you  also use the plan element previously
+     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -4926,13 +4921,12 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * **Attach**  This value is used when you are using a specialized disk to
+     * create the virtual machine.<br><br> **FromImage**  This value is used when
+     * you are using an image to create the virtual machine. If you are using a
+     * platform image, you also use the imageReference element described above. If
+     * you are using a marketplace image, you  also use the plan element previously
+     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -5343,13 +5337,12 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * **Attach**  This value is used when you are using a specialized disk to
+     * create the virtual machine.<br><br> **FromImage**  This value is used when
+     * you are using an image to create the virtual machine. If you are using a
+     * platform image, you also use the imageReference element described above. If
+     * you are using a marketplace image, you  also use the plan element previously
+     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -5739,13 +5732,12 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * **Attach**  This value is used when you are using a specialized disk to
+     * create the virtual machine.<br><br> **FromImage**  This value is used when
+     * you are using an image to create the virtual machine. If you are using a
+     * platform image, you also use the imageReference element described above. If
+     * you are using a marketplace image, you  also use the plan element previously
+     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -8610,12 +8602,12 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * parameters.virtualMachineProfile.storageProfile.osDisk.createOption
      * Specifies how the virtual machines in the scale set should be
-     * created.<br><br> The only allowed value is: **FromImage** \u2013 This value
-     * is used when you are using an image to create the virtual machine. If you
-     * are using a platform image, you also use the imageReference element
-     * described above. If you are using a marketplace image, you  also use the
-     * plan element previously described. Possible values include: 'FromImage',
-     * 'Empty', 'Attach'
+     * created.<br><br> The only allowed value is: **FromImage**  This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
@@ -9023,12 +9015,12 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * parameters.virtualMachineProfile.storageProfile.osDisk.createOption
      * Specifies how the virtual machines in the scale set should be
-     * created.<br><br> The only allowed value is: **FromImage** \u2013 This value
-     * is used when you are using an image to create the virtual machine. If you
-     * are using a platform image, you also use the imageReference element
-     * described above. If you are using a marketplace image, you  also use the
-     * plan element previously described. Possible values include: 'FromImage',
-     * 'Empty', 'Attach'
+     * created.<br><br> The only allowed value is: **FromImage**  This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
@@ -11235,12 +11227,12 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * parameters.virtualMachineProfile.storageProfile.osDisk.createOption
      * Specifies how the virtual machines in the scale set should be
-     * created.<br><br> The only allowed value is: **FromImage** \u2013 This value
-     * is used when you are using an image to create the virtual machine. If you
-     * are using a platform image, you also use the imageReference element
-     * described above. If you are using a marketplace image, you  also use the
-     * plan element previously described. Possible values include: 'FromImage',
-     * 'Empty', 'Attach'
+     * created.<br><br> The only allowed value is: **FromImage**  This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
@@ -11648,12 +11640,12 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * parameters.virtualMachineProfile.storageProfile.osDisk.createOption
      * Specifies how the virtual machines in the scale set should be
-     * created.<br><br> The only allowed value is: **FromImage** \u2013 This value
-     * is used when you are using an image to create the virtual machine. If you
-     * are using a platform image, you also use the imageReference element
-     * described above. If you are using a marketplace image, you  also use the
-     * plan element previously described. Possible values include: 'FromImage',
-     * 'Empty', 'Attach'
+     * created.<br><br> The only allowed value is: **FromImage**  This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
@@ -14705,13 +14697,12 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * **Attach**  This value is used when you are using a specialized disk to
+     * create the virtual machine.<br><br> **FromImage**  This value is used when
+     * you are using an image to create the virtual machine. If you are using a
+     * platform image, you also use the imageReference element described above. If
+     * you are using a marketplace image, you  also use the plan element previously
+     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -15089,13 +15080,12 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * **Attach**  This value is used when you are using a specialized disk to
+     * create the virtual machine.<br><br> **FromImage**  This value is used when
+     * you are using an image to create the virtual machine. If you are using a
+     * platform image, you also use the imageReference element described above. If
+     * you are using a marketplace image, you  also use the plan element previously
+     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -16285,13 +16275,12 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * **Attach**  This value is used when you are using a specialized disk to
+     * create the virtual machine.<br><br> **FromImage**  This value is used when
+     * you are using an image to create the virtual machine. If you are using a
+     * platform image, you also use the imageReference element described above. If
+     * you are using a marketplace image, you  also use the plan element previously
+     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -16669,13 +16658,12 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach** \u2013 This value is used when you are using a specialized disk
-     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * **Attach**  This value is used when you are using a specialized disk to
+     * create the virtual machine.<br><br> **FromImage**  This value is used when
+     * you are using an image to create the virtual machine. If you are using a
+     * platform image, you also use the imageReference element described above. If
+     * you are using a marketplace image, you  also use the plan element previously
+     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
