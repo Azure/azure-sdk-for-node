@@ -37,7 +37,7 @@ export default class CustomImageSearchAPIClient extends ServiceClient {
   credentials: ServiceClientCredentials;
 
   // Operation groups
-  custom: operations.Custom;
+  customInstance: operations.CustomInstance;
 }
 
 export { CustomImageSearchAPIClient, models as CustomImageSearchAPIModels };

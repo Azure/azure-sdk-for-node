@@ -14,11 +14,11 @@ import * as models from '../models';
 
 /**
  * @class
- * Custom
+ * CustomInstance
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the CustomImageSearchAPIClient.
  */
-export interface Custom {
+export interface CustomInstance {
 
 
     /**
@@ -370,7 +370,7 @@ export interface Custom {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    searchWithHttpOperationResponse(query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, customConfig? : number, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Images>>;
+    imageSearchWithHttpOperationResponse(query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, customConfig? : number, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Images>>;
 
     /**
      * @summary The Custom Image Search API lets you send an image search query to
@@ -737,7 +737,7 @@ export interface Custom {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    search(query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, customConfig? : number, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Images>;
-    search(query: string, callback: ServiceCallback<models.Images>): void;
-    search(query: string, options: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, customConfig? : number, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Images>): void;
+    imageSearch(query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, customConfig? : number, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Images>;
+    imageSearch(query: string, callback: ServiceCallback<models.Images>): void;
+    imageSearch(query: string, options: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, customConfig? : number, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Images>): void;
 }
