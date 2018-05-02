@@ -25,6 +25,9 @@ export interface CustomInstance {
      * @summary The Custom Image Search API lets you send an image search query to
      * Bing and get image results found in your custom view of the web.
      *
+     * @param {number} customConfig The identifier for the custom search
+     * configuration
+     *
      * @param {string} query The user's search query term. The term cannot be
      * empty. The term may contain [Bing Advanced
      * Operators](http://msdn.microsoft.com/library/ff795620.aspx). For example, to
@@ -153,9 +156,6 @@ export interface CustomInstance {
      * the user's physical location (for example, if the client uses VPN). For
      * optimal results, you should include this header and the X-MSEdge-ClientIP
      * header, but at a minimum, you should include this header.
-     *
-     * @param {number} [options.customConfig] The identifier for the custom search
-     * configuration
      *
      * @param {string} [options.aspect] Filter images by the following aspect
      * ratios. All: Do not filter by aspect.Specifying this value is the same as
@@ -370,11 +370,14 @@ export interface CustomInstance {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    imageSearchWithHttpOperationResponse(query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, customConfig? : number, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Images>>;
+    imageSearchWithHttpOperationResponse(customConfig: number, query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Images>>;
 
     /**
      * @summary The Custom Image Search API lets you send an image search query to
      * Bing and get image results found in your custom view of the web.
+     *
+     * @param {number} customConfig The identifier for the custom search
+     * configuration
      *
      * @param {string} query The user's search query term. The term cannot be
      * empty. The term may contain [Bing Advanced
@@ -504,9 +507,6 @@ export interface CustomInstance {
      * the user's physical location (for example, if the client uses VPN). For
      * optimal results, you should include this header and the X-MSEdge-ClientIP
      * header, but at a minimum, you should include this header.
-     *
-     * @param {number} [options.customConfig] The identifier for the custom search
-     * configuration
      *
      * @param {string} [options.aspect] Filter images by the following aspect
      * ratios. All: Do not filter by aspect.Specifying this value is the same as
@@ -737,7 +737,7 @@ export interface CustomInstance {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    imageSearch(query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, customConfig? : number, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Images>;
-    imageSearch(query: string, callback: ServiceCallback<models.Images>): void;
-    imageSearch(query: string, options: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, customConfig? : number, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Images>): void;
+    imageSearch(customConfig: number, query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Images>;
+    imageSearch(customConfig: number, query: string, callback: ServiceCallback<models.Images>): void;
+    imageSearch(customConfig: number, query: string, options: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, aspect? : string, color? : string, countryCode? : string, count? : number, freshness? : string, height? : number, id? : string, imageContent? : string, imageType? : string, license? : string, market? : string, maxFileSize? : number, maxHeight? : number, maxWidth? : number, minFileSize? : number, minHeight? : number, minWidth? : number, offset? : number, safeSearch? : string, size? : string, setLang? : string, width? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Images>): void;
 }
