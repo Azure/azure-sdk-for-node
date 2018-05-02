@@ -196,3 +196,67 @@ export interface SentimentBatchResult {
   readonly documents?: SentimentBatchResultItem[];
   readonly errors?: ErrorRecord[];
 }
+
+/**
+ * @class
+ * Initializes a new instance of the MatchRecord class.
+ * @constructor
+ * @member {string} [text] Entity text as appears in the request.
+ * @member {number} [offset] Start position (in Unicode characters) for the
+ * entity match text.
+ * @member {number} [length] Length (in Unicode characters) for the entity
+ * match text.
+ */
+export interface MatchRecord {
+  text?: string;
+  offset?: number;
+  length?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EntityRecord class.
+ * @constructor
+ * @member {string} [name] Entity formal name.
+ * @member {array} [matches] List of instances this entity appears in the text.
+ * @member {string} [wikipediaLanguage] Wikipedia language for which the
+ * WikipediaId and WikipediaUrl refers to.
+ * @member {string} [wikipediaId] Wikipedia unique identifier of the recognized
+ * entity.
+ * @member {string} [wikipediaUrl] URL for the entity's English Wikipedia page.
+ * @member {string} [bingId] Bing unique identifier of the recognized entity.
+ * Use in conjunction with the Bing Entity Search API to fetch additional
+ * relevant information.
+ */
+export interface EntityRecord {
+  name?: string;
+  readonly matches?: MatchRecord[];
+  wikipediaLanguage?: string;
+  wikipediaId?: string;
+  readonly wikipediaUrl?: string;
+  bingId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EntitiesBatchResultItem class.
+ * @constructor
+ * @member {string} [id] Unique document identifier.
+ * @member {array} [entities] Recognized entities in the document.
+ */
+export interface EntitiesBatchResultItem {
+  readonly id?: string;
+  readonly entities?: EntityRecord[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EntitiesBatchResult class.
+ * @constructor
+ * @member {array} [documents]
+ * @member {array} [errors]
+ */
+export interface EntitiesBatchResult {
+  readonly documents?: EntitiesBatchResultItem[];
+  readonly errors?: ErrorRecord[];
+}
