@@ -1330,41 +1330,18 @@ export interface DscMetaConfiguration {
  * @member {string} [source.value] Gets or sets the value of the content. This
  * is based on the content source type.
  * @member {string} [source.version] Gets or sets the version of the content.
- * @member {string} name Name of the node configuration.
+ * @member {string} name Gets or sets the type of the parameter.
  * @member {object} configuration Gets or sets the configuration of the node.
  * @member {string} [configuration.name] Gets or sets the name of the Dsc
  * configuration.
  * @member {boolean} [newNodeConfigurationBuildVersionRequired] If a new build
  * version of NodeConfiguration is required.
- * @member {object} source1 Gets or sets the source.
- * @member {object} [source1.hash] Gets or sets the hash.
- * @member {string} [source1.hash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [source1.hash.value] Gets or sets expected hash value of
- * the content.
- * @member {string} [source1.type] Gets or sets the content source type.
- * Possible values include: 'embeddedContent', 'uri'
- * @member {string} [source1.value] Gets or sets the value of the content. This
- * is based on the content source type.
- * @member {string} [source1.version] Gets or sets the version of the content.
- * @member {string} name1 Gets or sets the type of the parameter.
- * @member {object} configuration1 Gets or sets the configuration of the node.
- * @member {string} [configuration1.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
- * of NodeConfiguration is required.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
  */
 export interface DscNodeConfigurationCreateOrUpdateParameters {
   source: ContentSource;
   name: string;
   configuration: DscConfigurationAssociationProperty;
   newNodeConfigurationBuildVersionRequired?: boolean;
-  source1: ContentSource;
-  name1: string;
-  configuration1: DscConfigurationAssociationProperty;
-  incrementNodeConfigurationBuild?: boolean;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -1674,7 +1651,7 @@ export interface Job extends ProxyResource {
   lastModifiedTime?: Date;
   lastStatusModifiedTime?: Date;
   parameters?: { [propertyName: string]: string };
-  readonly provisioningState?: JobProvisioningStateProperty;
+  provisioningState?: JobProvisioningStateProperty;
 }
 
 /**
@@ -2368,7 +2345,11 @@ export interface WebhookUpdateParameters {
  * @member {date} [startTime] The start time of the job.
  * @member {date} [endTime] The end time of the job.
  * @member {date} [lastModifiedTime] The last modified time of the job.
- * @member {string} [provisioningState] The provisioning state of a resource.
+ * @member {object} [provisioningState] The current provisioning state of the
+ * job.
+ * @member {string} [provisioningState.provisioningState] The provisioning
+ * state of the resource. Possible values include: 'Failed', 'Succeeded',
+ * 'Suspended', 'Processing'
  */
 export interface JobCollectionItem extends ProxyResource {
   readonly runbook?: RunbookAssociationProperty;
@@ -2378,7 +2359,7 @@ export interface JobCollectionItem extends ProxyResource {
   readonly startTime?: Date;
   readonly endTime?: Date;
   readonly lastModifiedTime?: Date;
-  readonly provisioningState?: string;
+  provisioningState?: JobProvisioningStateProperty;
 }
 
 /**
@@ -3040,6 +3021,38 @@ export interface DscNodeConfiguration extends ProxyResource {
   configuration?: DscConfigurationAssociationProperty;
   source?: string;
   nodeCount?: number;
+  incrementNodeConfigurationBuild?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParametersProperties class.
+ * @constructor
+ * The parameters supplied to the create or update node configuration
+ * operation.
+ *
+ * @member {object} source Gets or sets the source.
+ * @member {object} [source.hash] Gets or sets the hash.
+ * @member {string} [source.hash.algorithm] Gets or sets the content hash
+ * algorithm used to hash the content.
+ * @member {string} [source.hash.value] Gets or sets expected hash value of the
+ * content.
+ * @member {string} [source.type] Gets or sets the content source type.
+ * Possible values include: 'embeddedContent', 'uri'
+ * @member {string} [source.value] Gets or sets the value of the content. This
+ * is based on the content source type.
+ * @member {string} [source.version] Gets or sets the version of the content.
+ * @member {string} name Gets or sets the type of the parameter.
+ * @member {object} configuration Gets or sets the configuration of the node.
+ * @member {string} [configuration.name] Gets or sets the name of the Dsc
+ * configuration.
+ * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
+ * of NodeConfiguration is required.
+ */
+export interface DscNodeConfigurationCreateOrUpdateParametersProperties {
+  source: ContentSource;
+  name: string;
+  configuration: DscConfigurationAssociationProperty;
   incrementNodeConfigurationBuild?: boolean;
 }
 
