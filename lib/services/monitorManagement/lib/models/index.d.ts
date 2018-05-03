@@ -2210,7 +2210,7 @@ export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricA
  *
  * @member {string} query Log search query.
  * @member {array} [authorizedResources] List of  Resource referred into query
- * @member {string} datasourceId The resource uri over which log search query
+ * @member {string} dataSourceId The resource uri over which log search query
  * is to be run.
  * @member {string} [queryType] Set value to ResultCount if query should be
  * returning search result count. Set it to Number if its a metric query.
@@ -2219,7 +2219,7 @@ export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricA
 export interface Source {
   query: string;
   authorizedResources?: string[];
-  datasourceId: string;
+  dataSourceId: string;
   queryType?: string;
 }
 
@@ -2258,7 +2258,7 @@ export interface Schedule {
  * @member {string} [source.query] Log search query.
  * @member {array} [source.authorizedResources] List of  Resource referred into
  * query
- * @member {string} [source.datasourceId] The resource uri over which log
+ * @member {string} [source.dataSourceId] The resource uri over which log
  * search query is to be run.
  * @member {string} [source.queryType] Set value to ResultCount if query should
  * be returning search result count. Set it to Number if its a metric query.
@@ -2339,12 +2339,13 @@ export interface TriggerCondition {
  * @class
  * Initializes a new instance of the AzNsActionGroup class.
  * @constructor
- * azns notification group
+ * Azure action group
  *
- * @member {array} [actionGroup] Azure Group reference.
- * @member {string} [emailSubject] Custom subject for Azns email
- * @member {string} [customWebhookPayload] Custom webhook payload to be send to
- * azns action group
+ * @member {array} [actionGroup] Azure Action Group reference.
+ * @member {string} [emailSubject] Custom subject override for all email ids in
+ * Azure action group
+ * @member {string} [customWebhookPayload] Custom payload to be sent for all
+ * webook URI in Azure action group
  */
 export interface AzNsActionGroup {
   actionGroup?: string[];
@@ -2360,13 +2361,14 @@ export interface AzNsActionGroup {
  *
  * @member {string} severity Severity of the alert. Possible values include:
  * '0', '1', '2', '3', '4'
- * @member {object} aznsAction azns notification group reference.
- * @member {array} [aznsAction.actionGroup] Azure Group reference.
- * @member {string} [aznsAction.emailSubject] Custom subject for Azns email
- * @member {string} [aznsAction.customWebhookPayload] Custom webhook payload to
- * be send to azns action group
+ * @member {object} aznsAction Azure action group reference.
+ * @member {array} [aznsAction.actionGroup] Azure Action Group reference.
+ * @member {string} [aznsAction.emailSubject] Custom subject override for all
+ * email ids in Azure action group
+ * @member {string} [aznsAction.customWebhookPayload] Custom payload to be sent
+ * for all webook URI in Azure action group
  * @member {number} [throttlingInMin] time (in minutes) for which Alerts should
- * be throttled
+ * be throttled or suppressed.
  * @member {object} trigger The trigger condition that results in the alert
  * rule being.
  * @member {string} [trigger.thresholdOperator] Evaluation operation for rule -
