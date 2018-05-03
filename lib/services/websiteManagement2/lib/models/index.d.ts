@@ -3393,6 +3393,118 @@ export interface AnalysisDefinition extends ProxyOnlyResource {
 
 /**
  * @class
+ * Initializes a new instance of the DataTableResponseColumn class.
+ * @constructor
+ * Column definition
+ *
+ * @member {string} [columnName] Name of the column
+ * @member {string} [dataType] Data type which looks like 'String' or 'Int32'.
+ * @member {string} [columnType] Column Type
+ */
+export interface DataTableResponseColumn {
+  columnName?: string;
+  dataType?: string;
+  columnType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataTableResponseObject class.
+ * @constructor
+ * Data Table which defines columns and raw row values
+ *
+ * @member {string} [tableName] Name of the table
+ * @member {array} [columns] List of columns with data types
+ * @member {array} [rows] Raw row values
+ */
+export interface DataTableResponseObject {
+  tableName?: string;
+  columns?: DataTableResponseColumn[];
+  rows?: string[][];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DetectorInfo class.
+ * @constructor
+ * Definition of Detector
+ *
+ * @member {string} [description] Short description of the detector and its
+ * purpose
+ * @member {string} [category] Support Category
+ * @member {string} [subCategory] Support Sub Category
+ * @member {string} [supportTopicId] Support Topic Id
+ */
+export interface DetectorInfo {
+  readonly description?: string;
+  readonly category?: string;
+  readonly subCategory?: string;
+  readonly supportTopicId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Rendering class.
+ * @constructor
+ * Instructions for rendering the data
+ *
+ * @member {string} [renderingType] Rendering Type. Possible values include:
+ * 'NoGraph', 'Table', 'TimeSeries', 'TimeSeriesPerInstance'
+ * @member {string} [title] Title of data
+ * @member {string} [description] Description of the data that will help it be
+ * interpreted
+ */
+export interface Rendering {
+  renderingType?: string;
+  title?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticData class.
+ * @constructor
+ * Set of data with rendering instructions
+ *
+ * @member {object} [table] Data in table form
+ * @member {string} [table.tableName] Name of the table
+ * @member {array} [table.columns] List of columns with data types
+ * @member {array} [table.rows] Raw row values
+ * @member {object} [renderingProperties] Properties that describe how the
+ * table should be rendered
+ * @member {string} [renderingProperties.renderingType] Rendering Type.
+ * Possible values include: 'NoGraph', 'Table', 'TimeSeries',
+ * 'TimeSeriesPerInstance'
+ * @member {string} [renderingProperties.title] Title of data
+ * @member {string} [renderingProperties.description] Description of the data
+ * that will help it be interpreted
+ */
+export interface DiagnosticData {
+  table?: DataTableResponseObject;
+  renderingProperties?: Rendering;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DetectorResponse class.
+ * @constructor
+ * Class representing Response from Detector
+ *
+ * @member {object} [metadata] metadata for the detector
+ * @member {string} [metadata.description] Short description of the detector
+ * and its purpose
+ * @member {string} [metadata.category] Support Category
+ * @member {string} [metadata.subCategory] Support Sub Category
+ * @member {string} [metadata.supportTopicId] Support Topic Id
+ * @member {array} [dataset] Data Set
+ */
+export interface DetectorResponse extends ProxyOnlyResource {
+  metadata?: DetectorInfo;
+  dataset?: DiagnosticData[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the DiagnosticAnalysis class.
  * @constructor
  * Class representing a diagnostic analysis done on an application
@@ -6776,6 +6888,18 @@ export interface CertificateCollection extends Array<Certificate> {
  * @member {string} [nextLink] Link to next page of resources.
  */
 export interface DeletedWebAppCollection extends Array<DeletedSite> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DetectorResponseCollection class.
+ * @constructor
+ * Collection of detector responses
+ *
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface DetectorResponseCollection extends Array<DetectorResponse> {
   readonly nextLink?: string;
 }
 
