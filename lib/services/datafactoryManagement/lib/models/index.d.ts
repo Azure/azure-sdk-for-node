@@ -4329,14 +4329,11 @@ export interface MultiplePipelineTrigger extends Trigger {
  * for which events can trigger the pipeline.
  * @member {array} events The type of events that cause this trigger to fire.
  * @member {string} scope The ARM resource ID of the Storage Account.
- * @member {number} maxConcurrency The max number of parallel events to handle
- * when triggered.
  */
 export interface BlobEventsTrigger extends MultiplePipelineTrigger {
   blobPath: string;
   events: string[];
   scope: string;
-  maxConcurrency: number;
 }
 
 /**
