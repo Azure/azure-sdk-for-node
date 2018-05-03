@@ -4716,82 +4716,82 @@ export interface IntegrationAccountBatchConfigurations {
      *
      * @param {string} batchConfigurationName The batch configuration name.
      *
-     * @param {object} assemblyArtifact The assembly artifact.
+     * @param {object} batchConfiguration The batch configuration.
      *
-     * @param {object} assemblyArtifact.properties The batch configuration
+     * @param {object} batchConfiguration.properties The batch configuration
      * properties.
      *
-     * @param {string} assemblyArtifact.properties.batchGroupName The name of the
+     * @param {string} batchConfiguration.properties.batchGroupName The name of the
      * batch group.
      *
-     * @param {object} assemblyArtifact.properties.releaseCriteria The batch
+     * @param {object} batchConfiguration.properties.releaseCriteria The batch
      * release criteria.
      *
-     * @param {number} [assemblyArtifact.properties.releaseCriteria.messageCount]
+     * @param {number} [batchConfiguration.properties.releaseCriteria.messageCount]
      * The message count.
      *
-     * @param {number} [assemblyArtifact.properties.releaseCriteria.batchSize] The
-     * batch size in bytes.
+     * @param {number} [batchConfiguration.properties.releaseCriteria.batchSize]
+     * The batch size in bytes.
      *
-     * @param {object} [assemblyArtifact.properties.releaseCriteria.recurrence] The
-     * recurrence.
+     * @param {object} [batchConfiguration.properties.releaseCriteria.recurrence]
+     * The recurrence.
      *
      * @param {string}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.frequency] The
+     * [batchConfiguration.properties.releaseCriteria.recurrence.frequency] The
      * frequency. Possible values include: 'NotSpecified', 'Second', 'Minute',
      * 'Hour', 'Day', 'Week', 'Month', 'Year'
      *
      * @param {number}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.interval] The
+     * [batchConfiguration.properties.releaseCriteria.recurrence.interval] The
      * interval.
      *
      * @param {string}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.startTime] The start
+     * [batchConfiguration.properties.releaseCriteria.recurrence.startTime] The
+     * start time.
+     *
+     * @param {string}
+     * [batchConfiguration.properties.releaseCriteria.recurrence.endTime] The end
      * time.
      *
      * @param {string}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.endTime] The end
-     * time.
-     *
-     * @param {string}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.timeZone] The time
+     * [batchConfiguration.properties.releaseCriteria.recurrence.timeZone] The time
      * zone.
      *
      * @param {object}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule] The
+     * [batchConfiguration.properties.releaseCriteria.recurrence.schedule] The
      * recurrence schedule.
      *
      * @param {array}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.minutes]
+     * [batchConfiguration.properties.releaseCriteria.recurrence.schedule.minutes]
      * The minutes.
      *
      * @param {array}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.hours] The
-     * hours.
+     * [batchConfiguration.properties.releaseCriteria.recurrence.schedule.hours]
+     * The hours.
      *
      * @param {array}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.weekDays]
+     * [batchConfiguration.properties.releaseCriteria.recurrence.schedule.weekDays]
      * The days of the week.
      *
      * @param {array}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.monthDays]
+     * [batchConfiguration.properties.releaseCriteria.recurrence.schedule.monthDays]
      * The month days.
      *
      * @param {array}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.monthlyOccurrences]
+     * [batchConfiguration.properties.releaseCriteria.recurrence.schedule.monthlyOccurrences]
      * The monthly occurrences.
      *
-     * @param {date} [assemblyArtifact.properties.createdTime] The artifact
+     * @param {date} [batchConfiguration.properties.createdTime] The artifact
      * creation time.
      *
-     * @param {date} [assemblyArtifact.properties.changedTime] The artifact changed
-     * time.
+     * @param {date} [batchConfiguration.properties.changedTime] The artifact
+     * changed time.
      *
-     * @param {object} [assemblyArtifact.properties.metadata]
+     * @param {object} [batchConfiguration.properties.metadata]
      *
-     * @param {string} [assemblyArtifact.location] The resource location.
+     * @param {string} [batchConfiguration.location] The resource location.
      *
-     * @param {object} [assemblyArtifact.tags] The resource tags.
+     * @param {object} [batchConfiguration.tags] The resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4804,7 +4804,7 @@ export interface IntegrationAccountBatchConfigurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, assemblyArtifact: models.BatchConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BatchConfiguration>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, batchConfiguration: models.BatchConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BatchConfiguration>>;
 
     /**
      * Create or update a batch configuration for an integration account.
@@ -4815,82 +4815,82 @@ export interface IntegrationAccountBatchConfigurations {
      *
      * @param {string} batchConfigurationName The batch configuration name.
      *
-     * @param {object} assemblyArtifact The assembly artifact.
+     * @param {object} batchConfiguration The batch configuration.
      *
-     * @param {object} assemblyArtifact.properties The batch configuration
+     * @param {object} batchConfiguration.properties The batch configuration
      * properties.
      *
-     * @param {string} assemblyArtifact.properties.batchGroupName The name of the
+     * @param {string} batchConfiguration.properties.batchGroupName The name of the
      * batch group.
      *
-     * @param {object} assemblyArtifact.properties.releaseCriteria The batch
+     * @param {object} batchConfiguration.properties.releaseCriteria The batch
      * release criteria.
      *
-     * @param {number} [assemblyArtifact.properties.releaseCriteria.messageCount]
+     * @param {number} [batchConfiguration.properties.releaseCriteria.messageCount]
      * The message count.
      *
-     * @param {number} [assemblyArtifact.properties.releaseCriteria.batchSize] The
-     * batch size in bytes.
+     * @param {number} [batchConfiguration.properties.releaseCriteria.batchSize]
+     * The batch size in bytes.
      *
-     * @param {object} [assemblyArtifact.properties.releaseCriteria.recurrence] The
-     * recurrence.
+     * @param {object} [batchConfiguration.properties.releaseCriteria.recurrence]
+     * The recurrence.
      *
      * @param {string}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.frequency] The
+     * [batchConfiguration.properties.releaseCriteria.recurrence.frequency] The
      * frequency. Possible values include: 'NotSpecified', 'Second', 'Minute',
      * 'Hour', 'Day', 'Week', 'Month', 'Year'
      *
      * @param {number}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.interval] The
+     * [batchConfiguration.properties.releaseCriteria.recurrence.interval] The
      * interval.
      *
      * @param {string}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.startTime] The start
+     * [batchConfiguration.properties.releaseCriteria.recurrence.startTime] The
+     * start time.
+     *
+     * @param {string}
+     * [batchConfiguration.properties.releaseCriteria.recurrence.endTime] The end
      * time.
      *
      * @param {string}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.endTime] The end
-     * time.
-     *
-     * @param {string}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.timeZone] The time
+     * [batchConfiguration.properties.releaseCriteria.recurrence.timeZone] The time
      * zone.
      *
      * @param {object}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule] The
+     * [batchConfiguration.properties.releaseCriteria.recurrence.schedule] The
      * recurrence schedule.
      *
      * @param {array}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.minutes]
+     * [batchConfiguration.properties.releaseCriteria.recurrence.schedule.minutes]
      * The minutes.
      *
      * @param {array}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.hours] The
-     * hours.
+     * [batchConfiguration.properties.releaseCriteria.recurrence.schedule.hours]
+     * The hours.
      *
      * @param {array}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.weekDays]
+     * [batchConfiguration.properties.releaseCriteria.recurrence.schedule.weekDays]
      * The days of the week.
      *
      * @param {array}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.monthDays]
+     * [batchConfiguration.properties.releaseCriteria.recurrence.schedule.monthDays]
      * The month days.
      *
      * @param {array}
-     * [assemblyArtifact.properties.releaseCriteria.recurrence.schedule.monthlyOccurrences]
+     * [batchConfiguration.properties.releaseCriteria.recurrence.schedule.monthlyOccurrences]
      * The monthly occurrences.
      *
-     * @param {date} [assemblyArtifact.properties.createdTime] The artifact
+     * @param {date} [batchConfiguration.properties.createdTime] The artifact
      * creation time.
      *
-     * @param {date} [assemblyArtifact.properties.changedTime] The artifact changed
-     * time.
+     * @param {date} [batchConfiguration.properties.changedTime] The artifact
+     * changed time.
      *
-     * @param {object} [assemblyArtifact.properties.metadata]
+     * @param {object} [batchConfiguration.properties.metadata]
      *
-     * @param {string} [assemblyArtifact.location] The resource location.
+     * @param {string} [batchConfiguration.location] The resource location.
      *
-     * @param {object} [assemblyArtifact.tags] The resource tags.
+     * @param {object} [batchConfiguration.tags] The resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4919,9 +4919,9 @@ export interface IntegrationAccountBatchConfigurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, assemblyArtifact: models.BatchConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BatchConfiguration>;
-    createOrUpdate(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, assemblyArtifact: models.BatchConfiguration, callback: ServiceCallback<models.BatchConfiguration>): void;
-    createOrUpdate(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, assemblyArtifact: models.BatchConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, batchConfiguration: models.BatchConfiguration, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BatchConfiguration>;
+    createOrUpdate(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, batchConfiguration: models.BatchConfiguration, callback: ServiceCallback<models.BatchConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, integrationAccountName: string, batchConfigurationName: string, batchConfiguration: models.BatchConfiguration, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BatchConfiguration>): void;
 
 
     /**
