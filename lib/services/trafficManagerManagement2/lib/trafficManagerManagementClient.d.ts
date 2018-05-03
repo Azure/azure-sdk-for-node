@@ -47,6 +47,8 @@ export default class TrafficManagerManagementClient extends AzureServiceClient {
 
   subscriptionId: string;
 
+  apiVersion: string;
+
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -58,7 +60,6 @@ export default class TrafficManagerManagementClient extends AzureServiceClient {
   profiles: operations.Profiles;
   geographicHierarchies: operations.GeographicHierarchies;
   heatMap: operations.HeatMap;
-  trafficManagerUserMetricsKeys: operations.TrafficManagerUserMetricsKeys;
 }
 
 export { TrafficManagerManagementClient, models as TrafficManagerManagementModels };
