@@ -4325,13 +4325,12 @@ export interface MultiplePipelineTrigger extends Trigger {
  * @constructor
  * Trigger that runs everytime a Blob event occurs.
  *
- * @member {string} blobPath path to container, folder, blob, or file extension
+ * @member {string} blobPath Path to container, folder, blob, or file extension
  * for which events can trigger the pipeline.
- * @member {array} events the type of events for which we want to trigger the
- * pipeline.
- * @member {string} scope the resource id of the Storage Account.
- * @member {number} maxConcurrency the max number of parallel events to handle
- * when it is triggered.
+ * @member {array} events The type of events that cause this trigger to fire.
+ * @member {string} scope The ARM resource ID of the Storage Account.
+ * @member {number} maxConcurrency The max number of parallel events to handle
+ * when triggered.
  */
 export interface BlobEventsTrigger extends MultiplePipelineTrigger {
   blobPath: string;
