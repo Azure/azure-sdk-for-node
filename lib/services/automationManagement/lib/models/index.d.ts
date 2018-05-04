@@ -3028,6 +3028,9 @@ export interface DscNodeConfiguration extends ProxyResource {
  * @class
  * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParameters class.
  * @constructor
+ * The parameters supplied to the create or update node configuration
+ * operation.
+ *
  * @member {object} source Gets or sets the source.
  * @member {object} [source.hash] Gets or sets the hash.
  * @member {string} [source.hash.algorithm] Gets or sets the content hash
