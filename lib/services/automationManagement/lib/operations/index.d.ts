@@ -2975,6 +2975,14 @@ export interface DscConfigurationOperations {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2984,7 +2992,7 @@ export interface DscConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfigurationListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfigurationListResult>>;
 
     /**
      * Retrieve a list of configurations.
@@ -2994,6 +3002,14 @@ export interface DscConfigurationOperations {
      * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3021,9 +3037,9 @@ export interface DscConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfigurationListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfigurationListResult>;
     listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscConfigurationListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfigurationListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfigurationListResult>): void;
 
 
     /**
@@ -7796,6 +7812,12 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
+     * numbers included from the software update configuration.
+     *
+     * @param {string} [parameters.updateConfiguration.windows.rebootSetting]
+     * Reboot setting for the software update configuration.
+     *
      * @param {object} [parameters.updateConfiguration.linux] Linux specific update
      * configuration.
      *
@@ -7807,6 +7829,13 @@ export interface SoftwareUpdateConfigurations {
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
+     *
+     * @param {array}
+     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
+     * included from the software update configuration.
+     *
+     * @param {string} [parameters.updateConfiguration.linux.rebootSetting] Reboot
+     * setting for the software update configuration.
      *
      * @param {moment.duration} [parameters.updateConfiguration.duration] Maximum
      * time allowed for the software update configuration run. Duration needs to be
@@ -7926,6 +7955,12 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
+     * numbers included from the software update configuration.
+     *
+     * @param {string} [parameters.updateConfiguration.windows.rebootSetting]
+     * Reboot setting for the software update configuration.
+     *
      * @param {object} [parameters.updateConfiguration.linux] Linux specific update
      * configuration.
      *
@@ -7937,6 +7972,13 @@ export interface SoftwareUpdateConfigurations {
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
+     *
+     * @param {array}
+     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
+     * included from the software update configuration.
+     *
+     * @param {string} [parameters.updateConfiguration.linux.rebootSetting] Reboot
+     * setting for the software update configuration.
      *
      * @param {moment.duration} [parameters.updateConfiguration.duration] Maximum
      * time allowed for the software update configuration run. Duration needs to be
@@ -10617,6 +10659,12 @@ export interface DscNodeOperations {
      *
      * @param {string} [options.filter] The filter to apply on the operation.
      *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -10626,7 +10674,7 @@ export interface DscNodeOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeListResult>>;
 
     /**
      * Retrieve a list of dsc nodes.
@@ -10638,6 +10686,12 @@ export interface DscNodeOperations {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10664,9 +10718,9 @@ export interface DscNodeOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeListResult>;
     listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscNodeListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeListResult>): void;
 
 
     /**
@@ -11841,6 +11895,12 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {string} [options.filter] The filter to apply on the operation.
      *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -11850,7 +11910,7 @@ export interface DscNodeConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfigurationListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfigurationListResult>>;
 
     /**
      * Retrieve a list of dsc node configurations.
@@ -11862,6 +11922,12 @@ export interface DscNodeConfigurationOperations {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -11889,9 +11955,9 @@ export interface DscNodeConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
     listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
 
 
     /**
