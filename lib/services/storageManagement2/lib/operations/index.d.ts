@@ -1771,6 +1771,63 @@ export interface UsageOperations {
     list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageListResult>;
     list(callback: ServiceCallback<models.UsageListResult>): void;
     list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageListResult>): void;
+
+
+    /**
+     * Gets the current usage count and the limit for the resources of the location
+     * under the subscription.
+     *
+     * @param {string} location The location of the Azure Storage resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByLocationWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageListResult>>;
+
+    /**
+     * Gets the current usage count and the limit for the resources of the location
+     * under the subscription.
+     *
+     * @param {string} location The location of the Azure Storage resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByLocation(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageListResult>;
+    listByLocation(location: string, callback: ServiceCallback<models.UsageListResult>): void;
+    listByLocation(location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageListResult>): void;
 }
 
 /**
