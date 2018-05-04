@@ -4060,15 +4060,15 @@ export interface Job extends Resource {
  * @member {string} [startTime] Date time to get jobs from.
  * @member {string} [endTime] Date time to get jobs upto.
  * @member {string} [fabricId] The Id of the fabric to search jobs under.
- * @member {array} [affectedObjectTypes] The type of objects.
- * @member {array} [jobStatus] The states of the job to be filtered can be in.
+ * @member {string} [affectedObjectTypes] The type of objects.
+ * @member {string} [jobStatus] The states of the job to be filtered can be in.
  */
 export interface JobQueryParameter {
   startTime?: string;
   endTime?: string;
   fabricId?: string;
-  affectedObjectTypes?: string[];
-  jobStatus?: string[];
+  affectedObjectTypes?: string;
+  jobStatus?: string;
 }
 
 /**
@@ -4655,6 +4655,18 @@ export interface ProtectableItemProperties {
  */
 export interface ProtectableItem extends Resource {
   properties?: ProtectableItemProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProtectableItemQueryParameter class.
+ * @constructor
+ * Query parameter to enumerate Protectable items.
+ *
+ * @member {string} [state] State of the Protectable item query filter.
+ */
+export interface ProtectableItemQueryParameter {
+  state?: string;
 }
 
 /**

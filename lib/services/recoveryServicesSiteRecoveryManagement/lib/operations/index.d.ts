@@ -4134,6 +4134,8 @@ export interface ReplicationProtectableItems {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.filter] OData filter options.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -4143,7 +4145,7 @@ export interface ReplicationProtectableItems {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByReplicationProtectionContainersWithHttpOperationResponse(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectableItemCollection>>;
+    listByReplicationProtectionContainersWithHttpOperationResponse(fabricName: string, protectionContainerName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProtectableItemCollection>>;
 
     /**
      * @summary Gets the list of protectable items.
@@ -4155,6 +4157,8 @@ export interface ReplicationProtectableItems {
      * @param {string} protectionContainerName Protection container name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] OData filter options.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4182,9 +4186,9 @@ export interface ReplicationProtectableItems {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectableItemCollection>;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProtectableItemCollection>;
     listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, callback: ServiceCallback<models.ProtectableItemCollection>): void;
-    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectableItemCollection>): void;
+    listByReplicationProtectionContainers(fabricName: string, protectionContainerName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProtectableItemCollection>): void;
 
 
     /**
@@ -11388,9 +11392,9 @@ export interface ReplicationJobs {
      * @param {string} [jobQueryParameter.fabricId] The Id of the fabric to search
      * jobs under.
      *
-     * @param {array} [jobQueryParameter.affectedObjectTypes] The type of objects.
+     * @param {string} [jobQueryParameter.affectedObjectTypes] The type of objects.
      *
-     * @param {array} [jobQueryParameter.jobStatus] The states of the job to be
+     * @param {string} [jobQueryParameter.jobStatus] The states of the job to be
      * filtered can be in.
      *
      * @param {object} [options] Optional Parameters.
@@ -11421,9 +11425,9 @@ export interface ReplicationJobs {
      * @param {string} [jobQueryParameter.fabricId] The Id of the fabric to search
      * jobs under.
      *
-     * @param {array} [jobQueryParameter.affectedObjectTypes] The type of objects.
+     * @param {string} [jobQueryParameter.affectedObjectTypes] The type of objects.
      *
-     * @param {array} [jobQueryParameter.jobStatus] The states of the job to be
+     * @param {string} [jobQueryParameter.jobStatus] The states of the job to be
      * filtered can be in.
      *
      * @param {object} [options] Optional Parameters.
@@ -11662,9 +11666,9 @@ export interface ReplicationJobs {
      * @param {string} [jobQueryParameter.fabricId] The Id of the fabric to search
      * jobs under.
      *
-     * @param {array} [jobQueryParameter.affectedObjectTypes] The type of objects.
+     * @param {string} [jobQueryParameter.affectedObjectTypes] The type of objects.
      *
-     * @param {array} [jobQueryParameter.jobStatus] The states of the job to be
+     * @param {string} [jobQueryParameter.jobStatus] The states of the job to be
      * filtered can be in.
      *
      * @param {object} [options] Optional Parameters.
@@ -11695,9 +11699,9 @@ export interface ReplicationJobs {
      * @param {string} [jobQueryParameter.fabricId] The Id of the fabric to search
      * jobs under.
      *
-     * @param {array} [jobQueryParameter.affectedObjectTypes] The type of objects.
+     * @param {string} [jobQueryParameter.affectedObjectTypes] The type of objects.
      *
-     * @param {array} [jobQueryParameter.jobStatus] The states of the job to be
+     * @param {string} [jobQueryParameter.jobStatus] The states of the job to be
      * filtered can be in.
      *
      * @param {object} [options] Optional Parameters.
