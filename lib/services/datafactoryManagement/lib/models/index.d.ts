@@ -4325,8 +4325,9 @@ export interface MultiplePipelineTrigger extends Trigger {
  * @constructor
  * Trigger that runs everytime a Blob event occurs.
  *
- * @member {string} blobPath Path to container, folder, blob, or file extension
- * for which events can trigger the pipeline.
+ * @member {string} blobPath Expression to determine if trigger should fire.
+ * For example, @startswith('/records/blobs/december/') will only fire the
+ * trigger for blobs in the december folder under the records container.
  * @member {array} events The type of events that cause this trigger to fire.
  * @member {string} scope The ARM resource ID of the Storage Account.
  */
