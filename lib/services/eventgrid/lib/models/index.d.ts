@@ -755,3 +755,63 @@ export interface ContainerRegistryEventSource {
   instanceID?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ServiceBusActiveMessagesAvailableWithNoListenersEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners event.
+ *
+ * @member {string} [namespaceName] The namespace name of the
+ * Microsoft.ServiceBus resource.
+ * @member {string} [requestUri] The endpoint of the Microsoft.ServiceBus
+ * resource.
+ * @member {string} [entityType] The entity type of the Microsoft.ServiceBus
+ * resource. Could be one of 'queue' or 'subscriber'.
+ * @member {string} [queueName] The name of the Microsoft.ServiceBus queue. If
+ * the entity type is of type 'subscriber', then this value will be null.
+ * @member {string} [topicName] The name of the Microsoft.ServiceBus topic. If
+ * the entity type is of type 'queue', then this value will be null.
+ * @member {string} [subscriptionName] The name of the Microsoft.ServiceBus
+ * topic's subscription. If the entity type is of type 'queue', then this value
+ * will be null.
+ */
+export interface ServiceBusActiveMessagesAvailableWithNoListenersEventData {
+  namespaceName?: string;
+  requestUri?: string;
+  entityType?: string;
+  queueName?: string;
+  topicName?: string;
+  subscriptionName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceBusDeadletterMessagesAvailableWithNoListenersEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListenersEvent event.
+ *
+ * @member {string} [namespaceName] The namespace name of the
+ * Microsoft.ServiceBus resource.
+ * @member {string} [requestUri] The endpoint of the Microsoft.ServiceBus
+ * resource.
+ * @member {string} [entityType] The entity type of the Microsoft.ServiceBus
+ * resource. Could be one of 'queue' or 'subscriber'.
+ * @member {string} [queueName] The name of the Microsoft.ServiceBus queue. If
+ * the entity type is of type 'subscriber', then this value will be null.
+ * @member {string} [topicName] The name of the Microsoft.ServiceBus topic. If
+ * the entity type is of type 'queue', then this value will be null.
+ * @member {string} [subscriptionName] The name of the Microsoft.ServiceBus
+ * topic's subscription. If the entity type is of type 'queue', then this value
+ * will be null.
+ */
+export interface ServiceBusDeadletterMessagesAvailableWithNoListenersEventData {
+  namespaceName?: string;
+  requestUri?: string;
+  entityType?: string;
+  queueName?: string;
+  topicName?: string;
+  subscriptionName?: string;
+}
+
