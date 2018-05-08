@@ -2254,6 +2254,19 @@ export interface VirtualMachineUpdate extends UpdateResource {
 
 /**
  * @class
+ * Initializes a new instance of the AutoOSUpgradePolicy class.
+ * @constructor
+ * The configuration parameters used for performing automatic OS upgrade.
+ *
+ * @member {boolean} [disableAutoRollback] Whether OS image rollback feature
+ * should be disabled. Default value is false.
+ */
+export interface AutoOSUpgradePolicy {
+  disableAutoRollback?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RollingUpgradePolicy class.
  * @constructor
  * The configuration parameters used while performing a rolling upgrade.
@@ -2326,11 +2339,16 @@ export interface RollingUpgradePolicy {
  * @member {boolean} [automaticOSUpgrade] Whether OS upgrades should
  * automatically be applied to scale set instances in a rolling fashion when a
  * newer version of the image becomes available.
+ * @member {object} [autoOSUpgradePolicy] Configuration parameters used for
+ * performing automatic OS Upgrade.
+ * @member {boolean} [autoOSUpgradePolicy.disableAutoRollback] Whether OS image
+ * rollback feature should be disabled. Default value is false.
  */
 export interface UpgradePolicy {
   mode?: string;
   rollingUpgradePolicy?: RollingUpgradePolicy;
   automaticOSUpgrade?: boolean;
+  autoOSUpgradePolicy?: AutoOSUpgradePolicy;
 }
 
 /**
@@ -3663,6 +3681,11 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * @member {boolean} [upgradePolicy.automaticOSUpgrade] Whether OS upgrades
  * should automatically be applied to scale set instances in a rolling fashion
  * when a newer version of the image becomes available.
+ * @member {object} [upgradePolicy.autoOSUpgradePolicy] Configuration
+ * parameters used for performing automatic OS Upgrade.
+ * @member {boolean} [upgradePolicy.autoOSUpgradePolicy.disableAutoRollback]
+ * Whether OS image rollback feature should be disabled. Default value is
+ * false.
  * @member {object} [virtualMachineProfile] The virtual machine profile.
  * @member {object} [virtualMachineProfile.osProfile] Specifies the operating
  * system settings for the virtual machines in the scale set.
@@ -3976,6 +3999,11 @@ export interface VirtualMachineScaleSet extends Resource {
  * @member {boolean} [upgradePolicy.automaticOSUpgrade] Whether OS upgrades
  * should automatically be applied to scale set instances in a rolling fashion
  * when a newer version of the image becomes available.
+ * @member {object} [upgradePolicy.autoOSUpgradePolicy] Configuration
+ * parameters used for performing automatic OS Upgrade.
+ * @member {boolean} [upgradePolicy.autoOSUpgradePolicy.disableAutoRollback]
+ * Whether OS image rollback feature should be disabled. Default value is
+ * false.
  * @member {object} [virtualMachineProfile] The virtual machine profile.
  * @member {object} [virtualMachineProfile.osProfile] The virtual machine scale
  * set OS profile.
