@@ -206,6 +206,21 @@ export interface DatabaseAccount extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Error Response.
+ *
+ * @member {string} [code] Error code.
+ * @member {string} [message] Error message indicating why the operation
+ * failed.
+ */
+export interface ErrorResponse {
+  code?: string;
+  message?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the FailoverPolicies class.
  * @constructor
  * The list of new failover policies for the failover priority change.
