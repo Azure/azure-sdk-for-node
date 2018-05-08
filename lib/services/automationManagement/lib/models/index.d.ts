@@ -2886,25 +2886,25 @@ export interface SourceControlUpdateParameters {
  * @member {string} [name] Resource name.
  * @member {string} [type] Resource type.
  * @member {string} [id] Resource id.
- * @member {string} [sourceControlSyncJobId] Gets the source control sync job
- * id.
+ * @member {string} [syncJobId] Gets the source control sync job id.
  * @member {date} [creationTime] Gets the creation time of the job.
  * @member {string} [provisioningState] Gets the provisioning state of the job.
  * Possible values include: 'Completed', 'Failed', 'Running'
  * @member {date} [startTime] Gets the start time of the job.
  * @member {date} [endTime] Gets the end time of the job.
- * @member {string} [startedBy] Gets the user who started the sync job.
+ * @member {string} [startType] Gets the type of start for the sync job.
+ * Possible values include: 'AutoSync', 'ManualSync'
  */
 export interface SourceControlSyncJob {
   readonly name?: string;
   readonly type?: string;
   readonly id?: string;
-  sourceControlSyncJobId?: string;
+  syncJobId?: string;
   readonly creationTime?: Date;
   provisioningState?: string;
   readonly startTime?: Date;
   readonly endTime?: Date;
-  startedBy?: string;
+  startType?: string;
 }
 
 /**
@@ -2922,46 +2922,31 @@ export interface SourceControlSyncJobCreateParameters {
 
 /**
  * @class
- * Initializes a new instance of the SourceControlSyncJobByIdErrors class.
- * @constructor
- * Error details of the source control sync job.
- *
- * @member {string} [code] Gets the error code for the job.
- * @member {string} [message] Gets the error message for the job.
- */
-export interface SourceControlSyncJobByIdErrors {
-  code?: string;
-  message?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SourceControlSyncJobById class.
  * @constructor
  * Definition of the source control sync job.
  *
  * @member {string} [id] Gets the id of the job.
- * @member {string} [sourceControlSyncJobId] Gets the source control sync job
- * id.
+ * @member {string} [syncJobId] Gets the source control sync job id.
  * @member {date} [creationTime] Gets the creation time of the job.
  * @member {string} [provisioningState] Gets the provisioning state of the job.
  * Possible values include: 'Completed', 'Failed', 'Running'
  * @member {date} [startTime] Gets the start time of the job.
  * @member {date} [endTime] Gets the end time of the job.
- * @member {string} [startedBy] Gets the user who started the sync job.
- * @member {object} [errors] Error details of the source control sync job.
- * @member {string} [errors.code] Gets the error code for the job.
- * @member {string} [errors.message] Gets the error message for the job.
+ * @member {string} [startType] Gets the type of start for the sync job.
+ * Possible values include: 'AutoSync', 'ManualSync'
+ * @member {string} [exception] Gets the exceptions that occured while running
+ * the sync job.
  */
 export interface SourceControlSyncJobById {
   id?: string;
-  sourceControlSyncJobId?: string;
+  syncJobId?: string;
   readonly creationTime?: Date;
   provisioningState?: string;
   readonly startTime?: Date;
   readonly endTime?: Date;
-  startedBy?: string;
-  errors?: SourceControlSyncJobByIdErrors;
+  startType?: string;
+  exception?: string;
 }
 
 /**
