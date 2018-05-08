@@ -168,6 +168,8 @@ export interface ProxyResource extends Resource {
  * the webhook job will run on.
  * @member {date} [creationTime] Gets or sets the creation time.
  * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [lastModifiedBy] Details of the user who last modified the
+ * Webhook
  * @member {string} [description] Gets or sets the description.
  */
 export interface Webhook extends ProxyResource {
@@ -180,6 +182,7 @@ export interface Webhook extends ProxyResource {
   runOn?: string;
   creationTime?: Date;
   lastModifiedTime?: Date;
+  lastModifiedBy?: string;
   description?: string;
 }
 
@@ -670,6 +673,8 @@ export interface DscConfigurationParameter {
  * @member {boolean} [logVerbose] Gets or sets verbose log option.
  * @member {date} [creationTime] Gets or sets the creation time.
  * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {number} [nodeConfigurationCount] Gets the number of compiled node
+ * configurations.
  * @member {string} [description] Gets or sets the description.
  * @member {string} [etag] Gets or sets the etag of the resource.
  */
@@ -682,6 +687,7 @@ export interface DscConfiguration extends TrackedResource {
   logVerbose?: boolean;
   creationTime?: Date;
   lastModifiedTime?: Date;
+  nodeConfigurationCount?: number;
   description?: string;
   etag?: string;
 }
@@ -1596,11 +1602,13 @@ export interface DscNodeReport {
  * @member {string} [ip] Gets or sets the assigned machine IP address.
  * @member {date} [registrationTime] Gets or sets the registration time of the
  * worker machine.
+ * @member {date} [lastSeenDateTime] Last Heartbeat from the Worker
  */
 export interface HybridRunbookWorker {
   name?: string;
   ip?: string;
   registrationTime?: Date;
+  lastSeenDateTime?: Date;
 }
 
 /**
@@ -2388,6 +2396,8 @@ export interface WebhookUpdateParameters {
  * @member {date} [endTime] The end time of the job.
  * @member {date} [lastModifiedTime] The last modified time of the job.
  * @member {string} [provisioningState] The provisioning state of a resource.
+ * @member {string} [runOn] Specifies the runOn group name where the job was
+ * executed.
  */
 export interface JobCollectionItem extends ProxyResource {
   readonly runbook?: RunbookAssociationProperty;
@@ -2398,6 +2408,7 @@ export interface JobCollectionItem extends ProxyResource {
   readonly endTime?: Date;
   readonly lastModifiedTime?: Date;
   readonly provisioningState?: string;
+  runOn?: string;
 }
 
 /**
@@ -2413,10 +2424,16 @@ export interface JobCollectionItem extends ProxyResource {
  * 'Tools', 'Updates'
  * @member {array} [excludedKbNumbers] KB numbers excluded from the software
  * update configuration.
+ * @member {array} [includedKbNumbers] KB numbers included from the software
+ * update configuration.
+ * @member {string} [rebootSetting] Reboot setting for the software update
+ * configuration.
  */
 export interface WindowsProperties {
   includedUpdateClassifications?: string;
   excludedKbNumbers?: string[];
+  includedKbNumbers?: string[];
+  rebootSetting?: string;
 }
 
 /**
@@ -2430,10 +2447,16 @@ export interface WindowsProperties {
  * 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [excludedPackageNameMasks] packages excluded from the
  * software update configuration.
+ * @member {array} [includedPackageNameMasks] packages included from the
+ * software update configuration.
+ * @member {string} [rebootSetting] Reboot setting for the software update
+ * configuration.
  */
 export interface LinuxProperties {
   includedPackageClassifications?: string;
   excludedPackageNameMasks?: string[];
+  includedPackageNameMasks?: string[];
+  rebootSetting?: string;
 }
 
 /**
@@ -2452,12 +2475,20 @@ export interface LinuxProperties {
  * 'ServicePack', 'Definition', 'Tools', 'Updates'
  * @member {array} [windows.excludedKbNumbers] KB numbers excluded from the
  * software update configuration.
+ * @member {array} [windows.includedKbNumbers] KB numbers included from the
+ * software update configuration.
+ * @member {string} [windows.rebootSetting] Reboot setting for the software
+ * update configuration.
  * @member {object} [linux] Linux specific update configuration.
  * @member {string} [linux.includedPackageClassifications] Update
  * classifications included in the software update configuration. Possible
  * values include: 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [linux.excludedPackageNameMasks] packages excluded from the
  * software update configuration.
+ * @member {array} [linux.includedPackageNameMasks] packages included from the
+ * software update configuration.
+ * @member {string} [linux.rebootSetting] Reboot setting for the software
+ * update configuration.
  * @member {moment.duration} [duration] Maximum time allowed for the software
  * update configuration run. Duration needs to be specified using the format
  * PT[n]H[n]M[n]S as per ISO8601
@@ -2497,6 +2528,10 @@ export interface UpdateConfiguration {
  * 'ServicePack', 'Definition', 'Tools', 'Updates'
  * @member {array} [updateConfiguration.windows.excludedKbNumbers] KB numbers
  * excluded from the software update configuration.
+ * @member {array} [updateConfiguration.windows.includedKbNumbers] KB numbers
+ * included from the software update configuration.
+ * @member {string} [updateConfiguration.windows.rebootSetting] Reboot setting
+ * for the software update configuration.
  * @member {object} [updateConfiguration.linux] Linux specific update
  * configuration.
  * @member {string} [updateConfiguration.linux.includedPackageClassifications]
@@ -2504,6 +2539,10 @@ export interface UpdateConfiguration {
  * Possible values include: 'Unclassified', 'Critical', 'Security', 'Other'
  * @member {array} [updateConfiguration.linux.excludedPackageNameMasks]
  * packages excluded from the software update configuration.
+ * @member {array} [updateConfiguration.linux.includedPackageNameMasks]
+ * packages included from the software update configuration.
+ * @member {string} [updateConfiguration.linux.rebootSetting] Reboot setting
+ * for the software update configuration.
  * @member {moment.duration} [updateConfiguration.duration] Maximum time
  * allowed for the software update configuration run. Duration needs to be
  * specified using the format PT[n]H[n]M[n]S as per ISO8601
@@ -2924,25 +2963,25 @@ export interface SourceControlUpdateParameters {
  * @member {string} [name] Resource name.
  * @member {string} [type] Resource type.
  * @member {string} [id] Resource id.
- * @member {string} [sourceControlSyncJobId] Gets the source control sync job
- * id.
+ * @member {string} [syncJobId] Gets the source control sync job id.
  * @member {date} [creationTime] Gets the creation time of the job.
  * @member {string} [provisioningState] Gets the provisioning state of the job.
  * Possible values include: 'Completed', 'Failed', 'Running'
  * @member {date} [startTime] Gets the start time of the job.
  * @member {date} [endTime] Gets the end time of the job.
- * @member {string} [startedBy] Gets the user who started the sync job.
+ * @member {string} [startType] Gets the type of start for the sync job.
+ * Possible values include: 'AutoSync', 'ManualSync'
  */
 export interface SourceControlSyncJob {
   readonly name?: string;
   readonly type?: string;
   readonly id?: string;
-  sourceControlSyncJobId?: string;
+  syncJobId?: string;
   readonly creationTime?: Date;
   provisioningState?: string;
   readonly startTime?: Date;
   readonly endTime?: Date;
-  startedBy?: string;
+  startType?: string;
 }
 
 /**
@@ -2960,46 +2999,31 @@ export interface SourceControlSyncJobCreateParameters {
 
 /**
  * @class
- * Initializes a new instance of the SourceControlSyncJobByIdErrors class.
- * @constructor
- * Error details of the source control sync job.
- *
- * @member {string} [code] Gets the error code for the job.
- * @member {string} [message] Gets the error message for the job.
- */
-export interface SourceControlSyncJobByIdErrors {
-  code?: string;
-  message?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SourceControlSyncJobById class.
  * @constructor
  * Definition of the source control sync job.
  *
  * @member {string} [id] Gets the id of the job.
- * @member {string} [sourceControlSyncJobId] Gets the source control sync job
- * id.
+ * @member {string} [syncJobId] Gets the source control sync job id.
  * @member {date} [creationTime] Gets the creation time of the job.
  * @member {string} [provisioningState] Gets the provisioning state of the job.
  * Possible values include: 'Completed', 'Failed', 'Running'
  * @member {date} [startTime] Gets the start time of the job.
  * @member {date} [endTime] Gets the end time of the job.
- * @member {string} [startedBy] Gets the user who started the sync job.
- * @member {object} [errors] Error details of the source control sync job.
- * @member {string} [errors.code] Gets the error code for the job.
- * @member {string} [errors.message] Gets the error message for the job.
+ * @member {string} [startType] Gets the type of start for the sync job.
+ * Possible values include: 'AutoSync', 'ManualSync'
+ * @member {string} [exception] Gets the exceptions that occured while running
+ * the sync job.
  */
 export interface SourceControlSyncJobById {
   id?: string;
-  sourceControlSyncJobId?: string;
+  syncJobId?: string;
   readonly creationTime?: Date;
   provisioningState?: string;
   readonly startTime?: Date;
   readonly endTime?: Date;
-  startedBy?: string;
-  errors?: SourceControlSyncJobByIdErrors;
+  startType?: string;
+  exception?: string;
 }
 
 /**
@@ -3018,6 +3042,8 @@ export interface SourceControlSyncJobById {
  * @member {string} [status] Gets or sets the status of the node.
  * @member {string} [nodeId] Gets or sets the node id.
  * @member {string} [etag] Gets or sets the etag of the resource.
+ * @member {number} [totalCount] Gets the total number of records matching
+ * filter criteria.
  * @member {array} [extensionHandler] Gets or sets the list of extensionHandler
  * properties for a Node.
  */
@@ -3030,6 +3056,7 @@ export interface DscNode extends ProxyResource {
   status?: string;
   nodeId?: string;
   etag?: string;
+  totalCount?: number;
   extensionHandler?: DscNodeExtensionHandlerAssociationProperty[];
 }
 
@@ -3165,6 +3192,8 @@ export interface CredentialListResult extends Array<Credential> {
  * The response model for the list configuration operation.
  *
  * @member {string} [nextLink] Gets or sets the next link.
+ * @member {number} [totalCount] Gets the total number of configurations
+ * matching filter criteria.
  */
 export interface DscConfigurationListResult extends Array<DscConfiguration> {
   nextLink?: string;
@@ -3331,6 +3360,8 @@ export interface JobListResultV2 extends Array<JobCollectionItem> {
  * The response model for the list dsc nodes operation.
  *
  * @member {string} [nextLink] Gets or sets the next link.
+ * @member {number} [totalCount] Gets the total number of nodes matching filter
+ * criteria.
  */
 export interface DscNodeListResult extends Array<DscNode> {
   nextLink?: string;
@@ -3367,6 +3398,7 @@ export interface DscCompilationJobListResult extends Array<DscCompilationJob> {
  * The response model for the list job operation.
  *
  * @member {string} [nextLink] Gets or sets the next link.
+ * @member {number} [totalCount] Gets or sets the total rows in query.
  */
 export interface DscNodeConfigurationListResult extends Array<DscNodeConfiguration> {
   nextLink?: string;
