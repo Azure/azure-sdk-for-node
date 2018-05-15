@@ -14,6 +14,1617 @@ import * as models from '../models';
 
 /**
  * @class
+ * GalleryOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface GalleryOperations {
+
+
+    /**
+     * Create or update a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * gallery operation.
+     *
+     * @param {string} [parameters.description] The description of this gallery
+     * resource.
+     *
+     * @param {object} [parameters.identifier]
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Gallery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, parameters: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
+
+    /**
+     * Create or update a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * gallery operation.
+     *
+     * @param {string} [parameters.description] The description of this gallery
+     * resource.
+     *
+     * @param {object} [parameters.identifier]
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Gallery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Gallery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Gallery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, galleryName: string, parameters: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Gallery>;
+    createOrUpdate(resourceGroupName: string, galleryName: string, parameters: models.Gallery, callback: ServiceCallback<models.Gallery>): void;
+    createOrUpdate(resourceGroupName: string, galleryName: string, parameters: models.Gallery, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gallery>): void;
+
+
+    /**
+     * Retrieves information about a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Gallery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
+
+    /**
+     * Retrieves information about a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Gallery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Gallery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Gallery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Gallery>;
+    get(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.Gallery>): void;
+    get(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gallery>): void;
+
+
+    /**
+     * Delete a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, galleryName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List galleries under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listGalleriesInResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+
+    /**
+     * List galleries under a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listGalleriesInResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    listGalleriesInResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.GalleryList>): void;
+    listGalleriesInResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+
+
+    /**
+     * List galleries under a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listGalleriesInSubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+
+    /**
+     * List galleries under a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listGalleriesInSubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    listGalleriesInSubscription(callback: ServiceCallback<models.GalleryList>): void;
+    listGalleriesInSubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+
+
+    /**
+     * Create or update a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * gallery operation.
+     *
+     * @param {string} [parameters.description] The description of this gallery
+     * resource.
+     *
+     * @param {object} [parameters.identifier]
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Gallery>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, parameters: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
+
+    /**
+     * Create or update a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * gallery operation.
+     *
+     * @param {string} [parameters.description] The description of this gallery
+     * resource.
+     *
+     * @param {object} [parameters.identifier]
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Gallery} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Gallery} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Gallery} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, parameters: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Gallery>;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, parameters: models.Gallery, callback: ServiceCallback<models.Gallery>): void;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, parameters: models.Gallery, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gallery>): void;
+
+
+    /**
+     * Delete a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * GalleryImageOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface GalleryImageOperations {
+
+
+    /**
+     * Create or update a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * gallery image operation.
+     *
+     * @param {string} [parameters.description] The description of this gallery
+     * image resource.
+     *
+     * @param {string} [parameters.eula] The Eula agreement for the gallery image.
+     *
+     * @param {string} [parameters.privacyStatementUri] The privacy statement uri.
+     *
+     * @param {string} [parameters.releaseNoteUri] The release note uri.
+     *
+     * @param {string} [parameters.osType] This property allows you to specify the
+     * type of the OS that is included in the disk if creating a VM from user-image
+     * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [parameters.osState] The OS State. Possible values include:
+     * 'Generalized', 'Specialized'
+     *
+     * @param {date} [parameters.endOfLifeDate] The end of life of this gallery
+     * image.
+     *
+     * @param {object} [parameters.identifier]
+     *
+     * @param {string} [parameters.identifier.publisher] The gallery image
+     * publisher name.
+     *
+     * @param {string} [parameters.identifier.offer] The gallery image offer name.
+     *
+     * @param {string} [parameters.identifier.sku] The gallery image sku name.
+     *
+     * @param {object} [parameters.recommended]
+     *
+     * @param {object} [parameters.recommended.vCPUs]
+     *
+     * @param {object} [parameters.recommended.memory]
+     *
+     * @param {number} [parameters.recommended.memory.min] The minimum number of
+     * the resource.
+     *
+     * @param {number} [parameters.recommended.memory.max] The maximum number of
+     * the resource.
+     *
+     * @param {object} [parameters.disallowed]
+     *
+     * @param {array} [parameters.disallowed.diskTypes] A list of disk types.
+     *
+     * @param {object} [parameters.purchasePlan]
+     *
+     * @param {string} [parameters.purchasePlan.name] The plan ID.
+     *
+     * @param {string} [parameters.purchasePlan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.purchasePlan.product] The product ID.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, parameters: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
+
+    /**
+     * Create or update a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * gallery image operation.
+     *
+     * @param {string} [parameters.description] The description of this gallery
+     * image resource.
+     *
+     * @param {string} [parameters.eula] The Eula agreement for the gallery image.
+     *
+     * @param {string} [parameters.privacyStatementUri] The privacy statement uri.
+     *
+     * @param {string} [parameters.releaseNoteUri] The release note uri.
+     *
+     * @param {string} [parameters.osType] This property allows you to specify the
+     * type of the OS that is included in the disk if creating a VM from user-image
+     * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [parameters.osState] The OS State. Possible values include:
+     * 'Generalized', 'Specialized'
+     *
+     * @param {date} [parameters.endOfLifeDate] The end of life of this gallery
+     * image.
+     *
+     * @param {object} [parameters.identifier]
+     *
+     * @param {string} [parameters.identifier.publisher] The gallery image
+     * publisher name.
+     *
+     * @param {string} [parameters.identifier.offer] The gallery image offer name.
+     *
+     * @param {string} [parameters.identifier.sku] The gallery image sku name.
+     *
+     * @param {object} [parameters.recommended]
+     *
+     * @param {object} [parameters.recommended.vCPUs]
+     *
+     * @param {object} [parameters.recommended.memory]
+     *
+     * @param {number} [parameters.recommended.memory.min] The minimum number of
+     * the resource.
+     *
+     * @param {number} [parameters.recommended.memory.max] The maximum number of
+     * the resource.
+     *
+     * @param {object} [parameters.disallowed]
+     *
+     * @param {array} [parameters.disallowed.diskTypes] A list of disk types.
+     *
+     * @param {object} [parameters.purchasePlan]
+     *
+     * @param {string} [parameters.purchasePlan.name] The plan ID.
+     *
+     * @param {string} [parameters.purchasePlan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.purchasePlan.product] The product ID.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImage} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, parameters: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImage>;
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, parameters: models.GalleryImage, callback: ServiceCallback<models.GalleryImage>): void;
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, parameters: models.GalleryImage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImage>): void;
+
+
+    /**
+     * Retrieves information about a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
+
+    /**
+     * Retrieves information about a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImage} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImage>;
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.GalleryImage>): void;
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImage>): void;
+
+
+    /**
+     * Delete a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List gallery images under a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listGalleryImagesInGalleryWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
+
+    /**
+     * List gallery images under a gallery.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listGalleryImagesInGallery(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageList>;
+    listGalleryImagesInGallery(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.GalleryImageList>): void;
+    listGalleryImagesInGallery(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageList>): void;
+
+
+    /**
+     * Create or update a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * gallery image operation.
+     *
+     * @param {string} [parameters.description] The description of this gallery
+     * image resource.
+     *
+     * @param {string} [parameters.eula] The Eula agreement for the gallery image.
+     *
+     * @param {string} [parameters.privacyStatementUri] The privacy statement uri.
+     *
+     * @param {string} [parameters.releaseNoteUri] The release note uri.
+     *
+     * @param {string} [parameters.osType] This property allows you to specify the
+     * type of the OS that is included in the disk if creating a VM from user-image
+     * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [parameters.osState] The OS State. Possible values include:
+     * 'Generalized', 'Specialized'
+     *
+     * @param {date} [parameters.endOfLifeDate] The end of life of this gallery
+     * image.
+     *
+     * @param {object} [parameters.identifier]
+     *
+     * @param {string} [parameters.identifier.publisher] The gallery image
+     * publisher name.
+     *
+     * @param {string} [parameters.identifier.offer] The gallery image offer name.
+     *
+     * @param {string} [parameters.identifier.sku] The gallery image sku name.
+     *
+     * @param {object} [parameters.recommended]
+     *
+     * @param {object} [parameters.recommended.vCPUs]
+     *
+     * @param {object} [parameters.recommended.memory]
+     *
+     * @param {number} [parameters.recommended.memory.min] The minimum number of
+     * the resource.
+     *
+     * @param {number} [parameters.recommended.memory.max] The maximum number of
+     * the resource.
+     *
+     * @param {object} [parameters.disallowed]
+     *
+     * @param {array} [parameters.disallowed.diskTypes] A list of disk types.
+     *
+     * @param {object} [parameters.purchasePlan]
+     *
+     * @param {string} [parameters.purchasePlan.name] The plan ID.
+     *
+     * @param {string} [parameters.purchasePlan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.purchasePlan.product] The product ID.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImage>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, parameters: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
+
+    /**
+     * Create or update a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * gallery image operation.
+     *
+     * @param {string} [parameters.description] The description of this gallery
+     * image resource.
+     *
+     * @param {string} [parameters.eula] The Eula agreement for the gallery image.
+     *
+     * @param {string} [parameters.privacyStatementUri] The privacy statement uri.
+     *
+     * @param {string} [parameters.releaseNoteUri] The release note uri.
+     *
+     * @param {string} [parameters.osType] This property allows you to specify the
+     * type of the OS that is included in the disk if creating a VM from user-image
+     * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
+     * <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
+     *
+     * @param {string} [parameters.osState] The OS State. Possible values include:
+     * 'Generalized', 'Specialized'
+     *
+     * @param {date} [parameters.endOfLifeDate] The end of life of this gallery
+     * image.
+     *
+     * @param {object} [parameters.identifier]
+     *
+     * @param {string} [parameters.identifier.publisher] The gallery image
+     * publisher name.
+     *
+     * @param {string} [parameters.identifier.offer] The gallery image offer name.
+     *
+     * @param {string} [parameters.identifier.sku] The gallery image sku name.
+     *
+     * @param {object} [parameters.recommended]
+     *
+     * @param {object} [parameters.recommended.vCPUs]
+     *
+     * @param {object} [parameters.recommended.memory]
+     *
+     * @param {number} [parameters.recommended.memory.min] The minimum number of
+     * the resource.
+     *
+     * @param {number} [parameters.recommended.memory.max] The maximum number of
+     * the resource.
+     *
+     * @param {object} [parameters.disallowed]
+     *
+     * @param {array} [parameters.disallowed.diskTypes] A list of disk types.
+     *
+     * @param {object} [parameters.purchasePlan]
+     *
+     * @param {string} [parameters.purchasePlan.name] The plan ID.
+     *
+     * @param {string} [parameters.purchasePlan.publisher] The publisher ID.
+     *
+     * @param {string} [parameters.purchasePlan.product] The product ID.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImage} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImage} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImage} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, parameters: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImage>;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, parameters: models.GalleryImage, callback: ServiceCallback<models.GalleryImage>): void;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, parameters: models.GalleryImage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImage>): void;
+
+
+    /**
+     * Delete a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * GalleryImageVersionOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ComputeManagementClient.
+ */
+export interface GalleryImageVersionOperations {
+
+
+    /**
+     * Create or update a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * gallery image version operation.
+     *
+     * @param {object} [parameters.publishingProfile]
+     *
+     * @param {boolean} [parameters.publishingProfile.excludeFromLatest] The flag
+     * means that if it is set to true, people deploying VMs with 'latest' as
+     * version will not use this version.
+     *
+     * @param {date} [parameters.publishingProfile.endOfLifeDate] The end of life
+     * date of the gallery image version.
+     *
+     * @param {array} [parameters.publishingProfile.regions] The regions where the
+     * artifact is going to be published.
+     *
+     * @param {object} [parameters.publishingProfile.source]
+     *
+     * @param {object} [parameters.publishingProfile.source.managedImage]
+     *
+     * @param {string} [parameters.publishingProfile.source.managedImage.id] The
+     * managed artifact id.
+     *
+     * @param {object} [parameters.storageProfile]
+     *
+     * @param {object} [parameters.storageProfile.osDiskImage]
+     *
+     * @param {number} [parameters.storageProfile.osDiskImage.sizedInGB] It
+     * indicates the size of the VHD to create.
+     *
+     * @param {string} [parameters.storageProfile.osDiskImage.hostCaching] The host
+     * caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'.
+     * Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {array} [parameters.storageProfile.dataDiskImages] A list of data
+     * disk images.
+     *
+     * @param {object} [parameters.replicationStatus]
+     *
+     * @param {string} [parameters.replicationStatus.aggregatedState] This is the
+     * aggregated replication status based on the regional replication status.
+     * Possible values include: 'Unknown', 'InProgress', 'Completed', 'Failed'
+     *
+     * @param {array} [parameters.replicationStatus.summary] This is a summary of
+     * replication status for each region.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersion>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, parameters: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
+
+    /**
+     * Create or update a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * gallery image version operation.
+     *
+     * @param {object} [parameters.publishingProfile]
+     *
+     * @param {boolean} [parameters.publishingProfile.excludeFromLatest] The flag
+     * means that if it is set to true, people deploying VMs with 'latest' as
+     * version will not use this version.
+     *
+     * @param {date} [parameters.publishingProfile.endOfLifeDate] The end of life
+     * date of the gallery image version.
+     *
+     * @param {array} [parameters.publishingProfile.regions] The regions where the
+     * artifact is going to be published.
+     *
+     * @param {object} [parameters.publishingProfile.source]
+     *
+     * @param {object} [parameters.publishingProfile.source.managedImage]
+     *
+     * @param {string} [parameters.publishingProfile.source.managedImage.id] The
+     * managed artifact id.
+     *
+     * @param {object} [parameters.storageProfile]
+     *
+     * @param {object} [parameters.storageProfile.osDiskImage]
+     *
+     * @param {number} [parameters.storageProfile.osDiskImage.sizedInGB] It
+     * indicates the size of the VHD to create.
+     *
+     * @param {string} [parameters.storageProfile.osDiskImage.hostCaching] The host
+     * caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'.
+     * Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {array} [parameters.storageProfile.dataDiskImages] A list of data
+     * disk images.
+     *
+     * @param {object} [parameters.replicationStatus]
+     *
+     * @param {string} [parameters.replicationStatus.aggregatedState] This is the
+     * aggregated replication status based on the regional replication status.
+     * Possible values include: 'Unknown', 'InProgress', 'Completed', 'Failed'
+     *
+     * @param {array} [parameters.replicationStatus.summary] This is a summary of
+     * replication status for each region.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersion} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersion} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersion} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, parameters: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersion>;
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, parameters: models.GalleryImageVersion, callback: ServiceCallback<models.GalleryImageVersion>): void;
+    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, parameters: models.GalleryImageVersion, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersion>): void;
+
+
+    /**
+     * Retrieves information about a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersion>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
+
+    /**
+     * Retrieves information about a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] The expand expression to apply on the
+     * operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersion} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersion} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersion} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersion>;
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<models.GalleryImageVersion>): void;
+    get(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersion>): void;
+
+
+    /**
+     * Delete a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List gallery image versions under a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listGalleryImageVersionsInGalleryImageWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersionList>>;
+
+    /**
+     * List gallery image versions under a gallery image.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listGalleryImageVersionsInGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersionList>;
+    listGalleryImageVersionsInGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.GalleryImageVersionList>): void;
+    listGalleryImageVersionsInGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersionList>): void;
+
+
+    /**
+     * Create or update a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * gallery image version operation.
+     *
+     * @param {object} [parameters.publishingProfile]
+     *
+     * @param {boolean} [parameters.publishingProfile.excludeFromLatest] The flag
+     * means that if it is set to true, people deploying VMs with 'latest' as
+     * version will not use this version.
+     *
+     * @param {date} [parameters.publishingProfile.endOfLifeDate] The end of life
+     * date of the gallery image version.
+     *
+     * @param {array} [parameters.publishingProfile.regions] The regions where the
+     * artifact is going to be published.
+     *
+     * @param {object} [parameters.publishingProfile.source]
+     *
+     * @param {object} [parameters.publishingProfile.source.managedImage]
+     *
+     * @param {string} [parameters.publishingProfile.source.managedImage.id] The
+     * managed artifact id.
+     *
+     * @param {object} [parameters.storageProfile]
+     *
+     * @param {object} [parameters.storageProfile.osDiskImage]
+     *
+     * @param {number} [parameters.storageProfile.osDiskImage.sizedInGB] It
+     * indicates the size of the VHD to create.
+     *
+     * @param {string} [parameters.storageProfile.osDiskImage.hostCaching] The host
+     * caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'.
+     * Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {array} [parameters.storageProfile.dataDiskImages] A list of data
+     * disk images.
+     *
+     * @param {object} [parameters.replicationStatus]
+     *
+     * @param {string} [parameters.replicationStatus.aggregatedState] This is the
+     * aggregated replication status based on the regional replication status.
+     * Possible values include: 'Unknown', 'InProgress', 'Completed', 'Failed'
+     *
+     * @param {array} [parameters.replicationStatus.summary] This is a summary of
+     * replication status for each region.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersion>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, parameters: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
+
+    /**
+     * Create or update a gallery image version.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} galleryName The name of the gallery.
+     *
+     * @param {string} galleryImageName The name of the gallery image.
+     *
+     * @param {string} galleryImageVersionName The name of the gallery image
+     * version.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * gallery image version operation.
+     *
+     * @param {object} [parameters.publishingProfile]
+     *
+     * @param {boolean} [parameters.publishingProfile.excludeFromLatest] The flag
+     * means that if it is set to true, people deploying VMs with 'latest' as
+     * version will not use this version.
+     *
+     * @param {date} [parameters.publishingProfile.endOfLifeDate] The end of life
+     * date of the gallery image version.
+     *
+     * @param {array} [parameters.publishingProfile.regions] The regions where the
+     * artifact is going to be published.
+     *
+     * @param {object} [parameters.publishingProfile.source]
+     *
+     * @param {object} [parameters.publishingProfile.source.managedImage]
+     *
+     * @param {string} [parameters.publishingProfile.source.managedImage.id] The
+     * managed artifact id.
+     *
+     * @param {object} [parameters.storageProfile]
+     *
+     * @param {object} [parameters.storageProfile.osDiskImage]
+     *
+     * @param {number} [parameters.storageProfile.osDiskImage.sizedInGB] It
+     * indicates the size of the VHD to create.
+     *
+     * @param {string} [parameters.storageProfile.osDiskImage.hostCaching] The host
+     * caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'.
+     * Possible values include: 'None', 'ReadOnly', 'ReadWrite'
+     *
+     * @param {array} [parameters.storageProfile.dataDiskImages] A list of data
+     * disk images.
+     *
+     * @param {object} [parameters.replicationStatus]
+     *
+     * @param {string} [parameters.replicationStatus.aggregatedState] This is the
+     * aggregated replication status based on the regional replication status.
+     * Possible values include: 'Unknown', 'InProgress', 'Completed', 'Failed'
+     *
+     * @param {array} [parameters.replicationStatus.summary] This is a summary of
+     * replication status for each region.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersion} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersion} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersion} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, parameters: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersion>;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, parameters: models.GalleryImageVersion, callback: ServiceCallback<models.GalleryImageVersion>): void;
+    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, parameters: models.GalleryImageVersion, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersion>): void;
+}
+
+/**
+ * @class
  * Operations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
