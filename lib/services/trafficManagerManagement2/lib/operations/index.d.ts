@@ -795,6 +795,11 @@ export interface Profiles {
      * @param {array} [parameters.endpoints] The list of endpoints in the Traffic
      * Manager profile.
      *
+     * @param {string} [parameters.trafficViewEnrollmentStatus] Indicates whether
+     * Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile.
+     * Null, indicates 'Disabled'. Enabling this feature will increase the cost of
+     * the Traffic Manage profile. Possible values include: 'Enabled', 'Disabled'
+     *
      * @param {object} [parameters.tags] Resource tags.
      *
      * @param {string} [parameters.location] The Azure Region where the resource
@@ -882,6 +887,11 @@ export interface Profiles {
      *
      * @param {array} [parameters.endpoints] The list of endpoints in the Traffic
      * Manager profile.
+     *
+     * @param {string} [parameters.trafficViewEnrollmentStatus] Indicates whether
+     * Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile.
+     * Null, indicates 'Disabled'. Enabling this feature will increase the cost of
+     * the Traffic Manage profile. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [parameters.tags] Resource tags.
      *
@@ -1053,6 +1063,11 @@ export interface Profiles {
      * @param {array} [parameters.endpoints] The list of endpoints in the Traffic
      * Manager profile.
      *
+     * @param {string} [parameters.trafficViewEnrollmentStatus] Indicates whether
+     * Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile.
+     * Null, indicates 'Disabled'. Enabling this feature will increase the cost of
+     * the Traffic Manage profile. Possible values include: 'Enabled', 'Disabled'
+     *
      * @param {object} [parameters.tags] Resource tags.
      *
      * @param {string} [parameters.location] The Azure Region where the resource
@@ -1140,6 +1155,11 @@ export interface Profiles {
      *
      * @param {array} [parameters.endpoints] The list of endpoints in the Traffic
      * Manager profile.
+     *
+     * @param {string} [parameters.trafficViewEnrollmentStatus] Indicates whether
+     * Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile.
+     * Null, indicates 'Disabled'. Enabling this feature will increase the cost of
+     * the Traffic Manage profile. Possible values include: 'Enabled', 'Disabled'
      *
      * @param {object} [parameters.tags] Resource tags.
      *

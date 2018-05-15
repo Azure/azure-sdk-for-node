@@ -364,6 +364,10 @@ export interface TrackedResource extends Resource {
  * status code ranges.
  * @member {array} [endpoints] The list of endpoints in the Traffic Manager
  * profile.
+ * @member {string} [trafficViewEnrollmentStatus] Indicates whether Traffic
+ * View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null,
+ * indicates 'Disabled'. Enabling this feature will increase the cost of the
+ * Traffic Manage profile. Possible values include: 'Enabled', 'Disabled'
  */
 export interface Profile extends TrackedResource {
   profileStatus?: string;
@@ -371,6 +375,7 @@ export interface Profile extends TrackedResource {
   dnsConfig?: DnsConfig;
   monitorConfig?: MonitorConfig;
   endpoints?: Endpoint[];
+  trafficViewEnrollmentStatus?: string;
 }
 
 /**
