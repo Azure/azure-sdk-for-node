@@ -4325,14 +4325,21 @@ export interface MultiplePipelineTrigger extends Trigger {
  * @constructor
  * Trigger that runs everytime a Blob event occurs.
  *
- * @member {string} blobPath Expression to determine if trigger should fire.
- * For example, @startswith('/records/blobs/december/') will only fire the
- * trigger for blobs in the december folder under the records container.
+ * @member {string} [blobPathBeginsWith] The blob path must begin with the
+ * pattern provided for trigger to fire. For example,
+ * '/records/blobs/december/' will only fire the trigger for blobs in the
+ * december folder under the records container. At least one of these must be
+ * provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {string} [blobPathEndsWith] The blob path must end with the pattern
+ * provided for trigger to fire. For example, 'december/boxes.csv' will only
+ * fire the trigger for blobs named boxes in a december folder. At least one of
+ * these must be provided: blobPathBeginsWith, blobPathEndsWith.
  * @member {array} events The type of events that cause this trigger to fire.
  * @member {string} scope The ARM resource ID of the Storage Account.
  */
 export interface BlobEventsTrigger extends MultiplePipelineTrigger {
-  blobPath: string;
+  blobPathBeginsWith?: string;
+  blobPathEndsWith?: string;
   events: string[];
   scope: string;
 }
