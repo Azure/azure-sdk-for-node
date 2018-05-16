@@ -2902,8 +2902,8 @@ export interface ExpressRouteCircuit extends Resource {
  * @constructor
  * The ARP table associated with the ExpressRouteCircuit.
  *
- * @member {number} [age] Age
- * @member {string} [interfaceProperty] Interface
+ * @member {number} [age] Entry age in minutes
+ * @member {string} [interfaceProperty] Interface address
  * @member {string} [ipAddress] The IP address.
  * @member {string} [macAddress] The MAC address.
  */
@@ -2934,11 +2934,12 @@ export interface ExpressRouteCircuitsArpTableListResult {
  * @constructor
  * The routes table associated with the ExpressRouteCircuit
  *
- * @member {string} [network] network
- * @member {string} [nextHop] nextHop
- * @member {string} [locPrf] locPrf
- * @member {number} [weight] weight.
- * @member {string} [path] path
+ * @member {string} [network] IP address of a network entity
+ * @member {string} [nextHop] NextHop address
+ * @member {string} [locPrf] Local preference value as set with the set
+ * local-preference route-map configuration command
+ * @member {number} [weight] Route Weight.
+ * @member {string} [path] Autonomous system paths to the destination network.
  */
 export interface ExpressRouteCircuitRoutesTable {
   network?: string;
@@ -2968,7 +2969,7 @@ export interface ExpressRouteCircuitsRoutesTableListResult {
  * @constructor
  * The routes table associated with the ExpressRouteCircuit.
  *
- * @member {string} [neighbor] Neighbor
+ * @member {string} [neighbor] IP address of the neighbor.
  * @member {number} [v] BGP version number spoken to the neighbor.
  * @member {number} [as] Autonomous system number.
  * @member {string} [upDown] The length of time that the BGP session has been
