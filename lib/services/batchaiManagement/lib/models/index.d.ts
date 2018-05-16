@@ -2048,84 +2048,6 @@ export interface Experiment extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the ClustersListOptions class.
- * @constructor
- * Additional parameters for list operation.
- *
- * @member {number} [maxResults] The maximum number of items to return in the
- * response. A maximum of 1000 files can be returned. Default value: 1000 .
- */
-export interface ClustersListOptions {
-  maxResults?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ClustersListByResourceGroupOptions class.
- * @constructor
- * Additional parameters for listByResourceGroup operation.
- *
- * @member {number} [maxResults] The maximum number of items to return in the
- * response. A maximum of 1000 files can be returned. Default value: 1000 .
- */
-export interface ClustersListByResourceGroupOptions {
-  maxResults?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ClustersListByWorkspaceOptions class.
- * @constructor
- * Additional parameters for listByWorkspace operation.
- *
- * @member {number} [maxResults] The maximum number of items to return in the
- * response. A maximum of 1000 files can be returned. Default value: 1000 .
- */
-export interface ClustersListByWorkspaceOptions {
-  maxResults?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileServersListOptions class.
- * @constructor
- * Additional parameters for list operation.
- *
- * @member {number} [maxResults] The maximum number of items to return in the
- * response. A maximum of 1000 files can be returned. Default value: 1000 .
- */
-export interface FileServersListOptions {
-  maxResults?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileServersListByResourceGroupOptions class.
- * @constructor
- * Additional parameters for listByResourceGroup operation.
- *
- * @member {number} [maxResults] The maximum number of items to return in the
- * response. A maximum of 1000 files can be returned. Default value: 1000 .
- */
-export interface FileServersListByResourceGroupOptions {
-  maxResults?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileServersListByWorkspaceOptions class.
- * @constructor
- * Additional parameters for listByWorkspace operation.
- *
- * @member {number} [maxResults] The maximum number of items to return in the
- * response. A maximum of 1000 files can be returned. Default value: 1000 .
- */
-export interface FileServersListByWorkspaceOptions {
-  maxResults?: number;
-}
-
-/**
- * @class
  * Initializes a new instance of the WorkspacesListOptions class.
  * @constructor
  * Additional parameters for list operation.
@@ -2198,6 +2120,32 @@ export interface JobsListOutputFilesOptions {
   maxResults?: number;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the FileServersListByWorkspaceOptions class.
+ * @constructor
+ * Additional parameters for listByWorkspace operation.
+ *
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 files can be returned. Default value: 1000 .
+ */
+export interface FileServersListByWorkspaceOptions {
+  maxResults?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClustersListByWorkspaceOptions class.
+ * @constructor
+ * Additional parameters for listByWorkspace operation.
+ *
+ * @member {number} [maxResults] The maximum number of items to return in the
+ * response. A maximum of 1000 files can be returned. Default value: 1000 .
+ */
+export interface ClustersListByWorkspaceOptions {
+  maxResults?: number;
+}
+
 
 /**
  * @class
@@ -2225,42 +2173,6 @@ export interface OperationListResult extends Array<Operation> {
  * of compute resource usage information.
  */
 export interface ListUsagesResult extends Array<Usage> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ClusterListResult class.
- * @constructor
- * Values returned by the List Clusters operation.
- *
- * @member {string} [nextLink] The continuation token.
- */
-export interface ClusterListResult extends Array<Cluster> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RemoteLoginInformationListResult class.
- * @constructor
- * Values returned by the List operation.
- *
- * @member {string} [nextLink] The continuation token.
- */
-export interface RemoteLoginInformationListResult extends Array<RemoteLoginInformation> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the FileServerListResult class.
- * @constructor
- * Values returned by the List operation.
- *
- * @member {string} [nextLink] The continuation token.
- */
-export interface FileServerListResult extends Array<FileServer> {
   readonly nextLink?: string;
 }
 
@@ -2309,5 +2221,41 @@ export interface JobListResult extends Array<Job> {
  * @member {string} [nextLink] The continuation token.
  */
 export interface FileListResult extends Array<File> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RemoteLoginInformationListResult class.
+ * @constructor
+ * Values returned by the List operation.
+ *
+ * @member {string} [nextLink] The continuation token.
+ */
+export interface RemoteLoginInformationListResult extends Array<RemoteLoginInformation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FileServerListResult class.
+ * @constructor
+ * Values returned by the List operation.
+ *
+ * @member {string} [nextLink] The continuation token.
+ */
+export interface FileServerListResult extends Array<FileServer> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterListResult class.
+ * @constructor
+ * Values returned by the List Clusters operation.
+ *
+ * @member {string} [nextLink] The continuation token.
+ */
+export interface ClusterListResult extends Array<Cluster> {
   readonly nextLink?: string;
 }
