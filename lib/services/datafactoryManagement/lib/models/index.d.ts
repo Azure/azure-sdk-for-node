@@ -2927,8 +2927,6 @@ export interface AzureMLLinkedService extends LinkedService {
  *
  * @member {object} server Server name for connection. Type: string (or
  * Expression with resultType string).
- * @member {object} [schema] Schema name for connection. Type: string (or
- * Expression with resultType string).
  * @member {string} [authenticationType] AuthenticationType to be used for
  * connection. Possible values include: 'Basic', 'Windows'
  * @member {object} [username] Username for authentication. Type: string (or
@@ -2941,7 +2939,6 @@ export interface AzureMLLinkedService extends LinkedService {
  */
 export interface TeradataLinkedService extends LinkedService {
   server: any;
-  schema?: any;
   authenticationType?: string;
   username?: any;
   password?: SecretBase;
@@ -2958,8 +2955,6 @@ export interface TeradataLinkedService extends LinkedService {
  * Expression with resultType string).
  * @member {object} database Database name for connection. Type: string (or
  * Expression with resultType string).
- * @member {object} [schema] Schema name for connection. Type: string (or
- * Expression with resultType string).
  * @member {string} [authenticationType] AuthenticationType to be used for
  * connection. Possible values include: 'Basic'
  * @member {object} [username] Username for authentication. Type: string (or
@@ -2973,7 +2968,6 @@ export interface TeradataLinkedService extends LinkedService {
 export interface Db2LinkedService extends LinkedService {
   server: any;
   database: any;
-  schema?: any;
   authenticationType?: string;
   username?: any;
   password?: SecretBase;
@@ -3018,26 +3012,14 @@ export interface SybaseLinkedService extends LinkedService {
  * @constructor
  * Linked service for PostgreSQL data source.
  *
- * @member {object} server Server name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} database Database name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} [schema] Schema name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} [username] Username for authentication. Type: string (or
- * Expression with resultType string).
- * @member {object} [password] Password for authentication.
- * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} connectionString The connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface PostgreSqlLinkedService extends LinkedService {
-  server: any;
-  database: any;
-  schema?: any;
-  username?: any;
-  password?: SecretBase;
+  connectionString: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -3047,26 +3029,14 @@ export interface PostgreSqlLinkedService extends LinkedService {
  * @constructor
  * Linked service for MySQL data source.
  *
- * @member {object} server Server name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} database Database name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} [schema] Schema name for connection. Type: string (or
- * Expression with resultType string).
- * @member {object} [username] Username for authentication. Type: string (or
- * Expression with resultType string).
- * @member {object} [password] Password for authentication.
- * @member {string} [password.type] Polymorphic Discriminator
+ * @member {object} connectionString The connection string.
+ * @member {string} [connectionString.type] Polymorphic Discriminator
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface MySqlLinkedService extends LinkedService {
-  server: any;
-  database: any;
-  schema?: any;
-  username?: any;
-  password?: SecretBase;
+  connectionString: SecretBase;
   encryptedCredential?: any;
 }
 
@@ -4347,6 +4317,31 @@ export interface TumblingWindowTrigger extends Trigger {
  */
 export interface MultiplePipelineTrigger extends Trigger {
   pipelines?: TriggerPipelineReference[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BlobEventsTrigger class.
+ * @constructor
+ * Trigger that runs everytime a Blob event occurs.
+ *
+ * @member {string} [blobPathBeginsWith] The blob path must begin with the
+ * pattern provided for trigger to fire. For example,
+ * '/records/blobs/december/' will only fire the trigger for blobs in the
+ * december folder under the records container. At least one of these must be
+ * provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {string} [blobPathEndsWith] The blob path must end with the pattern
+ * provided for trigger to fire. For example, 'december/boxes.csv' will only
+ * fire the trigger for blobs named boxes in a december folder. At least one of
+ * these must be provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {array} events The type of events that cause this trigger to fire.
+ * @member {string} scope The ARM resource ID of the Storage Account.
+ */
+export interface BlobEventsTrigger extends MultiplePipelineTrigger {
+  blobPathBeginsWith?: string;
+  blobPathEndsWith?: string;
+  events: string[];
+  scope: string;
 }
 
 /**
