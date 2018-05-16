@@ -124,7 +124,7 @@ export interface CategoryDetail {
  *
  * @member {string} [name] Name of the category.
  * @member {number} [score] Scoring of the category.
- * @member {object} [detail] Additional category detail if available.
+ * @member {object} [detail]
  * @member {array} [detail.celebrities] An array of celebrities if any
  * identified.
  */
@@ -251,7 +251,7 @@ export interface ImageMetadata {
  * @member {array} [tags] A collection of image tags.
  * @member {array} [captions] A list of captions, sorted by confidence level.
  * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata] Image metadata
+ * @member {object} [metadata]
  * @member {number} [metadata.width] Image width
  * @member {number} [metadata.height] Image height
  * @member {string} [metadata.format] Image format
@@ -295,8 +295,7 @@ export interface FaceDescription {
  * Result of AnalyzeImage operation.
  *
  * @member {array} [categories] An array indicating identified categories.
- * @member {object} [adult] A property scoring on whether the image is
- * adult-oriented and/or racy.
+ * @member {object} [adult]
  * @member {boolean} [adult.isAdultContent] A value indicating if the image
  * contains adult-oriented content.
  * @member {boolean} [adult.isRacyContent] A value indicating if the image is
@@ -305,7 +304,7 @@ export interface FaceDescription {
  * much of adult content is within the image.
  * @member {number} [adult.racyScore] Score from 0 to 1 that indicates how
  * suggestive is the image.
- * @member {object} [color] A property scoring on color spectrums.
+ * @member {object} [color]
  * @member {string} [color.dominantColorForeground] Possible dominant
  * foreground color.
  * @member {string} [color.dominantColorBackground] Possible dominant
@@ -314,25 +313,24 @@ export interface FaceDescription {
  * @member {string} [color.accentColor] Possible accent color.
  * @member {boolean} [color.isBWImg] A value indicating if the image is black
  * and white.
- * @member {object} [imageType] A property indicating type of image (whether
- * it's clipart or line drawing)
+ * @member {object} [imageType]
  * @member {number} [imageType.clipArtType] Confidence level that the image is
  * a clip art.
  * @member {number} [imageType.lineDrawingType] Confidence level that the image
  * is a line drawing.
  * @member {array} [tags] A list of tags with confidence level.
- * @member {object} [description] Description of the image.
+ * @member {object} [description]
  * @member {array} [description.tags] A collection of image tags.
  * @member {array} [description.captions] A list of captions, sorted by
  * confidence level.
  * @member {string} [description.requestId] Id of the REST API request.
- * @member {object} [description.metadata] Image metadata
+ * @member {object} [description.metadata]
  * @member {number} [description.metadata.width] Image width
  * @member {number} [description.metadata.height] Image height
  * @member {string} [description.metadata.format] Image format
  * @member {array} [faces] An array of possible faces within the image.
  * @member {string} [requestId] Id of the request for tracking purposes.
- * @member {object} [metadata] Image metadata
+ * @member {object} [metadata]
  * @member {number} [metadata.width] Image width
  * @member {number} [metadata.height] Image height
  * @member {string} [metadata.format] Image format
@@ -474,7 +472,7 @@ export interface ListModelsResult {
  * @member {array} [celebrities] An array of possible celebritied identified in
  * the image.
  * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata] Additional image metadata
+ * @member {object} [metadata]
  * @member {number} [metadata.width] Image width
  * @member {number} [metadata.height] Image height
  * @member {string} [metadata.format] Image format
@@ -495,7 +493,7 @@ export interface DomainModelResults {
  * @member {array} [tags] A collection of image tags.
  * @member {array} [captions] A list of captions, sorted by confidence level.
  * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata] Image metadata
+ * @member {object} [metadata]
  * @member {number} [metadata.width] Image width
  * @member {number} [metadata.height] Image height
  * @member {string} [metadata.format] Image format
@@ -515,7 +513,7 @@ export interface ImageDescription {
  *
  * @member {array} [tags] A list of tags with confidence level.
  * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata] Image metadata
+ * @member {object} [metadata]
  * @member {number} [metadata.width] Image width
  * @member {number} [metadata.height] Image height
  * @member {string} [metadata.format] Image format
@@ -549,7 +547,7 @@ export interface ComputerVisionError {
  * @class
  * Initializes a new instance of the ImageUrl class.
  * @constructor
- * @member {string} url
+ * @member {string} url Publicly reachable URL of an image
  */
 export interface ImageUrl {
   url: string;
