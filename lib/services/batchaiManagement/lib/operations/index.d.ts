@@ -3717,9 +3717,6 @@ export interface Experiments {
      * can only contain a combination of alphanumeric characters along with dash
      * (-) and underscore (_). The name must be from 1 through 64 characters long.
      *
-     * @param {object} parameters The parameters to provide for the experiment
-     * creation.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3731,7 +3728,7 @@ export interface Experiments {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, experimentName: string, parameters: any, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Experiment>>;
+    createWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, experimentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Experiment>>;
 
     /**
      * Creates an Experiment.
@@ -3746,9 +3743,6 @@ export interface Experiments {
      * @param {string} experimentName The name of the experiment. Experiment names
      * can only contain a combination of alphanumeric characters along with dash
      * (-) and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {object} parameters The parameters to provide for the experiment
-     * creation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3777,9 +3771,9 @@ export interface Experiments {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, workspaceName: string, experimentName: string, parameters: any, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Experiment>;
-    create(resourceGroupName: string, workspaceName: string, experimentName: string, parameters: any, callback: ServiceCallback<models.Experiment>): void;
-    create(resourceGroupName: string, workspaceName: string, experimentName: string, parameters: any, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Experiment>): void;
+    create(resourceGroupName: string, workspaceName: string, experimentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Experiment>;
+    create(resourceGroupName: string, workspaceName: string, experimentName: string, callback: ServiceCallback<models.Experiment>): void;
+    create(resourceGroupName: string, workspaceName: string, experimentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Experiment>): void;
 
 
     /**
@@ -3941,9 +3935,6 @@ export interface Experiments {
      * can only contain a combination of alphanumeric characters along with dash
      * (-) and underscore (_). The name must be from 1 through 64 characters long.
      *
-     * @param {object} parameters The parameters to provide for the experiment
-     * creation.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3955,7 +3946,7 @@ export interface Experiments {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, experimentName: string, parameters: any, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Experiment>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, experimentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Experiment>>;
 
     /**
      * Creates an Experiment.
@@ -3970,9 +3961,6 @@ export interface Experiments {
      * @param {string} experimentName The name of the experiment. Experiment names
      * can only contain a combination of alphanumeric characters along with dash
      * (-) and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {object} parameters The parameters to provide for the experiment
-     * creation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4001,9 +3989,9 @@ export interface Experiments {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, workspaceName: string, experimentName: string, parameters: any, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Experiment>;
-    beginCreate(resourceGroupName: string, workspaceName: string, experimentName: string, parameters: any, callback: ServiceCallback<models.Experiment>): void;
-    beginCreate(resourceGroupName: string, workspaceName: string, experimentName: string, parameters: any, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Experiment>): void;
+    beginCreate(resourceGroupName: string, workspaceName: string, experimentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Experiment>;
+    beginCreate(resourceGroupName: string, workspaceName: string, experimentName: string, callback: ServiceCallback<models.Experiment>): void;
+    beginCreate(resourceGroupName: string, workspaceName: string, experimentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Experiment>): void;
 
 
     /**
@@ -4253,7 +4241,7 @@ export interface Jobs {
      * @param {object} parameters The parameters to provide for job creation.
      *
      * @param {string} [parameters.schedulingPriority] Scheduling priority
-     * associated with the job. Scheduling priority  associated with the job.
+     * associated with the job. Scheduling priority associated with the job.
      * Possible values include: 'low', 'normal', 'high'
      *
      * @param {object} parameters.cluster Specifies the Id of the cluster on which
@@ -4557,7 +4545,7 @@ export interface Jobs {
      * @param {object} parameters The parameters to provide for job creation.
      *
      * @param {string} [parameters.schedulingPriority] Scheduling priority
-     * associated with the job. Scheduling priority  associated with the job.
+     * associated with the job. Scheduling priority associated with the job.
      * Possible values include: 'low', 'normal', 'high'
      *
      * @param {object} parameters.cluster Specifies the Id of the cluster on which
@@ -5334,7 +5322,7 @@ export interface Jobs {
      * @param {object} parameters The parameters to provide for job creation.
      *
      * @param {string} [parameters.schedulingPriority] Scheduling priority
-     * associated with the job. Scheduling priority  associated with the job.
+     * associated with the job. Scheduling priority associated with the job.
      * Possible values include: 'low', 'normal', 'high'
      *
      * @param {object} parameters.cluster Specifies the Id of the cluster on which
@@ -5638,7 +5626,7 @@ export interface Jobs {
      * @param {object} parameters The parameters to provide for job creation.
      *
      * @param {string} [parameters.schedulingPriority] Scheduling priority
-     * associated with the job. Scheduling priority  associated with the job.
+     * associated with the job. Scheduling priority associated with the job.
      * Possible values include: 'low', 'normal', 'high'
      *
      * @param {object} parameters.cluster Specifies the Id of the cluster on which

@@ -1476,7 +1476,7 @@ export interface JobBasePropertiesConstraints {
  * Parameters supplied to the Create operation.
  *
  * @member {string} [schedulingPriority] Scheduling priority associated with
- * the job. Scheduling priority  associated with the job. Possible values
+ * the job. Scheduling priority associated with the job. Possible values
  * include: 'low', 'normal', 'high'. Default value: 'normal' .
  * @member {object} cluster Specifies the Id of the cluster on which this job
  * will run.
