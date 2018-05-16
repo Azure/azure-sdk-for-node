@@ -14,11 +14,11 @@ import * as models from '../models';
 
 /**
  * @class
- * GalleryOperations
+ * Galleries
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
  */
-export interface GalleryOperations {
+export interface Galleries {
 
 
     /**
@@ -470,11 +470,11 @@ export interface GalleryOperations {
 
 /**
  * @class
- * GalleryImageOperations
+ * GalleryImages
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
  */
-export interface GalleryImageOperations {
+export interface GalleryImages {
 
 
     /**
@@ -1091,11 +1091,11 @@ export interface GalleryImageOperations {
 
 /**
  * @class
- * GalleryImageVersionOperations
+ * GalleryImageVersions
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
  */
-export interface GalleryImageVersionOperations {
+export interface GalleryImageVersions {
 
 
     /**
