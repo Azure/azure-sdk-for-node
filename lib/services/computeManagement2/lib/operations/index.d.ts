@@ -237,7 +237,7 @@ export interface Galleries {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listGalleriesInResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
 
     /**
      * List galleries under a resource group.
@@ -271,9 +271,9 @@ export interface Galleries {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listGalleriesInResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
-    listGalleriesInResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.GalleryList>): void;
-    listGalleriesInResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.GalleryList>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
 
 
     /**
@@ -290,7 +290,7 @@ export interface Galleries {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listGalleriesInSubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
 
     /**
      * List galleries under a subscription.
@@ -322,9 +322,9 @@ export interface Galleries {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listGalleriesInSubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
-    listGalleriesInSubscription(callback: ServiceCallback<models.GalleryList>): void;
-    listGalleriesInSubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    listBySubscription(callback: ServiceCallback<models.GalleryList>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
 
 
     /**
@@ -803,7 +803,7 @@ export interface GalleryImages {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listGalleryImagesInGalleryWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
+    listGalleryImagesByGalleryWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
 
     /**
      * List gallery images under a gallery.
@@ -839,9 +839,9 @@ export interface GalleryImages {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listGalleryImagesInGallery(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageList>;
-    listGalleryImagesInGallery(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.GalleryImageList>): void;
-    listGalleryImagesInGallery(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageList>): void;
+    listGalleryImagesByGallery(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageList>;
+    listGalleryImagesByGallery(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.GalleryImageList>): void;
+    listGalleryImagesByGallery(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageList>): void;
 
 
     /**
@@ -1428,7 +1428,7 @@ export interface GalleryImageVersions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listGalleryImageVersionsInGalleryImageWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersionList>>;
+    listGalleryImageVersionsByGalleryImageWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersionList>>;
 
     /**
      * List gallery image versions under a gallery image.
@@ -1467,9 +1467,9 @@ export interface GalleryImageVersions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listGalleryImageVersionsInGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersionList>;
-    listGalleryImageVersionsInGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.GalleryImageVersionList>): void;
-    listGalleryImageVersionsInGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersionList>): void;
+    listGalleryImageVersionsByGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersionList>;
+    listGalleryImageVersionsByGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.GalleryImageVersionList>): void;
+    listGalleryImageVersionsByGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersionList>): void;
 
 
     /**
