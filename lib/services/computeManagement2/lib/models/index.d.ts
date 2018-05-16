@@ -352,7 +352,7 @@ export interface ReplicationStatus {
  * @member {array} [replicationStatus.summary] This is a summary of replication
  * status for each region.
  */
-export interface GalleryImageVersion {
+export interface GalleryImageVersion extends Resource {
   publishingProfile?: GalleryImageVersionPublishingProfile;
   readonly provisioningState?: string;
   storageProfile?: GalleryImageVersionStorageProfile;

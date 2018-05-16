@@ -1155,6 +1155,10 @@ export interface GalleryImageVersionOperations {
      * @param {array} [parameters.replicationStatus.summary] This is a summary of
      * replication status for each region.
      *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1224,6 +1228,10 @@ export interface GalleryImageVersionOperations {
      *
      * @param {array} [parameters.replicationStatus.summary] This is a summary of
      * replication status for each region.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1521,6 +1529,10 @@ export interface GalleryImageVersionOperations {
      * @param {array} [parameters.replicationStatus.summary] This is a summary of
      * replication status for each region.
      *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1590,6 +1602,10 @@ export interface GalleryImageVersionOperations {
      *
      * @param {array} [parameters.replicationStatus.summary] This is a summary of
      * replication status for each region.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
      *
