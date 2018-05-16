@@ -369,6 +369,60 @@ export interface EventGridEvent {
 
 /**
  * @class
+ * Initializes a new instance of the SubscriptionValidationEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.EventGrid.SubscriptionValidationEvent.
+ *
+ * @member {string} [validationCode] The validation code sent by Azure Event
+ * Grid to validate an event subscription. To complete the validation
+ * handshake, the subscriber must either respond with this validation code as
+ * part of the validation response, or perform a GET request on the
+ * validationUrl (available starting version 2018-05-01-preview).
+ * @member {string} [validationUrl] The validation URL sent by Azure Event Grid
+ * (available starting version 2018-05-01-preview). To complete the validation
+ * handshake, the subscriber must either respond with the validationCode as
+ * part of the validation response, or perform a GET request on the
+ * validationUrl (available starting version 2018-05-01-preview).
+ */
+export interface SubscriptionValidationEventData {
+  readonly validationCode?: string;
+  readonly validationUrl?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SubscriptionValidationResponse class.
+ * @constructor
+ * To complete an event subscription validation handshake, a subscriber can use
+ * either the validationCode or the validationUrl received in a
+ * SubscriptionValidationEvent. When the validationCode is used, the
+ * SubscriptionValidationResponse can be used to build the response.
+ *
+ * @member {string} [validationResponse] The validation response sent by the
+ * subscriber to Azure Event Grid to complete the validation of an event
+ * subscription.
+ */
+export interface SubscriptionValidationResponse {
+  validationResponse?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SubscriptionDeletedEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.EventGrid.SubscriptionDeletedEvent.
+ *
+ * @member {string} [eventSubscriptionId] The Azure resource ID of the deleted
+ * event subscription.
+ */
+export interface SubscriptionDeletedEventData {
+  readonly eventSubscriptionId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DeviceLifeCycleEventProperties class.
  * @constructor
  * Schema of the Data property of an EventGridEvent for a device life cycle
@@ -753,5 +807,65 @@ export interface ContainerRegistryEventActor {
 export interface ContainerRegistryEventSource {
   addr?: string;
   instanceID?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceBusActiveMessagesAvailableWithNoListenersEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners event.
+ *
+ * @member {string} [namespaceName] The namespace name of the
+ * Microsoft.ServiceBus resource.
+ * @member {string} [requestUri] The endpoint of the Microsoft.ServiceBus
+ * resource.
+ * @member {string} [entityType] The entity type of the Microsoft.ServiceBus
+ * resource. Could be one of 'queue' or 'subscriber'.
+ * @member {string} [queueName] The name of the Microsoft.ServiceBus queue. If
+ * the entity type is of type 'subscriber', then this value will be null.
+ * @member {string} [topicName] The name of the Microsoft.ServiceBus topic. If
+ * the entity type is of type 'queue', then this value will be null.
+ * @member {string} [subscriptionName] The name of the Microsoft.ServiceBus
+ * topic's subscription. If the entity type is of type 'queue', then this value
+ * will be null.
+ */
+export interface ServiceBusActiveMessagesAvailableWithNoListenersEventData {
+  namespaceName?: string;
+  requestUri?: string;
+  entityType?: string;
+  queueName?: string;
+  topicName?: string;
+  subscriptionName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceBusDeadletterMessagesAvailableWithNoListenersEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListenersEvent event.
+ *
+ * @member {string} [namespaceName] The namespace name of the
+ * Microsoft.ServiceBus resource.
+ * @member {string} [requestUri] The endpoint of the Microsoft.ServiceBus
+ * resource.
+ * @member {string} [entityType] The entity type of the Microsoft.ServiceBus
+ * resource. Could be one of 'queue' or 'subscriber'.
+ * @member {string} [queueName] The name of the Microsoft.ServiceBus queue. If
+ * the entity type is of type 'subscriber', then this value will be null.
+ * @member {string} [topicName] The name of the Microsoft.ServiceBus topic. If
+ * the entity type is of type 'queue', then this value will be null.
+ * @member {string} [subscriptionName] The name of the Microsoft.ServiceBus
+ * topic's subscription. If the entity type is of type 'queue', then this value
+ * will be null.
+ */
+export interface ServiceBusDeadletterMessagesAvailableWithNoListenersEventData {
+  namespaceName?: string;
+  requestUri?: string;
+  entityType?: string;
+  queueName?: string;
+  topicName?: string;
+  subscriptionName?: string;
 }
 
