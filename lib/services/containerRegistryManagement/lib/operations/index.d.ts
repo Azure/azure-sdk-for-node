@@ -927,18 +927,18 @@ export interface Registries {
      * object that represents quarantine policy for a container registry.
      *
      * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
-     * The value that indicates whether the policy is enabled. Possible values
-     * include: 'enabled', 'disabled'
+     * The value that indicates whether the policy is enabled or not. Possible
+     * values include: 'enabled', 'disabled'
      *
      * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
      * that represents content trust policy for a container registry.
      *
      * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
-     * of trust policy. Possible values include: 'None', 'Notary'
+     * of trust policy. Possible values include: 'Notary'
      *
      * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
-     * value that indicates whether the policy is enabled. Possible values include:
-     * 'enabled', 'disabled'
+     * value that indicates whether the policy is enabled or not. Possible values
+     * include: 'enabled', 'disabled'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -968,18 +968,18 @@ export interface Registries {
      * object that represents quarantine policy for a container registry.
      *
      * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
-     * The value that indicates whether the policy is enabled. Possible values
-     * include: 'enabled', 'disabled'
+     * The value that indicates whether the policy is enabled or not. Possible
+     * values include: 'enabled', 'disabled'
      *
      * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
      * that represents content trust policy for a container registry.
      *
      * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
-     * of trust policy. Possible values include: 'None', 'Notary'
+     * of trust policy. Possible values include: 'Notary'
      *
      * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
-     * value that indicates whether the policy is enabled. Possible values include:
-     * 'enabled', 'disabled'
+     * value that indicates whether the policy is enabled or not. Possible values
+     * include: 'enabled', 'disabled'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1420,18 +1420,18 @@ export interface Registries {
      * object that represents quarantine policy for a container registry.
      *
      * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
-     * The value that indicates whether the policy is enabled. Possible values
-     * include: 'enabled', 'disabled'
+     * The value that indicates whether the policy is enabled or not. Possible
+     * values include: 'enabled', 'disabled'
      *
      * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
      * that represents content trust policy for a container registry.
      *
      * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
-     * of trust policy. Possible values include: 'None', 'Notary'
+     * of trust policy. Possible values include: 'Notary'
      *
      * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
-     * value that indicates whether the policy is enabled. Possible values include:
-     * 'enabled', 'disabled'
+     * value that indicates whether the policy is enabled or not. Possible values
+     * include: 'enabled', 'disabled'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1461,18 +1461,18 @@ export interface Registries {
      * object that represents quarantine policy for a container registry.
      *
      * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
-     * The value that indicates whether the policy is enabled. Possible values
-     * include: 'enabled', 'disabled'
+     * The value that indicates whether the policy is enabled or not. Possible
+     * values include: 'enabled', 'disabled'
      *
      * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
      * that represents content trust policy for a container registry.
      *
      * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
-     * of trust policy. Possible values include: 'None', 'Notary'
+     * of trust policy. Possible values include: 'Notary'
      *
      * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
-     * value that indicates whether the policy is enabled. Possible values include:
-     * 'enabled', 'disabled'
+     * value that indicates whether the policy is enabled or not. Possible values
+     * include: 'enabled', 'disabled'
      *
      * @param {object} [options] Optional Parameters.
      *

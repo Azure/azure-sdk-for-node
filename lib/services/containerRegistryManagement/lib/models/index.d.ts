@@ -399,7 +399,7 @@ export interface RegistryUsageListResult {
  * An object that represents quarantine policy for a container registry.
  *
  * @member {string} [status] The value that indicates whether the policy is
- * enabled. Possible values include: 'enabled', 'disabled'
+ * enabled or not. Possible values include: 'enabled', 'disabled'
  */
 export interface QuarantinePolicy {
   status?: string;
@@ -412,9 +412,9 @@ export interface QuarantinePolicy {
  * An object that represents content trust policy for a container registry.
  *
  * @member {string} [type] The type of trust policy. Possible values include:
- * 'None', 'Notary'
+ * 'Notary'
  * @member {string} [status] The value that indicates whether the policy is
- * enabled. Possible values include: 'enabled', 'disabled'
+ * enabled or not. Possible values include: 'enabled', 'disabled'
  */
 export interface TrustPolicy {
   type?: string;
@@ -430,13 +430,13 @@ export interface TrustPolicy {
  * @member {object} [quarantinePolicy] An object that represents quarantine
  * policy for a container registry.
  * @member {string} [quarantinePolicy.status] The value that indicates whether
- * the policy is enabled. Possible values include: 'enabled', 'disabled'
+ * the policy is enabled or not. Possible values include: 'enabled', 'disabled'
  * @member {object} [trustPolicy] An object that represents content trust
  * policy for a container registry.
  * @member {string} [trustPolicy.type] The type of trust policy. Possible
- * values include: 'None', 'Notary'
+ * values include: 'Notary'
  * @member {string} [trustPolicy.status] The value that indicates whether the
- * policy is enabled. Possible values include: 'enabled', 'disabled'
+ * policy is enabled or not. Possible values include: 'enabled', 'disabled'
  */
 export interface RegistryPolicies {
   quarantinePolicy?: QuarantinePolicy;
