@@ -83,6 +83,7 @@ export default class AutomationClient extends AzureServiceClient {
   softwareUpdateConfigurationMachineRuns: operations.SoftwareUpdateConfigurationMachineRuns;
   sourceControlOperations: operations.SourceControlOperations;
   sourceControlSyncJobOperations: operations.SourceControlSyncJobOperations;
+  sourceControlSyncJobStreams: operations.SourceControlSyncJobStreams;
   jobOperations: operations.JobOperations;
   jobStreamOperations: operations.JobStreamOperations;
   agentRegistrationInformation: operations.AgentRegistrationInformation;
