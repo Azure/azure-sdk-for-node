@@ -493,12 +493,19 @@ export interface VirtualMachineCaptureParameters {
  * @class
  * Initializes a new instance of the VirtualMachineCaptureResult class.
  * @constructor
- * Resource Id.
+ * Output of virtual machine capture operation.
  *
- * @member {object} [output] Operation output data (raw JSON)
+ * @member {string} [schema] the schema of the captured virtual machine
+ * @member {string} [contentVersion] the version of the content
+ * @member {object} [parameters] parameters of the captured virtual machine
+ * @member {array} [resources] a list of resource items of the captured virtual
+ * machine
  */
 export interface VirtualMachineCaptureResult extends SubResource {
-  output?: any;
+  readonly schema?: string;
+  readonly contentVersion?: string;
+  readonly parameters?: any;
+  readonly resources?: any[];
 }
 
 /**
@@ -756,13 +763,13 @@ export interface ManagedDiskParameters extends SubResource {
  * @member {boolean} [writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
  * @member {string} createOption Specifies how the virtual machine should be
- * created.<br><br> Possible values are:<br><br> **Attach**  This value is used
- * when you are using a specialized disk to create the virtual machine.<br><br>
- * **FromImage**  This value is used when you are using an image to create the
- * virtual machine. If you are using a platform image, you also use the
- * imageReference element described above. If you are using a marketplace
- * image, you  also use the plan element previously described. Possible values
- * include: 'FromImage', 'Empty', 'Attach'
+ * created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value
+ * is used when you are using a specialized disk to create the virtual
+ * machine.<br><br> **FromImage** \u2013 This value is used when you are using
+ * an image to create the virtual machine. If you are using a platform image,
+ * you also use the imageReference element described above. If you are using a
+ * marketplace image, you  also use the plan element previously described.
+ * Possible values include: 'FromImage', 'Empty', 'Attach'
  * @member {number} [diskSizeGB] Specifies the size of an empty data disk in
  * gigabytes. This element can be used to overwrite the name of the disk in a
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
@@ -808,13 +815,13 @@ export interface OSDisk {
  * @member {boolean} [writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
  * @member {string} createOption Specifies how the virtual machine should be
- * created.<br><br> Possible values are:<br><br> **Attach**  This value is used
- * when you are using a specialized disk to create the virtual machine.<br><br>
- * **FromImage**  This value is used when you are using an image to create the
- * virtual machine. If you are using a platform image, you also use the
- * imageReference element described above. If you are using a marketplace
- * image, you  also use the plan element previously described. Possible values
- * include: 'FromImage', 'Empty', 'Attach'
+ * created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value
+ * is used when you are using a specialized disk to create the virtual
+ * machine.<br><br> **FromImage** \u2013 This value is used when you are using
+ * an image to create the virtual machine. If you are using a platform image,
+ * you also use the imageReference element described above. If you are using a
+ * marketplace image, you  also use the plan element previously described.
+ * Possible values include: 'FromImage', 'Empty', 'Attach'
  * @member {number} [diskSizeGB] Specifies the size of an empty data disk in
  * gigabytes. This element can be used to overwrite the name of the disk in a
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
@@ -901,13 +908,13 @@ export interface DataDisk {
  * @member {boolean} [osDisk.writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
  * @member {string} [osDisk.createOption] Specifies how the virtual machine
- * should be created.<br><br> Possible values are:<br><br> **Attach**  This
- * value is used when you are using a specialized disk to create the virtual
- * machine.<br><br> **FromImage**  This value is used when you are using an
- * image to create the virtual machine. If you are using a platform image, you
- * also use the imageReference element described above. If you are using a
- * marketplace image, you  also use the plan element previously described.
- * Possible values include: 'FromImage', 'Empty', 'Attach'
+ * should be created.<br><br> Possible values are:<br><br> **Attach** \u2013
+ * This value is used when you are using a specialized disk to create the
+ * virtual machine.<br><br> **FromImage** \u2013 This value is used when you
+ * are using an image to create the virtual machine. If you are using a
+ * platform image, you also use the imageReference element described above. If
+ * you are using a marketplace image, you  also use the plan element previously
+ * described. Possible values include: 'FromImage', 'Empty', 'Attach'
  * @member {number} [osDisk.diskSizeGB] Specifies the size of an empty data
  * disk in gigabytes. This element can be used to overwrite the name of the
  * disk in a virtual machine image. <br><br> This value cannot be larger than
@@ -1634,12 +1641,13 @@ export interface VirtualMachineInstanceView {
  * whether writeAccelerator should be enabled or disabled on the disk.
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
- * **Attach**  This value is used when you are using a specialized disk to
- * create the virtual machine.<br><br> **FromImage**  This value is used when
- * you are using an image to create the virtual machine. If you are using a
- * platform image, you also use the imageReference element described above. If
- * you are using a marketplace image, you  also use the plan element previously
- * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+ * **Attach** \u2013 This value is used when you are using a specialized disk
+ * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+ * used when you are using an image to create the virtual machine. If you are
+ * using a platform image, you also use the imageReference element described
+ * above. If you are using a marketplace image, you  also use the plan element
+ * previously described. Possible values include: 'FromImage', 'Empty',
+ * 'Attach'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of an
  * empty data disk in gigabytes. This element can be used to overwrite the name
  * of the disk in a virtual machine image. <br><br> This value cannot be larger
@@ -2020,12 +2028,13 @@ export interface VirtualMachine extends Resource {
  * whether writeAccelerator should be enabled or disabled on the disk.
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
- * **Attach**  This value is used when you are using a specialized disk to
- * create the virtual machine.<br><br> **FromImage**  This value is used when
- * you are using an image to create the virtual machine. If you are using a
- * platform image, you also use the imageReference element described above. If
- * you are using a marketplace image, you  also use the plan element previously
- * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+ * **Attach** \u2013 This value is used when you are using a specialized disk
+ * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+ * used when you are using an image to create the virtual machine. If you are
+ * using a platform image, you also use the imageReference element described
+ * above. If you are using a marketplace image, you  also use the plan element
+ * previously described. Possible values include: 'FromImage', 'Empty',
+ * 'Attach'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of an
  * empty data disk in gigabytes. This element can be used to overwrite the name
  * of the disk in a virtual machine image. <br><br> This value cannot be larger
@@ -2768,9 +2777,9 @@ export interface VirtualMachineScaleSetManagedDiskParameters {
  * writeAccelerator should be enabled or disabled on the disk.
  * @member {string} createOption Specifies how the virtual machines in the
  * scale set should be created.<br><br> The only allowed value is:
- * **FromImage**  This value is used when you are using an image to create the
- * virtual machine. If you are using a platform image, you also use the
- * imageReference element described above. If you are using a marketplace
+ * **FromImage** \u2013 This value is used when you are using an image to
+ * create the virtual machine. If you are using a platform image, you also use
+ * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
  * @member {string} [osType] This property allows you to specify the type of
@@ -2901,9 +2910,9 @@ export interface VirtualMachineScaleSetDataDisk {
  * writeAccelerator should be enabled or disabled on the disk.
  * @member {string} [osDisk.createOption] Specifies how the virtual machines in
  * the scale set should be created.<br><br> The only allowed value is:
- * **FromImage**  This value is used when you are using an image to create the
- * virtual machine. If you are using a platform image, you also use the
- * imageReference element described above. If you are using a marketplace
+ * **FromImage** \u2013 This value is used when you are using an image to
+ * create the virtual machine. If you are using a platform image, you also use
+ * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
  * @member {string} [osDisk.osType] This property allows you to specify the
@@ -3430,9 +3439,9 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * whether writeAccelerator should be enabled or disabled on the disk.
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machines in the scale set should be created.<br><br> The only
- * allowed value is: **FromImage**  This value is used when you are using an
- * image to create the virtual machine. If you are using a platform image, you
- * also use the imageReference element described above. If you are using a
+ * allowed value is: **FromImage** \u2013 This value is used when you are using
+ * an image to create the virtual machine. If you are using a platform image,
+ * you also use the imageReference element described above. If you are using a
  * marketplace image, you  also use the plan element previously described.
  * Possible values include: 'FromImage', 'Empty', 'Attach'
  * @member {string} [storageProfile.osDisk.osType] This property allows you to
@@ -3813,12 +3822,12 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * disk.
  * @member {string} [virtualMachineProfile.storageProfile.osDisk.createOption]
  * Specifies how the virtual machines in the scale set should be
- * created.<br><br> The only allowed value is: **FromImage**  This value is
- * used when you are using an image to create the virtual machine. If you are
- * using a platform image, you also use the imageReference element described
- * above. If you are using a marketplace image, you  also use the plan element
- * previously described. Possible values include: 'FromImage', 'Empty',
- * 'Attach'
+ * created.<br><br> The only allowed value is: **FromImage** \u2013 This value
+ * is used when you are using an image to create the virtual machine. If you
+ * are using a platform image, you also use the imageReference element
+ * described above. If you are using a marketplace image, you  also use the
+ * plan element previously described. Possible values include: 'FromImage',
+ * 'Empty', 'Attach'
  * @member {string} [virtualMachineProfile.storageProfile.osDisk.osType] This
  * property allows you to specify the type of the OS that is included in the
  * disk if creating a VM from user-image or a specialized VHD. <br><br>
@@ -4771,12 +4780,13 @@ export interface UpgradeOperationHistoricalStatusInfo {
  * whether writeAccelerator should be enabled or disabled on the disk.
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
- * **Attach**  This value is used when you are using a specialized disk to
- * create the virtual machine.<br><br> **FromImage**  This value is used when
- * you are using an image to create the virtual machine. If you are using a
- * platform image, you also use the imageReference element described above. If
- * you are using a marketplace image, you  also use the plan element previously
- * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+ * **Attach** \u2013 This value is used when you are using a specialized disk
+ * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+ * used when you are using an image to create the virtual machine. If you are
+ * using a platform image, you also use the imageReference element described
+ * above. If you are using a marketplace image, you  also use the plan element
+ * previously described. Possible values include: 'FromImage', 'Empty',
+ * 'Attach'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of an
  * empty data disk in gigabytes. This element can be used to overwrite the name
  * of the disk in a virtual machine image. <br><br> This value cannot be larger
@@ -5120,18 +5130,6 @@ export interface RollingUpgradeStatusInfo extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ComputeLongRunningOperationProperties class.
- * @constructor
- * Compute-specific operation properties, including output
- *
- * @member {object} [output] Operation output data (raw JSON)
- */
-export interface ComputeLongRunningOperationProperties {
-  output?: any;
-}
-
-/**
- * @class
  * Initializes a new instance of the RecoveryWalkResponse class.
  * @constructor
  * Response after calling a manual recovery walk
@@ -5144,34 +5142,6 @@ export interface ComputeLongRunningOperationProperties {
 export interface RecoveryWalkResponse {
   readonly walkPerformed?: boolean;
   readonly nextPlatformUpdateDomain?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationStatusResponse class.
- * @constructor
- * Operation status response
- *
- * @member {string} [name] Operation ID
- * @member {string} [status] Operation status
- * @member {date} [startTime] Start time of the operation
- * @member {date} [endTime] End time of the operation
- * @member {object} [error] Api error
- * @member {array} [error.details] The Api error details
- * @member {object} [error.innererror] The Api inner error
- * @member {string} [error.innererror.exceptiontype] The exception type.
- * @member {string} [error.innererror.errordetail] The internal error message
- * or exception dump.
- * @member {string} [error.code] The error code.
- * @member {string} [error.target] The target of the particular error.
- * @member {string} [error.message] The error message.
- */
-export interface OperationStatusResponse {
-  readonly name?: string;
-  readonly status?: string;
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly error?: ApiError;
 }
 
 /**
@@ -5244,7 +5214,7 @@ export interface LogAnalyticsOutput {
  * @member {object} [properties] LogAnalyticsOutput
  * @member {string} [properties.output] Output file Uri path to blob container.
  */
-export interface LogAnalyticsOperationResult extends OperationStatusResponse {
+export interface LogAnalyticsOperationResult {
   readonly properties?: LogAnalyticsOutput;
 }
 
@@ -5342,7 +5312,7 @@ export interface RunCommandDocument extends RunCommandDocumentBase {
  *
  * @member {object} [output] Operation output data (raw JSON)
  */
-export interface RunCommandResult extends OperationStatusResponse {
+export interface RunCommandResult {
   output?: any;
 }
 
