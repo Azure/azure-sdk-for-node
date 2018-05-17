@@ -9,9 +9,10 @@
  */
 
 import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'ms-rest';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class CustomSearchAPIClient extends ServiceClient {
+export default class CustomSearchAPIClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the CustomSearchAPIClient class.
@@ -39,4 +40,4 @@ declare class CustomSearchAPIClient extends ServiceClient {
   customInstance: operations.CustomInstance;
 }
 
-export = CustomSearchAPIClient;
+export { CustomSearchAPIClient, models as CustomSearchAPIModels };
