@@ -91,12 +91,6 @@ export default class SqlManagementClient extends AzureServiceClient {
   virtualNetworkRules: operations.VirtualNetworkRules;
   databaseVulnerabilityAssessmentRuleBaselines: operations.DatabaseVulnerabilityAssessmentRuleBaselines;
   databaseVulnerabilityAssessments: operations.DatabaseVulnerabilityAssessments;
-  longTermRetentionBackups: operations.LongTermRetentionBackups;
-  backupLongTermRetentionPolicies: operations.BackupLongTermRetentionPolicies;
-  managedDatabases: operations.ManagedDatabases;
-  serverAutomaticTuningOperations: operations.ServerAutomaticTuningOperations;
-  serverDnsAliases: operations.ServerDnsAliases;
-  restorePoints: operations.RestorePoints;
   jobAgents: operations.JobAgents;
   jobCredentials: operations.JobCredentials;
   jobExecutions: operations.JobExecutions;
@@ -106,6 +100,12 @@ export default class SqlManagementClient extends AzureServiceClient {
   jobTargetExecutions: operations.JobTargetExecutions;
   jobTargetGroups: operations.JobTargetGroups;
   jobVersions: operations.JobVersions;
+  longTermRetentionBackups: operations.LongTermRetentionBackups;
+  backupLongTermRetentionPolicies: operations.BackupLongTermRetentionPolicies;
+  managedDatabases: operations.ManagedDatabases;
+  serverAutomaticTuningOperations: operations.ServerAutomaticTuningOperations;
+  serverDnsAliases: operations.ServerDnsAliases;
+  restorePoints: operations.RestorePoints;
   databaseOperations: operations.DatabaseOperations;
   elasticPoolOperations: operations.ElasticPoolOperations;
   capabilities: operations.Capabilities;

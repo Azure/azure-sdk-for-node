@@ -1950,274 +1950,6 @@ export interface DatabaseVulnerabilityAssessment extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the LongTermRetentionBackup class.
- * @constructor
- * A long term retention backup.
- *
- * @member {string} [serverName] The server name that the backup database
- * belong to.
- * @member {date} [serverCreateTime] The create time of the server.
- * @member {string} [databaseName] The name of the database the backup belong
- * to
- * @member {date} [databaseDeletionTime] The delete time of the database
- * @member {date} [backupTime] The time the backup was taken
- * @member {date} [backupExpirationTime] The time the long term retention
- * backup will expire.
- */
-export interface LongTermRetentionBackup extends ProxyResource {
-  readonly serverName?: string;
-  readonly serverCreateTime?: Date;
-  readonly databaseName?: string;
-  readonly databaseDeletionTime?: Date;
-  readonly backupTime?: Date;
-  readonly backupExpirationTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the BackupLongTermRetentionPolicy class.
- * @constructor
- * A long term retention policy.
- *
- * @member {string} [weeklyRetention] The weekly retention policy for an LTR
- * backup in an ISO 8601 format.
- * @member {string} [monthlyRetention] The montly retention policy for an LTR
- * backup in an ISO 8601 format.
- * @member {string} [yearlyRetention] The yearly retention policy for an LTR
- * backup in an ISO 8601 format.
- * @member {number} [weekOfYear] The week of year to take the yearly backup in
- * an ISO 8601 format.
- */
-export interface BackupLongTermRetentionPolicy extends ProxyResource {
-  weeklyRetention?: string;
-  monthlyRetention?: string;
-  yearlyRetention?: string;
-  weekOfYear?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the CompleteDatabaseRestoreDefinition class.
- * @constructor
- * Contains the information necessary to perform a complete database restore
- * operation.
- *
- * @member {string} lastBackupName The last backup name to apply
- */
-export interface CompleteDatabaseRestoreDefinition {
-  lastBackupName: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagedDatabase class.
- * @constructor
- * A managed database resource.
- *
- * @member {string} [collation] Collation of the managed database.
- * @member {string} [status] Status for the database. Possible values include:
- * 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
- * @member {date} [creationDate] Creation date of the database.
- * @member {date} [earliestRestorePoint] Earliest restore point in time for
- * point in time restore.
- * @member {date} [restorePointInTime] Conditional. If createMode is
- * PointInTimeRestore, this value is required. Specifies the point in time
- * (ISO8601 format) of the source database that will be restored to create the
- * new database.
- * @member {string} [defaultSecondaryLocation] Geo paired region.
- * @member {string} [catalogCollation] Collation of the metadata catalog.
- * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
- * @member {string} [createMode] Managed database create mode.
- * PointInTimeRestore: Create a database by restoring a point in time backup of
- * an existing database. SourceDatabaseName, SourceManagedInstanceName and
- * PointInTime must be specified. RestoreExternalBackup: Create a database by
- * restoring from external backup files. Collation, StorageContainerUri and
- * StorageContainerSasToken must be specified. Possible values include:
- * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
- * @member {string} [storageContainerUri] Conditional. If createMode is
- * RestoreExternalBackup, this value is required. Specifies the uri of the
- * storage container where backups for this restore are stored.
- * @member {string} [sourceDatabaseId] The resource identifier of the source
- * database associated with create operation of this database.
- * @member {string} [storageContainerSasToken] Conditional. If createMode is
- * RestoreExternalBackup, this value is required. Specifies the storage
- * container sas token.
- * @member {string} [failoverGroupId] Instance Failover Group resource
- * identifier that this managed database belongs to.
- */
-export interface ManagedDatabase extends TrackedResource {
-  collation?: string;
-  readonly status?: string;
-  readonly creationDate?: Date;
-  readonly earliestRestorePoint?: Date;
-  restorePointInTime?: Date;
-  readonly defaultSecondaryLocation?: string;
-  catalogCollation?: string;
-  createMode?: string;
-  storageContainerUri?: string;
-  sourceDatabaseId?: string;
-  storageContainerSasToken?: string;
-  readonly failoverGroupId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagedDatabaseUpdate class.
- * @constructor
- * An managed database update.
- *
- * @member {string} [collation] Collation of the managed database.
- * @member {string} [status] Status for the database. Possible values include:
- * 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
- * @member {date} [creationDate] Creation date of the database.
- * @member {date} [earliestRestorePoint] Earliest restore point in time for
- * point in time restore.
- * @member {date} [restorePointInTime] Conditional. If createMode is
- * PointInTimeRestore, this value is required. Specifies the point in time
- * (ISO8601 format) of the source database that will be restored to create the
- * new database.
- * @member {string} [defaultSecondaryLocation] Geo paired region.
- * @member {string} [catalogCollation] Collation of the metadata catalog.
- * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
- * @member {string} [createMode] Managed database create mode.
- * PointInTimeRestore: Create a database by restoring a point in time backup of
- * an existing database. SourceDatabaseName, SourceManagedInstanceName and
- * PointInTime must be specified. RestoreExternalBackup: Create a database by
- * restoring from external backup files. Collation, StorageContainerUri and
- * StorageContainerSasToken must be specified. Possible values include:
- * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
- * @member {string} [storageContainerUri] Conditional. If createMode is
- * RestoreExternalBackup, this value is required. Specifies the uri of the
- * storage container where backups for this restore are stored.
- * @member {string} [sourceDatabaseId] The resource identifier of the source
- * database associated with create operation of this database.
- * @member {string} [storageContainerSasToken] Conditional. If createMode is
- * RestoreExternalBackup, this value is required. Specifies the storage
- * container sas token.
- * @member {string} [failoverGroupId] Instance Failover Group resource
- * identifier that this managed database belongs to.
- * @member {object} [tags] Resource tags.
- */
-export interface ManagedDatabaseUpdate {
-  collation?: string;
-  readonly status?: string;
-  readonly creationDate?: Date;
-  readonly earliestRestorePoint?: Date;
-  restorePointInTime?: Date;
-  readonly defaultSecondaryLocation?: string;
-  catalogCollation?: string;
-  createMode?: string;
-  storageContainerUri?: string;
-  sourceDatabaseId?: string;
-  storageContainerSasToken?: string;
-  readonly failoverGroupId?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the AutomaticTuningServerOptions class.
- * @constructor
- * Automatic tuning properties for individual advisors.
- *
- * @member {string} [desiredState] Automatic tuning option desired state.
- * Possible values include: 'Off', 'On', 'Default'
- * @member {string} [actualState] Automatic tuning option actual state.
- * Possible values include: 'Off', 'On'
- * @member {number} [reasonCode] Reason code if desired and actual state are
- * different.
- * @member {string} [reasonDesc] Reason description if desired and actual state
- * are different. Possible values include: 'Default', 'Disabled',
- * 'AutoConfigured'
- */
-export interface AutomaticTuningServerOptions {
-  desiredState?: string;
-  readonly actualState?: string;
-  readonly reasonCode?: number;
-  readonly reasonDesc?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServerAutomaticTuning class.
- * @constructor
- * Server-level Automatic Tuning.
- *
- * @member {string} [desiredState] Automatic tuning desired state. Possible
- * values include: 'Custom', 'Auto', 'Unspecified'
- * @member {string} [actualState] Automatic tuning actual state. Possible
- * values include: 'Custom', 'Auto', 'Unspecified'
- * @member {object} [options] Automatic tuning options definition.
- */
-export interface ServerAutomaticTuning extends ProxyResource {
-  desiredState?: string;
-  readonly actualState?: string;
-  options?: { [propertyName: string]: AutomaticTuningServerOptions };
-}
-
-/**
- * @class
- * Initializes a new instance of the ServerDnsAlias class.
- * @constructor
- * A server DNS alias.
- *
- * @member {string} [azureDnsRecord] The fully qualified DNS record for alias
- */
-export interface ServerDnsAlias extends ProxyResource {
-  readonly azureDnsRecord?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServerDnsAliasAcquisition class.
- * @constructor
- * A server DNS alias acquisition request.
- *
- * @member {string} [oldServerDnsAliasId] The id of the server alias that will
- * be acquired to point to this server instead.
- */
-export interface ServerDnsAliasAcquisition {
-  oldServerDnsAliasId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RestorePoint class.
- * @constructor
- * Database restore points.
- *
- * @member {string} [location] Resource location.
- * @member {string} [restorePointType] The type of restore point. Possible
- * values include: 'CONTINUOUS', 'DISCRETE'
- * @member {date} [earliestRestoreDate] The earliest time to which this
- * database can be restored
- * @member {date} [restorePointCreationDate] The time the backup was taken
- * @member {string} [restorePointLabel] The label of restore point for backup
- * request by user
- */
-export interface RestorePoint extends ProxyResource {
-  readonly location?: string;
-  readonly restorePointType?: string;
-  readonly earliestRestoreDate?: Date;
-  readonly restorePointCreationDate?: Date;
-  readonly restorePointLabel?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CreateDatabaseRestorePointDefinition class.
- * @constructor
- * Contains the information necessary to perform a create database restore
- * point operation.
- *
- * @member {string} restorePointLabel The restore point label to apply
- */
-export interface CreateDatabaseRestorePointDefinition {
-  restorePointLabel: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the JobAgent class.
  * @constructor
  * An Azure SQL job agent.
@@ -2558,6 +2290,274 @@ export interface JobTargetGroup extends ProxyResource {
  *
  */
 export interface JobVersion extends ProxyResource {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LongTermRetentionBackup class.
+ * @constructor
+ * A long term retention backup.
+ *
+ * @member {string} [serverName] The server name that the backup database
+ * belong to.
+ * @member {date} [serverCreateTime] The create time of the server.
+ * @member {string} [databaseName] The name of the database the backup belong
+ * to
+ * @member {date} [databaseDeletionTime] The delete time of the database
+ * @member {date} [backupTime] The time the backup was taken
+ * @member {date} [backupExpirationTime] The time the long term retention
+ * backup will expire.
+ */
+export interface LongTermRetentionBackup extends ProxyResource {
+  readonly serverName?: string;
+  readonly serverCreateTime?: Date;
+  readonly databaseName?: string;
+  readonly databaseDeletionTime?: Date;
+  readonly backupTime?: Date;
+  readonly backupExpirationTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BackupLongTermRetentionPolicy class.
+ * @constructor
+ * A long term retention policy.
+ *
+ * @member {string} [weeklyRetention] The weekly retention policy for an LTR
+ * backup in an ISO 8601 format.
+ * @member {string} [monthlyRetention] The montly retention policy for an LTR
+ * backup in an ISO 8601 format.
+ * @member {string} [yearlyRetention] The yearly retention policy for an LTR
+ * backup in an ISO 8601 format.
+ * @member {number} [weekOfYear] The week of year to take the yearly backup in
+ * an ISO 8601 format.
+ */
+export interface BackupLongTermRetentionPolicy extends ProxyResource {
+  weeklyRetention?: string;
+  monthlyRetention?: string;
+  yearlyRetention?: string;
+  weekOfYear?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CompleteDatabaseRestoreDefinition class.
+ * @constructor
+ * Contains the information necessary to perform a complete database restore
+ * operation.
+ *
+ * @member {string} lastBackupName The last backup name to apply
+ */
+export interface CompleteDatabaseRestoreDefinition {
+  lastBackupName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedDatabase class.
+ * @constructor
+ * A managed database resource.
+ *
+ * @member {string} [collation] Collation of the managed database.
+ * @member {string} [status] Status for the database. Possible values include:
+ * 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
+ * @member {date} [creationDate] Creation date of the database.
+ * @member {date} [earliestRestorePoint] Earliest restore point in time for
+ * point in time restore.
+ * @member {date} [restorePointInTime] Conditional. If createMode is
+ * PointInTimeRestore, this value is required. Specifies the point in time
+ * (ISO8601 format) of the source database that will be restored to create the
+ * new database.
+ * @member {string} [defaultSecondaryLocation] Geo paired region.
+ * @member {string} [catalogCollation] Collation of the metadata catalog.
+ * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
+ * @member {string} [createMode] Managed database create mode.
+ * PointInTimeRestore: Create a database by restoring a point in time backup of
+ * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+ * PointInTime must be specified. RestoreExternalBackup: Create a database by
+ * restoring from external backup files. Collation, StorageContainerUri and
+ * StorageContainerSasToken must be specified. Possible values include:
+ * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+ * @member {string} [storageContainerUri] Conditional. If createMode is
+ * RestoreExternalBackup, this value is required. Specifies the uri of the
+ * storage container where backups for this restore are stored.
+ * @member {string} [sourceDatabaseId] The resource identifier of the source
+ * database associated with create operation of this database.
+ * @member {string} [storageContainerSasToken] Conditional. If createMode is
+ * RestoreExternalBackup, this value is required. Specifies the storage
+ * container sas token.
+ * @member {string} [failoverGroupId] Instance Failover Group resource
+ * identifier that this managed database belongs to.
+ */
+export interface ManagedDatabase extends TrackedResource {
+  collation?: string;
+  readonly status?: string;
+  readonly creationDate?: Date;
+  readonly earliestRestorePoint?: Date;
+  restorePointInTime?: Date;
+  readonly defaultSecondaryLocation?: string;
+  catalogCollation?: string;
+  createMode?: string;
+  storageContainerUri?: string;
+  sourceDatabaseId?: string;
+  storageContainerSasToken?: string;
+  readonly failoverGroupId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedDatabaseUpdate class.
+ * @constructor
+ * An managed database update.
+ *
+ * @member {string} [collation] Collation of the managed database.
+ * @member {string} [status] Status for the database. Possible values include:
+ * 'Online', 'Offline', 'Shutdown', 'Creating', 'Inaccessible'
+ * @member {date} [creationDate] Creation date of the database.
+ * @member {date} [earliestRestorePoint] Earliest restore point in time for
+ * point in time restore.
+ * @member {date} [restorePointInTime] Conditional. If createMode is
+ * PointInTimeRestore, this value is required. Specifies the point in time
+ * (ISO8601 format) of the source database that will be restored to create the
+ * new database.
+ * @member {string} [defaultSecondaryLocation] Geo paired region.
+ * @member {string} [catalogCollation] Collation of the metadata catalog.
+ * Possible values include: 'DATABASE_DEFAULT', 'SQL_Latin1_General_CP1_CI_AS'
+ * @member {string} [createMode] Managed database create mode.
+ * PointInTimeRestore: Create a database by restoring a point in time backup of
+ * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+ * PointInTime must be specified. RestoreExternalBackup: Create a database by
+ * restoring from external backup files. Collation, StorageContainerUri and
+ * StorageContainerSasToken must be specified. Possible values include:
+ * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+ * @member {string} [storageContainerUri] Conditional. If createMode is
+ * RestoreExternalBackup, this value is required. Specifies the uri of the
+ * storage container where backups for this restore are stored.
+ * @member {string} [sourceDatabaseId] The resource identifier of the source
+ * database associated with create operation of this database.
+ * @member {string} [storageContainerSasToken] Conditional. If createMode is
+ * RestoreExternalBackup, this value is required. Specifies the storage
+ * container sas token.
+ * @member {string} [failoverGroupId] Instance Failover Group resource
+ * identifier that this managed database belongs to.
+ * @member {object} [tags] Resource tags.
+ */
+export interface ManagedDatabaseUpdate {
+  collation?: string;
+  readonly status?: string;
+  readonly creationDate?: Date;
+  readonly earliestRestorePoint?: Date;
+  restorePointInTime?: Date;
+  readonly defaultSecondaryLocation?: string;
+  catalogCollation?: string;
+  createMode?: string;
+  storageContainerUri?: string;
+  sourceDatabaseId?: string;
+  storageContainerSasToken?: string;
+  readonly failoverGroupId?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AutomaticTuningServerOptions class.
+ * @constructor
+ * Automatic tuning properties for individual advisors.
+ *
+ * @member {string} [desiredState] Automatic tuning option desired state.
+ * Possible values include: 'Off', 'On', 'Default'
+ * @member {string} [actualState] Automatic tuning option actual state.
+ * Possible values include: 'Off', 'On'
+ * @member {number} [reasonCode] Reason code if desired and actual state are
+ * different.
+ * @member {string} [reasonDesc] Reason description if desired and actual state
+ * are different. Possible values include: 'Default', 'Disabled',
+ * 'AutoConfigured'
+ */
+export interface AutomaticTuningServerOptions {
+  desiredState?: string;
+  readonly actualState?: string;
+  readonly reasonCode?: number;
+  readonly reasonDesc?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerAutomaticTuning class.
+ * @constructor
+ * Server-level Automatic Tuning.
+ *
+ * @member {string} [desiredState] Automatic tuning desired state. Possible
+ * values include: 'Custom', 'Auto', 'Unspecified'
+ * @member {string} [actualState] Automatic tuning actual state. Possible
+ * values include: 'Custom', 'Auto', 'Unspecified'
+ * @member {object} [options] Automatic tuning options definition.
+ */
+export interface ServerAutomaticTuning extends ProxyResource {
+  desiredState?: string;
+  readonly actualState?: string;
+  options?: { [propertyName: string]: AutomaticTuningServerOptions };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerDnsAlias class.
+ * @constructor
+ * A server DNS alias.
+ *
+ * @member {string} [azureDnsRecord] The fully qualified DNS record for alias
+ */
+export interface ServerDnsAlias extends ProxyResource {
+  readonly azureDnsRecord?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerDnsAliasAcquisition class.
+ * @constructor
+ * A server DNS alias acquisition request.
+ *
+ * @member {string} [oldServerDnsAliasId] The id of the server alias that will
+ * be acquired to point to this server instead.
+ */
+export interface ServerDnsAliasAcquisition {
+  oldServerDnsAliasId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RestorePoint class.
+ * @constructor
+ * Database restore points.
+ *
+ * @member {string} [location] Resource location.
+ * @member {string} [restorePointType] The type of restore point. Possible
+ * values include: 'CONTINUOUS', 'DISCRETE'
+ * @member {date} [earliestRestoreDate] The earliest time to which this
+ * database can be restored
+ * @member {date} [restorePointCreationDate] The time the backup was taken
+ * @member {string} [restorePointLabel] The label of restore point for backup
+ * request by user
+ */
+export interface RestorePoint extends ProxyResource {
+  readonly location?: string;
+  readonly restorePointType?: string;
+  readonly earliestRestoreDate?: Date;
+  readonly restorePointCreationDate?: Date;
+  readonly restorePointLabel?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreateDatabaseRestorePointDefinition class.
+ * @constructor
+ * Contains the information necessary to perform a create database restore
+ * point operation.
+ *
+ * @member {string} restorePointLabel The restore point label to apply
+ */
+export interface CreateDatabaseRestorePointDefinition {
+  restorePointLabel: string;
 }
 
 /**
@@ -4052,54 +4052,6 @@ export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> 
 
 /**
  * @class
- * Initializes a new instance of the LongTermRetentionBackupListResult class.
- * @constructor
- * A list of long term retention bacukps.
- *
- * @member {string} [nextLink] Link to retrieve next page of results.
- */
-export interface LongTermRetentionBackupListResult extends Array<LongTermRetentionBackup> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagedDatabaseListResult class.
- * @constructor
- * A list of managed databases.
- *
- * @member {string} [nextLink] Link to retrieve next page of results.
- */
-export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServerDnsAliasListResult class.
- * @constructor
- * A list of server DNS aliases.
- *
- * @member {string} [nextLink] Link to retrieve next page of results.
- */
-export interface ServerDnsAliasListResult extends Array<ServerDnsAlias> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RestorePointListResult class.
- * @constructor
- * A list of long term retention bacukps.
- *
- * @member {string} [nextLink] Link to retrieve next page of results.
- */
-export interface RestorePointListResult extends Array<RestorePoint> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the JobAgentListResult class.
  * @constructor
  * A list of Azure SQL job agents.
@@ -4179,6 +4131,54 @@ export interface JobTargetGroupListResult extends Array<JobTargetGroup> {
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface JobVersionListResult extends Array<JobVersion> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LongTermRetentionBackupListResult class.
+ * @constructor
+ * A list of long term retention bacukps.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface LongTermRetentionBackupListResult extends Array<LongTermRetentionBackup> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedDatabaseListResult class.
+ * @constructor
+ * A list of managed databases.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerDnsAliasListResult class.
+ * @constructor
+ * A list of server DNS aliases.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface ServerDnsAliasListResult extends Array<ServerDnsAlias> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RestorePointListResult class.
+ * @constructor
+ * A list of long term retention bacukps.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface RestorePointListResult extends Array<RestorePoint> {
   readonly nextLink?: string;
 }
 
