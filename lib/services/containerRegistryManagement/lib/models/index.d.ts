@@ -117,10 +117,47 @@ export interface OperationDisplayDefinition {
 
 /**
  * @class
+ * Initializes a new instance of the OperationMetricSpecificationDefinition class.
+ * @constructor
+ * The definition of Azure Monitoring metric.
+ *
+ * @member {string} [name] Metric name.
+ * @member {string} [displayName] Metric display name.
+ * @member {string} [displayDescription] Metric description.
+ * @member {string} [unit] Metric unit.
+ * @member {string} [aggregationType] Metric aggregation type.
+ * @member {string} [internalMetricName] Internal metric name.
+ */
+export interface OperationMetricSpecificationDefinition {
+  name?: string;
+  displayName?: string;
+  displayDescription?: string;
+  unit?: string;
+  aggregationType?: string;
+  internalMetricName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationServiceSpecificationDefinition class.
+ * @constructor
+ * The definition of Azure Monitoring metrics list.
+ *
+ * @member {array} [metricSpecifications] A list of Azure Monitoring metrics
+ * definition.
+ */
+export interface OperationServiceSpecificationDefinition {
+  metricSpecifications?: OperationMetricSpecificationDefinition[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDefinition class.
  * @constructor
  * The definition of a container registry operation.
  *
+ * @member {string} [origin] The origin information of the container registry
+ * operation.
  * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
  * @member {object} [display] The display information for the container
  * registry operation.
@@ -130,10 +167,16 @@ export interface OperationDisplayDefinition {
  * performed.
  * @member {string} [display.operation] The operation that users can perform.
  * @member {string} [display.description] The description for the operation.
+ * @member {object} [serviceSpecification] The definition of Azure Monitoring
+ * service.
+ * @member {array} [serviceSpecification.metricSpecifications] A list of Azure
+ * Monitoring metrics definition.
  */
 export interface OperationDefinition {
+  origin?: string;
   name?: string;
   display?: OperationDisplayDefinition;
+  serviceSpecification?: OperationServiceSpecificationDefinition;
 }
 
 /**
@@ -347,6 +390,57 @@ export interface RegistryUsage {
  */
 export interface RegistryUsageListResult {
   value?: RegistryUsage[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QuarantinePolicy class.
+ * @constructor
+ * An object that represents quarantine policy for a container registry.
+ *
+ * @member {string} [status] The value that indicates whether the policy is
+ * enabled. Possible values include: 'enabled', 'disabled'
+ */
+export interface QuarantinePolicy {
+  status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrustPolicy class.
+ * @constructor
+ * An object that represents content trust policy for a container registry.
+ *
+ * @member {string} [type] The type of trust policy. Possible values include:
+ * 'None', 'Notary'
+ * @member {string} [status] The value that indicates whether the policy is
+ * enabled. Possible values include: 'enabled', 'disabled'
+ */
+export interface TrustPolicy {
+  type?: string;
+  status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RegistryPolicies class.
+ * @constructor
+ * An object that represents policies for a container registry.
+ *
+ * @member {object} [quarantinePolicy] An object that represents quarantine
+ * policy for a container registry.
+ * @member {string} [quarantinePolicy.status] The value that indicates whether
+ * the policy is enabled. Possible values include: 'enabled', 'disabled'
+ * @member {object} [trustPolicy] An object that represents content trust
+ * policy for a container registry.
+ * @member {string} [trustPolicy.type] The type of trust policy. Possible
+ * values include: 'None', 'Notary'
+ * @member {string} [trustPolicy.status] The value that indicates whether the
+ * policy is enabled. Possible values include: 'enabled', 'disabled'
+ */
+export interface RegistryPolicies {
+  quarantinePolicy?: QuarantinePolicy;
+  trustPolicy?: TrustPolicy;
 }
 
 /**

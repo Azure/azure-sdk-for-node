@@ -7,7 +7,10 @@
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
   },
-  "keywords": [ "node", "azure" ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
   "license": "MIT",
   "main": "./lib/containerRegistryManagementClient.js",
   "types": "./lib/containerRegistryManagementClient.d.ts",
