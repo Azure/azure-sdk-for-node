@@ -1880,6 +1880,420 @@ export interface VirtualNetworkRule extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the DatabaseVulnerabilityAssessmentRuleBaselineItem class.
+ * @constructor
+ * Properties for an Azure SQL Database Vulnerability Assessment rule
+ * baseline's result.
+ *
+ * @member {array} result The rule baseline result
+ */
+export interface DatabaseVulnerabilityAssessmentRuleBaselineItem {
+  result: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseVulnerabilityAssessmentRuleBaseline class.
+ * @constructor
+ * A database vulnerability assessment rule baseline.
+ *
+ * @member {array} baselineResults The rule baseline result
+ */
+export interface DatabaseVulnerabilityAssessmentRuleBaseline extends ProxyResource {
+  baselineResults: DatabaseVulnerabilityAssessmentRuleBaselineItem[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VulnerabilityAssessmentRecurringScansProperties class.
+ * @constructor
+ * Properties of a Vulnerability Assessment recurring scans.
+ *
+ * @member {boolean} [isEnabled] Recurring scans state.
+ * @member {boolean} [emailSubscriptionAdmins] Specifies that the schedule scan
+ * notification will be is sent to the subscription administrators. Default
+ * value: true .
+ * @member {array} [emails] Specifies an array of e-mail addresses to which the
+ * scan notification is sent.
+ */
+export interface VulnerabilityAssessmentRecurringScansProperties {
+  isEnabled?: boolean;
+  emailSubscriptionAdmins?: boolean;
+  emails?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseVulnerabilityAssessment class.
+ * @constructor
+ * A database vulnerability assessment.
+ *
+ * @member {string} [storageContainerPath] A blob storage container path to
+ * hold the scan results (e.g.
+ * https://myStorage.blob.core.windows.net/VaScans/).
+ * @member {string} [storageContainerSasKey] A shared access signature (SAS
+ * Key) that has write access to the blob container specified in
+ * 'storageContainerPath' parameter.
+ * @member {object} [recurringScans] The recurring scans settings
+ * @member {boolean} [recurringScans.isEnabled] Recurring scans state.
+ * @member {boolean} [recurringScans.emailSubscriptionAdmins] Specifies that
+ * the schedule scan notification will be is sent to the subscription
+ * administrators.
+ * @member {array} [recurringScans.emails] Specifies an array of e-mail
+ * addresses to which the scan notification is sent.
+ */
+export interface DatabaseVulnerabilityAssessment extends ProxyResource {
+  storageContainerPath?: string;
+  storageContainerSasKey?: string;
+  recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobAgent class.
+ * @constructor
+ * An Azure SQL job agent.
+ *
+ * @member {object} [sku] The name and tier of the SKU.
+ * @member {string} [sku.name] The name of the SKU, typically, a letter +
+ * Number code, e.g. P3.
+ * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
+ * Premium.
+ * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.family] If the service has different generations of
+ * hardware, for the same SKU, then that can be captured here.
+ * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {string} databaseId Resource ID of the database to store job
+ * metadata in.
+ * @member {string} [state] The state of the job agent. Possible values
+ * include: 'Creating', 'Ready', 'Updating', 'Deleting', 'Disabled'
+ */
+export interface JobAgent extends TrackedResource {
+  sku?: Sku;
+  databaseId: string;
+  readonly state?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobAgentUpdate class.
+ * @constructor
+ * An update to an Azure SQL job agent.
+ *
+ * @member {object} [tags] Resource tags.
+ */
+export interface JobAgentUpdate {
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobCredential class.
+ * @constructor
+ * A stored credential that can be used by a job to connect to target
+ * databases.
+ *
+ * @member {string} username The credential user name.
+ * @member {string} password The credential password.
+ */
+export interface JobCredential extends ProxyResource {
+  username: string;
+  password: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobExecutionTarget class.
+ * @constructor
+ * The target that a job execution is executed on.
+ *
+ * @member {string} [type] The type of the target. Possible values include:
+ * 'TargetGroup', 'SqlDatabase', 'SqlElasticPool', 'SqlShardMap', 'SqlServer'
+ * @member {string} [serverName] The server name.
+ * @member {string} [databaseName] The database name.
+ */
+export interface JobExecutionTarget {
+  readonly type?: string;
+  readonly serverName?: string;
+  readonly databaseName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobExecution class.
+ * @constructor
+ * An execution of a job
+ *
+ * @member {number} [jobVersion] The job version number.
+ * @member {string} [stepName] The job step name.
+ * @member {number} [stepId] The job step id.
+ * @member {uuid} [jobExecutionId] The unique identifier of the job execution.
+ * @member {string} [lifecycle] The detailed state of the job execution.
+ * Possible values include: 'Created', 'InProgress',
+ * 'WaitingForChildJobExecutions', 'WaitingForRetry', 'Succeeded',
+ * 'SucceededWithSkipped', 'Failed', 'TimedOut', 'Canceled', 'Skipped'
+ * @member {string} [provisioningState] The ARM provisioning state of the job
+ * execution. Possible values include: 'Created', 'InProgress', 'Succeeded',
+ * 'Failed', 'Canceled'
+ * @member {date} [createTime] The time that the job execution was created.
+ * @member {date} [startTime] The time that the job execution started.
+ * @member {date} [endTime] The time that the job execution completed.
+ * @member {number} [currentAttempts] Number of times the job execution has
+ * been attempted.
+ * @member {date} [currentAttemptStartTime] Start time of the current attempt.
+ * @member {string} [lastMessage] The last status or error message.
+ * @member {object} [target] The target that this execution is executed on.
+ * @member {string} [target.type] The type of the target. Possible values
+ * include: 'TargetGroup', 'SqlDatabase', 'SqlElasticPool', 'SqlShardMap',
+ * 'SqlServer'
+ * @member {string} [target.serverName] The server name.
+ * @member {string} [target.databaseName] The database name.
+ */
+export interface JobExecution extends ProxyResource {
+  readonly jobVersion?: number;
+  readonly stepName?: string;
+  readonly stepId?: number;
+  readonly jobExecutionId?: string;
+  readonly lifecycle?: string;
+  readonly provisioningState?: string;
+  readonly createTime?: Date;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  currentAttempts?: number;
+  readonly currentAttemptStartTime?: Date;
+  readonly lastMessage?: string;
+  readonly target?: JobExecutionTarget;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobSchedule class.
+ * @constructor
+ * Scheduling properties of a job.
+ *
+ * @member {date} [startTime] Schedule start time. Default value: new
+ * Date('0001-01-01T00:00:00Z') .
+ * @member {date} [endTime] Schedule end time. Default value: new
+ * Date('9999-12-31T11:59:59Z') .
+ * @member {string} [type] Schedule interval type. Possible values include:
+ * 'Once', 'Recurring'. Default value: 'Once' .
+ * @member {boolean} [enabled] Whether or not the schedule is enabled.
+ * @member {string} [interval] Value of the schedule's recurring interval, if
+ * the scheduletype is recurring. ISO8601 duration format.
+ */
+export interface JobSchedule {
+  startTime?: Date;
+  endTime?: Date;
+  type?: string;
+  enabled?: boolean;
+  interval?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Job class.
+ * @constructor
+ * A job.
+ *
+ * @member {string} [description] User-defined description of the job. Default
+ * value: '' .
+ * @member {number} [version] The job version number.
+ * @member {object} [schedule] Schedule properties of the job.
+ * @member {date} [schedule.startTime] Schedule start time.
+ * @member {date} [schedule.endTime] Schedule end time.
+ * @member {string} [schedule.type] Schedule interval type. Possible values
+ * include: 'Once', 'Recurring'
+ * @member {boolean} [schedule.enabled] Whether or not the schedule is enabled.
+ * @member {string} [schedule.interval] Value of the schedule's recurring
+ * interval, if the scheduletype is recurring. ISO8601 duration format.
+ */
+export interface Job extends ProxyResource {
+  description?: string;
+  readonly version?: number;
+  schedule?: JobSchedule;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobStepAction class.
+ * @constructor
+ * The action to be executed by a job step.
+ *
+ * @member {string} [type] Type of action being executed by the job step.
+ * Possible values include: 'TSql'. Default value: 'TSql' .
+ * @member {string} [source] The source of the action to execute. Possible
+ * values include: 'Inline'. Default value: 'Inline' .
+ * @member {string} value The action value, for example the text of the T-SQL
+ * script to execute.
+ */
+export interface JobStepAction {
+  type?: string;
+  source?: string;
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobStepOutput class.
+ * @constructor
+ * The output configuration of a job step.
+ *
+ * @member {string} [type] The output destination type. Possible values
+ * include: 'SqlDatabase'. Default value: 'SqlDatabase' .
+ * @member {uuid} [subscriptionId] The output destination subscription id.
+ * @member {string} [resourceGroupName] The output destination resource group.
+ * @member {string} serverName The output destination server name.
+ * @member {string} databaseName The output destination database.
+ * @member {string} [schemaName] The output destination schema. Default value:
+ * 'dbo' .
+ * @member {string} tableName The output destination table.
+ * @member {string} credential The resource ID of the credential to use to
+ * connect to the output destination.
+ */
+export interface JobStepOutput {
+  type?: string;
+  subscriptionId?: string;
+  resourceGroupName?: string;
+  serverName: string;
+  databaseName: string;
+  schemaName?: string;
+  tableName: string;
+  credential: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobStepExecutionOptions class.
+ * @constructor
+ * The execution options of a job step.
+ *
+ * @member {number} [timeoutSeconds] Execution timeout for the job step.
+ * Default value: 43200 .
+ * @member {number} [retryAttempts] Maximum number of times the job step will
+ * be reattempted if the first attempt fails. Default value: 10 .
+ * @member {number} [initialRetryIntervalSeconds] Initial delay between retries
+ * for job step execution. Default value: 1 .
+ * @member {number} [maximumRetryIntervalSeconds] The maximum amount of time to
+ * wait between retries for job step execution. Default value: 120 .
+ * @member {number} [retryIntervalBackoffMultiplier] The backoff multiplier for
+ * the time between retries. Default value: 2 .
+ */
+export interface JobStepExecutionOptions {
+  timeoutSeconds?: number;
+  retryAttempts?: number;
+  initialRetryIntervalSeconds?: number;
+  maximumRetryIntervalSeconds?: number;
+  retryIntervalBackoffMultiplier?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobStep class.
+ * @constructor
+ * A job step.
+ *
+ * @member {number} [stepId] The job step's index within the job. If not
+ * specified when creating the job step, it will be created as the last step.
+ * If not specified when updating the job step, the step id is not modified.
+ * @member {string} targetGroup The resource ID of the target group that the
+ * job step will be executed on.
+ * @member {string} credential The resource ID of the job credential that will
+ * be used to connect to the targets.
+ * @member {object} action The action payload of the job step.
+ * @member {string} [action.type] Type of action being executed by the job
+ * step. Possible values include: 'TSql'
+ * @member {string} [action.source] The source of the action to execute.
+ * Possible values include: 'Inline'
+ * @member {string} [action.value] The action value, for example the text of
+ * the T-SQL script to execute.
+ * @member {object} [output] Output destination properties of the job step.
+ * @member {string} [output.type] The output destination type. Possible values
+ * include: 'SqlDatabase'
+ * @member {uuid} [output.subscriptionId] The output destination subscription
+ * id.
+ * @member {string} [output.resourceGroupName] The output destination resource
+ * group.
+ * @member {string} [output.serverName] The output destination server name.
+ * @member {string} [output.databaseName] The output destination database.
+ * @member {string} [output.schemaName] The output destination schema.
+ * @member {string} [output.tableName] The output destination table.
+ * @member {string} [output.credential] The resource ID of the credential to
+ * use to connect to the output destination.
+ * @member {object} [executionOptions] Execution options for the job step.
+ * @member {number} [executionOptions.timeoutSeconds] Execution timeout for the
+ * job step.
+ * @member {number} [executionOptions.retryAttempts] Maximum number of times
+ * the job step will be reattempted if the first attempt fails.
+ * @member {number} [executionOptions.initialRetryIntervalSeconds] Initial
+ * delay between retries for job step execution.
+ * @member {number} [executionOptions.maximumRetryIntervalSeconds] The maximum
+ * amount of time to wait between retries for job step execution.
+ * @member {number} [executionOptions.retryIntervalBackoffMultiplier] The
+ * backoff multiplier for the time between retries.
+ */
+export interface JobStep extends ProxyResource {
+  stepId?: number;
+  targetGroup: string;
+  credential: string;
+  action: JobStepAction;
+  output?: JobStepOutput;
+  executionOptions?: JobStepExecutionOptions;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobTarget class.
+ * @constructor
+ * A job target, for example a specific database or a container of databases
+ * that is evaluated during job execution.
+ *
+ * @member {string} [membershipType] Whether the target is included or excluded
+ * from the group. Possible values include: 'Include', 'Exclude'. Default
+ * value: 'Include' .
+ * @member {string} type The target type. Possible values include:
+ * 'TargetGroup', 'SqlDatabase', 'SqlElasticPool', 'SqlShardMap', 'SqlServer'
+ * @member {string} [serverName] The target server name.
+ * @member {string} [databaseName] The target database name.
+ * @member {string} [elasticPoolName] The target elastic pool name.
+ * @member {string} [shardMapName] The target shard map.
+ * @member {string} [refreshCredential] The resource ID of the credential that
+ * is used during job execution to connect to the target and determine the list
+ * of databases inside the target.
+ */
+export interface JobTarget {
+  membershipType?: string;
+  type: string;
+  serverName?: string;
+  databaseName?: string;
+  elasticPoolName?: string;
+  shardMapName?: string;
+  refreshCredential?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobTargetGroup class.
+ * @constructor
+ * A group of job targets.
+ *
+ * @member {array} members Members of the target group.
+ */
+export interface JobTargetGroup extends ProxyResource {
+  members: JobTarget[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobVersion class.
+ * @constructor
+ * A job version.
+ *
+ */
+export interface JobVersion extends ProxyResource {
+}
+
+/**
+ * @class
  * Initializes a new instance of the LongTermRetentionBackup class.
  * @constructor
  * A long term retention backup.
@@ -3068,6 +3482,64 @@ export interface ElasticPoolUpdate {
 
 /**
  * @class
+ * Initializes a new instance of the VulnerabilityAssessmentScanError class.
+ * @constructor
+ * Properties of a vulnerability assessment scan error.
+ *
+ * @member {string} [code] The error code.
+ * @member {string} [message] The error message.
+ */
+export interface VulnerabilityAssessmentScanError {
+  readonly code?: string;
+  readonly message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VulnerabilityAssessmentScanRecord class.
+ * @constructor
+ * A vulnerability assessment scan record.
+ *
+ * @member {string} [scanId] The scan ID.
+ * @member {string} [triggerType] The scan trigger type. Possible values
+ * include: 'OnDemand', 'Recurring'
+ * @member {string} [state] The scan status. Possible values include: 'Passed',
+ * 'Failed', 'FailedToRun', 'InProgress'
+ * @member {date} [startTime] The scan start time (UTC).
+ * @member {date} [endTime] The scan end time (UTC).
+ * @member {array} [errors] The scan errors.
+ * @member {string} [storageContainerPath] The scan results storage container
+ * path.
+ * @member {number} [numberOfFailedSecurityChecks] The number of failed
+ * security checks.
+ */
+export interface VulnerabilityAssessmentScanRecord extends ProxyResource {
+  readonly scanId?: string;
+  readonly triggerType?: string;
+  readonly state?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly errors?: VulnerabilityAssessmentScanError[];
+  readonly storageContainerPath?: string;
+  readonly numberOfFailedSecurityChecks?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabaseVulnerabilityAssessmentScansExport class.
+ * @constructor
+ * A database Vulnerability Assessment scan export resource.
+ *
+ * @member {string} [exportedReportLocation] Location of the exported report
+ * (e.g.
+ * https://myStorage.blob.core.windows.net/VaScans/scans/serverName/databaseName/scan_scanId.xlsx).
+ */
+export interface DatabaseVulnerabilityAssessmentScansExport extends ProxyResource {
+  readonly exportedReportLocation?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the InstanceFailoverGroupReadWriteEndpoint class.
  * @constructor
  * Read-write endpoint of the failover group instance.
@@ -3580,6 +4052,90 @@ export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> 
 
 /**
  * @class
+ * Initializes a new instance of the JobAgentListResult class.
+ * @constructor
+ * A list of Azure SQL job agents.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobAgentListResult extends Array<JobAgent> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobCredentialListResult class.
+ * @constructor
+ * A list of job credentials.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobCredentialListResult extends Array<JobCredential> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobExecutionListResult class.
+ * @constructor
+ * A list of job executions.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobExecutionListResult extends Array<JobExecution> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobListResult class.
+ * @constructor
+ * A list of jobs.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobListResult extends Array<Job> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobStepListResult class.
+ * @constructor
+ * A list of job steps.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobStepListResult extends Array<JobStep> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobTargetGroupListResult class.
+ * @constructor
+ * A list of target groups.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobTargetGroupListResult extends Array<JobTargetGroup> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobVersionListResult class.
+ * @constructor
+ * A list of job versions.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface JobVersionListResult extends Array<JobVersion> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the LongTermRetentionBackupListResult class.
  * @constructor
  * A list of long term retention bacukps.
@@ -3647,6 +4203,18 @@ export interface DatabaseOperationListResult extends Array<DatabaseOperation> {
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ElasticPoolOperationListResult extends Array<ElasticPoolOperation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VulnerabilityAssessmentScanRecordListResult class.
+ * @constructor
+ * A list of vulnerability assessment scan records.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface VulnerabilityAssessmentScanRecordListResult extends Array<VulnerabilityAssessmentScanRecord> {
   readonly nextLink?: string;
 }
 
