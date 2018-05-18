@@ -55,8 +55,10 @@ export interface Resource extends BaseResource {
  * @member {string} [description] The description of this gallery resource.
  * @member {object} [identifier]
  * @member {string} [identifier.uniqueName] The unique name of the gallery
- * @member {string} [provisioningState] The provisioning state, which only
- * appears in the response.
+ * @member {string} [provisioningState] The current state of the gallery. The
+ * provisioning state, which only appears in the response. Possible values
+ * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
+ * 'Migrating'
  */
 export interface Gallery extends Resource {
   description?: string;
@@ -179,8 +181,10 @@ export interface ImagePurchasePlan {
  * @member {string} [purchasePlan.name] The plan ID.
  * @member {string} [purchasePlan.publisher] The publisher ID.
  * @member {string} [purchasePlan.product] The product ID.
- * @member {string} [provisioningState] The provisioning state, which only
- * appears in the response.
+ * @member {string} [provisioningState] The current state of the gallery image.
+ * The provisioning state, which only appears in the response. Possible values
+ * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
+ * 'Migrating'
  */
 export interface GalleryImage extends Resource {
   description?: string;
@@ -340,8 +344,10 @@ export interface ReplicationStatus {
  * image version is published.
  * @member {date} [publishingProfile.endOfLifeDate] The end of life date of the
  * gallery image version.
- * @member {string} [provisioningState] The provisioning state, which only
- * appears in the response.
+ * @member {string} [provisioningState] The current state of the gallery image
+ * version. The provisioning state, which only appears in the response.
+ * Possible values include: 'Creating', 'Updating', 'Failed', 'Succeeded',
+ * 'Deleting', 'Migrating'
  * @member {object} [storageProfile]
  * @member {object} [storageProfile.osDiskImage]
  * @member {array} [storageProfile.dataDiskImages] A list of data disk images.
