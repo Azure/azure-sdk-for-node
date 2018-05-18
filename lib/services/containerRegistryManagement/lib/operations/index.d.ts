@@ -852,168 +852,6 @@ export interface Registries {
 
 
     /**
-     * Lists the policies for the specified container registry.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RegistryPolicies>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listPoliciesWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegistryPolicies>>;
-
-    /**
-     * Lists the policies for the specified container registry.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RegistryPolicies} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RegistryPolicies} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RegistryPolicies} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listPolicies(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryPolicies>;
-    listPolicies(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.RegistryPolicies>): void;
-    listPolicies(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryPolicies>): void;
-
-
-    /**
-     * Updates the policies for the specified container registry.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {object} registryPoliciesUpdateParameters The parameters for updating
-     * policies of a container registry.
-     *
-     * @param {object} [registryPoliciesUpdateParameters.quarantinePolicy] An
-     * object that represents quarantine policy for a container registry.
-     *
-     * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
-     * The value that indicates whether the policy is enabled or not. Possible
-     * values include: 'enabled', 'disabled'
-     *
-     * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
-     * that represents content trust policy for a container registry.
-     *
-     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
-     * of trust policy. Possible values include: 'Notary'
-     *
-     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
-     * value that indicates whether the policy is enabled or not. Possible values
-     * include: 'enabled', 'disabled'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RegistryPolicies>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updatePoliciesWithHttpOperationResponse(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegistryPolicies>>;
-
-    /**
-     * Updates the policies for the specified container registry.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {object} registryPoliciesUpdateParameters The parameters for updating
-     * policies of a container registry.
-     *
-     * @param {object} [registryPoliciesUpdateParameters.quarantinePolicy] An
-     * object that represents quarantine policy for a container registry.
-     *
-     * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
-     * The value that indicates whether the policy is enabled or not. Possible
-     * values include: 'enabled', 'disabled'
-     *
-     * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
-     * that represents content trust policy for a container registry.
-     *
-     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
-     * of trust policy. Possible values include: 'Notary'
-     *
-     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
-     * value that indicates whether the policy is enabled or not. Possible values
-     * include: 'enabled', 'disabled'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RegistryPolicies} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RegistryPolicies} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RegistryPolicies} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryPolicies>;
-    updatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, callback: ServiceCallback<models.RegistryPolicies>): void;
-    updatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryPolicies>): void;
-
-
-    /**
      * Copies an image to this container registry from the specified container
      * registry.
      *
@@ -1406,107 +1244,6 @@ export interface Registries {
 
 
     /**
-     * Updates the policies for the specified container registry.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {object} registryPoliciesUpdateParameters The parameters for updating
-     * policies of a container registry.
-     *
-     * @param {object} [registryPoliciesUpdateParameters.quarantinePolicy] An
-     * object that represents quarantine policy for a container registry.
-     *
-     * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
-     * The value that indicates whether the policy is enabled or not. Possible
-     * values include: 'enabled', 'disabled'
-     *
-     * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
-     * that represents content trust policy for a container registry.
-     *
-     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
-     * of trust policy. Possible values include: 'Notary'
-     *
-     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
-     * value that indicates whether the policy is enabled or not. Possible values
-     * include: 'enabled', 'disabled'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RegistryPolicies>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUpdatePoliciesWithHttpOperationResponse(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegistryPolicies>>;
-
-    /**
-     * Updates the policies for the specified container registry.
-     *
-     * @param {string} resourceGroupName The name of the resource group to which
-     * the container registry belongs.
-     *
-     * @param {string} registryName The name of the container registry.
-     *
-     * @param {object} registryPoliciesUpdateParameters The parameters for updating
-     * policies of a container registry.
-     *
-     * @param {object} [registryPoliciesUpdateParameters.quarantinePolicy] An
-     * object that represents quarantine policy for a container registry.
-     *
-     * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
-     * The value that indicates whether the policy is enabled or not. Possible
-     * values include: 'enabled', 'disabled'
-     *
-     * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
-     * that represents content trust policy for a container registry.
-     *
-     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
-     * of trust policy. Possible values include: 'Notary'
-     *
-     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
-     * value that indicates whether the policy is enabled or not. Possible values
-     * include: 'enabled', 'disabled'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RegistryPolicies} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RegistryPolicies} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RegistryPolicies} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUpdatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryPolicies>;
-    beginUpdatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, callback: ServiceCallback<models.RegistryPolicies>): void;
-    beginUpdatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryPolicies>): void;
-
-
-    /**
      * Lists all the container registries under the specified resource group.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -1618,6 +1355,123 @@ export interface Registries {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.RegistryListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryListResult>): void;
+}
+
+/**
+ * @class
+ * Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ContainerRegistryManagementClient.
+ */
+export interface Operations {
+
+
+    /**
+     * Lists all of the available Azure Container Registry REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Azure Container Registry REST API operations.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+
+
+    /**
+     * Lists all of the available Azure Container Registry REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
+
+    /**
+     * Lists all of the available Azure Container Registry REST API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
 }
 
 /**
