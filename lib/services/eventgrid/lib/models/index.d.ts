@@ -869,3 +869,22 @@ export interface ServiceBusDeadletterMessagesAvailableWithNoListenersEventData {
   subscriptionName?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the MediaJobStateChangeEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.Media.JobStateChange event.
+ *
+ * @member {string} [previousState] The previous state of the Job. Possible
+ * values include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
+ * 'Queued', 'Scheduled'
+ * @member {string} [state] The new state of the Job. Possible values include:
+ * 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing', 'Queued',
+ * 'Scheduled'
+ */
+export interface MediaJobStateChangeEventData {
+  readonly previousState?: string;
+  readonly state?: string;
+}
+
