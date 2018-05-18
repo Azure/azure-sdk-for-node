@@ -1484,7 +1484,8 @@ export interface ManagedClusters {
     /**
      * @summary Gets upgrade profile for a managed cluster.
      *
-     * Use ManagedClusters_ListCredential instead.
+     * Gets the details of the upgrade profile for a managed cluster with a
+     * specified resource group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1506,7 +1507,8 @@ export interface ManagedClusters {
     /**
      * @summary Gets upgrade profile for a managed cluster.
      *
-     * Use ManagedClusters_ListCredential instead.
+     * Gets the details of the upgrade profile for a managed cluster with a
+     * specified resource group and name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1569,7 +1571,7 @@ export interface ManagedClusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listCredentialWithHttpOperationResponse(resourceGroupName: string, resourceName: string, roleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedClusterAccessProfile>>;
+    getAccessProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, roleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedClusterAccessProfile>>;
 
     /**
      * @summary Gets an access profile of a managed cluster.
@@ -1612,16 +1614,15 @@ export interface ManagedClusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listCredential(resourceGroupName: string, resourceName: string, roleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedClusterAccessProfile>;
-    listCredential(resourceGroupName: string, resourceName: string, roleName: string, callback: ServiceCallback<models.ManagedClusterAccessProfile>): void;
-    listCredential(resourceGroupName: string, resourceName: string, roleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedClusterAccessProfile>): void;
+    getAccessProfile(resourceGroupName: string, resourceName: string, roleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedClusterAccessProfile>;
+    getAccessProfile(resourceGroupName: string, resourceName: string, roleName: string, callback: ServiceCallback<models.ManagedClusterAccessProfile>): void;
+    getAccessProfile(resourceGroupName: string, resourceName: string, roleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedClusterAccessProfile>): void;
 
 
     /**
      * @summary Gets access profile of a managed cluster.
      *
-     * Gets the accessProfile for the specified role name of the managed cluster
-     * with a specified resource group and name.
+     * Use ManagedClusters_GetAccessProfile instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1646,8 +1647,7 @@ export interface ManagedClusters {
     /**
      * @summary Gets access profile of a managed cluster.
      *
-     * Gets the accessProfile for the specified role name of the managed cluster
-     * with a specified resource group and name.
+     * Use ManagedClusters_GetAccessProfile instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
