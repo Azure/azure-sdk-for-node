@@ -394,57 +394,6 @@ export interface RegistryUsageListResult {
 
 /**
  * @class
- * Initializes a new instance of the QuarantinePolicy class.
- * @constructor
- * An object that represents quarantine policy for a container registry.
- *
- * @member {string} [status] The value that indicates whether the policy is
- * enabled or not. Possible values include: 'enabled', 'disabled'
- */
-export interface QuarantinePolicy {
-  status?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TrustPolicy class.
- * @constructor
- * An object that represents content trust policy for a container registry.
- *
- * @member {string} [type] The type of trust policy. Possible values include:
- * 'Notary'
- * @member {string} [status] The value that indicates whether the policy is
- * enabled or not. Possible values include: 'enabled', 'disabled'
- */
-export interface TrustPolicy {
-  type?: string;
-  status?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RegistryPolicies class.
- * @constructor
- * An object that represents policies for a container registry.
- *
- * @member {object} [quarantinePolicy] An object that represents quarantine
- * policy for a container registry.
- * @member {string} [quarantinePolicy.status] The value that indicates whether
- * the policy is enabled or not. Possible values include: 'enabled', 'disabled'
- * @member {object} [trustPolicy] An object that represents content trust
- * policy for a container registry.
- * @member {string} [trustPolicy.type] The type of trust policy. Possible
- * values include: 'Notary'
- * @member {string} [trustPolicy.status] The value that indicates whether the
- * policy is enabled or not. Possible values include: 'enabled', 'disabled'
- */
-export interface RegistryPolicies {
-  quarantinePolicy?: QuarantinePolicy;
-  trustPolicy?: TrustPolicy;
-}
-
-/**
- * @class
  * Initializes a new instance of the Replication class.
  * @constructor
  * An object that represents a replication for a container registry.
