@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class DataLakeAnalyticsAccountManagementClient extends AzureServiceClient {
+export default class DataLakeAnalyticsAccountManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the DataLakeAnalyticsAccountManagementClient class.
    * @constructor
@@ -55,11 +56,13 @@ declare class DataLakeAnalyticsAccountManagementClient extends AzureServiceClien
   generateClientRequestId: boolean;
 
   // Operation groups
+  accounts: operations.Accounts;
+  dataLakeStoreAccounts: operations.DataLakeStoreAccounts;
+  storageAccounts: operations.StorageAccounts;
   computePolicies: operations.ComputePolicies;
   firewallRules: operations.FirewallRules;
-  storageAccounts: operations.StorageAccounts;
-  dataLakeStoreAccounts: operations.DataLakeStoreAccounts;
-  account: operations.Account;
+  operations: operations.Operations;
+  locations: operations.Locations;
 }
 
-export = DataLakeAnalyticsAccountManagementClient;
+export { DataLakeAnalyticsAccountManagementClient, models as DataLakeAnalyticsAccountManagementModels };
