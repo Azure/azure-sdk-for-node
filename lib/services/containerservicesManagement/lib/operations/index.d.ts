@@ -1484,8 +1484,7 @@ export interface ManagedClusters {
     /**
      * @summary Gets upgrade profile for a managed cluster.
      *
-     * Gets the details of the upgrade profile for a managed cluster with a
-     * specified resource group and name.
+     * Use ManagedClusters_ListCredential instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1507,8 +1506,7 @@ export interface ManagedClusters {
     /**
      * @summary Gets upgrade profile for a managed cluster.
      *
-     * Gets the details of the upgrade profile for a managed cluster with a
-     * specified resource group and name.
+     * Use ManagedClusters_ListCredential instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
