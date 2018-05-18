@@ -414,8 +414,7 @@ export interface CertificateIssuerItem {
  *
  * @member {boolean} [exportable] Indicates if the private key can be exported.
  * @member {string} [keyType] The key type.
- * @member {number} [keySize] The key size in bytes. For example;  1024 or
- * 2048.
+ * @member {number} [keySize] The key size in bits. For example;  1024 or 2048.
  * @member {boolean} [reuseKey] Indicates if the same key pair will be used on
  * certificate renewal.
  */
@@ -564,7 +563,7 @@ export interface IssuerParameters {
  * @member {boolean} [keyProperties.exportable] Indicates if the private key
  * can be exported.
  * @member {string} [keyProperties.keyType] The key type.
- * @member {number} [keyProperties.keySize] The key size in bytes. For example;
+ * @member {number} [keyProperties.keySize] The key size in bits. For example;
  * 1024 or 2048.
  * @member {boolean} [keyProperties.reuseKey] Indicates if the same key pair
  * will be used on certificate renewal.
@@ -633,7 +632,7 @@ export interface CertificatePolicy {
  * @member {boolean} [policy.keyProperties.exportable] Indicates if the private
  * key can be exported.
  * @member {string} [policy.keyProperties.keyType] The key type.
- * @member {number} [policy.keyProperties.keySize] The key size in bytes. For
+ * @member {number} [policy.keyProperties.keySize] The key size in bits. For
  * example;  1024 or 2048.
  * @member {boolean} [policy.keyProperties.reuseKey] Indicates if the same key
  * pair will be used on certificate renewal.
@@ -936,7 +935,7 @@ export interface Contacts {
  * @member {string} kty The type of key to create. For valid values, see
  * JsonWebKeyType. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
  * 'oct'
- * @member {number} [keySize] The key size in bytes. For example, 1024 or 2048.
+ * @member {number} [keySize] The key size in bits. For example, 1024 or 2048.
  * @member {array} [keyOps]
  * @member {object} [keyAttributes]
  * @member {string} [keyAttributes.recoveryLevel] Reflects the deletion
@@ -1158,7 +1157,7 @@ export interface SecretUpdateParameters {
  * the private key can be exported.
  * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
- * bytes. For example;  1024 or 2048.
+ * bits. For example;  1024 or 2048.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
  * @member {object} [certificatePolicy.secretProperties] Properties of the
@@ -1246,7 +1245,7 @@ export interface CertificateCreateParameters {
  * the private key can be exported.
  * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
- * bytes. For example;  1024 or 2048.
+ * bits. For example;  1024 or 2048.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
  * @member {object} [certificatePolicy.secretProperties] Properties of the
@@ -1331,7 +1330,7 @@ export interface CertificateImportParameters {
  * the private key can be exported.
  * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
- * bytes. For example;  1024 or 2048.
+ * bits. For example;  1024 or 2048.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
  * @member {object} [certificatePolicy.secretProperties] Properties of the
