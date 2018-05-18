@@ -57,7 +57,6 @@ export default class ContainerRegistryManagementClient extends AzureServiceClien
 
   // Operation groups
   registries: operations.Registries;
-  operations: operations.Operations;
   replications: operations.Replications;
   webhooks: operations.Webhooks;
 }

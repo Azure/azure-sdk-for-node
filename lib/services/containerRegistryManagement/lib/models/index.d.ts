@@ -97,90 +97,6 @@ export interface RegistryNameStatus {
 
 /**
  * @class
- * Initializes a new instance of the OperationDisplayDefinition class.
- * @constructor
- * The display information for a container registry operation.
- *
- * @member {string} [provider] The resource provider name:
- * Microsoft.ContainerRegistry.
- * @member {string} [resource] The resource on which the operation is
- * performed.
- * @member {string} [operation] The operation that users can perform.
- * @member {string} [description] The description for the operation.
- */
-export interface OperationDisplayDefinition {
-  provider?: string;
-  resource?: string;
-  operation?: string;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationMetricSpecificationDefinition class.
- * @constructor
- * The definition of Azure Monitoring metric.
- *
- * @member {string} [name] Metric name.
- * @member {string} [displayName] Metric display name.
- * @member {string} [displayDescription] Metric description.
- * @member {string} [unit] Metric unit.
- * @member {string} [aggregationType] Metric aggregation type.
- * @member {string} [internalMetricName] Internal metric name.
- */
-export interface OperationMetricSpecificationDefinition {
-  name?: string;
-  displayName?: string;
-  displayDescription?: string;
-  unit?: string;
-  aggregationType?: string;
-  internalMetricName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationServiceSpecificationDefinition class.
- * @constructor
- * The definition of Azure Monitoring metrics list.
- *
- * @member {array} [metricSpecifications] A list of Azure Monitoring metrics
- * definition.
- */
-export interface OperationServiceSpecificationDefinition {
-  metricSpecifications?: OperationMetricSpecificationDefinition[];
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationDefinition class.
- * @constructor
- * The definition of a container registry operation.
- *
- * @member {string} [origin] The origin information of the container registry
- * operation.
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
- * @member {object} [display] The display information for the container
- * registry operation.
- * @member {string} [display.provider] The resource provider name:
- * Microsoft.ContainerRegistry.
- * @member {string} [display.resource] The resource on which the operation is
- * performed.
- * @member {string} [display.operation] The operation that users can perform.
- * @member {string} [display.description] The description for the operation.
- * @member {object} [serviceSpecification] The definition of Azure Monitoring
- * service.
- * @member {array} [serviceSpecification.metricSpecifications] A list of Azure
- * Monitoring metrics definition.
- */
-export interface OperationDefinition {
-  origin?: string;
-  name?: string;
-  display?: OperationDisplayDefinition;
-  serviceSpecification?: OperationServiceSpecificationDefinition;
-}
-
-/**
- * @class
  * Initializes a new instance of the Sku class.
  * @constructor
  * The SKU of a container registry.
@@ -390,6 +306,57 @@ export interface RegistryUsage {
  */
 export interface RegistryUsageListResult {
   value?: RegistryUsage[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QuarantinePolicy class.
+ * @constructor
+ * An object that represents quarantine policy for a container registry.
+ *
+ * @member {string} [status] The value that indicates whether the policy is
+ * enabled or not. Possible values include: 'enabled', 'disabled'
+ */
+export interface QuarantinePolicy {
+  status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrustPolicy class.
+ * @constructor
+ * An object that represents content trust policy for a container registry.
+ *
+ * @member {string} [type] The type of trust policy. Possible values include:
+ * 'Notary'
+ * @member {string} [status] The value that indicates whether the policy is
+ * enabled or not. Possible values include: 'enabled', 'disabled'
+ */
+export interface TrustPolicy {
+  type?: string;
+  status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RegistryPolicies class.
+ * @constructor
+ * An object that represents policies for a container registry.
+ *
+ * @member {object} [quarantinePolicy] An object that represents quarantine
+ * policy for a container registry.
+ * @member {string} [quarantinePolicy.status] The value that indicates whether
+ * the policy is enabled or not. Possible values include: 'enabled', 'disabled'
+ * @member {object} [trustPolicy] An object that represents content trust
+ * policy for a container registry.
+ * @member {string} [trustPolicy.type] The type of trust policy. Possible
+ * values include: 'Notary'
+ * @member {string} [trustPolicy.status] The value that indicates whether the
+ * policy is enabled or not. Possible values include: 'enabled', 'disabled'
+ */
+export interface RegistryPolicies {
+  quarantinePolicy?: QuarantinePolicy;
+  trustPolicy?: TrustPolicy;
 }
 
 /**
@@ -854,19 +821,6 @@ export interface Event extends EventInfo {
  * list of container registries.
  */
 export interface RegistryListResult extends Array<Registry> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * The result of a request to list container registry operations.
- *
- * @member {string} [nextLink] The URI that can be used to request the next
- * list of container registry operations.
- */
-export interface OperationListResult extends Array<OperationDefinition> {
   nextLink?: string;
 }
 
