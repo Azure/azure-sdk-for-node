@@ -177,11 +177,11 @@ export interface Galleries {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Delete a gallery.
@@ -202,7 +202,7 @@ export interface Galleries {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -210,15 +210,17 @@ export interface Galleries {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, galleryName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    deleteMethod(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
@@ -424,11 +426,11 @@ export interface Galleries {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Delete a gallery.
@@ -449,7 +451,7 @@ export interface Galleries {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -457,15 +459,131 @@ export interface Galleries {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
+
+    /**
+     * List galleries under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+
+    /**
+     * List galleries under a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.GalleryList>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
+
+
+    /**
+     * List galleries under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
+
+    /**
+     * List galleries under a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
+    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.GalleryList>): void;
+    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
 }
 
 /**
@@ -745,11 +863,11 @@ export interface GalleryImages {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Delete a gallery image.
@@ -772,7 +890,7 @@ export interface GalleryImages {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -780,15 +898,17 @@ export interface GalleryImages {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
@@ -1055,11 +1175,11 @@ export interface GalleryImages {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Delete a gallery image.
@@ -1082,7 +1202,7 @@ export interface GalleryImages {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1090,15 +1210,74 @@ export interface GalleryImages {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
+
+    /**
+     * List gallery images under a gallery.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listGalleryImagesByGalleryNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
+
+    /**
+     * List gallery images under a gallery.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listGalleryImagesByGalleryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageList>;
+    listGalleryImagesByGalleryNext(nextPageLink: string, callback: ServiceCallback<models.GalleryImageList>): void;
+    listGalleryImagesByGalleryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageList>): void;
 }
 
 /**
@@ -1296,7 +1475,7 @@ export interface GalleryImageVersions {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] The expand expression to apply on the
-     * operation.
+     * operation. Possible values include: 'ReplicationStatus'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1324,7 +1503,7 @@ export interface GalleryImageVersions {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] The expand expression to apply on the
-     * operation.
+     * operation. Possible values include: 'ReplicationStatus'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1375,11 +1554,11 @@ export interface GalleryImageVersions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Delete a gallery image version.
@@ -1405,7 +1584,7 @@ export interface GalleryImageVersions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1413,15 +1592,17 @@ export interface GalleryImageVersions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
 
 
     /**
@@ -1678,11 +1859,11 @@ export interface GalleryImageVersions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
 
     /**
      * Delete a gallery image version.
@@ -1708,7 +1889,7 @@ export interface GalleryImageVersions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {OperationStatusResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1716,15 +1897,75 @@ export interface GalleryImageVersions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatusResponse} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+
+
+    /**
+     * List gallery image versions under a gallery image.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<GalleryImageVersionList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listGalleryImageVersionsByGalleryImageNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersionList>>;
+
+    /**
+     * List gallery image versions under a gallery image.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {GalleryImageVersionList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {GalleryImageVersionList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link GalleryImageVersionList} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listGalleryImageVersionsByGalleryImageNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersionList>;
+    listGalleryImageVersionsByGalleryImageNext(nextPageLink: string, callback: ServiceCallback<models.GalleryImageVersionList>): void;
+    listGalleryImageVersionsByGalleryImageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersionList>): void;
 }
 
 /**

@@ -392,48 +392,83 @@ export interface GalleryArtifactSource {
 
 /**
  * @class
- * Initializes a new instance of the GalleryList class.
+ * Initializes a new instance of the ApiErrorBase class.
  * @constructor
- * The List Galleries operation response.
+ * Api error base.
  *
- * @member {array} value A list of galleries.
- * @member {string} [nextLink] The uri to fetch the next page of galleries.
- * Call ListNext() with this to fetch the next page of galleries.
+ * @member {string} [code] The error code.
+ * @member {string} [target] The target of the particular error.
+ * @member {string} [message] The error message.
  */
-export interface GalleryList {
-  value: Gallery[];
-  nextLink?: string;
+export interface ApiErrorBase {
+  code?: string;
+  target?: string;
+  message?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the GalleryImageList class.
+ * Initializes a new instance of the InnerError class.
  * @constructor
- * The List Gallery Images operation response.
+ * Inner error details.
  *
- * @member {array} value A list of gallery images.
- * @member {string} [nextLink] The uri to fetch the next page of gallery
- * images. Call ListNext() with this to fetch the next page of gallery images.
+ * @member {string} [exceptiontype] The exception type.
+ * @member {string} [errordetail] The internal error message or exception dump.
  */
-export interface GalleryImageList {
-  value: GalleryImage[];
-  nextLink?: string;
+export interface InnerError {
+  exceptiontype?: string;
+  errordetail?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the GalleryImageVersionList class.
+ * Initializes a new instance of the ApiError class.
  * @constructor
- * The List Gallery Image version operation response.
+ * Api error.
  *
- * @member {array} value A list of gallery image versions.
- * @member {string} [nextLink] The uri to fetch the next page of gallery image
- * versions. Call ListNext() with this to fetch the next page of gallery image
- * versions.
+ * @member {array} [details] The Api error details
+ * @member {object} [innererror] The Api inner error
+ * @member {string} [innererror.exceptiontype] The exception type.
+ * @member {string} [innererror.errordetail] The internal error message or
+ * exception dump.
+ * @member {string} [code] The error code.
+ * @member {string} [target] The target of the particular error.
+ * @member {string} [message] The error message.
  */
-export interface GalleryImageVersionList {
-  value: GalleryImageVersion[];
-  nextLink?: string;
+export interface ApiError {
+  details?: ApiErrorBase[];
+  innererror?: InnerError;
+  code?: string;
+  target?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationStatusResponse class.
+ * @constructor
+ * Operation status response
+ *
+ * @member {string} [name] Operation ID
+ * @member {string} [status] Operation status
+ * @member {date} [startTime] Start time of the operation
+ * @member {date} [endTime] End time of the operation
+ * @member {object} [error] Api error
+ * @member {array} [error.details] The Api error details
+ * @member {object} [error.innererror] The Api inner error
+ * @member {string} [error.innererror.exceptiontype] The exception type.
+ * @member {string} [error.innererror.errordetail] The internal error message
+ * or exception dump.
+ * @member {string} [error.code] The error code.
+ * @member {string} [error.target] The target of the particular error.
+ * @member {string} [error.message] The error message.
+ */
+export interface OperationStatusResponse {
+  readonly name?: string;
+  readonly status?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly error?: ApiError;
 }
 
 /**
@@ -4684,59 +4719,6 @@ export interface VirtualMachineScaleSetSku {
 
 /**
  * @class
- * Initializes a new instance of the ApiErrorBase class.
- * @constructor
- * Api error base.
- *
- * @member {string} [code] The error code.
- * @member {string} [target] The target of the particular error.
- * @member {string} [message] The error message.
- */
-export interface ApiErrorBase {
-  code?: string;
-  target?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InnerError class.
- * @constructor
- * Inner error details.
- *
- * @member {string} [exceptiontype] The exception type.
- * @member {string} [errordetail] The internal error message or exception dump.
- */
-export interface InnerError {
-  exceptiontype?: string;
-  errordetail?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApiError class.
- * @constructor
- * Api error.
- *
- * @member {array} [details] The Api error details
- * @member {object} [innererror] The Api inner error
- * @member {string} [innererror.exceptiontype] The exception type.
- * @member {string} [innererror.errordetail] The internal error message or
- * exception dump.
- * @member {string} [code] The error code.
- * @member {string} [target] The target of the particular error.
- * @member {string} [message] The error message.
- */
-export interface ApiError {
-  details?: ApiErrorBase[];
-  innererror?: InnerError;
-  code?: string;
-  target?: string;
-  message?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the RollbackStatusInfo class.
  * @constructor
  * Information about rollback on failed VM instances after a OS Upgrade
@@ -5544,34 +5526,6 @@ export interface ComputeLongRunningOperationProperties {
 export interface RecoveryWalkResponse {
   readonly walkPerformed?: boolean;
   readonly nextPlatformUpdateDomain?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationStatusResponse class.
- * @constructor
- * Operation status response
- *
- * @member {string} [name] Operation ID
- * @member {string} [status] Operation status
- * @member {date} [startTime] Start time of the operation
- * @member {date} [endTime] End time of the operation
- * @member {object} [error] Api error
- * @member {array} [error.details] The Api error details
- * @member {object} [error.innererror] The Api inner error
- * @member {string} [error.innererror.exceptiontype] The exception type.
- * @member {string} [error.innererror.errordetail] The internal error message
- * or exception dump.
- * @member {string} [error.code] The error code.
- * @member {string} [error.target] The target of the particular error.
- * @member {string} [error.message] The error message.
- */
-export interface OperationStatusResponse {
-  readonly name?: string;
-  readonly status?: string;
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly error?: ApiError;
 }
 
 /**
@@ -6582,6 +6536,46 @@ export interface ContainerService extends Resource {
   diagnosticsProfile?: ContainerServiceDiagnosticsProfile;
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryList class.
+ * @constructor
+ * The List Galleries operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of galleries.
+ * Call ListNext() with this to fetch the next page of galleries.
+ */
+export interface GalleryList extends Array<Gallery> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageList class.
+ * @constructor
+ * The List Gallery Images operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of gallery
+ * images. Call ListNext() with this to fetch the next page of gallery images.
+ */
+export interface GalleryImageList extends Array<GalleryImage> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionList class.
+ * @constructor
+ * The List Gallery Image version operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of gallery image
+ * versions. Call ListNext() with this to fetch the next page of gallery image
+ * versions.
+ */
+export interface GalleryImageVersionList extends Array<GalleryImageVersion> {
+  nextLink?: string;
+}
 
 /**
  * @class
