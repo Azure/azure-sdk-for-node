@@ -4330,12 +4330,12 @@ export interface ScheduledQueryRules {
      * @param {array} [parameters.source.authorizedResources] List of  Resource
      * referred into query
      *
-     * @param {string} parameters.source.datasourceId The resource uri over which
+     * @param {string} parameters.source.dataSourceId The resource uri over which
      * log search query is to be run.
      *
      * @param {string} [parameters.source.queryType] Set value to ResultCount if
-     * query should be returning search result count. Set it to Number if its a
-     * metric query. Possible values include: 'ResultCount'
+     * query should be returning search result count. Possible values include:
+     * 'ResultCount'
      *
      * @param {object} parameters.schedule Schedule (Frequnecy, Time Window) for
      * rule.
@@ -4398,12 +4398,12 @@ export interface ScheduledQueryRules {
      * @param {array} [parameters.source.authorizedResources] List of  Resource
      * referred into query
      *
-     * @param {string} parameters.source.datasourceId The resource uri over which
+     * @param {string} parameters.source.dataSourceId The resource uri over which
      * log search query is to be run.
      *
      * @param {string} [parameters.source.queryType] Set value to ResultCount if
-     * query should be returning search result count. Set it to Number if its a
-     * metric query. Possible values include: 'ResultCount'
+     * query should be returning search result count. Possible values include:
+     * 'ResultCount'
      *
      * @param {object} parameters.schedule Schedule (Frequnecy, Time Window) for
      * rule.
@@ -4518,6 +4518,81 @@ export interface ScheduledQueryRules {
     get(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogSearchRuleResource>;
     get(resourceGroupName: string, ruleName: string, callback: ServiceCallback<models.LogSearchRuleResource>): void;
     get(resourceGroupName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogSearchRuleResource>): void;
+
+
+    /**
+     * Update log search Rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} parameters The parameters of the rule to update.
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {string} [parameters.enabled] The flag which indicates whether the
+     * Log Search rule is enabled. Value should be true or false. Possible values
+     * include: 'true', 'false'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LogSearchRuleResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResourcePatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogSearchRuleResource>>;
+
+    /**
+     * Update log search Rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} parameters The parameters of the rule to update.
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {string} [parameters.enabled] The flag which indicates whether the
+     * Log Search rule is enabled. Value should be true or false. Possible values
+     * include: 'true', 'false'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LogSearchRuleResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LogSearchRuleResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LogSearchRuleResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResourcePatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogSearchRuleResource>;
+    update(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResourcePatch, callback: ServiceCallback<models.LogSearchRuleResource>): void;
+    update(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResourcePatch, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogSearchRuleResource>): void;
 
 
     /**
