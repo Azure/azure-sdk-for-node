@@ -2045,6 +2045,8 @@ export interface MetricAlertCriteria {
  * threshold.
  * @member {object} criteria defines the specific alert criteria information.
  * @member {string} [criteria.odatatype] Polymorphic Discriminator
+ * @member {boolean} [autoMitigate] the flag that indicates whether the alert
+ * should be auto resolved or not.
  * @member {array} [actions] the array of actions that are performed when the
  * alert rule becomes active, and when an alert condition is resolved.
  * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
@@ -2058,6 +2060,7 @@ export interface MetricAlertResource extends Resource {
   evaluationFrequency: moment.Duration;
   windowSize: moment.Duration;
   criteria: MetricAlertCriteria;
+  autoMitigate?: boolean;
   actions?: Action[];
   readonly lastUpdatedTime?: Date;
 }
@@ -2083,6 +2086,8 @@ export interface MetricAlertResource extends Resource {
  * threshold.
  * @member {object} criteria defines the specific alert criteria information.
  * @member {string} [criteria.odatatype] Polymorphic Discriminator
+ * @member {boolean} [autoMitigate] the flag that indicates whether the alert
+ * should be auto resolved or not.
  * @member {array} [actions] the array of actions that are performed when the
  * alert rule becomes active, and when an alert condition is resolved.
  * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
@@ -2097,6 +2102,7 @@ export interface MetricAlertResourcePatch {
   evaluationFrequency: moment.Duration;
   windowSize: moment.Duration;
   criteria: MetricAlertCriteria;
+  autoMitigate?: boolean;
   actions?: Action[];
   readonly lastUpdatedTime?: Date;
 }
@@ -2210,7 +2216,7 @@ export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricA
  *
  * @member {string} query Log search query.
  * @member {array} [authorizedResources] List of  Resource referred into query
- * @member {string} dataSourceId The resource uri over which log search query
+ * @member {string} datasourceId The resource uri over which log search query
  * is to be run.
  * @member {string} [queryType] Set value to ResultCount if query should be
  * returning search result count. Set it to Number if its a metric query.
@@ -2219,7 +2225,7 @@ export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricA
 export interface Source {
   query: string;
   authorizedResources?: string[];
-  dataSourceId: string;
+  datasourceId: string;
   queryType?: string;
 }
 
@@ -2258,7 +2264,7 @@ export interface Schedule {
  * @member {string} [source.query] Log search query.
  * @member {array} [source.authorizedResources] List of  Resource referred into
  * query
- * @member {string} [source.dataSourceId] The resource uri over which log
+ * @member {string} [source.datasourceId] The resource uri over which log
  * search query is to be run.
  * @member {string} [source.queryType] Set value to ResultCount if query should
  * be returning search result count. Set it to Number if its a metric query.
@@ -2339,13 +2345,12 @@ export interface TriggerCondition {
  * @class
  * Initializes a new instance of the AzNsActionGroup class.
  * @constructor
- * Azure action group
+ * azns notification group
  *
- * @member {array} [actionGroup] Azure Action Group reference.
- * @member {string} [emailSubject] Custom subject override for all email ids in
- * Azure action group
- * @member {string} [customWebhookPayload] Custom payload to be sent for all
- * webook URI in Azure action group
+ * @member {array} [actionGroup] Azure Group reference.
+ * @member {string} [emailSubject] Custom subject for Azns email
+ * @member {string} [customWebhookPayload] Custom webhook payload to be send to
+ * azns action group
  */
 export interface AzNsActionGroup {
   actionGroup?: string[];
@@ -2361,14 +2366,13 @@ export interface AzNsActionGroup {
  *
  * @member {string} severity Severity of the alert. Possible values include:
  * '0', '1', '2', '3', '4'
- * @member {object} aznsAction Azure action group reference.
- * @member {array} [aznsAction.actionGroup] Azure Action Group reference.
- * @member {string} [aznsAction.emailSubject] Custom subject override for all
- * email ids in Azure action group
- * @member {string} [aznsAction.customWebhookPayload] Custom payload to be sent
- * for all webook URI in Azure action group
+ * @member {object} aznsAction azns notification group reference.
+ * @member {array} [aznsAction.actionGroup] Azure Group reference.
+ * @member {string} [aznsAction.emailSubject] Custom subject for Azns email
+ * @member {string} [aznsAction.customWebhookPayload] Custom webhook payload to
+ * be send to azns action group
  * @member {number} [throttlingInMin] time (in minutes) for which Alerts should
- * be throttled or suppressed.
+ * be throttled
  * @member {object} trigger The trigger condition that results in the alert
  * rule being.
  * @member {string} [trigger.thresholdOperator] Evaluation operation for rule -
