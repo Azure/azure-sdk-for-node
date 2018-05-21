@@ -8,7 +8,7 @@
  * regenerated.
  */
 
-import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
+import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
@@ -56,80 +56,8 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  usageDetails: operations.UsageDetails;
-  usageDetailsByBillingAccount: operations.UsageDetailsByBillingAccount;
-  usageDetailsByDepartment: operations.UsageDetailsByDepartment;
-  usageDetailsByEnrollmentAccount: operations.UsageDetailsByEnrollmentAccount;
-  marketplaces: operations.Marketplaces;
-  marketplacesByBillingAccount: operations.MarketplacesByBillingAccount;
-  marketplacesByDepartment: operations.MarketplacesByDepartment;
-  marketplacesByEnrollmentAccounts: operations.MarketplacesByEnrollmentAccounts;
-  getBalancesByBillingAccount: operations.GetBalancesByBillingAccount;
-  reservationsSummaries: operations.ReservationsSummaries;
-  reservationsDetails: operations.ReservationsDetails;
-  reservationRecommendationsOperations: operations.ReservationRecommendationsOperations;
-  budgets: operations.Budgets;
+  forecasts: operations.Forecasts;
   operations: operations.Operations;
-  priceSheet: operations.PriceSheet;
-  costTagsOperations: operations.CostTagsOperations;
-  tagsOperations: operations.TagsOperations;
-
-
-  /**
-   * Gets the balances for a scope by billingAccountId. Balances are available
-   * via this API only for May 1, 2014 or later.
-   *
-   * @param {string} billingAccountId BillingAccount ID
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @returns {Promise} A promise is returned
-   *
-   * @resolve {HttpOperationResponse<Balance>} - The deserialized result object.
-   *
-   * @reject {Error|ServiceError} - The error object.
-   */
-  getBalancesByBillingAccountWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Balance>>;
-
-  /**
-   * Gets the balances for a scope by billingAccountId. Balances are available
-   * via this API only for May 1, 2014 or later.
-   *
-   * @param {string} billingAccountId BillingAccount ID
-   *
-   * @param {object} [options] Optional Parameters.
-   *
-   * @param {object} [options.customHeaders] Headers that will be added to the
-   * request
-   *
-   * @param {ServiceCallback} [optionalCallback] - The optional callback.
-   *
-   * @returns {ServiceCallback|Promise} If a callback was passed as the last
-   * parameter then it returns the callback else returns a Promise.
-   *
-   * {Promise} A promise is returned.
-   *
-   *                      @resolve {Balance} - The deserialized result object.
-   *
-   *                      @reject {Error|ServiceError} - The error object.
-   *
-   * {ServiceCallback} optionalCallback(err, result, request, response)
-   *
-   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-   *
-   *                      {Balance} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link Balance} for more information.
-   *
-   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-   *
-   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-   */
-  getBalancesByBillingAccount(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Balance>;
-  getBalancesByBillingAccount(billingAccountId: string, callback: ServiceCallback<models.Balance>): void;
-  getBalancesByBillingAccount(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Balance>): void;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };
