@@ -9398,6 +9398,217 @@ export interface SourceControlSyncJobOperations {
 
 /**
  * @class
+ * SourceControlSyncJobStreams
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface SourceControlSyncJobStreams {
+
+
+    /**
+     * Retrieve a list of sync job streams identified by sync job id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} sourceControlName The source control name.
+     *
+     * @param {uuid} sourceControlSyncJobId The source control sync job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SourceControlSyncJobStreamsListBySyncJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySyncJobWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJobStreamsListBySyncJob>>;
+
+    /**
+     * Retrieve a list of sync job streams identified by sync job id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} sourceControlName The source control name.
+     *
+     * @param {uuid} sourceControlSyncJobId The source control sync job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SourceControlSyncJobStreamsListBySyncJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SourceControlSyncJobStreamsListBySyncJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SourceControlSyncJobStreamsListBySyncJob}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySyncJob(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJobStreamsListBySyncJob>;
+    listBySyncJob(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, callback: ServiceCallback<models.SourceControlSyncJobStreamsListBySyncJob>): void;
+    listBySyncJob(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJobStreamsListBySyncJob>): void;
+
+
+    /**
+     * Retrieve a sync job stream identified by stream id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} sourceControlName The source control name.
+     *
+     * @param {uuid} sourceControlSyncJobId The source control sync job id.
+     *
+     * @param {string} streamId The id of the sync job stream.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SourceControlSyncJobStreamById>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, streamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJobStreamById>>;
+
+    /**
+     * Retrieve a sync job stream identified by stream id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} sourceControlName The source control name.
+     *
+     * @param {uuid} sourceControlSyncJobId The source control sync job id.
+     *
+     * @param {string} streamId The id of the sync job stream.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SourceControlSyncJobStreamById} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SourceControlSyncJobStreamById} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SourceControlSyncJobStreamById} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, streamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJobStreamById>;
+    get(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, streamId: string, callback: ServiceCallback<models.SourceControlSyncJobStreamById>): void;
+    get(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, streamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJobStreamById>): void;
+
+
+    /**
+     * Retrieve a list of sync job streams identified by sync job id.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SourceControlSyncJobStreamsListBySyncJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySyncJobNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJobStreamsListBySyncJob>>;
+
+    /**
+     * Retrieve a list of sync job streams identified by sync job id.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SourceControlSyncJobStreamsListBySyncJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SourceControlSyncJobStreamsListBySyncJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SourceControlSyncJobStreamsListBySyncJob}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySyncJobNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJobStreamsListBySyncJob>;
+    listBySyncJobNext(nextPageLink: string, callback: ServiceCallback<models.SourceControlSyncJobStreamsListBySyncJob>): void;
+    listBySyncJobNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJobStreamsListBySyncJob>): void;
+}
+
+/**
+ * @class
  * JobOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AutomationClient.
@@ -11743,43 +11954,33 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {object} parameters.source Gets or sets the source.
      *
-     * @param {string} parameters.name Name of the node configuration.
+     * @param {object} [parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source.version] Gets or sets the version of the
+     * content.
      *
      * @param {object} parameters.configuration Gets or sets the configuration of
      * the node.
      *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
-     *
-     * @param {object} parameters.source1 Gets or sets the source.
-     *
-     * @param {object} [parameters.source1.hash] Gets or sets the hash.
-     *
-     * @param {string} parameters.source1.hash.algorithm Gets or sets the content
-     * hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.source1.hash.value Gets or sets expected hash
-     * value of the content.
-     *
-     * @param {string} [parameters.source1.type] Gets or sets the content source
-     * type. Possible values include: 'embeddedContent', 'uri'
-     *
-     * @param {string} [parameters.source1.value] Gets or sets the value of the
-     * content. This is based on the content source type.
-     *
-     * @param {string} [parameters.source1.version] Gets or sets the version of the
-     * content.
-     *
-     * @param {string} parameters.name1 Gets or sets the type of the parameter.
-     *
-     * @param {object} parameters.configuration1 Gets or sets the configuration of
-     * the node.
-     *
-     * @param {string} [parameters.configuration1.name] Gets or sets the name of
-     * the Dsc configuration.
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
      *
      * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
      * version of NodeConfiguration is required.
+     *
+     * @param {string} [parameters.name] Name of the node configuration.
      *
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource.
@@ -11811,43 +12012,33 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {object} parameters.source Gets or sets the source.
      *
-     * @param {string} parameters.name Name of the node configuration.
+     * @param {object} [parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source.version] Gets or sets the version of the
+     * content.
      *
      * @param {object} parameters.configuration Gets or sets the configuration of
      * the node.
      *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
-     *
-     * @param {object} parameters.source1 Gets or sets the source.
-     *
-     * @param {object} [parameters.source1.hash] Gets or sets the hash.
-     *
-     * @param {string} parameters.source1.hash.algorithm Gets or sets the content
-     * hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.source1.hash.value Gets or sets expected hash
-     * value of the content.
-     *
-     * @param {string} [parameters.source1.type] Gets or sets the content source
-     * type. Possible values include: 'embeddedContent', 'uri'
-     *
-     * @param {string} [parameters.source1.value] Gets or sets the value of the
-     * content. This is based on the content source type.
-     *
-     * @param {string} [parameters.source1.version] Gets or sets the version of the
-     * content.
-     *
-     * @param {string} parameters.name1 Gets or sets the type of the parameter.
-     *
-     * @param {object} parameters.configuration1 Gets or sets the configuration of
-     * the node.
-     *
-     * @param {string} [parameters.configuration1.name] Gets or sets the name of
-     * the Dsc configuration.
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
      *
      * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
      * version of NodeConfiguration is required.
+     *
+     * @param {string} [parameters.name] Name of the node configuration.
      *
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource.
@@ -11974,43 +12165,33 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {object} parameters.source Gets or sets the source.
      *
-     * @param {string} parameters.name Name of the node configuration.
+     * @param {object} [parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source.version] Gets or sets the version of the
+     * content.
      *
      * @param {object} parameters.configuration Gets or sets the configuration of
      * the node.
      *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
-     *
-     * @param {object} parameters.source1 Gets or sets the source.
-     *
-     * @param {object} [parameters.source1.hash] Gets or sets the hash.
-     *
-     * @param {string} parameters.source1.hash.algorithm Gets or sets the content
-     * hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.source1.hash.value Gets or sets expected hash
-     * value of the content.
-     *
-     * @param {string} [parameters.source1.type] Gets or sets the content source
-     * type. Possible values include: 'embeddedContent', 'uri'
-     *
-     * @param {string} [parameters.source1.value] Gets or sets the value of the
-     * content. This is based on the content source type.
-     *
-     * @param {string} [parameters.source1.version] Gets or sets the version of the
-     * content.
-     *
-     * @param {string} parameters.name1 Gets or sets the type of the parameter.
-     *
-     * @param {object} parameters.configuration1 Gets or sets the configuration of
-     * the node.
-     *
-     * @param {string} [parameters.configuration1.name] Gets or sets the name of
-     * the Dsc configuration.
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
      *
      * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
      * version of NodeConfiguration is required.
+     *
+     * @param {string} [parameters.name] Name of the node configuration.
      *
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource.
@@ -12042,43 +12223,33 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {object} parameters.source Gets or sets the source.
      *
-     * @param {string} parameters.name Name of the node configuration.
+     * @param {object} [parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source.version] Gets or sets the version of the
+     * content.
      *
      * @param {object} parameters.configuration Gets or sets the configuration of
      * the node.
      *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
-     *
-     * @param {object} parameters.source1 Gets or sets the source.
-     *
-     * @param {object} [parameters.source1.hash] Gets or sets the hash.
-     *
-     * @param {string} parameters.source1.hash.algorithm Gets or sets the content
-     * hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.source1.hash.value Gets or sets expected hash
-     * value of the content.
-     *
-     * @param {string} [parameters.source1.type] Gets or sets the content source
-     * type. Possible values include: 'embeddedContent', 'uri'
-     *
-     * @param {string} [parameters.source1.value] Gets or sets the value of the
-     * content. This is based on the content source type.
-     *
-     * @param {string} [parameters.source1.version] Gets or sets the version of the
-     * content.
-     *
-     * @param {string} parameters.name1 Gets or sets the type of the parameter.
-     *
-     * @param {object} parameters.configuration1 Gets or sets the configuration of
-     * the node.
-     *
-     * @param {string} [parameters.configuration1.name] Gets or sets the name of
-     * the Dsc configuration.
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
      *
      * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
      * version of NodeConfiguration is required.
+     *
+     * @param {string} [parameters.name] Name of the node configuration.
      *
      * @param {object} [parameters.tags] Gets or sets the tags attached to the
      * resource.

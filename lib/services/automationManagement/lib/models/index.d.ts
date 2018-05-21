@@ -269,7 +269,7 @@ export interface DscCompilationJob extends ProxyResource {
   readonly startedBy?: string;
   readonly jobId?: string;
   readonly creationTime?: Date;
-  provisioningState?: JobProvisioningStateProperty;
+  readonly provisioningState?: JobProvisioningStateProperty;
   runOn?: string;
   status?: string;
   statusDetails?: string;
@@ -1313,61 +1313,6 @@ export interface DscMetaConfiguration {
   certificateId?: string;
   refreshFrequencyMins?: number;
   allowModuleOverwrite?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update node configuration
- * operation.
- *
- * @member {object} source Gets or sets the source.
- * @member {object} [source.hash] Gets or sets the hash.
- * @member {string} [source.hash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [source.hash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [source.type] Gets or sets the content source type.
- * Possible values include: 'embeddedContent', 'uri'
- * @member {string} [source.value] Gets or sets the value of the content. This
- * is based on the content source type.
- * @member {string} [source.version] Gets or sets the version of the content.
- * @member {string} name Name of the node configuration.
- * @member {object} configuration Gets or sets the configuration of the node.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {boolean} [newNodeConfigurationBuildVersionRequired] If a new build
- * version of NodeConfiguration is required.
- * @member {object} source1 Gets or sets the source.
- * @member {object} [source1.hash] Gets or sets the hash.
- * @member {string} [source1.hash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [source1.hash.value] Gets or sets expected hash value of
- * the content.
- * @member {string} [source1.type] Gets or sets the content source type.
- * Possible values include: 'embeddedContent', 'uri'
- * @member {string} [source1.value] Gets or sets the value of the content. This
- * is based on the content source type.
- * @member {string} [source1.version] Gets or sets the version of the content.
- * @member {string} name1 Gets or sets the type of the parameter.
- * @member {object} configuration1 Gets or sets the configuration of the node.
- * @member {string} [configuration1.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
- * of NodeConfiguration is required.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface DscNodeConfigurationCreateOrUpdateParameters {
-  source: ContentSource;
-  name: string;
-  configuration: DscConfigurationAssociationProperty;
-  newNodeConfigurationBuildVersionRequired?: boolean;
-  source1: ContentSource;
-  name1: string;
-  configuration1: DscConfigurationAssociationProperty;
-  incrementNodeConfigurationBuild?: boolean;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -3006,6 +2951,52 @@ export interface SourceControlSyncJobById {
 
 /**
  * @class
+ * Initializes a new instance of the SourceControlSyncJobStream class.
+ * @constructor
+ * Definition of the source control sync job stream.
+ *
+ * @member {string} [id] Resource id.
+ * @member {string} [syncJobStreamId] Gets the sync job stream id.
+ * @member {string} [summary] Gets the summary of the sync job stream.
+ * @member {date} [time] Gets the time of the sync job stream.
+ * @member {string} [streamType] Gets the type of the sync job stream. Possible
+ * values include: 'Error', 'Output'
+ */
+export interface SourceControlSyncJobStream {
+  readonly id?: string;
+  syncJobStreamId?: string;
+  summary?: string;
+  readonly time?: Date;
+  streamType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceControlSyncJobStreamById class.
+ * @constructor
+ * Definition of the source control sync job stream by id.
+ *
+ * @member {string} [id] Resource id.
+ * @member {string} [syncJobStreamId] Gets the sync job stream id.
+ * @member {string} [summary] Gets the summary of the sync job stream.
+ * @member {date} [time] Gets the time of the sync job stream.
+ * @member {string} [streamType] Gets the type of the sync job stream. Possible
+ * values include: 'Error', 'Output'
+ * @member {string} [streamText] Gets the text of the sync job stream.
+ * @member {string} [value] Gets the value of the sync job stream.
+ */
+export interface SourceControlSyncJobStreamById {
+  readonly id?: string;
+  syncJobStreamId?: string;
+  summary?: string;
+  readonly time?: Date;
+  streamType?: string;
+  streamText?: string;
+  value?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DscNode class.
  * @constructor
  * Definition of a DscNode
@@ -3062,6 +3053,40 @@ export interface DscNodeConfiguration extends ProxyResource {
   source?: string;
   nodeCount?: number;
   incrementNodeConfigurationBuild?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update node configuration
+ * operation.
+ *
+ * @member {object} source Gets or sets the source.
+ * @member {object} [source.hash] Gets or sets the hash.
+ * @member {string} [source.hash.algorithm] Gets or sets the content hash
+ * algorithm used to hash the content.
+ * @member {string} [source.hash.value] Gets or sets expected hash value of the
+ * content.
+ * @member {string} [source.type] Gets or sets the content source type.
+ * Possible values include: 'embeddedContent', 'uri'
+ * @member {string} [source.value] Gets or sets the value of the content. This
+ * is based on the content source type.
+ * @member {string} [source.version] Gets or sets the version of the content.
+ * @member {object} configuration Gets or sets the configuration of the node.
+ * @member {string} [configuration.name] Gets or sets the name of the Dsc
+ * configuration.
+ * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
+ * of NodeConfiguration is required.
+ * @member {string} [name] Name of the node configuration.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface DscNodeConfigurationCreateOrUpdateParameters {
+  source: ContentSource;
+  configuration: DscConfigurationAssociationProperty;
+  incrementNodeConfigurationBuild?: boolean;
+  name?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 
@@ -3317,6 +3342,18 @@ export interface SourceControlListResult extends Array<SourceControl> {
  */
 export interface SourceControlSyncJobListResult extends Array<SourceControlSyncJob> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceControlSyncJobStreamsListBySyncJob class.
+ * @constructor
+ * The response model for the list source control sync job streams operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface SourceControlSyncJobStreamsListBySyncJob extends Array<SourceControlSyncJobStream> {
+  readonly nextLink?: string;
 }
 
 /**
