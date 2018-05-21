@@ -1928,11 +1928,10 @@ export interface VulnerabilityAssessmentRecurringScansProperties {
  * @constructor
  * A database vulnerability assessment.
  *
- * @member {string} [storageContainerPath] A blob storage container path to
- * hold the scan results (e.g.
- * https://myStorage.blob.core.windows.net/VaScans/).
- * @member {string} [storageContainerSasKey] A shared access signature (SAS
- * Key) that has write access to the blob container specified in
+ * @member {string} storageContainerPath A blob storage container path to hold
+ * the scan results (e.g. https://myStorage.blob.core.windows.net/VaScans/).
+ * @member {string} storageContainerSasKey A shared access signature (SAS Key)
+ * that has write access to the blob container specified in
  * 'storageContainerPath' parameter.
  * @member {object} [recurringScans] The recurring scans settings
  * @member {boolean} [recurringScans.isEnabled] Recurring scans state.
@@ -1943,8 +1942,8 @@ export interface VulnerabilityAssessmentRecurringScansProperties {
  * addresses to which the scan notification is sent.
  */
 export interface DatabaseVulnerabilityAssessment extends ProxyResource {
-  storageContainerPath?: string;
-  storageContainerSasKey?: string;
+  storageContainerPath: string;
+  storageContainerSasKey: string;
   recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
 }
 
