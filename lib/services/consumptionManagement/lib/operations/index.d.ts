@@ -22,8 +22,8 @@ export interface UsageDetails {
 
 
     /**
-     * Lists the usage details for a scope by billing period. Usage details are
-     * available via this API only for May 1, 2014 or later.
+     * Lists the usage details for a scope by current billing period. Usage details
+     * are available via this API only for May 1, 2014 or later.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -51,7 +51,7 @@ export interface UsageDetails {
      * operation
      *
      * @param {string} [options.queryOptions.apply] OData apply expression to
-     * aggregatie usageDetails by tags or (tags and properties/usageStart)
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -65,8 +65,8 @@ export interface UsageDetails {
     listWithHttpOperationResponse(options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
 
     /**
-     * Lists the usage details for a scope by billing period. Usage details are
-     * available via this API only for May 1, 2014 or later.
+     * Lists the usage details for a scope by current billing period. Usage details
+     * are available via this API only for May 1, 2014 or later.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -94,7 +94,7 @@ export interface UsageDetails {
      * operation
      *
      * @param {string} [options.queryOptions.apply] OData apply expression to
-     * aggregatie usageDetails by tags or (tags and properties/usageStart)
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -159,7 +159,7 @@ export interface UsageDetails {
      * operation
      *
      * @param {string} [options.queryOptions.apply] OData apply expression to
-     * aggregatie usageDetails by tags or (tags and properties/usageStart)
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -204,7 +204,7 @@ export interface UsageDetails {
      * operation
      *
      * @param {string} [options.queryOptions.apply] OData apply expression to
-     * aggregatie usageDetails by tags or (tags and properties/usageStart)
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -238,8 +238,8 @@ export interface UsageDetails {
 
 
     /**
-     * Lists the usage details for a scope by billing period. Usage details are
-     * available via this API only for May 1, 2014 or later.
+     * Lists the usage details for a scope by current billing period. Usage details
+     * are available via this API only for May 1, 2014 or later.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -258,8 +258,8 @@ export interface UsageDetails {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
 
     /**
-     * Lists the usage details for a scope by billing period. Usage details are
-     * available via this API only for May 1, 2014 or later.
+     * Lists the usage details for a scope by current billing period. Usage details
+     * are available via this API only for May 1, 2014 or later.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -359,6 +359,1089 @@ export interface UsageDetails {
 
 /**
  * @class
+ * UsageDetailsByBillingAccount
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface UsageDetailsByBillingAccount {
+
+
+    /**
+     * Lists the usage details by billingAccountId for a scope by current billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
+     * details.
+     *
+     * @param {string} [options.filter] May be used to filter usageDetails by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName, properties/instanceId or
+     * tags. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does
+     * not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression to
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(billingAccountId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+
+    /**
+     * Lists the usage details by billingAccountId for a scope by current billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
+     * details.
+     *
+     * @param {string} [options.filter] May be used to filter usageDetails by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName, properties/instanceId or
+     * tags. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does
+     * not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression to
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(billingAccountId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    list(billingAccountId: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    list(billingAccountId: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+
+
+    /**
+     * Lists the usage details based on billingAccountId for a scope by billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
+     * details.
+     *
+     * @param {string} [options.filter] May be used to filter usageDetails by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression to
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingPeriodWithHttpOperationResponse(billingAccountId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+
+    /**
+     * Lists the usage details based on billingAccountId for a scope by billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
+     * details.
+     *
+     * @param {string} [options.filter] May be used to filter usageDetails by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression to
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingPeriod(billingAccountId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listByBillingPeriod(billingAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByBillingPeriod(billingAccountId: string, billingPeriodName: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+
+
+    /**
+     * Lists the usage details by billingAccountId for a scope by current billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+
+    /**
+     * Lists the usage details by billingAccountId for a scope by current billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+
+
+    /**
+     * Lists the usage details based on billingAccountId for a scope by billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingPeriodNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+
+    /**
+     * Lists the usage details based on billingAccountId for a scope by billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingPeriodNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listByBillingPeriodNext(nextPageLink: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByBillingPeriodNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+}
+
+/**
+ * @class
+ * UsageDetailsByDepartment
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface UsageDetailsByDepartment {
+
+
+    /**
+     * Lists the usage details by departmentId for a scope by current billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} departmentId Department ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
+     * details.
+     *
+     * @param {string} [options.filter] May be used to filter usageDetails by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName, properties/instanceId or
+     * tags. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does
+     * not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression to
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(departmentId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+
+    /**
+     * Lists the usage details by departmentId for a scope by current billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} departmentId Department ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
+     * details.
+     *
+     * @param {string} [options.filter] May be used to filter usageDetails by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName, properties/instanceId or
+     * tags. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does
+     * not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression to
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(departmentId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    list(departmentId: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    list(departmentId: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+
+
+    /**
+     * Lists the usage details  based on departmentId for a scope by billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} departmentId Department ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
+     * details.
+     *
+     * @param {string} [options.filter] May be used to filter usageDetails by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression to
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingPeriodWithHttpOperationResponse(departmentId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+
+    /**
+     * Lists the usage details  based on departmentId for a scope by billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} departmentId Department ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
+     * details.
+     *
+     * @param {string} [options.filter] May be used to filter usageDetails by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression to
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingPeriod(departmentId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listByBillingPeriod(departmentId: string, billingPeriodName: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByBillingPeriod(departmentId: string, billingPeriodName: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+
+
+    /**
+     * Lists the usage details by departmentId for a scope by current billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+
+    /**
+     * Lists the usage details by departmentId for a scope by current billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+
+
+    /**
+     * Lists the usage details  based on departmentId for a scope by billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingPeriodNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+
+    /**
+     * Lists the usage details  based on departmentId for a scope by billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingPeriodNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listByBillingPeriodNext(nextPageLink: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByBillingPeriodNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+}
+
+/**
+ * @class
+ * UsageDetailsByEnrollmentAccount
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface UsageDetailsByEnrollmentAccount {
+
+
+    /**
+     * Lists the usage details by enrollmentAccountId for a scope by current
+     * billing period. Usage details are available via this API only for May 1,
+     * 2014 or later.
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
+     * details.
+     *
+     * @param {string} [options.filter] May be used to filter usageDetails by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName, properties/instanceId or
+     * tags. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does
+     * not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression to
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(enrollmentAccountId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+
+    /**
+     * Lists the usage details by enrollmentAccountId for a scope by current
+     * billing period. Usage details are available via this API only for May 1,
+     * 2014 or later.
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
+     * details.
+     *
+     * @param {string} [options.filter] May be used to filter usageDetails by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName, properties/instanceId or
+     * tags. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does
+     * not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression to
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(enrollmentAccountId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    list(enrollmentAccountId: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    list(enrollmentAccountId: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+
+
+    /**
+     * Lists the usage details based on enrollmentAccountId for a scope by billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
+     * details.
+     *
+     * @param {string} [options.filter] May be used to filter usageDetails by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression to
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingPeriodWithHttpOperationResponse(enrollmentAccountId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+
+    /**
+     * Lists the usage details based on enrollmentAccountId for a scope by billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * properties/additionalProperties or properties/meterDetails within a list of
+     * usage details. By default, these fields are not included when listing usage
+     * details.
+     *
+     * @param {string} [options.filter] May be used to filter usageDetails by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N usageDetails.
+     *
+     * @param {object} [options.queryOptions] Additional parameters for the
+     * operation
+     *
+     * @param {string} [options.queryOptions.apply] OData apply expression to
+     * aggregate usageDetails by tags or (tags and properties/usageStart)
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingPeriod(enrollmentAccountId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listByBillingPeriod(enrollmentAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByBillingPeriod(enrollmentAccountId: string, billingPeriodName: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+
+
+    /**
+     * Lists the usage details by enrollmentAccountId for a scope by current
+     * billing period. Usage details are available via this API only for May 1,
+     * 2014 or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+
+    /**
+     * Lists the usage details by enrollmentAccountId for a scope by current
+     * billing period. Usage details are available via this API only for May 1,
+     * 2014 or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+
+
+    /**
+     * Lists the usage details based on enrollmentAccountId for a scope by billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UsageDetailsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingPeriodNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+
+    /**
+     * Lists the usage details based on enrollmentAccountId for a scope by billing
+     * period. Usage details are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UsageDetailsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UsageDetailsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsageDetailsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingPeriodNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listByBillingPeriodNext(nextPageLink: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByBillingPeriodNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+}
+
+/**
+ * @class
  * Marketplaces
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ConsumptionManagementClient.
@@ -367,8 +1450,9 @@ export interface Marketplaces {
 
 
     /**
-     * Lists the marketplaces for a scope by subscriptionId. Marketplaces are
-     * available via this API only for May 1, 2014 or later.
+     * Lists the marketplaces for a scope by subscriptionId and current billing
+     * period. Marketplaces are available via this API only for May 1, 2014 or
+     * later.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -398,8 +1482,9 @@ export interface Marketplaces {
     listWithHttpOperationResponse(options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
-     * Lists the marketplaces for a scope by subscriptionId. Marketplaces are
-     * available via this API only for May 1, 2014 or later.
+     * Lists the marketplaces for a scope by subscriptionId and current billing
+     * period. Marketplaces are available via this API only for May 1, 2014 or
+     * later.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -535,8 +1620,9 @@ export interface Marketplaces {
 
 
     /**
-     * Lists the marketplaces for a scope by subscriptionId. Marketplaces are
-     * available via this API only for May 1, 2014 or later.
+     * Lists the marketplaces for a scope by subscriptionId and current billing
+     * period. Marketplaces are available via this API only for May 1, 2014 or
+     * later.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -555,8 +1641,9 @@ export interface Marketplaces {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
-     * Lists the marketplaces for a scope by subscriptionId. Marketplaces are
-     * available via this API only for May 1, 2014 or later.
+     * Lists the marketplaces for a scope by subscriptionId and current billing
+     * period. Marketplaces are available via this API only for May 1, 2014 or
+     * later.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -652,6 +1739,1007 @@ export interface Marketplaces {
     listByBillingPeriodNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
     listByBillingPeriodNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
     listByBillingPeriodNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+}
+
+/**
+ * @class
+ * MarketplacesByBillingAccount
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface MarketplacesByBillingAccount {
+
+
+    /**
+     * Lists the marketplaces for a scope by billingAccountId and current billing
+     * period. Marketplaces are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(billingAccountId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplaces for a scope by billingAccountId and current billing
+     * period. Marketplaces are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(billingAccountId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    list(billingAccountId: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    list(billingAccountId: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
+     * Lists the marketplaces for a scope by billing period and billingAccountId.
+     * Marketplaces are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingPeriodWithHttpOperationResponse(billingAccountId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplaces for a scope by billing period and billingAccountId.
+     * Marketplaces are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingPeriod(billingAccountId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByBillingPeriod(billingAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByBillingPeriod(billingAccountId: string, billingPeriodName: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
+     * Lists the marketplaces for a scope by billingAccountId and current billing
+     * period. Marketplaces are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplaces for a scope by billingAccountId and current billing
+     * period. Marketplaces are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
+     * Lists the marketplaces for a scope by billing period and billingAccountId.
+     * Marketplaces are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingPeriodNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplaces for a scope by billing period and billingAccountId.
+     * Marketplaces are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingPeriodNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByBillingPeriodNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByBillingPeriodNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+}
+
+/**
+ * @class
+ * MarketplacesByDepartment
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface MarketplacesByDepartment {
+
+
+    /**
+     * Lists the marketplaces for a scope by departmentId and current billing
+     * period. Marketplaces are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} departmentId Department ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(departmentId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplaces for a scope by departmentId and current billing
+     * period. Marketplaces are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} departmentId Department ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(departmentId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    list(departmentId: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    list(departmentId: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
+     * Lists the marketplaces for a scope by billing period and departmentId.
+     * Marketplaces are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} departmentId Department ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingPeriodWithHttpOperationResponse(departmentId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplaces for a scope by billing period and departmentId.
+     * Marketplaces are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} departmentId Department ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingPeriod(departmentId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByBillingPeriod(departmentId: string, billingPeriodName: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByBillingPeriod(departmentId: string, billingPeriodName: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
+     * Lists the marketplaces for a scope by departmentId and current billing
+     * period. Marketplaces are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplaces for a scope by departmentId and current billing
+     * period. Marketplaces are available via this API only for May 1, 2014 or
+     * later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
+     * Lists the marketplaces for a scope by billing period and departmentId.
+     * Marketplaces are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingPeriodNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplaces for a scope by billing period and departmentId.
+     * Marketplaces are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingPeriodNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByBillingPeriodNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByBillingPeriodNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+}
+
+/**
+ * @class
+ * MarketplacesByEnrollmentAccounts
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface MarketplacesByEnrollmentAccounts {
+
+
+    /**
+     * Lists the marketplaces for a scope by enrollmentAccountId and current
+     * billing period. Marketplaces are available via this API only for May 1, 2014
+     * or later.
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(enrollmentAccountId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplaces for a scope by enrollmentAccountId and current
+     * billing period. Marketplaces are available via this API only for May 1, 2014
+     * or later.
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(enrollmentAccountId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    list(enrollmentAccountId: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    list(enrollmentAccountId: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
+     * Lists the marketplaces for a scope by billing period and
+     * enrollmentAccountId. Marketplaces are available via this API only for May 1,
+     * 2014 or later.
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingPeriodWithHttpOperationResponse(enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplaces for a scope by billing period and
+     * enrollmentAccountId. Marketplaces are available via this API only for May 1,
+     * 2014 or later.
+     *
+     * @param {string} enrollmentAccountId EnrollmentAccount ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter marketplaces by
+     * properties/usageEnd (Utc time), properties/usageStart (Utc time),
+     * properties/resourceGroup, properties/instanceName or properties/instanceId.
+     * The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N marketplaces.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingPeriod(enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByBillingPeriod(enrollmentAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByBillingPeriod(enrollmentAccountId: string, billingPeriodName: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
+     * Lists the marketplaces for a scope by enrollmentAccountId and current
+     * billing period. Marketplaces are available via this API only for May 1, 2014
+     * or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplaces for a scope by enrollmentAccountId and current
+     * billing period. Marketplaces are available via this API only for May 1, 2014
+     * or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+
+
+    /**
+     * Lists the marketplaces for a scope by billing period and
+     * enrollmentAccountId. Marketplaces are available via this API only for May 1,
+     * 2014 or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MarketplacesListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingPeriodNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+
+    /**
+     * Lists the marketplaces for a scope by billing period and
+     * enrollmentAccountId. Marketplaces are available via this API only for May 1,
+     * 2014 or later.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MarketplacesListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MarketplacesListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MarketplacesListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingPeriodNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByBillingPeriodNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByBillingPeriodNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+}
+
+/**
+ * @class
+ * GetBalancesByBillingAccount
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface GetBalancesByBillingAccount {
+
+
+    /**
+     * Gets the balances for a scope by billing period and billingAccountId.
+     * Balances are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Balance>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    byBillingPeriodWithHttpOperationResponse(billingAccountId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Balance>>;
+
+    /**
+     * Gets the balances for a scope by billing period and billingAccountId.
+     * Balances are available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Balance} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Balance} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Balance} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    byBillingPeriod(billingAccountId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Balance>;
+    byBillingPeriod(billingAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.Balance>): void;
+    byBillingPeriod(billingAccountId: string, billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Balance>): void;
 }
 
 /**
@@ -2360,7 +4448,7 @@ export interface CostTagsOperations {
     /**
      * Get cost tags for a billing account.
      *
-     * @param {string} billingAccountId Azure Billing Account ID.
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2378,7 +4466,7 @@ export interface CostTagsOperations {
     /**
      * Get cost tags for a billing account.
      *
-     * @param {string} billingAccountId Azure Billing Account ID.
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2418,7 +4506,7 @@ export interface CostTagsOperations {
      * mandatorily. You may obtain the latest eTag by performing a get operation.
      * Create operation does not require eTag.
      *
-     * @param {string} billingAccountId Azure Billing Account ID.
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {object} parameters Parameters supplied to the Create cost tags
      * operation.
@@ -2448,7 +4536,7 @@ export interface CostTagsOperations {
      * mandatorily. You may obtain the latest eTag by performing a get operation.
      * Create operation does not require eTag.
      *
-     * @param {string} billingAccountId Azure Billing Account ID.
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {object} parameters Parameters supplied to the Create cost tags
      * operation.
@@ -2503,7 +4591,7 @@ export interface TagsOperations {
     /**
      * Get all available tag keys for a billing account.
      *
-     * @param {string} billingAccountId Azure Billing Account ID.
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2521,7 +4609,7 @@ export interface TagsOperations {
     /**
      * Get all available tag keys for a billing account.
      *
-     * @param {string} billingAccountId Azure Billing Account ID.
+     * @param {string} billingAccountId BillingAccount ID
      *
      * @param {object} [options] Optional Parameters.
      *

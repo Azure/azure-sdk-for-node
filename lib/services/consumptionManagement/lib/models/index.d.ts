@@ -210,6 +210,76 @@ export interface Marketplace extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the BalancePropertiesNewPurchasesDetailsItem class.
+ * @constructor
+ * @member {string} [name] the name of new purchase.
+ * @member {number} [value] the value of new purchase.
+ */
+export interface BalancePropertiesNewPurchasesDetailsItem {
+  readonly name?: string;
+  readonly value?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BalancePropertiesAdjustmentDetailsItem class.
+ * @constructor
+ * @member {string} [name] the name of new adjustment.
+ * @member {number} [value] the value of new adjustment.
+ */
+export interface BalancePropertiesAdjustmentDetailsItem {
+  readonly name?: string;
+  readonly value?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Balance class.
+ * @constructor
+ * A balance resource.
+ *
+ * @member {string} [currency] The ISO currency in which the meter is charged,
+ * for example, USD.
+ * @member {number} [beginningBalance] The beginning balance for the billing
+ * period.
+ * @member {number} [endingBalance] The ending balance for the billing period
+ * (for open periods this will be updated daily).
+ * @member {number} [newPurchases] Total new purchase amount.
+ * @member {number} [adjustments] Total adjustment amount.
+ * @member {number} [utilized] Total Commitment usage.
+ * @member {number} [serviceOverage] Overage for Azure services.
+ * @member {number} [chargesBilledSeparately] Charges Billed separately.
+ * @member {number} [totalOverage] serviceOverage + chargesBilledSeparately.
+ * @member {number} [totalUsage] Azure service commitment + total Overage.
+ * @member {number} [azureMarketplaceServiceCharges] Total charges for Azure
+ * Marketplace.
+ * @member {string} [billingFrequency] The billing frequency. Possible values
+ * include: 'Month', 'Quarter', 'Year'
+ * @member {boolean} [priceHidden] Price is hidden or not.
+ * @member {array} [newPurchasesDetails] List of new purchases.
+ * @member {array} [adjustmentDetails] List of Adjustments (Promo credit, SIE
+ * credit etc.).
+ */
+export interface Balance extends Resource {
+  readonly currency?: string;
+  readonly beginningBalance?: number;
+  readonly endingBalance?: number;
+  readonly newPurchases?: number;
+  readonly adjustments?: number;
+  readonly utilized?: number;
+  readonly serviceOverage?: number;
+  readonly chargesBilledSeparately?: number;
+  readonly totalOverage?: number;
+  readonly totalUsage?: number;
+  readonly azureMarketplaceServiceCharges?: number;
+  billingFrequency?: string;
+  readonly priceHidden?: boolean;
+  readonly newPurchasesDetails?: BalancePropertiesNewPurchasesDetailsItem[];
+  readonly adjustmentDetails?: BalancePropertiesAdjustmentDetailsItem[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ReservationSummaries class.
  * @constructor
  * reservation summaries resource.
@@ -668,11 +738,10 @@ export interface PriceSheetResult extends Resource {
  * @class
  * Initializes a new instance of the QueryOptions class.
  * @constructor
- * Additional parameters for a set of operations, such as: UsageDetails_list,
- * UsageDetails_listByBillingPeriod.
+ * Additional parameters for a set of operations.
  *
- * @member {string} [apply] OData apply expression to aggregatie usageDetails
- * by tags or (tags and properties/usageStart)
+ * @member {string} [apply] OData apply expression to aggregate usageDetails by
+ * tags or (tags and properties/usageStart)
  */
 export interface QueryOptions {
   apply?: string;
