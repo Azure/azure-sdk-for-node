@@ -20541,11 +20541,11 @@ export interface Disks {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a disk.
@@ -20569,7 +20569,7 @@ export interface Disks {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -20577,17 +20577,15 @@ export interface Disks {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -20796,11 +20794,11 @@ export interface Disks {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    revokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    revokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Revokes access to a disk.
@@ -20824,7 +20822,7 @@ export interface Disks {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -20832,17 +20830,15 @@ export interface Disks {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    revokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    revokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    revokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    revokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    revokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<void>): void;
+    revokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -21250,11 +21246,11 @@ export interface Disks {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a disk.
@@ -21278,7 +21274,7 @@ export interface Disks {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -21286,17 +21282,15 @@ export interface Disks {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, diskName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -21399,11 +21393,11 @@ export interface Disks {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Revokes access to a disk.
@@ -21427,7 +21421,7 @@ export interface Disks {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -21435,17 +21429,15 @@ export interface Disks {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRevokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRevokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRevokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRevokeAccess(resourceGroupName: string, diskName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRevokeAccess(resourceGroupName: string, diskName: string, callback: ServiceCallback<void>): void;
+    beginRevokeAccess(resourceGroupName: string, diskName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -22039,11 +22031,11 @@ export interface Snapshots {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a snapshot.
@@ -22067,7 +22059,7 @@ export interface Snapshots {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -22075,17 +22067,15 @@ export interface Snapshots {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -22294,11 +22284,11 @@ export interface Snapshots {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    revokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    revokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Revokes access to a snapshot.
@@ -22322,7 +22312,7 @@ export interface Snapshots {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -22330,17 +22320,15 @@ export interface Snapshots {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    revokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    revokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    revokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    revokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    revokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<void>): void;
+    revokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -22746,11 +22734,11 @@ export interface Snapshots {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a snapshot.
@@ -22774,7 +22762,7 @@ export interface Snapshots {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -22782,17 +22770,15 @@ export interface Snapshots {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -22895,11 +22881,11 @@ export interface Snapshots {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRevokeAccessWithHttpOperationResponse(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Revokes access to a snapshot.
@@ -22923,7 +22909,7 @@ export interface Snapshots {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -22931,17 +22917,15 @@ export interface Snapshots {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRevokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRevokeAccess(resourceGroupName: string, snapshotName: string, callback: ServiceCallback<void>): void;
+    beginRevokeAccess(resourceGroupName: string, snapshotName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
