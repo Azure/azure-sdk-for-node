@@ -2045,6 +2045,8 @@ export interface MetricAlertCriteria {
  * threshold.
  * @member {object} criteria defines the specific alert criteria information.
  * @member {string} [criteria.odatatype] Polymorphic Discriminator
+ * @member {boolean} [autoMitigate] the flag that indicates whether the alert
+ * should be auto resolved or not.
  * @member {array} [actions] the array of actions that are performed when the
  * alert rule becomes active, and when an alert condition is resolved.
  * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
@@ -2058,6 +2060,7 @@ export interface MetricAlertResource extends Resource {
   evaluationFrequency: moment.Duration;
   windowSize: moment.Duration;
   criteria: MetricAlertCriteria;
+  autoMitigate?: boolean;
   actions?: Action[];
   readonly lastUpdatedTime?: Date;
 }
@@ -2083,6 +2086,8 @@ export interface MetricAlertResource extends Resource {
  * threshold.
  * @member {object} criteria defines the specific alert criteria information.
  * @member {string} [criteria.odatatype] Polymorphic Discriminator
+ * @member {boolean} [autoMitigate] the flag that indicates whether the alert
+ * should be auto resolved or not.
  * @member {array} [actions] the array of actions that are performed when the
  * alert rule becomes active, and when an alert condition is resolved.
  * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
@@ -2097,6 +2102,7 @@ export interface MetricAlertResourcePatch {
   evaluationFrequency: moment.Duration;
   windowSize: moment.Duration;
   criteria: MetricAlertCriteria;
+  autoMitigate?: boolean;
   actions?: Action[];
   readonly lastUpdatedTime?: Date;
 }

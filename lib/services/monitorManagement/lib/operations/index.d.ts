@@ -3884,6 +3884,9 @@ export interface MetricAlerts {
      *
      * @param {string} parameters.criteria.odatatype Polymorphic Discriminator
      *
+     * @param {boolean} [parameters.autoMitigate] the flag that indicates whether
+     * the alert should be auto resolved or not.
+     *
      * @param {array} [parameters.actions] the array of actions that are performed
      * when the alert rule becomes active, and when an alert condition is resolved.
      *
@@ -3935,6 +3938,9 @@ export interface MetricAlerts {
      * information.
      *
      * @param {string} parameters.criteria.odatatype Polymorphic Discriminator
+     *
+     * @param {boolean} [parameters.autoMitigate] the flag that indicates whether
+     * the alert should be auto resolved or not.
      *
      * @param {array} [parameters.actions] the array of actions that are performed
      * when the alert rule becomes active, and when an alert condition is resolved.
@@ -4009,6 +4015,9 @@ export interface MetricAlerts {
      *
      * @param {string} parameters.criteria.odatatype Polymorphic Discriminator
      *
+     * @param {boolean} [parameters.autoMitigate] the flag that indicates whether
+     * the alert should be auto resolved or not.
+     *
      * @param {array} [parameters.actions] the array of actions that are performed
      * when the alert rule becomes active, and when an alert condition is resolved.
      *
@@ -4058,6 +4067,9 @@ export interface MetricAlerts {
      * information.
      *
      * @param {string} parameters.criteria.odatatype Polymorphic Discriminator
+     *
+     * @param {boolean} [parameters.autoMitigate] the flag that indicates whether
+     * the alert should be auto resolved or not.
      *
      * @param {array} [parameters.actions] the array of actions that are performed
      * when the alert rule becomes active, and when an alert condition is resolved.
