@@ -16803,12 +16803,12 @@ export interface DatabaseVulnerabilityAssessments {
      *
      * @param {object} parameters The requested resource.
      *
-     * @param {string} [parameters.storageContainerPath] A blob storage container
+     * @param {string} parameters.storageContainerPath A blob storage container
      * path to hold the scan results (e.g.
      * https://myStorage.blob.core.windows.net/VaScans/).
      *
-     * @param {string} [parameters.storageContainerSasKey] A shared access
-     * signature (SAS Key) that has write access to the blob container specified in
+     * @param {string} parameters.storageContainerSasKey A shared access signature
+     * (SAS Key) that has write access to the blob container specified in
      * 'storageContainerPath' parameter.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
@@ -16850,12 +16850,12 @@ export interface DatabaseVulnerabilityAssessments {
      *
      * @param {object} parameters The requested resource.
      *
-     * @param {string} [parameters.storageContainerPath] A blob storage container
+     * @param {string} parameters.storageContainerPath A blob storage container
      * path to hold the scan results (e.g.
      * https://myStorage.blob.core.windows.net/VaScans/).
      *
-     * @param {string} [parameters.storageContainerSasKey] A shared access
-     * signature (SAS Key) that has write access to the blob container specified in
+     * @param {string} parameters.storageContainerSasKey A shared access signature
+     * (SAS Key) that has write access to the blob container specified in
      * 'storageContainerPath' parameter.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
@@ -25576,12 +25576,12 @@ export interface ManagedDatabaseVulnerabilityAssessments {
      *
      * @param {object} parameters The requested resource.
      *
-     * @param {string} [parameters.storageContainerPath] A blob storage container
+     * @param {string} parameters.storageContainerPath A blob storage container
      * path to hold the scan results (e.g.
      * https://myStorage.blob.core.windows.net/VaScans/).
      *
-     * @param {string} [parameters.storageContainerSasKey] A shared access
-     * signature (SAS Key) that has write access to the blob container specified in
+     * @param {string} parameters.storageContainerSasKey A shared access signature
+     * (SAS Key) that has write access to the blob container specified in
      * 'storageContainerPath' parameter.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
@@ -25623,12 +25623,12 @@ export interface ManagedDatabaseVulnerabilityAssessments {
      *
      * @param {object} parameters The requested resource.
      *
-     * @param {string} [parameters.storageContainerPath] A blob storage container
+     * @param {string} parameters.storageContainerPath A blob storage container
      * path to hold the scan results (e.g.
      * https://myStorage.blob.core.windows.net/VaScans/).
      *
-     * @param {string} [parameters.storageContainerSasKey] A shared access
-     * signature (SAS Key) that has write access to the blob container specified in
+     * @param {string} parameters.storageContainerSasKey A shared access signature
+     * (SAS Key) that has write access to the blob container specified in
      * 'storageContainerPath' parameter.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
