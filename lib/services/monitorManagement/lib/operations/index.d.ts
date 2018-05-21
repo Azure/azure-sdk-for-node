@@ -4330,7 +4330,7 @@ export interface ScheduledQueryRules {
      * @param {array} [parameters.source.authorizedResources] List of  Resource
      * referred into query
      *
-     * @param {string} parameters.source.dataSourceId The resource uri over which
+     * @param {string} parameters.source.datasourceId The resource uri over which
      * log search query is to be run.
      *
      * @param {string} [parameters.source.queryType] Set value to ResultCount if
@@ -4398,7 +4398,7 @@ export interface ScheduledQueryRules {
      * @param {array} [parameters.source.authorizedResources] List of  Resource
      * referred into query
      *
-     * @param {string} parameters.source.dataSourceId The resource uri over which
+     * @param {string} parameters.source.datasourceId The resource uri over which
      * log search query is to be run.
      *
      * @param {string} [parameters.source.queryType] Set value to ResultCount if
