@@ -14,1962 +14,6 @@ import * as models from '../models';
 
 /**
  * @class
- * Galleries
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ComputeManagementClient.
- */
-export interface Galleries {
-
-
-    /**
-     * Create or update a gallery.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {object} gallery Parameters supplied to the create or update gallery
-     * operation.
-     *
-     * @param {string} [gallery.description] The description of this gallery
-     * resource.
-     *
-     * @param {object} [gallery.identifier]
-     *
-     * @param {string} gallery.location Resource location
-     *
-     * @param {object} [gallery.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Gallery>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
-
-    /**
-     * Create or update a gallery.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {object} gallery Parameters supplied to the create or update gallery
-     * operation.
-     *
-     * @param {string} [gallery.description] The description of this gallery
-     * resource.
-     *
-     * @param {object} [gallery.identifier]
-     *
-     * @param {string} gallery.location Resource location
-     *
-     * @param {object} [gallery.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Gallery} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Gallery} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Gallery} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Gallery>;
-    createOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, callback: ServiceCallback<models.Gallery>): void;
-    createOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gallery>): void;
-
-
-    /**
-     * Retrieves information about a gallery.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Gallery>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
-
-    /**
-     * Retrieves information about a gallery.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Gallery} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Gallery} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Gallery} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Gallery>;
-    get(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.Gallery>): void;
-    get(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gallery>): void;
-
-
-    /**
-     * Delete a gallery.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Delete a gallery.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * List galleries under a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
-
-    /**
-     * List galleries under a resource group.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.GalleryList>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
-
-
-    /**
-     * List galleries under a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
-
-    /**
-     * List galleries under a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
-    listBySubscription(callback: ServiceCallback<models.GalleryList>): void;
-    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
-
-
-    /**
-     * Create or update a gallery.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {object} gallery Parameters supplied to the create or update gallery
-     * operation.
-     *
-     * @param {string} [gallery.description] The description of this gallery
-     * resource.
-     *
-     * @param {object} [gallery.identifier]
-     *
-     * @param {string} gallery.location Resource location
-     *
-     * @param {object} [gallery.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Gallery>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Gallery>>;
-
-    /**
-     * Create or update a gallery.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {object} gallery Parameters supplied to the create or update gallery
-     * operation.
-     *
-     * @param {string} [gallery.description] The description of this gallery
-     * resource.
-     *
-     * @param {object} [gallery.identifier]
-     *
-     * @param {string} gallery.location Resource location
-     *
-     * @param {object} [gallery.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Gallery} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Gallery} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Gallery} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Gallery>;
-    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, callback: ServiceCallback<models.Gallery>): void;
-    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, gallery: models.Gallery, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Gallery>): void;
-
-
-    /**
-     * Delete a gallery.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Delete a gallery.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * List galleries under a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
-
-    /**
-     * List galleries under a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.GalleryList>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
-
-
-    /**
-     * List galleries under a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryList>>;
-
-    /**
-     * List galleries under a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryList>;
-    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.GalleryList>): void;
-    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryList>): void;
-}
-
-/**
- * @class
- * GalleryImages
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ComputeManagementClient.
- */
-export interface GalleryImages {
-
-
-    /**
-     * Create or update a gallery image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {object} galleryImage Parameters supplied to the create or update
-     * gallery image operation.
-     *
-     * @param {string} [galleryImage.description] The description of this gallery
-     * image resource.
-     *
-     * @param {string} [galleryImage.eula] The Eula agreement for the gallery
-     * image.
-     *
-     * @param {string} [galleryImage.privacyStatementUri] The privacy statement
-     * uri.
-     *
-     * @param {string} [galleryImage.releaseNoteUri] The release note uri.
-     *
-     * @param {string} [galleryImage.osType] This property allows you to specify
-     * the type of the OS that is included in the disk if creating a VM from
-     * user-image or a specialized VHD. <br><br> Possible values are: <br><br>
-     * **Windows** <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} [galleryImage.osState] The OS State. Possible values
-     * include: 'Generalized', 'Specialized'
-     *
-     * @param {date} [galleryImage.endOfLifeDate] The end of life of this gallery
-     * image.
-     *
-     * @param {object} [galleryImage.identifier]
-     *
-     * @param {string} [galleryImage.identifier.publisher] The gallery image
-     * publisher name.
-     *
-     * @param {string} [galleryImage.identifier.offer] The gallery image offer
-     * name.
-     *
-     * @param {string} [galleryImage.identifier.sku] The gallery image sku name.
-     *
-     * @param {object} [galleryImage.recommended]
-     *
-     * @param {object} [galleryImage.recommended.vCPUs]
-     *
-     * @param {object} [galleryImage.recommended.memory]
-     *
-     * @param {number} [galleryImage.recommended.memory.min] The minimum number of
-     * the resource.
-     *
-     * @param {number} [galleryImage.recommended.memory.max] The maximum number of
-     * the resource.
-     *
-     * @param {object} [galleryImage.disallowed]
-     *
-     * @param {array} [galleryImage.disallowed.diskTypes] A list of disk types.
-     *
-     * @param {object} [galleryImage.purchasePlan]
-     *
-     * @param {string} [galleryImage.purchasePlan.name] The plan ID.
-     *
-     * @param {string} [galleryImage.purchasePlan.publisher] The publisher ID.
-     *
-     * @param {string} [galleryImage.purchasePlan.product] The product ID.
-     *
-     * @param {string} galleryImage.location Resource location
-     *
-     * @param {object} [galleryImage.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryImage>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
-
-    /**
-     * Create or update a gallery image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {object} galleryImage Parameters supplied to the create or update
-     * gallery image operation.
-     *
-     * @param {string} [galleryImage.description] The description of this gallery
-     * image resource.
-     *
-     * @param {string} [galleryImage.eula] The Eula agreement for the gallery
-     * image.
-     *
-     * @param {string} [galleryImage.privacyStatementUri] The privacy statement
-     * uri.
-     *
-     * @param {string} [galleryImage.releaseNoteUri] The release note uri.
-     *
-     * @param {string} [galleryImage.osType] This property allows you to specify
-     * the type of the OS that is included in the disk if creating a VM from
-     * user-image or a specialized VHD. <br><br> Possible values are: <br><br>
-     * **Windows** <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} [galleryImage.osState] The OS State. Possible values
-     * include: 'Generalized', 'Specialized'
-     *
-     * @param {date} [galleryImage.endOfLifeDate] The end of life of this gallery
-     * image.
-     *
-     * @param {object} [galleryImage.identifier]
-     *
-     * @param {string} [galleryImage.identifier.publisher] The gallery image
-     * publisher name.
-     *
-     * @param {string} [galleryImage.identifier.offer] The gallery image offer
-     * name.
-     *
-     * @param {string} [galleryImage.identifier.sku] The gallery image sku name.
-     *
-     * @param {object} [galleryImage.recommended]
-     *
-     * @param {object} [galleryImage.recommended.vCPUs]
-     *
-     * @param {object} [galleryImage.recommended.memory]
-     *
-     * @param {number} [galleryImage.recommended.memory.min] The minimum number of
-     * the resource.
-     *
-     * @param {number} [galleryImage.recommended.memory.max] The maximum number of
-     * the resource.
-     *
-     * @param {object} [galleryImage.disallowed]
-     *
-     * @param {array} [galleryImage.disallowed.diskTypes] A list of disk types.
-     *
-     * @param {object} [galleryImage.purchasePlan]
-     *
-     * @param {string} [galleryImage.purchasePlan.name] The plan ID.
-     *
-     * @param {string} [galleryImage.purchasePlan.publisher] The publisher ID.
-     *
-     * @param {string} [galleryImage.purchasePlan.product] The product ID.
-     *
-     * @param {string} galleryImage.location Resource location
-     *
-     * @param {object} [galleryImage.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryImage} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryImage} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryImage} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImage>;
-    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, callback: ServiceCallback<models.GalleryImage>): void;
-    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImage>): void;
-
-
-    /**
-     * Retrieves information about a gallery image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryImage>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
-
-    /**
-     * Retrieves information about a gallery image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryImage} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryImage} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryImage} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImage>;
-    get(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.GalleryImage>): void;
-    get(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImage>): void;
-
-
-    /**
-     * Delete a gallery image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Delete a gallery image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * List gallery images under a gallery.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryImageList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listGalleryImagesByGalleryWithHttpOperationResponse(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
-
-    /**
-     * List gallery images under a gallery.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryImageList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryImageList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryImageList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listGalleryImagesByGallery(resourceGroupName: string, galleryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageList>;
-    listGalleryImagesByGallery(resourceGroupName: string, galleryName: string, callback: ServiceCallback<models.GalleryImageList>): void;
-    listGalleryImagesByGallery(resourceGroupName: string, galleryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageList>): void;
-
-
-    /**
-     * Create or update a gallery image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {object} galleryImage Parameters supplied to the create or update
-     * gallery image operation.
-     *
-     * @param {string} [galleryImage.description] The description of this gallery
-     * image resource.
-     *
-     * @param {string} [galleryImage.eula] The Eula agreement for the gallery
-     * image.
-     *
-     * @param {string} [galleryImage.privacyStatementUri] The privacy statement
-     * uri.
-     *
-     * @param {string} [galleryImage.releaseNoteUri] The release note uri.
-     *
-     * @param {string} [galleryImage.osType] This property allows you to specify
-     * the type of the OS that is included in the disk if creating a VM from
-     * user-image or a specialized VHD. <br><br> Possible values are: <br><br>
-     * **Windows** <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} [galleryImage.osState] The OS State. Possible values
-     * include: 'Generalized', 'Specialized'
-     *
-     * @param {date} [galleryImage.endOfLifeDate] The end of life of this gallery
-     * image.
-     *
-     * @param {object} [galleryImage.identifier]
-     *
-     * @param {string} [galleryImage.identifier.publisher] The gallery image
-     * publisher name.
-     *
-     * @param {string} [galleryImage.identifier.offer] The gallery image offer
-     * name.
-     *
-     * @param {string} [galleryImage.identifier.sku] The gallery image sku name.
-     *
-     * @param {object} [galleryImage.recommended]
-     *
-     * @param {object} [galleryImage.recommended.vCPUs]
-     *
-     * @param {object} [galleryImage.recommended.memory]
-     *
-     * @param {number} [galleryImage.recommended.memory.min] The minimum number of
-     * the resource.
-     *
-     * @param {number} [galleryImage.recommended.memory.max] The maximum number of
-     * the resource.
-     *
-     * @param {object} [galleryImage.disallowed]
-     *
-     * @param {array} [galleryImage.disallowed.diskTypes] A list of disk types.
-     *
-     * @param {object} [galleryImage.purchasePlan]
-     *
-     * @param {string} [galleryImage.purchasePlan.name] The plan ID.
-     *
-     * @param {string} [galleryImage.purchasePlan.publisher] The publisher ID.
-     *
-     * @param {string} [galleryImage.purchasePlan.product] The product ID.
-     *
-     * @param {string} galleryImage.location Resource location
-     *
-     * @param {object} [galleryImage.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryImage>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImage>>;
-
-    /**
-     * Create or update a gallery image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {object} galleryImage Parameters supplied to the create or update
-     * gallery image operation.
-     *
-     * @param {string} [galleryImage.description] The description of this gallery
-     * image resource.
-     *
-     * @param {string} [galleryImage.eula] The Eula agreement for the gallery
-     * image.
-     *
-     * @param {string} [galleryImage.privacyStatementUri] The privacy statement
-     * uri.
-     *
-     * @param {string} [galleryImage.releaseNoteUri] The release note uri.
-     *
-     * @param {string} [galleryImage.osType] This property allows you to specify
-     * the type of the OS that is included in the disk if creating a VM from
-     * user-image or a specialized VHD. <br><br> Possible values are: <br><br>
-     * **Windows** <br><br> **Linux**. Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} [galleryImage.osState] The OS State. Possible values
-     * include: 'Generalized', 'Specialized'
-     *
-     * @param {date} [galleryImage.endOfLifeDate] The end of life of this gallery
-     * image.
-     *
-     * @param {object} [galleryImage.identifier]
-     *
-     * @param {string} [galleryImage.identifier.publisher] The gallery image
-     * publisher name.
-     *
-     * @param {string} [galleryImage.identifier.offer] The gallery image offer
-     * name.
-     *
-     * @param {string} [galleryImage.identifier.sku] The gallery image sku name.
-     *
-     * @param {object} [galleryImage.recommended]
-     *
-     * @param {object} [galleryImage.recommended.vCPUs]
-     *
-     * @param {object} [galleryImage.recommended.memory]
-     *
-     * @param {number} [galleryImage.recommended.memory.min] The minimum number of
-     * the resource.
-     *
-     * @param {number} [galleryImage.recommended.memory.max] The maximum number of
-     * the resource.
-     *
-     * @param {object} [galleryImage.disallowed]
-     *
-     * @param {array} [galleryImage.disallowed.diskTypes] A list of disk types.
-     *
-     * @param {object} [galleryImage.purchasePlan]
-     *
-     * @param {string} [galleryImage.purchasePlan.name] The plan ID.
-     *
-     * @param {string} [galleryImage.purchasePlan.publisher] The publisher ID.
-     *
-     * @param {string} [galleryImage.purchasePlan.product] The product ID.
-     *
-     * @param {string} galleryImage.location Resource location
-     *
-     * @param {object} [galleryImage.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryImage} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryImage} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryImage} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImage>;
-    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, callback: ServiceCallback<models.GalleryImage>): void;
-    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImage: models.GalleryImage, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImage>): void;
-
-
-    /**
-     * Delete a gallery image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Delete a gallery image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * List gallery images under a gallery.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryImageList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listGalleryImagesByGalleryNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageList>>;
-
-    /**
-     * List gallery images under a gallery.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryImageList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryImageList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryImageList} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listGalleryImagesByGalleryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageList>;
-    listGalleryImagesByGalleryNext(nextPageLink: string, callback: ServiceCallback<models.GalleryImageList>): void;
-    listGalleryImagesByGalleryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageList>): void;
-}
-
-/**
- * @class
- * GalleryImageVersions
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ComputeManagementClient.
- */
-export interface GalleryImageVersions {
-
-
-    /**
-     * Create or update a gallery image version.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
-     *
-     * @param {object} galleryImageVersion Parameters supplied to the create or
-     * update gallery image version operation.
-     *
-     * @param {object} [galleryImageVersion.publishingProfile]
-     *
-     * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
-     * The flag means that if it is set to true, people deploying VMs with 'latest'
-     * as version will not use this version.
-     *
-     * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
-     * of life date of the gallery image version.
-     *
-     * @param {array} [galleryImageVersion.publishingProfile.regions] The regions
-     * where the artifact is going to be published.
-     *
-     * @param {object} [galleryImageVersion.publishingProfile.source]
-     *
-     * @param {object} [galleryImageVersion.publishingProfile.source.managedImage]
-     *
-     * @param {string}
-     * [galleryImageVersion.publishingProfile.source.managedImage.id] The managed
-     * artifact id.
-     *
-     * @param {object} [galleryImageVersion.storageProfile]
-     *
-     * @param {object} [galleryImageVersion.storageProfile.osDiskImage]
-     *
-     * @param {number} [galleryImageVersion.storageProfile.osDiskImage.sizedInGB]
-     * It indicates the size of the VHD to create.
-     *
-     * @param {string} [galleryImageVersion.storageProfile.osDiskImage.hostCaching]
-     * The host caching of the disk. Valid values are 'None', 'ReadOnly', and
-     * 'ReadWrite'. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {array} [galleryImageVersion.storageProfile.dataDiskImages] A list of
-     * data disk images.
-     *
-     * @param {object} [galleryImageVersion.replicationStatus]
-     *
-     * @param {string} [galleryImageVersion.replicationStatus.aggregatedState] This
-     * is the aggregated replication status based on the regional replication
-     * status. Possible values include: 'Unknown', 'InProgress', 'Completed',
-     * 'Failed'
-     *
-     * @param {array} [galleryImageVersion.replicationStatus.summary] This is a
-     * summary of replication status for each region.
-     *
-     * @param {string} galleryImageVersion.location Resource location
-     *
-     * @param {object} [galleryImageVersion.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryImageVersion>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
-
-    /**
-     * Create or update a gallery image version.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
-     *
-     * @param {object} galleryImageVersion Parameters supplied to the create or
-     * update gallery image version operation.
-     *
-     * @param {object} [galleryImageVersion.publishingProfile]
-     *
-     * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
-     * The flag means that if it is set to true, people deploying VMs with 'latest'
-     * as version will not use this version.
-     *
-     * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
-     * of life date of the gallery image version.
-     *
-     * @param {array} [galleryImageVersion.publishingProfile.regions] The regions
-     * where the artifact is going to be published.
-     *
-     * @param {object} [galleryImageVersion.publishingProfile.source]
-     *
-     * @param {object} [galleryImageVersion.publishingProfile.source.managedImage]
-     *
-     * @param {string}
-     * [galleryImageVersion.publishingProfile.source.managedImage.id] The managed
-     * artifact id.
-     *
-     * @param {object} [galleryImageVersion.storageProfile]
-     *
-     * @param {object} [galleryImageVersion.storageProfile.osDiskImage]
-     *
-     * @param {number} [galleryImageVersion.storageProfile.osDiskImage.sizedInGB]
-     * It indicates the size of the VHD to create.
-     *
-     * @param {string} [galleryImageVersion.storageProfile.osDiskImage.hostCaching]
-     * The host caching of the disk. Valid values are 'None', 'ReadOnly', and
-     * 'ReadWrite'. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {array} [galleryImageVersion.storageProfile.dataDiskImages] A list of
-     * data disk images.
-     *
-     * @param {object} [galleryImageVersion.replicationStatus]
-     *
-     * @param {string} [galleryImageVersion.replicationStatus.aggregatedState] This
-     * is the aggregated replication status based on the regional replication
-     * status. Possible values include: 'Unknown', 'InProgress', 'Completed',
-     * 'Failed'
-     *
-     * @param {array} [galleryImageVersion.replicationStatus.summary] This is a
-     * summary of replication status for each region.
-     *
-     * @param {string} galleryImageVersion.location Resource location
-     *
-     * @param {object} [galleryImageVersion.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryImageVersion} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryImageVersion} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryImageVersion} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersion>;
-    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, callback: ServiceCallback<models.GalleryImageVersion>): void;
-    createOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersion>): void;
-
-
-    /**
-     * Retrieves information about a gallery image version.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] The expand expression to apply on the
-     * operation. Possible values include: 'ReplicationStatus'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryImageVersion>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
-
-    /**
-     * Retrieves information about a gallery image version.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] The expand expression to apply on the
-     * operation. Possible values include: 'ReplicationStatus'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryImageVersion} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryImageVersion} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryImageVersion} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersion>;
-    get(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<models.GalleryImageVersion>): void;
-    get(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersion>): void;
-
-
-    /**
-     * Delete a gallery image version.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Delete a gallery image version.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * List gallery image versions under a gallery image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryImageVersionList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listGalleryImageVersionsByGalleryImageWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersionList>>;
-
-    /**
-     * List gallery image versions under a gallery image.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryImageVersionList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryImageVersionList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryImageVersionList} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listGalleryImageVersionsByGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersionList>;
-    listGalleryImageVersionsByGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, callback: ServiceCallback<models.GalleryImageVersionList>): void;
-    listGalleryImageVersionsByGalleryImage(resourceGroupName: string, galleryName: string, galleryImageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersionList>): void;
-
-
-    /**
-     * Create or update a gallery image version.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
-     *
-     * @param {object} galleryImageVersion Parameters supplied to the create or
-     * update gallery image version operation.
-     *
-     * @param {object} [galleryImageVersion.publishingProfile]
-     *
-     * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
-     * The flag means that if it is set to true, people deploying VMs with 'latest'
-     * as version will not use this version.
-     *
-     * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
-     * of life date of the gallery image version.
-     *
-     * @param {array} [galleryImageVersion.publishingProfile.regions] The regions
-     * where the artifact is going to be published.
-     *
-     * @param {object} [galleryImageVersion.publishingProfile.source]
-     *
-     * @param {object} [galleryImageVersion.publishingProfile.source.managedImage]
-     *
-     * @param {string}
-     * [galleryImageVersion.publishingProfile.source.managedImage.id] The managed
-     * artifact id.
-     *
-     * @param {object} [galleryImageVersion.storageProfile]
-     *
-     * @param {object} [galleryImageVersion.storageProfile.osDiskImage]
-     *
-     * @param {number} [galleryImageVersion.storageProfile.osDiskImage.sizedInGB]
-     * It indicates the size of the VHD to create.
-     *
-     * @param {string} [galleryImageVersion.storageProfile.osDiskImage.hostCaching]
-     * The host caching of the disk. Valid values are 'None', 'ReadOnly', and
-     * 'ReadWrite'. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {array} [galleryImageVersion.storageProfile.dataDiskImages] A list of
-     * data disk images.
-     *
-     * @param {object} [galleryImageVersion.replicationStatus]
-     *
-     * @param {string} [galleryImageVersion.replicationStatus.aggregatedState] This
-     * is the aggregated replication status based on the regional replication
-     * status. Possible values include: 'Unknown', 'InProgress', 'Completed',
-     * 'Failed'
-     *
-     * @param {array} [galleryImageVersion.replicationStatus.summary] This is a
-     * summary of replication status for each region.
-     *
-     * @param {string} galleryImageVersion.location Resource location
-     *
-     * @param {object} [galleryImageVersion.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryImageVersion>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersion>>;
-
-    /**
-     * Create or update a gallery image version.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
-     *
-     * @param {object} galleryImageVersion Parameters supplied to the create or
-     * update gallery image version operation.
-     *
-     * @param {object} [galleryImageVersion.publishingProfile]
-     *
-     * @param {boolean} [galleryImageVersion.publishingProfile.excludeFromLatest]
-     * The flag means that if it is set to true, people deploying VMs with 'latest'
-     * as version will not use this version.
-     *
-     * @param {date} [galleryImageVersion.publishingProfile.endOfLifeDate] The end
-     * of life date of the gallery image version.
-     *
-     * @param {array} [galleryImageVersion.publishingProfile.regions] The regions
-     * where the artifact is going to be published.
-     *
-     * @param {object} [galleryImageVersion.publishingProfile.source]
-     *
-     * @param {object} [galleryImageVersion.publishingProfile.source.managedImage]
-     *
-     * @param {string}
-     * [galleryImageVersion.publishingProfile.source.managedImage.id] The managed
-     * artifact id.
-     *
-     * @param {object} [galleryImageVersion.storageProfile]
-     *
-     * @param {object} [galleryImageVersion.storageProfile.osDiskImage]
-     *
-     * @param {number} [galleryImageVersion.storageProfile.osDiskImage.sizedInGB]
-     * It indicates the size of the VHD to create.
-     *
-     * @param {string} [galleryImageVersion.storageProfile.osDiskImage.hostCaching]
-     * The host caching of the disk. Valid values are 'None', 'ReadOnly', and
-     * 'ReadWrite'. Possible values include: 'None', 'ReadOnly', 'ReadWrite'
-     *
-     * @param {array} [galleryImageVersion.storageProfile.dataDiskImages] A list of
-     * data disk images.
-     *
-     * @param {object} [galleryImageVersion.replicationStatus]
-     *
-     * @param {string} [galleryImageVersion.replicationStatus.aggregatedState] This
-     * is the aggregated replication status based on the regional replication
-     * status. Possible values include: 'Unknown', 'InProgress', 'Completed',
-     * 'Failed'
-     *
-     * @param {array} [galleryImageVersion.replicationStatus.summary] This is a
-     * summary of replication status for each region.
-     *
-     * @param {string} galleryImageVersion.location Resource location
-     *
-     * @param {object} [galleryImageVersion.tags] Resource tags
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryImageVersion} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryImageVersion} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryImageVersion} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersion>;
-    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, callback: ServiceCallback<models.GalleryImageVersion>): void;
-    beginCreateOrUpdate(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, galleryImageVersion: models.GalleryImageVersion, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersion>): void;
-
-
-    /**
-     * Delete a gallery image version.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
-
-    /**
-     * Delete a gallery image version.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} galleryName The name of the gallery.
-     *
-     * @param {string} galleryImageName The name of the gallery image.
-     *
-     * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, galleryName: string, galleryImageName: string, galleryImageVersionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
-
-
-    /**
-     * List gallery image versions under a gallery image.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<GalleryImageVersionList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listGalleryImageVersionsByGalleryImageNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GalleryImageVersionList>>;
-
-    /**
-     * List gallery image versions under a gallery image.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {GalleryImageVersionList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {GalleryImageVersionList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link GalleryImageVersionList} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listGalleryImageVersionsByGalleryImageNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GalleryImageVersionList>;
-    listGalleryImageVersionsByGalleryImageNext(nextPageLink: string, callback: ServiceCallback<models.GalleryImageVersionList>): void;
-    listGalleryImageVersionsByGalleryImageNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GalleryImageVersionList>): void;
-}
-
-/**
- * @class
  * Operations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ComputeManagementClient.
@@ -2266,11 +310,11 @@ export interface AvailabilitySets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete an availability set.
@@ -2291,7 +335,7 @@ export interface AvailabilitySets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2299,17 +343,15 @@ export interface AvailabilitySets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -3016,11 +1058,11 @@ export interface VirtualMachineExtensions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to delete the extension.
@@ -3044,7 +1086,7 @@ export interface VirtualMachineExtensions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3052,17 +1094,15 @@ export interface VirtualMachineExtensions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -3446,11 +1486,11 @@ export interface VirtualMachineExtensions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to delete the extension.
@@ -3474,7 +1514,7 @@ export interface VirtualMachineExtensions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3482,17 +1522,15 @@ export interface VirtualMachineExtensions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, vmExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -3844,12 +1882,13 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach**  This value is used when you are using a specialized disk to
-     * create the virtual machine.<br><br> **FromImage**  This value is used when
-     * you are using an image to create the virtual machine. If you are using a
-     * platform image, you also use the imageReference element described above. If
-     * you are using a marketplace image, you  also use the plan element previously
-     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -4241,12 +2280,13 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach**  This value is used when you are using a specialized disk to
-     * create the virtual machine.<br><br> **FromImage**  This value is used when
-     * you are using an image to create the virtual machine. If you are using a
-     * platform image, you also use the imageReference element described above. If
-     * you are using a marketplace image, you  also use the plan element previously
-     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -4657,12 +2697,13 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach**  This value is used when you are using a specialized disk to
-     * create the virtual machine.<br><br> **FromImage**  This value is used when
-     * you are using an image to create the virtual machine. If you are using a
-     * platform image, you also use the imageReference element described above. If
-     * you are using a marketplace image, you  also use the plan element previously
-     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -5052,12 +3093,13 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach**  This value is used when you are using a specialized disk to
-     * create the virtual machine.<br><br> **FromImage**  This value is used when
-     * you are using an image to create the virtual machine. If you are using a
-     * platform image, you also use the imageReference element described above. If
-     * you are using a marketplace image, you  also use the plan element previously
-     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -5294,11 +3336,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to delete a virtual machine.
@@ -5319,7 +3361,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5327,17 +3369,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5482,11 +3522,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    convertToManagedDisksWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    convertToManagedDisksWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Converts virtual machine disks from blob-based to managed disks. Virtual
@@ -5508,7 +3548,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5516,17 +3556,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    convertToManagedDisks(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    convertToManagedDisks(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    convertToManagedDisks(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    convertToManagedDisks(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    convertToManagedDisks(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    convertToManagedDisks(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5544,11 +3582,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deallocateWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deallocateWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Shuts down the virtual machine and releases the compute resources. You are
@@ -5570,7 +3608,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5578,17 +3616,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deallocate(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deallocate(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    deallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5605,11 +3641,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    generalizeWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    generalizeWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Sets the state of the virtual machine to generalized.
@@ -5630,7 +3666,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5638,17 +3674,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    generalize(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    generalize(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    generalize(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    generalize(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    generalize(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    generalize(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5841,11 +3875,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    powerOffWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    powerOffWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to power off (stop) a virtual machine. The virtual machine can
@@ -5868,7 +3902,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5876,17 +3910,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    powerOff(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    powerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    powerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    powerOff(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    powerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    powerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5903,11 +3935,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    restartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    restartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to restart a virtual machine.
@@ -5928,7 +3960,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5936,17 +3968,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    restart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    restart(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    restart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    restart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restart(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5963,11 +3993,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    startWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to start a virtual machine.
@@ -5988,7 +4018,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5996,17 +4026,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    start(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    start(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    start(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    start(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    start(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -6023,11 +4051,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    redeployWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    redeployWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to redeploy a virtual machine.
@@ -6048,7 +4076,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6056,17 +4084,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    redeploy(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    redeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    redeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    redeploy(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    redeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    redeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -6083,11 +4109,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to perform maintenance on a virtual machine.
@@ -6108,7 +4134,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6116,17 +4142,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    performMaintenance(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    performMaintenance(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    performMaintenance(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    performMaintenance(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    performMaintenance(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    performMaintenance(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -6153,11 +4177,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<RunCommandResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    runCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandResult>>;
+    runCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceViewStatus[]>>;
 
     /**
      * Run command on the VM.
@@ -6188,7 +4212,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {RunCommandResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6196,16 +4220,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {RunCommandResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RunCommandResult} for more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandResult>;
-    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.RunCommandResult>): void;
-    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandResult>): void;
+    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceViewStatus[]>;
+    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.InstanceViewStatus[]>): void;
+    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceViewStatus[]>): void;
 
 
     /**
@@ -6480,12 +4503,13 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach**  This value is used when you are using a specialized disk to
-     * create the virtual machine.<br><br> **FromImage**  This value is used when
-     * you are using an image to create the virtual machine. If you are using a
-     * platform image, you also use the imageReference element described above. If
-     * you are using a marketplace image, you  also use the plan element previously
-     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -6877,12 +4901,13 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach**  This value is used when you are using a specialized disk to
-     * create the virtual machine.<br><br> **FromImage**  This value is used when
-     * you are using an image to create the virtual machine. If you are using a
-     * platform image, you also use the imageReference element described above. If
-     * you are using a marketplace image, you  also use the plan element previously
-     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -7293,12 +5318,13 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach**  This value is used when you are using a specialized disk to
-     * create the virtual machine.<br><br> **FromImage**  This value is used when
-     * you are using an image to create the virtual machine. If you are using a
-     * platform image, you also use the imageReference element described above. If
-     * you are using a marketplace image, you  also use the plan element previously
-     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -7688,12 +5714,13 @@ export interface VirtualMachines {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach**  This value is used when you are using a specialized disk to
-     * create the virtual machine.<br><br> **FromImage**  This value is used when
-     * you are using an image to create the virtual machine. If you are using a
-     * platform image, you also use the imageReference element described above. If
-     * you are using a marketplace image, you  also use the plan element previously
-     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -7930,11 +5957,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to delete a virtual machine.
@@ -7955,7 +5982,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -7963,17 +5990,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -7991,11 +6016,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginConvertToManagedDisksWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginConvertToManagedDisksWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Converts virtual machine disks from blob-based to managed disks. Virtual
@@ -8017,7 +6042,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8025,17 +6050,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginConvertToManagedDisks(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -8053,11 +6076,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Shuts down the virtual machine and releases the compute resources. You are
@@ -8079,7 +6102,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8087,17 +6110,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeallocate(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeallocate(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeallocate(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -8116,11 +6137,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to power off (stop) a virtual machine. The virtual machine can
@@ -8143,7 +6164,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8151,17 +6172,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPowerOff(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginPowerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginPowerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPowerOff(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPowerOff(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginPowerOff(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -8178,11 +6197,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to restart a virtual machine.
@@ -8203,7 +6222,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8211,17 +6230,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRestart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRestart(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRestart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRestart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestart(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginRestart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -8238,11 +6255,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginStartWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to start a virtual machine.
@@ -8263,7 +6280,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8271,17 +6288,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginStart(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginStart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStart(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStart(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -8298,11 +6313,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to redeploy a virtual machine.
@@ -8323,7 +6338,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8331,17 +6346,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRedeploy(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRedeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRedeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRedeploy(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRedeploy(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginRedeploy(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -8358,11 +6371,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to perform maintenance on a virtual machine.
@@ -8383,7 +6396,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8391,17 +6404,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPerformMaintenance(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginPerformMaintenance(resourceGroupName: string, vmName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginPerformMaintenance(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPerformMaintenance(resourceGroupName: string, vmName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPerformMaintenance(resourceGroupName: string, vmName: string, callback: ServiceCallback<void>): void;
+    beginPerformMaintenance(resourceGroupName: string, vmName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -8428,11 +6439,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<RunCommandResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRunCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandResult>>;
+    beginRunCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceViewStatus[]>>;
 
     /**
      * Run command on the VM.
@@ -8463,7 +6474,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {RunCommandResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8471,16 +6482,15 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {RunCommandResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RunCommandResult} for more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandResult>;
-    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.RunCommandResult>): void;
-    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandResult>): void;
+    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceViewStatus[]>;
+    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.InstanceViewStatus[]>): void;
+    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceViewStatus[]>): void;
 
 
     /**
@@ -9528,11 +7538,11 @@ export interface Images {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes an Image.
@@ -9553,7 +7563,7 @@ export interface Images {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -9561,17 +7571,15 @@ export interface Images {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10129,11 +8137,11 @@ export interface Images {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes an Image.
@@ -10154,7 +8162,7 @@ export interface Images {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -10162,17 +8170,15 @@ export interface Images {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, imageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, imageName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, imageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -10565,12 +8571,12 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * parameters.virtualMachineProfile.storageProfile.osDisk.createOption
      * Specifies how the virtual machines in the scale set should be
-     * created.<br><br> The only allowed value is: **FromImage**  This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * created.<br><br> The only allowed value is: **FromImage** \u2013 This value
+     * is used when you are using an image to create the virtual machine. If you
+     * are using a platform image, you also use the imageReference element
+     * described above. If you are using a marketplace image, you  also use the
+     * plan element previously described. Possible values include: 'FromImage',
+     * 'Empty', 'Attach'
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
@@ -10985,12 +8991,12 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * parameters.virtualMachineProfile.storageProfile.osDisk.createOption
      * Specifies how the virtual machines in the scale set should be
-     * created.<br><br> The only allowed value is: **FromImage**  This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * created.<br><br> The only allowed value is: **FromImage** \u2013 This value
+     * is used when you are using an image to create the virtual machine. If you
+     * are using a platform image, you also use the imageReference element
+     * described above. If you are using a marketplace image, you  also use the
+     * plan element previously described. Possible values include: 'FromImage',
+     * 'Empty', 'Attach'
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
@@ -11784,11 +9790,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a VM scale set.
@@ -11809,7 +9815,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -11817,17 +9823,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -11911,11 +9915,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deallocates specific virtual machines in a VM scale set. Shuts down the
@@ -11943,7 +9947,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -11951,17 +9955,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -11980,11 +9982,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes virtual machines in a VM scale set.
@@ -12007,7 +10009,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12015,17 +10017,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    deleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12345,11 +10345,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    powerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    powerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Power off (stop) one or more virtual machines in a VM scale set. Note that
@@ -12377,7 +10377,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12385,17 +10385,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    powerOff(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    powerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    powerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12417,11 +10415,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    restartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    restartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Restarts one or more virtual machines in a VM scale set.
@@ -12447,7 +10445,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12455,17 +10453,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    restart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    restart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    restart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12487,11 +10483,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    startWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Starts one or more virtual machines in a VM scale set.
@@ -12517,7 +10513,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12525,17 +10521,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    start(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    start(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    start(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    start(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12557,11 +10551,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    redeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    redeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Redeploy one or more virtual machines in a VM scale set.
@@ -12587,7 +10581,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12595,17 +10589,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    redeploy(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    redeploy(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    redeploy(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    redeploy(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    redeploy(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    redeploy(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12627,11 +10619,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Perform maintenance on one or more virtual machines in a VM scale set.
@@ -12657,7 +10649,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12665,17 +10657,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    performMaintenance(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    performMaintenance(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    performMaintenance(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    performMaintenance(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    performMaintenance(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    performMaintenance(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12695,11 +10685,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    updateInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Upgrades one or more virtual machines to the latest SKU set in the VM scale
@@ -12723,7 +10713,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12731,17 +10721,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<models.OperationStatusResponse>): void;
-    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    updateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12764,11 +10752,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    reimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
@@ -12795,7 +10783,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12803,17 +10791,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reimage(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    reimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    reimage(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    reimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12836,11 +10822,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    reimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages all the disks ( including data disks ) in the virtual machines in a
@@ -12867,7 +10853,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12875,17 +10861,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -13218,12 +11202,12 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * parameters.virtualMachineProfile.storageProfile.osDisk.createOption
      * Specifies how the virtual machines in the scale set should be
-     * created.<br><br> The only allowed value is: **FromImage**  This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * created.<br><br> The only allowed value is: **FromImage** \u2013 This value
+     * is used when you are using an image to create the virtual machine. If you
+     * are using a platform image, you also use the imageReference element
+     * described above. If you are using a marketplace image, you  also use the
+     * plan element previously described. Possible values include: 'FromImage',
+     * 'Empty', 'Attach'
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
@@ -13638,12 +11622,12 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * parameters.virtualMachineProfile.storageProfile.osDisk.createOption
      * Specifies how the virtual machines in the scale set should be
-     * created.<br><br> The only allowed value is: **FromImage**  This value is
-     * used when you are using an image to create the virtual machine. If you are
-     * using a platform image, you also use the imageReference element described
-     * above. If you are using a marketplace image, you  also use the plan element
-     * previously described. Possible values include: 'FromImage', 'Empty',
-     * 'Attach'
+     * created.<br><br> The only allowed value is: **FromImage** \u2013 This value
+     * is used when you are using an image to create the virtual machine. If you
+     * are using a platform image, you also use the imageReference element
+     * described above. If you are using a marketplace image, you  also use the
+     * plan element previously described. Possible values include: 'FromImage',
+     * 'Empty', 'Attach'
      *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
@@ -14437,11 +12421,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a VM scale set.
@@ -14462,7 +12446,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14470,17 +12454,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14504,11 +12486,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deallocates specific virtual machines in a VM scale set. Shuts down the
@@ -14536,7 +12518,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14544,17 +12526,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14573,11 +12553,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes virtual machines in a VM scale set.
@@ -14600,7 +12580,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14608,17 +12588,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    beginDeleteInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14642,11 +12620,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Power off (stop) one or more virtual machines in a VM scale set. Note that
@@ -14674,7 +12652,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14682,17 +12660,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14714,11 +12690,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Restarts one or more virtual machines in a VM scale set.
@@ -14744,7 +12720,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14752,17 +12728,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14784,11 +12758,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginStartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Starts one or more virtual machines in a VM scale set.
@@ -14814,7 +12788,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14822,17 +12796,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginStart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginStart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14854,11 +12826,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Redeploy one or more virtual machines in a VM scale set.
@@ -14884,7 +12856,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14892,17 +12864,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14924,11 +12894,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Perform maintenance on one or more virtual machines in a VM scale set.
@@ -14954,7 +12924,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -14962,17 +12932,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -14992,11 +12960,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginUpdateInstancesWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Upgrades one or more virtual machines to the latest SKU set in the VM scale
@@ -15020,7 +12988,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15028,17 +12996,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], callback: ServiceCallback<void>): void;
+    beginUpdateInstances(resourceGroupName: string, vmScaleSetName: string, instanceIds: string[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -15061,11 +13027,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages (upgrade the operating system) one or more virtual machines in a VM
@@ -15092,7 +13058,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15100,17 +13066,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -15133,11 +13097,11 @@ export interface VirtualMachineScaleSets {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginReimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages all the disks ( including data disks ) in the virtual machines in a
@@ -15164,7 +13128,7 @@ export interface VirtualMachineScaleSets {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15172,17 +13136,15 @@ export interface VirtualMachineScaleSets {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, options?: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, options: { instanceIds? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -15577,11 +13539,11 @@ export interface VirtualMachineScaleSetExtensions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to delete the extension.
@@ -15605,7 +13567,7 @@ export interface VirtualMachineScaleSetExtensions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15613,17 +13575,15 @@ export interface VirtualMachineScaleSetExtensions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -15903,11 +13863,11 @@ export interface VirtualMachineScaleSetExtensions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * The operation to delete the extension.
@@ -15931,7 +13891,7 @@ export interface VirtualMachineScaleSetExtensions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -15939,17 +13899,15 @@ export interface VirtualMachineScaleSetExtensions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, vmssExtensionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -16033,11 +13991,11 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    cancelWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    cancelWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Cancels the current virtual machine scale set rolling upgrade.
@@ -16058,7 +14016,7 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -16066,17 +14024,15 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    cancel(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    cancel(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    cancel(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    cancel(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    cancel(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    cancel(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -16095,11 +14051,11 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startOSUpgradeWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    startOSUpgradeWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Starts a rolling upgrade to move all virtual machine scale set instances to
@@ -16122,7 +14078,7 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -16130,17 +14086,15 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    startOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    startOSUpgrade(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    startOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    startOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    startOSUpgrade(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    startOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -16217,11 +14171,11 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCancelWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginCancelWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Cancels the current virtual machine scale set rolling upgrade.
@@ -16242,7 +14196,7 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -16250,17 +14204,15 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCancel(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginCancel(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginCancel(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginCancel(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCancel(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginCancel(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -16279,11 +14231,11 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartOSUpgradeWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginStartOSUpgradeWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Starts a rolling upgrade to move all virtual machine scale set instances to
@@ -16306,7 +14258,7 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -16314,17 +14266,15 @@ export interface VirtualMachineScaleSetRollingUpgrades {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStartOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginStartOSUpgrade(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginStartOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStartOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStartOSUpgrade(resourceGroupName: string, vmScaleSetName: string, callback: ServiceCallback<void>): void;
+    beginStartOSUpgrade(resourceGroupName: string, vmScaleSetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -16353,11 +14303,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    reimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages (upgrade the operating system) a specific virtual machine in a VM
@@ -16381,7 +14331,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -16389,17 +14339,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    reimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -16419,11 +14367,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    reimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    reimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Allows you to re-image all the disks ( including data disks ) in the a VM
@@ -16447,7 +14395,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -16455,17 +14403,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    reimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -16487,11 +14433,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deallocates a specific virtual machine in a VM scale set. Shuts down the
@@ -16517,7 +14463,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -16525,17 +14471,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    deallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -16709,12 +14653,13 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach**  This value is used when you are using a specialized disk to
-     * create the virtual machine.<br><br> **FromImage**  This value is used when
-     * you are using an image to create the virtual machine. If you are using a
-     * platform image, you also use the imageReference element described above. If
-     * you are using a marketplace image, you  also use the plan element previously
-     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -17092,12 +15037,13 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach**  This value is used when you are using a specialized disk to
-     * create the virtual machine.<br><br> **FromImage**  This value is used when
-     * you are using an image to create the virtual machine. If you are using a
-     * platform image, you also use the imageReference element described above. If
-     * you are using a marketplace image, you  also use the plan element previously
-     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -17340,11 +15286,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a virtual machine from a VM scale set.
@@ -17367,7 +15313,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -17375,17 +15321,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -17608,11 +15552,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    powerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    powerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Power off (stop) a virtual machine in a VM scale set. Note that resources
@@ -17637,7 +15581,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -17645,17 +15589,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    powerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -17674,11 +15616,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    restartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    restartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Restarts a virtual machine in a VM scale set.
@@ -17701,7 +15643,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -17709,17 +15651,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    restart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -17738,11 +15678,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    startWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    startWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Starts a virtual machine in a VM scale set.
@@ -17765,7 +15705,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -17773,17 +15713,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -17802,11 +15740,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    redeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    redeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Redeploys a virtual machine in a VM scale set.
@@ -17829,7 +15767,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -17837,17 +15775,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    redeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    redeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    redeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    redeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    redeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    redeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -17866,11 +15802,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    performMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Performs maintenance on a virtual machine in a VM scale set.
@@ -17893,7 +15829,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -17901,17 +15837,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    performMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    performMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    performMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    performMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    performMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    performMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -17931,11 +15865,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginReimageWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Reimages (upgrade the operating system) a specific virtual machine in a VM
@@ -17959,7 +15893,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -17967,17 +15901,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginReimage(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -17997,11 +15929,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginReimageAllWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Allows you to re-image all the disks ( including data disks ) in the a VM
@@ -18025,7 +15957,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -18033,17 +15965,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginReimageAll(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -18065,11 +15995,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeallocateWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deallocates a specific virtual machine in a VM scale set. Shuts down the
@@ -18095,7 +16025,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -18103,17 +16033,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginDeallocate(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -18287,12 +16215,13 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach**  This value is used when you are using a specialized disk to
-     * create the virtual machine.<br><br> **FromImage**  This value is used when
-     * you are using an image to create the virtual machine. If you are using a
-     * platform image, you also use the imageReference element described above. If
-     * you are using a marketplace image, you  also use the plan element previously
-     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -18670,12 +16599,13 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @param {string} parameters.storageProfile.osDisk.createOption Specifies how
      * the virtual machine should be created.<br><br> Possible values are:<br><br>
-     * **Attach**  This value is used when you are using a specialized disk to
-     * create the virtual machine.<br><br> **FromImage**  This value is used when
-     * you are using an image to create the virtual machine. If you are using a
-     * platform image, you also use the imageReference element described above. If
-     * you are using a marketplace image, you  also use the plan element previously
-     * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+     * **Attach** \u2013 This value is used when you are using a specialized disk
+     * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+     * used when you are using an image to create the virtual machine. If you are
+     * using a platform image, you also use the imageReference element described
+     * above. If you are using a marketplace image, you  also use the plan element
+     * previously described. Possible values include: 'FromImage', 'Empty',
+     * 'Attach'
      *
      * @param {number} [parameters.storageProfile.osDisk.diskSizeGB] Specifies the
      * size of an empty data disk in gigabytes. This element can be used to
@@ -18918,11 +16848,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Deletes a virtual machine from a VM scale set.
@@ -18945,7 +16875,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -18953,17 +16883,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -18984,11 +16912,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginPowerOffWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Power off (stop) a virtual machine in a VM scale set. Note that resources
@@ -19013,7 +16941,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -19021,17 +16949,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginPowerOff(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -19050,11 +16976,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRestartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Restarts a virtual machine in a VM scale set.
@@ -19077,7 +17003,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -19085,17 +17011,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginRestart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -19114,11 +17038,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginStartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginStartWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Starts a virtual machine in a VM scale set.
@@ -19141,7 +17065,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -19149,17 +17073,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginStart(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -19178,11 +17100,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginRedeployWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Redeploys a virtual machine in a VM scale set.
@@ -19205,7 +17127,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -19213,17 +17135,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginRedeploy(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -19242,11 +17162,11 @@ export interface VirtualMachineScaleSetVMs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OperationStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatusResponse>>;
+    beginPerformMaintenanceWithHttpOperationResponse(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Performs maintenance on a virtual machine in a VM scale set.
@@ -19269,7 +17189,7 @@ export interface VirtualMachineScaleSetVMs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OperationStatusResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -19277,17 +17197,15 @@ export interface VirtualMachineScaleSetVMs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OperationStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationStatusResponse} for more
-     *                      information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatusResponse>;
-    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<models.OperationStatusResponse>): void;
-    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatusResponse>): void;
+    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, callback: ServiceCallback<void>): void;
+    beginPerformMaintenance(resourceGroupName: string, vmScaleSetName: string, instanceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**

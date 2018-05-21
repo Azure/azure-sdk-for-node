@@ -54,9 +54,6 @@ export default class ComputeManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  galleries: operations.Galleries;
-  galleryImages: operations.GalleryImages;
-  galleryImageVersions: operations.GalleryImageVersions;
   operations: operations.Operations;
   availabilitySets: operations.AvailabilitySets;
   virtualMachineExtensionImages: operations.VirtualMachineExtensionImages;

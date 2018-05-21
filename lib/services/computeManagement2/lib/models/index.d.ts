@@ -18,461 +18,6 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the GalleryIdentifier class.
- * @constructor
- * @member {string} [uniqueName] The unique name of the gallery
- */
-export interface GalleryIdentifier {
-  readonly uniqueName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * The Resource model definition.
- *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the Gallery class.
- * @constructor
- * Specifies information about the gallery that you want to create or update.
- *
- * @member {string} [description] The description of this gallery resource.
- * @member {object} [identifier]
- * @member {string} [identifier.uniqueName] The unique name of the gallery
- * @member {string} [provisioningState] The current state of the gallery. The
- * provisioning state, which only appears in the response. Possible values
- * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
- * 'Migrating'
- */
-export interface Gallery extends Resource {
-  description?: string;
-  identifier?: GalleryIdentifier;
-  readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GalleryImageIdentifier class.
- * @constructor
- * This is the gallery image identifier.
- *
- * @member {string} [publisher] The gallery image publisher name.
- * @member {string} [offer] The gallery image offer name.
- * @member {string} [sku] The gallery image sku name.
- */
-export interface GalleryImageIdentifier {
-  publisher?: string;
-  offer?: string;
-  sku?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ResourceRange class.
- * @constructor
- * Describes the resource range.
- *
- * @member {number} [min] The minimum number of the resource.
- * @member {number} [max] The maximum number of the resource.
- */
-export interface ResourceRange {
-  min?: number;
-  max?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the RecommendedMachineConfiguration class.
- * @constructor
- * Describes the recommended machine configuration.
- *
- * @member {object} [vCPUs]
- * @member {number} [vCPUs.min] The minimum number of the resource.
- * @member {number} [vCPUs.max] The maximum number of the resource.
- * @member {object} [memory]
- * @member {number} [memory.min] The minimum number of the resource.
- * @member {number} [memory.max] The maximum number of the resource.
- */
-export interface RecommendedMachineConfiguration {
-  vCPUs?: ResourceRange;
-  memory?: ResourceRange;
-}
-
-/**
- * @class
- * Initializes a new instance of the Disallowed class.
- * @constructor
- * Describes the disallowed disk types.
- *
- * @member {array} [diskTypes] A list of disk types.
- */
-export interface Disallowed {
-  diskTypes?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ImagePurchasePlan class.
- * @constructor
- * Describes the gallery image purchase plan. This is used by marketplace
- * images.
- *
- * @member {string} [name] The plan ID.
- * @member {string} [publisher] The publisher ID.
- * @member {string} [product] The product ID.
- */
-export interface ImagePurchasePlan {
-  name?: string;
-  publisher?: string;
-  product?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GalleryImage class.
- * @constructor
- * Specifies information about the gallery image that you want to create or
- * update.
- *
- * @member {string} [description] The description of this gallery image
- * resource.
- * @member {string} [eula] The Eula agreement for the gallery image.
- * @member {string} [privacyStatementUri] The privacy statement uri.
- * @member {string} [releaseNoteUri] The release note uri.
- * @member {string} [osType] This property allows you to specify the type of
- * the OS that is included in the disk if creating a VM from user-image or a
- * specialized VHD. <br><br> Possible values are: <br><br> **Windows** <br><br>
- * **Linux**. Possible values include: 'Windows', 'Linux'
- * @member {string} [osState] The OS State. Possible values include:
- * 'Generalized', 'Specialized'
- * @member {date} [endOfLifeDate] The end of life of this gallery image.
- * @member {object} [identifier]
- * @member {string} [identifier.publisher] The gallery image publisher name.
- * @member {string} [identifier.offer] The gallery image offer name.
- * @member {string} [identifier.sku] The gallery image sku name.
- * @member {object} [recommended]
- * @member {object} [recommended.vCPUs]
- * @member {number} [recommended.vCPUs.min] The minimum number of the resource.
- * @member {number} [recommended.vCPUs.max] The maximum number of the resource.
- * @member {object} [recommended.memory]
- * @member {number} [recommended.memory.min] The minimum number of the
- * resource.
- * @member {number} [recommended.memory.max] The maximum number of the
- * resource.
- * @member {object} [disallowed]
- * @member {array} [disallowed.diskTypes] A list of disk types.
- * @member {object} [purchasePlan]
- * @member {string} [purchasePlan.name] The plan ID.
- * @member {string} [purchasePlan.publisher] The publisher ID.
- * @member {string} [purchasePlan.product] The product ID.
- * @member {string} [provisioningState] The current state of the gallery image.
- * The provisioning state, which only appears in the response. Possible values
- * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
- * 'Migrating'
- */
-export interface GalleryImage extends Resource {
-  description?: string;
-  eula?: string;
-  privacyStatementUri?: string;
-  releaseNoteUri?: string;
-  osType?: string;
-  osState?: string;
-  endOfLifeDate?: Date;
-  identifier?: GalleryImageIdentifier;
-  recommended?: RecommendedMachineConfiguration;
-  disallowed?: Disallowed;
-  purchasePlan?: ImagePurchasePlan;
-  readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GalleryArtifactPublishingProfileBase class.
- * @constructor
- * Describes the basic gallery artifact publishing profile.
- *
- * @member {array} [regions] The regions where the artifact is going to be
- * published.
- * @member {object} [source]
- * @member {object} [source.managedImage]
- * @member {string} [source.managedImage.id] The managed artifact id.
- */
-export interface GalleryArtifactPublishingProfileBase {
-  regions?: string[];
-  source?: GalleryArtifactSource;
-}
-
-/**
- * @class
- * Initializes a new instance of the GalleryImageVersionPublishingProfile class.
- * @constructor
- * The publishing profile of a gallery image version.
- *
- * @member {boolean} [excludeFromLatest] The flag means that if it is set to
- * true, people deploying VMs with 'latest' as version will not use this
- * version.
- * @member {date} [publishedDate] The time when the gallery image version is
- * published.
- * @member {date} [endOfLifeDate] The end of life date of the gallery image
- * version.
- */
-export interface GalleryImageVersionPublishingProfile extends GalleryArtifactPublishingProfileBase {
-  excludeFromLatest?: boolean;
-  readonly publishedDate?: Date;
-  endOfLifeDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the GalleryDiskImage class.
- * @constructor
- * This is the disk image base class.
- *
- * @member {number} [sizedInGB] It indicates the size of the VHD to create.
- * @member {string} [hostCaching] The host caching of the disk. Valid values
- * are 'None', 'ReadOnly', and 'ReadWrite'. Possible values include: 'None',
- * 'ReadOnly', 'ReadWrite'
- */
-export interface GalleryDiskImage {
-  sizedInGB?: number;
-  hostCaching?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GalleryOSDiskImage class.
- * @constructor
- * This is the OS disk image.
- *
- */
-export interface GalleryOSDiskImage extends GalleryDiskImage {
-}
-
-/**
- * @class
- * Initializes a new instance of the GalleryDataDiskImage class.
- * @constructor
- * This is the data disk image.
- *
- * @member {number} [lun] Specifies the logical unit number of the data disk.
- * This value is used to identify data disks within the VM and therefore must
- * be unique for each data disk attached to a VM.
- */
-export interface GalleryDataDiskImage extends GalleryDiskImage {
-  lun?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the GalleryImageVersionStorageProfile class.
- * @constructor
- * This is the storage profile of a gallery image version.
- *
- * @member {object} [osDiskImage]
- * @member {array} [dataDiskImages] A list of data disk images.
- */
-export interface GalleryImageVersionStorageProfile {
-  osDiskImage?: GalleryOSDiskImage;
-  dataDiskImages?: GalleryDataDiskImage[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RegionalReplicationStatus class.
- * @constructor
- * This is the regional replication status.
- *
- * @member {string} [region] The region where the gallery image version is
- * published to.
- * @member {string} [state] This is the regional replication state. Possible
- * values include: 'Unknown', 'Replicating', 'Completed', 'Failed'
- * @member {string} [details] The details of the replication status.
- * @member {number} [progress] It indicates progress of the replication job.
- */
-export interface RegionalReplicationStatus {
-  region?: string;
-  state?: string;
-  details?: string;
-  progress?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the ReplicationStatus class.
- * @constructor
- * This is the replication status of the gallery image version.
- *
- * @member {string} [aggregatedState] This is the aggregated replication status
- * based on the regional replication status. Possible values include:
- * 'Unknown', 'InProgress', 'Completed', 'Failed'
- * @member {array} [summary] This is a summary of replication status for each
- * region.
- */
-export interface ReplicationStatus {
-  aggregatedState?: string;
-  summary?: RegionalReplicationStatus[];
-}
-
-/**
- * @class
- * Initializes a new instance of the GalleryImageVersion class.
- * @constructor
- * Specifies information about the gallery image version that you want to
- * create or update.
- *
- * @member {object} [publishingProfile]
- * @member {boolean} [publishingProfile.excludeFromLatest] The flag means that
- * if it is set to true, people deploying VMs with 'latest' as version will not
- * use this version.
- * @member {date} [publishingProfile.publishedDate] The time when the gallery
- * image version is published.
- * @member {date} [publishingProfile.endOfLifeDate] The end of life date of the
- * gallery image version.
- * @member {string} [provisioningState] The current state of the gallery image
- * version. The provisioning state, which only appears in the response.
- * Possible values include: 'Creating', 'Updating', 'Failed', 'Succeeded',
- * 'Deleting', 'Migrating'
- * @member {object} [storageProfile]
- * @member {object} [storageProfile.osDiskImage]
- * @member {array} [storageProfile.dataDiskImages] A list of data disk images.
- * @member {object} [replicationStatus]
- * @member {string} [replicationStatus.aggregatedState] This is the aggregated
- * replication status based on the regional replication status. Possible values
- * include: 'Unknown', 'InProgress', 'Completed', 'Failed'
- * @member {array} [replicationStatus.summary] This is a summary of replication
- * status for each region.
- */
-export interface GalleryImageVersion extends Resource {
-  publishingProfile?: GalleryImageVersionPublishingProfile;
-  readonly provisioningState?: string;
-  storageProfile?: GalleryImageVersionStorageProfile;
-  replicationStatus?: ReplicationStatus;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagedArtifact class.
- * @constructor
- * The managed artifact.
- *
- * @member {string} [id] The managed artifact id.
- */
-export interface ManagedArtifact {
-  id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GalleryArtifactSource class.
- * @constructor
- * The source of the gallery artifact.
- *
- * @member {object} [managedImage]
- * @member {string} [managedImage.id] The managed artifact id.
- */
-export interface GalleryArtifactSource {
-  managedImage?: ManagedArtifact;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApiErrorBase class.
- * @constructor
- * Api error base.
- *
- * @member {string} [code] The error code.
- * @member {string} [target] The target of the particular error.
- * @member {string} [message] The error message.
- */
-export interface ApiErrorBase {
-  code?: string;
-  target?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InnerError class.
- * @constructor
- * Inner error details.
- *
- * @member {string} [exceptiontype] The exception type.
- * @member {string} [errordetail] The internal error message or exception dump.
- */
-export interface InnerError {
-  exceptiontype?: string;
-  errordetail?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApiError class.
- * @constructor
- * Api error.
- *
- * @member {array} [details] The Api error details
- * @member {object} [innererror] The Api inner error
- * @member {string} [innererror.exceptiontype] The exception type.
- * @member {string} [innererror.errordetail] The internal error message or
- * exception dump.
- * @member {string} [code] The error code.
- * @member {string} [target] The target of the particular error.
- * @member {string} [message] The error message.
- */
-export interface ApiError {
-  details?: ApiErrorBase[];
-  innererror?: InnerError;
-  code?: string;
-  target?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationStatusResponse class.
- * @constructor
- * Operation status response
- *
- * @member {string} [name] Operation ID
- * @member {string} [status] Operation status
- * @member {date} [startTime] Start time of the operation
- * @member {date} [endTime] End time of the operation
- * @member {object} [error] Api error
- * @member {array} [error.details] The Api error details
- * @member {object} [error.innererror] The Api inner error
- * @member {string} [error.innererror.exceptiontype] The exception type.
- * @member {string} [error.innererror.errordetail] The internal error message
- * or exception dump.
- * @member {string} [error.code] The error code.
- * @member {string} [error.target] The target of the particular error.
- * @member {string} [error.message] The error message.
- */
-export interface OperationStatusResponse {
-  readonly name?: string;
-  readonly status?: string;
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly error?: ApiError;
-}
-
-/**
- * @class
  * Initializes a new instance of the ComputeOperationValue class.
  * @constructor
  * Describes the properties of a Compute Operation value.
@@ -543,6 +88,26 @@ export interface Sku {
   name?: string;
   tier?: string;
   capacity?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * The Resource model definition.
+ *
+ * @member {string} [id] Resource Id
+ * @member {string} [name] Resource name
+ * @member {string} [type] Resource type
+ * @member {string} location Resource location
+ * @member {object} [tags] Resource tags
+ */
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -928,12 +493,19 @@ export interface VirtualMachineCaptureParameters {
  * @class
  * Initializes a new instance of the VirtualMachineCaptureResult class.
  * @constructor
- * Resource Id.
+ * Output of virtual machine capture operation.
  *
- * @member {object} [output] Operation output data (raw JSON)
+ * @member {string} [schema] the schema of the captured virtual machine
+ * @member {string} [contentVersion] the version of the content
+ * @member {object} [parameters] parameters of the captured virtual machine
+ * @member {array} [resources] a list of resource items of the captured virtual
+ * machine
  */
 export interface VirtualMachineCaptureResult extends SubResource {
-  output?: any;
+  readonly schema?: string;
+  readonly contentVersion?: string;
+  readonly parameters?: any;
+  readonly resources?: any[];
 }
 
 /**
@@ -1191,13 +763,13 @@ export interface ManagedDiskParameters extends SubResource {
  * @member {boolean} [writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
  * @member {string} createOption Specifies how the virtual machine should be
- * created.<br><br> Possible values are:<br><br> **Attach**  This value is used
- * when you are using a specialized disk to create the virtual machine.<br><br>
- * **FromImage**  This value is used when you are using an image to create the
- * virtual machine. If you are using a platform image, you also use the
- * imageReference element described above. If you are using a marketplace
- * image, you  also use the plan element previously described. Possible values
- * include: 'FromImage', 'Empty', 'Attach'
+ * created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value
+ * is used when you are using a specialized disk to create the virtual
+ * machine.<br><br> **FromImage** \u2013 This value is used when you are using
+ * an image to create the virtual machine. If you are using a platform image,
+ * you also use the imageReference element described above. If you are using a
+ * marketplace image, you  also use the plan element previously described.
+ * Possible values include: 'FromImage', 'Empty', 'Attach'
  * @member {number} [diskSizeGB] Specifies the size of an empty data disk in
  * gigabytes. This element can be used to overwrite the name of the disk in a
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
@@ -1243,13 +815,13 @@ export interface OSDisk {
  * @member {boolean} [writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
  * @member {string} createOption Specifies how the virtual machine should be
- * created.<br><br> Possible values are:<br><br> **Attach**  This value is used
- * when you are using a specialized disk to create the virtual machine.<br><br>
- * **FromImage**  This value is used when you are using an image to create the
- * virtual machine. If you are using a platform image, you also use the
- * imageReference element described above. If you are using a marketplace
- * image, you  also use the plan element previously described. Possible values
- * include: 'FromImage', 'Empty', 'Attach'
+ * created.<br><br> Possible values are:<br><br> **Attach** \u2013 This value
+ * is used when you are using a specialized disk to create the virtual
+ * machine.<br><br> **FromImage** \u2013 This value is used when you are using
+ * an image to create the virtual machine. If you are using a platform image,
+ * you also use the imageReference element described above. If you are using a
+ * marketplace image, you  also use the plan element previously described.
+ * Possible values include: 'FromImage', 'Empty', 'Attach'
  * @member {number} [diskSizeGB] Specifies the size of an empty data disk in
  * gigabytes. This element can be used to overwrite the name of the disk in a
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
@@ -1336,13 +908,13 @@ export interface DataDisk {
  * @member {boolean} [osDisk.writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
  * @member {string} [osDisk.createOption] Specifies how the virtual machine
- * should be created.<br><br> Possible values are:<br><br> **Attach**  This
- * value is used when you are using a specialized disk to create the virtual
- * machine.<br><br> **FromImage**  This value is used when you are using an
- * image to create the virtual machine. If you are using a platform image, you
- * also use the imageReference element described above. If you are using a
- * marketplace image, you  also use the plan element previously described.
- * Possible values include: 'FromImage', 'Empty', 'Attach'
+ * should be created.<br><br> Possible values are:<br><br> **Attach** \u2013
+ * This value is used when you are using a specialized disk to create the
+ * virtual machine.<br><br> **FromImage** \u2013 This value is used when you
+ * are using an image to create the virtual machine. If you are using a
+ * platform image, you also use the imageReference element described above. If
+ * you are using a marketplace image, you  also use the plan element previously
+ * described. Possible values include: 'FromImage', 'Empty', 'Attach'
  * @member {number} [osDisk.diskSizeGB] Specifies the size of an empty data
  * disk in gigabytes. This element can be used to overwrite the name of the
  * disk in a virtual machine image. <br><br> This value cannot be larger than
@@ -2069,12 +1641,13 @@ export interface VirtualMachineInstanceView {
  * whether writeAccelerator should be enabled or disabled on the disk.
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
- * **Attach**  This value is used when you are using a specialized disk to
- * create the virtual machine.<br><br> **FromImage**  This value is used when
- * you are using an image to create the virtual machine. If you are using a
- * platform image, you also use the imageReference element described above. If
- * you are using a marketplace image, you  also use the plan element previously
- * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+ * **Attach** \u2013 This value is used when you are using a specialized disk
+ * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+ * used when you are using an image to create the virtual machine. If you are
+ * using a platform image, you also use the imageReference element described
+ * above. If you are using a marketplace image, you  also use the plan element
+ * previously described. Possible values include: 'FromImage', 'Empty',
+ * 'Attach'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of an
  * empty data disk in gigabytes. This element can be used to overwrite the name
  * of the disk in a virtual machine image. <br><br> This value cannot be larger
@@ -2455,12 +2028,13 @@ export interface VirtualMachine extends Resource {
  * whether writeAccelerator should be enabled or disabled on the disk.
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
- * **Attach**  This value is used when you are using a specialized disk to
- * create the virtual machine.<br><br> **FromImage**  This value is used when
- * you are using an image to create the virtual machine. If you are using a
- * platform image, you also use the imageReference element described above. If
- * you are using a marketplace image, you  also use the plan element previously
- * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+ * **Attach** \u2013 This value is used when you are using a specialized disk
+ * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+ * used when you are using an image to create the virtual machine. If you are
+ * using a platform image, you also use the imageReference element described
+ * above. If you are using a marketplace image, you  also use the plan element
+ * previously described. Possible values include: 'FromImage', 'Empty',
+ * 'Attach'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of an
  * empty data disk in gigabytes. This element can be used to overwrite the name
  * of the disk in a virtual machine image. <br><br> This value cannot be larger
@@ -3203,9 +2777,9 @@ export interface VirtualMachineScaleSetManagedDiskParameters {
  * writeAccelerator should be enabled or disabled on the disk.
  * @member {string} createOption Specifies how the virtual machines in the
  * scale set should be created.<br><br> The only allowed value is:
- * **FromImage**  This value is used when you are using an image to create the
- * virtual machine. If you are using a platform image, you also use the
- * imageReference element described above. If you are using a marketplace
+ * **FromImage** \u2013 This value is used when you are using an image to
+ * create the virtual machine. If you are using a platform image, you also use
+ * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
  * @member {string} [osType] This property allows you to specify the type of
@@ -3336,9 +2910,9 @@ export interface VirtualMachineScaleSetDataDisk {
  * writeAccelerator should be enabled or disabled on the disk.
  * @member {string} [osDisk.createOption] Specifies how the virtual machines in
  * the scale set should be created.<br><br> The only allowed value is:
- * **FromImage**  This value is used when you are using an image to create the
- * virtual machine. If you are using a platform image, you also use the
- * imageReference element described above. If you are using a marketplace
+ * **FromImage** \u2013 This value is used when you are using an image to
+ * create the virtual machine. If you are using a platform image, you also use
+ * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
  * @member {string} [osDisk.osType] This property allows you to specify the
@@ -3865,9 +3439,9 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * whether writeAccelerator should be enabled or disabled on the disk.
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machines in the scale set should be created.<br><br> The only
- * allowed value is: **FromImage**  This value is used when you are using an
- * image to create the virtual machine. If you are using a platform image, you
- * also use the imageReference element described above. If you are using a
+ * allowed value is: **FromImage** \u2013 This value is used when you are using
+ * an image to create the virtual machine. If you are using a platform image,
+ * you also use the imageReference element described above. If you are using a
  * marketplace image, you  also use the plan element previously described.
  * Possible values include: 'FromImage', 'Empty', 'Attach'
  * @member {string} [storageProfile.osDisk.osType] This property allows you to
@@ -4248,12 +3822,12 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * disk.
  * @member {string} [virtualMachineProfile.storageProfile.osDisk.createOption]
  * Specifies how the virtual machines in the scale set should be
- * created.<br><br> The only allowed value is: **FromImage**  This value is
- * used when you are using an image to create the virtual machine. If you are
- * using a platform image, you also use the imageReference element described
- * above. If you are using a marketplace image, you  also use the plan element
- * previously described. Possible values include: 'FromImage', 'Empty',
- * 'Attach'
+ * created.<br><br> The only allowed value is: **FromImage** \u2013 This value
+ * is used when you are using an image to create the virtual machine. If you
+ * are using a platform image, you also use the imageReference element
+ * described above. If you are using a marketplace image, you  also use the
+ * plan element previously described. Possible values include: 'FromImage',
+ * 'Empty', 'Attach'
  * @member {string} [virtualMachineProfile.storageProfile.osDisk.osType] This
  * property allows you to specify the type of the OS that is included in the
  * disk if creating a VM from user-image or a specialized VHD. <br><br>
@@ -4719,6 +4293,59 @@ export interface VirtualMachineScaleSetSku {
 
 /**
  * @class
+ * Initializes a new instance of the ApiErrorBase class.
+ * @constructor
+ * Api error base.
+ *
+ * @member {string} [code] The error code.
+ * @member {string} [target] The target of the particular error.
+ * @member {string} [message] The error message.
+ */
+export interface ApiErrorBase {
+  code?: string;
+  target?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InnerError class.
+ * @constructor
+ * Inner error details.
+ *
+ * @member {string} [exceptiontype] The exception type.
+ * @member {string} [errordetail] The internal error message or exception dump.
+ */
+export interface InnerError {
+  exceptiontype?: string;
+  errordetail?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiError class.
+ * @constructor
+ * Api error.
+ *
+ * @member {array} [details] The Api error details
+ * @member {object} [innererror] The Api inner error
+ * @member {string} [innererror.exceptiontype] The exception type.
+ * @member {string} [innererror.errordetail] The internal error message or
+ * exception dump.
+ * @member {string} [code] The error code.
+ * @member {string} [target] The target of the particular error.
+ * @member {string} [message] The error message.
+ */
+export interface ApiError {
+  details?: ApiErrorBase[];
+  innererror?: InnerError;
+  code?: string;
+  target?: string;
+  message?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RollbackStatusInfo class.
  * @constructor
  * Information about rollback on failed VM instances after a OS Upgrade
@@ -5153,12 +4780,13 @@ export interface UpgradeOperationHistoricalStatusInfo {
  * whether writeAccelerator should be enabled or disabled on the disk.
  * @member {string} [storageProfile.osDisk.createOption] Specifies how the
  * virtual machine should be created.<br><br> Possible values are:<br><br>
- * **Attach**  This value is used when you are using a specialized disk to
- * create the virtual machine.<br><br> **FromImage**  This value is used when
- * you are using an image to create the virtual machine. If you are using a
- * platform image, you also use the imageReference element described above. If
- * you are using a marketplace image, you  also use the plan element previously
- * described. Possible values include: 'FromImage', 'Empty', 'Attach'
+ * **Attach** \u2013 This value is used when you are using a specialized disk
+ * to create the virtual machine.<br><br> **FromImage** \u2013 This value is
+ * used when you are using an image to create the virtual machine. If you are
+ * using a platform image, you also use the imageReference element described
+ * above. If you are using a marketplace image, you  also use the plan element
+ * previously described. Possible values include: 'FromImage', 'Empty',
+ * 'Attach'
  * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of an
  * empty data disk in gigabytes. This element can be used to overwrite the name
  * of the disk in a virtual machine image. <br><br> This value cannot be larger
@@ -5502,18 +5130,6 @@ export interface RollingUpgradeStatusInfo extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ComputeLongRunningOperationProperties class.
- * @constructor
- * Compute-specific operation properties, including output
- *
- * @member {object} [output] Operation output data (raw JSON)
- */
-export interface ComputeLongRunningOperationProperties {
-  output?: any;
-}
-
-/**
- * @class
  * Initializes a new instance of the RecoveryWalkResponse class.
  * @constructor
  * Response after calling a manual recovery walk
@@ -5598,7 +5214,7 @@ export interface LogAnalyticsOutput {
  * @member {object} [properties] LogAnalyticsOutput
  * @member {string} [properties.output] Output file Uri path to blob container.
  */
-export interface LogAnalyticsOperationResult extends OperationStatusResponse {
+export interface LogAnalyticsOperationResult {
   readonly properties?: LogAnalyticsOutput;
 }
 
@@ -5696,7 +5312,7 @@ export interface RunCommandDocument extends RunCommandDocumentBase {
  *
  * @member {object} [output] Operation output data (raw JSON)
  */
-export interface RunCommandResult extends OperationStatusResponse {
+export interface RunCommandResult {
   output?: any;
 }
 
@@ -6536,46 +6152,6 @@ export interface ContainerService extends Resource {
   diagnosticsProfile?: ContainerServiceDiagnosticsProfile;
 }
 
-
-/**
- * @class
- * Initializes a new instance of the GalleryList class.
- * @constructor
- * The List Galleries operation response.
- *
- * @member {string} [nextLink] The uri to fetch the next page of galleries.
- * Call ListNext() with this to fetch the next page of galleries.
- */
-export interface GalleryList extends Array<Gallery> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GalleryImageList class.
- * @constructor
- * The List Gallery Images operation response.
- *
- * @member {string} [nextLink] The uri to fetch the next page of gallery
- * images. Call ListNext() with this to fetch the next page of gallery images.
- */
-export interface GalleryImageList extends Array<GalleryImage> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the GalleryImageVersionList class.
- * @constructor
- * The List Gallery Image version operation response.
- *
- * @member {string} [nextLink] The uri to fetch the next page of gallery image
- * versions. Call ListNext() with this to fetch the next page of gallery image
- * versions.
- */
-export interface GalleryImageVersionList extends Array<GalleryImageVersion> {
-  nextLink?: string;
-}
 
 /**
  * @class
