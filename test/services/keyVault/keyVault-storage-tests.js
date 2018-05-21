@@ -49,7 +49,7 @@ var testStorageAccount;
 var _tokenFromUserCredentials = () => { 
   return new Promise ( (resolve, reject) => { 
     if(suite.isPlayback) {
-      resolve( { 'oid': '7541419d-883d-452f-a823-56aa8bf0749f' } );
+      resolve( { 'oid': 'dummyoid' } );
       return;
     }
     
