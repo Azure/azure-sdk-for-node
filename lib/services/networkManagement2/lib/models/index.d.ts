@@ -535,7 +535,7 @@ export interface NetworkInterfaceDnsSettings {
  * resource is updated.
  */
 export interface NetworkInterface extends Resource {
-  virtualMachine?: SubResource;
+  readonly virtualMachine?: SubResource;
   networkSecurityGroup?: NetworkSecurityGroup;
   ipConfigurations?: NetworkInterfaceIPConfiguration[];
   dnsSettings?: NetworkInterfaceDnsSettings;
