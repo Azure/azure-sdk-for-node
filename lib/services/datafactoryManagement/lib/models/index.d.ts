@@ -142,6 +142,30 @@ export interface FactoryIdentity {
 
 /**
  * @class
+ * Initializes a new instance of the FactoryVSTSConfiguration class.
+ * @constructor
+ * Factory's VSTS repo information.
+ *
+ * @member {string} [accountName] VSTS account name.
+ * @member {string} [projectName] VSTS project name.
+ * @member {string} [repositoryName] VSTS repository name.
+ * @member {string} [collaborationBranch] VSTS collaboration branch.
+ * @member {string} [rootFolder] VSTS root folder.
+ * @member {string} [lastCommitId] VSTS last commit id.
+ * @member {string} [tenantId] VSTS tenant id.
+ */
+export interface FactoryVSTSConfiguration {
+  accountName?: string;
+  projectName?: string;
+  repositoryName?: string;
+  collaborationBranch?: string;
+  rootFolder?: string;
+  lastCommitId?: string;
+  tenantId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Factory class.
  * @constructor
  * Factory resource type.
@@ -153,12 +177,22 @@ export interface FactoryIdentity {
  * Succeeded.
  * @member {date} [createTime] Time the factory was created in ISO8601 format.
  * @member {string} [version] Version of the factory.
+ * @member {object} [vstsConfiguration] VSTS repo information of the factory.
+ * @member {string} [vstsConfiguration.accountName] VSTS account name.
+ * @member {string} [vstsConfiguration.projectName] VSTS project name.
+ * @member {string} [vstsConfiguration.repositoryName] VSTS repository name.
+ * @member {string} [vstsConfiguration.collaborationBranch] VSTS collaboration
+ * branch.
+ * @member {string} [vstsConfiguration.rootFolder] VSTS root folder.
+ * @member {string} [vstsConfiguration.lastCommitId] VSTS last commit id.
+ * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
  */
 export interface Factory extends Resource {
   identity?: FactoryIdentity;
   readonly provisioningState?: string;
   readonly createTime?: Date;
   readonly version?: string;
+  vstsConfiguration?: FactoryVSTSConfiguration;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
@@ -572,6 +606,30 @@ export interface ErrorResponse {
   message: string;
   target?: string;
   details?: ErrorResponse[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FactoryRepoUpdate class.
+ * @constructor
+ * Factory's VSTS repo information.
+ *
+ * @member {string} [factoryResourceId] The factory resource id.
+ * @member {string} [resourceGroupName] The resource group name.
+ * @member {object} [vstsConfiguration] VSTS repo information of the factory.
+ * @member {string} [vstsConfiguration.accountName] VSTS account name.
+ * @member {string} [vstsConfiguration.projectName] VSTS project name.
+ * @member {string} [vstsConfiguration.repositoryName] VSTS repository name.
+ * @member {string} [vstsConfiguration.collaborationBranch] VSTS collaboration
+ * branch.
+ * @member {string} [vstsConfiguration.rootFolder] VSTS root folder.
+ * @member {string} [vstsConfiguration.lastCommitId] VSTS last commit id.
+ * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
+ */
+export interface FactoryRepoUpdate {
+  factoryResourceId?: string;
+  resourceGroupName?: string;
+  vstsConfiguration?: FactoryVSTSConfiguration;
 }
 
 /**
