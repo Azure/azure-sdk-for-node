@@ -142,30 +142,6 @@ export interface FactoryIdentity {
 
 /**
  * @class
- * Initializes a new instance of the FactoryVSTSConfiguration class.
- * @constructor
- * Factory's VSTS repo information.
- *
- * @member {string} [accountName] VSTS account name.
- * @member {string} [projectName] VSTS project name.
- * @member {string} [repositoryName] VSTS repository name.
- * @member {string} [collaborationBranch] VSTS collaboration branch.
- * @member {string} [rootFolder] VSTS root folder.
- * @member {string} [lastCommitId] VSTS last commit id.
- * @member {string} [tenantId] VSTS tenant id.
- */
-export interface FactoryVSTSConfiguration {
-  accountName?: string;
-  projectName?: string;
-  repositoryName?: string;
-  collaborationBranch?: string;
-  rootFolder?: string;
-  lastCommitId?: string;
-  tenantId?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Factory class.
  * @constructor
  * Factory resource type.
@@ -177,22 +153,12 @@ export interface FactoryVSTSConfiguration {
  * Succeeded.
  * @member {date} [createTime] Time the factory was created in ISO8601 format.
  * @member {string} [version] Version of the factory.
- * @member {object} [vstsConfiguration] VSTS repo information of the factory.
- * @member {string} [vstsConfiguration.accountName] VSTS account name.
- * @member {string} [vstsConfiguration.projectName] VSTS project name.
- * @member {string} [vstsConfiguration.repositoryName] VSTS repository name.
- * @member {string} [vstsConfiguration.collaborationBranch] VSTS collaboration
- * branch.
- * @member {string} [vstsConfiguration.rootFolder] VSTS root folder.
- * @member {string} [vstsConfiguration.lastCommitId] VSTS last commit id.
- * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
  */
 export interface Factory extends Resource {
   identity?: FactoryIdentity;
   readonly provisioningState?: string;
   readonly createTime?: Date;
   readonly version?: string;
-  vstsConfiguration?: FactoryVSTSConfiguration;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
@@ -258,7 +224,7 @@ export interface IntegrationRuntimeReference {
  * integration runtime belong to.
  * @member {string} [state] The state of integration runtime. Possible values
  * include: 'Initial', 'Stopped', 'Started', 'Starting', 'Stopping',
- * 'NeedRegistration', 'Online', 'Limited', 'Offline'
+ * 'NeedRegistration', 'Online', 'Limited', 'Offline', 'AccessDenied'
  * @member {string} type Polymorphic Discriminator
  */
 export interface IntegrationRuntimeStatus {
@@ -284,7 +250,8 @@ export interface IntegrationRuntimeStatus {
  * the integration runtime belong to.
  * @member {string} [properties.state] The state of integration runtime.
  * Possible values include: 'Initial', 'Stopped', 'Started', 'Starting',
- * 'Stopping', 'NeedRegistration', 'Online', 'Limited', 'Offline'
+ * 'Stopping', 'NeedRegistration', 'Online', 'Limited', 'Offline',
+ * 'AccessDenied'
  * @member {string} [properties.type] Polymorphic Discriminator
  */
 export interface IntegrationRuntimeStatusResponse {
@@ -338,6 +305,18 @@ export interface UpdateIntegrationRuntimeRequest {
  */
 export interface UpdateIntegrationRuntimeNodeRequest {
   concurrentJobsLimit?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IntegrationRuntimePermissionRequest class.
+ * @constructor
+ * Grant or revoke access to integration runtime request.
+ *
+ * @member {string} factoryIdentity The data factory identity.
+ */
+export interface IntegrationRuntimePermissionRequest {
+  factoryIdentity: string;
 }
 
 /**
@@ -606,30 +585,6 @@ export interface ErrorResponse {
   message: string;
   target?: string;
   details?: ErrorResponse[];
-}
-
-/**
- * @class
- * Initializes a new instance of the FactoryRepoUpdate class.
- * @constructor
- * Factory's VSTS repo information.
- *
- * @member {string} [factoryResourceId] The factory resource id.
- * @member {string} [resourceGroupName] The resource group name.
- * @member {object} [vstsConfiguration] VSTS repo information of the factory.
- * @member {string} [vstsConfiguration.accountName] VSTS account name.
- * @member {string} [vstsConfiguration.projectName] VSTS project name.
- * @member {string} [vstsConfiguration.repositoryName] VSTS repository name.
- * @member {string} [vstsConfiguration.collaborationBranch] VSTS collaboration
- * branch.
- * @member {string} [vstsConfiguration.rootFolder] VSTS root folder.
- * @member {string} [vstsConfiguration.lastCommitId] VSTS last commit id.
- * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
- */
-export interface FactoryRepoUpdate {
-  factoryResourceId?: string;
-  resourceGroupName?: string;
-  vstsConfiguration?: FactoryVSTSConfiguration;
 }
 
 /**
@@ -1537,7 +1492,7 @@ export interface ShopifyLinkedService extends LinkedService {
  * ServiceNow server linked service.
  *
  * @member {object} endpoint The endpoint of the ServiceNow server. (i.e.
- * ServiceNowData.com)
+ * <instance>.service-now.com)
  * @member {string} authenticationType The authentication type to use. Possible
  * values include: 'Basic', 'OAuth2'
  * @member {object} [username] The user name used to connect to the ServiceNow
@@ -1582,10 +1537,13 @@ export interface ServiceNowLinkedService extends LinkedService {
  * quickbooks.api.intuit.com)
  * @member {object} companyId The company ID of the QuickBooks company to
  * authorize.
- * @member {object} [accessToken] The access token for OAuth 1.0
+ * @member {object} consumerKey The consumer key for OAuth 1.0 authentication.
+ * @member {object} consumerSecret The consumer secret for OAuth 1.0
  * authentication.
+ * @member {string} [consumerSecret.type] Polymorphic Discriminator
+ * @member {object} accessToken The access token for OAuth 1.0 authentication.
  * @member {string} [accessToken.type] Polymorphic Discriminator
- * @member {object} [accessTokenSecret] The access token secret for OAuth 1.0
+ * @member {object} accessTokenSecret The access token secret for OAuth 1.0
  * authentication.
  * @member {string} [accessTokenSecret.type] Polymorphic Discriminator
  * @member {object} [useEncryptedEndpoints] Specifies whether the data source
@@ -1597,8 +1555,10 @@ export interface ServiceNowLinkedService extends LinkedService {
 export interface QuickBooksLinkedService extends LinkedService {
   endpoint: any;
   companyId: any;
-  accessToken?: SecretBase;
-  accessTokenSecret?: SecretBase;
+  consumerKey: any;
+  consumerSecret: SecretBase;
+  accessToken: SecretBase;
+  accessTokenSecret: SecretBase;
   useEncryptedEndpoints?: any;
   encryptedCredential?: any;
 }
@@ -6668,6 +6628,9 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @member {string} [versionStatus] Status of the integration runtime version.
  * @member {array} [links] The list of linked integration runtimes that are
  * created to share with this integration runtime.
+ * @member {string} [pushedVersion] The version that the integration runtime is
+ * going to update to.
+ * @member {string} [latestVersion] The latest version on download center.
  */
 export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
   readonly createTime?: Date;
@@ -6683,6 +6646,8 @@ export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeSt
   readonly autoUpdate?: string;
   readonly versionStatus?: string;
   links?: LinkedIntegrationRuntime[];
+  readonly pushedVersion?: string;
+  readonly latestVersion?: string;
 }
 
 /**
@@ -6792,7 +6757,7 @@ export interface ManagedIntegrationRuntimeStatus extends IntegrationRuntimeStatu
  * @class
  * Initializes a new instance of the LinkedIntegrationRuntimeProperties class.
  * @constructor
- * The base definition of a secret type.
+ * The base definition of a linked integration runtime properties.
  *
  * @member {string} authorizationType Polymorphic Discriminator
  */
@@ -6804,10 +6769,10 @@ export interface LinkedIntegrationRuntimeProperties {
  * @class
  * Initializes a new instance of the LinkedIntegrationRuntimeRbac class.
  * @constructor
- * The base definition of a secret type.
+ * The role based access control (RBAC) authorization type.
  *
- * @member {string} resourceId The resource ID of the integration runtime to be
- * shared.
+ * @member {string} resourceId The resource identifier of the integration
+ * runtime to be shared.
  */
 export interface LinkedIntegrationRuntimeRbac extends LinkedIntegrationRuntimeProperties {
   resourceId: string;
@@ -6817,9 +6782,9 @@ export interface LinkedIntegrationRuntimeRbac extends LinkedIntegrationRuntimePr
  * @class
  * Initializes a new instance of the LinkedIntegrationRuntimeKey class.
  * @constructor
- * The base definition of a secret type.
+ * The key authorization type.
  *
- * @member {object} key Type of the secret.
+ * @member {object} key The key used for authorization.
  * @member {string} [key.value] Value of secure string.
  */
 export interface LinkedIntegrationRuntimeKey extends LinkedIntegrationRuntimeProperties {
@@ -6995,7 +6960,7 @@ export interface IntegrationRuntimeComputeProperties {
  * @member {string} [state] Integration runtime state, only valid for managed
  * dedicated integration runtime. Possible values include: 'Initial',
  * 'Stopped', 'Started', 'Starting', 'Stopping', 'NeedRegistration', 'Online',
- * 'Limited', 'Offline'
+ * 'Limited', 'Offline', 'AccessDenied'
  * @member {object} [computeProperties] The compute resource for managed
  * integration runtime.
  * @member {string} [computeProperties.location] The location for managed

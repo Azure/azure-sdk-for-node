@@ -133,125 +133,6 @@ export interface Factories {
 
 
     /**
-     * Updates a factory's repo information.
-     *
-     * @param {string} locationId The location identifier.
-     *
-     * @param {object} factoryRepoUpdate Update factory repo request definition.
-     *
-     * @param {string} [factoryRepoUpdate.factoryResourceId] The factory resource
-     * id.
-     *
-     * @param {string} [factoryRepoUpdate.resourceGroupName] The resource group
-     * name.
-     *
-     * @param {object} [factoryRepoUpdate.vstsConfiguration] VSTS repo information
-     * of the factory.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.accountName] VSTS
-     * account name.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.projectName] VSTS
-     * project name.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.repositoryName] VSTS
-     * repository name.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.collaborationBranch]
-     * VSTS collaboration branch.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.rootFolder] VSTS root
-     * folder.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.lastCommitId] VSTS last
-     * commit id.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.tenantId] VSTS tenant
-     * id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Factory>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    configureFactoryRepoWithHttpOperationResponse(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
-
-    /**
-     * Updates a factory's repo information.
-     *
-     * @param {string} locationId The location identifier.
-     *
-     * @param {object} factoryRepoUpdate Update factory repo request definition.
-     *
-     * @param {string} [factoryRepoUpdate.factoryResourceId] The factory resource
-     * id.
-     *
-     * @param {string} [factoryRepoUpdate.resourceGroupName] The resource group
-     * name.
-     *
-     * @param {object} [factoryRepoUpdate.vstsConfiguration] VSTS repo information
-     * of the factory.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.accountName] VSTS
-     * account name.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.projectName] VSTS
-     * project name.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.repositoryName] VSTS
-     * repository name.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.collaborationBranch]
-     * VSTS collaboration branch.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.rootFolder] VSTS root
-     * folder.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.lastCommitId] VSTS last
-     * commit id.
-     *
-     * @param {string} [factoryRepoUpdate.vstsConfiguration.tenantId] VSTS tenant
-     * id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Factory} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Factory} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Factory} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    configureFactoryRepo(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
-    configureFactoryRepo(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, callback: ServiceCallback<models.Factory>): void;
-    configureFactoryRepo(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
-
-
-    /**
      * Lists factories.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -317,26 +198,6 @@ export interface Factories {
      *
      * @param {object} [factory.identity] Managed service identity of the factory.
      *
-     * @param {object} [factory.vstsConfiguration] VSTS repo information of the
-     * factory.
-     *
-     * @param {string} [factory.vstsConfiguration.accountName] VSTS account name.
-     *
-     * @param {string} [factory.vstsConfiguration.projectName] VSTS project name.
-     *
-     * @param {string} [factory.vstsConfiguration.repositoryName] VSTS repository
-     * name.
-     *
-     * @param {string} [factory.vstsConfiguration.collaborationBranch] VSTS
-     * collaboration branch.
-     *
-     * @param {string} [factory.vstsConfiguration.rootFolder] VSTS root folder.
-     *
-     * @param {string} [factory.vstsConfiguration.lastCommitId] VSTS last commit
-     * id.
-     *
-     * @param {string} [factory.vstsConfiguration.tenantId] VSTS tenant id.
-     *
      * @param {string} [factory.location] The resource location.
      *
      * @param {object} [factory.tags] The resource tags.
@@ -364,26 +225,6 @@ export interface Factories {
      * @param {object} factory Factory resource definition.
      *
      * @param {object} [factory.identity] Managed service identity of the factory.
-     *
-     * @param {object} [factory.vstsConfiguration] VSTS repo information of the
-     * factory.
-     *
-     * @param {string} [factory.vstsConfiguration.accountName] VSTS account name.
-     *
-     * @param {string} [factory.vstsConfiguration.projectName] VSTS project name.
-     *
-     * @param {string} [factory.vstsConfiguration.repositoryName] VSTS repository
-     * name.
-     *
-     * @param {string} [factory.vstsConfiguration.collaborationBranch] VSTS
-     * collaboration branch.
-     *
-     * @param {string} [factory.vstsConfiguration.rootFolder] VSTS root folder.
-     *
-     * @param {string} [factory.vstsConfiguration.lastCommitId] VSTS last commit
-     * id.
-     *
-     * @param {string} [factory.vstsConfiguration.tenantId] VSTS tenant id.
      *
      * @param {string} [factory.location] The resource location.
      *
@@ -611,6 +452,131 @@ export interface Factories {
     deleteMethod(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, factoryName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, factoryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List data factories which the given data factory has access.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FactoryListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSharedFactoryWithHttpOperationResponse(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FactoryListResponse>>;
+
+    /**
+     * List data factories which the given data factory has access.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FactoryListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FactoryListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FactoryListResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSharedFactory(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
+    listSharedFactory(resourceGroupName: string, factoryName: string, callback: ServiceCallback<models.FactoryListResponse>): void;
+    listSharedFactory(resourceGroupName: string, factoryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
+
+
+    /**
+     * List integration runtimes which the given data factory has access.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.dataFactoryResourceId] The factory resource
+     * identifier.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IntegrationRuntimeListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSharedIntegrationRuntimeWithHttpOperationResponse(resourceGroupName: string, factoryName: string, options?: { dataFactoryResourceId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeListResponse>>;
+
+    /**
+     * List integration runtimes which the given data factory has access.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.dataFactoryResourceId] The factory resource
+     * identifier.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IntegrationRuntimeListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IntegrationRuntimeListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimeListResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSharedIntegrationRuntime(resourceGroupName: string, factoryName: string, options?: { dataFactoryResourceId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeListResponse>;
+    listSharedIntegrationRuntime(resourceGroupName: string, factoryName: string, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
+    listSharedIntegrationRuntime(resourceGroupName: string, factoryName: string, options: { dataFactoryResourceId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
 
 
     /**
@@ -1042,11 +1008,11 @@ export interface IntegrationRuntimes {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<IntegrationRuntimeStatusResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<IntegrationRuntimeResource>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeStatusResponse>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeResource>>;
 
     /**
      * Updates an integration runtime.
@@ -1081,7 +1047,7 @@ export interface IntegrationRuntimes {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {IntegrationRuntimeStatusResponse} - The deserialized result object.
+     *                      @resolve {IntegrationRuntimeResource} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1089,17 +1055,17 @@ export interface IntegrationRuntimes {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {IntegrationRuntimeStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link IntegrationRuntimeStatusResponse} for more
+     *                      {IntegrationRuntimeResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimeResource} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeStatusResponse>;
-    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, callback: ServiceCallback<models.IntegrationRuntimeStatusResponse>): void;
-    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeStatusResponse>): void;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeResource>;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, callback: ServiceCallback<models.IntegrationRuntimeResource>): void;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeResource>): void;
 
 
     /**
@@ -1832,6 +1798,154 @@ export interface IntegrationRuntimes {
     upgrade(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     upgrade(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<void>): void;
     upgrade(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Grant integration runtime access to other data factory.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} integrationRuntimePermissionRequest The data factory
+     * identity which will be granted the access to given integration runtime.
+     *
+     * @param {string} integrationRuntimePermissionRequest.factoryIdentity The data
+     * factory identity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    grantAccessWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Grant integration runtime access to other data factory.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} integrationRuntimePermissionRequest The data factory
+     * identity which will be granted the access to given integration runtime.
+     *
+     * @param {string} integrationRuntimePermissionRequest.factoryIdentity The data
+     * factory identity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    grantAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    grantAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, callback: ServiceCallback<void>): void;
+    grantAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Revoke the integration runtime access from other data factory.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} integrationRuntimePermissionRequest The data factory
+     * identity which will be revoked the access to given integration runtime.
+     *
+     * @param {string} integrationRuntimePermissionRequest.factoryIdentity The data
+     * factory identity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    revokeAccessWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Revoke the integration runtime access from other data factory.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} integrationRuntimePermissionRequest The data factory
+     * identity which will be revoked the access to given integration runtime.
+     *
+     * @param {string} integrationRuntimePermissionRequest.factoryIdentity The data
+     * factory identity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    revokeAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    revokeAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, callback: ServiceCallback<void>): void;
+    revokeAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
