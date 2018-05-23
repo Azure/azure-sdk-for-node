@@ -2025,16 +2025,6 @@ export interface MetricAlertCriteria {
 
 /**
  * @class
- * Initializes a new instance of the Action class.
- * @constructor
- * @member {string} odatatype Polymorphic Discriminator
- */
-export interface Action {
-  odatatype: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the MetricAlertResource class.
  * @constructor
  * The metric alert resource.
@@ -2069,7 +2059,7 @@ export interface MetricAlertResource extends Resource {
   windowSize: moment.Duration;
   criteria: MetricAlertCriteria;
   autoMitigate?: boolean;
-  actions?: Action[];
+  actions?: MetricAlertAction[];
   readonly lastUpdatedTime?: Date;
 }
 
@@ -2111,7 +2101,7 @@ export interface MetricAlertResourcePatch {
   windowSize: moment.Duration;
   criteria: MetricAlertCriteria;
   autoMitigate?: boolean;
-  actions?: Action[];
+  actions?: MetricAlertAction[];
   readonly lastUpdatedTime?: Date;
 }
 
@@ -2251,6 +2241,16 @@ export interface Source {
 export interface Schedule {
   frequencyInMinutes: number;
   timeWindowInMinutes: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Action class.
+ * @constructor
+ * @member {string} odatatype Polymorphic Discriminator
+ */
+export interface Action {
+  odatatype: string;
 }
 
 /**
