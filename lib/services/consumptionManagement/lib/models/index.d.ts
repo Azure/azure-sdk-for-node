@@ -141,18 +141,16 @@ export interface Forecast extends Resource {
   readonly confidenceLevels?: ForecastPropertiesConfidenceLevelsItem[];
 }
 
+
 /**
  * @class
  * Initializes a new instance of the ForecastsListResult class.
  * @constructor
  * Result of listing forecasts. It contains a list of available forecasts.
  *
- * @member {array} [value] The list of forecasts.
  */
-export interface ForecastsListResult {
-  readonly value?: Forecast[];
+export interface ForecastsListResult extends Array<Forecast> {
 }
-
 
 /**
  * @class
