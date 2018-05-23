@@ -70,8 +70,8 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {number} [options.keySize] The key size in bits. For example: 1024,
-   * 2048, 3072, or 4096 for RSA.
+   * @param {number} [options.keySize] The key size in bits. For example: 2048,
+   * 3072, or 4096 for RSA.
    *
    * @param {array} [options.keyOps]
    *
@@ -122,8 +122,8 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {number} [options.keySize] The key size in bits. For example: 1024,
-   * 2048, 3072, or 4096 for RSA.
+   * @param {number} [options.keySize] The key size in bits. For example: 2048,
+   * 3072, or 4096 for RSA.
    *
    * @param {array} [options.keyOps]
    *
@@ -3518,7 +3518,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * type.
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-   * size in bits. For example: 1024, 2048, 3072, or 4096 for RSA.
+   * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
@@ -3635,7 +3635,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * type.
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-   * size in bits. For example: 1024, 2048, 3072, or 4096 for RSA.
+   * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
@@ -3781,7 +3781,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * type.
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-   * size in bits. For example: 1024, 2048, 3072, or 4096 for RSA.
+   * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
@@ -3908,7 +3908,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * type.
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-   * size in bits. For example: 1024, 2048, 3072, or 4096 for RSA.
+   * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
@@ -4187,7 +4187,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} [certificatePolicy.keyProperties.keyType] The key type.
    *
    * @param {number} [certificatePolicy.keyProperties.keySize] The key size in
-   * bits. For example: 1024, 2048, 3072, or 4096 for RSA.
+   * bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if the
    * same key pair will be used on certificate renewal.
@@ -4294,7 +4294,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} [certificatePolicy.keyProperties.keyType] The key type.
    *
    * @param {number} [certificatePolicy.keyProperties.keySize] The key size in
-   * bits. For example: 1024, 2048, 3072, or 4096 for RSA.
+   * bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if the
    * same key pair will be used on certificate renewal.
@@ -4428,7 +4428,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * type.
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-   * size in bits. For example: 1024, 2048, 3072, or 4096 for RSA.
+   * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
@@ -4550,7 +4550,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * type.
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-   * size in bits. For example: 1024, 2048, 3072, or 4096 for RSA.
+   * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
