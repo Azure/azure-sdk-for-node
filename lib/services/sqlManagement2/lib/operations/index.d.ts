@@ -26124,11 +26124,11 @@ export interface InstanceFailoverGroups {
 
 /**
  * @class
- * ShortTermRetentionPolicies
+ * BackupShortTermRetentionPolicies
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
  */
-export interface ShortTermRetentionPolicies {
+export interface BackupShortTermRetentionPolicies {
 
 
     /**
@@ -26149,400 +26149,11 @@ export interface ShortTermRetentionPolicies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
-
-    /**
-     * Gets a database's short term retention policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-
-
-    /**
-     * Updates a database's short term retention policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} parameters The short term retention policy info.
-     *
-     * @param {number} [parameters.retentionDays] The backup retention period in
-     * days. This is how many days Point-in-Time Restore will be supported.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
-
-    /**
-     * Updates a database's short term retention policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} parameters The short term retention policy info.
-     *
-     * @param {number} [parameters.retentionDays] The backup retention period in
-     * days. This is how many days Point-in-Time Restore will be supported.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-
-
-    /**
-     * Updates a database's short term retention policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} parameters The short term retention policy info.
-     *
-     * @param {number} [parameters.retentionDays] The backup retention period in
-     * days. This is how many days Point-in-Time Restore will be supported.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
-
-    /**
-     * Updates a database's short term retention policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} parameters The short term retention policy info.
-     *
-     * @param {number} [parameters.retentionDays] The backup retention period in
-     * days. This is how many days Point-in-Time Restore will be supported.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-
-
-    /**
-     * Updates a database's short term retention policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} parameters The short term retention policy info.
-     *
-     * @param {number} [parameters.retentionDays] The backup retention period in
-     * days. This is how many days Point-in-Time Restore will be supported.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
-
-    /**
-     * Updates a database's short term retention policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} parameters The short term retention policy info.
-     *
-     * @param {number} [parameters.retentionDays] The backup retention period in
-     * days. This is how many days Point-in-Time Restore will be supported.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-
-
-    /**
-     * Updates a database's short term retention policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} parameters The short term retention policy info.
-     *
-     * @param {number} [parameters.retentionDays] The backup retention period in
-     * days. This is how many days Point-in-Time Restore will be supported.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
-
-    /**
-     * Updates a database's short term retention policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} parameters The short term retention policy info.
-     *
-     * @param {number} [parameters.retentionDays] The backup retention period in
-     * days. This is how many days Point-in-Time Restore will be supported.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-}
-
-/**
- * @class
- * ShortTermRetentionPolicies
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the SqlManagementClient.
- */
-export interface ShortTermRetentionPolicies {
-
-
-    /**
-     * Gets a database's short term retention policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
 
     /**
      * Gets a database's short term retention policy.
@@ -26567,7 +26178,7 @@ export interface ShortTermRetentionPolicies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -26575,17 +26186,17 @@ export interface ShortTermRetentionPolicies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
 
 
     /**
@@ -26611,11 +26222,11 @@ export interface ShortTermRetentionPolicies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
 
     /**
      * Updates a database's short term retention policy.
@@ -26645,7 +26256,7 @@ export interface ShortTermRetentionPolicies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -26653,17 +26264,17 @@ export interface ShortTermRetentionPolicies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
 
 
     /**
@@ -26689,11 +26300,11 @@ export interface ShortTermRetentionPolicies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
 
     /**
      * Updates a database's short term retention policy.
@@ -26723,7 +26334,7 @@ export interface ShortTermRetentionPolicies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -26731,17 +26342,17 @@ export interface ShortTermRetentionPolicies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
+    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
 
 
     /**
@@ -26767,11 +26378,11 @@ export interface ShortTermRetentionPolicies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
 
     /**
      * Updates a database's short term retention policy.
@@ -26801,7 +26412,7 @@ export interface ShortTermRetentionPolicies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -26809,17 +26420,17 @@ export interface ShortTermRetentionPolicies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
 
 
     /**
@@ -26845,11 +26456,11 @@ export interface ShortTermRetentionPolicies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
 
     /**
      * Updates a database's short term retention policy.
@@ -26879,7 +26490,7 @@ export interface ShortTermRetentionPolicies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -26887,15 +26498,15 @@ export interface ShortTermRetentionPolicies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
+    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
 }

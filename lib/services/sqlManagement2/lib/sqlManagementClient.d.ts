@@ -111,7 +111,7 @@ export default class SqlManagementClient extends AzureServiceClient {
   capabilities: operations.Capabilities;
   databaseVulnerabilityAssessmentScans: operations.DatabaseVulnerabilityAssessmentScans;
   instanceFailoverGroups: operations.InstanceFailoverGroups;
-  shortTermRetentionPolicies: operations.ShortTermRetentionPolicies;
+  backupShortTermRetentionPolicies: operations.BackupShortTermRetentionPolicies;
 }
 
 export { SqlManagementClient, models as SqlManagementModels };
