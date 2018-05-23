@@ -258,7 +258,7 @@ export interface IntegrationRuntimeReference {
  * integration runtime belong to.
  * @member {string} [state] The state of integration runtime. Possible values
  * include: 'Initial', 'Stopped', 'Started', 'Starting', 'Stopping',
- * 'NeedRegistration', 'Online', 'Limited', 'Offline'
+ * 'NeedRegistration', 'Online', 'Limited', 'Offline', 'AccessDenied'
  * @member {string} type Polymorphic Discriminator
  */
 export interface IntegrationRuntimeStatus {
@@ -284,7 +284,8 @@ export interface IntegrationRuntimeStatus {
  * the integration runtime belong to.
  * @member {string} [properties.state] The state of integration runtime.
  * Possible values include: 'Initial', 'Stopped', 'Started', 'Starting',
- * 'Stopping', 'NeedRegistration', 'Online', 'Limited', 'Offline'
+ * 'Stopping', 'NeedRegistration', 'Online', 'Limited', 'Offline',
+ * 'AccessDenied'
  * @member {string} [properties.type] Polymorphic Discriminator
  */
 export interface IntegrationRuntimeStatusResponse {
@@ -338,6 +339,18 @@ export interface UpdateIntegrationRuntimeRequest {
  */
 export interface UpdateIntegrationRuntimeNodeRequest {
   concurrentJobsLimit?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IntegrationRuntimePermissionRequest class.
+ * @constructor
+ * Grant or revoke access to integration runtime request.
+ *
+ * @member {string} factoryIdentity The data factory identity.
+ */
+export interface IntegrationRuntimePermissionRequest {
+  factoryIdentity: string;
 }
 
 /**
@@ -1537,7 +1550,7 @@ export interface ShopifyLinkedService extends LinkedService {
  * ServiceNow server linked service.
  *
  * @member {object} endpoint The endpoint of the ServiceNow server. (i.e.
- * ServiceNowData.com)
+ * <instance>.service-now.com)
  * @member {string} authenticationType The authentication type to use. Possible
  * values include: 'Basic', 'OAuth2'
  * @member {object} [username] The user name used to connect to the ServiceNow
@@ -1582,10 +1595,13 @@ export interface ServiceNowLinkedService extends LinkedService {
  * quickbooks.api.intuit.com)
  * @member {object} companyId The company ID of the QuickBooks company to
  * authorize.
- * @member {object} [accessToken] The access token for OAuth 1.0
+ * @member {object} consumerKey The consumer key for OAuth 1.0 authentication.
+ * @member {object} consumerSecret The consumer secret for OAuth 1.0
  * authentication.
+ * @member {string} [consumerSecret.type] Polymorphic Discriminator
+ * @member {object} accessToken The access token for OAuth 1.0 authentication.
  * @member {string} [accessToken.type] Polymorphic Discriminator
- * @member {object} [accessTokenSecret] The access token secret for OAuth 1.0
+ * @member {object} accessTokenSecret The access token secret for OAuth 1.0
  * authentication.
  * @member {string} [accessTokenSecret.type] Polymorphic Discriminator
  * @member {object} [useEncryptedEndpoints] Specifies whether the data source
@@ -1597,8 +1613,10 @@ export interface ServiceNowLinkedService extends LinkedService {
 export interface QuickBooksLinkedService extends LinkedService {
   endpoint: any;
   companyId: any;
-  accessToken?: SecretBase;
-  accessTokenSecret?: SecretBase;
+  consumerKey: any;
+  consumerSecret: SecretBase;
+  accessToken: SecretBase;
+  accessTokenSecret: SecretBase;
   useEncryptedEndpoints?: any;
   encryptedCredential?: any;
 }
@@ -6668,6 +6686,9 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @member {string} [versionStatus] Status of the integration runtime version.
  * @member {array} [links] The list of linked integration runtimes that are
  * created to share with this integration runtime.
+ * @member {string} [pushedVersion] The version that the integration runtime is
+ * going to update to.
+ * @member {string} [latestVersion] The latest version on download center.
  */
 export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
   readonly createTime?: Date;
@@ -6683,6 +6704,8 @@ export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeSt
   readonly autoUpdate?: string;
   readonly versionStatus?: string;
   links?: LinkedIntegrationRuntime[];
+  readonly pushedVersion?: string;
+  readonly latestVersion?: string;
 }
 
 /**
@@ -6792,7 +6815,7 @@ export interface ManagedIntegrationRuntimeStatus extends IntegrationRuntimeStatu
  * @class
  * Initializes a new instance of the LinkedIntegrationRuntimeProperties class.
  * @constructor
- * The base definition of a secret type.
+ * The base definition of a linked integration runtime properties.
  *
  * @member {string} authorizationType Polymorphic Discriminator
  */
@@ -6804,10 +6827,10 @@ export interface LinkedIntegrationRuntimeProperties {
  * @class
  * Initializes a new instance of the LinkedIntegrationRuntimeRbac class.
  * @constructor
- * The base definition of a secret type.
+ * The role based access control (RBAC) authorization type.
  *
- * @member {string} resourceId The resource ID of the integration runtime to be
- * shared.
+ * @member {string} resourceId The resource identifier of the integration
+ * runtime to be shared.
  */
 export interface LinkedIntegrationRuntimeRbac extends LinkedIntegrationRuntimeProperties {
   resourceId: string;
@@ -6817,9 +6840,9 @@ export interface LinkedIntegrationRuntimeRbac extends LinkedIntegrationRuntimePr
  * @class
  * Initializes a new instance of the LinkedIntegrationRuntimeKey class.
  * @constructor
- * The base definition of a secret type.
+ * The key authorization type.
  *
- * @member {object} key Type of the secret.
+ * @member {object} key The key used for authorization.
  * @member {string} [key.value] Value of secure string.
  */
 export interface LinkedIntegrationRuntimeKey extends LinkedIntegrationRuntimeProperties {
@@ -6995,7 +7018,7 @@ export interface IntegrationRuntimeComputeProperties {
  * @member {string} [state] Integration runtime state, only valid for managed
  * dedicated integration runtime. Possible values include: 'Initial',
  * 'Stopped', 'Started', 'Starting', 'Stopping', 'NeedRegistration', 'Online',
- * 'Limited', 'Offline'
+ * 'Limited', 'Offline', 'AccessDenied'
  * @member {object} [computeProperties] The compute resource for managed
  * integration runtime.
  * @member {string} [computeProperties.location] The location for managed
