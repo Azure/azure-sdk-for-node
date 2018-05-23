@@ -148,22 +148,18 @@ export interface MountSettings {
 
 /**
  * @class
- * Initializes a new instance of the Resource class.
+ * Initializes a new instance of the ProxyResource class.
  * @constructor
- * A definition of an Azure resource.
+ * A definition of an Azure proxy resource.
  *
- * @member {string} [id] The ID of the resource
- * @member {string} [name] The name of the resource
- * @member {string} [type] The type of the resource
- * @member {string} [location] The location of the resource
- * @member {object} [tags] The tags of the resource
+ * @member {string} [id] The ID of the resource.
+ * @member {string} [name] The name of the resource.
+ * @member {string} [type] The type of the resource.
  */
-export interface Resource extends BaseResource {
+export interface ProxyResource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  readonly location?: string;
-  readonly tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -211,7 +207,7 @@ export interface Resource extends BaseResource {
  * succeeded. Possible values include: 'creating', 'updating', 'deleting',
  * 'succeeded', 'failed'
  */
-export interface FileServer extends Resource {
+export interface FileServer extends ProxyResource {
   vmSize?: string;
   sshConfiguration?: SshConfiguration;
   dataDisks?: DataDisks;
@@ -243,9 +239,6 @@ export interface KeyVaultSecretReference {
  * @constructor
  * Parameters supplied to the Create operation.
  *
- * @member {string} location The region in which to create the File Server.
- * @member {object} [tags] The user specified tags associated with the File
- * Server.
  * @member {string} vmSize The size of the virtual machine of the file server.
  * For information about available VM sizes for fileservers from the Virtual
  * Machines Marketplace, see Sizes for Virtual Machines (Linux).
@@ -270,8 +263,6 @@ export interface KeyVaultSecretReference {
  * @member {string} [subnet.id] The ID of the resource
  */
 export interface FileServerCreateParameters {
-  location: string;
-  tags?: { [propertyName: string]: string };
   vmSize: string;
   sshConfiguration: SshConfiguration;
   dataDisks: DataDisks;
@@ -789,8 +780,6 @@ export interface NodeStateCounts {
  * @constructor
  * Parameters supplied to the Create operation.
  *
- * @member {string} location The region in which to create the cluster.
- * @member {object} [tags] The user specified tags associated with the Cluster.
  * @member {string} vmSize The size of the virtual machines in the cluster. All
  * virtual machines in a cluster are the same size. For information about
  * available VM sizes for clusters using images from the Virtual Machines
@@ -886,8 +875,6 @@ export interface NodeStateCounts {
  * @member {string} [subnet.id] The ID of the resource
  */
 export interface ClusterCreateParameters {
-  location: string;
-  tags?: { [propertyName: string]: string };
   vmSize: string;
   vmPriority?: string;
   scaleSettings?: ScaleSettings;
@@ -903,7 +890,6 @@ export interface ClusterCreateParameters {
  * @constructor
  * Parameters supplied to the Update operation.
  *
- * @member {object} [tags] The user specified tags associated with the Cluster.
  * @member {object} [scaleSettings] Desired scale for the cluster.
  * @member {object} [scaleSettings.manual]
  * @member {number} [scaleSettings.manual.targetNodeCount] Default is 0. If
@@ -918,7 +904,6 @@ export interface ClusterCreateParameters {
  * @member {number} [scaleSettings.autoScale.initialNodeCount]
  */
 export interface ClusterUpdateParameters {
-  tags?: { [propertyName: string]: string };
   scaleSettings?: ScaleSettings;
 }
 
@@ -1087,7 +1072,7 @@ export interface BatchAIError {
  * @member {number} [nodeStateCounts.unusableNodeCount]
  * @member {number} [nodeStateCounts.leavingNodeCount]
  */
-export interface Cluster extends Resource {
+export interface Cluster extends ProxyResource {
   vmSize?: string;
   vmPriority?: string;
   scaleSettings?: ScaleSettings;
@@ -1181,9 +1166,12 @@ export interface ImageSourceRegistry {
  * ID of the resource
  * @member {string}
  * [imageSourceRegistry.credentials.passwordSecretReference.secretUrl]
+ * @member {string} [shmSize] Size of /dev/shm. Please refer to docker
+ * documentation for supported argument formats.
  */
 export interface ContainerSettings {
   imageSourceRegistry: ImageSourceRegistry;
+  shmSize?: string;
 }
 
 /**
@@ -1518,6 +1506,7 @@ export interface JobBasePropertiesConstraints {
  * The ID of the resource
  * @member {string}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl]
+ * @member {string} [containerSettings.shmSize]
  * @member {object} [cntkSettings] Specifies the settings for CNTK (aka
  * Microsoft Cognitive Toolkit) job.
  * @member {string} [cntkSettings.languageType] Valid values are 'BrainScript'
@@ -1678,22 +1667,6 @@ export interface JobPropertiesExecutionInfo {
 
 /**
  * @class
- * Initializes a new instance of the ProxyResource class.
- * @constructor
- * A definition of an Azure proxy resource.
- *
- * @member {string} [id] The ID of the resource.
- * @member {string} [name] The name of the resource.
- * @member {string} [type] The type of the resource.
- */
-export interface ProxyResource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Job class.
  * @constructor
  * Contains information about a Job.
@@ -1746,6 +1719,7 @@ export interface ProxyResource extends BaseResource {
  * The ID of the resource
  * @member {string}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl]
+ * @member {string} [containerSettings.shmSize]
  * @member {string} [toolType] The toolkit type of this job. Possible values
  * are: cntk, tensorflow, caffe, caffe2, chainer, pytorch, custom, mpi,
  * horovod. Possible values include: 'cntk', 'tensorflow', 'caffe', 'caffe2',
@@ -1948,6 +1922,26 @@ export interface File {
 
 /**
  * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * A definition of an Azure resource.
+ *
+ * @member {string} [id] The ID of the resource
+ * @member {string} [name] The name of the resource
+ * @member {string} [type] The type of the resource
+ * @member {string} [location] The location of the resource
+ * @member {object} [tags] The tags of the resource
+ */
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  readonly location?: string;
+  readonly tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * The object that describes the operation.
@@ -2023,6 +2017,19 @@ export interface Workspace extends Resource {
  */
 export interface WorkspaceCreateParameters {
   location: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkspaceUpdateParameters class.
+ * @constructor
+ * Parameters supplied to the Update operation.
+ *
+ * @member {object} [tags] The user specified tags associated with the
+ * Workspace.
+ */
+export interface WorkspaceUpdateParameters {
   tags?: { [propertyName: string]: string };
 }
 

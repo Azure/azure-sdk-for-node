@@ -481,6 +481,77 @@ export interface Workspaces {
 
 
     /**
+     * Updates properties of a Workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.tags] The user specified tags associated with the
+     * Workspace.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Workspace>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workspace>>;
+
+    /**
+     * Updates properties of a Workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.tags] The user specified tags associated with the
+     * Workspace.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Workspace} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Workspace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Workspace} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, workspaceName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workspace>;
+    update(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.Workspace>): void;
+    update(resourceGroupName: string, workspaceName: string, options: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workspace>): void;
+
+
+    /**
      * Deletes a Workspace.
      *
      * @param {string} resourceGroupName Name of the resource group to which the
@@ -1568,6 +1639,9 @@ export interface Jobs {
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl
      * The URL referencing a secret in a Key Vault.
      *
+     * @param {string} [parameters.containerSettings.shmSize] Size of /dev/shm.
+     * Please refer to docker documentation for supported argument formats.
+     *
      * @param {object} [parameters.cntkSettings] Specifies the settings for CNTK
      * (aka Microsoft Cognitive Toolkit) job.
      *
@@ -1871,6 +1945,9 @@ export interface Jobs {
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl
      * The URL referencing a secret in a Key Vault.
+     *
+     * @param {string} [parameters.containerSettings.shmSize] Size of /dev/shm.
+     * Please refer to docker documentation for supported argument formats.
      *
      * @param {object} [parameters.cntkSettings] Specifies the settings for CNTK
      * (aka Microsoft Cognitive Toolkit) job.
@@ -2649,6 +2726,9 @@ export interface Jobs {
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl
      * The URL referencing a secret in a Key Vault.
      *
+     * @param {string} [parameters.containerSettings.shmSize] Size of /dev/shm.
+     * Please refer to docker documentation for supported argument formats.
+     *
      * @param {object} [parameters.cntkSettings] Specifies the settings for CNTK
      * (aka Microsoft Cognitive Toolkit) job.
      *
@@ -2952,6 +3032,9 @@ export interface Jobs {
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl
      * The URL referencing a secret in a Key Vault.
+     *
+     * @param {string} [parameters.containerSettings.shmSize] Size of /dev/shm.
+     * Please refer to docker documentation for supported argument formats.
      *
      * @param {object} [parameters.cntkSettings] Specifies the settings for CNTK
      * (aka Microsoft Cognitive Toolkit) job.
@@ -3551,12 +3634,6 @@ export interface FileServers {
      * @param {object} parameters The parameters to provide for File Server
      * creation.
      *
-     * @param {string} parameters.location The region in which to create the File
-     * Server.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the File Server.
-     *
      * @param {string} parameters.vmSize The size of the virtual machine of the
      * file server. For information about available VM sizes for fileservers from
      * the Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
@@ -3639,12 +3716,6 @@ export interface FileServers {
      *
      * @param {object} parameters The parameters to provide for File Server
      * creation.
-     *
-     * @param {string} parameters.location The region in which to create the File
-     * Server.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the File Server.
      *
      * @param {string} parameters.vmSize The size of the virtual machine of the
      * file server. For information about available VM sizes for fileservers from
@@ -3976,12 +4047,6 @@ export interface FileServers {
      * @param {object} parameters The parameters to provide for File Server
      * creation.
      *
-     * @param {string} parameters.location The region in which to create the File
-     * Server.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the File Server.
-     *
      * @param {string} parameters.vmSize The size of the virtual machine of the
      * file server. For information about available VM sizes for fileservers from
      * the Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
@@ -4064,12 +4129,6 @@ export interface FileServers {
      *
      * @param {object} parameters The parameters to provide for File Server
      * creation.
-     *
-     * @param {string} parameters.location The region in which to create the File
-     * Server.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the File Server.
      *
      * @param {string} parameters.vmSize The size of the virtual machine of the
      * file server. For information about available VM sizes for fileservers from
@@ -4313,12 +4372,6 @@ export interface Clusters {
      * @param {object} parameters The parameters to provide for the Cluster
      * creation.
      *
-     * @param {string} parameters.location The region in which to create the
-     * cluster.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the Cluster.
-     *
      * @param {string} parameters.vmSize The size of the virtual machines in the
      * cluster. All virtual machines in a cluster are the same size. For
      * information about available VM sizes for clusters using images from the
@@ -4514,12 +4567,6 @@ export interface Clusters {
      *
      * @param {object} parameters The parameters to provide for the Cluster
      * creation.
-     *
-     * @param {string} parameters.location The region in which to create the
-     * cluster.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the Cluster.
      *
      * @param {string} parameters.vmSize The size of the virtual machines in the
      * cluster. All virtual machines in a cluster are the same size. For
@@ -4733,39 +4780,34 @@ export interface Clusters {
      * characters along with dash (-) and underscore (_). The name must be from 1
      * through 64 characters long.
      *
-     * @param {object} parameters Additional parameters for cluster update.
+     * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the Cluster.
+     * @param {object} [options.scaleSettings] Desired scale for the cluster
      *
-     * @param {object} [parameters.scaleSettings] Desired scale for the cluster
+     * @param {object} [options.scaleSettings.manual] The scale for the cluster by
+     * manual settings
      *
-     * @param {object} [parameters.scaleSettings.manual] The scale for the cluster
-     * by manual settings
-     *
-     * @param {number} parameters.scaleSettings.manual.targetNodeCount The desired
+     * @param {number} options.scaleSettings.manual.targetNodeCount The desired
      * number of compute nodes in the Cluster. Default is 0. If autoScaleSettings
      * are not specified, then the Cluster starts with this target.
      *
-     * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
+     * @param {string} [options.scaleSettings.manual.nodeDeallocationOption]
      * Determines what to do with the job(s) running on compute node if the Cluster
      * size is decreasing. The default value is requeue. Possible values include:
      * 'requeue', 'terminate', 'waitforjobcompletion'
      *
-     * @param {object} [parameters.scaleSettings.autoScale] The scale for the
-     * cluster by autoscale settings
+     * @param {object} [options.scaleSettings.autoScale] The scale for the cluster
+     * by autoscale settings
      *
-     * @param {number} parameters.scaleSettings.autoScale.minimumNodeCount
-     * Specifies the minimum number of compute nodes the cluster can have.
+     * @param {number} options.scaleSettings.autoScale.minimumNodeCount Specifies
+     * the minimum number of compute nodes the cluster can have.
      *
-     * @param {number} parameters.scaleSettings.autoScale.maximumNodeCount
-     * Specifies the maximum number of compute nodes the cluster can have.
+     * @param {number} options.scaleSettings.autoScale.maximumNodeCount Specifies
+     * the maximum number of compute nodes the cluster can have.
      *
-     * @param {number} [parameters.scaleSettings.autoScale.initialNodeCount]
-     * Specifies the number of compute nodes to allocate on cluster creation. Note
-     * that this value is used only during cluster creation.
-     *
-     * @param {object} [options] Optional Parameters.
+     * @param {number} [options.scaleSettings.autoScale.initialNodeCount] Specifies
+     * the number of compute nodes to allocate on cluster creation. Note that this
+     * value is used only during cluster creation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4776,7 +4818,7 @@ export interface Clusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { scaleSettings? : models.ScaleSettings, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
      * Updates properties of a Cluster.
@@ -4793,39 +4835,34 @@ export interface Clusters {
      * characters along with dash (-) and underscore (_). The name must be from 1
      * through 64 characters long.
      *
-     * @param {object} parameters Additional parameters for cluster update.
+     * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the Cluster.
+     * @param {object} [options.scaleSettings] Desired scale for the cluster
      *
-     * @param {object} [parameters.scaleSettings] Desired scale for the cluster
+     * @param {object} [options.scaleSettings.manual] The scale for the cluster by
+     * manual settings
      *
-     * @param {object} [parameters.scaleSettings.manual] The scale for the cluster
-     * by manual settings
-     *
-     * @param {number} parameters.scaleSettings.manual.targetNodeCount The desired
+     * @param {number} options.scaleSettings.manual.targetNodeCount The desired
      * number of compute nodes in the Cluster. Default is 0. If autoScaleSettings
      * are not specified, then the Cluster starts with this target.
      *
-     * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
+     * @param {string} [options.scaleSettings.manual.nodeDeallocationOption]
      * Determines what to do with the job(s) running on compute node if the Cluster
      * size is decreasing. The default value is requeue. Possible values include:
      * 'requeue', 'terminate', 'waitforjobcompletion'
      *
-     * @param {object} [parameters.scaleSettings.autoScale] The scale for the
-     * cluster by autoscale settings
+     * @param {object} [options.scaleSettings.autoScale] The scale for the cluster
+     * by autoscale settings
      *
-     * @param {number} parameters.scaleSettings.autoScale.minimumNodeCount
-     * Specifies the minimum number of compute nodes the cluster can have.
+     * @param {number} options.scaleSettings.autoScale.minimumNodeCount Specifies
+     * the minimum number of compute nodes the cluster can have.
      *
-     * @param {number} parameters.scaleSettings.autoScale.maximumNodeCount
-     * Specifies the maximum number of compute nodes the cluster can have.
+     * @param {number} options.scaleSettings.autoScale.maximumNodeCount Specifies
+     * the maximum number of compute nodes the cluster can have.
      *
-     * @param {number} [parameters.scaleSettings.autoScale.initialNodeCount]
-     * Specifies the number of compute nodes to allocate on cluster creation. Note
-     * that this value is used only during cluster creation.
-     *
-     * @param {object} [options] Optional Parameters.
+     * @param {number} [options.scaleSettings.autoScale.initialNodeCount] Specifies
+     * the number of compute nodes to allocate on cluster creation. Note that this
+     * value is used only during cluster creation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -4852,9 +4889,9 @@ export interface Clusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    update(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.Cluster>): void;
-    update(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+    update(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { scaleSettings? : models.ScaleSettings, customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    update(resourceGroupName: string, workspaceName: string, clusterName: string, callback: ServiceCallback<models.Cluster>): void;
+    update(resourceGroupName: string, workspaceName: string, clusterName: string, options: { scaleSettings? : models.ScaleSettings, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
 
 
     /**
@@ -5179,12 +5216,6 @@ export interface Clusters {
      * @param {object} parameters The parameters to provide for the Cluster
      * creation.
      *
-     * @param {string} parameters.location The region in which to create the
-     * cluster.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the Cluster.
-     *
      * @param {string} parameters.vmSize The size of the virtual machines in the
      * cluster. All virtual machines in a cluster are the same size. For
      * information about available VM sizes for clusters using images from the
@@ -5380,12 +5411,6 @@ export interface Clusters {
      *
      * @param {object} parameters The parameters to provide for the Cluster
      * creation.
-     *
-     * @param {string} parameters.location The region in which to create the
-     * cluster.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the Cluster.
      *
      * @param {string} parameters.vmSize The size of the virtual machines in the
      * cluster. All virtual machines in a cluster are the same size. For
