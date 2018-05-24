@@ -1880,6 +1880,324 @@ export interface VirtualNetworkRule extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the ExtendedDatabaseBlobAuditingPolicy class.
+ * @constructor
+ * An extended database blob auditing policy.
+ *
+ * @member {string} [predicateExpression] Specifies condition of where clause
+ * when creating an audit.
+ * @member {string} state Specifies the state of the policy. If state is
+ * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
+ * values include: 'Enabled', 'Disabled'
+ * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
+ * https://MyAccount.blob.core.windows.net). If state is Enabled,
+ * storageEndpoint is required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the auditing storage account. If state is Enabled, storageAccountAccessKey
+ * is required.
+ * @member {number} [retentionDays] Specifies the number of days to keep in the
+ * audit logs.
+ * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
+ * Actions to audit.
+ *
+ * The recommended set of action groups to use is the following combination -
+ * this will audit all the queries and stored procedures executed against the
+ * database, as well as successful and failed logins:
+ *
+ * BATCH_COMPLETED_GROUP,
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+ * FAILED_DATABASE_AUTHENTICATION_GROUP.
+ *
+ * This above combination is also the set that is configured by default when
+ * enabling auditing from the Azure portal.
+ *
+ * The supported action groups to audit are (note: choose only specific groups
+ * that cover your auditing needs. Using unnecessary groups could lead to very
+ * large quantities of audit records):
+ *
+ * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+ * BACKUP_RESTORE_GROUP
+ * DATABASE_LOGOUT_GROUP
+ * DATABASE_OBJECT_CHANGE_GROUP
+ * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+ * DATABASE_OPERATION_GROUP
+ * DATABASE_PERMISSION_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+ * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+ * FAILED_DATABASE_AUTHENTICATION_GROUP
+ * SCHEMA_OBJECT_ACCESS_GROUP
+ * SCHEMA_OBJECT_CHANGE_GROUP
+ * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+ * USER_CHANGE_PASSWORD_GROUP
+ * BATCH_STARTED_GROUP
+ * BATCH_COMPLETED_GROUP
+ *
+ * These are groups that cover all sql statements and stored procedures
+ * executed against the database, and should not be used in combination with
+ * other groups as this will result in duplicate audit logs.
+ *
+ * For more information, see [Database-Level Audit Action
+ * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+ *
+ * For Database auditing policy, specific Actions can also be specified (note
+ * that Actions cannot be specified for Server auditing policy). The supported
+ * actions to audit are:
+ * SELECT
+ * UPDATE
+ * INSERT
+ * DELETE
+ * EXECUTE
+ * RECEIVE
+ * REFERENCES
+ *
+ * The general form for defining an action to be audited is:
+ * <action> ON <object> BY <principal>
+ *
+ * Note that <object> in the above format can refer to an object like a table,
+ * view, or stored procedure, or an entire database or schema. For the latter
+ * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * respectively.
+ *
+ * For example:
+ * SELECT on dbo.myTable by public
+ * SELECT on DATABASE::myDatabase by public
+ * SELECT on SCHEMA::mySchema by public
+ *
+ * For more information, see [Database-Level Audit
+ * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+ * @member {uuid} [storageAccountSubscriptionId] Specifies the blob storage
+ * subscription Id.
+ * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
+ * storageAccountAccessKey value is the storage's secondary key.
+ */
+export interface ExtendedDatabaseBlobAuditingPolicy extends ProxyResource {
+  predicateExpression?: string;
+  state: string;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
+  auditActionsAndGroups?: string[];
+  storageAccountSubscriptionId?: string;
+  isStorageSecondaryKeyInUse?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExtendedServerBlobAuditingPolicy class.
+ * @constructor
+ * An extended server blob auditing policy.
+ *
+ * @member {string} [predicateExpression] Specifies condition of where clause
+ * when creating an audit.
+ * @member {string} state Specifies the state of the policy. If state is
+ * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
+ * values include: 'Enabled', 'Disabled'
+ * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
+ * https://MyAccount.blob.core.windows.net). If state is Enabled,
+ * storageEndpoint is required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the auditing storage account. If state is Enabled, storageAccountAccessKey
+ * is required.
+ * @member {number} [retentionDays] Specifies the number of days to keep in the
+ * audit logs.
+ * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
+ * Actions to audit.
+ *
+ * The recommended set of action groups to use is the following combination -
+ * this will audit all the queries and stored procedures executed against the
+ * database, as well as successful and failed logins:
+ *
+ * BATCH_COMPLETED_GROUP,
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+ * FAILED_DATABASE_AUTHENTICATION_GROUP.
+ *
+ * This above combination is also the set that is configured by default when
+ * enabling auditing from the Azure portal.
+ *
+ * The supported action groups to audit are (note: choose only specific groups
+ * that cover your auditing needs. Using unnecessary groups could lead to very
+ * large quantities of audit records):
+ *
+ * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+ * BACKUP_RESTORE_GROUP
+ * DATABASE_LOGOUT_GROUP
+ * DATABASE_OBJECT_CHANGE_GROUP
+ * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+ * DATABASE_OPERATION_GROUP
+ * DATABASE_PERMISSION_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+ * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+ * FAILED_DATABASE_AUTHENTICATION_GROUP
+ * SCHEMA_OBJECT_ACCESS_GROUP
+ * SCHEMA_OBJECT_CHANGE_GROUP
+ * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+ * USER_CHANGE_PASSWORD_GROUP
+ * BATCH_STARTED_GROUP
+ * BATCH_COMPLETED_GROUP
+ *
+ * These are groups that cover all sql statements and stored procedures
+ * executed against the database, and should not be used in combination with
+ * other groups as this will result in duplicate audit logs.
+ *
+ * For more information, see [Database-Level Audit Action
+ * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+ *
+ * For Database auditing policy, specific Actions can also be specified (note
+ * that Actions cannot be specified for Server auditing policy). The supported
+ * actions to audit are:
+ * SELECT
+ * UPDATE
+ * INSERT
+ * DELETE
+ * EXECUTE
+ * RECEIVE
+ * REFERENCES
+ *
+ * The general form for defining an action to be audited is:
+ * <action> ON <object> BY <principal>
+ *
+ * Note that <object> in the above format can refer to an object like a table,
+ * view, or stored procedure, or an entire database or schema. For the latter
+ * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * respectively.
+ *
+ * For example:
+ * SELECT on dbo.myTable by public
+ * SELECT on DATABASE::myDatabase by public
+ * SELECT on SCHEMA::mySchema by public
+ *
+ * For more information, see [Database-Level Audit
+ * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+ * @member {uuid} [storageAccountSubscriptionId] Specifies the blob storage
+ * subscription Id.
+ * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
+ * storageAccountAccessKey value is the storage's secondary key.
+ */
+export interface ExtendedServerBlobAuditingPolicy extends ProxyResource {
+  predicateExpression?: string;
+  state: string;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
+  auditActionsAndGroups?: string[];
+  storageAccountSubscriptionId?: string;
+  isStorageSecondaryKeyInUse?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerBlobAuditingPolicy class.
+ * @constructor
+ * A server blob auditing policy.
+ *
+ * @member {string} state Specifies the state of the policy. If state is
+ * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
+ * values include: 'Enabled', 'Disabled'
+ * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
+ * https://MyAccount.blob.core.windows.net). If state is Enabled,
+ * storageEndpoint is required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the auditing storage account. If state is Enabled, storageAccountAccessKey
+ * is required.
+ * @member {number} [retentionDays] Specifies the number of days to keep in the
+ * audit logs.
+ * @member {array} [auditActionsAndGroups] Specifies the Actions-Groups and
+ * Actions to audit.
+ *
+ * The recommended set of action groups to use is the following combination -
+ * this will audit all the queries and stored procedures executed against the
+ * database, as well as successful and failed logins:
+ *
+ * BATCH_COMPLETED_GROUP,
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+ * FAILED_DATABASE_AUTHENTICATION_GROUP.
+ *
+ * This above combination is also the set that is configured by default when
+ * enabling auditing from the Azure portal.
+ *
+ * The supported action groups to audit are (note: choose only specific groups
+ * that cover your auditing needs. Using unnecessary groups could lead to very
+ * large quantities of audit records):
+ *
+ * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+ * BACKUP_RESTORE_GROUP
+ * DATABASE_LOGOUT_GROUP
+ * DATABASE_OBJECT_CHANGE_GROUP
+ * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+ * DATABASE_OPERATION_GROUP
+ * DATABASE_PERMISSION_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_CHANGE_GROUP
+ * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+ * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+ * FAILED_DATABASE_AUTHENTICATION_GROUP
+ * SCHEMA_OBJECT_ACCESS_GROUP
+ * SCHEMA_OBJECT_CHANGE_GROUP
+ * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+ * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+ * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+ * USER_CHANGE_PASSWORD_GROUP
+ * BATCH_STARTED_GROUP
+ * BATCH_COMPLETED_GROUP
+ *
+ * These are groups that cover all sql statements and stored procedures
+ * executed against the database, and should not be used in combination with
+ * other groups as this will result in duplicate audit logs.
+ *
+ * For more information, see [Database-Level Audit Action
+ * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+ *
+ * For Database auditing policy, specific Actions can also be specified (note
+ * that Actions cannot be specified for Server auditing policy). The supported
+ * actions to audit are:
+ * SELECT
+ * UPDATE
+ * INSERT
+ * DELETE
+ * EXECUTE
+ * RECEIVE
+ * REFERENCES
+ *
+ * The general form for defining an action to be audited is:
+ * <action> ON <object> BY <principal>
+ *
+ * Note that <object> in the above format can refer to an object like a table,
+ * view, or stored procedure, or an entire database or schema. For the latter
+ * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+ * respectively.
+ *
+ * For example:
+ * SELECT on dbo.myTable by public
+ * SELECT on DATABASE::myDatabase by public
+ * SELECT on SCHEMA::mySchema by public
+ *
+ * For more information, see [Database-Level Audit
+ * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+ * @member {uuid} [storageAccountSubscriptionId] Specifies the blob storage
+ * subscription Id.
+ * @member {boolean} [isStorageSecondaryKeyInUse] Specifies whether
+ * storageAccountAccessKey value is the storage's secondary key.
+ */
+export interface ServerBlobAuditingPolicy extends ProxyResource {
+  state: string;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
+  auditActionsAndGroups?: string[];
+  storageAccountSubscriptionId?: string;
+  isStorageSecondaryKeyInUse?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DatabaseVulnerabilityAssessmentRuleBaselineItem class.
  * @constructor
  * Properties for an Azure SQL Database Vulnerability Assessment rule
