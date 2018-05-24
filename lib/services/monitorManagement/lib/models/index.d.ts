@@ -2218,8 +2218,8 @@ export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricA
  * @member {array} [authorizedResources] List of  Resource referred into query
  * @member {string} dataSourceId The resource uri over which log search query
  * is to be run.
- * @member {string} [queryType] Set value to ResultCount if query should be
- * returning search result count. Possible values include: 'ResultCount'
+ * @member {string} [queryType] Set value to 'ResultCount'. Possible values
+ * include: 'ResultCount'
  */
 export interface Source {
   query: string;
@@ -2265,8 +2265,8 @@ export interface Schedule {
  * query
  * @member {string} [source.dataSourceId] The resource uri over which log
  * search query is to be run.
- * @member {string} [source.queryType] Set value to ResultCount if query should
- * be returning search result count. Possible values include: 'ResultCount'
+ * @member {string} [source.queryType] Set value to 'ResultCount'. Possible
+ * values include: 'ResultCount'
  * @member {object} schedule Schedule (Frequnecy, Time Window) for rule.
  * @member {number} [schedule.frequencyInMinutes] frequency (in minutes) at
  * which rule condition should be evaluated.

@@ -4333,9 +4333,8 @@ export interface ScheduledQueryRules {
      * @param {string} parameters.source.dataSourceId The resource uri over which
      * log search query is to be run.
      *
-     * @param {string} [parameters.source.queryType] Set value to ResultCount if
-     * query should be returning search result count. Possible values include:
-     * 'ResultCount'
+     * @param {string} [parameters.source.queryType] Set value to 'ResultCount'.
+     * Possible values include: 'ResultCount'
      *
      * @param {object} parameters.schedule Schedule (Frequnecy, Time Window) for
      * rule.
@@ -4401,9 +4400,8 @@ export interface ScheduledQueryRules {
      * @param {string} parameters.source.dataSourceId The resource uri over which
      * log search query is to be run.
      *
-     * @param {string} [parameters.source.queryType] Set value to ResultCount if
-     * query should be returning search result count. Possible values include:
-     * 'ResultCount'
+     * @param {string} [parameters.source.queryType] Set value to 'ResultCount'.
+     * Possible values include: 'ResultCount'
      *
      * @param {object} parameters.schedule Schedule (Frequnecy, Time Window) for
      * rule.
