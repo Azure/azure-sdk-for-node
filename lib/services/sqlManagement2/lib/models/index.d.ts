@@ -34,20 +34,6 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
- * Initializes a new instance of the TrackedResource class.
- * @constructor
- * ARM tracked top level resource.
- *
- * @member {object} [tags] Resource tags.
- * @member {string} location Resource location.
- */
-export interface TrackedResource extends Resource {
-  tags?: { [propertyName: string]: string };
-  location: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ProxyResource class.
  * @constructor
  * ARM proxy resource.
@@ -106,6 +92,20 @@ export interface RestorableDroppedDatabase extends ProxyResource {
   readonly creationDate?: Date;
   readonly deletionDate?: Date;
   readonly earliestRestoreDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * ARM tracked top level resource.
+ *
+ * @member {string} location Resource location.
+ * @member {object} [tags] Resource tags.
+ */
+export interface TrackedResource extends Resource {
+  location: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -1314,15 +1314,20 @@ export interface ResourceIdentity {
  * @class
  * Initializes a new instance of the Sku class.
  * @constructor
- * An ARM Resource SKU.
+ * The resource model definition representing SKU
  *
- * @member {string} name The name of the SKU, typically, a letter + Number
- * code, e.g. P3.
- * @member {string} [tier] The tier of the particular SKU, e.g. Basic, Premium.
- * @member {string} [size] Size of the particular SKU
+ * @member {string} name The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [size] The SKU size. When the name field is the combination
+ * of tier and some other value, this would be the standalone code.
  * @member {string} [family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [capacity] Capacity of the particular SKU.
+ * @member {number} [capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  */
 export interface Sku {
   name: string;
@@ -1348,14 +1353,18 @@ export interface Sku {
  * 'SystemAssigned'
  * @member {uuid} [identity.tenantId] The Azure Active Directory tenant id.
  * @member {object} [sku] Managed instance sku
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {string} [fullyQualifiedDomainName] The fully qualified domain name
  * of the managed instance.
  * @member {string} [administratorLogin] Administrator username for the managed
@@ -1390,14 +1399,18 @@ export interface ManagedInstance extends TrackedResource {
  * An update request for an Azure SQL Database managed instance.
  *
  * @member {object} [sku] Managed instance sku
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {string} [fullyQualifiedDomainName] The fully qualified domain name
  * of the managed instance.
  * @member {string} [administratorLogin] Administrator username for the managed
@@ -1928,11 +1941,10 @@ export interface VulnerabilityAssessmentRecurringScansProperties {
  * @constructor
  * A database vulnerability assessment.
  *
- * @member {string} [storageContainerPath] A blob storage container path to
- * hold the scan results (e.g.
- * https://myStorage.blob.core.windows.net/VaScans/).
- * @member {string} [storageContainerSasKey] A shared access signature (SAS
- * Key) that has write access to the blob container specified in
+ * @member {string} storageContainerPath A blob storage container path to hold
+ * the scan results (e.g. https://myStorage.blob.core.windows.net/VaScans/).
+ * @member {string} storageContainerSasKey A shared access signature (SAS Key)
+ * that has write access to the blob container specified in
  * 'storageContainerPath' parameter.
  * @member {object} [recurringScans] The recurring scans settings
  * @member {boolean} [recurringScans.isEnabled] Recurring scans state.
@@ -1943,8 +1955,8 @@ export interface VulnerabilityAssessmentRecurringScansProperties {
  * addresses to which the scan notification is sent.
  */
 export interface DatabaseVulnerabilityAssessment extends ProxyResource {
-  storageContainerPath?: string;
-  storageContainerSasKey?: string;
+  storageContainerPath: string;
+  storageContainerSasKey: string;
   recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
 }
 
@@ -1955,14 +1967,18 @@ export interface DatabaseVulnerabilityAssessment extends ProxyResource {
  * An Azure SQL job agent.
  *
  * @member {object} [sku] The name and tier of the SKU.
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {string} databaseId Resource ID of the database to store job
  * metadata in.
  * @member {string} [state] The state of the job agent. Possible values
@@ -2763,14 +2779,18 @@ export interface LicenseTypeCapability {
  * @member {string} [performanceLevel.unit] Unit type used to measure
  * performance level. Possible values include: 'DTU', 'VCores'
  * @member {object} [sku] The sku.
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {array} [supportedLicenseTypes] List of supported license types.
  * @member {object} [includedMaxSize] The included (free) max size.
  * @member {number} [includedMaxSize.limit] The maximum size limit (see 'unit'
@@ -2871,14 +2891,18 @@ export interface ElasticPoolPerDatabaseMaxPerformanceLevelCapability {
  * @member {string} [performanceLevel.unit] Unit type used to measure
  * performance level. Possible values include: 'DTU', 'VCores'
  * @member {object} [sku] The sku.
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {array} [supportedLicenseTypes] List of supported license types.
  * @member {number} [maxDatabaseCount] The maximum number of databases
  * supported.
@@ -3077,14 +3101,18 @@ export interface LocationCapabilities {
  * A database resource.
  *
  * @member {object} [sku] The name and tier of the SKU.
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {string} [kind] Kind of database. This is metadata used for the
  * Azure portal experience.
  * @member {string} [managedBy] Resource that manages the database.
@@ -3179,14 +3207,18 @@ export interface LocationCapabilities {
  * string may be routed to a readonly secondary replica in the same region.
  * Possible values include: 'Enabled', 'Disabled'
  * @member {object} [currentSku] The name and tier of the SKU.
- * @member {string} [currentSku.name] The name of the SKU, typically, a letter
- * + Number code, e.g. P3.
- * @member {string} [currentSku.tier] The tier of the particular SKU, e.g.
- * Basic, Premium.
- * @member {string} [currentSku.size] Size of the particular SKU
+ * @member {string} [currentSku.name] The name of the SKU. Ex - P3. It is
+ * typically a letter+number code
+ * @member {string} [currentSku.tier] This field is required to be implemented
+ * by the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @member {string} [currentSku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [currentSku.family] If the service has different
  * generations of hardware, for the same SKU, then that can be captured here.
- * @member {number} [currentSku.capacity] Capacity of the particular SKU.
+ * @member {number} [currentSku.capacity] If the SKU supports scale out/in then
+ * the capacity integer should be included. If scale out/in is not possible for
+ * the resource this may be omitted.
  */
 export interface Database extends TrackedResource {
   sku?: Sku;
@@ -3227,14 +3259,18 @@ export interface Database extends TrackedResource {
  * A database resource.
  *
  * @member {object} [sku] The name and tier of the SKU.
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {string} [createMode] Specifies the mode of database creation.
  *
  * Default: regular database creation.
@@ -3326,14 +3362,18 @@ export interface Database extends TrackedResource {
  * string may be routed to a readonly secondary replica in the same region.
  * Possible values include: 'Enabled', 'Disabled'
  * @member {object} [currentSku] The name and tier of the SKU.
- * @member {string} [currentSku.name] The name of the SKU, typically, a letter
- * + Number code, e.g. P3.
- * @member {string} [currentSku.tier] The tier of the particular SKU, e.g.
- * Basic, Premium.
- * @member {string} [currentSku.size] Size of the particular SKU
+ * @member {string} [currentSku.name] The name of the SKU. Ex - P3. It is
+ * typically a letter+number code
+ * @member {string} [currentSku.tier] This field is required to be implemented
+ * by the Resource Provider if the service has more than one tier, but is not
+ * required on a PUT.
+ * @member {string} [currentSku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [currentSku.family] If the service has different
  * generations of hardware, for the same SKU, then that can be captured here.
- * @member {number} [currentSku.capacity] Capacity of the particular SKU.
+ * @member {number} [currentSku.capacity] If the SKU supports scale out/in then
+ * the capacity integer should be included. If scale out/in is not possible for
+ * the resource this may be omitted.
  * @member {object} [tags] Resource tags.
  */
 export interface DatabaseUpdate {
@@ -3402,14 +3442,18 @@ export interface ElasticPoolPerDatabaseSettings {
  * An elastic pool.
  *
  * @member {object} [sku]
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {string} [kind] Kind of elastic pool. This is metadata used for the
  * Azure portal experience.
  * @member {string} [state] The state of the elastic pool. Possible values
@@ -3448,14 +3492,18 @@ export interface ElasticPool extends TrackedResource {
  * An elastic pool update.
  *
  * @member {object} [sku]
- * @member {string} [sku.name] The name of the SKU, typically, a letter +
- * Number code, e.g. P3.
- * @member {string} [sku.tier] The tier of the particular SKU, e.g. Basic,
- * Premium.
- * @member {string} [sku.size] Size of the particular SKU
+ * @member {string} [sku.name] The name of the SKU. Ex - P3. It is typically a
+ * letter+number code
+ * @member {string} [sku.tier] This field is required to be implemented by the
+ * Resource Provider if the service has more than one tier, but is not required
+ * on a PUT.
+ * @member {string} [sku.size] The SKU size. When the name field is the
+ * combination of tier and some other value, this would be the standalone code.
  * @member {string} [sku.family] If the service has different generations of
  * hardware, for the same SKU, then that can be captured here.
- * @member {number} [sku.capacity] Capacity of the particular SKU.
+ * @member {number} [sku.capacity] If the SKU supports scale out/in then the
+ * capacity integer should be included. If scale out/in is not possible for the
+ * resource this may be omitted.
  * @member {number} [maxSizeBytes] The storage limit for the database elastic
  * pool in bytes.
  * @member {object} [perDatabaseSettings] The per database settings for the
