@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ServerManagement extends AzureServiceClient {
+export default class ServerManagement extends AzureServiceClient {
   /**
    * Initializes a new instance of the ServerManagement class.
    * @constructor
@@ -61,4 +62,4 @@ declare class ServerManagement extends AzureServiceClient {
   powerShell: operations.PowerShell;
 }
 
-export = ServerManagement;
+export { ServerManagement, models as ServerManagementModels };
