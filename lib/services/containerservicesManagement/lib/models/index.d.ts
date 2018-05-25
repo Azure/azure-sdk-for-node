@@ -272,6 +272,8 @@ export interface ContainerServiceMasterProfile {
  * @member {string} [osType] OsType to be used to specify os type. Choose from
  * Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
+ * @member {number} [maxPods] Maximum number of pods that can run on a node.
+ * Default value: 30 .
  */
 export interface ContainerServiceAgentPoolProfile {
   name: string;
@@ -284,6 +286,7 @@ export interface ContainerServiceAgentPoolProfile {
   storageProfile?: string;
   vnetSubnetID?: string;
   osType?: string;
+  maxPods?: number;
 }
 
 /**
@@ -523,17 +526,105 @@ export interface ContainerService extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the ComputeOperationValue class.
+ * @constructor
+ * Describes the properties of a Compute Operation value.
+ *
+ * @member {string} [origin] The origin of the compute operation.
+ * @member {string} [name] The name of the compute operation.
+ * @member {string} [operation] The display name of the compute operation.
+ * @member {string} [resource] The display name of the resource the operation
+ * applies to.
+ * @member {string} [description] The description of the operation.
+ * @member {string} [provider] The resource provider for the operation.
+ */
+export interface ComputeOperationValue {
+  readonly origin?: string;
+  readonly name?: string;
+  readonly operation?: string;
+  readonly resource?: string;
+  readonly description?: string;
+  readonly provider?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContainerServiceNetworkProfile class.
+ * @constructor
+ * Profile of network configuration.
+ *
+ * @member {string} [networkPlugin] Network plugin used for building Kubernetes
+ * network. Possible values include: 'azure', 'kubenet'. Default value:
+ * 'kubenet' .
+ * @member {string} [networkPolicy] Network policy used for building Kubernetes
+ * network. Possible values include: 'calico', 'cilium'
+ * @member {string} [podCidr] A CIDR notation IP range from which to assign pod
+ * IPs when kubenet is used.
+ * @member {string} [serviceCidr] A CIDR notation IP range from which to assign
+ * service cluster IPs. It must not overlap with any Subnet IP ranges. Default
+ * value: '10.0.0.0/16' .
+ * @member {string} [dnsServiceIP] An IP address assigned to the Kubernetes DNS
+ * service. It must be within the Kubernetes service address range specified in
+ * serviceCidr. Default value: '10.0.0.10' .
+ * @member {string} [dockerBridgeCidr] A CIDR notation IP range assigned to the
+ * Docker bridge network. It must not overlap with any Subnet IP ranges or the
+ * Kubernetes service address range. Default value: '172.17.0.1/16' .
+ */
+export interface ContainerServiceNetworkProfile {
+  networkPlugin?: string;
+  networkPolicy?: string;
+  podCidr?: string;
+  serviceCidr?: string;
+  dnsServiceIP?: string;
+  dockerBridgeCidr?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedClusterAddonProfile class.
+ * @constructor
+ * A Kubernetes add-on profile for a managed cluster.
+ *
+ * @member {boolean} enabled Whether the add-on is enabled or not.
+ * @member {object} [config] Key-value pairs for configuring an add-on.
+ */
+export interface ManagedClusterAddonProfile {
+  enabled: boolean;
+  config?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedClusterAADProfile class.
+ * @constructor
+ * AADProfile specifies attributes for Azure Active Directory integration.
+ *
+ * @member {string} clientAppID The client AAD application ID.
+ * @member {string} serverAppID The server AAD application ID.
+ * @member {string} serverAppSecret The server AAD application secret.
+ * @member {string} [tenantID] The AAD tenant ID to use for authentication. If
+ * not specified, will use the tenant of the deployment subscription.
+ */
+export interface ManagedClusterAADProfile {
+  clientAppID: string;
+  serverAppID: string;
+  serverAppSecret: string;
+  tenantID?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ManagedCluster class.
  * @constructor
  * Managed cluster.
  *
  * @member {string} [provisioningState] The current deployment or provisioning
  * state, which only appears in the response.
+ * @member {string} [kubernetesVersion] Version of Kubernetes specified when
+ * creating the managed cluster.
  * @member {string} [dnsPrefix] DNS prefix specified when creating the managed
  * cluster.
  * @member {string} [fqdn] FDQN for the master pool.
- * @member {string} [kubernetesVersion] Version of Kubernetes specified when
- * creating the managed cluster.
  * @member {array} [agentPoolProfiles] Properties of the agent pool.
  * @member {object} [linuxProfile] Profile for Linux VMs in the container
  * service cluster.
@@ -558,15 +649,47 @@ export interface ContainerService extends Resource {
  * secret name.
  * @member {string} [servicePrincipalProfile.keyVaultSecretRef.version] The
  * secret version.
+ * @member {object} [addonProfiles] Profile of managed cluster add-on.
+ * @member {boolean} [enableRBAC] Whether to enable Kubernetes Role-Based
+ * Access Control.
+ * @member {object} [networkProfile] Profile of network configuration.
+ * @member {string} [networkProfile.networkPlugin] Network plugin used for
+ * building Kubernetes network. Possible values include: 'azure', 'kubenet'
+ * @member {string} [networkProfile.networkPolicy] Network policy used for
+ * building Kubernetes network. Possible values include: 'calico', 'cilium'
+ * @member {string} [networkProfile.podCidr] A CIDR notation IP range from
+ * which to assign pod IPs when kubenet is used.
+ * @member {string} [networkProfile.serviceCidr] A CIDR notation IP range from
+ * which to assign service cluster IPs. It must not overlap with any Subnet IP
+ * ranges.
+ * @member {string} [networkProfile.dnsServiceIP] An IP address assigned to the
+ * Kubernetes DNS service. It must be within the Kubernetes service address
+ * range specified in serviceCidr.
+ * @member {string} [networkProfile.dockerBridgeCidr] A CIDR notation IP range
+ * assigned to the Docker bridge network. It must not overlap with any Subnet
+ * IP ranges or the Kubernetes service address range.
+ * @member {object} [aadProfile] Profile of Azure Active Directory
+ * configuration.
+ * @member {string} [aadProfile.clientAppID] The client AAD application ID.
+ * @member {string} [aadProfile.serverAppID] The server AAD application ID.
+ * @member {string} [aadProfile.serverAppSecret] The server AAD application
+ * secret.
+ * @member {string} [aadProfile.tenantID] The AAD tenant ID to use for
+ * authentication. If not specified, will use the tenant of the deployment
+ * subscription.
  */
 export interface ManagedCluster extends Resource {
   readonly provisioningState?: string;
+  kubernetesVersion?: string;
   dnsPrefix?: string;
   readonly fqdn?: string;
-  kubernetesVersion?: string;
   agentPoolProfiles?: ContainerServiceAgentPoolProfile[];
   linuxProfile?: ContainerServiceLinuxProfile;
   servicePrincipalProfile?: ContainerServiceServicePrincipalProfile;
+  addonProfiles?: { [propertyName: string]: ManagedClusterAddonProfile };
+  enableRBAC?: boolean;
+  networkProfile?: ContainerServiceNetworkProfile;
+  aadProfile?: ManagedClusterAADProfile;
 }
 
 /**
@@ -698,6 +821,16 @@ export interface OrchestratorVersionProfileListResult {
  */
 export interface ContainerServiceListResult extends Array<ContainerService> {
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ComputeOperationListResult class.
+ * @constructor
+ * The List Compute Operation operation response.
+ *
+ */
+export interface ComputeOperationListResult extends Array<ComputeOperationValue> {
 }
 
 /**
