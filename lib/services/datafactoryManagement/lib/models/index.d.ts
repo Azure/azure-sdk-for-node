@@ -213,11 +213,6 @@ export interface Factory extends Resource {
 export interface IntegrationRuntime {
   description?: string;
   type: string;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
 }
 
 /**
@@ -265,11 +260,6 @@ export interface IntegrationRuntimeStatus {
   readonly dataFactoryName?: string;
   readonly state?: string;
   type: string;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
 }
 
 /**
@@ -6787,6 +6777,8 @@ export interface ManagedIntegrationRuntimeNode {
  * @constructor
  * Managed integration runtime status.
  *
+ * @member {object} [additionalProperties] Unmatched properties from the
+ * message are deserialized this collection
  * @member {date} [createTime] The time at which the integration runtime was
  * created, in ISO8601 format.
  * @member {array} [nodes] The list of nodes for managed integration runtime.
@@ -6805,6 +6797,7 @@ export interface ManagedIntegrationRuntimeNode {
  * operation request.
  */
 export interface ManagedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
+  additionalProperties?: { [propertyName: string]: any };
   readonly createTime?: Date;
   readonly nodes?: ManagedIntegrationRuntimeNode[];
   readonly otherErrors?: ManagedIntegrationRuntimeError[];
