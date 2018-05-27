@@ -2975,6 +2975,14 @@ export interface DscConfigurationOperations {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2984,7 +2992,7 @@ export interface DscConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfigurationListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscConfigurationListResult>>;
 
     /**
      * Retrieve a list of configurations.
@@ -2994,6 +3002,14 @@ export interface DscConfigurationOperations {
      * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3021,9 +3037,9 @@ export interface DscConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfigurationListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscConfigurationListResult>;
     listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscConfigurationListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfigurationListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscConfigurationListResult>): void;
 
 
     /**
@@ -3314,6 +3330,8 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3323,7 +3341,7 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroupsListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HybridRunbookWorkerGroupsListResult>>;
 
     /**
      * Retrieve a list of hybrid runbook worker groups.
@@ -3333,6 +3351,8 @@ export interface HybridRunbookWorkerGroupOperations {
      * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3360,9 +3380,9 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroupsListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.HybridRunbookWorkerGroupsListResult>;
     listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HybridRunbookWorkerGroupsListResult>): void;
 
 
     /**
@@ -3667,6 +3687,8 @@ export interface JobScheduleOperations {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3676,7 +3698,7 @@ export interface JobScheduleOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobScheduleListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobScheduleListResult>>;
 
     /**
      * Retrieve a list of job schedules.
@@ -3686,6 +3708,8 @@ export interface JobScheduleOperations {
      * @param {string} automationAccountName The automation account name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3712,9 +3736,9 @@ export interface JobScheduleOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobScheduleListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobScheduleListResult>;
     listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.JobScheduleListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobScheduleListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobScheduleListResult>): void;
 
 
     /**
@@ -7788,6 +7812,12 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
+     * numbers included from the software update configuration.
+     *
+     * @param {string} [parameters.updateConfiguration.windows.rebootSetting]
+     * Reboot setting for the software update configuration.
+     *
      * @param {object} [parameters.updateConfiguration.linux] Linux specific update
      * configuration.
      *
@@ -7799,6 +7829,13 @@ export interface SoftwareUpdateConfigurations {
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
+     *
+     * @param {array}
+     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
+     * included from the software update configuration.
+     *
+     * @param {string} [parameters.updateConfiguration.linux.rebootSetting] Reboot
+     * setting for the software update configuration.
      *
      * @param {moment.duration} [parameters.updateConfiguration.duration] Maximum
      * time allowed for the software update configuration run. Duration needs to be
@@ -7918,6 +7955,12 @@ export interface SoftwareUpdateConfigurations {
      * @param {array} [parameters.updateConfiguration.windows.excludedKbNumbers] KB
      * numbers excluded from the software update configuration.
      *
+     * @param {array} [parameters.updateConfiguration.windows.includedKbNumbers] KB
+     * numbers included from the software update configuration.
+     *
+     * @param {string} [parameters.updateConfiguration.windows.rebootSetting]
+     * Reboot setting for the software update configuration.
+     *
      * @param {object} [parameters.updateConfiguration.linux] Linux specific update
      * configuration.
      *
@@ -7929,6 +7972,13 @@ export interface SoftwareUpdateConfigurations {
      * @param {array}
      * [parameters.updateConfiguration.linux.excludedPackageNameMasks] packages
      * excluded from the software update configuration.
+     *
+     * @param {array}
+     * [parameters.updateConfiguration.linux.includedPackageNameMasks] packages
+     * included from the software update configuration.
+     *
+     * @param {string} [parameters.updateConfiguration.linux.rebootSetting] Reboot
+     * setting for the software update configuration.
      *
      * @param {moment.duration} [parameters.updateConfiguration.duration] Maximum
      * time allowed for the software update configuration run. Duration needs to be
@@ -9084,6 +9134,12 @@ export interface SourceControlSyncJobOperations {
      *
      * @param {uuid} sourceControlSyncJobId The source control sync job id.
      *
+     * @param {object} parameters The parameters supplied to the create source
+     * control sync job operation.
+     *
+     * @param {string} [parameters.commitId] Sets the commit id of the source
+     * control sync job.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -9095,7 +9151,7 @@ export interface SourceControlSyncJobOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJob>>;
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, parameters: models.SourceControlSyncJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJob>>;
 
     /**
      * Creates the sync job for a source control.
@@ -9107,6 +9163,12 @@ export interface SourceControlSyncJobOperations {
      * @param {string} sourceControlName The source control name.
      *
      * @param {uuid} sourceControlSyncJobId The source control sync job id.
+     *
+     * @param {object} parameters The parameters supplied to the create source
+     * control sync job operation.
+     *
+     * @param {string} [parameters.commitId] Sets the commit id of the source
+     * control sync job.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9135,9 +9197,9 @@ export interface SourceControlSyncJobOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJob>;
-    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, callback: ServiceCallback<models.SourceControlSyncJob>): void;
-    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, parameters: models.SourceControlSyncJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJob>;
+    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, parameters: models.SourceControlSyncJobCreateParameters, callback: ServiceCallback<models.SourceControlSyncJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, parameters: models.SourceControlSyncJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJob>): void;
 
 
     /**
@@ -9332,6 +9394,217 @@ export interface SourceControlSyncJobOperations {
     listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJobListResult>;
     listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.SourceControlSyncJobListResult>): void;
     listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJobListResult>): void;
+}
+
+/**
+ * @class
+ * SourceControlSyncJobStreams
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface SourceControlSyncJobStreams {
+
+
+    /**
+     * Retrieve a list of sync job streams identified by sync job id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} sourceControlName The source control name.
+     *
+     * @param {uuid} sourceControlSyncJobId The source control sync job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SourceControlSyncJobStreamsListBySyncJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySyncJobWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJobStreamsListBySyncJob>>;
+
+    /**
+     * Retrieve a list of sync job streams identified by sync job id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} sourceControlName The source control name.
+     *
+     * @param {uuid} sourceControlSyncJobId The source control sync job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SourceControlSyncJobStreamsListBySyncJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SourceControlSyncJobStreamsListBySyncJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SourceControlSyncJobStreamsListBySyncJob}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySyncJob(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJobStreamsListBySyncJob>;
+    listBySyncJob(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, callback: ServiceCallback<models.SourceControlSyncJobStreamsListBySyncJob>): void;
+    listBySyncJob(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJobStreamsListBySyncJob>): void;
+
+
+    /**
+     * Retrieve a sync job stream identified by stream id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} sourceControlName The source control name.
+     *
+     * @param {uuid} sourceControlSyncJobId The source control sync job id.
+     *
+     * @param {string} streamId The id of the sync job stream.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SourceControlSyncJobStreamById>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, streamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJobStreamById>>;
+
+    /**
+     * Retrieve a sync job stream identified by stream id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} sourceControlName The source control name.
+     *
+     * @param {uuid} sourceControlSyncJobId The source control sync job id.
+     *
+     * @param {string} streamId The id of the sync job stream.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SourceControlSyncJobStreamById} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SourceControlSyncJobStreamById} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SourceControlSyncJobStreamById} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, streamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJobStreamById>;
+    get(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, streamId: string, callback: ServiceCallback<models.SourceControlSyncJobStreamById>): void;
+    get(resourceGroupName: string, automationAccountName: string, sourceControlName: string, sourceControlSyncJobId: string, streamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJobStreamById>): void;
+
+
+    /**
+     * Retrieve a list of sync job streams identified by sync job id.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SourceControlSyncJobStreamsListBySyncJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySyncJobNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceControlSyncJobStreamsListBySyncJob>>;
+
+    /**
+     * Retrieve a list of sync job streams identified by sync job id.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SourceControlSyncJobStreamsListBySyncJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SourceControlSyncJobStreamsListBySyncJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SourceControlSyncJobStreamsListBySyncJob}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySyncJobNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlSyncJobStreamsListBySyncJob>;
+    listBySyncJobNext(nextPageLink: string, callback: ServiceCallback<models.SourceControlSyncJobStreamsListBySyncJob>): void;
+    listBySyncJobNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlSyncJobStreamsListBySyncJob>): void;
 }
 
 /**
@@ -10597,6 +10870,12 @@ export interface DscNodeOperations {
      *
      * @param {string} [options.filter] The filter to apply on the operation.
      *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -10606,7 +10885,7 @@ export interface DscNodeOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeListResult>>;
 
     /**
      * Retrieve a list of dsc nodes.
@@ -10618,6 +10897,12 @@ export interface DscNodeOperations {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -10644,9 +10929,9 @@ export interface DscNodeOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeListResult>;
     listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscNodeListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeListResult>): void;
 
 
     /**
@@ -11686,8 +11971,6 @@ export interface DscNodeConfigurationOperations {
      * @param {string} [parameters.source.version] Gets or sets the version of the
      * content.
      *
-     * @param {string} parameters.name Gets or sets the type of the parameter.
-     *
      * @param {object} parameters.configuration Gets or sets the configuration of
      * the node.
      *
@@ -11696,6 +11979,11 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
      * version of NodeConfiguration is required.
+     *
+     * @param {string} [parameters.name] Name of the node configuration.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11708,7 +11996,7 @@ export interface DscNodeConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
 
     /**
      * Create the node configuration identified by node configuration name.
@@ -11741,8 +12029,6 @@ export interface DscNodeConfigurationOperations {
      * @param {string} [parameters.source.version] Gets or sets the version of the
      * content.
      *
-     * @param {string} parameters.name Gets or sets the type of the parameter.
-     *
      * @param {object} parameters.configuration Gets or sets the configuration of
      * the node.
      *
@@ -11751,6 +12037,11 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
      * version of NodeConfiguration is required.
+     *
+     * @param {string} [parameters.name] Name of the node configuration.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11779,9 +12070,9 @@ export interface DscNodeConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, callback: ServiceCallback<models.DscNodeConfiguration>): void;
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
 
 
     /**
@@ -11794,6 +12085,12 @@ export interface DscNodeConfigurationOperations {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -11804,7 +12101,7 @@ export interface DscNodeConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfigurationListResult>>;
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfigurationListResult>>;
 
     /**
      * Retrieve a list of dsc node configurations.
@@ -11816,6 +12113,12 @@ export interface DscNodeConfigurationOperations {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {number} [options.skip] The number of rows to skip.
+     *
+     * @param {number} [options.top] The the number of rows to take.
+     *
+     * @param {string} [options.inlinecount] Return total rows.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -11843,9 +12146,9 @@ export interface DscNodeConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
     listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, skip? : number, top? : number, inlinecount? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
 
 
     /**
@@ -11879,8 +12182,6 @@ export interface DscNodeConfigurationOperations {
      * @param {string} [parameters.source.version] Gets or sets the version of the
      * content.
      *
-     * @param {string} parameters.name Gets or sets the type of the parameter.
-     *
      * @param {object} parameters.configuration Gets or sets the configuration of
      * the node.
      *
@@ -11889,6 +12190,11 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
      * version of NodeConfiguration is required.
+     *
+     * @param {string} [parameters.name] Name of the node configuration.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11901,7 +12207,7 @@ export interface DscNodeConfigurationOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
 
     /**
      * Create the node configuration identified by node configuration name.
@@ -11934,8 +12240,6 @@ export interface DscNodeConfigurationOperations {
      * @param {string} [parameters.source.version] Gets or sets the version of the
      * content.
      *
-     * @param {string} parameters.name Gets or sets the type of the parameter.
-     *
      * @param {object} parameters.configuration Gets or sets the configuration of
      * the node.
      *
@@ -11944,6 +12248,11 @@ export interface DscNodeConfigurationOperations {
      *
      * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
      * version of NodeConfiguration is required.
+     *
+     * @param {string} [parameters.name] Name of the node configuration.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11972,9 +12281,9 @@ export interface DscNodeConfigurationOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
-    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, callback: ServiceCallback<models.DscNodeConfiguration>): void;
-    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
+    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
 
 
     /**

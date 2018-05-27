@@ -84,6 +84,12 @@ export interface ScaleCapacity {
  * 'GreaterThan', 'GreaterThanOrEqual', 'LessThan', 'LessThanOrEqual'
  * @member {number} threshold the threshold of the metric that triggers the
  * scale action.
+ * @member {string} [thresholdOperator] Evaluation operation for Metric
+ * -'GreaterThan' or 'LessThan' or 'Equal'. Possible values include:
+ * 'GreaterThan', 'LessThan', 'Equal'
+ * @member {string} [metricTriggerType] Metric Trigger Type - 'Consecutive' or
+ * 'Total'. Possible values include: 'Consecutive', 'Total'
+ * @member {string} [metricColumn] Evaluation of metric on a particular column
  */
 export interface MetricTrigger {
   metricName: string;
@@ -94,6 +100,9 @@ export interface MetricTrigger {
   timeAggregation: string;
   operator: string;
   threshold: number;
+  thresholdOperator?: string;
+  metricTriggerType?: string;
+  metricColumn?: string;
 }
 
 /**
@@ -154,6 +163,13 @@ export interface ScaleAction {
  * 'LessThanOrEqual'
  * @member {number} [metricTrigger.threshold] the threshold of the metric that
  * triggers the scale action.
+ * @member {string} [metricTrigger.thresholdOperator] Evaluation operation for
+ * Metric -'GreaterThan' or 'LessThan' or 'Equal'. Possible values include:
+ * 'GreaterThan', 'LessThan', 'Equal'
+ * @member {string} [metricTrigger.metricTriggerType] Metric Trigger Type -
+ * 'Consecutive' or 'Total'. Possible values include: 'Consecutive', 'Total'
+ * @member {string} [metricTrigger.metricColumn] Evaluation of metric on a
+ * particular column
  * @member {object} scaleAction the parameters for the scaling action.
  * @member {string} [scaleAction.direction] the scale direction. Whether the
  * scaling action increases or decreases the number of instances. Possible
@@ -1305,6 +1321,61 @@ export interface AutomationRunbookReceiver {
 
 /**
  * @class
+ * Initializes a new instance of the VoiceReceiver class.
+ * @constructor
+ * A voice receiver.
+ *
+ * @member {string} name The name of the voice receiver. Names must be unique
+ * across all receivers within an action group.
+ * @member {string} countryCode The country code of the voice receiver.
+ * @member {string} phoneNumber The phone number of the voice receiver.
+ */
+export interface VoiceReceiver {
+  name: string;
+  countryCode: string;
+  phoneNumber: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogicAppReceiver class.
+ * @constructor
+ * A logic app receiver.
+ *
+ * @member {string} name The name of the logic app receiver. Names must be
+ * unique across all receivers within an action group.
+ * @member {string} resourceId The azure resource id of the logic app receiver.
+ * @member {string} callbackUrl The callback url where http request sent to.
+ */
+export interface LogicAppReceiver {
+  name: string;
+  resourceId: string;
+  callbackUrl: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFunctionReceiver class.
+ * @constructor
+ * An azure function receiver.
+ *
+ * @member {string} name The name of the azure function receiver. Names must be
+ * unique across all receivers within an action group.
+ * @member {string} functionAppResourceId The azure resource id of the function
+ * app.
+ * @member {string} functionName The function name in the function app.
+ * @member {string} httpTriggerUrl The http trigger url where http request sent
+ * to.
+ */
+export interface AzureFunctionReceiver {
+  name: string;
+  functionAppResourceId: string;
+  functionName: string;
+  httpTriggerUrl: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ActionGroupResource class.
  * @constructor
  * An action group resource.
@@ -1326,6 +1397,12 @@ export interface AutomationRunbookReceiver {
  * that are part of this action group.
  * @member {array} [automationRunbookReceivers] The list of AutomationRunbook
  * receivers that are part of this action group.
+ * @member {array} [voiceReceivers] The list of voice receivers that are part
+ * of this action group.
+ * @member {array} [logicAppReceivers] The list of logic app receivers that are
+ * part of this action group.
+ * @member {array} [azureFunctionReceivers] The list of azure function
+ * receivers that are part of this action group.
  */
 export interface ActionGroupResource extends Resource {
   groupShortName: string;
@@ -1336,6 +1413,9 @@ export interface ActionGroupResource extends Resource {
   itsmReceivers?: ItsmReceiver[];
   azureAppPushReceivers?: AzureAppPushReceiver[];
   automationRunbookReceivers?: AutomationRunbookReceiver[];
+  voiceReceivers?: VoiceReceiver[];
+  logicAppReceivers?: LogicAppReceiver[];
+  azureFunctionReceivers?: AzureFunctionReceiver[];
 }
 
 /**
@@ -1914,14 +1994,14 @@ export interface CalculateBaselineResponse {
 
 /**
  * @class
- * Initializes a new instance of the Action class.
+ * Initializes a new instance of the MetricAlertAction class.
  * @constructor
  * An alert action.
  *
  * @member {string} [actionGroupId] the id of the action group to use.
  * @member {object} [webhookProperties]
  */
-export interface Action {
+export interface MetricAlertAction {
   actionGroupId?: string;
   webhookProperties?: { [propertyName: string]: string };
 }
@@ -1963,6 +2043,8 @@ export interface MetricAlertCriteria {
  * threshold.
  * @member {object} criteria defines the specific alert criteria information.
  * @member {string} [criteria.odatatype] Polymorphic Discriminator
+ * @member {boolean} [autoMitigate] the flag that indicates whether the alert
+ * should be auto resolved or not.
  * @member {array} [actions] the array of actions that are performed when the
  * alert rule becomes active, and when an alert condition is resolved.
  * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
@@ -1976,7 +2058,8 @@ export interface MetricAlertResource extends Resource {
   evaluationFrequency: moment.Duration;
   windowSize: moment.Duration;
   criteria: MetricAlertCriteria;
-  actions?: Action[];
+  autoMitigate?: boolean;
+  actions?: MetricAlertAction[];
   readonly lastUpdatedTime?: Date;
 }
 
@@ -2001,6 +2084,8 @@ export interface MetricAlertResource extends Resource {
  * threshold.
  * @member {object} criteria defines the specific alert criteria information.
  * @member {string} [criteria.odatatype] Polymorphic Discriminator
+ * @member {boolean} [autoMitigate] the flag that indicates whether the alert
+ * should be auto resolved or not.
  * @member {array} [actions] the array of actions that are performed when the
  * alert rule becomes active, and when an alert condition is resolved.
  * @member {date} [lastUpdatedTime] Last time the rule was updated in ISO8601
@@ -2015,7 +2100,8 @@ export interface MetricAlertResourcePatch {
   evaluationFrequency: moment.Duration;
   windowSize: moment.Duration;
   criteria: MetricAlertCriteria;
-  actions?: Action[];
+  autoMitigate?: boolean;
+  actions?: MetricAlertAction[];
   readonly lastUpdatedTime?: Date;
 }
 
@@ -2118,6 +2204,231 @@ export interface MetricCriteria {
  */
 export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricAlertCriteria {
   allOf?: MetricCriteria[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Source class.
+ * @constructor
+ * Specifies the log search query.
+ *
+ * @member {string} query Log search query.
+ * @member {array} [authorizedResources] List of  Resource referred into query
+ * @member {string} dataSourceId The resource uri over which log search query
+ * is to be run.
+ * @member {string} [queryType] Set value to ResultCount if query should be
+ * returning search result count. Set it to Number if its a metric query.
+ * Possible values include: 'ResultCount'
+ */
+export interface Source {
+  query: string;
+  authorizedResources?: string[];
+  dataSourceId: string;
+  queryType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Schedule class.
+ * @constructor
+ * Defines how often to run the search and the time interval.
+ *
+ * @member {number} frequencyInMinutes frequency (in minutes) at which rule
+ * condition should be evaluated.
+ * @member {number} timeWindowInMinutes Time window for which data needs to be
+ * fetched for query (should be greater than or equal to frequencyInMinutes).
+ */
+export interface Schedule {
+  frequencyInMinutes: number;
+  timeWindowInMinutes: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Action class.
+ * @constructor
+ * @member {string} odatatype Polymorphic Discriminator
+ */
+export interface Action {
+  odatatype: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogSearchRuleResource class.
+ * @constructor
+ * The Log Search Rule resource.
+ *
+ * @member {string} [description] The description of the Log Search rule.
+ * @member {string} [enabled] The flag which indicates whether the Log Search
+ * rule is enabled. Value should be true or false. Possible values include:
+ * 'true', 'false'
+ * @member {date} [lastUpdatedTime] Last time the rule was updated in IS08601
+ * format.
+ * @member {string} [provisioningState] Provisioning state of the
+ * scheduledquery rule. Possible values include: 'Succeeded', 'Deploying',
+ * 'Canceled', 'Failed'
+ * @member {object} source Data Source against which rule will Query Data
+ * @member {string} [source.query] Log search query.
+ * @member {array} [source.authorizedResources] List of  Resource referred into
+ * query
+ * @member {string} [source.dataSourceId] The resource uri over which log
+ * search query is to be run.
+ * @member {string} [source.queryType] Set value to ResultCount if query should
+ * be returning search result count. Set it to Number if its a metric query.
+ * Possible values include: 'ResultCount'
+ * @member {object} schedule Schedule (Frequnecy, Time Window) for rule.
+ * @member {number} [schedule.frequencyInMinutes] frequency (in minutes) at
+ * which rule condition should be evaluated.
+ * @member {number} [schedule.timeWindowInMinutes] Time window for which data
+ * needs to be fetched for query (should be greater than or equal to
+ * frequencyInMinutes).
+ * @member {object} action Action needs to be taken on rule execution.
+ * @member {string} [action.odatatype] Polymorphic Discriminator
+ */
+export interface LogSearchRuleResource extends Resource {
+  description?: string;
+  enabled?: string;
+  readonly lastUpdatedTime?: Date;
+  readonly provisioningState?: string;
+  source: Source;
+  schedule: Schedule;
+  action: Action;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerCondition class.
+ * @constructor
+ * The condition that results in the Log Search rule.
+ *
+ * @member {string} thresholdOperator Evaluation operation for rule -
+ * 'GreaterThan' or 'LessThan. Possible values include: 'GreaterThan',
+ * 'LessThan', 'Equal'
+ * @member {number} threshold Result or count threshold based on which rule
+ * should be triggered.
+ * @member {object} [metricTrigger] Trigger condition for metric query rule
+ * @member {string} [metricTrigger.metricName] the name of the metric that
+ * defines what the rule monitors.
+ * @member {string} [metricTrigger.metricResourceUri] the resource identifier
+ * of the resource the rule monitors.
+ * @member {moment.duration} [metricTrigger.timeGrain] the granularity of
+ * metrics the rule monitors. Must be one of the predefined values returned
+ * from metric definitions for the metric. Must be between 12 hours and 1
+ * minute.
+ * @member {string} [metricTrigger.statistic] the metric statistic type. How
+ * the metrics from multiple instances are combined. Possible values include:
+ * 'Average', 'Min', 'Max', 'Sum'
+ * @member {moment.duration} [metricTrigger.timeWindow] the range of time in
+ * which instance data is collected. This value must be greater than the delay
+ * in metric collection, which can vary from resource-to-resource. Must be
+ * between 12 hours and 5 minutes.
+ * @member {string} [metricTrigger.timeAggregation] time aggregation type. How
+ * the data that is collected should be combined over time. The default value
+ * is Average. Possible values include: 'Average', 'Minimum', 'Maximum',
+ * 'Total', 'Count'
+ * @member {string} [metricTrigger.operator] the operator that is used to
+ * compare the metric data and the threshold. Possible values include:
+ * 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
+ * 'LessThanOrEqual'
+ * @member {number} [metricTrigger.threshold] the threshold of the metric that
+ * triggers the scale action.
+ * @member {string} [metricTrigger.thresholdOperator] Evaluation operation for
+ * Metric -'GreaterThan' or 'LessThan' or 'Equal'. Possible values include:
+ * 'GreaterThan', 'LessThan', 'Equal'
+ * @member {string} [metricTrigger.metricTriggerType] Metric Trigger Type -
+ * 'Consecutive' or 'Total'. Possible values include: 'Consecutive', 'Total'
+ * @member {string} [metricTrigger.metricColumn] Evaluation of metric on a
+ * particular column
+ */
+export interface TriggerCondition {
+  thresholdOperator: string;
+  threshold: number;
+  metricTrigger?: MetricTrigger;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzNsActionGroup class.
+ * @constructor
+ * Azure action group
+ *
+ * @member {array} [actionGroup] Azure Action Group reference.
+ * @member {string} [emailSubject] Custom subject override for all email ids in
+ * Azure action group
+ * @member {string} [customWebhookPayload] Custom payload to be sent for all
+ * webook URI in Azure action group
+ */
+export interface AzNsActionGroup {
+  actionGroup?: string[];
+  emailSubject?: string;
+  customWebhookPayload?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AlertingAction class.
+ * @constructor
+ * Specifiy action need to be taken when rule type is Alert
+ *
+ * @member {string} severity Severity of the alert. Possible values include:
+ * '0', '1', '2', '3', '4'
+ * @member {object} aznsAction Azure action group reference.
+ * @member {array} [aznsAction.actionGroup] Azure Action Group reference.
+ * @member {string} [aznsAction.emailSubject] Custom subject override for all
+ * email ids in Azure action group
+ * @member {string} [aznsAction.customWebhookPayload] Custom payload to be sent
+ * for all webook URI in Azure action group
+ * @member {number} [throttlingInMin] time (in minutes) for which Alerts should
+ * be throttled or suppressed.
+ * @member {object} trigger The trigger condition that results in the alert
+ * rule being.
+ * @member {string} [trigger.thresholdOperator] Evaluation operation for rule -
+ * 'GreaterThan' or 'LessThan. Possible values include: 'GreaterThan',
+ * 'LessThan', 'Equal'
+ * @member {number} [trigger.threshold] Result or count threshold based on
+ * which rule should be triggered.
+ * @member {object} [trigger.metricTrigger] Trigger condition for metric query
+ * rule
+ * @member {string} [trigger.metricTrigger.metricName] the name of the metric
+ * that defines what the rule monitors.
+ * @member {string} [trigger.metricTrigger.metricResourceUri] the resource
+ * identifier of the resource the rule monitors.
+ * @member {moment.duration} [trigger.metricTrigger.timeGrain] the granularity
+ * of metrics the rule monitors. Must be one of the predefined values returned
+ * from metric definitions for the metric. Must be between 12 hours and 1
+ * minute.
+ * @member {string} [trigger.metricTrigger.statistic] the metric statistic
+ * type. How the metrics from multiple instances are combined. Possible values
+ * include: 'Average', 'Min', 'Max', 'Sum'
+ * @member {moment.duration} [trigger.metricTrigger.timeWindow] the range of
+ * time in which instance data is collected. This value must be greater than
+ * the delay in metric collection, which can vary from resource-to-resource.
+ * Must be between 12 hours and 5 minutes.
+ * @member {string} [trigger.metricTrigger.timeAggregation] time aggregation
+ * type. How the data that is collected should be combined over time. The
+ * default value is Average. Possible values include: 'Average', 'Minimum',
+ * 'Maximum', 'Total', 'Count'
+ * @member {string} [trigger.metricTrigger.operator] the operator that is used
+ * to compare the metric data and the threshold. Possible values include:
+ * 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
+ * 'LessThanOrEqual'
+ * @member {number} [trigger.metricTrigger.threshold] the threshold of the
+ * metric that triggers the scale action.
+ * @member {string} [trigger.metricTrigger.thresholdOperator] Evaluation
+ * operation for Metric -'GreaterThan' or 'LessThan' or 'Equal'. Possible
+ * values include: 'GreaterThan', 'LessThan', 'Equal'
+ * @member {string} [trigger.metricTrigger.metricTriggerType] Metric Trigger
+ * Type - 'Consecutive' or 'Total'. Possible values include: 'Consecutive',
+ * 'Total'
+ * @member {string} [trigger.metricTrigger.metricColumn] Evaluation of metric
+ * on a particular column
+ */
+export interface AlertingAction extends Action {
+  severity: string;
+  aznsAction: AzNsActionGroup;
+  throttlingInMin?: number;
+  trigger: TriggerCondition;
 }
 
 
@@ -2231,4 +2542,14 @@ export interface MetricDefinitionCollection extends Array<MetricDefinition> {
  *
  */
 export interface MetricAlertResourceCollection extends Array<MetricAlertResource> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogSearchRuleResourceCollection class.
+ * @constructor
+ * Represents a collection of Log Search rule resources.
+ *
+ */
+export interface LogSearchRuleResourceCollection extends Array<LogSearchRuleResource> {
 }

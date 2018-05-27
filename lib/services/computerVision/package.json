@@ -2,11 +2,14 @@
   "name": "azure-cognitiveservices-computervision",
   "author": "Microsoft Corporation",
   "description": "ComputerVisionAPIClient Library with typescript type definitions for node",
-  "version": "1.0.1",
+  "version": "1.0.0-preview",
   "dependencies": {
-    "ms-rest": "^2.3.2"
+    "ms-rest": "^2.3.3"
   },
-  "keywords": [ "node", "azure" ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
   "license": "MIT",
   "main": "./lib/computerVisionAPIClient.js",
   "types": "./lib/computerVisionAPIClient.d.ts",

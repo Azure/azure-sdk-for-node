@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class NotificationHubsManagementClient extends AzureServiceClient {
+export default class NotificationHubsManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the NotificationHubsManagementClient class.
    * @constructor
@@ -55,10 +56,9 @@ declare class NotificationHubsManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  operations: operations.Operations;
   namespaces: operations.Namespaces;
-  name: operations.Name;
   notificationHubs: operations.NotificationHubs;
-  hubs: operations.Hubs;
 }
 
-export = NotificationHubsManagementClient;
+export { NotificationHubsManagementClient, models as NotificationHubsManagementModels };

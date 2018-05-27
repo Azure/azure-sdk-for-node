@@ -148,14 +148,13 @@ export interface ContainerServices {
      * create the FQDN for the master pool.
      *
      * @param {string} parameters.masterProfile.vmSize Size of agent VMs. Possible
-     * values include: 'Standard_A0', 'Standard_A1', 'Standard_A10',
-     * 'Standard_A11', 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2',
-     * 'Standard_A2m_v2', 'Standard_A3', 'Standard_A4', 'Standard_A4_v2',
-     * 'Standard_A4m_v2', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9',
-     * 'Standard_B1ms', 'Standard_B1s', 'Standard_B2ms', 'Standard_B2s',
-     * 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1', 'Standard_D11',
-     * 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
+     * values include: 'Standard_A1', 'Standard_A10', 'Standard_A11',
+     * 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2',
+     * 'Standard_A3', 'Standard_A4', 'Standard_A4_v2', 'Standard_A4m_v2',
+     * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9', 'Standard_B2ms',
+     * 'Standard_B2s', 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1',
+     * 'Standard_D11', 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
      * 'Standard_D12_v2', 'Standard_D12_v2_Promo', 'Standard_D13',
      * 'Standard_D13_v2', 'Standard_D13_v2_Promo', 'Standard_D14',
      * 'Standard_D14_v2', 'Standard_D14_v2_Promo', 'Standard_D15_v2',
@@ -335,14 +334,13 @@ export interface ContainerServices {
      * create the FQDN for the master pool.
      *
      * @param {string} parameters.masterProfile.vmSize Size of agent VMs. Possible
-     * values include: 'Standard_A0', 'Standard_A1', 'Standard_A10',
-     * 'Standard_A11', 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2',
-     * 'Standard_A2m_v2', 'Standard_A3', 'Standard_A4', 'Standard_A4_v2',
-     * 'Standard_A4m_v2', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9',
-     * 'Standard_B1ms', 'Standard_B1s', 'Standard_B2ms', 'Standard_B2s',
-     * 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1', 'Standard_D11',
-     * 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
+     * values include: 'Standard_A1', 'Standard_A10', 'Standard_A11',
+     * 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2',
+     * 'Standard_A3', 'Standard_A4', 'Standard_A4_v2', 'Standard_A4m_v2',
+     * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9', 'Standard_B2ms',
+     * 'Standard_B2s', 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1',
+     * 'Standard_D11', 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
      * 'Standard_D12_v2', 'Standard_D12_v2_Promo', 'Standard_D13',
      * 'Standard_D13_v2', 'Standard_D13_v2_Promo', 'Standard_D14',
      * 'Standard_D14_v2', 'Standard_D14_v2_Promo', 'Standard_D15_v2',
@@ -822,14 +820,13 @@ export interface ContainerServices {
      * create the FQDN for the master pool.
      *
      * @param {string} parameters.masterProfile.vmSize Size of agent VMs. Possible
-     * values include: 'Standard_A0', 'Standard_A1', 'Standard_A10',
-     * 'Standard_A11', 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2',
-     * 'Standard_A2m_v2', 'Standard_A3', 'Standard_A4', 'Standard_A4_v2',
-     * 'Standard_A4m_v2', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9',
-     * 'Standard_B1ms', 'Standard_B1s', 'Standard_B2ms', 'Standard_B2s',
-     * 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1', 'Standard_D11',
-     * 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
+     * values include: 'Standard_A1', 'Standard_A10', 'Standard_A11',
+     * 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2',
+     * 'Standard_A3', 'Standard_A4', 'Standard_A4_v2', 'Standard_A4m_v2',
+     * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9', 'Standard_B2ms',
+     * 'Standard_B2s', 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1',
+     * 'Standard_D11', 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
      * 'Standard_D12_v2', 'Standard_D12_v2_Promo', 'Standard_D13',
      * 'Standard_D13_v2', 'Standard_D13_v2_Promo', 'Standard_D14',
      * 'Standard_D14_v2', 'Standard_D14_v2_Promo', 'Standard_D15_v2',
@@ -1009,14 +1006,13 @@ export interface ContainerServices {
      * create the FQDN for the master pool.
      *
      * @param {string} parameters.masterProfile.vmSize Size of agent VMs. Possible
-     * values include: 'Standard_A0', 'Standard_A1', 'Standard_A10',
-     * 'Standard_A11', 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2',
-     * 'Standard_A2m_v2', 'Standard_A3', 'Standard_A4', 'Standard_A4_v2',
-     * 'Standard_A4m_v2', 'Standard_A5', 'Standard_A6', 'Standard_A7',
-     * 'Standard_A8', 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9',
-     * 'Standard_B1ms', 'Standard_B1s', 'Standard_B2ms', 'Standard_B2s',
-     * 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1', 'Standard_D11',
-     * 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
+     * values include: 'Standard_A1', 'Standard_A10', 'Standard_A11',
+     * 'Standard_A1_v2', 'Standard_A2', 'Standard_A2_v2', 'Standard_A2m_v2',
+     * 'Standard_A3', 'Standard_A4', 'Standard_A4_v2', 'Standard_A4m_v2',
+     * 'Standard_A5', 'Standard_A6', 'Standard_A7', 'Standard_A8',
+     * 'Standard_A8_v2', 'Standard_A8m_v2', 'Standard_A9', 'Standard_B2ms',
+     * 'Standard_B2s', 'Standard_B4ms', 'Standard_B8ms', 'Standard_D1',
+     * 'Standard_D11', 'Standard_D11_v2', 'Standard_D11_v2_Promo', 'Standard_D12',
      * 'Standard_D12_v2', 'Standard_D12_v2_Promo', 'Standard_D13',
      * 'Standard_D13_v2', 'Standard_D13_v2_Promo', 'Standard_D14',
      * 'Standard_D14_v2', 'Standard_D14_v2_Promo', 'Standard_D15_v2',
@@ -1552,10 +1548,81 @@ export interface ManagedClusters {
 
 
     /**
-     * @summary Gets access profile of a managed cluster.
+     * @summary Gets an access profile of a managed cluster.
      *
      * Gets the accessProfile for the specified role name of the managed cluster
      * with a specified resource group and name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {string} roleName The name of the role for managed cluster
+     * accessProfile resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedClusterAccessProfile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAccessProfileWithHttpOperationResponse(resourceGroupName: string, resourceName: string, roleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedClusterAccessProfile>>;
+
+    /**
+     * @summary Gets an access profile of a managed cluster.
+     *
+     * Gets the accessProfile for the specified role name of the managed cluster
+     * with a specified resource group and name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {string} roleName The name of the role for managed cluster
+     * accessProfile resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedClusterAccessProfile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedClusterAccessProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedClusterAccessProfile} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAccessProfile(resourceGroupName: string, resourceName: string, roleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedClusterAccessProfile>;
+    getAccessProfile(resourceGroupName: string, resourceName: string, roleName: string, callback: ServiceCallback<models.ManagedClusterAccessProfile>): void;
+    getAccessProfile(resourceGroupName: string, resourceName: string, roleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedClusterAccessProfile>): void;
+
+
+    /**
+     * @summary Gets access profile of a managed cluster.
+     *
+     * Use ManagedClusters_GetAccessProfile instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1580,8 +1647,7 @@ export interface ManagedClusters {
     /**
      * @summary Gets access profile of a managed cluster.
      *
-     * Gets the accessProfile for the specified role name of the managed cluster
-     * with a specified resource group and name.
+     * Use ManagedClusters_GetAccessProfile instead.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *

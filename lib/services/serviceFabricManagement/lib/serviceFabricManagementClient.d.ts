@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ServiceFabricManagementClient extends AzureServiceClient {
+export default class ServiceFabricManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ServiceFabricManagementClient class.
    * @constructor
@@ -20,7 +21,7 @@ declare class ServiceFabricManagementClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - The customer subscription identifier
+   * @param {string} subscriptionId - The customer subscription identifier.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -44,8 +45,6 @@ declare class ServiceFabricManagementClient extends AzureServiceClient {
 
   credentials: ServiceClientCredentials;
 
-  apiVersion: string;
-
   subscriptionId: string;
 
   acceptLanguage: string;
@@ -58,10 +57,10 @@ declare class ServiceFabricManagementClient extends AzureServiceClient {
   clusters: operations.Clusters;
   clusterVersions: operations.ClusterVersions;
   operations: operations.Operations;
-  applicationType: operations.ApplicationType;
-  version: operations.Version;
-  application: operations.Application;
-  service: operations.Service;
+  applicationTypes: operations.ApplicationTypes;
+  applicationTypeVersions: operations.ApplicationTypeVersions;
+  applications: operations.Applications;
+  services: operations.Services;
 }
 
-export = ServiceFabricManagementClient;
+export { ServiceFabricManagementClient, models as ServiceFabricManagementModels };

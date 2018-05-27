@@ -22,509 +22,14 @@ export interface Clusters {
 
 
     /**
-     * @summary Create a ServiceFabric cluster
+     * @summary Gets a Service Fabric cluster resource.
      *
-     * Create cluster resource
-     *
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} clusterName The name of the cluster resource
-     *
-     * @param {object} cluster The cluster resource.
-     *
-     * @param {array} [cluster.availableClusterVersions] The Service Fabric runtime
-     * versions available for this cluster.
-     *
-     * @param {string} [cluster.clusterState] Possible values include:
-     * 'WaitingForNodes', 'Deploying', 'BaselineUpgrade',
-     * 'UpdatingUserConfiguration', 'UpdatingUserCertificate',
-     * 'UpdatingInfrastructure', 'EnforcingClusterVersion',
-     * 'UpgradeServiceUnreachable', 'AutoScale', 'Ready'
-     *
-     * @param {string} [cluster.clusterCodeVersion] The Service Fabric runtime
-     * version of the cluster. This property can only by set the user when
-     * **upgradeMode** is set to 'Manual'. To get list of available Service Fabric
-     * versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To
-     * get the list of available version for existing clusters use
-     * **availableClusterVersions**.
-     *
-     * @param {object} [cluster.certificate] The certificate to use for securing
-     * the cluster. The certificate provided will be used for  node to node
-     * security within the cluster, SSL certificate for cluster management endpoint
-     * and default  admin client.
-     *
-     * @param {string} [cluster.reliabilityLevel] Possible values include: 'None',
-     * 'Bronze', 'Silver', 'Gold', 'Platinum'
-     *
-     * @param {string} [cluster.upgradeMode] Possible values include: 'Automatic',
-     * 'Manual'
-     *
-     * @param {array} [cluster.clientCertificateThumbprints] The list of client
-     * certificates referenced by thumbprint that are allowed to manage the
-     * cluster.
-     *
-     * @param {array} [cluster.clientCertificateCommonNames] The list of client
-     * certificates referenced by common name that are allowed to manage the
-     * cluster.
-     *
-     * @param {array} [cluster.fabricSettings] The list of custom fabric settings
-     * to configure the cluster.
-     *
-     * @param {object} [cluster.reverseProxyCertificate] The server certificate
-     * used by reverse proxy.
-     *
-     * @param {string} cluster.reverseProxyCertificate.thumbprint Thumbprint of the
-     * primary certificate.
-     *
-     * @param {string} [cluster.reverseProxyCertificate.thumbprintSecondary]
-     * Thumbprint of the secondary certificate.
-     *
-     * @param {string} [cluster.reverseProxyCertificate.x509StoreName] The local
-     * certificate store location. Possible values include: 'AddressBook',
-     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
-     * 'TrustedPeople', 'TrustedPublisher'
-     *
-     * @param {string} cluster.managementEndpoint The http management endpoint of
-     * the cluster.
-     *
-     * @param {array} cluster.nodeTypes The list of node types in the cluster.
-     *
-     * @param {object} [cluster.azureActiveDirectory] The AAD authentication
-     * settings of the cluster.
-     *
-     * @param {string} [cluster.azureActiveDirectory.tenantId] Azure active
-     * directory tenant id.
-     *
-     * @param {string} [cluster.azureActiveDirectory.clusterApplication] Azure
-     * active directory cluster application id.
-     *
-     * @param {string} [cluster.azureActiveDirectory.clientApplication] Azure
-     * active directory client application id.
-     *
-     * @param {string} [cluster.vmImage] The VM image VMSS has been configured
-     * with. Generic names such as Windows or Linux can be used.
-     *
-     * @param {object} [cluster.diagnosticsStorageAccountConfig] The storage
-     * account information for storing Service Fabric diagnostic logs.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.storageAccountName
-     * The Azure storage account name.
-     *
-     * @param {string}
-     * cluster.diagnosticsStorageAccountConfig.protectedAccountKeyName The
-     * protected diagnostics storage key name.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.blobEndpoint The
-     * blob endpoint of the azure storage account.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.queueEndpoint The
-     * queue endpoint of the azure storage account.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.tableEndpoint The
-     * table endpoint of the azure storage account.
-     *
-     * @param {object} [cluster.upgradeDescription] The policy to use when
-     * upgrading the cluster.
-     *
-     * @param {boolean} [cluster.upgradeDescription.forceRestart] If true, then
-     * processes are forcefully restarted during upgrade even when the code version
-     * has not changed (the upgrade only changes configuration or data).
-     *
-     * @param {string} cluster.upgradeDescription.upgradeReplicaSetCheckTimeout The
-     * maximum amount of time to block processing of an upgrade domain and revent
-     * loss of availability when there are unexpected issues. When this timeout
-     * expires, processing of the upgrade domain will proceed regardless of
-     * availability loss issues. The timeout is reset at the start of each upgrade
-     * domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-     *
-     * @param {string} cluster.upgradeDescription.healthCheckWaitDuration The
-     * length of time to wait after completing an upgrade domain before performing
-     * health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms
-     * format.
-     *
-     * @param {string} cluster.upgradeDescription.healthCheckStableDuration The
-     * amount of time that the application or cluster must remain healthy before
-     * the upgrade proceeds to the next upgrade domain. The duration can be in
-     * either hh:mm:ss or in d.hh:mm:ss.ms format.
-     *
-     * @param {string} cluster.upgradeDescription.healthCheckRetryTimeout The
-     * amount of time to retry health evaluation when the application or cluster is
-     * unhealthy before the upgrade rolls back. The timeout can be in either
-     * hh:mm:ss or in d.hh:mm:ss.ms format.
-     *
-     * @param {string} cluster.upgradeDescription.upgradeTimeout The amount of time
-     * the overall upgrade has to complete before the upgrade rolls back. The
-     * timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-     *
-     * @param {string} cluster.upgradeDescription.upgradeDomainTimeout The amount
-     * of time each upgrade domain has to complete before the upgrade rolls back.
-     * The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-     *
-     * @param {object} cluster.upgradeDescription.healthPolicy The cluster health
-     * policy used when upgrading the cluster.
-     *
-     * @param {number}
-     * [cluster.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
-     * maximum allowed percentage of unhealthy nodes before reporting an error. For
-     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
-     *
-     * @param {number}
-     * [cluster.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
-     * The maximum allowed percentage of unhealthy applications before reporting an
-     * error. For example, to allow 10% of applications to be unhealthy, this value
-     * would be 10.
-     *
-     * @param {object} [cluster.upgradeDescription.deltaHealthPolicy] The delta
-     * health policy used when upgrading the cluster.
-     *
-     * @param {number}
-     * cluster.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
-     * The maximum allowed percentage of nodes health degradation allowed during
-     * cluster upgrades. The delta is measured between the state of the nodes at
-     * the beginning of upgrade and the state of the nodes at the time of the
-     * health evaluation. The check is performed after every upgrade domain upgrade
-     * completion to make sure the global state of the cluster is within tolerated
-     * limits.
-     *
-     * @param {number}
-     * cluster.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
-     * The maximum allowed percentage of upgrade domain nodes health degradation
-     * allowed during cluster upgrades. The delta is measured between the state of
-     * the upgrade domain nodes at the beginning of upgrade and the state of the
-     * upgrade domain nodes at the time of the health evaluation. The check is
-     * performed after every upgrade domain upgrade completion for all completed
-     * upgrade domains to make sure the state of the upgrade domains is within
-     * tolerated limits.
-     *
-     * @param {number}
-     * cluster.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
-     * The maximum allowed percentage of applications health degradation allowed
-     * during cluster upgrades. The delta is measured between the state of the
-     * applications at the beginning of upgrade and the state of the applications
-     * at the time of the health evaluation. The check is performed after every
-     * upgrade domain upgrade completion to make sure the global state of the
-     * cluster is within tolerated limits. System services are not included in
-     * this.
-     *
-     * @param {array} [cluster.addOnFeatures] The list of add-on features to enable
-     * in the cluster.
-     *
-     * @param {string} cluster.location Resource location.
-     *
-     * @param {object} [cluster.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Cluster>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, cluster: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
-
-    /**
-     * @summary Create a ServiceFabric cluster
-     *
-     * Create cluster resource
-     *
+     * Get a Service Fabric cluster resource created or in the process of being
+     * created in the specified resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
-     *
-     * @param {object} cluster The cluster resource.
-     *
-     * @param {array} [cluster.availableClusterVersions] The Service Fabric runtime
-     * versions available for this cluster.
-     *
-     * @param {string} [cluster.clusterState] Possible values include:
-     * 'WaitingForNodes', 'Deploying', 'BaselineUpgrade',
-     * 'UpdatingUserConfiguration', 'UpdatingUserCertificate',
-     * 'UpdatingInfrastructure', 'EnforcingClusterVersion',
-     * 'UpgradeServiceUnreachable', 'AutoScale', 'Ready'
-     *
-     * @param {string} [cluster.clusterCodeVersion] The Service Fabric runtime
-     * version of the cluster. This property can only by set the user when
-     * **upgradeMode** is set to 'Manual'. To get list of available Service Fabric
-     * versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To
-     * get the list of available version for existing clusters use
-     * **availableClusterVersions**.
-     *
-     * @param {object} [cluster.certificate] The certificate to use for securing
-     * the cluster. The certificate provided will be used for  node to node
-     * security within the cluster, SSL certificate for cluster management endpoint
-     * and default  admin client.
-     *
-     * @param {string} [cluster.reliabilityLevel] Possible values include: 'None',
-     * 'Bronze', 'Silver', 'Gold', 'Platinum'
-     *
-     * @param {string} [cluster.upgradeMode] Possible values include: 'Automatic',
-     * 'Manual'
-     *
-     * @param {array} [cluster.clientCertificateThumbprints] The list of client
-     * certificates referenced by thumbprint that are allowed to manage the
-     * cluster.
-     *
-     * @param {array} [cluster.clientCertificateCommonNames] The list of client
-     * certificates referenced by common name that are allowed to manage the
-     * cluster.
-     *
-     * @param {array} [cluster.fabricSettings] The list of custom fabric settings
-     * to configure the cluster.
-     *
-     * @param {object} [cluster.reverseProxyCertificate] The server certificate
-     * used by reverse proxy.
-     *
-     * @param {string} cluster.reverseProxyCertificate.thumbprint Thumbprint of the
-     * primary certificate.
-     *
-     * @param {string} [cluster.reverseProxyCertificate.thumbprintSecondary]
-     * Thumbprint of the secondary certificate.
-     *
-     * @param {string} [cluster.reverseProxyCertificate.x509StoreName] The local
-     * certificate store location. Possible values include: 'AddressBook',
-     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
-     * 'TrustedPeople', 'TrustedPublisher'
-     *
-     * @param {string} cluster.managementEndpoint The http management endpoint of
-     * the cluster.
-     *
-     * @param {array} cluster.nodeTypes The list of node types in the cluster.
-     *
-     * @param {object} [cluster.azureActiveDirectory] The AAD authentication
-     * settings of the cluster.
-     *
-     * @param {string} [cluster.azureActiveDirectory.tenantId] Azure active
-     * directory tenant id.
-     *
-     * @param {string} [cluster.azureActiveDirectory.clusterApplication] Azure
-     * active directory cluster application id.
-     *
-     * @param {string} [cluster.azureActiveDirectory.clientApplication] Azure
-     * active directory client application id.
-     *
-     * @param {string} [cluster.vmImage] The VM image VMSS has been configured
-     * with. Generic names such as Windows or Linux can be used.
-     *
-     * @param {object} [cluster.diagnosticsStorageAccountConfig] The storage
-     * account information for storing Service Fabric diagnostic logs.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.storageAccountName
-     * The Azure storage account name.
-     *
-     * @param {string}
-     * cluster.diagnosticsStorageAccountConfig.protectedAccountKeyName The
-     * protected diagnostics storage key name.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.blobEndpoint The
-     * blob endpoint of the azure storage account.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.queueEndpoint The
-     * queue endpoint of the azure storage account.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.tableEndpoint The
-     * table endpoint of the azure storage account.
-     *
-     * @param {object} [cluster.upgradeDescription] The policy to use when
-     * upgrading the cluster.
-     *
-     * @param {boolean} [cluster.upgradeDescription.forceRestart] If true, then
-     * processes are forcefully restarted during upgrade even when the code version
-     * has not changed (the upgrade only changes configuration or data).
-     *
-     * @param {string} cluster.upgradeDescription.upgradeReplicaSetCheckTimeout The
-     * maximum amount of time to block processing of an upgrade domain and revent
-     * loss of availability when there are unexpected issues. When this timeout
-     * expires, processing of the upgrade domain will proceed regardless of
-     * availability loss issues. The timeout is reset at the start of each upgrade
-     * domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-     *
-     * @param {string} cluster.upgradeDescription.healthCheckWaitDuration The
-     * length of time to wait after completing an upgrade domain before performing
-     * health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms
-     * format.
-     *
-     * @param {string} cluster.upgradeDescription.healthCheckStableDuration The
-     * amount of time that the application or cluster must remain healthy before
-     * the upgrade proceeds to the next upgrade domain. The duration can be in
-     * either hh:mm:ss or in d.hh:mm:ss.ms format.
-     *
-     * @param {string} cluster.upgradeDescription.healthCheckRetryTimeout The
-     * amount of time to retry health evaluation when the application or cluster is
-     * unhealthy before the upgrade rolls back. The timeout can be in either
-     * hh:mm:ss or in d.hh:mm:ss.ms format.
-     *
-     * @param {string} cluster.upgradeDescription.upgradeTimeout The amount of time
-     * the overall upgrade has to complete before the upgrade rolls back. The
-     * timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-     *
-     * @param {string} cluster.upgradeDescription.upgradeDomainTimeout The amount
-     * of time each upgrade domain has to complete before the upgrade rolls back.
-     * The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-     *
-     * @param {object} cluster.upgradeDescription.healthPolicy The cluster health
-     * policy used when upgrading the cluster.
-     *
-     * @param {number}
-     * [cluster.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
-     * maximum allowed percentage of unhealthy nodes before reporting an error. For
-     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
-     *
-     * @param {number}
-     * [cluster.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
-     * The maximum allowed percentage of unhealthy applications before reporting an
-     * error. For example, to allow 10% of applications to be unhealthy, this value
-     * would be 10.
-     *
-     * @param {object} [cluster.upgradeDescription.deltaHealthPolicy] The delta
-     * health policy used when upgrading the cluster.
-     *
-     * @param {number}
-     * cluster.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
-     * The maximum allowed percentage of nodes health degradation allowed during
-     * cluster upgrades. The delta is measured between the state of the nodes at
-     * the beginning of upgrade and the state of the nodes at the time of the
-     * health evaluation. The check is performed after every upgrade domain upgrade
-     * completion to make sure the global state of the cluster is within tolerated
-     * limits.
-     *
-     * @param {number}
-     * cluster.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
-     * The maximum allowed percentage of upgrade domain nodes health degradation
-     * allowed during cluster upgrades. The delta is measured between the state of
-     * the upgrade domain nodes at the beginning of upgrade and the state of the
-     * upgrade domain nodes at the time of the health evaluation. The check is
-     * performed after every upgrade domain upgrade completion for all completed
-     * upgrade domains to make sure the state of the upgrade domains is within
-     * tolerated limits.
-     *
-     * @param {number}
-     * cluster.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
-     * The maximum allowed percentage of applications health degradation allowed
-     * during cluster upgrades. The delta is measured between the state of the
-     * applications at the beginning of upgrade and the state of the applications
-     * at the time of the health evaluation. The check is performed after every
-     * upgrade domain upgrade completion to make sure the global state of the
-     * cluster is within tolerated limits. System services are not included in
-     * this.
-     *
-     * @param {array} [cluster.addOnFeatures] The list of add-on features to enable
-     * in the cluster.
-     *
-     * @param {string} cluster.location Resource location.
-     *
-     * @param {object} [cluster.tags] Resource tags.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Cluster} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Cluster} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Cluster} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    create(resourceGroupName: string, clusterName: string, cluster: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    create(resourceGroupName: string, clusterName: string, cluster: models.Cluster, callback: ServiceCallback<models.Cluster>): void;
-    create(resourceGroupName: string, clusterName: string, cluster: models.Cluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
-
-
-    /**
-     * @summary Delete cluster resource
-     *
-     * Delete cluster resource
-     *
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} clusterName The name of the cluster resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Delete cluster resource
-     *
-     * Delete cluster resource
-     *
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} clusterName The name of the cluster resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * @summary Get cluster resource
-     *
-     * Get cluster resource
-     *
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -540,14 +45,14 @@ export interface Clusters {
     getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
-     * @summary Get cluster resource
+     * @summary Gets a Service Fabric cluster resource.
      *
-     * Get cluster resource
-     *
+     * Get a Service Fabric cluster resource created or in the process of being
+     * created in the specified resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -582,167 +87,263 @@ export interface Clusters {
 
 
     /**
-     * @summary Update cluster configuration
+     * @summary Creates or updates a Service Fabric cluster resource.
      *
-     * Update cluster configuration
-     *
+     * Create or update a Service Fabric cluster resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
-     * @param {object} clusterUpdateParameters The parameters which contains the
-     * property value and property name which used to update the cluster
-     * configuration.
+     * @param {object} parameters The cluster resource.
      *
-     * @param {string} [clusterUpdateParameters.reliabilityLevel] The reliability
-     * level sets the replica set size of system services. Learn about
-     * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
-     * Possible values include: 'Bronze', 'Silver', 'Gold'
+     * @param {array} [parameters.addOnFeatures] The list of add-on features to
+     * enable in the cluster.
      *
-     * @param {string} [clusterUpdateParameters.upgradeMode] The upgrade mode of
-     * the cluster. This indicates if the cluster should be automatically upgraded
-     * when new Service Fabric runtime version is available. Possible values
-     * include: 'Automatic', 'Manual'
+     * @param {object} [parameters.azureActiveDirectory] The AAD authentication
+     * settings of the cluster.
      *
-     * @param {string} [clusterUpdateParameters.clusterCodeVersion] The Service
-     * Fabric runtime version of the cluster. This property can only by set the
-     * user when **upgradeMode** is set to 'Manual'. To get list of available
-     * Service Fabric versions for new clusters use [ClusterVersion
-     * API](./ClusterVersion.md). To get the list of available version for existing
-     * clusters use **availableClusterVersions**.
+     * @param {string} [parameters.azureActiveDirectory.tenantId] Azure active
+     * directory tenant id.
      *
-     * @param {object} [clusterUpdateParameters.certificate] The certificate to use
-     * for securing the cluster. The certificate provided will be used for  node to
-     * node security within the cluster, SSL certificate for cluster management
-     * endpoint and default  admin client.
+     * @param {string} [parameters.azureActiveDirectory.clusterApplication] Azure
+     * active directory cluster application id.
      *
-     * @param {array} [clusterUpdateParameters.clientCertificateThumbprints] The
-     * list of client certificates referenced by thumbprint that are allowed to
-     * manage the cluster. This will overwrite the existing list.
+     * @param {string} [parameters.azureActiveDirectory.clientApplication] Azure
+     * active directory client application id.
      *
-     * @param {array} [clusterUpdateParameters.clientCertificateCommonNames] The
-     * list of client certificates referenced by common name that are allowed to
-     * manage the cluster. This will overwrite the existing list.
+     * @param {object} [parameters.certificate] The certificate to use for securing
+     * the cluster. The certificate provided will be used for node to node security
+     * within the cluster, SSL certificate for cluster management endpoint and
+     * default admin client.
      *
-     * @param {array} [clusterUpdateParameters.fabricSettings] The list of custom
-     * fabric settings to configure the cluster. This will overwrite the existing
-     * list.
+     * @param {object} [parameters.certificateCommonNames] Describes a list of
+     * server certificates referenced by common name that are used to secure the
+     * cluster.
      *
-     * @param {object} [clusterUpdateParameters.reverseProxyCertificate] The server
-     * certificate used by reverse proxy.
+     * @param {array} [parameters.clientCertificateCommonNames] The list of client
+     * certificates referenced by common name that are allowed to manage the
+     * cluster.
      *
-     * @param {string} clusterUpdateParameters.reverseProxyCertificate.thumbprint
-     * Thumbprint of the primary certificate.
+     * @param {array} [parameters.clientCertificateThumbprints] The list of client
+     * certificates referenced by thumbprint that are allowed to manage the
+     * cluster.
+     *
+     * @param {string} [parameters.clusterCodeVersion] The Service Fabric runtime
+     * version of the cluster. This property can only by set the user when
+     * **upgradeMode** is set to 'Manual'. To get list of available Service Fabric
+     * versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To
+     * get the list of available version for existing clusters use
+     * **availableClusterVersions**.
+     *
+     * @param {object} [parameters.diagnosticsStorageAccountConfig] The storage
+     * account information for storing Service Fabric diagnostic logs.
      *
      * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.thumbprintSecondary]
+     * parameters.diagnosticsStorageAccountConfig.storageAccountName The Azure
+     * storage account name.
+     *
+     * @param {string}
+     * parameters.diagnosticsStorageAccountConfig.protectedAccountKeyName The
+     * protected diagnostics storage key name.
+     *
+     * @param {string} parameters.diagnosticsStorageAccountConfig.blobEndpoint The
+     * blob endpoint of the azure storage account.
+     *
+     * @param {string} parameters.diagnosticsStorageAccountConfig.queueEndpoint The
+     * queue endpoint of the azure storage account.
+     *
+     * @param {string} parameters.diagnosticsStorageAccountConfig.tableEndpoint The
+     * table endpoint of the azure storage account.
+     *
+     * @param {array} [parameters.fabricSettings] The list of custom fabric
+     * settings to configure the cluster.
+     *
+     * @param {string} parameters.managementEndpoint The http management endpoint
+     * of the cluster.
+     *
+     * @param {array} parameters.nodeTypes The list of node types in the cluster.
+     *
+     * @param {string} [parameters.reliabilityLevel] The reliability level sets the
+     * replica set size of system services. Learn about
+     * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
+     *
+     * - None - Run the System services with a target replica set count of 1. This
+     * should only be used for test clusters.
+     * - Bronze - Run the System services with a target replica set count of 3.
+     * This should only be used for test clusters.
+     * - Silver - Run the System services with a target replica set count of 5.
+     * - Gold - Run the System services with a target replica set count of 7.
+     * - Platinum - Run the System services with a target replica set count of 9.
+     * . Possible values include: 'None', 'Bronze', 'Silver', 'Gold', 'Platinum'
+     *
+     * @param {object} [parameters.reverseProxyCertificate] The server certificate
+     * used by reverse proxy.
+     *
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate.
+     *
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
      * Thumbprint of the secondary certificate.
      *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.x509StoreName] The local
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
      * certificate store location. Possible values include: 'AddressBook',
      * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
      * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {array} [clusterUpdateParameters.nodeTypes] The list of node types in
-     * the cluster. This will overwrite the existing list.
+     * @param {object} [parameters.reverseProxyCertificateCommonNames] Describes a
+     * list of server certificates referenced by common name that are used to
+     * secure the cluster.
      *
-     * @param {object} [clusterUpdateParameters.upgradeDescription] The policy to
-     * use when upgrading the cluster.
-     *
-     * @param {boolean} [clusterUpdateParameters.upgradeDescription.forceRestart]
-     * If true, then processes are forcefully restarted during upgrade even when
-     * the code version has not changed (the upgrade only changes configuration or
-     * data).
+     * @param {array} [parameters.reverseProxyCertificateCommonNames.commonNames]
+     * The list of server certificates referenced by common name that are used to
+     * secure the cluster.
      *
      * @param {string}
-     * clusterUpdateParameters.upgradeDescription.upgradeReplicaSetCheckTimeout The
-     * maximum amount of time to block processing of an upgrade domain and revent
-     * loss of availability when there are unexpected issues. When this timeout
-     * expires, processing of the upgrade domain will proceed regardless of
+     * [parameters.reverseProxyCertificateCommonNames.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
+     *
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
+     *
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * The maximum amount of time to block processing of an upgrade domain and
+     * revent loss of availability when there are unexpected issues. When this
+     * timeout expires, processing of the upgrade domain will proceed regardless of
      * availability loss issues. The timeout is reset at the start of each upgrade
      * domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.healthCheckWaitDuration The
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
      * length of time to wait after completing an upgrade domain before performing
      * health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms
      * format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.healthCheckStableDuration The
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
      * amount of time that the application or cluster must remain healthy before
      * the upgrade proceeds to the next upgrade domain. The duration can be in
      * either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.healthCheckRetryTimeout The
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
      * amount of time to retry health evaluation when the application or cluster is
      * unhealthy before the upgrade rolls back. The timeout can be in either
      * hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string} clusterUpdateParameters.upgradeDescription.upgradeTimeout
-     * The amount of time the overall upgrade has to complete before the upgrade
-     * rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms
-     * format.
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The amount of
+     * time the overall upgrade has to complete before the upgrade rolls back. The
+     * timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.upgradeDomainTimeout The amount
-     * of time each upgrade domain has to complete before the upgrade rolls back.
-     * The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * amount of time each upgrade domain has to complete before the upgrade rolls
+     * back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {object} clusterUpdateParameters.upgradeDescription.healthPolicy The
-     * cluster health policy used when upgrading the cluster.
+     * @param {object} parameters.upgradeDescription.healthPolicy The cluster
+     * health policy used when upgrading the cluster.
      *
      * @param {number}
-     * [clusterUpdateParameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
-     * The maximum allowed percentage of unhealthy nodes before reporting an error.
-     * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     *
+     * The percentage represents the maximum tolerated percentage of nodes that can
+     * be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy node, the
+     * health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy nodes over
+     * the total number of nodes in the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     * In large clusters, some nodes will always be down or out for repairs, so
+     * this percentage should be configured to tolerate that.
+     *
      *
      * @param {number}
-     * [clusterUpdateParameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
      * The maximum allowed percentage of unhealthy applications before reporting an
      * error. For example, to allow 10% of applications to be unhealthy, this value
      * would be 10.
      *
+     * The percentage represents the maximum tolerated percentage of applications
+     * that can be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy
+     * application, the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy applications over the
+     * total number of application instances in the cluster, excluding applications
+     * of application types that are included in the
+     * ApplicationTypeHealthPolicyMap.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * applications. Default percentage is zero.
+     *
+     *
      * @param {object}
-     * [clusterUpdateParameters.upgradeDescription.deltaHealthPolicy] The delta
-     * health policy used when upgrading the cluster.
+     * [parameters.upgradeDescription.healthPolicy.applicationHealthPolicies]
+     * Defines the application health policy map used to evaluate the health of an
+     * application or one of its children entities.
+     *
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] The
+     * cluster delta health policy used when upgrading the cluster.
      *
      * @param {number}
-     * clusterUpdateParameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
      * The maximum allowed percentage of nodes health degradation allowed during
-     * cluster upgrades. The delta is measured between the state of the nodes at
-     * the beginning of upgrade and the state of the nodes at the time of the
-     * health evaluation. The check is performed after every upgrade domain upgrade
-     * completion to make sure the global state of the cluster is within tolerated
-     * limits.
+     * cluster upgrades.
+     * The delta is measured between the state of the nodes at the beginning of
+     * upgrade and the state of the nodes at the time of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits.
+     *
      *
      * @param {number}
-     * clusterUpdateParameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
      * The maximum allowed percentage of upgrade domain nodes health degradation
-     * allowed during cluster upgrades. The delta is measured between the state of
-     * the upgrade domain nodes at the beginning of upgrade and the state of the
-     * upgrade domain nodes at the time of the health evaluation. The check is
-     * performed after every upgrade domain upgrade completion for all completed
-     * upgrade domains to make sure the state of the upgrade domains is within
-     * tolerated limits.
+     * allowed during cluster upgrades.
+     * The delta is measured between the state of the upgrade domain nodes at the
+     * beginning of upgrade and the state of the upgrade domain nodes at the time
+     * of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion for all
+     * completed upgrade domains to make sure the state of the upgrade domains is
+     * within tolerated limits.
+     *
      *
      * @param {number}
-     * clusterUpdateParameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
      * The maximum allowed percentage of applications health degradation allowed
-     * during cluster upgrades. The delta is measured between the state of the
-     * applications at the beginning of upgrade and the state of the applications
-     * at the time of the health evaluation. The check is performed after every
-     * upgrade domain upgrade completion to make sure the global state of the
-     * cluster is within tolerated limits. System services are not included in
-     * this.
+     * during cluster upgrades.
+     * The delta is measured between the state of the applications at the beginning
+     * of upgrade and the state of the applications at the time of the health
+     * evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits. System
+     * services are not included in this.
      *
-     * @param {array} [clusterUpdateParameters.addOnFeatures] The list of add-on
-     * features to enable in the cluster.
      *
-     * @param {object} [clusterUpdateParameters.tags] Cluster update parameters
+     * @param {object}
+     * [parameters.upgradeDescription.deltaHealthPolicy.applicationDeltaHealthPolicies]
+     * Defines the application delta health policy map used to evaluate the health
+     * of an application or one of its child entities when upgrading the cluster.
+     *
+     * @param {string} [parameters.upgradeMode] The upgrade mode of the cluster
+     * when new Service Fabric runtime version is available.
+     *
+     * - Automatic - The cluster will be automatically upgraded to the latest
+     * Service Fabric runtime version as soon as it is available.
+     * - Manual - The cluster will not be automatically upgraded to the latest
+     * Service Fabric runtime version. The cluster is upgraded by setting the
+     * **clusterCodeVersion** property in the cluster resource.
+     * . Possible values include: 'Automatic', 'Manual'
+     *
+     * @param {string} [parameters.vmImage] The VM image VMSS has been configured
+     * with. Generic names such as Windows or Linux can be used.
+     *
+     * @param {string} parameters.location Azure resource location.
+     *
+     * @param {object} [parameters.tags] Azure resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -755,170 +356,266 @@ export interface Clusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+    createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
-     * @summary Update cluster configuration
+     * @summary Creates or updates a Service Fabric cluster resource.
      *
-     * Update cluster configuration
-     *
+     * Create or update a Service Fabric cluster resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
-     * @param {object} clusterUpdateParameters The parameters which contains the
-     * property value and property name which used to update the cluster
-     * configuration.
+     * @param {object} parameters The cluster resource.
      *
-     * @param {string} [clusterUpdateParameters.reliabilityLevel] The reliability
-     * level sets the replica set size of system services. Learn about
-     * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
-     * Possible values include: 'Bronze', 'Silver', 'Gold'
+     * @param {array} [parameters.addOnFeatures] The list of add-on features to
+     * enable in the cluster.
      *
-     * @param {string} [clusterUpdateParameters.upgradeMode] The upgrade mode of
-     * the cluster. This indicates if the cluster should be automatically upgraded
-     * when new Service Fabric runtime version is available. Possible values
-     * include: 'Automatic', 'Manual'
+     * @param {object} [parameters.azureActiveDirectory] The AAD authentication
+     * settings of the cluster.
      *
-     * @param {string} [clusterUpdateParameters.clusterCodeVersion] The Service
-     * Fabric runtime version of the cluster. This property can only by set the
-     * user when **upgradeMode** is set to 'Manual'. To get list of available
-     * Service Fabric versions for new clusters use [ClusterVersion
-     * API](./ClusterVersion.md). To get the list of available version for existing
-     * clusters use **availableClusterVersions**.
+     * @param {string} [parameters.azureActiveDirectory.tenantId] Azure active
+     * directory tenant id.
      *
-     * @param {object} [clusterUpdateParameters.certificate] The certificate to use
-     * for securing the cluster. The certificate provided will be used for  node to
-     * node security within the cluster, SSL certificate for cluster management
-     * endpoint and default  admin client.
+     * @param {string} [parameters.azureActiveDirectory.clusterApplication] Azure
+     * active directory cluster application id.
      *
-     * @param {array} [clusterUpdateParameters.clientCertificateThumbprints] The
-     * list of client certificates referenced by thumbprint that are allowed to
-     * manage the cluster. This will overwrite the existing list.
+     * @param {string} [parameters.azureActiveDirectory.clientApplication] Azure
+     * active directory client application id.
      *
-     * @param {array} [clusterUpdateParameters.clientCertificateCommonNames] The
-     * list of client certificates referenced by common name that are allowed to
-     * manage the cluster. This will overwrite the existing list.
+     * @param {object} [parameters.certificate] The certificate to use for securing
+     * the cluster. The certificate provided will be used for node to node security
+     * within the cluster, SSL certificate for cluster management endpoint and
+     * default admin client.
      *
-     * @param {array} [clusterUpdateParameters.fabricSettings] The list of custom
-     * fabric settings to configure the cluster. This will overwrite the existing
-     * list.
+     * @param {object} [parameters.certificateCommonNames] Describes a list of
+     * server certificates referenced by common name that are used to secure the
+     * cluster.
      *
-     * @param {object} [clusterUpdateParameters.reverseProxyCertificate] The server
-     * certificate used by reverse proxy.
+     * @param {array} [parameters.clientCertificateCommonNames] The list of client
+     * certificates referenced by common name that are allowed to manage the
+     * cluster.
      *
-     * @param {string} clusterUpdateParameters.reverseProxyCertificate.thumbprint
-     * Thumbprint of the primary certificate.
+     * @param {array} [parameters.clientCertificateThumbprints] The list of client
+     * certificates referenced by thumbprint that are allowed to manage the
+     * cluster.
+     *
+     * @param {string} [parameters.clusterCodeVersion] The Service Fabric runtime
+     * version of the cluster. This property can only by set the user when
+     * **upgradeMode** is set to 'Manual'. To get list of available Service Fabric
+     * versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To
+     * get the list of available version for existing clusters use
+     * **availableClusterVersions**.
+     *
+     * @param {object} [parameters.diagnosticsStorageAccountConfig] The storage
+     * account information for storing Service Fabric diagnostic logs.
      *
      * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.thumbprintSecondary]
+     * parameters.diagnosticsStorageAccountConfig.storageAccountName The Azure
+     * storage account name.
+     *
+     * @param {string}
+     * parameters.diagnosticsStorageAccountConfig.protectedAccountKeyName The
+     * protected diagnostics storage key name.
+     *
+     * @param {string} parameters.diagnosticsStorageAccountConfig.blobEndpoint The
+     * blob endpoint of the azure storage account.
+     *
+     * @param {string} parameters.diagnosticsStorageAccountConfig.queueEndpoint The
+     * queue endpoint of the azure storage account.
+     *
+     * @param {string} parameters.diagnosticsStorageAccountConfig.tableEndpoint The
+     * table endpoint of the azure storage account.
+     *
+     * @param {array} [parameters.fabricSettings] The list of custom fabric
+     * settings to configure the cluster.
+     *
+     * @param {string} parameters.managementEndpoint The http management endpoint
+     * of the cluster.
+     *
+     * @param {array} parameters.nodeTypes The list of node types in the cluster.
+     *
+     * @param {string} [parameters.reliabilityLevel] The reliability level sets the
+     * replica set size of system services. Learn about
+     * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
+     *
+     * - None - Run the System services with a target replica set count of 1. This
+     * should only be used for test clusters.
+     * - Bronze - Run the System services with a target replica set count of 3.
+     * This should only be used for test clusters.
+     * - Silver - Run the System services with a target replica set count of 5.
+     * - Gold - Run the System services with a target replica set count of 7.
+     * - Platinum - Run the System services with a target replica set count of 9.
+     * . Possible values include: 'None', 'Bronze', 'Silver', 'Gold', 'Platinum'
+     *
+     * @param {object} [parameters.reverseProxyCertificate] The server certificate
+     * used by reverse proxy.
+     *
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate.
+     *
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
      * Thumbprint of the secondary certificate.
      *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.x509StoreName] The local
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
      * certificate store location. Possible values include: 'AddressBook',
      * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
      * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {array} [clusterUpdateParameters.nodeTypes] The list of node types in
-     * the cluster. This will overwrite the existing list.
+     * @param {object} [parameters.reverseProxyCertificateCommonNames] Describes a
+     * list of server certificates referenced by common name that are used to
+     * secure the cluster.
      *
-     * @param {object} [clusterUpdateParameters.upgradeDescription] The policy to
-     * use when upgrading the cluster.
-     *
-     * @param {boolean} [clusterUpdateParameters.upgradeDescription.forceRestart]
-     * If true, then processes are forcefully restarted during upgrade even when
-     * the code version has not changed (the upgrade only changes configuration or
-     * data).
+     * @param {array} [parameters.reverseProxyCertificateCommonNames.commonNames]
+     * The list of server certificates referenced by common name that are used to
+     * secure the cluster.
      *
      * @param {string}
-     * clusterUpdateParameters.upgradeDescription.upgradeReplicaSetCheckTimeout The
-     * maximum amount of time to block processing of an upgrade domain and revent
-     * loss of availability when there are unexpected issues. When this timeout
-     * expires, processing of the upgrade domain will proceed regardless of
+     * [parameters.reverseProxyCertificateCommonNames.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
+     *
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
+     *
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * The maximum amount of time to block processing of an upgrade domain and
+     * revent loss of availability when there are unexpected issues. When this
+     * timeout expires, processing of the upgrade domain will proceed regardless of
      * availability loss issues. The timeout is reset at the start of each upgrade
      * domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.healthCheckWaitDuration The
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
      * length of time to wait after completing an upgrade domain before performing
      * health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms
      * format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.healthCheckStableDuration The
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
      * amount of time that the application or cluster must remain healthy before
      * the upgrade proceeds to the next upgrade domain. The duration can be in
      * either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.healthCheckRetryTimeout The
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
      * amount of time to retry health evaluation when the application or cluster is
      * unhealthy before the upgrade rolls back. The timeout can be in either
      * hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string} clusterUpdateParameters.upgradeDescription.upgradeTimeout
-     * The amount of time the overall upgrade has to complete before the upgrade
-     * rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms
-     * format.
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The amount of
+     * time the overall upgrade has to complete before the upgrade rolls back. The
+     * timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.upgradeDomainTimeout The amount
-     * of time each upgrade domain has to complete before the upgrade rolls back.
-     * The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * amount of time each upgrade domain has to complete before the upgrade rolls
+     * back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {object} clusterUpdateParameters.upgradeDescription.healthPolicy The
-     * cluster health policy used when upgrading the cluster.
+     * @param {object} parameters.upgradeDescription.healthPolicy The cluster
+     * health policy used when upgrading the cluster.
      *
      * @param {number}
-     * [clusterUpdateParameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
-     * The maximum allowed percentage of unhealthy nodes before reporting an error.
-     * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     *
+     * The percentage represents the maximum tolerated percentage of nodes that can
+     * be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy node, the
+     * health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy nodes over
+     * the total number of nodes in the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     * In large clusters, some nodes will always be down or out for repairs, so
+     * this percentage should be configured to tolerate that.
+     *
      *
      * @param {number}
-     * [clusterUpdateParameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
      * The maximum allowed percentage of unhealthy applications before reporting an
      * error. For example, to allow 10% of applications to be unhealthy, this value
      * would be 10.
      *
+     * The percentage represents the maximum tolerated percentage of applications
+     * that can be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy
+     * application, the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy applications over the
+     * total number of application instances in the cluster, excluding applications
+     * of application types that are included in the
+     * ApplicationTypeHealthPolicyMap.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * applications. Default percentage is zero.
+     *
+     *
      * @param {object}
-     * [clusterUpdateParameters.upgradeDescription.deltaHealthPolicy] The delta
-     * health policy used when upgrading the cluster.
+     * [parameters.upgradeDescription.healthPolicy.applicationHealthPolicies]
+     * Defines the application health policy map used to evaluate the health of an
+     * application or one of its children entities.
+     *
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] The
+     * cluster delta health policy used when upgrading the cluster.
      *
      * @param {number}
-     * clusterUpdateParameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
      * The maximum allowed percentage of nodes health degradation allowed during
-     * cluster upgrades. The delta is measured between the state of the nodes at
-     * the beginning of upgrade and the state of the nodes at the time of the
-     * health evaluation. The check is performed after every upgrade domain upgrade
-     * completion to make sure the global state of the cluster is within tolerated
-     * limits.
+     * cluster upgrades.
+     * The delta is measured between the state of the nodes at the beginning of
+     * upgrade and the state of the nodes at the time of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits.
+     *
      *
      * @param {number}
-     * clusterUpdateParameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
      * The maximum allowed percentage of upgrade domain nodes health degradation
-     * allowed during cluster upgrades. The delta is measured between the state of
-     * the upgrade domain nodes at the beginning of upgrade and the state of the
-     * upgrade domain nodes at the time of the health evaluation. The check is
-     * performed after every upgrade domain upgrade completion for all completed
-     * upgrade domains to make sure the state of the upgrade domains is within
-     * tolerated limits.
+     * allowed during cluster upgrades.
+     * The delta is measured between the state of the upgrade domain nodes at the
+     * beginning of upgrade and the state of the upgrade domain nodes at the time
+     * of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion for all
+     * completed upgrade domains to make sure the state of the upgrade domains is
+     * within tolerated limits.
+     *
      *
      * @param {number}
-     * clusterUpdateParameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
      * The maximum allowed percentage of applications health degradation allowed
-     * during cluster upgrades. The delta is measured between the state of the
-     * applications at the beginning of upgrade and the state of the applications
-     * at the time of the health evaluation. The check is performed after every
-     * upgrade domain upgrade completion to make sure the global state of the
-     * cluster is within tolerated limits. System services are not included in
-     * this.
+     * during cluster upgrades.
+     * The delta is measured between the state of the applications at the beginning
+     * of upgrade and the state of the applications at the time of the health
+     * evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits. System
+     * services are not included in this.
      *
-     * @param {array} [clusterUpdateParameters.addOnFeatures] The list of add-on
-     * features to enable in the cluster.
      *
-     * @param {object} [clusterUpdateParameters.tags] Cluster update parameters
+     * @param {object}
+     * [parameters.upgradeDescription.deltaHealthPolicy.applicationDeltaHealthPolicies]
+     * Defines the application delta health policy map used to evaluate the health
+     * of an application or one of its child entities when upgrading the cluster.
+     *
+     * @param {string} [parameters.upgradeMode] The upgrade mode of the cluster
+     * when new Service Fabric runtime version is available.
+     *
+     * - Automatic - The cluster will be automatically upgraded to the latest
+     * Service Fabric runtime version as soon as it is available.
+     * - Manual - The cluster will not be automatically upgraded to the latest
+     * Service Fabric runtime version. The cluster is upgraded by setting the
+     * **clusterCodeVersion** property in the cluster resource.
+     * . Possible values include: 'Automatic', 'Manual'
+     *
+     * @param {string} [parameters.vmImage] The VM image VMSS has been configured
+     * with. Generic names such as Windows or Linux can be used.
+     *
+     * @param {string} parameters.location Azure resource location.
+     *
+     * @param {object} [parameters.tags] Azure resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -947,16 +644,558 @@ export interface Clusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    update(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.Cluster>): void;
-    update(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+    create(resourceGroupName: string, clusterName: string, parameters: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    create(resourceGroupName: string, clusterName: string, parameters: models.Cluster, callback: ServiceCallback<models.Cluster>): void;
+    create(resourceGroupName: string, clusterName: string, parameters: models.Cluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
 
 
     /**
-     * @summary List cluster resource by resource group
+     * @summary Updates the configuration of a Service Fabric cluster resource.
      *
-     * List cluster resource by resource group
+     * Update the configuration of a Service Fabric cluster resource with the
+     * specified name.
      *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {object} parameters The parameters which contains the property value
+     * and property name which used to update the cluster configuration.
+     *
+     * @param {array} [parameters.addOnFeatures] The list of add-on features to
+     * enable in the cluster.
+     *
+     * @param {object} [parameters.certificate] The certificate to use for securing
+     * the cluster. The certificate provided will be used for  node to node
+     * security within the cluster, SSL certificate for cluster management endpoint
+     * and default  admin client.
+     *
+     * @param {object} [parameters.certificateCommonNames] Describes a list of
+     * server certificates referenced by common name that are used to secure the
+     * cluster.
+     *
+     * @param {array} [parameters.certificateCommonNames.commonNames] The list of
+     * server certificates referenced by common name that are used to secure the
+     * cluster.
+     *
+     * @param {string} [parameters.certificateCommonNames.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
+     *
+     * @param {array} [parameters.clientCertificateCommonNames] The list of client
+     * certificates referenced by common name that are allowed to manage the
+     * cluster. This will overwrite the existing list.
+     *
+     * @param {array} [parameters.clientCertificateThumbprints] The list of client
+     * certificates referenced by thumbprint that are allowed to manage the
+     * cluster. This will overwrite the existing list.
+     *
+     * @param {string} [parameters.clusterCodeVersion] The Service Fabric runtime
+     * version of the cluster. This property can only by set the user when
+     * **upgradeMode** is set to 'Manual'. To get list of available Service Fabric
+     * versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To
+     * get the list of available version for existing clusters use
+     * **availableClusterVersions**.
+     *
+     * @param {array} [parameters.fabricSettings] The list of custom fabric
+     * settings to configure the cluster. This will overwrite the existing list.
+     *
+     * @param {array} [parameters.nodeTypes] The list of node types in the cluster.
+     * This will overwrite the existing list.
+     *
+     * @param {string} [parameters.reliabilityLevel] The reliability level sets the
+     * replica set size of system services. Learn about
+     * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
+     *
+     * - None - Run the System services with a target replica set count of 1. This
+     * should only be used for test clusters.
+     * - Bronze - Run the System services with a target replica set count of 3.
+     * This should only be used for test clusters.
+     * - Silver - Run the System services with a target replica set count of 5.
+     * - Gold - Run the System services with a target replica set count of 7.
+     * - Platinum - Run the System services with a target replica set count of 9.
+     * . Possible values include: 'None', 'Bronze', 'Silver', 'Gold', 'Platinum'
+     *
+     * @param {object} [parameters.reverseProxyCertificate] The server certificate
+     * used by reverse proxy.
+     *
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate.
+     *
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
+     * Thumbprint of the secondary certificate.
+     *
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
+     *
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
+     *
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * The maximum amount of time to block processing of an upgrade domain and
+     * revent loss of availability when there are unexpected issues. When this
+     * timeout expires, processing of the upgrade domain will proceed regardless of
+     * availability loss issues. The timeout is reset at the start of each upgrade
+     * domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
+     * length of time to wait after completing an upgrade domain before performing
+     * health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms
+     * format.
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
+     * amount of time that the application or cluster must remain healthy before
+     * the upgrade proceeds to the next upgrade domain. The duration can be in
+     * either hh:mm:ss or in d.hh:mm:ss.ms format.
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
+     * amount of time to retry health evaluation when the application or cluster is
+     * unhealthy before the upgrade rolls back. The timeout can be in either
+     * hh:mm:ss or in d.hh:mm:ss.ms format.
+     *
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The amount of
+     * time the overall upgrade has to complete before the upgrade rolls back. The
+     * timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     *
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * amount of time each upgrade domain has to complete before the upgrade rolls
+     * back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     *
+     * @param {object} parameters.upgradeDescription.healthPolicy The cluster
+     * health policy used when upgrading the cluster.
+     *
+     * @param {number}
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     *
+     * The percentage represents the maximum tolerated percentage of nodes that can
+     * be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy node, the
+     * health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy nodes over
+     * the total number of nodes in the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     * In large clusters, some nodes will always be down or out for repairs, so
+     * this percentage should be configured to tolerate that.
+     *
+     *
+     * @param {number}
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * The maximum allowed percentage of unhealthy applications before reporting an
+     * error. For example, to allow 10% of applications to be unhealthy, this value
+     * would be 10.
+     *
+     * The percentage represents the maximum tolerated percentage of applications
+     * that can be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy
+     * application, the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy applications over the
+     * total number of application instances in the cluster, excluding applications
+     * of application types that are included in the
+     * ApplicationTypeHealthPolicyMap.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * applications. Default percentage is zero.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradeDescription.healthPolicy.applicationHealthPolicies]
+     * Defines the application health policy map used to evaluate the health of an
+     * application or one of its children entities.
+     *
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] The
+     * cluster delta health policy used when upgrading the cluster.
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * The maximum allowed percentage of nodes health degradation allowed during
+     * cluster upgrades.
+     * The delta is measured between the state of the nodes at the beginning of
+     * upgrade and the state of the nodes at the time of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits.
+     *
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * The maximum allowed percentage of upgrade domain nodes health degradation
+     * allowed during cluster upgrades.
+     * The delta is measured between the state of the upgrade domain nodes at the
+     * beginning of upgrade and the state of the upgrade domain nodes at the time
+     * of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion for all
+     * completed upgrade domains to make sure the state of the upgrade domains is
+     * within tolerated limits.
+     *
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * The maximum allowed percentage of applications health degradation allowed
+     * during cluster upgrades.
+     * The delta is measured between the state of the applications at the beginning
+     * of upgrade and the state of the applications at the time of the health
+     * evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits. System
+     * services are not included in this.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradeDescription.deltaHealthPolicy.applicationDeltaHealthPolicies]
+     * Defines the application delta health policy map used to evaluate the health
+     * of an application or one of its child entities when upgrading the cluster.
+     *
+     * @param {string} [parameters.upgradeMode] The upgrade mode of the cluster
+     * when new Service Fabric runtime version is available.
+     *
+     * - Automatic - The cluster will be automatically upgraded to the latest
+     * Service Fabric runtime version as soon as it is available.
+     * - Manual - The cluster will not be automatically upgraded to the latest
+     * Service Fabric runtime version. The cluster is upgraded by setting the
+     * **clusterCodeVersion** property in the cluster resource.
+     * . Possible values include: 'Automatic', 'Manual'
+     *
+     * @param {object} [parameters.tags] Cluster update parameters
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Cluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+
+    /**
+     * @summary Updates the configuration of a Service Fabric cluster resource.
+     *
+     * Update the configuration of a Service Fabric cluster resource with the
+     * specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {object} parameters The parameters which contains the property value
+     * and property name which used to update the cluster configuration.
+     *
+     * @param {array} [parameters.addOnFeatures] The list of add-on features to
+     * enable in the cluster.
+     *
+     * @param {object} [parameters.certificate] The certificate to use for securing
+     * the cluster. The certificate provided will be used for  node to node
+     * security within the cluster, SSL certificate for cluster management endpoint
+     * and default  admin client.
+     *
+     * @param {object} [parameters.certificateCommonNames] Describes a list of
+     * server certificates referenced by common name that are used to secure the
+     * cluster.
+     *
+     * @param {array} [parameters.certificateCommonNames.commonNames] The list of
+     * server certificates referenced by common name that are used to secure the
+     * cluster.
+     *
+     * @param {string} [parameters.certificateCommonNames.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
+     *
+     * @param {array} [parameters.clientCertificateCommonNames] The list of client
+     * certificates referenced by common name that are allowed to manage the
+     * cluster. This will overwrite the existing list.
+     *
+     * @param {array} [parameters.clientCertificateThumbprints] The list of client
+     * certificates referenced by thumbprint that are allowed to manage the
+     * cluster. This will overwrite the existing list.
+     *
+     * @param {string} [parameters.clusterCodeVersion] The Service Fabric runtime
+     * version of the cluster. This property can only by set the user when
+     * **upgradeMode** is set to 'Manual'. To get list of available Service Fabric
+     * versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To
+     * get the list of available version for existing clusters use
+     * **availableClusterVersions**.
+     *
+     * @param {array} [parameters.fabricSettings] The list of custom fabric
+     * settings to configure the cluster. This will overwrite the existing list.
+     *
+     * @param {array} [parameters.nodeTypes] The list of node types in the cluster.
+     * This will overwrite the existing list.
+     *
+     * @param {string} [parameters.reliabilityLevel] The reliability level sets the
+     * replica set size of system services. Learn about
+     * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
+     *
+     * - None - Run the System services with a target replica set count of 1. This
+     * should only be used for test clusters.
+     * - Bronze - Run the System services with a target replica set count of 3.
+     * This should only be used for test clusters.
+     * - Silver - Run the System services with a target replica set count of 5.
+     * - Gold - Run the System services with a target replica set count of 7.
+     * - Platinum - Run the System services with a target replica set count of 9.
+     * . Possible values include: 'None', 'Bronze', 'Silver', 'Gold', 'Platinum'
+     *
+     * @param {object} [parameters.reverseProxyCertificate] The server certificate
+     * used by reverse proxy.
+     *
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate.
+     *
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
+     * Thumbprint of the secondary certificate.
+     *
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
+     *
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
+     *
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * The maximum amount of time to block processing of an upgrade domain and
+     * revent loss of availability when there are unexpected issues. When this
+     * timeout expires, processing of the upgrade domain will proceed regardless of
+     * availability loss issues. The timeout is reset at the start of each upgrade
+     * domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
+     * length of time to wait after completing an upgrade domain before performing
+     * health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms
+     * format.
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
+     * amount of time that the application or cluster must remain healthy before
+     * the upgrade proceeds to the next upgrade domain. The duration can be in
+     * either hh:mm:ss or in d.hh:mm:ss.ms format.
+     *
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
+     * amount of time to retry health evaluation when the application or cluster is
+     * unhealthy before the upgrade rolls back. The timeout can be in either
+     * hh:mm:ss or in d.hh:mm:ss.ms format.
+     *
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The amount of
+     * time the overall upgrade has to complete before the upgrade rolls back. The
+     * timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     *
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * amount of time each upgrade domain has to complete before the upgrade rolls
+     * back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     *
+     * @param {object} parameters.upgradeDescription.healthPolicy The cluster
+     * health policy used when upgrading the cluster.
+     *
+     * @param {number}
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     *
+     * The percentage represents the maximum tolerated percentage of nodes that can
+     * be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy node, the
+     * health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy nodes over
+     * the total number of nodes in the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     * In large clusters, some nodes will always be down or out for repairs, so
+     * this percentage should be configured to tolerate that.
+     *
+     *
+     * @param {number}
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * The maximum allowed percentage of unhealthy applications before reporting an
+     * error. For example, to allow 10% of applications to be unhealthy, this value
+     * would be 10.
+     *
+     * The percentage represents the maximum tolerated percentage of applications
+     * that can be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy
+     * application, the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy applications over the
+     * total number of application instances in the cluster, excluding applications
+     * of application types that are included in the
+     * ApplicationTypeHealthPolicyMap.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * applications. Default percentage is zero.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradeDescription.healthPolicy.applicationHealthPolicies]
+     * Defines the application health policy map used to evaluate the health of an
+     * application or one of its children entities.
+     *
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] The
+     * cluster delta health policy used when upgrading the cluster.
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * The maximum allowed percentage of nodes health degradation allowed during
+     * cluster upgrades.
+     * The delta is measured between the state of the nodes at the beginning of
+     * upgrade and the state of the nodes at the time of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits.
+     *
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * The maximum allowed percentage of upgrade domain nodes health degradation
+     * allowed during cluster upgrades.
+     * The delta is measured between the state of the upgrade domain nodes at the
+     * beginning of upgrade and the state of the upgrade domain nodes at the time
+     * of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion for all
+     * completed upgrade domains to make sure the state of the upgrade domains is
+     * within tolerated limits.
+     *
+     *
+     * @param {number}
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * The maximum allowed percentage of applications health degradation allowed
+     * during cluster upgrades.
+     * The delta is measured between the state of the applications at the beginning
+     * of upgrade and the state of the applications at the time of the health
+     * evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits. System
+     * services are not included in this.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradeDescription.deltaHealthPolicy.applicationDeltaHealthPolicies]
+     * Defines the application delta health policy map used to evaluate the health
+     * of an application or one of its child entities when upgrading the cluster.
+     *
+     * @param {string} [parameters.upgradeMode] The upgrade mode of the cluster
+     * when new Service Fabric runtime version is available.
+     *
+     * - Automatic - The cluster will be automatically upgraded to the latest
+     * Service Fabric runtime version as soon as it is available.
+     * - Manual - The cluster will not be automatically upgraded to the latest
+     * Service Fabric runtime version. The cluster is upgraded by setting the
+     * **clusterCodeVersion** property in the cluster resource.
+     * . Possible values include: 'Automatic', 'Manual'
+     *
+     * @param {object} [parameters.tags] Cluster update parameters
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Cluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Cluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Cluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    update(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.Cluster>): void;
+    update(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+
+
+    /**
+     * @summary Deletes a Service Fabric cluster resource.
+     *
+     * Delete a Service Fabric cluster resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a Service Fabric cluster resource.
+     *
+     * Delete a Service Fabric cluster resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, clusterName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Gets the list of Service Fabric cluster resources created in the
+     * specified resource group.
+     *
+     * Gets all Service Fabric cluster resources created or in the process of being
+     * created in the resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -974,10 +1213,11 @@ export interface Clusters {
     listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
 
     /**
-     * @summary List cluster resource by resource group
+     * @summary Gets the list of Service Fabric cluster resources created in the
+     * specified resource group.
      *
-     * List cluster resource by resource group
-     *
+     * Gets all Service Fabric cluster resources created or in the process of being
+     * created in the resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1014,10 +1254,11 @@ export interface Clusters {
 
 
     /**
-     * @summary List cluster resource
+     * @summary Gets the list of Service Fabric cluster resources created in the
+     * specified subscription.
      *
-     * List cluster resource
-     *
+     * Gets all Service Fabric cluster resources created or in the process of being
+     * created in the subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1033,10 +1274,11 @@ export interface Clusters {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
 
     /**
-     * @summary List cluster resource
+     * @summary Gets the list of Service Fabric cluster resources created in the
+     * specified subscription.
      *
-     * List cluster resource
-     *
+     * Gets all Service Fabric cluster resources created or in the process of being
+     * created in the subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1071,197 +1313,263 @@ export interface Clusters {
 
 
     /**
-     * @summary Create a ServiceFabric cluster
+     * @summary Creates or updates a Service Fabric cluster resource.
      *
-     * Create cluster resource
-     *
+     * Create or update a Service Fabric cluster resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
-     * @param {object} cluster The cluster resource.
+     * @param {object} parameters The cluster resource.
      *
-     * @param {array} [cluster.availableClusterVersions] The Service Fabric runtime
-     * versions available for this cluster.
+     * @param {array} [parameters.addOnFeatures] The list of add-on features to
+     * enable in the cluster.
      *
-     * @param {string} [cluster.clusterState] Possible values include:
-     * 'WaitingForNodes', 'Deploying', 'BaselineUpgrade',
-     * 'UpdatingUserConfiguration', 'UpdatingUserCertificate',
-     * 'UpdatingInfrastructure', 'EnforcingClusterVersion',
-     * 'UpgradeServiceUnreachable', 'AutoScale', 'Ready'
+     * @param {object} [parameters.azureActiveDirectory] The AAD authentication
+     * settings of the cluster.
      *
-     * @param {string} [cluster.clusterCodeVersion] The Service Fabric runtime
+     * @param {string} [parameters.azureActiveDirectory.tenantId] Azure active
+     * directory tenant id.
+     *
+     * @param {string} [parameters.azureActiveDirectory.clusterApplication] Azure
+     * active directory cluster application id.
+     *
+     * @param {string} [parameters.azureActiveDirectory.clientApplication] Azure
+     * active directory client application id.
+     *
+     * @param {object} [parameters.certificate] The certificate to use for securing
+     * the cluster. The certificate provided will be used for node to node security
+     * within the cluster, SSL certificate for cluster management endpoint and
+     * default admin client.
+     *
+     * @param {object} [parameters.certificateCommonNames] Describes a list of
+     * server certificates referenced by common name that are used to secure the
+     * cluster.
+     *
+     * @param {array} [parameters.clientCertificateCommonNames] The list of client
+     * certificates referenced by common name that are allowed to manage the
+     * cluster.
+     *
+     * @param {array} [parameters.clientCertificateThumbprints] The list of client
+     * certificates referenced by thumbprint that are allowed to manage the
+     * cluster.
+     *
+     * @param {string} [parameters.clusterCodeVersion] The Service Fabric runtime
      * version of the cluster. This property can only by set the user when
      * **upgradeMode** is set to 'Manual'. To get list of available Service Fabric
      * versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To
      * get the list of available version for existing clusters use
      * **availableClusterVersions**.
      *
-     * @param {object} [cluster.certificate] The certificate to use for securing
-     * the cluster. The certificate provided will be used for  node to node
-     * security within the cluster, SSL certificate for cluster management endpoint
-     * and default  admin client.
+     * @param {object} [parameters.diagnosticsStorageAccountConfig] The storage
+     * account information for storing Service Fabric diagnostic logs.
      *
-     * @param {string} [cluster.reliabilityLevel] Possible values include: 'None',
-     * 'Bronze', 'Silver', 'Gold', 'Platinum'
+     * @param {string}
+     * parameters.diagnosticsStorageAccountConfig.storageAccountName The Azure
+     * storage account name.
      *
-     * @param {string} [cluster.upgradeMode] Possible values include: 'Automatic',
-     * 'Manual'
+     * @param {string}
+     * parameters.diagnosticsStorageAccountConfig.protectedAccountKeyName The
+     * protected diagnostics storage key name.
      *
-     * @param {array} [cluster.clientCertificateThumbprints] The list of client
-     * certificates referenced by thumbprint that are allowed to manage the
-     * cluster.
+     * @param {string} parameters.diagnosticsStorageAccountConfig.blobEndpoint The
+     * blob endpoint of the azure storage account.
      *
-     * @param {array} [cluster.clientCertificateCommonNames] The list of client
-     * certificates referenced by common name that are allowed to manage the
-     * cluster.
+     * @param {string} parameters.diagnosticsStorageAccountConfig.queueEndpoint The
+     * queue endpoint of the azure storage account.
      *
-     * @param {array} [cluster.fabricSettings] The list of custom fabric settings
-     * to configure the cluster.
+     * @param {string} parameters.diagnosticsStorageAccountConfig.tableEndpoint The
+     * table endpoint of the azure storage account.
      *
-     * @param {object} [cluster.reverseProxyCertificate] The server certificate
+     * @param {array} [parameters.fabricSettings] The list of custom fabric
+     * settings to configure the cluster.
+     *
+     * @param {string} parameters.managementEndpoint The http management endpoint
+     * of the cluster.
+     *
+     * @param {array} parameters.nodeTypes The list of node types in the cluster.
+     *
+     * @param {string} [parameters.reliabilityLevel] The reliability level sets the
+     * replica set size of system services. Learn about
+     * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
+     *
+     * - None - Run the System services with a target replica set count of 1. This
+     * should only be used for test clusters.
+     * - Bronze - Run the System services with a target replica set count of 3.
+     * This should only be used for test clusters.
+     * - Silver - Run the System services with a target replica set count of 5.
+     * - Gold - Run the System services with a target replica set count of 7.
+     * - Platinum - Run the System services with a target replica set count of 9.
+     * . Possible values include: 'None', 'Bronze', 'Silver', 'Gold', 'Platinum'
+     *
+     * @param {object} [parameters.reverseProxyCertificate] The server certificate
      * used by reverse proxy.
      *
-     * @param {string} cluster.reverseProxyCertificate.thumbprint Thumbprint of the
-     * primary certificate.
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate.
      *
-     * @param {string} [cluster.reverseProxyCertificate.thumbprintSecondary]
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
      * Thumbprint of the secondary certificate.
      *
-     * @param {string} [cluster.reverseProxyCertificate.x509StoreName] The local
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
      * certificate store location. Possible values include: 'AddressBook',
      * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
      * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {string} cluster.managementEndpoint The http management endpoint of
-     * the cluster.
+     * @param {object} [parameters.reverseProxyCertificateCommonNames] Describes a
+     * list of server certificates referenced by common name that are used to
+     * secure the cluster.
      *
-     * @param {array} cluster.nodeTypes The list of node types in the cluster.
-     *
-     * @param {object} [cluster.azureActiveDirectory] The AAD authentication
-     * settings of the cluster.
-     *
-     * @param {string} [cluster.azureActiveDirectory.tenantId] Azure active
-     * directory tenant id.
-     *
-     * @param {string} [cluster.azureActiveDirectory.clusterApplication] Azure
-     * active directory cluster application id.
-     *
-     * @param {string} [cluster.azureActiveDirectory.clientApplication] Azure
-     * active directory client application id.
-     *
-     * @param {string} [cluster.vmImage] The VM image VMSS has been configured
-     * with. Generic names such as Windows or Linux can be used.
-     *
-     * @param {object} [cluster.diagnosticsStorageAccountConfig] The storage
-     * account information for storing Service Fabric diagnostic logs.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.storageAccountName
-     * The Azure storage account name.
+     * @param {array} [parameters.reverseProxyCertificateCommonNames.commonNames]
+     * The list of server certificates referenced by common name that are used to
+     * secure the cluster.
      *
      * @param {string}
-     * cluster.diagnosticsStorageAccountConfig.protectedAccountKeyName The
-     * protected diagnostics storage key name.
+     * [parameters.reverseProxyCertificateCommonNames.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.blobEndpoint The
-     * blob endpoint of the azure storage account.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.queueEndpoint The
-     * queue endpoint of the azure storage account.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.tableEndpoint The
-     * table endpoint of the azure storage account.
-     *
-     * @param {object} [cluster.upgradeDescription] The policy to use when
+     * @param {object} [parameters.upgradeDescription] The policy to use when
      * upgrading the cluster.
      *
-     * @param {boolean} [cluster.upgradeDescription.forceRestart] If true, then
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] If true, then
      * processes are forcefully restarted during upgrade even when the code version
      * has not changed (the upgrade only changes configuration or data).
      *
-     * @param {string} cluster.upgradeDescription.upgradeReplicaSetCheckTimeout The
-     * maximum amount of time to block processing of an upgrade domain and revent
-     * loss of availability when there are unexpected issues. When this timeout
-     * expires, processing of the upgrade domain will proceed regardless of
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * The maximum amount of time to block processing of an upgrade domain and
+     * revent loss of availability when there are unexpected issues. When this
+     * timeout expires, processing of the upgrade domain will proceed regardless of
      * availability loss issues. The timeout is reset at the start of each upgrade
      * domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string} cluster.upgradeDescription.healthCheckWaitDuration The
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
      * length of time to wait after completing an upgrade domain before performing
      * health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms
      * format.
      *
-     * @param {string} cluster.upgradeDescription.healthCheckStableDuration The
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
      * amount of time that the application or cluster must remain healthy before
      * the upgrade proceeds to the next upgrade domain. The duration can be in
      * either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string} cluster.upgradeDescription.healthCheckRetryTimeout The
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
      * amount of time to retry health evaluation when the application or cluster is
      * unhealthy before the upgrade rolls back. The timeout can be in either
      * hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string} cluster.upgradeDescription.upgradeTimeout The amount of time
-     * the overall upgrade has to complete before the upgrade rolls back. The
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The amount of
+     * time the overall upgrade has to complete before the upgrade rolls back. The
      * timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string} cluster.upgradeDescription.upgradeDomainTimeout The amount
-     * of time each upgrade domain has to complete before the upgrade rolls back.
-     * The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * amount of time each upgrade domain has to complete before the upgrade rolls
+     * back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {object} cluster.upgradeDescription.healthPolicy The cluster health
-     * policy used when upgrading the cluster.
+     * @param {object} parameters.upgradeDescription.healthPolicy The cluster
+     * health policy used when upgrading the cluster.
      *
      * @param {number}
-     * [cluster.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
      * maximum allowed percentage of unhealthy nodes before reporting an error. For
      * example, to allow 10% of nodes to be unhealthy, this value would be 10.
      *
+     * The percentage represents the maximum tolerated percentage of nodes that can
+     * be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy node, the
+     * health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy nodes over
+     * the total number of nodes in the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     * In large clusters, some nodes will always be down or out for repairs, so
+     * this percentage should be configured to tolerate that.
+     *
+     *
      * @param {number}
-     * [cluster.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
      * The maximum allowed percentage of unhealthy applications before reporting an
      * error. For example, to allow 10% of applications to be unhealthy, this value
      * would be 10.
      *
-     * @param {object} [cluster.upgradeDescription.deltaHealthPolicy] The delta
-     * health policy used when upgrading the cluster.
+     * The percentage represents the maximum tolerated percentage of applications
+     * that can be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy
+     * application, the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy applications over the
+     * total number of application instances in the cluster, excluding applications
+     * of application types that are included in the
+     * ApplicationTypeHealthPolicyMap.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * applications. Default percentage is zero.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradeDescription.healthPolicy.applicationHealthPolicies]
+     * Defines the application health policy map used to evaluate the health of an
+     * application or one of its children entities.
+     *
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] The
+     * cluster delta health policy used when upgrading the cluster.
      *
      * @param {number}
-     * cluster.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
      * The maximum allowed percentage of nodes health degradation allowed during
-     * cluster upgrades. The delta is measured between the state of the nodes at
-     * the beginning of upgrade and the state of the nodes at the time of the
-     * health evaluation. The check is performed after every upgrade domain upgrade
-     * completion to make sure the global state of the cluster is within tolerated
-     * limits.
+     * cluster upgrades.
+     * The delta is measured between the state of the nodes at the beginning of
+     * upgrade and the state of the nodes at the time of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits.
+     *
      *
      * @param {number}
-     * cluster.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
      * The maximum allowed percentage of upgrade domain nodes health degradation
-     * allowed during cluster upgrades. The delta is measured between the state of
-     * the upgrade domain nodes at the beginning of upgrade and the state of the
-     * upgrade domain nodes at the time of the health evaluation. The check is
-     * performed after every upgrade domain upgrade completion for all completed
-     * upgrade domains to make sure the state of the upgrade domains is within
-     * tolerated limits.
+     * allowed during cluster upgrades.
+     * The delta is measured between the state of the upgrade domain nodes at the
+     * beginning of upgrade and the state of the upgrade domain nodes at the time
+     * of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion for all
+     * completed upgrade domains to make sure the state of the upgrade domains is
+     * within tolerated limits.
+     *
      *
      * @param {number}
-     * cluster.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
      * The maximum allowed percentage of applications health degradation allowed
-     * during cluster upgrades. The delta is measured between the state of the
-     * applications at the beginning of upgrade and the state of the applications
-     * at the time of the health evaluation. The check is performed after every
-     * upgrade domain upgrade completion to make sure the global state of the
-     * cluster is within tolerated limits. System services are not included in
-     * this.
+     * during cluster upgrades.
+     * The delta is measured between the state of the applications at the beginning
+     * of upgrade and the state of the applications at the time of the health
+     * evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits. System
+     * services are not included in this.
      *
-     * @param {array} [cluster.addOnFeatures] The list of add-on features to enable
-     * in the cluster.
      *
-     * @param {string} cluster.location Resource location.
+     * @param {object}
+     * [parameters.upgradeDescription.deltaHealthPolicy.applicationDeltaHealthPolicies]
+     * Defines the application delta health policy map used to evaluate the health
+     * of an application or one of its child entities when upgrading the cluster.
      *
-     * @param {object} [cluster.tags] Resource tags.
+     * @param {string} [parameters.upgradeMode] The upgrade mode of the cluster
+     * when new Service Fabric runtime version is available.
+     *
+     * - Automatic - The cluster will be automatically upgraded to the latest
+     * Service Fabric runtime version as soon as it is available.
+     * - Manual - The cluster will not be automatically upgraded to the latest
+     * Service Fabric runtime version. The cluster is upgraded by setting the
+     * **clusterCodeVersion** property in the cluster resource.
+     * . Possible values include: 'Automatic', 'Manual'
+     *
+     * @param {string} [parameters.vmImage] The VM image VMSS has been configured
+     * with. Generic names such as Windows or Linux can be used.
+     *
+     * @param {string} parameters.location Azure resource location.
+     *
+     * @param {object} [parameters.tags] Azure resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1274,200 +1582,266 @@ export interface Clusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, cluster: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
-     * @summary Create a ServiceFabric cluster
+     * @summary Creates or updates a Service Fabric cluster resource.
      *
-     * Create cluster resource
-     *
+     * Create or update a Service Fabric cluster resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
-     * @param {object} cluster The cluster resource.
+     * @param {object} parameters The cluster resource.
      *
-     * @param {array} [cluster.availableClusterVersions] The Service Fabric runtime
-     * versions available for this cluster.
+     * @param {array} [parameters.addOnFeatures] The list of add-on features to
+     * enable in the cluster.
      *
-     * @param {string} [cluster.clusterState] Possible values include:
-     * 'WaitingForNodes', 'Deploying', 'BaselineUpgrade',
-     * 'UpdatingUserConfiguration', 'UpdatingUserCertificate',
-     * 'UpdatingInfrastructure', 'EnforcingClusterVersion',
-     * 'UpgradeServiceUnreachable', 'AutoScale', 'Ready'
+     * @param {object} [parameters.azureActiveDirectory] The AAD authentication
+     * settings of the cluster.
      *
-     * @param {string} [cluster.clusterCodeVersion] The Service Fabric runtime
+     * @param {string} [parameters.azureActiveDirectory.tenantId] Azure active
+     * directory tenant id.
+     *
+     * @param {string} [parameters.azureActiveDirectory.clusterApplication] Azure
+     * active directory cluster application id.
+     *
+     * @param {string} [parameters.azureActiveDirectory.clientApplication] Azure
+     * active directory client application id.
+     *
+     * @param {object} [parameters.certificate] The certificate to use for securing
+     * the cluster. The certificate provided will be used for node to node security
+     * within the cluster, SSL certificate for cluster management endpoint and
+     * default admin client.
+     *
+     * @param {object} [parameters.certificateCommonNames] Describes a list of
+     * server certificates referenced by common name that are used to secure the
+     * cluster.
+     *
+     * @param {array} [parameters.clientCertificateCommonNames] The list of client
+     * certificates referenced by common name that are allowed to manage the
+     * cluster.
+     *
+     * @param {array} [parameters.clientCertificateThumbprints] The list of client
+     * certificates referenced by thumbprint that are allowed to manage the
+     * cluster.
+     *
+     * @param {string} [parameters.clusterCodeVersion] The Service Fabric runtime
      * version of the cluster. This property can only by set the user when
      * **upgradeMode** is set to 'Manual'. To get list of available Service Fabric
      * versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To
      * get the list of available version for existing clusters use
      * **availableClusterVersions**.
      *
-     * @param {object} [cluster.certificate] The certificate to use for securing
-     * the cluster. The certificate provided will be used for  node to node
-     * security within the cluster, SSL certificate for cluster management endpoint
-     * and default  admin client.
+     * @param {object} [parameters.diagnosticsStorageAccountConfig] The storage
+     * account information for storing Service Fabric diagnostic logs.
      *
-     * @param {string} [cluster.reliabilityLevel] Possible values include: 'None',
-     * 'Bronze', 'Silver', 'Gold', 'Platinum'
+     * @param {string}
+     * parameters.diagnosticsStorageAccountConfig.storageAccountName The Azure
+     * storage account name.
      *
-     * @param {string} [cluster.upgradeMode] Possible values include: 'Automatic',
-     * 'Manual'
+     * @param {string}
+     * parameters.diagnosticsStorageAccountConfig.protectedAccountKeyName The
+     * protected diagnostics storage key name.
      *
-     * @param {array} [cluster.clientCertificateThumbprints] The list of client
-     * certificates referenced by thumbprint that are allowed to manage the
-     * cluster.
+     * @param {string} parameters.diagnosticsStorageAccountConfig.blobEndpoint The
+     * blob endpoint of the azure storage account.
      *
-     * @param {array} [cluster.clientCertificateCommonNames] The list of client
-     * certificates referenced by common name that are allowed to manage the
-     * cluster.
+     * @param {string} parameters.diagnosticsStorageAccountConfig.queueEndpoint The
+     * queue endpoint of the azure storage account.
      *
-     * @param {array} [cluster.fabricSettings] The list of custom fabric settings
-     * to configure the cluster.
+     * @param {string} parameters.diagnosticsStorageAccountConfig.tableEndpoint The
+     * table endpoint of the azure storage account.
      *
-     * @param {object} [cluster.reverseProxyCertificate] The server certificate
+     * @param {array} [parameters.fabricSettings] The list of custom fabric
+     * settings to configure the cluster.
+     *
+     * @param {string} parameters.managementEndpoint The http management endpoint
+     * of the cluster.
+     *
+     * @param {array} parameters.nodeTypes The list of node types in the cluster.
+     *
+     * @param {string} [parameters.reliabilityLevel] The reliability level sets the
+     * replica set size of system services. Learn about
+     * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
+     *
+     * - None - Run the System services with a target replica set count of 1. This
+     * should only be used for test clusters.
+     * - Bronze - Run the System services with a target replica set count of 3.
+     * This should only be used for test clusters.
+     * - Silver - Run the System services with a target replica set count of 5.
+     * - Gold - Run the System services with a target replica set count of 7.
+     * - Platinum - Run the System services with a target replica set count of 9.
+     * . Possible values include: 'None', 'Bronze', 'Silver', 'Gold', 'Platinum'
+     *
+     * @param {object} [parameters.reverseProxyCertificate] The server certificate
      * used by reverse proxy.
      *
-     * @param {string} cluster.reverseProxyCertificate.thumbprint Thumbprint of the
-     * primary certificate.
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate.
      *
-     * @param {string} [cluster.reverseProxyCertificate.thumbprintSecondary]
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
      * Thumbprint of the secondary certificate.
      *
-     * @param {string} [cluster.reverseProxyCertificate.x509StoreName] The local
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
      * certificate store location. Possible values include: 'AddressBook',
      * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
      * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {string} cluster.managementEndpoint The http management endpoint of
-     * the cluster.
+     * @param {object} [parameters.reverseProxyCertificateCommonNames] Describes a
+     * list of server certificates referenced by common name that are used to
+     * secure the cluster.
      *
-     * @param {array} cluster.nodeTypes The list of node types in the cluster.
-     *
-     * @param {object} [cluster.azureActiveDirectory] The AAD authentication
-     * settings of the cluster.
-     *
-     * @param {string} [cluster.azureActiveDirectory.tenantId] Azure active
-     * directory tenant id.
-     *
-     * @param {string} [cluster.azureActiveDirectory.clusterApplication] Azure
-     * active directory cluster application id.
-     *
-     * @param {string} [cluster.azureActiveDirectory.clientApplication] Azure
-     * active directory client application id.
-     *
-     * @param {string} [cluster.vmImage] The VM image VMSS has been configured
-     * with. Generic names such as Windows or Linux can be used.
-     *
-     * @param {object} [cluster.diagnosticsStorageAccountConfig] The storage
-     * account information for storing Service Fabric diagnostic logs.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.storageAccountName
-     * The Azure storage account name.
+     * @param {array} [parameters.reverseProxyCertificateCommonNames.commonNames]
+     * The list of server certificates referenced by common name that are used to
+     * secure the cluster.
      *
      * @param {string}
-     * cluster.diagnosticsStorageAccountConfig.protectedAccountKeyName The
-     * protected diagnostics storage key name.
+     * [parameters.reverseProxyCertificateCommonNames.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.blobEndpoint The
-     * blob endpoint of the azure storage account.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.queueEndpoint The
-     * queue endpoint of the azure storage account.
-     *
-     * @param {string} cluster.diagnosticsStorageAccountConfig.tableEndpoint The
-     * table endpoint of the azure storage account.
-     *
-     * @param {object} [cluster.upgradeDescription] The policy to use when
+     * @param {object} [parameters.upgradeDescription] The policy to use when
      * upgrading the cluster.
      *
-     * @param {boolean} [cluster.upgradeDescription.forceRestart] If true, then
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] If true, then
      * processes are forcefully restarted during upgrade even when the code version
      * has not changed (the upgrade only changes configuration or data).
      *
-     * @param {string} cluster.upgradeDescription.upgradeReplicaSetCheckTimeout The
-     * maximum amount of time to block processing of an upgrade domain and revent
-     * loss of availability when there are unexpected issues. When this timeout
-     * expires, processing of the upgrade domain will proceed regardless of
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * The maximum amount of time to block processing of an upgrade domain and
+     * revent loss of availability when there are unexpected issues. When this
+     * timeout expires, processing of the upgrade domain will proceed regardless of
      * availability loss issues. The timeout is reset at the start of each upgrade
      * domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string} cluster.upgradeDescription.healthCheckWaitDuration The
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
      * length of time to wait after completing an upgrade domain before performing
      * health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms
      * format.
      *
-     * @param {string} cluster.upgradeDescription.healthCheckStableDuration The
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
      * amount of time that the application or cluster must remain healthy before
      * the upgrade proceeds to the next upgrade domain. The duration can be in
      * either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string} cluster.upgradeDescription.healthCheckRetryTimeout The
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
      * amount of time to retry health evaluation when the application or cluster is
      * unhealthy before the upgrade rolls back. The timeout can be in either
      * hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string} cluster.upgradeDescription.upgradeTimeout The amount of time
-     * the overall upgrade has to complete before the upgrade rolls back. The
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The amount of
+     * time the overall upgrade has to complete before the upgrade rolls back. The
      * timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string} cluster.upgradeDescription.upgradeDomainTimeout The amount
-     * of time each upgrade domain has to complete before the upgrade rolls back.
-     * The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * amount of time each upgrade domain has to complete before the upgrade rolls
+     * back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {object} cluster.upgradeDescription.healthPolicy The cluster health
-     * policy used when upgrading the cluster.
+     * @param {object} parameters.upgradeDescription.healthPolicy The cluster
+     * health policy used when upgrading the cluster.
      *
      * @param {number}
-     * [cluster.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
      * maximum allowed percentage of unhealthy nodes before reporting an error. For
      * example, to allow 10% of nodes to be unhealthy, this value would be 10.
      *
+     * The percentage represents the maximum tolerated percentage of nodes that can
+     * be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy node, the
+     * health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy nodes over
+     * the total number of nodes in the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     * In large clusters, some nodes will always be down or out for repairs, so
+     * this percentage should be configured to tolerate that.
+     *
+     *
      * @param {number}
-     * [cluster.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
      * The maximum allowed percentage of unhealthy applications before reporting an
      * error. For example, to allow 10% of applications to be unhealthy, this value
      * would be 10.
      *
-     * @param {object} [cluster.upgradeDescription.deltaHealthPolicy] The delta
-     * health policy used when upgrading the cluster.
+     * The percentage represents the maximum tolerated percentage of applications
+     * that can be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy
+     * application, the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy applications over the
+     * total number of application instances in the cluster, excluding applications
+     * of application types that are included in the
+     * ApplicationTypeHealthPolicyMap.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * applications. Default percentage is zero.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradeDescription.healthPolicy.applicationHealthPolicies]
+     * Defines the application health policy map used to evaluate the health of an
+     * application or one of its children entities.
+     *
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] The
+     * cluster delta health policy used when upgrading the cluster.
      *
      * @param {number}
-     * cluster.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
      * The maximum allowed percentage of nodes health degradation allowed during
-     * cluster upgrades. The delta is measured between the state of the nodes at
-     * the beginning of upgrade and the state of the nodes at the time of the
-     * health evaluation. The check is performed after every upgrade domain upgrade
-     * completion to make sure the global state of the cluster is within tolerated
-     * limits.
+     * cluster upgrades.
+     * The delta is measured between the state of the nodes at the beginning of
+     * upgrade and the state of the nodes at the time of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits.
+     *
      *
      * @param {number}
-     * cluster.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
      * The maximum allowed percentage of upgrade domain nodes health degradation
-     * allowed during cluster upgrades. The delta is measured between the state of
-     * the upgrade domain nodes at the beginning of upgrade and the state of the
-     * upgrade domain nodes at the time of the health evaluation. The check is
-     * performed after every upgrade domain upgrade completion for all completed
-     * upgrade domains to make sure the state of the upgrade domains is within
-     * tolerated limits.
+     * allowed during cluster upgrades.
+     * The delta is measured between the state of the upgrade domain nodes at the
+     * beginning of upgrade and the state of the upgrade domain nodes at the time
+     * of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion for all
+     * completed upgrade domains to make sure the state of the upgrade domains is
+     * within tolerated limits.
+     *
      *
      * @param {number}
-     * cluster.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
      * The maximum allowed percentage of applications health degradation allowed
-     * during cluster upgrades. The delta is measured between the state of the
-     * applications at the beginning of upgrade and the state of the applications
-     * at the time of the health evaluation. The check is performed after every
-     * upgrade domain upgrade completion to make sure the global state of the
-     * cluster is within tolerated limits. System services are not included in
-     * this.
+     * during cluster upgrades.
+     * The delta is measured between the state of the applications at the beginning
+     * of upgrade and the state of the applications at the time of the health
+     * evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits. System
+     * services are not included in this.
      *
-     * @param {array} [cluster.addOnFeatures] The list of add-on features to enable
-     * in the cluster.
      *
-     * @param {string} cluster.location Resource location.
+     * @param {object}
+     * [parameters.upgradeDescription.deltaHealthPolicy.applicationDeltaHealthPolicies]
+     * Defines the application delta health policy map used to evaluate the health
+     * of an application or one of its child entities when upgrading the cluster.
      *
-     * @param {object} [cluster.tags] Resource tags.
+     * @param {string} [parameters.upgradeMode] The upgrade mode of the cluster
+     * when new Service Fabric runtime version is available.
+     *
+     * - Automatic - The cluster will be automatically upgraded to the latest
+     * Service Fabric runtime version as soon as it is available.
+     * - Manual - The cluster will not be automatically upgraded to the latest
+     * Service Fabric runtime version. The cluster is upgraded by setting the
+     * **clusterCodeVersion** property in the cluster resource.
+     * . Possible values include: 'Automatic', 'Manual'
+     *
+     * @param {string} [parameters.vmImage] The VM image VMSS has been configured
+     * with. Generic names such as Windows or Linux can be used.
+     *
+     * @param {string} parameters.location Azure resource location.
+     *
+     * @param {object} [parameters.tags] Azure resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1496,173 +1870,227 @@ export interface Clusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, clusterName: string, cluster: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    beginCreate(resourceGroupName: string, clusterName: string, cluster: models.Cluster, callback: ServiceCallback<models.Cluster>): void;
-    beginCreate(resourceGroupName: string, clusterName: string, cluster: models.Cluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+    beginCreate(resourceGroupName: string, clusterName: string, parameters: models.Cluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    beginCreate(resourceGroupName: string, clusterName: string, parameters: models.Cluster, callback: ServiceCallback<models.Cluster>): void;
+    beginCreate(resourceGroupName: string, clusterName: string, parameters: models.Cluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
 
 
     /**
-     * @summary Update cluster configuration
+     * @summary Updates the configuration of a Service Fabric cluster resource.
      *
-     * Update cluster configuration
-     *
+     * Update the configuration of a Service Fabric cluster resource with the
+     * specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
-     * @param {object} clusterUpdateParameters The parameters which contains the
-     * property value and property name which used to update the cluster
-     * configuration.
+     * @param {object} parameters The parameters which contains the property value
+     * and property name which used to update the cluster configuration.
      *
-     * @param {string} [clusterUpdateParameters.reliabilityLevel] The reliability
-     * level sets the replica set size of system services. Learn about
-     * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
-     * Possible values include: 'Bronze', 'Silver', 'Gold'
+     * @param {array} [parameters.addOnFeatures] The list of add-on features to
+     * enable in the cluster.
      *
-     * @param {string} [clusterUpdateParameters.upgradeMode] The upgrade mode of
-     * the cluster. This indicates if the cluster should be automatically upgraded
-     * when new Service Fabric runtime version is available. Possible values
-     * include: 'Automatic', 'Manual'
+     * @param {object} [parameters.certificate] The certificate to use for securing
+     * the cluster. The certificate provided will be used for  node to node
+     * security within the cluster, SSL certificate for cluster management endpoint
+     * and default  admin client.
      *
-     * @param {string} [clusterUpdateParameters.clusterCodeVersion] The Service
-     * Fabric runtime version of the cluster. This property can only by set the
-     * user when **upgradeMode** is set to 'Manual'. To get list of available
-     * Service Fabric versions for new clusters use [ClusterVersion
-     * API](./ClusterVersion.md). To get the list of available version for existing
-     * clusters use **availableClusterVersions**.
+     * @param {object} [parameters.certificateCommonNames] Describes a list of
+     * server certificates referenced by common name that are used to secure the
+     * cluster.
      *
-     * @param {object} [clusterUpdateParameters.certificate] The certificate to use
-     * for securing the cluster. The certificate provided will be used for  node to
-     * node security within the cluster, SSL certificate for cluster management
-     * endpoint and default  admin client.
+     * @param {array} [parameters.certificateCommonNames.commonNames] The list of
+     * server certificates referenced by common name that are used to secure the
+     * cluster.
      *
-     * @param {array} [clusterUpdateParameters.clientCertificateThumbprints] The
-     * list of client certificates referenced by thumbprint that are allowed to
-     * manage the cluster. This will overwrite the existing list.
-     *
-     * @param {array} [clusterUpdateParameters.clientCertificateCommonNames] The
-     * list of client certificates referenced by common name that are allowed to
-     * manage the cluster. This will overwrite the existing list.
-     *
-     * @param {array} [clusterUpdateParameters.fabricSettings] The list of custom
-     * fabric settings to configure the cluster. This will overwrite the existing
-     * list.
-     *
-     * @param {object} [clusterUpdateParameters.reverseProxyCertificate] The server
-     * certificate used by reverse proxy.
-     *
-     * @param {string} clusterUpdateParameters.reverseProxyCertificate.thumbprint
-     * Thumbprint of the primary certificate.
-     *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.thumbprintSecondary]
-     * Thumbprint of the secondary certificate.
-     *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.x509StoreName] The local
+     * @param {string} [parameters.certificateCommonNames.x509StoreName] The local
      * certificate store location. Possible values include: 'AddressBook',
      * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
      * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {array} [clusterUpdateParameters.nodeTypes] The list of node types in
-     * the cluster. This will overwrite the existing list.
+     * @param {array} [parameters.clientCertificateCommonNames] The list of client
+     * certificates referenced by common name that are allowed to manage the
+     * cluster. This will overwrite the existing list.
      *
-     * @param {object} [clusterUpdateParameters.upgradeDescription] The policy to
-     * use when upgrading the cluster.
+     * @param {array} [parameters.clientCertificateThumbprints] The list of client
+     * certificates referenced by thumbprint that are allowed to manage the
+     * cluster. This will overwrite the existing list.
      *
-     * @param {boolean} [clusterUpdateParameters.upgradeDescription.forceRestart]
-     * If true, then processes are forcefully restarted during upgrade even when
-     * the code version has not changed (the upgrade only changes configuration or
-     * data).
+     * @param {string} [parameters.clusterCodeVersion] The Service Fabric runtime
+     * version of the cluster. This property can only by set the user when
+     * **upgradeMode** is set to 'Manual'. To get list of available Service Fabric
+     * versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To
+     * get the list of available version for existing clusters use
+     * **availableClusterVersions**.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.upgradeReplicaSetCheckTimeout The
-     * maximum amount of time to block processing of an upgrade domain and revent
-     * loss of availability when there are unexpected issues. When this timeout
-     * expires, processing of the upgrade domain will proceed regardless of
+     * @param {array} [parameters.fabricSettings] The list of custom fabric
+     * settings to configure the cluster. This will overwrite the existing list.
+     *
+     * @param {array} [parameters.nodeTypes] The list of node types in the cluster.
+     * This will overwrite the existing list.
+     *
+     * @param {string} [parameters.reliabilityLevel] The reliability level sets the
+     * replica set size of system services. Learn about
+     * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
+     *
+     * - None - Run the System services with a target replica set count of 1. This
+     * should only be used for test clusters.
+     * - Bronze - Run the System services with a target replica set count of 3.
+     * This should only be used for test clusters.
+     * - Silver - Run the System services with a target replica set count of 5.
+     * - Gold - Run the System services with a target replica set count of 7.
+     * - Platinum - Run the System services with a target replica set count of 9.
+     * . Possible values include: 'None', 'Bronze', 'Silver', 'Gold', 'Platinum'
+     *
+     * @param {object} [parameters.reverseProxyCertificate] The server certificate
+     * used by reverse proxy.
+     *
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate.
+     *
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
+     * Thumbprint of the secondary certificate.
+     *
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
+     *
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
+     *
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * The maximum amount of time to block processing of an upgrade domain and
+     * revent loss of availability when there are unexpected issues. When this
+     * timeout expires, processing of the upgrade domain will proceed regardless of
      * availability loss issues. The timeout is reset at the start of each upgrade
      * domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.healthCheckWaitDuration The
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
      * length of time to wait after completing an upgrade domain before performing
      * health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms
      * format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.healthCheckStableDuration The
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
      * amount of time that the application or cluster must remain healthy before
      * the upgrade proceeds to the next upgrade domain. The duration can be in
      * either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.healthCheckRetryTimeout The
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
      * amount of time to retry health evaluation when the application or cluster is
      * unhealthy before the upgrade rolls back. The timeout can be in either
      * hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string} clusterUpdateParameters.upgradeDescription.upgradeTimeout
-     * The amount of time the overall upgrade has to complete before the upgrade
-     * rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms
-     * format.
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The amount of
+     * time the overall upgrade has to complete before the upgrade rolls back. The
+     * timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.upgradeDomainTimeout The amount
-     * of time each upgrade domain has to complete before the upgrade rolls back.
-     * The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * amount of time each upgrade domain has to complete before the upgrade rolls
+     * back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {object} clusterUpdateParameters.upgradeDescription.healthPolicy The
-     * cluster health policy used when upgrading the cluster.
+     * @param {object} parameters.upgradeDescription.healthPolicy The cluster
+     * health policy used when upgrading the cluster.
      *
      * @param {number}
-     * [clusterUpdateParameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
-     * The maximum allowed percentage of unhealthy nodes before reporting an error.
-     * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     *
+     * The percentage represents the maximum tolerated percentage of nodes that can
+     * be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy node, the
+     * health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy nodes over
+     * the total number of nodes in the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     * In large clusters, some nodes will always be down or out for repairs, so
+     * this percentage should be configured to tolerate that.
+     *
      *
      * @param {number}
-     * [clusterUpdateParameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
      * The maximum allowed percentage of unhealthy applications before reporting an
      * error. For example, to allow 10% of applications to be unhealthy, this value
      * would be 10.
      *
+     * The percentage represents the maximum tolerated percentage of applications
+     * that can be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy
+     * application, the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy applications over the
+     * total number of application instances in the cluster, excluding applications
+     * of application types that are included in the
+     * ApplicationTypeHealthPolicyMap.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * applications. Default percentage is zero.
+     *
+     *
      * @param {object}
-     * [clusterUpdateParameters.upgradeDescription.deltaHealthPolicy] The delta
-     * health policy used when upgrading the cluster.
+     * [parameters.upgradeDescription.healthPolicy.applicationHealthPolicies]
+     * Defines the application health policy map used to evaluate the health of an
+     * application or one of its children entities.
+     *
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] The
+     * cluster delta health policy used when upgrading the cluster.
      *
      * @param {number}
-     * clusterUpdateParameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
      * The maximum allowed percentage of nodes health degradation allowed during
-     * cluster upgrades. The delta is measured between the state of the nodes at
-     * the beginning of upgrade and the state of the nodes at the time of the
-     * health evaluation. The check is performed after every upgrade domain upgrade
-     * completion to make sure the global state of the cluster is within tolerated
-     * limits.
+     * cluster upgrades.
+     * The delta is measured between the state of the nodes at the beginning of
+     * upgrade and the state of the nodes at the time of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits.
+     *
      *
      * @param {number}
-     * clusterUpdateParameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
      * The maximum allowed percentage of upgrade domain nodes health degradation
-     * allowed during cluster upgrades. The delta is measured between the state of
-     * the upgrade domain nodes at the beginning of upgrade and the state of the
-     * upgrade domain nodes at the time of the health evaluation. The check is
-     * performed after every upgrade domain upgrade completion for all completed
-     * upgrade domains to make sure the state of the upgrade domains is within
-     * tolerated limits.
+     * allowed during cluster upgrades.
+     * The delta is measured between the state of the upgrade domain nodes at the
+     * beginning of upgrade and the state of the upgrade domain nodes at the time
+     * of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion for all
+     * completed upgrade domains to make sure the state of the upgrade domains is
+     * within tolerated limits.
+     *
      *
      * @param {number}
-     * clusterUpdateParameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
      * The maximum allowed percentage of applications health degradation allowed
-     * during cluster upgrades. The delta is measured between the state of the
-     * applications at the beginning of upgrade and the state of the applications
-     * at the time of the health evaluation. The check is performed after every
-     * upgrade domain upgrade completion to make sure the global state of the
-     * cluster is within tolerated limits. System services are not included in
-     * this.
+     * during cluster upgrades.
+     * The delta is measured between the state of the applications at the beginning
+     * of upgrade and the state of the applications at the time of the health
+     * evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits. System
+     * services are not included in this.
      *
-     * @param {array} [clusterUpdateParameters.addOnFeatures] The list of add-on
-     * features to enable in the cluster.
      *
-     * @param {object} [clusterUpdateParameters.tags] Cluster update parameters
+     * @param {object}
+     * [parameters.upgradeDescription.deltaHealthPolicy.applicationDeltaHealthPolicies]
+     * Defines the application delta health policy map used to evaluate the health
+     * of an application or one of its child entities when upgrading the cluster.
+     *
+     * @param {string} [parameters.upgradeMode] The upgrade mode of the cluster
+     * when new Service Fabric runtime version is available.
+     *
+     * - Automatic - The cluster will be automatically upgraded to the latest
+     * Service Fabric runtime version as soon as it is available.
+     * - Manual - The cluster will not be automatically upgraded to the latest
+     * Service Fabric runtime version. The cluster is upgraded by setting the
+     * **clusterCodeVersion** property in the cluster resource.
+     * . Possible values include: 'Automatic', 'Manual'
+     *
+     * @param {object} [parameters.tags] Cluster update parameters
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1675,170 +2103,224 @@ export interface Clusters {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
 
     /**
-     * @summary Update cluster configuration
+     * @summary Updates the configuration of a Service Fabric cluster resource.
      *
-     * Update cluster configuration
-     *
+     * Update the configuration of a Service Fabric cluster resource with the
+     * specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
-     * @param {object} clusterUpdateParameters The parameters which contains the
-     * property value and property name which used to update the cluster
-     * configuration.
+     * @param {object} parameters The parameters which contains the property value
+     * and property name which used to update the cluster configuration.
      *
-     * @param {string} [clusterUpdateParameters.reliabilityLevel] The reliability
-     * level sets the replica set size of system services. Learn about
-     * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
-     * Possible values include: 'Bronze', 'Silver', 'Gold'
+     * @param {array} [parameters.addOnFeatures] The list of add-on features to
+     * enable in the cluster.
      *
-     * @param {string} [clusterUpdateParameters.upgradeMode] The upgrade mode of
-     * the cluster. This indicates if the cluster should be automatically upgraded
-     * when new Service Fabric runtime version is available. Possible values
-     * include: 'Automatic', 'Manual'
+     * @param {object} [parameters.certificate] The certificate to use for securing
+     * the cluster. The certificate provided will be used for  node to node
+     * security within the cluster, SSL certificate for cluster management endpoint
+     * and default  admin client.
      *
-     * @param {string} [clusterUpdateParameters.clusterCodeVersion] The Service
-     * Fabric runtime version of the cluster. This property can only by set the
-     * user when **upgradeMode** is set to 'Manual'. To get list of available
-     * Service Fabric versions for new clusters use [ClusterVersion
-     * API](./ClusterVersion.md). To get the list of available version for existing
-     * clusters use **availableClusterVersions**.
+     * @param {object} [parameters.certificateCommonNames] Describes a list of
+     * server certificates referenced by common name that are used to secure the
+     * cluster.
      *
-     * @param {object} [clusterUpdateParameters.certificate] The certificate to use
-     * for securing the cluster. The certificate provided will be used for  node to
-     * node security within the cluster, SSL certificate for cluster management
-     * endpoint and default  admin client.
+     * @param {array} [parameters.certificateCommonNames.commonNames] The list of
+     * server certificates referenced by common name that are used to secure the
+     * cluster.
      *
-     * @param {array} [clusterUpdateParameters.clientCertificateThumbprints] The
-     * list of client certificates referenced by thumbprint that are allowed to
-     * manage the cluster. This will overwrite the existing list.
-     *
-     * @param {array} [clusterUpdateParameters.clientCertificateCommonNames] The
-     * list of client certificates referenced by common name that are allowed to
-     * manage the cluster. This will overwrite the existing list.
-     *
-     * @param {array} [clusterUpdateParameters.fabricSettings] The list of custom
-     * fabric settings to configure the cluster. This will overwrite the existing
-     * list.
-     *
-     * @param {object} [clusterUpdateParameters.reverseProxyCertificate] The server
-     * certificate used by reverse proxy.
-     *
-     * @param {string} clusterUpdateParameters.reverseProxyCertificate.thumbprint
-     * Thumbprint of the primary certificate.
-     *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.thumbprintSecondary]
-     * Thumbprint of the secondary certificate.
-     *
-     * @param {string}
-     * [clusterUpdateParameters.reverseProxyCertificate.x509StoreName] The local
+     * @param {string} [parameters.certificateCommonNames.x509StoreName] The local
      * certificate store location. Possible values include: 'AddressBook',
      * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
      * 'TrustedPeople', 'TrustedPublisher'
      *
-     * @param {array} [clusterUpdateParameters.nodeTypes] The list of node types in
-     * the cluster. This will overwrite the existing list.
+     * @param {array} [parameters.clientCertificateCommonNames] The list of client
+     * certificates referenced by common name that are allowed to manage the
+     * cluster. This will overwrite the existing list.
      *
-     * @param {object} [clusterUpdateParameters.upgradeDescription] The policy to
-     * use when upgrading the cluster.
+     * @param {array} [parameters.clientCertificateThumbprints] The list of client
+     * certificates referenced by thumbprint that are allowed to manage the
+     * cluster. This will overwrite the existing list.
      *
-     * @param {boolean} [clusterUpdateParameters.upgradeDescription.forceRestart]
-     * If true, then processes are forcefully restarted during upgrade even when
-     * the code version has not changed (the upgrade only changes configuration or
-     * data).
+     * @param {string} [parameters.clusterCodeVersion] The Service Fabric runtime
+     * version of the cluster. This property can only by set the user when
+     * **upgradeMode** is set to 'Manual'. To get list of available Service Fabric
+     * versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To
+     * get the list of available version for existing clusters use
+     * **availableClusterVersions**.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.upgradeReplicaSetCheckTimeout The
-     * maximum amount of time to block processing of an upgrade domain and revent
-     * loss of availability when there are unexpected issues. When this timeout
-     * expires, processing of the upgrade domain will proceed regardless of
+     * @param {array} [parameters.fabricSettings] The list of custom fabric
+     * settings to configure the cluster. This will overwrite the existing list.
+     *
+     * @param {array} [parameters.nodeTypes] The list of node types in the cluster.
+     * This will overwrite the existing list.
+     *
+     * @param {string} [parameters.reliabilityLevel] The reliability level sets the
+     * replica set size of system services. Learn about
+     * [ReliabilityLevel](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity).
+     *
+     * - None - Run the System services with a target replica set count of 1. This
+     * should only be used for test clusters.
+     * - Bronze - Run the System services with a target replica set count of 3.
+     * This should only be used for test clusters.
+     * - Silver - Run the System services with a target replica set count of 5.
+     * - Gold - Run the System services with a target replica set count of 7.
+     * - Platinum - Run the System services with a target replica set count of 9.
+     * . Possible values include: 'None', 'Bronze', 'Silver', 'Gold', 'Platinum'
+     *
+     * @param {object} [parameters.reverseProxyCertificate] The server certificate
+     * used by reverse proxy.
+     *
+     * @param {string} parameters.reverseProxyCertificate.thumbprint Thumbprint of
+     * the primary certificate.
+     *
+     * @param {string} [parameters.reverseProxyCertificate.thumbprintSecondary]
+     * Thumbprint of the secondary certificate.
+     *
+     * @param {string} [parameters.reverseProxyCertificate.x509StoreName] The local
+     * certificate store location. Possible values include: 'AddressBook',
+     * 'AuthRoot', 'CertificateAuthority', 'Disallowed', 'My', 'Root',
+     * 'TrustedPeople', 'TrustedPublisher'
+     *
+     * @param {object} [parameters.upgradeDescription] The policy to use when
+     * upgrading the cluster.
+     *
+     * @param {boolean} [parameters.upgradeDescription.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
+     *
+     * @param {string} parameters.upgradeDescription.upgradeReplicaSetCheckTimeout
+     * The maximum amount of time to block processing of an upgrade domain and
+     * revent loss of availability when there are unexpected issues. When this
+     * timeout expires, processing of the upgrade domain will proceed regardless of
      * availability loss issues. The timeout is reset at the start of each upgrade
      * domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.healthCheckWaitDuration The
+     * @param {string} parameters.upgradeDescription.healthCheckWaitDuration The
      * length of time to wait after completing an upgrade domain before performing
      * health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms
      * format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.healthCheckStableDuration The
+     * @param {string} parameters.upgradeDescription.healthCheckStableDuration The
      * amount of time that the application or cluster must remain healthy before
      * the upgrade proceeds to the next upgrade domain. The duration can be in
      * either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.healthCheckRetryTimeout The
+     * @param {string} parameters.upgradeDescription.healthCheckRetryTimeout The
      * amount of time to retry health evaluation when the application or cluster is
      * unhealthy before the upgrade rolls back. The timeout can be in either
      * hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string} clusterUpdateParameters.upgradeDescription.upgradeTimeout
-     * The amount of time the overall upgrade has to complete before the upgrade
-     * rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms
-     * format.
+     * @param {string} parameters.upgradeDescription.upgradeTimeout The amount of
+     * time the overall upgrade has to complete before the upgrade rolls back. The
+     * timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {string}
-     * clusterUpdateParameters.upgradeDescription.upgradeDomainTimeout The amount
-     * of time each upgrade domain has to complete before the upgrade rolls back.
-     * The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
+     * @param {string} parameters.upgradeDescription.upgradeDomainTimeout The
+     * amount of time each upgrade domain has to complete before the upgrade rolls
+     * back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
      *
-     * @param {object} clusterUpdateParameters.upgradeDescription.healthPolicy The
-     * cluster health policy used when upgrading the cluster.
+     * @param {object} parameters.upgradeDescription.healthPolicy The cluster
+     * health policy used when upgrading the cluster.
      *
      * @param {number}
-     * [clusterUpdateParameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes]
-     * The maximum allowed percentage of unhealthy nodes before reporting an error.
-     * For example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyNodes] The
+     * maximum allowed percentage of unhealthy nodes before reporting an error. For
+     * example, to allow 10% of nodes to be unhealthy, this value would be 10.
+     *
+     * The percentage represents the maximum tolerated percentage of nodes that can
+     * be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy node, the
+     * health is evaluated as Warning.
+     * The percentage is calculated by dividing the number of unhealthy nodes over
+     * the total number of nodes in the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     * In large clusters, some nodes will always be down or out for repairs, so
+     * this percentage should be configured to tolerate that.
+     *
      *
      * @param {number}
-     * [clusterUpdateParameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
+     * [parameters.upgradeDescription.healthPolicy.maxPercentUnhealthyApplications]
      * The maximum allowed percentage of unhealthy applications before reporting an
      * error. For example, to allow 10% of applications to be unhealthy, this value
      * would be 10.
      *
+     * The percentage represents the maximum tolerated percentage of applications
+     * that can be unhealthy before the cluster is considered in error.
+     * If the percentage is respected but there is at least one unhealthy
+     * application, the health is evaluated as Warning.
+     * This is calculated by dividing the number of unhealthy applications over the
+     * total number of application instances in the cluster, excluding applications
+     * of application types that are included in the
+     * ApplicationTypeHealthPolicyMap.
+     * The computation rounds up to tolerate one failure on small numbers of
+     * applications. Default percentage is zero.
+     *
+     *
      * @param {object}
-     * [clusterUpdateParameters.upgradeDescription.deltaHealthPolicy] The delta
-     * health policy used when upgrading the cluster.
+     * [parameters.upgradeDescription.healthPolicy.applicationHealthPolicies]
+     * Defines the application health policy map used to evaluate the health of an
+     * application or one of its children entities.
+     *
+     * @param {object} [parameters.upgradeDescription.deltaHealthPolicy] The
+     * cluster delta health policy used when upgrading the cluster.
      *
      * @param {number}
-     * clusterUpdateParameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyNodes
      * The maximum allowed percentage of nodes health degradation allowed during
-     * cluster upgrades. The delta is measured between the state of the nodes at
-     * the beginning of upgrade and the state of the nodes at the time of the
-     * health evaluation. The check is performed after every upgrade domain upgrade
-     * completion to make sure the global state of the cluster is within tolerated
-     * limits.
+     * cluster upgrades.
+     * The delta is measured between the state of the nodes at the beginning of
+     * upgrade and the state of the nodes at the time of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits.
+     *
      *
      * @param {number}
-     * clusterUpdateParameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentUpgradeDomainDeltaUnhealthyNodes
      * The maximum allowed percentage of upgrade domain nodes health degradation
-     * allowed during cluster upgrades. The delta is measured between the state of
-     * the upgrade domain nodes at the beginning of upgrade and the state of the
-     * upgrade domain nodes at the time of the health evaluation. The check is
-     * performed after every upgrade domain upgrade completion for all completed
-     * upgrade domains to make sure the state of the upgrade domains is within
-     * tolerated limits.
+     * allowed during cluster upgrades.
+     * The delta is measured between the state of the upgrade domain nodes at the
+     * beginning of upgrade and the state of the upgrade domain nodes at the time
+     * of the health evaluation.
+     * The check is performed after every upgrade domain upgrade completion for all
+     * completed upgrade domains to make sure the state of the upgrade domains is
+     * within tolerated limits.
+     *
      *
      * @param {number}
-     * clusterUpdateParameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
+     * parameters.upgradeDescription.deltaHealthPolicy.maxPercentDeltaUnhealthyApplications
      * The maximum allowed percentage of applications health degradation allowed
-     * during cluster upgrades. The delta is measured between the state of the
-     * applications at the beginning of upgrade and the state of the applications
-     * at the time of the health evaluation. The check is performed after every
-     * upgrade domain upgrade completion to make sure the global state of the
-     * cluster is within tolerated limits. System services are not included in
-     * this.
+     * during cluster upgrades.
+     * The delta is measured between the state of the applications at the beginning
+     * of upgrade and the state of the applications at the time of the health
+     * evaluation.
+     * The check is performed after every upgrade domain upgrade completion to make
+     * sure the global state of the cluster is within tolerated limits. System
+     * services are not included in this.
      *
-     * @param {array} [clusterUpdateParameters.addOnFeatures] The list of add-on
-     * features to enable in the cluster.
      *
-     * @param {object} [clusterUpdateParameters.tags] Cluster update parameters
+     * @param {object}
+     * [parameters.upgradeDescription.deltaHealthPolicy.applicationDeltaHealthPolicies]
+     * Defines the application delta health policy map used to evaluate the health
+     * of an application or one of its child entities when upgrading the cluster.
+     *
+     * @param {string} [parameters.upgradeMode] The upgrade mode of the cluster
+     * when new Service Fabric runtime version is available.
+     *
+     * - Automatic - The cluster will be automatically upgraded to the latest
+     * Service Fabric runtime version as soon as it is available.
+     * - Manual - The cluster will not be automatically upgraded to the latest
+     * Service Fabric runtime version. The cluster is upgraded by setting the
+     * **clusterCodeVersion** property in the cluster resource.
+     * . Possible values include: 'Automatic', 'Manual'
+     *
+     * @param {object} [parameters.tags] Cluster update parameters
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1867,9 +2349,9 @@ export interface Clusters {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    beginUpdate(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.Cluster>): void;
-    beginUpdate(resourceGroupName: string, clusterName: string, clusterUpdateParameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+    beginUpdate(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    beginUpdate(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.Cluster>): void;
+    beginUpdate(resourceGroupName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
 }
 
 /**
@@ -1882,15 +2364,15 @@ export interface ClusterVersions {
 
 
     /**
-     * @summary Get cluster code versions
+     * @summary Gets information about a Service Fabric cluster code version
+     * available in the specified location.
      *
-     * Get cluster code versions by location
+     * Gets information about an available Service Fabric cluster code version.
      *
+     * @param {string} location The location for the cluster code versions. This is
+     * different from cluster location.
      *
-     * @param {string} location The location for the cluster code versions, this is
-     * different from cluster location
-     *
-     * @param {string} clusterVersion The cluster code version
+     * @param {string} clusterVersion The cluster code version.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1906,15 +2388,15 @@ export interface ClusterVersions {
     getWithHttpOperationResponse(location: string, clusterVersion: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterCodeVersionsListResult>>;
 
     /**
-     * @summary Get cluster code versions
+     * @summary Gets information about a Service Fabric cluster code version
+     * available in the specified location.
      *
-     * Get cluster code versions by location
+     * Gets information about an available Service Fabric cluster code version.
      *
+     * @param {string} location The location for the cluster code versions. This is
+     * different from cluster location.
      *
-     * @param {string} location The location for the cluster code versions, this is
-     * different from cluster location
-     *
-     * @param {string} clusterVersion The cluster code version
+     * @param {string} clusterVersion The cluster code version.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1950,18 +2432,19 @@ export interface ClusterVersions {
 
 
     /**
-     * @summary Get cluster code versions by environment
+     * @summary Gets information about a Service Fabric cluster code version
+     * available for the specified environment.
      *
-     * Get cluster code versions by environment
+     * Gets information about an available Service Fabric cluster code version by
+     * environment.
      *
+     * @param {string} location The location for the cluster code versions. This is
+     * different from cluster location.
      *
-     * @param {string} location The location for the cluster code versions, this is
-     * different from cluster location
+     * @param {string} environment The operating system of the cluster. The default
+     * means all. Possible values include: 'Windows', 'Linux'
      *
-     * @param {string} environment Cluster operating system, the default means all.
-     * Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} clusterVersion The cluster code version
+     * @param {string} clusterVersion The cluster code version.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1977,18 +2460,19 @@ export interface ClusterVersions {
     getByEnvironmentWithHttpOperationResponse(location: string, environment: string, clusterVersion: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterCodeVersionsListResult>>;
 
     /**
-     * @summary Get cluster code versions by environment
+     * @summary Gets information about a Service Fabric cluster code version
+     * available for the specified environment.
      *
-     * Get cluster code versions by environment
+     * Gets information about an available Service Fabric cluster code version by
+     * environment.
      *
+     * @param {string} location The location for the cluster code versions. This is
+     * different from cluster location.
      *
-     * @param {string} location The location for the cluster code versions, this is
-     * different from cluster location
+     * @param {string} environment The operating system of the cluster. The default
+     * means all. Possible values include: 'Windows', 'Linux'
      *
-     * @param {string} environment Cluster operating system, the default means all.
-     * Possible values include: 'Windows', 'Linux'
-     *
-     * @param {string} clusterVersion The cluster code version
+     * @param {string} clusterVersion The cluster code version.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2024,13 +2508,14 @@ export interface ClusterVersions {
 
 
     /**
-     * @summary List cluster code versions by location
+     * @summary Gets the list of Service Fabric cluster code versions available for
+     * the specified location.
      *
-     * List cluster code versions by location
+     * Gets all available code versions for Service Fabric cluster resources by
+     * location.
      *
-     *
-     * @param {string} location The location for the cluster code versions, this is
-     * different from cluster location
+     * @param {string} location The location for the cluster code versions. This is
+     * different from cluster location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2046,13 +2531,14 @@ export interface ClusterVersions {
     listWithHttpOperationResponse(location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterCodeVersionsListResult>>;
 
     /**
-     * @summary List cluster code versions by location
+     * @summary Gets the list of Service Fabric cluster code versions available for
+     * the specified location.
      *
-     * List cluster code versions by location
+     * Gets all available code versions for Service Fabric cluster resources by
+     * location.
      *
-     *
-     * @param {string} location The location for the cluster code versions, this is
-     * different from cluster location
+     * @param {string} location The location for the cluster code versions. This is
+     * different from cluster location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2088,16 +2574,17 @@ export interface ClusterVersions {
 
 
     /**
-     * @summary List cluster code versions by environment
+     * @summary Gets the list of Service Fabric cluster code versions available for
+     * the specified environment.
      *
-     * List cluster code versions by environment
+     * Gets all available code versions for Service Fabric cluster resources by
+     * environment.
      *
+     * @param {string} location The location for the cluster code versions. This is
+     * different from cluster location.
      *
-     * @param {string} location The location for the cluster code versions, this is
-     * different from cluster location
-     *
-     * @param {string} environment Cluster operating system, the default means all.
-     * Possible values include: 'Windows', 'Linux'
+     * @param {string} environment The operating system of the cluster. The default
+     * means all. Possible values include: 'Windows', 'Linux'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2113,16 +2600,17 @@ export interface ClusterVersions {
     listByEnvironmentWithHttpOperationResponse(location: string, environment: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterCodeVersionsListResult>>;
 
     /**
-     * @summary List cluster code versions by environment
+     * @summary Gets the list of Service Fabric cluster code versions available for
+     * the specified environment.
      *
-     * List cluster code versions by environment
+     * Gets all available code versions for Service Fabric cluster resources by
+     * environment.
      *
+     * @param {string} location The location for the cluster code versions. This is
+     * different from cluster location.
      *
-     * @param {string} location The location for the cluster code versions, this is
-     * different from cluster location
-     *
-     * @param {string} environment Cluster operating system, the default means all.
-     * Possible values include: 'Windows', 'Linux'
+     * @param {string} environment The operating system of the cluster. The default
+     * means all. Possible values include: 'Windows', 'Linux'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2167,11 +2655,13 @@ export interface Operations {
 
 
     /**
-     * @summary Lists all of the available ServiceFabric Resource Manager REST API
+     * @summary Lists all of the available Service Fabric resource provider API
      * operations.
      *
-     * @param {string} apiVersion The version of the ServiceFabric resouce provider
-     * api
+     * Get the list of available Service Fabric resource provider API operations.
+     *
+     * @param {string} apiVersion The version of the Service Fabric resouce
+     * provider API
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2187,11 +2677,13 @@ export interface Operations {
     listWithHttpOperationResponse(apiVersion: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
 
     /**
-     * @summary Lists all of the available ServiceFabric Resource Manager REST API
+     * @summary Lists all of the available Service Fabric resource provider API
      * operations.
      *
-     * @param {string} apiVersion The version of the ServiceFabric resouce provider
-     * api
+     * Get the list of available Service Fabric resource provider API operations.
+     *
+     * @param {string} apiVersion The version of the Service Fabric resouce
+     * provider API
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2226,8 +2718,10 @@ export interface Operations {
 
 
     /**
-     * @summary Lists all of the available ServiceFabric Resource Manager REST API
+     * @summary Lists all of the available Service Fabric resource provider API
      * operations.
+     *
+     * Get the list of available Service Fabric resource provider API operations.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2246,8 +2740,10 @@ export interface Operations {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
 
     /**
-     * @summary Lists all of the available ServiceFabric Resource Manager REST API
+     * @summary Lists all of the available Service Fabric resource provider API
      * operations.
+     *
+     * Get the list of available Service Fabric resource provider API operations.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2286,22 +2782,25 @@ export interface Operations {
 
 /**
  * @class
- * ApplicationType
+ * ApplicationTypes
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ServiceFabricManagementClient.
  */
-export interface ApplicationType {
+export interface ApplicationTypes {
 
 
     /**
-     * Returns an application type name resource.
+     * @summary Gets a Service Fabric application type name resource.
+     *
+     * Get a Service Fabric application type name resource created or in the
+     * process of being created in the Service Fabric cluster resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2317,14 +2816,17 @@ export interface ApplicationType {
     getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeResource>>;
 
     /**
-     * Returns an application type name resource.
+     * @summary Gets a Service Fabric application type name resource.
+     *
+     * Get a Service Fabric application type name resource created or in the
+     * process of being created in the Service Fabric cluster resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2360,18 +2862,21 @@ export interface ApplicationType {
 
 
     /**
-     * Creates the application type name resource.
+     * @summary Creates or updates a Service Fabric application type name resource.
+     *
+     * Create or update a Service Fabric application type name resource with the
+     * specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {object} parameters The application type name resource.
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Azure resource location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2384,21 +2889,24 @@ export interface ApplicationType {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    putWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, parameters: models.ApplicationTypeResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeResource>>;
+    createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, parameters: models.ApplicationTypeResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeResource>>;
 
     /**
-     * Creates the application type name resource.
+     * @summary Creates or updates a Service Fabric application type name resource.
+     *
+     * Create or update a Service Fabric application type name resource with the
+     * specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {object} parameters The application type name resource.
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Azure resource location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2428,96 +2936,23 @@ export interface ApplicationType {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    put(resourceGroupName: string, clusterName: string, applicationTypeName: string, parameters: models.ApplicationTypeResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeResource>;
-    put(resourceGroupName: string, clusterName: string, applicationTypeName: string, parameters: models.ApplicationTypeResource, callback: ServiceCallback<models.ApplicationTypeResource>): void;
-    put(resourceGroupName: string, clusterName: string, applicationTypeName: string, parameters: models.ApplicationTypeResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeResource>): void;
+    create(resourceGroupName: string, clusterName: string, applicationTypeName: string, parameters: models.ApplicationTypeResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeResource>;
+    create(resourceGroupName: string, clusterName: string, applicationTypeName: string, parameters: models.ApplicationTypeResource, callback: ServiceCallback<models.ApplicationTypeResource>): void;
+    create(resourceGroupName: string, clusterName: string, applicationTypeName: string, parameters: models.ApplicationTypeResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeResource>): void;
 
 
     /**
-     * Updates the application type name resource.
+     * @summary Deletes a Service Fabric application type name resource.
+     *
+     * Delete a Service Fabric application type name resource with the specified
+     * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
-     *
-     * @param {object} parameters The application type name resource for patch
-     * operations.
-     *
-     * @param {string} parameters.location Resource location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationTypeResource>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    patchWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, parameters: models.ApplicationTypeResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeResource>>;
-
-    /**
-     * Updates the application type name resource.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} clusterName The name of the cluster resource
-     *
-     * @param {string} applicationTypeName The name of the application type name
-     * resource
-     *
-     * @param {object} parameters The application type name resource for patch
-     * operations.
-     *
-     * @param {string} parameters.location Resource location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationTypeResource} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationTypeResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationTypeResource} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    patch(resourceGroupName: string, clusterName: string, applicationTypeName: string, parameters: models.ApplicationTypeResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeResource>;
-    patch(resourceGroupName: string, clusterName: string, applicationTypeName: string, parameters: models.ApplicationTypeResource, callback: ServiceCallback<models.ApplicationTypeResource>): void;
-    patch(resourceGroupName: string, clusterName: string, applicationTypeName: string, parameters: models.ApplicationTypeResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeResource>): void;
-
-
-    /**
-     * Deletes the application type name resource.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} clusterName The name of the cluster resource
-     *
-     * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2533,14 +2968,17 @@ export interface ApplicationType {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the application type name resource.
+     * @summary Deletes a Service Fabric application type name resource.
+     *
+     * Delete a Service Fabric application type name resource with the specified
+     * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2574,11 +3012,15 @@ export interface ApplicationType {
 
 
     /**
-     * Returns all application type names in the specified cluster.
+     * @summary Gets the list of application type name resources created in the
+     * specified Service Fabric cluster resource.
+     *
+     * Gets all application type name resources created or in the process of being
+     * created in the Service Fabric cluster resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2594,11 +3036,15 @@ export interface ApplicationType {
     listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeResourceList>>;
 
     /**
-     * Returns all application type names in the specified cluster.
+     * @summary Gets the list of application type name resources created in the
+     * specified Service Fabric cluster resource.
+     *
+     * Gets all application type name resources created or in the process of being
+     * created in the Service Fabric cluster resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2631,26 +3077,100 @@ export interface ApplicationType {
     list(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeResourceList>;
     list(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ApplicationTypeResourceList>): void;
     list(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeResourceList>): void;
+
+
+    /**
+     * @summary Deletes a Service Fabric application type name resource.
+     *
+     * Delete a Service Fabric application type name resource with the specified
+     * name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationTypeName The name of the application type name
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a Service Fabric application type name resource.
+     *
+     * Delete a Service Fabric application type name resource with the specified
+     * name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationTypeName The name of the application type name
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, applicationTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, applicationTypeName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, applicationTypeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
  * @class
- * Version
+ * ApplicationTypeVersions
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ServiceFabricManagementClient.
  */
-export interface Version {
+export interface ApplicationTypeVersions {
 
 
     /**
-     * Returns an application type version resource.
+     * @summary Gets a Service Fabric application type version resource.
+     *
+     * Get a Service Fabric application type version resource created or in the
+     * process of being created in the Service Fabric application type name
+     * resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {string} version The application type version.
      *
@@ -2661,21 +3181,25 @@ export interface Version {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<VersionResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ApplicationTypeVersionResource>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionResource>>;
+    getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeVersionResource>>;
 
     /**
-     * Returns an application type version resource.
+     * @summary Gets a Service Fabric application type version resource.
+     *
+     * Get a Service Fabric application type version resource created or in the
+     * process of being created in the Service Fabric application type name
+     * resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {string} version The application type version.
      *
@@ -2691,7 +3215,7 @@ export interface Version {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {VersionResource} - The deserialized result object.
+     *                      @resolve {ApplicationTypeVersionResource} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2699,36 +3223,40 @@ export interface Version {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {VersionResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VersionResource} for more information.
+     *                      {ApplicationTypeVersionResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationTypeVersionResource} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionResource>;
-    get(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, callback: ServiceCallback<models.VersionResource>): void;
-    get(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionResource>): void;
+    get(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeVersionResource>;
+    get(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, callback: ServiceCallback<models.ApplicationTypeVersionResource>): void;
+    get(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeVersionResource>): void;
 
 
     /**
-     * Provisions an application type version resource.
+     * @summary Creates or updates a Service Fabric application type version
+     * resource.
+     *
+     * Create or update a Service Fabric application type version resource with the
+     * specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {string} version The application type version.
      *
      * @param {object} parameters The application type version resource.
      *
-     * @param {string} [parameters.appPackageUrl] The URL to the application
-     * package
+     * @param {string} parameters.appPackageUrl The URL to the application package
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Azure resource location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2737,115 +3265,33 @@ export interface Version {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<VersionResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ApplicationTypeVersionResource>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    putWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.VersionResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionResource>>;
+    createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.ApplicationTypeVersionResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeVersionResource>>;
 
     /**
-     * Provisions an application type version resource.
+     * @summary Creates or updates a Service Fabric application type version
+     * resource.
+     *
+     * Create or update a Service Fabric application type version resource with the
+     * specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {string} version The application type version.
      *
      * @param {object} parameters The application type version resource.
      *
-     * @param {string} [parameters.appPackageUrl] The URL to the application
-     * package
+     * @param {string} parameters.appPackageUrl The URL to the application package
      *
-     * @param {string} parameters.location Resource location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {VersionResource} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {VersionResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VersionResource} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    put(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.VersionResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionResource>;
-    put(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.VersionResource, callback: ServiceCallback<models.VersionResource>): void;
-    put(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.VersionResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionResource>): void;
-
-
-    /**
-     * Updates an application type version resource.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} clusterName The name of the cluster resource
-     *
-     * @param {string} applicationTypeName The name of the application type name
-     * resource
-     *
-     * @param {string} version The application type version.
-     *
-     * @param {object} parameters The application type version resource for patch
-     * operations.
-     *
-     * @param {string} [parameters.appPackageUrl] The URL to the application
-     * package
-     *
-     * @param {string} parameters.location Resource location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<VersionResource>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    patchWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.VersionResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionResource>>;
-
-    /**
-     * Updates an application type version resource.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} clusterName The name of the cluster resource
-     *
-     * @param {string} applicationTypeName The name of the application type name
-     * resource
-     *
-     * @param {string} version The application type version.
-     *
-     * @param {object} parameters The application type version resource for patch
-     * operations.
-     *
-     * @param {string} [parameters.appPackageUrl] The URL to the application
-     * package
-     *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Azure resource location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2859,7 +3305,7 @@ export interface Version {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {VersionResource} - The deserialized result object.
+     *                      @resolve {ApplicationTypeVersionResource} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2867,27 +3313,31 @@ export interface Version {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {VersionResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VersionResource} for more information.
+     *                      {ApplicationTypeVersionResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationTypeVersionResource} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    patch(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.VersionResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionResource>;
-    patch(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.VersionResource, callback: ServiceCallback<models.VersionResource>): void;
-    patch(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.VersionResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionResource>): void;
+    create(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.ApplicationTypeVersionResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeVersionResource>;
+    create(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.ApplicationTypeVersionResource, callback: ServiceCallback<models.ApplicationTypeVersionResource>): void;
+    create(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.ApplicationTypeVersionResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeVersionResource>): void;
 
 
     /**
-     * Unprovisions an application type version resource.
+     * @summary Deletes a Service Fabric application type version resource.
+     *
+     * Delete a Service Fabric application type version resource with the specified
+     * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {string} version The application type version.
      *
@@ -2905,14 +3355,17 @@ export interface Version {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Unprovisions an application type version resource.
+     * @summary Deletes a Service Fabric application type version resource.
+     *
+     * Delete a Service Fabric application type version resource with the specified
+     * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {string} version The application type version.
      *
@@ -2948,14 +3401,18 @@ export interface Version {
 
 
     /**
-     * Returns all versions for the specified application type.
+     * @summary Gets the list of application type version resources created in the
+     * specified Service Fabric application type name resource.
+     *
+     * Gets all application type version resources created or in the process of
+     * being created in the Service Fabric application type name resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2964,21 +3421,25 @@ export interface Version {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<VersionResourceList>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ApplicationTypeVersionResourceList>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VersionResourceList>>;
+    listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeVersionResourceList>>;
 
     /**
-     * Returns all versions for the specified application type.
+     * @summary Gets the list of application type version resources created in the
+     * specified Service Fabric application type name resource.
+     *
+     * Gets all application type version resources created or in the process of
+     * being created in the Service Fabric application type name resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationTypeName The name of the application type name
-     * resource
+     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2992,7 +3453,7 @@ export interface Version {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {VersionResourceList} - The deserialized result object.
+     *                      @resolve {ApplicationTypeVersionResourceList} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3000,33 +3461,201 @@ export interface Version {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {VersionResourceList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VersionResourceList} for more information.
+     *                      {ApplicationTypeVersionResourceList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationTypeVersionResourceList} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, clusterName: string, applicationTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VersionResourceList>;
-    list(resourceGroupName: string, clusterName: string, applicationTypeName: string, callback: ServiceCallback<models.VersionResourceList>): void;
-    list(resourceGroupName: string, clusterName: string, applicationTypeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VersionResourceList>): void;
+    list(resourceGroupName: string, clusterName: string, applicationTypeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeVersionResourceList>;
+    list(resourceGroupName: string, clusterName: string, applicationTypeName: string, callback: ServiceCallback<models.ApplicationTypeVersionResourceList>): void;
+    list(resourceGroupName: string, clusterName: string, applicationTypeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeVersionResourceList>): void;
+
+
+    /**
+     * @summary Creates or updates a Service Fabric application type version
+     * resource.
+     *
+     * Create or update a Service Fabric application type version resource with the
+     * specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationTypeName The name of the application type name
+     * resource.
+     *
+     * @param {string} version The application type version.
+     *
+     * @param {object} parameters The application type version resource.
+     *
+     * @param {string} parameters.appPackageUrl The URL to the application package
+     *
+     * @param {string} [parameters.location] Azure resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationTypeVersionResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.ApplicationTypeVersionResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationTypeVersionResource>>;
+
+    /**
+     * @summary Creates or updates a Service Fabric application type version
+     * resource.
+     *
+     * Create or update a Service Fabric application type version resource with the
+     * specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationTypeName The name of the application type name
+     * resource.
+     *
+     * @param {string} version The application type version.
+     *
+     * @param {object} parameters The application type version resource.
+     *
+     * @param {string} parameters.appPackageUrl The URL to the application package
+     *
+     * @param {string} [parameters.location] Azure resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationTypeVersionResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationTypeVersionResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationTypeVersionResource} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.ApplicationTypeVersionResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationTypeVersionResource>;
+    beginCreate(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.ApplicationTypeVersionResource, callback: ServiceCallback<models.ApplicationTypeVersionResource>): void;
+    beginCreate(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, parameters: models.ApplicationTypeVersionResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationTypeVersionResource>): void;
+
+
+    /**
+     * @summary Deletes a Service Fabric application type version resource.
+     *
+     * Delete a Service Fabric application type version resource with the specified
+     * name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationTypeName The name of the application type name
+     * resource.
+     *
+     * @param {string} version The application type version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a Service Fabric application type version resource.
+     *
+     * Delete a Service Fabric application type version resource with the specified
+     * name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationTypeName The name of the application type name
+     * resource.
+     *
+     * @param {string} version The application type version.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, applicationTypeName: string, version: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
  * @class
- * Application
+ * Applications
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ServiceFabricManagementClient.
  */
-export interface Application {
+export interface Applications {
 
 
     /**
-     * Returns an application resource with the specified name.
+     * @summary Gets a Service Fabric application resource.
+     *
+     * Get a Service Fabric application resource created or in the process of being
+     * created in the Service Fabric cluster resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -3044,11 +3673,14 @@ export interface Application {
     getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResource>>;
 
     /**
-     * Returns an application resource with the specified name.
+     * @summary Gets a Service Fabric application resource.
+     *
+     * Get a Service Fabric application resource created or in the process of being
+     * created in the Service Fabric cluster resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -3085,44 +3717,94 @@ export interface Application {
 
 
     /**
-     * Creates or updates an application resource with the specified name.
+     * @summary Creates or updates a Service Fabric application resource.
+     *
+     * Create or update a Service Fabric application resource with the specified
+     * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
      * @param {object} parameters The application resource.
      *
-     * @param {string} [parameters.typeVersion]
+     * @param {string} [parameters.typeVersion] The version of the application type
+     * as defined in the application manifest.
      *
-     * @param {array} [parameters.parameters]
+     * @param {object} [parameters.parameters] List of application parameters with
+     * overridden values from their default values specified in the application
+     * manifest.
      *
-     * @param {object} [parameters.upgradePolicy]
+     * @param {object} [parameters.upgradePolicy] Describes the policy for a
+     * monitored application upgrade.
      *
-     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout]
+     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout] The
+     * maximum amount of time to block processing of an upgrade domain and prevent
+     * loss of availability when there are unexpected issues. When this timeout
+     * expires, processing of the upgrade domain will proceed regardless of
+     * availability loss issues. The timeout is reset at the start of each upgrade
+     * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+     * 32-bit integer).
      *
-     * @param {boolean} [parameters.upgradePolicy.forceRestart]
+     * @param {boolean} [parameters.upgradePolicy.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
      *
      * @param {object} [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy]
+     * The policy used for monitoring the application upgrade
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+     * The amount of time to wait after completing an upgrade domain before
+     * applying health policies. It is first interpreted as a string representing
+     * an ISO 8601 duration. If that fails, then it is interpreted as a number
+     * representing the total number of milliseconds.
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+     * The amount of time that the application or cluster must remain healthy
+     * before the upgrade proceeds to the next upgrade domain. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+     * The amount of time to retry health evaluation when the application or
+     * cluster is unhealthy before FailureAction is executed. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
      *
      * @param {string}
-     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout]
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout] The
+     * amount of time the overall upgrade has to complete before FailureAction is
+     * executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+     * The amount of time each upgrade domain has to complete before FailureAction
+     * is executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
      *
-     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy]
+     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy] Defines a
+     * health policy used to evaluate the health of an application or one of its
+     * children entities.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * The health policy used by default to evaluate the health of a service type.
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicies]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
      *
      * @param {boolean}
      * [parameters.upgradePolicy.applicationHealthPolicy.considerWarningAsError]
@@ -3143,56 +3825,19 @@ export interface Application {
      *
      *
      * @param {object}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1]
+     * The health policy used by default to evaluate the health of a service type.
      *
      * @param {number}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
-     * The maximum allowed percentage of unhealthy partitions per service. Allowed
-     * values are Byte values from zero to 100
-     *
-     * The percentage represents the maximum tolerated percentage of partitions
-     * that can be unhealthy before the service is considered in error.
-     * If the percentage is respected but there is at least one unhealthy
-     * partition, the health is evaluated as Warning.
-     * The percentage is calculated by dividing the number of unhealthy partitions
-     * over the total number of partitions in the service.
-     * The computation rounds up to tolerate one failure on small numbers of
-     * partitions. Default percentage is zero.
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1.maxPercentUnhealthyServices]
+     * The maximum percentage of services allowed to be unhealthy before your
+     * application is considered in error.
      *
      *
-     * @param {number}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
-     * The maximum allowed percentage of unhealthy replicas per partition. Allowed
-     * values are Byte values from zero to 100.
-     *
-     * The percentage represents the maximum tolerated percentage of replicas that
-     * can be unhealthy before the partition is considered in error.
-     * If the percentage is respected but there is at least one unhealthy replica,
-     * the health is evaluated as Warning.
-     * The percentage is calculated by dividing the number of unhealthy replicas
-     * over the total number of replicas in the partition.
-     * The computation rounds up to tolerate one failure on small numbers of
-     * replicas. Default percentage is zero.
-     *
-     *
-     * @param {number}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-     * The maximum maximum allowed percentage of unhealthy services. Allowed values
-     * are Byte values from zero to 100.
-     *
-     * The percentage represents the maximum tolerated percentage of services that
-     * can be unhealthy before the application is considered in error.
-     * If the percentage is respected but there is at least one unhealthy service,
-     * the health is evaluated as Warning.
-     * This is calculated by dividing the number of unhealthy services of the
-     * specific service type over the total number of services of the specific
-     * service type.
-     * The computation rounds up to tolerate one failure on small numbers of
-     * services. Default percentage is zero.
-     *
-     *
-     * @param {array}
+     * @param {object}
      * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
      *
      * @param {number} [parameters.minimumNodes] The minimum number of nodes where
      * Service Fabric will reserve capacity for this application. Note that this
@@ -3207,14 +3852,16 @@ export interface Application {
      * those nodes. By default, the value of this property is zero and it means
      * that the services can be placed on any node.
      *
-     * @param {boolean} [parameters.removeApplicationCapacity] The version of the
-     * application type
+     * @param {boolean} [parameters.removeApplicationCapacity] Remove the current
+     * application capacity settings.
      *
-     * @param {array} [parameters.metrics]
+     * @param {array} [parameters.metrics] List of application capacity metric
+     * description.
      *
-     * @param {string} [parameters.typeName]
+     * @param {string} [parameters.typeName] The application type name as defined
+     * in the application manifest.
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Azure resource location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3227,47 +3874,97 @@ export interface Application {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    putWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResource>>;
+    createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResource>>;
 
     /**
-     * Creates or updates an application resource with the specified name.
+     * @summary Creates or updates a Service Fabric application resource.
+     *
+     * Create or update a Service Fabric application resource with the specified
+     * name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
      * @param {object} parameters The application resource.
      *
-     * @param {string} [parameters.typeVersion]
+     * @param {string} [parameters.typeVersion] The version of the application type
+     * as defined in the application manifest.
      *
-     * @param {array} [parameters.parameters]
+     * @param {object} [parameters.parameters] List of application parameters with
+     * overridden values from their default values specified in the application
+     * manifest.
      *
-     * @param {object} [parameters.upgradePolicy]
+     * @param {object} [parameters.upgradePolicy] Describes the policy for a
+     * monitored application upgrade.
      *
-     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout]
+     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout] The
+     * maximum amount of time to block processing of an upgrade domain and prevent
+     * loss of availability when there are unexpected issues. When this timeout
+     * expires, processing of the upgrade domain will proceed regardless of
+     * availability loss issues. The timeout is reset at the start of each upgrade
+     * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+     * 32-bit integer).
      *
-     * @param {boolean} [parameters.upgradePolicy.forceRestart]
+     * @param {boolean} [parameters.upgradePolicy.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
      *
      * @param {object} [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy]
+     * The policy used for monitoring the application upgrade
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+     * The amount of time to wait after completing an upgrade domain before
+     * applying health policies. It is first interpreted as a string representing
+     * an ISO 8601 duration. If that fails, then it is interpreted as a number
+     * representing the total number of milliseconds.
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+     * The amount of time that the application or cluster must remain healthy
+     * before the upgrade proceeds to the next upgrade domain. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+     * The amount of time to retry health evaluation when the application or
+     * cluster is unhealthy before FailureAction is executed. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
      *
      * @param {string}
-     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout]
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout] The
+     * amount of time the overall upgrade has to complete before FailureAction is
+     * executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+     * The amount of time each upgrade domain has to complete before FailureAction
+     * is executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
      *
-     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy]
+     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy] Defines a
+     * health policy used to evaluate the health of an application or one of its
+     * children entities.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * The health policy used by default to evaluate the health of a service type.
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicies]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
      *
      * @param {boolean}
      * [parameters.upgradePolicy.applicationHealthPolicy.considerWarningAsError]
@@ -3288,56 +3985,19 @@ export interface Application {
      *
      *
      * @param {object}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1]
+     * The health policy used by default to evaluate the health of a service type.
      *
      * @param {number}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
-     * The maximum allowed percentage of unhealthy partitions per service. Allowed
-     * values are Byte values from zero to 100
-     *
-     * The percentage represents the maximum tolerated percentage of partitions
-     * that can be unhealthy before the service is considered in error.
-     * If the percentage is respected but there is at least one unhealthy
-     * partition, the health is evaluated as Warning.
-     * The percentage is calculated by dividing the number of unhealthy partitions
-     * over the total number of partitions in the service.
-     * The computation rounds up to tolerate one failure on small numbers of
-     * partitions. Default percentage is zero.
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1.maxPercentUnhealthyServices]
+     * The maximum percentage of services allowed to be unhealthy before your
+     * application is considered in error.
      *
      *
-     * @param {number}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
-     * The maximum allowed percentage of unhealthy replicas per partition. Allowed
-     * values are Byte values from zero to 100.
-     *
-     * The percentage represents the maximum tolerated percentage of replicas that
-     * can be unhealthy before the partition is considered in error.
-     * If the percentage is respected but there is at least one unhealthy replica,
-     * the health is evaluated as Warning.
-     * The percentage is calculated by dividing the number of unhealthy replicas
-     * over the total number of replicas in the partition.
-     * The computation rounds up to tolerate one failure on small numbers of
-     * replicas. Default percentage is zero.
-     *
-     *
-     * @param {number}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-     * The maximum maximum allowed percentage of unhealthy services. Allowed values
-     * are Byte values from zero to 100.
-     *
-     * The percentage represents the maximum tolerated percentage of services that
-     * can be unhealthy before the application is considered in error.
-     * If the percentage is respected but there is at least one unhealthy service,
-     * the health is evaluated as Warning.
-     * This is calculated by dividing the number of unhealthy services of the
-     * specific service type over the total number of services of the specific
-     * service type.
-     * The computation rounds up to tolerate one failure on small numbers of
-     * services. Default percentage is zero.
-     *
-     *
-     * @param {array}
+     * @param {object}
      * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
      *
      * @param {number} [parameters.minimumNodes] The minimum number of nodes where
      * Service Fabric will reserve capacity for this application. Note that this
@@ -3352,14 +4012,16 @@ export interface Application {
      * those nodes. By default, the value of this property is zero and it means
      * that the services can be placed on any node.
      *
-     * @param {boolean} [parameters.removeApplicationCapacity] The version of the
-     * application type
+     * @param {boolean} [parameters.removeApplicationCapacity] Remove the current
+     * application capacity settings.
      *
-     * @param {array} [parameters.metrics]
+     * @param {array} [parameters.metrics] List of application capacity metric
+     * description.
      *
-     * @param {string} [parameters.typeName]
+     * @param {string} [parameters.typeName] The application type name as defined
+     * in the application manifest.
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Azure resource location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3388,50 +4050,99 @@ export interface Application {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    put(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResource>;
-    put(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResource, callback: ServiceCallback<models.ApplicationResource>): void;
-    put(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResource>): void;
+    create(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResource>;
+    create(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResource, callback: ServiceCallback<models.ApplicationResource>): void;
+    create(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResource>): void;
 
 
     /**
-     * Updates an application resource with the specified name.
+     * @summary Updates a Service Fabric application resource.
+     *
+     * Update a Service Fabric application resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
      * @param {object} parameters The application resource for patch operations.
      *
-     * @param {string} [parameters.typeVersion]
+     * @param {string} [parameters.typeVersion] The version of the application type
+     * as defined in the application manifest.
      *
-     * @param {array} [parameters.parameters]
+     * @param {object} [parameters.parameters] List of application parameters with
+     * overridden values from their default values specified in the application
+     * manifest.
      *
-     * @param {object} [parameters.upgradePolicy]
+     * @param {object} [parameters.upgradePolicy] Describes the policy for a
+     * monitored application upgrade.
      *
-     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout]
+     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout] The
+     * maximum amount of time to block processing of an upgrade domain and prevent
+     * loss of availability when there are unexpected issues. When this timeout
+     * expires, processing of the upgrade domain will proceed regardless of
+     * availability loss issues. The timeout is reset at the start of each upgrade
+     * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+     * 32-bit integer).
      *
-     * @param {boolean} [parameters.upgradePolicy.forceRestart]
+     * @param {boolean} [parameters.upgradePolicy.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
      *
      * @param {object} [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy]
+     * The policy used for monitoring the application upgrade
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+     * The amount of time to wait after completing an upgrade domain before
+     * applying health policies. It is first interpreted as a string representing
+     * an ISO 8601 duration. If that fails, then it is interpreted as a number
+     * representing the total number of milliseconds.
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+     * The amount of time that the application or cluster must remain healthy
+     * before the upgrade proceeds to the next upgrade domain. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+     * The amount of time to retry health evaluation when the application or
+     * cluster is unhealthy before FailureAction is executed. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
      *
      * @param {string}
-     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout]
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout] The
+     * amount of time the overall upgrade has to complete before FailureAction is
+     * executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+     * The amount of time each upgrade domain has to complete before FailureAction
+     * is executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
      *
-     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy]
+     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy] Defines a
+     * health policy used to evaluate the health of an application or one of its
+     * children entities.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * The health policy used by default to evaluate the health of a service type.
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicies]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
      *
      * @param {boolean}
      * [parameters.upgradePolicy.applicationHealthPolicy.considerWarningAsError]
@@ -3452,56 +4163,19 @@ export interface Application {
      *
      *
      * @param {object}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1]
+     * The health policy used by default to evaluate the health of a service type.
      *
      * @param {number}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
-     * The maximum allowed percentage of unhealthy partitions per service. Allowed
-     * values are Byte values from zero to 100
-     *
-     * The percentage represents the maximum tolerated percentage of partitions
-     * that can be unhealthy before the service is considered in error.
-     * If the percentage is respected but there is at least one unhealthy
-     * partition, the health is evaluated as Warning.
-     * The percentage is calculated by dividing the number of unhealthy partitions
-     * over the total number of partitions in the service.
-     * The computation rounds up to tolerate one failure on small numbers of
-     * partitions. Default percentage is zero.
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1.maxPercentUnhealthyServices]
+     * The maximum percentage of services allowed to be unhealthy before your
+     * application is considered in error.
      *
      *
-     * @param {number}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
-     * The maximum allowed percentage of unhealthy replicas per partition. Allowed
-     * values are Byte values from zero to 100.
-     *
-     * The percentage represents the maximum tolerated percentage of replicas that
-     * can be unhealthy before the partition is considered in error.
-     * If the percentage is respected but there is at least one unhealthy replica,
-     * the health is evaluated as Warning.
-     * The percentage is calculated by dividing the number of unhealthy replicas
-     * over the total number of replicas in the partition.
-     * The computation rounds up to tolerate one failure on small numbers of
-     * replicas. Default percentage is zero.
-     *
-     *
-     * @param {number}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-     * The maximum maximum allowed percentage of unhealthy services. Allowed values
-     * are Byte values from zero to 100.
-     *
-     * The percentage represents the maximum tolerated percentage of services that
-     * can be unhealthy before the application is considered in error.
-     * If the percentage is respected but there is at least one unhealthy service,
-     * the health is evaluated as Warning.
-     * This is calculated by dividing the number of unhealthy services of the
-     * specific service type over the total number of services of the specific
-     * service type.
-     * The computation rounds up to tolerate one failure on small numbers of
-     * services. Default percentage is zero.
-     *
-     *
-     * @param {array}
+     * @param {object}
      * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
      *
      * @param {number} [parameters.minimumNodes] The minimum number of nodes where
      * Service Fabric will reserve capacity for this application. Note that this
@@ -3516,12 +4190,13 @@ export interface Application {
      * those nodes. By default, the value of this property is zero and it means
      * that the services can be placed on any node.
      *
-     * @param {boolean} [parameters.removeApplicationCapacity] The version of the
-     * application type
+     * @param {boolean} [parameters.removeApplicationCapacity] Remove the current
+     * application capacity settings.
      *
-     * @param {array} [parameters.metrics]
+     * @param {array} [parameters.metrics] List of application capacity metric
+     * description.
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Azure resource location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3534,47 +4209,96 @@ export interface Application {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    patchWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceUpdate>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceUpdate>>;
 
     /**
-     * Updates an application resource with the specified name.
+     * @summary Updates a Service Fabric application resource.
+     *
+     * Update a Service Fabric application resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
      * @param {object} parameters The application resource for patch operations.
      *
-     * @param {string} [parameters.typeVersion]
+     * @param {string} [parameters.typeVersion] The version of the application type
+     * as defined in the application manifest.
      *
-     * @param {array} [parameters.parameters]
+     * @param {object} [parameters.parameters] List of application parameters with
+     * overridden values from their default values specified in the application
+     * manifest.
      *
-     * @param {object} [parameters.upgradePolicy]
+     * @param {object} [parameters.upgradePolicy] Describes the policy for a
+     * monitored application upgrade.
      *
-     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout]
+     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout] The
+     * maximum amount of time to block processing of an upgrade domain and prevent
+     * loss of availability when there are unexpected issues. When this timeout
+     * expires, processing of the upgrade domain will proceed regardless of
+     * availability loss issues. The timeout is reset at the start of each upgrade
+     * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+     * 32-bit integer).
      *
-     * @param {boolean} [parameters.upgradePolicy.forceRestart]
+     * @param {boolean} [parameters.upgradePolicy.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
      *
      * @param {object} [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy]
+     * The policy used for monitoring the application upgrade
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+     * The amount of time to wait after completing an upgrade domain before
+     * applying health policies. It is first interpreted as a string representing
+     * an ISO 8601 duration. If that fails, then it is interpreted as a number
+     * representing the total number of milliseconds.
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+     * The amount of time that the application or cluster must remain healthy
+     * before the upgrade proceeds to the next upgrade domain. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+     * The amount of time to retry health evaluation when the application or
+     * cluster is unhealthy before FailureAction is executed. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
      *
      * @param {string}
-     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout]
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout] The
+     * amount of time the overall upgrade has to complete before FailureAction is
+     * executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
      *
      * @param {string}
      * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+     * The amount of time each upgrade domain has to complete before FailureAction
+     * is executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
      *
-     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy]
+     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy] Defines a
+     * health policy used to evaluate the health of an application or one of its
+     * children entities.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * The health policy used by default to evaluate the health of a service type.
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicies]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
      *
      * @param {boolean}
      * [parameters.upgradePolicy.applicationHealthPolicy.considerWarningAsError]
@@ -3595,56 +4319,19 @@ export interface Application {
      *
      *
      * @param {object}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1]
+     * The health policy used by default to evaluate the health of a service type.
      *
      * @param {number}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyPartitionsPerService]
-     * The maximum allowed percentage of unhealthy partitions per service. Allowed
-     * values are Byte values from zero to 100
-     *
-     * The percentage represents the maximum tolerated percentage of partitions
-     * that can be unhealthy before the service is considered in error.
-     * If the percentage is respected but there is at least one unhealthy
-     * partition, the health is evaluated as Warning.
-     * The percentage is calculated by dividing the number of unhealthy partitions
-     * over the total number of partitions in the service.
-     * The computation rounds up to tolerate one failure on small numbers of
-     * partitions. Default percentage is zero.
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1.maxPercentUnhealthyServices]
+     * The maximum percentage of services allowed to be unhealthy before your
+     * application is considered in error.
      *
      *
-     * @param {number}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
-     * The maximum allowed percentage of unhealthy replicas per partition. Allowed
-     * values are Byte values from zero to 100.
-     *
-     * The percentage represents the maximum tolerated percentage of replicas that
-     * can be unhealthy before the partition is considered in error.
-     * If the percentage is respected but there is at least one unhealthy replica,
-     * the health is evaluated as Warning.
-     * The percentage is calculated by dividing the number of unhealthy replicas
-     * over the total number of replicas in the partition.
-     * The computation rounds up to tolerate one failure on small numbers of
-     * replicas. Default percentage is zero.
-     *
-     *
-     * @param {number}
-     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
-     * The maximum maximum allowed percentage of unhealthy services. Allowed values
-     * are Byte values from zero to 100.
-     *
-     * The percentage represents the maximum tolerated percentage of services that
-     * can be unhealthy before the application is considered in error.
-     * If the percentage is respected but there is at least one unhealthy service,
-     * the health is evaluated as Warning.
-     * This is calculated by dividing the number of unhealthy services of the
-     * specific service type over the total number of services of the specific
-     * service type.
-     * The computation rounds up to tolerate one failure on small numbers of
-     * services. Default percentage is zero.
-     *
-     *
-     * @param {array}
+     * @param {object}
      * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
      *
      * @param {number} [parameters.minimumNodes] The minimum number of nodes where
      * Service Fabric will reserve capacity for this application. Note that this
@@ -3659,12 +4346,13 @@ export interface Application {
      * those nodes. By default, the value of this property is zero and it means
      * that the services can be placed on any node.
      *
-     * @param {boolean} [parameters.removeApplicationCapacity] The version of the
-     * application type
+     * @param {boolean} [parameters.removeApplicationCapacity] Remove the current
+     * application capacity settings.
      *
-     * @param {array} [parameters.metrics]
+     * @param {array} [parameters.metrics] List of application capacity metric
+     * description.
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Azure resource location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3694,17 +4382,19 @@ export interface Application {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    patch(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceUpdate>;
-    patch(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResourceUpdate, callback: ServiceCallback<models.ApplicationResourceUpdate>): void;
-    patch(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResourceUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceUpdate>): void;
+    update(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceUpdate>;
+    update(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResourceUpdate, callback: ServiceCallback<models.ApplicationResourceUpdate>): void;
+    update(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResourceUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceUpdate>): void;
 
 
     /**
-     * Deletes an application resource with the specified name.
+     * @summary Deletes a Service Fabric application resource.
+     *
+     * Delete a Service Fabric application resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -3722,11 +4412,13 @@ export interface Application {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes an application resource with the specified name.
+     * @summary Deletes a Service Fabric application resource.
+     *
+     * Delete a Service Fabric application resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -3762,11 +4454,15 @@ export interface Application {
 
 
     /**
-     * Returns all application resources in the specified cluster.
+     * @summary Gets the list of application resources created in the specified
+     * Service Fabric cluster resource.
+     *
+     * Gets all application resources created or in the process of being created in
+     * the Service Fabric cluster resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3782,11 +4478,15 @@ export interface Application {
     listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceList>>;
 
     /**
-     * Returns all application resources in the specified cluster.
+     * @summary Gets the list of application resources created in the specified
+     * Service Fabric cluster resource.
+     *
+     * Gets all application resources created or in the process of being created in
+     * the Service Fabric cluster resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3819,23 +4519,763 @@ export interface Application {
     list(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceList>;
     list(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ApplicationResourceList>): void;
     list(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceList>): void;
+
+
+    /**
+     * @summary Creates or updates a Service Fabric application resource.
+     *
+     * Create or update a Service Fabric application resource with the specified
+     * name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationName The name of the application resource.
+     *
+     * @param {object} parameters The application resource.
+     *
+     * @param {string} [parameters.typeVersion] The version of the application type
+     * as defined in the application manifest.
+     *
+     * @param {object} [parameters.parameters] List of application parameters with
+     * overridden values from their default values specified in the application
+     * manifest.
+     *
+     * @param {object} [parameters.upgradePolicy] Describes the policy for a
+     * monitored application upgrade.
+     *
+     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout] The
+     * maximum amount of time to block processing of an upgrade domain and prevent
+     * loss of availability when there are unexpected issues. When this timeout
+     * expires, processing of the upgrade domain will proceed regardless of
+     * availability loss issues. The timeout is reset at the start of each upgrade
+     * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+     * 32-bit integer).
+     *
+     * @param {boolean} [parameters.upgradePolicy.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
+     *
+     * @param {object} [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy]
+     * The policy used for monitoring the application upgrade
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+     * The amount of time to wait after completing an upgrade domain before
+     * applying health policies. It is first interpreted as a string representing
+     * an ISO 8601 duration. If that fails, then it is interpreted as a number
+     * representing the total number of milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+     * The amount of time that the application or cluster must remain healthy
+     * before the upgrade proceeds to the next upgrade domain. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+     * The amount of time to retry health evaluation when the application or
+     * cluster is unhealthy before FailureAction is executed. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout] The
+     * amount of time the overall upgrade has to complete before FailureAction is
+     * executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+     * The amount of time each upgrade domain has to complete before FailureAction
+     * is executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
+     *
+     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy] Defines a
+     * health policy used to evaluate the health of an application or one of its
+     * children entities.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * The health policy used by default to evaluate the health of a service type.
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicies]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.applicationHealthPolicy.considerWarningAsError]
+     * Indicates whether warnings are treated with the same severity as errors.
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+     * The maximum allowed percentage of unhealthy deployed applications. Allowed
+     * values are Byte values from zero to 100.
+     * The percentage represents the maximum tolerated percentage of deployed
+     * applications that can be unhealthy before the application is considered in
+     * error.
+     * This is calculated by dividing the number of unhealthy deployed applications
+     * over the number of nodes where the application is currently deployed on in
+     * the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1]
+     * The health policy used by default to evaluate the health of a service type.
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1.maxPercentUnhealthyServices]
+     * The maximum percentage of services allowed to be unhealthy before your
+     * application is considered in error.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
+     *
+     * @param {number} [parameters.minimumNodes] The minimum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. If this property is set to zero, no capacity will be reserved.
+     * The value of this property cannot be more than the value of the MaximumNodes
+     * property.
+     *
+     * @param {number} [parameters.maximumNodes] The maximum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. By default, the value of this property is zero and it means
+     * that the services can be placed on any node.
+     *
+     * @param {boolean} [parameters.removeApplicationCapacity] Remove the current
+     * application capacity settings.
+     *
+     * @param {array} [parameters.metrics] List of application capacity metric
+     * description.
+     *
+     * @param {string} [parameters.typeName] The application type name as defined
+     * in the application manifest.
+     *
+     * @param {string} [parameters.location] Azure resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResource>>;
+
+    /**
+     * @summary Creates or updates a Service Fabric application resource.
+     *
+     * Create or update a Service Fabric application resource with the specified
+     * name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationName The name of the application resource.
+     *
+     * @param {object} parameters The application resource.
+     *
+     * @param {string} [parameters.typeVersion] The version of the application type
+     * as defined in the application manifest.
+     *
+     * @param {object} [parameters.parameters] List of application parameters with
+     * overridden values from their default values specified in the application
+     * manifest.
+     *
+     * @param {object} [parameters.upgradePolicy] Describes the policy for a
+     * monitored application upgrade.
+     *
+     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout] The
+     * maximum amount of time to block processing of an upgrade domain and prevent
+     * loss of availability when there are unexpected issues. When this timeout
+     * expires, processing of the upgrade domain will proceed regardless of
+     * availability loss issues. The timeout is reset at the start of each upgrade
+     * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+     * 32-bit integer).
+     *
+     * @param {boolean} [parameters.upgradePolicy.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
+     *
+     * @param {object} [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy]
+     * The policy used for monitoring the application upgrade
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+     * The amount of time to wait after completing an upgrade domain before
+     * applying health policies. It is first interpreted as a string representing
+     * an ISO 8601 duration. If that fails, then it is interpreted as a number
+     * representing the total number of milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+     * The amount of time that the application or cluster must remain healthy
+     * before the upgrade proceeds to the next upgrade domain. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+     * The amount of time to retry health evaluation when the application or
+     * cluster is unhealthy before FailureAction is executed. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout] The
+     * amount of time the overall upgrade has to complete before FailureAction is
+     * executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+     * The amount of time each upgrade domain has to complete before FailureAction
+     * is executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
+     *
+     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy] Defines a
+     * health policy used to evaluate the health of an application or one of its
+     * children entities.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * The health policy used by default to evaluate the health of a service type.
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicies]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.applicationHealthPolicy.considerWarningAsError]
+     * Indicates whether warnings are treated with the same severity as errors.
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+     * The maximum allowed percentage of unhealthy deployed applications. Allowed
+     * values are Byte values from zero to 100.
+     * The percentage represents the maximum tolerated percentage of deployed
+     * applications that can be unhealthy before the application is considered in
+     * error.
+     * This is calculated by dividing the number of unhealthy deployed applications
+     * over the number of nodes where the application is currently deployed on in
+     * the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1]
+     * The health policy used by default to evaluate the health of a service type.
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1.maxPercentUnhealthyServices]
+     * The maximum percentage of services allowed to be unhealthy before your
+     * application is considered in error.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
+     *
+     * @param {number} [parameters.minimumNodes] The minimum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. If this property is set to zero, no capacity will be reserved.
+     * The value of this property cannot be more than the value of the MaximumNodes
+     * property.
+     *
+     * @param {number} [parameters.maximumNodes] The maximum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. By default, the value of this property is zero and it means
+     * that the services can be placed on any node.
+     *
+     * @param {boolean} [parameters.removeApplicationCapacity] Remove the current
+     * application capacity settings.
+     *
+     * @param {array} [parameters.metrics] List of application capacity metric
+     * description.
+     *
+     * @param {string} [parameters.typeName] The application type name as defined
+     * in the application manifest.
+     *
+     * @param {string} [parameters.location] Azure resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResource>;
+    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResource, callback: ServiceCallback<models.ApplicationResource>): void;
+    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResource>): void;
+
+
+    /**
+     * @summary Updates a Service Fabric application resource.
+     *
+     * Update a Service Fabric application resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationName The name of the application resource.
+     *
+     * @param {object} parameters The application resource for patch operations.
+     *
+     * @param {string} [parameters.typeVersion] The version of the application type
+     * as defined in the application manifest.
+     *
+     * @param {object} [parameters.parameters] List of application parameters with
+     * overridden values from their default values specified in the application
+     * manifest.
+     *
+     * @param {object} [parameters.upgradePolicy] Describes the policy for a
+     * monitored application upgrade.
+     *
+     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout] The
+     * maximum amount of time to block processing of an upgrade domain and prevent
+     * loss of availability when there are unexpected issues. When this timeout
+     * expires, processing of the upgrade domain will proceed regardless of
+     * availability loss issues. The timeout is reset at the start of each upgrade
+     * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+     * 32-bit integer).
+     *
+     * @param {boolean} [parameters.upgradePolicy.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
+     *
+     * @param {object} [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy]
+     * The policy used for monitoring the application upgrade
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+     * The amount of time to wait after completing an upgrade domain before
+     * applying health policies. It is first interpreted as a string representing
+     * an ISO 8601 duration. If that fails, then it is interpreted as a number
+     * representing the total number of milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+     * The amount of time that the application or cluster must remain healthy
+     * before the upgrade proceeds to the next upgrade domain. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+     * The amount of time to retry health evaluation when the application or
+     * cluster is unhealthy before FailureAction is executed. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout] The
+     * amount of time the overall upgrade has to complete before FailureAction is
+     * executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+     * The amount of time each upgrade domain has to complete before FailureAction
+     * is executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
+     *
+     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy] Defines a
+     * health policy used to evaluate the health of an application or one of its
+     * children entities.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * The health policy used by default to evaluate the health of a service type.
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicies]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.applicationHealthPolicy.considerWarningAsError]
+     * Indicates whether warnings are treated with the same severity as errors.
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+     * The maximum allowed percentage of unhealthy deployed applications. Allowed
+     * values are Byte values from zero to 100.
+     * The percentage represents the maximum tolerated percentage of deployed
+     * applications that can be unhealthy before the application is considered in
+     * error.
+     * This is calculated by dividing the number of unhealthy deployed applications
+     * over the number of nodes where the application is currently deployed on in
+     * the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1]
+     * The health policy used by default to evaluate the health of a service type.
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1.maxPercentUnhealthyServices]
+     * The maximum percentage of services allowed to be unhealthy before your
+     * application is considered in error.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
+     *
+     * @param {number} [parameters.minimumNodes] The minimum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. If this property is set to zero, no capacity will be reserved.
+     * The value of this property cannot be more than the value of the MaximumNodes
+     * property.
+     *
+     * @param {number} [parameters.maximumNodes] The maximum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. By default, the value of this property is zero and it means
+     * that the services can be placed on any node.
+     *
+     * @param {boolean} [parameters.removeApplicationCapacity] Remove the current
+     * application capacity settings.
+     *
+     * @param {array} [parameters.metrics] List of application capacity metric
+     * description.
+     *
+     * @param {string} [parameters.location] Azure resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ApplicationResourceUpdate>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationResourceUpdate>>;
+
+    /**
+     * @summary Updates a Service Fabric application resource.
+     *
+     * Update a Service Fabric application resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationName The name of the application resource.
+     *
+     * @param {object} parameters The application resource for patch operations.
+     *
+     * @param {string} [parameters.typeVersion] The version of the application type
+     * as defined in the application manifest.
+     *
+     * @param {object} [parameters.parameters] List of application parameters with
+     * overridden values from their default values specified in the application
+     * manifest.
+     *
+     * @param {object} [parameters.upgradePolicy] Describes the policy for a
+     * monitored application upgrade.
+     *
+     * @param {number} [parameters.upgradePolicy.upgradeReplicaSetCheckTimeout] The
+     * maximum amount of time to block processing of an upgrade domain and prevent
+     * loss of availability when there are unexpected issues. When this timeout
+     * expires, processing of the upgrade domain will proceed regardless of
+     * availability loss issues. The timeout is reset at the start of each upgrade
+     * domain. Valid values are between 0 and 42949672925 inclusive. (unsigned
+     * 32-bit integer).
+     *
+     * @param {boolean} [parameters.upgradePolicy.forceRestart] If true, then
+     * processes are forcefully restarted during upgrade even when the code version
+     * has not changed (the upgrade only changes configuration or data).
+     *
+     * @param {object} [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy]
+     * The policy used for monitoring the application upgrade
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckWaitDuration]
+     * The amount of time to wait after completing an upgrade domain before
+     * applying health policies. It is first interpreted as a string representing
+     * an ISO 8601 duration. If that fails, then it is interpreted as a number
+     * representing the total number of milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckStableDuration]
+     * The amount of time that the application or cluster must remain healthy
+     * before the upgrade proceeds to the next upgrade domain. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.healthCheckRetryTimeout]
+     * The amount of time to retry health evaluation when the application or
+     * cluster is unhealthy before FailureAction is executed. It is first
+     * interpreted as a string representing an ISO 8601 duration. If that fails,
+     * then it is interpreted as a number representing the total number of
+     * milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeTimeout] The
+     * amount of time the overall upgrade has to complete before FailureAction is
+     * executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
+     *
+     * @param {string}
+     * [parameters.upgradePolicy.rollingUpgradeMonitoringPolicy.upgradeDomainTimeout]
+     * The amount of time each upgrade domain has to complete before FailureAction
+     * is executed. It is first interpreted as a string representing an ISO 8601
+     * duration. If that fails, then it is interpreted as a number representing the
+     * total number of milliseconds.
+     *
+     * @param {object} [parameters.upgradePolicy.applicationHealthPolicy] Defines a
+     * health policy used to evaluate the health of an application or one of its
+     * children entities.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
+     * The health policy used by default to evaluate the health of a service type.
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicies]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
+     *
+     * @param {boolean}
+     * [parameters.upgradePolicy.applicationHealthPolicy.considerWarningAsError]
+     * Indicates whether warnings are treated with the same severity as errors.
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.maxPercentUnhealthyDeployedApplications]
+     * The maximum allowed percentage of unhealthy deployed applications. Allowed
+     * values are Byte values from zero to 100.
+     * The percentage represents the maximum tolerated percentage of deployed
+     * applications that can be unhealthy before the application is considered in
+     * error.
+     * This is calculated by dividing the number of unhealthy deployed applications
+     * over the number of nodes where the application is currently deployed on in
+     * the cluster.
+     * The computation rounds up to tolerate one failure on small numbers of nodes.
+     * Default percentage is zero.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1]
+     * The health policy used by default to evaluate the health of a service type.
+     *
+     * @param {number}
+     * [parameters.upgradePolicy.applicationHealthPolicy.defaultServiceTypeHealthPolicy1.maxPercentUnhealthyServices]
+     * The maximum percentage of services allowed to be unhealthy before your
+     * application is considered in error.
+     *
+     *
+     * @param {object}
+     * [parameters.upgradePolicy.applicationHealthPolicy.serviceTypeHealthPolicyMap]
+     * The map with service type health policy per service type name. The map is
+     * empty by default.
+     *
+     * @param {number} [parameters.minimumNodes] The minimum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. If this property is set to zero, no capacity will be reserved.
+     * The value of this property cannot be more than the value of the MaximumNodes
+     * property.
+     *
+     * @param {number} [parameters.maximumNodes] The maximum number of nodes where
+     * Service Fabric will reserve capacity for this application. Note that this
+     * does not mean that the services of this application will be placed on all of
+     * those nodes. By default, the value of this property is zero and it means
+     * that the services can be placed on any node.
+     *
+     * @param {boolean} [parameters.removeApplicationCapacity] Remove the current
+     * application capacity settings.
+     *
+     * @param {array} [parameters.metrics] List of application capacity metric
+     * description.
+     *
+     * @param {string} [parameters.location] Azure resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ApplicationResourceUpdate} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ApplicationResourceUpdate} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ApplicationResourceUpdate} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationResourceUpdate>;
+    beginUpdate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResourceUpdate, callback: ServiceCallback<models.ApplicationResourceUpdate>): void;
+    beginUpdate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationResourceUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationResourceUpdate>): void;
+
+
+    /**
+     * @summary Deletes a Service Fabric application resource.
+     *
+     * Delete a Service Fabric application resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationName The name of the application resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a Service Fabric application resource.
+     *
+     * Delete a Service Fabric application resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationName The name of the application resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, applicationName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, applicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
  * @class
- * Service
+ * Services
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ServiceFabricManagementClient.
  */
-export interface Service {
+export interface Services {
 
 
     /**
-     * Returns a service resource with the specified name.
+     * @summary Gets a Service Fabric service resource.
+     *
+     * Get a Service Fabric service resource created or in the process of being
+     * created in the Service Fabric application resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -3856,11 +5296,14 @@ export interface Service {
     getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResource>>;
 
     /**
-     * Returns a service resource with the specified name.
+     * @summary Gets a Service Fabric service resource.
+     *
+     * Get a Service Fabric service resource created or in the process of being
+     * created in the Service Fabric application resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -3900,11 +5343,13 @@ export interface Service {
 
 
     /**
-     * Creates or updates a service resource with the specified name.
+     * @summary Creates or updates a Service Fabric service resource.
+     *
+     * Create or update a Service Fabric service resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -3919,28 +5364,29 @@ export interface Service {
      * the service requirements. For example, to place a service on nodes where
      * NodeType is blue specify the following: "NodeColor == blue)".
      *
-     * @param {array} [parameters.correlationScheme]
+     * @param {array} [parameters.correlationScheme] A list that describes the
+     * correlation of the service with other services.
      *
-     * @param {array} [parameters.serviceLoadMetrics]
+     * @param {array} [parameters.serviceLoadMetrics] The service load metrics is
+     * given as an array of ServiceLoadMetricDescription objects.
      *
-     * @param {array} [parameters.servicePlacementPolicies]
+     * @param {array} [parameters.servicePlacementPolicies] A list that describes
+     * the correlation of the service with other services.
      *
-     * @param {string} [parameters.defaultMoveCost] Possible values include:
-     * 'Zero', 'Low', 'Medium', 'High'
-     *
-     * @param {string} [parameters.serviceKind] Possible values include: 'Invalid',
-     * 'Stateless', 'Stateful'
+     * @param {string} [parameters.defaultMoveCost] Specifies the move cost for the
+     * service. Possible values include: 'Zero', 'Low', 'Medium', 'High'
      *
      * @param {string} [parameters.serviceTypeName] The name of the service type
      *
-     * @param {object} [parameters.partitionDescription]
+     * @param {object} [parameters.partitionDescription] Describes how the service
+     * is partitioned.
      *
      * @param {string} parameters.partitionDescription.partitionScheme Polymorphic
      * Discriminator
      *
-     * @param {string} parameters.serviceResourceType Polymorphic Discriminator
+     * @param {string} parameters.serviceKind Polymorphic Discriminator
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Azure resource location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3953,14 +5399,16 @@ export interface Service {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    putWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResource>>;
+    createWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResource>>;
 
     /**
-     * Creates or updates a service resource with the specified name.
+     * @summary Creates or updates a Service Fabric service resource.
+     *
+     * Create or update a Service Fabric service resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -3975,28 +5423,29 @@ export interface Service {
      * the service requirements. For example, to place a service on nodes where
      * NodeType is blue specify the following: "NodeColor == blue)".
      *
-     * @param {array} [parameters.correlationScheme]
+     * @param {array} [parameters.correlationScheme] A list that describes the
+     * correlation of the service with other services.
      *
-     * @param {array} [parameters.serviceLoadMetrics]
+     * @param {array} [parameters.serviceLoadMetrics] The service load metrics is
+     * given as an array of ServiceLoadMetricDescription objects.
      *
-     * @param {array} [parameters.servicePlacementPolicies]
+     * @param {array} [parameters.servicePlacementPolicies] A list that describes
+     * the correlation of the service with other services.
      *
-     * @param {string} [parameters.defaultMoveCost] Possible values include:
-     * 'Zero', 'Low', 'Medium', 'High'
-     *
-     * @param {string} [parameters.serviceKind] Possible values include: 'Invalid',
-     * 'Stateless', 'Stateful'
+     * @param {string} [parameters.defaultMoveCost] Specifies the move cost for the
+     * service. Possible values include: 'Zero', 'Low', 'Medium', 'High'
      *
      * @param {string} [parameters.serviceTypeName] The name of the service type
      *
-     * @param {object} [parameters.partitionDescription]
+     * @param {object} [parameters.partitionDescription] Describes how the service
+     * is partitioned.
      *
      * @param {string} parameters.partitionDescription.partitionScheme Polymorphic
      * Discriminator
      *
-     * @param {string} parameters.serviceResourceType Polymorphic Discriminator
+     * @param {string} parameters.serviceKind Polymorphic Discriminator
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Azure resource location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4025,17 +5474,19 @@ export interface Service {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    put(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResource>;
-    put(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResource, callback: ServiceCallback<models.ServiceResource>): void;
-    put(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResource>): void;
+    create(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResource>;
+    create(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResource, callback: ServiceCallback<models.ServiceResource>): void;
+    create(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResource>): void;
 
 
     /**
-     * Updates a service resource with the specified name.
+     * @summary Updates a Service Fabric service resource.
+     *
+     * Update a Service Fabric service resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -4050,18 +5501,21 @@ export interface Service {
      * the service requirements. For example, to place a service on nodes where
      * NodeType is blue specify the following: "NodeColor == blue)".
      *
-     * @param {array} [parameters.correlationScheme]
+     * @param {array} [parameters.correlationScheme] A list that describes the
+     * correlation of the service with other services.
      *
-     * @param {array} [parameters.serviceLoadMetrics]
+     * @param {array} [parameters.serviceLoadMetrics] The service load metrics is
+     * given as an array of ServiceLoadMetricDescription objects.
      *
-     * @param {array} [parameters.servicePlacementPolicies]
+     * @param {array} [parameters.servicePlacementPolicies] A list that describes
+     * the correlation of the service with other services.
      *
-     * @param {string} [parameters.defaultMoveCost] Possible values include:
-     * 'Zero', 'Low', 'Medium', 'High'
+     * @param {string} [parameters.defaultMoveCost] Specifies the move cost for the
+     * service. Possible values include: 'Zero', 'Low', 'Medium', 'High'
      *
-     * @param {string} parameters.serviceResourceType Polymorphic Discriminator
+     * @param {string} parameters.serviceKind Polymorphic Discriminator
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Azure resource location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4074,14 +5528,16 @@ export interface Service {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    patchWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResourceUpdate>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResourceUpdate>>;
 
     /**
-     * Updates a service resource with the specified name.
+     * @summary Updates a Service Fabric service resource.
+     *
+     * Update a Service Fabric service resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -4096,18 +5552,21 @@ export interface Service {
      * the service requirements. For example, to place a service on nodes where
      * NodeType is blue specify the following: "NodeColor == blue)".
      *
-     * @param {array} [parameters.correlationScheme]
+     * @param {array} [parameters.correlationScheme] A list that describes the
+     * correlation of the service with other services.
      *
-     * @param {array} [parameters.serviceLoadMetrics]
+     * @param {array} [parameters.serviceLoadMetrics] The service load metrics is
+     * given as an array of ServiceLoadMetricDescription objects.
      *
-     * @param {array} [parameters.servicePlacementPolicies]
+     * @param {array} [parameters.servicePlacementPolicies] A list that describes
+     * the correlation of the service with other services.
      *
-     * @param {string} [parameters.defaultMoveCost] Possible values include:
-     * 'Zero', 'Low', 'Medium', 'High'
+     * @param {string} [parameters.defaultMoveCost] Specifies the move cost for the
+     * service. Possible values include: 'Zero', 'Low', 'Medium', 'High'
      *
-     * @param {string} parameters.serviceResourceType Polymorphic Discriminator
+     * @param {string} parameters.serviceKind Polymorphic Discriminator
      *
-     * @param {string} parameters.location Resource location.
+     * @param {string} [parameters.location] Azure resource location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4136,17 +5595,19 @@ export interface Service {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    patch(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResourceUpdate>;
-    patch(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResourceUpdate, callback: ServiceCallback<models.ServiceResourceUpdate>): void;
-    patch(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResourceUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResourceUpdate>): void;
+    update(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResourceUpdate>;
+    update(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResourceUpdate, callback: ServiceCallback<models.ServiceResourceUpdate>): void;
+    update(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResourceUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResourceUpdate>): void;
 
 
     /**
-     * Deletes a service resource with the specified name.
+     * @summary Deletes a Service Fabric service resource.
+     *
+     * Delete a Service Fabric service resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -4167,11 +5628,13 @@ export interface Service {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes a service resource with the specified name.
+     * @summary Deletes a Service Fabric service resource.
+     *
+     * Delete a Service Fabric service resource with the specified name.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -4210,11 +5673,15 @@ export interface Service {
 
 
     /**
-     * Returns all service resources in the specified application.
+     * @summary Gets the list of service resources created in the specified Service
+     * Fabric application resource.
+     *
+     * Gets all service resources created or in the process of being created in the
+     * Service Fabric application resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -4232,11 +5699,15 @@ export interface Service {
     listWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResourceList>>;
 
     /**
-     * Returns all service resources in the specified application.
+     * @summary Gets the list of service resources created in the specified Service
+     * Fabric application resource.
+     *
+     * Gets all service resources created or in the process of being created in the
+     * Service Fabric application resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
-     * @param {string} clusterName The name of the cluster resource
+     * @param {string} clusterName The name of the cluster resource.
      *
      * @param {string} applicationName The name of the application resource.
      *
@@ -4270,4 +5741,334 @@ export interface Service {
     list(resourceGroupName: string, clusterName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResourceList>;
     list(resourceGroupName: string, clusterName: string, applicationName: string, callback: ServiceCallback<models.ServiceResourceList>): void;
     list(resourceGroupName: string, clusterName: string, applicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResourceList>): void;
+
+
+    /**
+     * @summary Creates or updates a Service Fabric service resource.
+     *
+     * Create or update a Service Fabric service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationName The name of the application resource.
+     *
+     * @param {string} serviceName The name of the service resource in the format
+     * of {applicationName}~{serviceName}.
+     *
+     * @param {object} parameters The service resource.
+     *
+     * @param {string} [parameters.placementConstraints] The placement constraints
+     * as a string. Placement constraints are boolean expressions on node
+     * properties and allow for restricting a service to particular nodes based on
+     * the service requirements. For example, to place a service on nodes where
+     * NodeType is blue specify the following: "NodeColor == blue)".
+     *
+     * @param {array} [parameters.correlationScheme] A list that describes the
+     * correlation of the service with other services.
+     *
+     * @param {array} [parameters.serviceLoadMetrics] The service load metrics is
+     * given as an array of ServiceLoadMetricDescription objects.
+     *
+     * @param {array} [parameters.servicePlacementPolicies] A list that describes
+     * the correlation of the service with other services.
+     *
+     * @param {string} [parameters.defaultMoveCost] Specifies the move cost for the
+     * service. Possible values include: 'Zero', 'Low', 'Medium', 'High'
+     *
+     * @param {string} [parameters.serviceTypeName] The name of the service type
+     *
+     * @param {object} [parameters.partitionDescription] Describes how the service
+     * is partitioned.
+     *
+     * @param {string} parameters.partitionDescription.partitionScheme Polymorphic
+     * Discriminator
+     *
+     * @param {string} parameters.serviceKind Polymorphic Discriminator
+     *
+     * @param {string} [parameters.location] Azure resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResource>>;
+
+    /**
+     * @summary Creates or updates a Service Fabric service resource.
+     *
+     * Create or update a Service Fabric service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationName The name of the application resource.
+     *
+     * @param {string} serviceName The name of the service resource in the format
+     * of {applicationName}~{serviceName}.
+     *
+     * @param {object} parameters The service resource.
+     *
+     * @param {string} [parameters.placementConstraints] The placement constraints
+     * as a string. Placement constraints are boolean expressions on node
+     * properties and allow for restricting a service to particular nodes based on
+     * the service requirements. For example, to place a service on nodes where
+     * NodeType is blue specify the following: "NodeColor == blue)".
+     *
+     * @param {array} [parameters.correlationScheme] A list that describes the
+     * correlation of the service with other services.
+     *
+     * @param {array} [parameters.serviceLoadMetrics] The service load metrics is
+     * given as an array of ServiceLoadMetricDescription objects.
+     *
+     * @param {array} [parameters.servicePlacementPolicies] A list that describes
+     * the correlation of the service with other services.
+     *
+     * @param {string} [parameters.defaultMoveCost] Specifies the move cost for the
+     * service. Possible values include: 'Zero', 'Low', 'Medium', 'High'
+     *
+     * @param {string} [parameters.serviceTypeName] The name of the service type
+     *
+     * @param {object} [parameters.partitionDescription] Describes how the service
+     * is partitioned.
+     *
+     * @param {string} parameters.partitionDescription.partitionScheme Polymorphic
+     * Discriminator
+     *
+     * @param {string} parameters.serviceKind Polymorphic Discriminator
+     *
+     * @param {string} [parameters.location] Azure resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResource>;
+    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResource, callback: ServiceCallback<models.ServiceResource>): void;
+    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResource>): void;
+
+
+    /**
+     * @summary Updates a Service Fabric service resource.
+     *
+     * Update a Service Fabric service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationName The name of the application resource.
+     *
+     * @param {string} serviceName The name of the service resource in the format
+     * of {applicationName}~{serviceName}.
+     *
+     * @param {object} parameters The service resource for patch operations.
+     *
+     * @param {string} [parameters.placementConstraints] The placement constraints
+     * as a string. Placement constraints are boolean expressions on node
+     * properties and allow for restricting a service to particular nodes based on
+     * the service requirements. For example, to place a service on nodes where
+     * NodeType is blue specify the following: "NodeColor == blue)".
+     *
+     * @param {array} [parameters.correlationScheme] A list that describes the
+     * correlation of the service with other services.
+     *
+     * @param {array} [parameters.serviceLoadMetrics] The service load metrics is
+     * given as an array of ServiceLoadMetricDescription objects.
+     *
+     * @param {array} [parameters.servicePlacementPolicies] A list that describes
+     * the correlation of the service with other services.
+     *
+     * @param {string} [parameters.defaultMoveCost] Specifies the move cost for the
+     * service. Possible values include: 'Zero', 'Low', 'Medium', 'High'
+     *
+     * @param {string} parameters.serviceKind Polymorphic Discriminator
+     *
+     * @param {string} [parameters.location] Azure resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServiceResourceUpdate>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceResourceUpdate>>;
+
+    /**
+     * @summary Updates a Service Fabric service resource.
+     *
+     * Update a Service Fabric service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationName The name of the application resource.
+     *
+     * @param {string} serviceName The name of the service resource in the format
+     * of {applicationName}~{serviceName}.
+     *
+     * @param {object} parameters The service resource for patch operations.
+     *
+     * @param {string} [parameters.placementConstraints] The placement constraints
+     * as a string. Placement constraints are boolean expressions on node
+     * properties and allow for restricting a service to particular nodes based on
+     * the service requirements. For example, to place a service on nodes where
+     * NodeType is blue specify the following: "NodeColor == blue)".
+     *
+     * @param {array} [parameters.correlationScheme] A list that describes the
+     * correlation of the service with other services.
+     *
+     * @param {array} [parameters.serviceLoadMetrics] The service load metrics is
+     * given as an array of ServiceLoadMetricDescription objects.
+     *
+     * @param {array} [parameters.servicePlacementPolicies] A list that describes
+     * the correlation of the service with other services.
+     *
+     * @param {string} [parameters.defaultMoveCost] Specifies the move cost for the
+     * service. Possible values include: 'Zero', 'Low', 'Medium', 'High'
+     *
+     * @param {string} parameters.serviceKind Polymorphic Discriminator
+     *
+     * @param {string} [parameters.location] Azure resource location.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServiceResourceUpdate} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServiceResourceUpdate} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServiceResourceUpdate} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResourceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceResourceUpdate>;
+    beginUpdate(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResourceUpdate, callback: ServiceCallback<models.ServiceResourceUpdate>): void;
+    beginUpdate(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, parameters: models.ServiceResourceUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceResourceUpdate>): void;
+
+
+    /**
+     * @summary Deletes a Service Fabric service resource.
+     *
+     * Delete a Service Fabric service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationName The name of the application resource.
+     *
+     * @param {string} serviceName The name of the service resource in the format
+     * of {applicationName}~{serviceName}.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a Service Fabric service resource.
+     *
+     * Delete a Service Fabric service resource with the specified name.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster resource.
+     *
+     * @param {string} applicationName The name of the application resource.
+     *
+     * @param {string} serviceName The name of the service resource in the format
+     * of {applicationName}~{serviceName}.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, clusterName: string, applicationName: string, serviceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }

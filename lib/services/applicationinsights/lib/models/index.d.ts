@@ -629,12 +629,16 @@ export interface ApplicationInsightsComponent extends Resource {
  *
  * @member {string} [column] The column of the table over which the given query
  * should run
- * @member {string} [filter] A query to to run over the provided table and
- * column to purge the corresponding data.
+ * @member {string} [operator] A query operator to evaluate over the provided
+ * column and value(s).
+ * @member {object} [value] the value for the operator to function over. This
+ * can be a number (e.g., > 100), a string (timestamp >= '2017-09-01') or array
+ * of values.
  */
 export interface ComponentPurgeBodyFilters {
   column?: string;
-  filter?: string;
+  operator?: string;
+  value?: any;
 }
 
 /**
@@ -874,6 +878,164 @@ export interface WebTest extends Resource {
   locations: WebTestGeolocation[];
   configuration?: WebTestPropertiesConfiguration;
   readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentAnalyticsItemProperties class.
+ * @constructor
+ * A set of properties that can be defined in the context of a specific item
+ * type. Each type may have its own properties.
+ *
+ * @member {string} [functionAlias] A function alias, used when the type of the
+ * item is Function
+ */
+export interface ApplicationInsightsComponentAnalyticsItemProperties {
+  functionAlias?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationInsightsComponentAnalyticsItem class.
+ * @constructor
+ * Properties that define an Analytics item that is associated to an
+ * Application Insights component.
+ *
+ * @member {string} [id] Internally assigned unique id of the item definition.
+ * @member {string} [name] The user-defined name of the item.
+ * @member {string} [content] The content of this item
+ * @member {string} [version] This instance's version of the data model. This
+ * can change as new features are added.
+ * @member {string} [scope] Enum indicating if this item definition is owned by
+ * a specific user or is shared between all users with access to the
+ * Application Insights component. Possible values include: 'shared', 'user'
+ * @member {string} [type] Enum indicating the type of the Analytics item.
+ * Possible values include: 'query', 'function', 'folder', 'recent'
+ * @member {string} [timeCreated] Date and time in UTC when this item was
+ * created.
+ * @member {string} [timeModified] Date and time in UTC of the last
+ * modification that was made to this item.
+ * @member {object} [properties]
+ * @member {string} [properties.functionAlias] A function alias, used when the
+ * type of the item is Function
+ */
+export interface ApplicationInsightsComponentAnalyticsItem {
+  id?: string;
+  name?: string;
+  content?: string;
+  readonly version?: string;
+  scope?: string;
+  type?: string;
+  readonly timeCreated?: string;
+  readonly timeModified?: string;
+  properties?: ApplicationInsightsComponentAnalyticsItemProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Workbook class.
+ * @constructor
+ * An Application Insights workbook definition.
+ *
+ * @member {string} [kind] The kind of workbook. Choices are user and shared.
+ * Possible values include: 'user', 'shared'
+ * @member {string} workbookName The user-defined name of the workbook.
+ * @member {string} serializedData Configuration of this particular workbook.
+ * Configuration data is a string containing valid JSON
+ * @member {string} [version] This instance's version of the data model. This
+ * can change as new features are added that can be marked workbook.
+ * @member {string} workbookId Internally assigned unique id of the workbook
+ * definition.
+ * @member {string} sharedTypeKind Enum indicating if this workbook definition
+ * is owned by a specific user or is shared between all users with access to
+ * the Application Insights component. Possible values include: 'user',
+ * 'shared'. Default value: 'shared' .
+ * @member {string} [timeModified] Date and time in UTC of the last
+ * modification that was made to this workbook definition.
+ * @member {string} category Workbook category, as defined by the user at
+ * creation time.
+ * @member {array} [workbookTags] A list of 0 or more tags that are associated
+ * with this workbook definition
+ * @member {string} userId Unique user id of the specific user that owns this
+ * workbook.
+ * @member {string} [sourceResourceId] Optional resourceId for a source
+ * resource.
+ */
+export interface Workbook extends Resource {
+  kind?: string;
+  workbookName: string;
+  serializedData: string;
+  version?: string;
+  workbookId: string;
+  sharedTypeKind: string;
+  readonly timeModified?: string;
+  category: string;
+  workbookTags?: string[];
+  userId: string;
+  sourceResourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Workbooks class.
+ * @constructor
+ * Workbook list result.
+ *
+ * @member {array} [value] An array of workbooks.
+ */
+export interface Workbooks {
+  value?: Workbook[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinkProperties class.
+ * @constructor
+ * Contains a sourceId and workbook resource id to link two resources.
+ *
+ * @member {string} [sourceId] The source Azure resource id
+ * @member {string} [targetId] The workbook Azure resource id
+ * @member {string} [category] The category of workbook
+ */
+export interface LinkProperties {
+  sourceId?: string;
+  targetId?: string;
+  category?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorFieldContract class.
+ * @constructor
+ * Error Field contract.
+ *
+ * @member {string} [code] Property level error code.
+ * @member {string} [message] Human-readable representation of property-level
+ * error.
+ * @member {string} [target] Property name.
+ */
+export interface ErrorFieldContract {
+  code?: string;
+  message?: string;
+  target?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkbookError class.
+ * @constructor
+ * Error message body that will indicate why the operation failed.
+ *
+ * @member {string} [code] Service-defined error code. This code serves as a
+ * sub-status for the HTTP error code specified in the response.
+ * @member {string} [message] Human-readable representation of the error.
+ * @member {array} [details] The list of invalid fields send in request, in
+ * case of validation error.
+ */
+export interface WorkbookError {
+  code?: string;
+  message?: string;
+  details?: ErrorFieldContract[];
 }
 
 

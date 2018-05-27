@@ -25,6 +25,9 @@ export interface CustomInstance {
      * @summary The Custom Search API lets you send a search query to Bing and get
      * back web pages found in your custom view of the web.
      *
+     * @param {number} customConfig The identifier for the custom search
+     * configuration
+     *
      * @param {string} query The user's search query term. The term may not be
      * empty. The term may contain Bing Advanced Operators. For example, to limit
      * results to a specific domain, use the site: operator.
@@ -130,9 +133,6 @@ export interface CustomInstance {
      * the user's physical location (for example, if the client uses VPN). For
      * optimal results, you should include this header and the X-MSEdge-ClientIP
      * header, but at a minimum, you should include this header.
-     *
-     * @param {number} [options.customConfig] The identifier for the custom search
-     * configuration
      *
      * @param {string} [options.countryCode] A 2-character country code of the
      * country where the results come from. This API supports only the United
@@ -230,11 +230,14 @@ export interface CustomInstance {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    searchWithHttpOperationResponse(query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, customConfig? : number, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SearchResponse>>;
+    searchWithHttpOperationResponse(customConfig: number, query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SearchResponse>>;
 
     /**
      * @summary The Custom Search API lets you send a search query to Bing and get
      * back web pages found in your custom view of the web.
+     *
+     * @param {number} customConfig The identifier for the custom search
+     * configuration
      *
      * @param {string} query The user's search query term. The term may not be
      * empty. The term may contain Bing Advanced Operators. For example, to limit
@@ -341,9 +344,6 @@ export interface CustomInstance {
      * the user's physical location (for example, if the client uses VPN). For
      * optimal results, you should include this header and the X-MSEdge-ClientIP
      * header, but at a minimum, you should include this header.
-     *
-     * @param {number} [options.customConfig] The identifier for the custom search
-     * configuration
      *
      * @param {string} [options.countryCode] A 2-character country code of the
      * country where the results come from. This API supports only the United
@@ -457,7 +457,7 @@ export interface CustomInstance {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    search(query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, customConfig? : number, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SearchResponse>;
-    search(query: string, callback: ServiceCallback<models.SearchResponse>): void;
-    search(query: string, options: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, customConfig? : number, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SearchResponse>): void;
+    search(customConfig: number, query: string, options?: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SearchResponse>;
+    search(customConfig: number, query: string, callback: ServiceCallback<models.SearchResponse>): void;
+    search(customConfig: number, query: string, options: { acceptLanguage? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, count? : number, market? : string, offset? : number, safeSearch? : string, setLang? : string, textDecorations? : boolean, textFormat? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SearchResponse>): void;
 }

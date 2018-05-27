@@ -568,9 +568,9 @@ export interface Servers {
      *
      * @param {string} [parameters.version] The version of the server.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -612,9 +612,9 @@ export interface Servers {
      *
      * @param {string} [parameters.version] The version of the server.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -824,9 +824,9 @@ export interface Servers {
      *
      * @param {string} [parameters.version] The version of the server.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -868,9 +868,9 @@ export interface Servers {
      *
      * @param {string} [parameters.version] The version of the server.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3190,18 +3190,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -3294,9 +3299,9 @@ export interface Databases {
      * connection string may be routed to a readonly secondary replica in the same
      * region. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3326,18 +3331,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -3430,9 +3440,9 @@ export interface Databases {
      * connection string may be routed to a readonly secondary replica in the same
      * region. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3547,18 +3557,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -3681,18 +3696,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -4546,18 +4566,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -4650,9 +4675,9 @@ export interface Databases {
      * connection string may be routed to a readonly secondary replica in the same
      * region. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4682,18 +4707,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -4786,9 +4816,9 @@ export interface Databases {
      * connection string may be routed to a readonly secondary replica in the same
      * region. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4903,18 +4933,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -5037,18 +5072,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -5724,18 +5764,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -5756,9 +5801,9 @@ export interface ElasticPools {
      * @param {string} [parameters.licenseType] The license type to apply for this
      * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5788,18 +5833,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -5820,9 +5870,9 @@ export interface ElasticPools {
      * @param {string} [parameters.licenseType] The license type to apply for this
      * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5937,18 +5987,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -5999,18 +6054,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -6080,18 +6140,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -6112,9 +6177,9 @@ export interface ElasticPools {
      * @param {string} [parameters.licenseType] The license type to apply for this
      * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6144,18 +6209,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -6176,9 +6246,9 @@ export interface ElasticPools {
      * @param {string} [parameters.licenseType] The license type to apply for this
      * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6293,18 +6363,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -6355,18 +6430,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -10712,18 +10792,23 @@ export interface ManagedInstances {
      *
      * @param {object} [parameters.sku] Managed instance sku
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.administratorLogin] Administrator username for
      * the managed instance. Can only be specified when the managed instance is
@@ -10742,9 +10827,9 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10780,18 +10865,23 @@ export interface ManagedInstances {
      *
      * @param {object} [parameters.sku] Managed instance sku
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.administratorLogin] Administrator username for
      * the managed instance. Can only be specified when the managed instance is
@@ -10810,9 +10900,9 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10921,18 +11011,23 @@ export interface ManagedInstances {
      *
      * @param {object} [parameters.sku] Managed instance sku
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.administratorLogin] Administrator username for
      * the managed instance. Can only be specified when the managed instance is
@@ -10979,18 +11074,23 @@ export interface ManagedInstances {
      *
      * @param {object} [parameters.sku] Managed instance sku
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.administratorLogin] Administrator username for
      * the managed instance. Can only be specified when the managed instance is
@@ -11064,18 +11164,23 @@ export interface ManagedInstances {
      *
      * @param {object} [parameters.sku] Managed instance sku
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.administratorLogin] Administrator username for
      * the managed instance. Can only be specified when the managed instance is
@@ -11094,9 +11199,9 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11132,18 +11237,23 @@ export interface ManagedInstances {
      *
      * @param {object} [parameters.sku] Managed instance sku
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.administratorLogin] Administrator username for
      * the managed instance. Can only be specified when the managed instance is
@@ -11162,9 +11272,9 @@ export interface ManagedInstances {
      *
      * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -11273,18 +11383,23 @@ export interface ManagedInstances {
      *
      * @param {object} [parameters.sku] Managed instance sku
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.administratorLogin] Administrator username for
      * the managed instance. Can only be specified when the managed instance is
@@ -11331,18 +11446,23 @@ export interface ManagedInstances {
      *
      * @param {object} [parameters.sku] Managed instance sku
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.administratorLogin] Administrator username for
      * the managed instance. Can only be specified when the managed instance is
@@ -18464,12 +18584,12 @@ export interface DatabaseVulnerabilityAssessments {
      *
      * @param {object} parameters The requested resource.
      *
-     * @param {string} [parameters.storageContainerPath] A blob storage container
+     * @param {string} parameters.storageContainerPath A blob storage container
      * path to hold the scan results (e.g.
      * https://myStorage.blob.core.windows.net/VaScans/).
      *
-     * @param {string} [parameters.storageContainerSasKey] A shared access
-     * signature (SAS Key) that has write access to the blob container specified in
+     * @param {string} parameters.storageContainerSasKey A shared access signature
+     * (SAS Key) that has write access to the blob container specified in
      * 'storageContainerPath' parameter.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
@@ -18511,12 +18631,12 @@ export interface DatabaseVulnerabilityAssessments {
      *
      * @param {object} parameters The requested resource.
      *
-     * @param {string} [parameters.storageContainerPath] A blob storage container
+     * @param {string} parameters.storageContainerPath A blob storage container
      * path to hold the scan results (e.g.
      * https://myStorage.blob.core.windows.net/VaScans/).
      *
-     * @param {string} [parameters.storageContainerSasKey] A shared access
-     * signature (SAS Key) that has write access to the blob container specified in
+     * @param {string} parameters.storageContainerSasKey A shared access signature
+     * (SAS Key) that has write access to the blob container specified in
      * 'storageContainerPath' parameter.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
@@ -18787,25 +18907,30 @@ export interface JobAgents {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} parameters.databaseId Resource ID of the database to store
      * job metadata in.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18836,25 +18961,30 @@ export interface JobAgents {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} parameters.databaseId Resource ID of the database to store
      * job metadata in.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19045,25 +19175,30 @@ export interface JobAgents {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} parameters.databaseId Resource ID of the database to store
      * job metadata in.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19094,25 +19229,30 @@ export interface JobAgents {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} parameters.databaseId Resource ID of the database to store
      * job metadata in.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -24070,9 +24210,9 @@ export interface ManagedDatabases {
      * createMode is RestoreExternalBackup, this value is required. Specifies the
      * storage container sas token.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -24130,9 +24270,9 @@ export interface ManagedDatabases {
      * createMode is RestoreExternalBackup, this value is required. Specifies the
      * storage container sas token.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -24482,9 +24622,9 @@ export interface ManagedDatabases {
      * createMode is RestoreExternalBackup, this value is required. Specifies the
      * storage container sas token.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -24542,9 +24682,9 @@ export interface ManagedDatabases {
      * createMode is RestoreExternalBackup, this value is required. Specifies the
      * storage container sas token.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -26588,7 +26728,7 @@ export interface DatabaseVulnerabilityAssessmentScans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    executeWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    initiateScanWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Executes a Vulnerability Assessment database scan.
@@ -26630,9 +26770,9 @@ export interface DatabaseVulnerabilityAssessmentScans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    execute(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    execute(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
-    execute(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
+    initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -26802,7 +26942,7 @@ export interface DatabaseVulnerabilityAssessmentScans {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginExecuteWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginInitiateScanWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Executes a Vulnerability Assessment database scan.
@@ -26844,9 +26984,9 @@ export interface DatabaseVulnerabilityAssessmentScans {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginExecute(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginExecute(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
-    beginExecute(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginInitiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginInitiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
+    beginInitiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -27785,11 +27925,11 @@ export interface InstanceFailoverGroups {
 
 /**
  * @class
- * ShortTermRetentionPolicies
+ * BackupShortTermRetentionPolicies
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
  */
-export interface ShortTermRetentionPolicies {
+export interface BackupShortTermRetentionPolicies {
 
 
     /**
@@ -27810,11 +27950,11 @@ export interface ShortTermRetentionPolicies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
 
     /**
      * Gets a database's short term retention policy.
@@ -27839,7 +27979,7 @@ export interface ShortTermRetentionPolicies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -27847,17 +27987,17 @@ export interface ShortTermRetentionPolicies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
 
 
     /**
@@ -27883,11 +28023,11 @@ export interface ShortTermRetentionPolicies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
 
     /**
      * Updates a database's short term retention policy.
@@ -27917,7 +28057,7 @@ export interface ShortTermRetentionPolicies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -27925,17 +28065,17 @@ export interface ShortTermRetentionPolicies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
 
 
     /**
@@ -27961,11 +28101,11 @@ export interface ShortTermRetentionPolicies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
 
     /**
      * Updates a database's short term retention policy.
@@ -27995,7 +28135,7 @@ export interface ShortTermRetentionPolicies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -28003,17 +28143,17 @@ export interface ShortTermRetentionPolicies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
+    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
 
 
     /**
@@ -28039,11 +28179,11 @@ export interface ShortTermRetentionPolicies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
 
     /**
      * Updates a database's short term retention policy.
@@ -28073,7 +28213,7 @@ export interface ShortTermRetentionPolicies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -28081,17 +28221,17 @@ export interface ShortTermRetentionPolicies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
 
 
     /**
@@ -28117,11 +28257,11 @@ export interface ShortTermRetentionPolicies {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ShortTermRetentionPolicy>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ShortTermRetentionPolicy>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
 
     /**
      * Updates a database's short term retention policy.
@@ -28151,7 +28291,7 @@ export interface ShortTermRetentionPolicies {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ShortTermRetentionPolicy} - The deserialized result object.
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -28159,15 +28299,15 @@ export interface ShortTermRetentionPolicies {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ShortTermRetentionPolicy} for more
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ShortTermRetentionPolicy>;
-    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
-    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ShortTermRetentionPolicy>): void;
+    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
 }
