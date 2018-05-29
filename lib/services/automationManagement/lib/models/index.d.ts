@@ -1558,12 +1558,15 @@ export interface RunAsCredentialAssociationProperty {
  * runbook workers.
  * @member {object} [credential] Sets the credential of a worker group.
  * @member {string} [credential.name] Gets or sets the name of the credential.
+ * @member {string} [groupType] Type of the HybridWorkerGroup. Possible values
+ * include: 'User', 'System'
  */
 export interface HybridRunbookWorkerGroup {
   id?: string;
   name?: string;
   hybridRunbookWorkers?: HybridRunbookWorker[];
   credential?: RunAsCredentialAssociationProperty;
+  groupType?: string;
 }
 
 /**
