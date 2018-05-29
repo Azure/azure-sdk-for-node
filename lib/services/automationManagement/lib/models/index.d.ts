@@ -399,10 +399,10 @@ export interface Watcher extends TrackedResource {
   scriptName?: string;
   scriptParameters?: { [propertyName: string]: string };
   scriptRunOn?: string;
-  status?: string;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  lastModifiedBy?: string;
+  readonly status?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly lastModifiedBy?: string;
   description?: string;
   etag?: string;
 }
@@ -1348,6 +1348,61 @@ export interface DscMetaConfiguration {
   certificateId?: string;
   refreshFrequencyMins?: number;
   allowModuleOverwrite?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update node configuration
+ * operation.
+ *
+ * @member {object} source Gets or sets the source.
+ * @member {object} [source.hash] Gets or sets the hash.
+ * @member {string} [source.hash.algorithm] Gets or sets the content hash
+ * algorithm used to hash the content.
+ * @member {string} [source.hash.value] Gets or sets expected hash value of the
+ * content.
+ * @member {string} [source.type] Gets or sets the content source type.
+ * Possible values include: 'embeddedContent', 'uri'
+ * @member {string} [source.value] Gets or sets the value of the content. This
+ * is based on the content source type.
+ * @member {string} [source.version] Gets or sets the version of the content.
+ * @member {string} name Name of the node configuration.
+ * @member {object} configuration Gets or sets the configuration of the node.
+ * @member {string} [configuration.name] Gets or sets the name of the Dsc
+ * configuration.
+ * @member {boolean} [newNodeConfigurationBuildVersionRequired] If a new build
+ * version of NodeConfiguration is required.
+ * @member {object} source1 Gets or sets the source.
+ * @member {object} [source1.hash] Gets or sets the hash.
+ * @member {string} [source1.hash.algorithm] Gets or sets the content hash
+ * algorithm used to hash the content.
+ * @member {string} [source1.hash.value] Gets or sets expected hash value of
+ * the content.
+ * @member {string} [source1.type] Gets or sets the content source type.
+ * Possible values include: 'embeddedContent', 'uri'
+ * @member {string} [source1.value] Gets or sets the value of the content. This
+ * is based on the content source type.
+ * @member {string} [source1.version] Gets or sets the version of the content.
+ * @member {string} name1 Gets or sets the type of the parameter.
+ * @member {object} configuration1 Gets or sets the configuration of the node.
+ * @member {string} [configuration1.name] Gets or sets the name of the Dsc
+ * configuration.
+ * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
+ * of NodeConfiguration is required.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface DscNodeConfigurationCreateOrUpdateParameters {
+  source: ContentSource;
+  name: string;
+  configuration: DscConfigurationAssociationProperty;
+  newNodeConfigurationBuildVersionRequired?: boolean;
+  source1: ContentSource;
+  name1: string;
+  configuration1: DscConfigurationAssociationProperty;
+  incrementNodeConfigurationBuild?: boolean;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -2351,32 +2406,6 @@ export interface WatcherUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the WatcherCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update watcher operation.
- *
- * @member {string} name Gets or sets the name of the watcher.
- * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
- * which the watcher is invoked.
- * @member {string} [scriptName] Gets or sets the name of the script the
- * watcher is attached to, i.e. the name of an existing runbook.
- * @member {object} [scriptParameters] Gets or sets the parameters of the
- * script.
- * @member {string} [scriptRunOn] Gets or sets the name of the hybrid worker
- * group the webhook job will run on.
- * @member {string} [description] Gets or sets the watcher's description.
- */
-export interface WatcherCreateOrUpdateParameters {
-  name: string;
-  executionFrequencyInSeconds?: number;
-  scriptName?: string;
-  scriptParameters?: { [propertyName: string]: string };
-  scriptRunOn?: string;
-  description?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the JobCollectionItem class.
  * @constructor
  * Job collection item properties.
@@ -3046,6 +3075,20 @@ export interface SourceControlSyncJobStream {
 
 /**
  * @class
+ * Initializes a new instance of the SourceControlSyncJobStreamsListBySyncJob class.
+ * @constructor
+ * The response model for the list source control sync job streams operation.
+ *
+ * @member {array} [value] Gets a list of source control sync job streams.
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface SourceControlSyncJobStreamsListBySyncJob {
+  value?: SourceControlSyncJobStream[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SourceControlSyncJobStreamById class.
  * @constructor
  * Definition of the source control sync job stream by id.
@@ -3127,40 +3170,6 @@ export interface DscNodeConfiguration extends ProxyResource {
   source?: string;
   nodeCount?: number;
   incrementNodeConfigurationBuild?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscNodeConfigurationCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update node configuration
- * operation.
- *
- * @member {object} source Gets or sets the source.
- * @member {object} [source.hash] Gets or sets the hash.
- * @member {string} [source.hash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [source.hash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [source.type] Gets or sets the content source type.
- * Possible values include: 'embeddedContent', 'uri'
- * @member {string} [source.value] Gets or sets the value of the content. This
- * is based on the content source type.
- * @member {string} [source.version] Gets or sets the version of the content.
- * @member {object} configuration Gets or sets the configuration of the node.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
- * of NodeConfiguration is required.
- * @member {string} [name] Name of the node configuration.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface DscNodeConfigurationCreateOrUpdateParameters {
-  source: ContentSource;
-  configuration: DscConfigurationAssociationProperty;
-  incrementNodeConfigurationBuild?: boolean;
-  name?: string;
-  tags?: { [propertyName: string]: string };
 }
 
 
@@ -3416,18 +3425,6 @@ export interface SourceControlListResult extends Array<SourceControl> {
  */
 export interface SourceControlSyncJobListResult extends Array<SourceControlSyncJob> {
   nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SourceControlSyncJobStreamsListBySyncJob class.
- * @constructor
- * The response model for the list source control sync job streams operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface SourceControlSyncJobStreamsListBySyncJob extends Array<SourceControlSyncJobStream> {
-  readonly nextLink?: string;
 }
 
 /**
