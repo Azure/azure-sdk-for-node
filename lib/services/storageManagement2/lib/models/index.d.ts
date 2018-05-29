@@ -1127,6 +1127,39 @@ export interface ListServiceSasResponse {
 
 /**
  * @class
+ * Initializes a new instance of the StorageAccountManagementPolicies class.
+ * @constructor
+ * The Get Storage Account ManagementPolicies operation response.
+ *
+ * @member {object} [policy] The Storage Account ManagementPolicies Rules, in
+ * JSON format. See more details in:
+ * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+ * @member {date} [lastModifiedTime] Returns the date and time the
+ * ManagementPolicies was last modified.
+ */
+export interface StorageAccountManagementPolicies extends Resource {
+  policy?: any;
+  readonly lastModifiedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagementPoliciesRulesSetParameter class.
+ * @constructor
+ * The Storage Account ManagementPolicies Rules, in JSON format. See more
+ * details in:
+ * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+ *
+ * @member {object} [policy] The Storage Account ManagementPolicies Rules, in
+ * JSON format. See more details in:
+ * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+ */
+export interface ManagementPoliciesRulesSetParameter {
+  policy?: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ProxyResource class.
  * @constructor
  * The resource model definition for a ARM proxy resource. It will have
