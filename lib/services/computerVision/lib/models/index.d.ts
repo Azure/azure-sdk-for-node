@@ -410,7 +410,8 @@ export interface OcrRegion {
  * @class
  * Initializes a new instance of the OcrResult class.
  * @constructor
- * @member {object} [language]
+ * @member {string} [language] The BCP-47 language code of the text in the
+ * image.
  * @member {number} [textAngle] The angle, in degrees, of the detected text
  * with respect to the closest horizontal or vertical direction. After rotating
  * the input image clockwise by this angle, the recognized text lines become
@@ -430,7 +431,7 @@ export interface OcrRegion {
  * a region of recognized text.
  */
 export interface OcrResult {
-  language?: OcrResult;
+  language?: string;
   textAngle?: number;
   orientation?: string;
   regions?: OcrRegion[];
@@ -469,8 +470,7 @@ export interface ListModelsResult {
  * Result of image analysis using a specific domain model including additional
  * metadata.
  *
- * @member {array} [celebrities] An array of possible celebritied identified in
- * the image.
+ * @member {object} [result] Model-specific response
  * @member {string} [requestId] Id of the REST API request.
  * @member {object} [metadata]
  * @member {number} [metadata.width] Image width
@@ -478,7 +478,59 @@ export interface ListModelsResult {
  * @member {string} [metadata.format] Image format
  */
 export interface DomainModelResults {
+  result?: any;
+  requestId?: string;
+  metadata?: ImageMetadata;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CelebrityResults class.
+ * @constructor
+ * List of celebrities recognized in the image.
+ *
+ * @member {array} [celebrities]
+ * @member {string} [requestId] Id of the REST API request.
+ * @member {object} [metadata]
+ * @member {number} [metadata.width] Image width
+ * @member {number} [metadata.height] Image height
+ * @member {string} [metadata.format] Image format
+ */
+export interface CelebrityResults {
   celebrities?: CelebritiesModel[];
+  requestId?: string;
+  metadata?: ImageMetadata;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LandmarkResultsLandmarksItem class.
+ * @constructor
+ * A landmark recognized in the image
+ *
+ * @member {string} [name] Name of the landmark.
+ * @member {number} [confidence] Confidence level for the landmark recognition.
+ */
+export interface LandmarkResultsLandmarksItem {
+  name?: string;
+  confidence?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LandmarkResults class.
+ * @constructor
+ * List of landmarks recognized in the image.
+ *
+ * @member {array} [landmarks]
+ * @member {string} [requestId] Id of the REST API request.
+ * @member {object} [metadata]
+ * @member {number} [metadata.width] Image width
+ * @member {number} [metadata.height] Image height
+ * @member {string} [metadata.format] Image format
+ */
+export interface LandmarkResults {
+  landmarks?: LandmarkResultsLandmarksItem[];
   requestId?: string;
   metadata?: ImageMetadata;
 }
