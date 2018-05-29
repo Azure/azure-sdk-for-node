@@ -5587,7 +5587,7 @@ export interface Maps {
      * @param {object} map The integration account map.
      *
      * @param {string} map.mapType The map type. Possible values include:
-     * 'NotSpecified', 'Xslt'
+     * 'NotSpecified', 'Xslt', 'Xslt20', 'Xslt30', 'Liquid'
      *
      * @param {object} [map.parametersSchema] The parameters schema of integration
      * account map.
@@ -5629,7 +5629,7 @@ export interface Maps {
      * @param {object} map The integration account map.
      *
      * @param {string} map.mapType The map type. Possible values include:
-     * 'NotSpecified', 'Xslt'
+     * 'NotSpecified', 'Xslt', 'Xslt20', 'Xslt30', 'Liquid'
      *
      * @param {object} [map.parametersSchema] The parameters schema of integration
      * account map.
