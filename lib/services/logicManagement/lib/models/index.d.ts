@@ -997,7 +997,7 @@ export interface IntegrationAccountMapPropertiesParametersSchema {
  * The integration account map.
  *
  * @member {string} mapType The map type. Possible values include:
- * 'NotSpecified', 'Xslt'
+ * 'NotSpecified', 'Xslt', 'Xslt20', 'Xslt30', 'Liquid'
  * @member {object} [parametersSchema] The parameters schema of integration
  * account map.
  * @member {string} [parametersSchema.ref] The reference name.
@@ -1035,7 +1035,7 @@ export interface IntegrationAccountMap extends Resource {
  * The integration account map filter for odata query.
  *
  * @member {string} mapType The map type of integration account map. Possible
- * values include: 'NotSpecified', 'Xslt'
+ * values include: 'NotSpecified', 'Xslt', 'Xslt20', 'Xslt30', 'Liquid'
  */
 export interface IntegrationAccountMapFilter {
   mapType: string;
