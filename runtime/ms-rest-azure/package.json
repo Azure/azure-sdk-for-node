@@ -29,7 +29,8 @@
     "uuid": "^3.2.1",
     "adal-node": "^0.1.27",
     "ms-rest": "^2.3.2",
-    "moment": "^2.20.1"
+    "moment": "^2.20.1",
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
