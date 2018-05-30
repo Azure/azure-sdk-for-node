@@ -204,9 +204,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier. If you specify either master VNet
-     * Subnet, or agent VNet Subnet, you need to specify both. And they have to be
-     * in the same VNet.
+     * specifies the vnet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -390,9 +388,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier. If you specify either master VNet
-     * Subnet, or agent VNet Subnet, you need to specify both. And they have to be
-     * in the same VNet.
+     * specifies the vnet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -876,9 +872,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier. If you specify either master VNet
-     * Subnet, or agent VNet Subnet, you need to specify both. And they have to be
-     * in the same VNet.
+     * specifies the vnet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -1062,9 +1056,7 @@ export interface ContainerServices {
      * the vmSize specified.
      *
      * @param {string} [parameters.masterProfile.vnetSubnetID] VNet SubnetID
-     * specifies the vnet's subnet identifier. If you specify either master VNet
-     * Subnet, or agent VNet Subnet, you need to specify both. And they have to be
-     * in the same VNet.
+     * specifies the vnet's subnet identifier.
      *
      * @param {string} [parameters.masterProfile.firstConsecutiveStaticIP]
      * FirstConsecutiveStaticIP used to specify the first static ip of masters.
@@ -1817,8 +1809,7 @@ export interface ManagedClusters {
      * 'kubenet'
      *
      * @param {string} [parameters.networkProfile.networkPolicy] Network policy
-     * used for building Kubernetes network. Possible values include: 'calico',
-     * 'cilium'
+     * used for building Kubernetes network. Possible values include: 'calico'
      *
      * @param {string} [parameters.networkProfile.podCidr] A CIDR notation IP range
      * from which to assign pod IPs when kubenet is used.
@@ -1940,8 +1931,7 @@ export interface ManagedClusters {
      * 'kubenet'
      *
      * @param {string} [parameters.networkProfile.networkPolicy] Network policy
-     * used for building Kubernetes network. Possible values include: 'calico',
-     * 'cilium'
+     * used for building Kubernetes network. Possible values include: 'calico'
      *
      * @param {string} [parameters.networkProfile.podCidr] A CIDR notation IP range
      * from which to assign pod IPs when kubenet is used.
@@ -2144,8 +2134,7 @@ export interface ManagedClusters {
      * 'kubenet'
      *
      * @param {string} [parameters.networkProfile.networkPolicy] Network policy
-     * used for building Kubernetes network. Possible values include: 'calico',
-     * 'cilium'
+     * used for building Kubernetes network. Possible values include: 'calico'
      *
      * @param {string} [parameters.networkProfile.podCidr] A CIDR notation IP range
      * from which to assign pod IPs when kubenet is used.
@@ -2267,8 +2256,7 @@ export interface ManagedClusters {
      * 'kubenet'
      *
      * @param {string} [parameters.networkProfile.networkPolicy] Network policy
-     * used for building Kubernetes network. Possible values include: 'calico',
-     * 'cilium'
+     * used for building Kubernetes network. Possible values include: 'calico'
      *
      * @param {string} [parameters.networkProfile.podCidr] A CIDR notation IP range
      * from which to assign pod IPs when kubenet is used.

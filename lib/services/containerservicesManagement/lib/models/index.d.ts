@@ -171,8 +171,7 @@ export interface ContainerServiceOrchestratorProfile {
  * disk size for every machine in this master/agent pool. If you specify 0, it
  * will apply the default osDisk size according to the vmSize specified.
  * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
- * identifier. If you specify either master VNet Subnet, or agent VNet Subnet,
- * you need to specify both. And they have to be in the same VNet.
+ * identifier.
  * @member {string} [firstConsecutiveStaticIP] FirstConsecutiveStaticIP used to
  * specify the first static ip of masters. Default value: '10.240.255.5' .
  * @member {string} [storageProfile] Storage profile specifies what kind of
@@ -267,8 +266,7 @@ export interface ContainerServiceMasterProfile {
  * we will choose for you based on the orchestrator choice. Possible values
  * include: 'StorageAccount', 'ManagedDisks'
  * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
- * identifier. If you specify either master VNet Subnet, or agent VNet Subnet,
- * you need to specify both. And they have to be in the same VNet.
+ * identifier.
  * @member {string} [osType] OsType to be used to specify os type. Choose from
  * Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
@@ -476,8 +474,7 @@ export interface ContainerServiceDiagnosticsProfile {
  * specify 0, it will apply the default osDisk size according to the vmSize
  * specified.
  * @member {string} [masterProfile.vnetSubnetID] VNet SubnetID specifies the
- * vnet's subnet identifier. If you specify either master VNet Subnet, or agent
- * VNet Subnet, you need to specify both. And they have to be in the same VNet.
+ * vnet's subnet identifier.
  * @member {string} [masterProfile.firstConsecutiveStaticIP]
  * FirstConsecutiveStaticIP used to specify the first static ip of masters.
  * @member {string} [masterProfile.storageProfile] Storage profile specifies
@@ -619,8 +616,7 @@ export interface ComputeOperationValue {
  * we will choose for you based on the orchestrator choice. Possible values
  * include: 'StorageAccount', 'ManagedDisks'
  * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
- * identifier. If you specify either master VNet Subnet, or agent VNet Subnet,
- * you need to specify both. And they have to be in the same VNet.
+ * identifier.
  * @member {number} [maxPods] Maximum number of pods that can run on a node.
  * Default value: 30 .
  * @member {string} [osType] OsType to be used to specify os type. Choose from
@@ -651,9 +647,9 @@ export interface ManagedClusterAgentPoolProfile {
  * network. Possible values include: 'azure', 'kubenet'. Default value:
  * 'kubenet' .
  * @member {string} [networkPolicy] Network policy used for building Kubernetes
- * network. Possible values include: 'calico', 'cilium'
+ * network. Possible values include: 'calico'
  * @member {string} [podCidr] A CIDR notation IP range from which to assign pod
- * IPs when kubenet is used.
+ * IPs when kubenet is used. Default value: '10.244.0.0/16' .
  * @member {string} [serviceCidr] A CIDR notation IP range from which to assign
  * service cluster IPs. It must not overlap with any Subnet IP ranges. Default
  * value: '10.0.0.0/16' .
@@ -750,7 +746,7 @@ export interface ManagedClusterAADProfile {
  * @member {string} [networkProfile.networkPlugin] Network plugin used for
  * building Kubernetes network. Possible values include: 'azure', 'kubenet'
  * @member {string} [networkProfile.networkPolicy] Network policy used for
- * building Kubernetes network. Possible values include: 'calico', 'cilium'
+ * building Kubernetes network. Possible values include: 'calico'
  * @member {string} [networkProfile.podCidr] A CIDR notation IP range from
  * which to assign pod IPs when kubenet is used.
  * @member {string} [networkProfile.serviceCidr] A CIDR notation IP range from
