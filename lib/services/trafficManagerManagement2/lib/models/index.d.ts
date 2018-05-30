@@ -30,6 +30,23 @@ export interface DeleteOperationResult {
 
 /**
  * @class
+ * Initializes a new instance of the EndpointPropertiesSubnetsItem class.
+ * @constructor
+ * Subnet first address, scope, and/or last address.
+ *
+ * @member {string} [first] First address in the subnet.
+ * @member {string} [last] Last address in the subnet.
+ * @member {number} [scope] Block size (number of leading bits in the subnet
+ * mask).
+ */
+export interface EndpointPropertiesSubnetsItem {
+  first?: string;
+  last?: string;
+  scope?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EndpointPropertiesCustomHeadersItem class.
  * @constructor
  * Custom header name and value.
@@ -151,6 +168,18 @@ export interface HeatMapModel extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the UserMetricsModel class.
+ * @constructor
+ * Class representing Traffic Manager User Metrics.
+ *
+ * @member {string} [key] The key returned by the User Metrics operation.
+ */
+export interface UserMetricsModel extends ProxyResource {
+  key?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Endpoint class.
  * @constructor
  * Class representing a Traffic Manager endpoint.
@@ -166,12 +195,12 @@ export interface HeatMapModel extends ProxyResource {
  * @member {number} [weight] The weight of this endpoint when using the
  * 'Weighted' traffic routing method. Possible values are from 1 to 1000.
  * @member {number} [priority] The priority of this endpoint when using the
- * ‘Priority’ traffic routing method. Possible values are from 1 to 1000, lower
+ * 'Priority' traffic routing method. Possible values are from 1 to 1000, lower
  * values represent higher priority. This is an optional parameter.  If
  * specified, it must be specified on all endpoints, and no two endpoints can
  * share the same priority value.
  * @member {string} [endpointLocation] Specifies the location of the external
- * or nested endpoints when using the ‘Performance’ traffic routing method.
+ * or nested endpoints when using the 'Performance' traffic routing method.
  * @member {string} [endpointMonitorStatus] The monitoring status of the
  * endpoint. Possible values include: 'CheckingEndpoint', 'Online', 'Degraded',
  * 'Disabled', 'Inactive', 'Stopped'
@@ -179,8 +208,11 @@ export interface HeatMapModel extends ProxyResource {
  * must be available in the child profile in order for the parent profile to be
  * considered available. Only applicable to endpoint of type 'NestedEndpoints'.
  * @member {array} [geoMapping] The list of countries/regions mapped to this
- * endpoint when using the ‘Geographic’ traffic routing method. Please consult
+ * endpoint when using the 'Geographic' traffic routing method. Please consult
  * Traffic Manager Geographic documentation for a full list of accepted values.
+ * @member {array} [subnets] The list of subnets, IP addresses, and/or address
+ * ranges mapped to this endpoint when using the 'Subnet' traffic routing
+ * method. An empty list will match all ranges not covered by other endpoints.
  * @member {array} [customHeaders] List of custom headers.
  */
 export interface Endpoint extends ProxyResource {
@@ -193,6 +225,7 @@ export interface Endpoint extends ProxyResource {
   endpointMonitorStatus?: string;
   minChildEndpoints?: number;
   geoMapping?: string[];
+  subnets?: EndpointPropertiesSubnetsItem[];
   customHeaders?: EndpointPropertiesCustomHeadersItem[];
 }
 
@@ -324,7 +357,7 @@ export interface TrackedResource extends Resource {
  * Possible values include: 'Enabled', 'Disabled'
  * @member {string} [trafficRoutingMethod] The traffic routing method of the
  * Traffic Manager profile. Possible values include: 'Performance', 'Priority',
- * 'Weighted', 'Geographic'
+ * 'Weighted', 'Geographic', 'MultiValue', 'Subnet'
  * @member {object} [dnsConfig] The DNS settings of the Traffic Manager
  * profile.
  * @member {string} [dnsConfig.relativeName] The relative DNS name provided by
@@ -368,6 +401,8 @@ export interface TrackedResource extends Resource {
  * View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null,
  * indicates 'Disabled'. Enabling this feature will increase the cost of the
  * Traffic Manage profile. Possible values include: 'Enabled', 'Disabled'
+ * @member {number} [maxReturn] Maximum number of endpoints to be returned for
+ * MultiValue routing type.
  */
 export interface Profile extends TrackedResource {
   profileStatus?: string;
@@ -376,6 +411,7 @@ export interface Profile extends TrackedResource {
   monitorConfig?: MonitorConfig;
   endpoints?: Endpoint[];
   trafficViewEnrollmentStatus?: string;
+  maxReturn?: number;
 }
 
 /**
