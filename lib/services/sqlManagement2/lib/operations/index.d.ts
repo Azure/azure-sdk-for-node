@@ -16618,7 +16618,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @param {string} baselineName The name of the vulnerability assessment rule
      * baseline (default implies a baseline on a database level rule and master for
-     * server level rule). Possible values include: 'default', 'master'
+     * server level rule). Possible values include: 'Master', 'Default'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16649,7 +16649,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @param {string} baselineName The name of the vulnerability assessment rule
      * baseline (default implies a baseline on a database level rule and master for
-     * server level rule). Possible values include: 'default', 'master'
+     * server level rule). Possible values include: 'Master', 'Default'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16700,7 +16700,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @param {string} baselineName The name of the vulnerability assessment rule
      * baseline (default implies a baseline on a database level rule and master for
-     * server level rule). Possible values include: 'default', 'master'
+     * server level rule). Possible values include: 'Master', 'Default'
      *
      * @param {object} parameters The requested rule baseline resource.
      *
@@ -16735,7 +16735,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @param {string} baselineName The name of the vulnerability assessment rule
      * baseline (default implies a baseline on a database level rule and master for
-     * server level rule). Possible values include: 'default', 'master'
+     * server level rule). Possible values include: 'Master', 'Default'
      *
      * @param {object} parameters The requested rule baseline resource.
      *
@@ -16790,7 +16790,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @param {string} baselineName The name of the vulnerability assessment rule
      * baseline (default implies a baseline on a database level rule and master for
-     * server level rule). Possible values include: 'default', 'master'
+     * server level rule). Possible values include: 'Master', 'Default'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16821,7 +16821,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @param {string} baselineName The name of the vulnerability assessment rule
      * baseline (default implies a baseline on a database level rule and master for
-     * server level rule). Possible values include: 'default', 'master'
+     * server level rule). Possible values include: 'Master', 'Default'
      *
      * @param {object} [options] Optional Parameters.
      *
