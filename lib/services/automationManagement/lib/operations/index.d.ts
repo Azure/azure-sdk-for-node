@@ -9969,7 +9969,7 @@ export interface JobOperations {
      * @param {object} parameters The parameters supplied to the create job
      * operation.
      *
-     * @param {object} parameters.runbook Gets or sets the runbook.
+     * @param {object} [parameters.runbook] Gets or sets the runbook.
      *
      * @param {string} [parameters.runbook.name] Gets or sets the name of the
      * runbook.
@@ -10008,7 +10008,7 @@ export interface JobOperations {
      * @param {object} parameters The parameters supplied to the create job
      * operation.
      *
-     * @param {object} parameters.runbook Gets or sets the runbook.
+     * @param {object} [parameters.runbook] Gets or sets the runbook.
      *
      * @param {string} [parameters.runbook.name] Gets or sets the name of the
      * runbook.

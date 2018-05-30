@@ -1214,6 +1214,31 @@ export interface DscCompilationJobCreateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the JobStream class.
+ * @constructor
+ * Definition of the job stream.
+ *
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [jobStreamId] Gets or sets the id of the job stream.
+ * @member {date} [time] Gets or sets the creation time of the job.
+ * @member {string} [streamType] Gets or sets the stream type. Possible values
+ * include: 'Progress', 'Output', 'Warning', 'Error', 'Debug', 'Verbose', 'Any'
+ * @member {string} [streamText] Gets or sets the stream text.
+ * @member {string} [summary] Gets or sets the summary.
+ * @member {object} [value] Gets or sets the values of the job stream.
+ */
+export interface JobStream {
+  id?: string;
+  jobStreamId?: string;
+  time?: Date;
+  streamType?: string;
+  streamText?: string;
+  summary?: string;
+  value?: { [propertyName: string]: any };
+}
+
+/**
+ * @class
  * Initializes a new instance of the DscConfigurationCreateOrUpdateParameters class.
  * @constructor
  * The parameters supplied to the create or update configuration operation.
@@ -1584,86 +1609,6 @@ export interface HybridRunbookWorkerGroupUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the Job class.
- * @constructor
- * Definition of the job.
- *
- * @member {object} [runbook] Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [startedBy] Gets or sets the job started by.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- * @member {uuid} [jobId] Gets or sets the id of the job.
- * @member {date} [creationTime] Gets or sets the creation time of the job.
- * @member {string} [status] Gets or sets the status of the job. Possible
- * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
- * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
- * 'Resuming', 'Removing'
- * @member {string} [statusDetails] Gets or sets the status details of the job.
- * @member {date} [startTime] Gets or sets the start time of the job.
- * @member {date} [endTime] Gets or sets the end time of the job.
- * @member {string} [exception] Gets or sets the exception of the job.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
- * job.
- * @member {date} [lastStatusModifiedTime] Gets or sets the last status
- * modified time of the job.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {object} [provisioningState] The provisioning state of a resource.
- * @member {string} [provisioningState.provisioningState] The provisioning
- * state of the resource. Possible values include: 'Failed', 'Succeeded',
- * 'Suspended', 'Processing'
- */
-export interface Job extends ProxyResource {
-  runbook?: RunbookAssociationProperty;
-  startedBy?: string;
-  runOn?: string;
-  jobId?: string;
-  creationTime?: Date;
-  status?: string;
-  statusDetails?: string;
-  startTime?: Date;
-  endTime?: Date;
-  exception?: string;
-  lastModifiedTime?: Date;
-  lastStatusModifiedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-  readonly provisioningState?: JobProvisioningStateProperty;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobCreateParameters class.
- * @constructor
- * The parameters supplied to the create job operation.
- *
- * @member {object} runbook Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- */
-export interface JobCreateParameters {
-  runbook: RunbookAssociationProperty;
-  parameters?: { [propertyName: string]: string };
-  runOn?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobListResult class.
- * @constructor
- * The response model for the list job operation.
- *
- * @member {array} [value] Gets or sets a list of jobs.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface JobListResult {
-  value?: Job[];
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ScheduleAssociationProperty class.
  * @constructor
  * The schedule property associated with the entity.
@@ -1723,31 +1668,6 @@ export interface JobSchedule {
   runbook?: RunbookAssociationProperty;
   runOn?: string;
   parameters?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the JobStream class.
- * @constructor
- * Definition of the job stream.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [jobStreamId] Gets or sets the id of the job stream.
- * @member {date} [time] Gets or sets the creation time of the job.
- * @member {string} [streamType] Gets or sets the stream type. Possible values
- * include: 'Progress', 'Output', 'Warning', 'Error', 'Debug', 'Verbose', 'Any'
- * @member {string} [streamText] Gets or sets the stream text.
- * @member {string} [summary] Gets or sets the summary.
- * @member {object} [value] Gets or sets the values of the job stream.
- */
-export interface JobStream {
-  id?: string;
-  jobStreamId?: string;
-  time?: Date;
-  streamType?: string;
-  streamText?: string;
-  summary?: string;
-  value?: { [propertyName: string]: any };
 }
 
 /**
@@ -2306,6 +2226,51 @@ export interface WebhookUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the Job class.
+ * @constructor
+ * Definition of the job.
+ *
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [startedBy] Gets or sets the job started by.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ * @member {uuid} [jobId] Gets or sets the id of the job.
+ * @member {date} [creationTime] Gets or sets the creation time of the job.
+ * @member {string} [status] Gets or sets the status of the job. Possible
+ * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
+ * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
+ * 'Resuming', 'Removing'
+ * @member {string} [statusDetails] Gets or sets the status details of the job.
+ * @member {date} [startTime] Gets or sets the start time of the job.
+ * @member {date} [endTime] Gets or sets the end time of the job.
+ * @member {string} [exception] Gets or sets the exception of the job.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
+ * job.
+ * @member {date} [lastStatusModifiedTime] Gets or sets the last status
+ * modified time of the job.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [provisioningState] The provisioning state of a resource.
+ */
+export interface Job extends ProxyResource {
+  runbook?: RunbookAssociationProperty;
+  startedBy?: string;
+  runOn?: string;
+  jobId?: string;
+  creationTime?: Date;
+  status?: string;
+  statusDetails?: string;
+  startTime?: Date;
+  endTime?: Date;
+  exception?: string;
+  lastModifiedTime?: Date;
+  lastStatusModifiedTime?: Date;
+  parameters?: { [propertyName: string]: string };
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the JobCollectionItem class.
  * @constructor
  * Job collection item properties.
@@ -2334,6 +2299,24 @@ export interface JobCollectionItem extends ProxyResource {
   readonly endTime?: Date;
   readonly lastModifiedTime?: Date;
   readonly provisioningState?: string;
+  runOn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create job operation.
+ *
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ */
+export interface JobCreateParameters {
+  runbook?: RunbookAssociationProperty;
+  parameters?: { [propertyName: string]: string };
   runOn?: string;
 }
 
