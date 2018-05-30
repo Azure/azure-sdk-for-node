@@ -4349,13 +4349,13 @@ export interface ApiError {
  * Initializes a new instance of the RollbackStatusInfo class.
  * @constructor
  * Information about rollback on failed VM instances after a OS Upgrade
- * operation
+ * operation.
  *
  * @member {number} [successfullyRolledbackInstanceCount] The number of
  * instances which have been successfully rolled back.
  * @member {number} [failedRolledbackInstanceCount] The number of instances
  * which failed to rollback.
- * @member {object} [rollbackError] Error Details if OS rollback failed.
+ * @member {object} [rollbackError] Error details if OS rollback failed.
  * @member {array} [rollbackError.details] The Api error details
  * @member {object} [rollbackError.innererror] The Api inner error
  * @member {string} [rollbackError.innererror.exceptiontype] The exception
@@ -4463,7 +4463,7 @@ export interface RollingUpgradeProgressInfo {
  * number of instances which have been successfully rolled back.
  * @member {number} [rollbackInfo.failedRolledbackInstanceCount] The number of
  * instances which failed to rollback.
- * @member {object} [rollbackInfo.rollbackError] Error Details if OS rollback
+ * @member {object} [rollbackInfo.rollbackError] Error details if OS rollback
  * failed.
  * @member {array} [rollbackInfo.rollbackError.details] The Api error details
  * @member {object} [rollbackInfo.rollbackError.innererror] The Api inner error
@@ -4545,7 +4545,7 @@ export interface UpgradeOperationHistoricalStatusInfoProperties {
  * instances which have been successfully rolled back.
  * @member {number} [properties.rollbackInfo.failedRolledbackInstanceCount] The
  * number of instances which failed to rollback.
- * @member {object} [properties.rollbackInfo.rollbackError] Error Details if OS
+ * @member {object} [properties.rollbackInfo.rollbackError] Error details if OS
  * rollback failed.
  * @member {array} [properties.rollbackInfo.rollbackError.details] The Api
  * error details
@@ -6185,19 +6185,6 @@ export interface VirtualMachineSizeListResult extends Array<VirtualMachineSize> 
 
 /**
  * @class
- * Initializes a new instance of the VirtualMachineListResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {string} [nextLink] The URI to fetch the next page of VMs. Call
- * ListNext() with this URI to fetch the next page of Virtual Machines.
- */
-export interface VirtualMachineListResult extends Array<VirtualMachine> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ListUsagesResult class.
  * @constructor
  * The List Usages operation response.
@@ -6220,6 +6207,19 @@ export interface ListUsagesResult extends Array<Usage> {
  * ListNext() with this to fetch the next page of Images.
  */
 export interface ImageListResult extends Array<Image> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineListResult class.
+ * @constructor
+ * The List Virtual Machine operation response.
+ *
+ * @member {string} [nextLink] The URI to fetch the next page of VMs. Call
+ * ListNext() with this URI to fetch the next page of Virtual Machines.
+ */
+export interface VirtualMachineListResult extends Array<VirtualMachine> {
   nextLink?: string;
 }
 
