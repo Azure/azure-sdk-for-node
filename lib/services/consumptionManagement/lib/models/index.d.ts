@@ -107,12 +107,12 @@ export interface Resource extends BaseResource {
  * @constructor
  * @member {number} [percentage] The percentage level of the confidence
  * @member {string} [bound] The boundary of the percentage, values could be
- * 'Upper' or 'Lower'
+ * 'Upper' or 'Lower'. Possible values include: 'Upper', 'Lower'
  * @member {number} [value] The amount of forecast within the percentage level
  */
 export interface ForecastPropertiesConfidenceLevelsItem {
   readonly percentage?: number;
-  readonly bound?: string;
+  bound?: string;
   readonly value?: number;
 }
 
@@ -123,21 +123,22 @@ export interface ForecastPropertiesConfidenceLevelsItem {
  * A forecast resource.
  *
  * @member {string} [usageDate] The usage date of the forecast.
- * @member {string} [grain] The granularity of forecast. i.e. Daily, Monthly
+ * @member {string} [grain] The granularity of forecast. Possible values
+ * include: 'Daily', 'Monthly', 'Yearly'
  * @member {number} [charge] The amount of charge
  * @member {string} [currency] The ISO currency in which the meter is charged,
  * for example, USD.
  * @member {string} [chargeType] The type of the charge. Could be actual or
- * forecast
+ * forecast. Possible values include: 'Actual', 'Forecast'
  * @member {array} [confidenceLevels] The details about the forecast confidence
  * levels. This is populated only when chargeType is Forecast.
  */
 export interface Forecast extends Resource {
   readonly usageDate?: string;
-  readonly grain?: string;
+  grain?: string;
   readonly charge?: number;
   readonly currency?: string;
-  readonly chargeType?: string;
+  chargeType?: string;
   readonly confidenceLevels?: ForecastPropertiesConfidenceLevelsItem[];
 }
 
