@@ -269,7 +269,7 @@ export interface DscCompilationJob extends ProxyResource {
   readonly startedBy?: string;
   readonly jobId?: string;
   readonly creationTime?: Date;
-  provisioningState?: JobProvisioningStateProperty;
+  readonly provisioningState?: JobProvisioningStateProperty;
   runOn?: string;
   status?: string;
   statusDetails?: string;
