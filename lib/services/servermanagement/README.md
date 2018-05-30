@@ -1,11 +1,14 @@
-# Microsoft Azure SDK for Node.js - ServerManagement
+---
+uid: azure-arm-servermanagement
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Azure ServerManagement Resources. Right now it supports:
-- **Node.js version: 6.0.0 or higher**
+---
+# Microsoft Azure SDK for Node.js - ServerManagement
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
 
 ## Features
 
- - TODO
 
 ## How to Install
 
@@ -13,26 +16,28 @@ This project provides a Node.js package that makes it easy to manage Azure Serve
 npm install azure-arm-servermanagement
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing nodes in a resource group as an example
+### Authentication, client creation and get gateway as an example.
 
- ```javascript
- var msRestAzure = require('ms-rest-azure');
- var ServerManagement = require('azure-arm-servermanagement');
- 
- // Interactive Login
- msRestAzure.interactiveLogin(function(err, credentials) {
-  var client = new ServerManagement(credentials, 'your-subscription-id');
-  client.node.list(resourceGroupName, function(err, nodes, request, response) {
-    if (err) console.log(err);
-    nodes.map(function (node, index, array) {
-      console.log('found node :' + node.name);
-    }));
-  });
- });
- ```
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const ServerManagement = require("azure-arm-servermanagement");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new ServerManagement(creds, subscriptionId);
+    const resourceGroupName = "testresourceGroupName";
+    const gatewayName = "testgatewayName";
+    const expand = "status";
+    return client.gateway.get(resourceGroupName, gatewayName, expand).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
+}).catch((err) => {
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 
-- [Microsoft Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
