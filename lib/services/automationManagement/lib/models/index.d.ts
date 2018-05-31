@@ -360,6 +360,55 @@ export interface Certificate extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * The resource model definition for a ARM tracked top level resource
+ *
+ * @member {object} [tags] Resource tags.
+ * @member {string} [location] The Azure Region where the resource lives
+ */
+export interface TrackedResource extends Resource {
+  tags?: { [propertyName: string]: string };
+  location?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Watcher class.
+ * @constructor
+ * Definition of the watcher type.
+ *
+ * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
+ * which the watcher is invoked.
+ * @member {string} [scriptName] Gets or sets the name of the script the
+ * watcher is attached to, i.e. the name of an existing runbook.
+ * @member {object} [scriptParameters] Gets or sets the parameters of the
+ * script.
+ * @member {string} [scriptRunOn] Gets or sets the name of the hybrid worker
+ * group the watcher will run on.
+ * @member {string} [status] Gets the current status of the watcher.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [lastModifiedBy] Details of the user who last modified the
+ * watcher.
+ * @member {string} [description] Gets or sets the description.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ */
+export interface Watcher extends TrackedResource {
+  executionFrequencyInSeconds?: number;
+  scriptName?: string;
+  scriptParameters?: { [propertyName: string]: string };
+  scriptRunOn?: string;
+  readonly status?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly lastModifiedBy?: string;
+  description?: string;
+  etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RunbookParameter class.
  * @constructor
  * Definition of the runbook parameter type.
@@ -444,20 +493,6 @@ export interface RunbookDraft {
   lastModifiedTime?: Date;
   parameters?: { [propertyName: string]: RunbookParameter };
   outputTypes?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the TrackedResource class.
- * @constructor
- * The resource model definition for a ARM tracked top level resource
- *
- * @member {object} [tags] Resource tags.
- * @member {string} [location] The Azure Region where the resource lives
- */
-export interface TrackedResource extends Resource {
-  tags?: { [propertyName: string]: string };
-  location?: string;
 }
 
 /**
@@ -2024,7 +2059,7 @@ export interface ScheduleProperties {
  * @member {date} [lastModifiedTime] Gets or sets the last modified time.
  * @member {string} [description] Gets or sets the description.
  */
-export interface Schedule {
+export interface Schedule extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
@@ -2222,6 +2257,19 @@ export interface WebhookUpdateParameters {
   runOn?: string;
   parameters?: { [propertyName: string]: string };
   description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WatcherUpdateParameters class.
+ * @constructor
+ * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
+ * which the watcher is invoked.
+ * @member {string} [name] Gets or sets the name of the resource.
+ */
+export interface WatcherUpdateParameters {
+  executionFrequencyInSeconds?: number;
+  name?: string;
 }
 
 /**
@@ -3402,5 +3450,17 @@ export interface DscCompilationJobListResult extends Array<DscCompilationJob> {
  * @member {number} [totalCount] Gets or sets the total rows in query.
  */
 export interface DscNodeConfigurationListResult extends Array<DscNodeConfiguration> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WatcherListResult class.
+ * @constructor
+ * The response model for the list watcher operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface WatcherListResult extends Array<Watcher> {
   nextLink?: string;
 }
