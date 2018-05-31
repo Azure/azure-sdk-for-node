@@ -157,10 +157,50 @@ export interface RequiredResourceAccess {
 
 /**
  * @class
+ * Initializes a new instance of the AppRole class.
+ * @constructor
+ * Represents an application role that may be requested by a client application
+ * calling another application or that may be used to assign an application to
+ * users or groups in a specified application role. The appRoles property of
+ * the servicePrincipal entity and of the application entity is a collection of
+ * appRole.
+ *
+ * @member {array} [allowedMemberTypes] Specifies whether this app role
+ * definition can be assigned to users and groups, to other applications, or to
+ * both.
+ * @member {string} [description] Permission help text that appears in the
+ * admin app assignment and consent experiences.
+ * @member {string} [displayName] Display name for the permission that appears
+ * in the admin consent and app assignment experiences.
+ * @member {string} [id] Unique role identifier inside the appRoles collection.
+ * @member {boolean} [isEnabled] When creating or updating a role definition,
+ * this must be set to true (which is the default). To delete a role, this must
+ * first be set to false.
+ * @member {string} [value] Specifies the value of the roles claim that the
+ * application should expect in the authentication and access tokens.
+ */
+export interface AppRole {
+  allowedMemberTypes?: string[];
+  description?: string;
+  displayName?: string;
+  id?: string;
+  isEnabled?: boolean;
+  value?: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationCreateParameters class.
  * @constructor
  * Request parameters for creating a new application.
  *
+ * @member {array} [appRoles] The collection of application roles that an
+ * application may declare.
  * @member {boolean} availableToOtherTenants Whether the application is
  * available to other tenants.
  * @member {string} displayName The display name of the application.
@@ -178,6 +218,7 @@ export interface RequiredResourceAccess {
  * pre-configuration of required resource access drives the consent experience.
  */
 export interface ApplicationCreateParameters {
+  appRoles?: AppRole[];
   availableToOtherTenants: boolean;
   displayName: string;
   homepage?: string;
@@ -200,6 +241,8 @@ export interface ApplicationCreateParameters {
  * @constructor
  * Request parameters for updating an existing application.
  *
+ * @member {array} [appRoles] The collection of application roles that an
+ * application may declare.
  * @member {boolean} [availableToOtherTenants] Whether the application is
  * available to other tenants
  * @member {string} [displayName] The display name of the application.
@@ -217,6 +260,7 @@ export interface ApplicationCreateParameters {
  * pre-configuration of required resource access drives the consent experience.
  */
 export interface ApplicationUpdateParameters {
+  appRoles?: AppRole[];
   availableToOtherTenants?: boolean;
   displayName?: string;
   homepage?: string;
@@ -241,6 +285,8 @@ export interface ApplicationUpdateParameters {
  *
  * @member {string} [appId] The application ID.
  * @member {array} [appPermissions] The application permissions.
+ * @member {array} [appRoles] The collection of application roles that an
+ * application may declare.
  * @member {boolean} [availableToOtherTenants] Whether the application is be
  * available to other tenants.
  * @member {string} [displayName] The display name of the application.
@@ -253,6 +299,7 @@ export interface ApplicationUpdateParameters {
 export interface Application extends DirectoryObject {
   appId?: string;
   appPermissions?: string[];
+  appRoles?: AppRole[];
   availableToOtherTenants?: boolean;
   displayName?: string;
   identifierUris?: string[];
