@@ -2806,12 +2806,15 @@ export interface IdentityProviderBaseParameters {
  * Instrumentation key for applicationInsights logger.
  * @member {boolean} [isBuffered] Whether records are buffered in the logger
  * before publishing. Default is assumed to be true.
+ * @member {string} [resourceId] Azure Resource Id of a log target (either
+ * Azure Event Hub resource or Azure Application Insights resource).
  */
 export interface LoggerContract extends Resource {
   loggerType: string;
   description?: string;
   credentials: { [propertyName: string]: string };
   isBuffered?: boolean;
+  resourceId?: string;
 }
 
 /**

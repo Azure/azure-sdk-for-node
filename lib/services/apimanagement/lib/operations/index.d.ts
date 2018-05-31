@@ -13689,6 +13689,9 @@ export interface Logger {
      * @param {boolean} [parameters.isBuffered] Whether records are buffered in the
      * logger before publishing. Default is assumed to be true.
      *
+     * @param {string} [parameters.resourceId] Azure Resource Id of a log target
+     * (either Azure Event Hub resource or Azure Application Insights resource).
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.ifMatch] ETag of the Entity. Not required when
@@ -13728,6 +13731,9 @@ export interface Logger {
      *
      * @param {boolean} [parameters.isBuffered] Whether records are buffered in the
      * logger before publishing. Default is assumed to be true.
+     *
+     * @param {string} [parameters.resourceId] Azure Resource Id of a log target
+     * (either Azure Event Hub resource or Azure Application Insights resource).
      *
      * @param {object} [options] Optional Parameters.
      *
