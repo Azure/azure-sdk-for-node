@@ -1353,7 +1353,7 @@ export interface CustomToolkitSettings {
  * @class
  * Initializes a new instance of the CustomMpiSettings class.
  * @constructor
- * Specifies the settings for a custom tool kit job.
+ * Specifies the settings for a custom MPI job.
  *
  * @member {string} commandLine The program and program command line parameters
  * to be executed by mpi runtime.
@@ -1370,7 +1370,7 @@ export interface CustomMpiSettings {
  * @class
  * Initializes a new instance of the HorovodSettings class.
  * @constructor
- * Specifies the settings for Chainer job.
+ * Specifies the settings for Horovod job.
  *
  * @member {string} pythonScriptFilePath The path and file name of the python
  * script to execute the job.
