@@ -1671,9 +1671,9 @@ export interface JobPropertiesExecutionInfo {
  * @constructor
  * Contains information about a Job.
  *
- * @member {string} [priority] Priority associated with the job. Priority
- * associated with the job. Possible values include: 'low', 'normal', 'high'.
- * Default value: 'normal' .
+ * @member {string} [schedulingPriority] Scheduling priority associated with
+ * the job. Scheduling priority associated with the job. Possible values
+ * include: 'low', 'normal', 'high'. Default value: 'normal' .
  * @member {object} [cluster] Specifies the Id of the cluster on which this job
  * will run.
  * @member {string} [cluster.id] The ID of the resource
@@ -1773,6 +1773,10 @@ export interface JobPropertiesExecutionInfo {
  * @member {string} [caffeSettings.commandLineArgs]
  * @member {number} [caffeSettings.processCount] The default value for this
  * property is equal to nodeCount property
+ * @member {object} [caffe2Settings] Specifies the settings for Caffe2 job.
+ * @member {string} [caffe2Settings.pythonScriptFilePath]
+ * @member {string} [caffe2Settings.pythonInterpreterPath]
+ * @member {string} [caffe2Settings.commandLineArgs]
  * @member {object} [chainerSettings] Specifies the settings for Chainer job.
  * @member {string} [chainerSettings.pythonScriptFilePath]
  * @member {string} [chainerSettings.pythonInterpreterPath]
@@ -1851,7 +1855,7 @@ export interface JobPropertiesExecutionInfo {
  * @member {array} [executionInfo.errors]
  */
 export interface Job extends ProxyResource {
-  priority?: string;
+  schedulingPriority?: string;
   cluster?: ResourceId;
   mountVolumes?: MountVolumes;
   readonly jobOutputDirectoryPathSegment?: string;
@@ -1862,6 +1866,7 @@ export interface Job extends ProxyResource {
   pyTorchSettings?: PyTorchSettings;
   tensorFlowSettings?: TensorFlowSettings;
   caffeSettings?: CaffeSettings;
+  caffe2Settings?: Caffe2Settings;
   chainerSettings?: ChainerSettings;
   customToolkitSettings?: CustomToolkitSettings;
   customMpiSettings?: CustomMpiSettings;
