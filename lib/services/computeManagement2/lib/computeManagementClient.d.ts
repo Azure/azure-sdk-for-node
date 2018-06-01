@@ -72,6 +72,9 @@ export default class ComputeManagementClient extends AzureServiceClient {
   resourceSkus: operations.ResourceSkus;
   disks: operations.Disks;
   snapshots: operations.Snapshots;
+  galleries: operations.Galleries;
+  galleryImages: operations.GalleryImages;
+  galleryImageVersions: operations.GalleryImageVersions;
   containerServices: operations.ContainerServices;
 }
 

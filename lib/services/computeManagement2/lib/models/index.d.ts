@@ -5903,6 +5903,366 @@ export interface SnapshotUpdate {
 
 /**
  * @class
+ * Initializes a new instance of the GalleryIdentifier class.
+ * @constructor
+ * @member {string} [uniqueName] The unique name of the gallery
+ */
+export interface GalleryIdentifier {
+  readonly uniqueName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Gallery class.
+ * @constructor
+ * Specifies information about the gallery that you want to create or update.
+ *
+ * @member {string} [description] The description of this gallery resource.
+ * @member {object} [identifier]
+ * @member {string} [identifier.uniqueName] The unique name of the gallery
+ * @member {string} [provisioningState] The current state of the gallery. The
+ * provisioning state, which only appears in the response. Possible values
+ * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
+ * 'Migrating'
+ */
+export interface Gallery extends Resource {
+  description?: string;
+  identifier?: GalleryIdentifier;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageIdentifier class.
+ * @constructor
+ * This is the gallery image identifier.
+ *
+ * @member {string} [publisher] The gallery image publisher name.
+ * @member {string} [offer] The gallery image offer name.
+ * @member {string} [sku] The gallery image sku name.
+ */
+export interface GalleryImageIdentifier {
+  publisher?: string;
+  offer?: string;
+  sku?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceRange class.
+ * @constructor
+ * Describes the resource range.
+ *
+ * @member {number} [min] The minimum number of the resource.
+ * @member {number} [max] The maximum number of the resource.
+ */
+export interface ResourceRange {
+  min?: number;
+  max?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendedMachineConfiguration class.
+ * @constructor
+ * Describes the recommended machine configuration.
+ *
+ * @member {object} [vCPUs]
+ * @member {number} [vCPUs.min] The minimum number of the resource.
+ * @member {number} [vCPUs.max] The maximum number of the resource.
+ * @member {object} [memory]
+ * @member {number} [memory.min] The minimum number of the resource.
+ * @member {number} [memory.max] The maximum number of the resource.
+ */
+export interface RecommendedMachineConfiguration {
+  vCPUs?: ResourceRange;
+  memory?: ResourceRange;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Disallowed class.
+ * @constructor
+ * Describes the disallowed disk types.
+ *
+ * @member {array} [diskTypes] A list of disk types.
+ */
+export interface Disallowed {
+  diskTypes?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImagePurchasePlan class.
+ * @constructor
+ * Describes the gallery image purchase plan. This is used by marketplace
+ * images.
+ *
+ * @member {string} [name] The plan ID.
+ * @member {string} [publisher] The publisher ID.
+ * @member {string} [product] The product ID.
+ */
+export interface ImagePurchasePlan {
+  name?: string;
+  publisher?: string;
+  product?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImage class.
+ * @constructor
+ * Specifies information about the gallery image that you want to create or
+ * update.
+ *
+ * @member {string} [description] The description of this gallery image
+ * resource.
+ * @member {string} [eula] The Eula agreement for the gallery image.
+ * @member {string} [privacyStatementUri] The privacy statement uri.
+ * @member {string} [releaseNoteUri] The release note uri.
+ * @member {string} [osType] This property allows you to specify the type of
+ * the OS that is included in the disk if creating a VM from user-image or a
+ * specialized VHD. <br><br> Possible values are: <br><br> **Windows** <br><br>
+ * **Linux**. Possible values include: 'Windows', 'Linux'
+ * @member {string} [osState] The OS State. Possible values include:
+ * 'Generalized', 'Specialized'
+ * @member {date} [endOfLifeDate] The end of life of this gallery image.
+ * @member {object} [identifier]
+ * @member {string} [identifier.publisher] The gallery image publisher name.
+ * @member {string} [identifier.offer] The gallery image offer name.
+ * @member {string} [identifier.sku] The gallery image sku name.
+ * @member {object} [recommended]
+ * @member {object} [recommended.vCPUs]
+ * @member {number} [recommended.vCPUs.min] The minimum number of the resource.
+ * @member {number} [recommended.vCPUs.max] The maximum number of the resource.
+ * @member {object} [recommended.memory]
+ * @member {number} [recommended.memory.min] The minimum number of the
+ * resource.
+ * @member {number} [recommended.memory.max] The maximum number of the
+ * resource.
+ * @member {object} [disallowed]
+ * @member {array} [disallowed.diskTypes] A list of disk types.
+ * @member {object} [purchasePlan]
+ * @member {string} [purchasePlan.name] The plan ID.
+ * @member {string} [purchasePlan.publisher] The publisher ID.
+ * @member {string} [purchasePlan.product] The product ID.
+ * @member {string} [provisioningState] The current state of the gallery image.
+ * The provisioning state, which only appears in the response. Possible values
+ * include: 'Creating', 'Updating', 'Failed', 'Succeeded', 'Deleting',
+ * 'Migrating'
+ */
+export interface GalleryImage extends Resource {
+  description?: string;
+  eula?: string;
+  privacyStatementUri?: string;
+  releaseNoteUri?: string;
+  osType?: string;
+  osState?: string;
+  endOfLifeDate?: Date;
+  identifier?: GalleryImageIdentifier;
+  recommended?: RecommendedMachineConfiguration;
+  disallowed?: Disallowed;
+  purchasePlan?: ImagePurchasePlan;
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryArtifactPublishingProfileBase class.
+ * @constructor
+ * Describes the basic gallery artifact publishing profile.
+ *
+ * @member {array} [regions] The regions where the artifact is going to be
+ * published.
+ * @member {object} [source]
+ * @member {object} [source.managedImage]
+ * @member {string} [source.managedImage.id] The managed artifact id.
+ */
+export interface GalleryArtifactPublishingProfileBase {
+  regions?: string[];
+  source?: GalleryArtifactSource;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionPublishingProfile class.
+ * @constructor
+ * The publishing profile of a gallery image version.
+ *
+ * @member {string} [scaleTier] The scale tier of the gallery image version.
+ * Valid values are 'S30' and 'S100'. Possible values include: 'S30', 'S100'
+ * @member {boolean} [excludeFromLatest] The flag means that if it is set to
+ * true, people deploying VMs with 'latest' as version will not use this
+ * version.
+ * @member {date} [publishedDate] The time when the gallery image version is
+ * published.
+ * @member {date} [endOfLifeDate] The end of life date of the gallery image
+ * version.
+ */
+export interface GalleryImageVersionPublishingProfile extends GalleryArtifactPublishingProfileBase {
+  scaleTier?: string;
+  excludeFromLatest?: boolean;
+  readonly publishedDate?: Date;
+  endOfLifeDate?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryDiskImage class.
+ * @constructor
+ * This is the disk image base class.
+ *
+ * @member {number} [sizeInGB] It indicates the size of the VHD to create.
+ * @member {string} [hostCaching] The host caching of the disk. Valid values
+ * are 'None', 'ReadOnly', and 'ReadWrite'. Possible values include: 'None',
+ * 'ReadOnly', 'ReadWrite'
+ */
+export interface GalleryDiskImage {
+  readonly sizeInGB?: number;
+  readonly hostCaching?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryOSDiskImage class.
+ * @constructor
+ * This is the OS disk image.
+ *
+ */
+export interface GalleryOSDiskImage extends GalleryDiskImage {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryDataDiskImage class.
+ * @constructor
+ * This is the data disk image.
+ *
+ * @member {number} [lun] Specifies the logical unit number of the data disk.
+ * This value is used to identify data disks within the VM and therefore must
+ * be unique for each data disk attached to a VM.
+ */
+export interface GalleryDataDiskImage extends GalleryDiskImage {
+  readonly lun?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionStorageProfile class.
+ * @constructor
+ * This is the storage profile of a gallery image version.
+ *
+ * @member {object} [osDiskImage]
+ * @member {array} [dataDiskImages] A list of data disk images.
+ */
+export interface GalleryImageVersionStorageProfile {
+  readonly osDiskImage?: GalleryOSDiskImage;
+  readonly dataDiskImages?: GalleryDataDiskImage[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RegionalReplicationStatus class.
+ * @constructor
+ * This is the regional replication status.
+ *
+ * @member {string} [region] The region where the gallery image version is
+ * published to.
+ * @member {string} [state] This is the regional replication state. Possible
+ * values include: 'Unknown', 'Replicating', 'Completed', 'Failed'
+ * @member {string} [details] The details of the replication status.
+ * @member {number} [progress] It indicates progress of the replication job.
+ */
+export interface RegionalReplicationStatus {
+  readonly region?: string;
+  readonly state?: string;
+  readonly details?: string;
+  readonly progress?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReplicationStatus class.
+ * @constructor
+ * This is the replication status of the gallery image version.
+ *
+ * @member {string} [aggregatedState] This is the aggregated replication status
+ * based on the regional replication status. Possible values include:
+ * 'Unknown', 'InProgress', 'Completed', 'Failed'
+ * @member {array} [summary] This is a summary of replication status for each
+ * region.
+ */
+export interface ReplicationStatus {
+  readonly aggregatedState?: string;
+  readonly summary?: RegionalReplicationStatus[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersion class.
+ * @constructor
+ * Specifies information about the gallery image version that you want to
+ * create or update.
+ *
+ * @member {object} [publishingProfile]
+ * @member {string} [publishingProfile.scaleTier] The scale tier of the gallery
+ * image version. Valid values are 'S30' and 'S100'. Possible values include:
+ * 'S30', 'S100'
+ * @member {boolean} [publishingProfile.excludeFromLatest] The flag means that
+ * if it is set to true, people deploying VMs with 'latest' as version will not
+ * use this version.
+ * @member {date} [publishingProfile.publishedDate] The time when the gallery
+ * image version is published.
+ * @member {date} [publishingProfile.endOfLifeDate] The end of life date of the
+ * gallery image version.
+ * @member {string} [provisioningState] The current state of the gallery image
+ * version. The provisioning state, which only appears in the response.
+ * Possible values include: 'Creating', 'Updating', 'Failed', 'Succeeded',
+ * 'Deleting', 'Migrating'
+ * @member {object} [storageProfile]
+ * @member {object} [storageProfile.osDiskImage]
+ * @member {array} [storageProfile.dataDiskImages] A list of data disk images.
+ * @member {object} [replicationStatus]
+ * @member {string} [replicationStatus.aggregatedState] This is the aggregated
+ * replication status based on the regional replication status. Possible values
+ * include: 'Unknown', 'InProgress', 'Completed', 'Failed'
+ * @member {array} [replicationStatus.summary] This is a summary of replication
+ * status for each region.
+ */
+export interface GalleryImageVersion extends Resource {
+  publishingProfile?: GalleryImageVersionPublishingProfile;
+  readonly provisioningState?: string;
+  readonly storageProfile?: GalleryImageVersionStorageProfile;
+  readonly replicationStatus?: ReplicationStatus;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagedArtifact class.
+ * @constructor
+ * The managed artifact.
+ *
+ * @member {string} [id] The managed artifact id.
+ */
+export interface ManagedArtifact {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryArtifactSource class.
+ * @constructor
+ * The source of the gallery artifact.
+ *
+ * @member {object} [managedImage]
+ * @member {string} [managedImage.id] The managed artifact id.
+ */
+export interface GalleryArtifactSource {
+  managedImage?: ManagedArtifact;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ContainerServiceCustomProfile class.
  * @constructor
  * Properties to configure a custom container service cluster.
@@ -6353,6 +6713,46 @@ export interface DiskList extends Array<Disk> {
  * Call ListNext() with this to fetch the next page of snapshots.
  */
 export interface SnapshotList extends Array<Snapshot> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryList class.
+ * @constructor
+ * The List Galleries operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of galleries.
+ * Call ListNext() with this to fetch the next page of galleries.
+ */
+export interface GalleryList extends Array<Gallery> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageList class.
+ * @constructor
+ * The List Gallery Images operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of gallery
+ * images. Call ListNext() with this to fetch the next page of gallery images.
+ */
+export interface GalleryImageList extends Array<GalleryImage> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GalleryImageVersionList class.
+ * @constructor
+ * The List Gallery Image version operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of gallery image
+ * versions. Call ListNext() with this to fetch the next page of gallery image
+ * versions.
+ */
+export interface GalleryImageVersionList extends Array<GalleryImageVersion> {
   nextLink?: string;
 }
 
