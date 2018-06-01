@@ -431,7 +431,7 @@ export interface SubscriptionDeletedEventData {
  * @member {string} [deviceId] The unique identifier of the device. This
  * case-sensitive string can be up to 128 characters long, and supports ASCII
  * 7-bit alphanumeric characters plus the following special characters: - : . +
- * % _ # * ? ! ( ) , = @ ; $ '.
+ * % _ &#35; * ? ! ( ) , = @ ; $ '.
  * @member {string} [hubName] Name of the IoT Hub where the device was created
  * or deleted.
  * @member {string} [opType] The event type specified for this operation by the
