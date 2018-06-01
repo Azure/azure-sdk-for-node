@@ -3011,6 +3011,21 @@ export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualMachineScaleSetIpTag class.
+ * @constructor
+ * Contains the IP tag associated with the public IP address.
+ *
+ * @member {string} [ipTagType] IP tag type. Example: FirstPartyUsage.
+ * @member {string} [tag] IP tag associated with the public IP. Example: SQL,
+ * Storage etc.
+ */
+export interface VirtualMachineScaleSetIpTag {
+  ipTagType?: string;
+  tag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineScaleSetPublicIPAddressConfiguration class.
  * @constructor
  * Describes a virtual machines scale set IP Configuration's PublicIPAddress
@@ -3024,11 +3039,14 @@ export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
  * @member {string} [dnsSettings.domainNameLabel] The Domain name label.The
  * concatenation of the domain name label and vm index will be the domain name
  * labels of the PublicIPAddress resources that will be created
+ * @member {array} [ipTags] The list of IP tags associated with the public IP
+ * address.
  */
 export interface VirtualMachineScaleSetPublicIPAddressConfiguration {
   name: string;
   idleTimeoutInMinutes?: number;
   dnsSettings?: VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings;
+  ipTags?: VirtualMachineScaleSetIpTag[];
 }
 
 /**
@@ -3077,6 +3095,8 @@ export interface VirtualMachineScaleSetUpdatePublicIPAddressConfiguration {
  * The Domain name label.The concatenation of the domain name label and vm
  * index will be the domain name labels of the PublicIPAddress resources that
  * will be created
+ * @member {array} [publicIPAddressConfiguration.ipTags] The list of IP tags
+ * associated with the public IP address.
  * @member {string} [privateIPAddressVersion] Available from Api-Version
  * 2017-03-30 onwards, it represents whether the specific ipconfiguration is
  * IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and
@@ -5484,23 +5504,6 @@ export interface DiskSku {
 
 /**
  * @class
- * Initializes a new instance of the ResourceUpdate class.
- * @constructor
- * The Resource model definition.
- *
- * @member {object} [tags] Resource tags
- * @member {object} [sku]
- * @member {string} [sku.name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS'
- * @member {string} [sku.tier] The sku tier.
- */
-export interface ResourceUpdate {
-  tags?: { [propertyName: string]: string };
-  sku?: DiskSku;
-}
-
-/**
- * @class
  * Initializes a new instance of the ImageDiskReference class.
  * @constructor
  * The source image used for creating the disk.
@@ -5738,11 +5741,18 @@ export interface Disk extends Resource {
  * Resource Id
  * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
  * to a key or secret in KeyVault
+ * @member {object} [tags] Resource tags
+ * @member {object} [sku]
+ * @member {string} [sku.name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS'
+ * @member {string} [sku.tier] The sku tier.
  */
-export interface DiskUpdate extends ResourceUpdate {
+export interface DiskUpdate {
   osType?: string;
   diskSizeGB?: number;
   encryptionSettings?: EncryptionSettings;
+  tags?: { [propertyName: string]: string };
+  sku?: DiskSku;
 }
 
 /**
@@ -5897,11 +5907,18 @@ export interface Snapshot extends Resource {
  * Resource Id
  * @member {string} [encryptionSettings.keyEncryptionKey.keyUrl] Url pointing
  * to a key or secret in KeyVault
+ * @member {object} [tags] Resource tags
+ * @member {object} [sku]
+ * @member {string} [sku.name] The sku name. Possible values include:
+ * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+ * @member {string} [sku.tier] The sku tier.
  */
-export interface SnapshotUpdate extends ResourceUpdate {
+export interface SnapshotUpdate {
   osType?: string;
   diskSizeGB?: number;
   encryptionSettings?: EncryptionSettings;
+  tags?: { [propertyName: string]: string };
+  sku?: SnapshotSku;
 }
 
 /**
