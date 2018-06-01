@@ -264,6 +264,18 @@ export interface ContainerGroups {
      * @param {array} [containerGroup.volumes] The list of volumes that can be
      * mounted by containers in this container group.
      *
+     * @param {object} [containerGroup.diagnostics] The diagnostic information for
+     * a container group.
+     *
+     * @param {object} [containerGroup.diagnostics.logAnalytics] Container group
+     * log analytics information.
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceId The
+     * workspace id for log analytics
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceKey The
+     * workspace key for log analytics
+     *
      * @param {string} [containerGroup.location] The resource location.
      *
      * @param {object} [containerGroup.tags] The resource tags.
@@ -324,6 +336,18 @@ export interface ContainerGroups {
      *
      * @param {array} [containerGroup.volumes] The list of volumes that can be
      * mounted by containers in this container group.
+     *
+     * @param {object} [containerGroup.diagnostics] The diagnostic information for
+     * a container group.
+     *
+     * @param {object} [containerGroup.diagnostics.logAnalytics] Container group
+     * log analytics information.
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceId The
+     * workspace id for log analytics
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceKey The
+     * workspace key for log analytics
      *
      * @param {string} [containerGroup.location] The resource location.
      *
@@ -549,6 +573,18 @@ export interface ContainerGroups {
      * @param {array} [containerGroup.volumes] The list of volumes that can be
      * mounted by containers in this container group.
      *
+     * @param {object} [containerGroup.diagnostics] The diagnostic information for
+     * a container group.
+     *
+     * @param {object} [containerGroup.diagnostics.logAnalytics] Container group
+     * log analytics information.
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceId The
+     * workspace id for log analytics
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceKey The
+     * workspace key for log analytics
+     *
      * @param {string} [containerGroup.location] The resource location.
      *
      * @param {object} [containerGroup.tags] The resource tags.
@@ -609,6 +645,18 @@ export interface ContainerGroups {
      *
      * @param {array} [containerGroup.volumes] The list of volumes that can be
      * mounted by containers in this container group.
+     *
+     * @param {object} [containerGroup.diagnostics] The diagnostic information for
+     * a container group.
+     *
+     * @param {object} [containerGroup.diagnostics.logAnalytics] Container group
+     * log analytics information.
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceId The
+     * workspace id for log analytics
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceKey The
+     * workspace key for log analytics
      *
      * @param {string} [containerGroup.location] The resource location.
      *
