@@ -19761,7 +19761,7 @@ export interface Snapshots {
      * @param {object} [snapshot.sku]
      *
      * @param {string} [snapshot.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19833,7 +19833,7 @@ export interface Snapshots {
      * @param {object} [snapshot.sku]
      *
      * @param {string} [snapshot.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -20529,7 +20529,7 @@ export interface Snapshots {
      * @param {object} [snapshot.sku]
      *
      * @param {string} [snapshot.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -20601,7 +20601,7 @@ export interface Snapshots {
      * @param {object} [snapshot.sku]
      *
      * @param {string} [snapshot.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'Standard_ZRS'
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
