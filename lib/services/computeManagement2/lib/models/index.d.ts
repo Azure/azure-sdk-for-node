@@ -3011,6 +3011,21 @@ export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualMachineScaleSetIpTag class.
+ * @constructor
+ * Contains the IP tag associated with the public IP address.
+ *
+ * @member {string} [ipTagType] IP tag type. Example: FirstPartyUsage.
+ * @member {string} [tag] IP tag associated with the public IP. Example: SQL,
+ * Storage etc.
+ */
+export interface VirtualMachineScaleSetIpTag {
+  ipTagType?: string;
+  tag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineScaleSetPublicIPAddressConfiguration class.
  * @constructor
  * Describes a virtual machines scale set IP Configuration's PublicIPAddress
@@ -3024,11 +3039,14 @@ export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
  * @member {string} [dnsSettings.domainNameLabel] The Domain name label.The
  * concatenation of the domain name label and vm index will be the domain name
  * labels of the PublicIPAddress resources that will be created
+ * @member {array} [ipTags] The list of IP tags associated with the public IP
+ * address.
  */
 export interface VirtualMachineScaleSetPublicIPAddressConfiguration {
   name: string;
   idleTimeoutInMinutes?: number;
   dnsSettings?: VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings;
+  ipTags?: VirtualMachineScaleSetIpTag[];
 }
 
 /**
@@ -3077,6 +3095,8 @@ export interface VirtualMachineScaleSetUpdatePublicIPAddressConfiguration {
  * The Domain name label.The concatenation of the domain name label and vm
  * index will be the domain name labels of the PublicIPAddress resources that
  * will be created
+ * @member {array} [publicIPAddressConfiguration.ipTags] The list of IP tags
+ * associated with the public IP address.
  * @member {string} [privateIPAddressVersion] Available from Api-Version
  * 2017-03-30 onwards, it represents whether the specific ipconfiguration is
  * IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and
@@ -4349,13 +4369,13 @@ export interface ApiError {
  * Initializes a new instance of the RollbackStatusInfo class.
  * @constructor
  * Information about rollback on failed VM instances after a OS Upgrade
- * operation
+ * operation.
  *
  * @member {number} [successfullyRolledbackInstanceCount] The number of
  * instances which have been successfully rolled back.
  * @member {number} [failedRolledbackInstanceCount] The number of instances
  * which failed to rollback.
- * @member {object} [rollbackError] Error Details if OS rollback failed.
+ * @member {object} [rollbackError] Error details if OS rollback failed.
  * @member {array} [rollbackError.details] The Api error details
  * @member {object} [rollbackError.innererror] The Api inner error
  * @member {string} [rollbackError.innererror.exceptiontype] The exception
@@ -4463,7 +4483,7 @@ export interface RollingUpgradeProgressInfo {
  * number of instances which have been successfully rolled back.
  * @member {number} [rollbackInfo.failedRolledbackInstanceCount] The number of
  * instances which failed to rollback.
- * @member {object} [rollbackInfo.rollbackError] Error Details if OS rollback
+ * @member {object} [rollbackInfo.rollbackError] Error details if OS rollback
  * failed.
  * @member {array} [rollbackInfo.rollbackError.details] The Api error details
  * @member {object} [rollbackInfo.rollbackError.innererror] The Api inner error
@@ -4545,7 +4565,7 @@ export interface UpgradeOperationHistoricalStatusInfoProperties {
  * instances which have been successfully rolled back.
  * @member {number} [properties.rollbackInfo.failedRolledbackInstanceCount] The
  * number of instances which failed to rollback.
- * @member {object} [properties.rollbackInfo.rollbackError] Error Details if OS
+ * @member {object} [properties.rollbackInfo.rollbackError] Error details if OS
  * rollback failed.
  * @member {array} [properties.rollbackInfo.rollbackError.details] The Api
  * error details
@@ -6182,19 +6202,6 @@ export interface VirtualMachineSizeListResult extends Array<VirtualMachineSize> 
 
 /**
  * @class
- * Initializes a new instance of the VirtualMachineListResult class.
- * @constructor
- * The List Virtual Machine operation response.
- *
- * @member {string} [nextLink] The URI to fetch the next page of VMs. Call
- * ListNext() with this URI to fetch the next page of Virtual Machines.
- */
-export interface VirtualMachineListResult extends Array<VirtualMachine> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ListUsagesResult class.
  * @constructor
  * The List Usages operation response.
@@ -6217,6 +6224,19 @@ export interface ListUsagesResult extends Array<Usage> {
  * ListNext() with this to fetch the next page of Images.
  */
 export interface ImageListResult extends Array<Image> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineListResult class.
+ * @constructor
+ * The List Virtual Machine operation response.
+ *
+ * @member {string} [nextLink] The URI to fetch the next page of VMs. Call
+ * ListNext() with this URI to fetch the next page of Virtual Machines.
+ */
+export interface VirtualMachineListResult extends Array<VirtualMachine> {
   nextLink?: string;
 }
 
