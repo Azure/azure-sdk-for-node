@@ -2176,7 +2176,7 @@ export interface Components {
      * data produced by the application being monitored that is being sampled for
      * Application Insights telemetry.
      *
-     * @param {string} [insightProperties.location] Resource location
+     * @param {string} insightProperties.location Resource location
      *
      * @param {object} [insightProperties.tags] Resource tags
      *
@@ -2231,7 +2231,7 @@ export interface Components {
      * data produced by the application being monitored that is being sampled for
      * Application Insights telemetry.
      *
-     * @param {string} [insightProperties.location] Resource location
+     * @param {string} insightProperties.location Resource location
      *
      * @param {object} [insightProperties.tags] Resource tags
      *
@@ -3662,7 +3662,7 @@ export interface WebTests {
      * @param {string} [webTestDefinition.configuration.webTest] The XML
      * specification of a WebTest to run against an application.
      *
-     * @param {string} [webTestDefinition.location] Resource location
+     * @param {string} webTestDefinition.location Resource location
      *
      * @param {object} [webTestDefinition.tags] Resource tags
      *
@@ -3729,7 +3729,7 @@ export interface WebTests {
      * @param {string} [webTestDefinition.configuration.webTest] The XML
      * specification of a WebTest to run against an application.
      *
-     * @param {string} [webTestDefinition.location] Resource location
+     * @param {string} webTestDefinition.location Resource location
      *
      * @param {object} [webTestDefinition.tags] Resource tags
      *
@@ -4844,7 +4844,7 @@ export interface WorkbookOperations {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} [workbookProperties.location] Resource location
+     * @param {string} workbookProperties.location Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
@@ -4905,7 +4905,7 @@ export interface WorkbookOperations {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} [workbookProperties.location] Resource location
+     * @param {string} workbookProperties.location Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
@@ -4985,7 +4985,7 @@ export interface WorkbookOperations {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} [workbookProperties.location] Resource location
+     * @param {string} workbookProperties.location Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
@@ -5046,7 +5046,7 @@ export interface WorkbookOperations {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} [workbookProperties.location] Resource location
+     * @param {string} workbookProperties.location Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *

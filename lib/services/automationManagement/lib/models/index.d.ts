@@ -1404,6 +1404,16 @@ export interface DscNodeExtensionHandlerAssociationProperty {
 
 /**
  * @class
+ * Initializes a new instance of the DscNodeUpdateParametersProperties class.
+ * @constructor
+ * @member {string} [name] Gets or sets the name of the dsc nodeconfiguration.
+ */
+export interface DscNodeUpdateParametersProperties {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DscNodeUpdateParameters class.
  * @constructor
  * The parameters supplied to the update dsc node operation.
@@ -1413,10 +1423,14 @@ export interface DscNodeExtensionHandlerAssociationProperty {
  * node.
  * @member {string} [nodeConfiguration.name] Gets or sets the name of the dsc
  * nodeconfiguration.
+ * @member {object} [properties]
+ * @member {string} [properties.name] Gets or sets the name of the dsc
+ * nodeconfiguration.
  */
 export interface DscNodeUpdateParameters {
   nodeId?: string;
   nodeConfiguration?: DscNodeConfigurationAssociationProperty;
+  properties?: DscNodeUpdateParametersProperties;
 }
 
 /**

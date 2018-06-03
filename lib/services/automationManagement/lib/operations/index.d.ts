@@ -10783,6 +10783,11 @@ export interface DscNodeOperations {
      * @param {string} [dscNodeUpdateParameters.nodeConfiguration.name] Gets or
      * sets the name of the dsc nodeconfiguration.
      *
+     * @param {object} [dscNodeUpdateParameters.properties]
+     *
+     * @param {string} [dscNodeUpdateParameters.properties.name] Gets or sets the
+     * name of the dsc nodeconfiguration.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -10816,6 +10821,11 @@ export interface DscNodeOperations {
      *
      * @param {string} [dscNodeUpdateParameters.nodeConfiguration.name] Gets or
      * sets the name of the dsc nodeconfiguration.
+     *
+     * @param {object} [dscNodeUpdateParameters.properties]
+     *
+     * @param {string} [dscNodeUpdateParameters.properties.name] Gets or sets the
+     * name of the dsc nodeconfiguration.
      *
      * @param {object} [options] Optional Parameters.
      *

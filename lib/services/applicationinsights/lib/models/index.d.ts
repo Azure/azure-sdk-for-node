@@ -533,6 +533,26 @@ export interface ApplicationInsightsComponentProactiveDetectionConfiguration ext
 
 /**
  * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * An azure resource object
+ *
+ * @member {string} [id] Azure resource Id
+ * @member {string} [name] Azure resource name
+ * @member {string} [type] Azure resource type
+ * @member {string} location Resource location
+ * @member {object} [tags] Resource tags
+ */
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the TagsResource class.
  * @constructor
  * A container holding only the Tags for a resource, allowing the user to
@@ -541,26 +561,6 @@ export interface ApplicationInsightsComponentProactiveDetectionConfiguration ext
  * @member {object} [tags] Resource tags
  */
 export interface TagsResource {
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * An azure resource object
- *
- * @member {string} [id] Azure resource Id
- * @member {string} [name] Azure resource name
- * @member {string} [type] Azure resource type
- * @member {string} [location] Resource location
- * @member {object} [tags] Resource tags
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location?: string;
   tags?: { [propertyName: string]: string };
 }
 
