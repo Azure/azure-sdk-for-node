@@ -18277,6 +18277,10 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @param {string} ruleId The vulnerability assessment rule ID.
      *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -18288,7 +18292,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentRuleBaseline>>;
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentRuleBaseline>>;
 
     /**
      * Gets a database's vulnerability assessment rule baseline.
@@ -18304,6 +18308,10 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @param {string} ruleId The vulnerability assessment rule ID.
      *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -18332,9 +18340,9 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentRuleBaseline>;
-    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
-    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentRuleBaseline>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
 
 
     /**
@@ -18350,6 +18358,10 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      * vulnerability assessment rule baseline is defined.
      *
      * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
      *
      * @param {object} parameters The requested rule baseline resource.
      *
@@ -18366,7 +18378,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentRuleBaseline>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentRuleBaseline>>;
 
     /**
      * Creates or updates a database's vulnerability assessment rule baseline.
@@ -18381,6 +18393,10 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      * vulnerability assessment rule baseline is defined.
      *
      * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
      *
      * @param {object} parameters The requested rule baseline resource.
      *
@@ -18414,9 +18430,9 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentRuleBaseline>;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentRuleBaseline>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
 
 
     /**
@@ -18432,6 +18448,10 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      * vulnerability assessment rule baseline is defined.
      *
      * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18444,7 +18464,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Removes the database's vulnerability assessment rule baseline.
@@ -18459,6 +18479,10 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      * vulnerability assessment rule baseline is defined.
      *
      * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18486,9 +18510,9 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
