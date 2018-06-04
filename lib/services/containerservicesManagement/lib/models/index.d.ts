@@ -618,7 +618,6 @@ export interface OperationValue {
  * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
  * identifier.
  * @member {number} [maxPods] Maximum number of pods that can run on a node.
- * Default value: 30 .
  * @member {string} [osType] OsType to be used to specify os type. Choose from
  * Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
