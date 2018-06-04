@@ -520,7 +520,7 @@ export interface ContainerService extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ComputeOperationValue class.
+ * Initializes a new instance of the OperationValue class.
  * @constructor
  * Describes the properties of a Compute Operation value.
  *
@@ -532,7 +532,7 @@ export interface ContainerService extends Resource {
  * @member {string} [description] The description of the operation.
  * @member {string} [provider] The resource provider for the operation.
  */
-export interface ComputeOperationValue {
+export interface OperationValue {
   readonly origin?: string;
   readonly name?: string;
   readonly operation?: string;
@@ -915,12 +915,12 @@ export interface ContainerServiceListResult extends Array<ContainerService> {
 
 /**
  * @class
- * Initializes a new instance of the ComputeOperationListResult class.
+ * Initializes a new instance of the OperationListResult class.
  * @constructor
  * The List Compute Operation operation response.
  *
  */
-export interface ComputeOperationListResult extends Array<ComputeOperationValue> {
+export interface OperationListResult extends Array<OperationValue> {
 }
 
 /**

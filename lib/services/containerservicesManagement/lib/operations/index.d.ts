@@ -1361,11 +1361,11 @@ export interface Operations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ComputeOperationListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComputeOperationListResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
 
     /**
      * Gets a list of compute operations.
@@ -1382,7 +1382,7 @@ export interface Operations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ComputeOperationListResult} - The deserialized result object.
+     *                      @resolve {OperationListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1390,17 +1390,16 @@ export interface Operations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ComputeOperationListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ComputeOperationListResult} for more
-     *                      information.
+     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComputeOperationListResult>;
-    list(callback: ServiceCallback<models.ComputeOperationListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComputeOperationListResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
+    list(callback: ServiceCallback<models.OperationListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
 }
 
 /**
