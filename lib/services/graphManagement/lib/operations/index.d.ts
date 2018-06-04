@@ -210,6 +210,9 @@ export interface Applications {
      *
      * @param {object} parameters The parameters for creating an application.
      *
+     * @param {array} [parameters.appRoles] The collection of application roles
+     * that an application may declare.
+     *
      * @param {boolean} parameters.availableToOtherTenants Whether the application
      * is available to other tenants.
      *
@@ -254,6 +257,9 @@ export interface Applications {
      * Create a new application.
      *
      * @param {object} parameters The parameters for creating an application.
+     *
+     * @param {array} [parameters.appRoles] The collection of application roles
+     * that an application may declare.
      *
      * @param {boolean} parameters.availableToOtherTenants Whether the application
      * is available to other tenants.
@@ -485,6 +491,9 @@ export interface Applications {
      *
      * @param {object} parameters Parameters to update an existing application.
      *
+     * @param {array} [parameters.appRoles] The collection of application roles
+     * that an application may declare.
+     *
      * @param {boolean} [parameters.availableToOtherTenants] Whether the
      * application is available to other tenants
      *
@@ -532,6 +541,9 @@ export interface Applications {
      * @param {string} applicationObjectId Application object ID.
      *
      * @param {object} parameters Parameters to update an existing application.
+     *
+     * @param {array} [parameters.appRoles] The collection of application roles
+     * that an application may declare.
      *
      * @param {boolean} [parameters.availableToOtherTenants] Whether the
      * application is available to other tenants
