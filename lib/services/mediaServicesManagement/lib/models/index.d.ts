@@ -206,7 +206,7 @@ export interface ODataError {
  * @constructor
  * The API error.
  *
- * @member {object} [error] ApiError. The error properties.
+ * @member {object} [error] The error properties.
  * @member {string} [error.code] A language-independent error name.
  * @member {string} [error.message] The error message.
  * @member {string} [error.target] The target of the error (for example, the
