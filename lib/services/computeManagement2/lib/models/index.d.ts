@@ -5925,6 +5925,8 @@ export interface SnapshotUpdate {
  * @class
  * Initializes a new instance of the GalleryIdentifier class.
  * @constructor
+ * Describes the gallery unique name.
+ *
  * @member {string} [uniqueName] The unique name of the gallery
  */
 export interface GalleryIdentifier {
