@@ -4349,6 +4349,11 @@ export interface ScheduledQueryRules {
      * @param {object} parameters.action Action needs to be taken on rule
      * execution.
      *
+     * @param {string} [parameters.action.actionGroupId] the id of the action group
+     * to use.
+     *
+     * @param {object} [parameters.action.webhookProperties]
+     *
      * @param {string} parameters.action.odatatype Polymorphic Discriminator
      *
      * @param {string} parameters.location Resource location
@@ -4410,6 +4415,11 @@ export interface ScheduledQueryRules {
      *
      * @param {object} parameters.action Action needs to be taken on rule
      * execution.
+     *
+     * @param {string} [parameters.action.actionGroupId] the id of the action group
+     * to use.
+     *
+     * @param {object} [parameters.action.webhookProperties]
      *
      * @param {string} parameters.action.odatatype Polymorphic Discriminator
      *

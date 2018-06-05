@@ -1978,16 +1978,18 @@ export interface CalculateBaselineResponse {
 
 /**
  * @class
- * Initializes a new instance of the MetricAlertAction class.
+ * Initializes a new instance of the Action class.
  * @constructor
  * An alert action.
  *
  * @member {string} [actionGroupId] the id of the action group to use.
  * @member {object} [webhookProperties]
+ * @member {string} odatatype Polymorphic Discriminator
  */
-export interface MetricAlertAction {
+export interface Action {
   actionGroupId?: string;
   webhookProperties?: { [propertyName: string]: string };
+  odatatype: string;
 }
 
 /**
@@ -2043,7 +2045,7 @@ export interface MetricAlertResource extends Resource {
   windowSize: moment.Duration;
   criteria: MetricAlertCriteria;
   autoMitigate?: boolean;
-  actions?: MetricAlertAction[];
+  actions?: Action[];
   readonly lastUpdatedTime?: Date;
 }
 
@@ -2085,7 +2087,7 @@ export interface MetricAlertResourcePatch {
   windowSize: moment.Duration;
   criteria: MetricAlertCriteria;
   autoMitigate?: boolean;
-  actions?: MetricAlertAction[];
+  actions?: Action[];
   readonly lastUpdatedTime?: Date;
 }
 
@@ -2228,16 +2230,6 @@ export interface Schedule {
 
 /**
  * @class
- * Initializes a new instance of the Action class.
- * @constructor
- * @member {string} odatatype Polymorphic Discriminator
- */
-export interface Action {
-  odatatype: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the LogSearchRuleResource class.
  * @constructor
  * The Log Search Rule resource.
@@ -2266,6 +2258,8 @@ export interface Action {
  * needs to be fetched for query (should be greater than or equal to
  * frequencyInMinutes).
  * @member {object} action Action needs to be taken on rule execution.
+ * @member {string} [action.actionGroupId] the id of the action group to use.
+ * @member {object} [action.webhookProperties]
  * @member {string} [action.odatatype] Polymorphic Discriminator
  */
 export interface LogSearchRuleResource extends Resource {
