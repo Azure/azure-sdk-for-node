@@ -84,12 +84,6 @@ export interface ScaleCapacity {
  * 'GreaterThan', 'GreaterThanOrEqual', 'LessThan', 'LessThanOrEqual'
  * @member {number} threshold the threshold of the metric that triggers the
  * scale action.
- * @member {string} [thresholdOperator] Evaluation operation for Metric
- * -'GreaterThan' or 'LessThan' or 'Equal'. Possible values include:
- * 'GreaterThan', 'LessThan', 'Equal'
- * @member {string} [metricTriggerType] Metric Trigger Type - 'Consecutive' or
- * 'Total'. Possible values include: 'Consecutive', 'Total'
- * @member {string} [metricColumn] Evaluation of metric on a particular column
  */
 export interface MetricTrigger {
   metricName: string;
@@ -100,9 +94,6 @@ export interface MetricTrigger {
   timeAggregation: string;
   operator: string;
   threshold: number;
-  thresholdOperator?: string;
-  metricTriggerType?: string;
-  metricColumn?: string;
 }
 
 /**
@@ -163,13 +154,6 @@ export interface ScaleAction {
  * 'LessThanOrEqual'
  * @member {number} [metricTrigger.threshold] the threshold of the metric that
  * triggers the scale action.
- * @member {string} [metricTrigger.thresholdOperator] Evaluation operation for
- * Metric -'GreaterThan' or 'LessThan' or 'Equal'. Possible values include:
- * 'GreaterThan', 'LessThan', 'Equal'
- * @member {string} [metricTrigger.metricTriggerType] Metric Trigger Type -
- * 'Consecutive' or 'Total'. Possible values include: 'Consecutive', 'Total'
- * @member {string} [metricTrigger.metricColumn] Evaluation of metric on a
- * particular column
  * @member {object} scaleAction the parameters for the scaling action.
  * @member {string} [scaleAction.direction] the scale direction. Whether the
  * scaling action increases or decreases the number of instances. Possible
@@ -2216,9 +2200,8 @@ export interface MetricAlertSingleResourceMultipleMetricCriteria extends MetricA
  * @member {array} [authorizedResources] List of  Resource referred into query
  * @member {string} dataSourceId The resource uri over which log search query
  * is to be run.
- * @member {string} [queryType] Set value to ResultCount if query should be
- * returning search result count. Set it to Number if its a metric query.
- * Possible values include: 'ResultCount'
+ * @member {string} [queryType] Set value to 'ResultCount'. Possible values
+ * include: 'ResultCount'
  */
 export interface Source {
   query: string;
@@ -2274,9 +2257,8 @@ export interface Action {
  * query
  * @member {string} [source.dataSourceId] The resource uri over which log
  * search query is to be run.
- * @member {string} [source.queryType] Set value to ResultCount if query should
- * be returning search result count. Set it to Number if its a metric query.
- * Possible values include: 'ResultCount'
+ * @member {string} [source.queryType] Set value to 'ResultCount'. Possible
+ * values include: 'ResultCount'
  * @member {object} schedule Schedule (Frequnecy, Time Window) for rule.
  * @member {number} [schedule.frequencyInMinutes] frequency (in minutes) at
  * which rule condition should be evaluated.
@@ -2298,6 +2280,41 @@ export interface LogSearchRuleResource extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the LogSearchRuleResourcePatch class.
+ * @constructor
+ * The log search rule resource for patch operations.
+ *
+ * @member {object} [tags] Resource tags
+ * @member {string} [enabled] The flag which indicates whether the Log Search
+ * rule is enabled. Value should be true or false. Possible values include:
+ * 'true', 'false'
+ */
+export interface LogSearchRuleResourcePatch {
+  tags?: { [propertyName: string]: string };
+  enabled?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogMetricTrigger class.
+ * @constructor
+ * @member {string} [thresholdOperator] Evaluation operation for Metric
+ * -'GreaterThan' or 'LessThan' or 'Equal'. Possible values include:
+ * 'GreaterThan', 'LessThan', 'Equal'
+ * @member {number} [threshold]
+ * @member {string} [metricTriggerType] Metric Trigger Type - 'Consecutive' or
+ * 'Total'. Possible values include: 'Consecutive', 'Total'
+ * @member {string} [metricColumn] Evaluation of metric on a particular column
+ */
+export interface LogMetricTrigger {
+  thresholdOperator?: string;
+  threshold?: number;
+  metricTriggerType?: string;
+  metricColumn?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TriggerCondition class.
  * @constructor
  * The condition that results in the Log Search rule.
@@ -2308,34 +2325,10 @@ export interface LogSearchRuleResource extends Resource {
  * @member {number} threshold Result or count threshold based on which rule
  * should be triggered.
  * @member {object} [metricTrigger] Trigger condition for metric query rule
- * @member {string} [metricTrigger.metricName] the name of the metric that
- * defines what the rule monitors.
- * @member {string} [metricTrigger.metricResourceUri] the resource identifier
- * of the resource the rule monitors.
- * @member {moment.duration} [metricTrigger.timeGrain] the granularity of
- * metrics the rule monitors. Must be one of the predefined values returned
- * from metric definitions for the metric. Must be between 12 hours and 1
- * minute.
- * @member {string} [metricTrigger.statistic] the metric statistic type. How
- * the metrics from multiple instances are combined. Possible values include:
- * 'Average', 'Min', 'Max', 'Sum'
- * @member {moment.duration} [metricTrigger.timeWindow] the range of time in
- * which instance data is collected. This value must be greater than the delay
- * in metric collection, which can vary from resource-to-resource. Must be
- * between 12 hours and 5 minutes.
- * @member {string} [metricTrigger.timeAggregation] time aggregation type. How
- * the data that is collected should be combined over time. The default value
- * is Average. Possible values include: 'Average', 'Minimum', 'Maximum',
- * 'Total', 'Count'
- * @member {string} [metricTrigger.operator] the operator that is used to
- * compare the metric data and the threshold. Possible values include:
- * 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
- * 'LessThanOrEqual'
- * @member {number} [metricTrigger.threshold] the threshold of the metric that
- * triggers the scale action.
  * @member {string} [metricTrigger.thresholdOperator] Evaluation operation for
  * Metric -'GreaterThan' or 'LessThan' or 'Equal'. Possible values include:
  * 'GreaterThan', 'LessThan', 'Equal'
+ * @member {number} [metricTrigger.threshold]
  * @member {string} [metricTrigger.metricTriggerType] Metric Trigger Type -
  * 'Consecutive' or 'Total'. Possible values include: 'Consecutive', 'Total'
  * @member {string} [metricTrigger.metricColumn] Evaluation of metric on a
@@ -2344,7 +2337,7 @@ export interface LogSearchRuleResource extends Resource {
 export interface TriggerCondition {
   thresholdOperator: string;
   threshold: number;
-  metricTrigger?: MetricTrigger;
+  metricTrigger?: LogMetricTrigger;
 }
 
 /**
@@ -2390,34 +2383,10 @@ export interface AzNsActionGroup {
  * which rule should be triggered.
  * @member {object} [trigger.metricTrigger] Trigger condition for metric query
  * rule
- * @member {string} [trigger.metricTrigger.metricName] the name of the metric
- * that defines what the rule monitors.
- * @member {string} [trigger.metricTrigger.metricResourceUri] the resource
- * identifier of the resource the rule monitors.
- * @member {moment.duration} [trigger.metricTrigger.timeGrain] the granularity
- * of metrics the rule monitors. Must be one of the predefined values returned
- * from metric definitions for the metric. Must be between 12 hours and 1
- * minute.
- * @member {string} [trigger.metricTrigger.statistic] the metric statistic
- * type. How the metrics from multiple instances are combined. Possible values
- * include: 'Average', 'Min', 'Max', 'Sum'
- * @member {moment.duration} [trigger.metricTrigger.timeWindow] the range of
- * time in which instance data is collected. This value must be greater than
- * the delay in metric collection, which can vary from resource-to-resource.
- * Must be between 12 hours and 5 minutes.
- * @member {string} [trigger.metricTrigger.timeAggregation] time aggregation
- * type. How the data that is collected should be combined over time. The
- * default value is Average. Possible values include: 'Average', 'Minimum',
- * 'Maximum', 'Total', 'Count'
- * @member {string} [trigger.metricTrigger.operator] the operator that is used
- * to compare the metric data and the threshold. Possible values include:
- * 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
- * 'LessThanOrEqual'
- * @member {number} [trigger.metricTrigger.threshold] the threshold of the
- * metric that triggers the scale action.
  * @member {string} [trigger.metricTrigger.thresholdOperator] Evaluation
  * operation for Metric -'GreaterThan' or 'LessThan' or 'Equal'. Possible
  * values include: 'GreaterThan', 'LessThan', 'Equal'
+ * @member {number} [trigger.metricTrigger.threshold]
  * @member {string} [trigger.metricTrigger.metricTriggerType] Metric Trigger
  * Type - 'Consecutive' or 'Total'. Possible values include: 'Consecutive',
  * 'Total'
