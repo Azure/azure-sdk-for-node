@@ -181,9 +181,13 @@ export interface SearchAction extends Action {
  * @class
  * Initializes a new instance of the SuggestionsSuggestionGroup class.
  * @constructor
+ * @member {string} name Possible values include: 'Unknown', 'Web',
+ * 'StoreApps', 'SearchHistory', 'PersonalSearchDocuments',
+ * 'PersonalSearchTags', 'Custom'. Default value: 'Unknown' .
  * @member {array} searchSuggestions
  */
 export interface SuggestionsSuggestionGroup {
+  name: string;
   searchSuggestions: SearchAction[];
 }
 
