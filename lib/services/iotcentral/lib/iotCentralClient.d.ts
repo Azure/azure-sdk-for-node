@@ -21,7 +21,7 @@ export default class IotCentralClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {uuid} subscriptionId - The subscription identifier.
+   * @param {string} subscriptionId - The subscription identifier.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
