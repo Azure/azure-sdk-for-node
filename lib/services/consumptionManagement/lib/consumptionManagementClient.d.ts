@@ -58,6 +58,13 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   // Operation groups
   forecasts: operations.Forecasts;
   operations: operations.Operations;
+  reportConfigOperations: operations.ReportConfigOperations;
+  billingAccountDimensions: operations.BillingAccountDimensions;
+  subscriptionDimensions: operations.SubscriptionDimensions;
+  resourceGroupDimensions: operations.ResourceGroupDimensions;
+  subscriptionInsights: operations.SubscriptionInsights;
+  resourceGroupInsights: operations.ResourceGroupInsights;
+  billingAccountInsights: operations.BillingAccountInsights;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };

@@ -142,6 +142,437 @@ export interface Forecast extends Resource {
   readonly confidenceLevels?: ForecastPropertiesConfidenceLevelsItem[];
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigRecurrencePeriod class.
+ * @constructor
+ * The start and end date for recurrence schedule.
+ *
+ * @member {date} from The start date of recurrence.
+ * @member {date} [to] The end date of recurrence. If not provided, we default
+ * this to 10 years from the start date.
+ */
+export interface ReportConfigRecurrencePeriod {
+  from: Date;
+  to?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigSchedule class.
+ * @constructor
+ * The schedule associated with a report config.
+ *
+ * @member {string} [status] The status of the schedule. Whether active or not.
+ * If inactive, the report's scheduled execution is paused. Possible values
+ * include: 'Active', 'Inactive'
+ * @member {string} recurrence The schedule recurrence. Possible values
+ * include: 'Daily', 'Weekly', 'Monthly', 'Annually'
+ * @member {object} recurrencePeriod Has start and end date of the recurrence.
+ * The start date must be in future. If present, the end date must be greater
+ * than start date.
+ * @member {date} [recurrencePeriod.from] The start date of recurrence.
+ * @member {date} [recurrencePeriod.to] The end date of recurrence. If not
+ * provided, we default this to 10 years from the start date.
+ */
+export interface ReportConfigSchedule {
+  status?: string;
+  recurrence: string;
+  recurrencePeriod: ReportConfigRecurrencePeriod;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigDeliveryDestination class.
+ * @constructor
+ * The destination information for the delivery of the report.
+ *
+ * @member {string} subscriptionId The subscription id of the storage account
+ * where reports will be delivered.
+ * @member {string} resourceGroup The resource group of the storage account
+ * here reports will be delivered.
+ * @member {string} storageAccount The storage account here reports will be
+ * delivered.
+ * @member {string} endpoint The endpoint of the storage service where reports
+ * will be delivered.
+ * @member {string} container The name of the container where reports will be
+ * uploaded.
+ * @member {string} category The name of the directory where reports will be
+ * uploaded.
+ */
+export interface ReportConfigDeliveryDestination {
+  subscriptionId: string;
+  resourceGroup: string;
+  storageAccount: string;
+  endpoint: string;
+  container: string;
+  category: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigDeliveryInfo class.
+ * @constructor
+ * The delivery information associated with a report config.
+ *
+ * @member {object} destination Has destination for the report being delivered.
+ * @member {string} [destination.subscriptionId] The subscription id of the
+ * storage account where reports will be delivered.
+ * @member {string} [destination.resourceGroup] The resource group of the
+ * storage account here reports will be delivered.
+ * @member {string} [destination.storageAccount] The storage account here
+ * reports will be delivered.
+ * @member {string} [destination.endpoint] The endpoint of the storage service
+ * where reports will be delivered.
+ * @member {string} [destination.container] The name of the container where
+ * reports will be uploaded.
+ * @member {string} [destination.category] The name of the directory where
+ * reports will be uploaded.
+ */
+export interface ReportConfigDeliveryInfo {
+  destination: ReportConfigDeliveryDestination;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigTimePeriod class.
+ * @constructor
+ * The start and end date for pulling data for the report.
+ *
+ * @member {date} from The start date to pull data from.
+ * @member {date} to The end date to pull data to.
+ */
+export interface ReportConfigTimePeriod {
+  from: Date;
+  to: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigDatasetConfiguration class.
+ * @constructor
+ * The configuration of dataset in the report.
+ *
+ * @member {array} [columns] Array of column names to be included in the
+ * report. Any valid report column name is allowed. If not provided, then
+ * report includes all columns.
+ */
+export interface ReportConfigDatasetConfiguration {
+  columns?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigAggregation class.
+ * @constructor
+ * The aggregation expression to be used in the report.
+ *
+ * @member {string} name The name of the column to aggregate.
+ */
+export interface ReportConfigAggregation {
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigGrouping class.
+ * @constructor
+ * The group by expression to be used in the report.
+ *
+ * @member {string} columnType Has type of the column to group. Possible values
+ * include: 'Tag', 'Dimension'
+ * @member {string} name The name of the column to group.
+ */
+export interface ReportConfigGrouping {
+  columnType: string;
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigComparisonExpression class.
+ * @constructor
+ * The comparison expression to be used in the report.
+ *
+ * @member {string} name The name of the column to use in comaprison.
+ * @member {array} values Array of values to use for comparison
+ */
+export interface ReportConfigComparisonExpression {
+  name: string;
+  values: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigFilter class.
+ * @constructor
+ * The filter expression to be used in the report.
+ *
+ * @member {array} [and] The logical "AND" expression. Must have atleast 2
+ * items.
+ * @member {array} [or] The logical "OR" expression. Must have atleast 2 items.
+ * @member {object} [not] The logical "NOT" expression.
+ * @member {object} [dimension] Has comparison expression for a dimension
+ * @member {string} [dimension.name] The name of the column to use in
+ * comaprison.
+ * @member {array} [dimension.values] Array of values to use for comparison
+ * @member {object} [tag] Has comparison expression for a tag
+ * @member {string} [tag.name] The name of the column to use in comaprison.
+ * @member {array} [tag.values] Array of values to use for comparison
+ */
+export interface ReportConfigFilter {
+  and?: ReportConfigFilter[];
+  or?: ReportConfigFilter[];
+  not?: ReportConfigFilter;
+  dimension?: ReportConfigComparisonExpression;
+  tag?: ReportConfigComparisonExpression;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigDataset class.
+ * @constructor
+ * The definition of data present in the report.
+ *
+ * @member {string} [granularity] The granularity of rows in the report.
+ * Possible values include: 'Daily'
+ * @member {object} [configuration] Has configuration information for the data
+ * in the report. The configuration will be ignored if aggregation and grouping
+ * are provided.
+ * @member {array} [configuration.columns] Array of column names to be included
+ * in the report. Any valid report column name is allowed. If not provided,
+ * then report includes all columns.
+ * @member {object} [aggregation] Dictionary of aggregation expression to use
+ * in the report. The key of each item in the dictionary is the alias for the
+ * aggregated column. Report can have upto 2 aggregation clauses.
+ * @member {array} [grouping] Array of group by expression to use in the
+ * report. Report can have upto 2 group by clauses.
+ * @member {object} [filter] Has filter expression to use in the report.
+ * @member {array} [filter.and] The logical "AND" expression. Must have atleast
+ * 2 items.
+ * @member {array} [filter.or] The logical "OR" expression. Must have atleast 2
+ * items.
+ * @member {object} [filter.not] The logical "NOT" expression.
+ * @member {object} [filter.dimension] Has comparison expression for a
+ * dimension
+ * @member {string} [filter.dimension.name] The name of the column to use in
+ * comaprison.
+ * @member {array} [filter.dimension.values] Array of values to use for
+ * comparison
+ * @member {object} [filter.tag] Has comparison expression for a tag
+ * @member {string} [filter.tag.name] The name of the column to use in
+ * comaprison.
+ * @member {array} [filter.tag.values] Array of values to use for comparison
+ */
+export interface ReportConfigDataset {
+  granularity?: string;
+  configuration?: ReportConfigDatasetConfiguration;
+  aggregation?: { [propertyName: string]: ReportConfigAggregation };
+  grouping?: ReportConfigGrouping[];
+  filter?: ReportConfigFilter;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigDefinition class.
+ * @constructor
+ * The definition of a report config.
+ *
+ * @member {string} timeframe The time frame for pulling data for the report.
+ * If custom, then a specific time period must be provided. Possible values
+ * include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+ * @member {object} [timePeriod] Has time period for pulling data for the
+ * report.
+ * @member {date} [timePeriod.from] The start date to pull data from.
+ * @member {date} [timePeriod.to] The end date to pull data to.
+ * @member {object} [dataset] Has definition for data in this report config.
+ * @member {string} [dataset.granularity] The granularity of rows in the
+ * report. Possible values include: 'Daily'
+ * @member {object} [dataset.configuration] Has configuration information for
+ * the data in the report. The configuration will be ignored if aggregation and
+ * grouping are provided.
+ * @member {array} [dataset.configuration.columns] Array of column names to be
+ * included in the report. Any valid report column name is allowed. If not
+ * provided, then report includes all columns.
+ * @member {object} [dataset.aggregation] Dictionary of aggregation expression
+ * to use in the report. The key of each item in the dictionary is the alias
+ * for the aggregated column. Report can have upto 2 aggregation clauses.
+ * @member {array} [dataset.grouping] Array of group by expression to use in
+ * the report. Report can have upto 2 group by clauses.
+ * @member {object} [dataset.filter] Has filter expression to use in the
+ * report.
+ * @member {array} [dataset.filter.and] The logical "AND" expression. Must have
+ * atleast 2 items.
+ * @member {array} [dataset.filter.or] The logical "OR" expression. Must have
+ * atleast 2 items.
+ * @member {object} [dataset.filter.not] The logical "NOT" expression.
+ * @member {object} [dataset.filter.dimension] Has comparison expression for a
+ * dimension
+ * @member {string} [dataset.filter.dimension.name] The name of the column to
+ * use in comaprison.
+ * @member {array} [dataset.filter.dimension.values] Array of values to use for
+ * comparison
+ * @member {object} [dataset.filter.tag] Has comparison expression for a tag
+ * @member {string} [dataset.filter.tag.name] The name of the column to use in
+ * comaprison.
+ * @member {array} [dataset.filter.tag.values] Array of values to use for
+ * comparison
+ */
+export interface ReportConfigDefinition {
+  timeframe: string;
+  timePeriod?: ReportConfigTimePeriod;
+  dataset?: ReportConfigDataset;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfig class.
+ * @constructor
+ * A report config resource.
+ *
+ * @member {object} [schedule] Has schedule information for the report config.
+ * @member {string} [schedule.status] The status of the schedule. Whether
+ * active or not. If inactive, the report's scheduled execution is paused.
+ * Possible values include: 'Active', 'Inactive'
+ * @member {string} [schedule.recurrence] The schedule recurrence. Possible
+ * values include: 'Daily', 'Weekly', 'Monthly', 'Annually'
+ * @member {object} [schedule.recurrencePeriod] Has start and end date of the
+ * recurrence. The start date must be in future. If present, the end date must
+ * be greater than start date.
+ * @member {date} [schedule.recurrencePeriod.from] The start date of
+ * recurrence.
+ * @member {date} [schedule.recurrencePeriod.to] The end date of recurrence. If
+ * not provided, we default this to 10 years from the start date.
+ * @member {string} [format] The format of the report being delivered. Possible
+ * values include: 'Csv'
+ * @member {object} deliveryInfo Has delivery information for the report
+ * config.
+ * @member {object} [deliveryInfo.destination] Has destination for the report
+ * being delivered.
+ * @member {string} [deliveryInfo.destination.subscriptionId] The subscription
+ * id of the storage account where reports will be delivered.
+ * @member {string} [deliveryInfo.destination.resourceGroup] The resource group
+ * of the storage account here reports will be delivered.
+ * @member {string} [deliveryInfo.destination.storageAccount] The storage
+ * account here reports will be delivered.
+ * @member {string} [deliveryInfo.destination.endpoint] The endpoint of the
+ * storage service where reports will be delivered.
+ * @member {string} [deliveryInfo.destination.container] The name of the
+ * container where reports will be uploaded.
+ * @member {string} [deliveryInfo.destination.category] The name of the
+ * directory where reports will be uploaded.
+ * @member {object} definition Has definition for the report config.
+ * @member {string} [definition.timeframe] The time frame for pulling data for
+ * the report. If custom, then a specific time period must be provided.
+ * Possible values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+ * @member {object} [definition.timePeriod] Has time period for pulling data
+ * for the report.
+ * @member {date} [definition.timePeriod.from] The start date to pull data
+ * from.
+ * @member {date} [definition.timePeriod.to] The end date to pull data to.
+ * @member {object} [definition.dataset] Has definition for data in this report
+ * config.
+ * @member {string} [definition.dataset.granularity] The granularity of rows in
+ * the report. Possible values include: 'Daily'
+ * @member {object} [definition.dataset.configuration] Has configuration
+ * information for the data in the report. The configuration will be ignored if
+ * aggregation and grouping are provided.
+ * @member {array} [definition.dataset.configuration.columns] Array of column
+ * names to be included in the report. Any valid report column name is allowed.
+ * If not provided, then report includes all columns.
+ * @member {object} [definition.dataset.aggregation] Dictionary of aggregation
+ * expression to use in the report. The key of each item in the dictionary is
+ * the alias for the aggregated column. Report can have upto 2 aggregation
+ * clauses.
+ * @member {array} [definition.dataset.grouping] Array of group by expression
+ * to use in the report. Report can have upto 2 group by clauses.
+ * @member {object} [definition.dataset.filter] Has filter expression to use in
+ * the report.
+ * @member {array} [definition.dataset.filter.and] The logical "AND"
+ * expression. Must have atleast 2 items.
+ * @member {array} [definition.dataset.filter.or] The logical "OR" expression.
+ * Must have atleast 2 items.
+ * @member {object} [definition.dataset.filter.not] The logical "NOT"
+ * expression.
+ * @member {object} [definition.dataset.filter.dimension] Has comparison
+ * expression for a dimension
+ * @member {string} [definition.dataset.filter.dimension.name] The name of the
+ * column to use in comaprison.
+ * @member {array} [definition.dataset.filter.dimension.values] Array of values
+ * to use for comparison
+ * @member {object} [definition.dataset.filter.tag] Has comparison expression
+ * for a tag
+ * @member {string} [definition.dataset.filter.tag.name] The name of the column
+ * to use in comaprison.
+ * @member {array} [definition.dataset.filter.tag.values] Array of values to
+ * use for comparison
+ */
+export interface ReportConfig extends Resource {
+  schedule?: ReportConfigSchedule;
+  format?: string;
+  deliveryInfo: ReportConfigDeliveryInfo;
+  definition: ReportConfigDefinition;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReportConfigListResult class.
+ * @constructor
+ * Result of listing report configs. It contains a list of available report
+ * configurations in the scope provided.
+ *
+ * @member {array} [value] The list of report configs.
+ */
+export interface ReportConfigListResult {
+  readonly value?: ReportConfig[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Dimension class.
+ * @constructor
+ * @member {array} [data]
+ * @member {number} [total]
+ * @member {string} [category]
+ * @member {date} [usageStart]
+ * @member {date} [usageEnd]
+ * @member {string} [nextLink]
+ */
+export interface Dimension extends Resource {
+  data?: string[];
+  total?: number;
+  category?: string;
+  usageStart?: Date;
+  usageEnd?: Date;
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InsightColumn class.
+ * @constructor
+ * @member {string} [name]
+ * @member {string} [type]
+ */
+export interface InsightColumn {
+  name?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Insight class.
+ * @constructor
+ * @member {string} [nextLink]
+ * @member {array} [columns] Array of columns
+ * @member {array} [rows]
+ */
+export interface Insight extends Resource {
+  nextLink?: string;
+  columns?: InsightColumn[];
+  rows?: any[][];
+}
+
 
 /**
  * @class
@@ -165,4 +596,25 @@ export interface ForecastsListResult extends Array<Forecast> {
  */
 export interface OperationListResult extends Array<Operation> {
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DimensionsListResult class.
+ * @constructor
+ * Result of listing dimensions. It contains a list of available dimensions.
+ *
+ */
+export interface DimensionsListResult extends Array<Dimension> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the InsightsListResult class.
+ * @constructor
+ * Result of listing insights. It contains all columns listed under groupings
+ * and aggregation.
+ *
+ */
+export interface InsightsListResult extends Array<Insight> {
 }

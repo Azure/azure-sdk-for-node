@@ -198,3 +198,1754 @@ export interface Operations {
     listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
 }
+
+/**
+ * @class
+ * ReportConfigOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface ReportConfigOperations {
+
+
+    /**
+     * Lists all report configs for a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReportConfigListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReportConfigListResult>>;
+
+    /**
+     * Lists all report configs for a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReportConfigListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReportConfigListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReportConfigListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReportConfigListResult>;
+    list(callback: ServiceCallback<models.ReportConfigListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReportConfigListResult>): void;
+
+
+    /**
+     * Lists all report configs for a resource group under a subscription.
+     *
+     * @param {string} resourceGroupName Azure Resource Group Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReportConfigListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNameWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReportConfigListResult>>;
+
+    /**
+     * Lists all report configs for a resource group under a subscription.
+     *
+     * @param {string} resourceGroupName Azure Resource Group Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReportConfigListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReportConfigListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReportConfigListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupName(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReportConfigListResult>;
+    listByResourceGroupName(resourceGroupName: string, callback: ServiceCallback<models.ReportConfigListResult>): void;
+    listByResourceGroupName(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReportConfigListResult>): void;
+
+
+    /**
+     * Gets the report config for a subscription by report config name.
+     *
+     * @param {string} reportConfigName Report Config Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReportConfig>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(reportConfigName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReportConfig>>;
+
+    /**
+     * Gets the report config for a subscription by report config name.
+     *
+     * @param {string} reportConfigName Report Config Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReportConfig} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReportConfig} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReportConfig} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(reportConfigName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReportConfig>;
+    get(reportConfigName: string, callback: ServiceCallback<models.ReportConfig>): void;
+    get(reportConfigName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReportConfig>): void;
+
+
+    /**
+     * The operation to create or update a report config. Update operation requires
+     * latest eTag to be set in the request mandatorily. You may obtain the latest
+     * eTag by performing a get operation. Create operation does not require eTag.
+     *
+     * @param {string} reportConfigName Report Config Name.
+     *
+     * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+     * Config operation.
+     *
+     * @param {object} [parameters.schedule] Has schedule information for the
+     * report config.
+     *
+     * @param {string} [parameters.schedule.status] The status of the schedule.
+     * Whether active or not. If inactive, the report's scheduled execution is
+     * paused. Possible values include: 'Active', 'Inactive'
+     *
+     * @param {string} parameters.schedule.recurrence The schedule recurrence.
+     * Possible values include: 'Daily', 'Weekly', 'Monthly', 'Annually'
+     *
+     * @param {object} parameters.schedule.recurrencePeriod Has start and end date
+     * of the recurrence. The start date must be in future. If present, the end
+     * date must be greater than start date.
+     *
+     * @param {date} parameters.schedule.recurrencePeriod.from The start date of
+     * recurrence.
+     *
+     * @param {date} [parameters.schedule.recurrencePeriod.to] The end date of
+     * recurrence. If not provided, we default this to 10 years from the start
+     * date.
+     *
+     * @param {string} [parameters.format] The format of the report being
+     * delivered. Possible values include: 'Csv'
+     *
+     * @param {object} parameters.deliveryInfo Has delivery information for the
+     * report config.
+     *
+     * @param {object} parameters.deliveryInfo.destination Has destination for the
+     * report being delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.subscriptionId The
+     * subscription id of the storage account where reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.resourceGroup The
+     * resource group of the storage account here reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.storageAccount The
+     * storage account here reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.endpoint The endpoint of
+     * the storage service where reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.container The name of
+     * the container where reports will be uploaded.
+     *
+     * @param {string} parameters.deliveryInfo.destination.category The name of the
+     * directory where reports will be uploaded.
+     *
+     * @param {object} parameters.definition Has definition for the report config.
+     *
+     * @param {string} parameters.definition.timeframe The time frame for pulling
+     * data for the report. If custom, then a specific time period must be
+     * provided. Possible values include: 'WeekToDate', 'MonthToDate',
+     * 'YearToDate', 'Custom'
+     *
+     * @param {object} [parameters.definition.timePeriod] Has time period for
+     * pulling data for the report.
+     *
+     * @param {date} parameters.definition.timePeriod.from The start date to pull
+     * data from.
+     *
+     * @param {date} parameters.definition.timePeriod.to The end date to pull data
+     * to.
+     *
+     * @param {object} [parameters.definition.dataset] Has definition for data in
+     * this report config.
+     *
+     * @param {string} [parameters.definition.dataset.granularity] The granularity
+     * of rows in the report. Possible values include: 'Daily'
+     *
+     * @param {object} [parameters.definition.dataset.configuration] Has
+     * configuration information for the data in the report. The configuration will
+     * be ignored if aggregation and grouping are provided.
+     *
+     * @param {array} [parameters.definition.dataset.configuration.columns] Array
+     * of column names to be included in the report. Any valid report column name
+     * is allowed. If not provided, then report includes all columns.
+     *
+     * @param {object} [parameters.definition.dataset.aggregation] Dictionary of
+     * aggregation expression to use in the report. The key of each item in the
+     * dictionary is the alias for the aggregated column. Report can have upto 2
+     * aggregation clauses.
+     *
+     * @param {array} [parameters.definition.dataset.grouping] Array of group by
+     * expression to use in the report. Report can have upto 2 group by clauses.
+     *
+     * @param {object} [parameters.definition.dataset.filter] Has filter expression
+     * to use in the report.
+     *
+     * @param {array} [parameters.definition.dataset.filter.and] The logical "AND"
+     * expression. Must have atleast 2 items.
+     *
+     * @param {array} [parameters.definition.dataset.filter.or] The logical "OR"
+     * expression. Must have atleast 2 items.
+     *
+     * @param {object} [parameters.definition.dataset.filter.not] The logical "NOT"
+     * expression.
+     *
+     * @param {object} [parameters.definition.dataset.filter.dimension] Has
+     * comparison expression for a dimension
+     *
+     * @param {object} [parameters.definition.dataset.filter.tag] Has comparison
+     * expression for a tag
+     *
+     * @param {string} parameters.definition.dataset.filter.tag.name The name of
+     * the column to use in comaprison.
+     *
+     * @param {array} parameters.definition.dataset.filter.tag.values Array of
+     * values to use for comparison
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReportConfig>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(reportConfigName: string, parameters: models.ReportConfig, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReportConfig>>;
+
+    /**
+     * The operation to create or update a report config. Update operation requires
+     * latest eTag to be set in the request mandatorily. You may obtain the latest
+     * eTag by performing a get operation. Create operation does not require eTag.
+     *
+     * @param {string} reportConfigName Report Config Name.
+     *
+     * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+     * Config operation.
+     *
+     * @param {object} [parameters.schedule] Has schedule information for the
+     * report config.
+     *
+     * @param {string} [parameters.schedule.status] The status of the schedule.
+     * Whether active or not. If inactive, the report's scheduled execution is
+     * paused. Possible values include: 'Active', 'Inactive'
+     *
+     * @param {string} parameters.schedule.recurrence The schedule recurrence.
+     * Possible values include: 'Daily', 'Weekly', 'Monthly', 'Annually'
+     *
+     * @param {object} parameters.schedule.recurrencePeriod Has start and end date
+     * of the recurrence. The start date must be in future. If present, the end
+     * date must be greater than start date.
+     *
+     * @param {date} parameters.schedule.recurrencePeriod.from The start date of
+     * recurrence.
+     *
+     * @param {date} [parameters.schedule.recurrencePeriod.to] The end date of
+     * recurrence. If not provided, we default this to 10 years from the start
+     * date.
+     *
+     * @param {string} [parameters.format] The format of the report being
+     * delivered. Possible values include: 'Csv'
+     *
+     * @param {object} parameters.deliveryInfo Has delivery information for the
+     * report config.
+     *
+     * @param {object} parameters.deliveryInfo.destination Has destination for the
+     * report being delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.subscriptionId The
+     * subscription id of the storage account where reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.resourceGroup The
+     * resource group of the storage account here reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.storageAccount The
+     * storage account here reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.endpoint The endpoint of
+     * the storage service where reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.container The name of
+     * the container where reports will be uploaded.
+     *
+     * @param {string} parameters.deliveryInfo.destination.category The name of the
+     * directory where reports will be uploaded.
+     *
+     * @param {object} parameters.definition Has definition for the report config.
+     *
+     * @param {string} parameters.definition.timeframe The time frame for pulling
+     * data for the report. If custom, then a specific time period must be
+     * provided. Possible values include: 'WeekToDate', 'MonthToDate',
+     * 'YearToDate', 'Custom'
+     *
+     * @param {object} [parameters.definition.timePeriod] Has time period for
+     * pulling data for the report.
+     *
+     * @param {date} parameters.definition.timePeriod.from The start date to pull
+     * data from.
+     *
+     * @param {date} parameters.definition.timePeriod.to The end date to pull data
+     * to.
+     *
+     * @param {object} [parameters.definition.dataset] Has definition for data in
+     * this report config.
+     *
+     * @param {string} [parameters.definition.dataset.granularity] The granularity
+     * of rows in the report. Possible values include: 'Daily'
+     *
+     * @param {object} [parameters.definition.dataset.configuration] Has
+     * configuration information for the data in the report. The configuration will
+     * be ignored if aggregation and grouping are provided.
+     *
+     * @param {array} [parameters.definition.dataset.configuration.columns] Array
+     * of column names to be included in the report. Any valid report column name
+     * is allowed. If not provided, then report includes all columns.
+     *
+     * @param {object} [parameters.definition.dataset.aggregation] Dictionary of
+     * aggregation expression to use in the report. The key of each item in the
+     * dictionary is the alias for the aggregated column. Report can have upto 2
+     * aggregation clauses.
+     *
+     * @param {array} [parameters.definition.dataset.grouping] Array of group by
+     * expression to use in the report. Report can have upto 2 group by clauses.
+     *
+     * @param {object} [parameters.definition.dataset.filter] Has filter expression
+     * to use in the report.
+     *
+     * @param {array} [parameters.definition.dataset.filter.and] The logical "AND"
+     * expression. Must have atleast 2 items.
+     *
+     * @param {array} [parameters.definition.dataset.filter.or] The logical "OR"
+     * expression. Must have atleast 2 items.
+     *
+     * @param {object} [parameters.definition.dataset.filter.not] The logical "NOT"
+     * expression.
+     *
+     * @param {object} [parameters.definition.dataset.filter.dimension] Has
+     * comparison expression for a dimension
+     *
+     * @param {object} [parameters.definition.dataset.filter.tag] Has comparison
+     * expression for a tag
+     *
+     * @param {string} parameters.definition.dataset.filter.tag.name The name of
+     * the column to use in comaprison.
+     *
+     * @param {array} parameters.definition.dataset.filter.tag.values Array of
+     * values to use for comparison
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReportConfig} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReportConfig} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReportConfig} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(reportConfigName: string, parameters: models.ReportConfig, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReportConfig>;
+    createOrUpdate(reportConfigName: string, parameters: models.ReportConfig, callback: ServiceCallback<models.ReportConfig>): void;
+    createOrUpdate(reportConfigName: string, parameters: models.ReportConfig, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReportConfig>): void;
+
+
+    /**
+     * The operation to delete a report.
+     *
+     * @param {string} reportConfigName Report Config Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(reportConfigName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to delete a report.
+     *
+     * @param {string} reportConfigName Report Config Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(reportConfigName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(reportConfigName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(reportConfigName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the report config for a resource group under a subscription by report
+     * config name.
+     *
+     * @param {string} resourceGroupName Azure Resource Group Name.
+     *
+     * @param {string} reportConfigName Report Config Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReportConfig>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getByResourceGroupNameWithHttpOperationResponse(resourceGroupName: string, reportConfigName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReportConfig>>;
+
+    /**
+     * Gets the report config for a resource group under a subscription by report
+     * config name.
+     *
+     * @param {string} resourceGroupName Azure Resource Group Name.
+     *
+     * @param {string} reportConfigName Report Config Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReportConfig} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReportConfig} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReportConfig} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getByResourceGroupName(resourceGroupName: string, reportConfigName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReportConfig>;
+    getByResourceGroupName(resourceGroupName: string, reportConfigName: string, callback: ServiceCallback<models.ReportConfig>): void;
+    getByResourceGroupName(resourceGroupName: string, reportConfigName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReportConfig>): void;
+
+
+    /**
+     * The operation to create or update a report config. Update operation requires
+     * latest eTag to be set in the request mandatorily. You may obtain the latest
+     * eTag by performing a get operation. Create operation does not require eTag.
+     *
+     * @param {string} resourceGroupName Azure Resource Group Name.
+     *
+     * @param {string} reportConfigName Report Config Name.
+     *
+     * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+     * Config operation.
+     *
+     * @param {object} [parameters.schedule] Has schedule information for the
+     * report config.
+     *
+     * @param {string} [parameters.schedule.status] The status of the schedule.
+     * Whether active or not. If inactive, the report's scheduled execution is
+     * paused. Possible values include: 'Active', 'Inactive'
+     *
+     * @param {string} parameters.schedule.recurrence The schedule recurrence.
+     * Possible values include: 'Daily', 'Weekly', 'Monthly', 'Annually'
+     *
+     * @param {object} parameters.schedule.recurrencePeriod Has start and end date
+     * of the recurrence. The start date must be in future. If present, the end
+     * date must be greater than start date.
+     *
+     * @param {date} parameters.schedule.recurrencePeriod.from The start date of
+     * recurrence.
+     *
+     * @param {date} [parameters.schedule.recurrencePeriod.to] The end date of
+     * recurrence. If not provided, we default this to 10 years from the start
+     * date.
+     *
+     * @param {string} [parameters.format] The format of the report being
+     * delivered. Possible values include: 'Csv'
+     *
+     * @param {object} parameters.deliveryInfo Has delivery information for the
+     * report config.
+     *
+     * @param {object} parameters.deliveryInfo.destination Has destination for the
+     * report being delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.subscriptionId The
+     * subscription id of the storage account where reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.resourceGroup The
+     * resource group of the storage account here reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.storageAccount The
+     * storage account here reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.endpoint The endpoint of
+     * the storage service where reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.container The name of
+     * the container where reports will be uploaded.
+     *
+     * @param {string} parameters.deliveryInfo.destination.category The name of the
+     * directory where reports will be uploaded.
+     *
+     * @param {object} parameters.definition Has definition for the report config.
+     *
+     * @param {string} parameters.definition.timeframe The time frame for pulling
+     * data for the report. If custom, then a specific time period must be
+     * provided. Possible values include: 'WeekToDate', 'MonthToDate',
+     * 'YearToDate', 'Custom'
+     *
+     * @param {object} [parameters.definition.timePeriod] Has time period for
+     * pulling data for the report.
+     *
+     * @param {date} parameters.definition.timePeriod.from The start date to pull
+     * data from.
+     *
+     * @param {date} parameters.definition.timePeriod.to The end date to pull data
+     * to.
+     *
+     * @param {object} [parameters.definition.dataset] Has definition for data in
+     * this report config.
+     *
+     * @param {string} [parameters.definition.dataset.granularity] The granularity
+     * of rows in the report. Possible values include: 'Daily'
+     *
+     * @param {object} [parameters.definition.dataset.configuration] Has
+     * configuration information for the data in the report. The configuration will
+     * be ignored if aggregation and grouping are provided.
+     *
+     * @param {array} [parameters.definition.dataset.configuration.columns] Array
+     * of column names to be included in the report. Any valid report column name
+     * is allowed. If not provided, then report includes all columns.
+     *
+     * @param {object} [parameters.definition.dataset.aggregation] Dictionary of
+     * aggregation expression to use in the report. The key of each item in the
+     * dictionary is the alias for the aggregated column. Report can have upto 2
+     * aggregation clauses.
+     *
+     * @param {array} [parameters.definition.dataset.grouping] Array of group by
+     * expression to use in the report. Report can have upto 2 group by clauses.
+     *
+     * @param {object} [parameters.definition.dataset.filter] Has filter expression
+     * to use in the report.
+     *
+     * @param {array} [parameters.definition.dataset.filter.and] The logical "AND"
+     * expression. Must have atleast 2 items.
+     *
+     * @param {array} [parameters.definition.dataset.filter.or] The logical "OR"
+     * expression. Must have atleast 2 items.
+     *
+     * @param {object} [parameters.definition.dataset.filter.not] The logical "NOT"
+     * expression.
+     *
+     * @param {object} [parameters.definition.dataset.filter.dimension] Has
+     * comparison expression for a dimension
+     *
+     * @param {object} [parameters.definition.dataset.filter.tag] Has comparison
+     * expression for a tag
+     *
+     * @param {string} parameters.definition.dataset.filter.tag.name The name of
+     * the column to use in comaprison.
+     *
+     * @param {array} parameters.definition.dataset.filter.tag.values Array of
+     * values to use for comparison
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ReportConfig>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateByResourceGroupNameWithHttpOperationResponse(resourceGroupName: string, reportConfigName: string, parameters: models.ReportConfig, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ReportConfig>>;
+
+    /**
+     * The operation to create or update a report config. Update operation requires
+     * latest eTag to be set in the request mandatorily. You may obtain the latest
+     * eTag by performing a get operation. Create operation does not require eTag.
+     *
+     * @param {string} resourceGroupName Azure Resource Group Name.
+     *
+     * @param {string} reportConfigName Report Config Name.
+     *
+     * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+     * Config operation.
+     *
+     * @param {object} [parameters.schedule] Has schedule information for the
+     * report config.
+     *
+     * @param {string} [parameters.schedule.status] The status of the schedule.
+     * Whether active or not. If inactive, the report's scheduled execution is
+     * paused. Possible values include: 'Active', 'Inactive'
+     *
+     * @param {string} parameters.schedule.recurrence The schedule recurrence.
+     * Possible values include: 'Daily', 'Weekly', 'Monthly', 'Annually'
+     *
+     * @param {object} parameters.schedule.recurrencePeriod Has start and end date
+     * of the recurrence. The start date must be in future. If present, the end
+     * date must be greater than start date.
+     *
+     * @param {date} parameters.schedule.recurrencePeriod.from The start date of
+     * recurrence.
+     *
+     * @param {date} [parameters.schedule.recurrencePeriod.to] The end date of
+     * recurrence. If not provided, we default this to 10 years from the start
+     * date.
+     *
+     * @param {string} [parameters.format] The format of the report being
+     * delivered. Possible values include: 'Csv'
+     *
+     * @param {object} parameters.deliveryInfo Has delivery information for the
+     * report config.
+     *
+     * @param {object} parameters.deliveryInfo.destination Has destination for the
+     * report being delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.subscriptionId The
+     * subscription id of the storage account where reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.resourceGroup The
+     * resource group of the storage account here reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.storageAccount The
+     * storage account here reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.endpoint The endpoint of
+     * the storage service where reports will be delivered.
+     *
+     * @param {string} parameters.deliveryInfo.destination.container The name of
+     * the container where reports will be uploaded.
+     *
+     * @param {string} parameters.deliveryInfo.destination.category The name of the
+     * directory where reports will be uploaded.
+     *
+     * @param {object} parameters.definition Has definition for the report config.
+     *
+     * @param {string} parameters.definition.timeframe The time frame for pulling
+     * data for the report. If custom, then a specific time period must be
+     * provided. Possible values include: 'WeekToDate', 'MonthToDate',
+     * 'YearToDate', 'Custom'
+     *
+     * @param {object} [parameters.definition.timePeriod] Has time period for
+     * pulling data for the report.
+     *
+     * @param {date} parameters.definition.timePeriod.from The start date to pull
+     * data from.
+     *
+     * @param {date} parameters.definition.timePeriod.to The end date to pull data
+     * to.
+     *
+     * @param {object} [parameters.definition.dataset] Has definition for data in
+     * this report config.
+     *
+     * @param {string} [parameters.definition.dataset.granularity] The granularity
+     * of rows in the report. Possible values include: 'Daily'
+     *
+     * @param {object} [parameters.definition.dataset.configuration] Has
+     * configuration information for the data in the report. The configuration will
+     * be ignored if aggregation and grouping are provided.
+     *
+     * @param {array} [parameters.definition.dataset.configuration.columns] Array
+     * of column names to be included in the report. Any valid report column name
+     * is allowed. If not provided, then report includes all columns.
+     *
+     * @param {object} [parameters.definition.dataset.aggregation] Dictionary of
+     * aggregation expression to use in the report. The key of each item in the
+     * dictionary is the alias for the aggregated column. Report can have upto 2
+     * aggregation clauses.
+     *
+     * @param {array} [parameters.definition.dataset.grouping] Array of group by
+     * expression to use in the report. Report can have upto 2 group by clauses.
+     *
+     * @param {object} [parameters.definition.dataset.filter] Has filter expression
+     * to use in the report.
+     *
+     * @param {array} [parameters.definition.dataset.filter.and] The logical "AND"
+     * expression. Must have atleast 2 items.
+     *
+     * @param {array} [parameters.definition.dataset.filter.or] The logical "OR"
+     * expression. Must have atleast 2 items.
+     *
+     * @param {object} [parameters.definition.dataset.filter.not] The logical "NOT"
+     * expression.
+     *
+     * @param {object} [parameters.definition.dataset.filter.dimension] Has
+     * comparison expression for a dimension
+     *
+     * @param {object} [parameters.definition.dataset.filter.tag] Has comparison
+     * expression for a tag
+     *
+     * @param {string} parameters.definition.dataset.filter.tag.name The name of
+     * the column to use in comaprison.
+     *
+     * @param {array} parameters.definition.dataset.filter.tag.values Array of
+     * values to use for comparison
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ReportConfig} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ReportConfig} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ReportConfig} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateByResourceGroupName(resourceGroupName: string, reportConfigName: string, parameters: models.ReportConfig, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ReportConfig>;
+    createOrUpdateByResourceGroupName(resourceGroupName: string, reportConfigName: string, parameters: models.ReportConfig, callback: ServiceCallback<models.ReportConfig>): void;
+    createOrUpdateByResourceGroupName(resourceGroupName: string, reportConfigName: string, parameters: models.ReportConfig, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ReportConfig>): void;
+
+
+    /**
+     * The operation to delete a report config.
+     *
+     * @param {string} resourceGroupName Azure Resource Group Name.
+     *
+     * @param {string} reportConfigName Report Config Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteByResourceGroupNameWithHttpOperationResponse(resourceGroupName: string, reportConfigName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * The operation to delete a report config.
+     *
+     * @param {string} resourceGroupName Azure Resource Group Name.
+     *
+     * @param {string} reportConfigName Report Config Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteByResourceGroupName(resourceGroupName: string, reportConfigName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteByResourceGroupName(resourceGroupName: string, reportConfigName: string, callback: ServiceCallback<void>): void;
+    deleteByResourceGroupName(resourceGroupName: string, reportConfigName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * BillingAccountDimensions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface BillingAccountDimensions {
+
+
+    /**
+     * Lists the dimensions by billingAccount Id.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter dimensions by
+     * properties/category, properties/usageStart, properties/usageEnd. Supported
+     * operators are 'eq','lt', 'gt', 'le', 'ge'.
+     *
+     * @param {string} [options.expand] May be used to expand the properties/data
+     * within a dimension dategory. By default, data is not included when listing
+     * dimensions.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N dimension data.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DimensionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(billingAccountId: string, options?: { filter? : string, expand? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DimensionsListResult>>;
+
+    /**
+     * Lists the dimensions by billingAccount Id.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter dimensions by
+     * properties/category, properties/usageStart, properties/usageEnd. Supported
+     * operators are 'eq','lt', 'gt', 'le', 'ge'.
+     *
+     * @param {string} [options.expand] May be used to expand the properties/data
+     * within a dimension dategory. By default, data is not included when listing
+     * dimensions.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N dimension data.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DimensionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DimensionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DimensionsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(billingAccountId: string, options?: { filter? : string, expand? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DimensionsListResult>;
+    list(billingAccountId: string, callback: ServiceCallback<models.DimensionsListResult>): void;
+    list(billingAccountId: string, options: { filter? : string, expand? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DimensionsListResult>): void;
+}
+
+/**
+ * @class
+ * SubscriptionDimensions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface SubscriptionDimensions {
+
+
+    /**
+     * Lists the dimensions by subscription Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter dimensions by
+     * properties/category, properties/usageStart, properties/usageEnd. Supported
+     * operators are 'eq','lt', 'gt', 'le', 'ge'.
+     *
+     * @param {string} [options.expand] May be used to expand the properties/data
+     * within a dimension dategory. By default, data is not included when listing
+     * dimensions.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N dimension data.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DimensionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { filter? : string, expand? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DimensionsListResult>>;
+
+    /**
+     * Lists the dimensions by subscription Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter dimensions by
+     * properties/category, properties/usageStart, properties/usageEnd. Supported
+     * operators are 'eq','lt', 'gt', 'le', 'ge'.
+     *
+     * @param {string} [options.expand] May be used to expand the properties/data
+     * within a dimension dategory. By default, data is not included when listing
+     * dimensions.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N dimension data.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DimensionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DimensionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DimensionsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { filter? : string, expand? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DimensionsListResult>;
+    list(callback: ServiceCallback<models.DimensionsListResult>): void;
+    list(options: { filter? : string, expand? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DimensionsListResult>): void;
+}
+
+/**
+ * @class
+ * ResourceGroupDimensions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface ResourceGroupDimensions {
+
+
+    /**
+     * Lists the dimensions by resource group Id.
+     *
+     * @param {string} resourceGroupName Azure Resource Group Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter dimensions by
+     * properties/category, properties/usageStart, properties/usageEnd. Supported
+     * operators are 'eq','lt', 'gt', 'le', 'ge'.
+     *
+     * @param {string} [options.expand] May be used to expand the properties/data
+     * within a dimension dategory. By default, data is not included when listing
+     * dimensions.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N dimension data.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DimensionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, expand? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DimensionsListResult>>;
+
+    /**
+     * Lists the dimensions by resource group Id.
+     *
+     * @param {string} resourceGroupName Azure Resource Group Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter dimensions by
+     * properties/category, properties/usageStart, properties/usageEnd. Supported
+     * operators are 'eq','lt', 'gt', 'le', 'ge'.
+     *
+     * @param {string} [options.expand] May be used to expand the properties/data
+     * within a dimension dategory. By default, data is not included when listing
+     * dimensions.
+     *
+     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
+     * operation returned a partial result. If a previous response contains a
+     * nextLink element, the value of the nextLink element will include a skiptoken
+     * parameter that specifies a starting point to use for subsequent calls.
+     *
+     * @param {number} [options.top] May be used to limit the number of results to
+     * the most recent N dimension data.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DimensionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DimensionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DimensionsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { filter? : string, expand? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DimensionsListResult>;
+    list(resourceGroupName: string, callback: ServiceCallback<models.DimensionsListResult>): void;
+    list(resourceGroupName: string, options: { filter? : string, expand? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DimensionsListResult>): void;
+}
+
+/**
+ * @class
+ * SubscriptionInsights
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface SubscriptionInsights {
+
+
+    /**
+     * Lists the consumption data for subscriptionId.
+     *
+     * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+     * Config operation.
+     *
+     * @param {string} parameters.timeframe The time frame for pulling data for the
+     * report. If custom, then a specific time period must be provided. Possible
+     * values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+     *
+     * @param {object} [parameters.timePeriod] Has time period for pulling data for
+     * the report.
+     *
+     * @param {date} parameters.timePeriod.from The start date to pull data from.
+     *
+     * @param {date} parameters.timePeriod.to The end date to pull data to.
+     *
+     * @param {object} [parameters.dataset] Has definition for data in this report
+     * config.
+     *
+     * @param {string} [parameters.dataset.granularity] The granularity of rows in
+     * the report. Possible values include: 'Daily'
+     *
+     * @param {object} [parameters.dataset.configuration] Has configuration
+     * information for the data in the report. The configuration will be ignored if
+     * aggregation and grouping are provided.
+     *
+     * @param {array} [parameters.dataset.configuration.columns] Array of column
+     * names to be included in the report. Any valid report column name is allowed.
+     * If not provided, then report includes all columns.
+     *
+     * @param {object} [parameters.dataset.aggregation] Dictionary of aggregation
+     * expression to use in the report. The key of each item in the dictionary is
+     * the alias for the aggregated column. Report can have upto 2 aggregation
+     * clauses.
+     *
+     * @param {array} [parameters.dataset.grouping] Array of group by expression to
+     * use in the report. Report can have upto 2 group by clauses.
+     *
+     * @param {object} [parameters.dataset.filter] Has filter expression to use in
+     * the report.
+     *
+     * @param {array} [parameters.dataset.filter.and] The logical "AND" expression.
+     * Must have atleast 2 items.
+     *
+     * @param {array} [parameters.dataset.filter.or] The logical "OR" expression.
+     * Must have atleast 2 items.
+     *
+     * @param {object} [parameters.dataset.filter.not] The logical "NOT"
+     * expression.
+     *
+     * @param {object} [parameters.dataset.filter.dimension] Has comparison
+     * expression for a dimension
+     *
+     * @param {object} [parameters.dataset.filter.tag] Has comparison expression
+     * for a tag
+     *
+     * @param {string} parameters.dataset.filter.tag.name The name of the column to
+     * use in comaprison.
+     *
+     * @param {array} parameters.dataset.filter.tag.values Array of values to use
+     * for comparison
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InsightsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    postWithHttpOperationResponse(parameters: models.ReportConfigDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InsightsListResult>>;
+
+    /**
+     * Lists the consumption data for subscriptionId.
+     *
+     * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+     * Config operation.
+     *
+     * @param {string} parameters.timeframe The time frame for pulling data for the
+     * report. If custom, then a specific time period must be provided. Possible
+     * values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+     *
+     * @param {object} [parameters.timePeriod] Has time period for pulling data for
+     * the report.
+     *
+     * @param {date} parameters.timePeriod.from The start date to pull data from.
+     *
+     * @param {date} parameters.timePeriod.to The end date to pull data to.
+     *
+     * @param {object} [parameters.dataset] Has definition for data in this report
+     * config.
+     *
+     * @param {string} [parameters.dataset.granularity] The granularity of rows in
+     * the report. Possible values include: 'Daily'
+     *
+     * @param {object} [parameters.dataset.configuration] Has configuration
+     * information for the data in the report. The configuration will be ignored if
+     * aggregation and grouping are provided.
+     *
+     * @param {array} [parameters.dataset.configuration.columns] Array of column
+     * names to be included in the report. Any valid report column name is allowed.
+     * If not provided, then report includes all columns.
+     *
+     * @param {object} [parameters.dataset.aggregation] Dictionary of aggregation
+     * expression to use in the report. The key of each item in the dictionary is
+     * the alias for the aggregated column. Report can have upto 2 aggregation
+     * clauses.
+     *
+     * @param {array} [parameters.dataset.grouping] Array of group by expression to
+     * use in the report. Report can have upto 2 group by clauses.
+     *
+     * @param {object} [parameters.dataset.filter] Has filter expression to use in
+     * the report.
+     *
+     * @param {array} [parameters.dataset.filter.and] The logical "AND" expression.
+     * Must have atleast 2 items.
+     *
+     * @param {array} [parameters.dataset.filter.or] The logical "OR" expression.
+     * Must have atleast 2 items.
+     *
+     * @param {object} [parameters.dataset.filter.not] The logical "NOT"
+     * expression.
+     *
+     * @param {object} [parameters.dataset.filter.dimension] Has comparison
+     * expression for a dimension
+     *
+     * @param {object} [parameters.dataset.filter.tag] Has comparison expression
+     * for a tag
+     *
+     * @param {string} parameters.dataset.filter.tag.name The name of the column to
+     * use in comaprison.
+     *
+     * @param {array} parameters.dataset.filter.tag.values Array of values to use
+     * for comparison
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InsightsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InsightsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InsightsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    post(parameters: models.ReportConfigDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InsightsListResult>;
+    post(parameters: models.ReportConfigDefinition, callback: ServiceCallback<models.InsightsListResult>): void;
+    post(parameters: models.ReportConfigDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InsightsListResult>): void;
+}
+
+/**
+ * @class
+ * ResourceGroupInsights
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface ResourceGroupInsights {
+
+
+    /**
+     * Lists the consumption data for subscriptionId and resource group.
+     *
+     * @param {string} resourceGroupName Azure Resource Group Name.
+     *
+     * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+     * Config operation.
+     *
+     * @param {string} parameters.timeframe The time frame for pulling data for the
+     * report. If custom, then a specific time period must be provided. Possible
+     * values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+     *
+     * @param {object} [parameters.timePeriod] Has time period for pulling data for
+     * the report.
+     *
+     * @param {date} parameters.timePeriod.from The start date to pull data from.
+     *
+     * @param {date} parameters.timePeriod.to The end date to pull data to.
+     *
+     * @param {object} [parameters.dataset] Has definition for data in this report
+     * config.
+     *
+     * @param {string} [parameters.dataset.granularity] The granularity of rows in
+     * the report. Possible values include: 'Daily'
+     *
+     * @param {object} [parameters.dataset.configuration] Has configuration
+     * information for the data in the report. The configuration will be ignored if
+     * aggregation and grouping are provided.
+     *
+     * @param {array} [parameters.dataset.configuration.columns] Array of column
+     * names to be included in the report. Any valid report column name is allowed.
+     * If not provided, then report includes all columns.
+     *
+     * @param {object} [parameters.dataset.aggregation] Dictionary of aggregation
+     * expression to use in the report. The key of each item in the dictionary is
+     * the alias for the aggregated column. Report can have upto 2 aggregation
+     * clauses.
+     *
+     * @param {array} [parameters.dataset.grouping] Array of group by expression to
+     * use in the report. Report can have upto 2 group by clauses.
+     *
+     * @param {object} [parameters.dataset.filter] Has filter expression to use in
+     * the report.
+     *
+     * @param {array} [parameters.dataset.filter.and] The logical "AND" expression.
+     * Must have atleast 2 items.
+     *
+     * @param {array} [parameters.dataset.filter.or] The logical "OR" expression.
+     * Must have atleast 2 items.
+     *
+     * @param {object} [parameters.dataset.filter.not] The logical "NOT"
+     * expression.
+     *
+     * @param {object} [parameters.dataset.filter.dimension] Has comparison
+     * expression for a dimension
+     *
+     * @param {object} [parameters.dataset.filter.tag] Has comparison expression
+     * for a tag
+     *
+     * @param {string} parameters.dataset.filter.tag.name The name of the column to
+     * use in comaprison.
+     *
+     * @param {array} parameters.dataset.filter.tag.values Array of values to use
+     * for comparison
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InsightsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    postWithHttpOperationResponse(resourceGroupName: string, parameters: models.ReportConfigDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InsightsListResult>>;
+
+    /**
+     * Lists the consumption data for subscriptionId and resource group.
+     *
+     * @param {string} resourceGroupName Azure Resource Group Name.
+     *
+     * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+     * Config operation.
+     *
+     * @param {string} parameters.timeframe The time frame for pulling data for the
+     * report. If custom, then a specific time period must be provided. Possible
+     * values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+     *
+     * @param {object} [parameters.timePeriod] Has time period for pulling data for
+     * the report.
+     *
+     * @param {date} parameters.timePeriod.from The start date to pull data from.
+     *
+     * @param {date} parameters.timePeriod.to The end date to pull data to.
+     *
+     * @param {object} [parameters.dataset] Has definition for data in this report
+     * config.
+     *
+     * @param {string} [parameters.dataset.granularity] The granularity of rows in
+     * the report. Possible values include: 'Daily'
+     *
+     * @param {object} [parameters.dataset.configuration] Has configuration
+     * information for the data in the report. The configuration will be ignored if
+     * aggregation and grouping are provided.
+     *
+     * @param {array} [parameters.dataset.configuration.columns] Array of column
+     * names to be included in the report. Any valid report column name is allowed.
+     * If not provided, then report includes all columns.
+     *
+     * @param {object} [parameters.dataset.aggregation] Dictionary of aggregation
+     * expression to use in the report. The key of each item in the dictionary is
+     * the alias for the aggregated column. Report can have upto 2 aggregation
+     * clauses.
+     *
+     * @param {array} [parameters.dataset.grouping] Array of group by expression to
+     * use in the report. Report can have upto 2 group by clauses.
+     *
+     * @param {object} [parameters.dataset.filter] Has filter expression to use in
+     * the report.
+     *
+     * @param {array} [parameters.dataset.filter.and] The logical "AND" expression.
+     * Must have atleast 2 items.
+     *
+     * @param {array} [parameters.dataset.filter.or] The logical "OR" expression.
+     * Must have atleast 2 items.
+     *
+     * @param {object} [parameters.dataset.filter.not] The logical "NOT"
+     * expression.
+     *
+     * @param {object} [parameters.dataset.filter.dimension] Has comparison
+     * expression for a dimension
+     *
+     * @param {object} [parameters.dataset.filter.tag] Has comparison expression
+     * for a tag
+     *
+     * @param {string} parameters.dataset.filter.tag.name The name of the column to
+     * use in comaprison.
+     *
+     * @param {array} parameters.dataset.filter.tag.values Array of values to use
+     * for comparison
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InsightsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InsightsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InsightsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    post(resourceGroupName: string, parameters: models.ReportConfigDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InsightsListResult>;
+    post(resourceGroupName: string, parameters: models.ReportConfigDefinition, callback: ServiceCallback<models.InsightsListResult>): void;
+    post(resourceGroupName: string, parameters: models.ReportConfigDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InsightsListResult>): void;
+}
+
+/**
+ * @class
+ * BillingAccountInsights
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface BillingAccountInsights {
+
+
+    /**
+     * Lists the consumption data for billing account.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+     * Config operation.
+     *
+     * @param {string} parameters.timeframe The time frame for pulling data for the
+     * report. If custom, then a specific time period must be provided. Possible
+     * values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+     *
+     * @param {object} [parameters.timePeriod] Has time period for pulling data for
+     * the report.
+     *
+     * @param {date} parameters.timePeriod.from The start date to pull data from.
+     *
+     * @param {date} parameters.timePeriod.to The end date to pull data to.
+     *
+     * @param {object} [parameters.dataset] Has definition for data in this report
+     * config.
+     *
+     * @param {string} [parameters.dataset.granularity] The granularity of rows in
+     * the report. Possible values include: 'Daily'
+     *
+     * @param {object} [parameters.dataset.configuration] Has configuration
+     * information for the data in the report. The configuration will be ignored if
+     * aggregation and grouping are provided.
+     *
+     * @param {array} [parameters.dataset.configuration.columns] Array of column
+     * names to be included in the report. Any valid report column name is allowed.
+     * If not provided, then report includes all columns.
+     *
+     * @param {object} [parameters.dataset.aggregation] Dictionary of aggregation
+     * expression to use in the report. The key of each item in the dictionary is
+     * the alias for the aggregated column. Report can have upto 2 aggregation
+     * clauses.
+     *
+     * @param {array} [parameters.dataset.grouping] Array of group by expression to
+     * use in the report. Report can have upto 2 group by clauses.
+     *
+     * @param {object} [parameters.dataset.filter] Has filter expression to use in
+     * the report.
+     *
+     * @param {array} [parameters.dataset.filter.and] The logical "AND" expression.
+     * Must have atleast 2 items.
+     *
+     * @param {array} [parameters.dataset.filter.or] The logical "OR" expression.
+     * Must have atleast 2 items.
+     *
+     * @param {object} [parameters.dataset.filter.not] The logical "NOT"
+     * expression.
+     *
+     * @param {object} [parameters.dataset.filter.dimension] Has comparison
+     * expression for a dimension
+     *
+     * @param {object} [parameters.dataset.filter.tag] Has comparison expression
+     * for a tag
+     *
+     * @param {string} parameters.dataset.filter.tag.name The name of the column to
+     * use in comaprison.
+     *
+     * @param {array} parameters.dataset.filter.tag.values Array of values to use
+     * for comparison
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InsightsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    postWithHttpOperationResponse(billingAccountId: string, parameters: models.ReportConfigDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InsightsListResult>>;
+
+    /**
+     * Lists the consumption data for billing account.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+     * Config operation.
+     *
+     * @param {string} parameters.timeframe The time frame for pulling data for the
+     * report. If custom, then a specific time period must be provided. Possible
+     * values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+     *
+     * @param {object} [parameters.timePeriod] Has time period for pulling data for
+     * the report.
+     *
+     * @param {date} parameters.timePeriod.from The start date to pull data from.
+     *
+     * @param {date} parameters.timePeriod.to The end date to pull data to.
+     *
+     * @param {object} [parameters.dataset] Has definition for data in this report
+     * config.
+     *
+     * @param {string} [parameters.dataset.granularity] The granularity of rows in
+     * the report. Possible values include: 'Daily'
+     *
+     * @param {object} [parameters.dataset.configuration] Has configuration
+     * information for the data in the report. The configuration will be ignored if
+     * aggregation and grouping are provided.
+     *
+     * @param {array} [parameters.dataset.configuration.columns] Array of column
+     * names to be included in the report. Any valid report column name is allowed.
+     * If not provided, then report includes all columns.
+     *
+     * @param {object} [parameters.dataset.aggregation] Dictionary of aggregation
+     * expression to use in the report. The key of each item in the dictionary is
+     * the alias for the aggregated column. Report can have upto 2 aggregation
+     * clauses.
+     *
+     * @param {array} [parameters.dataset.grouping] Array of group by expression to
+     * use in the report. Report can have upto 2 group by clauses.
+     *
+     * @param {object} [parameters.dataset.filter] Has filter expression to use in
+     * the report.
+     *
+     * @param {array} [parameters.dataset.filter.and] The logical "AND" expression.
+     * Must have atleast 2 items.
+     *
+     * @param {array} [parameters.dataset.filter.or] The logical "OR" expression.
+     * Must have atleast 2 items.
+     *
+     * @param {object} [parameters.dataset.filter.not] The logical "NOT"
+     * expression.
+     *
+     * @param {object} [parameters.dataset.filter.dimension] Has comparison
+     * expression for a dimension
+     *
+     * @param {object} [parameters.dataset.filter.tag] Has comparison expression
+     * for a tag
+     *
+     * @param {string} parameters.dataset.filter.tag.name The name of the column to
+     * use in comaprison.
+     *
+     * @param {array} parameters.dataset.filter.tag.values Array of values to use
+     * for comparison
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InsightsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InsightsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InsightsListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    post(billingAccountId: string, parameters: models.ReportConfigDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InsightsListResult>;
+    post(billingAccountId: string, parameters: models.ReportConfigDefinition, callback: ServiceCallback<models.InsightsListResult>): void;
+    post(billingAccountId: string, parameters: models.ReportConfigDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InsightsListResult>): void;
+}
