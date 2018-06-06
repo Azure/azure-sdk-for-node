@@ -103,6 +103,93 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
+ * Initializes a new instance of the MeterDetails class.
+ * @constructor
+ * The properties of the meter detail.
+ *
+ * @member {string} [meterName] The name of the meter, within the given meter
+ * category
+ * @member {string} [meterCategory] The category of the meter, for example,
+ * 'Cloud services', 'Networking', etc..
+ * @member {string} [meterSubCategory] The subcategory of the meter, for
+ * example, 'A6 Cloud services', 'ExpressRoute (IXP)', etc..
+ * @member {string} [unit] The unit in which the meter consumption is charged,
+ * for example, 'Hours', 'GB', etc.
+ * @member {string} [meterLocation] The location in which the Azure service is
+ * available.
+ * @member {number} [totalIncludedQuantity] The total included quantity
+ * associated with the offer.
+ * @member {number} [pretaxStandardRate] The pretax listing price.
+ */
+export interface MeterDetails {
+  readonly meterName?: string;
+  readonly meterCategory?: string;
+  readonly meterSubCategory?: string;
+  readonly unit?: string;
+  readonly meterLocation?: string;
+  readonly totalIncludedQuantity?: number;
+  readonly pretaxStandardRate?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PriceSheetProperties class.
+ * @constructor
+ * The properties of the price sheet.
+ *
+ * @member {string} [billingPeriodId] The id of the billing period resource
+ * that the usage belongs to.
+ * @member {uuid} [meterId] The meter id (GUID)
+ * @member {object} [meterDetails] The details about the meter. By default this
+ * is not populated, unless it's specified in $expand.
+ * @member {string} [meterDetails.meterName] The name of the meter, within the
+ * given meter category
+ * @member {string} [meterDetails.meterCategory] The category of the meter, for
+ * example, 'Cloud services', 'Networking', etc..
+ * @member {string} [meterDetails.meterSubCategory] The subcategory of the
+ * meter, for example, 'A6 Cloud services', 'ExpressRoute (IXP)', etc..
+ * @member {string} [meterDetails.unit] The unit in which the meter consumption
+ * is charged, for example, 'Hours', 'GB', etc.
+ * @member {string} [meterDetails.meterLocation] The location in which the
+ * Azure service is available.
+ * @member {number} [meterDetails.totalIncludedQuantity] The total included
+ * quantity associated with the offer.
+ * @member {number} [meterDetails.pretaxStandardRate] The pretax listing price.
+ * @member {string} [unitOfMeasure] Unit of measure
+ * @member {number} [includedQuantity] Included quality for an offer
+ * @member {string} [partNumber] Part Number
+ * @member {number} [unitPrice] Unit Price
+ * @member {string} [currencyCode] Currency Code
+ * @member {string} [offerId] Offer Id
+ */
+export interface PriceSheetProperties {
+  readonly billingPeriodId?: string;
+  readonly meterId?: string;
+  readonly meterDetails?: MeterDetails;
+  readonly unitOfMeasure?: string;
+  readonly includedQuantity?: number;
+  readonly partNumber?: string;
+  readonly unitPrice?: number;
+  readonly currencyCode?: string;
+  readonly offerId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PriceSheetResult class.
+ * @constructor
+ * An pricesheet resource.
+ *
+ * @member {array} [pricesheets] Price sheet
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface PriceSheetResult extends Resource {
+  readonly pricesheets?: PriceSheetProperties[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ForecastPropertiesConfidenceLevelsItem class.
  * @constructor
  * @member {number} [percentage] The percentage level of the confidence
@@ -142,6 +229,118 @@ export interface Forecast extends Resource {
   readonly confidenceLevels?: ForecastPropertiesConfidenceLevelsItem[];
 }
 
+/**
+ * @class
+ * Initializes a new instance of the UsageDetail class.
+ * @constructor
+ * An usage detail resource.
+ *
+ * @member {string} [billingPeriodId] The id of the billing period resource
+ * that the usage belongs to.
+ * @member {string} [invoiceId] The id of the invoice resource that the usage
+ * belongs to.
+ * @member {date} [usageStart] The start of the date time range covered by the
+ * usage detail.
+ * @member {date} [usageEnd] The end of the date time range covered by the
+ * usage detail.
+ * @member {string} [instanceName] The name of the resource instance that the
+ * usage is about.
+ * @member {string} [instanceId] The uri of the resource instance that the
+ * usage is about.
+ * @member {string} [instanceLocation] The location of the resource instance
+ * that the usage is about.
+ * @member {string} [currency] The ISO currency in which the meter is charged,
+ * for example, USD.
+ * @member {number} [usageQuantity] The quantity of usage.
+ * @member {number} [billableQuantity] The billable usage quantity.
+ * @member {number} [pretaxCost] The amount of cost before tax.
+ * @member {boolean} [isEstimated] The estimated usage is subject to change.
+ * @member {uuid} [meterId] The meter id (GUID).
+ * @member {object} [meterDetails] The details about the meter. By default this
+ * is not populated, unless it's specified in $expand.
+ * @member {string} [meterDetails.meterName] The name of the meter, within the
+ * given meter category
+ * @member {string} [meterDetails.meterCategory] The category of the meter, for
+ * example, 'Cloud services', 'Networking', etc..
+ * @member {string} [meterDetails.meterSubCategory] The subcategory of the
+ * meter, for example, 'A6 Cloud services', 'ExpressRoute (IXP)', etc..
+ * @member {string} [meterDetails.unit] The unit in which the meter consumption
+ * is charged, for example, 'Hours', 'GB', etc.
+ * @member {string} [meterDetails.meterLocation] The location in which the
+ * Azure service is available.
+ * @member {number} [meterDetails.totalIncludedQuantity] The total included
+ * quantity associated with the offer.
+ * @member {number} [meterDetails.pretaxStandardRate] The pretax listing price.
+ * @member {uuid} [subscriptionGuid] Subscription guid.
+ * @member {string} [subscriptionName] Subscription name.
+ * @member {string} [accountName] Account name.
+ * @member {string} [departmentName] Department name.
+ * @member {string} [product] Product name.
+ * @member {string} [consumedService] Consumed service name.
+ * @member {string} [costCenter] The cost center of this department if it is a
+ * department and a costcenter exists
+ * @member {string} [partNumber] Part Number
+ * @member {string} [resourceGuid] Resource Guid
+ * @member {string} [offerId] Offer Id
+ * @member {boolean} [chargesBilledSeparately] Charges billed separately
+ * @member {string} [additionalProperties] Additional details of this usage
+ * item. By default this is not populated, unless it's specified in $expand.
+ */
+export interface UsageDetail extends Resource {
+  readonly billingPeriodId?: string;
+  readonly invoiceId?: string;
+  readonly usageStart?: Date;
+  readonly usageEnd?: Date;
+  readonly instanceName?: string;
+  readonly instanceId?: string;
+  readonly instanceLocation?: string;
+  readonly currency?: string;
+  readonly usageQuantity?: number;
+  readonly billableQuantity?: number;
+  readonly pretaxCost?: number;
+  readonly isEstimated?: boolean;
+  readonly meterId?: string;
+  readonly meterDetails?: MeterDetails;
+  readonly subscriptionGuid?: string;
+  readonly subscriptionName?: string;
+  readonly accountName?: string;
+  readonly departmentName?: string;
+  readonly product?: string;
+  readonly consumedService?: string;
+  readonly costCenter?: string;
+  readonly partNumber?: string;
+  readonly resourceGuid?: string;
+  readonly offerId?: string;
+  readonly chargesBilledSeparately?: boolean;
+  readonly additionalProperties?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QueryOptions class.
+ * @constructor
+ * Additional parameters for a set of operations.
+ *
+ * @member {string} [apply] OData apply expression to aggregate usageDetails by
+ * tags or (tags and properties/usageStart)
+ */
+export interface QueryOptions {
+  apply?: string;
+}
+
+
+/**
+ * @class
+ * Initializes a new instance of the UsageDetailsListResult class.
+ * @constructor
+ * Result of listing usage details. It contains a list of available usage
+ * details in reverse chronological order by billing period.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface UsageDetailsListResult extends Array<UsageDetail> {
+  readonly nextLink?: string;
+}
 
 /**
  * @class
