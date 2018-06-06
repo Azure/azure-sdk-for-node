@@ -142,6 +142,30 @@ export interface FactoryIdentity {
 
 /**
  * @class
+ * Initializes a new instance of the FactoryVSTSConfiguration class.
+ * @constructor
+ * Factory's VSTS repo information.
+ *
+ * @member {string} [accountName] VSTS account name.
+ * @member {string} [projectName] VSTS project name.
+ * @member {string} [repositoryName] VSTS repository name.
+ * @member {string} [collaborationBranch] VSTS collaboration branch.
+ * @member {string} [rootFolder] VSTS root folder.
+ * @member {string} [lastCommitId] VSTS last commit id.
+ * @member {string} [tenantId] VSTS tenant id.
+ */
+export interface FactoryVSTSConfiguration {
+  accountName?: string;
+  projectName?: string;
+  repositoryName?: string;
+  collaborationBranch?: string;
+  rootFolder?: string;
+  lastCommitId?: string;
+  tenantId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Factory class.
  * @constructor
  * Factory resource type.
@@ -153,12 +177,22 @@ export interface FactoryIdentity {
  * Succeeded.
  * @member {date} [createTime] Time the factory was created in ISO8601 format.
  * @member {string} [version] Version of the factory.
+ * @member {object} [vstsConfiguration] VSTS repo information of the factory.
+ * @member {string} [vstsConfiguration.accountName] VSTS account name.
+ * @member {string} [vstsConfiguration.projectName] VSTS project name.
+ * @member {string} [vstsConfiguration.repositoryName] VSTS repository name.
+ * @member {string} [vstsConfiguration.collaborationBranch] VSTS collaboration
+ * branch.
+ * @member {string} [vstsConfiguration.rootFolder] VSTS root folder.
+ * @member {string} [vstsConfiguration.lastCommitId] VSTS last commit id.
+ * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
  */
 export interface Factory extends Resource {
   identity?: FactoryIdentity;
   readonly provisioningState?: string;
   readonly createTime?: Date;
   readonly version?: string;
+  vstsConfiguration?: FactoryVSTSConfiguration;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
@@ -572,6 +606,30 @@ export interface ErrorResponse {
   message: string;
   target?: string;
   details?: ErrorResponse[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FactoryRepoUpdate class.
+ * @constructor
+ * Factory's VSTS repo information.
+ *
+ * @member {string} [factoryResourceId] The factory resource id.
+ * @member {string} [resourceGroupName] The resource group name.
+ * @member {object} [vstsConfiguration] VSTS repo information of the factory.
+ * @member {string} [vstsConfiguration.accountName] VSTS account name.
+ * @member {string} [vstsConfiguration.projectName] VSTS project name.
+ * @member {string} [vstsConfiguration.repositoryName] VSTS repository name.
+ * @member {string} [vstsConfiguration.collaborationBranch] VSTS collaboration
+ * branch.
+ * @member {string} [vstsConfiguration.rootFolder] VSTS root folder.
+ * @member {string} [vstsConfiguration.lastCommitId] VSTS last commit id.
+ * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
+ */
+export interface FactoryRepoUpdate {
+  factoryResourceId?: string;
+  resourceGroupName?: string;
+  vstsConfiguration?: FactoryVSTSConfiguration;
 }
 
 /**
@@ -1479,7 +1537,7 @@ export interface ShopifyLinkedService extends LinkedService {
  * ServiceNow server linked service.
  *
  * @member {object} endpoint The endpoint of the ServiceNow server. (i.e.
- * ServiceNowData.com)
+ * <instance>.service-now.com)
  * @member {string} authenticationType The authentication type to use. Possible
  * values include: 'Basic', 'OAuth2'
  * @member {object} [username] The user name used to connect to the ServiceNow
@@ -1524,10 +1582,13 @@ export interface ServiceNowLinkedService extends LinkedService {
  * quickbooks.api.intuit.com)
  * @member {object} companyId The company ID of the QuickBooks company to
  * authorize.
- * @member {object} [accessToken] The access token for OAuth 1.0
+ * @member {object} consumerKey The consumer key for OAuth 1.0 authentication.
+ * @member {object} consumerSecret The consumer secret for OAuth 1.0
  * authentication.
+ * @member {string} [consumerSecret.type] Polymorphic Discriminator
+ * @member {object} accessToken The access token for OAuth 1.0 authentication.
  * @member {string} [accessToken.type] Polymorphic Discriminator
- * @member {object} [accessTokenSecret] The access token secret for OAuth 1.0
+ * @member {object} accessTokenSecret The access token secret for OAuth 1.0
  * authentication.
  * @member {string} [accessTokenSecret.type] Polymorphic Discriminator
  * @member {object} [useEncryptedEndpoints] Specifies whether the data source
@@ -1539,8 +1600,10 @@ export interface ServiceNowLinkedService extends LinkedService {
 export interface QuickBooksLinkedService extends LinkedService {
   endpoint: any;
   companyId: any;
-  accessToken?: SecretBase;
-  accessTokenSecret?: SecretBase;
+  consumerKey: any;
+  consumerSecret: SecretBase;
+  accessToken: SecretBase;
+  accessTokenSecret: SecretBase;
   useEncryptedEndpoints?: any;
   encryptedCredential?: any;
 }
@@ -4317,6 +4380,31 @@ export interface TumblingWindowTrigger extends Trigger {
  */
 export interface MultiplePipelineTrigger extends Trigger {
   pipelines?: TriggerPipelineReference[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BlobEventsTrigger class.
+ * @constructor
+ * Trigger that runs everytime a Blob event occurs.
+ *
+ * @member {string} [blobPathBeginsWith] The blob path must begin with the
+ * pattern provided for trigger to fire. For example,
+ * '/records/blobs/december/' will only fire the trigger for blobs in the
+ * december folder under the records container. At least one of these must be
+ * provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {string} [blobPathEndsWith] The blob path must end with the pattern
+ * provided for trigger to fire. For example, 'december/boxes.csv' will only
+ * fire the trigger for blobs named boxes in a december folder. At least one of
+ * these must be provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {array} events The type of events that cause this trigger to fire.
+ * @member {string} scope The ARM resource ID of the Storage Account.
+ */
+export interface BlobEventsTrigger extends MultiplePipelineTrigger {
+  blobPathBeginsWith?: string;
+  blobPathEndsWith?: string;
+  events: string[];
+  scope: string;
 }
 
 /**
