@@ -142,6 +142,30 @@ export interface FactoryIdentity {
 
 /**
  * @class
+ * Initializes a new instance of the FactoryVSTSConfiguration class.
+ * @constructor
+ * Factory's VSTS repo information.
+ *
+ * @member {string} [accountName] VSTS account name.
+ * @member {string} [projectName] VSTS project name.
+ * @member {string} [repositoryName] VSTS repository name.
+ * @member {string} [collaborationBranch] VSTS collaboration branch.
+ * @member {string} [rootFolder] VSTS root folder.
+ * @member {string} [lastCommitId] VSTS last commit id.
+ * @member {string} [tenantId] VSTS tenant id.
+ */
+export interface FactoryVSTSConfiguration {
+  accountName?: string;
+  projectName?: string;
+  repositoryName?: string;
+  collaborationBranch?: string;
+  rootFolder?: string;
+  lastCommitId?: string;
+  tenantId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Factory class.
  * @constructor
  * Factory resource type.
@@ -153,12 +177,22 @@ export interface FactoryIdentity {
  * Succeeded.
  * @member {date} [createTime] Time the factory was created in ISO8601 format.
  * @member {string} [version] Version of the factory.
+ * @member {object} [vstsConfiguration] VSTS repo information of the factory.
+ * @member {string} [vstsConfiguration.accountName] VSTS account name.
+ * @member {string} [vstsConfiguration.projectName] VSTS project name.
+ * @member {string} [vstsConfiguration.repositoryName] VSTS repository name.
+ * @member {string} [vstsConfiguration.collaborationBranch] VSTS collaboration
+ * branch.
+ * @member {string} [vstsConfiguration.rootFolder] VSTS root folder.
+ * @member {string} [vstsConfiguration.lastCommitId] VSTS last commit id.
+ * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
  */
 export interface Factory extends Resource {
   identity?: FactoryIdentity;
   readonly provisioningState?: string;
   readonly createTime?: Date;
   readonly version?: string;
+  vstsConfiguration?: FactoryVSTSConfiguration;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
@@ -572,6 +606,30 @@ export interface ErrorResponse {
   message: string;
   target?: string;
   details?: ErrorResponse[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FactoryRepoUpdate class.
+ * @constructor
+ * Factory's VSTS repo information.
+ *
+ * @member {string} [factoryResourceId] The factory resource id.
+ * @member {string} [resourceGroupName] The resource group name.
+ * @member {object} [vstsConfiguration] VSTS repo information of the factory.
+ * @member {string} [vstsConfiguration.accountName] VSTS account name.
+ * @member {string} [vstsConfiguration.projectName] VSTS project name.
+ * @member {string} [vstsConfiguration.repositoryName] VSTS repository name.
+ * @member {string} [vstsConfiguration.collaborationBranch] VSTS collaboration
+ * branch.
+ * @member {string} [vstsConfiguration.rootFolder] VSTS root folder.
+ * @member {string} [vstsConfiguration.lastCommitId] VSTS last commit id.
+ * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
+ */
+export interface FactoryRepoUpdate {
+  factoryResourceId?: string;
+  resourceGroupName?: string;
+  vstsConfiguration?: FactoryVSTSConfiguration;
 }
 
 /**
@@ -1252,14 +1310,14 @@ export interface SalesforceMarketingCloudLinkedService extends LinkedService {
  * @constructor
  * Netezza linked service.
  *
- * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [connectionString] An ODBC connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface NetezzaLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -1269,14 +1327,14 @@ export interface NetezzaLinkedService extends LinkedService {
  * @constructor
  * Vertica linked service.
  *
- * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [connectionString] An ODBC connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface VerticaLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -1479,7 +1537,7 @@ export interface ShopifyLinkedService extends LinkedService {
  * ServiceNow server linked service.
  *
  * @member {object} endpoint The endpoint of the ServiceNow server. (i.e.
- * ServiceNowData.com)
+ * <instance>.service-now.com)
  * @member {string} authenticationType The authentication type to use. Possible
  * values include: 'Basic', 'OAuth2'
  * @member {object} [username] The user name used to connect to the ServiceNow
@@ -1524,10 +1582,13 @@ export interface ServiceNowLinkedService extends LinkedService {
  * quickbooks.api.intuit.com)
  * @member {object} companyId The company ID of the QuickBooks company to
  * authorize.
- * @member {object} [accessToken] The access token for OAuth 1.0
+ * @member {object} consumerKey The consumer key for OAuth 1.0 authentication.
+ * @member {object} consumerSecret The consumer secret for OAuth 1.0
  * authentication.
+ * @member {string} [consumerSecret.type] Polymorphic Discriminator
+ * @member {object} accessToken The access token for OAuth 1.0 authentication.
  * @member {string} [accessToken.type] Polymorphic Discriminator
- * @member {object} [accessTokenSecret] The access token secret for OAuth 1.0
+ * @member {object} accessTokenSecret The access token secret for OAuth 1.0
  * authentication.
  * @member {string} [accessTokenSecret.type] Polymorphic Discriminator
  * @member {object} [useEncryptedEndpoints] Specifies whether the data source
@@ -1539,8 +1600,10 @@ export interface ServiceNowLinkedService extends LinkedService {
 export interface QuickBooksLinkedService extends LinkedService {
   endpoint: any;
   companyId: any;
-  accessToken?: SecretBase;
-  accessTokenSecret?: SecretBase;
+  consumerKey: any;
+  consumerSecret: SecretBase;
+  accessToken: SecretBase;
+  accessTokenSecret: SecretBase;
   useEncryptedEndpoints?: any;
   encryptedCredential?: any;
 }
@@ -1728,14 +1791,14 @@ export interface MarketoLinkedService extends LinkedService {
  * @constructor
  * MariaDB server linked service.
  *
- * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [connectionString] An ODBC connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface MariaDBLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -2015,14 +2078,14 @@ export interface HBaseLinkedService extends LinkedService {
  * @constructor
  * Greenplum Database linked service.
  *
- * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [connectionString] An ODBC connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface GreenplumLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -2122,14 +2185,14 @@ export interface EloquaLinkedService extends LinkedService {
  * @constructor
  * Drill server linked service.
  *
- * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [connectionString] An ODBC connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface DrillLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -2139,14 +2202,14 @@ export interface DrillLinkedService extends LinkedService {
  * @constructor
  * Couchbase server linked service.
  *
- * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [connectionString] An ODBC connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface CouchbaseLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -2190,14 +2253,14 @@ export interface ConcurLinkedService extends LinkedService {
  * @constructor
  * Azure PostgreSQL linked service.
  *
- * @member {object} [connectionString] An ODBC connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} [connectionString] An ODBC connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzurePostgreSqlLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   encryptedCredential?: any;
 }
 
@@ -2857,8 +2920,8 @@ export interface HdfsLinkedService extends LinkedService {
  * Open Database Connectivity (ODBC) linked service.
  *
  * @member {object} connectionString The non-access credential portion of the
- * connection string as well as an optional encrypted credential.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * connection string as well as an optional encrypted credential. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [authenticationType] Type of authentication used to connect
  * to the ODBC data store. Possible values are: Anonymous and Basic. Type:
  * string (or Expression with resultType string).
@@ -2874,7 +2937,7 @@ export interface HdfsLinkedService extends LinkedService {
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface OdbcLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   authenticationType?: any;
   credential?: SecretBase;
   userName?: any;
@@ -3046,14 +3109,14 @@ export interface MySqlLinkedService extends LinkedService {
  * @constructor
  * Azure MySQL database linked service.
  *
- * @member {object} connectionString The connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} connectionString The connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureMySqlLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   encryptedCredential?: any;
 }
 
@@ -3063,14 +3126,14 @@ export interface AzureMySqlLinkedService extends LinkedService {
  * @constructor
  * Oracle database.
  *
- * @member {object} connectionString The connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} connectionString The connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface OracleLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   encryptedCredential?: any;
 }
 
@@ -3184,14 +3247,14 @@ export interface DynamicsLinkedService extends LinkedService {
  * @constructor
  * Microsoft Azure Cosmos Database (CosmosDB) linked service.
  *
- * @member {object} connectionString The connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} connectionString The connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface CosmosDbLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   encryptedCredential?: any;
 }
 
@@ -3247,8 +3310,8 @@ export interface AzureBatchLinkedService extends LinkedService {
  * @constructor
  * Microsoft Azure SQL Database linked service.
  *
- * @member {object} connectionString The connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} connectionString The connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [servicePrincipalId] The ID of the service principal used
  * to authenticate against Azure SQL Database. Type: string (or Expression with
  * resultType string).
@@ -3262,7 +3325,7 @@ export interface AzureBatchLinkedService extends LinkedService {
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureSqlDatabaseLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
   tenant?: any;
@@ -3275,8 +3338,8 @@ export interface AzureSqlDatabaseLinkedService extends LinkedService {
  * @constructor
  * SQL Server linked service.
  *
- * @member {object} connectionString The connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} connectionString The connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference.
  * @member {object} [userName] The on-premises Windows authentication user
  * name. Type: string (or Expression with resultType string).
  * @member {object} [password] The on-premises Windows authentication password.
@@ -3286,7 +3349,7 @@ export interface AzureSqlDatabaseLinkedService extends LinkedService {
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface SqlServerLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   userName?: any;
   password?: SecretBase;
   encryptedCredential?: any;
@@ -3298,8 +3361,9 @@ export interface SqlServerLinkedService extends LinkedService {
  * @constructor
  * Azure SQL Data Warehouse linked service.
  *
- * @member {object} connectionString The connection string.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * @member {object} connectionString The connection string. Type: string,
+ * SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or
+ * AzureKeyVaultSecretReference.
  * @member {object} [servicePrincipalId] The ID of the service principal used
  * to authenticate against Azure SQL Data Warehouse. Type: string (or
  * Expression with resultType string).
@@ -3313,7 +3377,7 @@ export interface SqlServerLinkedService extends LinkedService {
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureSqlDWLinkedService extends LinkedService {
-  connectionString: SecretBase;
+  connectionString: any;
   servicePrincipalId?: any;
   servicePrincipalKey?: SecretBase;
   tenant?: any;
@@ -3327,8 +3391,8 @@ export interface AzureSqlDWLinkedService extends LinkedService {
  * The storage account linked service.
  *
  * @member {object} [connectionString] The connection string. It is mutually
- * exclusive with sasUri property.
- * @member {string} [connectionString.type] Polymorphic Discriminator
+ * exclusive with sasUri property. Type: string, SecureString or
+ * AzureKeyVaultSecretReference.
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
  * mutually exclusive with connectionString property.
  * @member {string} [sasUri.type] Polymorphic Discriminator
@@ -3337,7 +3401,7 @@ export interface AzureSqlDWLinkedService extends LinkedService {
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureStorageLinkedService extends LinkedService {
-  connectionString?: SecretBase;
+  connectionString?: any;
   sasUri?: SecretBase;
   encryptedCredential?: any;
 }
@@ -4241,13 +4305,13 @@ export interface AmazonS3Dataset extends Dataset {
 
 /**
  * @class
- * Initializes a new instance of the TumblingWindowTriggerReference class.
+ * Initializes a new instance of the TriggerReference class.
  * @constructor
  * Tumbling window trigger reference type.
  *
- * @member {string} referenceName Reference TumblingWindowTrigger name.
+ * @member {string} referenceName Reference trigger name.
  */
-export interface TumblingWindowTriggerReference {
+export interface TriggerReference {
   referenceName: string;
 }
 
@@ -4306,7 +4370,7 @@ export interface RetryPolicy {
  * @member {number} [retryPolicy.intervalInSeconds] Interval between retries in
  * seconds. Default is 30.
  * @member {array} [dependsOn] Tumbling window triggers that this trigger
- * depends on.
+ * depends on. Only tumbling window triggers are supported.
  */
 export interface TumblingWindowTrigger extends Trigger {
   pipelineProperty: TriggerPipelineReference;
@@ -4317,7 +4381,7 @@ export interface TumblingWindowTrigger extends Trigger {
   delay?: any;
   maxConcurrency: number;
   retryPolicy?: RetryPolicy;
-  dependsOn?: TumblingWindowTriggerReference[];
+  dependsOn?: TriggerReference[];
 }
 
 /**
@@ -4331,6 +4395,31 @@ export interface TumblingWindowTrigger extends Trigger {
  */
 export interface MultiplePipelineTrigger extends Trigger {
   pipelines?: TriggerPipelineReference[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BlobEventsTrigger class.
+ * @constructor
+ * Trigger that runs everytime a Blob event occurs.
+ *
+ * @member {string} [blobPathBeginsWith] The blob path must begin with the
+ * pattern provided for trigger to fire. For example,
+ * '/records/blobs/december/' will only fire the trigger for blobs in the
+ * december folder under the records container. At least one of these must be
+ * provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {string} [blobPathEndsWith] The blob path must end with the pattern
+ * provided for trigger to fire. For example, 'december/boxes.csv' will only
+ * fire the trigger for blobs named boxes in a december folder. At least one of
+ * these must be provided: blobPathBeginsWith, blobPathEndsWith.
+ * @member {array} events The type of events that cause this trigger to fire.
+ * @member {string} scope The ARM resource ID of the Storage Account.
+ */
+export interface BlobEventsTrigger extends MultiplePipelineTrigger {
+  blobPathBeginsWith?: string;
+  blobPathEndsWith?: string;
+  events: string[];
+  scope: string;
 }
 
 /**
