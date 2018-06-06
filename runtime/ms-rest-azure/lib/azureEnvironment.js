@@ -135,7 +135,7 @@ var supportedEnvironments = {
     sqlServerHostnameSuffix: 'N/A',
     galleryEndpointUrl: 'N/A',
     activeDirectoryEndpointUrl: 'https://login.windows.net/',
-    activeDirectoryResourceId: 'https://management.msazurestack.onmicrosoft.com/8bf87789-7935-4e97-81f8-55959c31f4dd/',
+    activeDirectoryResourceId: 'https://management.msazurestack.onmicrosoft.com/8bf87789-7935-4e97-81f8-55959c31f4dd',
     activeDirectoryGraphResourceId: 'https://graph.windows.net/',
     batchResourceId: 'N/A',
     activeDirectoryGraphApiVersion: '2013-04-05',
