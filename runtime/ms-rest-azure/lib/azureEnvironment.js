@@ -124,6 +124,25 @@ var supportedEnvironments = {
     // TODO: add dns suffixes for the US government for datalake store and datalake analytics once they are defined.
     azureDataLakeStoreFileSystemEndpointSuffix: 'N/A',
     azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'N/A'
+  },
+  AzureStack: {
+    name: 'AzureStack',
+    portalUrl: 'http://onpremportalrc.northwest3.cloudapp.azurestack.selfhost.corp.microsoft.com/',
+    publishingProfileUrl: 'N/A',
+    managementEndpointUrl: 'https://management.northwest1.azurestack.selfhost.corp.microsoft.com',
+    resourceManagerEndpointUrl: 'https://management.northwest1.azurestack.selfhost.corp.microsoft.com',
+    sqlManagementEndpointUrl: 'N/A',
+    sqlServerHostnameSuffix: 'N/A',
+    galleryEndpointUrl: 'N/A',
+    activeDirectoryEndpointUrl: 'https://login.windows.net/',
+    activeDirectoryResourceId: 'https://management.msazurestack.onmicrosoft.com/8bf87789-7935-4e97-81f8-55959c31f4dd',
+    activeDirectoryGraphResourceId: 'https://graph.windows.net/',
+    batchResourceId: 'N/A',
+    activeDirectoryGraphApiVersion: '2013-04-05',
+    storageEndpointSuffix: '.northwest3.azurestack.selfhost.corp.microsoft.com',
+    keyVaultDnsSuffix: 'N/A',
+    azureDataLakeStoreFileSystemEndpointSuffix: 'N/A',
+    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'N/A'
   }
 };
 
