@@ -6653,6 +6653,8 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @constructor
  * Self-hosted integration runtime status.
  *
+ * @member {object} [additionalProperties] Unmatched properties from the
+ * message are deserialized this collection
  * @member {date} [createTime] The time at which the integration runtime was
  * created, in ISO8601 format.
  * @member {string} [taskQueueId] The task queue id of the integration runtime.
@@ -6681,6 +6683,7 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @member {string} [latestVersion] The latest version on download center.
  */
 export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
+  additionalProperties?: { [propertyName: string]: any };
   readonly createTime?: Date;
   readonly taskQueueId?: string;
   readonly internalChannelEncryption?: string;

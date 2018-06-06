@@ -631,7 +631,7 @@ export interface Factories {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listSharedFactoryWithHttpOperationResponse(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FactoryListResponse>>;
+    listSharedFactoriesWithHttpOperationResponse(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FactoryListResponse>>;
 
     /**
      * List data factories which the given data factory has access.
@@ -667,9 +667,9 @@ export interface Factories {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listSharedFactory(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
-    listSharedFactory(resourceGroupName: string, factoryName: string, callback: ServiceCallback<models.FactoryListResponse>): void;
-    listSharedFactory(resourceGroupName: string, factoryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
+    listSharedFactories(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
+    listSharedFactories(resourceGroupName: string, factoryName: string, callback: ServiceCallback<models.FactoryListResponse>): void;
+    listSharedFactories(resourceGroupName: string, factoryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
 
 
     /**
@@ -693,7 +693,7 @@ export interface Factories {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listSharedIntegrationRuntimeWithHttpOperationResponse(resourceGroupName: string, factoryName: string, options?: { dataFactoryResourceId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeListResponse>>;
+    listSharedIntegrationRuntimesWithHttpOperationResponse(resourceGroupName: string, factoryName: string, options?: { dataFactoryResourceId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeListResponse>>;
 
     /**
      * List integration runtimes which the given data factory has access.
@@ -733,9 +733,9 @@ export interface Factories {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listSharedIntegrationRuntime(resourceGroupName: string, factoryName: string, options?: { dataFactoryResourceId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeListResponse>;
-    listSharedIntegrationRuntime(resourceGroupName: string, factoryName: string, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
-    listSharedIntegrationRuntime(resourceGroupName: string, factoryName: string, options: { dataFactoryResourceId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
+    listSharedIntegrationRuntimes(resourceGroupName: string, factoryName: string, options?: { dataFactoryResourceId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeListResponse>;
+    listSharedIntegrationRuntimes(resourceGroupName: string, factoryName: string, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
+    listSharedIntegrationRuntimes(resourceGroupName: string, factoryName: string, options: { dataFactoryResourceId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
 
 
     /**
@@ -931,7 +931,7 @@ export interface Factories {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listSharedFactoryNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FactoryListResponse>>;
+    listSharedFactoriesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FactoryListResponse>>;
 
     /**
      * List data factories which the given data factory has access.
@@ -966,9 +966,9 @@ export interface Factories {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listSharedFactoryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
-    listSharedFactoryNext(nextPageLink: string, callback: ServiceCallback<models.FactoryListResponse>): void;
-    listSharedFactoryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
+    listSharedFactoriesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
+    listSharedFactoriesNext(nextPageLink: string, callback: ServiceCallback<models.FactoryListResponse>): void;
+    listSharedFactoriesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
 
 
     /**
@@ -988,7 +988,7 @@ export interface Factories {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listSharedIntegrationRuntimeNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeListResponse>>;
+    listSharedIntegrationRuntimesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeListResponse>>;
 
     /**
      * List integration runtimes which the given data factory has access.
@@ -1024,9 +1024,9 @@ export interface Factories {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listSharedIntegrationRuntimeNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeListResponse>;
-    listSharedIntegrationRuntimeNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
-    listSharedIntegrationRuntimeNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
+    listSharedIntegrationRuntimesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeListResponse>;
+    listSharedIntegrationRuntimesNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
+    listSharedIntegrationRuntimesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
 }
 
 /**
@@ -1282,11 +1282,11 @@ export interface IntegrationRuntimes {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<IntegrationRuntimeResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<IntegrationRuntimeStatusResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeResource>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeStatusResponse>>;
 
     /**
      * Updates an integration runtime.
@@ -1321,7 +1321,7 @@ export interface IntegrationRuntimes {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {IntegrationRuntimeResource} - The deserialized result object.
+     *                      @resolve {IntegrationRuntimeStatusResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1329,17 +1329,17 @@ export interface IntegrationRuntimes {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {IntegrationRuntimeResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link IntegrationRuntimeResource} for more
+     *                      {IntegrationRuntimeStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimeStatusResponse} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeResource>;
-    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, callback: ServiceCallback<models.IntegrationRuntimeResource>): void;
-    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeResource>): void;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeStatusResponse>;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, callback: ServiceCallback<models.IntegrationRuntimeStatusResponse>): void;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeStatusResponse>): void;
 
 
     /**
