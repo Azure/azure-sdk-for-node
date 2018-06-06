@@ -127,7 +127,7 @@ var supportedEnvironments = {
   },
   AzureStack: {
     name: 'AzureStack',
-    portalUrl: 'http://portal.microsoftazure.de/',
+    portalUrl: 'http://onpremportalrc.northwest3.cloudapp.azurestack.selfhost.corp.microsoft.com/',
     publishingProfileUrl: 'N/A',
     managementEndpointUrl: 'https://management.northwest1.azurestack.selfhost.corp.microsoft.com',
     resourceManagerEndpointUrl: 'https://management.northwest1.azurestack.selfhost.corp.microsoft.com',
