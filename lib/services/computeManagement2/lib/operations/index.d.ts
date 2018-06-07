@@ -22239,7 +22239,9 @@ export interface GalleryImageVersions {
      * @param {string} galleryImageName The name of the gallery image.
      *
      * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
+     * version. Needs to follow semantic version name pattern: The allowed
+     * characters are digit and period. Digits must be within the range of a 32-bit
+     * integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
      *
      * @param {object} galleryImageVersion Parameters supplied to the create or
      * update gallery image version operation.
@@ -22295,7 +22297,9 @@ export interface GalleryImageVersions {
      * @param {string} galleryImageName The name of the gallery image.
      *
      * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
+     * version. Needs to follow semantic version name pattern: The allowed
+     * characters are digit and period. Digits must be within the range of a 32-bit
+     * integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
      *
      * @param {object} galleryImageVersion Parameters supplied to the create or
      * update gallery image version operation.
@@ -22577,7 +22581,9 @@ export interface GalleryImageVersions {
      * @param {string} galleryImageName The name of the gallery image.
      *
      * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
+     * version. Needs to follow semantic version name pattern: The allowed
+     * characters are digit and period. Digits must be within the range of a 32-bit
+     * integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
      *
      * @param {object} galleryImageVersion Parameters supplied to the create or
      * update gallery image version operation.
@@ -22633,7 +22639,9 @@ export interface GalleryImageVersions {
      * @param {string} galleryImageName The name of the gallery image.
      *
      * @param {string} galleryImageVersionName The name of the gallery image
-     * version.
+     * version. Needs to follow semantic version name pattern: The allowed
+     * characters are digit and period. Digits must be within the range of a 32-bit
+     * integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
      *
      * @param {object} galleryImageVersion Parameters supplied to the create or
      * update gallery image version operation.
