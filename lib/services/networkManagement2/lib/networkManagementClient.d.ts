@@ -47,8 +47,6 @@ export default class NetworkManagementClient extends AzureServiceClient {
 
   subscriptionId: string;
 
-  apiVersion: string;
-
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
