@@ -2,12 +2,15 @@
   "name": "azure-arm-network",
   "author": "Microsoft Corporation",
   "description": "NetworkManagementClient Library with typescript type definitions for node",
-  "version": "5.3.0",
+  "version": "5.2.0",
   "dependencies": {
-    "ms-rest": "^2.3.2",
+    "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
   },
-  "keywords": [ "node", "azure" ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
   "license": "MIT",
   "main": "./lib/networkManagementClient.js",
   "types": "./lib/networkManagementClient.d.ts",
