@@ -13,39 +13,6 @@ import * as moment from "moment";
 
 /**
  * @class
- * Initializes a new instance of the SearchAction class.
- * @constructor
- * @member {string} [displayText]
- * @member {string} [query]
- * @member {string} [searchKind] Possible values include: 'WebSearch',
- * 'HistorySearch', 'DocumentSearch', 'TagSearch', 'LocationSearch',
- * 'CustomSearch'. Default value: 'WebSearch' .
- * @member {string} [url] The URL to get more information about the thing
- * represented by this object.
- */
-export interface SearchAction {
-  readonly displayText?: string;
-  readonly query?: string;
-  readonly searchKind?: string;
-  readonly url?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SuggestionsSuggestionGroup class.
- * @constructor
- * @member {string} name Possible values include: 'Unknown', 'Web',
- * 'StoreApps', 'SearchHistory', 'PersonalSearchDocuments',
- * 'PersonalSearchTags', 'Custom'. Default value: 'Unknown' .
- * @member {array} searchSuggestions
- */
-export interface SuggestionsSuggestionGroup {
-  name: string;
-  searchSuggestions: SearchAction[];
-}
-
-/**
- * @class
  * Initializes a new instance of the ResponseBase class.
  * @constructor
  * Response base
@@ -75,14 +42,129 @@ export interface Identifiable extends ResponseBase {
  * Defines a response. All schemas that could be returned at the root of a
  * response should inherit from this
  *
+ * @member {string} [readLink] The URL that returns this resource.
+ * @member {string} [webSearchUrl] The URL To Bing's search result for this
+ * item.
  * @member {array} [potentialAction]
  * @member {array} [immediateAction]
+ * @member {string} [preferredClickthroughUrl]
  * @member {string} [adaptiveCard]
  */
 export interface Response extends Identifiable {
+  readonly readLink?: string;
+  readonly webSearchUrl?: string;
   readonly potentialAction?: Action[];
   readonly immediateAction?: Action[];
+  readonly preferredClickthroughUrl?: string;
   readonly adaptiveCard?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Thing class.
+ * @constructor
+ * Defines a thing.
+ *
+ * @member {string} [url] The URL to get more information about the thing
+ * represented by this object.
+ */
+export interface Thing extends Response {
+  readonly url?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CreativeWork class.
+ * @constructor
+ * The most generic kind of creative work, including books, movies,
+ * photographs, software programs, etc.
+ *
+ * @member {string} [thumbnailUrl] The URL to a thumbnail of the item.
+ * @member {array} [about] For internal use only.
+ * @member {array} [mentions] For internal use only.
+ * @member {array} [provider] The source of the creative work.
+ * @member {object} [creator]
+ * @member {string} [creator.url] The URL to get more information about the
+ * thing represented by this object.
+ * @member {string} [text] Text content of this creative work
+ * @member {string} [discussionUrl]
+ * @member {number} [commentCount]
+ * @member {object} [mainEntity]
+ * @member {string} [mainEntity.url] The URL to get more information about the
+ * thing represented by this object.
+ * @member {string} [headLine]
+ * @member {object} [copyrightHolder]
+ * @member {string} [copyrightHolder.url] The URL to get more information about
+ * the thing represented by this object.
+ * @member {number} [copyrightYear]
+ * @member {string} [disclaimer]
+ * @member {boolean} [isAccessibleForFree]
+ * @member {array} [genre]
+ * @member {boolean} [isFamilyFriendly]
+ */
+export interface CreativeWork extends Thing {
+  readonly thumbnailUrl?: string;
+  readonly about?: Thing[];
+  readonly mentions?: Thing[];
+  readonly provider?: Thing[];
+  readonly creator?: Thing;
+  readonly text?: string;
+  readonly discussionUrl?: string;
+  readonly commentCount?: number;
+  readonly mainEntity?: Thing;
+  readonly headLine?: string;
+  readonly copyrightHolder?: Thing;
+  readonly copyrightYear?: number;
+  readonly disclaimer?: string;
+  readonly isAccessibleForFree?: boolean;
+  readonly genre?: string[];
+  readonly isFamilyFriendly?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Action class.
+ * @constructor
+ * @member {array} [result]
+ * @member {string} [displayName]
+ * @member {boolean} [isTopAction]
+ * @member {string} [serviceUrl]
+ */
+export interface Action extends CreativeWork {
+  readonly result?: Thing[];
+  readonly displayName?: string;
+  readonly isTopAction?: boolean;
+  readonly serviceUrl?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SearchAction class.
+ * @constructor
+ * @member {string} [displayText]
+ * @member {string} [query]
+ * @member {string} [searchKind] Possible values include: 'WebSearch',
+ * 'HistorySearch', 'DocumentSearch', 'TagSearch', 'LocationSearch',
+ * 'CustomSearch'. Default value: 'WebSearch' .
+ */
+export interface SearchAction extends Action {
+  readonly displayText?: string;
+  readonly query?: string;
+  readonly searchKind?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SuggestionsSuggestionGroup class.
+ * @constructor
+ * @member {string} name Possible values include: 'Unknown', 'Web',
+ * 'StoreApps', 'SearchHistory', 'PersonalSearchDocuments',
+ * 'PersonalSearchTags', 'Custom'. Default value: 'Unknown' .
+ * @member {array} searchSuggestions
+ */
+export interface SuggestionsSuggestionGroup {
+  name: string;
+  searchSuggestions: SearchAction[];
 }
 
 /**
@@ -138,8 +220,6 @@ export interface SearchResultsAnswer extends Answer {
  * @class
  * Initializes a new instance of the Suggestions class.
  * @constructor
- * Defines an AutoSuggest answer
- *
  * @member {array} suggestionGroups
  */
 export interface Suggestions extends SearchResultsAnswer {
@@ -184,115 +264,6 @@ export interface QueryContext {
   readonly adultIntent?: boolean;
   readonly askUserForLocation?: boolean;
   readonly isTransactional?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the Thing class.
- * @constructor
- * Defines a thing.
- *
- * @member {string} [name] The name of the thing represented by this object.
- * @member {string} [description] A short description of the item.
- * @member {string} [wikipediaId]
- * @member {string} [freebaseId]
- * @member {string} [alternateName] An alias for the item
- * @member {string} [bingId] An ID that uniquely identifies this item.
- * @member {string} [satoriId]
- * @member {string} [ypId]
- */
-export interface Thing extends Response {
-  readonly name?: string;
-  readonly description?: string;
-  readonly wikipediaId?: string;
-  readonly freebaseId?: string;
-  readonly alternateName?: string;
-  readonly bingId?: string;
-  readonly satoriId?: string;
-  readonly ypId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the CreativeWork class.
- * @constructor
- * The most generic kind of creative work, including books, movies,
- * photographs, software programs, etc.
- *
- * @member {array} [about] For internal use only.
- * @member {array} [mentions] For internal use only.
- * @member {array} [provider] The source of the creative work.
- * @member {object} [creator]
- * @member {string} [creator.name] The name of the thing represented by this
- * object.
- * @member {string} [creator.description] A short description of the item.
- * @member {string} [creator.wikipediaId]
- * @member {string} [creator.freebaseId]
- * @member {string} [creator.alternateName] An alias for the item
- * @member {string} [creator.bingId] An ID that uniquely identifies this item.
- * @member {string} [creator.satoriId]
- * @member {string} [creator.ypId]
- * @member {string} [text] Text content of this creative work
- * @member {number} [commentCount]
- * @member {object} [mainEntity]
- * @member {string} [mainEntity.name] The name of the thing represented by this
- * object.
- * @member {string} [mainEntity.description] A short description of the item.
- * @member {string} [mainEntity.wikipediaId]
- * @member {string} [mainEntity.freebaseId]
- * @member {string} [mainEntity.alternateName] An alias for the item
- * @member {string} [mainEntity.bingId] An ID that uniquely identifies this
- * item.
- * @member {string} [mainEntity.satoriId]
- * @member {string} [mainEntity.ypId]
- * @member {string} [headLine]
- * @member {object} [copyrightHolder]
- * @member {string} [copyrightHolder.name] The name of the thing represented by
- * this object.
- * @member {string} [copyrightHolder.description] A short description of the
- * item.
- * @member {string} [copyrightHolder.wikipediaId]
- * @member {string} [copyrightHolder.freebaseId]
- * @member {string} [copyrightHolder.alternateName] An alias for the item
- * @member {string} [copyrightHolder.bingId] An ID that uniquely identifies
- * this item.
- * @member {string} [copyrightHolder.satoriId]
- * @member {string} [copyrightHolder.ypId]
- * @member {number} [copyrightYear]
- * @member {string} [disclaimer]
- * @member {boolean} [isAccessibleForFree]
- * @member {array} [genre]
- * @member {boolean} [isFamilyFriendly]
- */
-export interface CreativeWork extends Thing {
-  readonly about?: Thing[];
-  readonly mentions?: Thing[];
-  readonly provider?: Thing[];
-  readonly creator?: Thing;
-  readonly text?: string;
-  readonly commentCount?: number;
-  readonly mainEntity?: Thing;
-  readonly headLine?: string;
-  readonly copyrightHolder?: Thing;
-  readonly copyrightYear?: number;
-  readonly disclaimer?: string;
-  readonly isAccessibleForFree?: boolean;
-  readonly genre?: string[];
-  readonly isFamilyFriendly?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the Action class.
- * @constructor
- * @member {array} [result]
- * @member {string} [displayName]
- * @member {boolean} [isTopAction]
- */
-export interface Action extends CreativeWork {
-  readonly result?: Thing[];
-  readonly displayName?: string;
-  readonly isTopAction?: boolean;
 }
 
 /**
