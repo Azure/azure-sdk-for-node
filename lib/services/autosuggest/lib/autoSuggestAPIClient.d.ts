@@ -219,11 +219,11 @@ export default class AutoSuggestAPIClient extends ServiceClient {
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<AutoSuggest>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<Suggestions>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  autoSuggestMethodWithHttpOperationResponse(query: string, options?: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, market? : string, safeSearch? : string, setLang? : string, responseFormat? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutoSuggest>>;
+  autoSuggestWithHttpOperationResponse(query: string, options?: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, market? : string, safeSearch? : string, setLang? : string, responseFormat? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Suggestions>>;
 
   /**
    * @summary The AutoSuggest API lets you send a search query to Bing and get
@@ -413,7 +413,7 @@ export default class AutoSuggestAPIClient extends ServiceClient {
    *
    * {Promise} A promise is returned.
    *
-   *                      @resolve {AutoSuggest} - The deserialized result object.
+   *                      @resolve {Suggestions} - The deserialized result object.
    *
    *                      @reject {Error|ServiceError} - The error object.
    *
@@ -421,16 +421,16 @@ export default class AutoSuggestAPIClient extends ServiceClient {
    *
    *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
    *
-   *                      {AutoSuggest} [result]   - The deserialized result object if an error did not occur.
-   *                      See {@link AutoSuggest} for more information.
+   *                      {Suggestions} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link Suggestions} for more information.
    *
    *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  autoSuggestMethod(query: string, options?: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, market? : string, safeSearch? : string, setLang? : string, responseFormat? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.AutoSuggest>;
-  autoSuggestMethod(query: string, callback: ServiceCallback<models.AutoSuggest>): void;
-  autoSuggestMethod(query: string, options: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, market? : string, safeSearch? : string, setLang? : string, responseFormat? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutoSuggest>): void;
+  autoSuggest(query: string, options?: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, market? : string, safeSearch? : string, setLang? : string, responseFormat? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.Suggestions>;
+  autoSuggest(query: string, callback: ServiceCallback<models.Suggestions>): void;
+  autoSuggest(query: string, options: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, countryCode? : string, market? : string, safeSearch? : string, setLang? : string, responseFormat? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Suggestions>): void;
 }
 
 export { AutoSuggestAPIClient, models as AutoSuggestAPIModels };

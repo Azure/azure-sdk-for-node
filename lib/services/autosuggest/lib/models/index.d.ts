@@ -13,6 +13,39 @@ import * as moment from "moment";
 
 /**
  * @class
+ * Initializes a new instance of the SearchAction class.
+ * @constructor
+ * @member {string} [displayText]
+ * @member {string} [query]
+ * @member {string} [searchKind] Possible values include: 'WebSearch',
+ * 'HistorySearch', 'DocumentSearch', 'TagSearch', 'LocationSearch',
+ * 'CustomSearch'. Default value: 'WebSearch' .
+ * @member {string} [url] The URL to get more information about the thing
+ * represented by this object.
+ */
+export interface SearchAction {
+  readonly displayText?: string;
+  readonly query?: string;
+  readonly searchKind?: string;
+  readonly url?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SuggestionsSuggestionGroup class.
+ * @constructor
+ * @member {string} name Possible values include: 'Unknown', 'Web',
+ * 'StoreApps', 'SearchHistory', 'PersonalSearchDocuments',
+ * 'PersonalSearchTags', 'Custom'. Default value: 'Unknown' .
+ * @member {array} searchSuggestions
+ */
+export interface SuggestionsSuggestionGroup {
+  name: string;
+  searchSuggestions: SearchAction[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ResponseBase class.
  * @constructor
  * Response base
@@ -50,6 +83,107 @@ export interface Response extends Identifiable {
   readonly potentialAction?: Action[];
   readonly immediateAction?: Action[];
   readonly adaptiveCard?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Answer class.
+ * @constructor
+ * Defines an answer.
+ *
+ */
+export interface Answer extends Response {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SearchResultsAnswer class.
+ * @constructor
+ * Defines a search result answer.
+ *
+ * @member {object} [queryContext]
+ * @member {string} [queryContext.originalQuery] The query string as specified
+ * in the request.
+ * @member {string} [queryContext.alteredQuery] The query string used by Bing
+ * to perform the query. Bing uses the altered query string if the original
+ * query string contained spelling mistakes. For example, if the query string
+ * is "saling downwind", the altered query string will be "sailing downwind".
+ * This field is included only if the original query string contains a spelling
+ * mistake.
+ * @member {string} [queryContext.alterationOverrideQuery] The query string to
+ * use to force Bing to use the original string. For example, if the query
+ * string is "saling downwind", the override query string will be "+saling
+ * downwind". Remember to encode the query string which results in
+ * "%2Bsaling+downwind". This field is included only if the original query
+ * string contains a spelling mistake.
+ * @member {boolean} [queryContext.adultIntent] A Boolean value that indicates
+ * whether the specified query has adult intent. The value is true if the query
+ * has adult intent; otherwise, false.
+ * @member {boolean} [queryContext.askUserForLocation] A Boolean value that
+ * indicates whether Bing requires the user's location to provide accurate
+ * results. If you specified the user's location by using the X-MSEdge-ClientIP
+ * and X-Search-Location headers, you can ignore this field. For location aware
+ * queries, such as "today's weather" or "restaurants near me" that need the
+ * user's location to provide accurate results, this field is set to true. For
+ * location aware queries that include the location (for example, "Seattle
+ * weather"), this field is set to false. This field is also set to false for
+ * queries that are not location aware, such as "best sellers".
+ * @member {boolean} [queryContext.isTransactional]
+ */
+export interface SearchResultsAnswer extends Answer {
+  readonly queryContext?: QueryContext;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Suggestions class.
+ * @constructor
+ * Defines an AutoSuggest answer
+ *
+ * @member {array} suggestionGroups
+ */
+export interface Suggestions extends SearchResultsAnswer {
+  suggestionGroups: SuggestionsSuggestionGroup[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QueryContext class.
+ * @constructor
+ * Defines the query context that Bing used for the request.
+ *
+ * @member {string} originalQuery The query string as specified in the request.
+ * @member {string} [alteredQuery] The query string used by Bing to perform the
+ * query. Bing uses the altered query string if the original query string
+ * contained spelling mistakes. For example, if the query string is "saling
+ * downwind", the altered query string will be "sailing downwind". This field
+ * is included only if the original query string contains a spelling mistake.
+ * @member {string} [alterationOverrideQuery] The query string to use to force
+ * Bing to use the original string. For example, if the query string is "saling
+ * downwind", the override query string will be "+saling downwind". Remember to
+ * encode the query string which results in "%2Bsaling+downwind". This field is
+ * included only if the original query string contains a spelling mistake.
+ * @member {boolean} [adultIntent] A Boolean value that indicates whether the
+ * specified query has adult intent. The value is true if the query has adult
+ * intent; otherwise, false.
+ * @member {boolean} [askUserForLocation] A Boolean value that indicates
+ * whether Bing requires the user's location to provide accurate results. If
+ * you specified the user's location by using the X-MSEdge-ClientIP and
+ * X-Search-Location headers, you can ignore this field. For location aware
+ * queries, such as "today's weather" or "restaurants near me" that need the
+ * user's location to provide accurate results, this field is set to true. For
+ * location aware queries that include the location (for example, "Seattle
+ * weather"), this field is set to false. This field is also set to false for
+ * queries that are not location aware, such as "best sellers".
+ * @member {boolean} [isTransactional]
+ */
+export interface QueryContext {
+  originalQuery: string;
+  readonly alteredQuery?: string;
+  readonly alterationOverrideQuery?: string;
+  readonly adultIntent?: boolean;
+  readonly askUserForLocation?: boolean;
+  readonly isTransactional?: boolean;
 }
 
 /**
@@ -159,137 +293,6 @@ export interface Action extends CreativeWork {
   readonly result?: Thing[];
   readonly displayName?: string;
   readonly isTopAction?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchAction class.
- * @constructor
- * @member {string} [displayText]
- * @member {string} [query]
- * @member {string} [searchKind] Possible values include: 'WebSearch',
- * 'HistorySearch', 'DocumentSearch', 'TagSearch', 'LocationSearch',
- * 'CustomSearch'. Default value: 'WebSearch' .
- */
-export interface SearchAction extends Action {
-  readonly displayText?: string;
-  readonly query?: string;
-  readonly searchKind?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SuggestionsSuggestionGroup class.
- * @constructor
- * @member {string} name Possible values include: 'Unknown', 'Web',
- * 'StoreApps', 'SearchHistory', 'PersonalSearchDocuments',
- * 'PersonalSearchTags', 'Custom'. Default value: 'Unknown' .
- * @member {array} searchSuggestions
- */
-export interface SuggestionsSuggestionGroup {
-  name: string;
-  searchSuggestions: SearchAction[];
-}
-
-/**
- * @class
- * Initializes a new instance of the Answer class.
- * @constructor
- * Defines an answer.
- *
- */
-export interface Answer extends Response {
-}
-
-/**
- * @class
- * Initializes a new instance of the SearchResultsAnswer class.
- * @constructor
- * Defines a search result answer.
- *
- * @member {object} [queryContext]
- * @member {string} [queryContext.originalQuery] The query string as specified
- * in the request.
- * @member {string} [queryContext.alteredQuery] The query string used by Bing
- * to perform the query. Bing uses the altered query string if the original
- * query string contained spelling mistakes. For example, if the query string
- * is "saling downwind", the altered query string will be "sailing downwind".
- * This field is included only if the original query string contains a spelling
- * mistake.
- * @member {string} [queryContext.alterationOverrideQuery] The query string to
- * use to force Bing to use the original string. For example, if the query
- * string is "saling downwind", the override query string will be "+saling
- * downwind". Remember to encode the query string which results in
- * "%2Bsaling+downwind". This field is included only if the original query
- * string contains a spelling mistake.
- * @member {boolean} [queryContext.adultIntent] A Boolean value that indicates
- * whether the specified query has adult intent. The value is true if the query
- * has adult intent; otherwise, false.
- * @member {boolean} [queryContext.askUserForLocation] A Boolean value that
- * indicates whether Bing requires the user's location to provide accurate
- * results. If you specified the user's location by using the X-MSEdge-ClientIP
- * and X-Search-Location headers, you can ignore this field. For location aware
- * queries, such as "today's weather" or "restaurants near me" that need the
- * user's location to provide accurate results, this field is set to true. For
- * location aware queries that include the location (for example, "Seattle
- * weather"), this field is set to false. This field is also set to false for
- * queries that are not location aware, such as "best sellers".
- * @member {boolean} [queryContext.isTransactional]
- */
-export interface SearchResultsAnswer extends Answer {
-  readonly queryContext?: QueryContext;
-}
-
-/**
- * @class
- * Initializes a new instance of the AutoSuggest class.
- * @constructor
- * Defines an AutoSuggest answer
- *
- * @member {array} suggestionGroups
- */
-export interface AutoSuggest extends SearchResultsAnswer {
-  suggestionGroups: SuggestionsSuggestionGroup[];
-}
-
-/**
- * @class
- * Initializes a new instance of the QueryContext class.
- * @constructor
- * Defines the query context that Bing used for the request.
- *
- * @member {string} originalQuery The query string as specified in the request.
- * @member {string} [alteredQuery] The query string used by Bing to perform the
- * query. Bing uses the altered query string if the original query string
- * contained spelling mistakes. For example, if the query string is "saling
- * downwind", the altered query string will be "sailing downwind". This field
- * is included only if the original query string contains a spelling mistake.
- * @member {string} [alterationOverrideQuery] The query string to use to force
- * Bing to use the original string. For example, if the query string is "saling
- * downwind", the override query string will be "+saling downwind". Remember to
- * encode the query string which results in "%2Bsaling+downwind". This field is
- * included only if the original query string contains a spelling mistake.
- * @member {boolean} [adultIntent] A Boolean value that indicates whether the
- * specified query has adult intent. The value is true if the query has adult
- * intent; otherwise, false.
- * @member {boolean} [askUserForLocation] A Boolean value that indicates
- * whether Bing requires the user's location to provide accurate results. If
- * you specified the user's location by using the X-MSEdge-ClientIP and
- * X-Search-Location headers, you can ignore this field. For location aware
- * queries, such as "today's weather" or "restaurants near me" that need the
- * user's location to provide accurate results, this field is set to true. For
- * location aware queries that include the location (for example, "Seattle
- * weather"), this field is set to false. This field is also set to false for
- * queries that are not location aware, such as "best sellers".
- * @member {boolean} [isTransactional]
- */
-export interface QueryContext {
-  originalQuery: string;
-  readonly alteredQuery?: string;
-  readonly alterationOverrideQuery?: string;
-  readonly adultIntent?: boolean;
-  readonly askUserForLocation?: boolean;
-  readonly isTransactional?: boolean;
 }
 
 /**
