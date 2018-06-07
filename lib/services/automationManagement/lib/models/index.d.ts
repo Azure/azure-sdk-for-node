@@ -2225,107 +2225,6 @@ export interface VariableUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the SourceControlCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update source control operation.
- *
- * @member {string} [repoUrl] Gets or sets the repo url of the source control.
- * @member {string} [branch] Gets or sets the repo branch of the source
- * control. Include branch as empty string for VsoTfvc.
- * @member {string} [folderPath] Gets or sets the folder path of the source
- * control. Path must be relative.
- * @member {boolean} [autoSync] Gets or sets auto async of the source control.
- * Default is false.
- * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
- * source control. Default is true.
- * @member {string} [sourceType] The source type. Must be one of VsoGit,
- * VsoTfvc, GitHub, case sensitive. Possible values include: 'VsoGit',
- * 'VsoTfvc', 'GitHub'
- * @member {string} [securityToken] Gets or sets the authorization token for
- * the repo of the source control.
- * @member {string} [description] Gets or sets the user description of the
- * source control.
- */
-export interface SourceControlCreateOrUpdateParameters {
-  repoUrl?: string;
-  branch?: string;
-  folderPath?: string;
-  autoSync?: boolean;
-  publishRunbook?: boolean;
-  sourceType?: string;
-  securityToken?: string;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SourceControl class.
- * @constructor
- * Definition of the source control.
- *
- * @member {string} [name] Resource name.
- * @member {string} [id] Resource Id.
- * @member {string} [type] Resource type.
- * @member {string} [repoUrl] Gets or sets the repo url of the source control.
- * @member {string} [branch] Gets or sets the repo branch of the source
- * control. Include branch as empty string for VsoTfvc.
- * @member {string} [folderPath] Gets or sets the folder path of the source
- * control.
- * @member {boolean} [autoSync] Gets or sets auto async of the source control.
- * Default is false.
- * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
- * source control. Default is true.
- * @member {string} [sourceType] The source type. Must be one of VsoGit,
- * VsoTfvc, GitHub. Possible values include: 'VsoGit', 'VsoTfvc', 'GitHub'
- * @member {string} [description] Gets or sets the description.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- */
-export interface SourceControl extends BaseResource {
-  readonly name?: string;
-  readonly id?: string;
-  readonly type?: string;
-  repoUrl?: string;
-  branch?: string;
-  folderPath?: string;
-  autoSync?: boolean;
-  publishRunbook?: boolean;
-  sourceType?: string;
-  description?: string;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the SourceControlUpdateParameters class.
- * @constructor
- * The parameters supplied to the update source control operation.
- *
- * @member {string} [branch] Gets or sets the repo branch of the source
- * control.
- * @member {string} [folderPath] Gets or sets the folder path of the source
- * control. Path must be relative.
- * @member {boolean} [autoSync] Gets or sets auto async of the source control.
- * Default is false.
- * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
- * source control. Default is true.
- * @member {string} [securityToken] Gets or sets the authorization token for
- * the repo of the source control.
- * @member {string} [description] Gets or sets the user description of the
- * source control.
- */
-export interface SourceControlUpdateParameters {
-  branch?: string;
-  folderPath?: string;
-  autoSync?: boolean;
-  publishRunbook?: boolean;
-  securityToken?: string;
-  description?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the WindowsProperties class.
  * @constructor
  * Windows specific update configuration.
@@ -2764,6 +2663,101 @@ export interface SoftwareUpdateConfigurationMachineRun {
 export interface SoftwareUpdateConfigurationMachineRunListResult {
   value?: SoftwareUpdateConfigurationMachineRun[];
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceControl class.
+ * @constructor
+ * Definition of the source control.
+ *
+ * @member {string} [repoUrl] Gets or sets the repo url of the source control.
+ * @member {string} [branch] Gets or sets the repo branch of the source
+ * control. Include branch as empty string for VsoTfvc.
+ * @member {string} [folderPath] Gets or sets the folder path of the source
+ * control.
+ * @member {boolean} [autoSync] Gets or sets auto async of the source control.
+ * Default is false.
+ * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
+ * source control. Default is true.
+ * @member {string} [sourceType] The source type. Must be one of VsoGit,
+ * VsoTfvc, GitHub. Possible values include: 'VsoGit', 'VsoTfvc', 'GitHub'
+ * @member {string} [description] Gets or sets the description.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ */
+export interface SourceControl extends ProxyResource {
+  repoUrl?: string;
+  branch?: string;
+  folderPath?: string;
+  autoSync?: boolean;
+  publishRunbook?: boolean;
+  sourceType?: string;
+  description?: string;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceControlUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update source control operation.
+ *
+ * @member {string} [branch] Gets or sets the repo branch of the source
+ * control.
+ * @member {string} [folderPath] Gets or sets the folder path of the source
+ * control. Path must be relative.
+ * @member {boolean} [autoSync] Gets or sets auto async of the source control.
+ * Default is false.
+ * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
+ * source control. Default is true.
+ * @member {string} [securityToken] Gets or sets the authorization token for
+ * the repo of the source control.
+ * @member {string} [description] Gets or sets the user description of the
+ * source control.
+ */
+export interface SourceControlUpdateParameters {
+  branch?: string;
+  folderPath?: string;
+  autoSync?: boolean;
+  publishRunbook?: boolean;
+  securityToken?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SourceControlCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update source control operation.
+ *
+ * @member {string} [repoUrl] Gets or sets the repo url of the source control.
+ * @member {string} [branch] Gets or sets the repo branch of the source
+ * control. Include branch as empty string for VsoTfvc.
+ * @member {string} [folderPath] Gets or sets the folder path of the source
+ * control. Path must be relative.
+ * @member {boolean} [autoSync] Gets or sets auto async of the source control.
+ * Default is false.
+ * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
+ * source control. Default is true.
+ * @member {string} [sourceType] The source type. Must be one of VsoGit,
+ * VsoTfvc, GitHub, case sensitive. Possible values include: 'VsoGit',
+ * 'VsoTfvc', 'GitHub'
+ * @member {string} [securityToken] Gets or sets the authorization token for
+ * the repo of the source control.
+ * @member {string} [description] Gets or sets the user description of the
+ * source control.
+ */
+export interface SourceControlCreateOrUpdateParameters {
+  repoUrl?: string;
+  branch?: string;
+  folderPath?: string;
+  autoSync?: boolean;
+  publishRunbook?: boolean;
+  sourceType?: string;
+  securityToken?: string;
+  description?: string;
 }
 
 /**
