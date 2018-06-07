@@ -170,7 +170,7 @@ export interface ServerConnectionPolicy extends ProxyResource {
  * @member {string} [kind] Resource kind.
  * @member {string} state Specifies the state of the policy. If state is
  * Enabled, storageEndpoint and storageAccountAccessKey are required. Possible
- * values include: 'New', 'Enabled', 'Disabled'
+ * values include: 'Enabled', 'Disabled'
  * @member {string} [disabledAlerts] Specifies the semicolon-separated list of
  * alerts that are disabled, or empty string to disable no alerts. Possible
  * values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly;
@@ -2538,6 +2538,39 @@ export interface ServerDnsAlias extends ProxyResource {
  */
 export interface ServerDnsAliasAcquisition {
   oldServerDnsAliasId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerSecurityAlertPolicy class.
+ * @constructor
+ * A server security alert policy.
+ *
+ * @member {string} state Specifies the state of the policy, whether it is
+ * enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+ * @member {array} [disabledAlerts] Specifies an array of alerts that are
+ * disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability,
+ * Access_Anomaly
+ * @member {array} [emailAddresses] Specifies an array of e-mail addresses to
+ * which the alert is sent.
+ * @member {boolean} [emailAccountAdmins] Specifies that the alert is sent to
+ * the account administrators.
+ * @member {string} [storageEndpoint] Specifies the blob storage endpoint (e.g.
+ * https://MyAccount.blob.core.windows.net). This blob storage will hold all
+ * Threat Detection audit logs.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the Threat Detection audit storage account.
+ * @member {number} [retentionDays] Specifies the number of days to keep in the
+ * Threat Detection audit logs.
+ */
+export interface ServerSecurityAlertPolicy extends ProxyResource {
+  state: string;
+  disabledAlerts?: string[];
+  emailAddresses?: string[];
+  emailAccountAdmins?: boolean;
+  storageEndpoint?: string;
+  storageAccountAccessKey?: string;
+  retentionDays?: number;
 }
 
 /**
