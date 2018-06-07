@@ -111,18 +111,6 @@ export interface Statistics {
 
 /**
  * @class
- * Initializes a new instance of the RunbookAssociationProperty class.
- * @constructor
- * The runbook property associated with the entity.
- *
- * @member {string} [name] Gets or sets the name of the runbook.
- */
-export interface RunbookAssociationProperty {
-  name?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The core properties of ARM resources
@@ -141,309 +129,10 @@ export interface Resource extends BaseResource {
  * @class
  * Initializes a new instance of the ProxyResource class.
  * @constructor
- * The resource model definition for a ARM proxy resource. It will have
- * everything other than required location and tags
+ * ARM proxy resource.
  *
  */
 export interface ProxyResource extends Resource {
-}
-
-/**
- * @class
- * Initializes a new instance of the Webhook class.
- * @constructor
- * Definition of the webhook type.
- *
- * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
- * the webhook. Default value: false .
- * @member {string} [uri] Gets or sets the webhook uri.
- * @member {date} [expiryTime] Gets or sets the expiry time.
- * @member {date} [lastInvokedTime] Gets or sets the last invoked time.
- * @member {object} [parameters] Gets or sets the parameters of the job that is
- * created when the webhook calls the runbook it is associated with.
- * @member {object} [runbook] Gets or sets the runbook the webhook is
- * associated with.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [runOn] Gets or sets the name of the hybrid worker group
- * the webhook job will run on.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [lastModifiedBy] Details of the user who last modified the
- * Webhook
- * @member {string} [description] Gets or sets the description.
- */
-export interface Webhook extends ProxyResource {
-  isEnabled?: boolean;
-  uri?: string;
-  expiryTime?: Date;
-  lastInvokedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-  runbook?: RunbookAssociationProperty;
-  runOn?: string;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  lastModifiedBy?: string;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Variable class.
- * @constructor
- * Definition of the varible.
- *
- * @member {string} [value] Gets or sets the value of the variable.
- * @member {boolean} [isEncrypted] Gets or sets the encrypted flag of the
- * variable.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- */
-export interface Variable extends ProxyResource {
-  value?: string;
-  isEncrypted?: boolean;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobProvisioningStateProperty class.
- * @constructor
- * The provisioning state property.
- *
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Failed', 'Succeeded', 'Suspended', 'Processing'
- */
-export interface JobProvisioningStateProperty {
-  readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscConfigurationAssociationProperty class.
- * @constructor
- * The Dsc configuration property associated with the entity.
- *
- * @member {string} [name] Gets or sets the name of the Dsc configuration.
- */
-export interface DscConfigurationAssociationProperty {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscCompilationJob class.
- * @constructor
- * Definition of the Dsc Compilation job.
- *
- * @member {object} [configuration] Gets or sets the configuration.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {string} [startedBy] Gets the compilation job started by.
- * @member {uuid} [jobId] Gets the id of the job.
- * @member {date} [creationTime] Gets the creation time of the job.
- * @member {object} [provisioningState] The current provisioning state of the
- * job.
- * @member {string} [provisioningState.provisioningState] The provisioning
- * state of the resource. Possible values include: 'Failed', 'Succeeded',
- * 'Suspended', 'Processing'
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- * @member {string} [status] Gets or sets the status of the job. Possible
- * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
- * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
- * 'Resuming', 'Removing'
- * @member {string} [statusDetails] Gets or sets the status details of the job.
- * @member {date} [startTime] Gets the start time of the job.
- * @member {date} [endTime] Gets the end time of the job.
- * @member {string} [exception] Gets the exception of the job.
- * @member {date} [lastModifiedTime] Gets the last modified time of the job.
- * @member {date} [lastStatusModifiedTime] Gets the last status modified time
- * of the job.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- */
-export interface DscCompilationJob extends ProxyResource {
-  configuration?: DscConfigurationAssociationProperty;
-  readonly startedBy?: string;
-  readonly jobId?: string;
-  readonly creationTime?: Date;
-  provisioningState?: JobProvisioningStateProperty;
-  runOn?: string;
-  status?: string;
-  statusDetails?: string;
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly exception?: string;
-  readonly lastModifiedTime?: Date;
-  readonly lastStatusModifiedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the Credential class.
- * @constructor
- * Definition of the credential.
- *
- * @member {string} [userName] Gets the user name of the credential.
- * @member {date} [creationTime] Gets the creation time.
- * @member {date} [lastModifiedTime] Gets the last modified time.
- * @member {string} [description] Gets or sets the description.
- */
-export interface Credential extends ProxyResource {
-  readonly userName?: string;
-  readonly creationTime?: Date;
-  readonly lastModifiedTime?: Date;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ConnectionTypeAssociationProperty class.
- * @constructor
- * The connection type property associated with the entity.
- *
- * @member {string} [name] Gets or sets the name of the connection type.
- */
-export interface ConnectionTypeAssociationProperty {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Connection class.
- * @constructor
- * Definition of the connection.
- *
- * @member {object} [connectionType] Gets or sets the connectionType of the
- * connection.
- * @member {string} [connectionType.name] Gets or sets the name of the
- * connection type.
- * @member {object} [fieldDefinitionValues] Gets the field definition values of
- * the connection.
- * @member {date} [creationTime] Gets the creation time.
- * @member {date} [lastModifiedTime] Gets the last modified time.
- * @member {string} [description] Gets or sets the description.
- */
-export interface Connection extends ProxyResource {
-  connectionType?: ConnectionTypeAssociationProperty;
-  readonly fieldDefinitionValues?: { [propertyName: string]: string };
-  readonly creationTime?: Date;
-  readonly lastModifiedTime?: Date;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Certificate class.
- * @constructor
- * Definition of the certificate.
- *
- * @member {string} [thumbprint] Gets the thumbprint of the certificate.
- * @member {date} [expiryTime] Gets the expiry time of the certificate.
- * @member {boolean} [isExportable] Gets the is exportable flag of the
- * certificate.
- * @member {date} [creationTime] Gets the creation time.
- * @member {date} [lastModifiedTime] Gets the last modified time.
- * @member {string} [description] Gets or sets the description.
- */
-export interface Certificate extends ProxyResource {
-  readonly thumbprint?: string;
-  readonly expiryTime?: Date;
-  readonly isExportable?: boolean;
-  readonly creationTime?: Date;
-  readonly lastModifiedTime?: Date;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookParameter class.
- * @constructor
- * Definition of the runbook parameter type.
- *
- * @member {string} [type] Gets or sets the type of the parameter.
- * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
- * whether the parameter is madatory or not.
- * @member {number} [position] Get or sets the position of the parameter.
- * @member {string} [defaultValue] Gets or sets the default value of parameter.
- */
-export interface RunbookParameter {
-  type?: string;
-  isMandatory?: boolean;
-  position?: number;
-  defaultValue?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContentHash class.
- * @constructor
- * Definition of the runbook property type.
- *
- * @member {string} algorithm Gets or sets the content hash algorithm used to
- * hash the content.
- * @member {string} value Gets or sets expected hash value of the content.
- */
-export interface ContentHash {
-  algorithm: string;
-  value: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContentLink class.
- * @constructor
- * Definition of the content link.
- *
- * @member {string} [uri] Gets or sets the uri of the runbook content.
- * @member {object} [contentHash] Gets or sets the hash.
- * @member {string} [contentHash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [contentHash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [version] Gets or sets the version of the content.
- */
-export interface ContentLink {
-  uri?: string;
-  contentHash?: ContentHash;
-  version?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunbookDraft class.
- * @constructor
- * Definition of the runbook type.
- *
- * @member {boolean} [inEdit] Gets or sets whether runbook is in edit mode.
- * @member {object} [draftContentLink] Gets or sets the draft runbook content
- * link.
- * @member {string} [draftContentLink.uri] Gets or sets the uri of the runbook
- * content.
- * @member {object} [draftContentLink.contentHash] Gets or sets the hash.
- * @member {string} [draftContentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [draftContentLink.contentHash.value] Gets or sets expected
- * hash value of the content.
- * @member {string} [draftContentLink.version] Gets or sets the version of the
- * content.
- * @member {date} [creationTime] Gets or sets the creation time of the runbook
- * draft.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
- * runbook draft.
- * @member {object} [parameters] Gets or sets the runbook draft parameters.
- * @member {array} [outputTypes] Gets or sets the runbook output types.
- */
-export interface RunbookDraft {
-  inEdit?: boolean;
-  draftContentLink?: ContentLink;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  parameters?: { [propertyName: string]: RunbookParameter };
-  outputTypes?: string[];
 }
 
 /**
@@ -458,235 +147,6 @@ export interface RunbookDraft {
 export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
   location?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Runbook class.
- * @constructor
- * Definition of the runbook type.
- *
- * @member {string} [runbookType] Gets or sets the type of the runbook.
- * Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
- * 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell'
- * @member {object} [publishContentLink] Gets or sets the published runbook
- * content link.
- * @member {string} [publishContentLink.uri] Gets or sets the uri of the
- * runbook content.
- * @member {object} [publishContentLink.contentHash] Gets or sets the hash.
- * @member {string} [publishContentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [publishContentLink.contentHash.value] Gets or sets
- * expected hash value of the content.
- * @member {string} [publishContentLink.version] Gets or sets the version of
- * the content.
- * @member {string} [state] Gets or sets the state of the runbook. Possible
- * values include: 'New', 'Edit', 'Published'
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {boolean} [logProgress] Gets or sets progress log option.
- * @member {number} [logActivityTrace] Gets or sets the option to log activity
- * trace of the runbook.
- * @member {number} [jobCount] Gets or sets the job count of the runbook.
- * @member {object} [parameters] Gets or sets the runbook parameters.
- * @member {array} [outputTypes] Gets or sets the runbook output types.
- * @member {object} [draft] Gets or sets the draft runbook properties.
- * @member {boolean} [draft.inEdit] Gets or sets whether runbook is in edit
- * mode.
- * @member {object} [draft.draftContentLink] Gets or sets the draft runbook
- * content link.
- * @member {string} [draft.draftContentLink.uri] Gets or sets the uri of the
- * runbook content.
- * @member {object} [draft.draftContentLink.contentHash] Gets or sets the hash.
- * @member {string} [draft.draftContentLink.contentHash.algorithm] Gets or sets
- * the content hash algorithm used to hash the content.
- * @member {string} [draft.draftContentLink.contentHash.value] Gets or sets
- * expected hash value of the content.
- * @member {string} [draft.draftContentLink.version] Gets or sets the version
- * of the content.
- * @member {date} [draft.creationTime] Gets or sets the creation time of the
- * runbook draft.
- * @member {date} [draft.lastModifiedTime] Gets or sets the last modified time
- * of the runbook draft.
- * @member {object} [draft.parameters] Gets or sets the runbook draft
- * parameters.
- * @member {array} [draft.outputTypes] Gets or sets the runbook output types.
- * @member {string} [provisioningState] Gets or sets the provisioning state of
- * the runbook. Possible values include: 'Succeeded'
- * @member {string} [lastModifiedBy] Gets or sets the last modified by.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- * @member {string} [etag] Gets or sets the etag of the resource.
- */
-export interface Runbook extends TrackedResource {
-  runbookType?: string;
-  publishContentLink?: ContentLink;
-  state?: string;
-  logVerbose?: boolean;
-  logProgress?: boolean;
-  logActivityTrace?: number;
-  jobCount?: number;
-  parameters?: { [propertyName: string]: RunbookParameter };
-  outputTypes?: string[];
-  draft?: RunbookDraft;
-  provisioningState?: string;
-  lastModifiedBy?: string;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-  etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ModuleErrorInfo class.
- * @constructor
- * Definition of the module error info type.
- *
- * @member {string} [code] Gets or sets the error code.
- * @member {string} [message] Gets or sets the error message.
- */
-export interface ModuleErrorInfo {
-  code?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Module class.
- * @constructor
- * Definition of the module type.
- *
- * @member {boolean} [isGlobal] Gets or sets the isGlobal flag of the module.
- * @member {string} [version] Gets or sets the version of the module.
- * @member {number} [sizeInBytes] Gets or sets the size in bytes of the module.
- * @member {number} [activityCount] Gets or sets the activity count of the
- * module.
- * @member {string} [provisioningState] Gets or sets the provisioning state of
- * the module. Possible values include: 'Created', 'Creating',
- * 'StartingImportModuleRunbook', 'RunningImportModuleRunbook',
- * 'ContentRetrieved', 'ContentDownloaded', 'ContentValidated',
- * 'ConnectionTypeImported', 'ContentStored', 'ModuleDataStored',
- * 'ActivitiesStored', 'ModuleImportRunbookComplete', 'Succeeded', 'Failed',
- * 'Cancelled', 'Updating'
- * @member {object} [contentLink] Gets or sets the contentLink of the module.
- * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
- * content.
- * @member {object} [contentLink.contentHash] Gets or sets the hash.
- * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
- * value of the content.
- * @member {string} [contentLink.version] Gets or sets the version of the
- * content.
- * @member {object} [error] Gets or sets the error info of the module.
- * @member {string} [error.code] Gets or sets the error code.
- * @member {string} [error.message] Gets or sets the error message.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- * @member {string} [etag] Gets or sets the etag of the resource.
- */
-export interface Module extends TrackedResource {
-  isGlobal?: boolean;
-  version?: string;
-  sizeInBytes?: number;
-  activityCount?: number;
-  provisioningState?: string;
-  contentLink?: ContentLink;
-  error?: ModuleErrorInfo;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-  etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ContentSource class.
- * @constructor
- * Definition of the content source.
- *
- * @member {object} [hash] Gets or sets the hash.
- * @member {string} [hash.algorithm] Gets or sets the content hash algorithm
- * used to hash the content.
- * @member {string} [hash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [type] Gets or sets the content source type. Possible
- * values include: 'embeddedContent', 'uri'
- * @member {string} [value] Gets or sets the value of the content. This is
- * based on the content source type.
- * @member {string} [version] Gets or sets the version of the content.
- */
-export interface ContentSource {
-  hash?: ContentHash;
-  type?: string;
-  value?: string;
-  version?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscConfigurationParameter class.
- * @constructor
- * Definition of the configuration parameter type.
- *
- * @member {string} [type] Gets or sets the type of the parameter.
- * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
- * whether the parameter is madatory or not.
- * @member {number} [position] Get or sets the position of the parameter.
- * @member {string} [defaultValue] Gets or sets the default value of parameter.
- */
-export interface DscConfigurationParameter {
-  type?: string;
-  isMandatory?: boolean;
-  position?: number;
-  defaultValue?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscConfiguration class.
- * @constructor
- * Definition of the configuration type.
- *
- * @member {string} [provisioningState] Gets or sets the provisioning state of
- * the configuration. Possible values include: 'Succeeded'
- * @member {number} [jobCount] Gets or sets the job count of the configuration.
- * @member {object} [parameters] Gets or sets the configuration parameters.
- * @member {object} [source] Gets or sets the source.
- * @member {object} [source.hash] Gets or sets the hash.
- * @member {string} [source.hash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [source.hash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [source.type] Gets or sets the content source type.
- * Possible values include: 'embeddedContent', 'uri'
- * @member {string} [source.value] Gets or sets the value of the content. This
- * is based on the content source type.
- * @member {string} [source.version] Gets or sets the version of the content.
- * @member {string} [state] Gets or sets the state of the configuration.
- * Possible values include: 'New', 'Edit', 'Published'
- * @member {boolean} [logVerbose] Gets or sets verbose log option.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {number} [nodeConfigurationCount] Gets the number of compiled node
- * configurations.
- * @member {string} [description] Gets or sets the description.
- * @member {string} [etag] Gets or sets the etag of the resource.
- */
-export interface DscConfiguration extends TrackedResource {
-  provisioningState?: string;
-  jobCount?: number;
-  parameters?: { [propertyName: string]: DscConfigurationParameter };
-  source?: ContentSource;
-  state?: string;
-  logVerbose?: boolean;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  nodeConfigurationCount?: number;
-  description?: string;
-  etag?: string;
 }
 
 /**
@@ -818,6 +278,29 @@ export interface AutomationAccountUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the Certificate class.
+ * @constructor
+ * Definition of the certificate.
+ *
+ * @member {string} [thumbprint] Gets the thumbprint of the certificate.
+ * @member {date} [expiryTime] Gets the expiry time of the certificate.
+ * @member {boolean} [isExportable] Gets the is exportable flag of the
+ * certificate.
+ * @member {date} [creationTime] Gets the creation time.
+ * @member {date} [lastModifiedTime] Gets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ */
+export interface Certificate extends ProxyResource {
+  readonly thumbprint?: string;
+  readonly expiryTime?: Date;
+  readonly isExportable?: boolean;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  description?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the CertificateUpdateParameters class.
  * @constructor
  * The parameters supplied to the update certificate operation.
@@ -854,6 +337,42 @@ export interface CertificateCreateOrUpdateParameters {
   description?: string;
   thumbprint?: string;
   isExportable?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionTypeAssociationProperty class.
+ * @constructor
+ * The connection type property associated with the entity.
+ *
+ * @member {string} [name] Gets or sets the name of the connection type.
+ */
+export interface ConnectionTypeAssociationProperty {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Connection class.
+ * @constructor
+ * Definition of the connection.
+ *
+ * @member {object} [connectionType] Gets or sets the connectionType of the
+ * connection.
+ * @member {string} [connectionType.name] Gets or sets the name of the
+ * connection type.
+ * @member {object} [fieldDefinitionValues] Gets the field definition values of
+ * the connection.
+ * @member {date} [creationTime] Gets the creation time.
+ * @member {date} [lastModifiedTime] Gets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ */
+export interface Connection extends ProxyResource {
+  connectionType?: ConnectionTypeAssociationProperty;
+  readonly fieldDefinitionValues?: { [propertyName: string]: string };
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  description?: string;
 }
 
 /**
@@ -960,6 +479,24 @@ export interface ConnectionTypeCreateOrUpdateParameters {
   name: string;
   isGlobal?: boolean;
   fieldDefinitions: { [propertyName: string]: FieldDefinition };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Credential class.
+ * @constructor
+ * Definition of the credential.
+ *
+ * @member {string} [userName] Gets the user name of the credential.
+ * @member {date} [creationTime] Gets the creation time.
+ * @member {date} [lastModifiedTime] Gets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ */
+export interface Credential extends ProxyResource {
+  readonly userName?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  description?: string;
 }
 
 /**
@@ -1189,6 +726,77 @@ export interface AgentRegistrationRegenerateKeyParameter {
 
 /**
  * @class
+ * Initializes a new instance of the ContentHash class.
+ * @constructor
+ * Definition of the runbook property type.
+ *
+ * @member {string} algorithm Gets or sets the content hash algorithm used to
+ * hash the content.
+ * @member {string} value Gets or sets expected hash value of the content.
+ */
+export interface ContentHash {
+  algorithm: string;
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContentLink class.
+ * @constructor
+ * Definition of the content link.
+ *
+ * @member {string} [uri] Gets or sets the uri of the runbook content.
+ * @member {object} [contentHash] Gets or sets the hash.
+ * @member {string} [contentHash.algorithm] Gets or sets the content hash
+ * algorithm used to hash the content.
+ * @member {string} [contentHash.value] Gets or sets expected hash value of the
+ * content.
+ * @member {string} [version] Gets or sets the version of the content.
+ */
+export interface ContentLink {
+  uri?: string;
+  contentHash?: ContentHash;
+  version?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ContentSource class.
+ * @constructor
+ * Definition of the content source.
+ *
+ * @member {object} [hash] Gets or sets the hash.
+ * @member {string} [hash.algorithm] Gets or sets the content hash algorithm
+ * used to hash the content.
+ * @member {string} [hash.value] Gets or sets expected hash value of the
+ * content.
+ * @member {string} [type] Gets or sets the content source type. Possible
+ * values include: 'embeddedContent', 'uri'
+ * @member {string} [value] Gets or sets the value of the content. This is
+ * based on the content source type.
+ * @member {string} [version] Gets or sets the version of the content.
+ */
+export interface ContentSource {
+  hash?: ContentHash;
+  type?: string;
+  value?: string;
+  version?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscConfigurationAssociationProperty class.
+ * @constructor
+ * The Dsc configuration property associated with the entity.
+ *
+ * @member {string} [name] Gets or sets the name of the Dsc configuration.
+ */
+export interface DscConfigurationAssociationProperty {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DscCompilationJobCreateParameters class.
  * @constructor
  * The parameters supplied to the create compilation job operation.
@@ -1235,6 +843,132 @@ export interface JobStream {
   streamText?: string;
   summary?: string;
   value?: { [propertyName: string]: any };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobProvisioningStateProperty class.
+ * @constructor
+ * The provisioning state property.
+ *
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Failed', 'Succeeded', 'Suspended', 'Processing'
+ */
+export interface JobProvisioningStateProperty {
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscCompilationJob class.
+ * @constructor
+ * Definition of the Dsc Compilation job.
+ *
+ * @member {object} [configuration] Gets or sets the configuration.
+ * @member {string} [configuration.name] Gets or sets the name of the Dsc
+ * configuration.
+ * @member {string} [startedBy] Gets the compilation job started by.
+ * @member {uuid} [jobId] Gets the id of the job.
+ * @member {date} [creationTime] Gets the creation time of the job.
+ * @member {object} [provisioningState] The current provisioning state of the
+ * job.
+ * @member {string} [provisioningState.provisioningState] The provisioning
+ * state of the resource. Possible values include: 'Failed', 'Succeeded',
+ * 'Suspended', 'Processing'
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ * @member {string} [status] Gets or sets the status of the job. Possible
+ * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
+ * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
+ * 'Resuming', 'Removing'
+ * @member {string} [statusDetails] Gets or sets the status details of the job.
+ * @member {date} [startTime] Gets the start time of the job.
+ * @member {date} [endTime] Gets the end time of the job.
+ * @member {string} [exception] Gets the exception of the job.
+ * @member {date} [lastModifiedTime] Gets the last modified time of the job.
+ * @member {date} [lastStatusModifiedTime] Gets the last status modified time
+ * of the job.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ */
+export interface DscCompilationJob extends ProxyResource {
+  configuration?: DscConfigurationAssociationProperty;
+  readonly startedBy?: string;
+  readonly jobId?: string;
+  readonly creationTime?: Date;
+  provisioningState?: JobProvisioningStateProperty;
+  runOn?: string;
+  status?: string;
+  statusDetails?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly exception?: string;
+  readonly lastModifiedTime?: Date;
+  readonly lastStatusModifiedTime?: Date;
+  parameters?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscConfigurationParameter class.
+ * @constructor
+ * Definition of the configuration parameter type.
+ *
+ * @member {string} [type] Gets or sets the type of the parameter.
+ * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
+ * whether the parameter is madatory or not.
+ * @member {number} [position] Get or sets the position of the parameter.
+ * @member {string} [defaultValue] Gets or sets the default value of parameter.
+ */
+export interface DscConfigurationParameter {
+  type?: string;
+  isMandatory?: boolean;
+  position?: number;
+  defaultValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscConfiguration class.
+ * @constructor
+ * Definition of the configuration type.
+ *
+ * @member {string} [provisioningState] Gets or sets the provisioning state of
+ * the configuration. Possible values include: 'Succeeded'
+ * @member {number} [jobCount] Gets or sets the job count of the configuration.
+ * @member {object} [parameters] Gets or sets the configuration parameters.
+ * @member {object} [source] Gets or sets the source.
+ * @member {object} [source.hash] Gets or sets the hash.
+ * @member {string} [source.hash.algorithm] Gets or sets the content hash
+ * algorithm used to hash the content.
+ * @member {string} [source.hash.value] Gets or sets expected hash value of the
+ * content.
+ * @member {string} [source.type] Gets or sets the content source type.
+ * Possible values include: 'embeddedContent', 'uri'
+ * @member {string} [source.value] Gets or sets the value of the content. This
+ * is based on the content source type.
+ * @member {string} [source.version] Gets or sets the version of the content.
+ * @member {string} [state] Gets or sets the state of the configuration.
+ * Possible values include: 'New', 'Edit', 'Published'
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {number} [nodeConfigurationCount] Gets the number of compiled node
+ * configurations.
+ * @member {string} [description] Gets or sets the description.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ */
+export interface DscConfiguration extends TrackedResource {
+  provisioningState?: string;
+  jobCount?: number;
+  parameters?: { [propertyName: string]: DscConfigurationParameter };
+  source?: ContentSource;
+  state?: string;
+  logVerbose?: boolean;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  nodeConfigurationCount?: number;
+  description?: string;
+  etag?: string;
 }
 
 /**
@@ -1621,6 +1355,18 @@ export interface ScheduleAssociationProperty {
 
 /**
  * @class
+ * Initializes a new instance of the RunbookAssociationProperty class.
+ * @constructor
+ * The runbook property associated with the entity.
+ *
+ * @member {string} [name] Gets or sets the name of the runbook.
+ */
+export interface RunbookAssociationProperty {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the JobScheduleCreateParameters class.
  * @constructor
  * The parameters supplied to the create job schedule operation.
@@ -1711,6 +1457,70 @@ export interface ModuleCreateOrUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the ModuleErrorInfo class.
+ * @constructor
+ * Definition of the module error info type.
+ *
+ * @member {string} [code] Gets or sets the error code.
+ * @member {string} [message] Gets or sets the error message.
+ */
+export interface ModuleErrorInfo {
+  code?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Module class.
+ * @constructor
+ * Definition of the module type.
+ *
+ * @member {boolean} [isGlobal] Gets or sets the isGlobal flag of the module.
+ * @member {string} [version] Gets or sets the version of the module.
+ * @member {number} [sizeInBytes] Gets or sets the size in bytes of the module.
+ * @member {number} [activityCount] Gets or sets the activity count of the
+ * module.
+ * @member {string} [provisioningState] Gets or sets the provisioning state of
+ * the module. Possible values include: 'Created', 'Creating',
+ * 'StartingImportModuleRunbook', 'RunningImportModuleRunbook',
+ * 'ContentRetrieved', 'ContentDownloaded', 'ContentValidated',
+ * 'ConnectionTypeImported', 'ContentStored', 'ModuleDataStored',
+ * 'ActivitiesStored', 'ModuleImportRunbookComplete', 'Succeeded', 'Failed',
+ * 'Cancelled', 'Updating'
+ * @member {object} [contentLink] Gets or sets the contentLink of the module.
+ * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [contentLink.contentHash] Gets or sets the hash.
+ * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
+ * value of the content.
+ * @member {string} [contentLink.version] Gets or sets the version of the
+ * content.
+ * @member {object} [error] Gets or sets the error info of the module.
+ * @member {string} [error.code] Gets or sets the error code.
+ * @member {string} [error.message] Gets or sets the error message.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ */
+export interface Module extends TrackedResource {
+  isGlobal?: boolean;
+  version?: string;
+  sizeInBytes?: number;
+  activityCount?: number;
+  provisioningState?: string;
+  contentLink?: ContentLink;
+  error?: ModuleErrorInfo;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
+  etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ModuleUpdateParameters class.
  * @constructor
  * The parameters supplied to the update module operation.
@@ -1734,6 +1544,59 @@ export interface ModuleUpdateParameters {
   name?: string;
   location?: string;
   tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookParameter class.
+ * @constructor
+ * Definition of the runbook parameter type.
+ *
+ * @member {string} [type] Gets or sets the type of the parameter.
+ * @member {boolean} [isMandatory] Gets or sets a Boolean value to indicate
+ * whether the parameter is madatory or not.
+ * @member {number} [position] Get or sets the position of the parameter.
+ * @member {string} [defaultValue] Gets or sets the default value of parameter.
+ */
+export interface RunbookParameter {
+  type?: string;
+  isMandatory?: boolean;
+  position?: number;
+  defaultValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RunbookDraft class.
+ * @constructor
+ * Definition of the runbook type.
+ *
+ * @member {boolean} [inEdit] Gets or sets whether runbook is in edit mode.
+ * @member {object} [draftContentLink] Gets or sets the draft runbook content
+ * link.
+ * @member {string} [draftContentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [draftContentLink.contentHash] Gets or sets the hash.
+ * @member {string} [draftContentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [draftContentLink.contentHash.value] Gets or sets expected
+ * hash value of the content.
+ * @member {string} [draftContentLink.version] Gets or sets the version of the
+ * content.
+ * @member {date} [creationTime] Gets or sets the creation time of the runbook
+ * draft.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
+ * runbook draft.
+ * @member {object} [parameters] Gets or sets the runbook draft parameters.
+ * @member {array} [outputTypes] Gets or sets the runbook output types.
+ */
+export interface RunbookDraft {
+  inEdit?: boolean;
+  draftContentLink?: ContentLink;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  parameters?: { [propertyName: string]: RunbookParameter };
+  outputTypes?: string[];
 }
 
 /**
@@ -1905,6 +1768,83 @@ export interface RunbookUpdateParameters {
   name?: string;
   location?: string;
   tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Runbook class.
+ * @constructor
+ * Definition of the runbook type.
+ *
+ * @member {string} [runbookType] Gets or sets the type of the runbook.
+ * Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
+ * 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell'
+ * @member {object} [publishContentLink] Gets or sets the published runbook
+ * content link.
+ * @member {string} [publishContentLink.uri] Gets or sets the uri of the
+ * runbook content.
+ * @member {object} [publishContentLink.contentHash] Gets or sets the hash.
+ * @member {string} [publishContentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [publishContentLink.contentHash.value] Gets or sets
+ * expected hash value of the content.
+ * @member {string} [publishContentLink.version] Gets or sets the version of
+ * the content.
+ * @member {string} [state] Gets or sets the state of the runbook. Possible
+ * values include: 'New', 'Edit', 'Published'
+ * @member {boolean} [logVerbose] Gets or sets verbose log option.
+ * @member {boolean} [logProgress] Gets or sets progress log option.
+ * @member {number} [logActivityTrace] Gets or sets the option to log activity
+ * trace of the runbook.
+ * @member {number} [jobCount] Gets or sets the job count of the runbook.
+ * @member {object} [parameters] Gets or sets the runbook parameters.
+ * @member {array} [outputTypes] Gets or sets the runbook output types.
+ * @member {object} [draft] Gets or sets the draft runbook properties.
+ * @member {boolean} [draft.inEdit] Gets or sets whether runbook is in edit
+ * mode.
+ * @member {object} [draft.draftContentLink] Gets or sets the draft runbook
+ * content link.
+ * @member {string} [draft.draftContentLink.uri] Gets or sets the uri of the
+ * runbook content.
+ * @member {object} [draft.draftContentLink.contentHash] Gets or sets the hash.
+ * @member {string} [draft.draftContentLink.contentHash.algorithm] Gets or sets
+ * the content hash algorithm used to hash the content.
+ * @member {string} [draft.draftContentLink.contentHash.value] Gets or sets
+ * expected hash value of the content.
+ * @member {string} [draft.draftContentLink.version] Gets or sets the version
+ * of the content.
+ * @member {date} [draft.creationTime] Gets or sets the creation time of the
+ * runbook draft.
+ * @member {date} [draft.lastModifiedTime] Gets or sets the last modified time
+ * of the runbook draft.
+ * @member {object} [draft.parameters] Gets or sets the runbook draft
+ * parameters.
+ * @member {array} [draft.outputTypes] Gets or sets the runbook output types.
+ * @member {string} [provisioningState] Gets or sets the provisioning state of
+ * the runbook. Possible values include: 'Succeeded'
+ * @member {string} [lastModifiedBy] Gets or sets the last modified by.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ */
+export interface Runbook extends TrackedResource {
+  runbookType?: string;
+  publishContentLink?: ContentLink;
+  state?: string;
+  logVerbose?: boolean;
+  logProgress?: boolean;
+  logActivityTrace?: number;
+  jobCount?: number;
+  parameters?: { [propertyName: string]: RunbookParameter };
+  outputTypes?: string[];
+  draft?: RunbookDraft;
+  provisioningState?: string;
+  lastModifiedBy?: string;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
+  etag?: string;
 }
 
 /**
@@ -2142,6 +2082,114 @@ export interface TypeField {
 
 /**
  * @class
+ * Initializes a new instance of the Variable class.
+ * @constructor
+ * Definition of the varible.
+ *
+ * @member {string} [value] Gets or sets the value of the variable.
+ * @member {boolean} [isEncrypted] Gets or sets the encrypted flag of the
+ * variable.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ */
+export interface Variable extends ProxyResource {
+  value?: string;
+  isEncrypted?: boolean;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebhookCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update webhook operation.
+ *
+ * @member {string} name Gets or sets the name of the webhook.
+ * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
+ * webhook.
+ * @member {string} [uri] Gets or sets the uri.
+ * @member {date} [expiryTime] Gets or sets the expiry time.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [runOn] Gets or sets the name of the hybrid worker group
+ * the webhook job will run on.
+ */
+export interface WebhookCreateOrUpdateParameters {
+  name: string;
+  isEnabled?: boolean;
+  uri?: string;
+  expiryTime?: Date;
+  parameters?: { [propertyName: string]: string };
+  runbook?: RunbookAssociationProperty;
+  runOn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Webhook class.
+ * @constructor
+ * Definition of the webhook type.
+ *
+ * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
+ * the webhook. Default value: false .
+ * @member {string} [uri] Gets or sets the webhook uri.
+ * @member {date} [expiryTime] Gets or sets the expiry time.
+ * @member {date} [lastInvokedTime] Gets or sets the last invoked time.
+ * @member {object} [parameters] Gets or sets the parameters of the job that is
+ * created when the webhook calls the runbook it is associated with.
+ * @member {object} [runbook] Gets or sets the runbook the webhook is
+ * associated with.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [runOn] Gets or sets the name of the hybrid worker group
+ * the webhook job will run on.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [lastModifiedBy] Details of the user who last modified the
+ * Webhook
+ * @member {string} [description] Gets or sets the description.
+ */
+export interface Webhook extends ProxyResource {
+  isEnabled?: boolean;
+  uri?: string;
+  expiryTime?: Date;
+  lastInvokedTime?: Date;
+  parameters?: { [propertyName: string]: string };
+  runbook?: RunbookAssociationProperty;
+  runOn?: string;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  lastModifiedBy?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WebhookUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update webhook operation.
+ *
+ * @member {string} [name] Gets or sets the name of the webhook.
+ * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
+ * webhook.
+ * @member {string} [runOn] Gets or sets the name of the hybrid worker group
+ * the webhook job will run on.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [description] Gets or sets the description of the webhook.
+ */
+export interface WebhookUpdateParameters {
+  name?: string;
+  isEnabled?: boolean;
+  runOn?: string;
+  parameters?: { [propertyName: string]: string };
+  description?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VariableCreateOrUpdateParameters class.
  * @constructor
  * The parameters supplied to the create or update variable operation.
@@ -2177,147 +2225,103 @@ export interface VariableUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the WebhookCreateOrUpdateParameters class.
+ * Initializes a new instance of the SourceControlCreateOrUpdateParameters class.
  * @constructor
- * The parameters supplied to the create or update webhook operation.
+ * The parameters supplied to the create or update source control operation.
  *
- * @member {string} name Gets or sets the name of the webhook.
- * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
- * webhook.
- * @member {string} [uri] Gets or sets the uri.
- * @member {date} [expiryTime] Gets or sets the expiry time.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {object} [runbook] Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [runOn] Gets or sets the name of the hybrid worker group
- * the webhook job will run on.
+ * @member {string} [repoUrl] Gets or sets the repo url of the source control.
+ * @member {string} [branch] Gets or sets the repo branch of the source
+ * control. Include branch as empty string for VsoTfvc.
+ * @member {string} [folderPath] Gets or sets the folder path of the source
+ * control. Path must be relative.
+ * @member {boolean} [autoSync] Gets or sets auto async of the source control.
+ * Default is false.
+ * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
+ * source control. Default is true.
+ * @member {string} [sourceType] The source type. Must be one of VsoGit,
+ * VsoTfvc, GitHub, case sensitive. Possible values include: 'VsoGit',
+ * 'VsoTfvc', 'GitHub'
+ * @member {string} [securityToken] Gets or sets the authorization token for
+ * the repo of the source control.
+ * @member {string} [description] Gets or sets the user description of the
+ * source control.
  */
-export interface WebhookCreateOrUpdateParameters {
-  name: string;
-  isEnabled?: boolean;
-  uri?: string;
-  expiryTime?: Date;
-  parameters?: { [propertyName: string]: string };
-  runbook?: RunbookAssociationProperty;
-  runOn?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WebhookUpdateParameters class.
- * @constructor
- * The parameters supplied to the update webhook operation.
- *
- * @member {string} [name] Gets or sets the name of the webhook.
- * @member {boolean} [isEnabled] Gets or sets the value of the enabled flag of
- * webhook.
- * @member {string} [runOn] Gets or sets the name of the hybrid worker group
- * the webhook job will run on.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {string} [description] Gets or sets the description of the webhook.
- */
-export interface WebhookUpdateParameters {
-  name?: string;
-  isEnabled?: boolean;
-  runOn?: string;
-  parameters?: { [propertyName: string]: string };
+export interface SourceControlCreateOrUpdateParameters {
+  repoUrl?: string;
+  branch?: string;
+  folderPath?: string;
+  autoSync?: boolean;
+  publishRunbook?: boolean;
+  sourceType?: string;
+  securityToken?: string;
   description?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the Job class.
+ * Initializes a new instance of the SourceControl class.
  * @constructor
- * Definition of the job.
+ * Definition of the source control.
  *
- * @member {object} [runbook] Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [startedBy] Gets or sets the job started by.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- * @member {uuid} [jobId] Gets or sets the id of the job.
- * @member {date} [creationTime] Gets or sets the creation time of the job.
- * @member {string} [status] Gets or sets the status of the job. Possible
- * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
- * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
- * 'Resuming', 'Removing'
- * @member {string} [statusDetails] Gets or sets the status details of the job.
- * @member {date} [startTime] Gets or sets the start time of the job.
- * @member {date} [endTime] Gets or sets the end time of the job.
- * @member {string} [exception] Gets or sets the exception of the job.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
- * job.
- * @member {date} [lastStatusModifiedTime] Gets or sets the last status
- * modified time of the job.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {string} [provisioningState] The provisioning state of a resource.
+ * @member {string} [name] Resource name.
+ * @member {string} [id] Resource Id.
+ * @member {string} [type] Resource type.
+ * @member {string} [repoUrl] Gets or sets the repo url of the source control.
+ * @member {string} [branch] Gets or sets the repo branch of the source
+ * control. Include branch as empty string for VsoTfvc.
+ * @member {string} [folderPath] Gets or sets the folder path of the source
+ * control.
+ * @member {boolean} [autoSync] Gets or sets auto async of the source control.
+ * Default is false.
+ * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
+ * source control. Default is true.
+ * @member {string} [sourceType] The source type. Must be one of VsoGit,
+ * VsoTfvc, GitHub. Possible values include: 'VsoGit', 'VsoTfvc', 'GitHub'
+ * @member {string} [description] Gets or sets the description.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
  */
-export interface Job extends ProxyResource {
-  runbook?: RunbookAssociationProperty;
-  startedBy?: string;
-  runOn?: string;
-  jobId?: string;
+export interface SourceControl extends BaseResource {
+  readonly name?: string;
+  readonly id?: string;
+  readonly type?: string;
+  repoUrl?: string;
+  branch?: string;
+  folderPath?: string;
+  autoSync?: boolean;
+  publishRunbook?: boolean;
+  sourceType?: string;
+  description?: string;
   creationTime?: Date;
-  status?: string;
-  statusDetails?: string;
-  startTime?: Date;
-  endTime?: Date;
-  exception?: string;
   lastModifiedTime?: Date;
-  lastStatusModifiedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-  readonly provisioningState?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the JobCollectionItem class.
+ * Initializes a new instance of the SourceControlUpdateParameters class.
  * @constructor
- * Job collection item properties.
+ * The parameters supplied to the update source control operation.
  *
- * @member {object} [runbook] The runbook association.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {uuid} [jobId] The id of the job.
- * @member {date} [creationTime] The creation time of the job.
- * @member {string} [status] The status of the job. Possible values include:
- * 'New', 'Activating', 'Running', 'Completed', 'Failed', 'Stopped', 'Blocked',
- * 'Suspended', 'Disconnected', 'Suspending', 'Stopping', 'Resuming',
- * 'Removing'
- * @member {date} [startTime] The start time of the job.
- * @member {date} [endTime] The end time of the job.
- * @member {date} [lastModifiedTime] The last modified time of the job.
- * @member {string} [provisioningState] The provisioning state of a resource.
- * @member {string} [runOn] Specifies the runOn group name where the job was
- * executed.
+ * @member {string} [branch] Gets or sets the repo branch of the source
+ * control.
+ * @member {string} [folderPath] Gets or sets the folder path of the source
+ * control. Path must be relative.
+ * @member {boolean} [autoSync] Gets or sets auto async of the source control.
+ * Default is false.
+ * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
+ * source control. Default is true.
+ * @member {string} [securityToken] Gets or sets the authorization token for
+ * the repo of the source control.
+ * @member {string} [description] Gets or sets the user description of the
+ * source control.
  */
-export interface JobCollectionItem extends ProxyResource {
-  readonly runbook?: RunbookAssociationProperty;
-  readonly jobId?: string;
-  readonly creationTime?: Date;
-  readonly status?: string;
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly lastModifiedTime?: Date;
-  readonly provisioningState?: string;
-  runOn?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobCreateParameters class.
- * @constructor
- * The parameters supplied to the create job operation.
- *
- * @member {object} [runbook] Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- */
-export interface JobCreateParameters {
-  runbook?: RunbookAssociationProperty;
-  parameters?: { [propertyName: string]: string };
-  runOn?: string;
+export interface SourceControlUpdateParameters {
+  branch?: string;
+  folderPath?: string;
+  autoSync?: boolean;
+  publishRunbook?: boolean;
+  securityToken?: string;
+  description?: string;
 }
 
 /**
@@ -2609,19 +2613,6 @@ export interface UpdateConfigurationNavigation {
 
 /**
  * @class
- * Initializes a new instance of the JobNavigation class.
- * @constructor
- * Software update configuration machine run job navigation properties.
- *
- * @member {string} [id] Id of the job associated with the software update
- * configuration run
- */
-export interface JobNavigation {
-  readonly id?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SoftwareUpdateConfigurationRun class.
  * @constructor
  * Software update configuration Run properties.
@@ -2682,6 +2673,19 @@ export interface SoftwareUpdateConfigurationRun {
 export interface SoftwareUpdateConfigurationRunListResult {
   value?: SoftwareUpdateConfigurationRun[];
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobNavigation class.
+ * @constructor
+ * Software update configuration machine run job navigation properties.
+ *
+ * @member {string} [id] Id of the job associated with the software update
+ * configuration run
+ */
+export interface JobNavigation {
+  readonly id?: string;
 }
 
 /**
@@ -2760,107 +2764,6 @@ export interface SoftwareUpdateConfigurationMachineRun {
 export interface SoftwareUpdateConfigurationMachineRunListResult {
   value?: SoftwareUpdateConfigurationMachineRun[];
   nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SourceControlCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update source control operation.
- *
- * @member {string} [repoUrl] Gets or sets the repo url of the source control.
- * @member {string} [branch] Gets or sets the repo branch of the source
- * control. Include branch as empty string for VsoTfvc.
- * @member {string} [folderPath] Gets or sets the folder path of the source
- * control. Path must be relative.
- * @member {boolean} [autoSync] Gets or sets auto async of the source control.
- * Default is false.
- * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
- * source control. Default is true.
- * @member {string} [sourceType] The source type. Must be one of VsoGit,
- * VsoTfvc, GitHub, case sensitive. Possible values include: 'VsoGit',
- * 'VsoTfvc', 'GitHub'
- * @member {string} [securityToken] Gets or sets the authorization token for
- * the repo of the source control.
- * @member {string} [description] Gets or sets the user description of the
- * source control.
- */
-export interface SourceControlCreateOrUpdateParameters {
-  repoUrl?: string;
-  branch?: string;
-  folderPath?: string;
-  autoSync?: boolean;
-  publishRunbook?: boolean;
-  sourceType?: string;
-  securityToken?: string;
-  description?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SourceControl class.
- * @constructor
- * Definition of the source control.
- *
- * @member {string} [name] Resource name.
- * @member {string} [id] Resource Id.
- * @member {string} [type] Resource type.
- * @member {string} [repoUrl] Gets or sets the repo url of the source control.
- * @member {string} [branch] Gets or sets the repo branch of the source
- * control. Include branch as empty string for VsoTfvc.
- * @member {string} [folderPath] Gets or sets the folder path of the source
- * control.
- * @member {boolean} [autoSync] Gets or sets auto async of the source control.
- * Default is false.
- * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
- * source control. Default is true.
- * @member {string} [sourceType] The source type. Must be one of VsoGit,
- * VsoTfvc, GitHub. Possible values include: 'VsoGit', 'VsoTfvc', 'GitHub'
- * @member {string} [description] Gets or sets the description.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- */
-export interface SourceControl extends BaseResource {
-  readonly name?: string;
-  readonly id?: string;
-  readonly type?: string;
-  repoUrl?: string;
-  branch?: string;
-  folderPath?: string;
-  autoSync?: boolean;
-  publishRunbook?: boolean;
-  sourceType?: string;
-  description?: string;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the SourceControlUpdateParameters class.
- * @constructor
- * The parameters supplied to the update source control operation.
- *
- * @member {string} [branch] Gets or sets the repo branch of the source
- * control.
- * @member {string} [folderPath] Gets or sets the folder path of the source
- * control. Path must be relative.
- * @member {boolean} [autoSync] Gets or sets auto async of the source control.
- * Default is false.
- * @member {boolean} [publishRunbook] Gets or sets the auto publish of the
- * source control. Default is true.
- * @member {string} [securityToken] Gets or sets the authorization token for
- * the repo of the source control.
- * @member {string} [description] Gets or sets the user description of the
- * source control.
- */
-export interface SourceControlUpdateParameters {
-  branch?: string;
-  folderPath?: string;
-  autoSync?: boolean;
-  publishRunbook?: boolean;
-  securityToken?: string;
-  description?: string;
 }
 
 /**
@@ -2983,6 +2886,102 @@ export interface SourceControlSyncJobStreamById {
 
 /**
  * @class
+ * Initializes a new instance of the Job class.
+ * @constructor
+ * Definition of the job.
+ *
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [startedBy] Gets or sets the job started by.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ * @member {uuid} [jobId] Gets or sets the id of the job.
+ * @member {date} [creationTime] Gets or sets the creation time of the job.
+ * @member {string} [status] Gets or sets the status of the job. Possible
+ * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
+ * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
+ * 'Resuming', 'Removing'
+ * @member {string} [statusDetails] Gets or sets the status details of the job.
+ * @member {date} [startTime] Gets or sets the start time of the job.
+ * @member {date} [endTime] Gets or sets the end time of the job.
+ * @member {string} [exception] Gets or sets the exception of the job.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
+ * job.
+ * @member {date} [lastStatusModifiedTime] Gets or sets the last status
+ * modified time of the job.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [provisioningState] The provisioning state of a resource.
+ */
+export interface Job extends ProxyResource {
+  runbook?: RunbookAssociationProperty;
+  startedBy?: string;
+  runOn?: string;
+  jobId?: string;
+  creationTime?: Date;
+  status?: string;
+  statusDetails?: string;
+  startTime?: Date;
+  endTime?: Date;
+  exception?: string;
+  lastModifiedTime?: Date;
+  lastStatusModifiedTime?: Date;
+  parameters?: { [propertyName: string]: string };
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobCollectionItem class.
+ * @constructor
+ * Job collection item properties.
+ *
+ * @member {object} [runbook] The runbook association.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {uuid} [jobId] The id of the job.
+ * @member {date} [creationTime] The creation time of the job.
+ * @member {string} [status] The status of the job. Possible values include:
+ * 'New', 'Activating', 'Running', 'Completed', 'Failed', 'Stopped', 'Blocked',
+ * 'Suspended', 'Disconnected', 'Suspending', 'Stopping', 'Resuming',
+ * 'Removing'
+ * @member {date} [startTime] The start time of the job.
+ * @member {date} [endTime] The end time of the job.
+ * @member {date} [lastModifiedTime] The last modified time of the job.
+ * @member {string} [provisioningState] The provisioning state of a resource.
+ * @member {string} [runOn] Specifies the runOn group name where the job was
+ * executed.
+ */
+export interface JobCollectionItem extends ProxyResource {
+  readonly runbook?: RunbookAssociationProperty;
+  readonly jobId?: string;
+  readonly creationTime?: Date;
+  readonly status?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly provisioningState?: string;
+  runOn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create job operation.
+ *
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ */
+export interface JobCreateParameters {
+  runbook?: RunbookAssociationProperty;
+  parameters?: { [propertyName: string]: string };
+  runOn?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DscNode class.
  * @constructor
  * Definition of a DscNode
@@ -3073,6 +3072,54 @@ export interface DscNodeConfigurationCreateOrUpdateParameters {
   incrementNodeConfigurationBuild?: boolean;
   name?: string;
   tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Watcher class.
+ * @constructor
+ * Definition of the watcher type.
+ *
+ * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
+ * which the watcher is invoked.
+ * @member {string} [scriptName] Gets or sets the name of the script the
+ * watcher is attached to, i.e. the name of an existing runbook.
+ * @member {object} [scriptParameters] Gets or sets the parameters of the
+ * script.
+ * @member {string} [scriptRunOn] Gets or sets the name of the hybrid worker
+ * group the watcher will run on.
+ * @member {string} [status] Gets the current status of the watcher.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [lastModifiedBy] Details of the user who last modified the
+ * watcher.
+ * @member {string} [description] Gets or sets the description.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ */
+export interface Watcher extends TrackedResource {
+  executionFrequencyInSeconds?: number;
+  scriptName?: string;
+  scriptParameters?: { [propertyName: string]: string };
+  scriptRunOn?: string;
+  readonly status?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly lastModifiedBy?: string;
+  description?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WatcherUpdateParameters class.
+ * @constructor
+ * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
+ * which the watcher is invoked.
+ * @member {string} [name] Gets or sets the name of the resource.
+ */
+export interface WatcherUpdateParameters {
+  executionFrequencyInSeconds?: number;
+  name?: string;
 }
 
 
@@ -3402,5 +3449,17 @@ export interface DscCompilationJobListResult extends Array<DscCompilationJob> {
  * @member {number} [totalCount] Gets or sets the total rows in query.
  */
 export interface DscNodeConfigurationListResult extends Array<DscNodeConfiguration> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WatcherListResult class.
+ * @constructor
+ * The response model for the list watcher operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface WatcherListResult extends Array<Watcher> {
   nextLink?: string;
 }

@@ -24,9 +24,9 @@ export interface AutomationAccountOperations {
     /**
      * Update an automation account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName Automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} parameters Parameters supplied to the update automation
      * account.
@@ -64,9 +64,9 @@ export interface AutomationAccountOperations {
     /**
      * Update an automation account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName Automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} parameters Parameters supplied to the update automation
      * account.
@@ -123,10 +123,9 @@ export interface AutomationAccountOperations {
     /**
      * Create or update automation account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName Parameters supplied to the create or
-     * update automation account.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} parameters Parameters supplied to the create or update
      * automation account.
@@ -164,10 +163,9 @@ export interface AutomationAccountOperations {
     /**
      * Create or update automation account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName Parameters supplied to the create or
-     * update automation account.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} parameters Parameters supplied to the create or update
      * automation account.
@@ -224,9 +222,9 @@ export interface AutomationAccountOperations {
     /**
      * Delete an automation account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName Automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -244,9 +242,9 @@ export interface AutomationAccountOperations {
     /**
      * Delete an automation account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName Automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -282,9 +280,9 @@ export interface AutomationAccountOperations {
     /**
      * Get information about an Automation Account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -302,9 +300,9 @@ export interface AutomationAccountOperations {
     /**
      * Get information about an Automation Account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -341,7 +339,9 @@ export interface AutomationAccountOperations {
     /**
      * Retrieve a list of accounts within a given resource group.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -354,12 +354,14 @@ export interface AutomationAccountOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccountListResult>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccountListResult>>;
 
     /**
      * Retrieve a list of accounts within a given resource group.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -389,9 +391,9 @@ export interface AutomationAccountOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccountListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.AutomationAccountListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccountListResult>): void;
+    listByResourceGroup(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccountListResult>;
+    listByResourceGroup(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.AutomationAccountListResult>): void;
+    listByResourceGroup(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccountListResult>): void;
 
 
     /**
@@ -642,9 +644,9 @@ export interface StatisticsOperations {
     /**
      * Retrieve the statistics for the account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -664,9 +666,9 @@ export interface StatisticsOperations {
     /**
      * Retrieve the statistics for the account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -714,9 +716,9 @@ export interface Usages {
     /**
      * Retrieve the usage for the account id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -734,9 +736,9 @@ export interface Usages {
     /**
      * Retrieve the usage for the account id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -784,7 +786,7 @@ export interface Keys {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -804,7 +806,7 @@ export interface Keys {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -852,7 +854,7 @@ export interface CertificateOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} certificateName The name of certificate.
      *
@@ -874,7 +876,7 @@ export interface CertificateOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} certificateName The name of certificate.
      *
@@ -914,7 +916,7 @@ export interface CertificateOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} certificateName The name of certificate.
      *
@@ -936,7 +938,7 @@ export interface CertificateOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} certificateName The name of certificate.
      *
@@ -977,7 +979,7 @@ export interface CertificateOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} certificateName The parameters supplied to the create or
      * update certificate operation.
@@ -1017,7 +1019,7 @@ export interface CertificateOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} certificateName The parameters supplied to the create or
      * update certificate operation.
@@ -1076,7 +1078,7 @@ export interface CertificateOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} certificateName The parameters supplied to the update
      * certificate operation.
@@ -1107,7 +1109,7 @@ export interface CertificateOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} certificateName The parameters supplied to the update
      * certificate operation.
@@ -1157,7 +1159,7 @@ export interface CertificateOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1177,7 +1179,7 @@ export interface CertificateOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1282,7 +1284,7 @@ export interface ConnectionOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionName The name of connection.
      *
@@ -1304,7 +1306,7 @@ export interface ConnectionOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionName The name of connection.
      *
@@ -1345,7 +1347,7 @@ export interface ConnectionOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionName The name of connection.
      *
@@ -1367,7 +1369,7 @@ export interface ConnectionOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionName The name of connection.
      *
@@ -1408,7 +1410,7 @@ export interface ConnectionOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionName The parameters supplied to the create or
      * update connection operation.
@@ -1448,7 +1450,7 @@ export interface ConnectionOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionName The parameters supplied to the create or
      * update connection operation.
@@ -1507,7 +1509,7 @@ export interface ConnectionOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionName The parameters supplied to the update a
      * connection operation.
@@ -1541,7 +1543,7 @@ export interface ConnectionOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionName The parameters supplied to the update a
      * connection operation.
@@ -1594,7 +1596,7 @@ export interface ConnectionOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1614,7 +1616,7 @@ export interface ConnectionOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1719,7 +1721,7 @@ export interface ConnectionTypeOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionTypeName The name of connectiontype.
      *
@@ -1741,7 +1743,7 @@ export interface ConnectionTypeOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionTypeName The name of connectiontype.
      *
@@ -1781,7 +1783,7 @@ export interface ConnectionTypeOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionTypeName The name of connectiontype.
      *
@@ -1803,7 +1805,7 @@ export interface ConnectionTypeOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionTypeName The name of connectiontype.
      *
@@ -1844,7 +1846,7 @@ export interface ConnectionTypeOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionTypeName The parameters supplied to the create or
      * update connectiontype operation.
@@ -1879,7 +1881,7 @@ export interface ConnectionTypeOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} connectionTypeName The parameters supplied to the create or
      * update connectiontype operation.
@@ -1933,7 +1935,7 @@ export interface ConnectionTypeOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1953,7 +1955,7 @@ export interface ConnectionTypeOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2060,7 +2062,7 @@ export interface CredentialOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} credentialName The name of credential.
      *
@@ -2082,7 +2084,7 @@ export interface CredentialOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} credentialName The name of credential.
      *
@@ -2122,7 +2124,7 @@ export interface CredentialOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} credentialName The name of credential.
      *
@@ -2144,7 +2146,7 @@ export interface CredentialOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} credentialName The name of credential.
      *
@@ -2185,7 +2187,7 @@ export interface CredentialOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} credentialName The parameters supplied to the create or
      * update credential operation.
@@ -2222,7 +2224,7 @@ export interface CredentialOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} credentialName The parameters supplied to the create or
      * update credential operation.
@@ -2278,7 +2280,7 @@ export interface CredentialOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} credentialName The parameters supplied to the Update
      * credential operation.
@@ -2315,7 +2317,7 @@ export interface CredentialOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} credentialName The parameters supplied to the Update
      * credential operation.
@@ -2371,7 +2373,7 @@ export interface CredentialOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2391,7 +2393,7 @@ export interface CredentialOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2496,7 +2498,7 @@ export interface DscConfigurationOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} configurationName The configuration name.
      *
@@ -2518,7 +2520,7 @@ export interface DscConfigurationOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} configurationName The configuration name.
      *
@@ -2558,7 +2560,7 @@ export interface DscConfigurationOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} configurationName The configuration name.
      *
@@ -2580,7 +2582,7 @@ export interface DscConfigurationOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} configurationName The configuration name.
      *
@@ -2621,7 +2623,7 @@ export interface DscConfigurationOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} configurationName The create or update parameters for
      * configuration.
@@ -2684,7 +2686,7 @@ export interface DscConfigurationOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} configurationName The create or update parameters for
      * configuration.
@@ -2766,7 +2768,7 @@ export interface DscConfigurationOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} configurationName The create or update parameters for
      * configuration.
@@ -2828,7 +2830,7 @@ export interface DscConfigurationOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} configurationName The create or update parameters for
      * configuration.
@@ -2909,7 +2911,7 @@ export interface DscConfigurationOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} configurationName The configuration name.
      *
@@ -2931,7 +2933,7 @@ export interface DscConfigurationOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} configurationName The configuration name.
      *
@@ -2971,7 +2973,7 @@ export interface DscConfigurationOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2999,7 +3001,7 @@ export interface DscConfigurationOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3178,7 +3180,7 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
      * name
@@ -3201,7 +3203,7 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
      * name
@@ -3244,7 +3246,7 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
      * name
@@ -3275,7 +3277,7 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
      * name
@@ -3326,7 +3328,7 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3348,7 +3350,7 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3457,7 +3459,7 @@ export interface JobScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {uuid} jobScheduleId The job schedule name.
      *
@@ -3479,7 +3481,7 @@ export interface JobScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {uuid} jobScheduleId The job schedule name.
      *
@@ -3519,7 +3521,7 @@ export interface JobScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {uuid} jobScheduleId The job schedule name.
      *
@@ -3541,7 +3543,7 @@ export interface JobScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {uuid} jobScheduleId The job schedule name.
      *
@@ -3582,7 +3584,7 @@ export interface JobScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {uuid} jobScheduleId The job schedule name.
      *
@@ -3623,7 +3625,7 @@ export interface JobScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {uuid} jobScheduleId The job schedule name.
      *
@@ -3683,7 +3685,7 @@ export interface JobScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3705,7 +3707,7 @@ export interface JobScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3812,7 +3814,7 @@ export interface LinkedWorkspaceOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3832,7 +3834,7 @@ export interface LinkedWorkspaceOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3881,7 +3883,7 @@ export interface ActivityOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The name of module.
      *
@@ -3906,7 +3908,7 @@ export interface ActivityOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The name of module.
      *
@@ -3949,7 +3951,7 @@ export interface ActivityOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The name of module.
      *
@@ -3971,7 +3973,7 @@ export interface ActivityOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The name of module.
      *
@@ -4078,7 +4080,7 @@ export interface ModuleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The module name.
      *
@@ -4100,7 +4102,7 @@ export interface ModuleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The module name.
      *
@@ -4140,7 +4142,7 @@ export interface ModuleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The module name.
      *
@@ -4162,7 +4164,7 @@ export interface ModuleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The module name.
      *
@@ -4203,7 +4205,7 @@ export interface ModuleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The name of module.
      *
@@ -4251,7 +4253,7 @@ export interface ModuleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The name of module.
      *
@@ -4318,7 +4320,7 @@ export interface ModuleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The name of module.
      *
@@ -4367,7 +4369,7 @@ export interface ModuleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The name of module.
      *
@@ -4435,7 +4437,7 @@ export interface ModuleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4455,7 +4457,7 @@ export interface ModuleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4560,7 +4562,7 @@ export interface ObjectDataTypes {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The name of module.
      *
@@ -4584,7 +4586,7 @@ export interface ObjectDataTypes {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The name of module.
      *
@@ -4627,7 +4629,7 @@ export interface ObjectDataTypes {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} typeName The name of type.
      *
@@ -4649,7 +4651,7 @@ export interface ObjectDataTypes {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} typeName The name of type.
      *
@@ -4699,7 +4701,7 @@ export interface Fields {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The name of module.
      *
@@ -4723,7 +4725,7 @@ export interface Fields {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} moduleName The name of module.
      *
@@ -4775,7 +4777,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -4797,7 +4799,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -4837,7 +4839,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -4861,7 +4863,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -4903,7 +4905,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -4925,7 +4927,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -4966,7 +4968,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The parameters supplied to the publish runbook
      * operation.
@@ -4989,7 +4991,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The parameters supplied to the publish runbook
      * operation.
@@ -5030,7 +5032,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5052,7 +5054,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5094,7 +5096,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5118,7 +5120,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5160,7 +5162,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The parameters supplied to the publish runbook
      * operation.
@@ -5183,7 +5185,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The parameters supplied to the publish runbook
      * operation.
@@ -5233,7 +5235,7 @@ export interface RunbookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5255,7 +5257,7 @@ export interface RunbookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5295,7 +5297,7 @@ export interface RunbookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5317,7 +5319,7 @@ export interface RunbookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5358,7 +5360,7 @@ export interface RunbookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5444,7 +5446,7 @@ export interface RunbookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5549,7 +5551,7 @@ export interface RunbookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5591,7 +5593,7 @@ export interface RunbookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5652,7 +5654,7 @@ export interface RunbookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5674,7 +5676,7 @@ export interface RunbookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5714,7 +5716,7 @@ export interface RunbookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5734,7 +5736,7 @@ export interface RunbookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5840,7 +5842,7 @@ export interface TestJobStreams {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5865,7 +5867,7 @@ export interface TestJobStreams {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5908,7 +5910,7 @@ export interface TestJobStreams {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -5932,7 +5934,7 @@ export interface TestJobStreams {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -6041,7 +6043,7 @@ export interface TestJobOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The parameters supplied to the create test job
      * operation.
@@ -6073,7 +6075,7 @@ export interface TestJobOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The parameters supplied to the create test job
      * operation.
@@ -6124,7 +6126,7 @@ export interface TestJobOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -6146,7 +6148,7 @@ export interface TestJobOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -6187,7 +6189,7 @@ export interface TestJobOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -6209,7 +6211,7 @@ export interface TestJobOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -6249,7 +6251,7 @@ export interface TestJobOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -6271,7 +6273,7 @@ export interface TestJobOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -6311,7 +6313,7 @@ export interface TestJobOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -6333,7 +6335,7 @@ export interface TestJobOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} runbookName The runbook name.
      *
@@ -6382,7 +6384,7 @@ export interface ScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} scheduleName The schedule name.
      *
@@ -6439,7 +6441,7 @@ export interface ScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} scheduleName The schedule name.
      *
@@ -6515,7 +6517,7 @@ export interface ScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} scheduleName The schedule name.
      *
@@ -6548,7 +6550,7 @@ export interface ScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} scheduleName The schedule name.
      *
@@ -6600,7 +6602,7 @@ export interface ScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} scheduleName The schedule name.
      *
@@ -6622,7 +6624,7 @@ export interface ScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} scheduleName The schedule name.
      *
@@ -6663,7 +6665,7 @@ export interface ScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} scheduleName The schedule name.
      *
@@ -6685,7 +6687,7 @@ export interface ScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} scheduleName The schedule name.
      *
@@ -6725,7 +6727,7 @@ export interface ScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6745,7 +6747,7 @@ export interface ScheduleOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6850,7 +6852,7 @@ export interface VariableOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} variableName The variable name.
      *
@@ -6885,7 +6887,7 @@ export interface VariableOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} variableName The variable name.
      *
@@ -6939,7 +6941,7 @@ export interface VariableOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} variableName The variable name.
      *
@@ -6971,7 +6973,7 @@ export interface VariableOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} variableName The variable name.
      *
@@ -7022,7 +7024,7 @@ export interface VariableOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} variableName The name of variable.
      *
@@ -7044,7 +7046,7 @@ export interface VariableOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} variableName The name of variable.
      *
@@ -7084,7 +7086,7 @@ export interface VariableOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} variableName The name of variable.
      *
@@ -7106,7 +7108,7 @@ export interface VariableOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} variableName The name of variable.
      *
@@ -7147,7 +7149,7 @@ export interface VariableOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7167,7 +7169,7 @@ export interface VariableOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7272,7 +7274,7 @@ export interface WebhookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7292,7 +7294,7 @@ export interface WebhookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7330,7 +7332,7 @@ export interface WebhookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} webhookName The webhook name.
      *
@@ -7352,7 +7354,7 @@ export interface WebhookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} webhookName The webhook name.
      *
@@ -7392,7 +7394,7 @@ export interface WebhookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} webhookName The webhook name.
      *
@@ -7414,7 +7416,7 @@ export interface WebhookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} webhookName The webhook name.
      *
@@ -7455,7 +7457,7 @@ export interface WebhookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} webhookName The webhook name.
      *
@@ -7499,7 +7501,7 @@ export interface WebhookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} webhookName The webhook name.
      *
@@ -7562,7 +7564,7 @@ export interface WebhookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} webhookName The webhook name.
      *
@@ -7600,7 +7602,7 @@ export interface WebhookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} webhookName The webhook name.
      *
@@ -7657,7 +7659,7 @@ export interface WebhookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -7679,7 +7681,7 @@ export interface WebhookOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12342,4 +12344,568 @@ export interface DscNodeConfigurationOperations {
     listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
     listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
     listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
+}
+
+/**
+ * @class
+ * WatcherOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface WatcherOperations {
+
+
+    /**
+     * Create the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} parameters The create or update parameters for watcher.
+     *
+     * @param {number} [parameters.executionFrequencyInSeconds] Gets or sets the
+     * frequency at which the watcher is invoked.
+     *
+     * @param {string} [parameters.scriptName] Gets or sets the name of the script
+     * the watcher is attached to, i.e. the name of an existing runbook.
+     *
+     * @param {object} [parameters.scriptParameters] Gets or sets the parameters of
+     * the script.
+     *
+     * @param {string} [parameters.scriptRunOn] Gets or sets the name of the hybrid
+     * worker group the watcher will run on.
+     *
+     * @param {string} [parameters.description] Gets or sets the description.
+     *
+     * @param {string} [parameters.etag] Gets or sets the etag of the resource.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} [parameters.location] The Azure Region where the resource
+     * lives
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Watcher>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.Watcher, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Watcher>>;
+
+    /**
+     * Create the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} parameters The create or update parameters for watcher.
+     *
+     * @param {number} [parameters.executionFrequencyInSeconds] Gets or sets the
+     * frequency at which the watcher is invoked.
+     *
+     * @param {string} [parameters.scriptName] Gets or sets the name of the script
+     * the watcher is attached to, i.e. the name of an existing runbook.
+     *
+     * @param {object} [parameters.scriptParameters] Gets or sets the parameters of
+     * the script.
+     *
+     * @param {string} [parameters.scriptRunOn] Gets or sets the name of the hybrid
+     * worker group the watcher will run on.
+     *
+     * @param {string} [parameters.description] Gets or sets the description.
+     *
+     * @param {string} [parameters.etag] Gets or sets the etag of the resource.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} [parameters.location] The Azure Region where the resource
+     * lives
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Watcher} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Watcher} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Watcher} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.Watcher, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Watcher>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.Watcher, callback: ServiceCallback<models.Watcher>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.Watcher, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Watcher>): void;
+
+
+    /**
+     * Retrieve the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Watcher>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Watcher>>;
+
+    /**
+     * Retrieve the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Watcher} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Watcher} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Watcher} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Watcher>;
+    get(resourceGroupName: string, automationAccountName: string, watcherName: string, callback: ServiceCallback<models.Watcher>): void;
+    get(resourceGroupName: string, automationAccountName: string, watcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Watcher>): void;
+
+
+    /**
+     * Update the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} parameters The update parameters for watcher.
+     *
+     * @param {number} [parameters.executionFrequencyInSeconds] Gets or sets the
+     * frequency at which the watcher is invoked.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Watcher>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.WatcherUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Watcher>>;
+
+    /**
+     * Update the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} parameters The update parameters for watcher.
+     *
+     * @param {number} [parameters.executionFrequencyInSeconds] Gets or sets the
+     * frequency at which the watcher is invoked.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Watcher} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Watcher} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Watcher} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.WatcherUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Watcher>;
+    update(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.WatcherUpdateParameters, callback: ServiceCallback<models.Watcher>): void;
+    update(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.WatcherUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Watcher>): void;
+
+
+    /**
+     * Delete the watcher by name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the watcher by name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, watcherName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, watcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Resume the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    startWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resume the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    start(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    start(resourceGroupName: string, automationAccountName: string, watcherName: string, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, automationAccountName: string, watcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Resume the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    stopWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resume the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    stop(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stop(resourceGroupName: string, automationAccountName: string, watcherName: string, callback: ServiceCallback<void>): void;
+    stop(resourceGroupName: string, automationAccountName: string, watcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve a list of watchers.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WatcherListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WatcherListResult>>;
+
+    /**
+     * Retrieve a list of watchers.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WatcherListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WatcherListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WatcherListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.WatcherListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.WatcherListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WatcherListResult>): void;
+
+
+    /**
+     * Retrieve a list of watchers.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WatcherListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WatcherListResult>>;
+
+    /**
+     * Retrieve a list of watchers.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WatcherListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WatcherListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WatcherListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WatcherListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.WatcherListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WatcherListResult>): void;
 }

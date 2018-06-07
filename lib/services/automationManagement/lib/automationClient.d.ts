@@ -92,6 +92,7 @@ export default class AutomationClient extends AzureServiceClient {
   dscCompilationJobOperations: operations.DscCompilationJobOperations;
   dscCompilationJobStream: operations.DscCompilationJobStream;
   dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
+  watcherOperations: operations.WatcherOperations;
 }
 
 export { AutomationClient, models as AutomationModels };
