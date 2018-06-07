@@ -535,7 +535,7 @@ export interface NetworkInterfaceDnsSettings {
  * resource is updated.
  */
 export interface NetworkInterface extends Resource {
-  virtualMachine?: SubResource;
+  readonly virtualMachine?: SubResource;
   networkSecurityGroup?: NetworkSecurityGroup;
   ipConfigurations?: NetworkInterfaceIPConfiguration[];
   dnsSettings?: NetworkInterfaceDnsSettings;
@@ -1703,9 +1703,9 @@ export interface ApplicationGatewayBackendHealth {
  *
  * @member {string} [name] Name of an application gateway SKU. Possible values
  * include: 'Standard_Small', 'Standard_Medium', 'Standard_Large',
- * 'WAF_Medium', 'WAF_Large'
+ * 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
  * @member {string} [tier] Tier of an application gateway. Possible values
- * include: 'Standard', 'WAF'
+ * include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
  * @member {number} [capacity] Capacity (instance count) of an application
  * gateway.
  */
@@ -2196,6 +2196,37 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
 
 /**
  * @class
+ * Initializes a new instance of the ApplicationGatewayAutoscaleBounds class.
+ * @constructor
+ * Application Gateway autoscale bounds on number of Application Gateway
+ * instance.
+ *
+ * @member {number} min Lower bound on number of Application Gateway instances.
+ * @member {number} max Upper bound on number of Application Gateway instances.
+ */
+export interface ApplicationGatewayAutoscaleBounds {
+  min: number;
+  max: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationGatewayAutoscaleConfiguration class.
+ * @constructor
+ * Application Gateway autoscale configuration.
+ *
+ * @member {object} bounds Autoscale bounds
+ * @member {number} [bounds.min] Lower bound on number of Application Gateway
+ * instances.
+ * @member {number} [bounds.max] Upper bound on number of Application Gateway
+ * instances.
+ */
+export interface ApplicationGatewayAutoscaleConfiguration {
+  bounds: ApplicationGatewayAutoscaleBounds;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationGateway class.
  * @constructor
  * Application gateway resource
@@ -2203,9 +2234,9 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
  * @member {object} [sku] SKU of the application gateway resource.
  * @member {string} [sku.name] Name of an application gateway SKU. Possible
  * values include: 'Standard_Small', 'Standard_Medium', 'Standard_Large',
- * 'WAF_Medium', 'WAF_Large'
+ * 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
  * @member {string} [sku.tier] Tier of an application gateway. Possible values
- * include: 'Standard', 'WAF'
+ * include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
  * @member {number} [sku.capacity] Capacity (instance count) of an application
  * gateway.
  * @member {object} [sslPolicy] SSL policy of the application gateway resource.
@@ -2266,12 +2297,20 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
  * Maxium request body size for WAF.
  * @member {boolean} [enableHttp2] Whether HTTP2 is enabled on the application
  * gateway resource.
+ * @member {object} [autoscaleConfiguration] Autoscale Configuration.
+ * @member {object} [autoscaleConfiguration.bounds] Autoscale bounds
+ * @member {number} [autoscaleConfiguration.bounds.min] Lower bound on number
+ * of Application Gateway instances.
+ * @member {number} [autoscaleConfiguration.bounds.max] Upper bound on number
+ * of Application Gateway instances.
  * @member {string} [resourceGuid] Resource GUID property of the application
  * gateway resource.
  * @member {string} [provisioningState] Provisioning state of the application
  * gateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
+ * @member {array} [zones] A list of availability zones denoting where the
+ * resource needs to come from.
  */
 export interface ApplicationGateway extends Resource {
   sku?: ApplicationGatewaySku;
@@ -2291,9 +2330,11 @@ export interface ApplicationGateway extends Resource {
   redirectConfigurations?: ApplicationGatewayRedirectConfiguration[];
   webApplicationFirewallConfiguration?: ApplicationGatewayWebApplicationFirewallConfiguration;
   enableHttp2?: boolean;
+  autoscaleConfiguration?: ApplicationGatewayAutoscaleConfiguration;
   resourceGuid?: string;
   provisioningState?: string;
   etag?: string;
+  zones?: string[];
 }
 
 /**
