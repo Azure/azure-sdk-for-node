@@ -739,6 +739,8 @@ export interface ManagedClusterAADProfile {
  * @member {string} [servicePrincipalProfile.keyVaultSecretRef.version] The
  * secret version.
  * @member {object} [addonProfiles] Profile of managed cluster add-on.
+ * @member {string} [nodeResourceGroup] Name of the resource group containing
+ * agent pool nodes.
  * @member {boolean} [enableRBAC] Whether to enable Kubernetes Role-Based
  * Access Control.
  * @member {object} [networkProfile] Profile of network configuration.
@@ -776,6 +778,7 @@ export interface ManagedCluster extends Resource {
   linuxProfile?: ContainerServiceLinuxProfile;
   servicePrincipalProfile?: ContainerServiceServicePrincipalProfile;
   addonProfiles?: { [propertyName: string]: ManagedClusterAddonProfile };
+  readonly nodeResourceGroup?: string;
   enableRBAC?: boolean;
   networkProfile?: ContainerServiceNetworkProfile;
   aadProfile?: ManagedClusterAADProfile;
