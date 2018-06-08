@@ -43,8 +43,9 @@ export interface Attributes {
  * As of http://tools.ietf.org/html/draft-ietf-jose-json-web-key-18
  *
  * @member {string} [kid] Key identifier.
- * @member {string} [kty] JsonWebKey key type (kty). Possible values include:
- * 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [kty] JsonWebKey Key Type (kty), as defined in
+ * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+ * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [keyOps]
  * @member {buffer} [n] RSA modulus.
  * @member {buffer} [e] RSA public exponent.
@@ -107,8 +108,9 @@ export interface KeyAttributes extends Attributes {
  *
  * @member {object} [key] The Json web key.
  * @member {string} [key.kid] Key identifier.
- * @member {string} [key.kty] JsonWebKey key type (kty). Possible values
- * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [key.kty] JsonWebKey Key Type (kty), as defined in
+ * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+ * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [key.keyOps]
  * @member {buffer} [key.n] RSA modulus.
  * @member {buffer} [key.e] RSA public exponent.
@@ -413,7 +415,8 @@ export interface CertificateIssuerItem {
  * Properties of the key pair backing a certificate.
  *
  * @member {boolean} [exportable] Indicates if the private key can be exported.
- * @member {string} [keyType] The key type.
+ * @member {string} [kty] The type of key pair to be used for the certificate.
+ * Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [keySize] The key size in bits. For example: 2048, 3072, or
  * 4096 for RSA.
  * @member {boolean} [reuseKey] Indicates if the same key pair will be used on
@@ -421,7 +424,7 @@ export interface CertificateIssuerItem {
  */
 export interface KeyProperties {
   exportable?: boolean;
-  keyType?: string;
+  kty?: string;
   keySize?: number;
   reuseKey?: boolean;
 }
@@ -563,7 +566,9 @@ export interface IssuerParameters {
  * certificate.
  * @member {boolean} [keyProperties.exportable] Indicates if the private key
  * can be exported.
- * @member {string} [keyProperties.keyType] The key type.
+ * @member {string} [keyProperties.kty] The type of key pair to be used for the
+ * certificate. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+ * 'oct'
  * @member {number} [keyProperties.keySize] The key size in bits. For example:
  * 2048, 3072, or 4096 for RSA.
  * @member {boolean} [keyProperties.reuseKey] Indicates if the same key pair
@@ -632,7 +637,9 @@ export interface CertificatePolicy {
  * certificate.
  * @member {boolean} [policy.keyProperties.exportable] Indicates if the private
  * key can be exported.
- * @member {string} [policy.keyProperties.keyType] The key type.
+ * @member {string} [policy.keyProperties.kty] The type of key pair to be used
+ * for the certificate. Possible values include: 'EC', 'EC-HSM', 'RSA',
+ * 'RSA-HSM', 'oct'
  * @member {number} [policy.keyProperties.keySize] The key size in bits. For
  * example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [policy.keyProperties.reuseKey] Indicates if the same key
@@ -971,8 +978,9 @@ export interface KeyCreateParameters {
  * software key.
  * @member {object} key The Json web key
  * @member {string} [key.kid] Key identifier.
- * @member {string} [key.kty] JsonWebKey key type (kty). Possible values
- * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [key.kty] JsonWebKey Key Type (kty), as defined in
+ * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+ * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [key.keyOps]
  * @member {buffer} [key.n] RSA modulus.
  * @member {buffer} [key.e] RSA public exponent.
@@ -1157,7 +1165,9 @@ export interface SecretUpdateParameters {
  * backing a certificate.
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
+ * @member {string} [certificatePolicy.keyProperties.kty] The type of key pair
+ * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
+ * 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
  * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
@@ -1245,7 +1255,9 @@ export interface CertificateCreateParameters {
  * backing a certificate.
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
+ * @member {string} [certificatePolicy.keyProperties.kty] The type of key pair
+ * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
+ * 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
  * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
@@ -1330,7 +1342,9 @@ export interface CertificateImportParameters {
  * backing a certificate.
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
+ * @member {string} [certificatePolicy.keyProperties.kty] The type of key pair
+ * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
+ * 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
  * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
