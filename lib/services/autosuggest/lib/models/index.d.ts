@@ -161,10 +161,12 @@ export interface SearchAction extends Action {
  * 'StoreApps', 'SearchHistory', 'PersonalSearchDocuments',
  * 'PersonalSearchTags', 'Custom'. Default value: 'Unknown' .
  * @member {array} searchSuggestions
+ * @member {string} _type Polymorphic Discriminator
  */
 export interface SuggestionsSuggestionGroup {
   name: string;
   searchSuggestions: SearchAction[];
+  _type: string;
 }
 
 /**
@@ -211,6 +213,7 @@ export interface Answer extends Response {
  * weather"), this field is set to false. This field is also set to false for
  * queries that are not location aware, such as "best sellers".
  * @member {boolean} [queryContext.isTransactional]
+ * @member {string} [queryContext._type] Polymorphic Discriminator
  */
 export interface SearchResultsAnswer extends Answer {
   readonly queryContext?: QueryContext;
@@ -256,6 +259,7 @@ export interface Suggestions extends SearchResultsAnswer {
  * weather"), this field is set to false. This field is also set to false for
  * queries that are not location aware, such as "best sellers".
  * @member {boolean} [isTransactional]
+ * @member {string} _type Polymorphic Discriminator
  */
 export interface QueryContext {
   originalQuery: string;
@@ -264,6 +268,7 @@ export interface QueryContext {
   readonly adultIntent?: boolean;
   readonly askUserForLocation?: boolean;
   readonly isTransactional?: boolean;
+  _type: string;
 }
 
 /**
@@ -283,6 +288,7 @@ export interface QueryContext {
  * error.
  * @member {string} [value] The parameter's value in the request that was not
  * valid.
+ * @member {string} _type Polymorphic Discriminator
  */
 export interface ErrorModel {
   code: string;
@@ -290,6 +296,7 @@ export interface ErrorModel {
   readonly moreDetails?: string;
   readonly parameter?: string;
   readonly value?: string;
+  _type: string;
 }
 
 /**
