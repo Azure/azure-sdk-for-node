@@ -190,8 +190,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [key.kid] Key identifier.
    *
-   * @param {string} [key.kty] JsonWebKey key type (kty). Possible values
-   * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} [key.kty] JsonWebKey Key Type (kty), as defined in
+   * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+   * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {array} [key.keyOps]
    *
@@ -269,8 +270,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [key.kid] Key identifier.
    *
-   * @param {string} [key.kty] JsonWebKey key type (kty). Possible values
-   * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} [key.kty] JsonWebKey Key Type (kty), as defined in
+   * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+   * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {array} [key.keyOps]
    *
@@ -3514,8 +3516,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.kty] The type of
+   * key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
    * size in bits. For example: 2048, 3072, or 4096 for RSA.
@@ -3631,8 +3634,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.kty] The type of
+   * key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
    * size in bits. For example: 2048, 3072, or 4096 for RSA.
@@ -3777,8 +3781,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.kty] The type of
+   * key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
    * size in bits. For example: 2048, 3072, or 4096 for RSA.
@@ -3904,8 +3909,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.kty] The type of
+   * key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
    * size in bits. For example: 2048, 3072, or 4096 for RSA.
@@ -4184,7 +4190,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
    * the private key can be exported.
    *
-   * @param {string} [certificatePolicy.keyProperties.keyType] The key type.
+   * @param {string} [certificatePolicy.keyProperties.kty] The type of key pair
+   * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
+   * 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [certificatePolicy.keyProperties.keySize] The key size in
    * bits. For example: 2048, 3072, or 4096 for RSA.
@@ -4291,7 +4299,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
    * the private key can be exported.
    *
-   * @param {string} [certificatePolicy.keyProperties.keyType] The key type.
+   * @param {string} [certificatePolicy.keyProperties.kty] The type of key pair
+   * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
+   * 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [certificatePolicy.keyProperties.keySize] The key size in
    * bits. For example: 2048, 3072, or 4096 for RSA.
@@ -4424,8 +4434,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.kty] The type of
+   * key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
    * size in bits. For example: 2048, 3072, or 4096 for RSA.
@@ -4546,8 +4557,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.kty] The type of
+   * key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
    * size in bits. For example: 2048, 3072, or 4096 for RSA.
