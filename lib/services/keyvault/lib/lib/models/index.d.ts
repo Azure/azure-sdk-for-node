@@ -421,12 +421,16 @@ export interface CertificateIssuerItem {
  * 4096 for RSA.
  * @member {boolean} [reuseKey] Indicates if the same key pair will be used on
  * certificate renewal.
+ * @member {string} [curve] Elliptic curve name. For valid values, see
+ * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+ * 'SECP256K1'
  */
 export interface KeyProperties {
   exportable?: boolean;
   kty?: string;
   keySize?: number;
   reuseKey?: boolean;
+  curve?: string;
 }
 
 /**
@@ -573,6 +577,9 @@ export interface IssuerParameters {
  * 2048, 3072, or 4096 for RSA.
  * @member {boolean} [keyProperties.reuseKey] Indicates if the same key pair
  * will be used on certificate renewal.
+ * @member {string} [keyProperties.curve] Elliptic curve name. For valid
+ * values, see JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384',
+ * 'P-521', 'SECP256K1'
  * @member {object} [secretProperties] Properties of the secret backing a
  * certificate.
  * @member {string} [secretProperties.contentType] The media type (MIME type).
@@ -644,6 +651,9 @@ export interface CertificatePolicy {
  * example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [policy.keyProperties.reuseKey] Indicates if the same key
  * pair will be used on certificate renewal.
+ * @member {string} [policy.keyProperties.curve] Elliptic curve name. For valid
+ * values, see JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384',
+ * 'P-521', 'SECP256K1'
  * @member {object} [policy.secretProperties] Properties of the secret backing
  * a certificate.
  * @member {string} [policy.secretProperties.contentType] The media type (MIME
@@ -1172,6 +1182,9 @@ export interface SecretUpdateParameters {
  * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
+ * @member {string} [certificatePolicy.keyProperties.curve] Elliptic curve
+ * name. For valid values, see JsonWebKeyCurveName. Possible values include:
+ * 'P-256', 'P-384', 'P-521', 'SECP256K1'
  * @member {object} [certificatePolicy.secretProperties] Properties of the
  * secret backing a certificate.
  * @member {string} [certificatePolicy.secretProperties.contentType] The media
@@ -1262,6 +1275,9 @@ export interface CertificateCreateParameters {
  * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
+ * @member {string} [certificatePolicy.keyProperties.curve] Elliptic curve
+ * name. For valid values, see JsonWebKeyCurveName. Possible values include:
+ * 'P-256', 'P-384', 'P-521', 'SECP256K1'
  * @member {object} [certificatePolicy.secretProperties] Properties of the
  * secret backing a certificate.
  * @member {string} [certificatePolicy.secretProperties.contentType] The media
@@ -1349,6 +1365,9 @@ export interface CertificateImportParameters {
  * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
+ * @member {string} [certificatePolicy.keyProperties.curve] Elliptic curve
+ * name. For valid values, see JsonWebKeyCurveName. Possible values include:
+ * 'P-256', 'P-384', 'P-521', 'SECP256K1'
  * @member {object} [certificatePolicy.secretProperties] Properties of the
  * secret backing a certificate.
  * @member {string} [certificatePolicy.secretProperties.contentType] The media
