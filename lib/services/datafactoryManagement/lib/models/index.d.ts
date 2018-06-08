@@ -1537,7 +1537,7 @@ export interface ShopifyLinkedService extends LinkedService {
  * ServiceNow server linked service.
  *
  * @member {object} endpoint The endpoint of the ServiceNow server. (i.e.
- * ServiceNowData.com)
+ * <instance>.service-now.com)
  * @member {string} authenticationType The authentication type to use. Possible
  * values include: 'Basic', 'OAuth2'
  * @member {object} [username] The user name used to connect to the ServiceNow
@@ -1582,10 +1582,13 @@ export interface ServiceNowLinkedService extends LinkedService {
  * quickbooks.api.intuit.com)
  * @member {object} companyId The company ID of the QuickBooks company to
  * authorize.
- * @member {object} [accessToken] The access token for OAuth 1.0
+ * @member {object} consumerKey The consumer key for OAuth 1.0 authentication.
+ * @member {object} consumerSecret The consumer secret for OAuth 1.0
  * authentication.
+ * @member {string} [consumerSecret.type] Polymorphic Discriminator
+ * @member {object} accessToken The access token for OAuth 1.0 authentication.
  * @member {string} [accessToken.type] Polymorphic Discriminator
- * @member {object} [accessTokenSecret] The access token secret for OAuth 1.0
+ * @member {object} accessTokenSecret The access token secret for OAuth 1.0
  * authentication.
  * @member {string} [accessTokenSecret.type] Polymorphic Discriminator
  * @member {object} [useEncryptedEndpoints] Specifies whether the data source
@@ -1597,8 +1600,10 @@ export interface ServiceNowLinkedService extends LinkedService {
 export interface QuickBooksLinkedService extends LinkedService {
   endpoint: any;
   companyId: any;
-  accessToken?: SecretBase;
-  accessTokenSecret?: SecretBase;
+  consumerKey: any;
+  consumerSecret: SecretBase;
+  accessToken: SecretBase;
+  accessTokenSecret: SecretBase;
   useEncryptedEndpoints?: any;
   encryptedCredential?: any;
 }
@@ -6030,11 +6035,17 @@ export interface CopyTranslator {
  * @constructor
  * A copy activity tabular translator.
  *
- * @member {object} [columnMappings] Column mappings. Type: string (or
- * Expression with resultType string).
+ * @member {object} [columnMappings] Column mappings. Example: "UserId:
+ * MyUserId, Group: MyGroup, Name: MyName" Type: string (or Expression with
+ * resultType string).
+ * @member {object} [schemaMapping] The schema mapping to map between tabular
+ * data and hierarchical data. Example: {"Column1": "$.Column1", "Column2":
+ * "$.Column2.Property1", "Column3": "$.Column2.Property2"}. Type: object (or
+ * Expression with resultType object).
  */
 export interface TabularTranslator extends CopyTranslator {
   columnMappings?: any;
+  schemaMapping?: any;
 }
 
 /**
