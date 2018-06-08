@@ -3523,6 +3523,10 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
    *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'SECP256K1'
+   *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
    *
@@ -3639,6 +3643,10 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'SECP256K1'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -3786,6 +3794,10 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
    *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'SECP256K1'
+   *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
    *
@@ -3912,6 +3924,10 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'SECP256K1'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -4192,6 +4208,10 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if the
    * same key pair will be used on certificate renewal.
    *
+   * @param {string} [certificatePolicy.keyProperties.curve] Elliptic curve name.
+   * For valid values, see JsonWebKeyCurveName. Possible values include: 'P-256',
+   * 'P-384', 'P-521', 'SECP256K1'
+   *
    * @param {object} [certificatePolicy.secretProperties] Properties of the
    * secret backing a certificate.
    *
@@ -4298,6 +4318,10 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if the
    * same key pair will be used on certificate renewal.
+   *
+   * @param {string} [certificatePolicy.keyProperties.curve] Elliptic curve name.
+   * For valid values, see JsonWebKeyCurveName. Possible values include: 'P-256',
+   * 'P-384', 'P-521', 'SECP256K1'
    *
    * @param {object} [certificatePolicy.secretProperties] Properties of the
    * secret backing a certificate.
@@ -4433,6 +4457,10 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
    *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'SECP256K1'
+   *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
    *
@@ -4554,6 +4582,10 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'SECP256K1'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
