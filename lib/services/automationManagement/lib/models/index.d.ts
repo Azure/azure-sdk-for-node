@@ -33,84 +33,6 @@ export interface ErrorResponse {
 
 /**
  * @class
- * Initializes a new instance of the Key class.
- * @constructor
- * Automation key which is used to register a DSC Node
- *
- * @member {string} [keyName] Automation key name. Possible values include:
- * 'primary', 'secondary'
- * @member {string} [permissions] Automation key permissions. Possible values
- * include: 'Full'
- * @member {string} [value] Value of the Automation Key used for registration.
- */
-export interface Key {
-  keyName?: string;
-  permissions?: string;
-  value?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the UsageCounterName class.
- * @constructor
- * Definition of usage counter name.
- *
- * @member {string} [value] Gets or sets the usage counter name.
- * @member {string} [localizedValue] Gets or sets the localized usage counter
- * name.
- */
-export interface UsageCounterName {
-  value?: string;
-  localizedValue?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Usage class.
- * @constructor
- * Definition of Usage.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {object} [name] Gets or sets the usage counter name.
- * @member {string} [name.value] Gets or sets the usage counter name.
- * @member {string} [name.localizedValue] Gets or sets the localized usage
- * counter name.
- * @member {string} [unit] Gets or sets the usage unit name.
- * @member {number} [currentValue] Gets or sets the current usage value.
- * @member {number} [limit] Gets or sets max limit. -1 for unlimited
- * @member {string} [throttleStatus] Gets or sets the throttle status.
- */
-export interface Usage {
-  id?: string;
-  name?: UsageCounterName;
-  unit?: string;
-  currentValue?: number;
-  limit?: number;
-  throttleStatus?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Statistics class.
- * @constructor
- * Definition of the statistic.
- *
- * @member {string} [counterProperty] Gets the property value of the statistic.
- * @member {number} [counterValue] Gets the value of the statistic.
- * @member {date} [startTime] Gets the startTime of the statistic.
- * @member {date} [endTime] Gets the endTime of the statistic.
- * @member {string} [id] Gets the id.
- */
-export interface Statistics {
-  readonly counterProperty?: string;
-  readonly counterValue?: number;
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly id?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The core properties of ARM resources
@@ -127,16 +49,6 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
- * Initializes a new instance of the ProxyResource class.
- * @constructor
- * ARM proxy resource.
- *
- */
-export interface ProxyResource extends Resource {
-}
-
-/**
- * @class
  * Initializes a new instance of the TrackedResource class.
  * @constructor
  * The resource model definition for a ARM tracked top level resource
@@ -147,6 +59,16 @@ export interface ProxyResource extends Resource {
 export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
   location?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * ARM proxy resource.
+ *
+ */
+export interface ProxyResource extends Resource {
 }
 
 /**
@@ -197,6 +119,29 @@ export interface AutomationAccount extends TrackedResource {
 
 /**
  * @class
+ * Initializes a new instance of the AutomationAccountCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update automation account
+ * operation.
+ *
+ * @member {object} [sku] Gets or sets account SKU.
+ * @member {string} [sku.name] Gets or sets the SKU name of the account.
+ * Possible values include: 'Free', 'Basic'
+ * @member {string} [sku.family] Gets or sets the SKU family.
+ * @member {number} [sku.capacity] Gets or sets the SKU capacity.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface AutomationAccountCreateOrUpdateParameters {
+  sku?: Sku;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * Provider, Resource and Operation values
@@ -233,25 +178,80 @@ export interface Operation {
 
 /**
  * @class
- * Initializes a new instance of the AutomationAccountCreateOrUpdateParameters class.
+ * Initializes a new instance of the Statistics class.
  * @constructor
- * The parameters supplied to the create or update automation account
- * operation.
+ * Definition of the statistic.
  *
- * @member {object} [sku] Gets or sets account SKU.
- * @member {string} [sku.name] Gets or sets the SKU name of the account.
- * Possible values include: 'Free', 'Basic'
- * @member {string} [sku.family] Gets or sets the SKU family.
- * @member {number} [sku.capacity] Gets or sets the SKU capacity.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
+ * @member {string} [counterProperty] Gets the property value of the statistic.
+ * @member {number} [counterValue] Gets the value of the statistic.
+ * @member {date} [startTime] Gets the startTime of the statistic.
+ * @member {date} [endTime] Gets the endTime of the statistic.
+ * @member {string} [id] Gets the id.
  */
-export interface AutomationAccountCreateOrUpdateParameters {
-  sku?: Sku;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
+export interface Statistics {
+  readonly counterProperty?: string;
+  readonly counterValue?: number;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UsageCounterName class.
+ * @constructor
+ * Definition of usage counter name.
+ *
+ * @member {string} [value] Gets or sets the usage counter name.
+ * @member {string} [localizedValue] Gets or sets the localized usage counter
+ * name.
+ */
+export interface UsageCounterName {
+  value?: string;
+  localizedValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Usage class.
+ * @constructor
+ * Definition of Usage.
+ *
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {object} [name] Gets or sets the usage counter name.
+ * @member {string} [name.value] Gets or sets the usage counter name.
+ * @member {string} [name.localizedValue] Gets or sets the localized usage
+ * counter name.
+ * @member {string} [unit] Gets or sets the usage unit name.
+ * @member {number} [currentValue] Gets or sets the current usage value.
+ * @member {number} [limit] Gets or sets max limit. -1 for unlimited
+ * @member {string} [throttleStatus] Gets or sets the throttle status.
+ */
+export interface Usage {
+  id?: string;
+  name?: UsageCounterName;
+  unit?: string;
+  currentValue?: number;
+  limit?: number;
+  throttleStatus?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Key class.
+ * @constructor
+ * Automation key which is used to register a DSC Node
+ *
+ * @member {string} [keyName] Automation key name. Possible values include:
+ * 'primary', 'secondary'
+ * @member {string} [permissions] Automation key permissions. Possible values
+ * include: 'Full'
+ * @member {string} [value] Value of the Automation Key used for registration.
+ */
+export interface Key {
+  keyName?: string;
+  permissions?: string;
+  value?: string;
 }
 
 /**
@@ -539,104 +539,6 @@ export interface CredentialCreateOrUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the ActivityParameter class.
- * @constructor
- * Definition of the activity parameter.
- *
- * @member {string} [name] Gets or sets the name of the activity parameter.
- * @member {string} [type] Gets or sets the type of the activity parameter.
- * @member {boolean} [isMandatory] Gets or sets a Boolean value that indicates
- * true if the parameter is required. If the value is false, the parameter is
- * optional.
- * @member {boolean} [isDynamic] Gets or sets a Boolean value that indicates
- * true if the parameter is dynamic.
- * @member {boolean} [position] Gets or sets the position of the activity
- * parameter.
- * @member {boolean} [valueFromPipeline] Gets or sets a Boolean value that
- * indicates true if the parameter can take values from the incoming pipeline
- * objects. This setting is used if the cmdlet must access the complete input
- * object. false indicates that the parameter cannot take values from the
- * complete input object.
- * @member {boolean} [valueFromPipelineByPropertyName] Gets or sets a Boolean
- * value that indicates true if the parameter can be filled from a property of
- * the incoming pipeline object that has the same name as this parameter. false
- * indicates that the parameter cannot be filled from the incoming pipeline
- * object property with the same name.
- * @member {boolean} [valueFromRemainingArguments] Gets or sets a Boolean value
- * that indicates true if the cmdlet parameter accepts all the remaining
- * command-line arguments that are associated with this parameter in the form
- * of an array. false if the cmdlet parameter does not accept all the remaining
- * argument values.
- */
-export interface ActivityParameter {
-  name?: string;
-  type?: string;
-  isMandatory?: boolean;
-  isDynamic?: boolean;
-  position?: boolean;
-  valueFromPipeline?: boolean;
-  valueFromPipelineByPropertyName?: boolean;
-  valueFromRemainingArguments?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the ActivityParameterSet class.
- * @constructor
- * Definition of the activity parameter set.
- *
- * @member {string} [name] Gets or sets the name of the activity parameter set.
- * @member {array} [parameters] Gets or sets the parameters of the activity
- * parameter set.
- */
-export interface ActivityParameterSet {
-  name?: string;
-  parameters?: ActivityParameter[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ActivityOutputType class.
- * @constructor
- * Definition of the activity output type.
- *
- * @member {string} [name] Gets or sets the name of the activity output type.
- * @member {string} [type] Gets or sets the type of the activity output type.
- */
-export interface ActivityOutputType {
-  name?: string;
-  type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Activity class.
- * @constructor
- * Definition of the activity.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [name] Gets the name of the activity.
- * @member {string} [definition] Gets or sets the user name of the activity.
- * @member {array} [parameterSets] Gets or sets the parameter sets of the
- * activity.
- * @member {array} [outputTypes] Gets or sets the output types of the activity.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- */
-export interface Activity {
-  id?: string;
-  readonly name?: string;
-  definition?: string;
-  parameterSets?: ActivityParameterSet[];
-  outputTypes?: ActivityOutputType[];
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AdvancedScheduleMonthlyOccurrence class.
  * @constructor
  * The properties of the create advanced schedule monthly occurrence.
@@ -741,26 +643,6 @@ export interface ContentHash {
 
 /**
  * @class
- * Initializes a new instance of the ContentLink class.
- * @constructor
- * Definition of the content link.
- *
- * @member {string} [uri] Gets or sets the uri of the runbook content.
- * @member {object} [contentHash] Gets or sets the hash.
- * @member {string} [contentHash.algorithm] Gets or sets the content hash
- * algorithm used to hash the content.
- * @member {string} [contentHash.value] Gets or sets expected hash value of the
- * content.
- * @member {string} [version] Gets or sets the version of the content.
- */
-export interface ContentLink {
-  uri?: string;
-  contentHash?: ContentHash;
-  version?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ContentSource class.
  * @constructor
  * Definition of the content source.
@@ -781,43 +663,6 @@ export interface ContentSource {
   type?: string;
   value?: string;
   version?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscConfigurationAssociationProperty class.
- * @constructor
- * The Dsc configuration property associated with the entity.
- *
- * @member {string} [name] Gets or sets the name of the Dsc configuration.
- */
-export interface DscConfigurationAssociationProperty {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscCompilationJobCreateParameters class.
- * @constructor
- * The parameters supplied to the create compilation job operation.
- *
- * @member {object} configuration Gets or sets the configuration.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {boolean} [newNodeConfigurationBuildVersionRequired] If a new build
- * version of NodeConfiguration is required.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface DscCompilationJobCreateParameters {
-  configuration: DscConfigurationAssociationProperty;
-  parameters?: { [propertyName: string]: string };
-  newNodeConfigurationBuildVersionRequired?: boolean;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -847,64 +692,22 @@ export interface JobStream {
 
 /**
  * @class
- * Initializes a new instance of the JobProvisioningStateProperty class.
+ * Initializes a new instance of the ContentLink class.
  * @constructor
- * The provisioning state property.
+ * Definition of the content link.
  *
- * @member {string} [provisioningState] The provisioning state of the resource.
- * Possible values include: 'Failed', 'Succeeded', 'Suspended', 'Processing'
+ * @member {string} [uri] Gets or sets the uri of the runbook content.
+ * @member {object} [contentHash] Gets or sets the hash.
+ * @member {string} [contentHash.algorithm] Gets or sets the content hash
+ * algorithm used to hash the content.
+ * @member {string} [contentHash.value] Gets or sets expected hash value of the
+ * content.
+ * @member {string} [version] Gets or sets the version of the content.
  */
-export interface JobProvisioningStateProperty {
-  readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the DscCompilationJob class.
- * @constructor
- * Definition of the Dsc Compilation job.
- *
- * @member {object} [configuration] Gets or sets the configuration.
- * @member {string} [configuration.name] Gets or sets the name of the Dsc
- * configuration.
- * @member {string} [startedBy] Gets the compilation job started by.
- * @member {uuid} [jobId] Gets the id of the job.
- * @member {date} [creationTime] Gets the creation time of the job.
- * @member {object} [provisioningState] The current provisioning state of the
- * job.
- * @member {string} [provisioningState.provisioningState] The provisioning
- * state of the resource. Possible values include: 'Failed', 'Succeeded',
- * 'Suspended', 'Processing'
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- * @member {string} [status] Gets or sets the status of the job. Possible
- * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
- * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
- * 'Resuming', 'Removing'
- * @member {string} [statusDetails] Gets or sets the status details of the job.
- * @member {date} [startTime] Gets the start time of the job.
- * @member {date} [endTime] Gets the end time of the job.
- * @member {string} [exception] Gets the exception of the job.
- * @member {date} [lastModifiedTime] Gets the last modified time of the job.
- * @member {date} [lastStatusModifiedTime] Gets the last status modified time
- * of the job.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- */
-export interface DscCompilationJob extends ProxyResource {
-  configuration?: DscConfigurationAssociationProperty;
-  readonly startedBy?: string;
-  readonly jobId?: string;
-  readonly creationTime?: Date;
-  provisioningState?: JobProvisioningStateProperty;
-  runOn?: string;
-  status?: string;
-  statusDetails?: string;
-  readonly startTime?: Date;
-  readonly endTime?: Date;
-  readonly exception?: string;
-  readonly lastModifiedTime?: Date;
-  readonly lastStatusModifiedTime?: Date;
-  parameters?: { [propertyName: string]: string };
+export interface ContentLink {
+  uri?: string;
+  contentHash?: ContentHash;
+  version?: string;
 }
 
 /**
@@ -1414,136 +1217,6 @@ export interface JobSchedule {
   runbook?: RunbookAssociationProperty;
   runOn?: string;
   parameters?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the LinkedWorkspace class.
- * @constructor
- * Definition of the linked workspace.
- *
- * @member {string} [id] Gets the id of the linked workspace.
- */
-export interface LinkedWorkspace {
-  readonly id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ModuleCreateOrUpdateParameters class.
- * @constructor
- * The parameters supplied to the create or update module operation.
- *
- * @member {object} contentLink Gets or sets the module content link.
- * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
- * content.
- * @member {object} [contentLink.contentHash] Gets or sets the hash.
- * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
- * value of the content.
- * @member {string} [contentLink.version] Gets or sets the version of the
- * content.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface ModuleCreateOrUpdateParameters {
-  contentLink: ContentLink;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the ModuleErrorInfo class.
- * @constructor
- * Definition of the module error info type.
- *
- * @member {string} [code] Gets or sets the error code.
- * @member {string} [message] Gets or sets the error message.
- */
-export interface ModuleErrorInfo {
-  code?: string;
-  message?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Module class.
- * @constructor
- * Definition of the module type.
- *
- * @member {boolean} [isGlobal] Gets or sets the isGlobal flag of the module.
- * @member {string} [version] Gets or sets the version of the module.
- * @member {number} [sizeInBytes] Gets or sets the size in bytes of the module.
- * @member {number} [activityCount] Gets or sets the activity count of the
- * module.
- * @member {string} [provisioningState] Gets or sets the provisioning state of
- * the module. Possible values include: 'Created', 'Creating',
- * 'StartingImportModuleRunbook', 'RunningImportModuleRunbook',
- * 'ContentRetrieved', 'ContentDownloaded', 'ContentValidated',
- * 'ConnectionTypeImported', 'ContentStored', 'ModuleDataStored',
- * 'ActivitiesStored', 'ModuleImportRunbookComplete', 'Succeeded', 'Failed',
- * 'Cancelled', 'Updating'
- * @member {object} [contentLink] Gets or sets the contentLink of the module.
- * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
- * content.
- * @member {object} [contentLink.contentHash] Gets or sets the hash.
- * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
- * value of the content.
- * @member {string} [contentLink.version] Gets or sets the version of the
- * content.
- * @member {object} [error] Gets or sets the error info of the module.
- * @member {string} [error.code] Gets or sets the error code.
- * @member {string} [error.message] Gets or sets the error message.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [description] Gets or sets the description.
- * @member {string} [etag] Gets or sets the etag of the resource.
- */
-export interface Module extends TrackedResource {
-  isGlobal?: boolean;
-  version?: string;
-  sizeInBytes?: number;
-  activityCount?: number;
-  provisioningState?: string;
-  contentLink?: ContentLink;
-  error?: ModuleErrorInfo;
-  creationTime?: Date;
-  lastModifiedTime?: Date;
-  description?: string;
-  etag?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ModuleUpdateParameters class.
- * @constructor
- * The parameters supplied to the update module operation.
- *
- * @member {object} [contentLink] Gets or sets the module content link.
- * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
- * content.
- * @member {object} [contentLink.contentHash] Gets or sets the hash.
- * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
- * content hash algorithm used to hash the content.
- * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
- * value of the content.
- * @member {string} [contentLink.version] Gets or sets the version of the
- * content.
- * @member {string} [name] Gets or sets name of the resource.
- * @member {string} [location] Gets or sets the location of the resource.
- * @member {object} [tags] Gets or sets the tags attached to the resource.
- */
-export interface ModuleUpdateParameters {
-  contentLink?: ContentLink;
-  name?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -2068,20 +1741,6 @@ export interface TestJob {
 
 /**
  * @class
- * Initializes a new instance of the TypeField class.
- * @constructor
- * Information about a field of a type.
- *
- * @member {string} [name] Gets or sets the name of the field.
- * @member {string} [type] Gets or sets the type of the field.
- */
-export interface TypeField {
-  name?: string;
-  type?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Variable class.
  * @constructor
  * Definition of the varible.
@@ -2186,6 +1845,248 @@ export interface WebhookUpdateParameters {
   runOn?: string;
   parameters?: { [propertyName: string]: string };
   description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinkedWorkspace class.
+ * @constructor
+ * Definition of the linked workspace.
+ *
+ * @member {string} [id] Gets the id of the linked workspace.
+ */
+export interface LinkedWorkspace {
+  readonly id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityParameter class.
+ * @constructor
+ * Definition of the activity parameter.
+ *
+ * @member {string} [name] Gets or sets the name of the activity parameter.
+ * @member {string} [type] Gets or sets the type of the activity parameter.
+ * @member {boolean} [isMandatory] Gets or sets a Boolean value that indicates
+ * true if the parameter is required. If the value is false, the parameter is
+ * optional.
+ * @member {boolean} [isDynamic] Gets or sets a Boolean value that indicates
+ * true if the parameter is dynamic.
+ * @member {boolean} [position] Gets or sets the position of the activity
+ * parameter.
+ * @member {boolean} [valueFromPipeline] Gets or sets a Boolean value that
+ * indicates true if the parameter can take values from the incoming pipeline
+ * objects. This setting is used if the cmdlet must access the complete input
+ * object. false indicates that the parameter cannot take values from the
+ * complete input object.
+ * @member {boolean} [valueFromPipelineByPropertyName] Gets or sets a Boolean
+ * value that indicates true if the parameter can be filled from a property of
+ * the incoming pipeline object that has the same name as this parameter. false
+ * indicates that the parameter cannot be filled from the incoming pipeline
+ * object property with the same name.
+ * @member {boolean} [valueFromRemainingArguments] Gets or sets a Boolean value
+ * that indicates true if the cmdlet parameter accepts all the remaining
+ * command-line arguments that are associated with this parameter in the form
+ * of an array. false if the cmdlet parameter does not accept all the remaining
+ * argument values.
+ */
+export interface ActivityParameter {
+  name?: string;
+  type?: string;
+  isMandatory?: boolean;
+  isDynamic?: boolean;
+  position?: boolean;
+  valueFromPipeline?: boolean;
+  valueFromPipelineByPropertyName?: boolean;
+  valueFromRemainingArguments?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityParameterSet class.
+ * @constructor
+ * Definition of the activity parameter set.
+ *
+ * @member {string} [name] Gets or sets the name of the activity parameter set.
+ * @member {array} [parameters] Gets or sets the parameters of the activity
+ * parameter set.
+ */
+export interface ActivityParameterSet {
+  name?: string;
+  parameters?: ActivityParameter[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ActivityOutputType class.
+ * @constructor
+ * Definition of the activity output type.
+ *
+ * @member {string} [name] Gets or sets the name of the activity output type.
+ * @member {string} [type] Gets or sets the type of the activity output type.
+ */
+export interface ActivityOutputType {
+  name?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Activity class.
+ * @constructor
+ * Definition of the activity.
+ *
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [name] Gets the name of the activity.
+ * @member {string} [definition] Gets or sets the user name of the activity.
+ * @member {array} [parameterSets] Gets or sets the parameter sets of the
+ * activity.
+ * @member {array} [outputTypes] Gets or sets the output types of the activity.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ */
+export interface Activity {
+  id?: string;
+  readonly name?: string;
+  definition?: string;
+  parameterSets?: ActivityParameterSet[];
+  outputTypes?: ActivityOutputType[];
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ModuleErrorInfo class.
+ * @constructor
+ * Definition of the module error info type.
+ *
+ * @member {string} [code] Gets or sets the error code.
+ * @member {string} [message] Gets or sets the error message.
+ */
+export interface ModuleErrorInfo {
+  code?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Module class.
+ * @constructor
+ * Definition of the module type.
+ *
+ * @member {boolean} [isGlobal] Gets or sets the isGlobal flag of the module.
+ * @member {string} [version] Gets or sets the version of the module.
+ * @member {number} [sizeInBytes] Gets or sets the size in bytes of the module.
+ * @member {number} [activityCount] Gets or sets the activity count of the
+ * module.
+ * @member {string} [provisioningState] Gets or sets the provisioning state of
+ * the module. Possible values include: 'Created', 'Creating',
+ * 'StartingImportModuleRunbook', 'RunningImportModuleRunbook',
+ * 'ContentRetrieved', 'ContentDownloaded', 'ContentValidated',
+ * 'ConnectionTypeImported', 'ContentStored', 'ModuleDataStored',
+ * 'ActivitiesStored', 'ModuleImportRunbookComplete', 'Succeeded', 'Failed',
+ * 'Cancelled', 'Updating'
+ * @member {object} [contentLink] Gets or sets the contentLink of the module.
+ * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [contentLink.contentHash] Gets or sets the hash.
+ * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
+ * value of the content.
+ * @member {string} [contentLink.version] Gets or sets the version of the
+ * content.
+ * @member {object} [error] Gets or sets the error info of the module.
+ * @member {string} [error.code] Gets or sets the error code.
+ * @member {string} [error.message] Gets or sets the error message.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [description] Gets or sets the description.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ */
+export interface Module extends TrackedResource {
+  isGlobal?: boolean;
+  version?: string;
+  sizeInBytes?: number;
+  activityCount?: number;
+  provisioningState?: string;
+  contentLink?: ContentLink;
+  error?: ModuleErrorInfo;
+  creationTime?: Date;
+  lastModifiedTime?: Date;
+  description?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ModuleCreateOrUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the create or update module operation.
+ *
+ * @member {object} contentLink Gets or sets the module content link.
+ * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [contentLink.contentHash] Gets or sets the hash.
+ * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
+ * value of the content.
+ * @member {string} [contentLink.version] Gets or sets the version of the
+ * content.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface ModuleCreateOrUpdateParameters {
+  contentLink: ContentLink;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ModuleUpdateParameters class.
+ * @constructor
+ * The parameters supplied to the update module operation.
+ *
+ * @member {object} [contentLink] Gets or sets the module content link.
+ * @member {string} [contentLink.uri] Gets or sets the uri of the runbook
+ * content.
+ * @member {object} [contentLink.contentHash] Gets or sets the hash.
+ * @member {string} [contentLink.contentHash.algorithm] Gets or sets the
+ * content hash algorithm used to hash the content.
+ * @member {string} [contentLink.contentHash.value] Gets or sets expected hash
+ * value of the content.
+ * @member {string} [contentLink.version] Gets or sets the version of the
+ * content.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface ModuleUpdateParameters {
+  contentLink?: ContentLink;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TypeField class.
+ * @constructor
+ * Information about a field of a type.
+ *
+ * @member {string} [name] Gets or sets the name of the field.
+ * @member {string} [type] Gets or sets the type of the field.
+ */
+export interface TypeField {
+  name?: string;
+  type?: string;
 }
 
 /**
@@ -2904,7 +2805,9 @@ export interface SourceControlSyncJobStreamById {
  * @member {date} [lastStatusModifiedTime] Gets or sets the last status
  * modified time of the job.
  * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {string} [provisioningState] The provisioning state of a resource.
+ * @member {string} [provisioningState] The current provisioning state of the
+ * job. Possible values include: 'Failed', 'Succeeded', 'Suspended',
+ * 'Processing'
  */
 export interface Job extends ProxyResource {
   runbook?: RunbookAssociationProperty;
@@ -2920,7 +2823,7 @@ export interface Job extends ProxyResource {
   lastModifiedTime?: Date;
   lastStatusModifiedTime?: Date;
   parameters?: { [propertyName: string]: string };
-  readonly provisioningState?: string;
+  provisioningState?: string;
 }
 
 /**
@@ -3006,6 +2909,90 @@ export interface DscNode extends ProxyResource {
   etag?: string;
   totalCount?: number;
   extensionHandler?: DscNodeExtensionHandlerAssociationProperty[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscConfigurationAssociationProperty class.
+ * @constructor
+ * The Dsc configuration property associated with the entity.
+ *
+ * @member {string} [name] Gets or sets the name of the Dsc configuration.
+ */
+export interface DscConfigurationAssociationProperty {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscCompilationJob class.
+ * @constructor
+ * Definition of the Dsc Compilation job.
+ *
+ * @member {object} [configuration] Gets or sets the configuration.
+ * @member {string} [configuration.name] Gets or sets the name of the Dsc
+ * configuration.
+ * @member {string} [startedBy] Gets the compilation job started by.
+ * @member {uuid} [jobId] Gets the id of the job.
+ * @member {date} [creationTime] Gets the creation time of the job.
+ * @member {string} [provisioningState] The current provisioning state of the
+ * job. Possible values include: 'Failed', 'Succeeded', 'Suspended',
+ * 'Processing'
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ * @member {string} [status] Gets or sets the status of the job. Possible
+ * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
+ * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
+ * 'Resuming', 'Removing'
+ * @member {string} [statusDetails] Gets or sets the status details of the job.
+ * @member {date} [startTime] Gets the start time of the job.
+ * @member {date} [endTime] Gets the end time of the job.
+ * @member {string} [exception] Gets the exception of the job.
+ * @member {date} [lastModifiedTime] Gets the last modified time of the job.
+ * @member {date} [lastStatusModifiedTime] Gets the last status modified time
+ * of the job.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ */
+export interface DscCompilationJob extends ProxyResource {
+  configuration?: DscConfigurationAssociationProperty;
+  readonly startedBy?: string;
+  readonly jobId?: string;
+  readonly creationTime?: Date;
+  provisioningState?: string;
+  runOn?: string;
+  status?: string;
+  statusDetails?: string;
+  readonly startTime?: Date;
+  readonly endTime?: Date;
+  readonly exception?: string;
+  readonly lastModifiedTime?: Date;
+  readonly lastStatusModifiedTime?: Date;
+  parameters?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DscCompilationJobCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create compilation job operation.
+ *
+ * @member {object} configuration Gets or sets the configuration.
+ * @member {string} [configuration.name] Gets or sets the name of the Dsc
+ * configuration.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {boolean} [newNodeConfigurationBuildVersionRequired] If a new build
+ * version of NodeConfiguration is required.
+ * @member {string} [name] Gets or sets name of the resource.
+ * @member {string} [location] Gets or sets the location of the resource.
+ * @member {object} [tags] Gets or sets the tags attached to the resource.
+ */
+export interface DscCompilationJobCreateParameters {
+  configuration: DscConfigurationAssociationProperty;
+  parameters?: { [propertyName: string]: string };
+  newNodeConfigurationBuildVersionRequired?: boolean;
+  name?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
