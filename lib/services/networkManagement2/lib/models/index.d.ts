@@ -6473,6 +6473,231 @@ export interface VpnDeviceScriptParameters {
   firmwareVersion?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the VirtualWAN class.
+ * @constructor
+ * VirtualWAN Resource.
+ *
+ * @member {boolean} [disableVpnEncryption] Vpn encryption to be disabled or
+ * not.
+ * @member {array} [virtualHubs] List of VirtualHubs in the VirtualWAN.
+ * @member {array} [vpnSites]
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface VirtualWAN extends Resource {
+  disableVpnEncryption?: boolean;
+  readonly virtualHubs?: SubResource[];
+  readonly vpnSites?: SubResource[];
+  provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeviceProperties class.
+ * @constructor
+ * List of properties of the device.
+ *
+ * @member {string} [deviceVendor] Name of the device Vendor.
+ * @member {string} [deviceModel] Model of the device.
+ * @member {number} [linkSpeedInMbps] Link speed.
+ */
+export interface DeviceProperties {
+  deviceVendor?: string;
+  deviceModel?: string;
+  linkSpeedInMbps?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VpnSite class.
+ * @constructor
+ * VpnSite Resource.
+ *
+ * @member {object} [virtualWAN] The VirtualWAN to which the vpnSite belongs
+ * @member {string} [virtualWAN.id] Resource ID.
+ * @member {object} [deviceProperties] The device properties
+ * @member {string} [deviceProperties.deviceVendor] Name of the device Vendor.
+ * @member {string} [deviceProperties.deviceModel] Model of the device.
+ * @member {number} [deviceProperties.linkSpeedInMbps] Link speed.
+ * @member {string} [ipAddress] The ip-address for the vpn-site.
+ * @member {string} [siteKey] The key for vpn-site that can be used for
+ * connections.
+ * @member {object} [addressSpace] The AddressSpace that contains an array of
+ * IP address ranges.
+ * @member {array} [addressSpace.addressPrefixes] A list of address blocks
+ * reserved for this virtual network in CIDR notation.
+ * @member {object} [bgpProperties] The set of bgp properties.
+ * @member {number} [bgpProperties.asn] The BGP speaker's ASN.
+ * @member {string} [bgpProperties.bgpPeeringAddress] The BGP peering address
+ * and BGP identifier of this BGP speaker.
+ * @member {number} [bgpProperties.peerWeight] The weight added to routes
+ * learned from this BGP speaker.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface VpnSite extends Resource {
+  virtualWAN?: SubResource;
+  deviceProperties?: DeviceProperties;
+  ipAddress?: string;
+  siteKey?: string;
+  addressSpace?: AddressSpace;
+  bgpProperties?: BgpSettings;
+  provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the GetVpnSitesConfigurationRequest class.
+ * @constructor
+ * List of Vpn-Sites
+ *
+ * @member {array} [vpnSites] List of resource-ids of the vpn-sites for which
+ * config is to be downloaded.
+ * @member {string} [outputBlobSasUrl] The sas-url to download the
+ * configurations for vpn-sites
+ */
+export interface GetVpnSitesConfigurationRequest {
+  vpnSites?: SubResource[];
+  outputBlobSasUrl?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HubVirtualNetworkConnection class.
+ * @constructor
+ * HubVirtualNetworkConnection Resource.
+ *
+ * @member {object} [remoteVirtualNetwork] Reference to the remote virtual
+ * network.
+ * @member {string} [remoteVirtualNetwork.id] Resource ID.
+ * @member {boolean} [allowHubToRemoteVnetTransit] VirtualHub to RemoteVnet
+ * transit to enabled or not.
+ * @member {boolean} [allowRemoteVnetToUseHubVnetGateways] Allow RemoteVnet to
+ * use Virtual Hub's gateways.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface HubVirtualNetworkConnection extends Resource {
+  remoteVirtualNetwork?: SubResource;
+  allowHubToRemoteVnetTransit?: boolean;
+  allowRemoteVnetToUseHubVnetGateways?: boolean;
+  provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualHub class.
+ * @constructor
+ * VirtualHub Resource.
+ *
+ * @member {object} [virtualWan] The VirtualWAN to which the VirtualHub belongs
+ * @member {string} [virtualWan.id] Resource ID.
+ * @member {array} [hubVirtualNetworkConnections] list of all vnet connections
+ * with this VirtualHub.
+ * @member {string} [addressPrefix] Address-prefix for this VirtualHub.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface VirtualHub extends Resource {
+  virtualWan?: SubResource;
+  hubVirtualNetworkConnections?: HubVirtualNetworkConnection[];
+  addressPrefix?: string;
+  provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VpnConnection class.
+ * @constructor
+ * VpnConnection Resource.
+ *
+ * @member {object} [remoteVpnSite] Id of the connected vpn site.
+ * @member {string} [remoteVpnSite.id] Resource ID.
+ * @member {number} [routingWeight] routing weight for vpn connection.
+ * @member {string} [connectionStatus] The connection status. Possible values
+ * include: 'Unknown', 'Connecting', 'Connected', 'NotConnected'
+ * @member {string} [tunnelConnectionStatus] The connection status of tunnel.
+ * Possible values include: 'Unknown', 'Connecting', 'Connected',
+ * 'NotConnected'
+ * @member {number} [ingressBytesTransferred] Ingress bytes transferred.
+ * @member {number} [egressBytesTransferred] Egress bytes transferred.
+ * @member {number} [connectionBandwidthInMbps] Expected bandwidth in MBPS.
+ * @member {string} [sharedKey] SharedKey for the vpn connection.
+ * @member {boolean} [enableBgp] EnableBgp flag
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface VpnConnection extends Resource {
+  remoteVpnSite?: SubResource;
+  routingWeight?: number;
+  connectionStatus?: string;
+  tunnelConnectionStatus?: string;
+  readonly ingressBytesTransferred?: number;
+  readonly egressBytesTransferred?: number;
+  readonly connectionBandwidthInMbps?: number;
+  sharedKey?: string;
+  enableBgp?: boolean;
+  provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VpnGateway class.
+ * @constructor
+ * VpnGateway Resource.
+ *
+ * @member {object} [virtualHub] The VirtualHub to which the gateway belongs
+ * @member {string} [virtualHub.id] Resource ID.
+ * @member {array} [connections] list of all vpn connections to the gateway.
+ * @member {object} [bgpSettings] Local network gateway's BGP speaker settings.
+ * @member {number} [bgpSettings.asn] The BGP speaker's ASN.
+ * @member {string} [bgpSettings.bgpPeeringAddress] The BGP peering address and
+ * BGP identifier of this BGP speaker.
+ * @member {number} [bgpSettings.peerWeight] The weight added to routes learned
+ * from this BGP speaker.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface VpnGateway extends Resource {
+  virtualHub?: SubResource;
+  connections?: VpnConnection[];
+  bgpSettings?: BgpSettings;
+  provisioningState?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VpnSiteId class.
+ * @constructor
+ * VpnSite Resource.
+ *
+ * @member {string} [vpnSite] The resource-uri of the vpn-site for which config
+ * is to be fetched.
+ */
+export interface VpnSiteId {
+  readonly vpnSite?: string;
+}
+
 
 /**
  * @class
@@ -6966,4 +7191,89 @@ export interface VirtualNetworkGatewayConnectionListResult extends Array<Virtual
  */
 export interface LocalNetworkGatewayListResult extends Array<LocalNetworkGateway> {
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListVirtualWANsResult class.
+ * @constructor
+ * Result of the request to list VirtualWANs. It contains a list of VirtualWANs
+ * and a URL nextLink to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListVirtualWANsResult extends Array<VirtualWAN> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListVpnSitesResult class.
+ * @constructor
+ * Result of the request to list VpnSites. It contains a list of VpnSites and a
+ * URL nextLink to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListVpnSitesResult extends Array<VpnSite> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListVirtualHubsResult class.
+ * @constructor
+ * Result of the request to list VirtualHubs. It contains a list of VirtualHubs
+ * and a URL nextLink to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListVirtualHubsResult extends Array<VirtualHub> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListHubVirtualNetworkConnectionsResult class.
+ * @constructor
+ * List of HubVirtualNetworkConnections and a URL nextLink to get the next set
+ * of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListHubVirtualNetworkConnectionsResult extends Array<HubVirtualNetworkConnection> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListVpnGatewaysResult class.
+ * @constructor
+ * Result of the request to list VpnGateways. It contains a list of VpnGateways
+ * and a URL nextLink to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListVpnGatewaysResult extends Array<VpnGateway> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListVpnConnectionsResult class.
+ * @constructor
+ * Result of the request to list all vpn connections to a virtual wan vpn
+ * gateway. It contains a list of Vpn Connections and a URL nextLink to get the
+ * next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ListVpnConnectionsResult extends Array<VpnConnection> {
+  nextLink?: string;
 }
