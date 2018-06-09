@@ -341,8 +341,6 @@ export interface AutomationAccountOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The name of the automation account.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -354,14 +352,12 @@ export interface AutomationAccountOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccountListResult>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutomationAccountListResult>>;
 
     /**
      * Retrieve a list of accounts within a given resource group.
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -391,9 +387,9 @@ export interface AutomationAccountOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccountListResult>;
-    listByResourceGroup(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.AutomationAccountListResult>): void;
-    listByResourceGroup(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccountListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutomationAccountListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.AutomationAccountListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutomationAccountListResult>): void;
 
 
     /**
@@ -3116,7 +3112,7 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName Automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
      * name
@@ -3139,7 +3135,7 @@ export interface HybridRunbookWorkerGroupOperations {
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName Automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} hybridRunbookWorkerGroupName The hybrid runbook worker group
      * name
@@ -10555,14 +10551,6 @@ export interface AgentRegistrationInformation {
      * @param {string} parameters.keyName Gets or sets the agent registration key
      * name - primary or secondary. Possible values include: 'primary', 'secondary'
      *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
-     *
-     * @param {object} [parameters.tags] Gets or sets the tags attached to the
-     * resource.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -10588,14 +10576,6 @@ export interface AgentRegistrationInformation {
      *
      * @param {string} parameters.keyName Gets or sets the agent registration key
      * name - primary or secondary. Possible values include: 'primary', 'secondary'
-     *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
-     *
-     * @param {object} [parameters.tags] Gets or sets the tags attached to the
-     * resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10779,12 +10759,6 @@ export interface DscNodeOperations {
      * @param {string} [dscNodeUpdateParameters.nodeId] Gets or sets the id of the
      * dsc node.
      *
-     * @param {object} [dscNodeUpdateParameters.nodeConfiguration] Gets or sets the
-     * configuration of the node.
-     *
-     * @param {string} [dscNodeUpdateParameters.nodeConfiguration.name] Gets or
-     * sets the name of the dsc nodeconfiguration.
-     *
      * @param {object} [dscNodeUpdateParameters.properties]
      *
      * @param {string} [dscNodeUpdateParameters.properties.name] Gets or sets the
@@ -10817,12 +10791,6 @@ export interface DscNodeOperations {
      *
      * @param {string} [dscNodeUpdateParameters.nodeId] Gets or sets the id of the
      * dsc node.
-     *
-     * @param {object} [dscNodeUpdateParameters.nodeConfiguration] Gets or sets the
-     * configuration of the node.
-     *
-     * @param {string} [dscNodeUpdateParameters.nodeConfiguration.name] Gets or
-     * sets the name of the dsc nodeconfiguration.
      *
      * @param {object} [dscNodeUpdateParameters.properties]
      *
