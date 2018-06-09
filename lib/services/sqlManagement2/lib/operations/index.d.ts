@@ -1414,7 +1414,7 @@ export interface DatabaseThreatDetectionPolicies {
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
      * is Enabled, storageEndpoint and storageAccountAccessKey are required.
-     * Possible values include: 'Enabled', 'Disabled'
+     * Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.disabledAlerts] Specifies the
      * semicolon-separated list of alerts that are disabled, or empty string to
@@ -1475,7 +1475,7 @@ export interface DatabaseThreatDetectionPolicies {
      *
      * @param {string} parameters.state Specifies the state of the policy. If state
      * is Enabled, storageEndpoint and storageAccountAccessKey are required.
-     * Possible values include: 'Enabled', 'Disabled'
+     * Possible values include: 'New', 'Enabled', 'Disabled'
      *
      * @param {string} [parameters.disabledAlerts] Specifies the
      * semicolon-separated list of alerts that are disabled, or empty string to
@@ -8928,207 +8928,6 @@ export interface DatabaseUsages {
     listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseUsageListResult>;
     listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.DatabaseUsageListResult>): void;
     listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseUsageListResult>): void;
-}
-
-/**
- * @class
- * DatabaseBlobAuditingPolicies
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the SqlManagementClient.
- */
-export interface DatabaseBlobAuditingPolicies {
-
-
-    /**
-     * Gets a database's blob auditing policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database for which the blob
-     * audit policy is defined.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DatabaseBlobAuditingPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseBlobAuditingPolicy>>;
-
-    /**
-     * Gets a database's blob auditing policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database for which the blob
-     * audit policy is defined.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DatabaseBlobAuditingPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DatabaseBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DatabaseBlobAuditingPolicy} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseBlobAuditingPolicy>;
-    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
-    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
-
-
-    /**
-     * Creates or updates a database's blob auditing policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database for which the blob
-     * auditing policy will be defined.
-     *
-     * @param {object} parameters The database blob auditing policy.
-     *
-     * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
-     * Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
-     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
-     * Enabled, storageEndpoint is required.
-     *
-     * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
-     *
-     * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
-     *
-     * @param {array} [parameters.auditActionsAndGroups] Specifies the Actions and
-     * Actions-Groups to audit.
-     *
-     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
-     * storage subscription Id.
-     *
-     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
-     * storageAccountAccessKey value is the storage’s secondary key.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DatabaseBlobAuditingPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseBlobAuditingPolicy>>;
-
-    /**
-     * Creates or updates a database's blob auditing policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database for which the blob
-     * auditing policy will be defined.
-     *
-     * @param {object} parameters The database blob auditing policy.
-     *
-     * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
-     * Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
-     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
-     * Enabled, storageEndpoint is required.
-     *
-     * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
-     *
-     * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
-     *
-     * @param {array} [parameters.auditActionsAndGroups] Specifies the Actions and
-     * Actions-Groups to audit.
-     *
-     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
-     * storage subscription Id.
-     *
-     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
-     * storageAccountAccessKey value is the storage’s secondary key.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DatabaseBlobAuditingPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DatabaseBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DatabaseBlobAuditingPolicy} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseBlobAuditingPolicy>;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
 }
 
 /**
@@ -16591,6 +16390,1868 @@ export interface VirtualNetworkRules {
     listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRuleListResult>;
     listByServerNext(nextPageLink: string, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
     listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
+}
+
+/**
+ * @class
+ * ExtendedDatabaseBlobAuditingPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ExtendedDatabaseBlobAuditingPolicies {
+
+
+    /**
+     * Gets an extended database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExtendedDatabaseBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExtendedDatabaseBlobAuditingPolicy>>;
+
+    /**
+     * Gets an extended database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExtendedDatabaseBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExtendedDatabaseBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExtendedDatabaseBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExtendedDatabaseBlobAuditingPolicy>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.ExtendedDatabaseBlobAuditingPolicy>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExtendedDatabaseBlobAuditingPolicy>): void;
+
+
+    /**
+     * Creates or updates an extended database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The extended database blob auditing policy.
+     *
+     * @param {string} [parameters.predicateExpression] Specifies condition of
+     * where clause when creating an audit.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExtendedDatabaseBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExtendedDatabaseBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExtendedDatabaseBlobAuditingPolicy>>;
+
+    /**
+     * Creates or updates an extended database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The extended database blob auditing policy.
+     *
+     * @param {string} [parameters.predicateExpression] Specifies condition of
+     * where clause when creating an audit.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExtendedDatabaseBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExtendedDatabaseBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExtendedDatabaseBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExtendedDatabaseBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExtendedDatabaseBlobAuditingPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExtendedDatabaseBlobAuditingPolicy, callback: ServiceCallback<models.ExtendedDatabaseBlobAuditingPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExtendedDatabaseBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExtendedDatabaseBlobAuditingPolicy>): void;
+}
+
+/**
+ * @class
+ * ExtendedServerBlobAuditingPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ExtendedServerBlobAuditingPolicies {
+
+
+    /**
+     * Gets an extended server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExtendedServerBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExtendedServerBlobAuditingPolicy>>;
+
+    /**
+     * Gets an extended server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExtendedServerBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExtendedServerBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExtendedServerBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExtendedServerBlobAuditingPolicy>;
+    get(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.ExtendedServerBlobAuditingPolicy>): void;
+    get(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExtendedServerBlobAuditingPolicy>): void;
+
+
+    /**
+     * Creates or updates an extended server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of extended blob auditing policy
+     *
+     * @param {string} [parameters.predicateExpression] Specifies condition of
+     * where clause when creating an audit.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExtendedServerBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExtendedServerBlobAuditingPolicy>>;
+
+    /**
+     * Creates or updates an extended server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of extended blob auditing policy
+     *
+     * @param {string} [parameters.predicateExpression] Specifies condition of
+     * where clause when creating an audit.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExtendedServerBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExtendedServerBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExtendedServerBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExtendedServerBlobAuditingPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, callback: ServiceCallback<models.ExtendedServerBlobAuditingPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExtendedServerBlobAuditingPolicy>): void;
+
+
+    /**
+     * Creates or updates an extended server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of extended blob auditing policy
+     *
+     * @param {string} [parameters.predicateExpression] Specifies condition of
+     * where clause when creating an audit.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExtendedServerBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExtendedServerBlobAuditingPolicy>>;
+
+    /**
+     * Creates or updates an extended server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of extended blob auditing policy
+     *
+     * @param {string} [parameters.predicateExpression] Specifies condition of
+     * where clause when creating an audit.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExtendedServerBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExtendedServerBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExtendedServerBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExtendedServerBlobAuditingPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, callback: ServiceCallback<models.ExtendedServerBlobAuditingPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExtendedServerBlobAuditingPolicy>): void;
+}
+
+/**
+ * @class
+ * ServerBlobAuditingPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ServerBlobAuditingPolicies {
+
+
+    /**
+     * Gets a server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerBlobAuditingPolicy>>;
+
+    /**
+     * Gets a server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerBlobAuditingPolicy>;
+    get(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.ServerBlobAuditingPolicy>): void;
+    get(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerBlobAuditingPolicy>): void;
+
+
+    /**
+     * Creates or updates a server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of blob auditing policy
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerBlobAuditingPolicy>>;
+
+    /**
+     * Creates or updates a server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of blob auditing policy
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerBlobAuditingPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, callback: ServiceCallback<models.ServerBlobAuditingPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerBlobAuditingPolicy>): void;
+
+
+    /**
+     * Creates or updates a server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of blob auditing policy
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerBlobAuditingPolicy>>;
+
+    /**
+     * Creates or updates a server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of blob auditing policy
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerBlobAuditingPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, callback: ServiceCallback<models.ServerBlobAuditingPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerBlobAuditingPolicy>): void;
+}
+
+/**
+ * @class
+ * DatabaseBlobAuditingPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface DatabaseBlobAuditingPolicies {
+
+
+    /**
+     * Gets a database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseBlobAuditingPolicy>>;
+
+    /**
+     * Gets a database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseBlobAuditingPolicy>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
+
+
+    /**
+     * Creates or updates a database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The database blob auditing policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseBlobAuditingPolicy>>;
+
+    /**
+     * Creates or updates a database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The database blob auditing policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseBlobAuditingPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
 }
 
 /**
