@@ -16616,6 +16616,10 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @param {string} ruleId The vulnerability assessment rule ID.
      *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -16627,7 +16631,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentRuleBaseline>>;
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentRuleBaseline>>;
 
     /**
      * Gets a database's vulnerability assessment rule baseline.
@@ -16643,6 +16647,10 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @param {string} ruleId The vulnerability assessment rule ID.
      *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -16671,9 +16679,9 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentRuleBaseline>;
-    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
-    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentRuleBaseline>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
 
 
     /**
@@ -16689,6 +16697,10 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      * vulnerability assessment rule baseline is defined.
      *
      * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
      *
      * @param {object} parameters The requested rule baseline resource.
      *
@@ -16705,7 +16717,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentRuleBaseline>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentRuleBaseline>>;
 
     /**
      * Creates or updates a database's vulnerability assessment rule baseline.
@@ -16720,6 +16732,10 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      * vulnerability assessment rule baseline is defined.
      *
      * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
      *
      * @param {object} parameters The requested rule baseline resource.
      *
@@ -16753,9 +16769,9 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentRuleBaseline>;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentRuleBaseline>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
 
 
     /**
@@ -16771,6 +16787,10 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      * vulnerability assessment rule baseline is defined.
      *
      * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16783,7 +16803,7 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Removes the database's vulnerability assessment rule baseline.
@@ -16798,6 +16818,10 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      * vulnerability assessment rule baseline is defined.
      *
      * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16825,9 +16849,9 @@ export interface DatabaseVulnerabilityAssessmentRuleBaselines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -24095,6 +24119,307 @@ export interface ServerDnsAliases {
     listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerDnsAliasListResult>;
     listByServerNext(nextPageLink: string, callback: ServiceCallback<models.ServerDnsAliasListResult>): void;
     listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerDnsAliasListResult>): void;
+}
+
+/**
+ * @class
+ * ServerSecurityAlertPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ServerSecurityAlertPolicies {
+
+
+    /**
+     * Get a server's security alert policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerSecurityAlertPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerSecurityAlertPolicy>>;
+
+    /**
+     * Get a server's security alert policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerSecurityAlertPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerSecurityAlertPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerSecurityAlertPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerSecurityAlertPolicy>;
+    get(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+    get(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+
+
+    /**
+     * Creates or updates a threat detection policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The server security alert policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy, whether
+     * it is enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
+     * are disabled. Allowed values are: Sql_Injection,
+     * Sql_Injection_Vulnerability, Access_Anomaly
+     *
+     * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
+     * addresses to which the alert is sent.
+     *
+     * @param {boolean} [parameters.emailAccountAdmins] Specifies that the alert is
+     * sent to the account administrators.
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage
+     * will hold all Threat Detection audit logs.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the Threat Detection audit storage account.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the Threat Detection audit logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerSecurityAlertPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerSecurityAlertPolicy>>;
+
+    /**
+     * Creates or updates a threat detection policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The server security alert policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy, whether
+     * it is enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
+     * are disabled. Allowed values are: Sql_Injection,
+     * Sql_Injection_Vulnerability, Access_Anomaly
+     *
+     * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
+     * addresses to which the alert is sent.
+     *
+     * @param {boolean} [parameters.emailAccountAdmins] Specifies that the alert is
+     * sent to the account administrators.
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage
+     * will hold all Threat Detection audit logs.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the Threat Detection audit storage account.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the Threat Detection audit logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerSecurityAlertPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerSecurityAlertPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerSecurityAlertPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerSecurityAlertPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+
+
+    /**
+     * Creates or updates a threat detection policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The server security alert policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy, whether
+     * it is enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
+     * are disabled. Allowed values are: Sql_Injection,
+     * Sql_Injection_Vulnerability, Access_Anomaly
+     *
+     * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
+     * addresses to which the alert is sent.
+     *
+     * @param {boolean} [parameters.emailAccountAdmins] Specifies that the alert is
+     * sent to the account administrators.
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage
+     * will hold all Threat Detection audit logs.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the Threat Detection audit storage account.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the Threat Detection audit logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerSecurityAlertPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerSecurityAlertPolicy>>;
+
+    /**
+     * Creates or updates a threat detection policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The server security alert policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy, whether
+     * it is enabled or disabled. Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
+     * are disabled. Allowed values are: Sql_Injection,
+     * Sql_Injection_Vulnerability, Access_Anomaly
+     *
+     * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
+     * addresses to which the alert is sent.
+     *
+     * @param {boolean} [parameters.emailAccountAdmins] Specifies that the alert is
+     * sent to the account administrators.
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage
+     * will hold all Threat Detection audit logs.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the Threat Detection audit storage account.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the Threat Detection audit logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerSecurityAlertPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerSecurityAlertPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerSecurityAlertPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerSecurityAlertPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
 }
 
 /**

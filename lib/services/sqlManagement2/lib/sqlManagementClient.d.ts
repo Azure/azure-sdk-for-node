@@ -105,6 +105,7 @@ export default class SqlManagementClient extends AzureServiceClient {
   managedDatabases: operations.ManagedDatabases;
   serverAutomaticTuningOperations: operations.ServerAutomaticTuningOperations;
   serverDnsAliases: operations.ServerDnsAliases;
+  serverSecurityAlertPolicies: operations.ServerSecurityAlertPolicies;
   restorePoints: operations.RestorePoints;
   databaseOperations: operations.DatabaseOperations;
   elasticPoolOperations: operations.ElasticPoolOperations;
