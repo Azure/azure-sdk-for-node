@@ -2086,6 +2086,9 @@ export interface IntegrationRuntimes {
      * @param {object} integrationRuntimePermissionRequest The data factory
      * identity which will be granted the access to given integration runtime.
      *
+     * @param {string} [integrationRuntimePermissionRequest.factoryName] The data
+     * factory name.
+     *
      * @param {string} integrationRuntimePermissionRequest.factoryIdentity The data
      * factory identity.
      *
@@ -2096,11 +2099,11 @@ export interface IntegrationRuntimes {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<IntegrationRuntimePermissionResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    grantAccessWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    grantAccessWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimePermissionResponse>>;
 
     /**
      * Grant integration runtime access to other data factory.
@@ -2114,6 +2117,9 @@ export interface IntegrationRuntimes {
      * @param {object} integrationRuntimePermissionRequest The data factory
      * identity which will be granted the access to given integration runtime.
      *
+     * @param {string} [integrationRuntimePermissionRequest.factoryName] The data
+     * factory name.
+     *
      * @param {string} integrationRuntimePermissionRequest.factoryIdentity The data
      * factory identity.
      *
@@ -2129,7 +2135,7 @@ export interface IntegrationRuntimes {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {IntegrationRuntimePermissionResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2137,15 +2143,17 @@ export interface IntegrationRuntimes {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {IntegrationRuntimePermissionResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimePermissionResponse} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    grantAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    grantAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, callback: ServiceCallback<void>): void;
-    grantAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    grantAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimePermissionResponse>;
+    grantAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
+    grantAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
 
 
     /**
@@ -2159,6 +2167,9 @@ export interface IntegrationRuntimes {
      *
      * @param {object} integrationRuntimePermissionRequest The data factory
      * identity which will be revoked the access to given integration runtime.
+     *
+     * @param {string} [integrationRuntimePermissionRequest.factoryName] The data
+     * factory name.
      *
      * @param {string} integrationRuntimePermissionRequest.factoryIdentity The data
      * factory identity.
@@ -2170,11 +2181,11 @@ export interface IntegrationRuntimes {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<IntegrationRuntimePermissionResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    revokeAccessWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    revokeAccessWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimePermissionResponse>>;
 
     /**
      * Revoke the integration runtime access from other data factory.
@@ -2187,6 +2198,9 @@ export interface IntegrationRuntimes {
      *
      * @param {object} integrationRuntimePermissionRequest The data factory
      * identity which will be revoked the access to given integration runtime.
+     *
+     * @param {string} [integrationRuntimePermissionRequest.factoryName] The data
+     * factory name.
      *
      * @param {string} integrationRuntimePermissionRequest.factoryIdentity The data
      * factory identity.
@@ -2203,7 +2217,7 @@ export interface IntegrationRuntimes {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {IntegrationRuntimePermissionResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2211,15 +2225,17 @@ export interface IntegrationRuntimes {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {IntegrationRuntimePermissionResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimePermissionResponse} for
+     *                      more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    revokeAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    revokeAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, callback: ServiceCallback<void>): void;
-    revokeAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    revokeAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimePermissionResponse>;
+    revokeAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
+    revokeAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
 
 
     /**

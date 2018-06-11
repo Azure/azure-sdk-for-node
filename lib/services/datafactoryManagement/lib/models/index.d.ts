@@ -337,10 +337,26 @@ export interface UpdateIntegrationRuntimeNodeRequest {
  * @constructor
  * Grant or revoke access to integration runtime request.
  *
+ * @member {string} [factoryName] The data factory name.
  * @member {string} factoryIdentity The data factory identity.
  */
 export interface IntegrationRuntimePermissionRequest {
+  factoryName?: string;
   factoryIdentity: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IntegrationRuntimePermissionResponse class.
+ * @constructor
+ * The response of granting/revoking integration runtime permission operation.
+ *
+ * @member {number} [sharedIntegrationRuntimeCount] The number of the
+ * integration runtimes to which the given data factory has been granted
+ * access.
+ */
+export interface IntegrationRuntimePermissionResponse {
+  sharedIntegrationRuntimeCount?: number;
 }
 
 /**
@@ -6038,11 +6054,17 @@ export interface CopyTranslator {
  * @constructor
  * A copy activity tabular translator.
  *
- * @member {object} [columnMappings] Column mappings. Type: string (or
- * Expression with resultType string).
+ * @member {object} [columnMappings] Column mappings. Example: "UserId:
+ * MyUserId, Group: MyGroup, Name: MyName" Type: string (or Expression with
+ * resultType string).
+ * @member {object} [schemaMapping] The schema mapping to map between tabular
+ * data and hierarchical data. Example: {"Column1": "$.Column1", "Column2":
+ * "$.Column2.Property1", "Column3": "$.Column2.Property2"}. Type: object (or
+ * Expression with resultType object).
  */
 export interface TabularTranslator extends CopyTranslator {
   columnMappings?: any;
+  schemaMapping?: any;
 }
 
 /**
