@@ -56,6 +56,8 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  priceSheet: operations.PriceSheet;
+  usageDetails: operations.UsageDetails;
   forecasts: operations.Forecasts;
   operations: operations.Operations;
 }

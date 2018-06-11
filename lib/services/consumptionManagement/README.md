@@ -18,7 +18,7 @@ npm install azure-arm-consumption
 
 ## How to use
 
-### Authentication, client creation and list forecasts as an example.
+### Authentication, client creation and get priceSheet as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
@@ -26,8 +26,10 @@ const ConsumptionManagementClient = require("azure-arm-consumption");
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
     const client = new ConsumptionManagementClient(creds, subscriptionId);
-    const filter = "testfilter";
-    return client.forecasts.list(filter).then((result) => {
+    const expand = "testexpand";
+    const skiptoken = "testskiptoken";
+    const top = 1;
+    return client.priceSheet.get(expand, skiptoken, top).then((result) => {
       console.log("The result is:");
       console.log(result);
     });
