@@ -1157,7 +1157,11 @@ export interface OutputFile {
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When this is exceeded, the
+ * task cannot be added and the response error code will be
+ * RequestEntityTooLarge. If this occurs the recommended solution is to use an
+ * ApplicationPackage.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -2991,7 +2995,10 @@ export interface PoolInformation {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When this is exceeded, the task cannot be
+ * added and the response error code will be RequestEntityTooLarge. If this
+ * occurs the recommended solution is to use an ApplicationPackage.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -3825,7 +3832,11 @@ export interface JobScheduleStatistics {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When this is exceeded, the
+ * task cannot be added and the response error code will be
+ * RequestEntityTooLarge. If this occurs the recommended solution is to use an
+ * ApplicationPackage.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -4617,7 +4628,11 @@ export interface CloudJobSchedule {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When this is exceeded, the
+ * task cannot be added and the response error code will be
+ * RequestEntityTooLarge. If this occurs the recommended solution is to use an
+ * ApplicationPackage.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -5394,7 +5409,10 @@ export interface JobExecutionInformation {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When this is exceeded, the task cannot be
+ * added and the response error code will be RequestEntityTooLarge. If this
+ * occurs the recommended solution is to use an ApplicationPackage.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -6129,7 +6147,10 @@ export interface CloudJob {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When this is exceeded, the task cannot be
+ * added and the response error code will be RequestEntityTooLarge. If this
+ * occurs the recommended solution is to use an ApplicationPackage.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -8142,7 +8163,10 @@ export interface TaskDependencies {
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
- * compute node on which the primary task is executed.
+ * compute node on which the primary task is executed. There is a maximum size
+ * for the list of resource files.  When this is exceeded, the task cannot be
+ * added and the response error code will be RequestEntityTooLarge. If this
+ * occurs the recommended solution is to use an ApplicationPackage.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -8453,7 +8477,10 @@ export interface CloudTask {
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
- * compute node on which the primary task is executed.
+ * compute node on which the primary task is executed. There is a maximum size
+ * for the list of resource files.  When this is exceeded, the task cannot be
+ * added and the response error code will be RequestEntityTooLarge. If this
+ * occurs the recommended solution is to use an ApplicationPackage.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -9344,7 +9371,11 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When this is exceeded, the
+ * task cannot be added and the response error code will be
+ * RequestEntityTooLarge. If this occurs the recommended solution is to use an
+ * ApplicationPackage.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -10083,7 +10114,11 @@ export interface JobSchedulePatchParameter {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When this is exceeded, the
+ * task cannot be added and the response error code will be
+ * RequestEntityTooLarge. If this occurs the recommended solution is to use an
+ * ApplicationPackage.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
