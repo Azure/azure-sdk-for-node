@@ -7777,7 +7777,10 @@ export interface Job {
      * @param {array} [job.jobManagerTask.resourceFiles] A list of files that the
      * Batch service will download to the compute node before running the command
      * line. Files listed under this element are located in the task's working
-     * directory.
+     * directory. There is a maximum size for the list of resource files.  When
+     * this is exceeded, the task cannot be added and the response error code will
+     * be RequestEntityTooLarge. If this occurs the recommended solution is to use
+     * an ApplicationPackage.
      *
      * @param {array} [job.jobManagerTask.outputFiles] A list of files that the
      * Batch service will upload from the compute node after running the command
@@ -8627,7 +8630,10 @@ export interface Job {
      * @param {array} [job.jobManagerTask.resourceFiles] A list of files that the
      * Batch service will download to the compute node before running the command
      * line. Files listed under this element are located in the task's working
-     * directory.
+     * directory. There is a maximum size for the list of resource files.  When
+     * this is exceeded, the task cannot be added and the response error code will
+     * be RequestEntityTooLarge. If this occurs the recommended solution is to use
+     * an ApplicationPackage.
      *
      * @param {array} [job.jobManagerTask.outputFiles] A list of files that the
      * Batch service will upload from the compute node after running the command
@@ -12642,7 +12648,10 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
      * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * in the task's working directory. There is a maximum size for the list of
+     * resource files.  When this is exceeded, the task cannot be added and the
+     * response error code will be RequestEntityTooLarge. If this occurs the
+     * recommended solution is to use an ApplicationPackage.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.outputFiles] A
@@ -13636,7 +13645,10 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
      * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * in the task's working directory. There is a maximum size for the list of
+     * resource files.  When this is exceeded, the task cannot be added and the
+     * response error code will be RequestEntityTooLarge. If this occurs the
+     * recommended solution is to use an ApplicationPackage.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.outputFiles] A
@@ -14650,7 +14662,10 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
      * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * in the task's working directory. There is a maximum size for the list of
+     * resource files.  When this is exceeded, the task cannot be added and the
+     * response error code will be RequestEntityTooLarge. If this occurs the
+     * recommended solution is to use an ApplicationPackage.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.outputFiles] A
@@ -15650,7 +15665,10 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
      * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * in the task's working directory. There is a maximum size for the list of
+     * resource files.  When this is exceeded, the task cannot be added and the
+     * response error code will be RequestEntityTooLarge. If this occurs the
+     * recommended solution is to use an ApplicationPackage.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.outputFiles] A
@@ -17059,7 +17077,10 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobManagerTask.resourceFiles] A list of
      * files that the Batch service will download to the compute node before
      * running the command line. Files listed under this element are located in the
-     * task's working directory.
+     * task's working directory. There is a maximum size for the list of resource
+     * files.  When this is exceeded, the task cannot be added and the response
+     * error code will be RequestEntityTooLarge. If this occurs the recommended
+     * solution is to use an ApplicationPackage.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.outputFiles] A list of
@@ -18020,7 +18041,10 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobManagerTask.resourceFiles] A list of
      * files that the Batch service will download to the compute node before
      * running the command line. Files listed under this element are located in the
-     * task's working directory.
+     * task's working directory. There is a maximum size for the list of resource
+     * files.  When this is exceeded, the task cannot be added and the response
+     * error code will be RequestEntityTooLarge. If this occurs the recommended
+     * solution is to use an ApplicationPackage.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.outputFiles] A list of
@@ -19161,7 +19185,10 @@ export interface Task {
      * @param {array} [task.resourceFiles] A list of files that the Batch service
      * will download to the compute node before running the command line. For
      * multi-instance tasks, the resource files will only be downloaded to the
-     * compute node on which the primary task is executed.
+     * compute node on which the primary task is executed. There is a maximum size
+     * for the list of resource files.  When this is exceeded, the task cannot be
+     * added and the response error code will be RequestEntityTooLarge. If this
+     * occurs the recommended solution is to use an ApplicationPackage.
      *
      * @param {array} [task.outputFiles] A list of files that the Batch service
      * will upload from the compute node after running the command line. For
@@ -19440,7 +19467,10 @@ export interface Task {
      * @param {array} [task.resourceFiles] A list of files that the Batch service
      * will download to the compute node before running the command line. For
      * multi-instance tasks, the resource files will only be downloaded to the
-     * compute node on which the primary task is executed.
+     * compute node on which the primary task is executed. There is a maximum size
+     * for the list of resource files.  When this is exceeded, the task cannot be
+     * added and the response error code will be RequestEntityTooLarge. If this
+     * occurs the recommended solution is to use an ApplicationPackage.
      *
      * @param {array} [task.outputFiles] A list of files that the Batch service
      * will upload from the compute node after running the command line. For
