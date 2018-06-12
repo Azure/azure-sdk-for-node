@@ -714,6 +714,22 @@ export interface NotificationHubResource extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the DebugSendResponse class.
+ * @constructor
+ * Description of a NotificationHub Resource.
+ *
+ * @member {number} [success] successful send
+ * @member {number} [failure] send failure
+ * @member {string} [results] actual failure description
+ */
+export interface DebugSendResponse extends Resource {
+  success?: number;
+  failure?: number;
+  results?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PnsCredentialsResource class.
  * @constructor
  * Description of a NotificationHub PNS Credentials.

@@ -2223,11 +2223,11 @@ export interface NotificationHubs {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<NotificationHubResource>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<DebugSendResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    debugSendWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationHubResource>>;
+    debugSendWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DebugSendResponse>>;
 
     /**
      * test send a push notification
@@ -2252,7 +2252,7 @@ export interface NotificationHubs {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {NotificationHubResource} - The deserialized result object.
+     *                      @resolve {DebugSendResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2260,17 +2260,16 @@ export interface NotificationHubs {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {NotificationHubResource} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link NotificationHubResource} for more
-     *                      information.
+     *                      {DebugSendResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DebugSendResponse} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NotificationHubResource>;
-    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: string, callback: ServiceCallback<models.NotificationHubResource>): void;
-    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NotificationHubResource>): void;
+    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DebugSendResponse>;
+    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: string, callback: ServiceCallback<models.DebugSendResponse>): void;
+    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DebugSendResponse>): void;
 
 
     /**
