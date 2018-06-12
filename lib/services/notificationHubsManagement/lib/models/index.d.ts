@@ -720,12 +720,12 @@ export interface NotificationHubResource extends Resource {
  *
  * @member {number} [success] successful send
  * @member {number} [failure] send failure
- * @member {string} [results] actual failure description
+ * @member {object} [results] actual failure description
  */
 export interface DebugSendResponse extends Resource {
   success?: number;
   failure?: number;
-  results?: string;
+  results?: any;
 }
 
 /**
