@@ -18,7 +18,7 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the ErrorDetails class.
+ * Initializes a new instance of the StorageSyncErrorDetails class.
  * @constructor
  * Error Details object.
  *
@@ -26,7 +26,7 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} [message] Error message of the given entry.
  * @member {string} [target] Target of the given entry.
  */
-export interface ErrorDetails {
+export interface StorageSyncErrorDetails {
   code?: string;
   message?: string;
   target?: string;
@@ -34,7 +34,7 @@ export interface ErrorDetails {
 
 /**
  * @class
- * Initializes a new instance of the ErrorModel class.
+ * Initializes a new instance of the StorageSyncError class.
  * @constructor
  * Error type
  *
@@ -45,10 +45,10 @@ export interface ErrorDetails {
  * @member {string} [details.message] Error message of the given entry.
  * @member {string} [details.target] Target of the given entry.
  */
-export interface ErrorModel {
+export interface StorageSyncError {
   code?: string;
   message?: string;
-  details?: ErrorDetails;
+  details?: StorageSyncErrorDetails;
 }
 
 /**
@@ -94,7 +94,7 @@ export interface TrackedResource extends Resource {
  */
 export interface SubscriptionState {
   state?: string;
-  istransitioning?: boolean;
+  readonly istransitioning?: boolean;
   properties?: any;
 }
 
@@ -151,7 +151,7 @@ export interface CloudEndpoint extends BaseResource {
   storageAccountTenantId?: string;
   partnershipId?: string;
   friendlyName?: string;
-  backupEnabled?: boolean;
+  readonly backupEnabled?: boolean;
   provisioningState?: string;
   lastWorkflowId?: string;
 }
@@ -358,7 +358,7 @@ export interface OperationDisplayResource {
  */
 export interface RestoreFileSpec {
   path?: string;
-  isdir?: boolean;
+  readonly isdir?: boolean;
 }
 
 /**
@@ -404,7 +404,7 @@ export interface PostRestoreRequest {
  * @member {string} [backupMetadataPropertyBag] Pre Restore backup metadata
  * property bag.
  * @member {array} [restoreFileSpec] Pre Restore restore file spec array.
- * @member {number} [pausewaitforsyncdraintimeperiodinseconds] Pre Restore
+ * @member {number} [pauseWaitForSyncDrainTimePeriodInSeconds] Pre Restore
  * pause wait for sync drain time period in seconds.
  */
 export interface PreRestoreRequest {
@@ -416,7 +416,7 @@ export interface PreRestoreRequest {
   sourceAzureFileShareUri?: string;
   backupMetadataPropertyBag?: string;
   restoreFileSpec?: RestoreFileSpec[];
-  pausewaitforsyncdraintimeperiodinseconds?: number;
+  pauseWaitForSyncDrainTimePeriodInSeconds?: number;
 }
 
 /**

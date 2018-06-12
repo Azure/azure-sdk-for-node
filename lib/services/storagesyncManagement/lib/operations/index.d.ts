@@ -14,11 +14,11 @@ import * as models from '../models';
 
 /**
  * @class
- * OperationGet
+ * Operations
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
+ * instance of the StorageSyncManagementClient.
  */
-export interface OperationGet {
+export interface Operations {
 
 
     /**
@@ -135,7 +135,7 @@ export interface OperationGet {
  * @class
  * StorageSyncServices
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
+ * instance of the StorageSyncManagementClient.
  */
 export interface StorageSyncServices {
 
@@ -397,15 +397,6 @@ export interface StorageSyncServices {
     deleteMethod(resourceGroupName: string, storageSyncServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, storageSyncServiceName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, storageSyncServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-}
-
-/**
- * @class
- * StorageSyncServiceByResourceGroupGet
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface StorageSyncServiceByResourceGroupGet {
 
 
     /**
@@ -425,7 +416,7 @@ export interface StorageSyncServiceByResourceGroupGet {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncServiceArray>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncServiceArray>>;
 
     /**
      * Get a StorageSyncService list by Resource group name.
@@ -461,18 +452,9 @@ export interface StorageSyncServiceByResourceGroupGet {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncServiceArray>;
-    list(resourceGroupName: string, callback: ServiceCallback<models.StorageSyncServiceArray>): void;
-    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncServiceArray>): void;
-}
-
-/**
- * @class
- * StorageSyncServiceGet
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface StorageSyncServiceGet {
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncServiceArray>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.StorageSyncServiceArray>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncServiceArray>): void;
 
 
     /**
@@ -529,11 +511,11 @@ export interface StorageSyncServiceGet {
 
 /**
  * @class
- * GetSyncGroups
+ * SyncGroups
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
+ * instance of the StorageSyncManagementClient.
  */
-export interface GetSyncGroups {
+export interface SyncGroups {
 
 
     /**
@@ -597,15 +579,6 @@ export interface GetSyncGroups {
     listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SyncGroupArray>;
     listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, callback: ServiceCallback<models.SyncGroupArray>): void;
     listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SyncGroupArray>): void;
-}
-
-/**
- * @class
- * SyncGroups
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface SyncGroups {
 
 
     /**
@@ -820,7 +793,7 @@ export interface SyncGroups {
  * @class
  * CloudEndpoints
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
+ * instance of the StorageSyncManagementClient.
  */
 export interface CloudEndpoints {
 
@@ -853,8 +826,6 @@ export interface CloudEndpoints {
      * @param {string} [body.partnershipId] Partnership Id
      *
      * @param {string} [body.friendlyName] Friendly Name
-     *
-     * @param {boolean} [body.backupEnabled] Backup Enabled
      *
      * @param {string} [body.provisioningState] CloudEndpoint Provisioning State
      *
@@ -901,8 +872,6 @@ export interface CloudEndpoints {
      * @param {string} [body.partnershipId] Partnership Id
      *
      * @param {string} [body.friendlyName] Friendly Name
-     *
-     * @param {boolean} [body.backupEnabled] Backup Enabled
      *
      * @param {string} [body.provisioningState] CloudEndpoint Provisioning State
      *
@@ -1082,6 +1051,524 @@ export interface CloudEndpoints {
 
 
     /**
+     * Get a CloudEndpoint List.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CloudEndpointArray>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySyncGroupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpointArray>>;
+
+    /**
+     * Get a CloudEndpoint List.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CloudEndpointArray} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CloudEndpointArray} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CloudEndpointArray} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySyncGroup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpointArray>;
+    listBySyncGroup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, callback: ServiceCallback<models.CloudEndpointArray>): void;
+    listBySyncGroup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpointArray>): void;
+
+
+    /**
+     * Pre Backup a given CloudEndpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
+     *
+     * @param {object} body Body of Backup request.
+     *
+     * @param {string} [body.azureFileShare] Azure File Share.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    preBackupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Pre Backup a given CloudEndpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
+     *
+     * @param {object} body Body of Backup request.
+     *
+     * @param {string} [body.azureFileShare] Azure File Share.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    preBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    preBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, callback: ServiceCallback<void>): void;
+    preBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Post Backup a given CloudEndpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
+     *
+     * @param {object} body Body of Backup request.
+     *
+     * @param {string} [body.azureFileShare] Azure File Share.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PostBackupResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    postBackupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PostBackupResponse>>;
+
+    /**
+     * Post Backup a given CloudEndpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
+     *
+     * @param {object} body Body of Backup request.
+     *
+     * @param {string} [body.azureFileShare] Azure File Share.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PostBackupResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PostBackupResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PostBackupResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    postBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PostBackupResponse>;
+    postBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, callback: ServiceCallback<models.PostBackupResponse>): void;
+    postBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PostBackupResponse>): void;
+
+
+    /**
+     * Pre Restore a given CloudEndpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
+     *
+     * @param {object} body Body of Cloud Endpoint object.
+     *
+     * @param {string} [body.partition] Pre Restore partition.
+     *
+     * @param {string} [body.replicaGroup] Pre Restore replica group.
+     *
+     * @param {string} [body.requestId] Pre Restore request id.
+     *
+     * @param {string} [body.azureFileShareUri] Pre Restore Azure file share uri.
+     *
+     * @param {string} [body.status] Pre Restore Azure status.
+     *
+     * @param {string} [body.sourceAzureFileShareUri] Pre Restore Azure source
+     * azure file share uri.
+     *
+     * @param {string} [body.backupMetadataPropertyBag] Pre Restore backup metadata
+     * property bag.
+     *
+     * @param {array} [body.restoreFileSpec] Pre Restore restore file spec array.
+     *
+     * @param {number} [body.pauseWaitForSyncDrainTimePeriodInSeconds] Pre Restore
+     * pause wait for sync drain time period in seconds.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    preRestoreWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Pre Restore a given CloudEndpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
+     *
+     * @param {object} body Body of Cloud Endpoint object.
+     *
+     * @param {string} [body.partition] Pre Restore partition.
+     *
+     * @param {string} [body.replicaGroup] Pre Restore replica group.
+     *
+     * @param {string} [body.requestId] Pre Restore request id.
+     *
+     * @param {string} [body.azureFileShareUri] Pre Restore Azure file share uri.
+     *
+     * @param {string} [body.status] Pre Restore Azure status.
+     *
+     * @param {string} [body.sourceAzureFileShareUri] Pre Restore Azure source
+     * azure file share uri.
+     *
+     * @param {string} [body.backupMetadataPropertyBag] Pre Restore backup metadata
+     * property bag.
+     *
+     * @param {array} [body.restoreFileSpec] Pre Restore restore file spec array.
+     *
+     * @param {number} [body.pauseWaitForSyncDrainTimePeriodInSeconds] Pre Restore
+     * pause wait for sync drain time period in seconds.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    preRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    preRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, callback: ServiceCallback<void>): void;
+    preRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Restore Heartbeat a given CloudEndpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    restoreHeatbeatWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Restore Heartbeat a given CloudEndpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    restoreHeatbeat(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restoreHeatbeat(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, callback: ServiceCallback<void>): void;
+    restoreHeatbeat(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Post Restore a given CloudEndpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
+     *
+     * @param {object} body Body of Cloud Endpoint object.
+     *
+     * @param {string} [body.partition] Post Restore partition.
+     *
+     * @param {string} [body.replicaGroup] Post Restore replica group.
+     *
+     * @param {string} [body.requestId] Post Restore request id.
+     *
+     * @param {string} [body.azureFileShareUri] Post Restore Azure file share uri.
+     *
+     * @param {string} [body.status] Post Restore Azure status.
+     *
+     * @param {string} [body.sourceAzureFileShareUri] Post Restore Azure source
+     * azure file share uri.
+     *
+     * @param {string} [body.failedFileList] Post Restore Azure failed file list.
+     *
+     * @param {array} [body.restoreFileSpec] Post Restore restore file spec array.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    postRestoreWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Post Restore a given CloudEndpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
+     *
+     * @param {object} body Body of Cloud Endpoint object.
+     *
+     * @param {string} [body.partition] Post Restore partition.
+     *
+     * @param {string} [body.replicaGroup] Post Restore replica group.
+     *
+     * @param {string} [body.requestId] Post Restore request id.
+     *
+     * @param {string} [body.azureFileShareUri] Post Restore Azure file share uri.
+     *
+     * @param {string} [body.status] Post Restore Azure status.
+     *
+     * @param {string} [body.sourceAzureFileShareUri] Post Restore Azure source
+     * azure file share uri.
+     *
+     * @param {string} [body.failedFileList] Post Restore Azure failed file list.
+     *
+     * @param {array} [body.restoreFileSpec] Post Restore restore file spec array.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    postRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    postRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, callback: ServiceCallback<void>): void;
+    postRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Create a new CloudEndpoint.
      *
      * @param {string} resourceGroupName The name of the resource group within the
@@ -1109,8 +1596,6 @@ export interface CloudEndpoints {
      * @param {string} [body.partnershipId] Partnership Id
      *
      * @param {string} [body.friendlyName] Friendly Name
-     *
-     * @param {boolean} [body.backupEnabled] Backup Enabled
      *
      * @param {string} [body.provisioningState] CloudEndpoint Provisioning State
      *
@@ -1157,8 +1642,6 @@ export interface CloudEndpoints {
      * @param {string} [body.partnershipId] Partnership Id
      *
      * @param {string} [body.friendlyName] Friendly Name
-     *
-     * @param {boolean} [body.backupEnabled] Backup Enabled
      *
      * @param {string} [body.provisioningState] CloudEndpoint Provisioning State
      *
@@ -1264,91 +1747,6 @@ export interface CloudEndpoints {
     beginDeleteMethod(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-}
-
-/**
- * @class
- * CloudEndpointsGet
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface CloudEndpointsGet {
-
-
-    /**
-     * Get a CloudEndpoint List.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<CloudEndpointArray>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySyncGroupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpointArray>>;
-
-    /**
-     * Get a CloudEndpoint List.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {CloudEndpointArray} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {CloudEndpointArray} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CloudEndpointArray} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySyncGroup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpointArray>;
-    listBySyncGroup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, callback: ServiceCallback<models.CloudEndpointArray>): void;
-    listBySyncGroup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpointArray>): void;
-}
-
-/**
- * @class
- * CloudEndpointPreBackup
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface CloudEndpointPreBackup {
 
 
     /**
@@ -1379,7 +1777,7 @@ export interface CloudEndpointPreBackup {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    postWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPreBackupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Pre Backup a given CloudEndpoint.
@@ -1424,96 +1822,9 @@ export interface CloudEndpointPreBackup {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, callback: ServiceCallback<void>): void;
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Pre Backup a given CloudEndpoint.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
-     *
-     * @param {object} body Body of Backup request.
-     *
-     * @param {string} [body.azureFileShare] Azure File Share.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginPostWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Pre Backup a given CloudEndpoint.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
-     *
-     * @param {object} body Body of Backup request.
-     *
-     * @param {string} [body.azureFileShare] Azure File Share.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, callback: ServiceCallback<void>): void;
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-}
-
-/**
- * @class
- * CloudEndpointPostBackup
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface CloudEndpointPostBackup {
+    beginPreBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPreBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, callback: ServiceCallback<void>): void;
+    beginPreBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1544,7 +1855,7 @@ export interface CloudEndpointPostBackup {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    postWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PostBackupResponse>>;
+    beginPostBackupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PostBackupResponse>>;
 
     /**
      * Post Backup a given CloudEndpoint.
@@ -1590,97 +1901,9 @@ export interface CloudEndpointPostBackup {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PostBackupResponse>;
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, callback: ServiceCallback<models.PostBackupResponse>): void;
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PostBackupResponse>): void;
-
-
-    /**
-     * Post Backup a given CloudEndpoint.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
-     *
-     * @param {object} body Body of Backup request.
-     *
-     * @param {string} [body.azureFileShare] Azure File Share.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PostBackupResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginPostWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PostBackupResponse>>;
-
-    /**
-     * Post Backup a given CloudEndpoint.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
-     *
-     * @param {object} body Body of Backup request.
-     *
-     * @param {string} [body.azureFileShare] Azure File Share.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PostBackupResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PostBackupResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PostBackupResponse} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PostBackupResponse>;
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, callback: ServiceCallback<models.PostBackupResponse>): void;
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PostBackupResponse>): void;
-}
-
-/**
- * @class
- * CloudEndpointPreRestore
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface CloudEndpointPreRestore {
+    beginPostBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PostBackupResponse>;
+    beginPostBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, callback: ServiceCallback<models.PostBackupResponse>): void;
+    beginPostBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PostBackupResponse>): void;
 
 
     /**
@@ -1716,7 +1939,7 @@ export interface CloudEndpointPreRestore {
      *
      * @param {array} [body.restoreFileSpec] Pre Restore restore file spec array.
      *
-     * @param {number} [body.pausewaitforsyncdraintimeperiodinseconds] Pre Restore
+     * @param {number} [body.pauseWaitForSyncDrainTimePeriodInSeconds] Pre Restore
      * pause wait for sync drain time period in seconds.
      *
      * @param {object} [options] Optional Parameters.
@@ -1730,7 +1953,7 @@ export interface CloudEndpointPreRestore {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    postWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPreRestoreWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Pre Restore a given CloudEndpoint.
@@ -1765,7 +1988,7 @@ export interface CloudEndpointPreRestore {
      *
      * @param {array} [body.restoreFileSpec] Pre Restore restore file spec array.
      *
-     * @param {number} [body.pausewaitforsyncdraintimeperiodinseconds] Pre Restore
+     * @param {number} [body.pauseWaitForSyncDrainTimePeriodInSeconds] Pre Restore
      * pause wait for sync drain time period in seconds.
      *
      * @param {object} [options] Optional Parameters.
@@ -1794,213 +2017,9 @@ export interface CloudEndpointPreRestore {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, callback: ServiceCallback<void>): void;
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Pre Restore a given CloudEndpoint.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
-     *
-     * @param {object} body Body of Cloud Endpoint object.
-     *
-     * @param {string} [body.partition] Pre Restore partition.
-     *
-     * @param {string} [body.replicaGroup] Pre Restore replica group.
-     *
-     * @param {string} [body.requestId] Pre Restore request id.
-     *
-     * @param {string} [body.azureFileShareUri] Pre Restore Azure file share uri.
-     *
-     * @param {string} [body.status] Pre Restore Azure status.
-     *
-     * @param {string} [body.sourceAzureFileShareUri] Pre Restore Azure source
-     * azure file share uri.
-     *
-     * @param {string} [body.backupMetadataPropertyBag] Pre Restore backup metadata
-     * property bag.
-     *
-     * @param {array} [body.restoreFileSpec] Pre Restore restore file spec array.
-     *
-     * @param {number} [body.pausewaitforsyncdraintimeperiodinseconds] Pre Restore
-     * pause wait for sync drain time period in seconds.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginPostWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Pre Restore a given CloudEndpoint.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
-     *
-     * @param {object} body Body of Cloud Endpoint object.
-     *
-     * @param {string} [body.partition] Pre Restore partition.
-     *
-     * @param {string} [body.replicaGroup] Pre Restore replica group.
-     *
-     * @param {string} [body.requestId] Pre Restore request id.
-     *
-     * @param {string} [body.azureFileShareUri] Pre Restore Azure file share uri.
-     *
-     * @param {string} [body.status] Pre Restore Azure status.
-     *
-     * @param {string} [body.sourceAzureFileShareUri] Pre Restore Azure source
-     * azure file share uri.
-     *
-     * @param {string} [body.backupMetadataPropertyBag] Pre Restore backup metadata
-     * property bag.
-     *
-     * @param {array} [body.restoreFileSpec] Pre Restore restore file spec array.
-     *
-     * @param {number} [body.pausewaitforsyncdraintimeperiodinseconds] Pre Restore
-     * pause wait for sync drain time period in seconds.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, callback: ServiceCallback<void>): void;
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-}
-
-/**
- * @class
- * CloudEndpointRestoreHeatbeat
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface CloudEndpointRestoreHeatbeat {
-
-
-    /**
-     * Restore Heartbeat a given CloudEndpoint.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    postWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Restore Heartbeat a given CloudEndpoint.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, callback: ServiceCallback<void>): void;
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-}
-
-/**
- * @class
- * CloudEndpointPostRestore
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface CloudEndpointPostRestore {
+    beginPreRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPreRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, callback: ServiceCallback<void>): void;
+    beginPreRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -2046,7 +2065,7 @@ export interface CloudEndpointPostRestore {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    postWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPostRestoreWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Post Restore a given CloudEndpoint.
@@ -2106,124 +2125,16 @@ export interface CloudEndpointPostRestore {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, callback: ServiceCallback<void>): void;
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Post Restore a given CloudEndpoint.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
-     *
-     * @param {object} body Body of Cloud Endpoint object.
-     *
-     * @param {string} [body.partition] Post Restore partition.
-     *
-     * @param {string} [body.replicaGroup] Post Restore replica group.
-     *
-     * @param {string} [body.requestId] Post Restore request id.
-     *
-     * @param {string} [body.azureFileShareUri] Post Restore Azure file share uri.
-     *
-     * @param {string} [body.status] Post Restore Azure status.
-     *
-     * @param {string} [body.sourceAzureFileShareUri] Post Restore Azure source
-     * azure file share uri.
-     *
-     * @param {string} [body.failedFileList] Post Restore Azure failed file list.
-     *
-     * @param {array} [body.restoreFileSpec] Post Restore restore file spec array.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginPostWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Post Restore a given CloudEndpoint.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {string} cloudEndpointName Name of Cloud Endpoint object.
-     *
-     * @param {object} body Body of Cloud Endpoint object.
-     *
-     * @param {string} [body.partition] Post Restore partition.
-     *
-     * @param {string} [body.replicaGroup] Post Restore replica group.
-     *
-     * @param {string} [body.requestId] Post Restore request id.
-     *
-     * @param {string} [body.azureFileShareUri] Post Restore Azure file share uri.
-     *
-     * @param {string} [body.status] Post Restore Azure status.
-     *
-     * @param {string} [body.sourceAzureFileShareUri] Post Restore Azure source
-     * azure file share uri.
-     *
-     * @param {string} [body.failedFileList] Post Restore Azure failed file list.
-     *
-     * @param {array} [body.restoreFileSpec] Post Restore restore file spec array.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, callback: ServiceCallback<void>): void;
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPostRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPostRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, callback: ServiceCallback<void>): void;
+    beginPostRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
  * @class
  * ServerEndpoints
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
+ * instance of the StorageSyncManagementClient.
  */
 export interface ServerEndpoints {
 
@@ -2708,6 +2619,143 @@ export interface ServerEndpoints {
 
 
     /**
+     * Get a ServerEndpoint list.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerEndpointArray>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySyncGroupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpointArray>>;
+
+    /**
+     * Get a ServerEndpoint list.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerEndpointArray} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerEndpointArray} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerEndpointArray} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySyncGroup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpointArray>;
+    listBySyncGroup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, callback: ServiceCallback<models.ServerEndpointArray>): void;
+    listBySyncGroup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpointArray>): void;
+
+
+    /**
+     * Recall a serverendpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {string} serverEndpointName Name of Server Endpoint object.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    recallWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Recall a serverendpoint.
+     *
+     * @param {string} resourceGroupName The name of the resource group within the
+     * user's subscription. The name is case insensitive.
+     *
+     * @param {string} storageSyncServiceName Name of Storage Sync Service
+     * resource.
+     *
+     * @param {string} syncGroupName Name of Sync Group resource.
+     *
+     * @param {string} serverEndpointName Name of Server Endpoint object.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    recall(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    recall(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
+    recall(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Create a new ServerEndpoint.
      *
      * @param {string} resourceGroupName The name of the resource group within the
@@ -3113,91 +3161,6 @@ export interface ServerEndpoints {
     beginDeleteMethod(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-}
-
-/**
- * @class
- * ServerEndpointsGet
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface ServerEndpointsGet {
-
-
-    /**
-     * Get a ServerEndpoint list.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServerEndpointArray>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySyncGroupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpointArray>>;
-
-    /**
-     * Get a ServerEndpoint list.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServerEndpointArray} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServerEndpointArray} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServerEndpointArray} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySyncGroup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpointArray>;
-    listBySyncGroup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, callback: ServiceCallback<models.ServerEndpointArray>): void;
-    listBySyncGroup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpointArray>): void;
-}
-
-/**
- * @class
- * ServerEndpointRecall
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface ServerEndpointRecall {
 
 
     /**
@@ -3224,7 +3187,7 @@ export interface ServerEndpointRecall {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    postWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginRecallWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Recall a serverendpoint.
@@ -3265,88 +3228,18 @@ export interface ServerEndpointRecall {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
-    post(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Recall a serverendpoint.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {string} serverEndpointName Name of Server Endpoint object.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginPostWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Recall a serverendpoint.
-     *
-     * @param {string} resourceGroupName The name of the resource group within the
-     * user's subscription. The name is case insensitive.
-     *
-     * @param {string} storageSyncServiceName Name of Storage Sync Service
-     * resource.
-     *
-     * @param {string} syncGroupName Name of Sync Group resource.
-     *
-     * @param {string} serverEndpointName Name of Server Endpoint object.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
-    beginPost(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginRecall(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRecall(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<void>): void;
+    beginRecall(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
  * @class
- * RegisteredServersGet
+ * RegisteredServers
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
+ * instance of the StorageSyncManagementClient.
  */
-export interface RegisteredServersGet {
+export interface RegisteredServers {
 
 
     /**
@@ -3410,15 +3303,6 @@ export interface RegisteredServersGet {
     listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServerArray>;
     listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, callback: ServiceCallback<models.RegisteredServerArray>): void;
     listByStorageSyncService(resourceGroupName: string, storageSyncServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServerArray>): void;
-}
-
-/**
- * @class
- * RegisteredServers
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface RegisteredServers {
 
 
     /**
@@ -3874,7 +3758,7 @@ export interface RegisteredServers {
  * @class
  * Workflows
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
+ * instance of the StorageSyncManagementClient.
  */
 export interface Workflows {
 
@@ -3944,15 +3828,6 @@ export interface Workflows {
     get(resourceGroupName: string, storageSyncServiceName: string, workflowId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workflow>;
     get(resourceGroupName: string, storageSyncServiceName: string, workflowId: string, callback: ServiceCallback<models.Workflow>): void;
     get(resourceGroupName: string, storageSyncServiceName: string, workflowId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workflow>): void;
-}
-
-/**
- * @class
- * AbortWorkflows
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the MicrosoftStorageSync.
- */
-export interface AbortWorkflows {
 
 
     /**
@@ -3977,7 +3852,7 @@ export interface AbortWorkflows {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    postWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, workflowId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    abortWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, workflowId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Abort the given workflow.
@@ -4016,7 +3891,7 @@ export interface AbortWorkflows {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    post(resourceGroupName: string, storageSyncServiceName: string, workflowId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    post(resourceGroupName: string, storageSyncServiceName: string, workflowId: string, callback: ServiceCallback<void>): void;
-    post(resourceGroupName: string, storageSyncServiceName: string, workflowId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    abort(resourceGroupName: string, storageSyncServiceName: string, workflowId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    abort(resourceGroupName: string, storageSyncServiceName: string, workflowId: string, callback: ServiceCallback<void>): void;
+    abort(resourceGroupName: string, storageSyncServiceName: string, workflowId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }

@@ -1,7 +1,7 @@
 {
   "name": "azure-arm-storagesync",
   "author": "Microsoft Corporation",
-  "description": "MicrosoftStorageSync Library with typescript type definitions for node",
+  "description": "StorageSyncManagementClient Library with typescript type definitions for node",
   "version": "1.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
@@ -12,8 +12,8 @@
     "azure"
   ],
   "license": "MIT",
-  "main": "./lib/microsoftStorageSync.js",
-  "types": "./lib/microsoftStorageSync.d.ts",
+  "main": "./lib/storageSyncManagementClient.js",
+  "types": "./lib/storageSyncManagementClient.d.ts",
   "homepage": "http://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",

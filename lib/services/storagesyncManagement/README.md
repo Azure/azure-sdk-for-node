@@ -3,7 +3,7 @@ uid: azure-arm-storagesync
 summary: *content
 
 ---
-# Microsoft Azure SDK for Node.js - MicrosoftStorageSync
+# Microsoft Azure SDK for Node.js - StorageSyncManagementClient
 This project provides a Node.js package for accessing Azure. Right now it supports:
 - **Node.js version 6.x.x or higher**
 
@@ -18,15 +18,15 @@ npm install azure-arm-storagesync
 
 ## How to use
 
-### Authentication, client creation and list operationGet as an example.
+### Authentication, client creation and list operations as an example.
 
 ```javascript
 const msRestAzure = require("ms-rest-azure");
-const MicrosoftStorageSync = require("azure-arm-storagesync");
+const StorageSyncManagementClient = require("azure-arm-storagesync");
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
-    const client = new MicrosoftStorageSync(creds, subscriptionId);
-    return client.operationGet.list().then((result) => {
+    const client = new StorageSyncManagementClient(creds, subscriptionId);
+    return client.operations.list().then((result) => {
       console.log("The result is:");
       console.log(result);
     });
