@@ -1796,114 +1796,121 @@ export interface NotificationHubs {
      *
      * @param {string} notificationHubName The notification hub name.
      *
-     * @param {object} parameters Parameters supplied to patch a NotificationHub
-     * Resource.
+     * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [parameters.notificationHubPatchParametersName] The
+     * @param {object} [options.parameters] Parameters supplied to patch a
+     * NotificationHub Resource.
+     *
+     * @param {string} [options.parameters.notificationHubPatchParametersName] The
      * NotificationHub name.
      *
-     * @param {string} [parameters.registrationTtl] The RegistrationTtl of the
-     * created NotificationHub
+     * @param {string} [options.parameters.registrationTtl] The RegistrationTtl of
+     * the created NotificationHub
      *
-     * @param {array} [parameters.authorizationRules] The AuthorizationRules of the
-     * created NotificationHub
+     * @param {array} [options.parameters.authorizationRules] The
+     * AuthorizationRules of the created NotificationHub
      *
-     * @param {object} [parameters.apnsCredential] The ApnsCredential of the
-     * created NotificationHub
+     * @param {object} [options.parameters.apnsCredential] The ApnsCredential of
+     * the created NotificationHub
      *
-     * @param {string} [parameters.apnsCredential.apnsCertificate] The APNS
+     * @param {string} [options.parameters.apnsCredential.apnsCertificate] The APNS
      * certificate.
      *
-     * @param {string} [parameters.apnsCredential.certificateKey] The certificate
-     * key.
+     * @param {string} [options.parameters.apnsCredential.certificateKey] The
+     * certificate key.
      *
-     * @param {string} [parameters.apnsCredential.endpoint] The endpoint of this
-     * credential.
+     * @param {string} [options.parameters.apnsCredential.endpoint] The endpoint of
+     * this credential.
      *
-     * @param {string} [parameters.apnsCredential.thumbprint] The Apns certificate
-     * Thumbprint
+     * @param {string} [options.parameters.apnsCredential.thumbprint] The Apns
+     * certificate Thumbprint
      *
-     * @param {string} [parameters.apnsCredential.keyId] A 10-character key
+     * @param {string} [options.parameters.apnsCredential.keyId] A 10-character key
      * identifier (kid) key, obtained from your developer account
      *
-     * @param {string} [parameters.apnsCredential.appName] The name of the
+     * @param {string} [options.parameters.apnsCredential.appName] The name of the
      * application
      *
-     * @param {string} [parameters.apnsCredential.appId] The issuer (iss)
+     * @param {string} [options.parameters.apnsCredential.appId] The issuer (iss)
      * registered claim key, whose value is your 10-character Team ID, obtained
      * from your developer account
      *
-     * @param {string} [parameters.apnsCredential.token] Provider Authentication
-     * Token, obtained through your developer account
+     * @param {string} [options.parameters.apnsCredential.token] Provider
+     * Authentication Token, obtained through your developer account
      *
-     * @param {object} [parameters.wnsCredential] The WnsCredential of the created
-     * NotificationHub
-     *
-     * @param {string} [parameters.wnsCredential.packageSid] The package ID for
-     * this credential.
-     *
-     * @param {string} [parameters.wnsCredential.secretKey] The secret key.
-     *
-     * @param {string} [parameters.wnsCredential.windowsLiveEndpoint] The Windows
-     * Live endpoint.
-     *
-     * @param {object} [parameters.gcmCredential] The GcmCredential of the created
-     * NotificationHub
-     *
-     * @param {string} [parameters.gcmCredential.gcmEndpoint] The GCM endpoint.
-     *
-     * @param {string} [parameters.gcmCredential.googleApiKey] The Google API key.
-     *
-     * @param {object} [parameters.mpnsCredential] The MpnsCredential of the
+     * @param {object} [options.parameters.wnsCredential] The WnsCredential of the
      * created NotificationHub
      *
-     * @param {string} [parameters.mpnsCredential.mpnsCertificate] The MPNS
+     * @param {string} [options.parameters.wnsCredential.packageSid] The package ID
+     * for this credential.
+     *
+     * @param {string} [options.parameters.wnsCredential.secretKey] The secret key.
+     *
+     * @param {string} [options.parameters.wnsCredential.windowsLiveEndpoint] The
+     * Windows Live endpoint.
+     *
+     * @param {object} [options.parameters.gcmCredential] The GcmCredential of the
+     * created NotificationHub
+     *
+     * @param {string} [options.parameters.gcmCredential.gcmEndpoint] The GCM
+     * endpoint.
+     *
+     * @param {string} [options.parameters.gcmCredential.googleApiKey] The Google
+     * API key.
+     *
+     * @param {object} [options.parameters.mpnsCredential] The MpnsCredential of
+     * the created NotificationHub
+     *
+     * @param {string} [options.parameters.mpnsCredential.mpnsCertificate] The MPNS
      * certificate.
      *
-     * @param {string} [parameters.mpnsCredential.certificateKey] The certificate
-     * key for this credential.
+     * @param {string} [options.parameters.mpnsCredential.certificateKey] The
+     * certificate key for this credential.
      *
-     * @param {string} [parameters.mpnsCredential.thumbprint] The Mpns certificate
-     * Thumbprint
+     * @param {string} [options.parameters.mpnsCredential.thumbprint] The Mpns
+     * certificate Thumbprint
      *
-     * @param {object} [parameters.admCredential] The AdmCredential of the created
-     * NotificationHub
-     *
-     * @param {string} [parameters.admCredential.clientId] The client identifier.
-     *
-     * @param {string} [parameters.admCredential.clientSecret] The credential
-     * secret access key.
-     *
-     * @param {string} [parameters.admCredential.authTokenUrl] The URL of the
-     * authorization token.
-     *
-     * @param {object} [parameters.baiduCredential] The BaiduCredential of the
+     * @param {object} [options.parameters.admCredential] The AdmCredential of the
      * created NotificationHub
      *
-     * @param {string} [parameters.baiduCredential.baiduApiKey] Baidu Api Key.
+     * @param {string} [options.parameters.admCredential.clientId] The client
+     * identifier.
      *
-     * @param {string} [parameters.baiduCredential.baiduEndPoint] Baidu Endpoint.
+     * @param {string} [options.parameters.admCredential.clientSecret] The
+     * credential secret access key.
      *
-     * @param {string} [parameters.baiduCredential.baiduSecretKey] Baidu Secret Key
+     * @param {string} [options.parameters.admCredential.authTokenUrl] The URL of
+     * the authorization token.
      *
-     * @param {string} [parameters.location] Resource location
+     * @param {object} [options.parameters.baiduCredential] The BaiduCredential of
+     * the created NotificationHub
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {string} [options.parameters.baiduCredential.baiduApiKey] Baidu Api
+     * Key.
      *
-     * @param {object} [parameters.sku] The sku of the created namespace
+     * @param {string} [options.parameters.baiduCredential.baiduEndPoint] Baidu
+     * Endpoint.
      *
-     * @param {string} parameters.sku.name Name of the notification hub sku.
-     * Possible values include: 'Free', 'Basic', 'Standard'
+     * @param {string} [options.parameters.baiduCredential.baiduSecretKey] Baidu
+     * Secret Key
      *
-     * @param {string} [parameters.sku.tier] The tier of particular sku
+     * @param {string} [options.parameters.location] Resource location
      *
-     * @param {string} [parameters.sku.size] The Sku size
+     * @param {object} [options.parameters.tags] Resource tags
      *
-     * @param {string} [parameters.sku.family] The Sku Family
+     * @param {object} [options.parameters.sku] The sku of the created namespace
      *
-     * @param {number} [parameters.sku.capacity] The capacity of the resource
+     * @param {string} options.parameters.sku.name Name of the notification hub
+     * sku. Possible values include: 'Free', 'Basic', 'Standard'
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {string} [options.parameters.sku.tier] The tier of particular sku
+     *
+     * @param {string} [options.parameters.sku.size] The Sku size
+     *
+     * @param {string} [options.parameters.sku.family] The Sku Family
+     *
+     * @param {number} [options.parameters.sku.capacity] The capacity of the
+     * resource
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1914,7 +1921,7 @@ export interface NotificationHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    patchWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: models.NotificationHubPatchParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationHubResource>>;
+    patchWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, notificationHubName: string, options?: { parameters? : models.NotificationHubPatchParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationHubResource>>;
 
     /**
      * Patch a NotificationHub in a namespace.
@@ -1925,114 +1932,121 @@ export interface NotificationHubs {
      *
      * @param {string} notificationHubName The notification hub name.
      *
-     * @param {object} parameters Parameters supplied to patch a NotificationHub
-     * Resource.
+     * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [parameters.notificationHubPatchParametersName] The
+     * @param {object} [options.parameters] Parameters supplied to patch a
+     * NotificationHub Resource.
+     *
+     * @param {string} [options.parameters.notificationHubPatchParametersName] The
      * NotificationHub name.
      *
-     * @param {string} [parameters.registrationTtl] The RegistrationTtl of the
-     * created NotificationHub
+     * @param {string} [options.parameters.registrationTtl] The RegistrationTtl of
+     * the created NotificationHub
      *
-     * @param {array} [parameters.authorizationRules] The AuthorizationRules of the
-     * created NotificationHub
+     * @param {array} [options.parameters.authorizationRules] The
+     * AuthorizationRules of the created NotificationHub
      *
-     * @param {object} [parameters.apnsCredential] The ApnsCredential of the
-     * created NotificationHub
+     * @param {object} [options.parameters.apnsCredential] The ApnsCredential of
+     * the created NotificationHub
      *
-     * @param {string} [parameters.apnsCredential.apnsCertificate] The APNS
+     * @param {string} [options.parameters.apnsCredential.apnsCertificate] The APNS
      * certificate.
      *
-     * @param {string} [parameters.apnsCredential.certificateKey] The certificate
-     * key.
+     * @param {string} [options.parameters.apnsCredential.certificateKey] The
+     * certificate key.
      *
-     * @param {string} [parameters.apnsCredential.endpoint] The endpoint of this
-     * credential.
+     * @param {string} [options.parameters.apnsCredential.endpoint] The endpoint of
+     * this credential.
      *
-     * @param {string} [parameters.apnsCredential.thumbprint] The Apns certificate
-     * Thumbprint
+     * @param {string} [options.parameters.apnsCredential.thumbprint] The Apns
+     * certificate Thumbprint
      *
-     * @param {string} [parameters.apnsCredential.keyId] A 10-character key
+     * @param {string} [options.parameters.apnsCredential.keyId] A 10-character key
      * identifier (kid) key, obtained from your developer account
      *
-     * @param {string} [parameters.apnsCredential.appName] The name of the
+     * @param {string} [options.parameters.apnsCredential.appName] The name of the
      * application
      *
-     * @param {string} [parameters.apnsCredential.appId] The issuer (iss)
+     * @param {string} [options.parameters.apnsCredential.appId] The issuer (iss)
      * registered claim key, whose value is your 10-character Team ID, obtained
      * from your developer account
      *
-     * @param {string} [parameters.apnsCredential.token] Provider Authentication
-     * Token, obtained through your developer account
+     * @param {string} [options.parameters.apnsCredential.token] Provider
+     * Authentication Token, obtained through your developer account
      *
-     * @param {object} [parameters.wnsCredential] The WnsCredential of the created
-     * NotificationHub
-     *
-     * @param {string} [parameters.wnsCredential.packageSid] The package ID for
-     * this credential.
-     *
-     * @param {string} [parameters.wnsCredential.secretKey] The secret key.
-     *
-     * @param {string} [parameters.wnsCredential.windowsLiveEndpoint] The Windows
-     * Live endpoint.
-     *
-     * @param {object} [parameters.gcmCredential] The GcmCredential of the created
-     * NotificationHub
-     *
-     * @param {string} [parameters.gcmCredential.gcmEndpoint] The GCM endpoint.
-     *
-     * @param {string} [parameters.gcmCredential.googleApiKey] The Google API key.
-     *
-     * @param {object} [parameters.mpnsCredential] The MpnsCredential of the
+     * @param {object} [options.parameters.wnsCredential] The WnsCredential of the
      * created NotificationHub
      *
-     * @param {string} [parameters.mpnsCredential.mpnsCertificate] The MPNS
+     * @param {string} [options.parameters.wnsCredential.packageSid] The package ID
+     * for this credential.
+     *
+     * @param {string} [options.parameters.wnsCredential.secretKey] The secret key.
+     *
+     * @param {string} [options.parameters.wnsCredential.windowsLiveEndpoint] The
+     * Windows Live endpoint.
+     *
+     * @param {object} [options.parameters.gcmCredential] The GcmCredential of the
+     * created NotificationHub
+     *
+     * @param {string} [options.parameters.gcmCredential.gcmEndpoint] The GCM
+     * endpoint.
+     *
+     * @param {string} [options.parameters.gcmCredential.googleApiKey] The Google
+     * API key.
+     *
+     * @param {object} [options.parameters.mpnsCredential] The MpnsCredential of
+     * the created NotificationHub
+     *
+     * @param {string} [options.parameters.mpnsCredential.mpnsCertificate] The MPNS
      * certificate.
      *
-     * @param {string} [parameters.mpnsCredential.certificateKey] The certificate
-     * key for this credential.
+     * @param {string} [options.parameters.mpnsCredential.certificateKey] The
+     * certificate key for this credential.
      *
-     * @param {string} [parameters.mpnsCredential.thumbprint] The Mpns certificate
-     * Thumbprint
+     * @param {string} [options.parameters.mpnsCredential.thumbprint] The Mpns
+     * certificate Thumbprint
      *
-     * @param {object} [parameters.admCredential] The AdmCredential of the created
-     * NotificationHub
-     *
-     * @param {string} [parameters.admCredential.clientId] The client identifier.
-     *
-     * @param {string} [parameters.admCredential.clientSecret] The credential
-     * secret access key.
-     *
-     * @param {string} [parameters.admCredential.authTokenUrl] The URL of the
-     * authorization token.
-     *
-     * @param {object} [parameters.baiduCredential] The BaiduCredential of the
+     * @param {object} [options.parameters.admCredential] The AdmCredential of the
      * created NotificationHub
      *
-     * @param {string} [parameters.baiduCredential.baiduApiKey] Baidu Api Key.
+     * @param {string} [options.parameters.admCredential.clientId] The client
+     * identifier.
      *
-     * @param {string} [parameters.baiduCredential.baiduEndPoint] Baidu Endpoint.
+     * @param {string} [options.parameters.admCredential.clientSecret] The
+     * credential secret access key.
      *
-     * @param {string} [parameters.baiduCredential.baiduSecretKey] Baidu Secret Key
+     * @param {string} [options.parameters.admCredential.authTokenUrl] The URL of
+     * the authorization token.
      *
-     * @param {string} [parameters.location] Resource location
+     * @param {object} [options.parameters.baiduCredential] The BaiduCredential of
+     * the created NotificationHub
      *
-     * @param {object} [parameters.tags] Resource tags
+     * @param {string} [options.parameters.baiduCredential.baiduApiKey] Baidu Api
+     * Key.
      *
-     * @param {object} [parameters.sku] The sku of the created namespace
+     * @param {string} [options.parameters.baiduCredential.baiduEndPoint] Baidu
+     * Endpoint.
      *
-     * @param {string} parameters.sku.name Name of the notification hub sku.
-     * Possible values include: 'Free', 'Basic', 'Standard'
+     * @param {string} [options.parameters.baiduCredential.baiduSecretKey] Baidu
+     * Secret Key
      *
-     * @param {string} [parameters.sku.tier] The tier of particular sku
+     * @param {string} [options.parameters.location] Resource location
      *
-     * @param {string} [parameters.sku.size] The Sku size
+     * @param {object} [options.parameters.tags] Resource tags
      *
-     * @param {string} [parameters.sku.family] The Sku Family
+     * @param {object} [options.parameters.sku] The sku of the created namespace
      *
-     * @param {number} [parameters.sku.capacity] The capacity of the resource
+     * @param {string} options.parameters.sku.name Name of the notification hub
+     * sku. Possible values include: 'Free', 'Basic', 'Standard'
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {string} [options.parameters.sku.tier] The tier of particular sku
+     *
+     * @param {string} [options.parameters.sku.size] The Sku size
+     *
+     * @param {string} [options.parameters.sku.family] The Sku Family
+     *
+     * @param {number} [options.parameters.sku.capacity] The capacity of the
+     * resource
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2060,9 +2074,9 @@ export interface NotificationHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    patch(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: models.NotificationHubPatchParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NotificationHubResource>;
-    patch(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: models.NotificationHubPatchParameters, callback: ServiceCallback<models.NotificationHubResource>): void;
-    patch(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: models.NotificationHubPatchParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NotificationHubResource>): void;
+    patch(resourceGroupName: string, namespaceName: string, notificationHubName: string, options?: { parameters? : models.NotificationHubPatchParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.NotificationHubResource>;
+    patch(resourceGroupName: string, namespaceName: string, notificationHubName: string, callback: ServiceCallback<models.NotificationHubResource>): void;
+    patch(resourceGroupName: string, namespaceName: string, notificationHubName: string, options: { parameters? : models.NotificationHubPatchParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NotificationHubResource>): void;
 
 
     /**
