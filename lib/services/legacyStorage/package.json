@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "Microsoft Azure Storage Client Library for node for back compat with older versions of node sdk",
   "tags": [
     "azure",
