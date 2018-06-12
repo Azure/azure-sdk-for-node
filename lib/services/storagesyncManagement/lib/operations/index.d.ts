@@ -149,7 +149,7 @@ export interface StorageSyncServices {
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
      *
-     * @param {object} body Storage Sync Service resource name.
+     * @param {object} parameters Storage Sync Service resource name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -162,7 +162,7 @@ export interface StorageSyncServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, body: models.StorageSyncService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncService>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncService>>;
 
     /**
      * Create a new StorageSyncService.
@@ -173,7 +173,7 @@ export interface StorageSyncServices {
      * @param {string} storageSyncServiceName Name of Storage Sync Service
      * resource.
      *
-     * @param {object} body Storage Sync Service resource name.
+     * @param {object} parameters Storage Sync Service resource name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -202,9 +202,9 @@ export interface StorageSyncServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, body: models.StorageSyncService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncService>;
-    create(resourceGroupName: string, storageSyncServiceName: string, body: models.StorageSyncService, callback: ServiceCallback<models.StorageSyncService>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, body: models.StorageSyncService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncService>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncService, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncService>;
+    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncService, callback: ServiceCallback<models.StorageSyncService>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, parameters: models.StorageSyncService, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncService>): void;
 
 
     /**
@@ -281,7 +281,7 @@ export interface StorageSyncServices {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.body] Storage Sync Service resource.
+     * @param {object} [options.parameters] Storage Sync Service resource.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -292,7 +292,7 @@ export interface StorageSyncServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, options?: { body? : models.StorageSyncService, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncService>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, options?: { parameters? : models.StorageSyncService, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageSyncService>>;
 
     /**
      * Patch a given StorageSyncService.
@@ -305,7 +305,7 @@ export interface StorageSyncServices {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.body] Storage Sync Service resource.
+     * @param {object} [options.parameters] Storage Sync Service resource.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -332,9 +332,9 @@ export interface StorageSyncServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, storageSyncServiceName: string, options?: { body? : models.StorageSyncService, customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncService>;
+    update(resourceGroupName: string, storageSyncServiceName: string, options?: { parameters? : models.StorageSyncService, customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageSyncService>;
     update(resourceGroupName: string, storageSyncServiceName: string, callback: ServiceCallback<models.StorageSyncService>): void;
-    update(resourceGroupName: string, storageSyncServiceName: string, options: { body? : models.StorageSyncService, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncService>): void;
+    update(resourceGroupName: string, storageSyncServiceName: string, options: { parameters? : models.StorageSyncService, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageSyncService>): void;
 
 
     /**
@@ -592,9 +592,9 @@ export interface SyncGroups {
      *
      * @param {string} syncGroupName Name of Sync Group resource.
      *
-     * @param {object} body Sync Group Body
+     * @param {object} parameters Sync Group Body
      *
-     * @param {string} [body.uniqueId] Unique Id
+     * @param {string} [parameters.uniqueId] Unique Id
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -607,7 +607,7 @@ export interface SyncGroups {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, body: models.SyncGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SyncGroup>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SyncGroup>>;
 
     /**
      * Create a new SyncGroup.
@@ -620,9 +620,9 @@ export interface SyncGroups {
      *
      * @param {string} syncGroupName Name of Sync Group resource.
      *
-     * @param {object} body Sync Group Body
+     * @param {object} parameters Sync Group Body
      *
-     * @param {string} [body.uniqueId] Unique Id
+     * @param {string} [parameters.uniqueId] Unique Id
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -651,9 +651,9 @@ export interface SyncGroups {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, body: models.SyncGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SyncGroup>;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, body: models.SyncGroup, callback: ServiceCallback<models.SyncGroup>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, body: models.SyncGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SyncGroup>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SyncGroup>;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroup, callback: ServiceCallback<models.SyncGroup>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, parameters: models.SyncGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SyncGroup>): void;
 
 
     /**
@@ -811,25 +811,29 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Cloud Endpoint resource.
+     * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [body.storageAccountKey] Storage Account access key.
+     * @param {string} [parameters.storageAccountKey] Storage Account access key.
      *
-     * @param {string} [body.storageAccount] Storage Account name.
+     * @param {string} [parameters.storageAccount] Storage Account name.
      *
-     * @param {string} [body.storageAccountResourceId] Storage Account Resource Id
+     * @param {string} [parameters.storageAccountResourceId] Storage Account
+     * Resource Id
      *
-     * @param {string} [body.storageAccountShareName] Storage Account Share name
+     * @param {string} [parameters.storageAccountShareName] Storage Account Share
+     * name
      *
-     * @param {string} [body.storageAccountTenantId] Storage Account Tenant Id
+     * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
+     * Id
      *
-     * @param {string} [body.partnershipId] Partnership Id
+     * @param {string} [parameters.partnershipId] Partnership Id
      *
-     * @param {string} [body.friendlyName] Friendly Name
+     * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {string} [body.provisioningState] CloudEndpoint Provisioning State
+     * @param {string} [parameters.provisioningState] CloudEndpoint Provisioning
+     * State
      *
-     * @param {string} [body.lastWorkflowId] CloudEndpoint lastWorkflowId
+     * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -842,7 +846,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpoint>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpoint>>;
 
     /**
      * Create a new CloudEndpoint.
@@ -857,25 +861,29 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Cloud Endpoint resource.
+     * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [body.storageAccountKey] Storage Account access key.
+     * @param {string} [parameters.storageAccountKey] Storage Account access key.
      *
-     * @param {string} [body.storageAccount] Storage Account name.
+     * @param {string} [parameters.storageAccount] Storage Account name.
      *
-     * @param {string} [body.storageAccountResourceId] Storage Account Resource Id
+     * @param {string} [parameters.storageAccountResourceId] Storage Account
+     * Resource Id
      *
-     * @param {string} [body.storageAccountShareName] Storage Account Share name
+     * @param {string} [parameters.storageAccountShareName] Storage Account Share
+     * name
      *
-     * @param {string} [body.storageAccountTenantId] Storage Account Tenant Id
+     * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
+     * Id
      *
-     * @param {string} [body.partnershipId] Partnership Id
+     * @param {string} [parameters.partnershipId] Partnership Id
      *
-     * @param {string} [body.friendlyName] Friendly Name
+     * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {string} [body.provisioningState] CloudEndpoint Provisioning State
+     * @param {string} [parameters.provisioningState] CloudEndpoint Provisioning
+     * State
      *
-     * @param {string} [body.lastWorkflowId] CloudEndpoint lastWorkflowId
+     * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -904,9 +912,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpoint>;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.CloudEndpoint, callback: ServiceCallback<models.CloudEndpoint>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.CloudEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpoint>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpoint>;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, callback: ServiceCallback<models.CloudEndpoint>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpoint>): void;
 
 
     /**
@@ -1130,9 +1138,9 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Backup request.
+     * @param {object} parameters Body of Backup request.
      *
-     * @param {string} [body.azureFileShare] Azure File Share.
+     * @param {string} [parameters.azureFileShare] Azure File Share.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1145,7 +1153,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    preBackupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    preBackupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Pre Backup a given CloudEndpoint.
@@ -1160,9 +1168,9 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Backup request.
+     * @param {object} parameters Body of Backup request.
      *
-     * @param {string} [body.azureFileShare] Azure File Share.
+     * @param {string} [parameters.azureFileShare] Azure File Share.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1190,9 +1198,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    preBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    preBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, callback: ServiceCallback<void>): void;
-    preBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    preBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    preBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, callback: ServiceCallback<void>): void;
+    preBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1208,9 +1216,9 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Backup request.
+     * @param {object} parameters Body of Backup request.
      *
-     * @param {string} [body.azureFileShare] Azure File Share.
+     * @param {string} [parameters.azureFileShare] Azure File Share.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1223,7 +1231,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    postBackupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PostBackupResponse>>;
+    postBackupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PostBackupResponse>>;
 
     /**
      * Post Backup a given CloudEndpoint.
@@ -1238,9 +1246,9 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Backup request.
+     * @param {object} parameters Body of Backup request.
      *
-     * @param {string} [body.azureFileShare] Azure File Share.
+     * @param {string} [parameters.azureFileShare] Azure File Share.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1269,9 +1277,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    postBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PostBackupResponse>;
-    postBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, callback: ServiceCallback<models.PostBackupResponse>): void;
-    postBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PostBackupResponse>): void;
+    postBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PostBackupResponse>;
+    postBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, callback: ServiceCallback<models.PostBackupResponse>): void;
+    postBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PostBackupResponse>): void;
 
 
     /**
@@ -1287,28 +1295,30 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Cloud Endpoint object.
+     * @param {object} parameters Body of Cloud Endpoint object.
      *
-     * @param {string} [body.partition] Pre Restore partition.
+     * @param {string} [parameters.partition] Pre Restore partition.
      *
-     * @param {string} [body.replicaGroup] Pre Restore replica group.
+     * @param {string} [parameters.replicaGroup] Pre Restore replica group.
      *
-     * @param {string} [body.requestId] Pre Restore request id.
+     * @param {string} [parameters.requestId] Pre Restore request id.
      *
-     * @param {string} [body.azureFileShareUri] Pre Restore Azure file share uri.
+     * @param {string} [parameters.azureFileShareUri] Pre Restore Azure file share
+     * uri.
      *
-     * @param {string} [body.status] Pre Restore Azure status.
+     * @param {string} [parameters.status] Pre Restore Azure status.
      *
-     * @param {string} [body.sourceAzureFileShareUri] Pre Restore Azure source
-     * azure file share uri.
+     * @param {string} [parameters.sourceAzureFileShareUri] Pre Restore Azure
+     * source azure file share uri.
      *
-     * @param {string} [body.backupMetadataPropertyBag] Pre Restore backup metadata
-     * property bag.
+     * @param {string} [parameters.backupMetadataPropertyBag] Pre Restore backup
+     * metadata property bag.
      *
-     * @param {array} [body.restoreFileSpec] Pre Restore restore file spec array.
+     * @param {array} [parameters.restoreFileSpec] Pre Restore restore file spec
+     * array.
      *
-     * @param {number} [body.pauseWaitForSyncDrainTimePeriodInSeconds] Pre Restore
-     * pause wait for sync drain time period in seconds.
+     * @param {number} [parameters.pauseWaitForSyncDrainTimePeriodInSeconds] Pre
+     * Restore pause wait for sync drain time period in seconds.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1321,7 +1331,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    preRestoreWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    preRestoreWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Pre Restore a given CloudEndpoint.
@@ -1336,28 +1346,30 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Cloud Endpoint object.
+     * @param {object} parameters Body of Cloud Endpoint object.
      *
-     * @param {string} [body.partition] Pre Restore partition.
+     * @param {string} [parameters.partition] Pre Restore partition.
      *
-     * @param {string} [body.replicaGroup] Pre Restore replica group.
+     * @param {string} [parameters.replicaGroup] Pre Restore replica group.
      *
-     * @param {string} [body.requestId] Pre Restore request id.
+     * @param {string} [parameters.requestId] Pre Restore request id.
      *
-     * @param {string} [body.azureFileShareUri] Pre Restore Azure file share uri.
+     * @param {string} [parameters.azureFileShareUri] Pre Restore Azure file share
+     * uri.
      *
-     * @param {string} [body.status] Pre Restore Azure status.
+     * @param {string} [parameters.status] Pre Restore Azure status.
      *
-     * @param {string} [body.sourceAzureFileShareUri] Pre Restore Azure source
-     * azure file share uri.
+     * @param {string} [parameters.sourceAzureFileShareUri] Pre Restore Azure
+     * source azure file share uri.
      *
-     * @param {string} [body.backupMetadataPropertyBag] Pre Restore backup metadata
-     * property bag.
+     * @param {string} [parameters.backupMetadataPropertyBag] Pre Restore backup
+     * metadata property bag.
      *
-     * @param {array} [body.restoreFileSpec] Pre Restore restore file spec array.
+     * @param {array} [parameters.restoreFileSpec] Pre Restore restore file spec
+     * array.
      *
-     * @param {number} [body.pauseWaitForSyncDrainTimePeriodInSeconds] Pre Restore
-     * pause wait for sync drain time period in seconds.
+     * @param {number} [parameters.pauseWaitForSyncDrainTimePeriodInSeconds] Pre
+     * Restore pause wait for sync drain time period in seconds.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1385,9 +1397,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    preRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    preRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, callback: ServiceCallback<void>): void;
-    preRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    preRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    preRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PreRestoreRequest, callback: ServiceCallback<void>): void;
+    preRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PreRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1473,24 +1485,27 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Cloud Endpoint object.
+     * @param {object} parameters Body of Cloud Endpoint object.
      *
-     * @param {string} [body.partition] Post Restore partition.
+     * @param {string} [parameters.partition] Post Restore partition.
      *
-     * @param {string} [body.replicaGroup] Post Restore replica group.
+     * @param {string} [parameters.replicaGroup] Post Restore replica group.
      *
-     * @param {string} [body.requestId] Post Restore request id.
+     * @param {string} [parameters.requestId] Post Restore request id.
      *
-     * @param {string} [body.azureFileShareUri] Post Restore Azure file share uri.
+     * @param {string} [parameters.azureFileShareUri] Post Restore Azure file share
+     * uri.
      *
-     * @param {string} [body.status] Post Restore Azure status.
+     * @param {string} [parameters.status] Post Restore Azure status.
      *
-     * @param {string} [body.sourceAzureFileShareUri] Post Restore Azure source
-     * azure file share uri.
+     * @param {string} [parameters.sourceAzureFileShareUri] Post Restore Azure
+     * source azure file share uri.
      *
-     * @param {string} [body.failedFileList] Post Restore Azure failed file list.
+     * @param {string} [parameters.failedFileList] Post Restore Azure failed file
+     * list.
      *
-     * @param {array} [body.restoreFileSpec] Post Restore restore file spec array.
+     * @param {array} [parameters.restoreFileSpec] Post Restore restore file spec
+     * array.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1503,7 +1518,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    postRestoreWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    postRestoreWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Post Restore a given CloudEndpoint.
@@ -1518,24 +1533,27 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Cloud Endpoint object.
+     * @param {object} parameters Body of Cloud Endpoint object.
      *
-     * @param {string} [body.partition] Post Restore partition.
+     * @param {string} [parameters.partition] Post Restore partition.
      *
-     * @param {string} [body.replicaGroup] Post Restore replica group.
+     * @param {string} [parameters.replicaGroup] Post Restore replica group.
      *
-     * @param {string} [body.requestId] Post Restore request id.
+     * @param {string} [parameters.requestId] Post Restore request id.
      *
-     * @param {string} [body.azureFileShareUri] Post Restore Azure file share uri.
+     * @param {string} [parameters.azureFileShareUri] Post Restore Azure file share
+     * uri.
      *
-     * @param {string} [body.status] Post Restore Azure status.
+     * @param {string} [parameters.status] Post Restore Azure status.
      *
-     * @param {string} [body.sourceAzureFileShareUri] Post Restore Azure source
-     * azure file share uri.
+     * @param {string} [parameters.sourceAzureFileShareUri] Post Restore Azure
+     * source azure file share uri.
      *
-     * @param {string} [body.failedFileList] Post Restore Azure failed file list.
+     * @param {string} [parameters.failedFileList] Post Restore Azure failed file
+     * list.
      *
-     * @param {array} [body.restoreFileSpec] Post Restore restore file spec array.
+     * @param {array} [parameters.restoreFileSpec] Post Restore restore file spec
+     * array.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1563,9 +1581,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    postRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    postRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, callback: ServiceCallback<void>): void;
-    postRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    postRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    postRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PostRestoreRequest, callback: ServiceCallback<void>): void;
+    postRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PostRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1581,25 +1599,29 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Cloud Endpoint resource.
+     * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [body.storageAccountKey] Storage Account access key.
+     * @param {string} [parameters.storageAccountKey] Storage Account access key.
      *
-     * @param {string} [body.storageAccount] Storage Account name.
+     * @param {string} [parameters.storageAccount] Storage Account name.
      *
-     * @param {string} [body.storageAccountResourceId] Storage Account Resource Id
+     * @param {string} [parameters.storageAccountResourceId] Storage Account
+     * Resource Id
      *
-     * @param {string} [body.storageAccountShareName] Storage Account Share name
+     * @param {string} [parameters.storageAccountShareName] Storage Account Share
+     * name
      *
-     * @param {string} [body.storageAccountTenantId] Storage Account Tenant Id
+     * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
+     * Id
      *
-     * @param {string} [body.partnershipId] Partnership Id
+     * @param {string} [parameters.partnershipId] Partnership Id
      *
-     * @param {string} [body.friendlyName] Friendly Name
+     * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {string} [body.provisioningState] CloudEndpoint Provisioning State
+     * @param {string} [parameters.provisioningState] CloudEndpoint Provisioning
+     * State
      *
-     * @param {string} [body.lastWorkflowId] CloudEndpoint lastWorkflowId
+     * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1612,7 +1634,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpoint>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CloudEndpoint>>;
 
     /**
      * Create a new CloudEndpoint.
@@ -1627,25 +1649,29 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Cloud Endpoint resource.
+     * @param {object} parameters Body of Cloud Endpoint resource.
      *
-     * @param {string} [body.storageAccountKey] Storage Account access key.
+     * @param {string} [parameters.storageAccountKey] Storage Account access key.
      *
-     * @param {string} [body.storageAccount] Storage Account name.
+     * @param {string} [parameters.storageAccount] Storage Account name.
      *
-     * @param {string} [body.storageAccountResourceId] Storage Account Resource Id
+     * @param {string} [parameters.storageAccountResourceId] Storage Account
+     * Resource Id
      *
-     * @param {string} [body.storageAccountShareName] Storage Account Share name
+     * @param {string} [parameters.storageAccountShareName] Storage Account Share
+     * name
      *
-     * @param {string} [body.storageAccountTenantId] Storage Account Tenant Id
+     * @param {string} [parameters.storageAccountTenantId] Storage Account Tenant
+     * Id
      *
-     * @param {string} [body.partnershipId] Partnership Id
+     * @param {string} [parameters.partnershipId] Partnership Id
      *
-     * @param {string} [body.friendlyName] Friendly Name
+     * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {string} [body.provisioningState] CloudEndpoint Provisioning State
+     * @param {string} [parameters.provisioningState] CloudEndpoint Provisioning
+     * State
      *
-     * @param {string} [body.lastWorkflowId] CloudEndpoint lastWorkflowId
+     * @param {string} [parameters.lastWorkflowId] CloudEndpoint lastWorkflowId
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1674,9 +1700,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpoint>;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.CloudEndpoint, callback: ServiceCallback<models.CloudEndpoint>): void;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.CloudEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpoint>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CloudEndpoint>;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, callback: ServiceCallback<models.CloudEndpoint>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.CloudEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CloudEndpoint>): void;
 
 
     /**
@@ -1762,9 +1788,9 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Backup request.
+     * @param {object} parameters Body of Backup request.
      *
-     * @param {string} [body.azureFileShare] Azure File Share.
+     * @param {string} [parameters.azureFileShare] Azure File Share.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1777,7 +1803,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPreBackupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPreBackupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Pre Backup a given CloudEndpoint.
@@ -1792,9 +1818,9 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Backup request.
+     * @param {object} parameters Body of Backup request.
      *
-     * @param {string} [body.azureFileShare] Azure File Share.
+     * @param {string} [parameters.azureFileShare] Azure File Share.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1822,9 +1848,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPreBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPreBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, callback: ServiceCallback<void>): void;
-    beginPreBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPreBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPreBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, callback: ServiceCallback<void>): void;
+    beginPreBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1840,9 +1866,9 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Backup request.
+     * @param {object} parameters Body of Backup request.
      *
-     * @param {string} [body.azureFileShare] Azure File Share.
+     * @param {string} [parameters.azureFileShare] Azure File Share.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1855,7 +1881,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPostBackupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PostBackupResponse>>;
+    beginPostBackupWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PostBackupResponse>>;
 
     /**
      * Post Backup a given CloudEndpoint.
@@ -1870,9 +1896,9 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Backup request.
+     * @param {object} parameters Body of Backup request.
      *
-     * @param {string} [body.azureFileShare] Azure File Share.
+     * @param {string} [parameters.azureFileShare] Azure File Share.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1901,9 +1927,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPostBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PostBackupResponse>;
-    beginPostBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, callback: ServiceCallback<models.PostBackupResponse>): void;
-    beginPostBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PostBackupResponse>): void;
+    beginPostBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PostBackupResponse>;
+    beginPostBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, callback: ServiceCallback<models.PostBackupResponse>): void;
+    beginPostBackup(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.BackupRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PostBackupResponse>): void;
 
 
     /**
@@ -1919,28 +1945,30 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Cloud Endpoint object.
+     * @param {object} parameters Body of Cloud Endpoint object.
      *
-     * @param {string} [body.partition] Pre Restore partition.
+     * @param {string} [parameters.partition] Pre Restore partition.
      *
-     * @param {string} [body.replicaGroup] Pre Restore replica group.
+     * @param {string} [parameters.replicaGroup] Pre Restore replica group.
      *
-     * @param {string} [body.requestId] Pre Restore request id.
+     * @param {string} [parameters.requestId] Pre Restore request id.
      *
-     * @param {string} [body.azureFileShareUri] Pre Restore Azure file share uri.
+     * @param {string} [parameters.azureFileShareUri] Pre Restore Azure file share
+     * uri.
      *
-     * @param {string} [body.status] Pre Restore Azure status.
+     * @param {string} [parameters.status] Pre Restore Azure status.
      *
-     * @param {string} [body.sourceAzureFileShareUri] Pre Restore Azure source
-     * azure file share uri.
+     * @param {string} [parameters.sourceAzureFileShareUri] Pre Restore Azure
+     * source azure file share uri.
      *
-     * @param {string} [body.backupMetadataPropertyBag] Pre Restore backup metadata
-     * property bag.
+     * @param {string} [parameters.backupMetadataPropertyBag] Pre Restore backup
+     * metadata property bag.
      *
-     * @param {array} [body.restoreFileSpec] Pre Restore restore file spec array.
+     * @param {array} [parameters.restoreFileSpec] Pre Restore restore file spec
+     * array.
      *
-     * @param {number} [body.pauseWaitForSyncDrainTimePeriodInSeconds] Pre Restore
-     * pause wait for sync drain time period in seconds.
+     * @param {number} [parameters.pauseWaitForSyncDrainTimePeriodInSeconds] Pre
+     * Restore pause wait for sync drain time period in seconds.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1953,7 +1981,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPreRestoreWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPreRestoreWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Pre Restore a given CloudEndpoint.
@@ -1968,28 +1996,30 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Cloud Endpoint object.
+     * @param {object} parameters Body of Cloud Endpoint object.
      *
-     * @param {string} [body.partition] Pre Restore partition.
+     * @param {string} [parameters.partition] Pre Restore partition.
      *
-     * @param {string} [body.replicaGroup] Pre Restore replica group.
+     * @param {string} [parameters.replicaGroup] Pre Restore replica group.
      *
-     * @param {string} [body.requestId] Pre Restore request id.
+     * @param {string} [parameters.requestId] Pre Restore request id.
      *
-     * @param {string} [body.azureFileShareUri] Pre Restore Azure file share uri.
+     * @param {string} [parameters.azureFileShareUri] Pre Restore Azure file share
+     * uri.
      *
-     * @param {string} [body.status] Pre Restore Azure status.
+     * @param {string} [parameters.status] Pre Restore Azure status.
      *
-     * @param {string} [body.sourceAzureFileShareUri] Pre Restore Azure source
-     * azure file share uri.
+     * @param {string} [parameters.sourceAzureFileShareUri] Pre Restore Azure
+     * source azure file share uri.
      *
-     * @param {string} [body.backupMetadataPropertyBag] Pre Restore backup metadata
-     * property bag.
+     * @param {string} [parameters.backupMetadataPropertyBag] Pre Restore backup
+     * metadata property bag.
      *
-     * @param {array} [body.restoreFileSpec] Pre Restore restore file spec array.
+     * @param {array} [parameters.restoreFileSpec] Pre Restore restore file spec
+     * array.
      *
-     * @param {number} [body.pauseWaitForSyncDrainTimePeriodInSeconds] Pre Restore
-     * pause wait for sync drain time period in seconds.
+     * @param {number} [parameters.pauseWaitForSyncDrainTimePeriodInSeconds] Pre
+     * Restore pause wait for sync drain time period in seconds.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2017,9 +2047,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPreRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPreRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, callback: ServiceCallback<void>): void;
-    beginPreRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PreRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPreRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PreRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPreRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PreRestoreRequest, callback: ServiceCallback<void>): void;
+    beginPreRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PreRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -2035,24 +2065,27 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Cloud Endpoint object.
+     * @param {object} parameters Body of Cloud Endpoint object.
      *
-     * @param {string} [body.partition] Post Restore partition.
+     * @param {string} [parameters.partition] Post Restore partition.
      *
-     * @param {string} [body.replicaGroup] Post Restore replica group.
+     * @param {string} [parameters.replicaGroup] Post Restore replica group.
      *
-     * @param {string} [body.requestId] Post Restore request id.
+     * @param {string} [parameters.requestId] Post Restore request id.
      *
-     * @param {string} [body.azureFileShareUri] Post Restore Azure file share uri.
+     * @param {string} [parameters.azureFileShareUri] Post Restore Azure file share
+     * uri.
      *
-     * @param {string} [body.status] Post Restore Azure status.
+     * @param {string} [parameters.status] Post Restore Azure status.
      *
-     * @param {string} [body.sourceAzureFileShareUri] Post Restore Azure source
-     * azure file share uri.
+     * @param {string} [parameters.sourceAzureFileShareUri] Post Restore Azure
+     * source azure file share uri.
      *
-     * @param {string} [body.failedFileList] Post Restore Azure failed file list.
+     * @param {string} [parameters.failedFileList] Post Restore Azure failed file
+     * list.
      *
-     * @param {array} [body.restoreFileSpec] Post Restore restore file spec array.
+     * @param {array} [parameters.restoreFileSpec] Post Restore restore file spec
+     * array.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2065,7 +2098,7 @@ export interface CloudEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPostRestoreWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginPostRestoreWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Post Restore a given CloudEndpoint.
@@ -2080,24 +2113,27 @@ export interface CloudEndpoints {
      *
      * @param {string} cloudEndpointName Name of Cloud Endpoint object.
      *
-     * @param {object} body Body of Cloud Endpoint object.
+     * @param {object} parameters Body of Cloud Endpoint object.
      *
-     * @param {string} [body.partition] Post Restore partition.
+     * @param {string} [parameters.partition] Post Restore partition.
      *
-     * @param {string} [body.replicaGroup] Post Restore replica group.
+     * @param {string} [parameters.replicaGroup] Post Restore replica group.
      *
-     * @param {string} [body.requestId] Post Restore request id.
+     * @param {string} [parameters.requestId] Post Restore request id.
      *
-     * @param {string} [body.azureFileShareUri] Post Restore Azure file share uri.
+     * @param {string} [parameters.azureFileShareUri] Post Restore Azure file share
+     * uri.
      *
-     * @param {string} [body.status] Post Restore Azure status.
+     * @param {string} [parameters.status] Post Restore Azure status.
      *
-     * @param {string} [body.sourceAzureFileShareUri] Post Restore Azure source
-     * azure file share uri.
+     * @param {string} [parameters.sourceAzureFileShareUri] Post Restore Azure
+     * source azure file share uri.
      *
-     * @param {string} [body.failedFileList] Post Restore Azure failed file list.
+     * @param {string} [parameters.failedFileList] Post Restore Azure failed file
+     * list.
      *
-     * @param {array} [body.restoreFileSpec] Post Restore restore file spec array.
+     * @param {array} [parameters.restoreFileSpec] Post Restore restore file spec
+     * array.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2125,9 +2161,9 @@ export interface CloudEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPostRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPostRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, callback: ServiceCallback<void>): void;
-    beginPostRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, body: models.PostRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginPostRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PostRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPostRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PostRestoreRequest, callback: ServiceCallback<void>): void;
+    beginPostRestore(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, cloudEndpointName: string, parameters: models.PostRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -2152,51 +2188,56 @@ export interface ServerEndpoints {
      *
      * @param {string} serverEndpointName Name of Server Endpoint object.
      *
-     * @param {object} body Body of Server Endpoint object.
+     * @param {object} parameters Body of Server Endpoint object.
      *
-     * @param {string} [body.serverLocalPath] Server Local path.
+     * @param {string} [parameters.serverLocalPath] Server Local path.
      *
-     * @param {string} [body.cloudTiering] Cloud Tiering. Possible values include:
-     * 'on', 'off'
+     * @param {string} [parameters.cloudTiering] Cloud Tiering. Possible values
+     * include: 'on', 'off'
      *
-     * @param {number} [body.volumeFreeSpacePercent] Level of free space to be
-     * maintained by Cloud Tiering if it is enabled.
+     * @param {number} [parameters.volumeFreeSpacePercent] Level of free space to
+     * be maintained by Cloud Tiering if it is enabled.
      *
-     * @param {string} [body.friendlyName] Friendly Name
+     * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {date} [body.lastSyncSuccess] Last Sync Success
+     * @param {date} [parameters.lastSyncSuccess] Last Sync Success
      *
-     * @param {string} [body.syncErrorState] Sync Error State
+     * @param {string} [parameters.syncErrorState] Sync Error State
      *
-     * @param {date} [body.syncErrorStateTimestamp] Sync Error State Timestamp
+     * @param {date} [parameters.syncErrorStateTimestamp] Sync Error State
+     * Timestamp
      *
-     * @param {string} [body.syncErrorDirection] Sync Error Direction. Possible
-     * values include: 'none', 'initialize', 'download', 'upload', 'recall'
+     * @param {string} [parameters.syncErrorDirection] Sync Error Direction.
+     * Possible values include: 'none', 'initialize', 'download', 'upload',
+     * 'recall'
      *
-     * @param {number} [body.itemUploadErrorCount] Item Upload Error Count.
+     * @param {number} [parameters.itemUploadErrorCount] Item Upload Error Count.
      *
-     * @param {number} [body.itemDownloadErrorCount] Item download error count.
+     * @param {number} [parameters.itemDownloadErrorCount] Item download error
+     * count.
      *
-     * @param {string} [body.syncErrorContext] sync error context.
+     * @param {string} [parameters.syncErrorContext] sync error context.
      *
-     * @param {string} [body.currentProgressType] current progress type. Possible
-     * values include: 'none', 'initialize', 'download', 'upload', 'recall'
+     * @param {string} [parameters.currentProgressType] current progress type.
+     * Possible values include: 'none', 'initialize', 'download', 'upload',
+     * 'recall'
      *
-     * @param {number} [body.itemProgressCount] Item Progress Count
+     * @param {number} [parameters.itemProgressCount] Item Progress Count
      *
-     * @param {number} [body.itemTotalCount] Item Total Count
+     * @param {number} [parameters.itemTotalCount] Item Total Count
      *
-     * @param {number} [body.byteProgress] Bytes in progress
+     * @param {number} [parameters.byteProgress] Bytes in progress
      *
-     * @param {number} [body.totalProgress] Total progress
+     * @param {number} [parameters.totalProgress] Total progress
      *
-     * @param {number} [body.byteTotal] Bytes total
+     * @param {number} [parameters.byteTotal] Bytes total
      *
-     * @param {string} [body.serverResourceId] Server Resource Id.
+     * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
-     * @param {string} [body.provisioningState] ServerEndpoint Provisioning State
+     * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
+     * State
      *
-     * @param {string} [body.lastWorkflowId] ServerEndpoint lastWorkflowId
+     * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2209,7 +2250,7 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, body: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
 
     /**
      * Create a new ServerEndpoint.
@@ -2224,51 +2265,56 @@ export interface ServerEndpoints {
      *
      * @param {string} serverEndpointName Name of Server Endpoint object.
      *
-     * @param {object} body Body of Server Endpoint object.
+     * @param {object} parameters Body of Server Endpoint object.
      *
-     * @param {string} [body.serverLocalPath] Server Local path.
+     * @param {string} [parameters.serverLocalPath] Server Local path.
      *
-     * @param {string} [body.cloudTiering] Cloud Tiering. Possible values include:
-     * 'on', 'off'
+     * @param {string} [parameters.cloudTiering] Cloud Tiering. Possible values
+     * include: 'on', 'off'
      *
-     * @param {number} [body.volumeFreeSpacePercent] Level of free space to be
-     * maintained by Cloud Tiering if it is enabled.
+     * @param {number} [parameters.volumeFreeSpacePercent] Level of free space to
+     * be maintained by Cloud Tiering if it is enabled.
      *
-     * @param {string} [body.friendlyName] Friendly Name
+     * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {date} [body.lastSyncSuccess] Last Sync Success
+     * @param {date} [parameters.lastSyncSuccess] Last Sync Success
      *
-     * @param {string} [body.syncErrorState] Sync Error State
+     * @param {string} [parameters.syncErrorState] Sync Error State
      *
-     * @param {date} [body.syncErrorStateTimestamp] Sync Error State Timestamp
+     * @param {date} [parameters.syncErrorStateTimestamp] Sync Error State
+     * Timestamp
      *
-     * @param {string} [body.syncErrorDirection] Sync Error Direction. Possible
-     * values include: 'none', 'initialize', 'download', 'upload', 'recall'
+     * @param {string} [parameters.syncErrorDirection] Sync Error Direction.
+     * Possible values include: 'none', 'initialize', 'download', 'upload',
+     * 'recall'
      *
-     * @param {number} [body.itemUploadErrorCount] Item Upload Error Count.
+     * @param {number} [parameters.itemUploadErrorCount] Item Upload Error Count.
      *
-     * @param {number} [body.itemDownloadErrorCount] Item download error count.
+     * @param {number} [parameters.itemDownloadErrorCount] Item download error
+     * count.
      *
-     * @param {string} [body.syncErrorContext] sync error context.
+     * @param {string} [parameters.syncErrorContext] sync error context.
      *
-     * @param {string} [body.currentProgressType] current progress type. Possible
-     * values include: 'none', 'initialize', 'download', 'upload', 'recall'
+     * @param {string} [parameters.currentProgressType] current progress type.
+     * Possible values include: 'none', 'initialize', 'download', 'upload',
+     * 'recall'
      *
-     * @param {number} [body.itemProgressCount] Item Progress Count
+     * @param {number} [parameters.itemProgressCount] Item Progress Count
      *
-     * @param {number} [body.itemTotalCount] Item Total Count
+     * @param {number} [parameters.itemTotalCount] Item Total Count
      *
-     * @param {number} [body.byteProgress] Bytes in progress
+     * @param {number} [parameters.byteProgress] Bytes in progress
      *
-     * @param {number} [body.totalProgress] Total progress
+     * @param {number} [parameters.totalProgress] Total progress
      *
-     * @param {number} [body.byteTotal] Bytes total
+     * @param {number} [parameters.byteTotal] Bytes total
      *
-     * @param {string} [body.serverResourceId] Server Resource Id.
+     * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
-     * @param {string} [body.provisioningState] ServerEndpoint Provisioning State
+     * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
+     * State
      *
-     * @param {string} [body.lastWorkflowId] ServerEndpoint lastWorkflowId
+     * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2297,9 +2343,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, body: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, body: models.ServerEndpoint, callback: ServiceCallback<models.ServerEndpoint>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, body: models.ServerEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, callback: ServiceCallback<models.ServerEndpoint>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
 
 
     /**
@@ -2317,57 +2363,59 @@ export interface ServerEndpoints {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.body] Any of the properties applicable in PUT
+     * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {string} [options.body.serverLocalPath] Server Local path.
+     * @param {string} [options.parameters.serverLocalPath] Server Local path.
      *
-     * @param {string} [options.body.cloudTiering] Cloud Tiering. Possible values
-     * include: 'on', 'off'
+     * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
+     * values include: 'on', 'off'
      *
-     * @param {number} [options.body.volumeFreeSpacePercent] Level of free space to
-     * be maintained by Cloud Tiering if it is enabled.
+     * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
+     * space to be maintained by Cloud Tiering if it is enabled.
      *
-     * @param {string} [options.body.friendlyName] Friendly Name
+     * @param {string} [options.parameters.friendlyName] Friendly Name
      *
-     * @param {date} [options.body.lastSyncSuccess] Last Sync Success
+     * @param {date} [options.parameters.lastSyncSuccess] Last Sync Success
      *
-     * @param {string} [options.body.syncErrorState] Sync Error State
+     * @param {string} [options.parameters.syncErrorState] Sync Error State
      *
-     * @param {date} [options.body.syncErrorStateTimestamp] Sync Error State
+     * @param {date} [options.parameters.syncErrorStateTimestamp] Sync Error State
      * Timestamp
      *
-     * @param {string} [options.body.syncErrorDirection] Sync Error Direction.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
+     * @param {string} [options.parameters.syncErrorDirection] Sync Error
+     * Direction. Possible values include: 'none', 'initialize', 'download',
+     * 'upload', 'recall'
+     *
+     * @param {number} [options.parameters.itemUploadErrorCount] Item Upload Error
+     * Count.
+     *
+     * @param {number} [options.parameters.itemDownloadErrorCount] Item download
+     * error count.
+     *
+     * @param {string} [options.parameters.syncErrorContext] sync error context.
+     *
+     * @param {string} [options.parameters.currentProgressType] current progress
+     * type. Possible values include: 'none', 'initialize', 'download', 'upload',
      * 'recall'
      *
-     * @param {number} [options.body.itemUploadErrorCount] Item Upload Error Count.
+     * @param {number} [options.parameters.itemProgressCount] Item Progress Count
      *
-     * @param {number} [options.body.itemDownloadErrorCount] Item download error
-     * count.
+     * @param {number} [options.parameters.itemTotalCount] Item Total Count
      *
-     * @param {string} [options.body.syncErrorContext] sync error context.
+     * @param {number} [options.parameters.byteProgress] Bytes in progress
      *
-     * @param {string} [options.body.currentProgressType] current progress type.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
+     * @param {number} [options.parameters.totalProgress] Total progress
      *
-     * @param {number} [options.body.itemProgressCount] Item Progress Count
+     * @param {number} [options.parameters.byteTotal] Bytes total
      *
-     * @param {number} [options.body.itemTotalCount] Item Total Count
+     * @param {string} [options.parameters.serverResourceId] Server Resource Id.
      *
-     * @param {number} [options.body.byteProgress] Bytes in progress
+     * @param {string} [options.parameters.provisioningState] ServerEndpoint
+     * Provisioning State
      *
-     * @param {number} [options.body.totalProgress] Total progress
-     *
-     * @param {number} [options.body.byteTotal] Bytes total
-     *
-     * @param {string} [options.body.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [options.body.provisioningState] ServerEndpoint Provisioning
-     * State
-     *
-     * @param {string} [options.body.lastWorkflowId] ServerEndpoint lastWorkflowId
+     * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
+     * lastWorkflowId
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2378,7 +2426,7 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { body? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
 
     /**
      * Patch a given ServerEndpoint.
@@ -2395,57 +2443,59 @@ export interface ServerEndpoints {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.body] Any of the properties applicable in PUT
+     * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {string} [options.body.serverLocalPath] Server Local path.
+     * @param {string} [options.parameters.serverLocalPath] Server Local path.
      *
-     * @param {string} [options.body.cloudTiering] Cloud Tiering. Possible values
-     * include: 'on', 'off'
+     * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
+     * values include: 'on', 'off'
      *
-     * @param {number} [options.body.volumeFreeSpacePercent] Level of free space to
-     * be maintained by Cloud Tiering if it is enabled.
+     * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
+     * space to be maintained by Cloud Tiering if it is enabled.
      *
-     * @param {string} [options.body.friendlyName] Friendly Name
+     * @param {string} [options.parameters.friendlyName] Friendly Name
      *
-     * @param {date} [options.body.lastSyncSuccess] Last Sync Success
+     * @param {date} [options.parameters.lastSyncSuccess] Last Sync Success
      *
-     * @param {string} [options.body.syncErrorState] Sync Error State
+     * @param {string} [options.parameters.syncErrorState] Sync Error State
      *
-     * @param {date} [options.body.syncErrorStateTimestamp] Sync Error State
+     * @param {date} [options.parameters.syncErrorStateTimestamp] Sync Error State
      * Timestamp
      *
-     * @param {string} [options.body.syncErrorDirection] Sync Error Direction.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
+     * @param {string} [options.parameters.syncErrorDirection] Sync Error
+     * Direction. Possible values include: 'none', 'initialize', 'download',
+     * 'upload', 'recall'
+     *
+     * @param {number} [options.parameters.itemUploadErrorCount] Item Upload Error
+     * Count.
+     *
+     * @param {number} [options.parameters.itemDownloadErrorCount] Item download
+     * error count.
+     *
+     * @param {string} [options.parameters.syncErrorContext] sync error context.
+     *
+     * @param {string} [options.parameters.currentProgressType] current progress
+     * type. Possible values include: 'none', 'initialize', 'download', 'upload',
      * 'recall'
      *
-     * @param {number} [options.body.itemUploadErrorCount] Item Upload Error Count.
+     * @param {number} [options.parameters.itemProgressCount] Item Progress Count
      *
-     * @param {number} [options.body.itemDownloadErrorCount] Item download error
-     * count.
+     * @param {number} [options.parameters.itemTotalCount] Item Total Count
      *
-     * @param {string} [options.body.syncErrorContext] sync error context.
+     * @param {number} [options.parameters.byteProgress] Bytes in progress
      *
-     * @param {string} [options.body.currentProgressType] current progress type.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
+     * @param {number} [options.parameters.totalProgress] Total progress
      *
-     * @param {number} [options.body.itemProgressCount] Item Progress Count
+     * @param {number} [options.parameters.byteTotal] Bytes total
      *
-     * @param {number} [options.body.itemTotalCount] Item Total Count
+     * @param {string} [options.parameters.serverResourceId] Server Resource Id.
      *
-     * @param {number} [options.body.byteProgress] Bytes in progress
+     * @param {string} [options.parameters.provisioningState] ServerEndpoint
+     * Provisioning State
      *
-     * @param {number} [options.body.totalProgress] Total progress
-     *
-     * @param {number} [options.body.byteTotal] Bytes total
-     *
-     * @param {string} [options.body.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [options.body.provisioningState] ServerEndpoint Provisioning
-     * State
-     *
-     * @param {string} [options.body.lastWorkflowId] ServerEndpoint lastWorkflowId
+     * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
+     * lastWorkflowId
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2472,9 +2522,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { body? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
+    update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
     update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<models.ServerEndpoint>): void;
-    update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { body? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
+    update(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
 
 
     /**
@@ -2768,51 +2818,56 @@ export interface ServerEndpoints {
      *
      * @param {string} serverEndpointName Name of Server Endpoint object.
      *
-     * @param {object} body Body of Server Endpoint object.
+     * @param {object} parameters Body of Server Endpoint object.
      *
-     * @param {string} [body.serverLocalPath] Server Local path.
+     * @param {string} [parameters.serverLocalPath] Server Local path.
      *
-     * @param {string} [body.cloudTiering] Cloud Tiering. Possible values include:
-     * 'on', 'off'
+     * @param {string} [parameters.cloudTiering] Cloud Tiering. Possible values
+     * include: 'on', 'off'
      *
-     * @param {number} [body.volumeFreeSpacePercent] Level of free space to be
-     * maintained by Cloud Tiering if it is enabled.
+     * @param {number} [parameters.volumeFreeSpacePercent] Level of free space to
+     * be maintained by Cloud Tiering if it is enabled.
      *
-     * @param {string} [body.friendlyName] Friendly Name
+     * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {date} [body.lastSyncSuccess] Last Sync Success
+     * @param {date} [parameters.lastSyncSuccess] Last Sync Success
      *
-     * @param {string} [body.syncErrorState] Sync Error State
+     * @param {string} [parameters.syncErrorState] Sync Error State
      *
-     * @param {date} [body.syncErrorStateTimestamp] Sync Error State Timestamp
+     * @param {date} [parameters.syncErrorStateTimestamp] Sync Error State
+     * Timestamp
      *
-     * @param {string} [body.syncErrorDirection] Sync Error Direction. Possible
-     * values include: 'none', 'initialize', 'download', 'upload', 'recall'
+     * @param {string} [parameters.syncErrorDirection] Sync Error Direction.
+     * Possible values include: 'none', 'initialize', 'download', 'upload',
+     * 'recall'
      *
-     * @param {number} [body.itemUploadErrorCount] Item Upload Error Count.
+     * @param {number} [parameters.itemUploadErrorCount] Item Upload Error Count.
      *
-     * @param {number} [body.itemDownloadErrorCount] Item download error count.
+     * @param {number} [parameters.itemDownloadErrorCount] Item download error
+     * count.
      *
-     * @param {string} [body.syncErrorContext] sync error context.
+     * @param {string} [parameters.syncErrorContext] sync error context.
      *
-     * @param {string} [body.currentProgressType] current progress type. Possible
-     * values include: 'none', 'initialize', 'download', 'upload', 'recall'
+     * @param {string} [parameters.currentProgressType] current progress type.
+     * Possible values include: 'none', 'initialize', 'download', 'upload',
+     * 'recall'
      *
-     * @param {number} [body.itemProgressCount] Item Progress Count
+     * @param {number} [parameters.itemProgressCount] Item Progress Count
      *
-     * @param {number} [body.itemTotalCount] Item Total Count
+     * @param {number} [parameters.itemTotalCount] Item Total Count
      *
-     * @param {number} [body.byteProgress] Bytes in progress
+     * @param {number} [parameters.byteProgress] Bytes in progress
      *
-     * @param {number} [body.totalProgress] Total progress
+     * @param {number} [parameters.totalProgress] Total progress
      *
-     * @param {number} [body.byteTotal] Bytes total
+     * @param {number} [parameters.byteTotal] Bytes total
      *
-     * @param {string} [body.serverResourceId] Server Resource Id.
+     * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
-     * @param {string} [body.provisioningState] ServerEndpoint Provisioning State
+     * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
+     * State
      *
-     * @param {string} [body.lastWorkflowId] ServerEndpoint lastWorkflowId
+     * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2825,7 +2880,7 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, body: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
 
     /**
      * Create a new ServerEndpoint.
@@ -2840,51 +2895,56 @@ export interface ServerEndpoints {
      *
      * @param {string} serverEndpointName Name of Server Endpoint object.
      *
-     * @param {object} body Body of Server Endpoint object.
+     * @param {object} parameters Body of Server Endpoint object.
      *
-     * @param {string} [body.serverLocalPath] Server Local path.
+     * @param {string} [parameters.serverLocalPath] Server Local path.
      *
-     * @param {string} [body.cloudTiering] Cloud Tiering. Possible values include:
-     * 'on', 'off'
+     * @param {string} [parameters.cloudTiering] Cloud Tiering. Possible values
+     * include: 'on', 'off'
      *
-     * @param {number} [body.volumeFreeSpacePercent] Level of free space to be
-     * maintained by Cloud Tiering if it is enabled.
+     * @param {number} [parameters.volumeFreeSpacePercent] Level of free space to
+     * be maintained by Cloud Tiering if it is enabled.
      *
-     * @param {string} [body.friendlyName] Friendly Name
+     * @param {string} [parameters.friendlyName] Friendly Name
      *
-     * @param {date} [body.lastSyncSuccess] Last Sync Success
+     * @param {date} [parameters.lastSyncSuccess] Last Sync Success
      *
-     * @param {string} [body.syncErrorState] Sync Error State
+     * @param {string} [parameters.syncErrorState] Sync Error State
      *
-     * @param {date} [body.syncErrorStateTimestamp] Sync Error State Timestamp
+     * @param {date} [parameters.syncErrorStateTimestamp] Sync Error State
+     * Timestamp
      *
-     * @param {string} [body.syncErrorDirection] Sync Error Direction. Possible
-     * values include: 'none', 'initialize', 'download', 'upload', 'recall'
+     * @param {string} [parameters.syncErrorDirection] Sync Error Direction.
+     * Possible values include: 'none', 'initialize', 'download', 'upload',
+     * 'recall'
      *
-     * @param {number} [body.itemUploadErrorCount] Item Upload Error Count.
+     * @param {number} [parameters.itemUploadErrorCount] Item Upload Error Count.
      *
-     * @param {number} [body.itemDownloadErrorCount] Item download error count.
+     * @param {number} [parameters.itemDownloadErrorCount] Item download error
+     * count.
      *
-     * @param {string} [body.syncErrorContext] sync error context.
+     * @param {string} [parameters.syncErrorContext] sync error context.
      *
-     * @param {string} [body.currentProgressType] current progress type. Possible
-     * values include: 'none', 'initialize', 'download', 'upload', 'recall'
+     * @param {string} [parameters.currentProgressType] current progress type.
+     * Possible values include: 'none', 'initialize', 'download', 'upload',
+     * 'recall'
      *
-     * @param {number} [body.itemProgressCount] Item Progress Count
+     * @param {number} [parameters.itemProgressCount] Item Progress Count
      *
-     * @param {number} [body.itemTotalCount] Item Total Count
+     * @param {number} [parameters.itemTotalCount] Item Total Count
      *
-     * @param {number} [body.byteProgress] Bytes in progress
+     * @param {number} [parameters.byteProgress] Bytes in progress
      *
-     * @param {number} [body.totalProgress] Total progress
+     * @param {number} [parameters.totalProgress] Total progress
      *
-     * @param {number} [body.byteTotal] Bytes total
+     * @param {number} [parameters.byteTotal] Bytes total
      *
-     * @param {string} [body.serverResourceId] Server Resource Id.
+     * @param {string} [parameters.serverResourceId] Server Resource Id.
      *
-     * @param {string} [body.provisioningState] ServerEndpoint Provisioning State
+     * @param {string} [parameters.provisioningState] ServerEndpoint Provisioning
+     * State
      *
-     * @param {string} [body.lastWorkflowId] ServerEndpoint lastWorkflowId
+     * @param {string} [parameters.lastWorkflowId] ServerEndpoint lastWorkflowId
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2913,9 +2973,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, body: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, body: models.ServerEndpoint, callback: ServiceCallback<models.ServerEndpoint>): void;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, body: models.ServerEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, callback: ServiceCallback<models.ServerEndpoint>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, parameters: models.ServerEndpoint, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
 
 
     /**
@@ -2933,57 +2993,59 @@ export interface ServerEndpoints {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.body] Any of the properties applicable in PUT
+     * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {string} [options.body.serverLocalPath] Server Local path.
+     * @param {string} [options.parameters.serverLocalPath] Server Local path.
      *
-     * @param {string} [options.body.cloudTiering] Cloud Tiering. Possible values
-     * include: 'on', 'off'
+     * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
+     * values include: 'on', 'off'
      *
-     * @param {number} [options.body.volumeFreeSpacePercent] Level of free space to
-     * be maintained by Cloud Tiering if it is enabled.
+     * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
+     * space to be maintained by Cloud Tiering if it is enabled.
      *
-     * @param {string} [options.body.friendlyName] Friendly Name
+     * @param {string} [options.parameters.friendlyName] Friendly Name
      *
-     * @param {date} [options.body.lastSyncSuccess] Last Sync Success
+     * @param {date} [options.parameters.lastSyncSuccess] Last Sync Success
      *
-     * @param {string} [options.body.syncErrorState] Sync Error State
+     * @param {string} [options.parameters.syncErrorState] Sync Error State
      *
-     * @param {date} [options.body.syncErrorStateTimestamp] Sync Error State
+     * @param {date} [options.parameters.syncErrorStateTimestamp] Sync Error State
      * Timestamp
      *
-     * @param {string} [options.body.syncErrorDirection] Sync Error Direction.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
+     * @param {string} [options.parameters.syncErrorDirection] Sync Error
+     * Direction. Possible values include: 'none', 'initialize', 'download',
+     * 'upload', 'recall'
+     *
+     * @param {number} [options.parameters.itemUploadErrorCount] Item Upload Error
+     * Count.
+     *
+     * @param {number} [options.parameters.itemDownloadErrorCount] Item download
+     * error count.
+     *
+     * @param {string} [options.parameters.syncErrorContext] sync error context.
+     *
+     * @param {string} [options.parameters.currentProgressType] current progress
+     * type. Possible values include: 'none', 'initialize', 'download', 'upload',
      * 'recall'
      *
-     * @param {number} [options.body.itemUploadErrorCount] Item Upload Error Count.
+     * @param {number} [options.parameters.itemProgressCount] Item Progress Count
      *
-     * @param {number} [options.body.itemDownloadErrorCount] Item download error
-     * count.
+     * @param {number} [options.parameters.itemTotalCount] Item Total Count
      *
-     * @param {string} [options.body.syncErrorContext] sync error context.
+     * @param {number} [options.parameters.byteProgress] Bytes in progress
      *
-     * @param {string} [options.body.currentProgressType] current progress type.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
+     * @param {number} [options.parameters.totalProgress] Total progress
      *
-     * @param {number} [options.body.itemProgressCount] Item Progress Count
+     * @param {number} [options.parameters.byteTotal] Bytes total
      *
-     * @param {number} [options.body.itemTotalCount] Item Total Count
+     * @param {string} [options.parameters.serverResourceId] Server Resource Id.
      *
-     * @param {number} [options.body.byteProgress] Bytes in progress
+     * @param {string} [options.parameters.provisioningState] ServerEndpoint
+     * Provisioning State
      *
-     * @param {number} [options.body.totalProgress] Total progress
-     *
-     * @param {number} [options.body.byteTotal] Bytes total
-     *
-     * @param {string} [options.body.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [options.body.provisioningState] ServerEndpoint Provisioning
-     * State
-     *
-     * @param {string} [options.body.lastWorkflowId] ServerEndpoint lastWorkflowId
+     * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
+     * lastWorkflowId
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2994,7 +3056,7 @@ export interface ServerEndpoints {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { body? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerEndpoint>>;
 
     /**
      * Patch a given ServerEndpoint.
@@ -3011,57 +3073,59 @@ export interface ServerEndpoints {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.body] Any of the properties applicable in PUT
+     * @param {object} [options.parameters] Any of the properties applicable in PUT
      * request.
      *
-     * @param {string} [options.body.serverLocalPath] Server Local path.
+     * @param {string} [options.parameters.serverLocalPath] Server Local path.
      *
-     * @param {string} [options.body.cloudTiering] Cloud Tiering. Possible values
-     * include: 'on', 'off'
+     * @param {string} [options.parameters.cloudTiering] Cloud Tiering. Possible
+     * values include: 'on', 'off'
      *
-     * @param {number} [options.body.volumeFreeSpacePercent] Level of free space to
-     * be maintained by Cloud Tiering if it is enabled.
+     * @param {number} [options.parameters.volumeFreeSpacePercent] Level of free
+     * space to be maintained by Cloud Tiering if it is enabled.
      *
-     * @param {string} [options.body.friendlyName] Friendly Name
+     * @param {string} [options.parameters.friendlyName] Friendly Name
      *
-     * @param {date} [options.body.lastSyncSuccess] Last Sync Success
+     * @param {date} [options.parameters.lastSyncSuccess] Last Sync Success
      *
-     * @param {string} [options.body.syncErrorState] Sync Error State
+     * @param {string} [options.parameters.syncErrorState] Sync Error State
      *
-     * @param {date} [options.body.syncErrorStateTimestamp] Sync Error State
+     * @param {date} [options.parameters.syncErrorStateTimestamp] Sync Error State
      * Timestamp
      *
-     * @param {string} [options.body.syncErrorDirection] Sync Error Direction.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
+     * @param {string} [options.parameters.syncErrorDirection] Sync Error
+     * Direction. Possible values include: 'none', 'initialize', 'download',
+     * 'upload', 'recall'
+     *
+     * @param {number} [options.parameters.itemUploadErrorCount] Item Upload Error
+     * Count.
+     *
+     * @param {number} [options.parameters.itemDownloadErrorCount] Item download
+     * error count.
+     *
+     * @param {string} [options.parameters.syncErrorContext] sync error context.
+     *
+     * @param {string} [options.parameters.currentProgressType] current progress
+     * type. Possible values include: 'none', 'initialize', 'download', 'upload',
      * 'recall'
      *
-     * @param {number} [options.body.itemUploadErrorCount] Item Upload Error Count.
+     * @param {number} [options.parameters.itemProgressCount] Item Progress Count
      *
-     * @param {number} [options.body.itemDownloadErrorCount] Item download error
-     * count.
+     * @param {number} [options.parameters.itemTotalCount] Item Total Count
      *
-     * @param {string} [options.body.syncErrorContext] sync error context.
+     * @param {number} [options.parameters.byteProgress] Bytes in progress
      *
-     * @param {string} [options.body.currentProgressType] current progress type.
-     * Possible values include: 'none', 'initialize', 'download', 'upload',
-     * 'recall'
+     * @param {number} [options.parameters.totalProgress] Total progress
      *
-     * @param {number} [options.body.itemProgressCount] Item Progress Count
+     * @param {number} [options.parameters.byteTotal] Bytes total
      *
-     * @param {number} [options.body.itemTotalCount] Item Total Count
+     * @param {string} [options.parameters.serverResourceId] Server Resource Id.
      *
-     * @param {number} [options.body.byteProgress] Bytes in progress
+     * @param {string} [options.parameters.provisioningState] ServerEndpoint
+     * Provisioning State
      *
-     * @param {number} [options.body.totalProgress] Total progress
-     *
-     * @param {number} [options.body.byteTotal] Bytes total
-     *
-     * @param {string} [options.body.serverResourceId] Server Resource Id.
-     *
-     * @param {string} [options.body.provisioningState] ServerEndpoint Provisioning
-     * State
-     *
-     * @param {string} [options.body.lastWorkflowId] ServerEndpoint lastWorkflowId
+     * @param {string} [options.parameters.lastWorkflowId] ServerEndpoint
+     * lastWorkflowId
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3088,9 +3152,9 @@ export interface ServerEndpoints {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { body? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
+    beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options?: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerEndpoint>;
     beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, callback: ServiceCallback<models.ServerEndpoint>): void;
-    beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { body? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
+    beginUpdate(resourceGroupName: string, storageSyncServiceName: string, syncGroupName: string, serverEndpointName: string, options: { parameters? : models.ServerEndpoint, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerEndpoint>): void;
 
 
     /**
@@ -3383,34 +3447,34 @@ export interface RegisteredServers {
      *
      * @param {string} serverId GUID identifying the on-premises server.
      *
-     * @param {object} body Body of Registered Server object.
+     * @param {object} parameters Body of Registered Server object.
      *
-     * @param {string} [body.serverCertificate] Registered Server Certificate
+     * @param {string} [parameters.serverCertificate] Registered Server Certificate
      *
-     * @param {string} [body.agentVersion] Registered Server Agent Version
+     * @param {string} [parameters.agentVersion] Registered Server Agent Version
      *
-     * @param {string} [body.serverOSVersion] Registered Server OS Version
+     * @param {string} [parameters.serverOSVersion] Registered Server OS Version
      *
-     * @param {number} [body.serverManagementtErrorCode] Registered Server
+     * @param {number} [parameters.serverManagementtErrorCode] Registered Server
      * Management Error Code
      *
-     * @param {string} [body.lastHeartBeat] Registered Server last heart beat
+     * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
      *
-     * @param {string} [body.provisioningState] Registered Server Provisioning
-     * State
+     * @param {string} [parameters.provisioningState] Registered Server
+     * Provisioning State
      *
-     * @param {string} [body.serverRole] Registered Server serverRole
+     * @param {string} [parameters.serverRole] Registered Server serverRole
      *
-     * @param {string} [body.clusterId] Registered Server clusterId
+     * @param {string} [parameters.clusterId] Registered Server clusterId
      *
-     * @param {string} [body.clusterName] Registered Server clusterName
+     * @param {string} [parameters.clusterName] Registered Server clusterName
      *
-     * @param {string} [body.serverId] Registered Server serverId
+     * @param {string} [parameters.serverId] Registered Server serverId
      *
-     * @param {string} [body.storageSyncServiceUid] Registered Server
+     * @param {string} [parameters.storageSyncServiceUid] Registered Server
      * storageSyncServiceUid
      *
-     * @param {string} [body.lastWorkflowId] Registered Server lastWorkflowId
+     * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3423,7 +3487,7 @@ export interface RegisteredServers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, body: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegisteredServer>>;
+    createWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegisteredServer>>;
 
     /**
      * Add a new registered server.
@@ -3436,34 +3500,34 @@ export interface RegisteredServers {
      *
      * @param {string} serverId GUID identifying the on-premises server.
      *
-     * @param {object} body Body of Registered Server object.
+     * @param {object} parameters Body of Registered Server object.
      *
-     * @param {string} [body.serverCertificate] Registered Server Certificate
+     * @param {string} [parameters.serverCertificate] Registered Server Certificate
      *
-     * @param {string} [body.agentVersion] Registered Server Agent Version
+     * @param {string} [parameters.agentVersion] Registered Server Agent Version
      *
-     * @param {string} [body.serverOSVersion] Registered Server OS Version
+     * @param {string} [parameters.serverOSVersion] Registered Server OS Version
      *
-     * @param {number} [body.serverManagementtErrorCode] Registered Server
+     * @param {number} [parameters.serverManagementtErrorCode] Registered Server
      * Management Error Code
      *
-     * @param {string} [body.lastHeartBeat] Registered Server last heart beat
+     * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
      *
-     * @param {string} [body.provisioningState] Registered Server Provisioning
-     * State
+     * @param {string} [parameters.provisioningState] Registered Server
+     * Provisioning State
      *
-     * @param {string} [body.serverRole] Registered Server serverRole
+     * @param {string} [parameters.serverRole] Registered Server serverRole
      *
-     * @param {string} [body.clusterId] Registered Server clusterId
+     * @param {string} [parameters.clusterId] Registered Server clusterId
      *
-     * @param {string} [body.clusterName] Registered Server clusterName
+     * @param {string} [parameters.clusterName] Registered Server clusterName
      *
-     * @param {string} [body.serverId] Registered Server serverId
+     * @param {string} [parameters.serverId] Registered Server serverId
      *
-     * @param {string} [body.storageSyncServiceUid] Registered Server
+     * @param {string} [parameters.storageSyncServiceUid] Registered Server
      * storageSyncServiceUid
      *
-     * @param {string} [body.lastWorkflowId] Registered Server lastWorkflowId
+     * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3492,9 +3556,9 @@ export interface RegisteredServers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, body: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServer>;
-    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, body: models.RegisteredServer, callback: ServiceCallback<models.RegisteredServer>): void;
-    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, body: models.RegisteredServer, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServer>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServer>;
+    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, callback: ServiceCallback<models.RegisteredServer>): void;
+    create(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServer>): void;
 
 
     /**
@@ -3574,34 +3638,34 @@ export interface RegisteredServers {
      *
      * @param {string} serverId GUID identifying the on-premises server.
      *
-     * @param {object} body Body of Registered Server object.
+     * @param {object} parameters Body of Registered Server object.
      *
-     * @param {string} [body.serverCertificate] Registered Server Certificate
+     * @param {string} [parameters.serverCertificate] Registered Server Certificate
      *
-     * @param {string} [body.agentVersion] Registered Server Agent Version
+     * @param {string} [parameters.agentVersion] Registered Server Agent Version
      *
-     * @param {string} [body.serverOSVersion] Registered Server OS Version
+     * @param {string} [parameters.serverOSVersion] Registered Server OS Version
      *
-     * @param {number} [body.serverManagementtErrorCode] Registered Server
+     * @param {number} [parameters.serverManagementtErrorCode] Registered Server
      * Management Error Code
      *
-     * @param {string} [body.lastHeartBeat] Registered Server last heart beat
+     * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
      *
-     * @param {string} [body.provisioningState] Registered Server Provisioning
-     * State
+     * @param {string} [parameters.provisioningState] Registered Server
+     * Provisioning State
      *
-     * @param {string} [body.serverRole] Registered Server serverRole
+     * @param {string} [parameters.serverRole] Registered Server serverRole
      *
-     * @param {string} [body.clusterId] Registered Server clusterId
+     * @param {string} [parameters.clusterId] Registered Server clusterId
      *
-     * @param {string} [body.clusterName] Registered Server clusterName
+     * @param {string} [parameters.clusterName] Registered Server clusterName
      *
-     * @param {string} [body.serverId] Registered Server serverId
+     * @param {string} [parameters.serverId] Registered Server serverId
      *
-     * @param {string} [body.storageSyncServiceUid] Registered Server
+     * @param {string} [parameters.storageSyncServiceUid] Registered Server
      * storageSyncServiceUid
      *
-     * @param {string} [body.lastWorkflowId] Registered Server lastWorkflowId
+     * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3614,7 +3678,7 @@ export interface RegisteredServers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, body: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegisteredServer>>;
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegisteredServer>>;
 
     /**
      * Add a new registered server.
@@ -3627,34 +3691,34 @@ export interface RegisteredServers {
      *
      * @param {string} serverId GUID identifying the on-premises server.
      *
-     * @param {object} body Body of Registered Server object.
+     * @param {object} parameters Body of Registered Server object.
      *
-     * @param {string} [body.serverCertificate] Registered Server Certificate
+     * @param {string} [parameters.serverCertificate] Registered Server Certificate
      *
-     * @param {string} [body.agentVersion] Registered Server Agent Version
+     * @param {string} [parameters.agentVersion] Registered Server Agent Version
      *
-     * @param {string} [body.serverOSVersion] Registered Server OS Version
+     * @param {string} [parameters.serverOSVersion] Registered Server OS Version
      *
-     * @param {number} [body.serverManagementtErrorCode] Registered Server
+     * @param {number} [parameters.serverManagementtErrorCode] Registered Server
      * Management Error Code
      *
-     * @param {string} [body.lastHeartBeat] Registered Server last heart beat
+     * @param {string} [parameters.lastHeartBeat] Registered Server last heart beat
      *
-     * @param {string} [body.provisioningState] Registered Server Provisioning
-     * State
+     * @param {string} [parameters.provisioningState] Registered Server
+     * Provisioning State
      *
-     * @param {string} [body.serverRole] Registered Server serverRole
+     * @param {string} [parameters.serverRole] Registered Server serverRole
      *
-     * @param {string} [body.clusterId] Registered Server clusterId
+     * @param {string} [parameters.clusterId] Registered Server clusterId
      *
-     * @param {string} [body.clusterName] Registered Server clusterName
+     * @param {string} [parameters.clusterName] Registered Server clusterName
      *
-     * @param {string} [body.serverId] Registered Server serverId
+     * @param {string} [parameters.serverId] Registered Server serverId
      *
-     * @param {string} [body.storageSyncServiceUid] Registered Server
+     * @param {string} [parameters.storageSyncServiceUid] Registered Server
      * storageSyncServiceUid
      *
-     * @param {string} [body.lastWorkflowId] Registered Server lastWorkflowId
+     * @param {string} [parameters.lastWorkflowId] Registered Server lastWorkflowId
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3683,9 +3747,9 @@ export interface RegisteredServers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, body: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServer>;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, body: models.RegisteredServer, callback: ServiceCallback<models.RegisteredServer>): void;
-    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, body: models.RegisteredServer, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServer>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegisteredServer>;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, callback: ServiceCallback<models.RegisteredServer>): void;
+    beginCreate(resourceGroupName: string, storageSyncServiceName: string, serverId: string, parameters: models.RegisteredServer, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegisteredServer>): void;
 
 
     /**
