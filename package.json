@@ -118,7 +118,7 @@
     "azure-servicefabric": "2.0.0-preview",
     "azure-storage": "^2.8.3",
     "azure-storage-legacy": "0.10.2",
-    "mime": "^2.3.1",
+    "mime": "^1.6.0",
     "moment": "^2.22.2",
     "ms-rest": "^2.3.0",
     "ms-rest-azure": "^2.5.0",

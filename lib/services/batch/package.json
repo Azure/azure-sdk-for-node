@@ -21,7 +21,7 @@
     "ms-rest": "^2.3.2",
     "ms-rest-azure": "^2.5.4",
     "underscore": "^1.8.3",
-    "moment": "^2.21.0"
+    "moment": "^2.22.2"
   },
   "devDependencies": {
     "@types/underscore": "^1.8.0"
