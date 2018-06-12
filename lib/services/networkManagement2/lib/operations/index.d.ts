@@ -249,6 +249,9 @@ export interface ApplicationGateways {
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
+     * @param {boolean} [parameters.enableFIPS] Whether FIPS is enabled on the
+     * application gateway resource.
+     *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
@@ -400,6 +403,9 @@ export interface ApplicationGateways {
      * request body size for WAF.
      *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
+     * application gateway resource.
+     *
+     * @param {boolean} [parameters.enableFIPS] Whether FIPS is enabled on the
      * application gateway resource.
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
@@ -1207,6 +1213,9 @@ export interface ApplicationGateways {
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
+     * @param {boolean} [parameters.enableFIPS] Whether FIPS is enabled on the
+     * application gateway resource.
+     *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
@@ -1358,6 +1367,9 @@ export interface ApplicationGateways {
      * request body size for WAF.
      *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
+     * application gateway resource.
+     *
+     * @param {boolean} [parameters.enableFIPS] Whether FIPS is enabled on the
      * application gateway resource.
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
@@ -34087,6 +34099,201 @@ export interface VpnConnections {
 
 
     /**
+     * Creates a vpn connection to a scalable vpn gateway if it doesn't exist else
+     * updates the existing connection.
+     *
+     * @param {string} resourceGroupName The resource group name of the VpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {string} connectionName The name of the connection.
+     *
+     * @param {object} vpnConnectionParameters Parameters supplied to create or
+     * Update a VPN Connection.
+     *
+     * @param {object} [vpnConnectionParameters.remoteVpnSite] Id of the connected
+     * vpn site.
+     *
+     * @param {string} [vpnConnectionParameters.remoteVpnSite.id] Resource ID.
+     *
+     * @param {number} [vpnConnectionParameters.routingWeight] routing weight for
+     * vpn connection.
+     *
+     * @param {string} [vpnConnectionParameters.connectionStatus] The connection
+     * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
+     * 'NotConnected'
+     *
+     * @param {string} [vpnConnectionParameters.tunnelConnectionStatus] The
+     * connection status of tunnel. Possible values include: 'Unknown',
+     * 'Connecting', 'Connected', 'NotConnected'
+     *
+     * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
+     * connection.
+     *
+     * @param {boolean} [vpnConnectionParameters.enableBgp] EnableBgp flag
+     *
+     * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
+     * state of the resource. Possible values include: 'Succeeded', 'Updating',
+     * 'Deleting', 'Failed'
+     *
+     * @param {string} [vpnConnectionParameters.id] Resource ID.
+     *
+     * @param {string} [vpnConnectionParameters.location] Resource location.
+     *
+     * @param {object} [vpnConnectionParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VpnConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnConnection>>;
+
+    /**
+     * Creates a vpn connection to a scalable vpn gateway if it doesn't exist else
+     * updates the existing connection.
+     *
+     * @param {string} resourceGroupName The resource group name of the VpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {string} connectionName The name of the connection.
+     *
+     * @param {object} vpnConnectionParameters Parameters supplied to create or
+     * Update a VPN Connection.
+     *
+     * @param {object} [vpnConnectionParameters.remoteVpnSite] Id of the connected
+     * vpn site.
+     *
+     * @param {string} [vpnConnectionParameters.remoteVpnSite.id] Resource ID.
+     *
+     * @param {number} [vpnConnectionParameters.routingWeight] routing weight for
+     * vpn connection.
+     *
+     * @param {string} [vpnConnectionParameters.connectionStatus] The connection
+     * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
+     * 'NotConnected'
+     *
+     * @param {string} [vpnConnectionParameters.tunnelConnectionStatus] The
+     * connection status of tunnel. Possible values include: 'Unknown',
+     * 'Connecting', 'Connected', 'NotConnected'
+     *
+     * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
+     * connection.
+     *
+     * @param {boolean} [vpnConnectionParameters.enableBgp] EnableBgp flag
+     *
+     * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
+     * state of the resource. Possible values include: 'Succeeded', 'Updating',
+     * 'Deleting', 'Failed'
+     *
+     * @param {string} [vpnConnectionParameters.id] Resource ID.
+     *
+     * @param {string} [vpnConnectionParameters.location] Resource location.
+     *
+     * @param {object} [vpnConnectionParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VpnConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VpnConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VpnConnection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnConnection>;
+    createOrUpdate(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, callback: ServiceCallback<models.VpnConnection>): void;
+    createOrUpdate(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnConnection>): void;
+
+
+    /**
+     * Deletes a vpn connection.
+     *
+     * @param {string} resourceGroupName The resource group name of the VpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {string} connectionName The name of the connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a vpn connection.
+     *
+     * @param {string} resourceGroupName The resource group name of the VpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {string} connectionName The name of the connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, gatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, gatewayName: string, connectionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, gatewayName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Retrieves all vpn connections for a particular virtual wan vpn gateway.
      *
      * @param {string} gatewayName The name of the gateway.
@@ -34140,6 +34347,201 @@ export interface VpnConnections {
     listByVpnGateway(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnConnectionsResult>;
     listByVpnGateway(gatewayName: string, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
     listByVpnGateway(gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
+
+
+    /**
+     * Creates a vpn connection to a scalable vpn gateway if it doesn't exist else
+     * updates the existing connection.
+     *
+     * @param {string} resourceGroupName The resource group name of the VpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {string} connectionName The name of the connection.
+     *
+     * @param {object} vpnConnectionParameters Parameters supplied to create or
+     * Update a VPN Connection.
+     *
+     * @param {object} [vpnConnectionParameters.remoteVpnSite] Id of the connected
+     * vpn site.
+     *
+     * @param {string} [vpnConnectionParameters.remoteVpnSite.id] Resource ID.
+     *
+     * @param {number} [vpnConnectionParameters.routingWeight] routing weight for
+     * vpn connection.
+     *
+     * @param {string} [vpnConnectionParameters.connectionStatus] The connection
+     * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
+     * 'NotConnected'
+     *
+     * @param {string} [vpnConnectionParameters.tunnelConnectionStatus] The
+     * connection status of tunnel. Possible values include: 'Unknown',
+     * 'Connecting', 'Connected', 'NotConnected'
+     *
+     * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
+     * connection.
+     *
+     * @param {boolean} [vpnConnectionParameters.enableBgp] EnableBgp flag
+     *
+     * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
+     * state of the resource. Possible values include: 'Succeeded', 'Updating',
+     * 'Deleting', 'Failed'
+     *
+     * @param {string} [vpnConnectionParameters.id] Resource ID.
+     *
+     * @param {string} [vpnConnectionParameters.location] Resource location.
+     *
+     * @param {object} [vpnConnectionParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VpnConnection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnConnection>>;
+
+    /**
+     * Creates a vpn connection to a scalable vpn gateway if it doesn't exist else
+     * updates the existing connection.
+     *
+     * @param {string} resourceGroupName The resource group name of the VpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {string} connectionName The name of the connection.
+     *
+     * @param {object} vpnConnectionParameters Parameters supplied to create or
+     * Update a VPN Connection.
+     *
+     * @param {object} [vpnConnectionParameters.remoteVpnSite] Id of the connected
+     * vpn site.
+     *
+     * @param {string} [vpnConnectionParameters.remoteVpnSite.id] Resource ID.
+     *
+     * @param {number} [vpnConnectionParameters.routingWeight] routing weight for
+     * vpn connection.
+     *
+     * @param {string} [vpnConnectionParameters.connectionStatus] The connection
+     * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
+     * 'NotConnected'
+     *
+     * @param {string} [vpnConnectionParameters.tunnelConnectionStatus] The
+     * connection status of tunnel. Possible values include: 'Unknown',
+     * 'Connecting', 'Connected', 'NotConnected'
+     *
+     * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
+     * connection.
+     *
+     * @param {boolean} [vpnConnectionParameters.enableBgp] EnableBgp flag
+     *
+     * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
+     * state of the resource. Possible values include: 'Succeeded', 'Updating',
+     * 'Deleting', 'Failed'
+     *
+     * @param {string} [vpnConnectionParameters.id] Resource ID.
+     *
+     * @param {string} [vpnConnectionParameters.location] Resource location.
+     *
+     * @param {object} [vpnConnectionParameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VpnConnection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VpnConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VpnConnection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnConnection>;
+    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, callback: ServiceCallback<models.VpnConnection>): void;
+    beginCreateOrUpdate(resourceGroupName: string, gatewayName: string, connectionName: string, vpnConnectionParameters: models.VpnConnection, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnConnection>): void;
+
+
+    /**
+     * Deletes a vpn connection.
+     *
+     * @param {string} resourceGroupName The resource group name of the VpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {string} connectionName The name of the connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a vpn connection.
+     *
+     * @param {string} resourceGroupName The resource group name of the VpnGateway.
+     *
+     * @param {string} gatewayName The name of the gateway.
+     *
+     * @param {string} connectionName The name of the connection.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, gatewayName: string, connectionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, gatewayName: string, connectionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, gatewayName: string, connectionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
