@@ -5,7 +5,7 @@
     "email": "azsdkteam@microsoft.com",
     "url": "https://github.com/Azure/azure-sdk-for-node"
   },
-  "version": "2.5.5",
+  "version": "2.5.6",
   "description": "Client Runtime for Node.js Azure client libraries generated using AutoRest",
   "tags": [
     "node",
@@ -25,22 +25,22 @@
   "types": "./index.d.ts",
   "license": "MIT",
   "dependencies": {
+    "adal-node": "^0.1.28",
     "async": "2.6.0",
-    "uuid": "^3.2.1",
-    "adal-node": "^0.1.27",
+    "moment": "^2.22.2",
     "ms-rest": "^2.3.2",
-    "moment": "^2.20.1"
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
     "@types/node": "^9.4.6",
     "@types/should": "^8.1.30",
     "@types/uuid": "^3.4.3",
-    "jshint": "2.9.4",
-    "mocha": "^3.2.0",
+    "jshint": "^2.9.5",
+    "mocha": "^5.2.0",
+    "nock": "^9.3.2",
     "should": "5.2.0",
     "sinon": "^2.3.8",
-    "nock": "^9.0.14",
     "typescript": "^2.7.2"
   },
   "homepage": "https://github.com/Azure/azure-sdk-for-node/runtime/ms-rest-azure",
