@@ -2214,9 +2214,9 @@ export interface NotificationHubs {
      *
      * @param {string} notificationHubName The notification hub name.
      *
-     * @param {string} parameters The shared access authorization rule.
-     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.parameters] Debug send message payload
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2227,7 +2227,7 @@ export interface NotificationHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    debugSendWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DebugSendResponse>>;
+    debugSendWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, notificationHubName: string, options?: { parameters? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DebugSendResponse>>;
 
     /**
      * test send a push notification
@@ -2238,9 +2238,9 @@ export interface NotificationHubs {
      *
      * @param {string} notificationHubName The notification hub name.
      *
-     * @param {string} parameters The shared access authorization rule.
-     *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.parameters] Debug send message payload
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2267,9 +2267,9 @@ export interface NotificationHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DebugSendResponse>;
-    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: string, callback: ServiceCallback<models.DebugSendResponse>): void;
-    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, parameters: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DebugSendResponse>): void;
+    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, options?: { parameters? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DebugSendResponse>;
+    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, callback: ServiceCallback<models.DebugSendResponse>): void;
+    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, options: { parameters? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DebugSendResponse>): void;
 
 
     /**
