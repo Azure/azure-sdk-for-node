@@ -415,10 +415,6 @@
     "category": "Client",
     "service_name": "Keyvault"
   },
-  "azure-monitor": {
-    "category": "Client",
-    "service_name": "Monitor"
-  },
   "azure-servicefabric": {
     "category": "Client",
     "service_name": "Service Fabric"
