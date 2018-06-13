@@ -1,4 +1,4 @@
-## 2017.06.12 version 2.3.0-preview
+## 2018.06.12 version 2.3.0-preview
 * Updated dependencies based on `npm audit` warnings
 * Removed deprecated `azure-monitor` from `azure` package
 
