@@ -723,12 +723,12 @@ export interface Logs {
  * @constructor
  * The size of the terminal.
  *
- * @member {number} [row] The row size of the terminal
- * @member {number} [column] The column size of the terminal
+ * @member {number} [rows] The row size of the terminal
+ * @member {number} [cols] The column size of the terminal
  */
 export interface ContainerExecRequestTerminalSize {
-  row?: number;
-  column?: number;
+  rows?: number;
+  cols?: number;
 }
 
 /**
@@ -739,8 +739,8 @@ export interface ContainerExecRequestTerminalSize {
  *
  * @member {string} [command] The command to be executed.
  * @member {object} [terminalSize] The size of the terminal.
- * @member {number} [terminalSize.row] The row size of the terminal
- * @member {number} [terminalSize.column] The column size of the terminal
+ * @member {number} [terminalSize.rows] The row size of the terminal
+ * @member {number} [terminalSize.cols] The column size of the terminal
  */
 export interface ContainerExecRequest {
   command?: string;
