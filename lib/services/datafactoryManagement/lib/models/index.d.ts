@@ -213,6 +213,11 @@ export interface Factory extends Resource {
 export interface IntegrationRuntime {
   description?: string;
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
