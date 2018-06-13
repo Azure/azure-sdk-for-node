@@ -11258,8 +11258,8 @@ export interface DscCompilationJobOperations {
      * @param {object} [parameters.parameters] Gets or sets the parameters of the
      * job.
      *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
+     * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
+     * version of NodeConfiguration is required.
      *
      * @param {string} [parameters.name] Gets or sets name of the resource.
      *
@@ -11302,8 +11302,8 @@ export interface DscCompilationJobOperations {
      * @param {object} [parameters.parameters] Gets or sets the parameters of the
      * job.
      *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
+     * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
+     * version of NodeConfiguration is required.
      *
      * @param {string} [parameters.name] Gets or sets name of the resource.
      *
@@ -11559,8 +11559,8 @@ export interface DscCompilationJobOperations {
      * @param {object} [parameters.parameters] Gets or sets the parameters of the
      * job.
      *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
+     * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
+     * version of NodeConfiguration is required.
      *
      * @param {string} [parameters.name] Gets or sets name of the resource.
      *
@@ -11603,8 +11603,8 @@ export interface DscCompilationJobOperations {
      * @param {object} [parameters.parameters] Gets or sets the parameters of the
      * job.
      *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
+     * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
+     * version of NodeConfiguration is required.
      *
      * @param {string} [parameters.name] Gets or sets name of the resource.
      *

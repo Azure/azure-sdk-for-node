@@ -889,7 +889,7 @@ export interface LinkedWorkspace {
  * optional.
  * @member {boolean} [isDynamic] Gets or sets a Boolean value that indicates
  * true if the parameter is dynamic.
- * @member {boolean} [position] Gets or sets the position of the activity
+ * @member {number} [position] Gets or sets the position of the activity
  * parameter.
  * @member {boolean} [valueFromPipeline] Gets or sets a Boolean value that
  * indicates true if the parameter can take values from the incoming pipeline
@@ -912,7 +912,7 @@ export interface ActivityParameter {
   type?: string;
   isMandatory?: boolean;
   isDynamic?: boolean;
-  position?: boolean;
+  position?: number;
   valueFromPipeline?: boolean;
   valueFromPipelineByPropertyName?: boolean;
   valueFromRemainingArguments?: boolean;
@@ -2947,8 +2947,8 @@ export interface DscCompilationJob extends ProxyResource {
  * @member {string} [configuration.name] Gets or sets the name of the Dsc
  * configuration.
  * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {boolean} [newNodeConfigurationBuildVersionRequired] If a new build
- * version of NodeConfiguration is required.
+ * @member {boolean} [incrementNodeConfigurationBuild] If a new build version
+ * of NodeConfiguration is required.
  * @member {string} [name] Gets or sets name of the resource.
  * @member {string} [location] Gets or sets the location of the resource.
  * @member {object} [tags] Gets or sets the tags attached to the resource.
@@ -2956,7 +2956,7 @@ export interface DscCompilationJob extends ProxyResource {
 export interface DscCompilationJobCreateParameters {
   configuration: DscConfigurationAssociationProperty;
   parameters?: { [propertyName: string]: string };
-  newNodeConfigurationBuildVersionRequired?: boolean;
+  incrementNodeConfigurationBuild?: boolean;
   name?: string;
   location?: string;
   tags?: { [propertyName: string]: string };
