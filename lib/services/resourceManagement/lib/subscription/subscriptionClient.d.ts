@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class SubscriptionClient extends AzureServiceClient {
+export default class SubscriptionClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the SubscriptionClient class.
    * @constructor
@@ -55,4 +56,4 @@ declare class SubscriptionClient extends AzureServiceClient {
   tenants: operations.Tenants;
 }
 
-export = SubscriptionClient;
+export { SubscriptionClient, models as SubscriptionModels };

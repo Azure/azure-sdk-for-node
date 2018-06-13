@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ManagementLinkClient extends AzureServiceClient {
+export default class ManagementLinkClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ManagementLinkClient class.
    * @constructor
@@ -58,4 +59,4 @@ declare class ManagementLinkClient extends AzureServiceClient {
   resourceLinks: operations.ResourceLinks;
 }
 
-export = ManagementLinkClient;
+export { ManagementLinkClient, models as ManagementLinkModels };

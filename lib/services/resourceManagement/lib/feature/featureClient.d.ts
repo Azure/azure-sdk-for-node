@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class FeatureClient extends AzureServiceClient {
+export default class FeatureClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the FeatureClient class.
    * @constructor
@@ -58,4 +59,4 @@ declare class FeatureClient extends AzureServiceClient {
   features: operations.Features;
 }
 
-export = FeatureClient;
+export { FeatureClient, models as FeatureModels };
