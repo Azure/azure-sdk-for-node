@@ -2297,6 +2297,8 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * Maxium request body size for WAF.
  * @member {boolean} [enableHttp2] Whether HTTP2 is enabled on the application
  * gateway resource.
+ * @member {boolean} [enableFIPS] Whether FIPS is enabled on the application
+ * gateway resource.
  * @member {object} [autoscaleConfiguration] Autoscale Configuration.
  * @member {object} [autoscaleConfiguration.bounds] Autoscale bounds
  * @member {number} [autoscaleConfiguration.bounds.min] Lower bound on number
@@ -2330,6 +2332,7 @@ export interface ApplicationGateway extends Resource {
   redirectConfigurations?: ApplicationGatewayRedirectConfiguration[];
   webApplicationFirewallConfiguration?: ApplicationGatewayWebApplicationFirewallConfiguration;
   enableHttp2?: boolean;
+  enableFIPS?: boolean;
   autoscaleConfiguration?: ApplicationGatewayAutoscaleConfiguration;
   resourceGuid?: string;
   provisioningState?: string;

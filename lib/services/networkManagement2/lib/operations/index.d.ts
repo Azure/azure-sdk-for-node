@@ -249,6 +249,9 @@ export interface ApplicationGateways {
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
+     * @param {boolean} [parameters.enableFIPS] Whether FIPS is enabled on the
+     * application gateway resource.
+     *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
@@ -400,6 +403,9 @@ export interface ApplicationGateways {
      * request body size for WAF.
      *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
+     * application gateway resource.
+     *
+     * @param {boolean} [parameters.enableFIPS] Whether FIPS is enabled on the
      * application gateway resource.
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
@@ -1207,6 +1213,9 @@ export interface ApplicationGateways {
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
+     * @param {boolean} [parameters.enableFIPS] Whether FIPS is enabled on the
+     * application gateway resource.
+     *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
      *
      * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
@@ -1358,6 +1367,9 @@ export interface ApplicationGateways {
      * request body size for WAF.
      *
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
+     * application gateway resource.
+     *
+     * @param {boolean} [parameters.enableFIPS] Whether FIPS is enabled on the
      * application gateway resource.
      *
      * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
