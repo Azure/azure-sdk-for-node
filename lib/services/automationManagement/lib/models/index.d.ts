@@ -360,6 +360,55 @@ export interface Certificate extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * The resource model definition for a ARM tracked top level resource
+ *
+ * @member {object} [tags] Resource tags.
+ * @member {string} [location] The Azure Region where the resource lives
+ */
+export interface TrackedResource extends Resource {
+  tags?: { [propertyName: string]: string };
+  location?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Watcher class.
+ * @constructor
+ * Definition of the watcher type.
+ *
+ * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
+ * which the watcher is invoked.
+ * @member {string} [scriptName] Gets or sets the name of the script the
+ * watcher is attached to, i.e. the name of an existing runbook.
+ * @member {object} [scriptParameters] Gets or sets the parameters of the
+ * script.
+ * @member {string} [scriptRunOn] Gets or sets the name of the hybrid worker
+ * group the watcher will run on.
+ * @member {string} [status] Gets the current status of the watcher.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [lastModifiedBy] Details of the user who last modified the
+ * watcher.
+ * @member {string} [description] Gets or sets the description.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ */
+export interface Watcher extends TrackedResource {
+  executionFrequencyInSeconds?: number;
+  scriptName?: string;
+  scriptParameters?: { [propertyName: string]: string };
+  scriptRunOn?: string;
+  readonly status?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly lastModifiedBy?: string;
+  description?: string;
+  etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RunbookParameter class.
  * @constructor
  * Definition of the runbook parameter type.
@@ -444,20 +493,6 @@ export interface RunbookDraft {
   lastModifiedTime?: Date;
   parameters?: { [propertyName: string]: RunbookParameter };
   outputTypes?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the TrackedResource class.
- * @constructor
- * The resource model definition for a ARM tracked top level resource
- *
- * @member {object} [tags] Resource tags.
- * @member {string} [location] The Azure Region where the resource lives
- */
-export interface TrackedResource extends Resource {
-  tags?: { [propertyName: string]: string };
-  location?: string;
 }
 
 /**
@@ -1214,6 +1249,31 @@ export interface DscCompilationJobCreateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the JobStream class.
+ * @constructor
+ * Definition of the job stream.
+ *
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [jobStreamId] Gets or sets the id of the job stream.
+ * @member {date} [time] Gets or sets the creation time of the job.
+ * @member {string} [streamType] Gets or sets the stream type. Possible values
+ * include: 'Progress', 'Output', 'Warning', 'Error', 'Debug', 'Verbose', 'Any'
+ * @member {string} [streamText] Gets or sets the stream text.
+ * @member {string} [summary] Gets or sets the summary.
+ * @member {object} [value] Gets or sets the values of the job stream.
+ */
+export interface JobStream {
+  id?: string;
+  jobStreamId?: string;
+  time?: Date;
+  streamType?: string;
+  streamText?: string;
+  summary?: string;
+  value?: { [propertyName: string]: any };
+}
+
+/**
+ * @class
  * Initializes a new instance of the DscConfigurationCreateOrUpdateParameters class.
  * @constructor
  * The parameters supplied to the create or update configuration operation.
@@ -1558,12 +1618,15 @@ export interface RunAsCredentialAssociationProperty {
  * runbook workers.
  * @member {object} [credential] Sets the credential of a worker group.
  * @member {string} [credential.name] Gets or sets the name of the credential.
+ * @member {string} [groupType] Type of the HybridWorkerGroup. Possible values
+ * include: 'User', 'System'
  */
 export interface HybridRunbookWorkerGroup {
   id?: string;
   name?: string;
   hybridRunbookWorkers?: HybridRunbookWorker[];
   credential?: RunAsCredentialAssociationProperty;
+  groupType?: string;
 }
 
 /**
@@ -1577,86 +1640,6 @@ export interface HybridRunbookWorkerGroup {
  */
 export interface HybridRunbookWorkerGroupUpdateParameters {
   credential?: RunAsCredentialAssociationProperty;
-}
-
-/**
- * @class
- * Initializes a new instance of the Job class.
- * @constructor
- * Definition of the job.
- *
- * @member {object} [runbook] Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {string} [startedBy] Gets or sets the job started by.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- * @member {uuid} [jobId] Gets or sets the id of the job.
- * @member {date} [creationTime] Gets or sets the creation time of the job.
- * @member {string} [status] Gets or sets the status of the job. Possible
- * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
- * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
- * 'Resuming', 'Removing'
- * @member {string} [statusDetails] Gets or sets the status details of the job.
- * @member {date} [startTime] Gets or sets the start time of the job.
- * @member {date} [endTime] Gets or sets the end time of the job.
- * @member {string} [exception] Gets or sets the exception of the job.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
- * job.
- * @member {date} [lastStatusModifiedTime] Gets or sets the last status
- * modified time of the job.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {object} [provisioningState] The provisioning state of a resource.
- * @member {string} [provisioningState.provisioningState] The provisioning
- * state of the resource. Possible values include: 'Failed', 'Succeeded',
- * 'Suspended', 'Processing'
- */
-export interface Job extends ProxyResource {
-  runbook?: RunbookAssociationProperty;
-  startedBy?: string;
-  runOn?: string;
-  jobId?: string;
-  creationTime?: Date;
-  status?: string;
-  statusDetails?: string;
-  startTime?: Date;
-  endTime?: Date;
-  exception?: string;
-  lastModifiedTime?: Date;
-  lastStatusModifiedTime?: Date;
-  parameters?: { [propertyName: string]: string };
-  readonly provisioningState?: JobProvisioningStateProperty;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobCreateParameters class.
- * @constructor
- * The parameters supplied to the create job operation.
- *
- * @member {object} runbook Gets or sets the runbook.
- * @member {string} [runbook.name] Gets or sets the name of the runbook.
- * @member {object} [parameters] Gets or sets the parameters of the job.
- * @member {string} [runOn] Gets or sets the runOn which specifies the group
- * name where the job is to be executed.
- */
-export interface JobCreateParameters {
-  runbook: RunbookAssociationProperty;
-  parameters?: { [propertyName: string]: string };
-  runOn?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JobListResult class.
- * @constructor
- * The response model for the list job operation.
- *
- * @member {array} [value] Gets or sets a list of jobs.
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface JobListResult {
-  value?: Job[];
-  nextLink?: string;
 }
 
 /**
@@ -1720,31 +1703,6 @@ export interface JobSchedule {
   runbook?: RunbookAssociationProperty;
   runOn?: string;
   parameters?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the JobStream class.
- * @constructor
- * Definition of the job stream.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [jobStreamId] Gets or sets the id of the job stream.
- * @member {date} [time] Gets or sets the creation time of the job.
- * @member {string} [streamType] Gets or sets the stream type. Possible values
- * include: 'Progress', 'Output', 'Warning', 'Error', 'Debug', 'Verbose', 'Any'
- * @member {string} [streamText] Gets or sets the stream text.
- * @member {string} [summary] Gets or sets the summary.
- * @member {object} [value] Gets or sets the values of the job stream.
- */
-export interface JobStream {
-  id?: string;
-  jobStreamId?: string;
-  time?: Date;
-  streamType?: string;
-  streamText?: string;
-  summary?: string;
-  value?: { [propertyName: string]: any };
 }
 
 /**
@@ -2303,6 +2261,64 @@ export interface WebhookUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the WatcherUpdateParameters class.
+ * @constructor
+ * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
+ * which the watcher is invoked.
+ * @member {string} [name] Gets or sets the name of the resource.
+ */
+export interface WatcherUpdateParameters {
+  executionFrequencyInSeconds?: number;
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Job class.
+ * @constructor
+ * Definition of the job.
+ *
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {string} [startedBy] Gets or sets the job started by.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ * @member {uuid} [jobId] Gets or sets the id of the job.
+ * @member {date} [creationTime] Gets or sets the creation time of the job.
+ * @member {string} [status] Gets or sets the status of the job. Possible
+ * values include: 'New', 'Activating', 'Running', 'Completed', 'Failed',
+ * 'Stopped', 'Blocked', 'Suspended', 'Disconnected', 'Suspending', 'Stopping',
+ * 'Resuming', 'Removing'
+ * @member {string} [statusDetails] Gets or sets the status details of the job.
+ * @member {date} [startTime] Gets or sets the start time of the job.
+ * @member {date} [endTime] Gets or sets the end time of the job.
+ * @member {string} [exception] Gets or sets the exception of the job.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time of the
+ * job.
+ * @member {date} [lastStatusModifiedTime] Gets or sets the last status
+ * modified time of the job.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [provisioningState] The provisioning state of a resource.
+ */
+export interface Job extends ProxyResource {
+  runbook?: RunbookAssociationProperty;
+  startedBy?: string;
+  runOn?: string;
+  jobId?: string;
+  creationTime?: Date;
+  status?: string;
+  statusDetails?: string;
+  startTime?: Date;
+  endTime?: Date;
+  exception?: string;
+  lastModifiedTime?: Date;
+  lastStatusModifiedTime?: Date;
+  parameters?: { [propertyName: string]: string };
+  readonly provisioningState?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the JobCollectionItem class.
  * @constructor
  * Job collection item properties.
@@ -2331,6 +2347,24 @@ export interface JobCollectionItem extends ProxyResource {
   readonly endTime?: Date;
   readonly lastModifiedTime?: Date;
   readonly provisioningState?: string;
+  runOn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobCreateParameters class.
+ * @constructor
+ * The parameters supplied to the create job operation.
+ *
+ * @member {object} [runbook] Gets or sets the runbook.
+ * @member {string} [runbook.name] Gets or sets the name of the runbook.
+ * @member {object} [parameters] Gets or sets the parameters of the job.
+ * @member {string} [runOn] Gets or sets the runOn which specifies the group
+ * name where the job is to be executed.
+ */
+export interface JobCreateParameters {
+  runbook?: RunbookAssociationProperty;
+  parameters?: { [propertyName: string]: string };
   runOn?: string;
 }
 
@@ -3416,5 +3450,17 @@ export interface DscCompilationJobListResult extends Array<DscCompilationJob> {
  * @member {number} [totalCount] Gets or sets the total rows in query.
  */
 export interface DscNodeConfigurationListResult extends Array<DscNodeConfiguration> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WatcherListResult class.
+ * @constructor
+ * The response model for the list watcher operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface WatcherListResult extends Array<Watcher> {
   nextLink?: string;
 }
