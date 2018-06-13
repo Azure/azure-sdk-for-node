@@ -147,7 +147,7 @@ export interface Namespaces {
      *
      * @param {string} parameters.name Resource name
      *
-     * @param {string} parameters.location Resource location
+     * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
      *
@@ -189,7 +189,7 @@ export interface Namespaces {
      *
      * @param {string} parameters.name Resource name
      *
-     * @param {string} parameters.location Resource location
+     * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
      *
@@ -1412,7 +1412,7 @@ export interface NotificationHubs {
      *
      * @param {string} parameters.name Resource name
      *
-     * @param {string} parameters.location Resource location
+     * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
      *
@@ -1456,7 +1456,7 @@ export interface NotificationHubs {
      *
      * @param {string} parameters.name Resource name
      *
-     * @param {string} parameters.location Resource location
+     * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
      *
@@ -1788,6 +1788,298 @@ export interface NotificationHubs {
 
 
     /**
+     * Patch a NotificationHub in a namespace.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} namespaceName The namespace name.
+     *
+     * @param {string} notificationHubName The notification hub name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters supplied to patch a
+     * NotificationHub Resource.
+     *
+     * @param {string} [options.parameters.notificationHubPatchParametersName] The
+     * NotificationHub name.
+     *
+     * @param {string} [options.parameters.registrationTtl] The RegistrationTtl of
+     * the created NotificationHub
+     *
+     * @param {array} [options.parameters.authorizationRules] The
+     * AuthorizationRules of the created NotificationHub
+     *
+     * @param {object} [options.parameters.apnsCredential] The ApnsCredential of
+     * the created NotificationHub
+     *
+     * @param {string} [options.parameters.apnsCredential.apnsCertificate] The APNS
+     * certificate.
+     *
+     * @param {string} [options.parameters.apnsCredential.certificateKey] The
+     * certificate key.
+     *
+     * @param {string} [options.parameters.apnsCredential.endpoint] The endpoint of
+     * this credential.
+     *
+     * @param {string} [options.parameters.apnsCredential.thumbprint] The Apns
+     * certificate Thumbprint
+     *
+     * @param {string} [options.parameters.apnsCredential.keyId] A 10-character key
+     * identifier (kid) key, obtained from your developer account
+     *
+     * @param {string} [options.parameters.apnsCredential.appName] The name of the
+     * application
+     *
+     * @param {string} [options.parameters.apnsCredential.appId] The issuer (iss)
+     * registered claim key, whose value is your 10-character Team ID, obtained
+     * from your developer account
+     *
+     * @param {string} [options.parameters.apnsCredential.token] Provider
+     * Authentication Token, obtained through your developer account
+     *
+     * @param {object} [options.parameters.wnsCredential] The WnsCredential of the
+     * created NotificationHub
+     *
+     * @param {string} [options.parameters.wnsCredential.packageSid] The package ID
+     * for this credential.
+     *
+     * @param {string} [options.parameters.wnsCredential.secretKey] The secret key.
+     *
+     * @param {string} [options.parameters.wnsCredential.windowsLiveEndpoint] The
+     * Windows Live endpoint.
+     *
+     * @param {object} [options.parameters.gcmCredential] The GcmCredential of the
+     * created NotificationHub
+     *
+     * @param {string} [options.parameters.gcmCredential.gcmEndpoint] The GCM
+     * endpoint.
+     *
+     * @param {string} [options.parameters.gcmCredential.googleApiKey] The Google
+     * API key.
+     *
+     * @param {object} [options.parameters.mpnsCredential] The MpnsCredential of
+     * the created NotificationHub
+     *
+     * @param {string} [options.parameters.mpnsCredential.mpnsCertificate] The MPNS
+     * certificate.
+     *
+     * @param {string} [options.parameters.mpnsCredential.certificateKey] The
+     * certificate key for this credential.
+     *
+     * @param {string} [options.parameters.mpnsCredential.thumbprint] The Mpns
+     * certificate Thumbprint
+     *
+     * @param {object} [options.parameters.admCredential] The AdmCredential of the
+     * created NotificationHub
+     *
+     * @param {string} [options.parameters.admCredential.clientId] The client
+     * identifier.
+     *
+     * @param {string} [options.parameters.admCredential.clientSecret] The
+     * credential secret access key.
+     *
+     * @param {string} [options.parameters.admCredential.authTokenUrl] The URL of
+     * the authorization token.
+     *
+     * @param {object} [options.parameters.baiduCredential] The BaiduCredential of
+     * the created NotificationHub
+     *
+     * @param {string} [options.parameters.baiduCredential.baiduApiKey] Baidu Api
+     * Key.
+     *
+     * @param {string} [options.parameters.baiduCredential.baiduEndPoint] Baidu
+     * Endpoint.
+     *
+     * @param {string} [options.parameters.baiduCredential.baiduSecretKey] Baidu
+     * Secret Key
+     *
+     * @param {string} [options.parameters.location] Resource location
+     *
+     * @param {object} [options.parameters.tags] Resource tags
+     *
+     * @param {object} [options.parameters.sku] The sku of the created namespace
+     *
+     * @param {string} options.parameters.sku.name Name of the notification hub
+     * sku. Possible values include: 'Free', 'Basic', 'Standard'
+     *
+     * @param {string} [options.parameters.sku.tier] The tier of particular sku
+     *
+     * @param {string} [options.parameters.sku.size] The Sku size
+     *
+     * @param {string} [options.parameters.sku.family] The Sku Family
+     *
+     * @param {number} [options.parameters.sku.capacity] The capacity of the
+     * resource
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NotificationHubResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    patchWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, notificationHubName: string, options?: { parameters? : models.NotificationHubPatchParameters, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NotificationHubResource>>;
+
+    /**
+     * Patch a NotificationHub in a namespace.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} namespaceName The namespace name.
+     *
+     * @param {string} notificationHubName The notification hub name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Parameters supplied to patch a
+     * NotificationHub Resource.
+     *
+     * @param {string} [options.parameters.notificationHubPatchParametersName] The
+     * NotificationHub name.
+     *
+     * @param {string} [options.parameters.registrationTtl] The RegistrationTtl of
+     * the created NotificationHub
+     *
+     * @param {array} [options.parameters.authorizationRules] The
+     * AuthorizationRules of the created NotificationHub
+     *
+     * @param {object} [options.parameters.apnsCredential] The ApnsCredential of
+     * the created NotificationHub
+     *
+     * @param {string} [options.parameters.apnsCredential.apnsCertificate] The APNS
+     * certificate.
+     *
+     * @param {string} [options.parameters.apnsCredential.certificateKey] The
+     * certificate key.
+     *
+     * @param {string} [options.parameters.apnsCredential.endpoint] The endpoint of
+     * this credential.
+     *
+     * @param {string} [options.parameters.apnsCredential.thumbprint] The Apns
+     * certificate Thumbprint
+     *
+     * @param {string} [options.parameters.apnsCredential.keyId] A 10-character key
+     * identifier (kid) key, obtained from your developer account
+     *
+     * @param {string} [options.parameters.apnsCredential.appName] The name of the
+     * application
+     *
+     * @param {string} [options.parameters.apnsCredential.appId] The issuer (iss)
+     * registered claim key, whose value is your 10-character Team ID, obtained
+     * from your developer account
+     *
+     * @param {string} [options.parameters.apnsCredential.token] Provider
+     * Authentication Token, obtained through your developer account
+     *
+     * @param {object} [options.parameters.wnsCredential] The WnsCredential of the
+     * created NotificationHub
+     *
+     * @param {string} [options.parameters.wnsCredential.packageSid] The package ID
+     * for this credential.
+     *
+     * @param {string} [options.parameters.wnsCredential.secretKey] The secret key.
+     *
+     * @param {string} [options.parameters.wnsCredential.windowsLiveEndpoint] The
+     * Windows Live endpoint.
+     *
+     * @param {object} [options.parameters.gcmCredential] The GcmCredential of the
+     * created NotificationHub
+     *
+     * @param {string} [options.parameters.gcmCredential.gcmEndpoint] The GCM
+     * endpoint.
+     *
+     * @param {string} [options.parameters.gcmCredential.googleApiKey] The Google
+     * API key.
+     *
+     * @param {object} [options.parameters.mpnsCredential] The MpnsCredential of
+     * the created NotificationHub
+     *
+     * @param {string} [options.parameters.mpnsCredential.mpnsCertificate] The MPNS
+     * certificate.
+     *
+     * @param {string} [options.parameters.mpnsCredential.certificateKey] The
+     * certificate key for this credential.
+     *
+     * @param {string} [options.parameters.mpnsCredential.thumbprint] The Mpns
+     * certificate Thumbprint
+     *
+     * @param {object} [options.parameters.admCredential] The AdmCredential of the
+     * created NotificationHub
+     *
+     * @param {string} [options.parameters.admCredential.clientId] The client
+     * identifier.
+     *
+     * @param {string} [options.parameters.admCredential.clientSecret] The
+     * credential secret access key.
+     *
+     * @param {string} [options.parameters.admCredential.authTokenUrl] The URL of
+     * the authorization token.
+     *
+     * @param {object} [options.parameters.baiduCredential] The BaiduCredential of
+     * the created NotificationHub
+     *
+     * @param {string} [options.parameters.baiduCredential.baiduApiKey] Baidu Api
+     * Key.
+     *
+     * @param {string} [options.parameters.baiduCredential.baiduEndPoint] Baidu
+     * Endpoint.
+     *
+     * @param {string} [options.parameters.baiduCredential.baiduSecretKey] Baidu
+     * Secret Key
+     *
+     * @param {string} [options.parameters.location] Resource location
+     *
+     * @param {object} [options.parameters.tags] Resource tags
+     *
+     * @param {object} [options.parameters.sku] The sku of the created namespace
+     *
+     * @param {string} options.parameters.sku.name Name of the notification hub
+     * sku. Possible values include: 'Free', 'Basic', 'Standard'
+     *
+     * @param {string} [options.parameters.sku.tier] The tier of particular sku
+     *
+     * @param {string} [options.parameters.sku.size] The Sku size
+     *
+     * @param {string} [options.parameters.sku.family] The Sku Family
+     *
+     * @param {number} [options.parameters.sku.capacity] The capacity of the
+     * resource
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NotificationHubResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NotificationHubResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NotificationHubResource} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    patch(resourceGroupName: string, namespaceName: string, notificationHubName: string, options?: { parameters? : models.NotificationHubPatchParameters, customHeaders? : { [headerName: string]: string; } }): Promise<models.NotificationHubResource>;
+    patch(resourceGroupName: string, namespaceName: string, notificationHubName: string, callback: ServiceCallback<models.NotificationHubResource>): void;
+    patch(resourceGroupName: string, namespaceName: string, notificationHubName: string, options: { parameters? : models.NotificationHubPatchParameters, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NotificationHubResource>): void;
+
+
+    /**
      * Deletes a notification hub associated with a namespace.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -1911,6 +2203,73 @@ export interface NotificationHubs {
     get(resourceGroupName: string, namespaceName: string, notificationHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NotificationHubResource>;
     get(resourceGroupName: string, namespaceName: string, notificationHubName: string, callback: ServiceCallback<models.NotificationHubResource>): void;
     get(resourceGroupName: string, namespaceName: string, notificationHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NotificationHubResource>): void;
+
+
+    /**
+     * test send a push notification
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} namespaceName The namespace name.
+     *
+     * @param {string} notificationHubName The notification hub name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Debug send parameters
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DebugSendResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    debugSendWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, notificationHubName: string, options?: { parameters? : any, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DebugSendResponse>>;
+
+    /**
+     * test send a push notification
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} namespaceName The namespace name.
+     *
+     * @param {string} notificationHubName The notification hub name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.parameters] Debug send parameters
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DebugSendResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DebugSendResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DebugSendResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, options?: { parameters? : any, customHeaders? : { [headerName: string]: string; } }): Promise<models.DebugSendResponse>;
+    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, callback: ServiceCallback<models.DebugSendResponse>): void;
+    debugSend(resourceGroupName: string, namespaceName: string, notificationHubName: string, options: { parameters? : any, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DebugSendResponse>): void;
 
 
     /**

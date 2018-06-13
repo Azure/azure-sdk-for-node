@@ -100,7 +100,7 @@ export interface Sku {
  * @member {string} [id] Resource Id
  * @member {string} name Resource name
  * @member {string} [type] Resource type
- * @member {string} location Resource location
+ * @member {string} [location] Resource location
  * @member {object} [tags] Resource tags
  * @member {object} [sku] The sku of the created namespace
  * @member {string} [sku.name] Name of the notification hub sku. Possible
@@ -116,7 +116,7 @@ export interface CheckAvailabilityParameters {
   readonly id?: string;
   name: string;
   readonly type?: string;
-  location: string;
+  location?: string;
   tags?: { [propertyName: string]: string };
   sku?: Sku;
   isAvailiable?: boolean;
@@ -579,6 +579,74 @@ export interface NotificationHubCreateOrUpdateParameters extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the NotificationHubPatchParameters class.
+ * @constructor
+ * Parameters supplied to the patch NotificationHub operation.
+ *
+ * @member {string} [notificationHubPatchParametersName] The NotificationHub
+ * name.
+ * @member {string} [registrationTtl] The RegistrationTtl of the created
+ * NotificationHub
+ * @member {array} [authorizationRules] The AuthorizationRules of the created
+ * NotificationHub
+ * @member {object} [apnsCredential] The ApnsCredential of the created
+ * NotificationHub
+ * @member {string} [apnsCredential.apnsCertificate] The APNS certificate.
+ * @member {string} [apnsCredential.certificateKey] The certificate key.
+ * @member {string} [apnsCredential.endpoint] The endpoint of this credential.
+ * @member {string} [apnsCredential.thumbprint] The Apns certificate Thumbprint
+ * @member {string} [apnsCredential.keyId] A 10-character key identifier (kid)
+ * key, obtained from your developer account
+ * @member {string} [apnsCredential.appName] The name of the application
+ * @member {string} [apnsCredential.appId] The issuer (iss) registered claim
+ * key, whose value is your 10-character Team ID, obtained from your developer
+ * account
+ * @member {string} [apnsCredential.token] Provider Authentication Token,
+ * obtained through your developer account
+ * @member {object} [wnsCredential] The WnsCredential of the created
+ * NotificationHub
+ * @member {string} [wnsCredential.packageSid] The package ID for this
+ * credential.
+ * @member {string} [wnsCredential.secretKey] The secret key.
+ * @member {string} [wnsCredential.windowsLiveEndpoint] The Windows Live
+ * endpoint.
+ * @member {object} [gcmCredential] The GcmCredential of the created
+ * NotificationHub
+ * @member {string} [gcmCredential.gcmEndpoint] The GCM endpoint.
+ * @member {string} [gcmCredential.googleApiKey] The Google API key.
+ * @member {object} [mpnsCredential] The MpnsCredential of the created
+ * NotificationHub
+ * @member {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
+ * @member {string} [mpnsCredential.certificateKey] The certificate key for
+ * this credential.
+ * @member {string} [mpnsCredential.thumbprint] The Mpns certificate Thumbprint
+ * @member {object} [admCredential] The AdmCredential of the created
+ * NotificationHub
+ * @member {string} [admCredential.clientId] The client identifier.
+ * @member {string} [admCredential.clientSecret] The credential secret access
+ * key.
+ * @member {string} [admCredential.authTokenUrl] The URL of the authorization
+ * token.
+ * @member {object} [baiduCredential] The BaiduCredential of the created
+ * NotificationHub
+ * @member {string} [baiduCredential.baiduApiKey] Baidu Api Key.
+ * @member {string} [baiduCredential.baiduEndPoint] Baidu Endpoint.
+ * @member {string} [baiduCredential.baiduSecretKey] Baidu Secret Key
+ */
+export interface NotificationHubPatchParameters extends Resource {
+  notificationHubPatchParametersName?: string;
+  registrationTtl?: string;
+  authorizationRules?: SharedAccessAuthorizationRuleProperties[];
+  apnsCredential?: ApnsCredential;
+  wnsCredential?: WnsCredential;
+  gcmCredential?: GcmCredential;
+  mpnsCredential?: MpnsCredential;
+  admCredential?: AdmCredential;
+  baiduCredential?: BaiduCredential;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NotificationHubResource class.
  * @constructor
  * Description of a NotificationHub Resource.
@@ -642,6 +710,22 @@ export interface NotificationHubResource extends Resource {
   mpnsCredential?: MpnsCredential;
   admCredential?: AdmCredential;
   baiduCredential?: BaiduCredential;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DebugSendResponse class.
+ * @constructor
+ * Description of a NotificationHub Resource.
+ *
+ * @member {number} [success] successful send
+ * @member {number} [failure] send failure
+ * @member {object} [results] actual failure description
+ */
+export interface DebugSendResponse extends Resource {
+  success?: number;
+  failure?: number;
+  results?: any;
 }
 
 /**
