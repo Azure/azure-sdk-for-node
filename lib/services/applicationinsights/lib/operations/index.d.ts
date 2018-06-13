@@ -2444,7 +2444,7 @@ export interface Components {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    purgeStatusWithHttpOperationResponse(resourceGroupName: string, resourceName: string, purgeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComponentPurgeStatusResponse>>;
+    getPurgeStatusWithHttpOperationResponse(resourceGroupName: string, resourceName: string, purgeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComponentPurgeStatusResponse>>;
 
     /**
      * Get status for an ongoing purge operation.
@@ -2485,9 +2485,9 @@ export interface Components {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    purgeStatus(resourceGroupName: string, resourceName: string, purgeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComponentPurgeStatusResponse>;
-    purgeStatus(resourceGroupName: string, resourceName: string, purgeId: string, callback: ServiceCallback<models.ComponentPurgeStatusResponse>): void;
-    purgeStatus(resourceGroupName: string, resourceName: string, purgeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComponentPurgeStatusResponse>): void;
+    getPurgeStatus(resourceGroupName: string, resourceName: string, purgeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ComponentPurgeStatusResponse>;
+    getPurgeStatus(resourceGroupName: string, resourceName: string, purgeId: string, callback: ServiceCallback<models.ComponentPurgeStatusResponse>): void;
+    getPurgeStatus(resourceGroupName: string, resourceName: string, purgeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ComponentPurgeStatusResponse>): void;
 
 
     /**
@@ -4836,7 +4836,7 @@ export interface WorkbookOperations {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} workbookProperties.location Resource location
+     * @param {string} [workbookProperties.location] Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
@@ -4897,7 +4897,7 @@ export interface WorkbookOperations {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} workbookProperties.location Resource location
+     * @param {string} [workbookProperties.location] Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
@@ -4977,7 +4977,7 @@ export interface WorkbookOperations {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} workbookProperties.location Resource location
+     * @param {string} [workbookProperties.location] Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
@@ -5038,7 +5038,7 @@ export interface WorkbookOperations {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} workbookProperties.location Resource location
+     * @param {string} [workbookProperties.location] Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
