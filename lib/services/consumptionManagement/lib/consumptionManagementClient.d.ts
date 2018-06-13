@@ -8,7 +8,7 @@
  * regenerated.
  */
 
-import { ServiceClientCredentials } from 'ms-rest';
+import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
@@ -56,15 +56,535 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  priceSheet: operations.PriceSheet;
+  usageDetails: operations.UsageDetails;
   forecasts: operations.Forecasts;
   operations: operations.Operations;
   reportConfigOperations: operations.ReportConfigOperations;
   billingAccountDimensions: operations.BillingAccountDimensions;
   subscriptionDimensions: operations.SubscriptionDimensions;
   resourceGroupDimensions: operations.ResourceGroupDimensions;
-  subscriptionInsights: operations.SubscriptionInsights;
-  resourceGroupInsights: operations.ResourceGroupInsights;
-  billingAccountInsights: operations.BillingAccountInsights;
+
+
+  /**
+   * Lists the usage data for subscriptionId.
+   *
+   * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+   * Config operation.
+   *
+   * @param {string} parameters.timeframe The time frame for pulling data for the
+   * report. If custom, then a specific time period must be provided. Possible
+   * values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+   *
+   * @param {object} [parameters.timePeriod] Has time period for pulling data for
+   * the report.
+   *
+   * @param {date} parameters.timePeriod.from The start date to pull data from.
+   *
+   * @param {date} parameters.timePeriod.to The end date to pull data to.
+   *
+   * @param {object} [parameters.dataset] Has definition for data in this report
+   * config.
+   *
+   * @param {string} [parameters.dataset.granularity] The granularity of rows in
+   * the report. Possible values include: 'Daily'
+   *
+   * @param {object} [parameters.dataset.configuration] Has configuration
+   * information for the data in the report. The configuration will be ignored if
+   * aggregation and grouping are provided.
+   *
+   * @param {array} [parameters.dataset.configuration.columns] Array of column
+   * names to be included in the report. Any valid report column name is allowed.
+   * If not provided, then report includes all columns.
+   *
+   * @param {object} [parameters.dataset.aggregation] Dictionary of aggregation
+   * expression to use in the report. The key of each item in the dictionary is
+   * the alias for the aggregated column. Report can have upto 2 aggregation
+   * clauses.
+   *
+   * @param {array} [parameters.dataset.grouping] Array of group by expression to
+   * use in the report. Report can have upto 2 group by clauses.
+   *
+   * @param {object} [parameters.dataset.filter] Has filter expression to use in
+   * the report.
+   *
+   * @param {array} [parameters.dataset.filter.and] The logical "AND" expression.
+   * Must have atleast 2 items.
+   *
+   * @param {array} [parameters.dataset.filter.or] The logical "OR" expression.
+   * Must have atleast 2 items.
+   *
+   * @param {object} [parameters.dataset.filter.not] The logical "NOT"
+   * expression.
+   *
+   * @param {object} [parameters.dataset.filter.dimension] Has comparison
+   * expression for a dimension
+   *
+   * @param {object} [parameters.dataset.filter.tag] Has comparison expression
+   * for a tag
+   *
+   * @param {string} parameters.dataset.filter.tag.name The name of the column to
+   * use in comaprison.
+   *
+   * @param {array} parameters.dataset.filter.tag.values Array of values to use
+   * for comparison
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<UsageAnalysisResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  analyzeSubscriptionUsageWithHttpOperationResponse(parameters: models.ReportConfigDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageAnalysisResult>>;
+
+  /**
+   * Lists the usage data for subscriptionId.
+   *
+   * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+   * Config operation.
+   *
+   * @param {string} parameters.timeframe The time frame for pulling data for the
+   * report. If custom, then a specific time period must be provided. Possible
+   * values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+   *
+   * @param {object} [parameters.timePeriod] Has time period for pulling data for
+   * the report.
+   *
+   * @param {date} parameters.timePeriod.from The start date to pull data from.
+   *
+   * @param {date} parameters.timePeriod.to The end date to pull data to.
+   *
+   * @param {object} [parameters.dataset] Has definition for data in this report
+   * config.
+   *
+   * @param {string} [parameters.dataset.granularity] The granularity of rows in
+   * the report. Possible values include: 'Daily'
+   *
+   * @param {object} [parameters.dataset.configuration] Has configuration
+   * information for the data in the report. The configuration will be ignored if
+   * aggregation and grouping are provided.
+   *
+   * @param {array} [parameters.dataset.configuration.columns] Array of column
+   * names to be included in the report. Any valid report column name is allowed.
+   * If not provided, then report includes all columns.
+   *
+   * @param {object} [parameters.dataset.aggregation] Dictionary of aggregation
+   * expression to use in the report. The key of each item in the dictionary is
+   * the alias for the aggregated column. Report can have upto 2 aggregation
+   * clauses.
+   *
+   * @param {array} [parameters.dataset.grouping] Array of group by expression to
+   * use in the report. Report can have upto 2 group by clauses.
+   *
+   * @param {object} [parameters.dataset.filter] Has filter expression to use in
+   * the report.
+   *
+   * @param {array} [parameters.dataset.filter.and] The logical "AND" expression.
+   * Must have atleast 2 items.
+   *
+   * @param {array} [parameters.dataset.filter.or] The logical "OR" expression.
+   * Must have atleast 2 items.
+   *
+   * @param {object} [parameters.dataset.filter.not] The logical "NOT"
+   * expression.
+   *
+   * @param {object} [parameters.dataset.filter.dimension] Has comparison
+   * expression for a dimension
+   *
+   * @param {object} [parameters.dataset.filter.tag] Has comparison expression
+   * for a tag
+   *
+   * @param {string} parameters.dataset.filter.tag.name The name of the column to
+   * use in comaprison.
+   *
+   * @param {array} parameters.dataset.filter.tag.values Array of values to use
+   * for comparison
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {UsageAnalysisResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {UsageAnalysisResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link UsageAnalysisResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  analyzeSubscriptionUsage(parameters: models.ReportConfigDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageAnalysisResult>;
+  analyzeSubscriptionUsage(parameters: models.ReportConfigDefinition, callback: ServiceCallback<models.UsageAnalysisResult>): void;
+  analyzeSubscriptionUsage(parameters: models.ReportConfigDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageAnalysisResult>): void;
+
+
+  /**
+   * Lists the usage data for subscriptionId and resource group.
+   *
+   * @param {string} resourceGroupName Azure Resource Group Name.
+   *
+   * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+   * Config operation.
+   *
+   * @param {string} parameters.timeframe The time frame for pulling data for the
+   * report. If custom, then a specific time period must be provided. Possible
+   * values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+   *
+   * @param {object} [parameters.timePeriod] Has time period for pulling data for
+   * the report.
+   *
+   * @param {date} parameters.timePeriod.from The start date to pull data from.
+   *
+   * @param {date} parameters.timePeriod.to The end date to pull data to.
+   *
+   * @param {object} [parameters.dataset] Has definition for data in this report
+   * config.
+   *
+   * @param {string} [parameters.dataset.granularity] The granularity of rows in
+   * the report. Possible values include: 'Daily'
+   *
+   * @param {object} [parameters.dataset.configuration] Has configuration
+   * information for the data in the report. The configuration will be ignored if
+   * aggregation and grouping are provided.
+   *
+   * @param {array} [parameters.dataset.configuration.columns] Array of column
+   * names to be included in the report. Any valid report column name is allowed.
+   * If not provided, then report includes all columns.
+   *
+   * @param {object} [parameters.dataset.aggregation] Dictionary of aggregation
+   * expression to use in the report. The key of each item in the dictionary is
+   * the alias for the aggregated column. Report can have upto 2 aggregation
+   * clauses.
+   *
+   * @param {array} [parameters.dataset.grouping] Array of group by expression to
+   * use in the report. Report can have upto 2 group by clauses.
+   *
+   * @param {object} [parameters.dataset.filter] Has filter expression to use in
+   * the report.
+   *
+   * @param {array} [parameters.dataset.filter.and] The logical "AND" expression.
+   * Must have atleast 2 items.
+   *
+   * @param {array} [parameters.dataset.filter.or] The logical "OR" expression.
+   * Must have atleast 2 items.
+   *
+   * @param {object} [parameters.dataset.filter.not] The logical "NOT"
+   * expression.
+   *
+   * @param {object} [parameters.dataset.filter.dimension] Has comparison
+   * expression for a dimension
+   *
+   * @param {object} [parameters.dataset.filter.tag] Has comparison expression
+   * for a tag
+   *
+   * @param {string} parameters.dataset.filter.tag.name The name of the column to
+   * use in comaprison.
+   *
+   * @param {array} parameters.dataset.filter.tag.values Array of values to use
+   * for comparison
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<UsageAnalysisResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  analyzeResourceGroupUsageWithHttpOperationResponse(resourceGroupName: string, parameters: models.ReportConfigDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageAnalysisResult>>;
+
+  /**
+   * Lists the usage data for subscriptionId and resource group.
+   *
+   * @param {string} resourceGroupName Azure Resource Group Name.
+   *
+   * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+   * Config operation.
+   *
+   * @param {string} parameters.timeframe The time frame for pulling data for the
+   * report. If custom, then a specific time period must be provided. Possible
+   * values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+   *
+   * @param {object} [parameters.timePeriod] Has time period for pulling data for
+   * the report.
+   *
+   * @param {date} parameters.timePeriod.from The start date to pull data from.
+   *
+   * @param {date} parameters.timePeriod.to The end date to pull data to.
+   *
+   * @param {object} [parameters.dataset] Has definition for data in this report
+   * config.
+   *
+   * @param {string} [parameters.dataset.granularity] The granularity of rows in
+   * the report. Possible values include: 'Daily'
+   *
+   * @param {object} [parameters.dataset.configuration] Has configuration
+   * information for the data in the report. The configuration will be ignored if
+   * aggregation and grouping are provided.
+   *
+   * @param {array} [parameters.dataset.configuration.columns] Array of column
+   * names to be included in the report. Any valid report column name is allowed.
+   * If not provided, then report includes all columns.
+   *
+   * @param {object} [parameters.dataset.aggregation] Dictionary of aggregation
+   * expression to use in the report. The key of each item in the dictionary is
+   * the alias for the aggregated column. Report can have upto 2 aggregation
+   * clauses.
+   *
+   * @param {array} [parameters.dataset.grouping] Array of group by expression to
+   * use in the report. Report can have upto 2 group by clauses.
+   *
+   * @param {object} [parameters.dataset.filter] Has filter expression to use in
+   * the report.
+   *
+   * @param {array} [parameters.dataset.filter.and] The logical "AND" expression.
+   * Must have atleast 2 items.
+   *
+   * @param {array} [parameters.dataset.filter.or] The logical "OR" expression.
+   * Must have atleast 2 items.
+   *
+   * @param {object} [parameters.dataset.filter.not] The logical "NOT"
+   * expression.
+   *
+   * @param {object} [parameters.dataset.filter.dimension] Has comparison
+   * expression for a dimension
+   *
+   * @param {object} [parameters.dataset.filter.tag] Has comparison expression
+   * for a tag
+   *
+   * @param {string} parameters.dataset.filter.tag.name The name of the column to
+   * use in comaprison.
+   *
+   * @param {array} parameters.dataset.filter.tag.values Array of values to use
+   * for comparison
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {UsageAnalysisResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {UsageAnalysisResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link UsageAnalysisResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  analyzeResourceGroupUsage(resourceGroupName: string, parameters: models.ReportConfigDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageAnalysisResult>;
+  analyzeResourceGroupUsage(resourceGroupName: string, parameters: models.ReportConfigDefinition, callback: ServiceCallback<models.UsageAnalysisResult>): void;
+  analyzeResourceGroupUsage(resourceGroupName: string, parameters: models.ReportConfigDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageAnalysisResult>): void;
+
+
+  /**
+   * Lists the usage data for billing account.
+   *
+   * @param {string} billingAccountId BillingAccount ID
+   *
+   * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+   * Config operation.
+   *
+   * @param {string} parameters.timeframe The time frame for pulling data for the
+   * report. If custom, then a specific time period must be provided. Possible
+   * values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+   *
+   * @param {object} [parameters.timePeriod] Has time period for pulling data for
+   * the report.
+   *
+   * @param {date} parameters.timePeriod.from The start date to pull data from.
+   *
+   * @param {date} parameters.timePeriod.to The end date to pull data to.
+   *
+   * @param {object} [parameters.dataset] Has definition for data in this report
+   * config.
+   *
+   * @param {string} [parameters.dataset.granularity] The granularity of rows in
+   * the report. Possible values include: 'Daily'
+   *
+   * @param {object} [parameters.dataset.configuration] Has configuration
+   * information for the data in the report. The configuration will be ignored if
+   * aggregation and grouping are provided.
+   *
+   * @param {array} [parameters.dataset.configuration.columns] Array of column
+   * names to be included in the report. Any valid report column name is allowed.
+   * If not provided, then report includes all columns.
+   *
+   * @param {object} [parameters.dataset.aggregation] Dictionary of aggregation
+   * expression to use in the report. The key of each item in the dictionary is
+   * the alias for the aggregated column. Report can have upto 2 aggregation
+   * clauses.
+   *
+   * @param {array} [parameters.dataset.grouping] Array of group by expression to
+   * use in the report. Report can have upto 2 group by clauses.
+   *
+   * @param {object} [parameters.dataset.filter] Has filter expression to use in
+   * the report.
+   *
+   * @param {array} [parameters.dataset.filter.and] The logical "AND" expression.
+   * Must have atleast 2 items.
+   *
+   * @param {array} [parameters.dataset.filter.or] The logical "OR" expression.
+   * Must have atleast 2 items.
+   *
+   * @param {object} [parameters.dataset.filter.not] The logical "NOT"
+   * expression.
+   *
+   * @param {object} [parameters.dataset.filter.dimension] Has comparison
+   * expression for a dimension
+   *
+   * @param {object} [parameters.dataset.filter.tag] Has comparison expression
+   * for a tag
+   *
+   * @param {string} parameters.dataset.filter.tag.name The name of the column to
+   * use in comaprison.
+   *
+   * @param {array} parameters.dataset.filter.tag.values Array of values to use
+   * for comparison
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<UsageAnalysisResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  analyzeBillingAccountUsageWithHttpOperationResponse(billingAccountId: string, parameters: models.ReportConfigDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageAnalysisResult>>;
+
+  /**
+   * Lists the usage data for billing account.
+   *
+   * @param {string} billingAccountId BillingAccount ID
+   *
+   * @param {object} parameters Parameters supplied to the CreateOrUpdate Report
+   * Config operation.
+   *
+   * @param {string} parameters.timeframe The time frame for pulling data for the
+   * report. If custom, then a specific time period must be provided. Possible
+   * values include: 'WeekToDate', 'MonthToDate', 'YearToDate', 'Custom'
+   *
+   * @param {object} [parameters.timePeriod] Has time period for pulling data for
+   * the report.
+   *
+   * @param {date} parameters.timePeriod.from The start date to pull data from.
+   *
+   * @param {date} parameters.timePeriod.to The end date to pull data to.
+   *
+   * @param {object} [parameters.dataset] Has definition for data in this report
+   * config.
+   *
+   * @param {string} [parameters.dataset.granularity] The granularity of rows in
+   * the report. Possible values include: 'Daily'
+   *
+   * @param {object} [parameters.dataset.configuration] Has configuration
+   * information for the data in the report. The configuration will be ignored if
+   * aggregation and grouping are provided.
+   *
+   * @param {array} [parameters.dataset.configuration.columns] Array of column
+   * names to be included in the report. Any valid report column name is allowed.
+   * If not provided, then report includes all columns.
+   *
+   * @param {object} [parameters.dataset.aggregation] Dictionary of aggregation
+   * expression to use in the report. The key of each item in the dictionary is
+   * the alias for the aggregated column. Report can have upto 2 aggregation
+   * clauses.
+   *
+   * @param {array} [parameters.dataset.grouping] Array of group by expression to
+   * use in the report. Report can have upto 2 group by clauses.
+   *
+   * @param {object} [parameters.dataset.filter] Has filter expression to use in
+   * the report.
+   *
+   * @param {array} [parameters.dataset.filter.and] The logical "AND" expression.
+   * Must have atleast 2 items.
+   *
+   * @param {array} [parameters.dataset.filter.or] The logical "OR" expression.
+   * Must have atleast 2 items.
+   *
+   * @param {object} [parameters.dataset.filter.not] The logical "NOT"
+   * expression.
+   *
+   * @param {object} [parameters.dataset.filter.dimension] Has comparison
+   * expression for a dimension
+   *
+   * @param {object} [parameters.dataset.filter.tag] Has comparison expression
+   * for a tag
+   *
+   * @param {string} parameters.dataset.filter.tag.name The name of the column to
+   * use in comaprison.
+   *
+   * @param {array} parameters.dataset.filter.tag.values Array of values to use
+   * for comparison
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {UsageAnalysisResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {UsageAnalysisResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link UsageAnalysisResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  analyzeBillingAccountUsage(billingAccountId: string, parameters: models.ReportConfigDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageAnalysisResult>;
+  analyzeBillingAccountUsage(billingAccountId: string, parameters: models.ReportConfigDefinition, callback: ServiceCallback<models.UsageAnalysisResult>): void;
+  analyzeBillingAccountUsage(billingAccountId: string, parameters: models.ReportConfigDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageAnalysisResult>): void;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };
