@@ -863,6 +863,68 @@ export interface DatabaseAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
+    getReadOnlyKeysWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseAccountListReadOnlyKeysResult>>;
+
+    /**
+     * Lists the read-only access keys for the specified Azure Cosmos DB database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseAccountListReadOnlyKeysResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseAccountListReadOnlyKeysResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseAccountListReadOnlyKeysResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getReadOnlyKeys(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseAccountListReadOnlyKeysResult>;
+    getReadOnlyKeys(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DatabaseAccountListReadOnlyKeysResult>): void;
+    getReadOnlyKeys(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseAccountListReadOnlyKeysResult>): void;
+
+
+    /**
+     * Lists the read-only access keys for the specified Azure Cosmos DB database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseAccountListReadOnlyKeysResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
     listReadOnlyKeysWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseAccountListReadOnlyKeysResult>>;
 
     /**
