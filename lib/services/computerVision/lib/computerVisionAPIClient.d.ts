@@ -127,9 +127,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -172,9 +172,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -397,9 +397,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -432,9 +432,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -481,9 +481,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -511,9 +511,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -563,9 +563,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -596,9 +596,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -784,9 +784,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -826,9 +826,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1051,9 +1051,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1086,9 +1086,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1135,9 +1135,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1165,9 +1165,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1217,9 +1217,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1250,9 +1250,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
-   * &quot;en&quot;.Supported languages:en - English, Default.ja - Japanese pt -
-   * Portuguese zh - Simplified Chinese. Possible values include: 'en', 'ja',
-   * 'pt', 'zh'
+   * &quot;en&quot;.Supported languages:en - English, Default. es - Spanish, ja -
+   * Japanese, pt - Portuguese, zh - Simplified Chinese. Possible values include:
+   * 'en', 'es', 'ja', 'pt', 'zh'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
