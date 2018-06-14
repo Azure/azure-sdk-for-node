@@ -2,13 +2,15 @@
   "name": "azure-arm-batchai",
   "author": "Microsoft Corporation",
   "description": "BatchAIManagementClient Library with typescript type definitions for node",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "dependencies": {
-    "moment": "^2.21.0",
-    "ms-rest": "^2.3.2",
+    "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
   },
-  "keywords": [ "node", "azure" ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
   "license": "MIT",
   "main": "./lib/batchAIManagementClient.js",
   "types": "./lib/batchAIManagementClient.d.ts",
