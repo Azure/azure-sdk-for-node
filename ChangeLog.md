@@ -1,3 +1,6 @@
+## 2018.06.24 version 2.3.1-preview
+* Added client library for Log Analytics
+
 ## 2018.06.12 version 2.3.0-preview
 * Updated dependencies based on `npm audit` warnings
 * Removed deprecated `azure-monitor` from `azure` package

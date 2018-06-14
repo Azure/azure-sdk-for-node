@@ -15,7 +15,7 @@
     "Lu, Jianghao <jianghlu@microsoft.com>",
     "Krishnan, Balaji <Balaji.Krishnan@microsoft.com>"
   ],
-  "version": "2.3.0-preview",
+  "version": "2.3.1-preview",
   "description": "Microsoft Azure Client Library for node",
   "tags": [
     "azure",
