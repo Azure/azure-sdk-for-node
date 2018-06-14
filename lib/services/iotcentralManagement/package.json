@@ -1,19 +1,19 @@
 {
-  "name": "azure-graph",
+  "name": "azure-arm-iotcentral",
   "author": "Microsoft Corporation",
-  "description": "GraphRbacManagementClient Library with typescript type definitions for node",
-  "version": "3.0.0",
+  "description": "IotCentralClient Library with typescript type definitions for node",
+  "version": "1.0.0-preview",
   "dependencies": {
-    "ms-rest": "^2.3.4",
-    "ms-rest-azure": "^2.5.7"
+    "ms-rest": "^2.3.3",
+    "ms-rest-azure": "^2.5.5"
   },
   "keywords": [
     "node",
     "azure"
   ],
   "license": "MIT",
-  "main": "./lib/graphRbacManagementClient.js",
-  "types": "./lib/graphRbacManagementClient.d.ts",
+  "main": "./lib/iotCentralClient.js",
+  "types": "./lib/iotCentralClient.d.ts",
   "homepage": "http://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
