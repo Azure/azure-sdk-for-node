@@ -30867,7 +30867,7 @@ export interface VirtualWANs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionIdWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVirtualWANsResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVirtualWANsResult>>;
 
     /**
      * Lists all the VirtualWANs in a subscription.
@@ -30899,9 +30899,9 @@ export interface VirtualWANs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionId(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVirtualWANsResult>;
-    listBySubscriptionId(callback: ServiceCallback<models.ListVirtualWANsResult>): void;
-    listBySubscriptionId(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVirtualWANsResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVirtualWANsResult>;
+    list(callback: ServiceCallback<models.ListVirtualWANsResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVirtualWANsResult>): void;
 
 
     /**
@@ -31198,7 +31198,7 @@ export interface VirtualWANs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionIdNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVirtualWANsResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVirtualWANsResult>>;
 
     /**
      * Lists all the VirtualWANs in a subscription.
@@ -31233,9 +31233,9 @@ export interface VirtualWANs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionIdNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVirtualWANsResult>;
-    listBySubscriptionIdNext(nextPageLink: string, callback: ServiceCallback<models.ListVirtualWANsResult>): void;
-    listBySubscriptionIdNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVirtualWANsResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVirtualWANsResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ListVirtualWANsResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVirtualWANsResult>): void;
 }
 
 /**
