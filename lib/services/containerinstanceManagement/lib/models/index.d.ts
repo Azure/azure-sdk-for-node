@@ -735,7 +735,7 @@ export interface ContainerExecRequestTerminalSize {
  * @class
  * Initializes a new instance of the ContainerExecRequest class.
  * @constructor
- * The start container exec request.
+ * The container exec request.
  *
  * @member {string} [command] The command to be executed.
  * @member {object} [terminalSize] The size of the terminal.
