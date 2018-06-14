@@ -415,6 +415,10 @@
     "category": "Client",
     "service_name": "Keyvault"
   },
+  "azure-loganalytics": {
+    "category": "Client",
+    "service_name": "Log Analytics"
+  },
   "azure-servicefabric": {
     "category": "Client",
     "service_name": "Service Fabric"
