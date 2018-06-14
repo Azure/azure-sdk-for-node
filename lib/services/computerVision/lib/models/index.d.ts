@@ -106,14 +106,30 @@ export interface CelebritiesModel {
 
 /**
  * @class
+ * Initializes a new instance of the LandmarksModel class.
+ * @constructor
+ * A landmark recognized in the image
+ *
+ * @member {string} [name] Name of the landmark.
+ * @member {number} [confidence] Confidence level for the landmark recognition.
+ */
+export interface LandmarksModel {
+  name?: string;
+  confidence?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the CategoryDetail class.
  * @constructor
  * An object describing additional category details.
  *
  * @member {array} [celebrities] An array of celebrities if any identified.
+ * @member {array} [landmarks] An array of landmarks if any identified.
  */
 export interface CategoryDetail {
   celebrities?: CelebritiesModel[];
+  landmarks?: LandmarksModel[];
 }
 
 /**
@@ -127,6 +143,7 @@ export interface CategoryDetail {
  * @member {object} [detail]
  * @member {array} [detail.celebrities] An array of celebrities if any
  * identified.
+ * @member {array} [detail.landmarks] An array of landmarks if any identified.
  */
 export interface Category {
   name?: string;
@@ -227,22 +244,6 @@ export interface ImageCaption {
 
 /**
  * @class
- * Initializes a new instance of the ImageMetadata class.
- * @constructor
- * Image metadata
- *
- * @member {number} [width] Image width
- * @member {number} [height] Image height
- * @member {string} [format] Image format
- */
-export interface ImageMetadata {
-  width?: number;
-  height?: number;
-  format?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ImageDescriptionDetails class.
  * @constructor
  * A collection of content tags, along with a list of captions sorted by
@@ -250,17 +251,10 @@ export interface ImageMetadata {
  *
  * @member {array} [tags] A collection of image tags.
  * @member {array} [captions] A list of captions, sorted by confidence level.
- * @member {string} [requestId] Id of the REST API request.
- * @member {object} [metadata]
- * @member {number} [metadata.width] Image width
- * @member {number} [metadata.height] Image height
- * @member {string} [metadata.format] Image format
  */
 export interface ImageDescriptionDetails {
   tags?: string[];
   captions?: ImageCaption[];
-  requestId?: string;
-  metadata?: ImageMetadata;
 }
 
 /**
@@ -286,6 +280,22 @@ export interface FaceDescription {
   age?: number;
   gender?: string;
   faceRectangle?: FaceRectangle;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImageMetadata class.
+ * @constructor
+ * Image metadata
+ *
+ * @member {number} [width] Image width
+ * @member {number} [height] Image height
+ * @member {string} [format] Image format
+ */
+export interface ImageMetadata {
+  width?: number;
+  height?: number;
+  format?: string;
 }
 
 /**
@@ -323,11 +333,6 @@ export interface FaceDescription {
  * @member {array} [description.tags] A collection of image tags.
  * @member {array} [description.captions] A list of captions, sorted by
  * confidence level.
- * @member {string} [description.requestId] Id of the REST API request.
- * @member {object} [description.metadata]
- * @member {number} [description.metadata.width] Image width
- * @member {number} [description.metadata.height] Image height
- * @member {string} [description.metadata.format] Image format
  * @member {array} [faces] An array of possible faces within the image.
  * @member {string} [requestId] Id of the request for tracking purposes.
  * @member {object} [metadata]
@@ -504,20 +509,6 @@ export interface CelebrityResults {
 
 /**
  * @class
- * Initializes a new instance of the LandmarkResultsLandmarksItem class.
- * @constructor
- * A landmark recognized in the image
- *
- * @member {string} [name] Name of the landmark.
- * @member {number} [confidence] Confidence level for the landmark recognition.
- */
-export interface LandmarkResultsLandmarksItem {
-  name?: string;
-  confidence?: number;
-}
-
-/**
- * @class
  * Initializes a new instance of the LandmarkResults class.
  * @constructor
  * List of landmarks recognized in the image.
@@ -530,7 +521,7 @@ export interface LandmarkResultsLandmarksItem {
  * @member {string} [metadata.format] Image format
  */
 export interface LandmarkResults {
-  landmarks?: LandmarkResultsLandmarksItem[];
+  landmarks?: LandmarksModel[];
   requestId?: string;
   metadata?: ImageMetadata;
 }
