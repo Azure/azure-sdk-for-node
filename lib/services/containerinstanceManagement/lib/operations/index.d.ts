@@ -1078,7 +1078,7 @@ export interface ContainerOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    execWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerExecResponse>>;
+    executeCommandWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerExecResponse>>;
 
     /**
      * @summary Executes a command in a specific container instance.
@@ -1132,7 +1132,7 @@ export interface ContainerOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    exec(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerExecResponse>;
-    exec(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, callback: ServiceCallback<models.ContainerExecResponse>): void;
-    exec(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerExecResponse>): void;
+    executeCommand(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerExecResponse>;
+    executeCommand(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, callback: ServiceCallback<models.ContainerExecResponse>): void;
+    executeCommand(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerExecResponse>): void;
 }
