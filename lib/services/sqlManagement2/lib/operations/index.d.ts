@@ -28766,3 +28766,333 @@ export interface BackupShortTermRetentionPolicies {
     listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.BackupShortTermRetentionPolicyListResult>): void;
     listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicyListResult>): void;
 }
+
+/**
+ * @class
+ * TdeCertificates
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface TdeCertificates {
+
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    create(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, callback: ServiceCallback<void>): void;
+    create(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCreate(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, callback: ServiceCallback<void>): void;
+    beginCreate(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * ManagedInstanceTdeCertificates
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ManagedInstanceTdeCertificates {
+
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    create(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, callback: ServiceCallback<void>): void;
+    create(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCreate(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, callback: ServiceCallback<void>): void;
+    beginCreate(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
