@@ -23,8 +23,6 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - Azure Subscription ID.
    *
-   * @param {datagrain} grain - Can be daily or monthly. Possible values include: 'DailyGrain', 'MonthlyGrain'
-   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -43,15 +41,13 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, grain: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
 
   subscriptionId: string;
-
-  grain: string;
 
   acceptLanguage: string;
 
@@ -60,14 +56,10 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  usageDetails: operations.UsageDetails;
-  marketplaces: operations.Marketplaces;
-  reservationsSummaries: operations.ReservationsSummaries;
-  reservationsDetails: operations.ReservationsDetails;
-  reservationRecommendationsOperations: operations.ReservationRecommendationsOperations;
-  budgets: operations.Budgets;
-  operations: operations.Operations;
   priceSheet: operations.PriceSheet;
+  usageDetails: operations.UsageDetails;
+  forecasts: operations.Forecasts;
+  operations: operations.Operations;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };
