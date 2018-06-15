@@ -634,15 +634,14 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    * Recognize Text operation. When you use the Recognize Text interface, the
    * response contains a field called 'Operation-Location'. The
    * 'Operation-Location' field contains the URL that you must use for your Get
-   * Handwritten Text Operation Result operation.
+   * Recognize Text Operation Result operation.
+   *
+   * @param {string} mode Type of text to recognize. Possible values include:
+   * 'Handwritten', 'Printed'
    *
    * @param {string} url Publicly reachable URL of an image
    *
    * @param {object} [options] Optional Parameters.
-   *
-   * @param {boolean} [options.detectHandwriting] If 'true' is specified,
-   * handwriting recognition is performed. If this parameter is set to 'false' or
-   * is not specified, printed text recognition is performed.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -653,21 +652,20 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  recognizeTextWithHttpOperationResponse(url: string, options?: { detectHandwriting? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+  recognizeTextWithHttpOperationResponse(url: string, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
    * Recognize Text operation. When you use the Recognize Text interface, the
    * response contains a field called 'Operation-Location'. The
    * 'Operation-Location' field contains the URL that you must use for your Get
-   * Handwritten Text Operation Result operation.
+   * Recognize Text Operation Result operation.
+   *
+   * @param {string} mode Type of text to recognize. Possible values include:
+   * 'Handwritten', 'Printed'
    *
    * @param {string} url Publicly reachable URL of an image
    *
    * @param {object} [options] Optional Parameters.
-   *
-   * @param {boolean} [options.detectHandwriting] If 'true' is specified,
-   * handwriting recognition is performed. If this parameter is set to 'false' or
-   * is not specified, printed text recognition is performed.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -693,9 +691,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  recognizeText(url: string, options?: { detectHandwriting? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  recognizeText(url: string, callback: ServiceCallback<void>): void;
-  recognizeText(url: string, options: { detectHandwriting? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+  recognizeText(url: string, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  recognizeText(url: string, mode: string, callback: ServiceCallback<void>): void;
+  recognizeText(url: string, mode: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
   /**
@@ -704,7 +702,7 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    * Recognize Text interface.
    *
    * @param {string} operationId Id of the text operation returned in the
-   * response of the 'Recognize Handwritten Text'
+   * response of the 'Recognize Text'
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -725,7 +723,7 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    * Recognize Text interface.
    *
    * @param {string} operationId Id of the text operation returned in the
-   * response of the 'Recognize Handwritten Text'
+   * response of the 'Recognize Text'
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1290,15 +1288,14 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    * Recognize Text operation. When you use the Recognize Text interface, the
    * response contains a field called 'Operation-Location'. The
    * 'Operation-Location' field contains the URL that you must use for your Get
-   * Handwritten Text Operation Result operation.
+   * Recognize Text Operation Result operation.
    *
    * @param {object} image An image stream.
    *
-   * @param {object} [options] Optional Parameters.
+   * @param {string} mode Type of text to recognize. Possible values include:
+   * 'Handwritten', 'Printed'
    *
-   * @param {boolean} [options.detectHandwriting] If 'true' is specified,
-   * handwriting recognition is performed. If this parameter is set to 'false' or
-   * is not specified, printed text recognition is performed.
+   * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1309,21 +1306,20 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  recognizeTextInStreamWithHttpOperationResponse(image: stream.Readable, options?: { detectHandwriting? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+  recognizeTextInStreamWithHttpOperationResponse(image: stream.Readable, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
   /**
    * Recognize Text operation. When you use the Recognize Text interface, the
    * response contains a field called 'Operation-Location'. The
    * 'Operation-Location' field contains the URL that you must use for your Get
-   * Handwritten Text Operation Result operation.
+   * Recognize Text Operation Result operation.
    *
    * @param {object} image An image stream.
    *
-   * @param {object} [options] Optional Parameters.
+   * @param {string} mode Type of text to recognize. Possible values include:
+   * 'Handwritten', 'Printed'
    *
-   * @param {boolean} [options.detectHandwriting] If 'true' is specified,
-   * handwriting recognition is performed. If this parameter is set to 'false' or
-   * is not specified, printed text recognition is performed.
+   * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1349,9 +1345,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  recognizeTextInStream(image: stream.Readable, options?: { detectHandwriting? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-  recognizeTextInStream(image: stream.Readable, callback: ServiceCallback<void>): void;
-  recognizeTextInStream(image: stream.Readable, options: { detectHandwriting? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+  recognizeTextInStream(image: stream.Readable, mode: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  recognizeTextInStream(image: stream.Readable, mode: string, callback: ServiceCallback<void>): void;
+  recognizeTextInStream(image: stream.Readable, mode: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 export { ComputerVisionAPIClient, models as ComputerVisionAPIModels };
