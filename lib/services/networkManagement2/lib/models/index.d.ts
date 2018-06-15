@@ -6333,7 +6333,7 @@ export interface ConnectionResetSharedKey {
  *
  * @member {string} value The virtual network connection shared key value.
  */
-export interface ConnectionSharedKey {
+export interface ConnectionSharedKey extends SubResource {
   value: string;
 }
 
