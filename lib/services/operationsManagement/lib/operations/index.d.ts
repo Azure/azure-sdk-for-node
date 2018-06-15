@@ -407,6 +407,207 @@ export interface Solutions {
     listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SolutionPropertiesList>;
     listBySubscription(callback: ServiceCallback<models.SolutionPropertiesList>): void;
     listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SolutionPropertiesList>): void;
+
+
+    /**
+     * @summary Create/Update Solution.
+     *
+     * Creates or updates the Solution.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
+     *
+     * @param {object} parameters The parameters required to create OMS Solution.
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.plan] Plan for solution object supported by the
+     * OperationsManagement resource provider.
+     *
+     * @param {string} [parameters.plan.name] name of the solution to be created.
+     * For Microsoft published solution it should be in the format of
+     * solutionType(workspaceName). SolutionType part is case sensitive. For third
+     * party solution, it can be anything.
+     *
+     * @param {string} [parameters.plan.publisher] Publisher name. For gallery
+     * solution, it is Microsoft.
+     *
+     * @param {string} [parameters.plan.promotionCode] promotionCode, Not really
+     * used now, can you left as empty
+     *
+     * @param {string} [parameters.plan.product] name of the solution to
+     * enabled/add. For Microsoft published gallery solution it should be in the
+     * format of OMSGallery/<solutionType>. This is case sensitive
+     *
+     * @param {object} [parameters.properties] Properties for solution object
+     * supported by the OperationsManagement resource provider.
+     *
+     * @param {string} parameters.properties.workspaceResourceId The azure
+     * resourceId for the workspace where the solution will be deployed/enabled.
+     *
+     * @param {array} [parameters.properties.containedResources] The azure
+     * resources that will be contained within the solutions. They will be locked
+     * and gets deleted automatically when the solution is deleted.
+     *
+     * @param {array} [parameters.properties.referencedResources] The resources
+     * that will be referenced from this solution. Deleting any of those solution
+     * out of band will break the solution.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Solution>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, solutionName: string, parameters: models.Solution, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Solution>>;
+
+    /**
+     * @summary Create/Update Solution.
+     *
+     * Creates or updates the Solution.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
+     *
+     * @param {object} parameters The parameters required to create OMS Solution.
+     *
+     * @param {string} [parameters.location] Resource location
+     *
+     * @param {object} [parameters.plan] Plan for solution object supported by the
+     * OperationsManagement resource provider.
+     *
+     * @param {string} [parameters.plan.name] name of the solution to be created.
+     * For Microsoft published solution it should be in the format of
+     * solutionType(workspaceName). SolutionType part is case sensitive. For third
+     * party solution, it can be anything.
+     *
+     * @param {string} [parameters.plan.publisher] Publisher name. For gallery
+     * solution, it is Microsoft.
+     *
+     * @param {string} [parameters.plan.promotionCode] promotionCode, Not really
+     * used now, can you left as empty
+     *
+     * @param {string} [parameters.plan.product] name of the solution to
+     * enabled/add. For Microsoft published gallery solution it should be in the
+     * format of OMSGallery/<solutionType>. This is case sensitive
+     *
+     * @param {object} [parameters.properties] Properties for solution object
+     * supported by the OperationsManagement resource provider.
+     *
+     * @param {string} parameters.properties.workspaceResourceId The azure
+     * resourceId for the workspace where the solution will be deployed/enabled.
+     *
+     * @param {array} [parameters.properties.containedResources] The azure
+     * resources that will be contained within the solutions. They will be locked
+     * and gets deleted automatically when the solution is deleted.
+     *
+     * @param {array} [parameters.properties.referencedResources] The resources
+     * that will be referenced from this solution. Deleting any of those solution
+     * out of band will break the solution.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Solution} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Solution} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Solution} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, solutionName: string, parameters: models.Solution, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Solution>;
+    beginCreateOrUpdate(resourceGroupName: string, solutionName: string, parameters: models.Solution, callback: ServiceCallback<models.Solution>): void;
+    beginCreateOrUpdate(resourceGroupName: string, solutionName: string, parameters: models.Solution, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Solution>): void;
+
+
+    /**
+     * @summary Deletes the solution
+     *
+     * Deletes the solution in the subscription.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes the solution
+     *
+     * Deletes the solution in the subscription.
+     *
+     * @param {string} resourceGroupName The name of the resource group to get. The
+     * name is case insensitive.
+     *
+     * @param {string} solutionName User Solution Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, solutionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, solutionName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, solutionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
