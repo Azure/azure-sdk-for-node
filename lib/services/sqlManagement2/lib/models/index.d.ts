@@ -4129,12 +4129,10 @@ export interface BackupShortTermRetentionPolicy extends ProxyResource {
  * @constructor
  * A TDE certificate that can be uploaded into a server.
  *
- * @member {string} [certificateName] The name of the certificate
  * @member {string} privateBlob The base64 encoded certificate private blob.
  * @member {string} [certPassword] The certificate password.
  */
 export interface TdeCertificate extends ProxyResource {
-  readonly certificateName?: string;
   privateBlob: string;
   certPassword?: string;
 }
