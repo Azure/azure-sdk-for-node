@@ -6633,14 +6633,14 @@ export interface VirtualHub extends Resource {
  * @member {number} [routingWeight] routing weight for vpn connection.
  * @member {string} [connectionStatus] The connection status. Possible values
  * include: 'Unknown', 'Connecting', 'Connected', 'NotConnected'
- * @member {string} [tunnelConnectionStatus] The connection status of tunnel.
- * Possible values include: 'Unknown', 'Connecting', 'Connected',
- * 'NotConnected'
  * @member {number} [ingressBytesTransferred] Ingress bytes transferred.
  * @member {number} [egressBytesTransferred] Egress bytes transferred.
  * @member {number} [connectionBandwidthInMbps] Expected bandwidth in MBPS.
  * @member {string} [sharedKey] SharedKey for the vpn connection.
  * @member {boolean} [enableBgp] EnableBgp flag
+ * @member {array} [ipsecPolicies] The IPSec Policies to be considered by this
+ * connection.
+ * @member {boolean} [enableRateLimiting] EnableRateLimiting flag
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
  * @member {string} [etag] Gets a unique read-only string that changes whenever
@@ -6650,14 +6650,31 @@ export interface VpnConnection extends Resource {
   remoteVpnSite?: SubResource;
   routingWeight?: number;
   connectionStatus?: string;
-  tunnelConnectionStatus?: string;
   readonly ingressBytesTransferred?: number;
   readonly egressBytesTransferred?: number;
   readonly connectionBandwidthInMbps?: number;
   sharedKey?: string;
   enableBgp?: boolean;
+  ipsecPolicies?: IpsecPolicy[];
+  enableRateLimiting?: boolean;
   provisioningState?: string;
   readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Policies class.
+ * @constructor
+ * Policies for vpn gateway.
+ *
+ * @member {boolean} [allowBranchToBranchTraffic] True if branch to branch
+ * traffic is allowed.
+ * @member {boolean} [allowVnetToVnetTraffic] True if Vnet to Vnet traffic is
+ * allowed.
+ */
+export interface Policies {
+  allowBranchToBranchTraffic?: boolean;
+  allowVnetToVnetTraffic?: boolean;
 }
 
 /**
@@ -6677,6 +6694,11 @@ export interface VpnConnection extends Resource {
  * from this BGP speaker.
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
+ * @member {object} [policies] The policies applied to this vpn gateway.
+ * @member {boolean} [policies.allowBranchToBranchTraffic] True if branch to
+ * branch traffic is allowed.
+ * @member {boolean} [policies.allowVnetToVnetTraffic] True if Vnet to Vnet
+ * traffic is allowed.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -6685,6 +6707,7 @@ export interface VpnGateway extends Resource {
   connections?: VpnConnection[];
   bgpSettings?: BgpSettings;
   provisioningState?: string;
+  policies?: Policies;
   readonly etag?: string;
 }
 

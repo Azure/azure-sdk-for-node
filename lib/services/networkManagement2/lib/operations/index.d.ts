@@ -27018,6 +27018,208 @@ export interface VirtualNetworkGateways {
 
 
     /**
+     * The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy
+     * for P2S client of virtual network gateway in the specified resource group
+     * through Network resource provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} vpnclientIpsecParams Parameters supplied to the Begin Set
+     * vpnclient ipsec parameters of Virtual Network Gateway P2S client operation
+     * through Network resource provider.
+     *
+     * @param {number} vpnclientIpsecParams.saLifeTimeSeconds The IPSec Security
+     * Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for
+     * P2S client.
+     *
+     * @param {number} vpnclientIpsecParams.saDataSizeKilobytes The IPSec Security
+     * Association (also called Quick Mode or Phase 2 SA) payload size in KB for
+     * P2S client..
+     *
+     * @param {string} vpnclientIpsecParams.ipsecEncryption The IPSec encryption
+     * algorithm (IKE phase 1). Possible values include: 'None', 'DES', 'DES3',
+     * 'AES128', 'AES192', 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
+     *
+     * @param {string} vpnclientIpsecParams.ipsecIntegrity The IPSec integrity
+     * algorithm (IKE phase 1). Possible values include: 'MD5', 'SHA1', 'SHA256',
+     * 'GCMAES128', 'GCMAES192', 'GCMAES256'
+     *
+     * @param {string} vpnclientIpsecParams.ikeEncryption The IKE encryption
+     * algorithm (IKE phase 2). Possible values include: 'DES', 'DES3', 'AES128',
+     * 'AES192', 'AES256', 'GCMAES256', 'GCMAES128'
+     *
+     * @param {string} vpnclientIpsecParams.ikeIntegrity The IKE integrity
+     * algorithm (IKE phase 2). Possible values include: 'MD5', 'SHA1', 'SHA256',
+     * 'SHA384', 'GCMAES256', 'GCMAES128'
+     *
+     * @param {string} vpnclientIpsecParams.dhGroup The DH Groups used in IKE Phase
+     * 1 for initial SA. Possible values include: 'None', 'DHGroup1', 'DHGroup2',
+     * 'DHGroup14', 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
+     *
+     * @param {string} vpnclientIpsecParams.pfsGroup The Pfs Groups used in IKE
+     * Phase 2 for new child SA. Possible values include: 'None', 'PFS1', 'PFS2',
+     * 'PFS2048', 'ECP256', 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VpnClientIPsecParameters>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    setVpnclientIpsecParametersWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, vpnclientIpsecParams: models.VpnClientIPsecParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnClientIPsecParameters>>;
+
+    /**
+     * The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy
+     * for P2S client of virtual network gateway in the specified resource group
+     * through Network resource provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} vpnclientIpsecParams Parameters supplied to the Begin Set
+     * vpnclient ipsec parameters of Virtual Network Gateway P2S client operation
+     * through Network resource provider.
+     *
+     * @param {number} vpnclientIpsecParams.saLifeTimeSeconds The IPSec Security
+     * Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for
+     * P2S client.
+     *
+     * @param {number} vpnclientIpsecParams.saDataSizeKilobytes The IPSec Security
+     * Association (also called Quick Mode or Phase 2 SA) payload size in KB for
+     * P2S client..
+     *
+     * @param {string} vpnclientIpsecParams.ipsecEncryption The IPSec encryption
+     * algorithm (IKE phase 1). Possible values include: 'None', 'DES', 'DES3',
+     * 'AES128', 'AES192', 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
+     *
+     * @param {string} vpnclientIpsecParams.ipsecIntegrity The IPSec integrity
+     * algorithm (IKE phase 1). Possible values include: 'MD5', 'SHA1', 'SHA256',
+     * 'GCMAES128', 'GCMAES192', 'GCMAES256'
+     *
+     * @param {string} vpnclientIpsecParams.ikeEncryption The IKE encryption
+     * algorithm (IKE phase 2). Possible values include: 'DES', 'DES3', 'AES128',
+     * 'AES192', 'AES256', 'GCMAES256', 'GCMAES128'
+     *
+     * @param {string} vpnclientIpsecParams.ikeIntegrity The IKE integrity
+     * algorithm (IKE phase 2). Possible values include: 'MD5', 'SHA1', 'SHA256',
+     * 'SHA384', 'GCMAES256', 'GCMAES128'
+     *
+     * @param {string} vpnclientIpsecParams.dhGroup The DH Groups used in IKE Phase
+     * 1 for initial SA. Possible values include: 'None', 'DHGroup1', 'DHGroup2',
+     * 'DHGroup14', 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
+     *
+     * @param {string} vpnclientIpsecParams.pfsGroup The Pfs Groups used in IKE
+     * Phase 2 for new child SA. Possible values include: 'None', 'PFS1', 'PFS2',
+     * 'PFS2048', 'ECP256', 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VpnClientIPsecParameters} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VpnClientIPsecParameters} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VpnClientIPsecParameters} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    setVpnclientIpsecParameters(resourceGroupName: string, virtualNetworkGatewayName: string, vpnclientIpsecParams: models.VpnClientIPsecParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnClientIPsecParameters>;
+    setVpnclientIpsecParameters(resourceGroupName: string, virtualNetworkGatewayName: string, vpnclientIpsecParams: models.VpnClientIPsecParameters, callback: ServiceCallback<models.VpnClientIPsecParameters>): void;
+    setVpnclientIpsecParameters(resourceGroupName: string, virtualNetworkGatewayName: string, vpnclientIpsecParams: models.VpnClientIPsecParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnClientIPsecParameters>): void;
+
+
+    /**
+     * The Get VpnclientIpsecParameters operation retrieves information about the
+     * vpnclient ipsec policy for P2S client of virtual network gateway in the
+     * specified resource group through Network resource provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The virtual network gateway name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VpnClientIPsecParameters>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getVpnclientIpsecParametersWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnClientIPsecParameters>>;
+
+    /**
+     * The Get VpnclientIpsecParameters operation retrieves information about the
+     * vpnclient ipsec policy for P2S client of virtual network gateway in the
+     * specified resource group through Network resource provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The virtual network gateway name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VpnClientIPsecParameters} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VpnClientIPsecParameters} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VpnClientIPsecParameters} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getVpnclientIpsecParameters(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnClientIPsecParameters>;
+    getVpnclientIpsecParameters(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<models.VpnClientIPsecParameters>): void;
+    getVpnclientIpsecParameters(resourceGroupName: string, virtualNetworkGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnClientIPsecParameters>): void;
+
+
+    /**
      * Gets a xml format representation for vpn device configuration script.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -28024,6 +28226,208 @@ export interface VirtualNetworkGateways {
     beginGetAdvertisedRoutes(resourceGroupName: string, virtualNetworkGatewayName: string, peer: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.GatewayRouteListResult>;
     beginGetAdvertisedRoutes(resourceGroupName: string, virtualNetworkGatewayName: string, peer: string, callback: ServiceCallback<models.GatewayRouteListResult>): void;
     beginGetAdvertisedRoutes(resourceGroupName: string, virtualNetworkGatewayName: string, peer: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GatewayRouteListResult>): void;
+
+
+    /**
+     * The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy
+     * for P2S client of virtual network gateway in the specified resource group
+     * through Network resource provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} vpnclientIpsecParams Parameters supplied to the Begin Set
+     * vpnclient ipsec parameters of Virtual Network Gateway P2S client operation
+     * through Network resource provider.
+     *
+     * @param {number} vpnclientIpsecParams.saLifeTimeSeconds The IPSec Security
+     * Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for
+     * P2S client.
+     *
+     * @param {number} vpnclientIpsecParams.saDataSizeKilobytes The IPSec Security
+     * Association (also called Quick Mode or Phase 2 SA) payload size in KB for
+     * P2S client..
+     *
+     * @param {string} vpnclientIpsecParams.ipsecEncryption The IPSec encryption
+     * algorithm (IKE phase 1). Possible values include: 'None', 'DES', 'DES3',
+     * 'AES128', 'AES192', 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
+     *
+     * @param {string} vpnclientIpsecParams.ipsecIntegrity The IPSec integrity
+     * algorithm (IKE phase 1). Possible values include: 'MD5', 'SHA1', 'SHA256',
+     * 'GCMAES128', 'GCMAES192', 'GCMAES256'
+     *
+     * @param {string} vpnclientIpsecParams.ikeEncryption The IKE encryption
+     * algorithm (IKE phase 2). Possible values include: 'DES', 'DES3', 'AES128',
+     * 'AES192', 'AES256', 'GCMAES256', 'GCMAES128'
+     *
+     * @param {string} vpnclientIpsecParams.ikeIntegrity The IKE integrity
+     * algorithm (IKE phase 2). Possible values include: 'MD5', 'SHA1', 'SHA256',
+     * 'SHA384', 'GCMAES256', 'GCMAES128'
+     *
+     * @param {string} vpnclientIpsecParams.dhGroup The DH Groups used in IKE Phase
+     * 1 for initial SA. Possible values include: 'None', 'DHGroup1', 'DHGroup2',
+     * 'DHGroup14', 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
+     *
+     * @param {string} vpnclientIpsecParams.pfsGroup The Pfs Groups used in IKE
+     * Phase 2 for new child SA. Possible values include: 'None', 'PFS1', 'PFS2',
+     * 'PFS2048', 'ECP256', 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VpnClientIPsecParameters>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginSetVpnclientIpsecParametersWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, vpnclientIpsecParams: models.VpnClientIPsecParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnClientIPsecParameters>>;
+
+    /**
+     * The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy
+     * for P2S client of virtual network gateway in the specified resource group
+     * through Network resource provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} vpnclientIpsecParams Parameters supplied to the Begin Set
+     * vpnclient ipsec parameters of Virtual Network Gateway P2S client operation
+     * through Network resource provider.
+     *
+     * @param {number} vpnclientIpsecParams.saLifeTimeSeconds The IPSec Security
+     * Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for
+     * P2S client.
+     *
+     * @param {number} vpnclientIpsecParams.saDataSizeKilobytes The IPSec Security
+     * Association (also called Quick Mode or Phase 2 SA) payload size in KB for
+     * P2S client..
+     *
+     * @param {string} vpnclientIpsecParams.ipsecEncryption The IPSec encryption
+     * algorithm (IKE phase 1). Possible values include: 'None', 'DES', 'DES3',
+     * 'AES128', 'AES192', 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
+     *
+     * @param {string} vpnclientIpsecParams.ipsecIntegrity The IPSec integrity
+     * algorithm (IKE phase 1). Possible values include: 'MD5', 'SHA1', 'SHA256',
+     * 'GCMAES128', 'GCMAES192', 'GCMAES256'
+     *
+     * @param {string} vpnclientIpsecParams.ikeEncryption The IKE encryption
+     * algorithm (IKE phase 2). Possible values include: 'DES', 'DES3', 'AES128',
+     * 'AES192', 'AES256', 'GCMAES256', 'GCMAES128'
+     *
+     * @param {string} vpnclientIpsecParams.ikeIntegrity The IKE integrity
+     * algorithm (IKE phase 2). Possible values include: 'MD5', 'SHA1', 'SHA256',
+     * 'SHA384', 'GCMAES256', 'GCMAES128'
+     *
+     * @param {string} vpnclientIpsecParams.dhGroup The DH Groups used in IKE Phase
+     * 1 for initial SA. Possible values include: 'None', 'DHGroup1', 'DHGroup2',
+     * 'DHGroup14', 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
+     *
+     * @param {string} vpnclientIpsecParams.pfsGroup The Pfs Groups used in IKE
+     * Phase 2 for new child SA. Possible values include: 'None', 'PFS1', 'PFS2',
+     * 'PFS2048', 'ECP256', 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VpnClientIPsecParameters} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VpnClientIPsecParameters} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VpnClientIPsecParameters} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginSetVpnclientIpsecParameters(resourceGroupName: string, virtualNetworkGatewayName: string, vpnclientIpsecParams: models.VpnClientIPsecParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnClientIPsecParameters>;
+    beginSetVpnclientIpsecParameters(resourceGroupName: string, virtualNetworkGatewayName: string, vpnclientIpsecParams: models.VpnClientIPsecParameters, callback: ServiceCallback<models.VpnClientIPsecParameters>): void;
+    beginSetVpnclientIpsecParameters(resourceGroupName: string, virtualNetworkGatewayName: string, vpnclientIpsecParams: models.VpnClientIPsecParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnClientIPsecParameters>): void;
+
+
+    /**
+     * The Get VpnclientIpsecParameters operation retrieves information about the
+     * vpnclient ipsec policy for P2S client of virtual network gateway in the
+     * specified resource group through Network resource provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The virtual network gateway name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VpnClientIPsecParameters>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginGetVpnclientIpsecParametersWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VpnClientIPsecParameters>>;
+
+    /**
+     * The Get VpnclientIpsecParameters operation retrieves information about the
+     * vpnclient ipsec policy for P2S client of virtual network gateway in the
+     * specified resource group through Network resource provider.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The virtual network gateway name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VpnClientIPsecParameters} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VpnClientIPsecParameters} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VpnClientIPsecParameters} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginGetVpnclientIpsecParameters(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VpnClientIPsecParameters>;
+    beginGetVpnclientIpsecParameters(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<models.VpnClientIPsecParameters>): void;
+    beginGetVpnclientIpsecParameters(resourceGroupName: string, virtualNetworkGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VpnClientIPsecParameters>): void;
 
 
     /**
@@ -31667,7 +32071,7 @@ export interface VpnSites {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionIdWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnSitesResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnSitesResult>>;
 
     /**
      * Lists all the VpnSites in a subscription.
@@ -31699,9 +32103,9 @@ export interface VpnSites {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionId(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnSitesResult>;
-    listBySubscriptionId(callback: ServiceCallback<models.ListVpnSitesResult>): void;
-    listBySubscriptionId(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnSitesResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnSitesResult>;
+    list(callback: ServiceCallback<models.ListVpnSitesResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnSitesResult>): void;
 
 
     /**
@@ -32070,7 +32474,7 @@ export interface VpnSites {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionIdNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnSitesResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnSitesResult>>;
 
     /**
      * Lists all the VpnSites in a subscription.
@@ -32105,9 +32509,9 @@ export interface VpnSites {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionIdNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnSitesResult>;
-    listBySubscriptionIdNext(nextPageLink: string, callback: ServiceCallback<models.ListVpnSitesResult>): void;
-    listBySubscriptionIdNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnSitesResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnSitesResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ListVpnSitesResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnSitesResult>): void;
 }
 
 /**
@@ -32652,7 +33056,7 @@ export interface VirtualHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionIdWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVirtualHubsResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVirtualHubsResult>>;
 
     /**
      * Lists all the VirtualHubs in a subscription.
@@ -32684,9 +33088,9 @@ export interface VirtualHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionId(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVirtualHubsResult>;
-    listBySubscriptionId(callback: ServiceCallback<models.ListVirtualHubsResult>): void;
-    listBySubscriptionId(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVirtualHubsResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVirtualHubsResult>;
+    list(callback: ServiceCallback<models.ListVirtualHubsResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVirtualHubsResult>): void;
 
 
     /**
@@ -32999,7 +33403,7 @@ export interface VirtualHubs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionIdNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVirtualHubsResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVirtualHubsResult>>;
 
     /**
      * Lists all the VirtualHubs in a subscription.
@@ -33034,9 +33438,9 @@ export interface VirtualHubs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionIdNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVirtualHubsResult>;
-    listBySubscriptionIdNext(nextPageLink: string, callback: ServiceCallback<models.ListVirtualHubsResult>): void;
-    listBySubscriptionIdNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVirtualHubsResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVirtualHubsResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ListVirtualHubsResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVirtualHubsResult>): void;
 }
 
 /**
@@ -33333,6 +33737,15 @@ export interface VpnGateways {
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
      *
+     * @param {object} [vpnGatewayParameters.policies] The policies applied to this
+     * vpn gateway.
+     *
+     * @param {boolean} [vpnGatewayParameters.policies.allowBranchToBranchTraffic]
+     * True if branch to branch traffic is allowed.
+     *
+     * @param {boolean} [vpnGatewayParameters.policies.allowVnetToVnetTraffic] True
+     * if Vnet to Vnet traffic is allowed.
+     *
      * @param {string} [vpnGatewayParameters.id] Resource ID.
      *
      * @param {string} [vpnGatewayParameters.location] Resource location.
@@ -33386,6 +33799,15 @@ export interface VpnGateways {
      * @param {string} [vpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
+     *
+     * @param {object} [vpnGatewayParameters.policies] The policies applied to this
+     * vpn gateway.
+     *
+     * @param {boolean} [vpnGatewayParameters.policies.allowBranchToBranchTraffic]
+     * True if branch to branch traffic is allowed.
+     *
+     * @param {boolean} [vpnGatewayParameters.policies.allowVnetToVnetTraffic] True
+     * if Vnet to Vnet traffic is allowed.
      *
      * @param {string} [vpnGatewayParameters.id] Resource ID.
      *
@@ -33621,7 +34043,7 @@ export interface VpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionIdWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnGatewaysResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnGatewaysResult>>;
 
     /**
      * Lists all the VpnGateways in a subscription.
@@ -33653,9 +34075,9 @@ export interface VpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionId(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnGatewaysResult>;
-    listBySubscriptionId(callback: ServiceCallback<models.ListVpnGatewaysResult>): void;
-    listBySubscriptionId(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnGatewaysResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnGatewaysResult>;
+    list(callback: ServiceCallback<models.ListVpnGatewaysResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnGatewaysResult>): void;
 
 
     /**
@@ -33692,6 +34114,15 @@ export interface VpnGateways {
      * @param {string} [vpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
+     *
+     * @param {object} [vpnGatewayParameters.policies] The policies applied to this
+     * vpn gateway.
+     *
+     * @param {boolean} [vpnGatewayParameters.policies.allowBranchToBranchTraffic]
+     * True if branch to branch traffic is allowed.
+     *
+     * @param {boolean} [vpnGatewayParameters.policies.allowVnetToVnetTraffic] True
+     * if Vnet to Vnet traffic is allowed.
      *
      * @param {string} [vpnGatewayParameters.id] Resource ID.
      *
@@ -33746,6 +34177,15 @@ export interface VpnGateways {
      * @param {string} [vpnGatewayParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
      * 'Deleting', 'Failed'
+     *
+     * @param {object} [vpnGatewayParameters.policies] The policies applied to this
+     * vpn gateway.
+     *
+     * @param {boolean} [vpnGatewayParameters.policies.allowBranchToBranchTraffic]
+     * True if branch to branch traffic is allowed.
+     *
+     * @param {boolean} [vpnGatewayParameters.policies.allowVnetToVnetTraffic] True
+     * if Vnet to Vnet traffic is allowed.
      *
      * @param {string} [vpnGatewayParameters.id] Resource ID.
      *
@@ -33986,7 +34426,7 @@ export interface VpnGateways {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionIdNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnGatewaysResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnGatewaysResult>>;
 
     /**
      * Lists all the VpnGateways in a subscription.
@@ -34021,9 +34461,9 @@ export interface VpnGateways {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionIdNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnGatewaysResult>;
-    listBySubscriptionIdNext(nextPageLink: string, callback: ServiceCallback<models.ListVpnGatewaysResult>): void;
-    listBySubscriptionIdNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnGatewaysResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnGatewaysResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ListVpnGatewaysResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnGatewaysResult>): void;
 }
 
 /**
@@ -34123,14 +34563,16 @@ export interface VpnConnections {
      * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
      * 'NotConnected'
      *
-     * @param {string} [vpnConnectionParameters.tunnelConnectionStatus] The
-     * connection status of tunnel. Possible values include: 'Unknown',
-     * 'Connecting', 'Connected', 'NotConnected'
-     *
      * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
      * connection.
      *
      * @param {boolean} [vpnConnectionParameters.enableBgp] EnableBgp flag
+     *
+     * @param {array} [vpnConnectionParameters.ipsecPolicies] The IPSec Policies to
+     * be considered by this connection.
+     *
+     * @param {boolean} [vpnConnectionParameters.enableRateLimiting]
+     * EnableRateLimiting flag
      *
      * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -34180,14 +34622,16 @@ export interface VpnConnections {
      * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
      * 'NotConnected'
      *
-     * @param {string} [vpnConnectionParameters.tunnelConnectionStatus] The
-     * connection status of tunnel. Possible values include: 'Unknown',
-     * 'Connecting', 'Connected', 'NotConnected'
-     *
      * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
      * connection.
      *
      * @param {boolean} [vpnConnectionParameters.enableBgp] EnableBgp flag
+     *
+     * @param {array} [vpnConnectionParameters.ipsecPolicies] The IPSec Policies to
+     * be considered by this connection.
+     *
+     * @param {boolean} [vpnConnectionParameters.enableRateLimiting]
+     * EnableRateLimiting flag
      *
      * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -34374,14 +34818,16 @@ export interface VpnConnections {
      * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
      * 'NotConnected'
      *
-     * @param {string} [vpnConnectionParameters.tunnelConnectionStatus] The
-     * connection status of tunnel. Possible values include: 'Unknown',
-     * 'Connecting', 'Connected', 'NotConnected'
-     *
      * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
      * connection.
      *
      * @param {boolean} [vpnConnectionParameters.enableBgp] EnableBgp flag
+     *
+     * @param {array} [vpnConnectionParameters.ipsecPolicies] The IPSec Policies to
+     * be considered by this connection.
+     *
+     * @param {boolean} [vpnConnectionParameters.enableRateLimiting]
+     * EnableRateLimiting flag
      *
      * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
@@ -34431,14 +34877,16 @@ export interface VpnConnections {
      * status. Possible values include: 'Unknown', 'Connecting', 'Connected',
      * 'NotConnected'
      *
-     * @param {string} [vpnConnectionParameters.tunnelConnectionStatus] The
-     * connection status of tunnel. Possible values include: 'Unknown',
-     * 'Connecting', 'Connected', 'NotConnected'
-     *
      * @param {string} [vpnConnectionParameters.sharedKey] SharedKey for the vpn
      * connection.
      *
      * @param {boolean} [vpnConnectionParameters.enableBgp] EnableBgp flag
+     *
+     * @param {array} [vpnConnectionParameters.ipsecPolicies] The IPSec Policies to
+     * be considered by this connection.
+     *
+     * @param {boolean} [vpnConnectionParameters.enableRateLimiting]
+     * EnableRateLimiting flag
      *
      * @param {string} [vpnConnectionParameters.provisioningState] The provisioning
      * state of the resource. Possible values include: 'Succeeded', 'Updating',
