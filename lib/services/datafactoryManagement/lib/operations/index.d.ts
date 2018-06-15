@@ -2103,7 +2103,7 @@ export interface IntegrationRuntimes {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    grantAccessWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimePermissionResponse>>;
+    addIdentityWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimePermissionResponse>>;
 
     /**
      * Grant integration runtime access to other data factory.
@@ -2151,9 +2151,9 @@ export interface IntegrationRuntimes {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    grantAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimePermissionResponse>;
-    grantAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
-    grantAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
+    addIdentity(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimePermissionResponse>;
+    addIdentity(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
+    addIdentity(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
 
 
     /**
@@ -2185,7 +2185,7 @@ export interface IntegrationRuntimes {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    revokeAccessWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimePermissionResponse>>;
+    removeIdentityWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimePermissionResponse>>;
 
     /**
      * Revoke the integration runtime access from other data factory.
@@ -2233,9 +2233,9 @@ export interface IntegrationRuntimes {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    revokeAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimePermissionResponse>;
-    revokeAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
-    revokeAccess(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
+    removeIdentity(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimePermissionResponse>;
+    removeIdentity(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
+    removeIdentity(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
 
 
     /**
