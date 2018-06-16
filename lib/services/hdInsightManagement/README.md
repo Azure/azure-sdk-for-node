@@ -26,9 +26,7 @@ const HDInsightManagementClient = require("azure-arm-hdinsight");
 msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
     const client = new HDInsightManagementClient(creds, subscriptionId);
-    const resourceGroupName = "testresourceGroupName";
-    const clusterName = "testclusterName";
-    return client.clusters.get(resourceGroupName, clusterName).then((result) => {
+    return client.clusters.get().then((result) => {
       console.log("The result is:");
       console.log(result);
     });

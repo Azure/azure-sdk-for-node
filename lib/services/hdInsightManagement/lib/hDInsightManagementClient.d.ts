@@ -23,6 +23,22 @@ export default class HDInsightManagementClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
    *
+   * @param {string} resourceGroupName - The name of the resource group.
+   *
+   * @param {string} clusterName - The name of the cluster.
+   *
+   * @param {string} applicationName - The constant value for the application name.
+   *
+   * @param {string} location - The location to get capabilities for.
+   *
+   * @param {string} configurationName - The name of the cluster configuration.
+   *
+   * @param {string} extensionName - The name of the cluster extension.
+   *
+   * @param {string} scriptName - The name of the script.
+   *
+   * @param {string} scriptExecutionId - The script execution Id
+   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -41,13 +57,29 @@ export default class HDInsightManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, resourceGroupName: string, clusterName: string, applicationName: string, location: string, configurationName: string, extensionName: string, scriptName: string, scriptExecutionId: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   subscriptionId: string;
 
+  resourceGroupName: string;
+
+  clusterName: string;
+
   apiVersion: string;
+
+  applicationName: string;
+
+  location: string;
+
+  configurationName: string;
+
+  extensionName: string;
+
+  scriptName: string;
+
+  scriptExecutionId: string;
 
   acceptLanguage: string;
 
