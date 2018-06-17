@@ -1632,7 +1632,8 @@ export interface Jobs {
      *
      * @param {object}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault
-     * Key Vault resource ID. Fully qualified resource ID for the Key Vault.
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id
@@ -1640,7 +1641,7 @@ export interface Jobs {
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl
-     * Secret URL. The URL referencing a secret in a Key Vault.
+     * Secret URL. The URL referencing a secret in the Key Vault.
      *
      * @param {string} [parameters.containerSettings.shmSize] /dev/shm size. Size
      * of /dev/shm. Please refer to docker documentation for supported argument
@@ -1949,7 +1950,8 @@ export interface Jobs {
      *
      * @param {object}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault
-     * Key Vault resource ID. Fully qualified resource ID for the Key Vault.
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id
@@ -1957,7 +1959,7 @@ export interface Jobs {
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl
-     * Secret URL. The URL referencing a secret in a Key Vault.
+     * Secret URL. The URL referencing a secret in the Key Vault.
      *
      * @param {string} [parameters.containerSettings.shmSize] /dev/shm size. Size
      * of /dev/shm. Please refer to docker documentation for supported argument
@@ -2739,7 +2741,8 @@ export interface Jobs {
      *
      * @param {object}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault
-     * Key Vault resource ID. Fully qualified resource ID for the Key Vault.
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id
@@ -2747,7 +2750,7 @@ export interface Jobs {
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl
-     * Secret URL. The URL referencing a secret in a Key Vault.
+     * Secret URL. The URL referencing a secret in the Key Vault.
      *
      * @param {string} [parameters.containerSettings.shmSize] /dev/shm size. Size
      * of /dev/shm. Please refer to docker documentation for supported argument
@@ -3056,7 +3059,8 @@ export interface Jobs {
      *
      * @param {object}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault
-     * Key Vault resource ID. Fully qualified resource ID for the Key Vault.
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id
@@ -3064,7 +3068,7 @@ export interface Jobs {
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl
-     * Secret URL. The URL referencing a secret in a Key Vault.
+     * Secret URL. The URL referencing a secret in the Key Vault.
      *
      * @param {string} [parameters.containerSettings.shmSize] /dev/shm size. Size
      * of /dev/shm. Please refer to docker documentation for supported argument
@@ -3708,8 +3712,8 @@ export interface FileServers {
      * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB Disk size
      * in GB for the blank data disks.
      *
-     * @param {string} [parameters.dataDisks.cachingType] Caching Type. Caching
-     * Type for the disks. Available values are none (default), readonly,
+     * @param {string} [parameters.dataDisks.cachingType] Caching type. Caching
+     * type for the disks. Available values are none (default), readonly,
      * readwrite. Caching type can be set only for VM sizes supporting premium
      * storage. Possible values include: 'none', 'readonly', 'readwrite'
      *
@@ -3794,8 +3798,8 @@ export interface FileServers {
      * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB Disk size
      * in GB for the blank data disks.
      *
-     * @param {string} [parameters.dataDisks.cachingType] Caching Type. Caching
-     * Type for the disks. Available values are none (default), readonly,
+     * @param {string} [parameters.dataDisks.cachingType] Caching type. Caching
+     * type for the disks. Available values are none (default), readonly,
      * readwrite. Caching type can be set only for VM sizes supporting premium
      * storage. Possible values include: 'none', 'readonly', 'readwrite'
      *
@@ -4127,8 +4131,8 @@ export interface FileServers {
      * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB Disk size
      * in GB for the blank data disks.
      *
-     * @param {string} [parameters.dataDisks.cachingType] Caching Type. Caching
-     * Type for the disks. Available values are none (default), readonly,
+     * @param {string} [parameters.dataDisks.cachingType] Caching type. Caching
+     * type for the disks. Available values are none (default), readonly,
      * readwrite. Caching type can be set only for VM sizes supporting premium
      * storage. Possible values include: 'none', 'readonly', 'readwrite'
      *
@@ -4213,8 +4217,8 @@ export interface FileServers {
      * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB Disk size
      * in GB for the blank data disks.
      *
-     * @param {string} [parameters.dataDisks.cachingType] Caching Type. Caching
-     * Type for the disks. Available values are none (default), readonly,
+     * @param {string} [parameters.dataDisks.cachingType] Caching type. Caching
+     * type for the disks. Available values are none (default), readonly,
      * readwrite. Caching type can be set only for VM sizes supporting premium
      * storage. Possible values include: 'none', 'readonly', 'readwrite'
      *
@@ -4575,11 +4579,12 @@ export interface Clusters {
      *
      * @param {object}
      * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
-     * Key Vault resource ID. Fully qualified resource ID for the Key Vault.
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
      *
      * @param {string}
      * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
-     * Secret URL. The URL referencing a secret in a Key Vault.
+     * Secret URL. The URL referencing a secret in the Key Vault.
      *
      * @param {object} parameters.userAccountSettings User account settings.
      * Settings for an administrator user account that will be created on each
@@ -4782,11 +4787,12 @@ export interface Clusters {
      *
      * @param {object}
      * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
-     * Key Vault resource ID. Fully qualified resource ID for the Key Vault.
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
      *
      * @param {string}
      * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
-     * Secret URL. The URL referencing a secret in a Key Vault.
+     * Secret URL. The URL referencing a secret in the Key Vault.
      *
      * @param {object} parameters.userAccountSettings User account settings.
      * Settings for an administrator user account that will be created on each
@@ -5449,11 +5455,12 @@ export interface Clusters {
      *
      * @param {object}
      * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
-     * Key Vault resource ID. Fully qualified resource ID for the Key Vault.
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
      *
      * @param {string}
      * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
-     * Secret URL. The URL referencing a secret in a Key Vault.
+     * Secret URL. The URL referencing a secret in the Key Vault.
      *
      * @param {object} parameters.userAccountSettings User account settings.
      * Settings for an administrator user account that will be created on each
@@ -5656,11 +5663,12 @@ export interface Clusters {
      *
      * @param {object}
      * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
-     * Key Vault resource ID. Fully qualified resource ID for the Key Vault.
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
      *
      * @param {string}
      * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
-     * Secret URL. The URL referencing a secret in a Key Vault.
+     * Secret URL. The URL referencing a secret in the Key Vault.
      *
      * @param {object} parameters.userAccountSettings User account settings.
      * Settings for an administrator user account that will be created on each

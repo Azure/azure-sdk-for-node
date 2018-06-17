@@ -103,7 +103,7 @@ export interface SshConfiguration {
  *
  * @member {number} diskSizeInGB Disk size in GB. Disk size in GB for the blank
  * data disks.
- * @member {string} [cachingType] Caching Type. Caching Type for the disks.
+ * @member {string} [cachingType] Caching type. Caching type for the disks.
  * Available values are none (default), readonly, readwrite. Caching type can
  * be set only for VM sizes supporting premium storage. Possible values
  * include: 'none', 'readonly', 'readwrite'. Default value: 'none' .
@@ -140,10 +140,10 @@ export interface ResourceId extends BaseResource {
  * @class
  * Initializes a new instance of the MountSettings class.
  * @constructor
- * File Server Mount Information.
+ * File Server mount Information.
  *
- * @member {string} [mountPoint] Mount Point. Path where the NFS is mounted on
- * the File Server.
+ * @member {string} [mountPoint] Mount Point. Path where the data disks are
+ * mounted on the File Server.
  * @member {string} [fileServerPublicIP] Public IP. Public IP address of the
  * File Server which can be used to SSH to the node from outside of the subnet.
  * @member {string} [fileServerInternalIP] Internal IP. Internal IP address of
@@ -198,7 +198,7 @@ export interface ProxyResource extends BaseResource {
  * disks attached to File Server VM.
  * @member {number} [dataDisks.diskSizeInGB] Disk size in GB for the blank data
  * disks.
- * @member {string} [dataDisks.cachingType] Caching Type for the disks.
+ * @member {string} [dataDisks.cachingType] Caching type for the disks.
  * Available values are none (default), readonly, readwrite. Caching type can
  * be set only for VM sizes supporting premium storage. Possible values
  * include: 'none', 'readonly', 'readwrite'
@@ -213,8 +213,8 @@ export interface ProxyResource extends BaseResource {
  * resource ID.
  * @member {string} [subnet.id] The ID of the resource
  * @member {object} [mountSettings] Mount settings. File Server mount settings.
- * @member {string} [mountSettings.mountPoint] Path where the NFS is mounted on
- * the File Server.
+ * @member {string} [mountSettings.mountPoint] Path where the data disks are
+ * mounted on the File Server.
  * @member {string} [mountSettings.fileServerPublicIP] Public IP address of the
  * File Server which can be used to SSH to the node from outside of the subnet.
  * @member {string} [mountSettings.fileServerInternalIP] Internal IP address of
@@ -251,11 +251,11 @@ export interface FileServer extends ProxyResource {
  * @constructor
  * Key Vault Secret reference.
  *
- * @member {object} sourceVault Key Vault resource ID. Fully qualified resource
- * ID for the Key Vault.
+ * @member {object} sourceVault Key Vault resource identifier. Fully qualified
+ * resource indentifier of the Key Vault.
  * @member {string} [sourceVault.id] The ID of the resource
- * @member {string} secretUrl Secret URL. The URL referencing a secret in a Key
- * Vault.
+ * @member {string} secretUrl Secret URL. The URL referencing a secret in the
+ * Key Vault.
  */
 export interface KeyVaultSecretReference {
   sourceVault: ResourceId;
@@ -290,7 +290,7 @@ export interface KeyVaultSecretReference {
  * will be created for the File Server.
  * @member {number} [dataDisks.diskSizeInGB] Disk size in GB for the blank data
  * disks.
- * @member {string} [dataDisks.cachingType] Caching Type for the disks.
+ * @member {string} [dataDisks.cachingType] Caching type for the disks.
  * Available values are none (default), readonly, readwrite. Caching type can
  * be set only for VM sizes supporting premium storage. Possible values
  * include: 'none', 'readonly', 'readwrite'
@@ -472,11 +472,11 @@ export interface EnvironmentVariable {
  * store and secret which contains the value for the environment variable. One
  * of value or valueSecretReference must be provided.
  * @member {object} [valueSecretReference.sourceVault] Fully qualified resource
- * ID for the Key Vault.
+ * indentifier of the Key Vault.
  * @member {string} [valueSecretReference.sourceVault.id] The ID of the
  * resource
  * @member {string} [valueSecretReference.secretUrl] The URL referencing a
- * secret in a Key Vault.
+ * secret in the Key Vault.
  */
 export interface EnvironmentVariableWithSecretValue {
   name: string;
@@ -529,11 +529,11 @@ export interface SetupTask {
  * Information about KeyVault secret storing the storage account key. One of
  * accountKey or accountKeySecretReference must be specified.
  * @member {object} [accountKeySecretReference.sourceVault] Fully qualified
- * resource ID for the Key Vault.
+ * resource indentifier of the Key Vault.
  * @member {string} [accountKeySecretReference.sourceVault.id] The ID of the
  * resource
  * @member {string} [accountKeySecretReference.secretUrl] The URL referencing a
- * secret in a Key Vault.
+ * secret in the Key Vault.
  */
 export interface AzureStorageCredentialsInfo {
   accountKey?: string;
@@ -557,11 +557,11 @@ export interface AzureStorageCredentialsInfo {
  * KeyVault secret storing the storage account key. One of accountKey or
  * accountKeySecretReference must be specified.
  * @member {object} [credentials.accountKeySecretReference.sourceVault] Fully
- * qualified resource ID for the Key Vault.
+ * qualified resource indentifier of the Key Vault.
  * @member {string} [credentials.accountKeySecretReference.sourceVault.id] The
  * ID of the resource
  * @member {string} [credentials.accountKeySecretReference.secretUrl] The URL
- * referencing a secret in a Key Vault.
+ * referencing a secret in the Key Vault.
  * @member {string} relativeMountPath Relative mount path. The relative path on
  * the compute node where the Azure File share will be mounted. Note that all
  * cluster level file shares will be mounted under $AZ_BATCHAI_MOUNT_ROOT
@@ -599,11 +599,11 @@ export interface AzureFileShareReference {
  * KeyVault secret storing the storage account key. One of accountKey or
  * accountKeySecretReference must be specified.
  * @member {object} [credentials.accountKeySecretReference.sourceVault] Fully
- * qualified resource ID for the Key Vault.
+ * qualified resource indentifier of the Key Vault.
  * @member {string} [credentials.accountKeySecretReference.sourceVault.id] The
  * ID of the resource
  * @member {string} [credentials.accountKeySecretReference.secretUrl] The URL
- * referencing a secret in a Key Vault.
+ * referencing a secret in the Key Vault.
  * @member {string} relativeMountPath Relative mount path. The relative path on
  * the compute node where the Azure File container will be mounted. Note that
  * all cluster level containers will be mounted under $AZ_BATCHAI_MOUNT_ROOT
@@ -704,11 +704,11 @@ export interface MountVolumes {
  * Application Insights instrumentation key. One of instrumentationKey or
  * instrumentationKeySecretReference must be specified.
  * @member {object} [instrumentationKeySecretReference.sourceVault] Fully
- * qualified resource ID for the Key Vault.
+ * qualified resource indentifier of the Key Vault.
  * @member {string} [instrumentationKeySecretReference.sourceVault.id] The ID
  * of the resource
  * @member {string} [instrumentationKeySecretReference.secretUrl] The URL
- * referencing a secret in a Key Vault.
+ * referencing a secret in the Key Vault.
  */
 export interface AppInsightsReference {
   component: ResourceId;
@@ -737,13 +737,13 @@ export interface AppInsightsReference {
  * instrumentationKeySecretReference must be specified.
  * @member {object}
  * [appInsightsReference.instrumentationKeySecretReference.sourceVault] Fully
- * qualified resource ID for the Key Vault.
+ * qualified resource indentifier of the Key Vault.
  * @member {string}
  * [appInsightsReference.instrumentationKeySecretReference.sourceVault.id] The
  * ID of the resource
  * @member {string}
  * [appInsightsReference.instrumentationKeySecretReference.secretUrl] The URL
- * referencing a secret in a Key Vault.
+ * referencing a secret in the Key Vault.
  */
 export interface PerformanceCountersSettings {
   appInsightsReference: AppInsightsReference;
@@ -811,13 +811,13 @@ export interface PerformanceCountersSettings {
  * instrumentationKeySecretReference must be specified.
  * @member {object}
  * [performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault]
- * Fully qualified resource ID for the Key Vault.
+ * Fully qualified resource indentifier of the Key Vault.
  * @member {string}
  * [performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault.id]
  * The ID of the resource
  * @member {string}
  * [performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl]
- * The URL referencing a secret in a Key Vault.
+ * The URL referencing a secret in the Key Vault.
  */
 export interface NodeSetup {
   setupTask?: SetupTask;
@@ -970,13 +970,13 @@ export interface NodeStateCounts {
  * instrumentationKeySecretReference must be specified.
  * @member {object}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault]
- * Fully qualified resource ID for the Key Vault.
+ * Fully qualified resource indentifier of the Key Vault.
  * @member {string}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault.id]
  * The ID of the resource
  * @member {string}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl]
- * The URL referencing a secret in a Key Vault.
+ * The URL referencing a secret in the Key Vault.
  * @member {object} userAccountSettings User account settings. Settings for an
  * administrator user account that will be created on each compute node in the
  * cluster.
@@ -1181,13 +1181,13 @@ export interface BatchAIError {
  * instrumentationKeySecretReference must be specified.
  * @member {object}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault]
- * Fully qualified resource ID for the Key Vault.
+ * Fully qualified resource indentifier of the Key Vault.
  * @member {string}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault.id]
  * The ID of the resource
  * @member {string}
  * [nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl]
- * The URL referencing a secret in a Key Vault.
+ * The URL referencing a secret in the Key Vault.
  * @member {object} [userAccountSettings] User account settings. Administrator
  * user account settings which can be used to SSH to compute nodes.
  * @member {string} [userAccountSettings.adminUserName] Name of the
@@ -1268,11 +1268,11 @@ export interface Cluster extends ProxyResource {
  * KeyVault and pass it to the Batch AI service to integrate with KeyVault. One
  * of password or passwordSecretReference must be specified.
  * @member {object} [passwordSecretReference.sourceVault] Fully qualified
- * resource ID for the Key Vault.
+ * resource indentifier of the Key Vault.
  * @member {string} [passwordSecretReference.sourceVault.id] The ID of the
  * resource
  * @member {string} [passwordSecretReference.secretUrl] The URL referencing a
- * secret in a Key Vault.
+ * secret in the Key Vault.
  */
 export interface PrivateRegistryCredentials {
   username: string;
@@ -1299,11 +1299,11 @@ export interface PrivateRegistryCredentials {
  * pass it to the Batch AI service to integrate with KeyVault. One of password
  * or passwordSecretReference must be specified.
  * @member {object} [credentials.passwordSecretReference.sourceVault] Fully
- * qualified resource ID for the Key Vault.
+ * qualified resource indentifier of the Key Vault.
  * @member {string} [credentials.passwordSecretReference.sourceVault.id] The ID
  * of the resource
  * @member {string} [credentials.passwordSecretReference.secretUrl] The URL
- * referencing a secret in a Key Vault.
+ * referencing a secret in the Key Vault.
  */
 export interface ImageSourceRegistry {
   serverUrl?: string;
@@ -1335,13 +1335,13 @@ export interface ImageSourceRegistry {
  * of password or passwordSecretReference must be specified.
  * @member {object}
  * [imageSourceRegistry.credentials.passwordSecretReference.sourceVault] Fully
- * qualified resource ID for the Key Vault.
+ * qualified resource indentifier of the Key Vault.
  * @member {string}
  * [imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id] The
  * ID of the resource
  * @member {string}
  * [imageSourceRegistry.credentials.passwordSecretReference.secretUrl] The URL
- * referencing a secret in a Key Vault.
+ * referencing a secret in the Key Vault.
  * @member {string} [shmSize] /dev/shm size. Size of /dev/shm. Please refer to
  * docker documentation for supported argument formats.
  */
@@ -1694,13 +1694,13 @@ export interface JobBasePropertiesConstraints {
  * of password or passwordSecretReference must be specified.
  * @member {object}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault]
- * Fully qualified resource ID for the Key Vault.
+ * Fully qualified resource indentifier of the Key Vault.
  * @member {string}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id]
  * The ID of the resource
  * @member {string}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl]
- * The URL referencing a secret in a Key Vault.
+ * The URL referencing a secret in the Key Vault.
  * @member {string} [containerSettings.shmSize] Size of /dev/shm. Please refer
  * to docker documentation for supported argument formats.
  * @member {object} [cntkSettings] CNTK settings. Settings for CNTK (aka
@@ -1951,13 +1951,13 @@ export interface JobPropertiesExecutionInfo {
  * of password or passwordSecretReference must be specified.
  * @member {object}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault]
- * Fully qualified resource ID for the Key Vault.
+ * Fully qualified resource indentifier of the Key Vault.
  * @member {string}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id]
  * The ID of the resource
  * @member {string}
  * [containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl]
- * The URL referencing a secret in a Key Vault.
+ * The URL referencing a secret in the Key Vault.
  * @member {string} [containerSettings.shmSize] Size of /dev/shm. Please refer
  * to docker documentation for supported argument formats.
  * @member {string} [toolType] The toolkit type of this job. Possible values
