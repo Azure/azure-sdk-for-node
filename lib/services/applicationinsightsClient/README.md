@@ -18,32 +18,51 @@ npm install azure-applicationinsights
 
 ## How to use
 
-### Authentication, client creation and get metrics as an example.
+### Authentication, client creation and query execute as an example.
 
 ```javascript
-const msRest = require("ms-rest");
-const ApplicationInsightsDataClient = require("azure-applicationinsights");
-const token = "<access_token>";
-const creds = new msRest.TokenCredentials(token);
-const subscriptionId = "<Subscription_Id>";
-const client = new ApplicationInsightsDataClient(creds, subscriptionId);
-const appId = "testappId";
-const metricId = "requests/count";
-const timespan = "testtimespan";
-const interval = "P1Y2M3DT4H5M6S";
-const aggregation = ["min"];
-const segment = ["applicationBuild"];
-const top = 1;
-const orderby = "testorderby";
-const filter = "testfilter";
-client.metrics.get(appId, metricId, timespan, interval, aggregation, segment, top, orderby, filter).then((result) => {
-  console.log("The result is:");
-  console.log(result);
-}).catch((err) => {
-  console.log('An error occurred:');
-  console.dir(err, {depth: null, colors: true});
-});
+const msrestazure = require('ms-rest-azure');
+const ApplicationInsightsDataClient = require('azure-applicationinsights');
+
+var options = {
+  tokenAudience: 'https://api.applicationinsights.io'
+}
+
+msrestazure.loginWithServicePrincipalSecret(
+  'clientId or appId',
+  'secret or password',
+  'AAD domain or tenantId',
+  options,
+  (err, credentials) => {
+    if (err) throw err
+    // ..use the client instance to access service resources.
+    const client = new ApplicationInsightsDataClient(credentials);
+
+    const appId = 'ed6078ff-9048-4dd7-9b21-fc39e3fc7249';
+    var body = {
+      query: 'availabilityResults | summarize count() by name, location, duration | order by duration desc | take 10',
+      timespan: 'P2D'
+    };
+
+    client.query.execute(appId, body).then((result, err) => {
+      console.log('The result is:');
+      console.log('Columns:')
+      console.log(result.tables[0].columns)
+      console.log('Rows:')
+      console.log(result.tables[0].rows);
+    }).catch((err) => {
+      console.log('An error occurred:');
+      console.dir(err, {depth: null, colors: true});
+    });
+  }
+);
+```
 
 ## Related projects
 
-- [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
+- [Microsoft Azure SDK for Node.js - ApplicationInsightsDataClient](#microsoft-azure-sdk-for-nodejs---applicationinsightsdataclient)
+  - [Features](#features)
+  - [How to Install](#how-to-install)
+  - [How to use](#how-to-use)
+    - [Authentication, client creation and query execute as an example.](#authentication--client-creation-and-query-execute-as-an-example)
+  - [Related projects](#related-projects)
