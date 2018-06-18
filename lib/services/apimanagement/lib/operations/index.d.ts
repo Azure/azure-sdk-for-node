@@ -17813,8 +17813,9 @@ export interface ProductApi {
      * @param {string} productId Product identifier. Must be unique in the current
      * API Management service instance.
      *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17840,8 +17841,9 @@ export interface ProductApi {
      * @param {string} productId Product identifier. Must be unique in the current
      * API Management service instance.
      *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17884,8 +17886,9 @@ export interface ProductApi {
      * @param {string} productId Product identifier. Must be unique in the current
      * API Management service instance.
      *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17910,8 +17913,9 @@ export interface ProductApi {
      * @param {string} productId Product identifier. Must be unique in the current
      * API Management service instance.
      *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17955,8 +17959,9 @@ export interface ProductApi {
      * @param {string} productId Product identifier. Must be unique in the current
      * API Management service instance.
      *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17981,8 +17986,9 @@ export interface ProductApi {
      * @param {string} productId Product identifier. Must be unique in the current
      * API Management service instance.
      *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
      *
