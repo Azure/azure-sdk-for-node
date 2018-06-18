@@ -152,10 +152,10 @@ export interface ApplicationGateways {
      *
      * @param {string} [parameters.sku.name] Name of an application gateway SKU.
      * Possible values include: 'Standard_Small', 'Standard_Medium',
-     * 'Standard_Large', 'WAF_Medium', 'WAF_Large'
+     * 'Standard_Large', 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
      *
      * @param {string} [parameters.sku.tier] Tier of an application gateway.
-     * Possible values include: 'Standard', 'WAF'
+     * Possible values include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
      *
      * @param {number} [parameters.sku.capacity] Capacity (instance count) of an
      * application gateway.
@@ -249,6 +249,19 @@ export interface ApplicationGateways {
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
+     * @param {boolean} [parameters.enableFIPS] Whether FIPS is enabled on the
+     * application gateway resource.
+     *
+     * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
+     *
+     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
+     *
+     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
+     * number of Application Gateway instances.
+     *
+     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
+     * number of Application Gateway instances.
+     *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
      *
@@ -258,6 +271,9 @@ export interface ApplicationGateways {
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
+     *
+     * @param {array} [parameters.zones] A list of availability zones denoting
+     * where the resource needs to come from.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -292,10 +308,10 @@ export interface ApplicationGateways {
      *
      * @param {string} [parameters.sku.name] Name of an application gateway SKU.
      * Possible values include: 'Standard_Small', 'Standard_Medium',
-     * 'Standard_Large', 'WAF_Medium', 'WAF_Large'
+     * 'Standard_Large', 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
      *
      * @param {string} [parameters.sku.tier] Tier of an application gateway.
-     * Possible values include: 'Standard', 'WAF'
+     * Possible values include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
      *
      * @param {number} [parameters.sku.capacity] Capacity (instance count) of an
      * application gateway.
@@ -389,6 +405,19 @@ export interface ApplicationGateways {
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
+     * @param {boolean} [parameters.enableFIPS] Whether FIPS is enabled on the
+     * application gateway resource.
+     *
+     * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
+     *
+     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
+     *
+     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
+     * number of Application Gateway instances.
+     *
+     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
+     * number of Application Gateway instances.
+     *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
      *
@@ -398,6 +427,9 @@ export interface ApplicationGateways {
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
+     *
+     * @param {array} [parameters.zones] A list of availability zones denoting
+     * where the resource needs to come from.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -1084,10 +1116,10 @@ export interface ApplicationGateways {
      *
      * @param {string} [parameters.sku.name] Name of an application gateway SKU.
      * Possible values include: 'Standard_Small', 'Standard_Medium',
-     * 'Standard_Large', 'WAF_Medium', 'WAF_Large'
+     * 'Standard_Large', 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
      *
      * @param {string} [parameters.sku.tier] Tier of an application gateway.
-     * Possible values include: 'Standard', 'WAF'
+     * Possible values include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
      *
      * @param {number} [parameters.sku.capacity] Capacity (instance count) of an
      * application gateway.
@@ -1181,6 +1213,19 @@ export interface ApplicationGateways {
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
+     * @param {boolean} [parameters.enableFIPS] Whether FIPS is enabled on the
+     * application gateway resource.
+     *
+     * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
+     *
+     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
+     *
+     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
+     * number of Application Gateway instances.
+     *
+     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
+     * number of Application Gateway instances.
+     *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
      *
@@ -1190,6 +1235,9 @@ export interface ApplicationGateways {
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
+     *
+     * @param {array} [parameters.zones] A list of availability zones denoting
+     * where the resource needs to come from.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -1224,10 +1272,10 @@ export interface ApplicationGateways {
      *
      * @param {string} [parameters.sku.name] Name of an application gateway SKU.
      * Possible values include: 'Standard_Small', 'Standard_Medium',
-     * 'Standard_Large', 'WAF_Medium', 'WAF_Large'
+     * 'Standard_Large', 'WAF_Medium', 'WAF_Large', 'Standard_v2', 'WAF_v2'
      *
      * @param {string} [parameters.sku.tier] Tier of an application gateway.
-     * Possible values include: 'Standard', 'WAF'
+     * Possible values include: 'Standard', 'WAF', 'Standard_v2', 'WAF_v2'
      *
      * @param {number} [parameters.sku.capacity] Capacity (instance count) of an
      * application gateway.
@@ -1321,6 +1369,19 @@ export interface ApplicationGateways {
      * @param {boolean} [parameters.enableHttp2] Whether HTTP2 is enabled on the
      * application gateway resource.
      *
+     * @param {boolean} [parameters.enableFIPS] Whether FIPS is enabled on the
+     * application gateway resource.
+     *
+     * @param {object} [parameters.autoscaleConfiguration] Autoscale Configuration.
+     *
+     * @param {object} parameters.autoscaleConfiguration.bounds Autoscale bounds
+     *
+     * @param {number} parameters.autoscaleConfiguration.bounds.min Lower bound on
+     * number of Application Gateway instances.
+     *
+     * @param {number} parameters.autoscaleConfiguration.bounds.max Upper bound on
+     * number of Application Gateway instances.
+     *
      * @param {string} [parameters.resourceGuid] Resource GUID property of the
      * application gateway resource.
      *
@@ -1330,6 +1391,9 @@ export interface ApplicationGateways {
      *
      * @param {string} [parameters.etag] A unique read-only string that changes
      * whenever the resource is updated.
+     *
+     * @param {array} [parameters.zones] A list of availability zones denoting
+     * where the resource needs to come from.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -3648,7 +3712,7 @@ export interface ExpressRouteCircuitPeerings {
 
 
     /**
-     * Gets the specified authorization from the specified express route circuit.
+     * Gets the specified peering for the express route circuit.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -3670,7 +3734,7 @@ export interface ExpressRouteCircuitPeerings {
     getWithHttpOperationResponse(resourceGroupName: string, circuitName: string, peeringName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExpressRouteCircuitPeering>>;
 
     /**
-     * Gets the specified authorization from the specified express route circuit.
+     * Gets the specified peering for the express route circuit.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -11083,11 +11147,6 @@ export interface NetworkInterfaces {
      * @param {object} parameters Parameters supplied to the create or update
      * network interface operation.
      *
-     * @param {object} [parameters.virtualMachine] The reference of a virtual
-     * machine.
-     *
-     * @param {string} [parameters.virtualMachine.id] Resource ID.
-     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -11193,11 +11252,6 @@ export interface NetworkInterfaces {
      *
      * @param {object} parameters Parameters supplied to the create or update
      * network interface operation.
-     *
-     * @param {object} [parameters.virtualMachine] The reference of a virtual
-     * machine.
-     *
-     * @param {string} [parameters.virtualMachine.id] Resource ID.
      *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
@@ -12038,11 +12092,6 @@ export interface NetworkInterfaces {
      * @param {object} parameters Parameters supplied to the create or update
      * network interface operation.
      *
-     * @param {object} [parameters.virtualMachine] The reference of a virtual
-     * machine.
-     *
-     * @param {string} [parameters.virtualMachine.id] Resource ID.
-     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -12148,11 +12197,6 @@ export interface NetworkInterfaces {
      *
      * @param {object} parameters Parameters supplied to the create or update
      * network interface operation.
-     *
-     * @param {object} [parameters.virtualMachine] The reference of a virtual
-     * machine.
-     *
-     * @param {string} [parameters.virtualMachine.id] Resource ID.
      *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
