@@ -1667,7 +1667,7 @@ export interface Jobs {
      * specified only if the languageType is 'Python'.
      *
      * @param {string} [parameters.cntkSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script or cntk executable.
      *
      * @param {number} [parameters.cntkSettings.processCount] Process count. Number
@@ -1684,7 +1684,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.pyTorchSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {number} [parameters.pyTorchSettings.processCount] Process count.
@@ -1706,18 +1706,18 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs] Master
-     * command line arguments. Command line arguments that needs to be passed to
-     * the python script for the master task.
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the master task.
      *
      * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs] Worker
-     * command line arguments. Command line arguments that needs to be passed to
-     * the python script for the worker task. Optional for single process jobs.
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the worker task. Optional for single process jobs.
      *
      * @param {string}
      * [parameters.tensorFlowSettings.parameterServerCommandLineArgs] Parameter
-     * server command line arguments. Command line arguments that needs to be
-     * passed to the python script for the parameter server. Optional for single
-     * process jobs.
+     * server command line arguments. Command line arguments that need to be passed
+     * to the python script for the parameter server. Optional for single process
+     * jobs.
      *
      * @param {number} [parameters.tensorFlowSettings.workerCount] Worker count.
      * The number of worker tasks. If specified, the value must be less than or
@@ -1747,7 +1747,7 @@ export interface Jobs {
      * specified only if the pythonScriptFilePath is specified.
      *
      * @param {string} [parameters.caffeSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the Caffe job.
+     * arguments. Command line arguments that need to be passed to the Caffe job.
      *
      * @param {number} [parameters.caffeSettings.processCount] Process count.
      * Number of processes to launch for the job execution. The default value for
@@ -1763,7 +1763,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.caffe2Settings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {object} [parameters.chainerSettings] Chainer settings. Settings for
@@ -1776,7 +1776,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.chainerSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {number} [parameters.chainerSettings.processCount] Process count.
@@ -1809,7 +1809,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.horovodSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {number} [parameters.horovodSettings.processCount] Process count.
@@ -1985,7 +1985,7 @@ export interface Jobs {
      * specified only if the languageType is 'Python'.
      *
      * @param {string} [parameters.cntkSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script or cntk executable.
      *
      * @param {number} [parameters.cntkSettings.processCount] Process count. Number
@@ -2002,7 +2002,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.pyTorchSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {number} [parameters.pyTorchSettings.processCount] Process count.
@@ -2024,18 +2024,18 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs] Master
-     * command line arguments. Command line arguments that needs to be passed to
-     * the python script for the master task.
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the master task.
      *
      * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs] Worker
-     * command line arguments. Command line arguments that needs to be passed to
-     * the python script for the worker task. Optional for single process jobs.
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the worker task. Optional for single process jobs.
      *
      * @param {string}
      * [parameters.tensorFlowSettings.parameterServerCommandLineArgs] Parameter
-     * server command line arguments. Command line arguments that needs to be
-     * passed to the python script for the parameter server. Optional for single
-     * process jobs.
+     * server command line arguments. Command line arguments that need to be passed
+     * to the python script for the parameter server. Optional for single process
+     * jobs.
      *
      * @param {number} [parameters.tensorFlowSettings.workerCount] Worker count.
      * The number of worker tasks. If specified, the value must be less than or
@@ -2065,7 +2065,7 @@ export interface Jobs {
      * specified only if the pythonScriptFilePath is specified.
      *
      * @param {string} [parameters.caffeSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the Caffe job.
+     * arguments. Command line arguments that need to be passed to the Caffe job.
      *
      * @param {number} [parameters.caffeSettings.processCount] Process count.
      * Number of processes to launch for the job execution. The default value for
@@ -2081,7 +2081,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.caffe2Settings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {object} [parameters.chainerSettings] Chainer settings. Settings for
@@ -2094,7 +2094,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.chainerSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {number} [parameters.chainerSettings.processCount] Process count.
@@ -2127,7 +2127,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.horovodSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {number} [parameters.horovodSettings.processCount] Process count.
@@ -2776,7 +2776,7 @@ export interface Jobs {
      * specified only if the languageType is 'Python'.
      *
      * @param {string} [parameters.cntkSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script or cntk executable.
      *
      * @param {number} [parameters.cntkSettings.processCount] Process count. Number
@@ -2793,7 +2793,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.pyTorchSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {number} [parameters.pyTorchSettings.processCount] Process count.
@@ -2815,18 +2815,18 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs] Master
-     * command line arguments. Command line arguments that needs to be passed to
-     * the python script for the master task.
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the master task.
      *
      * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs] Worker
-     * command line arguments. Command line arguments that needs to be passed to
-     * the python script for the worker task. Optional for single process jobs.
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the worker task. Optional for single process jobs.
      *
      * @param {string}
      * [parameters.tensorFlowSettings.parameterServerCommandLineArgs] Parameter
-     * server command line arguments. Command line arguments that needs to be
-     * passed to the python script for the parameter server. Optional for single
-     * process jobs.
+     * server command line arguments. Command line arguments that need to be passed
+     * to the python script for the parameter server. Optional for single process
+     * jobs.
      *
      * @param {number} [parameters.tensorFlowSettings.workerCount] Worker count.
      * The number of worker tasks. If specified, the value must be less than or
@@ -2856,7 +2856,7 @@ export interface Jobs {
      * specified only if the pythonScriptFilePath is specified.
      *
      * @param {string} [parameters.caffeSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the Caffe job.
+     * arguments. Command line arguments that need to be passed to the Caffe job.
      *
      * @param {number} [parameters.caffeSettings.processCount] Process count.
      * Number of processes to launch for the job execution. The default value for
@@ -2872,7 +2872,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.caffe2Settings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {object} [parameters.chainerSettings] Chainer settings. Settings for
@@ -2885,7 +2885,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.chainerSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {number} [parameters.chainerSettings.processCount] Process count.
@@ -2918,7 +2918,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.horovodSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {number} [parameters.horovodSettings.processCount] Process count.
@@ -3094,7 +3094,7 @@ export interface Jobs {
      * specified only if the languageType is 'Python'.
      *
      * @param {string} [parameters.cntkSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script or cntk executable.
      *
      * @param {number} [parameters.cntkSettings.processCount] Process count. Number
@@ -3111,7 +3111,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.pyTorchSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {number} [parameters.pyTorchSettings.processCount] Process count.
@@ -3133,18 +3133,18 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs] Master
-     * command line arguments. Command line arguments that needs to be passed to
-     * the python script for the master task.
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the master task.
      *
      * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs] Worker
-     * command line arguments. Command line arguments that needs to be passed to
-     * the python script for the worker task. Optional for single process jobs.
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the worker task. Optional for single process jobs.
      *
      * @param {string}
      * [parameters.tensorFlowSettings.parameterServerCommandLineArgs] Parameter
-     * server command line arguments. Command line arguments that needs to be
-     * passed to the python script for the parameter server. Optional for single
-     * process jobs.
+     * server command line arguments. Command line arguments that need to be passed
+     * to the python script for the parameter server. Optional for single process
+     * jobs.
      *
      * @param {number} [parameters.tensorFlowSettings.workerCount] Worker count.
      * The number of worker tasks. If specified, the value must be less than or
@@ -3174,7 +3174,7 @@ export interface Jobs {
      * specified only if the pythonScriptFilePath is specified.
      *
      * @param {string} [parameters.caffeSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the Caffe job.
+     * arguments. Command line arguments that need to be passed to the Caffe job.
      *
      * @param {number} [parameters.caffeSettings.processCount] Process count.
      * Number of processes to launch for the job execution. The default value for
@@ -3190,7 +3190,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.caffe2Settings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {object} [parameters.chainerSettings] Chainer settings. Settings for
@@ -3203,7 +3203,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.chainerSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {number} [parameters.chainerSettings.processCount] Process count.
@@ -3236,7 +3236,7 @@ export interface Jobs {
      * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.horovodSettings.commandLineArgs] Command line
-     * arguments. Command line arguments that needs to be passed to the python
+     * arguments. Command line arguments that need to be passed to the python
      * script.
      *
      * @param {number} [parameters.horovodSettings.processCount] Process count.

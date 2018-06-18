@@ -1369,7 +1369,7 @@ export interface ContainerSettings {
  * to the Python interpreter. This property can be specified only if the
  * languageType is 'Python'.
  * @member {string} [commandLineArgs] Command line arguments. Command line
- * arguments that needs to be passed to the python script or cntk executable.
+ * arguments that need to be passed to the python script or cntk executable.
  * @member {number} [processCount] Process count. Number of processes to launch
  * for the job execution. The default value for this property is equal to
  * nodeCount property
@@ -1394,7 +1394,7 @@ export interface CNTKsettings {
  * @member {string} [pythonInterpreterPath] Python interpreter path. The path
  * to the Python interpreter.
  * @member {string} [commandLineArgs] Command line arguments. Command line
- * arguments that needs to be passed to the python script.
+ * arguments that need to be passed to the python script.
  * @member {number} [processCount] Process count. Number of processes to launch
  * for the job execution. The default value for this property is equal to
  * nodeCount property
@@ -1421,13 +1421,13 @@ export interface PyTorchSettings {
  * @member {string} [pythonInterpreterPath] Python interpreter path. The path
  * to the Python interpreter.
  * @member {string} [masterCommandLineArgs] Master command line arguments.
- * Command line arguments that needs to be passed to the python script for the
+ * Command line arguments that need to be passed to the python script for the
  * master task.
  * @member {string} [workerCommandLineArgs] Worker command line arguments.
- * Command line arguments that needs to be passed to the python script for the
+ * Command line arguments that need to be passed to the python script for the
  * worker task. Optional for single process jobs.
  * @member {string} [parameterServerCommandLineArgs] Parameter server command
- * line arguments. Command line arguments that needs to be passed to the python
+ * line arguments. Command line arguments that need to be passed to the python
  * script for the parameter server. Optional for single process jobs.
  * @member {number} [workerCount] Worker count. The number of worker tasks. If
  * specified, the value must be less than or equal to (nodeCount * numberOfGPUs
@@ -1465,7 +1465,7 @@ export interface TensorFlowSettings {
  * to the Python interpreter. The property can be specified only if the
  * pythonScriptFilePath is specified.
  * @member {string} [commandLineArgs] Command line arguments. Command line
- * arguments that needs to be passed to the Caffe job.
+ * arguments that need to be passed to the Caffe job.
  * @member {number} [processCount] Process count. Number of processes to launch
  * for the job execution. The default value for this property is equal to
  * nodeCount property
@@ -1489,7 +1489,7 @@ export interface CaffeSettings {
  * @member {string} [pythonInterpreterPath] Python interpreter path. The path
  * to the Python interpreter.
  * @member {string} [commandLineArgs] Command line arguments. Command line
- * arguments that needs to be passed to the python script.
+ * arguments that need to be passed to the python script.
  */
 export interface Caffe2Settings {
   pythonScriptFilePath: string;
@@ -1508,7 +1508,7 @@ export interface Caffe2Settings {
  * @member {string} [pythonInterpreterPath] Python interpreter path. The path
  * to the Python interpreter.
  * @member {string} [commandLineArgs] Command line arguments. Command line
- * arguments that needs to be passed to the python script.
+ * arguments that need to be passed to the python script.
  * @member {number} [processCount] Process count. Number of processes to launch
  * for the job execution. The default value for this property is equal to
  * nodeCount property
@@ -1561,7 +1561,7 @@ export interface CustomMpiSettings {
  * @member {string} [pythonInterpreterPath] Python interpreter path. The path
  * to the Python interpreter.
  * @member {string} [commandLineArgs] Command line arguments. Command line
- * arguments that needs to be passed to the python script.
+ * arguments that need to be passed to the python script.
  * @member {number} [processCount] Process count. Number of processes to launch
  * for the job execution. The default value for this property is equal to
  * nodeCount property
@@ -1718,7 +1718,7 @@ export interface JobBasePropertiesConstraints {
  * interpreter. This property can be specified only if the languageType is
  * 'Python'.
  * @member {string} [cntkSettings.commandLineArgs] Command line arguments that
- * needs to be passed to the python script or cntk executable.
+ * need to be passed to the python script or cntk executable.
  * @member {number} [cntkSettings.processCount] Number of processes to launch
  * for the job execution. The default value for this property is equal to
  * nodeCount property
@@ -1729,7 +1729,7 @@ export interface JobBasePropertiesConstraints {
  * @member {string} [pyTorchSettings.pythonInterpreterPath] The path to the
  * Python interpreter.
  * @member {string} [pyTorchSettings.commandLineArgs] Command line arguments
- * that needs to be passed to the python script.
+ * that need to be passed to the python script.
  * @member {number} [pyTorchSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
@@ -1743,13 +1743,13 @@ export interface JobBasePropertiesConstraints {
  * @member {string} [tensorFlowSettings.pythonInterpreterPath] The path to the
  * Python interpreter.
  * @member {string} [tensorFlowSettings.masterCommandLineArgs] Command line
- * arguments that needs to be passed to the python script for the master task.
+ * arguments that need to be passed to the python script for the master task.
  * @member {string} [tensorFlowSettings.workerCommandLineArgs] Command line
- * arguments that needs to be passed to the python script for the worker task.
+ * arguments that need to be passed to the python script for the worker task.
  * Optional for single process jobs.
  * @member {string} [tensorFlowSettings.parameterServerCommandLineArgs] Command
- * line arguments that needs to be passed to the python script for the
- * parameter server. Optional for single process jobs.
+ * line arguments that need to be passed to the python script for the parameter
+ * server. Optional for single process jobs.
  * @member {number} [tensorFlowSettings.workerCount] The number of worker
  * tasks. If specified, the value must be less than or equal to (nodeCount *
  * numberOfGPUs per VM). If not specified, the default value is equal to
@@ -1770,7 +1770,7 @@ export interface JobBasePropertiesConstraints {
  * Python interpreter. The property can be specified only if the
  * pythonScriptFilePath is specified.
  * @member {string} [caffeSettings.commandLineArgs] Command line arguments that
- * needs to be passed to the Caffe job.
+ * need to be passed to the Caffe job.
  * @member {number} [caffeSettings.processCount] Number of processes to launch
  * for the job execution. The default value for this property is equal to
  * nodeCount property
@@ -1780,7 +1780,7 @@ export interface JobBasePropertiesConstraints {
  * @member {string} [caffe2Settings.pythonInterpreterPath] The path to the
  * Python interpreter.
  * @member {string} [caffe2Settings.commandLineArgs] Command line arguments
- * that needs to be passed to the python script.
+ * that need to be passed to the python script.
  * @member {object} [chainerSettings] Chainer settings. Settings for Chainer
  * job.
  * @member {string} [chainerSettings.pythonScriptFilePath] The python script to
@@ -1788,7 +1788,7 @@ export interface JobBasePropertiesConstraints {
  * @member {string} [chainerSettings.pythonInterpreterPath] The path to the
  * Python interpreter.
  * @member {string} [chainerSettings.commandLineArgs] Command line arguments
- * that needs to be passed to the python script.
+ * that need to be passed to the python script.
  * @member {number} [chainerSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
@@ -1810,7 +1810,7 @@ export interface JobBasePropertiesConstraints {
  * @member {string} [horovodSettings.pythonInterpreterPath] The path to the
  * Python interpreter.
  * @member {string} [horovodSettings.commandLineArgs] Command line arguments
- * that needs to be passed to the python script.
+ * that need to be passed to the python script.
  * @member {number} [horovodSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
@@ -1979,7 +1979,7 @@ export interface JobPropertiesExecutionInfo {
  * interpreter. This property can be specified only if the languageType is
  * 'Python'.
  * @member {string} [cntkSettings.commandLineArgs] Command line arguments that
- * needs to be passed to the python script or cntk executable.
+ * need to be passed to the python script or cntk executable.
  * @member {number} [cntkSettings.processCount] Number of processes to launch
  * for the job execution. The default value for this property is equal to
  * nodeCount property
@@ -1989,7 +1989,7 @@ export interface JobPropertiesExecutionInfo {
  * @member {string} [pyTorchSettings.pythonInterpreterPath] The path to the
  * Python interpreter.
  * @member {string} [pyTorchSettings.commandLineArgs] Command line arguments
- * that needs to be passed to the python script.
+ * that need to be passed to the python script.
  * @member {number} [pyTorchSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
@@ -2003,13 +2003,13 @@ export interface JobPropertiesExecutionInfo {
  * @member {string} [tensorFlowSettings.pythonInterpreterPath] The path to the
  * Python interpreter.
  * @member {string} [tensorFlowSettings.masterCommandLineArgs] Command line
- * arguments that needs to be passed to the python script for the master task.
+ * arguments that need to be passed to the python script for the master task.
  * @member {string} [tensorFlowSettings.workerCommandLineArgs] Command line
- * arguments that needs to be passed to the python script for the worker task.
+ * arguments that need to be passed to the python script for the worker task.
  * Optional for single process jobs.
  * @member {string} [tensorFlowSettings.parameterServerCommandLineArgs] Command
- * line arguments that needs to be passed to the python script for the
- * parameter server. Optional for single process jobs.
+ * line arguments that need to be passed to the python script for the parameter
+ * server. Optional for single process jobs.
  * @member {number} [tensorFlowSettings.workerCount] The number of worker
  * tasks. If specified, the value must be less than or equal to (nodeCount *
  * numberOfGPUs per VM). If not specified, the default value is equal to
@@ -2030,7 +2030,7 @@ export interface JobPropertiesExecutionInfo {
  * Python interpreter. The property can be specified only if the
  * pythonScriptFilePath is specified.
  * @member {string} [caffeSettings.commandLineArgs] Command line arguments that
- * needs to be passed to the Caffe job.
+ * need to be passed to the Caffe job.
  * @member {number} [caffeSettings.processCount] Number of processes to launch
  * for the job execution. The default value for this property is equal to
  * nodeCount property
@@ -2040,14 +2040,14 @@ export interface JobPropertiesExecutionInfo {
  * @member {string} [caffe2Settings.pythonInterpreterPath] The path to the
  * Python interpreter.
  * @member {string} [caffe2Settings.commandLineArgs] Command line arguments
- * that needs to be passed to the python script.
+ * that need to be passed to the python script.
  * @member {object} [chainerSettings] Specifies the settings for Chainer job.
  * @member {string} [chainerSettings.pythonScriptFilePath] The python script to
  * execute.
  * @member {string} [chainerSettings.pythonInterpreterPath] The path to the
  * Python interpreter.
  * @member {string} [chainerSettings.commandLineArgs] Command line arguments
- * that needs to be passed to the python script.
+ * that need to be passed to the python script.
  * @member {number} [chainerSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
@@ -2068,7 +2068,7 @@ export interface JobPropertiesExecutionInfo {
  * @member {string} [horovodSettings.pythonInterpreterPath] The path to the
  * Python interpreter.
  * @member {string} [horovodSettings.commandLineArgs] Command line arguments
- * that needs to be passed to the python script.
+ * that need to be passed to the python script.
  * @member {number} [horovodSettings.processCount] Number of processes to
  * launch for the job execution. The default value for this property is equal
  * to nodeCount property
