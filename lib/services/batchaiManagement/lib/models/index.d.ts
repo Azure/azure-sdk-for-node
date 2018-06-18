@@ -1649,8 +1649,8 @@ export interface JobBasePropertiesConstraints {
  * Job creation parameters.
  *
  * @member {string} [schedulingPriority] Scheduling priority. Scheduling
- * priority associated with the job. Possible values include: 'low', 'normal',
- * 'high'. Default value: 'normal' .
+ * priority associated with the job. Possible values: low, normal, high.
+ * Possible values include: 'low', 'normal', 'high'. Default value: 'normal' .
  * @member {object} cluster Cluster. Resource ID of the cluster on which this
  * job will run.
  * @member {string} [cluster.id] The ID of the resource
@@ -2251,7 +2251,7 @@ export interface OperationDisplay {
  * @class
  * Initializes a new instance of the Operation class.
  * @constructor
- * @summary A REST API operation
+ * @summary A REST API operation.
  *
  * Details of a REST API operation
  *

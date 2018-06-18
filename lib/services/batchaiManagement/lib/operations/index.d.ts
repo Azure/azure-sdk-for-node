@@ -1565,8 +1565,8 @@ export interface Jobs {
      * @param {object} parameters The parameters to provide for job creation.
      *
      * @param {string} [parameters.schedulingPriority] Scheduling priority.
-     * Scheduling priority associated with the job. Possible values include: 'low',
-     * 'normal', 'high'
+     * Scheduling priority associated with the job. Possible values: low, normal,
+     * high. Possible values include: 'low', 'normal', 'high'
      *
      * @param {object} parameters.cluster Cluster. Resource ID of the cluster on
      * which this job will run.
@@ -1883,8 +1883,8 @@ export interface Jobs {
      * @param {object} parameters The parameters to provide for job creation.
      *
      * @param {string} [parameters.schedulingPriority] Scheduling priority.
-     * Scheduling priority associated with the job. Possible values include: 'low',
-     * 'normal', 'high'
+     * Scheduling priority associated with the job. Possible values: low, normal,
+     * high. Possible values include: 'low', 'normal', 'high'
      *
      * @param {object} parameters.cluster Cluster. Resource ID of the cluster on
      * which this job will run.
@@ -2674,8 +2674,8 @@ export interface Jobs {
      * @param {object} parameters The parameters to provide for job creation.
      *
      * @param {string} [parameters.schedulingPriority] Scheduling priority.
-     * Scheduling priority associated with the job. Possible values include: 'low',
-     * 'normal', 'high'
+     * Scheduling priority associated with the job. Possible values: low, normal,
+     * high. Possible values include: 'low', 'normal', 'high'
      *
      * @param {object} parameters.cluster Cluster. Resource ID of the cluster on
      * which this job will run.
@@ -2992,8 +2992,8 @@ export interface Jobs {
      * @param {object} parameters The parameters to provide for job creation.
      *
      * @param {string} [parameters.schedulingPriority] Scheduling priority.
-     * Scheduling priority associated with the job. Possible values include: 'low',
-     * 'normal', 'high'
+     * Scheduling priority associated with the job. Possible values: low, normal,
+     * high. Possible values include: 'low', 'normal', 'high'
      *
      * @param {object} parameters.cluster Cluster. Resource ID of the cluster on
      * which this job will run.
@@ -3700,7 +3700,7 @@ export interface FileServers {
      *
      * @param {string}
      * [parameters.sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH
-     * public key SSH public key of the administrator user account.
+     * public key. SSH public key of the administrator user account.
      *
      * @param {string}
      * [parameters.sshConfiguration.userAccountSettings.adminUserPassword]
@@ -3709,7 +3709,7 @@ export interface FileServers {
      * @param {object} parameters.dataDisks Data disks. Settings for the data disks
      * which will be created for the File Server.
      *
-     * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB Disk size
+     * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB. Disk size
      * in GB for the blank data disks.
      *
      * @param {string} [parameters.dataDisks.cachingType] Caching type. Caching
@@ -3786,7 +3786,7 @@ export interface FileServers {
      *
      * @param {string}
      * [parameters.sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH
-     * public key SSH public key of the administrator user account.
+     * public key. SSH public key of the administrator user account.
      *
      * @param {string}
      * [parameters.sshConfiguration.userAccountSettings.adminUserPassword]
@@ -3795,7 +3795,7 @@ export interface FileServers {
      * @param {object} parameters.dataDisks Data disks. Settings for the data disks
      * which will be created for the File Server.
      *
-     * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB Disk size
+     * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB. Disk size
      * in GB for the blank data disks.
      *
      * @param {string} [parameters.dataDisks.cachingType] Caching type. Caching
@@ -4119,7 +4119,7 @@ export interface FileServers {
      *
      * @param {string}
      * [parameters.sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH
-     * public key SSH public key of the administrator user account.
+     * public key. SSH public key of the administrator user account.
      *
      * @param {string}
      * [parameters.sshConfiguration.userAccountSettings.adminUserPassword]
@@ -4128,7 +4128,7 @@ export interface FileServers {
      * @param {object} parameters.dataDisks Data disks. Settings for the data disks
      * which will be created for the File Server.
      *
-     * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB Disk size
+     * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB. Disk size
      * in GB for the blank data disks.
      *
      * @param {string} [parameters.dataDisks.cachingType] Caching type. Caching
@@ -4205,7 +4205,7 @@ export interface FileServers {
      *
      * @param {string}
      * [parameters.sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH
-     * public key SSH public key of the administrator user account.
+     * public key. SSH public key of the administrator user account.
      *
      * @param {string}
      * [parameters.sshConfiguration.userAccountSettings.adminUserPassword]
@@ -4214,7 +4214,7 @@ export interface FileServers {
      * @param {object} parameters.dataDisks Data disks. Settings for the data disks
      * which will be created for the File Server.
      *
-     * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB Disk size
+     * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB. Disk size
      * in GB for the blank data disks.
      *
      * @param {string} [parameters.dataDisks.cachingType] Caching type. Caching
@@ -4428,7 +4428,7 @@ export interface Clusters {
      * @param {object} parameters The parameters to provide for the Cluster
      * creation.
      *
-     * @param {string} parameters.vmSize VM size The size of the virtual machines
+     * @param {string} parameters.vmSize VM size. The size of the virtual machines
      * in the cluster. All nodes in a cluster have the same VM size. For
      * information about available VM sizes for clusters using images from the
      * Virtual Machines Marketplace see Sizes for Virtual Machines (Linux). Batch
@@ -4594,7 +4594,7 @@ export interface Clusters {
      * of the administrator user account which can be used to SSH to nodes.
      *
      * @param {string} [parameters.userAccountSettings.adminUserSshPublicKey] SSH
-     * public key SSH public key of the administrator user account.
+     * public key. SSH public key of the administrator user account.
      *
      * @param {string} [parameters.userAccountSettings.adminUserPassword] Password.
      * Password of the administrator user account.
@@ -4636,7 +4636,7 @@ export interface Clusters {
      * @param {object} parameters The parameters to provide for the Cluster
      * creation.
      *
-     * @param {string} parameters.vmSize VM size The size of the virtual machines
+     * @param {string} parameters.vmSize VM size. The size of the virtual machines
      * in the cluster. All nodes in a cluster have the same VM size. For
      * information about available VM sizes for clusters using images from the
      * Virtual Machines Marketplace see Sizes for Virtual Machines (Linux). Batch
@@ -4802,7 +4802,7 @@ export interface Clusters {
      * of the administrator user account which can be used to SSH to nodes.
      *
      * @param {string} [parameters.userAccountSettings.adminUserSshPublicKey] SSH
-     * public key SSH public key of the administrator user account.
+     * public key. SSH public key of the administrator user account.
      *
      * @param {string} [parameters.userAccountSettings.adminUserPassword] Password.
      * Password of the administrator user account.
@@ -4862,7 +4862,7 @@ export interface Clusters {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.scaleSettings] Scale settings Desired scale
+     * @param {object} [options.scaleSettings] Scale settings. Desired scale
      * settings for the cluster. Batch AI service supports manual and auto scale
      * clusters.
      *
@@ -4921,7 +4921,7 @@ export interface Clusters {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.scaleSettings] Scale settings Desired scale
+     * @param {object} [options.scaleSettings] Scale settings. Desired scale
      * settings for the cluster. Batch AI service supports manual and auto scale
      * clusters.
      *
@@ -5304,7 +5304,7 @@ export interface Clusters {
      * @param {object} parameters The parameters to provide for the Cluster
      * creation.
      *
-     * @param {string} parameters.vmSize VM size The size of the virtual machines
+     * @param {string} parameters.vmSize VM size. The size of the virtual machines
      * in the cluster. All nodes in a cluster have the same VM size. For
      * information about available VM sizes for clusters using images from the
      * Virtual Machines Marketplace see Sizes for Virtual Machines (Linux). Batch
@@ -5470,7 +5470,7 @@ export interface Clusters {
      * of the administrator user account which can be used to SSH to nodes.
      *
      * @param {string} [parameters.userAccountSettings.adminUserSshPublicKey] SSH
-     * public key SSH public key of the administrator user account.
+     * public key. SSH public key of the administrator user account.
      *
      * @param {string} [parameters.userAccountSettings.adminUserPassword] Password.
      * Password of the administrator user account.
@@ -5512,7 +5512,7 @@ export interface Clusters {
      * @param {object} parameters The parameters to provide for the Cluster
      * creation.
      *
-     * @param {string} parameters.vmSize VM size The size of the virtual machines
+     * @param {string} parameters.vmSize VM size. The size of the virtual machines
      * in the cluster. All nodes in a cluster have the same VM size. For
      * information about available VM sizes for clusters using images from the
      * Virtual Machines Marketplace see Sizes for Virtual Machines (Linux). Batch
@@ -5678,7 +5678,7 @@ export interface Clusters {
      * of the administrator user account which can be used to SSH to nodes.
      *
      * @param {string} [parameters.userAccountSettings.adminUserSshPublicKey] SSH
-     * public key SSH public key of the administrator user account.
+     * public key. SSH public key of the administrator user account.
      *
      * @param {string} [parameters.userAccountSettings.adminUserPassword] Password.
      * Password of the administrator user account.
