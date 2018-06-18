@@ -1590,11 +1590,13 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * changes whenever the resource is updated.
  * @member {string} [health] Health of backend server. Possible values include:
  * 'Unknown', 'Up', 'Down', 'Partial', 'Draining'
+ * @member {string} [healthProbeLog] Log to indicate probe failure cause.
  */
 export interface ApplicationGatewayBackendHealthServer {
   address?: string;
   ipConfiguration?: NetworkInterfaceIPConfiguration;
   health?: string;
+  healthProbeLog?: string;
 }
 
 /**
@@ -6333,7 +6335,7 @@ export interface ConnectionResetSharedKey {
  *
  * @member {string} value The virtual network connection shared key value.
  */
-export interface ConnectionSharedKey {
+export interface ConnectionSharedKey extends SubResource {
   value: string;
 }
 

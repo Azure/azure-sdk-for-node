@@ -29105,11 +29105,11 @@ export interface VirtualNetworkGatewayConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<VirtualNetworkGatewayConnectionListEntity>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<VirtualNetworkGatewayConnection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkGatewayConnectionListEntity>>;
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkGatewayConnection>>;
 
     /**
      * Updates a virtual network gateway connection tags.
@@ -29136,7 +29136,7 @@ export interface VirtualNetworkGatewayConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {VirtualNetworkGatewayConnectionListEntity} - The deserialized result object.
+     *                      @resolve {VirtualNetworkGatewayConnection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -29144,17 +29144,17 @@ export interface VirtualNetworkGatewayConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {VirtualNetworkGatewayConnectionListEntity} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkGatewayConnectionListEntity}
-     *                      for more information.
+     *                      {VirtualNetworkGatewayConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkGatewayConnection} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGatewayConnectionListEntity>;
-    updateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetworkGatewayConnectionListEntity>): void;
-    updateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGatewayConnectionListEntity>): void;
+    updateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGatewayConnection>;
+    updateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetworkGatewayConnection>): void;
+    updateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGatewayConnection>): void;
 
 
     /**
@@ -29174,6 +29174,8 @@ export interface VirtualNetworkGatewayConnections {
      *
      * @param {string} parameters.value The virtual network connection shared key
      * value.
+     *
+     * @param {string} [parameters.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -29205,6 +29207,8 @@ export interface VirtualNetworkGatewayConnections {
      *
      * @param {string} parameters.value The virtual network connection shared key
      * value.
+     *
+     * @param {string} [parameters.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -29931,11 +29935,11 @@ export interface VirtualNetworkGatewayConnections {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<VirtualNetworkGatewayConnectionListEntity>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<VirtualNetworkGatewayConnection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkGatewayConnectionListEntity>>;
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkGatewayConnection>>;
 
     /**
      * Updates a virtual network gateway connection tags.
@@ -29962,7 +29966,7 @@ export interface VirtualNetworkGatewayConnections {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {VirtualNetworkGatewayConnectionListEntity} - The deserialized result object.
+     *                      @resolve {VirtualNetworkGatewayConnection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -29970,17 +29974,17 @@ export interface VirtualNetworkGatewayConnections {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {VirtualNetworkGatewayConnectionListEntity} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link VirtualNetworkGatewayConnectionListEntity}
-     *                      for more information.
+     *                      {VirtualNetworkGatewayConnection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkGatewayConnection} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGatewayConnectionListEntity>;
-    beginUpdateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetworkGatewayConnectionListEntity>): void;
-    beginUpdateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGatewayConnectionListEntity>): void;
+    beginUpdateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGatewayConnection>;
+    beginUpdateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, callback: ServiceCallback<models.VirtualNetworkGatewayConnection>): void;
+    beginUpdateTags(resourceGroupName: string, virtualNetworkGatewayConnectionName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGatewayConnection>): void;
 
 
     /**
@@ -30000,6 +30004,8 @@ export interface VirtualNetworkGatewayConnections {
      *
      * @param {string} parameters.value The virtual network connection shared key
      * value.
+     *
+     * @param {string} [parameters.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -30031,6 +30037,8 @@ export interface VirtualNetworkGatewayConnections {
      *
      * @param {string} parameters.value The virtual network connection shared key
      * value.
+     *
+     * @param {string} [parameters.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
      *
