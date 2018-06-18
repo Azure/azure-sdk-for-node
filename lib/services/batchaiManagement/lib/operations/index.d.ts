@@ -256,2753 +256,6 @@ export interface Usages {
 
 /**
  * @class
- * Clusters
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the BatchAIManagementClient.
- */
-export interface Clusters {
-
-
-    /**
-     * Gets a list of Clusters associated with the given subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.clustersListOptions] Additional parameters for the
-     * operation
-     *
-     * @param {number} [options.clustersListOptions.maxResults] The maximum number
-     * of items to return in the response. A maximum of 1000 files can be returned.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ClusterListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { clustersListOptions? : models.ClustersListOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
-
-    /**
-     * Gets a list of Clusters associated with the given subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.clustersListOptions] Additional parameters for the
-     * operation
-     *
-     * @param {number} [options.clustersListOptions.maxResults] The maximum number
-     * of items to return in the response. A maximum of 1000 files can be returned.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ClusterListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ClusterListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ClusterListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { clustersListOptions? : models.ClustersListOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterListResult>;
-    list(callback: ServiceCallback<models.ClusterListResult>): void;
-    list(options: { clustersListOptions? : models.ClustersListOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterListResult>): void;
-
-
-    /**
-     * Gets a list of Clusters within the specified resource group.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.clustersListByResourceGroupOptions] Additional
-     * parameters for the operation
-     *
-     * @param {number} [options.clustersListByResourceGroupOptions.maxResults] The
-     * maximum number of items to return in the response. A maximum of 1000 files
-     * can be returned.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ClusterListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { clustersListByResourceGroupOptions? : models.ClustersListByResourceGroupOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
-
-    /**
-     * Gets a list of Clusters within the specified resource group.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.clustersListByResourceGroupOptions] Additional
-     * parameters for the operation
-     *
-     * @param {number} [options.clustersListByResourceGroupOptions.maxResults] The
-     * maximum number of items to return in the response. A maximum of 1000 files
-     * can be returned.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ClusterListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ClusterListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ClusterListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { clustersListByResourceGroupOptions? : models.ClustersListByResourceGroupOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ClusterListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { clustersListByResourceGroupOptions? : models.ClustersListByResourceGroupOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterListResult>): void;
-
-
-    /**
-     * Creates a Cluster in the given Workspace.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} parameters The parameters to provide for the Cluster
-     * creation.
-     *
-     * @param {string} parameters.location The region in which to create the
-     * cluster.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the Cluster.
-     *
-     * @param {string} parameters.vmSize The size of the virtual machines in the
-     * cluster. All virtual machines in a cluster are the same size. For
-     * information about available VM sizes for clusters using images from the
-     * Virtual Machines Marketplace (see Sizes for Virtual Machines (Linux) or
-     * Sizes for Virtual Machines (Windows). Batch AI service supports all Azure VM
-     * sizes except STANDARD_A0 and those with premium storage (STANDARD_GS,
-     * STANDARD_DS, and STANDARD_DSV2 series).
-     *
-     * @param {string} [parameters.vmPriority] dedicated or lowpriority. Default is
-     * dedicated. Possible values include: 'dedicated', 'lowpriority'
-     *
-     * @param {object} [parameters.scaleSettings] Desired scale for the cluster.
-     *
-     * @param {object} [parameters.scaleSettings.manual] The scale for the cluster
-     * by manual settings
-     *
-     * @param {number} parameters.scaleSettings.manual.targetNodeCount The desired
-     * number of compute nodes in the Cluster. Default is 0. If autoScaleSettings
-     * are not specified, then the Cluster starts with this target.
-     *
-     * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
-     * Determines what to do with the job(s) running on compute node if the Cluster
-     * size is decreasing. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'waitforjobcompletion'
-     *
-     * @param {object} [parameters.scaleSettings.autoScale] The scale for the
-     * cluster by autoscale settings
-     *
-     * @param {number} parameters.scaleSettings.autoScale.minimumNodeCount
-     * Specifies the minimum number of compute nodes the cluster can have.
-     *
-     * @param {number} parameters.scaleSettings.autoScale.maximumNodeCount
-     * Specifies the maximum number of compute nodes the cluster can have.
-     *
-     * @param {number} [parameters.scaleSettings.autoScale.initialNodeCount]
-     * Specifies the number of compute nodes to allocate on cluster creation. Note
-     * that this value is used only during cluster creation.
-     *
-     * @param {object} [parameters.virtualMachineConfiguration] Settings for OS
-     * image and mounted data volumes.
-     *
-     * @param {object} [parameters.virtualMachineConfiguration.imageReference]
-     * Reference to OS image.
-     *
-     * @param {string}
-     * parameters.virtualMachineConfiguration.imageReference.publisher Publisher of
-     * the image.
-     *
-     * @param {string} parameters.virtualMachineConfiguration.imageReference.offer
-     * Offer of the image.
-     *
-     * @param {string} parameters.virtualMachineConfiguration.imageReference.sku
-     * SKU of the image.
-     *
-     * @param {string}
-     * [parameters.virtualMachineConfiguration.imageReference.version] Version of
-     * the image.
-     *
-     * @param {string}
-     * [parameters.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the virtual machine image. Computes nodes of
-     * the cluster will be created using this custom image. This is of the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * The virtual machine image must be in the same region and subscription as the
-     * cluster. For information about the firewall settings for the Batch node
-     * agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
-     * Note, you need to provide publisher, offer and sku of the base OS image of
-     * which the custom image has been derived from.
-     *
-     * @param {object} [parameters.nodeSetup] Setup to be done on all compute nodes
-     * in the cluster.
-     *
-     * @param {object} [parameters.nodeSetup.setupTask] Specifies a setup task
-     * which can be used to customize the compute nodes of the cluster. The
-     * NodeSetup task runs everytime a VM is rebooted. For that reason the task
-     * code needs to be idempotent. Generally it is used to either download static
-     * data that is required for all jobs that run on the cluster VMs or to
-     * download/install software.
-     *
-     * @param {string} parameters.nodeSetup.setupTask.commandLine Command line to
-     * be executed on each cluster's node after it being allocated or rebooted.
-     * Command line to be executed on each cluster's node after it being allocated
-     * or rebooted. The command is executed in a bash subshell as a root.
-     *
-     * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
-     * Collection of environment variables to be set for setup task.
-     *
-     * @param {array} [parameters.nodeSetup.setupTask.secrets] Collection of
-     * environment variables with secret values to be set for setup task. Server
-     * will never report values of these variables back.
-     *
-     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The
-     * prefix of a path where the Batch AI service will upload the stdout and
-     * stderr of the setup task.
-     *
-     * @param {object} [parameters.nodeSetup.mountVolumes] Information on shared
-     * volumes to be used by jobs. Specified mount volumes will be available to all
-     * jobs executing on the cluster. The volumes will be mounted at location
-     * specified by $AZ_BATCHAI_MOUNT_ROOT environment variable.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.azureFileShares] Azure
-     * File Share setup configuration. References to Azure File Shares that are to
-     * be mounted to the cluster nodes.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.azureBlobFileSystems]
-     * Azure Blob FileSystem setup configuration. References to Azure Blob FUSE
-     * that are to be mounted to the cluster nodes.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.fileServers] References to
-     * a list of file servers that are mounted to the cluster node.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.unmanagedFileSystems]
-     * References to a list of file servers that are mounted to the cluster node.
-     *
-     * @param {object} [parameters.nodeSetup.performanceCountersSettings] Specifies
-     * settings for performance counters collecting and uploading.
-     *
-     * @param {object}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference
-     * Specifies Azure Application Insights information for performance counters
-     * reporting. If provided, Batch AI will upload node performance counters to
-     * the corresponding Azure Application Insights account.
-     *
-     * @param {object}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.component
-     * Specifies the Azure Application Insights component resource id.
-     *
-     * @param {string}
-     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
-     * Value of the Azure Application Insights instrumentation key.
-     *
-     * @param {object}
-     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
-     * Specifies a KeyVault Secret containing Azure Application Insights
-     * instrumentation key. Specifies KeyVault Store and Secret which contains
-     * Azure Application Insights instrumentation key. One of instumentationKey or
-     * instrumentationKeySecretReference must be specified.
-     *
-     * @param {object}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
-     * Fully qualified resource Id for the Key Vault.
-     *
-     * @param {string}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
-     * The URL referencing a secret in a Key Vault.
-     *
-     * @param {object} parameters.userAccountSettings Settings for user account
-     * that will be created on all compute nodes of the cluster.
-     *
-     * @param {string} parameters.userAccountSettings.adminUserName Specifies the
-     * name of the administrator account.
-     *
-     * @param {string} [parameters.userAccountSettings.adminUserSshPublicKey] SSH
-     * public keys used to authenticate with linux based VMs. This does not get
-     * returned in a GET response body.
-     *
-     * @param {string} [parameters.userAccountSettings.adminUserPassword] Admin
-     * user Password (linux only). This does not get returned in a GET response
-     * body.
-     *
-     * @param {object} [parameters.subnet] Specifies the identifier of the subnet.
-     *
-     * @param {string} parameters.subnet.id The ID of the resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Cluster>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
-
-    /**
-     * Creates a Cluster in the given Workspace.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} parameters The parameters to provide for the Cluster
-     * creation.
-     *
-     * @param {string} parameters.location The region in which to create the
-     * cluster.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the Cluster.
-     *
-     * @param {string} parameters.vmSize The size of the virtual machines in the
-     * cluster. All virtual machines in a cluster are the same size. For
-     * information about available VM sizes for clusters using images from the
-     * Virtual Machines Marketplace (see Sizes for Virtual Machines (Linux) or
-     * Sizes for Virtual Machines (Windows). Batch AI service supports all Azure VM
-     * sizes except STANDARD_A0 and those with premium storage (STANDARD_GS,
-     * STANDARD_DS, and STANDARD_DSV2 series).
-     *
-     * @param {string} [parameters.vmPriority] dedicated or lowpriority. Default is
-     * dedicated. Possible values include: 'dedicated', 'lowpriority'
-     *
-     * @param {object} [parameters.scaleSettings] Desired scale for the cluster.
-     *
-     * @param {object} [parameters.scaleSettings.manual] The scale for the cluster
-     * by manual settings
-     *
-     * @param {number} parameters.scaleSettings.manual.targetNodeCount The desired
-     * number of compute nodes in the Cluster. Default is 0. If autoScaleSettings
-     * are not specified, then the Cluster starts with this target.
-     *
-     * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
-     * Determines what to do with the job(s) running on compute node if the Cluster
-     * size is decreasing. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'waitforjobcompletion'
-     *
-     * @param {object} [parameters.scaleSettings.autoScale] The scale for the
-     * cluster by autoscale settings
-     *
-     * @param {number} parameters.scaleSettings.autoScale.minimumNodeCount
-     * Specifies the minimum number of compute nodes the cluster can have.
-     *
-     * @param {number} parameters.scaleSettings.autoScale.maximumNodeCount
-     * Specifies the maximum number of compute nodes the cluster can have.
-     *
-     * @param {number} [parameters.scaleSettings.autoScale.initialNodeCount]
-     * Specifies the number of compute nodes to allocate on cluster creation. Note
-     * that this value is used only during cluster creation.
-     *
-     * @param {object} [parameters.virtualMachineConfiguration] Settings for OS
-     * image and mounted data volumes.
-     *
-     * @param {object} [parameters.virtualMachineConfiguration.imageReference]
-     * Reference to OS image.
-     *
-     * @param {string}
-     * parameters.virtualMachineConfiguration.imageReference.publisher Publisher of
-     * the image.
-     *
-     * @param {string} parameters.virtualMachineConfiguration.imageReference.offer
-     * Offer of the image.
-     *
-     * @param {string} parameters.virtualMachineConfiguration.imageReference.sku
-     * SKU of the image.
-     *
-     * @param {string}
-     * [parameters.virtualMachineConfiguration.imageReference.version] Version of
-     * the image.
-     *
-     * @param {string}
-     * [parameters.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the virtual machine image. Computes nodes of
-     * the cluster will be created using this custom image. This is of the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * The virtual machine image must be in the same region and subscription as the
-     * cluster. For information about the firewall settings for the Batch node
-     * agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
-     * Note, you need to provide publisher, offer and sku of the base OS image of
-     * which the custom image has been derived from.
-     *
-     * @param {object} [parameters.nodeSetup] Setup to be done on all compute nodes
-     * in the cluster.
-     *
-     * @param {object} [parameters.nodeSetup.setupTask] Specifies a setup task
-     * which can be used to customize the compute nodes of the cluster. The
-     * NodeSetup task runs everytime a VM is rebooted. For that reason the task
-     * code needs to be idempotent. Generally it is used to either download static
-     * data that is required for all jobs that run on the cluster VMs or to
-     * download/install software.
-     *
-     * @param {string} parameters.nodeSetup.setupTask.commandLine Command line to
-     * be executed on each cluster's node after it being allocated or rebooted.
-     * Command line to be executed on each cluster's node after it being allocated
-     * or rebooted. The command is executed in a bash subshell as a root.
-     *
-     * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
-     * Collection of environment variables to be set for setup task.
-     *
-     * @param {array} [parameters.nodeSetup.setupTask.secrets] Collection of
-     * environment variables with secret values to be set for setup task. Server
-     * will never report values of these variables back.
-     *
-     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The
-     * prefix of a path where the Batch AI service will upload the stdout and
-     * stderr of the setup task.
-     *
-     * @param {object} [parameters.nodeSetup.mountVolumes] Information on shared
-     * volumes to be used by jobs. Specified mount volumes will be available to all
-     * jobs executing on the cluster. The volumes will be mounted at location
-     * specified by $AZ_BATCHAI_MOUNT_ROOT environment variable.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.azureFileShares] Azure
-     * File Share setup configuration. References to Azure File Shares that are to
-     * be mounted to the cluster nodes.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.azureBlobFileSystems]
-     * Azure Blob FileSystem setup configuration. References to Azure Blob FUSE
-     * that are to be mounted to the cluster nodes.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.fileServers] References to
-     * a list of file servers that are mounted to the cluster node.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.unmanagedFileSystems]
-     * References to a list of file servers that are mounted to the cluster node.
-     *
-     * @param {object} [parameters.nodeSetup.performanceCountersSettings] Specifies
-     * settings for performance counters collecting and uploading.
-     *
-     * @param {object}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference
-     * Specifies Azure Application Insights information for performance counters
-     * reporting. If provided, Batch AI will upload node performance counters to
-     * the corresponding Azure Application Insights account.
-     *
-     * @param {object}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.component
-     * Specifies the Azure Application Insights component resource id.
-     *
-     * @param {string}
-     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
-     * Value of the Azure Application Insights instrumentation key.
-     *
-     * @param {object}
-     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
-     * Specifies a KeyVault Secret containing Azure Application Insights
-     * instrumentation key. Specifies KeyVault Store and Secret which contains
-     * Azure Application Insights instrumentation key. One of instumentationKey or
-     * instrumentationKeySecretReference must be specified.
-     *
-     * @param {object}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
-     * Fully qualified resource Id for the Key Vault.
-     *
-     * @param {string}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
-     * The URL referencing a secret in a Key Vault.
-     *
-     * @param {object} parameters.userAccountSettings Settings for user account
-     * that will be created on all compute nodes of the cluster.
-     *
-     * @param {string} parameters.userAccountSettings.adminUserName Specifies the
-     * name of the administrator account.
-     *
-     * @param {string} [parameters.userAccountSettings.adminUserSshPublicKey] SSH
-     * public keys used to authenticate with linux based VMs. This does not get
-     * returned in a GET response body.
-     *
-     * @param {string} [parameters.userAccountSettings.adminUserPassword] Admin
-     * user Password (linux only). This does not get returned in a GET response
-     * body.
-     *
-     * @param {object} [parameters.subnet] Specifies the identifier of the subnet.
-     *
-     * @param {string} parameters.subnet.id The ID of the resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Cluster} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Cluster} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Cluster} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    create(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    create(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, callback: ServiceCallback<models.Cluster>): void;
-    create(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
-
-
-    /**
-     * Updates properties of a Cluster.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} parameters Additional parameters for cluster update.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the Cluster.
-     *
-     * @param {object} [parameters.scaleSettings] Desired scale for the cluster
-     *
-     * @param {object} [parameters.scaleSettings.manual] The scale for the cluster
-     * by manual settings
-     *
-     * @param {number} parameters.scaleSettings.manual.targetNodeCount The desired
-     * number of compute nodes in the Cluster. Default is 0. If autoScaleSettings
-     * are not specified, then the Cluster starts with this target.
-     *
-     * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
-     * Determines what to do with the job(s) running on compute node if the Cluster
-     * size is decreasing. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'waitforjobcompletion'
-     *
-     * @param {object} [parameters.scaleSettings.autoScale] The scale for the
-     * cluster by autoscale settings
-     *
-     * @param {number} parameters.scaleSettings.autoScale.minimumNodeCount
-     * Specifies the minimum number of compute nodes the cluster can have.
-     *
-     * @param {number} parameters.scaleSettings.autoScale.maximumNodeCount
-     * Specifies the maximum number of compute nodes the cluster can have.
-     *
-     * @param {number} [parameters.scaleSettings.autoScale.initialNodeCount]
-     * Specifies the number of compute nodes to allocate on cluster creation. Note
-     * that this value is used only during cluster creation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Cluster>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
-
-    /**
-     * Updates properties of a Cluster.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} parameters Additional parameters for cluster update.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the Cluster.
-     *
-     * @param {object} [parameters.scaleSettings] Desired scale for the cluster
-     *
-     * @param {object} [parameters.scaleSettings.manual] The scale for the cluster
-     * by manual settings
-     *
-     * @param {number} parameters.scaleSettings.manual.targetNodeCount The desired
-     * number of compute nodes in the Cluster. Default is 0. If autoScaleSettings
-     * are not specified, then the Cluster starts with this target.
-     *
-     * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
-     * Determines what to do with the job(s) running on compute node if the Cluster
-     * size is decreasing. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'waitforjobcompletion'
-     *
-     * @param {object} [parameters.scaleSettings.autoScale] The scale for the
-     * cluster by autoscale settings
-     *
-     * @param {number} parameters.scaleSettings.autoScale.minimumNodeCount
-     * Specifies the minimum number of compute nodes the cluster can have.
-     *
-     * @param {number} parameters.scaleSettings.autoScale.maximumNodeCount
-     * Specifies the maximum number of compute nodes the cluster can have.
-     *
-     * @param {number} [parameters.scaleSettings.autoScale.initialNodeCount]
-     * Specifies the number of compute nodes to allocate on cluster creation. Note
-     * that this value is used only during cluster creation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Cluster} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Cluster} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Cluster} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    update(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterUpdateParameters, callback: ServiceCallback<models.Cluster>): void;
-    update(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
-
-
-    /**
-     * Deletes a Cluster.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes a Cluster.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, workspaceName: string, clusterName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, workspaceName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets information about a Cluster.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Cluster>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
-
-    /**
-     * Gets information about a Cluster.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Cluster} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Cluster} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Cluster} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    get(resourceGroupName: string, workspaceName: string, clusterName: string, callback: ServiceCallback<models.Cluster>): void;
-    get(resourceGroupName: string, workspaceName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
-
-
-    /**
-     * Get the IP address, port of all the compute nodes in the Cluster.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RemoteLoginInformationListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listRemoteLoginInformationWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemoteLoginInformationListResult>>;
-
-    /**
-     * Get the IP address, port of all the compute nodes in the Cluster.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RemoteLoginInformationListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RemoteLoginInformationListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RemoteLoginInformationListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listRemoteLoginInformation(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemoteLoginInformationListResult>;
-    listRemoteLoginInformation(resourceGroupName: string, workspaceName: string, clusterName: string, callback: ServiceCallback<models.RemoteLoginInformationListResult>): void;
-    listRemoteLoginInformation(resourceGroupName: string, workspaceName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemoteLoginInformationListResult>): void;
-
-
-    /**
-     * Gets information about Clusters associated with the given Workspace.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.clustersListByWorkspaceOptions] Additional
-     * parameters for the operation
-     *
-     * @param {number} [options.clustersListByWorkspaceOptions.maxResults] The
-     * maximum number of items to return in the response. A maximum of 1000 files
-     * can be returned.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ClusterListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByWorkspaceWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { clustersListByWorkspaceOptions? : models.ClustersListByWorkspaceOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
-
-    /**
-     * Gets information about Clusters associated with the given Workspace.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.clustersListByWorkspaceOptions] Additional
-     * parameters for the operation
-     *
-     * @param {number} [options.clustersListByWorkspaceOptions.maxResults] The
-     * maximum number of items to return in the response. A maximum of 1000 files
-     * can be returned.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ClusterListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ClusterListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ClusterListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByWorkspace(resourceGroupName: string, workspaceName: string, options?: { clustersListByWorkspaceOptions? : models.ClustersListByWorkspaceOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterListResult>;
-    listByWorkspace(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.ClusterListResult>): void;
-    listByWorkspace(resourceGroupName: string, workspaceName: string, options: { clustersListByWorkspaceOptions? : models.ClustersListByWorkspaceOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterListResult>): void;
-
-
-    /**
-     * Creates a Cluster in the given Workspace.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} parameters The parameters to provide for the Cluster
-     * creation.
-     *
-     * @param {string} parameters.location The region in which to create the
-     * cluster.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the Cluster.
-     *
-     * @param {string} parameters.vmSize The size of the virtual machines in the
-     * cluster. All virtual machines in a cluster are the same size. For
-     * information about available VM sizes for clusters using images from the
-     * Virtual Machines Marketplace (see Sizes for Virtual Machines (Linux) or
-     * Sizes for Virtual Machines (Windows). Batch AI service supports all Azure VM
-     * sizes except STANDARD_A0 and those with premium storage (STANDARD_GS,
-     * STANDARD_DS, and STANDARD_DSV2 series).
-     *
-     * @param {string} [parameters.vmPriority] dedicated or lowpriority. Default is
-     * dedicated. Possible values include: 'dedicated', 'lowpriority'
-     *
-     * @param {object} [parameters.scaleSettings] Desired scale for the cluster.
-     *
-     * @param {object} [parameters.scaleSettings.manual] The scale for the cluster
-     * by manual settings
-     *
-     * @param {number} parameters.scaleSettings.manual.targetNodeCount The desired
-     * number of compute nodes in the Cluster. Default is 0. If autoScaleSettings
-     * are not specified, then the Cluster starts with this target.
-     *
-     * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
-     * Determines what to do with the job(s) running on compute node if the Cluster
-     * size is decreasing. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'waitforjobcompletion'
-     *
-     * @param {object} [parameters.scaleSettings.autoScale] The scale for the
-     * cluster by autoscale settings
-     *
-     * @param {number} parameters.scaleSettings.autoScale.minimumNodeCount
-     * Specifies the minimum number of compute nodes the cluster can have.
-     *
-     * @param {number} parameters.scaleSettings.autoScale.maximumNodeCount
-     * Specifies the maximum number of compute nodes the cluster can have.
-     *
-     * @param {number} [parameters.scaleSettings.autoScale.initialNodeCount]
-     * Specifies the number of compute nodes to allocate on cluster creation. Note
-     * that this value is used only during cluster creation.
-     *
-     * @param {object} [parameters.virtualMachineConfiguration] Settings for OS
-     * image and mounted data volumes.
-     *
-     * @param {object} [parameters.virtualMachineConfiguration.imageReference]
-     * Reference to OS image.
-     *
-     * @param {string}
-     * parameters.virtualMachineConfiguration.imageReference.publisher Publisher of
-     * the image.
-     *
-     * @param {string} parameters.virtualMachineConfiguration.imageReference.offer
-     * Offer of the image.
-     *
-     * @param {string} parameters.virtualMachineConfiguration.imageReference.sku
-     * SKU of the image.
-     *
-     * @param {string}
-     * [parameters.virtualMachineConfiguration.imageReference.version] Version of
-     * the image.
-     *
-     * @param {string}
-     * [parameters.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the virtual machine image. Computes nodes of
-     * the cluster will be created using this custom image. This is of the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * The virtual machine image must be in the same region and subscription as the
-     * cluster. For information about the firewall settings for the Batch node
-     * agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
-     * Note, you need to provide publisher, offer and sku of the base OS image of
-     * which the custom image has been derived from.
-     *
-     * @param {object} [parameters.nodeSetup] Setup to be done on all compute nodes
-     * in the cluster.
-     *
-     * @param {object} [parameters.nodeSetup.setupTask] Specifies a setup task
-     * which can be used to customize the compute nodes of the cluster. The
-     * NodeSetup task runs everytime a VM is rebooted. For that reason the task
-     * code needs to be idempotent. Generally it is used to either download static
-     * data that is required for all jobs that run on the cluster VMs or to
-     * download/install software.
-     *
-     * @param {string} parameters.nodeSetup.setupTask.commandLine Command line to
-     * be executed on each cluster's node after it being allocated or rebooted.
-     * Command line to be executed on each cluster's node after it being allocated
-     * or rebooted. The command is executed in a bash subshell as a root.
-     *
-     * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
-     * Collection of environment variables to be set for setup task.
-     *
-     * @param {array} [parameters.nodeSetup.setupTask.secrets] Collection of
-     * environment variables with secret values to be set for setup task. Server
-     * will never report values of these variables back.
-     *
-     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The
-     * prefix of a path where the Batch AI service will upload the stdout and
-     * stderr of the setup task.
-     *
-     * @param {object} [parameters.nodeSetup.mountVolumes] Information on shared
-     * volumes to be used by jobs. Specified mount volumes will be available to all
-     * jobs executing on the cluster. The volumes will be mounted at location
-     * specified by $AZ_BATCHAI_MOUNT_ROOT environment variable.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.azureFileShares] Azure
-     * File Share setup configuration. References to Azure File Shares that are to
-     * be mounted to the cluster nodes.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.azureBlobFileSystems]
-     * Azure Blob FileSystem setup configuration. References to Azure Blob FUSE
-     * that are to be mounted to the cluster nodes.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.fileServers] References to
-     * a list of file servers that are mounted to the cluster node.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.unmanagedFileSystems]
-     * References to a list of file servers that are mounted to the cluster node.
-     *
-     * @param {object} [parameters.nodeSetup.performanceCountersSettings] Specifies
-     * settings for performance counters collecting and uploading.
-     *
-     * @param {object}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference
-     * Specifies Azure Application Insights information for performance counters
-     * reporting. If provided, Batch AI will upload node performance counters to
-     * the corresponding Azure Application Insights account.
-     *
-     * @param {object}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.component
-     * Specifies the Azure Application Insights component resource id.
-     *
-     * @param {string}
-     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
-     * Value of the Azure Application Insights instrumentation key.
-     *
-     * @param {object}
-     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
-     * Specifies a KeyVault Secret containing Azure Application Insights
-     * instrumentation key. Specifies KeyVault Store and Secret which contains
-     * Azure Application Insights instrumentation key. One of instumentationKey or
-     * instrumentationKeySecretReference must be specified.
-     *
-     * @param {object}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
-     * Fully qualified resource Id for the Key Vault.
-     *
-     * @param {string}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
-     * The URL referencing a secret in a Key Vault.
-     *
-     * @param {object} parameters.userAccountSettings Settings for user account
-     * that will be created on all compute nodes of the cluster.
-     *
-     * @param {string} parameters.userAccountSettings.adminUserName Specifies the
-     * name of the administrator account.
-     *
-     * @param {string} [parameters.userAccountSettings.adminUserSshPublicKey] SSH
-     * public keys used to authenticate with linux based VMs. This does not get
-     * returned in a GET response body.
-     *
-     * @param {string} [parameters.userAccountSettings.adminUserPassword] Admin
-     * user Password (linux only). This does not get returned in a GET response
-     * body.
-     *
-     * @param {object} [parameters.subnet] Specifies the identifier of the subnet.
-     *
-     * @param {string} parameters.subnet.id The ID of the resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Cluster>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
-
-    /**
-     * Creates a Cluster in the given Workspace.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} parameters The parameters to provide for the Cluster
-     * creation.
-     *
-     * @param {string} parameters.location The region in which to create the
-     * cluster.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the Cluster.
-     *
-     * @param {string} parameters.vmSize The size of the virtual machines in the
-     * cluster. All virtual machines in a cluster are the same size. For
-     * information about available VM sizes for clusters using images from the
-     * Virtual Machines Marketplace (see Sizes for Virtual Machines (Linux) or
-     * Sizes for Virtual Machines (Windows). Batch AI service supports all Azure VM
-     * sizes except STANDARD_A0 and those with premium storage (STANDARD_GS,
-     * STANDARD_DS, and STANDARD_DSV2 series).
-     *
-     * @param {string} [parameters.vmPriority] dedicated or lowpriority. Default is
-     * dedicated. Possible values include: 'dedicated', 'lowpriority'
-     *
-     * @param {object} [parameters.scaleSettings] Desired scale for the cluster.
-     *
-     * @param {object} [parameters.scaleSettings.manual] The scale for the cluster
-     * by manual settings
-     *
-     * @param {number} parameters.scaleSettings.manual.targetNodeCount The desired
-     * number of compute nodes in the Cluster. Default is 0. If autoScaleSettings
-     * are not specified, then the Cluster starts with this target.
-     *
-     * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
-     * Determines what to do with the job(s) running on compute node if the Cluster
-     * size is decreasing. The default value is requeue. Possible values include:
-     * 'requeue', 'terminate', 'waitforjobcompletion'
-     *
-     * @param {object} [parameters.scaleSettings.autoScale] The scale for the
-     * cluster by autoscale settings
-     *
-     * @param {number} parameters.scaleSettings.autoScale.minimumNodeCount
-     * Specifies the minimum number of compute nodes the cluster can have.
-     *
-     * @param {number} parameters.scaleSettings.autoScale.maximumNodeCount
-     * Specifies the maximum number of compute nodes the cluster can have.
-     *
-     * @param {number} [parameters.scaleSettings.autoScale.initialNodeCount]
-     * Specifies the number of compute nodes to allocate on cluster creation. Note
-     * that this value is used only during cluster creation.
-     *
-     * @param {object} [parameters.virtualMachineConfiguration] Settings for OS
-     * image and mounted data volumes.
-     *
-     * @param {object} [parameters.virtualMachineConfiguration.imageReference]
-     * Reference to OS image.
-     *
-     * @param {string}
-     * parameters.virtualMachineConfiguration.imageReference.publisher Publisher of
-     * the image.
-     *
-     * @param {string} parameters.virtualMachineConfiguration.imageReference.offer
-     * Offer of the image.
-     *
-     * @param {string} parameters.virtualMachineConfiguration.imageReference.sku
-     * SKU of the image.
-     *
-     * @param {string}
-     * [parameters.virtualMachineConfiguration.imageReference.version] Version of
-     * the image.
-     *
-     * @param {string}
-     * [parameters.virtualMachineConfiguration.imageReference.virtualMachineImageId]
-     * The ARM resource identifier of the virtual machine image. Computes nodes of
-     * the cluster will be created using this custom image. This is of the form
-     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}
-     * The virtual machine image must be in the same region and subscription as the
-     * cluster. For information about the firewall settings for the Batch node
-     * agent to communicate with the Batch service see
-     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
-     * Note, you need to provide publisher, offer and sku of the base OS image of
-     * which the custom image has been derived from.
-     *
-     * @param {object} [parameters.nodeSetup] Setup to be done on all compute nodes
-     * in the cluster.
-     *
-     * @param {object} [parameters.nodeSetup.setupTask] Specifies a setup task
-     * which can be used to customize the compute nodes of the cluster. The
-     * NodeSetup task runs everytime a VM is rebooted. For that reason the task
-     * code needs to be idempotent. Generally it is used to either download static
-     * data that is required for all jobs that run on the cluster VMs or to
-     * download/install software.
-     *
-     * @param {string} parameters.nodeSetup.setupTask.commandLine Command line to
-     * be executed on each cluster's node after it being allocated or rebooted.
-     * Command line to be executed on each cluster's node after it being allocated
-     * or rebooted. The command is executed in a bash subshell as a root.
-     *
-     * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
-     * Collection of environment variables to be set for setup task.
-     *
-     * @param {array} [parameters.nodeSetup.setupTask.secrets] Collection of
-     * environment variables with secret values to be set for setup task. Server
-     * will never report values of these variables back.
-     *
-     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix The
-     * prefix of a path where the Batch AI service will upload the stdout and
-     * stderr of the setup task.
-     *
-     * @param {object} [parameters.nodeSetup.mountVolumes] Information on shared
-     * volumes to be used by jobs. Specified mount volumes will be available to all
-     * jobs executing on the cluster. The volumes will be mounted at location
-     * specified by $AZ_BATCHAI_MOUNT_ROOT environment variable.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.azureFileShares] Azure
-     * File Share setup configuration. References to Azure File Shares that are to
-     * be mounted to the cluster nodes.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.azureBlobFileSystems]
-     * Azure Blob FileSystem setup configuration. References to Azure Blob FUSE
-     * that are to be mounted to the cluster nodes.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.fileServers] References to
-     * a list of file servers that are mounted to the cluster node.
-     *
-     * @param {array} [parameters.nodeSetup.mountVolumes.unmanagedFileSystems]
-     * References to a list of file servers that are mounted to the cluster node.
-     *
-     * @param {object} [parameters.nodeSetup.performanceCountersSettings] Specifies
-     * settings for performance counters collecting and uploading.
-     *
-     * @param {object}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference
-     * Specifies Azure Application Insights information for performance counters
-     * reporting. If provided, Batch AI will upload node performance counters to
-     * the corresponding Azure Application Insights account.
-     *
-     * @param {object}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.component
-     * Specifies the Azure Application Insights component resource id.
-     *
-     * @param {string}
-     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
-     * Value of the Azure Application Insights instrumentation key.
-     *
-     * @param {object}
-     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
-     * Specifies a KeyVault Secret containing Azure Application Insights
-     * instrumentation key. Specifies KeyVault Store and Secret which contains
-     * Azure Application Insights instrumentation key. One of instumentationKey or
-     * instrumentationKeySecretReference must be specified.
-     *
-     * @param {object}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
-     * Fully qualified resource Id for the Key Vault.
-     *
-     * @param {string}
-     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
-     * The URL referencing a secret in a Key Vault.
-     *
-     * @param {object} parameters.userAccountSettings Settings for user account
-     * that will be created on all compute nodes of the cluster.
-     *
-     * @param {string} parameters.userAccountSettings.adminUserName Specifies the
-     * name of the administrator account.
-     *
-     * @param {string} [parameters.userAccountSettings.adminUserSshPublicKey] SSH
-     * public keys used to authenticate with linux based VMs. This does not get
-     * returned in a GET response body.
-     *
-     * @param {string} [parameters.userAccountSettings.adminUserPassword] Admin
-     * user Password (linux only). This does not get returned in a GET response
-     * body.
-     *
-     * @param {object} [parameters.subnet] Specifies the identifier of the subnet.
-     *
-     * @param {string} parameters.subnet.id The ID of the resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Cluster} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Cluster} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Cluster} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreate(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
-    beginCreate(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, callback: ServiceCallback<models.Cluster>): void;
-    beginCreate(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
-
-
-    /**
-     * Deletes a Cluster.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes a Cluster.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} clusterName The name of the cluster within the specified
-     * resource group. Cluster names can only contain a combination of alphanumeric
-     * characters along with dash (-) and underscore (_). The name must be from 1
-     * through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, workspaceName: string, clusterName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, workspaceName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets a list of Clusters associated with the given subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ClusterListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
-
-    /**
-     * Gets a list of Clusters associated with the given subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ClusterListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ClusterListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ClusterListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ClusterListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterListResult>): void;
-
-
-    /**
-     * Gets a list of Clusters within the specified resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ClusterListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
-
-    /**
-     * Gets a list of Clusters within the specified resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ClusterListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ClusterListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ClusterListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ClusterListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterListResult>): void;
-
-
-    /**
-     * Get the IP address, port of all the compute nodes in the Cluster.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RemoteLoginInformationListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listRemoteLoginInformationNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemoteLoginInformationListResult>>;
-
-    /**
-     * Get the IP address, port of all the compute nodes in the Cluster.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RemoteLoginInformationListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RemoteLoginInformationListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RemoteLoginInformationListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listRemoteLoginInformationNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemoteLoginInformationListResult>;
-    listRemoteLoginInformationNext(nextPageLink: string, callback: ServiceCallback<models.RemoteLoginInformationListResult>): void;
-    listRemoteLoginInformationNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemoteLoginInformationListResult>): void;
-
-
-    /**
-     * Gets information about Clusters associated with the given Workspace.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ClusterListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByWorkspaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
-
-    /**
-     * Gets information about Clusters associated with the given Workspace.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ClusterListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ClusterListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ClusterListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByWorkspaceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterListResult>;
-    listByWorkspaceNext(nextPageLink: string, callback: ServiceCallback<models.ClusterListResult>): void;
-    listByWorkspaceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterListResult>): void;
-}
-
-/**
- * @class
- * FileServers
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the BatchAIManagementClient.
- */
-export interface FileServers {
-
-
-    /**
-     * Gets a list of File Servers associated with the given subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.fileServersListOptions] Additional parameters for
-     * the operation
-     *
-     * @param {number} [options.fileServersListOptions.maxResults] The maximum
-     * number of items to return in the response. A maximum of 1000 files can be
-     * returned.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<FileServerListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { fileServersListOptions? : models.FileServersListOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServerListResult>>;
-
-    /**
-     * Gets a list of File Servers associated with the given subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.fileServersListOptions] Additional parameters for
-     * the operation
-     *
-     * @param {number} [options.fileServersListOptions.maxResults] The maximum
-     * number of items to return in the response. A maximum of 1000 files can be
-     * returned.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {FileServerListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {FileServerListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FileServerListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { fileServersListOptions? : models.FileServersListOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServerListResult>;
-    list(callback: ServiceCallback<models.FileServerListResult>): void;
-    list(options: { fileServersListOptions? : models.FileServersListOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServerListResult>): void;
-
-
-    /**
-     * Gets a list of File Servers within the specified resource group.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.fileServersListByResourceGroupOptions] Additional
-     * parameters for the operation
-     *
-     * @param {number} [options.fileServersListByResourceGroupOptions.maxResults]
-     * The maximum number of items to return in the response. A maximum of 1000
-     * files can be returned.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<FileServerListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { fileServersListByResourceGroupOptions? : models.FileServersListByResourceGroupOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServerListResult>>;
-
-    /**
-     * Gets a list of File Servers within the specified resource group.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.fileServersListByResourceGroupOptions] Additional
-     * parameters for the operation
-     *
-     * @param {number} [options.fileServersListByResourceGroupOptions.maxResults]
-     * The maximum number of items to return in the response. A maximum of 1000
-     * files can be returned.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {FileServerListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {FileServerListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FileServerListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { fileServersListByResourceGroupOptions? : models.FileServersListByResourceGroupOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServerListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.FileServerListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { fileServersListByResourceGroupOptions? : models.FileServersListByResourceGroupOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServerListResult>): void;
-
-
-    /**
-     * Creates a File Server in the given workspace.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} fileServerName The name of the file server within the
-     * specified resource group. File server names can only contain a combination
-     * of alphanumeric characters along with dash (-) and underscore (_). The name
-     * must be from 1 through 64 characters long.
-     *
-     * @param {object} parameters The parameters to provide for File Server
-     * creation.
-     *
-     * @param {string} parameters.location The region in which to create the File
-     * Server.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the File Server.
-     *
-     * @param {string} parameters.vmSize The size of the virtual machine of the
-     * file server. For information about available VM sizes for fileservers from
-     * the Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
-     *
-     * @param {object} parameters.sshConfiguration SSH configuration for the file
-     * server.
-     *
-     * @param {array} [parameters.sshConfiguration.publicIPsToAllow] List of source
-     * IP ranges to allow SSH connection to a node. Default value is '*' can be
-     * used to match all source IPs. Maximum number of IP ranges that can be
-     * specified are 400.
-     *
-     * @param {object} parameters.sshConfiguration.userAccountSettings Settings for
-     * user account to be created on a node.
-     *
-     * @param {string}
-     * parameters.sshConfiguration.userAccountSettings.adminUserName Specifies the
-     * name of the administrator account.
-     *
-     * @param {string}
-     * [parameters.sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH
-     * public keys used to authenticate with linux based VMs. This does not get
-     * returned in a GET response body.
-     *
-     * @param {string}
-     * [parameters.sshConfiguration.userAccountSettings.adminUserPassword] Admin
-     * user Password (linux only). This does not get returned in a GET response
-     * body.
-     *
-     * @param {object} parameters.dataDisks Settings for the data disk which would
-     * be created for the file server.
-     *
-     * @param {number} parameters.dataDisks.diskSizeInGB Initial disk size in GB
-     * for blank data disks, and the new desired size for resizing existing data
-     * disks.
-     *
-     * @param {string} [parameters.dataDisks.cachingType] None, ReadOnly,
-     * ReadWrite. Default value is None. This property is not patchable. Possible
-     * values include: 'none', 'readonly', 'readwrite'
-     *
-     * @param {number} parameters.dataDisks.diskCount Number of data disks to be
-     * attached to the VM. RAID level 0 will be applied in the case of multiple
-     * disks.
-     *
-     * @param {string} parameters.dataDisks.storageAccountType Specifies the type
-     * of storage account to be used on the disk. Possible values are: Standard_LRS
-     * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
-     *
-     * @param {object} [parameters.subnet] Specifies the identifier of the subnet.
-     *
-     * @param {string} parameters.subnet.id The ID of the resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<FileServer>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServer>>;
-
-    /**
-     * Creates a File Server in the given workspace.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} fileServerName The name of the file server within the
-     * specified resource group. File server names can only contain a combination
-     * of alphanumeric characters along with dash (-) and underscore (_). The name
-     * must be from 1 through 64 characters long.
-     *
-     * @param {object} parameters The parameters to provide for File Server
-     * creation.
-     *
-     * @param {string} parameters.location The region in which to create the File
-     * Server.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the File Server.
-     *
-     * @param {string} parameters.vmSize The size of the virtual machine of the
-     * file server. For information about available VM sizes for fileservers from
-     * the Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
-     *
-     * @param {object} parameters.sshConfiguration SSH configuration for the file
-     * server.
-     *
-     * @param {array} [parameters.sshConfiguration.publicIPsToAllow] List of source
-     * IP ranges to allow SSH connection to a node. Default value is '*' can be
-     * used to match all source IPs. Maximum number of IP ranges that can be
-     * specified are 400.
-     *
-     * @param {object} parameters.sshConfiguration.userAccountSettings Settings for
-     * user account to be created on a node.
-     *
-     * @param {string}
-     * parameters.sshConfiguration.userAccountSettings.adminUserName Specifies the
-     * name of the administrator account.
-     *
-     * @param {string}
-     * [parameters.sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH
-     * public keys used to authenticate with linux based VMs. This does not get
-     * returned in a GET response body.
-     *
-     * @param {string}
-     * [parameters.sshConfiguration.userAccountSettings.adminUserPassword] Admin
-     * user Password (linux only). This does not get returned in a GET response
-     * body.
-     *
-     * @param {object} parameters.dataDisks Settings for the data disk which would
-     * be created for the file server.
-     *
-     * @param {number} parameters.dataDisks.diskSizeInGB Initial disk size in GB
-     * for blank data disks, and the new desired size for resizing existing data
-     * disks.
-     *
-     * @param {string} [parameters.dataDisks.cachingType] None, ReadOnly,
-     * ReadWrite. Default value is None. This property is not patchable. Possible
-     * values include: 'none', 'readonly', 'readwrite'
-     *
-     * @param {number} parameters.dataDisks.diskCount Number of data disks to be
-     * attached to the VM. RAID level 0 will be applied in the case of multiple
-     * disks.
-     *
-     * @param {string} parameters.dataDisks.storageAccountType Specifies the type
-     * of storage account to be used on the disk. Possible values are: Standard_LRS
-     * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
-     *
-     * @param {object} [parameters.subnet] Specifies the identifier of the subnet.
-     *
-     * @param {string} parameters.subnet.id The ID of the resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {FileServer} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {FileServer} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FileServer} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    create(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServer>;
-    create(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, callback: ServiceCallback<models.FileServer>): void;
-    create(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServer>): void;
-
-
-    /**
-     * Deletes a File Server.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} fileServerName The name of the file server within the
-     * specified resource group. File server names can only contain a combination
-     * of alphanumeric characters along with dash (-) and underscore (_). The name
-     * must be from 1 through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, fileServerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes a File Server.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} fileServerName The name of the file server within the
-     * specified resource group. File server names can only contain a combination
-     * of alphanumeric characters along with dash (-) and underscore (_). The name
-     * must be from 1 through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, workspaceName: string, fileServerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, workspaceName: string, fileServerName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, workspaceName: string, fileServerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets information about a File Server.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} fileServerName The name of the file server within the
-     * specified resource group. File server names can only contain a combination
-     * of alphanumeric characters along with dash (-) and underscore (_). The name
-     * must be from 1 through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<FileServer>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, fileServerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServer>>;
-
-    /**
-     * Gets information about a File Server.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} fileServerName The name of the file server within the
-     * specified resource group. File server names can only contain a combination
-     * of alphanumeric characters along with dash (-) and underscore (_). The name
-     * must be from 1 through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {FileServer} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {FileServer} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FileServer} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, workspaceName: string, fileServerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServer>;
-    get(resourceGroupName: string, workspaceName: string, fileServerName: string, callback: ServiceCallback<models.FileServer>): void;
-    get(resourceGroupName: string, workspaceName: string, fileServerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServer>): void;
-
-
-    /**
-     * Gets a list of File Servers associated with the specified workspace.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.fileServersListByWorkspaceOptions] Additional
-     * parameters for the operation
-     *
-     * @param {number} [options.fileServersListByWorkspaceOptions.maxResults] The
-     * maximum number of items to return in the response. A maximum of 1000 files
-     * can be returned.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<FileServerListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByWorkspaceWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { fileServersListByWorkspaceOptions? : models.FileServersListByWorkspaceOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServerListResult>>;
-
-    /**
-     * Gets a list of File Servers associated with the specified workspace.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.fileServersListByWorkspaceOptions] Additional
-     * parameters for the operation
-     *
-     * @param {number} [options.fileServersListByWorkspaceOptions.maxResults] The
-     * maximum number of items to return in the response. A maximum of 1000 files
-     * can be returned.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {FileServerListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {FileServerListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FileServerListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByWorkspace(resourceGroupName: string, workspaceName: string, options?: { fileServersListByWorkspaceOptions? : models.FileServersListByWorkspaceOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServerListResult>;
-    listByWorkspace(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.FileServerListResult>): void;
-    listByWorkspace(resourceGroupName: string, workspaceName: string, options: { fileServersListByWorkspaceOptions? : models.FileServersListByWorkspaceOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServerListResult>): void;
-
-
-    /**
-     * Creates a File Server in the given workspace.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} fileServerName The name of the file server within the
-     * specified resource group. File server names can only contain a combination
-     * of alphanumeric characters along with dash (-) and underscore (_). The name
-     * must be from 1 through 64 characters long.
-     *
-     * @param {object} parameters The parameters to provide for File Server
-     * creation.
-     *
-     * @param {string} parameters.location The region in which to create the File
-     * Server.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the File Server.
-     *
-     * @param {string} parameters.vmSize The size of the virtual machine of the
-     * file server. For information about available VM sizes for fileservers from
-     * the Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
-     *
-     * @param {object} parameters.sshConfiguration SSH configuration for the file
-     * server.
-     *
-     * @param {array} [parameters.sshConfiguration.publicIPsToAllow] List of source
-     * IP ranges to allow SSH connection to a node. Default value is '*' can be
-     * used to match all source IPs. Maximum number of IP ranges that can be
-     * specified are 400.
-     *
-     * @param {object} parameters.sshConfiguration.userAccountSettings Settings for
-     * user account to be created on a node.
-     *
-     * @param {string}
-     * parameters.sshConfiguration.userAccountSettings.adminUserName Specifies the
-     * name of the administrator account.
-     *
-     * @param {string}
-     * [parameters.sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH
-     * public keys used to authenticate with linux based VMs. This does not get
-     * returned in a GET response body.
-     *
-     * @param {string}
-     * [parameters.sshConfiguration.userAccountSettings.adminUserPassword] Admin
-     * user Password (linux only). This does not get returned in a GET response
-     * body.
-     *
-     * @param {object} parameters.dataDisks Settings for the data disk which would
-     * be created for the file server.
-     *
-     * @param {number} parameters.dataDisks.diskSizeInGB Initial disk size in GB
-     * for blank data disks, and the new desired size for resizing existing data
-     * disks.
-     *
-     * @param {string} [parameters.dataDisks.cachingType] None, ReadOnly,
-     * ReadWrite. Default value is None. This property is not patchable. Possible
-     * values include: 'none', 'readonly', 'readwrite'
-     *
-     * @param {number} parameters.dataDisks.diskCount Number of data disks to be
-     * attached to the VM. RAID level 0 will be applied in the case of multiple
-     * disks.
-     *
-     * @param {string} parameters.dataDisks.storageAccountType Specifies the type
-     * of storage account to be used on the disk. Possible values are: Standard_LRS
-     * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
-     *
-     * @param {object} [parameters.subnet] Specifies the identifier of the subnet.
-     *
-     * @param {string} parameters.subnet.id The ID of the resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<FileServer>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServer>>;
-
-    /**
-     * Creates a File Server in the given workspace.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} fileServerName The name of the file server within the
-     * specified resource group. File server names can only contain a combination
-     * of alphanumeric characters along with dash (-) and underscore (_). The name
-     * must be from 1 through 64 characters long.
-     *
-     * @param {object} parameters The parameters to provide for File Server
-     * creation.
-     *
-     * @param {string} parameters.location The region in which to create the File
-     * Server.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
-     * the File Server.
-     *
-     * @param {string} parameters.vmSize The size of the virtual machine of the
-     * file server. For information about available VM sizes for fileservers from
-     * the Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
-     *
-     * @param {object} parameters.sshConfiguration SSH configuration for the file
-     * server.
-     *
-     * @param {array} [parameters.sshConfiguration.publicIPsToAllow] List of source
-     * IP ranges to allow SSH connection to a node. Default value is '*' can be
-     * used to match all source IPs. Maximum number of IP ranges that can be
-     * specified are 400.
-     *
-     * @param {object} parameters.sshConfiguration.userAccountSettings Settings for
-     * user account to be created on a node.
-     *
-     * @param {string}
-     * parameters.sshConfiguration.userAccountSettings.adminUserName Specifies the
-     * name of the administrator account.
-     *
-     * @param {string}
-     * [parameters.sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH
-     * public keys used to authenticate with linux based VMs. This does not get
-     * returned in a GET response body.
-     *
-     * @param {string}
-     * [parameters.sshConfiguration.userAccountSettings.adminUserPassword] Admin
-     * user Password (linux only). This does not get returned in a GET response
-     * body.
-     *
-     * @param {object} parameters.dataDisks Settings for the data disk which would
-     * be created for the file server.
-     *
-     * @param {number} parameters.dataDisks.diskSizeInGB Initial disk size in GB
-     * for blank data disks, and the new desired size for resizing existing data
-     * disks.
-     *
-     * @param {string} [parameters.dataDisks.cachingType] None, ReadOnly,
-     * ReadWrite. Default value is None. This property is not patchable. Possible
-     * values include: 'none', 'readonly', 'readwrite'
-     *
-     * @param {number} parameters.dataDisks.diskCount Number of data disks to be
-     * attached to the VM. RAID level 0 will be applied in the case of multiple
-     * disks.
-     *
-     * @param {string} parameters.dataDisks.storageAccountType Specifies the type
-     * of storage account to be used on the disk. Possible values are: Standard_LRS
-     * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
-     *
-     * @param {object} [parameters.subnet] Specifies the identifier of the subnet.
-     *
-     * @param {string} parameters.subnet.id The ID of the resource
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {FileServer} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {FileServer} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FileServer} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreate(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServer>;
-    beginCreate(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, callback: ServiceCallback<models.FileServer>): void;
-    beginCreate(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServer>): void;
-
-
-    /**
-     * Deletes a File Server.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} fileServerName The name of the file server within the
-     * specified resource group. File server names can only contain a combination
-     * of alphanumeric characters along with dash (-) and underscore (_). The name
-     * must be from 1 through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, fileServerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes a File Server.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} workspaceName The name of the workspace. Workspace names can
-     * only contain a combination of alphanumeric characters along with dash (-)
-     * and underscore (_). The name must be from 1 through 64 characters long.
-     *
-     * @param {string} fileServerName The name of the file server within the
-     * specified resource group. File server names can only contain a combination
-     * of alphanumeric characters along with dash (-) and underscore (_). The name
-     * must be from 1 through 64 characters long.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, workspaceName: string, fileServerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, workspaceName: string, fileServerName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, workspaceName: string, fileServerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Gets a list of File Servers associated with the given subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<FileServerListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServerListResult>>;
-
-    /**
-     * Gets a list of File Servers associated with the given subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {FileServerListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {FileServerListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FileServerListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServerListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.FileServerListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServerListResult>): void;
-
-
-    /**
-     * Gets a list of File Servers within the specified resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<FileServerListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServerListResult>>;
-
-    /**
-     * Gets a list of File Servers within the specified resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {FileServerListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {FileServerListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FileServerListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServerListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.FileServerListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServerListResult>): void;
-
-
-    /**
-     * Gets a list of File Servers associated with the specified workspace.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<FileServerListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByWorkspaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServerListResult>>;
-
-    /**
-     * Gets a list of File Servers associated with the specified workspace.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {FileServerListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {FileServerListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link FileServerListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByWorkspaceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServerListResult>;
-    listByWorkspaceNext(nextPageLink: string, callback: ServiceCallback<models.FileServerListResult>): void;
-    listByWorkspaceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServerListResult>): void;
-}
-
-/**
- * @class
  * Workspaces
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BatchAIManagementClient.
@@ -3158,11 +411,11 @@ export interface Workspaces {
      *
      * @param {object} parameters Workspace creation parameters.
      *
-     * @param {string} parameters.location The region in which to create the
-     * Workspace.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
+     * @param {string} parameters.location Location. The region in which to create
      * the Workspace.
+     *
+     * @param {object} [parameters.tags] Tags. The user specified tags associated
+     * with the Workspace.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3189,11 +442,11 @@ export interface Workspaces {
      *
      * @param {object} parameters Workspace creation parameters.
      *
-     * @param {string} parameters.location The region in which to create the
-     * Workspace.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
+     * @param {string} parameters.location Location. The region in which to create
      * the Workspace.
+     *
+     * @param {object} [parameters.tags] Tags. The user specified tags associated
+     * with the Workspace.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3225,6 +478,77 @@ export interface Workspaces {
     create(resourceGroupName: string, workspaceName: string, parameters: models.WorkspaceCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workspace>;
     create(resourceGroupName: string, workspaceName: string, parameters: models.WorkspaceCreateParameters, callback: ServiceCallback<models.Workspace>): void;
     create(resourceGroupName: string, workspaceName: string, parameters: models.WorkspaceCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workspace>): void;
+
+
+    /**
+     * Updates properties of a Workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.tags] Tags. The user specified tags associated with
+     * the Workspace.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Workspace>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workspace>>;
+
+    /**
+     * Updates properties of a Workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.tags] Tags. The user specified tags associated with
+     * the Workspace.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Workspace} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Workspace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Workspace} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, workspaceName: string, options?: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workspace>;
+    update(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.Workspace>): void;
+    update(resourceGroupName: string, workspaceName: string, options: { tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workspace>): void;
 
 
     /**
@@ -3368,11 +692,11 @@ export interface Workspaces {
      *
      * @param {object} parameters Workspace creation parameters.
      *
-     * @param {string} parameters.location The region in which to create the
-     * Workspace.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
+     * @param {string} parameters.location Location. The region in which to create
      * the Workspace.
+     *
+     * @param {object} [parameters.tags] Tags. The user specified tags associated
+     * with the Workspace.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3399,11 +723,11 @@ export interface Workspaces {
      *
      * @param {object} parameters Workspace creation parameters.
      *
-     * @param {string} parameters.location The region in which to create the
-     * Workspace.
-     *
-     * @param {object} [parameters.tags] The user specified tags associated with
+     * @param {string} parameters.location Location. The region in which to create
      * the Workspace.
+     *
+     * @param {object} [parameters.tags] Tags. The user specified tags associated
+     * with the Workspace.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4240,72 +1564,76 @@ export interface Jobs {
      *
      * @param {object} parameters The parameters to provide for job creation.
      *
-     * @param {string} [parameters.schedulingPriority] Scheduling priority
-     * associated with the job. Scheduling priority associated with the job.
-     * Possible values include: 'low', 'normal', 'high'
+     * @param {string} [parameters.schedulingPriority] Scheduling priority.
+     * Scheduling priority associated with the job. Possible values: low, normal,
+     * high. Possible values include: 'low', 'normal', 'high'
      *
-     * @param {object} parameters.cluster Specifies the Id of the cluster on which
-     * this job will run.
+     * @param {object} parameters.cluster Cluster. Resource ID of the cluster on
+     * which this job will run.
      *
-     * @param {object} [parameters.mountVolumes] Information on mount volumes to be
-     * used by the job. These volumes will be mounted before the job execution and
-     * will be unmouted after the job completion. The volumes will be mounted at
-     * location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment variable.
+     * @param {object} [parameters.mountVolumes] Mount volumes. Information on
+     * mount volumes to be used by the job. These volumes will be mounted before
+     * the job execution and will be unmouted after the job completion. The volumes
+     * will be mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT
+     * environment variable.
      *
-     * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Share
-     * setup configuration. References to Azure File Shares that are to be mounted
-     * to the cluster nodes.
+     * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Shares.
+     * A collection of Azure File Shares that are to be mounted to the cluster
+     * nodes.
      *
      * @param {array} [parameters.mountVolumes.azureBlobFileSystems] Azure Blob
-     * FileSystem setup configuration. References to Azure Blob FUSE that are to be
-     * mounted to the cluster nodes.
+     * file systems. A collection of Azure Blob Containers that are to be mounted
+     * to the cluster nodes.
      *
-     * @param {array} [parameters.mountVolumes.fileServers] References to a list of
-     * file servers that are mounted to the cluster node.
+     * @param {array} [parameters.mountVolumes.fileServers] File Servers. A
+     * collection of Batch AI File Servers that are to be mounted to the cluster
+     * nodes.
      *
-     * @param {array} [parameters.mountVolumes.unmanagedFileSystems] References to
-     * a list of file servers that are mounted to the cluster node.
+     * @param {array} [parameters.mountVolumes.unmanagedFileSystems] Unmanaged file
+     * systems. A collection of unmanaged file systems that are to be mounted to
+     * the cluster nodes.
      *
-     * @param {number} parameters.nodeCount Number of compute nodes to run the job
-     * on. The job will be gang scheduled on that many compute nodes
+     * @param {number} parameters.nodeCount Node count. Number of compute nodes to
+     * run the job on. The job will be gang scheduled on that many compute nodes.
      *
-     * @param {object} [parameters.containerSettings] If provided the job will run
-     * in the specified container. If the container was downloaded as part of
-     * cluster setup then the same container image will be used. If not provided,
-     * the job will run on the VM.
+     * @param {object} [parameters.containerSettings] Container settings. Docker
+     * container settings for the job. If not provided, the job will run directly
+     * on the node.
      *
-     * @param {object} parameters.containerSettings.imageSourceRegistry Registry to
+     * @param {object} parameters.containerSettings.imageSourceRegistry Image
+     * source registry. Information about docker image and docker registry to
      * download the container from.
      *
      * @param {string} [parameters.containerSettings.imageSourceRegistry.serverUrl]
-     * URL for image repository.
+     * Server URL. URL for image repository.
      *
-     * @param {string} parameters.containerSettings.imageSourceRegistry.image The
-     * name of the image in image repository.
+     * @param {string} parameters.containerSettings.imageSourceRegistry.image
+     * Image. The name of the image in the image repository.
      *
      * @param {object}
-     * [parameters.containerSettings.imageSourceRegistry.credentials] Information
-     * to access the private Docker repository.
+     * [parameters.containerSettings.imageSourceRegistry.credentials] Credentials.
+     * Credentials to access the private docker repository.
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.username User
-     * name to login.
+     * name. User name to login to the repository.
      *
      * @param {string}
      * [parameters.containerSettings.imageSourceRegistry.credentials.password]
-     * Password to login. One of password or passwordSecretReference must be
-     * specified.
+     * Password. User password to login to the docker repository. One of password
+     * or passwordSecretReference must be specified.
      *
      * @param {object}
      * [parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference]
-     * Specifies the location of the password, which is a Key Vault Secret. Users
-     * can store their secrets in Azure KeyVault and pass it to the Batch AI
-     * Service to integrate with KeyVault. One of password or
-     * passwordSecretReference must be specified.
+     * Password secret reference. KeyVault Secret storing the password. Users can
+     * store their secrets in Azure KeyVault and pass it to the Batch AI service to
+     * integrate with KeyVault. One of password or passwordSecretReference must be
+     * specified.
      *
      * @param {object}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault
-     * Fully qualified resource Id for the Key Vault.
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id
@@ -4313,202 +1641,212 @@ export interface Jobs {
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl
-     * The URL referencing a secret in a Key Vault.
+     * Secret URL. The URL referencing a secret in the Key Vault.
      *
-     * @param {object} [parameters.cntkSettings] Specifies the settings for CNTK
+     * @param {string} [parameters.containerSettings.shmSize] /dev/shm size. Size
+     * of /dev/shm. Please refer to docker documentation for supported argument
+     * formats.
+     *
+     * @param {object} [parameters.cntkSettings] CNTK settings. Settings for CNTK
      * (aka Microsoft Cognitive Toolkit) job.
      *
-     * @param {string} [parameters.cntkSettings.languageType] Specifies the
-     * language type to use for launching CNTK (aka Microsoft Cognitive Toolkit)
-     * job. Valid values are 'BrainScript' or 'Python'.
+     * @param {string} [parameters.cntkSettings.languageType] Language type. The
+     * language to use for launching CNTK (aka Microsoft Cognitive Toolkit) job.
+     * Valid values are 'BrainScript' or 'Python'.
      *
-     * @param {string} [parameters.cntkSettings.configFilePath] Specifies the path
-     * of the config file. This property can be specified only if the languageType
-     * is 'BrainScript'.
+     * @param {string} [parameters.cntkSettings.configFilePath] Config file path.
+     * Specifies the path of the BrainScript config file. This property can be
+     * specified only if the languageType is 'BrainScript'.
      *
-     * @param {string} [parameters.cntkSettings.pythonScriptFilePath] The path and
-     * file name of the python script to execute the job. This property can be
+     * @param {string} [parameters.cntkSettings.pythonScriptFilePath] Python script
+     * file path. Python script to execute. This property can be specified only if
+     * the languageType is 'Python'.
+     *
+     * @param {string} [parameters.cntkSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter. This property can be
      * specified only if the languageType is 'Python'.
      *
-     * @param {string} [parameters.cntkSettings.pythonInterpreterPath] The path to
-     * python interpreter. This property can be specified only if the languageType
-     * is 'Python'.
-     *
      * @param {string} [parameters.cntkSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script or CNTK.exe.
+     * arguments. Command line arguments that need to be passed to the python
+     * script or cntk executable.
      *
-     * @param {number} [parameters.cntkSettings.processCount] Number of processes
-     * parameter that is passed to MPI runtime. The default value for this property
-     * is equal to nodeCount property
+     * @param {number} [parameters.cntkSettings.processCount] Process count. Number
+     * of processes to launch for the job execution. The default value for this
+     * property is equal to nodeCount property
      *
-     * @param {object} [parameters.pyTorchSettings] Specifies the settings for
+     * @param {object} [parameters.pyTorchSettings] pyTorch settings. Settings for
      * pyTorch job.
      *
-     * @param {string} parameters.pyTorchSettings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.pyTorchSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.pyTorchSettings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.pyTorchSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
-     * @param {string} [parameters.pyTorchSettings.commandLineArgs] Specifies the
-     * command line arguments for the master task.
+     * @param {string} [parameters.pyTorchSettings.commandLineArgs] Command line
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {number} [parameters.pyTorchSettings.processCount] Number of
-     * processes to launch for the job execution. The default value for this
-     * property is equal to nodeCount property.
+     * @param {number} [parameters.pyTorchSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
+     * this property is equal to nodeCount property
      *
-     * @param {string} [parameters.pyTorchSettings.communicationBackend] Type of
-     * the communication backend for distributed jobs. Valid values are 'TCP',
-     * 'Gloo' or 'MPI'. Not required for non-distributed jobs.
+     * @param {string} [parameters.pyTorchSettings.communicationBackend]
+     * Communication backend. Type of the communication backend for distributed
+     * jobs. Valid values are 'TCP', 'Gloo' or 'MPI'. Not required for
+     * non-distributed jobs.
      *
-     * @param {object} [parameters.tensorFlowSettings] Specifies the settings for
-     * Tensor Flow job.
+     * @param {object} [parameters.tensorFlowSettings] TensorFlow settings.
+     * Settings for Tensor Flow job.
      *
-     * @param {string} parameters.tensorFlowSettings.pythonScriptFilePath The path
-     * and file name of the python script to execute the job.
+     * @param {string} parameters.tensorFlowSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.tensorFlowSettings.pythonInterpreterPath] The
-     * path to python interpreter.
+     * @param {string} [parameters.tensorFlowSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
-     * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs]
-     * Specifies the command line arguments for the master task.
+     * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs] Master
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the master task.
      *
-     * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs]
-     * Specifies the command line arguments for the worker task. This property is
-     * optional for single machine training.
+     * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs] Worker
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the worker task. Optional for single process jobs.
      *
      * @param {string}
-     * [parameters.tensorFlowSettings.parameterServerCommandLineArgs] Specifies the
-     * command line arguments for the parameter server task. This property is
-     * optional for single machine training.
+     * [parameters.tensorFlowSettings.parameterServerCommandLineArgs] Parameter
+     * server command line arguments. Command line arguments that need to be passed
+     * to the python script for the parameter server. Optional for single process
+     * jobs.
      *
-     * @param {number} [parameters.tensorFlowSettings.workerCount] The number of
-     * worker tasks. If specified, the value must be less than or equal to
-     * (nodeCount * numberOfGPUs per VM). If not specified, the default value is
-     * equal to nodeCount. This property can be specified only for distributed
-     * TensorFlow training
+     * @param {number} [parameters.tensorFlowSettings.workerCount] Worker count.
+     * The number of worker tasks. If specified, the value must be less than or
+     * equal to (nodeCount * numberOfGPUs per VM). If not specified, the default
+     * value is equal to nodeCount. This property can be specified only for
+     * distributed TensorFlow training.
      *
-     * @param {number} [parameters.tensorFlowSettings.parameterServerCount] The
-     * number of parmeter server tasks. If specified, the value must be less than
-     * or equal to nodeCount. If not specified, the default value is equal to 1 for
-     * distributed TensorFlow training (This property is not applicable for single
-     * machine training). This property can be specified only for distributed
-     * TensorFlow training.
+     * @param {number} [parameters.tensorFlowSettings.parameterServerCount]
+     * Parameter server count. The number of parameter server tasks. If specified,
+     * the value must be less than or equal to nodeCount. If not specified, the
+     * default value is equal to 1 for distributed TensorFlow training. This
+     * property can be specified only for distributed TensorFlow training.
      *
-     * @param {object} [parameters.caffeSettings] Specifies the settings for Caffe
-     * job.
+     * @param {object} [parameters.caffeSettings] Caffe settings. Settings for
+     * Caffe job.
      *
-     * @param {string} [parameters.caffeSettings.configFilePath] Specifies the path
-     * of the config file. This property cannot be specified if
+     * @param {string} [parameters.caffeSettings.configFilePath] Config file path.
+     * Path of the config file for the job. This property cannot be specified if
      * pythonScriptFilePath is specified.
      *
-     * @param {string} [parameters.caffeSettings.pythonScriptFilePath] The path and
-     * file name of the python script to execute the job. This property cannot be
+     * @param {string} [parameters.caffeSettings.pythonScriptFilePath] Python
+     * script file path. Python script to execute. This property cannot be
      * specified if configFilePath is specified.
      *
-     * @param {string} [parameters.caffeSettings.pythonInterpreterPath] The path to
-     * python interpreter. This property can be specified only if the
-     * pythonScriptFilePath is specified.
+     * @param {string} [parameters.caffeSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter. The property can be
+     * specified only if the pythonScriptFilePath is specified.
      *
      * @param {string} [parameters.caffeSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the Caffe job.
+     * arguments. Command line arguments that need to be passed to the Caffe job.
      *
-     * @param {number} [parameters.caffeSettings.processCount] Number of processes
-     * parameter that is passed to MPI runtime. The default value for this property
-     * is equal to nodeCount property
+     * @param {number} [parameters.caffeSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
+     * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.caffe2Settings] Specifies the settings for
+     * @param {object} [parameters.caffe2Settings] Caffe2 settings. Settings for
      * Caffe2 job.
      *
-     * @param {string} parameters.caffe2Settings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.caffe2Settings.pythonScriptFilePath Python script
+     * file path. The python script to execute.
      *
-     * @param {string} [parameters.caffe2Settings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.caffe2Settings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.caffe2Settings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {object} [parameters.chainerSettings] Specifies the settings for
+     * @param {object} [parameters.chainerSettings] Chainer settings. Settings for
      * Chainer job.
      *
-     * @param {string} parameters.chainerSettings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.chainerSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.chainerSettings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.chainerSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.chainerSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {number} [parameters.chainerSettings.processCount] Number of
-     * processes parameter that is passed to MPI runtime. The default value for
+     * @param {number} [parameters.chainerSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
      * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.customToolkitSettings] Specifies the settings
-     * for custom tool kit job.
+     * @param {object} [parameters.customToolkitSettings] Custom tool kit job.
+     * Settings for custom tool kit job.
      *
-     * @param {string} [parameters.customToolkitSettings.commandLine] The command
-     * line to execute the custom toolkit Job.
+     * @param {string} [parameters.customToolkitSettings.commandLine] Command line.
+     * The command line to execute on the master node.
      *
-     * @param {object} [parameters.customMpiSettings] Specifies the settings for
-     * custom MPI job.
+     * @param {object} [parameters.customMpiSettings] Custom MPI settings. Settings
+     * for custom MPI job.
      *
-     * @param {string} parameters.customMpiSettings.commandLine The program and
-     * program command line parameters to be executed by mpi runtime.
+     * @param {string} parameters.customMpiSettings.commandLine Command line. The
+     * command line to be executed by mpi runtime on each compute node.
      *
-     * @param {number} [parameters.customMpiSettings.processCount] Number of
-     * processes parameter that is passed to MPI runtime. The default value for
+     * @param {number} [parameters.customMpiSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
      * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.horovodSettings] Specifies the settings for
+     * @param {object} [parameters.horovodSettings] Horovod settings. Settings for
      * Horovod job.
      *
-     * @param {string} parameters.horovodSettings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.horovodSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.horovodSettings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.horovodSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.horovodSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {number} [parameters.horovodSettings.processCount] Number of
-     * processes parameter that is passed to MPI runtime. The default value for
+     * @param {number} [parameters.horovodSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
      * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.jobPreparation] Specifies the command line to be
-     * executed before tool kit is launched. The specified actions will run on all
-     * the nodes that are part of the job
+     * @param {object} [parameters.jobPreparation] Job preparation. A command line
+     * to be executed on each node allocated for the job before tool kit is
+     * launched.
      *
-     * @param {string} parameters.jobPreparation.commandLine The command line to
-     * execute. If containerSettings is specified on the job, this commandLine will
-     * be executed in the same container as job. Otherwise it will be executed on
-     * the node.
+     * @param {string} parameters.jobPreparation.commandLine Command line. The
+     * command line to execute. If containerSettings is specified on the job, this
+     * commandLine will be executed in the same container as job. Otherwise it will
+     * be executed on the node.
      *
-     * @param {string} parameters.stdOutErrPathPrefix The path where the Batch AI
-     * service will upload stdout and stderror of the job.
+     * @param {string} parameters.stdOutErrPathPrefix Standard output path prefix.
+     * The path where the Batch AI service will store stdout, stderror and
+     * execution log of the job.
      *
-     * @param {array} [parameters.inputDirectories] Specifies the list of input
-     * directories for the Job.
+     * @param {array} [parameters.inputDirectories] Input directories. A list of
+     * input directories for the job.
      *
-     * @param {array} [parameters.outputDirectories] Specifies the list of output
-     * directories.
+     * @param {array} [parameters.outputDirectories] Output directories. A list of
+     * output directories for the job.
      *
-     * @param {array} [parameters.environmentVariables] Additional environment
-     * variables to set on the job. Batch AI will setup these additional
-     * environment variables for the job.
+     * @param {array} [parameters.environmentVariables] Environment variables. A
+     * list of user defined environment variables which will be setup for the job.
      *
-     * @param {array} [parameters.secrets] Additional environment variables with
-     * secret values to set on the job. Batch AI will setup these additional
-     * environment variables for the job. Server will never report values of these
-     * variables back.
+     * @param {array} [parameters.secrets] Secrets. A list of user defined
+     * environment variables with secret values which will be setup for the job.
+     * Server will never report values of these variables back.
      *
      * @param {object} [parameters.constraints] Constraints associated with the
      * Job.
      *
-     * @param {moment.duration} [parameters.constraints.maxWallClockTime] Max time
-     * the job can run. Default Value = 1 week.
+     * @param {moment.duration} [parameters.constraints.maxWallClockTime] Max wall
+     * clock time. Max time the job can run. Default value: 1 week.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4544,72 +1882,76 @@ export interface Jobs {
      *
      * @param {object} parameters The parameters to provide for job creation.
      *
-     * @param {string} [parameters.schedulingPriority] Scheduling priority
-     * associated with the job. Scheduling priority associated with the job.
-     * Possible values include: 'low', 'normal', 'high'
+     * @param {string} [parameters.schedulingPriority] Scheduling priority.
+     * Scheduling priority associated with the job. Possible values: low, normal,
+     * high. Possible values include: 'low', 'normal', 'high'
      *
-     * @param {object} parameters.cluster Specifies the Id of the cluster on which
-     * this job will run.
+     * @param {object} parameters.cluster Cluster. Resource ID of the cluster on
+     * which this job will run.
      *
-     * @param {object} [parameters.mountVolumes] Information on mount volumes to be
-     * used by the job. These volumes will be mounted before the job execution and
-     * will be unmouted after the job completion. The volumes will be mounted at
-     * location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment variable.
+     * @param {object} [parameters.mountVolumes] Mount volumes. Information on
+     * mount volumes to be used by the job. These volumes will be mounted before
+     * the job execution and will be unmouted after the job completion. The volumes
+     * will be mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT
+     * environment variable.
      *
-     * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Share
-     * setup configuration. References to Azure File Shares that are to be mounted
-     * to the cluster nodes.
+     * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Shares.
+     * A collection of Azure File Shares that are to be mounted to the cluster
+     * nodes.
      *
      * @param {array} [parameters.mountVolumes.azureBlobFileSystems] Azure Blob
-     * FileSystem setup configuration. References to Azure Blob FUSE that are to be
-     * mounted to the cluster nodes.
+     * file systems. A collection of Azure Blob Containers that are to be mounted
+     * to the cluster nodes.
      *
-     * @param {array} [parameters.mountVolumes.fileServers] References to a list of
-     * file servers that are mounted to the cluster node.
+     * @param {array} [parameters.mountVolumes.fileServers] File Servers. A
+     * collection of Batch AI File Servers that are to be mounted to the cluster
+     * nodes.
      *
-     * @param {array} [parameters.mountVolumes.unmanagedFileSystems] References to
-     * a list of file servers that are mounted to the cluster node.
+     * @param {array} [parameters.mountVolumes.unmanagedFileSystems] Unmanaged file
+     * systems. A collection of unmanaged file systems that are to be mounted to
+     * the cluster nodes.
      *
-     * @param {number} parameters.nodeCount Number of compute nodes to run the job
-     * on. The job will be gang scheduled on that many compute nodes
+     * @param {number} parameters.nodeCount Node count. Number of compute nodes to
+     * run the job on. The job will be gang scheduled on that many compute nodes.
      *
-     * @param {object} [parameters.containerSettings] If provided the job will run
-     * in the specified container. If the container was downloaded as part of
-     * cluster setup then the same container image will be used. If not provided,
-     * the job will run on the VM.
+     * @param {object} [parameters.containerSettings] Container settings. Docker
+     * container settings for the job. If not provided, the job will run directly
+     * on the node.
      *
-     * @param {object} parameters.containerSettings.imageSourceRegistry Registry to
+     * @param {object} parameters.containerSettings.imageSourceRegistry Image
+     * source registry. Information about docker image and docker registry to
      * download the container from.
      *
      * @param {string} [parameters.containerSettings.imageSourceRegistry.serverUrl]
-     * URL for image repository.
+     * Server URL. URL for image repository.
      *
-     * @param {string} parameters.containerSettings.imageSourceRegistry.image The
-     * name of the image in image repository.
+     * @param {string} parameters.containerSettings.imageSourceRegistry.image
+     * Image. The name of the image in the image repository.
      *
      * @param {object}
-     * [parameters.containerSettings.imageSourceRegistry.credentials] Information
-     * to access the private Docker repository.
+     * [parameters.containerSettings.imageSourceRegistry.credentials] Credentials.
+     * Credentials to access the private docker repository.
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.username User
-     * name to login.
+     * name. User name to login to the repository.
      *
      * @param {string}
      * [parameters.containerSettings.imageSourceRegistry.credentials.password]
-     * Password to login. One of password or passwordSecretReference must be
-     * specified.
+     * Password. User password to login to the docker repository. One of password
+     * or passwordSecretReference must be specified.
      *
      * @param {object}
      * [parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference]
-     * Specifies the location of the password, which is a Key Vault Secret. Users
-     * can store their secrets in Azure KeyVault and pass it to the Batch AI
-     * Service to integrate with KeyVault. One of password or
-     * passwordSecretReference must be specified.
+     * Password secret reference. KeyVault Secret storing the password. Users can
+     * store their secrets in Azure KeyVault and pass it to the Batch AI service to
+     * integrate with KeyVault. One of password or passwordSecretReference must be
+     * specified.
      *
      * @param {object}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault
-     * Fully qualified resource Id for the Key Vault.
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id
@@ -4617,202 +1959,212 @@ export interface Jobs {
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl
-     * The URL referencing a secret in a Key Vault.
+     * Secret URL. The URL referencing a secret in the Key Vault.
      *
-     * @param {object} [parameters.cntkSettings] Specifies the settings for CNTK
+     * @param {string} [parameters.containerSettings.shmSize] /dev/shm size. Size
+     * of /dev/shm. Please refer to docker documentation for supported argument
+     * formats.
+     *
+     * @param {object} [parameters.cntkSettings] CNTK settings. Settings for CNTK
      * (aka Microsoft Cognitive Toolkit) job.
      *
-     * @param {string} [parameters.cntkSettings.languageType] Specifies the
-     * language type to use for launching CNTK (aka Microsoft Cognitive Toolkit)
-     * job. Valid values are 'BrainScript' or 'Python'.
+     * @param {string} [parameters.cntkSettings.languageType] Language type. The
+     * language to use for launching CNTK (aka Microsoft Cognitive Toolkit) job.
+     * Valid values are 'BrainScript' or 'Python'.
      *
-     * @param {string} [parameters.cntkSettings.configFilePath] Specifies the path
-     * of the config file. This property can be specified only if the languageType
-     * is 'BrainScript'.
+     * @param {string} [parameters.cntkSettings.configFilePath] Config file path.
+     * Specifies the path of the BrainScript config file. This property can be
+     * specified only if the languageType is 'BrainScript'.
      *
-     * @param {string} [parameters.cntkSettings.pythonScriptFilePath] The path and
-     * file name of the python script to execute the job. This property can be
+     * @param {string} [parameters.cntkSettings.pythonScriptFilePath] Python script
+     * file path. Python script to execute. This property can be specified only if
+     * the languageType is 'Python'.
+     *
+     * @param {string} [parameters.cntkSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter. This property can be
      * specified only if the languageType is 'Python'.
      *
-     * @param {string} [parameters.cntkSettings.pythonInterpreterPath] The path to
-     * python interpreter. This property can be specified only if the languageType
-     * is 'Python'.
-     *
      * @param {string} [parameters.cntkSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script or CNTK.exe.
+     * arguments. Command line arguments that need to be passed to the python
+     * script or cntk executable.
      *
-     * @param {number} [parameters.cntkSettings.processCount] Number of processes
-     * parameter that is passed to MPI runtime. The default value for this property
-     * is equal to nodeCount property
+     * @param {number} [parameters.cntkSettings.processCount] Process count. Number
+     * of processes to launch for the job execution. The default value for this
+     * property is equal to nodeCount property
      *
-     * @param {object} [parameters.pyTorchSettings] Specifies the settings for
+     * @param {object} [parameters.pyTorchSettings] pyTorch settings. Settings for
      * pyTorch job.
      *
-     * @param {string} parameters.pyTorchSettings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.pyTorchSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.pyTorchSettings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.pyTorchSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
-     * @param {string} [parameters.pyTorchSettings.commandLineArgs] Specifies the
-     * command line arguments for the master task.
+     * @param {string} [parameters.pyTorchSettings.commandLineArgs] Command line
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {number} [parameters.pyTorchSettings.processCount] Number of
-     * processes to launch for the job execution. The default value for this
-     * property is equal to nodeCount property.
+     * @param {number} [parameters.pyTorchSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
+     * this property is equal to nodeCount property
      *
-     * @param {string} [parameters.pyTorchSettings.communicationBackend] Type of
-     * the communication backend for distributed jobs. Valid values are 'TCP',
-     * 'Gloo' or 'MPI'. Not required for non-distributed jobs.
+     * @param {string} [parameters.pyTorchSettings.communicationBackend]
+     * Communication backend. Type of the communication backend for distributed
+     * jobs. Valid values are 'TCP', 'Gloo' or 'MPI'. Not required for
+     * non-distributed jobs.
      *
-     * @param {object} [parameters.tensorFlowSettings] Specifies the settings for
-     * Tensor Flow job.
+     * @param {object} [parameters.tensorFlowSettings] TensorFlow settings.
+     * Settings for Tensor Flow job.
      *
-     * @param {string} parameters.tensorFlowSettings.pythonScriptFilePath The path
-     * and file name of the python script to execute the job.
+     * @param {string} parameters.tensorFlowSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.tensorFlowSettings.pythonInterpreterPath] The
-     * path to python interpreter.
+     * @param {string} [parameters.tensorFlowSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
-     * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs]
-     * Specifies the command line arguments for the master task.
+     * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs] Master
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the master task.
      *
-     * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs]
-     * Specifies the command line arguments for the worker task. This property is
-     * optional for single machine training.
+     * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs] Worker
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the worker task. Optional for single process jobs.
      *
      * @param {string}
-     * [parameters.tensorFlowSettings.parameterServerCommandLineArgs] Specifies the
-     * command line arguments for the parameter server task. This property is
-     * optional for single machine training.
+     * [parameters.tensorFlowSettings.parameterServerCommandLineArgs] Parameter
+     * server command line arguments. Command line arguments that need to be passed
+     * to the python script for the parameter server. Optional for single process
+     * jobs.
      *
-     * @param {number} [parameters.tensorFlowSettings.workerCount] The number of
-     * worker tasks. If specified, the value must be less than or equal to
-     * (nodeCount * numberOfGPUs per VM). If not specified, the default value is
-     * equal to nodeCount. This property can be specified only for distributed
-     * TensorFlow training
+     * @param {number} [parameters.tensorFlowSettings.workerCount] Worker count.
+     * The number of worker tasks. If specified, the value must be less than or
+     * equal to (nodeCount * numberOfGPUs per VM). If not specified, the default
+     * value is equal to nodeCount. This property can be specified only for
+     * distributed TensorFlow training.
      *
-     * @param {number} [parameters.tensorFlowSettings.parameterServerCount] The
-     * number of parmeter server tasks. If specified, the value must be less than
-     * or equal to nodeCount. If not specified, the default value is equal to 1 for
-     * distributed TensorFlow training (This property is not applicable for single
-     * machine training). This property can be specified only for distributed
-     * TensorFlow training.
+     * @param {number} [parameters.tensorFlowSettings.parameterServerCount]
+     * Parameter server count. The number of parameter server tasks. If specified,
+     * the value must be less than or equal to nodeCount. If not specified, the
+     * default value is equal to 1 for distributed TensorFlow training. This
+     * property can be specified only for distributed TensorFlow training.
      *
-     * @param {object} [parameters.caffeSettings] Specifies the settings for Caffe
-     * job.
+     * @param {object} [parameters.caffeSettings] Caffe settings. Settings for
+     * Caffe job.
      *
-     * @param {string} [parameters.caffeSettings.configFilePath] Specifies the path
-     * of the config file. This property cannot be specified if
+     * @param {string} [parameters.caffeSettings.configFilePath] Config file path.
+     * Path of the config file for the job. This property cannot be specified if
      * pythonScriptFilePath is specified.
      *
-     * @param {string} [parameters.caffeSettings.pythonScriptFilePath] The path and
-     * file name of the python script to execute the job. This property cannot be
+     * @param {string} [parameters.caffeSettings.pythonScriptFilePath] Python
+     * script file path. Python script to execute. This property cannot be
      * specified if configFilePath is specified.
      *
-     * @param {string} [parameters.caffeSettings.pythonInterpreterPath] The path to
-     * python interpreter. This property can be specified only if the
-     * pythonScriptFilePath is specified.
+     * @param {string} [parameters.caffeSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter. The property can be
+     * specified only if the pythonScriptFilePath is specified.
      *
      * @param {string} [parameters.caffeSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the Caffe job.
+     * arguments. Command line arguments that need to be passed to the Caffe job.
      *
-     * @param {number} [parameters.caffeSettings.processCount] Number of processes
-     * parameter that is passed to MPI runtime. The default value for this property
-     * is equal to nodeCount property
+     * @param {number} [parameters.caffeSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
+     * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.caffe2Settings] Specifies the settings for
+     * @param {object} [parameters.caffe2Settings] Caffe2 settings. Settings for
      * Caffe2 job.
      *
-     * @param {string} parameters.caffe2Settings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.caffe2Settings.pythonScriptFilePath Python script
+     * file path. The python script to execute.
      *
-     * @param {string} [parameters.caffe2Settings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.caffe2Settings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.caffe2Settings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {object} [parameters.chainerSettings] Specifies the settings for
+     * @param {object} [parameters.chainerSettings] Chainer settings. Settings for
      * Chainer job.
      *
-     * @param {string} parameters.chainerSettings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.chainerSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.chainerSettings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.chainerSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.chainerSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {number} [parameters.chainerSettings.processCount] Number of
-     * processes parameter that is passed to MPI runtime. The default value for
+     * @param {number} [parameters.chainerSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
      * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.customToolkitSettings] Specifies the settings
-     * for custom tool kit job.
+     * @param {object} [parameters.customToolkitSettings] Custom tool kit job.
+     * Settings for custom tool kit job.
      *
-     * @param {string} [parameters.customToolkitSettings.commandLine] The command
-     * line to execute the custom toolkit Job.
+     * @param {string} [parameters.customToolkitSettings.commandLine] Command line.
+     * The command line to execute on the master node.
      *
-     * @param {object} [parameters.customMpiSettings] Specifies the settings for
-     * custom MPI job.
+     * @param {object} [parameters.customMpiSettings] Custom MPI settings. Settings
+     * for custom MPI job.
      *
-     * @param {string} parameters.customMpiSettings.commandLine The program and
-     * program command line parameters to be executed by mpi runtime.
+     * @param {string} parameters.customMpiSettings.commandLine Command line. The
+     * command line to be executed by mpi runtime on each compute node.
      *
-     * @param {number} [parameters.customMpiSettings.processCount] Number of
-     * processes parameter that is passed to MPI runtime. The default value for
+     * @param {number} [parameters.customMpiSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
      * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.horovodSettings] Specifies the settings for
+     * @param {object} [parameters.horovodSettings] Horovod settings. Settings for
      * Horovod job.
      *
-     * @param {string} parameters.horovodSettings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.horovodSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.horovodSettings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.horovodSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.horovodSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {number} [parameters.horovodSettings.processCount] Number of
-     * processes parameter that is passed to MPI runtime. The default value for
+     * @param {number} [parameters.horovodSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
      * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.jobPreparation] Specifies the command line to be
-     * executed before tool kit is launched. The specified actions will run on all
-     * the nodes that are part of the job
+     * @param {object} [parameters.jobPreparation] Job preparation. A command line
+     * to be executed on each node allocated for the job before tool kit is
+     * launched.
      *
-     * @param {string} parameters.jobPreparation.commandLine The command line to
-     * execute. If containerSettings is specified on the job, this commandLine will
-     * be executed in the same container as job. Otherwise it will be executed on
-     * the node.
+     * @param {string} parameters.jobPreparation.commandLine Command line. The
+     * command line to execute. If containerSettings is specified on the job, this
+     * commandLine will be executed in the same container as job. Otherwise it will
+     * be executed on the node.
      *
-     * @param {string} parameters.stdOutErrPathPrefix The path where the Batch AI
-     * service will upload stdout and stderror of the job.
+     * @param {string} parameters.stdOutErrPathPrefix Standard output path prefix.
+     * The path where the Batch AI service will store stdout, stderror and
+     * execution log of the job.
      *
-     * @param {array} [parameters.inputDirectories] Specifies the list of input
-     * directories for the Job.
+     * @param {array} [parameters.inputDirectories] Input directories. A list of
+     * input directories for the job.
      *
-     * @param {array} [parameters.outputDirectories] Specifies the list of output
-     * directories.
+     * @param {array} [parameters.outputDirectories] Output directories. A list of
+     * output directories for the job.
      *
-     * @param {array} [parameters.environmentVariables] Additional environment
-     * variables to set on the job. Batch AI will setup these additional
-     * environment variables for the job.
+     * @param {array} [parameters.environmentVariables] Environment variables. A
+     * list of user defined environment variables which will be setup for the job.
      *
-     * @param {array} [parameters.secrets] Additional environment variables with
-     * secret values to set on the job. Batch AI will setup these additional
-     * environment variables for the job. Server will never report values of these
-     * variables back.
+     * @param {array} [parameters.secrets] Secrets. A list of user defined
+     * environment variables with secret values which will be setup for the job.
+     * Server will never report values of these variables back.
      *
      * @param {object} [parameters.constraints] Constraints associated with the
      * Job.
      *
-     * @param {moment.duration} [parameters.constraints.maxWallClockTime] Max time
-     * the job can run. Default Value = 1 week.
+     * @param {moment.duration} [parameters.constraints.maxWallClockTime] Max wall
+     * clock time. Max time the job can run. Default value: 1 week.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5321,72 +2673,76 @@ export interface Jobs {
      *
      * @param {object} parameters The parameters to provide for job creation.
      *
-     * @param {string} [parameters.schedulingPriority] Scheduling priority
-     * associated with the job. Scheduling priority associated with the job.
-     * Possible values include: 'low', 'normal', 'high'
+     * @param {string} [parameters.schedulingPriority] Scheduling priority.
+     * Scheduling priority associated with the job. Possible values: low, normal,
+     * high. Possible values include: 'low', 'normal', 'high'
      *
-     * @param {object} parameters.cluster Specifies the Id of the cluster on which
-     * this job will run.
+     * @param {object} parameters.cluster Cluster. Resource ID of the cluster on
+     * which this job will run.
      *
-     * @param {object} [parameters.mountVolumes] Information on mount volumes to be
-     * used by the job. These volumes will be mounted before the job execution and
-     * will be unmouted after the job completion. The volumes will be mounted at
-     * location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment variable.
+     * @param {object} [parameters.mountVolumes] Mount volumes. Information on
+     * mount volumes to be used by the job. These volumes will be mounted before
+     * the job execution and will be unmouted after the job completion. The volumes
+     * will be mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT
+     * environment variable.
      *
-     * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Share
-     * setup configuration. References to Azure File Shares that are to be mounted
-     * to the cluster nodes.
+     * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Shares.
+     * A collection of Azure File Shares that are to be mounted to the cluster
+     * nodes.
      *
      * @param {array} [parameters.mountVolumes.azureBlobFileSystems] Azure Blob
-     * FileSystem setup configuration. References to Azure Blob FUSE that are to be
-     * mounted to the cluster nodes.
+     * file systems. A collection of Azure Blob Containers that are to be mounted
+     * to the cluster nodes.
      *
-     * @param {array} [parameters.mountVolumes.fileServers] References to a list of
-     * file servers that are mounted to the cluster node.
+     * @param {array} [parameters.mountVolumes.fileServers] File Servers. A
+     * collection of Batch AI File Servers that are to be mounted to the cluster
+     * nodes.
      *
-     * @param {array} [parameters.mountVolumes.unmanagedFileSystems] References to
-     * a list of file servers that are mounted to the cluster node.
+     * @param {array} [parameters.mountVolumes.unmanagedFileSystems] Unmanaged file
+     * systems. A collection of unmanaged file systems that are to be mounted to
+     * the cluster nodes.
      *
-     * @param {number} parameters.nodeCount Number of compute nodes to run the job
-     * on. The job will be gang scheduled on that many compute nodes
+     * @param {number} parameters.nodeCount Node count. Number of compute nodes to
+     * run the job on. The job will be gang scheduled on that many compute nodes.
      *
-     * @param {object} [parameters.containerSettings] If provided the job will run
-     * in the specified container. If the container was downloaded as part of
-     * cluster setup then the same container image will be used. If not provided,
-     * the job will run on the VM.
+     * @param {object} [parameters.containerSettings] Container settings. Docker
+     * container settings for the job. If not provided, the job will run directly
+     * on the node.
      *
-     * @param {object} parameters.containerSettings.imageSourceRegistry Registry to
+     * @param {object} parameters.containerSettings.imageSourceRegistry Image
+     * source registry. Information about docker image and docker registry to
      * download the container from.
      *
      * @param {string} [parameters.containerSettings.imageSourceRegistry.serverUrl]
-     * URL for image repository.
+     * Server URL. URL for image repository.
      *
-     * @param {string} parameters.containerSettings.imageSourceRegistry.image The
-     * name of the image in image repository.
+     * @param {string} parameters.containerSettings.imageSourceRegistry.image
+     * Image. The name of the image in the image repository.
      *
      * @param {object}
-     * [parameters.containerSettings.imageSourceRegistry.credentials] Information
-     * to access the private Docker repository.
+     * [parameters.containerSettings.imageSourceRegistry.credentials] Credentials.
+     * Credentials to access the private docker repository.
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.username User
-     * name to login.
+     * name. User name to login to the repository.
      *
      * @param {string}
      * [parameters.containerSettings.imageSourceRegistry.credentials.password]
-     * Password to login. One of password or passwordSecretReference must be
-     * specified.
+     * Password. User password to login to the docker repository. One of password
+     * or passwordSecretReference must be specified.
      *
      * @param {object}
      * [parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference]
-     * Specifies the location of the password, which is a Key Vault Secret. Users
-     * can store their secrets in Azure KeyVault and pass it to the Batch AI
-     * Service to integrate with KeyVault. One of password or
-     * passwordSecretReference must be specified.
+     * Password secret reference. KeyVault Secret storing the password. Users can
+     * store their secrets in Azure KeyVault and pass it to the Batch AI service to
+     * integrate with KeyVault. One of password or passwordSecretReference must be
+     * specified.
      *
      * @param {object}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault
-     * Fully qualified resource Id for the Key Vault.
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id
@@ -5394,202 +2750,212 @@ export interface Jobs {
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl
-     * The URL referencing a secret in a Key Vault.
+     * Secret URL. The URL referencing a secret in the Key Vault.
      *
-     * @param {object} [parameters.cntkSettings] Specifies the settings for CNTK
+     * @param {string} [parameters.containerSettings.shmSize] /dev/shm size. Size
+     * of /dev/shm. Please refer to docker documentation for supported argument
+     * formats.
+     *
+     * @param {object} [parameters.cntkSettings] CNTK settings. Settings for CNTK
      * (aka Microsoft Cognitive Toolkit) job.
      *
-     * @param {string} [parameters.cntkSettings.languageType] Specifies the
-     * language type to use for launching CNTK (aka Microsoft Cognitive Toolkit)
-     * job. Valid values are 'BrainScript' or 'Python'.
+     * @param {string} [parameters.cntkSettings.languageType] Language type. The
+     * language to use for launching CNTK (aka Microsoft Cognitive Toolkit) job.
+     * Valid values are 'BrainScript' or 'Python'.
      *
-     * @param {string} [parameters.cntkSettings.configFilePath] Specifies the path
-     * of the config file. This property can be specified only if the languageType
-     * is 'BrainScript'.
+     * @param {string} [parameters.cntkSettings.configFilePath] Config file path.
+     * Specifies the path of the BrainScript config file. This property can be
+     * specified only if the languageType is 'BrainScript'.
      *
-     * @param {string} [parameters.cntkSettings.pythonScriptFilePath] The path and
-     * file name of the python script to execute the job. This property can be
+     * @param {string} [parameters.cntkSettings.pythonScriptFilePath] Python script
+     * file path. Python script to execute. This property can be specified only if
+     * the languageType is 'Python'.
+     *
+     * @param {string} [parameters.cntkSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter. This property can be
      * specified only if the languageType is 'Python'.
      *
-     * @param {string} [parameters.cntkSettings.pythonInterpreterPath] The path to
-     * python interpreter. This property can be specified only if the languageType
-     * is 'Python'.
-     *
      * @param {string} [parameters.cntkSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script or CNTK.exe.
+     * arguments. Command line arguments that need to be passed to the python
+     * script or cntk executable.
      *
-     * @param {number} [parameters.cntkSettings.processCount] Number of processes
-     * parameter that is passed to MPI runtime. The default value for this property
-     * is equal to nodeCount property
+     * @param {number} [parameters.cntkSettings.processCount] Process count. Number
+     * of processes to launch for the job execution. The default value for this
+     * property is equal to nodeCount property
      *
-     * @param {object} [parameters.pyTorchSettings] Specifies the settings for
+     * @param {object} [parameters.pyTorchSettings] pyTorch settings. Settings for
      * pyTorch job.
      *
-     * @param {string} parameters.pyTorchSettings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.pyTorchSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.pyTorchSettings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.pyTorchSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
-     * @param {string} [parameters.pyTorchSettings.commandLineArgs] Specifies the
-     * command line arguments for the master task.
+     * @param {string} [parameters.pyTorchSettings.commandLineArgs] Command line
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {number} [parameters.pyTorchSettings.processCount] Number of
-     * processes to launch for the job execution. The default value for this
-     * property is equal to nodeCount property.
+     * @param {number} [parameters.pyTorchSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
+     * this property is equal to nodeCount property
      *
-     * @param {string} [parameters.pyTorchSettings.communicationBackend] Type of
-     * the communication backend for distributed jobs. Valid values are 'TCP',
-     * 'Gloo' or 'MPI'. Not required for non-distributed jobs.
+     * @param {string} [parameters.pyTorchSettings.communicationBackend]
+     * Communication backend. Type of the communication backend for distributed
+     * jobs. Valid values are 'TCP', 'Gloo' or 'MPI'. Not required for
+     * non-distributed jobs.
      *
-     * @param {object} [parameters.tensorFlowSettings] Specifies the settings for
-     * Tensor Flow job.
+     * @param {object} [parameters.tensorFlowSettings] TensorFlow settings.
+     * Settings for Tensor Flow job.
      *
-     * @param {string} parameters.tensorFlowSettings.pythonScriptFilePath The path
-     * and file name of the python script to execute the job.
+     * @param {string} parameters.tensorFlowSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.tensorFlowSettings.pythonInterpreterPath] The
-     * path to python interpreter.
+     * @param {string} [parameters.tensorFlowSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
-     * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs]
-     * Specifies the command line arguments for the master task.
+     * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs] Master
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the master task.
      *
-     * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs]
-     * Specifies the command line arguments for the worker task. This property is
-     * optional for single machine training.
+     * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs] Worker
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the worker task. Optional for single process jobs.
      *
      * @param {string}
-     * [parameters.tensorFlowSettings.parameterServerCommandLineArgs] Specifies the
-     * command line arguments for the parameter server task. This property is
-     * optional for single machine training.
+     * [parameters.tensorFlowSettings.parameterServerCommandLineArgs] Parameter
+     * server command line arguments. Command line arguments that need to be passed
+     * to the python script for the parameter server. Optional for single process
+     * jobs.
      *
-     * @param {number} [parameters.tensorFlowSettings.workerCount] The number of
-     * worker tasks. If specified, the value must be less than or equal to
-     * (nodeCount * numberOfGPUs per VM). If not specified, the default value is
-     * equal to nodeCount. This property can be specified only for distributed
-     * TensorFlow training
+     * @param {number} [parameters.tensorFlowSettings.workerCount] Worker count.
+     * The number of worker tasks. If specified, the value must be less than or
+     * equal to (nodeCount * numberOfGPUs per VM). If not specified, the default
+     * value is equal to nodeCount. This property can be specified only for
+     * distributed TensorFlow training.
      *
-     * @param {number} [parameters.tensorFlowSettings.parameterServerCount] The
-     * number of parmeter server tasks. If specified, the value must be less than
-     * or equal to nodeCount. If not specified, the default value is equal to 1 for
-     * distributed TensorFlow training (This property is not applicable for single
-     * machine training). This property can be specified only for distributed
-     * TensorFlow training.
+     * @param {number} [parameters.tensorFlowSettings.parameterServerCount]
+     * Parameter server count. The number of parameter server tasks. If specified,
+     * the value must be less than or equal to nodeCount. If not specified, the
+     * default value is equal to 1 for distributed TensorFlow training. This
+     * property can be specified only for distributed TensorFlow training.
      *
-     * @param {object} [parameters.caffeSettings] Specifies the settings for Caffe
-     * job.
+     * @param {object} [parameters.caffeSettings] Caffe settings. Settings for
+     * Caffe job.
      *
-     * @param {string} [parameters.caffeSettings.configFilePath] Specifies the path
-     * of the config file. This property cannot be specified if
+     * @param {string} [parameters.caffeSettings.configFilePath] Config file path.
+     * Path of the config file for the job. This property cannot be specified if
      * pythonScriptFilePath is specified.
      *
-     * @param {string} [parameters.caffeSettings.pythonScriptFilePath] The path and
-     * file name of the python script to execute the job. This property cannot be
+     * @param {string} [parameters.caffeSettings.pythonScriptFilePath] Python
+     * script file path. Python script to execute. This property cannot be
      * specified if configFilePath is specified.
      *
-     * @param {string} [parameters.caffeSettings.pythonInterpreterPath] The path to
-     * python interpreter. This property can be specified only if the
-     * pythonScriptFilePath is specified.
+     * @param {string} [parameters.caffeSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter. The property can be
+     * specified only if the pythonScriptFilePath is specified.
      *
      * @param {string} [parameters.caffeSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the Caffe job.
+     * arguments. Command line arguments that need to be passed to the Caffe job.
      *
-     * @param {number} [parameters.caffeSettings.processCount] Number of processes
-     * parameter that is passed to MPI runtime. The default value for this property
-     * is equal to nodeCount property
+     * @param {number} [parameters.caffeSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
+     * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.caffe2Settings] Specifies the settings for
+     * @param {object} [parameters.caffe2Settings] Caffe2 settings. Settings for
      * Caffe2 job.
      *
-     * @param {string} parameters.caffe2Settings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.caffe2Settings.pythonScriptFilePath Python script
+     * file path. The python script to execute.
      *
-     * @param {string} [parameters.caffe2Settings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.caffe2Settings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.caffe2Settings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {object} [parameters.chainerSettings] Specifies the settings for
+     * @param {object} [parameters.chainerSettings] Chainer settings. Settings for
      * Chainer job.
      *
-     * @param {string} parameters.chainerSettings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.chainerSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.chainerSettings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.chainerSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.chainerSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {number} [parameters.chainerSettings.processCount] Number of
-     * processes parameter that is passed to MPI runtime. The default value for
+     * @param {number} [parameters.chainerSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
      * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.customToolkitSettings] Specifies the settings
-     * for custom tool kit job.
+     * @param {object} [parameters.customToolkitSettings] Custom tool kit job.
+     * Settings for custom tool kit job.
      *
-     * @param {string} [parameters.customToolkitSettings.commandLine] The command
-     * line to execute the custom toolkit Job.
+     * @param {string} [parameters.customToolkitSettings.commandLine] Command line.
+     * The command line to execute on the master node.
      *
-     * @param {object} [parameters.customMpiSettings] Specifies the settings for
-     * custom MPI job.
+     * @param {object} [parameters.customMpiSettings] Custom MPI settings. Settings
+     * for custom MPI job.
      *
-     * @param {string} parameters.customMpiSettings.commandLine The program and
-     * program command line parameters to be executed by mpi runtime.
+     * @param {string} parameters.customMpiSettings.commandLine Command line. The
+     * command line to be executed by mpi runtime on each compute node.
      *
-     * @param {number} [parameters.customMpiSettings.processCount] Number of
-     * processes parameter that is passed to MPI runtime. The default value for
+     * @param {number} [parameters.customMpiSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
      * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.horovodSettings] Specifies the settings for
+     * @param {object} [parameters.horovodSettings] Horovod settings. Settings for
      * Horovod job.
      *
-     * @param {string} parameters.horovodSettings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.horovodSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.horovodSettings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.horovodSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.horovodSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {number} [parameters.horovodSettings.processCount] Number of
-     * processes parameter that is passed to MPI runtime. The default value for
+     * @param {number} [parameters.horovodSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
      * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.jobPreparation] Specifies the command line to be
-     * executed before tool kit is launched. The specified actions will run on all
-     * the nodes that are part of the job
+     * @param {object} [parameters.jobPreparation] Job preparation. A command line
+     * to be executed on each node allocated for the job before tool kit is
+     * launched.
      *
-     * @param {string} parameters.jobPreparation.commandLine The command line to
-     * execute. If containerSettings is specified on the job, this commandLine will
-     * be executed in the same container as job. Otherwise it will be executed on
-     * the node.
+     * @param {string} parameters.jobPreparation.commandLine Command line. The
+     * command line to execute. If containerSettings is specified on the job, this
+     * commandLine will be executed in the same container as job. Otherwise it will
+     * be executed on the node.
      *
-     * @param {string} parameters.stdOutErrPathPrefix The path where the Batch AI
-     * service will upload stdout and stderror of the job.
+     * @param {string} parameters.stdOutErrPathPrefix Standard output path prefix.
+     * The path where the Batch AI service will store stdout, stderror and
+     * execution log of the job.
      *
-     * @param {array} [parameters.inputDirectories] Specifies the list of input
-     * directories for the Job.
+     * @param {array} [parameters.inputDirectories] Input directories. A list of
+     * input directories for the job.
      *
-     * @param {array} [parameters.outputDirectories] Specifies the list of output
-     * directories.
+     * @param {array} [parameters.outputDirectories] Output directories. A list of
+     * output directories for the job.
      *
-     * @param {array} [parameters.environmentVariables] Additional environment
-     * variables to set on the job. Batch AI will setup these additional
-     * environment variables for the job.
+     * @param {array} [parameters.environmentVariables] Environment variables. A
+     * list of user defined environment variables which will be setup for the job.
      *
-     * @param {array} [parameters.secrets] Additional environment variables with
-     * secret values to set on the job. Batch AI will setup these additional
-     * environment variables for the job. Server will never report values of these
-     * variables back.
+     * @param {array} [parameters.secrets] Secrets. A list of user defined
+     * environment variables with secret values which will be setup for the job.
+     * Server will never report values of these variables back.
      *
      * @param {object} [parameters.constraints] Constraints associated with the
      * Job.
      *
-     * @param {moment.duration} [parameters.constraints.maxWallClockTime] Max time
-     * the job can run. Default Value = 1 week.
+     * @param {moment.duration} [parameters.constraints.maxWallClockTime] Max wall
+     * clock time. Max time the job can run. Default value: 1 week.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5625,72 +2991,76 @@ export interface Jobs {
      *
      * @param {object} parameters The parameters to provide for job creation.
      *
-     * @param {string} [parameters.schedulingPriority] Scheduling priority
-     * associated with the job. Scheduling priority associated with the job.
-     * Possible values include: 'low', 'normal', 'high'
+     * @param {string} [parameters.schedulingPriority] Scheduling priority.
+     * Scheduling priority associated with the job. Possible values: low, normal,
+     * high. Possible values include: 'low', 'normal', 'high'
      *
-     * @param {object} parameters.cluster Specifies the Id of the cluster on which
-     * this job will run.
+     * @param {object} parameters.cluster Cluster. Resource ID of the cluster on
+     * which this job will run.
      *
-     * @param {object} [parameters.mountVolumes] Information on mount volumes to be
-     * used by the job. These volumes will be mounted before the job execution and
-     * will be unmouted after the job completion. The volumes will be mounted at
-     * location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT environment variable.
+     * @param {object} [parameters.mountVolumes] Mount volumes. Information on
+     * mount volumes to be used by the job. These volumes will be mounted before
+     * the job execution and will be unmouted after the job completion. The volumes
+     * will be mounted at location specified by $AZ_BATCHAI_JOB_MOUNT_ROOT
+     * environment variable.
      *
-     * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Share
-     * setup configuration. References to Azure File Shares that are to be mounted
-     * to the cluster nodes.
+     * @param {array} [parameters.mountVolumes.azureFileShares] Azure File Shares.
+     * A collection of Azure File Shares that are to be mounted to the cluster
+     * nodes.
      *
      * @param {array} [parameters.mountVolumes.azureBlobFileSystems] Azure Blob
-     * FileSystem setup configuration. References to Azure Blob FUSE that are to be
-     * mounted to the cluster nodes.
+     * file systems. A collection of Azure Blob Containers that are to be mounted
+     * to the cluster nodes.
      *
-     * @param {array} [parameters.mountVolumes.fileServers] References to a list of
-     * file servers that are mounted to the cluster node.
+     * @param {array} [parameters.mountVolumes.fileServers] File Servers. A
+     * collection of Batch AI File Servers that are to be mounted to the cluster
+     * nodes.
      *
-     * @param {array} [parameters.mountVolumes.unmanagedFileSystems] References to
-     * a list of file servers that are mounted to the cluster node.
+     * @param {array} [parameters.mountVolumes.unmanagedFileSystems] Unmanaged file
+     * systems. A collection of unmanaged file systems that are to be mounted to
+     * the cluster nodes.
      *
-     * @param {number} parameters.nodeCount Number of compute nodes to run the job
-     * on. The job will be gang scheduled on that many compute nodes
+     * @param {number} parameters.nodeCount Node count. Number of compute nodes to
+     * run the job on. The job will be gang scheduled on that many compute nodes.
      *
-     * @param {object} [parameters.containerSettings] If provided the job will run
-     * in the specified container. If the container was downloaded as part of
-     * cluster setup then the same container image will be used. If not provided,
-     * the job will run on the VM.
+     * @param {object} [parameters.containerSettings] Container settings. Docker
+     * container settings for the job. If not provided, the job will run directly
+     * on the node.
      *
-     * @param {object} parameters.containerSettings.imageSourceRegistry Registry to
+     * @param {object} parameters.containerSettings.imageSourceRegistry Image
+     * source registry. Information about docker image and docker registry to
      * download the container from.
      *
      * @param {string} [parameters.containerSettings.imageSourceRegistry.serverUrl]
-     * URL for image repository.
+     * Server URL. URL for image repository.
      *
-     * @param {string} parameters.containerSettings.imageSourceRegistry.image The
-     * name of the image in image repository.
+     * @param {string} parameters.containerSettings.imageSourceRegistry.image
+     * Image. The name of the image in the image repository.
      *
      * @param {object}
-     * [parameters.containerSettings.imageSourceRegistry.credentials] Information
-     * to access the private Docker repository.
+     * [parameters.containerSettings.imageSourceRegistry.credentials] Credentials.
+     * Credentials to access the private docker repository.
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.username User
-     * name to login.
+     * name. User name to login to the repository.
      *
      * @param {string}
      * [parameters.containerSettings.imageSourceRegistry.credentials.password]
-     * Password to login. One of password or passwordSecretReference must be
-     * specified.
+     * Password. User password to login to the docker repository. One of password
+     * or passwordSecretReference must be specified.
      *
      * @param {object}
      * [parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference]
-     * Specifies the location of the password, which is a Key Vault Secret. Users
-     * can store their secrets in Azure KeyVault and pass it to the Batch AI
-     * Service to integrate with KeyVault. One of password or
-     * passwordSecretReference must be specified.
+     * Password secret reference. KeyVault Secret storing the password. Users can
+     * store their secrets in Azure KeyVault and pass it to the Batch AI service to
+     * integrate with KeyVault. One of password or passwordSecretReference must be
+     * specified.
      *
      * @param {object}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault
-     * Fully qualified resource Id for the Key Vault.
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.sourceVault.id
@@ -5698,202 +3068,212 @@ export interface Jobs {
      *
      * @param {string}
      * parameters.containerSettings.imageSourceRegistry.credentials.passwordSecretReference.secretUrl
-     * The URL referencing a secret in a Key Vault.
+     * Secret URL. The URL referencing a secret in the Key Vault.
      *
-     * @param {object} [parameters.cntkSettings] Specifies the settings for CNTK
+     * @param {string} [parameters.containerSettings.shmSize] /dev/shm size. Size
+     * of /dev/shm. Please refer to docker documentation for supported argument
+     * formats.
+     *
+     * @param {object} [parameters.cntkSettings] CNTK settings. Settings for CNTK
      * (aka Microsoft Cognitive Toolkit) job.
      *
-     * @param {string} [parameters.cntkSettings.languageType] Specifies the
-     * language type to use for launching CNTK (aka Microsoft Cognitive Toolkit)
-     * job. Valid values are 'BrainScript' or 'Python'.
+     * @param {string} [parameters.cntkSettings.languageType] Language type. The
+     * language to use for launching CNTK (aka Microsoft Cognitive Toolkit) job.
+     * Valid values are 'BrainScript' or 'Python'.
      *
-     * @param {string} [parameters.cntkSettings.configFilePath] Specifies the path
-     * of the config file. This property can be specified only if the languageType
-     * is 'BrainScript'.
+     * @param {string} [parameters.cntkSettings.configFilePath] Config file path.
+     * Specifies the path of the BrainScript config file. This property can be
+     * specified only if the languageType is 'BrainScript'.
      *
-     * @param {string} [parameters.cntkSettings.pythonScriptFilePath] The path and
-     * file name of the python script to execute the job. This property can be
+     * @param {string} [parameters.cntkSettings.pythonScriptFilePath] Python script
+     * file path. Python script to execute. This property can be specified only if
+     * the languageType is 'Python'.
+     *
+     * @param {string} [parameters.cntkSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter. This property can be
      * specified only if the languageType is 'Python'.
      *
-     * @param {string} [parameters.cntkSettings.pythonInterpreterPath] The path to
-     * python interpreter. This property can be specified only if the languageType
-     * is 'Python'.
-     *
      * @param {string} [parameters.cntkSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script or CNTK.exe.
+     * arguments. Command line arguments that need to be passed to the python
+     * script or cntk executable.
      *
-     * @param {number} [parameters.cntkSettings.processCount] Number of processes
-     * parameter that is passed to MPI runtime. The default value for this property
-     * is equal to nodeCount property
+     * @param {number} [parameters.cntkSettings.processCount] Process count. Number
+     * of processes to launch for the job execution. The default value for this
+     * property is equal to nodeCount property
      *
-     * @param {object} [parameters.pyTorchSettings] Specifies the settings for
+     * @param {object} [parameters.pyTorchSettings] pyTorch settings. Settings for
      * pyTorch job.
      *
-     * @param {string} parameters.pyTorchSettings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.pyTorchSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.pyTorchSettings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.pyTorchSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
-     * @param {string} [parameters.pyTorchSettings.commandLineArgs] Specifies the
-     * command line arguments for the master task.
+     * @param {string} [parameters.pyTorchSettings.commandLineArgs] Command line
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {number} [parameters.pyTorchSettings.processCount] Number of
-     * processes to launch for the job execution. The default value for this
-     * property is equal to nodeCount property.
+     * @param {number} [parameters.pyTorchSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
+     * this property is equal to nodeCount property
      *
-     * @param {string} [parameters.pyTorchSettings.communicationBackend] Type of
-     * the communication backend for distributed jobs. Valid values are 'TCP',
-     * 'Gloo' or 'MPI'. Not required for non-distributed jobs.
+     * @param {string} [parameters.pyTorchSettings.communicationBackend]
+     * Communication backend. Type of the communication backend for distributed
+     * jobs. Valid values are 'TCP', 'Gloo' or 'MPI'. Not required for
+     * non-distributed jobs.
      *
-     * @param {object} [parameters.tensorFlowSettings] Specifies the settings for
-     * Tensor Flow job.
+     * @param {object} [parameters.tensorFlowSettings] TensorFlow settings.
+     * Settings for Tensor Flow job.
      *
-     * @param {string} parameters.tensorFlowSettings.pythonScriptFilePath The path
-     * and file name of the python script to execute the job.
+     * @param {string} parameters.tensorFlowSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.tensorFlowSettings.pythonInterpreterPath] The
-     * path to python interpreter.
+     * @param {string} [parameters.tensorFlowSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
-     * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs]
-     * Specifies the command line arguments for the master task.
+     * @param {string} [parameters.tensorFlowSettings.masterCommandLineArgs] Master
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the master task.
      *
-     * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs]
-     * Specifies the command line arguments for the worker task. This property is
-     * optional for single machine training.
+     * @param {string} [parameters.tensorFlowSettings.workerCommandLineArgs] Worker
+     * command line arguments. Command line arguments that need to be passed to the
+     * python script for the worker task. Optional for single process jobs.
      *
      * @param {string}
-     * [parameters.tensorFlowSettings.parameterServerCommandLineArgs] Specifies the
-     * command line arguments for the parameter server task. This property is
-     * optional for single machine training.
+     * [parameters.tensorFlowSettings.parameterServerCommandLineArgs] Parameter
+     * server command line arguments. Command line arguments that need to be passed
+     * to the python script for the parameter server. Optional for single process
+     * jobs.
      *
-     * @param {number} [parameters.tensorFlowSettings.workerCount] The number of
-     * worker tasks. If specified, the value must be less than or equal to
-     * (nodeCount * numberOfGPUs per VM). If not specified, the default value is
-     * equal to nodeCount. This property can be specified only for distributed
-     * TensorFlow training
+     * @param {number} [parameters.tensorFlowSettings.workerCount] Worker count.
+     * The number of worker tasks. If specified, the value must be less than or
+     * equal to (nodeCount * numberOfGPUs per VM). If not specified, the default
+     * value is equal to nodeCount. This property can be specified only for
+     * distributed TensorFlow training.
      *
-     * @param {number} [parameters.tensorFlowSettings.parameterServerCount] The
-     * number of parmeter server tasks. If specified, the value must be less than
-     * or equal to nodeCount. If not specified, the default value is equal to 1 for
-     * distributed TensorFlow training (This property is not applicable for single
-     * machine training). This property can be specified only for distributed
-     * TensorFlow training.
+     * @param {number} [parameters.tensorFlowSettings.parameterServerCount]
+     * Parameter server count. The number of parameter server tasks. If specified,
+     * the value must be less than or equal to nodeCount. If not specified, the
+     * default value is equal to 1 for distributed TensorFlow training. This
+     * property can be specified only for distributed TensorFlow training.
      *
-     * @param {object} [parameters.caffeSettings] Specifies the settings for Caffe
-     * job.
+     * @param {object} [parameters.caffeSettings] Caffe settings. Settings for
+     * Caffe job.
      *
-     * @param {string} [parameters.caffeSettings.configFilePath] Specifies the path
-     * of the config file. This property cannot be specified if
+     * @param {string} [parameters.caffeSettings.configFilePath] Config file path.
+     * Path of the config file for the job. This property cannot be specified if
      * pythonScriptFilePath is specified.
      *
-     * @param {string} [parameters.caffeSettings.pythonScriptFilePath] The path and
-     * file name of the python script to execute the job. This property cannot be
+     * @param {string} [parameters.caffeSettings.pythonScriptFilePath] Python
+     * script file path. Python script to execute. This property cannot be
      * specified if configFilePath is specified.
      *
-     * @param {string} [parameters.caffeSettings.pythonInterpreterPath] The path to
-     * python interpreter. This property can be specified only if the
-     * pythonScriptFilePath is specified.
+     * @param {string} [parameters.caffeSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter. The property can be
+     * specified only if the pythonScriptFilePath is specified.
      *
      * @param {string} [parameters.caffeSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the Caffe job.
+     * arguments. Command line arguments that need to be passed to the Caffe job.
      *
-     * @param {number} [parameters.caffeSettings.processCount] Number of processes
-     * parameter that is passed to MPI runtime. The default value for this property
-     * is equal to nodeCount property
+     * @param {number} [parameters.caffeSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
+     * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.caffe2Settings] Specifies the settings for
+     * @param {object} [parameters.caffe2Settings] Caffe2 settings. Settings for
      * Caffe2 job.
      *
-     * @param {string} parameters.caffe2Settings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.caffe2Settings.pythonScriptFilePath Python script
+     * file path. The python script to execute.
      *
-     * @param {string} [parameters.caffe2Settings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.caffe2Settings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.caffe2Settings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {object} [parameters.chainerSettings] Specifies the settings for
+     * @param {object} [parameters.chainerSettings] Chainer settings. Settings for
      * Chainer job.
      *
-     * @param {string} parameters.chainerSettings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.chainerSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.chainerSettings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.chainerSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.chainerSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {number} [parameters.chainerSettings.processCount] Number of
-     * processes parameter that is passed to MPI runtime. The default value for
+     * @param {number} [parameters.chainerSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
      * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.customToolkitSettings] Specifies the settings
-     * for custom tool kit job.
+     * @param {object} [parameters.customToolkitSettings] Custom tool kit job.
+     * Settings for custom tool kit job.
      *
-     * @param {string} [parameters.customToolkitSettings.commandLine] The command
-     * line to execute the custom toolkit Job.
+     * @param {string} [parameters.customToolkitSettings.commandLine] Command line.
+     * The command line to execute on the master node.
      *
-     * @param {object} [parameters.customMpiSettings] Specifies the settings for
-     * custom MPI job.
+     * @param {object} [parameters.customMpiSettings] Custom MPI settings. Settings
+     * for custom MPI job.
      *
-     * @param {string} parameters.customMpiSettings.commandLine The program and
-     * program command line parameters to be executed by mpi runtime.
+     * @param {string} parameters.customMpiSettings.commandLine Command line. The
+     * command line to be executed by mpi runtime on each compute node.
      *
-     * @param {number} [parameters.customMpiSettings.processCount] Number of
-     * processes parameter that is passed to MPI runtime. The default value for
+     * @param {number} [parameters.customMpiSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
      * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.horovodSettings] Specifies the settings for
+     * @param {object} [parameters.horovodSettings] Horovod settings. Settings for
      * Horovod job.
      *
-     * @param {string} parameters.horovodSettings.pythonScriptFilePath The path and
-     * file name of the python script to execute the job.
+     * @param {string} parameters.horovodSettings.pythonScriptFilePath Python
+     * script file path. The python script to execute.
      *
-     * @param {string} [parameters.horovodSettings.pythonInterpreterPath] The path
-     * to python interpreter.
+     * @param {string} [parameters.horovodSettings.pythonInterpreterPath] Python
+     * interpreter path. The path to the Python interpreter.
      *
      * @param {string} [parameters.horovodSettings.commandLineArgs] Command line
-     * arguments that needs to be passed to the python script
+     * arguments. Command line arguments that need to be passed to the python
+     * script.
      *
-     * @param {number} [parameters.horovodSettings.processCount] Number of
-     * processes parameter that is passed to MPI runtime. The default value for
+     * @param {number} [parameters.horovodSettings.processCount] Process count.
+     * Number of processes to launch for the job execution. The default value for
      * this property is equal to nodeCount property
      *
-     * @param {object} [parameters.jobPreparation] Specifies the command line to be
-     * executed before tool kit is launched. The specified actions will run on all
-     * the nodes that are part of the job
+     * @param {object} [parameters.jobPreparation] Job preparation. A command line
+     * to be executed on each node allocated for the job before tool kit is
+     * launched.
      *
-     * @param {string} parameters.jobPreparation.commandLine The command line to
-     * execute. If containerSettings is specified on the job, this commandLine will
-     * be executed in the same container as job. Otherwise it will be executed on
-     * the node.
+     * @param {string} parameters.jobPreparation.commandLine Command line. The
+     * command line to execute. If containerSettings is specified on the job, this
+     * commandLine will be executed in the same container as job. Otherwise it will
+     * be executed on the node.
      *
-     * @param {string} parameters.stdOutErrPathPrefix The path where the Batch AI
-     * service will upload stdout and stderror of the job.
+     * @param {string} parameters.stdOutErrPathPrefix Standard output path prefix.
+     * The path where the Batch AI service will store stdout, stderror and
+     * execution log of the job.
      *
-     * @param {array} [parameters.inputDirectories] Specifies the list of input
-     * directories for the Job.
+     * @param {array} [parameters.inputDirectories] Input directories. A list of
+     * input directories for the job.
      *
-     * @param {array} [parameters.outputDirectories] Specifies the list of output
-     * directories.
+     * @param {array} [parameters.outputDirectories] Output directories. A list of
+     * output directories for the job.
      *
-     * @param {array} [parameters.environmentVariables] Additional environment
-     * variables to set on the job. Batch AI will setup these additional
-     * environment variables for the job.
+     * @param {array} [parameters.environmentVariables] Environment variables. A
+     * list of user defined environment variables which will be setup for the job.
      *
-     * @param {array} [parameters.secrets] Additional environment variables with
-     * secret values to set on the job. Batch AI will setup these additional
-     * environment variables for the job. Server will never report values of these
-     * variables back.
+     * @param {array} [parameters.secrets] Secrets. A list of user defined
+     * environment variables with secret values which will be setup for the job.
+     * Server will never report values of these variables back.
      *
      * @param {object} [parameters.constraints] Constraints associated with the
      * Job.
      *
-     * @param {moment.duration} [parameters.constraints.maxWallClockTime] Max time
-     * the job can run. Default Value = 1 week.
+     * @param {moment.duration} [parameters.constraints.maxWallClockTime] Max wall
+     * clock time. Max time the job can run. Default value: 1 week.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6269,4 +3649,2259 @@ export interface Jobs {
     listRemoteLoginInformationNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemoteLoginInformationListResult>;
     listRemoteLoginInformationNext(nextPageLink: string, callback: ServiceCallback<models.RemoteLoginInformationListResult>): void;
     listRemoteLoginInformationNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemoteLoginInformationListResult>): void;
+}
+
+/**
+ * @class
+ * FileServers
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BatchAIManagementClient.
+ */
+export interface FileServers {
+
+
+    /**
+     * Creates a File Server in the given workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} fileServerName The name of the file server within the
+     * specified resource group. File server names can only contain a combination
+     * of alphanumeric characters along with dash (-) and underscore (_). The name
+     * must be from 1 through 64 characters long.
+     *
+     * @param {object} parameters The parameters to provide for File Server
+     * creation.
+     *
+     * @param {string} parameters.vmSize VM size. The size of the virtual machine
+     * for the File Server. For information about available VM sizes from the
+     * Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
+     *
+     * @param {object} parameters.sshConfiguration SSH configuration. SSH
+     * configuration for the File Server node.
+     *
+     * @param {array} [parameters.sshConfiguration.publicIPsToAllow] Allowed public
+     * IPs. List of source IP ranges to allow SSH connection from. The default
+     * value is '*' (all source IPs are allowed). Maximum number of IP ranges that
+     * can be specified is 400.
+     *
+     * @param {object} parameters.sshConfiguration.userAccountSettings User account
+     * settings. Settings for administrator user account to be created on a node.
+     * The account can be used to establish SSH connection to the node.
+     *
+     * @param {string}
+     * parameters.sshConfiguration.userAccountSettings.adminUserName User name.
+     * Name of the administrator user account which can be used to SSH to nodes.
+     *
+     * @param {string}
+     * [parameters.sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH
+     * public key. SSH public key of the administrator user account.
+     *
+     * @param {string}
+     * [parameters.sshConfiguration.userAccountSettings.adminUserPassword]
+     * Password. Password of the administrator user account.
+     *
+     * @param {object} parameters.dataDisks Data disks. Settings for the data disks
+     * which will be created for the File Server.
+     *
+     * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB. Disk size
+     * in GB for the blank data disks.
+     *
+     * @param {string} [parameters.dataDisks.cachingType] Caching type. Caching
+     * type for the disks. Available values are none (default), readonly,
+     * readwrite. Caching type can be set only for VM sizes supporting premium
+     * storage. Possible values include: 'none', 'readonly', 'readwrite'
+     *
+     * @param {number} parameters.dataDisks.diskCount Number of data disks. Number
+     * of data disks attached to the File Server. If multiple disks attached, they
+     * will be configured in RAID level 0.
+     *
+     * @param {string} parameters.dataDisks.storageAccountType Storage account
+     * type. Type of storage account to be used on the disk. Possible values are:
+     * Standard_LRS or Premium_LRS. Premium storage account type can only be used
+     * with VM sizes supporting premium storage. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {object} [parameters.subnet] Subnet identifier. Identifier of an
+     * existing virtual network subnet to put the File Server in. If not provided,
+     * a new virtual network and subnet will be created.
+     *
+     * @param {string} parameters.subnet.id The ID of the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FileServer>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServer>>;
+
+    /**
+     * Creates a File Server in the given workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} fileServerName The name of the file server within the
+     * specified resource group. File server names can only contain a combination
+     * of alphanumeric characters along with dash (-) and underscore (_). The name
+     * must be from 1 through 64 characters long.
+     *
+     * @param {object} parameters The parameters to provide for File Server
+     * creation.
+     *
+     * @param {string} parameters.vmSize VM size. The size of the virtual machine
+     * for the File Server. For information about available VM sizes from the
+     * Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
+     *
+     * @param {object} parameters.sshConfiguration SSH configuration. SSH
+     * configuration for the File Server node.
+     *
+     * @param {array} [parameters.sshConfiguration.publicIPsToAllow] Allowed public
+     * IPs. List of source IP ranges to allow SSH connection from. The default
+     * value is '*' (all source IPs are allowed). Maximum number of IP ranges that
+     * can be specified is 400.
+     *
+     * @param {object} parameters.sshConfiguration.userAccountSettings User account
+     * settings. Settings for administrator user account to be created on a node.
+     * The account can be used to establish SSH connection to the node.
+     *
+     * @param {string}
+     * parameters.sshConfiguration.userAccountSettings.adminUserName User name.
+     * Name of the administrator user account which can be used to SSH to nodes.
+     *
+     * @param {string}
+     * [parameters.sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH
+     * public key. SSH public key of the administrator user account.
+     *
+     * @param {string}
+     * [parameters.sshConfiguration.userAccountSettings.adminUserPassword]
+     * Password. Password of the administrator user account.
+     *
+     * @param {object} parameters.dataDisks Data disks. Settings for the data disks
+     * which will be created for the File Server.
+     *
+     * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB. Disk size
+     * in GB for the blank data disks.
+     *
+     * @param {string} [parameters.dataDisks.cachingType] Caching type. Caching
+     * type for the disks. Available values are none (default), readonly,
+     * readwrite. Caching type can be set only for VM sizes supporting premium
+     * storage. Possible values include: 'none', 'readonly', 'readwrite'
+     *
+     * @param {number} parameters.dataDisks.diskCount Number of data disks. Number
+     * of data disks attached to the File Server. If multiple disks attached, they
+     * will be configured in RAID level 0.
+     *
+     * @param {string} parameters.dataDisks.storageAccountType Storage account
+     * type. Type of storage account to be used on the disk. Possible values are:
+     * Standard_LRS or Premium_LRS. Premium storage account type can only be used
+     * with VM sizes supporting premium storage. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {object} [parameters.subnet] Subnet identifier. Identifier of an
+     * existing virtual network subnet to put the File Server in. If not provided,
+     * a new virtual network and subnet will be created.
+     *
+     * @param {string} parameters.subnet.id The ID of the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FileServer} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FileServer} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FileServer} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServer>;
+    create(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, callback: ServiceCallback<models.FileServer>): void;
+    create(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServer>): void;
+
+
+    /**
+     * Deletes a File Server.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} fileServerName The name of the file server within the
+     * specified resource group. File server names can only contain a combination
+     * of alphanumeric characters along with dash (-) and underscore (_). The name
+     * must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, fileServerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a File Server.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} fileServerName The name of the file server within the
+     * specified resource group. File server names can only contain a combination
+     * of alphanumeric characters along with dash (-) and underscore (_). The name
+     * must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, workspaceName: string, fileServerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, workspaceName: string, fileServerName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, workspaceName: string, fileServerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets information about a File Server.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} fileServerName The name of the file server within the
+     * specified resource group. File server names can only contain a combination
+     * of alphanumeric characters along with dash (-) and underscore (_). The name
+     * must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FileServer>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, fileServerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServer>>;
+
+    /**
+     * Gets information about a File Server.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} fileServerName The name of the file server within the
+     * specified resource group. File server names can only contain a combination
+     * of alphanumeric characters along with dash (-) and underscore (_). The name
+     * must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FileServer} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FileServer} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FileServer} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, workspaceName: string, fileServerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServer>;
+    get(resourceGroupName: string, workspaceName: string, fileServerName: string, callback: ServiceCallback<models.FileServer>): void;
+    get(resourceGroupName: string, workspaceName: string, fileServerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServer>): void;
+
+
+    /**
+     * Gets a list of File Servers associated with the specified workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.fileServersListByWorkspaceOptions] Additional
+     * parameters for the operation
+     *
+     * @param {number} [options.fileServersListByWorkspaceOptions.maxResults] The
+     * maximum number of items to return in the response. A maximum of 1000 files
+     * can be returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FileServerListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByWorkspaceWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { fileServersListByWorkspaceOptions? : models.FileServersListByWorkspaceOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServerListResult>>;
+
+    /**
+     * Gets a list of File Servers associated with the specified workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.fileServersListByWorkspaceOptions] Additional
+     * parameters for the operation
+     *
+     * @param {number} [options.fileServersListByWorkspaceOptions.maxResults] The
+     * maximum number of items to return in the response. A maximum of 1000 files
+     * can be returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FileServerListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FileServerListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FileServerListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByWorkspace(resourceGroupName: string, workspaceName: string, options?: { fileServersListByWorkspaceOptions? : models.FileServersListByWorkspaceOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServerListResult>;
+    listByWorkspace(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.FileServerListResult>): void;
+    listByWorkspace(resourceGroupName: string, workspaceName: string, options: { fileServersListByWorkspaceOptions? : models.FileServersListByWorkspaceOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServerListResult>): void;
+
+
+    /**
+     * Creates a File Server in the given workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} fileServerName The name of the file server within the
+     * specified resource group. File server names can only contain a combination
+     * of alphanumeric characters along with dash (-) and underscore (_). The name
+     * must be from 1 through 64 characters long.
+     *
+     * @param {object} parameters The parameters to provide for File Server
+     * creation.
+     *
+     * @param {string} parameters.vmSize VM size. The size of the virtual machine
+     * for the File Server. For information about available VM sizes from the
+     * Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
+     *
+     * @param {object} parameters.sshConfiguration SSH configuration. SSH
+     * configuration for the File Server node.
+     *
+     * @param {array} [parameters.sshConfiguration.publicIPsToAllow] Allowed public
+     * IPs. List of source IP ranges to allow SSH connection from. The default
+     * value is '*' (all source IPs are allowed). Maximum number of IP ranges that
+     * can be specified is 400.
+     *
+     * @param {object} parameters.sshConfiguration.userAccountSettings User account
+     * settings. Settings for administrator user account to be created on a node.
+     * The account can be used to establish SSH connection to the node.
+     *
+     * @param {string}
+     * parameters.sshConfiguration.userAccountSettings.adminUserName User name.
+     * Name of the administrator user account which can be used to SSH to nodes.
+     *
+     * @param {string}
+     * [parameters.sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH
+     * public key. SSH public key of the administrator user account.
+     *
+     * @param {string}
+     * [parameters.sshConfiguration.userAccountSettings.adminUserPassword]
+     * Password. Password of the administrator user account.
+     *
+     * @param {object} parameters.dataDisks Data disks. Settings for the data disks
+     * which will be created for the File Server.
+     *
+     * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB. Disk size
+     * in GB for the blank data disks.
+     *
+     * @param {string} [parameters.dataDisks.cachingType] Caching type. Caching
+     * type for the disks. Available values are none (default), readonly,
+     * readwrite. Caching type can be set only for VM sizes supporting premium
+     * storage. Possible values include: 'none', 'readonly', 'readwrite'
+     *
+     * @param {number} parameters.dataDisks.diskCount Number of data disks. Number
+     * of data disks attached to the File Server. If multiple disks attached, they
+     * will be configured in RAID level 0.
+     *
+     * @param {string} parameters.dataDisks.storageAccountType Storage account
+     * type. Type of storage account to be used on the disk. Possible values are:
+     * Standard_LRS or Premium_LRS. Premium storage account type can only be used
+     * with VM sizes supporting premium storage. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {object} [parameters.subnet] Subnet identifier. Identifier of an
+     * existing virtual network subnet to put the File Server in. If not provided,
+     * a new virtual network and subnet will be created.
+     *
+     * @param {string} parameters.subnet.id The ID of the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FileServer>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServer>>;
+
+    /**
+     * Creates a File Server in the given workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} fileServerName The name of the file server within the
+     * specified resource group. File server names can only contain a combination
+     * of alphanumeric characters along with dash (-) and underscore (_). The name
+     * must be from 1 through 64 characters long.
+     *
+     * @param {object} parameters The parameters to provide for File Server
+     * creation.
+     *
+     * @param {string} parameters.vmSize VM size. The size of the virtual machine
+     * for the File Server. For information about available VM sizes from the
+     * Virtual Machines Marketplace, see Sizes for Virtual Machines (Linux).
+     *
+     * @param {object} parameters.sshConfiguration SSH configuration. SSH
+     * configuration for the File Server node.
+     *
+     * @param {array} [parameters.sshConfiguration.publicIPsToAllow] Allowed public
+     * IPs. List of source IP ranges to allow SSH connection from. The default
+     * value is '*' (all source IPs are allowed). Maximum number of IP ranges that
+     * can be specified is 400.
+     *
+     * @param {object} parameters.sshConfiguration.userAccountSettings User account
+     * settings. Settings for administrator user account to be created on a node.
+     * The account can be used to establish SSH connection to the node.
+     *
+     * @param {string}
+     * parameters.sshConfiguration.userAccountSettings.adminUserName User name.
+     * Name of the administrator user account which can be used to SSH to nodes.
+     *
+     * @param {string}
+     * [parameters.sshConfiguration.userAccountSettings.adminUserSshPublicKey] SSH
+     * public key. SSH public key of the administrator user account.
+     *
+     * @param {string}
+     * [parameters.sshConfiguration.userAccountSettings.adminUserPassword]
+     * Password. Password of the administrator user account.
+     *
+     * @param {object} parameters.dataDisks Data disks. Settings for the data disks
+     * which will be created for the File Server.
+     *
+     * @param {number} parameters.dataDisks.diskSizeInGB Disk size in GB. Disk size
+     * in GB for the blank data disks.
+     *
+     * @param {string} [parameters.dataDisks.cachingType] Caching type. Caching
+     * type for the disks. Available values are none (default), readonly,
+     * readwrite. Caching type can be set only for VM sizes supporting premium
+     * storage. Possible values include: 'none', 'readonly', 'readwrite'
+     *
+     * @param {number} parameters.dataDisks.diskCount Number of data disks. Number
+     * of data disks attached to the File Server. If multiple disks attached, they
+     * will be configured in RAID level 0.
+     *
+     * @param {string} parameters.dataDisks.storageAccountType Storage account
+     * type. Type of storage account to be used on the disk. Possible values are:
+     * Standard_LRS or Premium_LRS. Premium storage account type can only be used
+     * with VM sizes supporting premium storage. Possible values include:
+     * 'Standard_LRS', 'Premium_LRS'
+     *
+     * @param {object} [parameters.subnet] Subnet identifier. Identifier of an
+     * existing virtual network subnet to put the File Server in. If not provided,
+     * a new virtual network and subnet will be created.
+     *
+     * @param {string} parameters.subnet.id The ID of the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FileServer} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FileServer} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FileServer} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServer>;
+    beginCreate(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, callback: ServiceCallback<models.FileServer>): void;
+    beginCreate(resourceGroupName: string, workspaceName: string, fileServerName: string, parameters: models.FileServerCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServer>): void;
+
+
+    /**
+     * Deletes a File Server.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} fileServerName The name of the file server within the
+     * specified resource group. File server names can only contain a combination
+     * of alphanumeric characters along with dash (-) and underscore (_). The name
+     * must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, fileServerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a File Server.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} fileServerName The name of the file server within the
+     * specified resource group. File server names can only contain a combination
+     * of alphanumeric characters along with dash (-) and underscore (_). The name
+     * must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, workspaceName: string, fileServerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, workspaceName: string, fileServerName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, workspaceName: string, fileServerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a list of File Servers associated with the specified workspace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FileServerListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByWorkspaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FileServerListResult>>;
+
+    /**
+     * Gets a list of File Servers associated with the specified workspace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FileServerListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FileServerListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FileServerListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByWorkspaceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FileServerListResult>;
+    listByWorkspaceNext(nextPageLink: string, callback: ServiceCallback<models.FileServerListResult>): void;
+    listByWorkspaceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FileServerListResult>): void;
+}
+
+/**
+ * @class
+ * Clusters
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BatchAIManagementClient.
+ */
+export interface Clusters {
+
+
+    /**
+     * Creates a Cluster in the given Workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} parameters The parameters to provide for the Cluster
+     * creation.
+     *
+     * @param {string} parameters.vmSize VM size. The size of the virtual machines
+     * in the cluster. All nodes in a cluster have the same VM size. For
+     * information about available VM sizes for clusters using images from the
+     * Virtual Machines Marketplace see Sizes for Virtual Machines (Linux). Batch
+     * AI service supports all Azure VM sizes except STANDARD_A0 and those with
+     * premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     *
+     * @param {string} [parameters.vmPriority] VM priority. VM priority. Allowed
+     * values are: dedicated (default) and lowpriority. Possible values include:
+     * 'dedicated', 'lowpriority'
+     *
+     * @param {object} [parameters.scaleSettings] Scale settings. Scale settings
+     * for the cluster. Batch AI service supports manual and auto scale clusters.
+     *
+     * @param {object} [parameters.scaleSettings.manual] Manual scale settings.
+     * Manual scale settings for the cluster.
+     *
+     * @param {number} parameters.scaleSettings.manual.targetNodeCount Target node
+     * count. The desired number of compute nodes in the Cluster. Default is 0.
+     *
+     * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
+     * Node deallocation options. An action to be performed when the cluster size
+     * is decreasing. The default value is requeue. Possible values include:
+     * 'requeue', 'terminate', 'waitforjobcompletion'
+     *
+     * @param {object} [parameters.scaleSettings.autoScale] Auto-scale settings.
+     * Auto-scale settings for the cluster.
+     *
+     * @param {number} parameters.scaleSettings.autoScale.minimumNodeCount Minimum
+     * node count. The minimum number of compute nodes the Batch AI service will
+     * try to allocate for the cluster. Note, the actual number of nodes can be
+     * less than the specified value if the subscription has not enough quota to
+     * fulfill the request.
+     *
+     * @param {number} parameters.scaleSettings.autoScale.maximumNodeCount Maximum
+     * node count. The maximum number of compute nodes the cluster can have.
+     *
+     * @param {number} [parameters.scaleSettings.autoScale.initialNodeCount]
+     * Initial node count. The number of compute nodes to allocate on cluster
+     * creation. Note that this value is used only during cluster creation.
+     * Default: 0.
+     *
+     * @param {object} [parameters.virtualMachineConfiguration] VM configuration.
+     * OS image configuration for cluster nodes. All nodes in a cluster have the
+     * same OS image.
+     *
+     * @param {object} [parameters.virtualMachineConfiguration.imageReference]
+     * Image reference. OS image reference for cluster nodes.
+     *
+     * @param {string}
+     * parameters.virtualMachineConfiguration.imageReference.publisher Publisher.
+     * Publisher of the image.
+     *
+     * @param {string} parameters.virtualMachineConfiguration.imageReference.offer
+     * Offer. Offer of the image.
+     *
+     * @param {string} parameters.virtualMachineConfiguration.imageReference.sku
+     * SKU. SKU of the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineConfiguration.imageReference.version] Version.
+     * Version of the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineConfiguration.imageReference.virtualMachineImageId]
+     * Custom VM image resource ID. The ARM resource identifier of the virtual
+     * machine image for the compute nodes. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}.
+     * The virtual machine image must be in the same region and subscription as the
+     * cluster. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Note, you need to provide publisher, offer and sku of the base OS image of
+     * which the custom image has been derived from.
+     *
+     * @param {object} [parameters.nodeSetup] Node setup. Setup to be performed on
+     * each compute node in the cluster.
+     *
+     * @param {object} [parameters.nodeSetup.setupTask] Setup task. Setup task to
+     * run on cluster nodes when nodes got created or rebooted. The setup task code
+     * needs to be idempotent. Generally the setup task is used to download static
+     * data that is required for all jobs that run on the cluster VMs and/or to
+     * download/install software.
+     *
+     * @param {string} parameters.nodeSetup.setupTask.commandLine Command line. The
+     * command line to be executed on each cluster's node after it being allocated
+     * or rebooted. The command is executed in a bash subshell as a root.
+     *
+     * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
+     * Environment variables. A collection of user defined environment variables to
+     * be set for setup task.
+     *
+     * @param {array} [parameters.nodeSetup.setupTask.secrets] Secrets. A
+     * collection of user defined environment variables with secret values to be
+     * set for the setup task. Server will never report values of these variables
+     * back.
+     *
+     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix Output
+     * path prefix. The prefix of a path where the Batch AI service will upload the
+     * stdout, stderr and execution log of the setup task.
+     *
+     * @param {object} [parameters.nodeSetup.mountVolumes] Mount volumes. Mount
+     * volumes to be available to setup task and all jobs executing on the cluster.
+     * The volumes will be mounted at location specified by $AZ_BATCHAI_MOUNT_ROOT
+     * environment variable.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.azureFileShares] Azure
+     * File Shares. A collection of Azure File Shares that are to be mounted to the
+     * cluster nodes.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.azureBlobFileSystems]
+     * Azure Blob file systems. A collection of Azure Blob Containers that are to
+     * be mounted to the cluster nodes.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.fileServers] File Servers.
+     * A collection of Batch AI File Servers that are to be mounted to the cluster
+     * nodes.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.unmanagedFileSystems]
+     * Unmanaged file systems. A collection of unmanaged file systems that are to
+     * be mounted to the cluster nodes.
+     *
+     * @param {object} [parameters.nodeSetup.performanceCountersSettings]
+     * Performance counters settings. Settings for performance counters collecting
+     * and uploading.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference Azure
+     * Application Insights reference. Azure Application Insights information for
+     * performance counters reporting. If provided, Batch AI will upload node
+     * performance counters to the corresponding Azure Application Insights
+     * account.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.component
+     * Component ID. Azure Application Insights component resource ID.
+     *
+     * @param {string}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
+     * Instrumentation Key. Value of the Azure Application Insights instrumentation
+     * key.
+     *
+     * @param {object}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
+     * Instrumentation key KeyVault Secret reference. KeyVault Store and Secret
+     * which contains Azure Application Insights instrumentation key. One of
+     * instrumentationKey or instrumentationKeySecretReference must be specified.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
+     *
+     * @param {string}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
+     * Secret URL. The URL referencing a secret in the Key Vault.
+     *
+     * @param {object} parameters.userAccountSettings User account settings.
+     * Settings for an administrator user account that will be created on each
+     * compute node in the cluster.
+     *
+     * @param {string} parameters.userAccountSettings.adminUserName User name. Name
+     * of the administrator user account which can be used to SSH to nodes.
+     *
+     * @param {string} [parameters.userAccountSettings.adminUserSshPublicKey] SSH
+     * public key. SSH public key of the administrator user account.
+     *
+     * @param {string} [parameters.userAccountSettings.adminUserPassword] Password.
+     * Password of the administrator user account.
+     *
+     * @param {object} [parameters.subnet] Subnet. Existing virtual network subnet
+     * to put the cluster nodes in. Note, if a File Server mount configured in node
+     * setup, the File Server's subnet will be used automatically.
+     *
+     * @param {string} parameters.subnet.id The ID of the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Cluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+
+    /**
+     * Creates a Cluster in the given Workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} parameters The parameters to provide for the Cluster
+     * creation.
+     *
+     * @param {string} parameters.vmSize VM size. The size of the virtual machines
+     * in the cluster. All nodes in a cluster have the same VM size. For
+     * information about available VM sizes for clusters using images from the
+     * Virtual Machines Marketplace see Sizes for Virtual Machines (Linux). Batch
+     * AI service supports all Azure VM sizes except STANDARD_A0 and those with
+     * premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     *
+     * @param {string} [parameters.vmPriority] VM priority. VM priority. Allowed
+     * values are: dedicated (default) and lowpriority. Possible values include:
+     * 'dedicated', 'lowpriority'
+     *
+     * @param {object} [parameters.scaleSettings] Scale settings. Scale settings
+     * for the cluster. Batch AI service supports manual and auto scale clusters.
+     *
+     * @param {object} [parameters.scaleSettings.manual] Manual scale settings.
+     * Manual scale settings for the cluster.
+     *
+     * @param {number} parameters.scaleSettings.manual.targetNodeCount Target node
+     * count. The desired number of compute nodes in the Cluster. Default is 0.
+     *
+     * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
+     * Node deallocation options. An action to be performed when the cluster size
+     * is decreasing. The default value is requeue. Possible values include:
+     * 'requeue', 'terminate', 'waitforjobcompletion'
+     *
+     * @param {object} [parameters.scaleSettings.autoScale] Auto-scale settings.
+     * Auto-scale settings for the cluster.
+     *
+     * @param {number} parameters.scaleSettings.autoScale.minimumNodeCount Minimum
+     * node count. The minimum number of compute nodes the Batch AI service will
+     * try to allocate for the cluster. Note, the actual number of nodes can be
+     * less than the specified value if the subscription has not enough quota to
+     * fulfill the request.
+     *
+     * @param {number} parameters.scaleSettings.autoScale.maximumNodeCount Maximum
+     * node count. The maximum number of compute nodes the cluster can have.
+     *
+     * @param {number} [parameters.scaleSettings.autoScale.initialNodeCount]
+     * Initial node count. The number of compute nodes to allocate on cluster
+     * creation. Note that this value is used only during cluster creation.
+     * Default: 0.
+     *
+     * @param {object} [parameters.virtualMachineConfiguration] VM configuration.
+     * OS image configuration for cluster nodes. All nodes in a cluster have the
+     * same OS image.
+     *
+     * @param {object} [parameters.virtualMachineConfiguration.imageReference]
+     * Image reference. OS image reference for cluster nodes.
+     *
+     * @param {string}
+     * parameters.virtualMachineConfiguration.imageReference.publisher Publisher.
+     * Publisher of the image.
+     *
+     * @param {string} parameters.virtualMachineConfiguration.imageReference.offer
+     * Offer. Offer of the image.
+     *
+     * @param {string} parameters.virtualMachineConfiguration.imageReference.sku
+     * SKU. SKU of the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineConfiguration.imageReference.version] Version.
+     * Version of the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineConfiguration.imageReference.virtualMachineImageId]
+     * Custom VM image resource ID. The ARM resource identifier of the virtual
+     * machine image for the compute nodes. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}.
+     * The virtual machine image must be in the same region and subscription as the
+     * cluster. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Note, you need to provide publisher, offer and sku of the base OS image of
+     * which the custom image has been derived from.
+     *
+     * @param {object} [parameters.nodeSetup] Node setup. Setup to be performed on
+     * each compute node in the cluster.
+     *
+     * @param {object} [parameters.nodeSetup.setupTask] Setup task. Setup task to
+     * run on cluster nodes when nodes got created or rebooted. The setup task code
+     * needs to be idempotent. Generally the setup task is used to download static
+     * data that is required for all jobs that run on the cluster VMs and/or to
+     * download/install software.
+     *
+     * @param {string} parameters.nodeSetup.setupTask.commandLine Command line. The
+     * command line to be executed on each cluster's node after it being allocated
+     * or rebooted. The command is executed in a bash subshell as a root.
+     *
+     * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
+     * Environment variables. A collection of user defined environment variables to
+     * be set for setup task.
+     *
+     * @param {array} [parameters.nodeSetup.setupTask.secrets] Secrets. A
+     * collection of user defined environment variables with secret values to be
+     * set for the setup task. Server will never report values of these variables
+     * back.
+     *
+     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix Output
+     * path prefix. The prefix of a path where the Batch AI service will upload the
+     * stdout, stderr and execution log of the setup task.
+     *
+     * @param {object} [parameters.nodeSetup.mountVolumes] Mount volumes. Mount
+     * volumes to be available to setup task and all jobs executing on the cluster.
+     * The volumes will be mounted at location specified by $AZ_BATCHAI_MOUNT_ROOT
+     * environment variable.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.azureFileShares] Azure
+     * File Shares. A collection of Azure File Shares that are to be mounted to the
+     * cluster nodes.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.azureBlobFileSystems]
+     * Azure Blob file systems. A collection of Azure Blob Containers that are to
+     * be mounted to the cluster nodes.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.fileServers] File Servers.
+     * A collection of Batch AI File Servers that are to be mounted to the cluster
+     * nodes.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.unmanagedFileSystems]
+     * Unmanaged file systems. A collection of unmanaged file systems that are to
+     * be mounted to the cluster nodes.
+     *
+     * @param {object} [parameters.nodeSetup.performanceCountersSettings]
+     * Performance counters settings. Settings for performance counters collecting
+     * and uploading.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference Azure
+     * Application Insights reference. Azure Application Insights information for
+     * performance counters reporting. If provided, Batch AI will upload node
+     * performance counters to the corresponding Azure Application Insights
+     * account.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.component
+     * Component ID. Azure Application Insights component resource ID.
+     *
+     * @param {string}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
+     * Instrumentation Key. Value of the Azure Application Insights instrumentation
+     * key.
+     *
+     * @param {object}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
+     * Instrumentation key KeyVault Secret reference. KeyVault Store and Secret
+     * which contains Azure Application Insights instrumentation key. One of
+     * instrumentationKey or instrumentationKeySecretReference must be specified.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
+     *
+     * @param {string}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
+     * Secret URL. The URL referencing a secret in the Key Vault.
+     *
+     * @param {object} parameters.userAccountSettings User account settings.
+     * Settings for an administrator user account that will be created on each
+     * compute node in the cluster.
+     *
+     * @param {string} parameters.userAccountSettings.adminUserName User name. Name
+     * of the administrator user account which can be used to SSH to nodes.
+     *
+     * @param {string} [parameters.userAccountSettings.adminUserSshPublicKey] SSH
+     * public key. SSH public key of the administrator user account.
+     *
+     * @param {string} [parameters.userAccountSettings.adminUserPassword] Password.
+     * Password of the administrator user account.
+     *
+     * @param {object} [parameters.subnet] Subnet. Existing virtual network subnet
+     * to put the cluster nodes in. Note, if a File Server mount configured in node
+     * setup, the File Server's subnet will be used automatically.
+     *
+     * @param {string} parameters.subnet.id The ID of the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Cluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Cluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Cluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    create(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, callback: ServiceCallback<models.Cluster>): void;
+    create(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+
+
+    /**
+     * Updates properties of a Cluster.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.scaleSettings] Scale settings. Desired scale
+     * settings for the cluster. Batch AI service supports manual and auto scale
+     * clusters.
+     *
+     * @param {object} [options.scaleSettings.manual] Manual scale settings. Manual
+     * scale settings for the cluster.
+     *
+     * @param {number} options.scaleSettings.manual.targetNodeCount Target node
+     * count. The desired number of compute nodes in the Cluster. Default is 0.
+     *
+     * @param {string} [options.scaleSettings.manual.nodeDeallocationOption] Node
+     * deallocation options. An action to be performed when the cluster size is
+     * decreasing. The default value is requeue. Possible values include:
+     * 'requeue', 'terminate', 'waitforjobcompletion'
+     *
+     * @param {object} [options.scaleSettings.autoScale] Auto-scale settings.
+     * Auto-scale settings for the cluster.
+     *
+     * @param {number} options.scaleSettings.autoScale.minimumNodeCount Minimum
+     * node count. The minimum number of compute nodes the Batch AI service will
+     * try to allocate for the cluster. Note, the actual number of nodes can be
+     * less than the specified value if the subscription has not enough quota to
+     * fulfill the request.
+     *
+     * @param {number} options.scaleSettings.autoScale.maximumNodeCount Maximum
+     * node count. The maximum number of compute nodes the cluster can have.
+     *
+     * @param {number} [options.scaleSettings.autoScale.initialNodeCount] Initial
+     * node count. The number of compute nodes to allocate on cluster creation.
+     * Note that this value is used only during cluster creation. Default: 0.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Cluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { scaleSettings? : models.ScaleSettings, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+
+    /**
+     * Updates properties of a Cluster.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.scaleSettings] Scale settings. Desired scale
+     * settings for the cluster. Batch AI service supports manual and auto scale
+     * clusters.
+     *
+     * @param {object} [options.scaleSettings.manual] Manual scale settings. Manual
+     * scale settings for the cluster.
+     *
+     * @param {number} options.scaleSettings.manual.targetNodeCount Target node
+     * count. The desired number of compute nodes in the Cluster. Default is 0.
+     *
+     * @param {string} [options.scaleSettings.manual.nodeDeallocationOption] Node
+     * deallocation options. An action to be performed when the cluster size is
+     * decreasing. The default value is requeue. Possible values include:
+     * 'requeue', 'terminate', 'waitforjobcompletion'
+     *
+     * @param {object} [options.scaleSettings.autoScale] Auto-scale settings.
+     * Auto-scale settings for the cluster.
+     *
+     * @param {number} options.scaleSettings.autoScale.minimumNodeCount Minimum
+     * node count. The minimum number of compute nodes the Batch AI service will
+     * try to allocate for the cluster. Note, the actual number of nodes can be
+     * less than the specified value if the subscription has not enough quota to
+     * fulfill the request.
+     *
+     * @param {number} options.scaleSettings.autoScale.maximumNodeCount Maximum
+     * node count. The maximum number of compute nodes the cluster can have.
+     *
+     * @param {number} [options.scaleSettings.autoScale.initialNodeCount] Initial
+     * node count. The number of compute nodes to allocate on cluster creation.
+     * Note that this value is used only during cluster creation. Default: 0.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Cluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Cluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Cluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { scaleSettings? : models.ScaleSettings, customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    update(resourceGroupName: string, workspaceName: string, clusterName: string, callback: ServiceCallback<models.Cluster>): void;
+    update(resourceGroupName: string, workspaceName: string, clusterName: string, options: { scaleSettings? : models.ScaleSettings, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+
+
+    /**
+     * Deletes a Cluster.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a Cluster.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, workspaceName: string, clusterName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, workspaceName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets information about a Cluster.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Cluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+
+    /**
+     * Gets information about a Cluster.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Cluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Cluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Cluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    get(resourceGroupName: string, workspaceName: string, clusterName: string, callback: ServiceCallback<models.Cluster>): void;
+    get(resourceGroupName: string, workspaceName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+
+
+    /**
+     * Get the IP address, port of all the compute nodes in the Cluster.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemoteLoginInformationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listRemoteLoginInformationWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemoteLoginInformationListResult>>;
+
+    /**
+     * Get the IP address, port of all the compute nodes in the Cluster.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemoteLoginInformationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemoteLoginInformationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemoteLoginInformationListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listRemoteLoginInformation(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemoteLoginInformationListResult>;
+    listRemoteLoginInformation(resourceGroupName: string, workspaceName: string, clusterName: string, callback: ServiceCallback<models.RemoteLoginInformationListResult>): void;
+    listRemoteLoginInformation(resourceGroupName: string, workspaceName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemoteLoginInformationListResult>): void;
+
+
+    /**
+     * Gets information about Clusters associated with the given Workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.clustersListByWorkspaceOptions] Additional
+     * parameters for the operation
+     *
+     * @param {number} [options.clustersListByWorkspaceOptions.maxResults] The
+     * maximum number of items to return in the response. A maximum of 1000 files
+     * can be returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ClusterListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByWorkspaceWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, options?: { clustersListByWorkspaceOptions? : models.ClustersListByWorkspaceOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
+
+    /**
+     * Gets information about Clusters associated with the given Workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.clustersListByWorkspaceOptions] Additional
+     * parameters for the operation
+     *
+     * @param {number} [options.clustersListByWorkspaceOptions.maxResults] The
+     * maximum number of items to return in the response. A maximum of 1000 files
+     * can be returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ClusterListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ClusterListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClusterListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByWorkspace(resourceGroupName: string, workspaceName: string, options?: { clustersListByWorkspaceOptions? : models.ClustersListByWorkspaceOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterListResult>;
+    listByWorkspace(resourceGroupName: string, workspaceName: string, callback: ServiceCallback<models.ClusterListResult>): void;
+    listByWorkspace(resourceGroupName: string, workspaceName: string, options: { clustersListByWorkspaceOptions? : models.ClustersListByWorkspaceOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterListResult>): void;
+
+
+    /**
+     * Creates a Cluster in the given Workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} parameters The parameters to provide for the Cluster
+     * creation.
+     *
+     * @param {string} parameters.vmSize VM size. The size of the virtual machines
+     * in the cluster. All nodes in a cluster have the same VM size. For
+     * information about available VM sizes for clusters using images from the
+     * Virtual Machines Marketplace see Sizes for Virtual Machines (Linux). Batch
+     * AI service supports all Azure VM sizes except STANDARD_A0 and those with
+     * premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     *
+     * @param {string} [parameters.vmPriority] VM priority. VM priority. Allowed
+     * values are: dedicated (default) and lowpriority. Possible values include:
+     * 'dedicated', 'lowpriority'
+     *
+     * @param {object} [parameters.scaleSettings] Scale settings. Scale settings
+     * for the cluster. Batch AI service supports manual and auto scale clusters.
+     *
+     * @param {object} [parameters.scaleSettings.manual] Manual scale settings.
+     * Manual scale settings for the cluster.
+     *
+     * @param {number} parameters.scaleSettings.manual.targetNodeCount Target node
+     * count. The desired number of compute nodes in the Cluster. Default is 0.
+     *
+     * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
+     * Node deallocation options. An action to be performed when the cluster size
+     * is decreasing. The default value is requeue. Possible values include:
+     * 'requeue', 'terminate', 'waitforjobcompletion'
+     *
+     * @param {object} [parameters.scaleSettings.autoScale] Auto-scale settings.
+     * Auto-scale settings for the cluster.
+     *
+     * @param {number} parameters.scaleSettings.autoScale.minimumNodeCount Minimum
+     * node count. The minimum number of compute nodes the Batch AI service will
+     * try to allocate for the cluster. Note, the actual number of nodes can be
+     * less than the specified value if the subscription has not enough quota to
+     * fulfill the request.
+     *
+     * @param {number} parameters.scaleSettings.autoScale.maximumNodeCount Maximum
+     * node count. The maximum number of compute nodes the cluster can have.
+     *
+     * @param {number} [parameters.scaleSettings.autoScale.initialNodeCount]
+     * Initial node count. The number of compute nodes to allocate on cluster
+     * creation. Note that this value is used only during cluster creation.
+     * Default: 0.
+     *
+     * @param {object} [parameters.virtualMachineConfiguration] VM configuration.
+     * OS image configuration for cluster nodes. All nodes in a cluster have the
+     * same OS image.
+     *
+     * @param {object} [parameters.virtualMachineConfiguration.imageReference]
+     * Image reference. OS image reference for cluster nodes.
+     *
+     * @param {string}
+     * parameters.virtualMachineConfiguration.imageReference.publisher Publisher.
+     * Publisher of the image.
+     *
+     * @param {string} parameters.virtualMachineConfiguration.imageReference.offer
+     * Offer. Offer of the image.
+     *
+     * @param {string} parameters.virtualMachineConfiguration.imageReference.sku
+     * SKU. SKU of the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineConfiguration.imageReference.version] Version.
+     * Version of the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineConfiguration.imageReference.virtualMachineImageId]
+     * Custom VM image resource ID. The ARM resource identifier of the virtual
+     * machine image for the compute nodes. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}.
+     * The virtual machine image must be in the same region and subscription as the
+     * cluster. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Note, you need to provide publisher, offer and sku of the base OS image of
+     * which the custom image has been derived from.
+     *
+     * @param {object} [parameters.nodeSetup] Node setup. Setup to be performed on
+     * each compute node in the cluster.
+     *
+     * @param {object} [parameters.nodeSetup.setupTask] Setup task. Setup task to
+     * run on cluster nodes when nodes got created or rebooted. The setup task code
+     * needs to be idempotent. Generally the setup task is used to download static
+     * data that is required for all jobs that run on the cluster VMs and/or to
+     * download/install software.
+     *
+     * @param {string} parameters.nodeSetup.setupTask.commandLine Command line. The
+     * command line to be executed on each cluster's node after it being allocated
+     * or rebooted. The command is executed in a bash subshell as a root.
+     *
+     * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
+     * Environment variables. A collection of user defined environment variables to
+     * be set for setup task.
+     *
+     * @param {array} [parameters.nodeSetup.setupTask.secrets] Secrets. A
+     * collection of user defined environment variables with secret values to be
+     * set for the setup task. Server will never report values of these variables
+     * back.
+     *
+     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix Output
+     * path prefix. The prefix of a path where the Batch AI service will upload the
+     * stdout, stderr and execution log of the setup task.
+     *
+     * @param {object} [parameters.nodeSetup.mountVolumes] Mount volumes. Mount
+     * volumes to be available to setup task and all jobs executing on the cluster.
+     * The volumes will be mounted at location specified by $AZ_BATCHAI_MOUNT_ROOT
+     * environment variable.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.azureFileShares] Azure
+     * File Shares. A collection of Azure File Shares that are to be mounted to the
+     * cluster nodes.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.azureBlobFileSystems]
+     * Azure Blob file systems. A collection of Azure Blob Containers that are to
+     * be mounted to the cluster nodes.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.fileServers] File Servers.
+     * A collection of Batch AI File Servers that are to be mounted to the cluster
+     * nodes.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.unmanagedFileSystems]
+     * Unmanaged file systems. A collection of unmanaged file systems that are to
+     * be mounted to the cluster nodes.
+     *
+     * @param {object} [parameters.nodeSetup.performanceCountersSettings]
+     * Performance counters settings. Settings for performance counters collecting
+     * and uploading.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference Azure
+     * Application Insights reference. Azure Application Insights information for
+     * performance counters reporting. If provided, Batch AI will upload node
+     * performance counters to the corresponding Azure Application Insights
+     * account.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.component
+     * Component ID. Azure Application Insights component resource ID.
+     *
+     * @param {string}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
+     * Instrumentation Key. Value of the Azure Application Insights instrumentation
+     * key.
+     *
+     * @param {object}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
+     * Instrumentation key KeyVault Secret reference. KeyVault Store and Secret
+     * which contains Azure Application Insights instrumentation key. One of
+     * instrumentationKey or instrumentationKeySecretReference must be specified.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
+     *
+     * @param {string}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
+     * Secret URL. The URL referencing a secret in the Key Vault.
+     *
+     * @param {object} parameters.userAccountSettings User account settings.
+     * Settings for an administrator user account that will be created on each
+     * compute node in the cluster.
+     *
+     * @param {string} parameters.userAccountSettings.adminUserName User name. Name
+     * of the administrator user account which can be used to SSH to nodes.
+     *
+     * @param {string} [parameters.userAccountSettings.adminUserSshPublicKey] SSH
+     * public key. SSH public key of the administrator user account.
+     *
+     * @param {string} [parameters.userAccountSettings.adminUserPassword] Password.
+     * Password of the administrator user account.
+     *
+     * @param {object} [parameters.subnet] Subnet. Existing virtual network subnet
+     * to put the cluster nodes in. Note, if a File Server mount configured in node
+     * setup, the File Server's subnet will be used automatically.
+     *
+     * @param {string} parameters.subnet.id The ID of the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Cluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Cluster>>;
+
+    /**
+     * Creates a Cluster in the given Workspace.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} parameters The parameters to provide for the Cluster
+     * creation.
+     *
+     * @param {string} parameters.vmSize VM size. The size of the virtual machines
+     * in the cluster. All nodes in a cluster have the same VM size. For
+     * information about available VM sizes for clusters using images from the
+     * Virtual Machines Marketplace see Sizes for Virtual Machines (Linux). Batch
+     * AI service supports all Azure VM sizes except STANDARD_A0 and those with
+     * premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+     *
+     * @param {string} [parameters.vmPriority] VM priority. VM priority. Allowed
+     * values are: dedicated (default) and lowpriority. Possible values include:
+     * 'dedicated', 'lowpriority'
+     *
+     * @param {object} [parameters.scaleSettings] Scale settings. Scale settings
+     * for the cluster. Batch AI service supports manual and auto scale clusters.
+     *
+     * @param {object} [parameters.scaleSettings.manual] Manual scale settings.
+     * Manual scale settings for the cluster.
+     *
+     * @param {number} parameters.scaleSettings.manual.targetNodeCount Target node
+     * count. The desired number of compute nodes in the Cluster. Default is 0.
+     *
+     * @param {string} [parameters.scaleSettings.manual.nodeDeallocationOption]
+     * Node deallocation options. An action to be performed when the cluster size
+     * is decreasing. The default value is requeue. Possible values include:
+     * 'requeue', 'terminate', 'waitforjobcompletion'
+     *
+     * @param {object} [parameters.scaleSettings.autoScale] Auto-scale settings.
+     * Auto-scale settings for the cluster.
+     *
+     * @param {number} parameters.scaleSettings.autoScale.minimumNodeCount Minimum
+     * node count. The minimum number of compute nodes the Batch AI service will
+     * try to allocate for the cluster. Note, the actual number of nodes can be
+     * less than the specified value if the subscription has not enough quota to
+     * fulfill the request.
+     *
+     * @param {number} parameters.scaleSettings.autoScale.maximumNodeCount Maximum
+     * node count. The maximum number of compute nodes the cluster can have.
+     *
+     * @param {number} [parameters.scaleSettings.autoScale.initialNodeCount]
+     * Initial node count. The number of compute nodes to allocate on cluster
+     * creation. Note that this value is used only during cluster creation.
+     * Default: 0.
+     *
+     * @param {object} [parameters.virtualMachineConfiguration] VM configuration.
+     * OS image configuration for cluster nodes. All nodes in a cluster have the
+     * same OS image.
+     *
+     * @param {object} [parameters.virtualMachineConfiguration.imageReference]
+     * Image reference. OS image reference for cluster nodes.
+     *
+     * @param {string}
+     * parameters.virtualMachineConfiguration.imageReference.publisher Publisher.
+     * Publisher of the image.
+     *
+     * @param {string} parameters.virtualMachineConfiguration.imageReference.offer
+     * Offer. Offer of the image.
+     *
+     * @param {string} parameters.virtualMachineConfiguration.imageReference.sku
+     * SKU. SKU of the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineConfiguration.imageReference.version] Version.
+     * Version of the image.
+     *
+     * @param {string}
+     * [parameters.virtualMachineConfiguration.imageReference.virtualMachineImageId]
+     * Custom VM image resource ID. The ARM resource identifier of the virtual
+     * machine image for the compute nodes. This is of the form
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}.
+     * The virtual machine image must be in the same region and subscription as the
+     * cluster. For information about the firewall settings for the Batch node
+     * agent to communicate with the Batch service see
+     * https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+     * Note, you need to provide publisher, offer and sku of the base OS image of
+     * which the custom image has been derived from.
+     *
+     * @param {object} [parameters.nodeSetup] Node setup. Setup to be performed on
+     * each compute node in the cluster.
+     *
+     * @param {object} [parameters.nodeSetup.setupTask] Setup task. Setup task to
+     * run on cluster nodes when nodes got created or rebooted. The setup task code
+     * needs to be idempotent. Generally the setup task is used to download static
+     * data that is required for all jobs that run on the cluster VMs and/or to
+     * download/install software.
+     *
+     * @param {string} parameters.nodeSetup.setupTask.commandLine Command line. The
+     * command line to be executed on each cluster's node after it being allocated
+     * or rebooted. The command is executed in a bash subshell as a root.
+     *
+     * @param {array} [parameters.nodeSetup.setupTask.environmentVariables]
+     * Environment variables. A collection of user defined environment variables to
+     * be set for setup task.
+     *
+     * @param {array} [parameters.nodeSetup.setupTask.secrets] Secrets. A
+     * collection of user defined environment variables with secret values to be
+     * set for the setup task. Server will never report values of these variables
+     * back.
+     *
+     * @param {string} parameters.nodeSetup.setupTask.stdOutErrPathPrefix Output
+     * path prefix. The prefix of a path where the Batch AI service will upload the
+     * stdout, stderr and execution log of the setup task.
+     *
+     * @param {object} [parameters.nodeSetup.mountVolumes] Mount volumes. Mount
+     * volumes to be available to setup task and all jobs executing on the cluster.
+     * The volumes will be mounted at location specified by $AZ_BATCHAI_MOUNT_ROOT
+     * environment variable.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.azureFileShares] Azure
+     * File Shares. A collection of Azure File Shares that are to be mounted to the
+     * cluster nodes.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.azureBlobFileSystems]
+     * Azure Blob file systems. A collection of Azure Blob Containers that are to
+     * be mounted to the cluster nodes.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.fileServers] File Servers.
+     * A collection of Batch AI File Servers that are to be mounted to the cluster
+     * nodes.
+     *
+     * @param {array} [parameters.nodeSetup.mountVolumes.unmanagedFileSystems]
+     * Unmanaged file systems. A collection of unmanaged file systems that are to
+     * be mounted to the cluster nodes.
+     *
+     * @param {object} [parameters.nodeSetup.performanceCountersSettings]
+     * Performance counters settings. Settings for performance counters collecting
+     * and uploading.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference Azure
+     * Application Insights reference. Azure Application Insights information for
+     * performance counters reporting. If provided, Batch AI will upload node
+     * performance counters to the corresponding Azure Application Insights
+     * account.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.component
+     * Component ID. Azure Application Insights component resource ID.
+     *
+     * @param {string}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKey]
+     * Instrumentation Key. Value of the Azure Application Insights instrumentation
+     * key.
+     *
+     * @param {object}
+     * [parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference]
+     * Instrumentation key KeyVault Secret reference. KeyVault Store and Secret
+     * which contains Azure Application Insights instrumentation key. One of
+     * instrumentationKey or instrumentationKeySecretReference must be specified.
+     *
+     * @param {object}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.sourceVault
+     * Key Vault resource identifier. Fully qualified resource indentifier of the
+     * Key Vault.
+     *
+     * @param {string}
+     * parameters.nodeSetup.performanceCountersSettings.appInsightsReference.instrumentationKeySecretReference.secretUrl
+     * Secret URL. The URL referencing a secret in the Key Vault.
+     *
+     * @param {object} parameters.userAccountSettings User account settings.
+     * Settings for an administrator user account that will be created on each
+     * compute node in the cluster.
+     *
+     * @param {string} parameters.userAccountSettings.adminUserName User name. Name
+     * of the administrator user account which can be used to SSH to nodes.
+     *
+     * @param {string} [parameters.userAccountSettings.adminUserSshPublicKey] SSH
+     * public key. SSH public key of the administrator user account.
+     *
+     * @param {string} [parameters.userAccountSettings.adminUserPassword] Password.
+     * Password of the administrator user account.
+     *
+     * @param {object} [parameters.subnet] Subnet. Existing virtual network subnet
+     * to put the cluster nodes in. Note, if a File Server mount configured in node
+     * setup, the File Server's subnet will be used automatically.
+     *
+     * @param {string} parameters.subnet.id The ID of the resource
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Cluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Cluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Cluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Cluster>;
+    beginCreate(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, callback: ServiceCallback<models.Cluster>): void;
+    beginCreate(resourceGroupName: string, workspaceName: string, clusterName: string, parameters: models.ClusterCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Cluster>): void;
+
+
+    /**
+     * Deletes a Cluster.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a Cluster.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} workspaceName The name of the workspace. Workspace names can
+     * only contain a combination of alphanumeric characters along with dash (-)
+     * and underscore (_). The name must be from 1 through 64 characters long.
+     *
+     * @param {string} clusterName The name of the cluster within the specified
+     * resource group. Cluster names can only contain a combination of alphanumeric
+     * characters along with dash (-) and underscore (_). The name must be from 1
+     * through 64 characters long.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, workspaceName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, workspaceName: string, clusterName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, workspaceName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Get the IP address, port of all the compute nodes in the Cluster.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RemoteLoginInformationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listRemoteLoginInformationNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RemoteLoginInformationListResult>>;
+
+    /**
+     * Get the IP address, port of all the compute nodes in the Cluster.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RemoteLoginInformationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RemoteLoginInformationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RemoteLoginInformationListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listRemoteLoginInformationNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RemoteLoginInformationListResult>;
+    listRemoteLoginInformationNext(nextPageLink: string, callback: ServiceCallback<models.RemoteLoginInformationListResult>): void;
+    listRemoteLoginInformationNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RemoteLoginInformationListResult>): void;
+
+
+    /**
+     * Gets information about Clusters associated with the given Workspace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ClusterListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByWorkspaceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClusterListResult>>;
+
+    /**
+     * Gets information about Clusters associated with the given Workspace.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ClusterListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ClusterListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ClusterListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByWorkspaceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClusterListResult>;
+    listByWorkspaceNext(nextPageLink: string, callback: ServiceCallback<models.ClusterListResult>): void;
+    listByWorkspaceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClusterListResult>): void;
 }
