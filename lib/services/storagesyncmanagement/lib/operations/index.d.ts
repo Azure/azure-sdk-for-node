@@ -2283,7 +2283,7 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
-     * @param {string} [parameters.syncStatus] Sync Health Status
+     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2332,7 +2332,7 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
-     * @param {string} [parameters.syncStatus] Sync Health Status
+     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2405,7 +2405,7 @@ export interface ServerEndpoints {
      * @param {string} [options.parameters.lastOperationName] Resource Last
      * Operation Name
      *
-     * @param {string} [options.parameters.syncStatus] Sync Health Status
+     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2457,7 +2457,7 @@ export interface ServerEndpoints {
      * @param {string} [options.parameters.lastOperationName] Resource Last
      * Operation Name
      *
-     * @param {string} [options.parameters.syncStatus] Sync Health Status
+     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2801,7 +2801,7 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
-     * @param {string} [parameters.syncStatus] Sync Health Status
+     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2850,7 +2850,7 @@ export interface ServerEndpoints {
      *
      * @param {string} [parameters.lastOperationName] Resource Last Operation Name
      *
-     * @param {string} [parameters.syncStatus] Sync Health Status
+     * @param {object} [parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2923,7 +2923,7 @@ export interface ServerEndpoints {
      * @param {string} [options.parameters.lastOperationName] Resource Last
      * Operation Name
      *
-     * @param {string} [options.parameters.syncStatus] Sync Health Status
+     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2975,7 +2975,7 @@ export interface ServerEndpoints {
      * @param {string} [options.parameters.lastOperationName] Resource Last
      * Operation Name
      *
-     * @param {string} [options.parameters.syncStatus] Sync Health Status
+     * @param {object} [options.parameters.syncStatus] Sync Health Status
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3335,6 +3335,10 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.serviceLocation] Service Location
      *
+     * @param {string} [parameters.friendlyName] Friendly Name
+     *
+     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3396,6 +3400,10 @@ export interface RegisteredServers {
      * @param {string} [parameters.resourceLocation] Resource Location
      *
      * @param {string} [parameters.serviceLocation] Service Location
+     *
+     * @param {string} [parameters.friendlyName] Friendly Name
+     *
+     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3544,6 +3552,10 @@ export interface RegisteredServers {
      *
      * @param {string} [parameters.serviceLocation] Service Location
      *
+     * @param {string} [parameters.friendlyName] Friendly Name
+     *
+     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3605,6 +3617,10 @@ export interface RegisteredServers {
      * @param {string} [parameters.resourceLocation] Resource Location
      *
      * @param {string} [parameters.serviceLocation] Service Location
+     *
+     * @param {string} [parameters.friendlyName] Friendly Name
+     *
+     * @param {string} [parameters.managementEndpointUri] Management Endpoint Uri
      *
      * @param {object} [options] Optional Parameters.
      *

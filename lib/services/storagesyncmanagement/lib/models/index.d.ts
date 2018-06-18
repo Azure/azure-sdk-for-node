@@ -174,7 +174,7 @@ export interface CloudEndpoint extends BaseResource {
  * @member {string} [provisioningState] ServerEndpoint Provisioning State
  * @member {string} [lastWorkflowId] ServerEndpoint lastWorkflowId
  * @member {string} [lastOperationName] Resource Last Operation Name
- * @member {string} [syncStatus] Sync Health Status
+ * @member {object} [syncStatus] Sync Health Status
  */
 export interface ServerEndpoint extends BaseResource {
   serverLocalPath?: string;
@@ -185,7 +185,7 @@ export interface ServerEndpoint extends BaseResource {
   provisioningState?: string;
   lastWorkflowId?: string;
   lastOperationName?: string;
-  syncStatus?: string;
+  syncStatus?: any;
 }
 
 /**
@@ -215,6 +215,8 @@ export interface ServerEndpoint extends BaseResource {
  * @member {string} [discoveryEndpointUri] Resource discoveryEndpointUri
  * @member {string} [resourceLocation] Resource Location
  * @member {string} [serviceLocation] Service Location
+ * @member {string} [friendlyName] Friendly Name
+ * @member {string} [managementEndpointUri] Management Endpoint Uri
  */
 export interface RegisteredServer extends BaseResource {
   readonly id?: string;
@@ -236,6 +238,8 @@ export interface RegisteredServer extends BaseResource {
   discoveryEndpointUri?: string;
   resourceLocation?: string;
   serviceLocation?: string;
+  friendlyName?: string;
+  managementEndpointUri?: string;
 }
 
 /**
