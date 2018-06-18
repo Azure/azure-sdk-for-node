@@ -4503,9 +4503,8 @@ export interface Clusters {
      * Note, you need to provide publisher, offer and sku of the base OS image of
      * which the custom image has been derived from.
      *
-     * @param {object} [parameters.nodeSetup] Node setup. Setup (mount file
-     * systems, performance counters settings and custom setup task) to be
-     * performed on each compute node in the cluster.
+     * @param {object} [parameters.nodeSetup] Node setup. Setup to be performed on
+     * each compute node in the cluster.
      *
      * @param {object} [parameters.nodeSetup.setupTask] Setup task. Setup task to
      * run on cluster nodes when nodes got created or rebooted. The setup task code
@@ -4711,9 +4710,8 @@ export interface Clusters {
      * Note, you need to provide publisher, offer and sku of the base OS image of
      * which the custom image has been derived from.
      *
-     * @param {object} [parameters.nodeSetup] Node setup. Setup (mount file
-     * systems, performance counters settings and custom setup task) to be
-     * performed on each compute node in the cluster.
+     * @param {object} [parameters.nodeSetup] Node setup. Setup to be performed on
+     * each compute node in the cluster.
      *
      * @param {object} [parameters.nodeSetup.setupTask] Setup task. Setup task to
      * run on cluster nodes when nodes got created or rebooted. The setup task code
@@ -5379,9 +5377,8 @@ export interface Clusters {
      * Note, you need to provide publisher, offer and sku of the base OS image of
      * which the custom image has been derived from.
      *
-     * @param {object} [parameters.nodeSetup] Node setup. Setup (mount file
-     * systems, performance counters settings and custom setup task) to be
-     * performed on each compute node in the cluster.
+     * @param {object} [parameters.nodeSetup] Node setup. Setup to be performed on
+     * each compute node in the cluster.
      *
      * @param {object} [parameters.nodeSetup.setupTask] Setup task. Setup task to
      * run on cluster nodes when nodes got created or rebooted. The setup task code
@@ -5587,9 +5584,8 @@ export interface Clusters {
      * Note, you need to provide publisher, offer and sku of the base OS image of
      * which the custom image has been derived from.
      *
-     * @param {object} [parameters.nodeSetup] Node setup. Setup (mount file
-     * systems, performance counters settings and custom setup task) to be
-     * performed on each compute node in the cluster.
+     * @param {object} [parameters.nodeSetup] Node setup. Setup to be performed on
+     * each compute node in the cluster.
      *
      * @param {object} [parameters.nodeSetup.setupTask] Setup task. Setup task to
      * run on cluster nodes when nodes got created or rebooted. The setup task code
