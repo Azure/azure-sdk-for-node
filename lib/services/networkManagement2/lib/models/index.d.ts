@@ -2297,7 +2297,7 @@ export interface ApplicationGatewayAutoscaleConfiguration {
  * Maxium request body size for WAF.
  * @member {boolean} [enableHttp2] Whether HTTP2 is enabled on the application
  * gateway resource.
- * @member {boolean} [enableFIPS] Whether FIPS is enabled on the application
+ * @member {boolean} [enableFips] Whether FIPS is enabled on the application
  * gateway resource.
  * @member {object} [autoscaleConfiguration] Autoscale Configuration.
  * @member {object} [autoscaleConfiguration.bounds] Autoscale bounds
@@ -2332,7 +2332,7 @@ export interface ApplicationGateway extends Resource {
   redirectConfigurations?: ApplicationGatewayRedirectConfiguration[];
   webApplicationFirewallConfiguration?: ApplicationGatewayWebApplicationFirewallConfiguration;
   enableHttp2?: boolean;
-  enableFIPS?: boolean;
+  enableFips?: boolean;
   autoscaleConfiguration?: ApplicationGatewayAutoscaleConfiguration;
   resourceGuid?: string;
   provisioningState?: string;
@@ -3559,10 +3559,10 @@ export interface LoadBalancingRule extends SubResource {
  * @member {array} [loadBalancingRules] The load balancer rules that use this
  * probe.
  * @member {string} protocol The protocol of the end point. Possible values
- * are: 'Http' or 'Tcp'. If 'Tcp' is specified, a received ACK is required for
- * the probe to be successful. If 'Http' is specified, a 200 OK response from
- * the specifies URI is required for the probe to be successful. Possible
- * values include: 'Http', 'Tcp'
+ * are: 'Http', 'Tcp', or 'Https'. If 'Tcp' is specified, a received ACK is
+ * required for the probe to be successful. If 'Http' or 'Https' is specified,
+ * a 200 OK response from the specifies URI is required for the probe to be
+ * successful. Possible values include: 'Http', 'Tcp', 'Https'
  * @member {number} port The port for communicating the probe. Possible values
  * range from 1 to 65535, inclusive.
  * @member {number} [intervalInSeconds] The interval, in seconds, for how
@@ -6333,7 +6333,7 @@ export interface ConnectionResetSharedKey {
  *
  * @member {string} value The virtual network connection shared key value.
  */
-export interface ConnectionSharedKey {
+export interface ConnectionSharedKey extends SubResource {
   value: string;
 }
 
