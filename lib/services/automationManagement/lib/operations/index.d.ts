@@ -4976,11 +4976,11 @@ export interface RunbookDraftOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    publishWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    publishWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Publish runbook draft.
@@ -5004,7 +5004,7 @@ export interface RunbookDraftOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {String} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5012,15 +5012,15 @@ export interface RunbookDraftOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
-    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -5170,11 +5170,11 @@ export interface RunbookDraftOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginPublishWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+    beginPublishWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Publish runbook draft.
@@ -5198,7 +5198,7 @@ export interface RunbookDraftOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {String} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5206,15 +5206,15 @@ export interface RunbookDraftOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
-    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
