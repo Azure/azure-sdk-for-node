@@ -23,11 +23,25 @@ var msrest = require('ms-rest');
 var MockedTestUtils = require('../../framework/mocked-test-utils');
 var util = require('util');
 
-describe('App Insights query', function () {
+describe('App Insights events', function () {
   
   var client;
   var suiteUtil;
   const appId = 'DEMO_APP';
+  const props = [
+    'id', 
+    'timestamp', 
+    'count', 
+    'customDimensions', 
+    'operation', 
+    'session', 
+    'user', 
+    'cloud', 
+    'ai', 
+    'application', 
+    'client', 
+    'type'
+  ];
 
   before(function (done) {
     var apiKeyOptions = {
@@ -37,7 +51,7 @@ describe('App Insights query', function () {
     }
     var credentials = new msrest.ApiKeyCredentials(apiKeyOptions);
     client = new ApplicationInsightsDataClient(credentials);
-    suiteUtil = new MockedTestUtils(client, 'applicationinsightsClient-query-tests');
+    suiteUtil = new MockedTestUtils(client, 'applicationinsightsClient-events-tests');
     suiteUtil.setupSuite(done);
   });
 
@@ -53,25 +67,39 @@ describe('App Insights query', function () {
     suiteUtil.baseTeardownTest(done);
   });
   
-  it('executes successfully', function (done) {
-    var queryBody = {
-      query: 'requests | take 10',
-      timespan: 'P2D'
-    }
-    client.query.execute(appId, queryBody, function(err, result) {
-      // All results at least return one empty table
+  it('can get events by type', function (done) {
+    client.events.getByType(appId, 'requests', (err, result) => {
       if (err) {
-        done(err);
+        return done(err);
       }
-      should.exist(result.tables);
-      (result.tables.length).should.be.aboveOrEqual(1);
       
-      // requests here has 37 column schema
-      should.equal(result.tables[0].columns.length, 37);
- 
-      // This call should be able to retrieve 10 rows successfully
-      should.equal(result.tables[0].rows.length, 10);
+      should.exist(result.value);
+      result.value.length.should.be.aboveOrEqual(1);
+      for (var i = 0; i < result.value.length; i++) {
+        result.value[i].should.have.properties(props);
+      }
+      console.log(result, err)
       done();
-    })
+    });
+  });
+
+  it('can get single event by id', function (done) {
+    client.events.get(appId, 'requests', 'a3a046e0-7378-11e8-9522-d9a097b67ddd', (err, result) => {
+      if (err) {
+        return done(err);
+      }
+      console.log(result, err);
+      done();
+    });
+  });
+
+  it('can get events metadata', function (done) {
+    client.events.getOdataMetadata(appId, (err, result, req, res) => {
+      if (err) {
+        // ERROR: Can't deserialize XML
+        return done(err);
+      }
+      done();
+    });
   });
 });

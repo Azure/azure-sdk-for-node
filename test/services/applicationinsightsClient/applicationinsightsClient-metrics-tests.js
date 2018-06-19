@@ -27,6 +27,7 @@ describe('App Insights metrics', function () {
   
   var client;
   var suiteUtil;
+  const appId = 'DEMO_APP';
 
   before(function (done) {
     var apiKeyOptions = {
@@ -54,7 +55,7 @@ describe('App Insights metrics', function () {
   
   it('can get single metric successfully', function (done) {
     let metricId = 'availabilityResults/count';
-    client.metrics.get('DEMO_APP', metricId, function(err, result) {
+    client.metrics.get(appId, metricId, function(err, result) {
       // All results at least return one empty table
       if (err) {
         done(err);
@@ -86,9 +87,9 @@ describe('App Insights metrics', function () {
       }
     ]
 
-    client.metrics.getMultiple('DEMO_APP', params, function(err, result) {
+    client.metrics.getMultiple(appId, params, function(err, result) {
       if (err) {
-        done(err);
+        return done(err);
       }
       
       // Basic properties
@@ -108,9 +109,9 @@ describe('App Insights metrics', function () {
   });
 
   it('can get metrics metadata successfully', function (done) {
-    client.metrics.getMetadata('DEMO_APP', function(err, result) {
+    client.metrics.getMetadata(appId, function(err, result) {
       if (err) {
-        done(err);
+        return done(err);
       }
 
       // Check smattering of metadata properties (how to improve this?)
