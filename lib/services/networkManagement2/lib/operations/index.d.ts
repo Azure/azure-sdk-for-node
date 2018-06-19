@@ -11147,6 +11147,11 @@ export interface NetworkInterfaces {
      * @param {object} parameters Parameters supplied to the create or update
      * network interface operation.
      *
+     * @param {object} [parameters.virtualMachine] The reference of a virtual
+     * machine.
+     *
+     * @param {string} [parameters.virtualMachine.id] Resource ID.
+     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -11252,6 +11257,11 @@ export interface NetworkInterfaces {
      *
      * @param {object} parameters Parameters supplied to the create or update
      * network interface operation.
+     *
+     * @param {object} [parameters.virtualMachine] The reference of a virtual
+     * machine.
+     *
+     * @param {string} [parameters.virtualMachine.id] Resource ID.
      *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
@@ -12092,6 +12102,11 @@ export interface NetworkInterfaces {
      * @param {object} parameters Parameters supplied to the create or update
      * network interface operation.
      *
+     * @param {object} [parameters.virtualMachine] The reference of a virtual
+     * machine.
+     *
+     * @param {string} [parameters.virtualMachine.id] Resource ID.
+     *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
      *
@@ -12197,6 +12212,11 @@ export interface NetworkInterfaces {
      *
      * @param {object} parameters Parameters supplied to the create or update
      * network interface operation.
+     *
+     * @param {object} [parameters.virtualMachine] The reference of a virtual
+     * machine.
+     *
+     * @param {string} [parameters.virtualMachine.id] Resource ID.
      *
      * @param {object} [parameters.networkSecurityGroup] The reference of the
      * NetworkSecurityGroup resource.
