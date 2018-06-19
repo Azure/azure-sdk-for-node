@@ -78,7 +78,6 @@ describe('App Insights events', function () {
       for (var i = 0; i < result.value.length; i++) {
         result.value[i].should.have.properties(props);
       }
-      console.log(result, err)
       done();
     });
   });
@@ -88,7 +87,9 @@ describe('App Insights events', function () {
       if (err) {
         return done(err);
       }
-      console.log(result, err);
+      should.exist(result.value)
+      result.value.length.should.be.eql(1);
+      result.value[0].should.have.properties(props);
       done();
     });
   });
