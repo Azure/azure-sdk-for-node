@@ -30,6 +30,7 @@ export interface Workflows {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: State, Trigger, and ReferencedResourceId.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -51,6 +52,7 @@ export interface Workflows {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: State, Trigger, and ReferencedResourceId.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -93,6 +95,7 @@ export interface Workflows {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: State, Trigger, and ReferencedResourceId.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -116,6 +119,7 @@ export interface Workflows {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: State, Trigger, and ReferencedResourceId.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2099,6 +2103,7 @@ export interface WorkflowTriggerHistories {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: Status, StartTime, and ClientTrackingId.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2126,6 +2131,7 @@ export interface WorkflowTriggerHistories {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: Status, StartTime, and ClientTrackingId.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2376,6 +2382,7 @@ export interface WorkflowRuns {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: Status, StartTime, and ClientTrackingId.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2401,6 +2408,7 @@ export interface WorkflowRuns {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: Status, StartTime, and ClientTrackingId.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2638,6 +2646,7 @@ export interface WorkflowRunActions {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: Status.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2665,6 +2674,7 @@ export interface WorkflowRunActions {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: Status.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5008,6 +5018,7 @@ export interface Schemas {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: SchemaType.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5033,6 +5044,7 @@ export interface Schemas {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: SchemaType.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5455,6 +5467,7 @@ export interface Maps {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: MapType.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5480,6 +5493,7 @@ export interface Maps {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: MapType.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5898,6 +5912,7 @@ export interface Partners {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: PartnerType.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -5923,6 +5938,7 @@ export interface Partners {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: PartnerType.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -6339,6 +6355,7 @@ export interface Agreements {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: AgreementType.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -6364,6 +6381,7 @@ export interface Agreements {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: AgreementType.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9105,6 +9123,7 @@ export interface Sessions {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: ChangedTime.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -9130,6 +9149,7 @@ export interface Sessions {
      * result.
      *
      * @param {string} [options.filter] The filter to apply on the operation.
+     * Options for filters include: ChangedTime.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
