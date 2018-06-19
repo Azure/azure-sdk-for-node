@@ -37,7 +37,7 @@ export interface ErrorFieldContract {
  * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
- * Error Body contract.
+ * Error Response.
  *
  * @member {string} [code] Service-defined error code. This code serves as a
  * sub-status for the HTTP error code specified in the response.
