@@ -795,7 +795,7 @@ export interface HybridRunbookWorkerGroupUpdateParameters {
  * @constructor
  * The schedule property associated with the entity.
  *
- * @member {string} [name] Gets or sets the name of the schedule.
+ * @member {string} [name] Gets or sets the name of the Schedule.
  */
 export interface ScheduleAssociationProperty {
   name?: string;
@@ -824,7 +824,7 @@ export interface RunbookAssociationProperty {
  * @member {string} [type] Resource type
  * @member {string} [jobScheduleId] Gets or sets the id of job schedule.
  * @member {object} [schedule] Gets or sets the schedule.
- * @member {string} [schedule.name] Gets or sets the name of the schedule.
+ * @member {string} [schedule.name] Gets or sets the name of the Schedule.
  * @member {object} [runbook] Gets or sets the runbook.
  * @member {string} [runbook.name] Gets or sets the name of the runbook.
  * @member {string} [runOn] Gets or sets the hybrid worker group that the
@@ -850,7 +850,7 @@ export interface JobSchedule {
  * The parameters supplied to the create job schedule operation.
  *
  * @member {object} schedule Gets or sets the schedule.
- * @member {string} [schedule.name] Gets or sets the name of the schedule.
+ * @member {string} [schedule.name] Gets or sets the name of the Schedule.
  * @member {object} runbook Gets or sets the runbook.
  * @member {string} [runbook.name] Gets or sets the name of the runbook.
  * @member {string} [runOn] Gets or sets the hybrid worker group that the
@@ -1544,7 +1544,7 @@ export interface AdvancedSchedule {
  * @constructor
  * The parameters supplied to the create or update schedule operation.
  *
- * @member {string} name Gets or sets the name of the schedule.
+ * @member {string} name Gets or sets the name of the Schedule.
  * @member {string} [description] Gets or sets the description of the schedule.
  * @member {date} startTime Gets or sets the start time of the schedule.
  * @member {date} [expiryTime] Gets or sets the end time of the schedule.
@@ -1675,7 +1675,7 @@ export interface Schedule extends ProxyResource {
  * @constructor
  * The parameters supplied to the update schedule operation.
  *
- * @member {string} [name] Gets or sets the name of the schedule.
+ * @member {string} [name] Gets or sets the name of the Schedule.
  * @member {string} [description] Gets or sets the description of the schedule.
  * @member {boolean} [isEnabled] Gets or sets a value indicating whether this
  * schedule is enabled.

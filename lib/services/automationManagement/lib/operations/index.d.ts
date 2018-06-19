@@ -3590,7 +3590,7 @@ export interface JobScheduleOperations {
      * @param {object} parameters.schedule Gets or sets the schedule.
      *
      * @param {string} [parameters.schedule.name] Gets or sets the name of the
-     * schedule.
+     * Schedule.
      *
      * @param {object} parameters.runbook Gets or sets the runbook.
      *
@@ -3631,7 +3631,7 @@ export interface JobScheduleOperations {
      * @param {object} parameters.schedule Gets or sets the schedule.
      *
      * @param {string} [parameters.schedule.name] Gets or sets the name of the
-     * schedule.
+     * Schedule.
      *
      * @param {object} parameters.runbook Gets or sets the runbook.
      *
@@ -6387,7 +6387,7 @@ export interface ScheduleOperations {
      * @param {object} parameters The parameters supplied to the create or update
      * schedule operation.
      *
-     * @param {string} parameters.name Gets or sets the name of the schedule.
+     * @param {string} parameters.name Gets or sets the name of the Schedule.
      *
      * @param {string} [parameters.description] Gets or sets the description of the
      * schedule.
@@ -6444,7 +6444,7 @@ export interface ScheduleOperations {
      * @param {object} parameters The parameters supplied to the create or update
      * schedule operation.
      *
-     * @param {string} parameters.name Gets or sets the name of the schedule.
+     * @param {string} parameters.name Gets or sets the name of the Schedule.
      *
      * @param {string} [parameters.description] Gets or sets the description of the
      * schedule.
@@ -6520,7 +6520,7 @@ export interface ScheduleOperations {
      * @param {object} parameters The parameters supplied to the update schedule
      * operation.
      *
-     * @param {string} [parameters.name] Gets or sets the name of the schedule.
+     * @param {string} [parameters.name] Gets or sets the name of the Schedule.
      *
      * @param {string} [parameters.description] Gets or sets the description of the
      * schedule.
@@ -6553,7 +6553,7 @@ export interface ScheduleOperations {
      * @param {object} parameters The parameters supplied to the update schedule
      * operation.
      *
-     * @param {string} [parameters.name] Gets or sets the name of the schedule.
+     * @param {string} [parameters.name] Gets or sets the name of the Schedule.
      *
      * @param {string} [parameters.description] Gets or sets the description of the
      * schedule.
