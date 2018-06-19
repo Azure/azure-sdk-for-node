@@ -35,9 +35,10 @@ msrestazure.loginWithServicePrincipalSecret(
   options,
   (err, credentials) => {
     if (err) throw err
-    // ..use the client instance to access service resources.
+    // Create the client instance. No arguments necessary besides parameters. 
     const client = new ApplicationInsightsDataClient(credentials);
 
+    // Parameters
     const appId = 'ed6078ff-9048-4dd7-9b21-fc39e3fc7249';
     var body = {
       query: 'availabilityResults | summarize count() by name, location, duration | order by duration desc | take 10',
