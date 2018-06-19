@@ -875,150 +875,50 @@ export interface Application extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the VersionSpec class.
+ * Initializes a new instance of the LocalizedName class.
  * @constructor
- * The version properties.
+ * The details about the localizable name of a type of usage.
  *
- * @member {string} [friendlyName] The friendly name
- * @member {string} [displayName] The display name
- * @member {string} [isDefault] Whether or not the version is the default
- * version.
- * @member {object} [componentVersions] The component version property.
+ * @member {string} [value] The name of the used resource.
+ * @member {string} [localizedValue] The localized name of the used resource.
  */
-export interface VersionSpec {
-  friendlyName?: string;
-  displayName?: string;
-  isDefault?: string;
-  componentVersions?: { [propertyName: string]: string };
+export interface LocalizedName {
+  value?: string;
+  localizedValue?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the VersionsCapability class.
+ * Initializes a new instance of the Usage class.
  * @constructor
- * The version capability.
+ * The details about the usage of a particular limited resource.
  *
- * @member {array} [available] The list of version capabilities.
+ * @member {string} [unit] The type of measurement for usage.
+ * @member {number} [currentValue] The current usage.
+ * @member {number} [limit] The maximum allowed usage.
+ * @member {object} [name] The details about the localizable name of the used
+ * resource.
+ * @member {string} [name.value] The name of the used resource.
+ * @member {string} [name.localizedValue] The localized name of the used
+ * resource.
  */
-export interface VersionsCapability {
-  available?: VersionSpec[];
+export interface Usage {
+  unit?: string;
+  currentValue?: number;
+  limit?: number;
+  name?: LocalizedName;
 }
 
 /**
  * @class
- * Initializes a new instance of the RegionsCapability class.
+ * Initializes a new instance of the UsagesResult class.
  * @constructor
- * The regions capability.
+ * The response for the operation to get regional usages for a subscription.
  *
- * @member {array} [available] The list of region capabilities.
+ * @member {array} [value] The list of usages.
  */
-export interface RegionsCapability {
-  available?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VmSizesCapability class.
- * @constructor
- * The virtual machine sizes capability.
- *
- * @member {array} [available] The list of virtual machine size capabilities.
- */
-export interface VmSizesCapability {
-  available?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VmSizeCompatibilityFilter class.
- * @constructor
- * The virtual machine type compatibility filter.
- *
- * @member {string} [filterMode] The mode for the filter.
- * @member {array} [regions] The list of regions.
- * @member {array} [clusterFlavors] The list of cluster types available.
- * @member {array} [nodeTypes] The list of node types.
- * @member {array} [clusterVersions] The list of cluster versions.
- * @member {array} [vmsizes] The list of virtual machine sizes.
- */
-export interface VmSizeCompatibilityFilter {
-  filterMode?: string;
-  regions?: string[];
-  clusterFlavors?: string[];
-  nodeTypes?: string[];
-  clusterVersions?: string[];
-  vmsizes?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RegionalQuotaCapability class.
- * @constructor
- * The regional quota capacity.
- *
- * @member {string} [regionName] The region name.
- * @member {number} [coresUsed] The number of cores used in the region.
- * @member {number} [coresAvailable] The number of courses available in the
- * region.
- */
-export interface RegionalQuotaCapability {
-  regionName?: string;
-  coresUsed?: number;
-  coresAvailable?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the QuotaCapability class.
- * @constructor
- * The regional quota capability.
- *
- * @member {array} [regionalQuotas] The list of region quota capabilities.
- */
-export interface QuotaCapability {
-  regionalQuotas?: RegionalQuotaCapability[];
-}
-
-/**
- * @class
- * Initializes a new instance of the CapabilitiesResult class.
- * @constructor
- * The Get Capabilities operation response.
- *
- * @member {object} [versions] The version capability.
- * @member {object} [regions] The virtual machine size compatibilty features.
- * @member {object} [vmSizes] The virtual machine sizes.
- * @member {array} [vmSizeFilters] The virtual machine size compatibilty
- * filters.
- * @member {array} [features] The capabilty features.
- * @member {object} [quota] The quota capability.
- * @member {array} [quota.regionalQuotas] The list of region quota
- * capabilities.
- */
-export interface CapabilitiesResult {
-  versions?: { [propertyName: string]: VersionsCapability };
-  regions?: { [propertyName: string]: RegionsCapability };
-  vmSizes?: { [propertyName: string]: VmSizesCapability };
-  vmSizeFilters?: VmSizeCompatibilityFilter[];
-  features?: string[];
-  quota?: QuotaCapability;
-}
-
-/**
- * @class
- * Initializes a new instance of the HttpConnectivitySettings class.
- * @constructor
- * The payload for a Configure HTTP settings request.
- *
- * @member {string} [enabledCredential] Whether or not the HTTP based
- * authorization is enabled. Possible values include: 'true', 'false'
- * @member {string} [username] The HTTP username.
- * @member {string} [password] The HTTP user password.
- */
-export interface HttpConnectivitySettings {
-  enabledCredential?: string;
-  username?: string;
-  password?: string;
+export interface UsagesResult {
+  value?: Usage[];
 }
 
 /**

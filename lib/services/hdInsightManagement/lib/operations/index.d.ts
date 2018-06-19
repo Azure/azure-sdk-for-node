@@ -1452,7 +1452,7 @@ export interface Location {
 
 
     /**
-     * Gets the capabilities for the specified location.
+     * Lists the usages for the specified location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1461,14 +1461,14 @@ export interface Location {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<CapabilitiesResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<UsagesResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getCapabilitiesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CapabilitiesResult>>;
+    listUsagesWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsagesResult>>;
 
     /**
-     * Gets the capabilities for the specified location.
+     * Lists the usages for the specified location.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1482,7 +1482,7 @@ export interface Location {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {CapabilitiesResult} - The deserialized result object.
+     *                      @resolve {UsagesResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1490,16 +1490,16 @@ export interface Location {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {CapabilitiesResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CapabilitiesResult} for more information.
+     *                      {UsagesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UsagesResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getCapabilities(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CapabilitiesResult>;
-    getCapabilities(callback: ServiceCallback<models.CapabilitiesResult>): void;
-    getCapabilities(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CapabilitiesResult>): void;
+    listUsages(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UsagesResult>;
+    listUsages(callback: ServiceCallback<models.UsagesResult>): void;
+    listUsages(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsagesResult>): void;
 }
 
 /**
@@ -1514,14 +1514,7 @@ export interface Configurations {
     /**
      * Configures the HTTP settings on the specified cluster.
      *
-     * @param {object} parameters The name of the resource group.
-     *
-     * @param {string} [parameters.enabledCredential] Whether or not the HTTP based
-     * authorization is enabled. Possible values include: 'true', 'false'
-     *
-     * @param {string} [parameters.username] The HTTP username.
-     *
-     * @param {string} [parameters.password] The HTTP user password.
+     * @param {object} parameters The cluster configurations.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1534,19 +1527,12 @@ export interface Configurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateHTTPSettingsWithHttpOperationResponse(parameters: models.HttpConnectivitySettings, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    updateHTTPSettingsWithHttpOperationResponse(parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Configures the HTTP settings on the specified cluster.
      *
-     * @param {object} parameters The name of the resource group.
-     *
-     * @param {string} [parameters.enabledCredential] Whether or not the HTTP based
-     * authorization is enabled. Possible values include: 'true', 'false'
-     *
-     * @param {string} [parameters.username] The HTTP username.
-     *
-     * @param {string} [parameters.password] The HTTP user password.
+     * @param {object} parameters The cluster configurations.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1574,9 +1560,9 @@ export interface Configurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateHTTPSettings(parameters: models.HttpConnectivitySettings, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    updateHTTPSettings(parameters: models.HttpConnectivitySettings, callback: ServiceCallback<void>): void;
-    updateHTTPSettings(parameters: models.HttpConnectivitySettings, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    updateHTTPSettings(parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    updateHTTPSettings(parameters: { [propertyName: string]: string }, callback: ServiceCallback<void>): void;
+    updateHTTPSettings(parameters: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1632,14 +1618,7 @@ export interface Configurations {
     /**
      * Configures the HTTP settings on the specified cluster.
      *
-     * @param {object} parameters The name of the resource group.
-     *
-     * @param {string} [parameters.enabledCredential] Whether or not the HTTP based
-     * authorization is enabled. Possible values include: 'true', 'false'
-     *
-     * @param {string} [parameters.username] The HTTP username.
-     *
-     * @param {string} [parameters.password] The HTTP user password.
+     * @param {object} parameters The cluster configurations.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1652,19 +1631,12 @@ export interface Configurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateHTTPSettingsWithHttpOperationResponse(parameters: models.HttpConnectivitySettings, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginUpdateHTTPSettingsWithHttpOperationResponse(parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Configures the HTTP settings on the specified cluster.
      *
-     * @param {object} parameters The name of the resource group.
-     *
-     * @param {string} [parameters.enabledCredential] Whether or not the HTTP based
-     * authorization is enabled. Possible values include: 'true', 'false'
-     *
-     * @param {string} [parameters.username] The HTTP username.
-     *
-     * @param {string} [parameters.password] The HTTP user password.
+     * @param {object} parameters The cluster configurations.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1692,9 +1664,9 @@ export interface Configurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateHTTPSettings(parameters: models.HttpConnectivitySettings, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginUpdateHTTPSettings(parameters: models.HttpConnectivitySettings, callback: ServiceCallback<void>): void;
-    beginUpdateHTTPSettings(parameters: models.HttpConnectivitySettings, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginUpdateHTTPSettings(parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginUpdateHTTPSettings(parameters: { [propertyName: string]: string }, callback: ServiceCallback<void>): void;
+    beginUpdateHTTPSettings(parameters: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
