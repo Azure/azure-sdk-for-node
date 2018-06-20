@@ -70,8 +70,8 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {number} [options.keySize] The key size in bytes. For example, 1024
-   * or 2048.
+   * @param {number} [options.keySize] The key size in bits. For example: 2048,
+   * 3072, or 4096 for RSA.
    *
    * @param {array} [options.keyOps]
    *
@@ -89,7 +89,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.curve] Elliptic curve name. For valid values, see
    * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
-   * 'SECP256K1'
+   * 'P-256K'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -122,8 +122,8 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {number} [options.keySize] The key size in bytes. For example, 1024
-   * or 2048.
+   * @param {number} [options.keySize] The key size in bits. For example: 2048,
+   * 3072, or 4096 for RSA.
    *
    * @param {array} [options.keyOps]
    *
@@ -141,7 +141,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.curve] Elliptic curve name. For valid values, see
    * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
-   * 'SECP256K1'
+   * 'P-256K'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -190,8 +190,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [key.kid] Key identifier.
    *
-   * @param {string} [key.kty] JsonWebKey key type (kty). Possible values
-   * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} [key.kty] JsonWebKey Key Type (kty), as defined in
+   * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+   * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {array} [key.keyOps]
    *
@@ -218,7 +219,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [key.crv] Elliptic curve name. For valid values, see
    * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
-   * 'SECP256K1'
+   * 'P-256K'
    *
    * @param {buffer} [key.x] X component of an EC public key.
    *
@@ -269,8 +270,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [key.kid] Key identifier.
    *
-   * @param {string} [key.kty] JsonWebKey key type (kty). Possible values
-   * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} [key.kty] JsonWebKey Key Type (kty), as defined in
+   * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+   * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {array} [key.keyOps]
    *
@@ -297,7 +299,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [key.crv] Elliptic curve name. For valid values, see
    * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
-   * 'SECP256K1'
+   * 'P-256K'
    *
    * @param {buffer} [key.x] X component of an EC public key.
    *
@@ -1145,7 +1147,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * more information on possible algorithm types, see
    * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
    * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
-   * 'ECDSA256'
+   * 'ES256K'
    *
    * @param {buffer} value
    *
@@ -1180,7 +1182,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * more information on possible algorithm types, see
    * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
    * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
-   * 'ECDSA256'
+   * 'ES256K'
    *
    * @param {buffer} value
    *
@@ -1236,7 +1238,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm The signing/verification algorithm. For more
    * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
    * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
-   * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ECDSA256'
+   * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ES256K'
    *
    * @param {buffer} digest The digest used for signing.
    *
@@ -1275,7 +1277,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm The signing/verification algorithm. For more
    * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
    * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
-   * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ECDSA256'
+   * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ES256K'
    *
    * @param {buffer} digest The digest used for signing.
    *
@@ -3514,14 +3516,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.kty] The type of
+   * key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-   * size in bytes. For example;  1024 or 2048.
+   * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -3631,14 +3638,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.kty] The type of
+   * key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-   * size in bytes. For example;  1024 or 2048.
+   * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -3777,14 +3789,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.kty] The type of
+   * key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-   * size in bytes. For example;  1024 or 2048.
+   * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -3904,14 +3921,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.kty] The type of
+   * key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-   * size in bytes. For example;  1024 or 2048.
+   * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -4184,13 +4206,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
    * the private key can be exported.
    *
-   * @param {string} [certificatePolicy.keyProperties.keyType] The key type.
+   * @param {string} [certificatePolicy.keyProperties.kty] The type of key pair
+   * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
+   * 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [certificatePolicy.keyProperties.keySize] The key size in
-   * bytes. For example;  1024 or 2048.
+   * bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if the
    * same key pair will be used on certificate renewal.
+   *
+   * @param {string} [certificatePolicy.keyProperties.curve] Elliptic curve name.
+   * For valid values, see JsonWebKeyCurveName. Possible values include: 'P-256',
+   * 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [certificatePolicy.secretProperties] Properties of the
    * secret backing a certificate.
@@ -4291,13 +4319,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
    * the private key can be exported.
    *
-   * @param {string} [certificatePolicy.keyProperties.keyType] The key type.
+   * @param {string} [certificatePolicy.keyProperties.kty] The type of key pair
+   * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
+   * 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [certificatePolicy.keyProperties.keySize] The key size in
-   * bytes. For example;  1024 or 2048.
+   * bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if the
    * same key pair will be used on certificate renewal.
+   *
+   * @param {string} [certificatePolicy.keyProperties.curve] Elliptic curve name.
+   * For valid values, see JsonWebKeyCurveName. Possible values include: 'P-256',
+   * 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [certificatePolicy.secretProperties] Properties of the
    * secret backing a certificate.
@@ -4424,14 +4458,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.kty] The type of
+   * key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-   * size in bytes. For example;  1024 or 2048.
+   * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -4546,14 +4585,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.kty] The type of
+   * key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
-   * size in bytes. For example;  1024 or 2048.
+   * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
