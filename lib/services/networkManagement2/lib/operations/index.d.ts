@@ -29172,8 +29172,8 @@ export interface VirtualNetworkGatewayConnections {
      * Network Gateway connection Shared key operation throughNetwork resource
      * provider.
      *
-     * @param {string} parameters.value The virtual network connection shared key
-     * value.
+     * @param {string} [parameters.value] The virtual network gateway connection
+     * shared key value.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -29205,8 +29205,8 @@ export interface VirtualNetworkGatewayConnections {
      * Network Gateway connection Shared key operation throughNetwork resource
      * provider.
      *
-     * @param {string} parameters.value The virtual network connection shared key
-     * value.
+     * @param {string} [parameters.value] The virtual network gateway connection
+     * shared key value.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -30002,8 +30002,8 @@ export interface VirtualNetworkGatewayConnections {
      * Network Gateway connection Shared key operation throughNetwork resource
      * provider.
      *
-     * @param {string} parameters.value The virtual network connection shared key
-     * value.
+     * @param {string} [parameters.value] The virtual network gateway connection
+     * shared key value.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -30035,8 +30035,8 @@ export interface VirtualNetworkGatewayConnections {
      * Network Gateway connection Shared key operation throughNetwork resource
      * provider.
      *
-     * @param {string} parameters.value The virtual network connection shared key
-     * value.
+     * @param {string} [parameters.value] The virtual network gateway connection
+     * shared key value.
      *
      * @param {string} [parameters.id] Resource ID.
      *
