@@ -221,10 +221,12 @@ export interface ImageType {
  * @member {string} [name] The tag value
  * @member {number} [confidence] The level of confidence the service has in the
  * caption
+ * @member {string} [hint] Optional categorization for the tag
  */
 export interface ImageTag {
   name?: string;
   confidence?: number;
+  hint?: string;
 }
 
 /**
