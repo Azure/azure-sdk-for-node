@@ -581,6 +581,162 @@ describe('msrest', function () {
       result.birthdate.should.equal('2017-12-13T02:29:51.000Z');
       done();
     });
+
+    it("should allow null when required: true and nullable: true", function() {
+      const mapper = {
+        required: false,
+        serializedName: 'testmodel',
+        type: {
+          name: 'Composite',
+          className: 'testmodel',
+          modelProperties: {
+            length: {
+              required: true,
+              nullable: true,
+              serializedName: 'length',
+              type: {
+                name: 'Number'
+              }
+            }
+          }
+        }
+      };
+
+      const result = msRest.serialize(mapper, { length: null }, "testobj");
+      should.exist(result);
+    });
+
+    it("should not allow undefined when required: true and nullable: true", function() {
+      const mapper = {
+        required: true,
+        nullable: true,
+        type: {
+          name: "String"
+        }
+      };
+      (function () { msRest.serialize(mapper, undefined, "testobj"); }).should.throw("testobj cannot be undefined.");
+    });
+
+    it("should not allow null when required: true and nullable: false", function() {
+      const mapper = {
+        required: true,
+        nullable: false,
+        type: {
+          name: "String"
+        }
+      };
+      (function () { msRest.serialize(mapper, null, "testobj"); }).should.throw("testobj cannot be null or undefined.");
+    });
+
+    it("should not allow undefined when required: true and nullable: false", function() {
+      const mapper = {
+        required: true,
+        nullable: false,
+        type: {
+          name: "String"
+        }
+      };
+      (function () { msRest.serialize(mapper, undefined, "testobj"); }).should.throw("testobj cannot be null or undefined.");
+    });
+
+    it("should not allow null when required: true and nullable is undefined", function() {
+      const mapper = {
+        required: true,
+        type: {
+          name: "String"
+        }
+      };
+      (function () { msRest.serialize(mapper, null, "testobj"); }).should.throw("testobj cannot be null or undefined.");
+    });
+
+    it("should not allow undefined when required: true and nullable is undefined", function() {
+      const mapper = {
+        required: true,
+        type: {
+          name: "String"
+        }
+      };
+      (function () { msRest.serialize(mapper, undefined, "testobj"); }).should.throw("testobj cannot be null or undefined.");
+    });
+
+    it("should allow null when required: false and nullable: true", function() {
+      const mapper = {
+        required: false,
+        nullable: true,
+        type: {
+          name: "String"
+        }
+      };
+
+      msRest.serialize(mapper, null, "testobj");
+    });
+
+    it("should not allow null when required: false and nullable: false", function() {
+      const mapper = {
+        required: false,
+        nullable: false,
+        type: {
+          name: "String"
+        }
+      };
+      (function () { msRest.serialize(mapper, null, "testobj"); }).should.throw("testobj cannot be null.");
+    });
+
+    it("should allow null when required: false and nullable is undefined", function() {
+      const mapper = {
+        required: false,
+        type: {
+          name: "String"
+        }
+      };
+
+      msRest.serialize(mapper, null, "testobj");
+    });
+
+    it("should allow undefined when required: false and nullable: true", function() {
+      const mapper = {
+        required: false,
+        nullable: true,
+        type: {
+          name: "String"
+        }
+      };
+
+      msRest.serialize(mapper, undefined, "testobj");
+    });
+
+    it("should allow undefined when required: false and nullable: false", function() {
+      const mapper = {
+        serializedName: "fooType",
+        type: {
+          name: "Composite",
+          className: "fooType",
+          modelProperties: {
+            foo: {
+              serializedName: "foo",
+              required: false,
+              nullable: false,
+              type: {
+                name: "String"
+              }
+            }
+          }
+        }
+      };
+
+      msRest.serialize(mapper, { foo: undefined }, "testobj");
+    });
+
+    it("should allow undefined when required: false and nullable is undefined", function() {
+      const mapper = {
+        required: false,
+        type: {
+          name: "String"
+        }
+      };
+
+      msRest.serialize(mapper, undefined, "testobj");
+    });
   });
 
   describe('deserialize', function () {

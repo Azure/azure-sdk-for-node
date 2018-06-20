@@ -58,16 +58,44 @@ exports.serialize = function (mapper, object, objectName) {
   let mapperType = mapper.type.name;
   if (!objectName) objectName = mapper.serializedName;
   if (mapperType.match(/^Sequence$/ig) !== null) payload = [];
-  //Throw if required and object is null or undefined
-  if (mapper.required && (object === null || object === undefined) && !mapper.isConstant) {
-    throw new Error(`${objectName} cannot be null or undefined.`);
-  }
   //Set Defaults
   if ((mapper.defaultValue !== null && mapper.defaultValue !== undefined) &&
     (object === null || object === undefined)) {
     object = mapper.defaultValue;
   }
   if (mapper.isConstant) object = mapper.defaultValue;
+
+  // See the following table to understand the logic behind
+  // the mapper.required and mapper.nullable properties.
+  // X means "neither undefined or null are allowed".
+  //           || required
+  //           || true      | false
+  //  nullable || ==========================
+  //      true || null      | undefined/null
+  //     false || X         | undefined
+  // undefined || X         | undefined/null
+
+  const { nullable, required } = mapper;
+  const areNullAndUndefinedAllowed = nullable !== false && !required;
+  const isOnlyNullAllowed = nullable === true && required || areNullAndUndefinedAllowed;
+  const isOnlyUndefinedAllowed = nullable === false && !required || areNullAndUndefinedAllowed;
+
+  if (!areNullAndUndefinedAllowed) {
+    if (object === null) {
+      if (isOnlyUndefinedAllowed) {
+        throw new Error(`${objectName} cannot be null.`);
+      }
+
+      throw new Error(`${objectName} cannot be null or undefined.`);
+    } else if (object === undefined) {
+      if (isOnlyNullAllowed) {
+        throw new Error(`${objectName} cannot be undefined.`);
+      }
+
+      throw new Error(`${objectName} cannot be null or undefined.`);
+    }
+  }
+
   //Validate Constraints if any
   validateConstraints.call(this, mapper, object, objectName);
   if (mapperType.match(/^any$/ig) !== null) {
@@ -228,9 +256,6 @@ function serializeCompositeType(mapper, object, objectName) {
           if (modelProps[key].isPolymorphicDiscriminator){
             //add expected polymorphic discriminator when serializing if it is missing
             object[key] = mapper.serializedName;
-          } else if (modelProps[key].required && !modelProps[key].isConstant) {
-            //required properties of the CompositeType must be present
-            throw new Error(`${key}" cannot be null or undefined in "${objectName}".`);
           }
         }
 
