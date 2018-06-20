@@ -1590,11 +1590,13 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * changes whenever the resource is updated.
  * @member {string} [health] Health of backend server. Possible values include:
  * 'Unknown', 'Up', 'Down', 'Partial', 'Draining'
+ * @member {string} [healthProbeLog] Log to indicate probe failure cause.
  */
 export interface ApplicationGatewayBackendHealthServer {
   address?: string;
   ipConfiguration?: NetworkInterfaceIPConfiguration;
   health?: string;
+  healthProbeLog?: string;
 }
 
 /**
@@ -6333,7 +6335,7 @@ export interface ConnectionResetSharedKey {
  *
  * @member {string} value The virtual network connection shared key value.
  */
-export interface ConnectionSharedKey {
+export interface ConnectionSharedKey extends SubResource {
   value: string;
 }
 
@@ -6640,7 +6642,6 @@ export interface VirtualHub extends Resource {
  * @member {boolean} [enableBgp] EnableBgp flag
  * @member {array} [ipsecPolicies] The IPSec Policies to be considered by this
  * connection.
- * @member {boolean} [enableRateLimiting] EnableRateLimiting flag
  * @member {string} [provisioningState] The provisioning state of the resource.
  * Possible values include: 'Succeeded', 'Updating', 'Deleting', 'Failed'
  * @member {string} [etag] Gets a unique read-only string that changes whenever
@@ -6656,7 +6657,6 @@ export interface VpnConnection extends Resource {
   sharedKey?: string;
   enableBgp?: boolean;
   ipsecPolicies?: IpsecPolicy[];
-  enableRateLimiting?: boolean;
   provisioningState?: string;
   readonly etag?: string;
 }
