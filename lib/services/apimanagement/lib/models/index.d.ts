@@ -35,6 +35,24 @@ export interface ErrorFieldContract {
 
 /**
  * @class
+ * Initializes a new instance of the ErrorResponseBody class.
+ * @constructor
+ * Error Body contract.
+ *
+ * @member {string} [code] Service-defined error code. This code serves as a
+ * sub-status for the HTTP error code specified in the response.
+ * @member {string} [message] Human-readable representation of the error.
+ * @member {array} [details] The list of invalid fields send in request, in
+ * case of validation error.
+ */
+export interface ErrorResponseBody {
+  code?: string;
+  message?: string;
+  details?: ErrorFieldContract[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
  * Error Response.
@@ -3644,7 +3662,7 @@ export interface OperationResultContract {
   started?: Date;
   updated?: Date;
   resultInfo?: string;
-  error?: ErrorResponse;
+  error?: ErrorResponseBody;
   readonly actionLog?: OperationResultLogItemContract[];
 }
 
