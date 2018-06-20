@@ -727,7 +727,7 @@ export interface ProxyResource extends Resource {
  *
  * @member {string} [provider] The service provider: Microsoft.HDInsight
  * @member {string} [resource] The resource on which the operation is
- * performed: Cluster, Capabilities, etc.
+ * performed: Cluster, Applications, etc.
  * @member {string} [operation] The operation type: read, write, delete, etc.
  */
 export interface OperationDisplay {
@@ -748,7 +748,7 @@ export interface OperationDisplay {
  * @member {string} [display.provider] The service provider:
  * Microsoft.HDInsight
  * @member {string} [display.resource] The resource on which the operation is
- * performed: Cluster, Capabilities, etc.
+ * performed: Cluster, Applications, etc.
  * @member {string} [display.operation] The operation type: read, write,
  * delete, etc.
  */
