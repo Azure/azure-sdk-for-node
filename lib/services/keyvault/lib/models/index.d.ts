@@ -43,8 +43,9 @@ export interface Attributes {
  * As of http://tools.ietf.org/html/draft-ietf-jose-json-web-key-18
  *
  * @member {string} [kid] Key identifier.
- * @member {string} [kty] JsonWebKey key type (kty). Possible values include:
- * 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [kty] JsonWebKey Key Type (kty), as defined in
+ * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+ * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [keyOps]
  * @member {buffer} [n] RSA modulus.
  * @member {buffer} [e] RSA public exponent.
@@ -59,7 +60,7 @@ export interface Attributes {
  * @member {buffer} [t] HSM Token, used with 'Bring Your Own Key'.
  * @member {string} [crv] Elliptic curve name. For valid values, see
  * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
- * 'SECP256K1'
+ * 'P-256K'
  * @member {buffer} [x] X component of an EC public key.
  * @member {buffer} [y] Y component of an EC public key.
  */
@@ -107,8 +108,9 @@ export interface KeyAttributes extends Attributes {
  *
  * @member {object} [key] The Json web key.
  * @member {string} [key.kid] Key identifier.
- * @member {string} [key.kty] JsonWebKey key type (kty). Possible values
- * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [key.kty] JsonWebKey Key Type (kty), as defined in
+ * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+ * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [key.keyOps]
  * @member {buffer} [key.n] RSA modulus.
  * @member {buffer} [key.e] RSA public exponent.
@@ -123,7 +125,7 @@ export interface KeyAttributes extends Attributes {
  * @member {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
  * @member {string} [key.crv] Elliptic curve name. For valid values, see
  * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
- * 'SECP256K1'
+ * 'P-256K'
  * @member {buffer} [key.x] X component of an EC public key.
  * @member {buffer} [key.y] Y component of an EC public key.
  * @member {object} [attributes] The key management attributes.
@@ -413,17 +415,22 @@ export interface CertificateIssuerItem {
  * Properties of the key pair backing a certificate.
  *
  * @member {boolean} [exportable] Indicates if the private key can be exported.
- * @member {string} [keyType] The key type.
- * @member {number} [keySize] The key size in bytes. For example;  1024 or
- * 2048.
+ * @member {string} [kty] The type of key pair to be used for the certificate.
+ * Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+ * @member {number} [keySize] The key size in bits. For example: 2048, 3072, or
+ * 4096 for RSA.
  * @member {boolean} [reuseKey] Indicates if the same key pair will be used on
  * certificate renewal.
+ * @member {string} [curve] Elliptic curve name. For valid values, see
+ * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
+ * 'P-256K'
  */
 export interface KeyProperties {
   exportable?: boolean;
-  keyType?: string;
+  kty?: string;
   keySize?: number;
   reuseKey?: boolean;
+  curve?: string;
 }
 
 /**
@@ -563,11 +570,16 @@ export interface IssuerParameters {
  * certificate.
  * @member {boolean} [keyProperties.exportable] Indicates if the private key
  * can be exported.
- * @member {string} [keyProperties.keyType] The key type.
- * @member {number} [keyProperties.keySize] The key size in bytes. For example;
- * 1024 or 2048.
+ * @member {string} [keyProperties.kty] The type of key pair to be used for the
+ * certificate. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+ * 'oct'
+ * @member {number} [keyProperties.keySize] The key size in bits. For example:
+ * 2048, 3072, or 4096 for RSA.
  * @member {boolean} [keyProperties.reuseKey] Indicates if the same key pair
  * will be used on certificate renewal.
+ * @member {string} [keyProperties.curve] Elliptic curve name. For valid
+ * values, see JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384',
+ * 'P-521', 'P-256K'
  * @member {object} [secretProperties] Properties of the secret backing a
  * certificate.
  * @member {string} [secretProperties.contentType] The media type (MIME type).
@@ -632,11 +644,16 @@ export interface CertificatePolicy {
  * certificate.
  * @member {boolean} [policy.keyProperties.exportable] Indicates if the private
  * key can be exported.
- * @member {string} [policy.keyProperties.keyType] The key type.
- * @member {number} [policy.keyProperties.keySize] The key size in bytes. For
- * example;  1024 or 2048.
+ * @member {string} [policy.keyProperties.kty] The type of key pair to be used
+ * for the certificate. Possible values include: 'EC', 'EC-HSM', 'RSA',
+ * 'RSA-HSM', 'oct'
+ * @member {number} [policy.keyProperties.keySize] The key size in bits. For
+ * example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [policy.keyProperties.reuseKey] Indicates if the same key
  * pair will be used on certificate renewal.
+ * @member {string} [policy.keyProperties.curve] Elliptic curve name. For valid
+ * values, see JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384',
+ * 'P-521', 'P-256K'
  * @member {object} [policy.secretProperties] Properties of the secret backing
  * a certificate.
  * @member {string} [policy.secretProperties.contentType] The media type (MIME
@@ -936,7 +953,8 @@ export interface Contacts {
  * @member {string} kty The type of key to create. For valid values, see
  * JsonWebKeyType. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
  * 'oct'
- * @member {number} [keySize] The key size in bytes. For example, 1024 or 2048.
+ * @member {number} [keySize] The key size in bits. For example: 2048, 3072, or
+ * 4096 for RSA.
  * @member {array} [keyOps]
  * @member {object} [keyAttributes]
  * @member {string} [keyAttributes.recoveryLevel] Reflects the deletion
@@ -949,7 +967,7 @@ export interface Contacts {
  * key-value pairs.
  * @member {string} [curve] Elliptic curve name. For valid values, see
  * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
- * 'SECP256K1'
+ * 'P-256K'
  */
 export interface KeyCreateParameters {
   kty: string;
@@ -970,8 +988,9 @@ export interface KeyCreateParameters {
  * software key.
  * @member {object} key The Json web key
  * @member {string} [key.kid] Key identifier.
- * @member {string} [key.kty] JsonWebKey key type (kty). Possible values
- * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [key.kty] JsonWebKey Key Type (kty), as defined in
+ * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+ * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {array} [key.keyOps]
  * @member {buffer} [key.n] RSA modulus.
  * @member {buffer} [key.e] RSA public exponent.
@@ -986,7 +1005,7 @@ export interface KeyCreateParameters {
  * @member {buffer} [key.t] HSM Token, used with 'Bring Your Own Key'.
  * @member {string} [key.crv] Elliptic curve name. For valid values, see
  * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
- * 'SECP256K1'
+ * 'P-256K'
  * @member {buffer} [key.x] X component of an EC public key.
  * @member {buffer} [key.y] Y component of an EC public key.
  * @member {object} [keyAttributes] The key management attributes.
@@ -1031,7 +1050,7 @@ export interface KeyOperationsParameters {
  * For more information on possible algorithm types, see
  * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
  * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
- * 'ECDSA256'
+ * 'ES256K'
  * @member {buffer} value
  */
 export interface KeySignParameters {
@@ -1048,7 +1067,7 @@ export interface KeySignParameters {
  * @member {string} algorithm The signing/verification algorithm. For more
  * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
  * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
- * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ECDSA256'
+ * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ES256K'
  * @member {buffer} digest The digest used for signing.
  * @member {buffer} signature The signature to be verified.
  */
@@ -1156,11 +1175,16 @@ export interface SecretUpdateParameters {
  * backing a certificate.
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
+ * @member {string} [certificatePolicy.keyProperties.kty] The type of key pair
+ * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
+ * 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
- * bytes. For example;  1024 or 2048.
+ * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
+ * @member {string} [certificatePolicy.keyProperties.curve] Elliptic curve
+ * name. For valid values, see JsonWebKeyCurveName. Possible values include:
+ * 'P-256', 'P-384', 'P-521', 'P-256K'
  * @member {object} [certificatePolicy.secretProperties] Properties of the
  * secret backing a certificate.
  * @member {string} [certificatePolicy.secretProperties.contentType] The media
@@ -1244,11 +1268,16 @@ export interface CertificateCreateParameters {
  * backing a certificate.
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
+ * @member {string} [certificatePolicy.keyProperties.kty] The type of key pair
+ * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
+ * 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
- * bytes. For example;  1024 or 2048.
+ * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
+ * @member {string} [certificatePolicy.keyProperties.curve] Elliptic curve
+ * name. For valid values, see JsonWebKeyCurveName. Possible values include:
+ * 'P-256', 'P-384', 'P-521', 'P-256K'
  * @member {object} [certificatePolicy.secretProperties] Properties of the
  * secret backing a certificate.
  * @member {string} [certificatePolicy.secretProperties.contentType] The media
@@ -1329,11 +1358,16 @@ export interface CertificateImportParameters {
  * backing a certificate.
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- * @member {string} [certificatePolicy.keyProperties.keyType] The key type.
+ * @member {string} [certificatePolicy.keyProperties.kty] The type of key pair
+ * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
+ * 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
- * bytes. For example;  1024 or 2048.
+ * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
  * the same key pair will be used on certificate renewal.
+ * @member {string} [certificatePolicy.keyProperties.curve] Elliptic curve
+ * name. For valid values, see JsonWebKeyCurveName. Possible values include:
+ * 'P-256', 'P-384', 'P-521', 'P-256K'
  * @member {object} [certificatePolicy.secretProperties] Properties of the
  * secret backing a certificate.
  * @member {string} [certificatePolicy.secretProperties.contentType] The media
