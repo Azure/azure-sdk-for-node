@@ -6333,10 +6333,11 @@ export interface ConnectionResetSharedKey {
  * @constructor
  * Response for GetConnectionSharedKey API service call
  *
- * @member {string} value The virtual network connection shared key value.
+ * @member {string} [value] The virtual network gateway connection shared key
+ * value.
  */
 export interface ConnectionSharedKey extends SubResource {
-  value: string;
+  value?: string;
 }
 
 /**
