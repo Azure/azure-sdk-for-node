@@ -3148,6 +3148,10 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -3222,6 +3226,10 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3317,6 +3325,10 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -3391,6 +3403,10 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3681,6 +3697,10 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -3747,6 +3767,10 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3834,6 +3858,10 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -3900,6 +3928,10 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -4302,6 +4334,10 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -4376,6 +4412,10 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -4471,6 +4511,10 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -4545,6 +4589,10 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -4694,6 +4742,10 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -4760,6 +4812,10 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -4847,6 +4903,10 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -4913,6 +4973,10 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The identities
+     * of the resource, should be represented as an object where the property names
+     * are the resource id of the identity and the value an empty JObject.
      *
      * @param {string} [parameters.location] Resource location
      *

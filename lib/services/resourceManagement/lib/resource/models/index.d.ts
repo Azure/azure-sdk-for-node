@@ -646,11 +646,15 @@ export interface Sku {
  * @member {string} [tenantId] The tenant ID of resource.
  * @member {string} [type] The identity type. Possible values include:
  * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [userAssignedIdentities] The identities of the resource,
+ * should be represented as an object where the property names are the resource
+ * id of the identity and the value an empty JObject.
  */
 export interface Identity {
   readonly principalId?: string;
   readonly tenantId?: string;
   type?: string;
+  userAssignedIdentities?: any;
 }
 
 /**
@@ -701,6 +705,9 @@ export interface Resource extends BaseResource {
  * @member {string} [identity.tenantId] The tenant ID of resource.
  * @member {string} [identity.type] The identity type. Possible values include:
  * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [identity.userAssignedIdentities] The identities of the
+ * resource, should be represented as an object where the property names are
+ * the resource id of the identity and the value an empty JObject.
  */
 export interface GenericResource extends Resource {
   plan?: Plan;
