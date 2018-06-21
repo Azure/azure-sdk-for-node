@@ -962,7 +962,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm algorithm identifier. Possible values include:
    * 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
    *
-   * @param {buffer} value
+   * @param {buffer} value an unpadded, url-encoded, base-64 string
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1002,7 +1002,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm algorithm identifier. Possible values include:
    * 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
    *
-   * @param {buffer} value
+   * @param {buffer} value an unpadded, url-encoded, base-64 string
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1057,7 +1057,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm algorithm identifier. Possible values include:
    * 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
    *
-   * @param {buffer} value
+   * @param {buffer} value an unpadded, url-encoded, base-64 string
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1093,7 +1093,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm algorithm identifier. Possible values include:
    * 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
    *
-   * @param {buffer} value
+   * @param {buffer} value an unpadded, url-encoded, base-64 string
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1335,7 +1335,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm algorithm identifier. Possible values include:
    * 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
    *
-   * @param {buffer} value
+   * @param {buffer} value an unpadded, url-encoded, base-64 string
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1372,7 +1372,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm algorithm identifier. Possible values include:
    * 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
    *
-   * @param {buffer} value
+   * @param {buffer} value an unpadded, url-encoded, base-64 string
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1426,7 +1426,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm algorithm identifier. Possible values include:
    * 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
    *
-   * @param {buffer} value
+   * @param {buffer} value an unpadded, url-encoded, base-64 string
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1461,7 +1461,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm algorithm identifier. Possible values include:
    * 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
    *
-   * @param {buffer} value
+   * @param {buffer} value an unpadded, url-encoded, base-64 string
    *
    * @param {object} [options] Optional Parameters.
    *
