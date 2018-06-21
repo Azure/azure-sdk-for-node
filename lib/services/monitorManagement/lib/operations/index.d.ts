@@ -1211,7 +1211,7 @@ export interface AlertRules {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySusbscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertRuleResourceCollection>>;
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertRuleResourceCollection>>;
 
     /**
      * List the alert rules within a subscription.
@@ -1244,9 +1244,9 @@ export interface AlertRules {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySusbscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRuleResourceCollection>;
-    listBySusbscription(callback: ServiceCallback<models.AlertRuleResourceCollection>): void;
-    listBySusbscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRuleResourceCollection>): void;
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRuleResourceCollection>;
+    listBySubscription(callback: ServiceCallback<models.AlertRuleResourceCollection>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRuleResourceCollection>): void;
 }
 
 /**

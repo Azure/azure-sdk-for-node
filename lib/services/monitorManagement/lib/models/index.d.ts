@@ -1594,7 +1594,7 @@ export interface HttpRequestInfo {
  * @constructor
  * The Azure event log entries are of type EventData
  *
- * @member {object} [authorization]
+ * @member {object} [authorization] The sender authorization information.
  * @member {string} [authorization.action] the permissible actions. For
  * instance: microsoft.support/supporttickets/write
  * @member {string} [authorization.role] the role of the user. For instance:
@@ -1983,7 +1983,7 @@ export interface CalculateBaselineResponse {
  * An alert action.
  *
  * @member {string} [actionGroupId] the id of the action group to use.
- * @member {object} [webhookProperties]
+ * @member {object} [webhookProperties] The properties of a webhook object.
  */
 export interface MetricAlertAction {
   actionGroupId?: string;
@@ -2095,7 +2095,8 @@ export interface MetricAlertResourcePatch {
  * @constructor
  * An alert status properties.
  *
- * @member {object} [dimensions]
+ * @member {object} [dimensions] An object describing the type of the
+ * dimensions.
  * @member {string} [status] status value
  * @member {date} [timestamp] UTC time when the status was checked.
  */
@@ -2116,7 +2117,8 @@ export interface MetricAlertStatusProperties {
  * @member {string} [type] The extended resource type name.
  * @member {object} [properties] The alert status properties of the metric
  * alert status.
- * @member {object} [properties.dimensions]
+ * @member {object} [properties.dimensions] An object describing the type of
+ * the dimensions.
  * @member {string} [properties.status] status value
  * @member {date} [properties.timestamp] UTC time when the status was checked.
  */
@@ -2143,6 +2145,8 @@ export interface MetricAlertStatusCollection {
  * @class
  * Initializes a new instance of the MetricDimension class.
  * @constructor
+ * Specifies a metric dimension.
+ *
  * @member {string} name Name of the dimension.
  * @member {string} operator the dimension operator.
  * @member {array} values list of dimension values.
@@ -2157,6 +2161,8 @@ export interface MetricDimension {
  * @class
  * Initializes a new instance of the MetricCriteria class.
  * @constructor
+ * Criterion to filter metrics.
+ *
  * @member {string} name Name of the criteria.
  * @member {string} metricName Name of the metric.
  * @member {string} [metricNamespace] Namespace of the metric.
@@ -2230,6 +2236,8 @@ export interface Schedule {
  * @class
  * Initializes a new instance of the Action class.
  * @constructor
+ * Action descriptor.
+ *
  * @member {string} odatatype Polymorphic Discriminator
  */
 export interface Action {
@@ -2298,10 +2306,12 @@ export interface LogSearchRuleResourcePatch {
  * @class
  * Initializes a new instance of the LogMetricTrigger class.
  * @constructor
+ * A log metrics trigger descriptor.
+ *
  * @member {string} [thresholdOperator] Evaluation operation for Metric
  * -'GreaterThan' or 'LessThan' or 'Equal'. Possible values include:
  * 'GreaterThan', 'LessThan', 'Equal'
- * @member {number} [threshold]
+ * @member {number} [threshold] The threshold of the metric trigger.
  * @member {string} [metricTriggerType] Metric Trigger Type - 'Consecutive' or
  * 'Total'. Possible values include: 'Consecutive', 'Total'
  * @member {string} [metricColumn] Evaluation of metric on a particular column
@@ -2328,7 +2338,8 @@ export interface LogMetricTrigger {
  * @member {string} [metricTrigger.thresholdOperator] Evaluation operation for
  * Metric -'GreaterThan' or 'LessThan' or 'Equal'. Possible values include:
  * 'GreaterThan', 'LessThan', 'Equal'
- * @member {number} [metricTrigger.threshold]
+ * @member {number} [metricTrigger.threshold] The threshold of the metric
+ * trigger.
  * @member {string} [metricTrigger.metricTriggerType] Metric Trigger Type -
  * 'Consecutive' or 'Total'. Possible values include: 'Consecutive', 'Total'
  * @member {string} [metricTrigger.metricColumn] Evaluation of metric on a
@@ -2386,7 +2397,8 @@ export interface AzNsActionGroup {
  * @member {string} [trigger.metricTrigger.thresholdOperator] Evaluation
  * operation for Metric -'GreaterThan' or 'LessThan' or 'Equal'. Possible
  * values include: 'GreaterThan', 'LessThan', 'Equal'
- * @member {number} [trigger.metricTrigger.threshold]
+ * @member {number} [trigger.metricTrigger.threshold] The threshold of the
+ * metric trigger.
  * @member {string} [trigger.metricTrigger.metricTriggerType] Metric Trigger
  * Type - 'Consecutive' or 'Total'. Possible values include: 'Consecutive',
  * 'Total'
