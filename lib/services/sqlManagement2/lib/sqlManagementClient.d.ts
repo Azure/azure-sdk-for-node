@@ -77,6 +77,7 @@ export default class SqlManagementClient extends AzureServiceClient {
   transparentDataEncryptionActivities: operations.TransparentDataEncryptionActivities;
   serverUsages: operations.ServerUsages;
   databaseUsages: operations.DatabaseUsages;
+  databaseBlobAuditingPolicies: operations.DatabaseBlobAuditingPolicies;
   databaseAutomaticTuningOperations: operations.DatabaseAutomaticTuningOperations;
   encryptionProtectors: operations.EncryptionProtectors;
   failoverGroups: operations.FailoverGroups;
@@ -88,10 +89,6 @@ export default class SqlManagementClient extends AzureServiceClient {
   syncMembers: operations.SyncMembers;
   subscriptionUsages: operations.SubscriptionUsages;
   virtualNetworkRules: operations.VirtualNetworkRules;
-  extendedDatabaseBlobAuditingPolicies: operations.ExtendedDatabaseBlobAuditingPolicies;
-  extendedServerBlobAuditingPolicies: operations.ExtendedServerBlobAuditingPolicies;
-  serverBlobAuditingPolicies: operations.ServerBlobAuditingPolicies;
-  databaseBlobAuditingPolicies: operations.DatabaseBlobAuditingPolicies;
   databaseVulnerabilityAssessmentRuleBaselines: operations.DatabaseVulnerabilityAssessmentRuleBaselines;
   databaseVulnerabilityAssessments: operations.DatabaseVulnerabilityAssessments;
   jobAgents: operations.JobAgents;
@@ -108,7 +105,6 @@ export default class SqlManagementClient extends AzureServiceClient {
   managedDatabases: operations.ManagedDatabases;
   serverAutomaticTuningOperations: operations.ServerAutomaticTuningOperations;
   serverDnsAliases: operations.ServerDnsAliases;
-  serverSecurityAlertPolicies: operations.ServerSecurityAlertPolicies;
   restorePoints: operations.RestorePoints;
   databaseOperations: operations.DatabaseOperations;
   elasticPoolOperations: operations.ElasticPoolOperations;
@@ -116,6 +112,8 @@ export default class SqlManagementClient extends AzureServiceClient {
   databaseVulnerabilityAssessmentScans: operations.DatabaseVulnerabilityAssessmentScans;
   instanceFailoverGroups: operations.InstanceFailoverGroups;
   backupShortTermRetentionPolicies: operations.BackupShortTermRetentionPolicies;
+  tdeCertificates: operations.TdeCertificates;
+  managedInstanceTdeCertificates: operations.ManagedInstanceTdeCertificates;
 }
 
 export { SqlManagementClient, models as SqlManagementModels };
