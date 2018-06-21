@@ -415,8 +415,9 @@ export interface CertificateIssuerItem {
  * Properties of the key pair backing a certificate.
  *
  * @member {boolean} [exportable] Indicates if the private key can be exported.
- * @member {string} [kty] The type of key pair to be used for the certificate.
- * Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [keyType] The type of key pair to be used for the
+ * certificate. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+ * 'oct'
  * @member {number} [keySize] The key size in bits. For example: 2048, 3072, or
  * 4096 for RSA.
  * @member {boolean} [reuseKey] Indicates if the same key pair will be used on
@@ -427,7 +428,7 @@ export interface CertificateIssuerItem {
  */
 export interface KeyProperties {
   exportable?: boolean;
-  kty?: string;
+  keyType?: string;
   keySize?: number;
   reuseKey?: boolean;
   curve?: string;
@@ -570,8 +571,8 @@ export interface IssuerParameters {
  * certificate.
  * @member {boolean} [keyProperties.exportable] Indicates if the private key
  * can be exported.
- * @member {string} [keyProperties.kty] The type of key pair to be used for the
- * certificate. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
+ * @member {string} [keyProperties.keyType] The type of key pair to be used for
+ * the certificate. Possible values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM',
  * 'oct'
  * @member {number} [keyProperties.keySize] The key size in bits. For example:
  * 2048, 3072, or 4096 for RSA.
@@ -644,8 +645,8 @@ export interface CertificatePolicy {
  * certificate.
  * @member {boolean} [policy.keyProperties.exportable] Indicates if the private
  * key can be exported.
- * @member {string} [policy.keyProperties.kty] The type of key pair to be used
- * for the certificate. Possible values include: 'EC', 'EC-HSM', 'RSA',
+ * @member {string} [policy.keyProperties.keyType] The type of key pair to be
+ * used for the certificate. Possible values include: 'EC', 'EC-HSM', 'RSA',
  * 'RSA-HSM', 'oct'
  * @member {number} [policy.keyProperties.keySize] The key size in bits. For
  * example: 2048, 3072, or 4096 for RSA.
@@ -1175,9 +1176,9 @@ export interface SecretUpdateParameters {
  * backing a certificate.
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- * @member {string} [certificatePolicy.keyProperties.kty] The type of key pair
- * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
- * 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [certificatePolicy.keyProperties.keyType] The type of key
+ * pair to be used for the certificate. Possible values include: 'EC',
+ * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
  * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
@@ -1268,9 +1269,9 @@ export interface CertificateCreateParameters {
  * backing a certificate.
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- * @member {string} [certificatePolicy.keyProperties.kty] The type of key pair
- * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
- * 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [certificatePolicy.keyProperties.keyType] The type of key
+ * pair to be used for the certificate. Possible values include: 'EC',
+ * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
  * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
@@ -1358,9 +1359,9 @@ export interface CertificateImportParameters {
  * backing a certificate.
  * @member {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
  * the private key can be exported.
- * @member {string} [certificatePolicy.keyProperties.kty] The type of key pair
- * to be used for the certificate. Possible values include: 'EC', 'EC-HSM',
- * 'RSA', 'RSA-HSM', 'oct'
+ * @member {string} [certificatePolicy.keyProperties.keyType] The type of key
+ * pair to be used for the certificate. Possible values include: 'EC',
+ * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
  * @member {number} [certificatePolicy.keyProperties.keySize] The key size in
  * bits. For example: 2048, 3072, or 4096 for RSA.
  * @member {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if
