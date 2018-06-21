@@ -65,7 +65,7 @@ exports.serialize = function (mapper, object, objectName) {
   }
   if (mapper.isConstant) object = mapper.defaultValue;
 
-  // See the following table to understand the logic behind
+  // This table of allowed values should help explain
   // the mapper.required and mapper.nullable properties.
   // X means "neither undefined or null are allowed".
   //           || required
@@ -75,25 +75,21 @@ exports.serialize = function (mapper, object, objectName) {
   //     false || X         | undefined
   // undefined || X         | undefined/null
 
-  const { nullable, required } = mapper;
-  const areNullAndUndefinedAllowed = nullable !== false && !required;
-  const isOnlyNullAllowed = nullable === true && required || areNullAndUndefinedAllowed;
-  const isOnlyUndefinedAllowed = nullable === false && !required || areNullAndUndefinedAllowed;
+  const { required, nullable } = mapper;
 
-  if (!areNullAndUndefinedAllowed) {
-    if (object === null) {
-      if (isOnlyUndefinedAllowed) {
-        throw new Error(`${objectName} cannot be null.`);
-      }
+  if (required && nullable && object === undefined) {
+    throw new Error(`${objectName} cannot be undefined.`);
+  }
+  if (required && !nullable && object == undefined) {
+    throw new Error(`${objectName} cannot be null or undefined.`);
+  }
+  if (!required && nullable === false && object === null) {
+    throw new Error(`${objectName} cannot be null.`);
+  }
 
-      throw new Error(`${objectName} cannot be null or undefined.`);
-    } else if (object === undefined) {
-      if (isOnlyNullAllowed) {
-        throw new Error(`${objectName} cannot be undefined.`);
-      }
-
-      throw new Error(`${objectName} cannot be null or undefined.`);
-    }
+  // if null or undefined, the only validation is from the checks against the required and nullable properties.
+  if (object == undefined) {
+    return object;
   }
 
   //Validate Constraints if any
@@ -263,9 +259,8 @@ function serializeCompositeType(mapper, object, objectName) {
         if (modelProps[key].readOnly) {
           continue;
         }
-        //serialize the property if it is present in the provided object instance
-        if (((parentObject !== null && parentObject !== undefined) && (modelProps[key].defaultValue !== null && modelProps[key].defaultValue !== undefined)) ||
-          (object[key] !== null && object[key] !== undefined)) {
+
+        if (parentObject !== null && parentObject !== undefined) {
           let propertyObjectName = objectName;
           if (modelProps[key].serializedName !== '') propertyObjectName = objectName + '.' + modelProps[key].serializedName;
           let propertyMapper = modelProps[key];

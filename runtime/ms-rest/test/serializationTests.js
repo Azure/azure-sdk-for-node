@@ -608,35 +608,71 @@ describe('msrest', function () {
 
     it("should not allow undefined when required: true and nullable: true", function() {
       const mapper = {
-        required: true,
-        nullable: true,
+        required: false,
+        serializedName: 'testmodel',
         type: {
-          name: "String"
+          name: 'Composite',
+          className: 'testmodel',
+          modelProperties: {
+            length: {
+              required: true,
+              nullable: true,
+              serializedName: 'length',
+              type: {
+                name: 'Number'
+              }
+            }
+          }
         }
       };
-      (function () { msRest.serialize(mapper, undefined, "testobj"); }).should.throw("testobj cannot be undefined.");
+
+      (function () { msRest.serialize(mapper, { length: undefined }, "testobj"); }).should.throw("testobj.length cannot be undefined.");
     });
 
     it("should not allow null when required: true and nullable: false", function() {
       const mapper = {
-        required: true,
-        nullable: false,
+        required: false,
+        serializedName: 'testmodel',
         type: {
-          name: "String"
+          name: 'Composite',
+          className: 'testmodel',
+          modelProperties: {
+            length: {
+              required: true,
+              nullable: false,
+              serializedName: 'length',
+              type: {
+                name: 'Number'
+              }
+            }
+          }
         }
       };
-      (function () { msRest.serialize(mapper, null, "testobj"); }).should.throw("testobj cannot be null or undefined.");
+
+      (function () { msRest.serialize(mapper, { length: null }, "testobj"); }).should.throw("testobj.length cannot be null or undefined.");
     });
 
     it("should not allow undefined when required: true and nullable: false", function() {
       const mapper = {
-        required: true,
-        nullable: false,
+        required: false,
+        serializedName: 'testmodel',
         type: {
-          name: "String"
+          name: 'Composite',
+          className: 'testmodel',
+          modelProperties: {
+            length: {
+              required: true,
+              nullable: false,
+              serializedName: 'length',
+              type: {
+                name: 'Number'
+              }
+            }
+          }
         }
       };
-      (function () { msRest.serialize(mapper, undefined, "testobj"); }).should.throw("testobj cannot be null or undefined.");
+
+      (function () { msRest.serialize(mapper, { length: undefined }, "testobj"); }).should.throw("testobj.length cannot be null or undefined.");
     });
 
     it("should not allow null when required: true and nullable is undefined", function() {
@@ -712,8 +748,8 @@ describe('msrest', function () {
           name: "Composite",
           className: "fooType",
           modelProperties: {
-            foo: {
-              serializedName: "foo",
+            length: {
+              serializedName: "length",
               required: false,
               nullable: false,
               type: {
@@ -724,7 +760,7 @@ describe('msrest', function () {
         }
       };
 
-      msRest.serialize(mapper, { foo: undefined }, "testobj");
+      msRest.serialize(mapper, { length: undefined }, "testobj");
     });
 
     it("should allow undefined when required: false and nullable is undefined", function() {
