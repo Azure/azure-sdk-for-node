@@ -989,7 +989,7 @@ export interface KeyImportParameters {
  *
  * @member {string} algorithm algorithm identifier. Possible values include:
  * 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5'
- * @member {buffer} value
+ * @member {buffer} value an unpadded, url-encoded, base-64 string
  */
 export interface KeyOperationsParameters {
   algorithm: string;
