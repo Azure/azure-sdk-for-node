@@ -799,7 +799,7 @@ export interface ApplicationGetEndpoint {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationGetProperties class.
+ * Initializes a new instance of the ApplicationProperties class.
  * @constructor
  * The HDInsight cluster application GET response.
  *
@@ -820,7 +820,7 @@ export interface ApplicationGetEndpoint {
  * @member {string} [additionalProperties] The additional properties for
  * application.
  */
-export interface ApplicationGetProperties {
+export interface ApplicationProperties {
   computeProfile?: ComputeProfile;
   installScriptActions?: RuntimeScriptAction[];
   uninstallScriptActions?: RuntimeScriptAction[];
@@ -870,7 +870,7 @@ export interface ApplicationGetProperties {
 export interface Application extends ProxyResource {
   etag?: string;
   tags?: { [propertyName: string]: string };
-  properties?: ApplicationGetProperties;
+  properties?: ApplicationProperties;
 }
 
 /**
@@ -911,13 +911,13 @@ export interface Usage {
 
 /**
  * @class
- * Initializes a new instance of the UsagesResult class.
+ * Initializes a new instance of the UsagesListResult class.
  * @constructor
  * The response for the operation to get regional usages for a subscription.
  *
  * @member {array} [value] The list of usages.
  */
-export interface UsagesResult {
+export interface UsagesListResult {
   value?: Usage[];
 }
 
