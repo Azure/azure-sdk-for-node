@@ -1729,6 +1729,9 @@ export interface DiagnosticSettingsOperations {
      * @param {string} [parameters.storageAccountId] The resource ID of the storage
      * account to which you would like to send Diagnostic Logs.
      *
+     * @param {string} [parameters.serviceBusRuleId] The service bus rule Id of the
+     * diagnostic setting. This is here to maintain backwards compatibility.
+     *
      * @param {string} [parameters.eventHubAuthorizationRuleId] The resource Id for
      * the event hub authorization rule.
      *
@@ -1768,6 +1771,9 @@ export interface DiagnosticSettingsOperations {
      *
      * @param {string} [parameters.storageAccountId] The resource ID of the storage
      * account to which you would like to send Diagnostic Logs.
+     *
+     * @param {string} [parameters.serviceBusRuleId] The service bus rule Id of the
+     * diagnostic setting. This is here to maintain backwards compatibility.
      *
      * @param {string} [parameters.eventHubAuthorizationRuleId] The resource Id for
      * the event hub authorization rule.

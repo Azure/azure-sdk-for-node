@@ -1126,6 +1126,8 @@ export interface LogSettings {
  *
  * @member {string} [storageAccountId] The resource ID of the storage account
  * to which you would like to send Diagnostic Logs.
+ * @member {string} [serviceBusRuleId] The service bus rule Id of the
+ * diagnostic setting. This is here to maintain backwards compatibility.
  * @member {string} [eventHubAuthorizationRuleId] The resource Id for the event
  * hub authorization rule.
  * @member {string} [eventHubName] The name of the event hub. If none is
@@ -1139,6 +1141,7 @@ export interface LogSettings {
  */
 export interface DiagnosticSettingsResource extends ProxyOnlyResource {
   storageAccountId?: string;
+  serviceBusRuleId?: string;
   eventHubAuthorizationRuleId?: string;
   eventHubName?: string;
   metrics?: MetricSettings[];
