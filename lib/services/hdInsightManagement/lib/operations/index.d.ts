@@ -1222,7 +1222,7 @@ export interface Applications {
 
 
     /**
-     * Lists properties of the specified application.
+     * Gets properties of the specified application.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1244,7 +1244,7 @@ export interface Applications {
     getWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
 
     /**
-     * Lists properties of the specified application.
+     * Gets properties of the specified application.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1461,6 +1461,123 @@ export interface Applications {
     deleteMethod(resourceGroupName: string, clusterName: string, applicationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, clusterName: string, applicationName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, clusterName: string, applicationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates applications for the HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {string} applicationName The constant value for the application name.
+     *
+     * @param {object} parameters The application create request.
+     *
+     * @param {object} [parameters.computeProfile] The list of roles in the
+     * cluster.
+     *
+     * @param {array} [parameters.computeProfile.roles] The list of roles in the
+     * cluster.
+     *
+     * @param {array} [parameters.installScriptActions] The list of install script
+     * actions.
+     *
+     * @param {array} [parameters.uninstallScriptActions] The list of uninstall
+     * script actions.
+     *
+     * @param {array} [parameters.httpsEndpoints] The list of application HTTPS
+     * endpoints.
+     *
+     * @param {array} [parameters.sshEndpoints] The list of application SSH
+     * endpoints.
+     *
+     * @param {string} [parameters.applicationType] The application type.
+     *
+     * @param {array} [parameters.errors] The list of errors.
+     *
+     * @param {string} [parameters.additionalProperties] The additional properties
+     * for application.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Application>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Application>>;
+
+    /**
+     * Creates applications for the HDInsight cluster.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} clusterName The name of the cluster.
+     *
+     * @param {string} applicationName The constant value for the application name.
+     *
+     * @param {object} parameters The application create request.
+     *
+     * @param {object} [parameters.computeProfile] The list of roles in the
+     * cluster.
+     *
+     * @param {array} [parameters.computeProfile.roles] The list of roles in the
+     * cluster.
+     *
+     * @param {array} [parameters.installScriptActions] The list of install script
+     * actions.
+     *
+     * @param {array} [parameters.uninstallScriptActions] The list of uninstall
+     * script actions.
+     *
+     * @param {array} [parameters.httpsEndpoints] The list of application HTTPS
+     * endpoints.
+     *
+     * @param {array} [parameters.sshEndpoints] The list of application SSH
+     * endpoints.
+     *
+     * @param {string} [parameters.applicationType] The application type.
+     *
+     * @param {array} [parameters.errors] The list of errors.
+     *
+     * @param {string} [parameters.additionalProperties] The additional properties
+     * for application.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Application} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Application} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Application} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Application>;
+    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationProperties, callback: ServiceCallback<models.Application>): void;
+    beginCreate(resourceGroupName: string, clusterName: string, applicationName: string, parameters: models.ApplicationProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Application>): void;
 
 
     /**
@@ -2620,7 +2737,7 @@ export interface ScriptActions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listPersistedScriptsByClusterWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScriptActionsList>>;
+    listByClusterWithHttpOperationResponse(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScriptActionsList>>;
 
     /**
      * Lists all the persisted script actions for the specified cluster.
@@ -2656,9 +2773,9 @@ export interface ScriptActions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listPersistedScriptsByCluster(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScriptActionsList>;
-    listPersistedScriptsByCluster(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ScriptActionsList>): void;
-    listPersistedScriptsByCluster(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScriptActionsList>): void;
+    listByCluster(resourceGroupName: string, clusterName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScriptActionsList>;
+    listByCluster(resourceGroupName: string, clusterName: string, callback: ServiceCallback<models.ScriptActionsList>): void;
+    listByCluster(resourceGroupName: string, clusterName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScriptActionsList>): void;
 
 
     /**
@@ -2742,7 +2859,7 @@ export interface ScriptActions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listPersistedScriptsByClusterNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScriptActionsList>>;
+    listByClusterNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ScriptActionsList>>;
 
     /**
      * Lists all the persisted script actions for the specified cluster.
@@ -2777,9 +2894,9 @@ export interface ScriptActions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listPersistedScriptsByClusterNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScriptActionsList>;
-    listPersistedScriptsByClusterNext(nextPageLink: string, callback: ServiceCallback<models.ScriptActionsList>): void;
-    listPersistedScriptsByClusterNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScriptActionsList>): void;
+    listByClusterNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ScriptActionsList>;
+    listByClusterNext(nextPageLink: string, callback: ServiceCallback<models.ScriptActionsList>): void;
+    listByClusterNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ScriptActionsList>): void;
 }
 
 /**
