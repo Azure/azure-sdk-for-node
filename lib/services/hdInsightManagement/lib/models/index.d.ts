@@ -721,40 +721,17 @@ export interface ProxyResource extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the OperationDisplay class.
+ * Initializes a new instance of the ErrorResponse class.
  * @constructor
- * The object that represents the operation.
+ * Describes the format of Error response.
  *
- * @member {string} [provider] The service provider: Microsoft.HDInsight
- * @member {string} [resource] The resource on which the operation is
- * performed: Cluster, Applications, etc.
- * @member {string} [operation] The operation type: read, write, delete, etc.
+ * @member {string} [code] Error code
+ * @member {string} [message] Error message indicating why the operation
+ * failed.
  */
-export interface OperationDisplay {
-  provider?: string;
-  resource?: string;
-  operation?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Operation class.
- * @constructor
- * The HDInsight REST API operation.
- *
- * @member {string} [name] The operation name:
- * {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] The service provider:
- * Microsoft.HDInsight
- * @member {string} [display.resource] The resource on which the operation is
- * performed: Cluster, Applications, etc.
- * @member {string} [display.operation] The operation type: read, write,
- * delete, etc.
- */
-export interface Operation {
-  name?: string;
-  display?: OperationDisplay;
+export interface ErrorResponse {
+  code?: string;
+  message?: string;
 }
 
 /**
@@ -988,6 +965,44 @@ export interface ScriptActionPersistedGetResponseSpec {
   parameters?: string;
   roles?: string[];
   applicationName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * The object that represents the operation.
+ *
+ * @member {string} [provider] The service provider: Microsoft.HDInsight
+ * @member {string} [resource] The resource on which the operation is
+ * performed: Cluster, Applications, etc.
+ * @member {string} [operation] The operation type: read, write, delete, etc.
+ */
+export interface OperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * The HDInsight REST API operation.
+ *
+ * @member {string} [name] The operation name:
+ * {provider}/{resource}/{operation}
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] The service provider:
+ * Microsoft.HDInsight
+ * @member {string} [display.resource] The resource on which the operation is
+ * performed: Cluster, Applications, etc.
+ * @member {string} [display.operation] The operation type: read, write,
+ * delete, etc.
+ */
+export interface Operation {
+  name?: string;
+  display?: OperationDisplay;
 }
 
 
