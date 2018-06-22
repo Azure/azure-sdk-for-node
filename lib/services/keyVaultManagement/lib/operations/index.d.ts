@@ -545,7 +545,7 @@ export interface Vaults {
 
 
     /**
-     * Update access policies in a key vault in the specified subscription.
+     * Update access policies on a key vault in the specified subscription.
      *
      * @param {string} resourceGroupName The name of the Resource Group to which
      * the vault belongs.
@@ -577,7 +577,7 @@ export interface Vaults {
     updateAccessPolicyWithHttpOperationResponse(resourceGroupName: string, vaultName: string, operationKind: string, parameters: models.VaultAccessPolicyParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VaultAccessPolicyParameters>>;
 
     /**
-     * Update access policies in a key vault in the specified subscription.
+     * Update access policies on a key vault in the specified subscription.
      *
      * @param {string} resourceGroupName The name of the Resource Group to which
      * the vault belongs.
