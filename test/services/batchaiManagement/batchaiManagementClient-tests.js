@@ -168,7 +168,7 @@ describe('BatchAI Management', function () {
                             azureFileUrl: util.format('https://%s.file.core.windows.net/%s', storageAccountName, azFileShareName),
                             directoryMode: '0777',
                             fileMode: '0777',
-                            relativeMountPath: azFileShareMountName,  // Content of the file share be available at $AZ_BATCHAI_MOUNT_ROOT/azfs
+                            relativeMountPath: azFileShareMountName,  // Content of the file share will be available at $AZ_BATCHAI_MOUNT_ROOT/azfs
                             accountName: storageAccountName,
                             credentials: {
                               accountKey: storageAccountKey
@@ -247,7 +247,7 @@ describe('BatchAI Management', function () {
                 azureFileUrl: util.format('https://%s.file.core.windows.net/%s', storageAccountName, azFileShareName),
                 directoryMode: '0777',
                 fileMode: '0777',
-                relativeMountPath: azFileShareMountName,  // Content of the file share be available at $AZ_BATCHAI_MOUNT_ROOT/azfs
+                relativeMountPath: azFileShareMountName,  // Content of the file share will be available at $AZ_BATCHAI_MOUNT_ROOT/azfs
                 accountName: storageAccountName,
                 credentials: {
                   accountKey: storageAccountKey
@@ -366,7 +366,7 @@ describe('BatchAI Management', function () {
                 azureFileUrl: util.format('https://%s.file.core.windows.net/%s', storageAccountName, azFileShareName),
                 directoryMode: '0777',
                 fileMode: '0777',
-                relativeMountPath: azFileShareMountName,  // Content of the file share be available at $AZ_BATCHAI_MOUNT_ROOT/azfs
+                relativeMountPath: azFileShareMountName,  // Content of the file share will be available at $AZ_BATCHAI_MOUNT_ROOT/azfs
                 accountName: storageAccountName,
                 credentials: {
                   accountKey: storageAccountKey
@@ -376,7 +376,7 @@ describe('BatchAI Management', function () {
             azureBlobFileSystems: [
               {
                 containerName: azContainerName,
-                relativeMountPath: azContainerMountName, // Content of the container be available at $AZ_BATCHAI_MOUNT_ROOT/azcs
+                relativeMountPath: azContainerMountName, // Content of the container will be available at $AZ_BATCHAI_MOUNT_ROOT/azcs
                 accountName: storageAccountName,
                 credentials: {
                   accountKey: storageAccountKey
@@ -549,7 +549,7 @@ describe('BatchAI Management', function () {
             azureFileShares: [
               {
                 azureFileUrl: util.format('https://%s.file.core.windows.net/%s', storageAccountName, azFileShareName),
-                relativeMountPath: azFileShareMountName,  // Content of the file share be available at $AZ_BATCHAI_MOUNT_ROOT/azfs
+                relativeMountPath: azFileShareMountName,  // Content of the file share will be available at $AZ_BATCHAI_MOUNT_ROOT/azfs
                 accountName: storageAccountName,
                 credentials: {
                   accountKey: storageAccountKey
