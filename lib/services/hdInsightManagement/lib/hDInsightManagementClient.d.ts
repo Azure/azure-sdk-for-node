@@ -58,7 +58,7 @@ export default class HDInsightManagementClient extends AzureServiceClient {
   // Operation groups
   clusters: operations.Clusters;
   applications: operations.Applications;
-  location: operations.Location;
+  locations: operations.Locations;
   configurations: operations.Configurations;
   extensions: operations.Extensions;
   scriptActions: operations.ScriptActions;

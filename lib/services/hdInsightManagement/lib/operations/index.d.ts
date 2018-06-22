@@ -1701,11 +1701,11 @@ export interface Applications {
 
 /**
  * @class
- * Location
+ * Locations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the HDInsightManagementClient.
  */
-export interface Location {
+export interface Locations {
 
 
     /**
