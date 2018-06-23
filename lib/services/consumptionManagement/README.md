@@ -27,7 +27,9 @@ msRestAzure.interactiveLogin().then((creds) => {
     const subscriptionId = "<Subscription_Id>";
     const client = new ConsumptionManagementClient(creds, subscriptionId);
     const billingAccountId = "testbillingAccountId";
-    return client.chargesByBillingAccount.list(billingAccountId).then((result) => {
+    const startDate = "teststartDate";
+    const endDate = "testendDate";
+    return client.chargesByBillingAccount.list(billingAccountId, startDate, endDate).then((result) => {
       console.log("The result is:");
       console.log(result);
     });

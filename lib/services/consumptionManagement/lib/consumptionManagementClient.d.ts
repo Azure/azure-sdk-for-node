@@ -21,10 +21,6 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} startDate - Start date
-   *
-   * @param {string} endDate - End date
-   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -43,15 +39,11 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, startDate: string, endDate: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   apiVersion: string;
-
-  startDate: string;
-
-  endDate: string;
 
   acceptLanguage: string;
 
@@ -79,6 +71,10 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @param {string} billingProfileId Billing Profile Id.
    *
+   * @param {string} startDate Start date
+   *
+   * @param {string} endDate End date
+   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -90,7 +86,7 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  productsByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
+  productsByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
 
   /**
    * Lists the products by billingProfileId for given start and end date.
@@ -98,6 +94,10 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * @param {string} billingAccountId BillingAccount ID
    *
    * @param {string} billingProfileId Billing Profile Id.
+   *
+   * @param {string} startDate Start date
+   *
+   * @param {string} endDate End date
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -126,9 +126,9 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  productsByBillingProfile(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
-  productsByBillingProfile(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<models.ProductsListResult>): void;
-  productsByBillingProfile(billingAccountId: string, billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
+  productsByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
+  productsByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, callback: ServiceCallback<models.ProductsListResult>): void;
+  productsByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };
