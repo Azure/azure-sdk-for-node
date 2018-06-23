@@ -29,10 +29,6 @@ export interface ChargesByBillingAccount {
      *
      * @param {string} billingAccountId BillingAccount ID
      *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -44,7 +40,7 @@ export interface ChargesByBillingAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByBillingAccount>>;
+    listWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByBillingAccount>>;
 
     /**
      * Lists the charges by billingAccountId for given start and end date. Start
@@ -53,10 +49,6 @@ export interface ChargesByBillingAccount {
      * month then that month will show all zeroes.
      *
      * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -86,9 +78,9 @@ export interface ChargesByBillingAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByBillingAccount>;
-    list(billingAccountId: string, startDate: string, endDate: string, callback: ServiceCallback<models.ChargesListResultByBillingAccount>): void;
-    list(billingAccountId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByBillingAccount>): void;
+    list(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByBillingAccount>;
+    list(billingAccountId: string, callback: ServiceCallback<models.ChargesListResultByBillingAccount>): void;
+    list(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByBillingAccount>): void;
 
 
     /**
@@ -149,70 +141,6 @@ export interface ChargesByBillingAccount {
     listByBillingPeriod(billingAccountId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummaryByBillingAccount>;
     listByBillingPeriod(billingAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummaryByBillingAccount>): void;
     listByBillingPeriod(billingAccountId: string, billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummaryByBillingAccount>): void;
-
-
-    /**
-     * Lists the charges based on billingAccountId by billing period.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} billingProfileId Billing Profile Id.
-     *
-     * @param {string} billingPeriodName Billing Period Name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ChargeSummaryByBillingProfile>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByBillingPeriod1WithHttpOperationResponse(billingAccountId: string, billingProfileId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummaryByBillingProfile>>;
-
-    /**
-     * Lists the charges based on billingAccountId by billing period.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} billingProfileId Billing Profile Id.
-     *
-     * @param {string} billingPeriodName Billing Period Name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ChargeSummaryByBillingProfile} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ChargeSummaryByBillingProfile} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ChargeSummaryByBillingProfile} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByBillingPeriod1(billingAccountId: string, billingProfileId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummaryByBillingProfile>;
-    listByBillingPeriod1(billingAccountId: string, billingProfileId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummaryByBillingProfile>): void;
-    listByBillingPeriod1(billingAccountId: string, billingProfileId: string, billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummaryByBillingProfile>): void;
 
 
     /**
@@ -393,10 +321,84 @@ export interface ChargesByBillingAccount {
     listByBillingPeriodNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummaryByBillingAccount>;
     listByBillingPeriodNext(nextPageLink: string, callback: ServiceCallback<models.ChargeSummaryByBillingAccount>): void;
     listByBillingPeriodNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummaryByBillingAccount>): void;
+}
+
+/**
+ * @class
+ * ChargesForBillingAccountByProject
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface ChargesForBillingAccountByProject {
 
 
     /**
-     * Lists the charges based on billingAccountId by billing period.
+     * Lists charges for all projects under a billing account given start and end
+     * date. Start and end date are used to determine the billing period. For
+     * current month, the data will be provided from month to date. If there are no
+     * chages for a month then that month will show all zeroes.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ChargesListResultByProject>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByProject>>;
+
+    /**
+     * Lists charges for all projects under a billing account given start and end
+     * date. Start and end date are used to determine the billing period. For
+     * current month, the data will be provided from month to date. If there are no
+     * chages for a month then that month will show all zeroes.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ChargesListResultByProject} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ChargesListResultByProject} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargesListResultByProject} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByProject>;
+    list(billingAccountId: string, callback: ServiceCallback<models.ChargesListResultByProject>): void;
+    list(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByProject>): void;
+
+
+    /**
+     * Lists charges for all projects under a billing account given start and end
+     * date. Start and end date are used to determine the billing period. For
+     * current month, the data will be provided from month to date. If there are no
+     * chages for a month then that month will show all zeroes.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -408,14 +410,17 @@ export interface ChargesByBillingAccount {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ChargeSummaryByBillingProfile>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ChargesListResultByProject>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingPeriod1NextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummaryByBillingProfile>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByProject>>;
 
     /**
-     * Lists the charges based on billingAccountId by billing period.
+     * Lists charges for all projects under a billing account given start and end
+     * date. Start and end date are used to determine the billing period. For
+     * current month, the data will be provided from month to date. If there are no
+     * chages for a month then that month will show all zeroes.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -432,7 +437,7 @@ export interface ChargesByBillingAccount {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ChargeSummaryByBillingProfile} - The deserialized result object.
+     *                      @resolve {ChargesListResultByProject} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -440,17 +445,17 @@ export interface ChargesByBillingAccount {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ChargeSummaryByBillingProfile} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ChargeSummaryByBillingProfile} for more
+     *                      {ChargesListResultByProject} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargesListResultByProject} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingPeriod1Next(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummaryByBillingProfile>;
-    listByBillingPeriod1Next(nextPageLink: string, callback: ServiceCallback<models.ChargeSummaryByBillingProfile>): void;
-    listByBillingPeriod1Next(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummaryByBillingProfile>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByProject>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ChargesListResultByProject>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByProject>): void;
 }
 
 /**
@@ -463,16 +468,14 @@ export interface ChargesByProject {
 
 
     /**
-     * Lists charges for all projects under a billing account given start and end
-     * date. Start and end date are used to determine the billing period. For
-     * current month, the data will be provided from month to date. If there are no
-     * chages for a month then that month will show all zeroes.
+     * Lists the charges by project id for given start and end date. Start and end
+     * date are used to determine the billing period. For current month, the data
+     * will be provided from month to date. If there are no chages for a month then
+     * that month will show all zeroes.
      *
      * @param {string} billingAccountId BillingAccount ID
      *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
+     * @param {string} projectId Project Id.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -485,19 +488,17 @@ export interface ChargesByProject {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByProject>>;
+    listWithHttpOperationResponse(billingAccountId: string, projectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByProject>>;
 
     /**
-     * Lists charges for all projects under a billing account given start and end
-     * date. Start and end date are used to determine the billing period. For
-     * current month, the data will be provided from month to date. If there are no
-     * chages for a month then that month will show all zeroes.
+     * Lists the charges by project id for given start and end date. Start and end
+     * date are used to determine the billing period. For current month, the data
+     * will be provided from month to date. If there are no chages for a month then
+     * that month will show all zeroes.
      *
      * @param {string} billingAccountId BillingAccount ID
      *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
+     * @param {string} projectId Project Id.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -527,83 +528,9 @@ export interface ChargesByProject {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByProject>;
-    list(billingAccountId: string, startDate: string, endDate: string, callback: ServiceCallback<models.ChargesListResultByProject>): void;
-    list(billingAccountId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByProject>): void;
-
-
-    /**
-     * Lists the charges by project id for given start and end date. Start and end
-     * date are used to determine the billing period. For current month, the data
-     * will be provided from month to date. If there are no chages for a month then
-     * that month will show all zeroes.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} projectId Project Id.
-     *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ChargesListResultByProject>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    list1WithHttpOperationResponse(billingAccountId: string, projectId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByProject>>;
-
-    /**
-     * Lists the charges by project id for given start and end date. Start and end
-     * date are used to determine the billing period. For current month, the data
-     * will be provided from month to date. If there are no chages for a month then
-     * that month will show all zeroes.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} projectId Project Id.
-     *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ChargesListResultByProject} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ChargesListResultByProject} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ChargesListResultByProject} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list1(billingAccountId: string, projectId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByProject>;
-    list1(billingAccountId: string, projectId: string, startDate: string, endDate: string, callback: ServiceCallback<models.ChargesListResultByProject>): void;
-    list1(billingAccountId: string, projectId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByProject>): void;
+    list(billingAccountId: string, projectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByProject>;
+    list(billingAccountId: string, projectId: string, callback: ServiceCallback<models.ChargesListResultByProject>): void;
+    list(billingAccountId: string, projectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByProject>): void;
 
 
     /**
@@ -733,10 +660,10 @@ export interface ChargesByProject {
 
 
     /**
-     * Lists charges for all projects under a billing account given start and end
-     * date. Start and end date are used to determine the billing period. For
-     * current month, the data will be provided from month to date. If there are no
-     * chages for a month then that month will show all zeroes.
+     * Lists the charges by project id for given start and end date. Start and end
+     * date are used to determine the billing period. For current month, the data
+     * will be provided from month to date. If there are no chages for a month then
+     * that month will show all zeroes.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -755,10 +682,10 @@ export interface ChargesByProject {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByProject>>;
 
     /**
-     * Lists charges for all projects under a billing account given start and end
-     * date. Start and end date are used to determine the billing period. For
-     * current month, the data will be provided from month to date. If there are no
-     * chages for a month then that month will show all zeroes.
+     * Lists the charges by project id for given start and end date. Start and end
+     * date are used to determine the billing period. For current month, the data
+     * will be provided from month to date. If there are no chages for a month then
+     * that month will show all zeroes.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -794,70 +721,6 @@ export interface ChargesByProject {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByProject>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ChargesListResultByProject>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByProject>): void;
-
-
-    /**
-     * Lists the charges by project id for given start and end date. Start and end
-     * date are used to determine the billing period. For current month, the data
-     * will be provided from month to date. If there are no chages for a month then
-     * that month will show all zeroes.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ChargesListResultByProject>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    list1NextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByProject>>;
-
-    /**
-     * Lists the charges by project id for given start and end date. Start and end
-     * date are used to determine the billing period. For current month, the data
-     * will be provided from month to date. If there are no chages for a month then
-     * that month will show all zeroes.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ChargesListResultByProject} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ChargesListResultByProject} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ChargesListResultByProject} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list1Next(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByProject>;
-    list1Next(nextPageLink: string, callback: ServiceCallback<models.ChargesListResultByProject>): void;
-    list1Next(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByProject>): void;
 
 
     /**
@@ -920,6 +783,141 @@ export interface ChargesByProject {
 
 /**
  * @class
+ * ChargesForBillingAccountByBillingProfile
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface ChargesForBillingAccountByBillingProfile {
+
+
+    /**
+     * Lists the charges by billing profile id for given start and end date. Start
+     * and end date are used to determine the billing period. For current month,
+     * the data will be provided from month to date. If there are no chages for a
+     * month then that month will show all zeroes.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ChargesListResultByBillingProfile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByBillingProfile>>;
+
+    /**
+     * Lists the charges by billing profile id for given start and end date. Start
+     * and end date are used to determine the billing period. For current month,
+     * the data will be provided from month to date. If there are no chages for a
+     * month then that month will show all zeroes.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ChargesListResultByBillingProfile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ChargesListResultByBillingProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargesListResultByBillingProfile} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByBillingProfile>;
+    list(billingAccountId: string, callback: ServiceCallback<models.ChargesListResultByBillingProfile>): void;
+    list(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByBillingProfile>): void;
+
+
+    /**
+     * Lists the charges by billing profile id for given start and end date. Start
+     * and end date are used to determine the billing period. For current month,
+     * the data will be provided from month to date. If there are no chages for a
+     * month then that month will show all zeroes.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ChargesListResultByBillingProfile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByBillingProfile>>;
+
+    /**
+     * Lists the charges by billing profile id for given start and end date. Start
+     * and end date are used to determine the billing period. For current month,
+     * the data will be provided from month to date. If there are no chages for a
+     * month then that month will show all zeroes.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ChargesListResultByBillingProfile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ChargesListResultByBillingProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargesListResultByBillingProfile} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByBillingProfile>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ChargesListResultByBillingProfile>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByBillingProfile>): void;
+}
+
+/**
+ * @class
  * ChargesByBillingProfile
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ConsumptionManagementClient.
@@ -935,9 +933,7 @@ export interface ChargesByBillingProfile {
      *
      * @param {string} billingAccountId BillingAccount ID
      *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
+     * @param {string} billingProfileId Billing Profile Id.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -950,7 +946,7 @@ export interface ChargesByBillingProfile {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByBillingProfile>>;
+    listWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByBillingProfile>>;
 
     /**
      * Lists the charges by billing profile id for given start and end date. Start
@@ -960,9 +956,7 @@ export interface ChargesByBillingProfile {
      *
      * @param {string} billingAccountId BillingAccount ID
      *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
+     * @param {string} billingProfileId Billing Profile Id.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -992,24 +986,19 @@ export interface ChargesByBillingProfile {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByBillingProfile>;
-    list(billingAccountId: string, startDate: string, endDate: string, callback: ServiceCallback<models.ChargesListResultByBillingProfile>): void;
-    list(billingAccountId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByBillingProfile>): void;
+    list(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByBillingProfile>;
+    list(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<models.ChargesListResultByBillingProfile>): void;
+    list(billingAccountId: string, billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByBillingProfile>): void;
 
 
     /**
-     * Lists the charges by billing profile id for given start and end date. Start
-     * and end date are used to determine the billing period. For current month,
-     * the data will be provided from month to date. If there are no chages for a
-     * month then that month will show all zeroes.
+     * Lists the charges based on billingAccountId by billing period.
      *
      * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingProfileId Billing Profile Id.
      *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
+     * @param {string} billingPeriodName Billing Period Name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1018,25 +1007,20 @@ export interface ChargesByBillingProfile {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ChargesListResultByBillingProfile>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ChargeSummaryByBillingProfile>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    list1WithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByBillingProfile>>;
+    listByBillingPeriodWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummaryByBillingProfile>>;
 
     /**
-     * Lists the charges by billing profile id for given start and end date. Start
-     * and end date are used to determine the billing period. For current month,
-     * the data will be provided from month to date. If there are no chages for a
-     * month then that month will show all zeroes.
+     * Lists the charges based on billingAccountId by billing period.
      *
      * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingProfileId Billing Profile Id.
      *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
+     * @param {string} billingPeriodName Billing Period Name.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1050,7 +1034,7 @@ export interface ChargesByBillingProfile {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ChargesListResultByBillingProfile} - The deserialized result object.
+     *                      @resolve {ChargeSummaryByBillingProfile} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1058,17 +1042,17 @@ export interface ChargesByBillingProfile {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ChargesListResultByBillingProfile} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ChargesListResultByBillingProfile} for more
+     *                      {ChargeSummaryByBillingProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargeSummaryByBillingProfile} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list1(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByBillingProfile>;
-    list1(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, callback: ServiceCallback<models.ChargesListResultByBillingProfile>): void;
-    list1(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByBillingProfile>): void;
+    listByBillingPeriod(billingAccountId: string, billingProfileId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummaryByBillingProfile>;
+    listByBillingPeriod(billingAccountId: string, billingProfileId: string, billingPeriodName: string, callback: ServiceCallback<models.ChargeSummaryByBillingProfile>): void;
+    listByBillingPeriod(billingAccountId: string, billingProfileId: string, billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummaryByBillingProfile>): void;
 
 
     /**
@@ -1198,10 +1182,7 @@ export interface ChargesByBillingProfile {
 
 
     /**
-     * Lists the charges by billing profile id for given start and end date. Start
-     * and end date are used to determine the billing period. For current month,
-     * the data will be provided from month to date. If there are no chages for a
-     * month then that month will show all zeroes.
+     * Lists the charges based on billingAccountId by billing period.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1213,17 +1194,14 @@ export interface ChargesByBillingProfile {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ChargesListResultByBillingProfile>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ChargeSummaryByBillingProfile>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    list1NextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargesListResultByBillingProfile>>;
+    listByBillingPeriodNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ChargeSummaryByBillingProfile>>;
 
     /**
-     * Lists the charges by billing profile id for given start and end date. Start
-     * and end date are used to determine the billing period. For current month,
-     * the data will be provided from month to date. If there are no chages for a
-     * month then that month will show all zeroes.
+     * Lists the charges based on billingAccountId by billing period.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1240,7 +1218,7 @@ export interface ChargesByBillingProfile {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ChargesListResultByBillingProfile} - The deserialized result object.
+     *                      @resolve {ChargeSummaryByBillingProfile} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1248,17 +1226,17 @@ export interface ChargesByBillingProfile {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ChargesListResultByBillingProfile} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ChargesListResultByBillingProfile} for more
+     *                      {ChargeSummaryByBillingProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ChargeSummaryByBillingProfile} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list1Next(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargesListResultByBillingProfile>;
-    list1Next(nextPageLink: string, callback: ServiceCallback<models.ChargesListResultByBillingProfile>): void;
-    list1Next(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargesListResultByBillingProfile>): void;
+    listByBillingPeriodNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ChargeSummaryByBillingProfile>;
+    listByBillingPeriodNext(nextPageLink: string, callback: ServiceCallback<models.ChargeSummaryByBillingProfile>): void;
+    listByBillingPeriodNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ChargeSummaryByBillingProfile>): void;
 }
 
 /**
@@ -1276,10 +1254,6 @@ export interface CreditsByBillingAccount {
      *
      * @param {string} billingAccountId BillingAccount ID
      *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the billingProfiles
@@ -1295,17 +1269,13 @@ export interface CreditsByBillingAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(billingAccountId: string, startDate: string, endDate: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreditSummary>>;
+    listWithHttpOperationResponse(billingAccountId: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreditSummary>>;
 
     /**
      * Lists the credits by billingAccountId and project id for given start and end
      * date.
      *
      * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1338,19 +1308,15 @@ export interface CreditsByBillingAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(billingAccountId: string, startDate: string, endDate: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.CreditSummary>;
-    list(billingAccountId: string, startDate: string, endDate: string, callback: ServiceCallback<models.CreditSummary>): void;
-    list(billingAccountId: string, startDate: string, endDate: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreditSummary>): void;
+    list(billingAccountId: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.CreditSummary>;
+    list(billingAccountId: string, callback: ServiceCallback<models.CreditSummary>): void;
+    list(billingAccountId: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreditSummary>): void;
 
 
     /**
      * Download the credit events based on billingAccountId.
      *
      * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1363,16 +1329,12 @@ export interface CreditsByBillingAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    downloadWithHttpOperationResponse(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    downloadWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Download the credit events based on billingAccountId.
      *
      * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1400,9 +1362,9 @@ export interface CreditsByBillingAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    download(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    download(billingAccountId: string, startDate: string, endDate: string, callback: ServiceCallback<void>): void;
-    download(billingAccountId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    download(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    download(billingAccountId: string, callback: ServiceCallback<void>): void;
+    download(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1481,10 +1443,6 @@ export interface CreditsByBillingProfile {
      *
      * @param {string} billingProfileId Billing Profile Id.
      *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the lots or events
@@ -1500,7 +1458,7 @@ export interface CreditsByBillingProfile {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreditSummary>>;
+    listWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreditSummary>>;
 
     /**
      * Lists the credits by billingAccountId and billingProfileId for given start
@@ -1509,10 +1467,6 @@ export interface CreditsByBillingProfile {
      * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingProfileId Billing Profile Id.
-     *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1545,9 +1499,9 @@ export interface CreditsByBillingProfile {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.CreditSummary>;
-    list(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, callback: ServiceCallback<models.CreditSummary>): void;
-    list(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreditSummary>): void;
+    list(billingAccountId: string, billingProfileId: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.CreditSummary>;
+    list(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<models.CreditSummary>): void;
+    list(billingAccountId: string, billingProfileId: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreditSummary>): void;
 
 
     /**
@@ -1556,10 +1510,6 @@ export interface CreditsByBillingProfile {
      * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingProfileId Billing Profile Id.
-     *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1572,7 +1522,7 @@ export interface CreditsByBillingProfile {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    downloadWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    downloadWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Download the credit events based on billing profile id.
@@ -1580,10 +1530,6 @@ export interface CreditsByBillingProfile {
      * @param {string} billingAccountId BillingAccount ID
      *
      * @param {string} billingProfileId Billing Profile Id.
-     *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1611,9 +1557,9 @@ export interface CreditsByBillingProfile {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    download(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    download(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, callback: ServiceCallback<void>): void;
-    download(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    download(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    download(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<void>): void;
+    download(billingAccountId: string, billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1689,10 +1635,6 @@ export interface ProductsByBillingAccount {
      *
      * @param {string} billingAccountId BillingAccount ID
      *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1704,16 +1646,12 @@ export interface ProductsByBillingAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
+    listWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
 
     /**
      * Lists the products by billingAccountId for given start and end date.
      *
      * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1742,9 +1680,9 @@ export interface ProductsByBillingAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
-    list(billingAccountId: string, startDate: string, endDate: string, callback: ServiceCallback<models.ProductsListResult>): void;
-    list(billingAccountId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
+    list(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
+    list(billingAccountId: string, callback: ServiceCallback<models.ProductsListResult>): void;
+    list(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
 
 
     /**
@@ -1802,78 +1740,6 @@ export interface ProductsByBillingAccount {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ProductsListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
-}
-
-/**
- * @class
- * ProductsByBillingProfile
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ConsumptionManagementClient.
- */
-export interface ProductsByBillingProfile {
-
-
-    /**
-     * Lists the products by billingProfileId for given start and end date.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} billingProfileId Billing Profile Id.
-     *
-     * @param {string} billingPeriodName Billing Period Name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ProductsListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    downloadWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
-
-    /**
-     * Lists the products by billingProfileId for given start and end date.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} billingProfileId Billing Profile Id.
-     *
-     * @param {string} billingPeriodName Billing Period Name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ProductsListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ProductsListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ProductsListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    download(billingAccountId: string, billingProfileId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
-    download(billingAccountId: string, billingProfileId: string, billingPeriodName: string, callback: ServiceCallback<models.ProductsListResult>): void;
-    download(billingAccountId: string, billingProfileId: string, billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
 }
 
 /**
