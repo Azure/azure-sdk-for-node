@@ -65,7 +65,7 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
 
 
   /**
-   * Lists the products by billingProfileId for given start and end date.
+   * Lists the products by billingProfileId for given start date and end date.
    *
    * @param {string} billingAccountId BillingAccount ID
    *
@@ -89,7 +89,7 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   productsByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
 
   /**
-   * Lists the products by billingProfileId for given start and end date.
+   * Lists the products by billingProfileId for given start date and end date.
    *
    * @param {string} billingAccountId BillingAccount ID
    *
