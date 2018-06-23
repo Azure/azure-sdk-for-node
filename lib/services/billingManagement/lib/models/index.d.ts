@@ -34,48 +34,349 @@ export interface Resource extends BaseResource {
 
 /**
  * @class
+ * Initializes a new instance of the BillingProfile class.
+ * @constructor
+ * A billing profile resource.
+ *
+ * @member {string} [displayName] The billing profile name.
+ * @member {string} [poNumber] Purchase order number.
+ */
+export interface BillingProfile extends Resource {
+  displayName?: string;
+  poNumber?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProductDetails class.
+ * @constructor
+ * Details about the product.
+ *
+ * @member {string} [productName] The product name.
+ * @member {string} [skuId] The sku id.
+ * @member {string} [skuDescription] The sku description.
+ * @member {string} [availabilityId] The availability id used by purchase.
+ * @member {string} [legacyId] The legacy id of the product.
+ */
+export interface ProductDetails {
+  readonly productName?: string;
+  readonly skuId?: string;
+  readonly skuDescription?: string;
+  readonly availabilityId?: string;
+  readonly legacyId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EligibleOffer class.
+ * @constructor
+ * An Eligible Offer resource.
+ *
+ * @member {string} [displayName] Offer name.
+ * @member {string} [parentAssetId] The id of the parent asset.
+ * @member {string} [owningProjectId] The id of the project.
+ * @member {date} [startDate] The start date.
+ * @member {date} [endDate] The end date.
+ * @member {object} [billingProfiles] The billing profiles associated to the
+ * eligible offer.
+ * @member {string} [billingProfiles.displayName] The billing profile name.
+ * @member {string} [billingProfiles.poNumber] Purchase order number.
+ * @member {object} [productDetails] Information about the product.
+ * @member {string} [productDetails.productName] The product name.
+ * @member {string} [productDetails.skuId] The sku id.
+ * @member {string} [productDetails.skuDescription] The sku description.
+ * @member {string} [productDetails.availabilityId] The availability id used by
+ * purchase.
+ * @member {string} [productDetails.legacyId] The legacy id of the product.
+ */
+export interface EligibleOffer extends Resource {
+  readonly displayName?: string;
+  readonly parentAssetId?: string;
+  readonly owningProjectId?: string;
+  readonly startDate?: Date;
+  readonly endDate?: Date;
+  billingProfiles?: BillingProfile;
+  productDetails?: ProductDetails;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Project class.
+ * @constructor
+ * A project resource.
+ *
+ * @member {string} [displayName] The name of the project.
+ * @member {array} [eligibleOffers] The eligible offers attached to the
+ * project.
+ * @member {string} [costCenter] The cost center for the project.
+ */
+export interface Project extends Resource {
+  displayName?: string;
+  eligibleOffers?: EligibleOffer[];
+  costCenter?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnrollmentPolicies class.
+ * @constructor
+ * The attributes associated with legacy enrollment
+ *
+ * @member {boolean} [accountOwnerViewCharges] The accountOwnerViewCharges flag
+ * for Enrollment
+ * @member {boolean} [departmentAdminViewCharges] The
+ * departmentAdminViewCharges flag for Enrollment
+ * @member {boolean} [marketplacesEnabled] The marketplaces flag for Enrollment
+ * @member {boolean} [reservedInstancesEnabled] The reserved instances flag for
+ * Enrollment
+ */
+export interface EnrollmentPolicies {
+  readonly accountOwnerViewCharges?: boolean;
+  readonly departmentAdminViewCharges?: boolean;
+  readonly marketplacesEnabled?: boolean;
+  readonly reservedInstancesEnabled?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Enrollment class.
+ * @constructor
+ * Current entity level details
+ *
+ * @member {date} [startDate] Enrollment Start Date
+ * @member {date} [endDate] Enrollment End Date
+ * @member {string} [currency] The currency associated with enrollment
+ * @member {string} [channel] The channel for Enrollment
+ * @member {object} [policies] The attributes associated with legacy
+ * enrollment.
+ * @member {boolean} [policies.accountOwnerViewCharges] The
+ * accountOwnerViewCharges flag for Enrollment
+ * @member {boolean} [policies.departmentAdminViewCharges] The
+ * departmentAdminViewCharges flag for Enrollment
+ * @member {boolean} [policies.marketplacesEnabled] The marketplaces flag for
+ * Enrollment
+ * @member {boolean} [policies.reservedInstancesEnabled] The reserved instances
+ * flag for Enrollment
+ * @member {string} [language] The language for Enrollment
+ * @member {string} [countryCode] The countryCode for Enrollment
+ * @member {string} [status] Enrollment status
+ * @member {string} [billingCylce] Enrollment billing cycle
+ */
+export interface Enrollment {
+  readonly startDate?: Date;
+  readonly endDate?: Date;
+  readonly currency?: string;
+  readonly channel?: string;
+  readonly policies?: EnrollmentPolicies;
+  readonly language?: string;
+  readonly countryCode?: string;
+  readonly status?: string;
+  readonly billingCylce?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EnrollmentAccount class.
  * @constructor
- * An enrollment account resource.
+ * An account resource.
  *
- * @member {string} [principalName] The account owner's principal name.
+ * @member {string} [accountName] The account name.
+ * @member {string} [costCenter] The cost center name.
+ * @member {string} [accountOwner] The account owner
+ * @member {string} [status] The status for account.
+ * @member {date} [startDate] Account Start Date
+ * @member {date} [endDate] Account End Date
+ * @member {object} [department] Associated department. By default this is not
+ * populated, unless it's specified in $expand.
+ * @member {string} [department.departmentName] The name for department.
+ * @member {string} [department.costCenter] The cost center name.
+ * @member {string} [department.status] The status for department.
+ * @member {array} [department.enrollmentAccounts] Associated enrollment
+ * accounts. By default this is not populated, unless it's specified in
+ * $expand.
  */
 export interface EnrollmentAccount extends Resource {
-  readonly principalName?: string;
+  readonly accountName?: string;
+  readonly costCenter?: string;
+  readonly accountOwner?: string;
+  readonly status?: string;
+  readonly startDate?: Date;
+  readonly endDate?: Date;
+  department?: Department;
 }
 
 /**
  * @class
- * Initializes a new instance of the BillingPeriod class.
+ * Initializes a new instance of the Department class.
  * @constructor
- * A billing period resource.
+ * A department resource.
  *
- * @member {date} [billingPeriodStartDate] The start of the date range covered
- * by the billing period.
- * @member {date} [billingPeriodEndDate] The end of the date range covered by
- * the billing period.
- * @member {array} [invoiceIds] Array of invoice ids that associated with.
+ * @member {string} [departmentName] The name for department.
+ * @member {string} [costCenter] The cost center name.
+ * @member {string} [status] The status for department.
+ * @member {array} [enrollmentAccounts] Associated enrollment accounts. By
+ * default this is not populated, unless it's specified in $expand.
  */
-export interface BillingPeriod extends Resource {
-  readonly billingPeriodStartDate?: Date;
-  readonly billingPeriodEndDate?: Date;
-  readonly invoiceIds?: string[];
+export interface Department extends Resource {
+  readonly departmentName?: string;
+  readonly costCenter?: string;
+  readonly status?: string;
+  enrollmentAccounts?: EnrollmentAccount[];
 }
 
 /**
  * @class
- * Initializes a new instance of the DownloadUrl class.
+ * Initializes a new instance of the BillingAccount class.
  * @constructor
- * A secure URL that can be used to download a PDF invoice until the URL
- * expires.
+ * A billing account resource.
  *
- * @member {date} [expiryTime] The time in UTC at which this download URL will
- * expire.
- * @member {string} [url] The URL to the PDF file.
+ * @member {string} [displayName] Name of the billing account.
+ * @member {string} [accountType] The billing account Type. Possible values
+ * include: 'CommerceRoot', 'Enrollment'
+ * @member {string} [address] The address associated with billing account.
+ * @member {string} [currency] The ISO currency, for example, USD.
+ * @member {string} [country] The country associated with billing account..
+ * @member {array} [projects] The projects associated to the billing account.
+ * @member {array} [billingProfiles] The billing profiles associated to the
+ * billing account.
+ * @member {object} [enrollmentDetails] The details about the associated legacy
+ * enrollment. By default this is not populated, unless it's specified in
+ * $expand.
+ * @member {date} [enrollmentDetails.startDate] Enrollment Start Date
+ * @member {date} [enrollmentDetails.endDate] Enrollment End Date
+ * @member {string} [enrollmentDetails.currency] The currency associated with
+ * enrollment
+ * @member {string} [enrollmentDetails.channel] The channel for Enrollment
+ * @member {object} [enrollmentDetails.policies] The attributes associated with
+ * legacy enrollment.
+ * @member {boolean} [enrollmentDetails.policies.accountOwnerViewCharges] The
+ * accountOwnerViewCharges flag for Enrollment
+ * @member {boolean} [enrollmentDetails.policies.departmentAdminViewCharges]
+ * The departmentAdminViewCharges flag for Enrollment
+ * @member {boolean} [enrollmentDetails.policies.marketplacesEnabled] The
+ * marketplaces flag for Enrollment
+ * @member {boolean} [enrollmentDetails.policies.reservedInstancesEnabled] The
+ * reserved instances flag for Enrollment
+ * @member {string} [enrollmentDetails.language] The language for Enrollment
+ * @member {string} [enrollmentDetails.countryCode] The countryCode for
+ * Enrollment
+ * @member {string} [enrollmentDetails.status] Enrollment status
+ * @member {string} [enrollmentDetails.billingCylce] Enrollment billing cycle
+ * @member {array} [departments] The departments associated to the enrollment.
+ * @member {array} [enrollmentAccounts] The accounts associated to the
+ * enrollment.
  */
-export interface DownloadUrl {
-  readonly expiryTime?: Date;
-  readonly url?: string;
+export interface BillingAccount extends Resource {
+  readonly displayName?: string;
+  readonly accountType?: string;
+  readonly address?: string;
+  readonly currency?: string;
+  readonly country?: string;
+  projects?: Project[];
+  billingProfiles?: BillingProfile[];
+  readonly enrollmentDetails?: Enrollment;
+  departments?: Department[];
+  enrollmentAccounts?: EnrollmentAccount[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BillingAccountListResult class.
+ * @constructor
+ * Result of listing billing accounts.
+ *
+ * @member {array} [value] The list of billing accounts.
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface BillingAccountListResult {
+  readonly value?: BillingAccount[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DepartmentListResult class.
+ * @constructor
+ * Result of listing departments.
+ *
+ * @member {array} [value] The list of departments.
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface DepartmentListResult {
+  readonly value?: Department[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EnrollmentAccountListResult class.
+ * @constructor
+ * Result of listing enrollment accounts.
+ *
+ * @member {array} [value] The list of enrollment accounts.
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface EnrollmentAccountListResult {
+  readonly value?: EnrollmentAccount[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BillingProfileListResult class.
+ * @constructor
+ * Result of listing billing profiles.
+ *
+ * @member {array} [value] The list of billing profiles.
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface BillingProfileListResult {
+  readonly value?: BillingProfile[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProjectListResult class.
+ * @constructor
+ * Result of listing projects.
+ *
+ * @member {array} [value] The list of projects.
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface ProjectListResult {
+  readonly value?: Project[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EligibleOfferListResult class.
+ * @constructor
+ * Result of listing Eligible Offers.
+ *
+ * @member {array} [value] The list of Eligible Offers.
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface EligibleOfferListResult {
+  readonly value?: EligibleOffer[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationStatus class.
+ * @constructor
+ * status of the Billing POST/PUT operation.
+ *
+ * @member {string} [id] The operation Id.
+ * @member {string} [status] Status of the pending operation
+ * @member {string} [statusDetail] Status Detail of the pending operation
+ */
+export interface OperationStatus {
+  readonly id?: string;
+  readonly status?: string;
+  readonly statusDetail?: string;
 }
 
 /**
@@ -112,116 +413,3 @@ export interface ErrorResponse {
   error?: ErrorDetails;
 }
 
-/**
- * @class
- * Initializes a new instance of the Invoice class.
- * @constructor
- * An invoice resource can be used download a PDF version of an invoice.
- *
- * @member {object} [downloadUrl] A secure link to download the PDF version of
- * an invoice. The link will cease to work after its expiry time is reached.
- * @member {date} [downloadUrl.expiryTime] The time in UTC at which this
- * download URL will expire.
- * @member {string} [downloadUrl.url] The URL to the PDF file.
- * @member {date} [invoicePeriodStartDate] The start of the date range covered
- * by the invoice.
- * @member {date} [invoicePeriodEndDate] The end of the date range covered by
- * the invoice.
- * @member {array} [billingPeriodIds] Array of billing perdiod ids that the
- * invoice is attributed to.
- */
-export interface Invoice extends Resource {
-  downloadUrl?: DownloadUrl;
-  readonly invoicePeriodStartDate?: Date;
-  readonly invoicePeriodEndDate?: Date;
-  readonly billingPeriodIds?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationDisplay class.
- * @constructor
- * The object that represents the operation.
- *
- * @member {string} [provider] Service provider: Microsoft.Billing.
- * @member {string} [resource] Resource on which the operation is performed:
- * Invoice, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
- */
-export interface OperationDisplay {
-  readonly provider?: string;
-  readonly resource?: string;
-  readonly operation?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Operation class.
- * @constructor
- * A Billing REST API operation.
- *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}.
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft.Billing.
- * @member {string} [display.resource] Resource on which the operation is
- * performed: Invoice, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
- * etc.
- */
-export interface Operation {
-  readonly name?: string;
-  display?: OperationDisplay;
-}
-
-
-/**
- * @class
- * Initializes a new instance of the EnrollmentAccountListResult class.
- * @constructor
- * Result of listing enrollment accounts.
- *
- * @member {string} [nextLink] The link (url) to the next page of results.
- */
-export interface EnrollmentAccountListResult extends Array<EnrollmentAccount> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the BillingPeriodsListResult class.
- * @constructor
- * Result of listing billing periods. It contains a list of available billing
- * periods in reverse chronological order.
- *
- * @member {string} [nextLink] The link (url) to the next page of results.
- */
-export interface BillingPeriodsListResult extends Array<BillingPeriod> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the InvoicesListResult class.
- * @constructor
- * Result of listing invoices. It contains a list of available invoices in
- * reverse chronological order.
- *
- * @member {string} [nextLink] The link (url) to the next page of results.
- */
-export interface InvoicesListResult extends Array<Invoice> {
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResult class.
- * @constructor
- * Result listing billing operations. It contains a list of operations and a
- * URL link to get the next set of results.
- *
- * @member {string} [nextLink] URL to get the next set of operation list
- * results if there are any.
- */
-export interface OperationListResult extends Array<Operation> {
-  readonly nextLink?: string;
-}

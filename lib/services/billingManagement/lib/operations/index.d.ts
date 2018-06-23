@@ -14,6 +14,874 @@ import * as models from '../models';
 
 /**
  * @class
+ * BillingAccounts
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BillingManagementClient.
+ */
+export interface BillingAccounts {
+
+
+    /**
+     * Lists all billing accounts for a user which he has access to.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the projects and
+     * billingProfiles.
+     *
+     * @param {string} [options.filter] May be used to filter by permission. The
+     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BillingAccountListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingAccountListResult>>;
+
+    /**
+     * Lists all billing accounts for a user which he has access to.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the projects and
+     * billingProfiles.
+     *
+     * @param {string} [options.filter] May be used to filter by permission. The
+     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BillingAccountListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BillingAccountListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BillingAccountListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingAccountListResult>;
+    list(callback: ServiceCallback<models.BillingAccountListResult>): void;
+    list(options: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingAccountListResult>): void;
+
+
+    /**
+     * Get the billing account by id.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the projects and
+     * billingProfiles.
+     *
+     * @param {string} [options.filter] May be used to filter by permission. The
+     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BillingAccount>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(billingAccountId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingAccount>>;
+
+    /**
+     * Get the billing account by id.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the projects and
+     * billingProfiles.
+     *
+     * @param {string} [options.filter] May be used to filter by permission. The
+     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BillingAccount} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BillingAccount} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BillingAccount} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(billingAccountId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingAccount>;
+    get(billingAccountId: string, callback: ServiceCallback<models.BillingAccount>): void;
+    get(billingAccountId: string, options: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingAccount>): void;
+}
+
+/**
+ * @class
+ * BillingProfiles
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BillingManagementClient.
+ */
+export interface BillingProfiles {
+
+
+    /**
+     * Lists all billing profiles for a user which that user has access to.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BillingProfileListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingAccountIdWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingProfileListResult>>;
+
+    /**
+     * Lists all billing profiles for a user which that user has access to.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BillingProfileListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BillingProfileListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BillingProfileListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingAccountId(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingProfileListResult>;
+    listByBillingAccountId(billingAccountId: string, callback: ServiceCallback<models.BillingProfileListResult>): void;
+    listByBillingAccountId(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingProfileListResult>): void;
+
+
+    /**
+     * Get the billing profile by id.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} billingProfileId Billing Profile Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BillingProfile>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingProfile>>;
+
+    /**
+     * Get the billing profile by id.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} billingProfileId Billing Profile Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BillingProfile} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BillingProfile} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BillingProfile} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingProfile>;
+    get(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<models.BillingProfile>): void;
+    get(billingAccountId: string, billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingProfile>): void;
+}
+
+/**
+ * @class
+ * Projects
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BillingManagementClient.
+ */
+export interface Projects {
+
+
+    /**
+     * Lists all projects for a user which he has access to.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the eligibleOffers.
+     *
+     * @param {string} [options.filter] May be used to filter by permission. The
+     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ProjectListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingAccountIdWithHttpOperationResponse(billingAccountId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProjectListResult>>;
+
+    /**
+     * Lists all projects for a user which he has access to.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the eligibleOffers.
+     *
+     * @param {string} [options.filter] May be used to filter by permission. The
+     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ProjectListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ProjectListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ProjectListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingAccountId(billingAccountId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProjectListResult>;
+    listByBillingAccountId(billingAccountId: string, callback: ServiceCallback<models.ProjectListResult>): void;
+    listByBillingAccountId(billingAccountId: string, options: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProjectListResult>): void;
+
+
+    /**
+     * The operation to create a project.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} parameters Parameters supplied to the Create Project
+     * operation.
+     *
+     * @param {string} [parameters.displayName] The name of the project.
+     *
+     * @param {array} [parameters.eligibleOffers] The eligible offers attached to
+     * the project.
+     *
+     * @param {string} [parameters.costCenter] The cost center for the project.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Project>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(billingAccountId: string, parameters: models.Project, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Project>>;
+
+    /**
+     * The operation to create a project.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} parameters Parameters supplied to the Create Project
+     * operation.
+     *
+     * @param {string} [parameters.displayName] The name of the project.
+     *
+     * @param {array} [parameters.eligibleOffers] The eligible offers attached to
+     * the project.
+     *
+     * @param {string} [parameters.costCenter] The cost center for the project.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Project} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Project} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Project} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(billingAccountId: string, parameters: models.Project, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Project>;
+    create(billingAccountId: string, parameters: models.Project, callback: ServiceCallback<models.Project>): void;
+    create(billingAccountId: string, parameters: models.Project, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Project>): void;
+
+
+    /**
+     * Get the project by id.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} projectId Project Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the eligibleOffers.
+     *
+     * @param {string} [options.filter] May be used to filter by permission. The
+     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Project>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(billingAccountId: string, projectId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Project>>;
+
+    /**
+     * Get the project by id.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} projectId Project Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the eligibleOffers.
+     *
+     * @param {string} [options.filter] May be used to filter by permission. The
+     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Project} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Project} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Project} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(billingAccountId: string, projectId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Project>;
+    get(billingAccountId: string, projectId: string, callback: ServiceCallback<models.Project>): void;
+    get(billingAccountId: string, projectId: string, options: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Project>): void;
+
+
+    /**
+     * The operation to update a project.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} projectId Project Id.
+     *
+     * @param {object} parameters Parameters supplied to the Create Project
+     * operation.
+     *
+     * @param {string} [parameters.displayName] The name of the project.
+     *
+     * @param {array} [parameters.eligibleOffers] The eligible offers attached to
+     * the project.
+     *
+     * @param {string} [parameters.costCenter] The cost center for the project.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Project>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(billingAccountId: string, projectId: string, parameters: models.Project, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Project>>;
+
+    /**
+     * The operation to update a project.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} projectId Project Id.
+     *
+     * @param {object} parameters Parameters supplied to the Create Project
+     * operation.
+     *
+     * @param {string} [parameters.displayName] The name of the project.
+     *
+     * @param {array} [parameters.eligibleOffers] The eligible offers attached to
+     * the project.
+     *
+     * @param {string} [parameters.costCenter] The cost center for the project.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Project} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Project} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Project} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(billingAccountId: string, projectId: string, parameters: models.Project, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Project>;
+    update(billingAccountId: string, projectId: string, parameters: models.Project, callback: ServiceCallback<models.Project>): void;
+    update(billingAccountId: string, projectId: string, parameters: models.Project, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Project>): void;
+}
+
+/**
+ * @class
+ * EligibleOffers
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BillingManagementClient.
+ */
+export interface EligibleOffers {
+
+
+    /**
+     * Lists all eligible offers for specified billing account id.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the billingProfiles.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EligibleOfferListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingAccountIdWithHttpOperationResponse(billingAccountId: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EligibleOfferListResult>>;
+
+    /**
+     * Lists all eligible offers for specified billing account id.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the billingProfiles.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EligibleOfferListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EligibleOfferListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EligibleOfferListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingAccountId(billingAccountId: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EligibleOfferListResult>;
+    listByBillingAccountId(billingAccountId: string, callback: ServiceCallback<models.EligibleOfferListResult>): void;
+    listByBillingAccountId(billingAccountId: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EligibleOfferListResult>): void;
+
+
+    /**
+     * Get the eligible offer by id.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} eligibleOfferId Eligible Offer Id.
+     *
+     * @param {string} projectId Project Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the billingProfiles.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EligibleOffer>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getByIdWithHttpOperationResponse(billingAccountId: string, eligibleOfferId: string, projectId: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EligibleOffer>>;
+
+    /**
+     * Get the eligible offer by id.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} eligibleOfferId Eligible Offer Id.
+     *
+     * @param {string} projectId Project Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the billingProfiles.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EligibleOffer} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EligibleOffer} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EligibleOffer} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getById(billingAccountId: string, eligibleOfferId: string, projectId: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EligibleOffer>;
+    getById(billingAccountId: string, eligibleOfferId: string, projectId: string, callback: ServiceCallback<models.EligibleOffer>): void;
+    getById(billingAccountId: string, eligibleOfferId: string, projectId: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EligibleOffer>): void;
+}
+
+/**
+ * @class
+ * Departments
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the BillingManagementClient.
+ */
+export interface Departments {
+
+
+    /**
+     * Lists all departments for a user which he has access to.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * enrollmentAccounts.
+     *
+     * @param {string} [options.filter] The filter supports 'eq', 'lt', 'gt', 'le',
+     * 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag
+     * filter is a key value pair string where key and value is separated by a
+     * colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DepartmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByBillingAccountIdWithHttpOperationResponse(billingAccountId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DepartmentListResult>>;
+
+    /**
+     * Lists all departments for a user which he has access to.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * enrollmentAccounts.
+     *
+     * @param {string} [options.filter] The filter supports 'eq', 'lt', 'gt', 'le',
+     * 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag
+     * filter is a key value pair string where key and value is separated by a
+     * colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DepartmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DepartmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DepartmentListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByBillingAccountId(billingAccountId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DepartmentListResult>;
+    listByBillingAccountId(billingAccountId: string, callback: ServiceCallback<models.DepartmentListResult>): void;
+    listByBillingAccountId(billingAccountId: string, options: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DepartmentListResult>): void;
+
+
+    /**
+     * Get the department by id.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} departmentId Department Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * enrollmentAccounts.
+     *
+     * @param {string} [options.filter] The filter supports 'eq', 'lt', 'gt', 'le',
+     * 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag
+     * filter is a key value pair string where key and value is separated by a
+     * colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Department>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(billingAccountId: string, departmentId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Department>>;
+
+    /**
+     * Get the department by id.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} departmentId Department Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the
+     * enrollmentAccounts.
+     *
+     * @param {string} [options.filter] The filter supports 'eq', 'lt', 'gt', 'le',
+     * 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag
+     * filter is a key value pair string where key and value is separated by a
+     * colon (:).
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Department} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Department} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Department} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(billingAccountId: string, departmentId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Department>;
+    get(billingAccountId: string, departmentId: string, callback: ServiceCallback<models.Department>): void;
+    get(billingAccountId: string, departmentId: string, options: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Department>): void;
+}
+
+/**
+ * @class
  * EnrollmentAccounts
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BillingManagementClient.
@@ -22,9 +890,18 @@ export interface EnrollmentAccounts {
 
 
     /**
-     * Lists the enrollment accounts the caller has access to.
+     * Lists all Enrollment Accounts for a user which he has access to.
+     *
+     * @param {string} billingAccountId billing Account Id.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the department.
+     *
+     * @param {string} [options.filter] The filter supports 'eq', 'lt', 'gt', 'le',
+     * 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag
+     * filter is a key value pair string where key and value is separated by a
+     * colon (:).
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -35,12 +912,21 @@ export interface EnrollmentAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EnrollmentAccountListResult>>;
+    listByBillingAccountIdWithHttpOperationResponse(billingAccountId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EnrollmentAccountListResult>>;
 
     /**
-     * Lists the enrollment accounts the caller has access to.
+     * Lists all Enrollment Accounts for a user which he has access to.
+     *
+     * @param {string} billingAccountId billing Account Id.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the department.
+     *
+     * @param {string} [options.filter] The filter supports 'eq', 'lt', 'gt', 'le',
+     * 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag
+     * filter is a key value pair string where key and value is separated by a
+     * colon (:).
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -68,17 +954,26 @@ export interface EnrollmentAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EnrollmentAccountListResult>;
-    list(callback: ServiceCallback<models.EnrollmentAccountListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EnrollmentAccountListResult>): void;
+    listByBillingAccountId(billingAccountId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EnrollmentAccountListResult>;
+    listByBillingAccountId(billingAccountId: string, callback: ServiceCallback<models.EnrollmentAccountListResult>): void;
+    listByBillingAccountId(billingAccountId: string, options: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EnrollmentAccountListResult>): void;
 
 
     /**
-     * Gets a enrollment account by name.
+     * Get the enrollment account by id.
      *
-     * @param {string} name Enrollment Account name.
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} enrollmentAccountId Enrollment Account Id.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the Department.
+     *
+     * @param {string} [options.filter] The filter supports 'eq', 'lt', 'gt', 'le',
+     * 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag
+     * filter is a key value pair string where key and value is separated by a
+     * colon (:).
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -89,14 +984,23 @@ export interface EnrollmentAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EnrollmentAccount>>;
+    getByEnrollmentAccountAccountIdWithHttpOperationResponse(billingAccountId: string, enrollmentAccountId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EnrollmentAccount>>;
 
     /**
-     * Gets a enrollment account by name.
+     * Get the enrollment account by id.
      *
-     * @param {string} name Enrollment Account name.
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {string} enrollmentAccountId Enrollment Account Id.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the Department.
+     *
+     * @param {string} [options.filter] The filter supports 'eq', 'lt', 'gt', 'le',
+     * 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag
+     * filter is a key value pair string where key and value is separated by a
+     * colon (:).
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -123,166 +1027,24 @@ export interface EnrollmentAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EnrollmentAccount>;
-    get(name: string, callback: ServiceCallback<models.EnrollmentAccount>): void;
-    get(name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EnrollmentAccount>): void;
-
-
-    /**
-     * Lists the enrollment accounts the caller has access to.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<EnrollmentAccountListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EnrollmentAccountListResult>>;
-
-    /**
-     * Lists the enrollment accounts the caller has access to.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {EnrollmentAccountListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {EnrollmentAccountListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link EnrollmentAccountListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EnrollmentAccountListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.EnrollmentAccountListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EnrollmentAccountListResult>): void;
+    getByEnrollmentAccountAccountId(billingAccountId: string, enrollmentAccountId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EnrollmentAccount>;
+    getByEnrollmentAccountAccountId(billingAccountId: string, enrollmentAccountId: string, callback: ServiceCallback<models.EnrollmentAccount>): void;
+    getByEnrollmentAccountAccountId(billingAccountId: string, enrollmentAccountId: string, options: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EnrollmentAccount>): void;
 }
 
 /**
  * @class
- * BillingPeriods
+ * OperationStatusOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the BillingManagementClient.
  */
-export interface BillingPeriods {
+export interface OperationStatusOperations {
 
 
     /**
-     * Lists the available billing periods for a subscription in reverse
-     * chronological order. This is only supported for Azure Web-Direct
-     * subscriptions. Other subscription types which were not purchased directly
-     * through the Azure web portal are not supported through this preview API.
+     * Get the status of pending Microsoft.Billing API operation.
      *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] May be used to filter billing periods by
-     * billingPeriodEndDate. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and
-     * 'and'. It does not currently support 'ne', 'or', or 'not'.
-     *
-     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
-     * operation returned a partial result. If a previous response contains a
-     * nextLink element, the value of the nextLink element will include a skiptoken
-     * parameter that specifies a starting point to use for subsequent calls.
-     *
-     * @param {number} [options.top] May be used to limit the number of results to
-     * the most recent N billing periods.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<BillingPeriodsListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { filter? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingPeriodsListResult>>;
-
-    /**
-     * Lists the available billing periods for a subscription in reverse
-     * chronological order. This is only supported for Azure Web-Direct
-     * subscriptions. Other subscription types which were not purchased directly
-     * through the Azure web portal are not supported through this preview API.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] May be used to filter billing periods by
-     * billingPeriodEndDate. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and
-     * 'and'. It does not currently support 'ne', 'or', or 'not'.
-     *
-     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
-     * operation returned a partial result. If a previous response contains a
-     * nextLink element, the value of the nextLink element will include a skiptoken
-     * parameter that specifies a starting point to use for subsequent calls.
-     *
-     * @param {number} [options.top] May be used to limit the number of results to
-     * the most recent N billing periods.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {BillingPeriodsListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {BillingPeriodsListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BillingPeriodsListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { filter? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingPeriodsListResult>;
-    list(callback: ServiceCallback<models.BillingPeriodsListResult>): void;
-    list(options: { filter? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingPeriodsListResult>): void;
-
-
-    /**
-     * Gets a named billing period.  This is only supported for Azure Web-Direct
-     * subscriptions. Other subscription types which were not purchased directly
-     * through the Azure web portal are not supported through this preview API.
-     *
-     * @param {string} billingPeriodName The name of a BillingPeriod resource.
+     * @param {string} operationId Operation Id.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -291,18 +1053,16 @@ export interface BillingPeriods {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<BillingPeriod>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingPeriod>>;
+    getWithHttpOperationResponse(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
 
     /**
-     * Gets a named billing period.  This is only supported for Azure Web-Direct
-     * subscriptions. Other subscription types which were not purchased directly
-     * through the Azure web portal are not supported through this preview API.
+     * Get the status of pending Microsoft.Billing API operation.
      *
-     * @param {string} billingPeriodName The name of a BillingPeriod resource.
+     * @param {string} operationId Operation Id.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -316,7 +1076,7 @@ export interface BillingPeriods {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {BillingPeriod} - The deserialized result object.
+     *                      @resolve {OperationStatus} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -324,488 +1084,14 @@ export interface BillingPeriods {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {BillingPeriod} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BillingPeriod} for more information.
+     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatus} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingPeriod>;
-    get(billingPeriodName: string, callback: ServiceCallback<models.BillingPeriod>): void;
-    get(billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingPeriod>): void;
-
-
-    /**
-     * Lists the available billing periods for a subscription in reverse
-     * chronological order. This is only supported for Azure Web-Direct
-     * subscriptions. Other subscription types which were not purchased directly
-     * through the Azure web portal are not supported through this preview API.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<BillingPeriodsListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingPeriodsListResult>>;
-
-    /**
-     * Lists the available billing periods for a subscription in reverse
-     * chronological order. This is only supported for Azure Web-Direct
-     * subscriptions. Other subscription types which were not purchased directly
-     * through the Azure web portal are not supported through this preview API.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {BillingPeriodsListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {BillingPeriodsListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BillingPeriodsListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingPeriodsListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.BillingPeriodsListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingPeriodsListResult>): void;
-}
-
-/**
- * @class
- * Invoices
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the BillingManagementClient.
- */
-export interface Invoices {
-
-
-    /**
-     * Lists the available invoices for a subscription in reverse chronological
-     * order beginning with the most recent invoice. In preview, invoices are
-     * available via this API only for invoice periods which end December 1, 2016
-     * or later.  This is only supported for Azure Web-Direct subscriptions. Other
-     * subscription types which were not purchased directly through the Azure web
-     * portal are not supported through this preview API.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] May be used to expand the downloadUrl
-     * property within a list of invoices. This enables download links to be
-     * generated for multiple invoices at once. By default, downloadURLs are not
-     * included when listing invoices.
-     *
-     * @param {string} [options.filter] May be used to filter invoices by
-     * invoicePeriodEndDate. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and
-     * 'and'. It does not currently support 'ne', 'or', or 'not'.
-     *
-     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
-     * operation returned a partial result. If a previous response contains a
-     * nextLink element, the value of the nextLink element will include a skiptoken
-     * parameter that specifies a starting point to use for subsequent calls.
-     *
-     * @param {number} [options.top] May be used to limit the number of results to
-     * the most recent N invoices.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<InvoicesListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InvoicesListResult>>;
-
-    /**
-     * Lists the available invoices for a subscription in reverse chronological
-     * order beginning with the most recent invoice. In preview, invoices are
-     * available via this API only for invoice periods which end December 1, 2016
-     * or later.  This is only supported for Azure Web-Direct subscriptions. Other
-     * subscription types which were not purchased directly through the Azure web
-     * portal are not supported through this preview API.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] May be used to expand the downloadUrl
-     * property within a list of invoices. This enables download links to be
-     * generated for multiple invoices at once. By default, downloadURLs are not
-     * included when listing invoices.
-     *
-     * @param {string} [options.filter] May be used to filter invoices by
-     * invoicePeriodEndDate. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and
-     * 'and'. It does not currently support 'ne', 'or', or 'not'.
-     *
-     * @param {string} [options.skiptoken] Skiptoken is only used if a previous
-     * operation returned a partial result. If a previous response contains a
-     * nextLink element, the value of the nextLink element will include a skiptoken
-     * parameter that specifies a starting point to use for subsequent calls.
-     *
-     * @param {number} [options.top] May be used to limit the number of results to
-     * the most recent N invoices.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {InvoicesListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {InvoicesListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link InvoicesListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.InvoicesListResult>;
-    list(callback: ServiceCallback<models.InvoicesListResult>): void;
-    list(options: { expand? : string, filter? : string, skiptoken? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InvoicesListResult>): void;
-
-
-    /**
-     * Gets a named invoice resource. When getting a single invoice, the
-     * downloadUrl property is expanded automatically.  This is only supported for
-     * Azure Web-Direct subscriptions. Other subscription types which were not
-     * purchased directly through the Azure web portal are not supported through
-     * this preview API.
-     *
-     * @param {string} invoiceName The name of an invoice resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Invoice>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Invoice>>;
-
-    /**
-     * Gets a named invoice resource. When getting a single invoice, the
-     * downloadUrl property is expanded automatically.  This is only supported for
-     * Azure Web-Direct subscriptions. Other subscription types which were not
-     * purchased directly through the Azure web portal are not supported through
-     * this preview API.
-     *
-     * @param {string} invoiceName The name of an invoice resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Invoice} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Invoice} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Invoice} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(invoiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Invoice>;
-    get(invoiceName: string, callback: ServiceCallback<models.Invoice>): void;
-    get(invoiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Invoice>): void;
-
-
-    /**
-     * Gets the most recent invoice. When getting a single invoice, the downloadUrl
-     * property is expanded automatically.  This is only supported for Azure
-     * Web-Direct subscriptions. Other subscription types which were not purchased
-     * directly through the Azure web portal are not supported through this preview
-     * API.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Invoice>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getLatestWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Invoice>>;
-
-    /**
-     * Gets the most recent invoice. When getting a single invoice, the downloadUrl
-     * property is expanded automatically.  This is only supported for Azure
-     * Web-Direct subscriptions. Other subscription types which were not purchased
-     * directly through the Azure web portal are not supported through this preview
-     * API.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Invoice} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Invoice} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Invoice} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getLatest(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Invoice>;
-    getLatest(callback: ServiceCallback<models.Invoice>): void;
-    getLatest(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Invoice>): void;
-
-
-    /**
-     * Lists the available invoices for a subscription in reverse chronological
-     * order beginning with the most recent invoice. In preview, invoices are
-     * available via this API only for invoice periods which end December 1, 2016
-     * or later.  This is only supported for Azure Web-Direct subscriptions. Other
-     * subscription types which were not purchased directly through the Azure web
-     * portal are not supported through this preview API.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<InvoicesListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InvoicesListResult>>;
-
-    /**
-     * Lists the available invoices for a subscription in reverse chronological
-     * order beginning with the most recent invoice. In preview, invoices are
-     * available via this API only for invoice periods which end December 1, 2016
-     * or later.  This is only supported for Azure Web-Direct subscriptions. Other
-     * subscription types which were not purchased directly through the Azure web
-     * portal are not supported through this preview API.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {InvoicesListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {InvoicesListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link InvoicesListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InvoicesListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.InvoicesListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InvoicesListResult>): void;
-}
-
-/**
- * @class
- * Operations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the BillingManagementClient.
- */
-export interface Operations {
-
-
-    /**
-     * Lists all of the available billing REST API operations.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
-
-    /**
-     * Lists all of the available billing REST API operations.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
-    list(callback: ServiceCallback<models.OperationListResult>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
-
-
-    /**
-     * Lists all of the available billing REST API operations.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<OperationListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResult>>;
-
-    /**
-     * Lists all of the available billing REST API operations.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {OperationListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {OperationListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OperationListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+    get(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    get(operationId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    get(operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
 }

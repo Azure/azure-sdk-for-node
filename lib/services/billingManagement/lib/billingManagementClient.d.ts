@@ -56,10 +56,13 @@ export default class BillingManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  billingAccounts: operations.BillingAccounts;
+  billingProfiles: operations.BillingProfiles;
+  projects: operations.Projects;
+  eligibleOffers: operations.EligibleOffers;
+  departments: operations.Departments;
   enrollmentAccounts: operations.EnrollmentAccounts;
-  billingPeriods: operations.BillingPeriods;
-  invoices: operations.Invoices;
-  operations: operations.Operations;
+  operationStatusOperations: operations.OperationStatusOperations;
 }
 
 export { BillingManagementClient, models as BillingManagementModels };
