@@ -405,6 +405,58 @@ export interface AutoscaleSettings {
 
 
     /**
+     * Lists the autoscale settings for a subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AutoscaleSettingResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutoscaleSettingResourceCollection>>;
+
+    /**
+     * Lists the autoscale settings for a subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AutoscaleSettingResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AutoscaleSettingResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AutoscaleSettingResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutoscaleSettingResourceCollection>;
+    listBySubscription(callback: ServiceCallback<models.AutoscaleSettingResourceCollection>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutoscaleSettingResourceCollection>): void;
+
+
+    /**
      * Lists the autoscale settings for a resource group
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -460,6 +512,64 @@ export interface AutoscaleSettings {
     listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutoscaleSettingResourceCollection>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.AutoscaleSettingResourceCollection>): void;
     listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutoscaleSettingResourceCollection>): void;
+
+
+    /**
+     * Lists the autoscale settings for a subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AutoscaleSettingResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutoscaleSettingResourceCollection>>;
+
+    /**
+     * Lists the autoscale settings for a subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AutoscaleSettingResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AutoscaleSettingResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AutoscaleSettingResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutoscaleSettingResourceCollection>;
+    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.AutoscaleSettingResourceCollection>): void;
+    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutoscaleSettingResourceCollection>): void;
 }
 
 /**
@@ -1085,6 +1195,58 @@ export interface AlertRules {
     listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRuleResourceCollection>;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.AlertRuleResourceCollection>): void;
     listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRuleResourceCollection>): void;
+
+
+    /**
+     * List the alert rules within a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AlertRuleResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertRuleResourceCollection>>;
+
+    /**
+     * List the alert rules within a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AlertRuleResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AlertRuleResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AlertRuleResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRuleResourceCollection>;
+    listBySubscription(callback: ServiceCallback<models.AlertRuleResourceCollection>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRuleResourceCollection>): void;
 }
 
 /**
@@ -1567,6 +1729,9 @@ export interface DiagnosticSettingsOperations {
      * @param {string} [parameters.storageAccountId] The resource ID of the storage
      * account to which you would like to send Diagnostic Logs.
      *
+     * @param {string} [parameters.serviceBusRuleId] The service bus rule Id of the
+     * diagnostic setting. This is here to maintain backwards compatibility.
+     *
      * @param {string} [parameters.eventHubAuthorizationRuleId] The resource Id for
      * the event hub authorization rule.
      *
@@ -1606,6 +1771,9 @@ export interface DiagnosticSettingsOperations {
      *
      * @param {string} [parameters.storageAccountId] The resource ID of the storage
      * account to which you would like to send Diagnostic Logs.
+     *
+     * @param {string} [parameters.serviceBusRuleId] The service bus rule Id of the
+     * diagnostic setting. This is here to maintain backwards compatibility.
      *
      * @param {string} [parameters.eventHubAuthorizationRuleId] The resource Id for
      * the event hub authorization rule.
