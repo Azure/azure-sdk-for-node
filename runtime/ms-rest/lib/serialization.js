@@ -75,7 +75,8 @@ exports.serialize = function (mapper, object, objectName) {
   //     false || X         | undefined
   // undefined || X         | undefined/null
 
-  const { required, nullable } = mapper;
+  const required = mapper.required;
+  const nullable = mapper.nullable;
 
   if (required && nullable && object === undefined) {
     throw new Error(`${objectName} cannot be undefined.`);

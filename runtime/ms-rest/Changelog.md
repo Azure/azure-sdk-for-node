@@ -1,3 +1,6 @@
+### 2.3.6 (6/25/2018)
+- Removed usage of destructuring syntax for compatibility with old node.js versions.
+
 ### 2.3.5 (6/21/2018)
 - Add support for x-nullable Swagger extension
 
