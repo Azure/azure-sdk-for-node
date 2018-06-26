@@ -914,24 +914,64 @@ export interface IssueAttachmentContract extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the LoggerContract class.
+ * Initializes a new instance of the BodyDiagnosticSettings class.
  * @constructor
- * Logger details.
+ * Body logging settings.
  *
- * @member {string} loggerType Logger type. Possible values include:
- * 'azureEventHub', 'applicationInsights'
- * @member {string} [description] Logger description.
- * @member {object} credentials The name and SendRule connection string of the
- * event hub for azureEventHub logger.
- * Instrumentation key for applicationInsights logger.
- * @member {boolean} [isBuffered] Whether records are buffered in the logger
- * before publishing. Default is assumed to be true.
+ * @member {number} [bytes] Number of request body bytes to log.
  */
-export interface LoggerContract extends Resource {
-  loggerType: string;
-  description?: string;
-  credentials: { [propertyName: string]: string };
-  isBuffered?: boolean;
+export interface BodyDiagnosticSettings {
+  bytes?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HttpMessageDiagnostic class.
+ * @constructor
+ * Http message diagnostic settings.
+ *
+ * @member {array} [headers] Array of HTTP Headers to log.
+ * @member {object} [body] Body logging settings.
+ * @member {number} [body.bytes] Number of request body bytes to log.
+ */
+export interface HttpMessageDiagnostic {
+  headers?: string[];
+  body?: BodyDiagnosticSettings;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PipelineDiagnosticSettings class.
+ * @constructor
+ * Diagnostic settings for incoming/outcoming HTTP messages to the Gateway.
+ *
+ * @member {object} [request] Diagnostic settings for request.
+ * @member {array} [request.headers] Array of HTTP Headers to log.
+ * @member {object} [request.body] Body logging settings.
+ * @member {number} [request.body.bytes] Number of request body bytes to log.
+ * @member {object} [response] Diagnostic settings for response.
+ * @member {array} [response.headers] Array of HTTP Headers to log.
+ * @member {object} [response.body] Body logging settings.
+ * @member {number} [response.body.bytes] Number of request body bytes to log.
+ */
+export interface PipelineDiagnosticSettings {
+  request?: HttpMessageDiagnostic;
+  response?: HttpMessageDiagnostic;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SamplingSettings class.
+ * @constructor
+ * Sampling settings for Diagnostic.
+ *
+ * @member {string} [samplingType] Sampling type. Possible values include:
+ * 'fixed'
+ * @member {number} [percentage] Rate of sampling for fixed-rate sampling.
+ */
+export interface SamplingSettings {
+  samplingType?: string;
+  percentage?: number;
 }
 
 /**
@@ -940,11 +980,45 @@ export interface LoggerContract extends Resource {
  * @constructor
  * Diagnostic details.
  *
- * @member {boolean} enabled Indicates whether a diagnostic should receive data
- * or not.
+ * @member {string} [alwaysLog] Specifies for what type of messages sampling
+ * settings should not apply. Possible values include: 'allErrors'
+ * @member {string} loggerId Resource Id of a target logger.
+ * @member {object} [sampling] Sampling settings for Diagnostic.
+ * @member {string} [sampling.samplingType] Sampling type. Possible values
+ * include: 'fixed'
+ * @member {number} [sampling.percentage] Rate of sampling for fixed-rate
+ * sampling.
+ * @member {object} [frontend] Diagnostic settings for incoming/outcoming HTTP
+ * messages to the Gateway.
+ * @member {object} [frontend.request] Diagnostic settings for request.
+ * @member {array} [frontend.request.headers] Array of HTTP Headers to log.
+ * @member {object} [frontend.request.body] Body logging settings.
+ * @member {number} [frontend.request.body.bytes] Number of request body bytes
+ * to log.
+ * @member {object} [frontend.response] Diagnostic settings for response.
+ * @member {array} [frontend.response.headers] Array of HTTP Headers to log.
+ * @member {object} [frontend.response.body] Body logging settings.
+ * @member {number} [frontend.response.body.bytes] Number of request body bytes
+ * to log.
+ * @member {object} [backend] Diagnostic settings for incoming/outcoming HTTP
+ * messages to the Backend
+ * @member {object} [backend.request] Diagnostic settings for request.
+ * @member {array} [backend.request.headers] Array of HTTP Headers to log.
+ * @member {object} [backend.request.body] Body logging settings.
+ * @member {number} [backend.request.body.bytes] Number of request body bytes
+ * to log.
+ * @member {object} [backend.response] Diagnostic settings for response.
+ * @member {array} [backend.response.headers] Array of HTTP Headers to log.
+ * @member {object} [backend.response.body] Body logging settings.
+ * @member {number} [backend.response.body.bytes] Number of request body bytes
+ * to log.
  */
 export interface DiagnosticContract extends Resource {
-  enabled: boolean;
+  alwaysLog?: string;
+  loggerId: string;
+  sampling?: SamplingSettings;
+  frontend?: PipelineDiagnosticSettings;
+  backend?: PipelineDiagnosticSettings;
 }
 
 /**
@@ -966,13 +1040,13 @@ export interface DiagnosticContract extends Resource {
  * be made without a subscription key. If property is omitted when creating a
  * new product it's value is assumed to be true.
  * @member {boolean} [approvalRequired] whether subscription approval is
- * required. If false, new subscriptions will be approved automatically
+ * required. If false, new subscriptions will be approved automatically
  * enabling developers to call the product’s APIs immediately after
- * subscribing. If true, administrators must manually approve the subscription
+ * subscribing. If true, administrators must manually approve the subscription
  * before the developer can any of the product’s APIs. Can be present only if
  * subscriptionRequired property is present and has a value of false.
  * @member {number} [subscriptionsLimit] Whether the number of subscriptions a
- * user can have to this product at the same time. Set to null or omit to allow
+ * user can have to this product at the same time. Set to null or omit to allow
  * unlimited per user subscriptions. Can be present only if
  * subscriptionRequired property is present and has a value of false.
  * @member {string} [state] whether product is published or not. Published
@@ -1137,13 +1211,13 @@ export interface TagResourceContract {
  * be made without a subscription key. If property is omitted when creating a
  * new product it's value is assumed to be true.
  * @member {boolean} [approvalRequired] whether subscription approval is
- * required. If false, new subscriptions will be approved automatically
+ * required. If false, new subscriptions will be approved automatically
  * enabling developers to call the product’s APIs immediately after
- * subscribing. If true, administrators must manually approve the subscription
+ * subscribing. If true, administrators must manually approve the subscription
  * before the developer can any of the product’s APIs. Can be present only if
  * subscriptionRequired property is present and has a value of false.
  * @member {number} [subscriptionsLimit] Whether the number of subscriptions a
- * user can have to this product at the same time. Set to null or omit to allow
+ * user can have to this product at the same time. Set to null or omit to allow
  * unlimited per user subscriptions. Can be present only if
  * subscriptionRequired property is present and has a value of false.
  * @member {string} [state] whether product is published or not. Published
@@ -2738,6 +2812,31 @@ export interface IdentityProviderBaseParameters {
 
 /**
  * @class
+ * Initializes a new instance of the LoggerContract class.
+ * @constructor
+ * Logger details.
+ *
+ * @member {string} loggerType Logger type. Possible values include:
+ * 'azureEventHub', 'applicationInsights'
+ * @member {string} [description] Logger description.
+ * @member {object} credentials The name and SendRule connection string of the
+ * event hub for azureEventHub logger.
+ * Instrumentation key for applicationInsights logger.
+ * @member {boolean} [isBuffered] Whether records are buffered in the logger
+ * before publishing. Default is assumed to be true.
+ * @member {string} [resourceId] Azure Resource Id of a log target (either
+ * Azure Event Hub resource or Azure Application Insights resource).
+ */
+export interface LoggerContract extends Resource {
+  loggerType: string;
+  description?: string;
+  credentials: { [propertyName: string]: string };
+  isBuffered?: boolean;
+  resourceId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the LoggerUpdateContract class.
  * @constructor
  * Logger update contract.
@@ -3068,13 +3167,13 @@ export interface PortalDelegationSettings extends Resource {
  * be made without a subscription key. If property is omitted when creating a
  * new product it's value is assumed to be true.
  * @member {boolean} [approvalRequired] whether subscription approval is
- * required. If false, new subscriptions will be approved automatically
+ * required. If false, new subscriptions will be approved automatically
  * enabling developers to call the product’s APIs immediately after
- * subscribing. If true, administrators must manually approve the subscription
+ * subscribing. If true, administrators must manually approve the subscription
  * before the developer can any of the product’s APIs. Can be present only if
  * subscriptionRequired property is present and has a value of false.
  * @member {number} [subscriptionsLimit] Whether the number of subscriptions a
- * user can have to this product at the same time. Set to null or omit to allow
+ * user can have to this product at the same time. Set to null or omit to allow
  * unlimited per user subscriptions. Can be present only if
  * subscriptionRequired property is present and has a value of false.
  * @member {string} [state] whether product is published or not. Published
@@ -3997,19 +4096,6 @@ export interface DiagnosticCollection extends Array<DiagnosticContract> {
 
 /**
  * @class
- * Initializes a new instance of the LoggerCollection class.
- * @constructor
- * Paged Logger list representation.
- *
- * @member {number} [count] Total record count number across all pages.
- * @member {string} [nextLink] Next page link if any.
- */
-export interface LoggerCollection extends Array<LoggerContract> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the IssueCollection class.
  * @constructor
  * Paged Issue list representation.
@@ -4153,6 +4239,19 @@ export interface UserCollection extends Array<UserContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface IdentityProviderList extends Array<IdentityProviderContract> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LoggerCollection class.
+ * @constructor
+ * Paged Logger list representation.
+ *
+ * @member {number} [count] Total record count number across all pages.
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface LoggerCollection extends Array<LoggerContract> {
   nextLink?: string;
 }
 
