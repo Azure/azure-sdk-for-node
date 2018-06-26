@@ -7772,6 +7772,570 @@ export interface WebhookOperations {
 
 /**
  * @class
+ * WatcherOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface WatcherOperations {
+
+
+    /**
+     * Create the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} parameters The create or update parameters for watcher.
+     *
+     * @param {number} [parameters.executionFrequencyInSeconds] Gets or sets the
+     * frequency at which the watcher is invoked.
+     *
+     * @param {string} [parameters.scriptName] Gets or sets the name of the script
+     * the watcher is attached to, i.e. the name of an existing runbook.
+     *
+     * @param {object} [parameters.scriptParameters] Gets or sets the parameters of
+     * the script.
+     *
+     * @param {string} [parameters.scriptRunOn] Gets or sets the name of the hybrid
+     * worker group the watcher will run on.
+     *
+     * @param {string} [parameters.description] Gets or sets the description.
+     *
+     * @param {string} [parameters.etag] Gets or sets the etag of the resource.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} [parameters.location] The Azure Region where the resource
+     * lives
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Watcher>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.Watcher, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Watcher>>;
+
+    /**
+     * Create the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} parameters The create or update parameters for watcher.
+     *
+     * @param {number} [parameters.executionFrequencyInSeconds] Gets or sets the
+     * frequency at which the watcher is invoked.
+     *
+     * @param {string} [parameters.scriptName] Gets or sets the name of the script
+     * the watcher is attached to, i.e. the name of an existing runbook.
+     *
+     * @param {object} [parameters.scriptParameters] Gets or sets the parameters of
+     * the script.
+     *
+     * @param {string} [parameters.scriptRunOn] Gets or sets the name of the hybrid
+     * worker group the watcher will run on.
+     *
+     * @param {string} [parameters.description] Gets or sets the description.
+     *
+     * @param {string} [parameters.etag] Gets or sets the etag of the resource.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} [parameters.location] The Azure Region where the resource
+     * lives
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Watcher} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Watcher} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Watcher} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.Watcher, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Watcher>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.Watcher, callback: ServiceCallback<models.Watcher>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.Watcher, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Watcher>): void;
+
+
+    /**
+     * Retrieve the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Watcher>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Watcher>>;
+
+    /**
+     * Retrieve the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Watcher} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Watcher} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Watcher} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Watcher>;
+    get(resourceGroupName: string, automationAccountName: string, watcherName: string, callback: ServiceCallback<models.Watcher>): void;
+    get(resourceGroupName: string, automationAccountName: string, watcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Watcher>): void;
+
+
+    /**
+     * Update the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} parameters The update parameters for watcher.
+     *
+     * @param {number} [parameters.executionFrequencyInSeconds] Gets or sets the
+     * frequency at which the watcher is invoked.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Watcher>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.WatcherUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Watcher>>;
+
+    /**
+     * Update the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} parameters The update parameters for watcher.
+     *
+     * @param {number} [parameters.executionFrequencyInSeconds] Gets or sets the
+     * frequency at which the watcher is invoked.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Watcher} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Watcher} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Watcher} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.WatcherUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Watcher>;
+    update(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.WatcherUpdateParameters, callback: ServiceCallback<models.Watcher>): void;
+    update(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.WatcherUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Watcher>): void;
+
+
+    /**
+     * Delete the watcher by name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the watcher by name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, watcherName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, watcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Resume the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    startWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resume the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    start(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    start(resourceGroupName: string, automationAccountName: string, watcherName: string, callback: ServiceCallback<void>): void;
+    start(resourceGroupName: string, automationAccountName: string, watcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Resume the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    stopWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resume the watcher identified by watcher name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} watcherName The watcher name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    stop(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stop(resourceGroupName: string, automationAccountName: string, watcherName: string, callback: ServiceCallback<void>): void;
+    stop(resourceGroupName: string, automationAccountName: string, watcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve a list of watchers.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WatcherListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WatcherListResult>>;
+
+    /**
+     * Retrieve a list of watchers.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WatcherListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WatcherListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WatcherListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.WatcherListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.WatcherListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WatcherListResult>): void;
+
+
+    /**
+     * Retrieve a list of watchers.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WatcherListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WatcherListResult>>;
+
+    /**
+     * Retrieve a list of watchers.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WatcherListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WatcherListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WatcherListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WatcherListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.WatcherListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WatcherListResult>): void;
+}
+
+/**
+ * @class
  * SoftwareUpdateConfigurations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AutomationClient.
@@ -12316,44 +12880,19 @@ export interface DscNodeConfigurationOperations {
 
 /**
  * @class
- * WatcherOperations
+ * NodeCountInformation
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AutomationClient.
  */
-export interface WatcherOperations {
+export interface NodeCountInformation {
 
 
     /**
-     * Create the watcher identified by watcher name.
+     * Retrieve counts for Dsc Nodes.
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} watcherName The watcher name.
-     *
-     * @param {object} parameters The create or update parameters for watcher.
-     *
-     * @param {number} [parameters.executionFrequencyInSeconds] Gets or sets the
-     * frequency at which the watcher is invoked.
-     *
-     * @param {string} [parameters.scriptName] Gets or sets the name of the script
-     * the watcher is attached to, i.e. the name of an existing runbook.
-     *
-     * @param {object} [parameters.scriptParameters] Gets or sets the parameters of
-     * the script.
-     *
-     * @param {string} [parameters.scriptRunOn] Gets or sets the name of the hybrid
-     * worker group the watcher will run on.
-     *
-     * @param {string} [parameters.description] Gets or sets the description.
-     *
-     * @param {string} [parameters.etag] Gets or sets the etag of the resource.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} [parameters.location] The Azure Region where the resource
-     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12362,43 +12901,18 @@ export interface WatcherOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Watcher>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<NodeCounts>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.Watcher, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Watcher>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NodeCounts>>;
 
     /**
-     * Create the watcher identified by watcher name.
+     * Retrieve counts for Dsc Nodes.
      *
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} watcherName The watcher name.
-     *
-     * @param {object} parameters The create or update parameters for watcher.
-     *
-     * @param {number} [parameters.executionFrequencyInSeconds] Gets or sets the
-     * frequency at which the watcher is invoked.
-     *
-     * @param {string} [parameters.scriptName] Gets or sets the name of the script
-     * the watcher is attached to, i.e. the name of an existing runbook.
-     *
-     * @param {object} [parameters.scriptParameters] Gets or sets the parameters of
-     * the script.
-     *
-     * @param {string} [parameters.scriptRunOn] Gets or sets the name of the hybrid
-     * worker group the watcher will run on.
-     *
-     * @param {string} [parameters.description] Gets or sets the description.
-     *
-     * @param {string} [parameters.etag] Gets or sets the etag of the resource.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} [parameters.location] The Azure Region where the resource
-     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12412,7 +12926,7 @@ export interface WatcherOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Watcher} - The deserialized result object.
+     *                      @resolve {NodeCounts} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12420,460 +12934,14 @@ export interface WatcherOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Watcher} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Watcher} for more information.
+     *                      {NodeCounts} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NodeCounts} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.Watcher, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Watcher>;
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.Watcher, callback: ServiceCallback<models.Watcher>): void;
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.Watcher, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Watcher>): void;
-
-
-    /**
-     * Retrieve the watcher identified by watcher name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} watcherName The watcher name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Watcher>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Watcher>>;
-
-    /**
-     * Retrieve the watcher identified by watcher name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} watcherName The watcher name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Watcher} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Watcher} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Watcher} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Watcher>;
-    get(resourceGroupName: string, automationAccountName: string, watcherName: string, callback: ServiceCallback<models.Watcher>): void;
-    get(resourceGroupName: string, automationAccountName: string, watcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Watcher>): void;
-
-
-    /**
-     * Update the watcher identified by watcher name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} watcherName The watcher name.
-     *
-     * @param {object} parameters The update parameters for watcher.
-     *
-     * @param {number} [parameters.executionFrequencyInSeconds] Gets or sets the
-     * frequency at which the watcher is invoked.
-     *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Watcher>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.WatcherUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Watcher>>;
-
-    /**
-     * Update the watcher identified by watcher name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} watcherName The watcher name.
-     *
-     * @param {object} parameters The update parameters for watcher.
-     *
-     * @param {number} [parameters.executionFrequencyInSeconds] Gets or sets the
-     * frequency at which the watcher is invoked.
-     *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Watcher} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Watcher} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Watcher} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.WatcherUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Watcher>;
-    update(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.WatcherUpdateParameters, callback: ServiceCallback<models.Watcher>): void;
-    update(resourceGroupName: string, automationAccountName: string, watcherName: string, parameters: models.WatcherUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Watcher>): void;
-
-
-    /**
-     * Delete the watcher by name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} watcherName The watcher name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete the watcher by name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} watcherName The watcher name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, automationAccountName: string, watcherName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, automationAccountName: string, watcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Resume the watcher identified by watcher name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} watcherName The watcher name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    startWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Resume the watcher identified by watcher name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} watcherName The watcher name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    start(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    start(resourceGroupName: string, automationAccountName: string, watcherName: string, callback: ServiceCallback<void>): void;
-    start(resourceGroupName: string, automationAccountName: string, watcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Resume the watcher identified by watcher name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} watcherName The watcher name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    stopWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Resume the watcher identified by watcher name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} watcherName The watcher name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    stop(resourceGroupName: string, automationAccountName: string, watcherName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    stop(resourceGroupName: string, automationAccountName: string, watcherName: string, callback: ServiceCallback<void>): void;
-    stop(resourceGroupName: string, automationAccountName: string, watcherName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Retrieve a list of watchers.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<WatcherListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WatcherListResult>>;
-
-    /**
-     * Retrieve a list of watchers.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {WatcherListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {WatcherListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WatcherListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.WatcherListResult>;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.WatcherListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WatcherListResult>): void;
-
-
-    /**
-     * Retrieve a list of watchers.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<WatcherListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WatcherListResult>>;
-
-    /**
-     * Retrieve a list of watchers.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {WatcherListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {WatcherListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WatcherListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WatcherListResult>;
-    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.WatcherListResult>): void;
-    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WatcherListResult>): void;
+    get(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NodeCounts>;
+    get(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.NodeCounts>): void;
+    get(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NodeCounts>): void;
 }
