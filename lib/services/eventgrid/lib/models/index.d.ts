@@ -18,6 +18,16 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the EventGridEventData class.
+ * @constructor
+ * Base type for system event data published by Azure services to Event Grid.
+ *
+ */
+export interface EventGridEventData {
+}
+
+/**
+ * @class
  * Initializes a new instance of the StorageBlobCreatedEventData class.
  * @constructor
  * Schema of the Data property of an EventGridEvent for an
@@ -45,7 +55,7 @@ export { CloudError } from 'ms-rest-azure';
  * occasionally included by the Azure Storage service. This property should be
  * ignored by event consumers.
  */
-export interface StorageBlobCreatedEventData {
+export interface StorageBlobCreatedEventData extends EventGridEventData {
   api?: string;
   clientRequestId?: string;
   requestId?: string;
@@ -83,7 +93,7 @@ export interface StorageBlobCreatedEventData {
  * occasionally included by the Azure Storage service. This property should be
  * ignored by event consumers.
  */
-export interface StorageBlobDeletedEventData {
+export interface StorageBlobDeletedEventData extends EventGridEventData {
   api?: string;
   clientRequestId?: string;
   requestId?: string;
@@ -92,6 +102,43 @@ export interface StorageBlobDeletedEventData {
   url?: string;
   sequencer?: string;
   storageDiagnostics?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SubscriptionDeletedEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.EventGrid.SubscriptionDeletedEvent.
+ *
+ * @member {string} [eventSubscriptionId] The Azure resource ID of the deleted
+ * event subscription.
+ */
+export interface SubscriptionDeletedEventData extends EventGridEventData {
+  readonly eventSubscriptionId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SubscriptionValidationEventData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.EventGrid.SubscriptionValidationEvent.
+ *
+ * @member {string} [validationCode] The validation code sent by Azure Event
+ * Grid to validate an event subscription. To complete the validation
+ * handshake, the subscriber must either respond with this validation code as
+ * part of the validation response, or perform a GET request on the
+ * validationUrl (available starting version 2018-05-01-preview).
+ * @member {string} [validationUrl] The validation URL sent by Azure Event Grid
+ * (available starting version 2018-05-01-preview). To complete the validation
+ * handshake, the subscriber must either respond with the validationCode as
+ * part of the validation response, or perform a GET request on the
+ * validationUrl (available starting version 2018-05-01-preview).
+ */
+export interface SubscriptionValidationEventData extends EventGridEventData {
+  readonly validationCode?: string;
+  readonly validationUrl?: string;
 }
 
 /**
@@ -113,7 +160,7 @@ export interface StorageBlobDeletedEventData {
  * @member {date} [firstEnqueueTime] The first time from the queue.
  * @member {date} [lastEnqueueTime] The last time from the queue.
  */
-export interface EventHubCaptureFileCreatedEventData {
+export interface EventHubCaptureFileCreatedEventData extends EventGridEventData {
   fileurl?: string;
   fileType?: string;
   partitionId?: string;
@@ -147,7 +194,7 @@ export interface EventHubCaptureFileCreatedEventData {
  * @member {string} [correlationId] An operation ID used for troubleshooting.
  * @member {string} [httpRequest] The details of the operation.
  */
-export interface ResourceWriteSuccessData {
+export interface ResourceWriteSuccessData extends EventGridEventData {
   tenantId?: string;
   subscriptionId?: string;
   resourceGroup?: string;
@@ -183,7 +230,7 @@ export interface ResourceWriteSuccessData {
  * @member {string} [correlationId] An operation ID used for troubleshooting.
  * @member {string} [httpRequest] The details of the operation.
  */
-export interface ResourceWriteFailureData {
+export interface ResourceWriteFailureData extends EventGridEventData {
   tenantId?: string;
   subscriptionId?: string;
   resourceGroup?: string;
@@ -219,7 +266,7 @@ export interface ResourceWriteFailureData {
  * @member {string} [correlationId] An operation ID used for troubleshooting.
  * @member {string} [httpRequest] The details of the operation.
  */
-export interface ResourceWriteCancelData {
+export interface ResourceWriteCancelData extends EventGridEventData {
   tenantId?: string;
   subscriptionId?: string;
   resourceGroup?: string;
@@ -255,7 +302,7 @@ export interface ResourceWriteCancelData {
  * @member {string} [correlationId] An operation ID used for troubleshooting.
  * @member {string} [httpRequest] The details of the operation.
  */
-export interface ResourceDeleteSuccessData {
+export interface ResourceDeleteSuccessData extends EventGridEventData {
   tenantId?: string;
   subscriptionId?: string;
   resourceGroup?: string;
@@ -291,7 +338,7 @@ export interface ResourceDeleteSuccessData {
  * @member {string} [correlationId] An operation ID used for troubleshooting.
  * @member {string} [httpRequest] The details of the operation.
  */
-export interface ResourceDeleteFailureData {
+export interface ResourceDeleteFailureData extends EventGridEventData {
   tenantId?: string;
   subscriptionId?: string;
   resourceGroup?: string;
@@ -327,7 +374,7 @@ export interface ResourceDeleteFailureData {
  * @member {string} [correlationId] An operation ID used for troubleshooting.
  * @member {string} [httpRequest] The details of the operation.
  */
-export interface ResourceDeleteCancelData {
+export interface ResourceDeleteCancelData extends EventGridEventData {
   tenantId?: string;
   subscriptionId?: string;
   resourceGroup?: string;
@@ -369,29 +416,6 @@ export interface EventGridEvent {
 
 /**
  * @class
- * Initializes a new instance of the SubscriptionValidationEventData class.
- * @constructor
- * Schema of the Data property of an EventGridEvent for a
- * Microsoft.EventGrid.SubscriptionValidationEvent.
- *
- * @member {string} [validationCode] The validation code sent by Azure Event
- * Grid to validate an event subscription. To complete the validation
- * handshake, the subscriber must either respond with this validation code as
- * part of the validation response, or perform a GET request on the
- * validationUrl (available starting version 2018-05-01-preview).
- * @member {string} [validationUrl] The validation URL sent by Azure Event Grid
- * (available starting version 2018-05-01-preview). To complete the validation
- * handshake, the subscriber must either respond with the validationCode as
- * part of the validation response, or perform a GET request on the
- * validationUrl (available starting version 2018-05-01-preview).
- */
-export interface SubscriptionValidationEventData {
-  readonly validationCode?: string;
-  readonly validationUrl?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the SubscriptionValidationResponse class.
  * @constructor
  * To complete an event subscription validation handshake, a subscriber can use
@@ -405,20 +429,6 @@ export interface SubscriptionValidationEventData {
  */
 export interface SubscriptionValidationResponse {
   validationResponse?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SubscriptionDeletedEventData class.
- * @constructor
- * Schema of the Data property of an EventGridEvent for a
- * Microsoft.EventGrid.SubscriptionDeletedEvent.
- *
- * @member {string} [eventSubscriptionId] The Azure resource ID of the deleted
- * event subscription.
- */
-export interface SubscriptionDeletedEventData {
-  readonly eventSubscriptionId?: string;
 }
 
 /**
@@ -484,7 +494,7 @@ export interface SubscriptionDeletedEventData {
  * @member {string} [twin.x509Thumbprint.secondaryThumbprint] Secondary
  * thumbprint for the x509 certificate.
  */
-export interface DeviceLifeCycleEventProperties {
+export interface DeviceLifeCycleEventProperties extends EventGridEventData {
   deviceId?: string;
   hubName?: string;
   opType?: string;
@@ -695,7 +705,7 @@ export interface DeviceTwinInfo {
  * @member {string} [source.instanceID] The running instance of an application.
  * Changes after each restart.
  */
-export interface ContainerRegistryEventData {
+export interface ContainerRegistryEventData extends EventGridEventData {
   id?: string;
   timestamp?: Date;
   action?: string;
@@ -830,7 +840,7 @@ export interface ContainerRegistryEventSource {
  * topic's subscription. If the entity type is of type 'queue', then this value
  * will be null.
  */
-export interface ServiceBusActiveMessagesAvailableWithNoListenersEventData {
+export interface ServiceBusActiveMessagesAvailableWithNoListenersEventData extends EventGridEventData {
   namespaceName?: string;
   requestUri?: string;
   entityType?: string;
@@ -860,7 +870,7 @@ export interface ServiceBusActiveMessagesAvailableWithNoListenersEventData {
  * topic's subscription. If the entity type is of type 'queue', then this value
  * will be null.
  */
-export interface ServiceBusDeadletterMessagesAvailableWithNoListenersEventData {
+export interface ServiceBusDeadletterMessagesAvailableWithNoListenersEventData extends EventGridEventData {
   namespaceName?: string;
   requestUri?: string;
   entityType?: string;
@@ -883,7 +893,7 @@ export interface ServiceBusDeadletterMessagesAvailableWithNoListenersEventData {
  * 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing', 'Queued',
  * 'Scheduled'
  */
-export interface MediaJobStateChangeEventData {
+export interface MediaJobStateChangeEventData extends EventGridEventData {
   readonly previousState?: string;
   readonly state?: string;
 }
