@@ -1831,6 +1831,54 @@ export interface WebhookCreateOrUpdateParameters {
 
 /**
  * @class
+ * Initializes a new instance of the Watcher class.
+ * @constructor
+ * Definition of the watcher type.
+ *
+ * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
+ * which the watcher is invoked.
+ * @member {string} [scriptName] Gets or sets the name of the script the
+ * watcher is attached to, i.e. the name of an existing runbook.
+ * @member {object} [scriptParameters] Gets or sets the parameters of the
+ * script.
+ * @member {string} [scriptRunOn] Gets or sets the name of the hybrid worker
+ * group the watcher will run on.
+ * @member {string} [status] Gets the current status of the watcher.
+ * @member {date} [creationTime] Gets or sets the creation time.
+ * @member {date} [lastModifiedTime] Gets or sets the last modified time.
+ * @member {string} [lastModifiedBy] Details of the user who last modified the
+ * watcher.
+ * @member {string} [description] Gets or sets the description.
+ * @member {string} [etag] Gets or sets the etag of the resource.
+ */
+export interface Watcher extends TrackedResource {
+  executionFrequencyInSeconds?: number;
+  scriptName?: string;
+  scriptParameters?: { [propertyName: string]: string };
+  scriptRunOn?: string;
+  readonly status?: string;
+  readonly creationTime?: Date;
+  readonly lastModifiedTime?: Date;
+  readonly lastModifiedBy?: string;
+  description?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WatcherUpdateParameters class.
+ * @constructor
+ * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
+ * which the watcher is invoked.
+ * @member {string} [name] Gets or sets the name of the resource.
+ */
+export interface WatcherUpdateParameters {
+  executionFrequencyInSeconds?: number;
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the WindowsProperties class.
  * @constructor
  * Windows specific update configuration.
@@ -3024,50 +3072,42 @@ export interface DscNodeConfigurationCreateOrUpdateParameters {
 
 /**
  * @class
- * Initializes a new instance of the Watcher class.
+ * Initializes a new instance of the NodeCountProperties class.
  * @constructor
- * Definition of the watcher type.
- *
- * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
- * which the watcher is invoked.
- * @member {string} [scriptName] Gets or sets the name of the script the
- * watcher is attached to, i.e. the name of an existing runbook.
- * @member {object} [scriptParameters] Gets or sets the parameters of the
- * script.
- * @member {string} [scriptRunOn] Gets or sets the name of the hybrid worker
- * group the watcher will run on.
- * @member {string} [status] Gets the current status of the watcher.
- * @member {date} [creationTime] Gets or sets the creation time.
- * @member {date} [lastModifiedTime] Gets or sets the last modified time.
- * @member {string} [lastModifiedBy] Details of the user who last modified the
- * watcher.
- * @member {string} [description] Gets or sets the description.
- * @member {string} [etag] Gets or sets the etag of the resource.
+ * @member {number} [count] Gets the count for the name
  */
-export interface Watcher extends TrackedResource {
-  executionFrequencyInSeconds?: number;
-  scriptName?: string;
-  scriptParameters?: { [propertyName: string]: string };
-  scriptRunOn?: string;
-  readonly status?: string;
-  readonly creationTime?: Date;
-  readonly lastModifiedTime?: Date;
-  readonly lastModifiedBy?: string;
-  description?: string;
-  etag?: string;
+export interface NodeCountProperties {
+  count?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the WatcherUpdateParameters class.
+ * Initializes a new instance of the NodeCount class.
  * @constructor
- * @member {number} [executionFrequencyInSeconds] Gets or sets the frequency at
- * which the watcher is invoked.
- * @member {string} [name] Gets or sets the name of the resource.
+ * Number of nodes based on the Filter
+ *
+ * @member {string} [name] Gets the name of a count type
+ * @member {object} [properties]
+ * @member {number} [properties.count] Gets the count for the name
  */
-export interface WatcherUpdateParameters {
-  executionFrequencyInSeconds?: number;
+export interface NodeCount {
   name?: string;
+  properties?: NodeCountProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NodeCounts class.
+ * @constructor
+ * Gets the count of nodes by count type
+ *
+ * @member {array} [value] Gets an array of counts
+ * @member {number} [totalCount] Gets the total number of records matching
+ * countType criteria.
+ */
+export interface NodeCounts {
+  value?: NodeCount[];
+  totalCount?: number;
 }
 
 
@@ -3295,6 +3335,18 @@ export interface WebhookListResult extends Array<Webhook> {
 
 /**
  * @class
+ * Initializes a new instance of the WatcherListResult class.
+ * @constructor
+ * The response model for the list watcher operation.
+ *
+ * @member {string} [nextLink] Gets or sets the next link.
+ */
+export interface WatcherListResult extends Array<Watcher> {
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SourceControlListResult class.
  * @constructor
  * The response model for the list source controls operation.
@@ -3389,17 +3441,5 @@ export interface DscCompilationJobListResult extends Array<DscCompilationJob> {
  * @member {number} [totalCount] Gets or sets the total rows in query.
  */
 export interface DscNodeConfigurationListResult extends Array<DscNodeConfiguration> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WatcherListResult class.
- * @constructor
- * The response model for the list watcher operation.
- *
- * @member {string} [nextLink] Gets or sets the next link.
- */
-export interface WatcherListResult extends Array<Watcher> {
   nextLink?: string;
 }

@@ -23,6 +23,8 @@ export default class AutomationClient extends AzureServiceClient {
    *
    * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
    *
+   * @param {countType} countType1 - The type of counts to retrieve. Possible values include: 'status', 'nodeconfiguration'
+   *
    * @param {string} [baseUri] - The base URI of the service.
    *
    * @param {object} [options] - The parameter options
@@ -41,11 +43,13 @@ export default class AutomationClient extends AzureServiceClient {
    * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
-  constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, subscriptionId: string, countType1: string, baseUri?: string, options?: AzureServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
   subscriptionId: string;
+
+  countType1: string;
 
   acceptLanguage: string;
 
@@ -78,6 +82,7 @@ export default class AutomationClient extends AzureServiceClient {
   scheduleOperations: operations.ScheduleOperations;
   variableOperations: operations.VariableOperations;
   webhookOperations: operations.WebhookOperations;
+  watcherOperations: operations.WatcherOperations;
   softwareUpdateConfigurations: operations.SoftwareUpdateConfigurations;
   softwareUpdateConfigurationRuns: operations.SoftwareUpdateConfigurationRuns;
   softwareUpdateConfigurationMachineRuns: operations.SoftwareUpdateConfigurationMachineRuns;
@@ -92,7 +97,7 @@ export default class AutomationClient extends AzureServiceClient {
   dscCompilationJobOperations: operations.DscCompilationJobOperations;
   dscCompilationJobStream: operations.DscCompilationJobStream;
   dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
-  watcherOperations: operations.WatcherOperations;
+  nodeCountInformation: operations.NodeCountInformation;
 }
 
 export { AutomationClient, models as AutomationModels };
