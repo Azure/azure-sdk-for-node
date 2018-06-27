@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class AdvisorManagementClient extends AzureServiceClient {
+export default class AdvisorManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the AdvisorManagementClient class.
    * @constructor
@@ -60,4 +61,4 @@ declare class AdvisorManagementClient extends AzureServiceClient {
   suppressions: operations.Suppressions;
 }
 
-export = AdvisorManagementClient;
+export { AdvisorManagementClient, models as AdvisorManagementModels };

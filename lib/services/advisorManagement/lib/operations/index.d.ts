@@ -94,7 +94,7 @@ export interface Recommendations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getGenerateStatusWithHttpOperationResponse(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    getGenerateRecommendationsStatusWithHttpOperationResponse(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Retrieves the status of the recommendation computation or generation
@@ -130,9 +130,9 @@ export interface Recommendations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getGenerateStatus(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    getGenerateStatus(operationId: string, callback: ServiceCallback<void>): void;
-    getGenerateStatus(operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    getGenerateRecommendationsStatus(operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    getGenerateRecommendationsStatus(operationId: string, callback: ServiceCallback<void>): void;
+    getGenerateRecommendationsStatus(operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -541,6 +541,11 @@ export interface Suppressions {
      * @param {string} [suppressionContract.ttl] The duration for which the
      * suppression is valid.
      *
+     * @param {string} [suppressionContract.location] The location of the resource.
+     * This cannot be changed after the resource is created.
+     *
+     * @param {object} [suppressionContract.tags] The tags of the resource.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -574,6 +579,11 @@ export interface Suppressions {
      *
      * @param {string} [suppressionContract.ttl] The duration for which the
      * suppression is valid.
+     *
+     * @param {string} [suppressionContract.location] The location of the resource.
+     * This cannot be changed after the resource is created.
+     *
+     * @param {object} [suppressionContract.tags] The tags of the resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -680,95 +690,21 @@ export interface Suppressions {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {number} [options.top] The number of suppressions per page if a paged
-     * version of this API is being used.
-     *
-     * @param {string} [options.skipToken] The page-continuation token to use with
-     * a paged version of this API.
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<SuppressionContractListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { top? : number, skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SuppressionContractListResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SuppressionContract[]>>;
 
     /**
      * Retrieves the list of snoozed or dismissed suppressions for a subscription.
      * The snoozed or dismissed attribute of a recommendation is referred to as a
      * suppression.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {number} [options.top] The number of suppressions per page if a paged
-     * version of this API is being used.
-     *
-     * @param {string} [options.skipToken] The page-continuation token to use with
-     * a paged version of this API.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {SuppressionContractListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {SuppressionContractListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SuppressionContractListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { top? : number, skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SuppressionContractListResult>;
-    list(callback: ServiceCallback<models.SuppressionContractListResult>): void;
-    list(options: { top? : number, skipToken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SuppressionContractListResult>): void;
-
-
-    /**
-     * Retrieves the list of snoozed or dismissed suppressions for a subscription.
-     * The snoozed or dismissed attribute of a recommendation is referred to as a
-     * suppression.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<SuppressionContractListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SuppressionContractListResult>>;
-
-    /**
-     * Retrieves the list of snoozed or dismissed suppressions for a subscription.
-     * The snoozed or dismissed attribute of a recommendation is referred to as a
-     * suppression.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -782,7 +718,7 @@ export interface Suppressions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {SuppressionContractListResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -790,15 +726,13 @@ export interface Suppressions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {SuppressionContractListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link SuppressionContractListResult} for more
-     *                      information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SuppressionContractListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.SuppressionContractListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SuppressionContractListResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SuppressionContract[]>;
+    list(callback: ServiceCallback<models.SuppressionContract[]>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SuppressionContract[]>): void;
 }

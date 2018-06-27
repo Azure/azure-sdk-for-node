@@ -34,26 +34,13 @@ export interface ShortDescription {
 
 /**
  * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * An Azure resource.
- *
- * @member {string} [id] The resource ID.
- * @member {string} [name] The name of the resource.
- * @member {string} [type] The type of the resource.
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ResourceRecommendationBase class.
  * @constructor
  * Advisor Recommendation.
  *
+ * @member {string} [id] The fully qualified recommendation ID, for example
+ * /subscriptions/subscriptionId/resourceGroups/resourceGroup1/providers/Microsoft.ClassicCompute/virtualMachines/vm1/providers/Microsoft.Advisor/recommendations/recommendationGUID.
+ * @member {string} [name] The name of recommendation.
  * @member {string} [category] The category of the recommendation. Possible
  * values include: 'HighAvailability', 'Security', 'Performance', 'Cost'
  * @member {string} [impact] The business impact of the recommendation.
@@ -73,8 +60,12 @@ export interface Resource extends BaseResource {
  * suggested by the recommendation.
  * @member {array} [suppressionIds] The list of snoozed and dismissed rules for
  * the recommendation.
+ * @member {string} [type] The recommendation type:
+ * Microsoft.Advisor/recommendations.
  */
-export interface ResourceRecommendationBase extends Resource {
+export interface ResourceRecommendationBase {
+  id?: string;
+  name?: string;
   category?: string;
   impact?: string;
   impactedField?: string;
@@ -85,6 +76,28 @@ export interface ResourceRecommendationBase extends Resource {
   risk?: string;
   shortDescription?: ShortDescription;
   suppressionIds?: string[];
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * An Azure resource.
+ *
+ * @member {string} [id] The resource ID.
+ * @member {string} [name] The name of the resource.
+ * @member {string} [type] The type of the resource.
+ * @member {string} [location] The location of the resource. This cannot be
+ * changed after the resource is created.
+ * @member {object} [tags] The tags of the resource.
+ */
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -165,18 +178,5 @@ export interface ResourceRecommendationBaseListResult extends Array<ResourceReco
  * operations.
  */
 export interface OperationEntityListResult extends Array<OperationEntity> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SuppressionContractListResult class.
- * @constructor
- * The list of Advisor suppressions.
- *
- * @member {string} [nextLink] The link used to get the next page of
- * suppressions.
- */
-export interface SuppressionContractListResult extends Array<SuppressionContract> {
   nextLink?: string;
 }
