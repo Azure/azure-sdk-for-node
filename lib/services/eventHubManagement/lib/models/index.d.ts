@@ -394,12 +394,15 @@ export interface ErrorResponse {
  * @member {string} [role] role of namespace in GEO DR - possible values
  * 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible values
  * include: 'Primary', 'PrimaryNotReplicating', 'Secondary'
+ * @member {number} [pendingReplicationOperationsCount] Number of entities
+ * pending to be replicated.
  */
 export interface ArmDisasterRecovery extends Resource {
   readonly provisioningState?: string;
   partnerNamespace?: string;
   alternateName?: string;
   readonly role?: string;
+  readonly pendingReplicationOperationsCount?: number;
 }
 
 /**
