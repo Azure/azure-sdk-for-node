@@ -312,6 +312,9 @@ export interface StorageAccounts {
      * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
      * only to storage service if sets to true.
      *
+     * @param {boolean} [parameters.isHnsEnabled] Account HierarchicalNamespace
+     * enabled if sets to true.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -437,6 +440,9 @@ export interface StorageAccounts {
      *
      * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
      * only to storage service if sets to true.
+     *
+     * @param {boolean} [parameters.isHnsEnabled] Account HierarchicalNamespace
+     * enabled if sets to true.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1757,6 +1763,9 @@ export interface StorageAccounts {
      * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
      * only to storage service if sets to true.
      *
+     * @param {boolean} [parameters.isHnsEnabled] Account HierarchicalNamespace
+     * enabled if sets to true.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1882,6 +1891,9 @@ export interface StorageAccounts {
      *
      * @param {boolean} [parameters.enableHttpsTrafficOnly] Allows https traffic
      * only to storage service if sets to true.
+     *
+     * @param {boolean} [parameters.isHnsEnabled] Account HierarchicalNamespace
+     * enabled if sets to true.
      *
      * @param {object} [options] Optional Parameters.
      *
