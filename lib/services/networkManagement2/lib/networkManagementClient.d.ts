@@ -54,6 +54,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  azureFirewalls: operations.AzureFirewalls;
   applicationGateways: operations.ApplicationGateways;
   applicationSecurityGroups: operations.ApplicationSecurityGroups;
   ddosProtectionPlans: operations.DdosProtectionPlans;
