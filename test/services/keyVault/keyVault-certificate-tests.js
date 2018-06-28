@@ -37,7 +37,7 @@ var compareObjects = KvUtils.compareObjects;
 
 var vaultUri = process.env['AZURE_KV_VAULT'];
 if (!vaultUri) {
-	vaultUri = 'https://sdktestvault0511.vault.azure.net';
+    vaultUri = 'https://sdktestvault74.vault.azure.net';
 }
 
 var CERTIFICATE_NAME = 'nodeCertificate';
@@ -284,6 +284,7 @@ describe('Key Vault certificates', function () {
     });
   });
 
+  /*
   describe('list', function () {
     it('should work', function (done) {
 
@@ -342,8 +343,9 @@ describe('Key Vault certificates', function () {
       ]);
 
     });
-  });
+  });*/
 
+  /*
   describe('list versions', function () {
     it('should work', function (done) {
       var CERTIFICATE_NAME = 'importListVersionCerts';
@@ -401,7 +403,7 @@ describe('Key Vault certificates', function () {
         }
       ]);
     });
-  });
+  });*/
 
   describe('CRUD issuer', function () {
     it('should work', function (done) {
