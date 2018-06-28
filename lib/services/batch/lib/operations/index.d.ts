@@ -882,7 +882,12 @@ export interface Pool {
      *
      * @param {array} [pool.startTask.resourceFiles] A list of files that the Batch
      * service will download to the compute node before running the command line.
-     * Files listed under this element are located in the task's working directory.
+     * There is a maximum size for the list of resource files. When the max size is
+     * exceeded, the request will fail and the response error code will be
+     * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+     * be reduced in size. This can be achieved using .zip files, Application
+     * Packages, or Docker Containers. Files listed under this element are located
+     * in the task's working directory.
      *
      * @param {array} [pool.startTask.environmentSettings] A list of environment
      * variable settings for the start task.
@@ -1294,7 +1299,12 @@ export interface Pool {
      *
      * @param {array} [pool.startTask.resourceFiles] A list of files that the Batch
      * service will download to the compute node before running the command line.
-     * Files listed under this element are located in the task's working directory.
+     * There is a maximum size for the list of resource files. When the max size is
+     * exceeded, the request will fail and the response error code will be
+     * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+     * be reduced in size. This can be achieved using .zip files, Application
+     * Packages, or Docker Containers. Files listed under this element are located
+     * in the task's working directory.
      *
      * @param {array} [pool.startTask.environmentSettings] A list of environment
      * variable settings for the start task.
@@ -2025,8 +2035,12 @@ export interface Pool {
      *
      * @param {array} [poolPatchParameter.startTask.resourceFiles] A list of files
      * that the Batch service will download to the compute node before running the
-     * command line. Files listed under this element are located in the task's
-     * working directory.
+     * command line.  There is a maximum size for the list of resource files. When
+     * the max size is exceeded, the request will fail and the response error code
+     * will be RequestEntityTooLarge. If this occurs, the collection of
+     * ResourceFiles must be reduced in size. This can be achieved using .zip
+     * files, Application Packages, or Docker Containers. Files listed under this
+     * element are located in the task's working directory.
      *
      * @param {array} [poolPatchParameter.startTask.environmentSettings] A list of
      * environment variable settings for the start task.
@@ -2218,8 +2232,12 @@ export interface Pool {
      *
      * @param {array} [poolPatchParameter.startTask.resourceFiles] A list of files
      * that the Batch service will download to the compute node before running the
-     * command line. Files listed under this element are located in the task's
-     * working directory.
+     * command line.  There is a maximum size for the list of resource files. When
+     * the max size is exceeded, the request will fail and the response error code
+     * will be RequestEntityTooLarge. If this occurs, the collection of
+     * ResourceFiles must be reduced in size. This can be achieved using .zip
+     * files, Application Packages, or Docker Containers. Files listed under this
+     * element are located in the task's working directory.
      *
      * @param {array} [poolPatchParameter.startTask.environmentSettings] A list of
      * environment variable settings for the start task.
@@ -3176,8 +3194,12 @@ export interface Pool {
      *
      * @param {array} [poolUpdatePropertiesParameter.startTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files. When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array} [poolUpdatePropertiesParameter.startTask.environmentSettings]
      * A list of environment variable settings for the start task.
@@ -3356,8 +3378,12 @@ export interface Pool {
      *
      * @param {array} [poolUpdatePropertiesParameter.startTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files. When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array} [poolUpdatePropertiesParameter.startTask.environmentSettings]
      * A list of environment variable settings for the start task.
@@ -5265,8 +5291,12 @@ export interface Job {
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files. When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
@@ -5857,8 +5887,12 @@ export interface Job {
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files. When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [jobPatchParameter.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
@@ -6459,8 +6493,12 @@ export interface Job {
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files. When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
@@ -7056,8 +7094,12 @@ export interface Job {
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files. When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [jobUpdateParameter.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
@@ -7777,7 +7819,11 @@ export interface Job {
      * @param {array} [job.jobManagerTask.resourceFiles] A list of files that the
      * Batch service will download to the compute node before running the command
      * line. Files listed under this element are located in the task's working
-     * directory.
+     * directory. There is a maximum size for the list of resource files.  When the
+     * max size is exceeded, the request will fail and the response error code will
+     * be RequestEntityTooLarge. If this occurs, the collection of ResourceFiles
+     * must be reduced in size. This can be achieved using .zip files, Application
+     * Packages, or Docker Containers.
      *
      * @param {array} [job.jobManagerTask.outputFiles] A list of files that the
      * Batch service will upload from the compute node after running the command
@@ -7881,7 +7927,11 @@ export interface Job {
      * @param {array} [job.jobPreparationTask.resourceFiles] A list of files that
      * the Batch service will download to the compute node before running the
      * command line. Files listed under this element are located in the task's
-     * working directory.
+     * working directory.  There is a maximum size for the list of resource files.
+     * When the max size is exceeded, the request will fail and the response error
+     * code will be RequestEntityTooLarge. If this occurs, the collection of
+     * ResourceFiles must be reduced in size. This can be achieved using .zip
+     * files, Application Packages, or Docker Containers.
      *
      * @param {array} [job.jobPreparationTask.environmentSettings] A list of
      * environment variable settings for the Job Preparation task.
@@ -7980,8 +8030,12 @@ export interface Job {
      *
      * @param {array} [job.jobReleaseTask.resourceFiles] A list of files that the
      * Batch service will download to the compute node before running the command
-     * line. Files listed under this element are located in the task's working
-     * directory.
+     * line.  There is a maximum size for the list of resource files.  When the max
+     * size is exceeded, the request will fail and the response error code will be
+     * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+     * be reduced in size. This can be achieved using .zip files, Application
+     * Packages, or Docker Containers. Files listed under this element are located
+     * in the task's working directory.
      *
      * @param {array} [job.jobReleaseTask.environmentSettings] A list of
      * environment variable settings for the Job Release task.
@@ -8392,8 +8446,12 @@ export interface Job {
      * @param {array}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles] A list of
      * files that the Batch service will download to the compute node before
-     * running the command line. Files listed under this element are located in the
-     * task's working directory.
+     * running the command line.  There is a maximum size for the list of resource
+     * files. When the max size is exceeded, the request will fail and the response
+     * error code will be RequestEntityTooLarge. If this occurs, the collection of
+     * ResourceFiles must be reduced in size. This can be achieved using .zip
+     * files, Application Packages, or Docker Containers. Files listed under this
+     * element are located in the task's working directory.
      *
      * @param {array}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings] A
@@ -8627,7 +8685,11 @@ export interface Job {
      * @param {array} [job.jobManagerTask.resourceFiles] A list of files that the
      * Batch service will download to the compute node before running the command
      * line. Files listed under this element are located in the task's working
-     * directory.
+     * directory. There is a maximum size for the list of resource files.  When the
+     * max size is exceeded, the request will fail and the response error code will
+     * be RequestEntityTooLarge. If this occurs, the collection of ResourceFiles
+     * must be reduced in size. This can be achieved using .zip files, Application
+     * Packages, or Docker Containers.
      *
      * @param {array} [job.jobManagerTask.outputFiles] A list of files that the
      * Batch service will upload from the compute node after running the command
@@ -8731,7 +8793,11 @@ export interface Job {
      * @param {array} [job.jobPreparationTask.resourceFiles] A list of files that
      * the Batch service will download to the compute node before running the
      * command line. Files listed under this element are located in the task's
-     * working directory.
+     * working directory.  There is a maximum size for the list of resource files.
+     * When the max size is exceeded, the request will fail and the response error
+     * code will be RequestEntityTooLarge. If this occurs, the collection of
+     * ResourceFiles must be reduced in size. This can be achieved using .zip
+     * files, Application Packages, or Docker Containers.
      *
      * @param {array} [job.jobPreparationTask.environmentSettings] A list of
      * environment variable settings for the Job Preparation task.
@@ -8830,8 +8896,12 @@ export interface Job {
      *
      * @param {array} [job.jobReleaseTask.resourceFiles] A list of files that the
      * Batch service will download to the compute node before running the command
-     * line. Files listed under this element are located in the task's working
-     * directory.
+     * line.  There is a maximum size for the list of resource files.  When the max
+     * size is exceeded, the request will fail and the response error code will be
+     * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+     * be reduced in size. This can be achieved using .zip files, Application
+     * Packages, or Docker Containers. Files listed under this element are located
+     * in the task's working directory.
      *
      * @param {array} [job.jobReleaseTask.environmentSettings] A list of
      * environment variable settings for the Job Release task.
@@ -9242,8 +9312,12 @@ export interface Job {
      * @param {array}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles] A list of
      * files that the Batch service will download to the compute node before
-     * running the command line. Files listed under this element are located in the
-     * task's working directory.
+     * running the command line.  There is a maximum size for the list of resource
+     * files. When the max size is exceeded, the request will fail and the response
+     * error code will be RequestEntityTooLarge. If this occurs, the collection of
+     * ResourceFiles must be reduced in size. This can be achieved using .zip
+     * files, Application Packages, or Docker Containers. Files listed under this
+     * element are located in the task's working directory.
      *
      * @param {array}
      * [job.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings] A
@@ -12642,7 +12716,11 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
      * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * in the task's working directory. There is a maximum size for the list of
+     * resource files.  When the max size is exceeded, the request will fail and
+     * the response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.outputFiles] A
@@ -12765,7 +12843,11 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
      * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * in the task's working directory.  There is a maximum size for the list of
+     * resource files.  When the max size is exceeded, the request will fail and
+     * the response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.environmentSettings]
@@ -12878,8 +12960,12 @@ export interface JobSchedule {
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files.  When the max size is exceeded, the request will fail and
+     * the response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.environmentSettings]
@@ -13312,8 +13398,12 @@ export interface JobSchedule {
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files. When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
@@ -13636,7 +13726,11 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
      * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * in the task's working directory. There is a maximum size for the list of
+     * resource files.  When the max size is exceeded, the request will fail and
+     * the response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobManagerTask.outputFiles] A
@@ -13759,7 +13853,11 @@ export interface JobSchedule {
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
      * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * in the task's working directory.  There is a maximum size for the list of
+     * resource files.  When the max size is exceeded, the request will fail and
+     * the response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobPreparationTask.environmentSettings]
@@ -13872,8 +13970,12 @@ export interface JobSchedule {
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files.  When the max size is exceeded, the request will fail and
+     * the response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.jobReleaseTask.environmentSettings]
@@ -14306,8 +14408,12 @@ export interface JobSchedule {
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files. When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [jobSchedulePatchParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
@@ -14650,7 +14756,11 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
      * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * in the task's working directory. There is a maximum size for the list of
+     * resource files.  When the max size is exceeded, the request will fail and
+     * the response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.outputFiles] A
@@ -14773,7 +14883,11 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
      * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * in the task's working directory.  There is a maximum size for the list of
+     * resource files.  When the max size is exceeded, the request will fail and
+     * the response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.environmentSettings]
@@ -14887,8 +15001,12 @@ export interface JobSchedule {
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files.  When the max size is exceeded, the request will fail and
+     * the response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.environmentSettings]
@@ -15322,8 +15440,12 @@ export interface JobSchedule {
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files. When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
@@ -15650,7 +15772,11 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
      * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * in the task's working directory. There is a maximum size for the list of
+     * resource files.  When the max size is exceeded, the request will fail and
+     * the response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobManagerTask.outputFiles] A
@@ -15773,7 +15899,11 @@ export interface JobSchedule {
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
      * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * in the task's working directory.  There is a maximum size for the list of
+     * resource files.  When the max size is exceeded, the request will fail and
+     * the response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobPreparationTask.environmentSettings]
@@ -15887,8 +16017,12 @@ export interface JobSchedule {
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.resourceFiles] A
      * list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files.  When the max size is exceeded, the request will fail and
+     * the response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.jobReleaseTask.environmentSettings]
@@ -16322,8 +16456,12 @@ export interface JobSchedule {
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files. When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [jobScheduleUpdateParameter.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
@@ -17059,7 +17197,11 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobManagerTask.resourceFiles] A list of
      * files that the Batch service will download to the compute node before
      * running the command line. Files listed under this element are located in the
-     * task's working directory.
+     * task's working directory. There is a maximum size for the list of resource
+     * files.  When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.outputFiles] A list of
@@ -17179,7 +17321,11 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.resourceFiles] A list
      * of files that the Batch service will download to the compute node before
      * running the command line. Files listed under this element are located in the
-     * task's working directory.
+     * task's working directory.  There is a maximum size for the list of resource
+     * files.  When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.environmentSettings] A
@@ -17291,8 +17437,12 @@ export interface JobSchedule {
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.resourceFiles] A list of
      * files that the Batch service will download to the compute node before
-     * running the command line. Files listed under this element are located in the
-     * task's working directory.
+     * running the command line.  There is a maximum size for the list of resource
+     * files.  When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.environmentSettings] A
@@ -17723,8 +17873,12 @@ export interface JobSchedule {
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files. When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
@@ -18020,7 +18174,11 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobManagerTask.resourceFiles] A list of
      * files that the Batch service will download to the compute node before
      * running the command line. Files listed under this element are located in the
-     * task's working directory.
+     * task's working directory. There is a maximum size for the list of resource
+     * files.  When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobManagerTask.outputFiles] A list of
@@ -18140,7 +18298,11 @@ export interface JobSchedule {
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.resourceFiles] A list
      * of files that the Batch service will download to the compute node before
      * running the command line. Files listed under this element are located in the
-     * task's working directory.
+     * task's working directory.  There is a maximum size for the list of resource
+     * files.  When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobPreparationTask.environmentSettings] A
@@ -18252,8 +18414,12 @@ export interface JobSchedule {
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.resourceFiles] A list of
      * files that the Batch service will download to the compute node before
-     * running the command line. Files listed under this element are located in the
-     * task's working directory.
+     * running the command line.  There is a maximum size for the list of resource
+     * files.  When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.jobReleaseTask.environmentSettings] A
@@ -18684,8 +18850,12 @@ export interface JobSchedule {
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.resourceFiles]
      * A list of files that the Batch service will download to the compute node
-     * before running the command line. Files listed under this element are located
-     * in the task's working directory.
+     * before running the command line.  There is a maximum size for the list of
+     * resource files. When the max size is exceeded, the request will fail and the
+     * response error code will be RequestEntityTooLarge. If this occurs, the
+     * collection of ResourceFiles must be reduced in size. This can be achieved
+     * using .zip files, Application Packages, or Docker Containers. Files listed
+     * under this element are located in the task's working directory.
      *
      * @param {array}
      * [cloudJobSchedule.jobSpecification.poolInfo.autoPoolSpecification.pool.startTask.environmentSettings]
@@ -19161,7 +19331,11 @@ export interface Task {
      * @param {array} [task.resourceFiles] A list of files that the Batch service
      * will download to the compute node before running the command line. For
      * multi-instance tasks, the resource files will only be downloaded to the
-     * compute node on which the primary task is executed.
+     * compute node on which the primary task is executed. There is a maximum size
+     * for the list of resource files.  When the max size is exceeded, the request
+     * will fail and the response error code will be RequestEntityTooLarge. If this
+     * occurs, the collection of ResourceFiles must be reduced in size. This can be
+     * achieved using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array} [task.outputFiles] A list of files that the Batch service
      * will upload from the compute node after running the command line. For
@@ -19249,7 +19423,12 @@ export interface Task {
      * including the primary, whereas task resource files are downloaded only for
      * the primary. Also note that these resource files are not downloaded to the
      * task working directory, but instead are downloaded to the task root
-     * directory (one directory above the working directory).
+     * directory (one directory above the working directory).  There is a maximum
+     * size for the list of resource files.  When the max size is exceeded, the
+     * request will fail and the response error code will be RequestEntityTooLarge.
+     * If this occurs, the collection of ResourceFiles must be reduced in size.
+     * This can be achieved using .zip files, Application Packages, or Docker
+     * Containers.
      *
      * @param {object} [task.dependsOn] The tasks that this task depends on. This
      * task will not be scheduled until all tasks that it depends on have completed
@@ -19440,7 +19619,11 @@ export interface Task {
      * @param {array} [task.resourceFiles] A list of files that the Batch service
      * will download to the compute node before running the command line. For
      * multi-instance tasks, the resource files will only be downloaded to the
-     * compute node on which the primary task is executed.
+     * compute node on which the primary task is executed. There is a maximum size
+     * for the list of resource files.  When the max size is exceeded, the request
+     * will fail and the response error code will be RequestEntityTooLarge. If this
+     * occurs, the collection of ResourceFiles must be reduced in size. This can be
+     * achieved using .zip files, Application Packages, or Docker Containers.
      *
      * @param {array} [task.outputFiles] A list of files that the Batch service
      * will upload from the compute node after running the command line. For
@@ -19528,7 +19711,12 @@ export interface Task {
      * including the primary, whereas task resource files are downloaded only for
      * the primary. Also note that these resource files are not downloaded to the
      * task working directory, but instead are downloaded to the task root
-     * directory (one directory above the working directory).
+     * directory (one directory above the working directory).  There is a maximum
+     * size for the list of resource files.  When the max size is exceeded, the
+     * request will fail and the response error code will be RequestEntityTooLarge.
+     * If this occurs, the collection of ResourceFiles must be reduced in size.
+     * This can be achieved using .zip files, Application Packages, or Docker
+     * Containers.
      *
      * @param {object} [task.dependsOn] The tasks that this task depends on. This
      * task will not be scheduled until all tasks that it depends on have completed
@@ -19767,7 +19955,7 @@ export interface Task {
      * be added.
      *
      * @param {array} value The collection of tasks to add. The total serialized
-     * size of this collection must be less than 4MB. If it is greater than 4MB
+     * size of this collection must be less than 1MB. If it is greater than 1MB
      * (for example if each task has 100's of resource files or environment
      * variables), the request will fail with code 'RequestBodyTooLarge' and should
      * be retried again with fewer tasks.
@@ -19827,7 +20015,7 @@ export interface Task {
      * be added.
      *
      * @param {array} value The collection of tasks to add. The total serialized
-     * size of this collection must be less than 4MB. If it is greater than 4MB
+     * size of this collection must be less than 1MB. If it is greater than 1MB
      * (for example if each task has 100's of resource files or environment
      * variables), the request will fail with code 'RequestBodyTooLarge' and should
      * be retried again with fewer tasks.
