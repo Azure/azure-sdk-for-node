@@ -12,7 +12,7 @@
     "azure"
   ],
   "license": "MIT",
-  "main": "./lib/keyVaultClient.js",
+  "main": "./lib/keyVault.js",
   "types": "./lib/keyVaultClient.d.ts",
   "homepage": "http://github.com/azure/azure-sdk-for-node",
   "repository": {

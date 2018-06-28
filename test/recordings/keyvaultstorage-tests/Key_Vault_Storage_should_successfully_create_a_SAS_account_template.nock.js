@@ -7,44 +7,44 @@ exports.setEnvironment = function() {
 
 exports.scopes = [[function (nock) { 
 var result = 
-nock('https://testacc5769.vault.azure.net:443')
+nock('https://testacc5018.vault.azure.net:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('//storage/testakvsa4138/sas/acctall?api-version=7.0-preview', '*')
-  .reply(200, "{\"id\":\"https://testacc5769.vault.azure.net/storage/testakvsa4138/sas/acctall\",\"sid\":\"https://testacc5769.vault.azure.net/secrets/testakvsa4138-acctall\",\"templateUri\":\"sv=2015-12-11&ss=bfqt&srt=sco&sp=acdlpruw&se=2020-01-01T00%3A00%3A00Z&sig=NhGCSmt3gu96CTb2JB%2FzYfO%2B77h2Pb%2FzB2tb1ja%2BtNo%3D\",\"sasType\":\"account\",\"validityPeriod\":\"PT2H\",\"attributes\":{\"enabled\":true,\"created\":1526880393,\"updated\":1526880393,\"recoveryLevel\":\"Purgeable\"}}", { 'cache-control': 'no-cache',
+.put('//storage/testakvsa725/sas/acctall?api-version=7.0', '*')
+  .reply(200, "{\"id\":\"https://testacc5018.vault.azure.net/storage/testakvsa725/sas/acctall\",\"sid\":\"https://testacc5018.vault.azure.net/secrets/testakvsa725-acctall\",\"templateUri\":\"sv=2015-12-11&ss=bfqt&srt=sco&sp=acdlpruw&se=2020-01-01T00%3A00%3A00Z&sig=3snAON6tMrLrXY3V%2FB8%2F4az%2FLgXpfdTPbs1RUmkpQdI%3D\",\"sasType\":\"account\",\"validityPeriod\":\"PT2H\",\"attributes\":{\"enabled\":true,\"created\":1530143642,\"updated\":1530143642,\"recoveryLevel\":\"Purgeable\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/10.0',
   'x-ms-keyvault-region': 'westus',
-  'x-ms-request-id': '65528ac0-cad5-4ace-ae36-8487eba17204',
-  'x-ms-keyvault-service-version': '1.0.0.848',
-  'x-ms-keyvault-network-info': 'addr=167.220.0.2;act_addr_fam=InterNetwork;',
+  'x-ms-request-id': '3b564e1b-06c8-4838-ab9f-8fc550452bce',
+  'x-ms-keyvault-service-version': '1.0.0.849',
+  'x-ms-keyvault-network-info': 'addr=167.220.1.2;act_addr_fam=InterNetwork;',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
   'x-content-type-options': 'nosniff',
-  date: 'Mon, 21 May 2018 05:26:32 GMT',
+  date: 'Wed, 27 Jun 2018 23:54:02 GMT',
   connection: 'close',
-  'content-length': '441' });
+  'content-length': '437' });
  return result; },
 function (nock) { 
 var result = 
-nock('https://testacc5769.vault.azure.net:443')
-  .get('//storage/testakvsa4138/sas?api-version=7.0-preview')
-  .reply(200, "{\"value\":[{\"id\":\"https://testacc5769.vault.azure.net/storage/testakvsa4138/sas/acctall\",\"sid\":\"https://testacc5769.vault.azure.net/secrets/testakvsa4138-acctall\",\"attributes\":{\"enabled\":true,\"created\":1526880393,\"updated\":1526880393,\"recoveryLevel\":\"Purgeable\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
+nock('https://testacc5018.vault.azure.net:443')
+  .get('//storage/testakvsa725/sas?api-version=7.0')
+  .reply(200, "{\"value\":[{\"id\":\"https://testacc5018.vault.azure.net/storage/testakvsa725/sas/acctall\",\"sid\":\"https://testacc5018.vault.azure.net/secrets/testakvsa725-acctall\",\"attributes\":{\"enabled\":true,\"created\":1530143642,\"updated\":1530143642,\"recoveryLevel\":\"Purgeable\"}}],\"nextLink\":null}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
   server: 'Microsoft-IIS/10.0',
   'x-ms-keyvault-region': 'westus',
-  'x-ms-request-id': '381bfbf3-6ba9-40a6-85b2-f3f37e6d695e',
-  'x-ms-keyvault-service-version': '1.0.0.848',
-  'x-ms-keyvault-network-info': 'addr=167.220.0.2;act_addr_fam=InterNetwork;',
+  'x-ms-request-id': '5cb10e7a-da78-402c-9645-5e80212b94d4',
+  'x-ms-keyvault-service-version': '1.0.0.849',
+  'x-ms-keyvault-network-info': 'addr=167.220.1.2;act_addr_fam=InterNetwork;',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
   'strict-transport-security': 'max-age=31536000;includeSubDomains',
   'x-content-type-options': 'nosniff',
-  date: 'Mon, 21 May 2018 05:26:33 GMT',
+  date: 'Wed, 27 Jun 2018 23:54:02 GMT',
   connection: 'close',
-  'content-length': '280' });
+  'content-length': '278' });
  return result; }]];

@@ -9,45 +9,45 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.put('/subscriptions/d756c23d-6c85-4d60-bc3c-adfdcd8e93a7/resourceGroups/nodeTestGroup6560/providers/Microsoft.KeyVault/vaults/testacc6320?api-version=2018-02-14-preview', '*')
-  .reply(200, "{\"id\":\"/subscriptions/d756c23d-6c85-4d60-bc3c-adfdcd8e93a7/resourceGroups/nodeTestGroup6560/providers/Microsoft.KeyVault/vaults/testacc6320\",\"name\":\"testacc6320\",\"type\":\"Microsoft.KeyVault/vaults\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"sku\":{\"family\":\"A\",\"name\":\"standard\"},\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"networkAcls\":{\"bypass\":\"AzureServices\",\"defaultAction\":\"Deny\",\"ipRules\":[{\"value\":\"23.43.43.43/32\"},{\"value\":\"23.43.44.44/32\"}],\"virtualNetworkRules\":[]},\"accessPolicies\":[],\"enabledForDeployment\":false,\"vaultUri\":\"https://testacc6320.vault.azure.net\",\"provisioningState\":\"RegisteringDns\"}}", { 'cache-control': 'no-cache',
+.put('/subscriptions/d756c23d-6c85-4d60-bc3c-adfdcd8e93a7/resourceGroups/nodeTestGroup664/providers/Microsoft.KeyVault/vaults/testacc1026?api-version=2018-02-14', '*')
+  .reply(200, "{\"id\":\"/subscriptions/d756c23d-6c85-4d60-bc3c-adfdcd8e93a7/resourceGroups/nodeTestGroup664/providers/Microsoft.KeyVault/vaults/testacc1026\",\"name\":\"testacc1026\",\"type\":\"Microsoft.KeyVault/vaults\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"sku\":{\"family\":\"A\",\"name\":\"standard\"},\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"networkAcls\":{\"bypass\":\"AzureServices\",\"defaultAction\":\"Deny\",\"ipRules\":[{\"value\":\"23.43.43.43/32\"},{\"value\":\"23.43.44.44/32\"}],\"virtualNetworkRules\":[]},\"accessPolicies\":[],\"enabledForDeployment\":false,\"vaultUri\":\"https://testacc1026.vault.azure.net\",\"provisioningState\":\"RegisteringDns\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '621',
+  'content-length': '620',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-keyvault-service-version': '1.0.0.215',
+  'x-ms-keyvault-service-version': '1.0.0.220',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
-  'x-ms-ratelimit-remaining-subscription-writes': '1198',
+  'x-ms-ratelimit-remaining-subscription-writes': '1199',
   server: 'Microsoft-IIS/10.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '40ff21ba-91f7-438d-8d89-b08952376885',
-  'x-ms-correlation-request-id': '40ff21ba-91f7-438d-8d89-b08952376885',
-  'x-ms-routing-request-id': 'WESTUS2:20180514T204200Z:40ff21ba-91f7-438d-8d89-b08952376885',
-  date: 'Mon, 14 May 2018 20:41:59 GMT',
+  'x-ms-request-id': '7771131f-11bc-4276-90a0-c0faa686e0da',
+  'x-ms-correlation-request-id': '7771131f-11bc-4276-90a0-c0faa686e0da',
+  'x-ms-routing-request-id': 'WESTUS2:20180628T000422Z:7771131f-11bc-4276-90a0-c0faa686e0da',
+  date: 'Thu, 28 Jun 2018 00:04:21 GMT',
   connection: 'close' });
  return result; },
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d756c23d-6c85-4d60-bc3c-adfdcd8e93a7/resourceGroups/nodeTestGroup6560/providers/Microsoft.KeyVault/vaults/testacc6320?api-version=2018-02-14-preview')
-  .reply(200, "{\"id\":\"/subscriptions/d756c23d-6c85-4d60-bc3c-adfdcd8e93a7/resourceGroups/nodeTestGroup6560/providers/Microsoft.KeyVault/vaults/testacc6320\",\"name\":\"testacc6320\",\"type\":\"Microsoft.KeyVault/vaults\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"sku\":{\"family\":\"A\",\"name\":\"standard\"},\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"networkAcls\":{\"bypass\":\"AzureServices\",\"defaultAction\":\"Deny\",\"ipRules\":[{\"value\":\"23.43.43.43/32\"},{\"value\":\"23.43.44.44/32\"}],\"virtualNetworkRules\":[]},\"accessPolicies\":[],\"enabledForDeployment\":false,\"vaultUri\":\"https://testacc6320.vault.azure.net/\",\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
+  .get('/subscriptions/d756c23d-6c85-4d60-bc3c-adfdcd8e93a7/resourceGroups/nodeTestGroup664/providers/Microsoft.KeyVault/vaults/testacc1026?api-version=2018-02-14')
+  .reply(200, "{\"id\":\"/subscriptions/d756c23d-6c85-4d60-bc3c-adfdcd8e93a7/resourceGroups/nodeTestGroup664/providers/Microsoft.KeyVault/vaults/testacc1026\",\"name\":\"testacc1026\",\"type\":\"Microsoft.KeyVault/vaults\",\"location\":\"westus\",\"tags\":{},\"properties\":{\"sku\":{\"family\":\"A\",\"name\":\"standard\"},\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"networkAcls\":{\"bypass\":\"AzureServices\",\"defaultAction\":\"Deny\",\"ipRules\":[{\"value\":\"23.43.43.43/32\"},{\"value\":\"23.43.44.44/32\"}],\"virtualNetworkRules\":[]},\"accessPolicies\":[],\"enabledForDeployment\":false,\"vaultUri\":\"https://testacc1026.vault.azure.net/\",\"provisioningState\":\"Succeeded\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
-  'content-length': '617',
+  'content-length': '616',
   'content-type': 'application/json; charset=utf-8',
   expires: '-1',
-  'x-ms-keyvault-service-version': '1.0.0.215',
+  'x-ms-keyvault-service-version': '1.0.0.220',
   'strict-transport-security': 'max-age=31536000; includeSubDomains',
   'x-content-type-options': 'nosniff',
   'x-ms-ratelimit-remaining-subscription-reads': '14999',
   server: 'Microsoft-IIS/10.0',
   'x-aspnet-version': '4.0.30319',
   'x-powered-by': 'ASP.NET',
-  'x-ms-request-id': '5e4ddde2-ec19-43c4-95d8-321065e93d5f',
-  'x-ms-correlation-request-id': '5e4ddde2-ec19-43c4-95d8-321065e93d5f',
-  'x-ms-routing-request-id': 'WESTUS2:20180514T204230Z:5e4ddde2-ec19-43c4-95d8-321065e93d5f',
-  date: 'Mon, 14 May 2018 20:42:30 GMT',
+  'x-ms-request-id': '142bd80d-bcf5-430e-a4d6-caf986b6cc6e',
+  'x-ms-correlation-request-id': '142bd80d-bcf5-430e-a4d6-caf986b6cc6e',
+  'x-ms-routing-request-id': 'WESTUS2:20180628T000452Z:142bd80d-bcf5-430e-a4d6-caf986b6cc6e',
+  date: 'Thu, 28 Jun 2018 00:04:51 GMT',
   connection: 'close' });
  return result; }]];
- exports.randomTestIdsGenerated = function() { return ['testacc6320'];};
+ exports.randomTestIdsGenerated = function() { return ['testacc1026'];};

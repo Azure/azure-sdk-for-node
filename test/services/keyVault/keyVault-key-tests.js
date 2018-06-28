@@ -36,7 +36,7 @@ var random = KvUtils.getRandom();
 
 var vaultUri = process.env['AZURE_KV_VAULT'];
 if (!vaultUri) {
-    vaultUri = 'https://sdktestvault0511.vault.azure.net';
+    vaultUri = 'https://sdktestvault74.vault.azure.net';
 }
 
 var standardVaultOnly = process.env['AZURE_KV_STANDARD_VAULT_ONLY'];
