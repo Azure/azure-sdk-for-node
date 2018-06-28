@@ -4761,1613 +4761,6 @@ export interface Fields {
 
 /**
  * @class
- * RunbookDraftOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the AutomationClient.
- */
-export interface RunbookDraftOperations {
-
-
-    /**
-     * Retrieve the content of runbook draft identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
-
-    /**
-     * Retrieve the content of runbook draft identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {String} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
-    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-
-
-    /**
-     * Replaces the runbook draft content.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {string} runbookContent The runbook draft content.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    replaceContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
-
-    /**
-     * Replaces the runbook draft content.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {string} runbookContent The runbook draft content.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {String} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<string>): void;
-    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-
-
-    /**
-     * Retrieve the runbook draft identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RunbookDraft>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookDraft>>;
-
-    /**
-     * Retrieve the runbook draft identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RunbookDraft} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RunbookDraft} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RunbookDraft} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookDraft>;
-    get(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.RunbookDraft>): void;
-    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookDraft>): void;
-
-
-    /**
-     * Publish runbook draft.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The parameters supplied to the publish runbook
-     * operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    publishWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Publish runbook draft.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The parameters supplied to the publish runbook
-     * operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Undo draft edit to last known published state identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RunbookDraftUndoEditResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    undoEditWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookDraftUndoEditResult>>;
-
-    /**
-     * Undo draft edit to last known published state identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RunbookDraftUndoEditResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RunbookDraftUndoEditResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RunbookDraftUndoEditResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    undoEdit(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookDraftUndoEditResult>;
-    undoEdit(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.RunbookDraftUndoEditResult>): void;
-    undoEdit(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookDraftUndoEditResult>): void;
-
-
-    /**
-     * Replaces the runbook draft content.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {string} runbookContent The runbook draft content.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginReplaceContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
-
-    /**
-     * Replaces the runbook draft content.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {string} runbookContent The runbook draft content.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {String} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<string>): void;
-    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-
-
-    /**
-     * Publish runbook draft.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The parameters supplied to the publish runbook
-     * operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginPublishWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Publish runbook draft.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The parameters supplied to the publish runbook
-     * operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-}
-
-/**
- * @class
- * RunbookOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the AutomationClient.
- */
-export interface RunbookOperations {
-
-
-    /**
-     * Retrieve the content of runbook identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
-
-    /**
-     * Retrieve the content of runbook identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {String} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {String} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
-    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
-    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
-
-
-    /**
-     * Retrieve the runbook identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Runbook>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
-
-    /**
-     * Retrieve the runbook identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Runbook} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Runbook} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Runbook} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
-    get(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.Runbook>): void;
-    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
-
-
-    /**
-     * Create the runbook identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} parameters The create or update parameters for runbook.
-     * Provide either content link for a published runbook or draft, not both.
-     *
-     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
-     *
-     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
-     *
-     * @param {string} parameters.runbookType Gets or sets the type of the runbook.
-     * Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
-     * 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell'
-     *
-     * @param {object} [parameters.draft] Gets or sets the draft runbook
-     * properties.
-     *
-     * @param {boolean} [parameters.draft.inEdit] Gets or sets whether runbook is
-     * in edit mode.
-     *
-     * @param {object} [parameters.draft.draftContentLink] Gets or sets the draft
-     * runbook content link.
-     *
-     * @param {date} [parameters.draft.creationTime] Gets or sets the creation time
-     * of the runbook draft.
-     *
-     * @param {date} [parameters.draft.lastModifiedTime] Gets or sets the last
-     * modified time of the runbook draft.
-     *
-     * @param {object} [parameters.draft.parameters] Gets or sets the runbook draft
-     * parameters.
-     *
-     * @param {array} [parameters.draft.outputTypes] Gets or sets the runbook
-     * output types.
-     *
-     * @param {object} [parameters.publishContentLink] Gets or sets the published
-     * runbook content link.
-     *
-     * @param {string} [parameters.publishContentLink.uri] Gets or sets the uri of
-     * the runbook content.
-     *
-     * @param {object} [parameters.publishContentLink.contentHash] Gets or sets the
-     * hash.
-     *
-     * @param {string} parameters.publishContentLink.contentHash.algorithm Gets or
-     * sets the content hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.publishContentLink.contentHash.value Gets or sets
-     * expected hash value of the content.
-     *
-     * @param {string} [parameters.publishContentLink.version] Gets or sets the
-     * version of the content.
-     *
-     * @param {string} [parameters.description] Gets or sets the description of the
-     * runbook.
-     *
-     * @param {number} [parameters.logActivityTrace] Gets or sets the
-     * activity-level tracing options of the runbook.
-     *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
-     *
-     * @param {object} [parameters.tags] Gets or sets the tags attached to the
-     * resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Runbook>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
-
-    /**
-     * Create the runbook identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} parameters The create or update parameters for runbook.
-     * Provide either content link for a published runbook or draft, not both.
-     *
-     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
-     *
-     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
-     *
-     * @param {string} parameters.runbookType Gets or sets the type of the runbook.
-     * Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
-     * 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell'
-     *
-     * @param {object} [parameters.draft] Gets or sets the draft runbook
-     * properties.
-     *
-     * @param {boolean} [parameters.draft.inEdit] Gets or sets whether runbook is
-     * in edit mode.
-     *
-     * @param {object} [parameters.draft.draftContentLink] Gets or sets the draft
-     * runbook content link.
-     *
-     * @param {date} [parameters.draft.creationTime] Gets or sets the creation time
-     * of the runbook draft.
-     *
-     * @param {date} [parameters.draft.lastModifiedTime] Gets or sets the last
-     * modified time of the runbook draft.
-     *
-     * @param {object} [parameters.draft.parameters] Gets or sets the runbook draft
-     * parameters.
-     *
-     * @param {array} [parameters.draft.outputTypes] Gets or sets the runbook
-     * output types.
-     *
-     * @param {object} [parameters.publishContentLink] Gets or sets the published
-     * runbook content link.
-     *
-     * @param {string} [parameters.publishContentLink.uri] Gets or sets the uri of
-     * the runbook content.
-     *
-     * @param {object} [parameters.publishContentLink.contentHash] Gets or sets the
-     * hash.
-     *
-     * @param {string} parameters.publishContentLink.contentHash.algorithm Gets or
-     * sets the content hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.publishContentLink.contentHash.value Gets or sets
-     * expected hash value of the content.
-     *
-     * @param {string} [parameters.publishContentLink.version] Gets or sets the
-     * version of the content.
-     *
-     * @param {string} [parameters.description] Gets or sets the description of the
-     * runbook.
-     *
-     * @param {number} [parameters.logActivityTrace] Gets or sets the
-     * activity-level tracing options of the runbook.
-     *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
-     *
-     * @param {object} [parameters.tags] Gets or sets the tags attached to the
-     * resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Runbook} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Runbook} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Runbook} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, callback: ServiceCallback<models.Runbook>): void;
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
-
-
-    /**
-     * Update the runbook identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} parameters The update parameters for runbook.
-     *
-     * @param {string} [parameters.description] Gets or sets the description of the
-     * runbook.
-     *
-     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
-     *
-     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
-     *
-     * @param {number} [parameters.logActivityTrace] Gets or sets the
-     * activity-level tracing options of the runbook.
-     *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
-     *
-     * @param {object} [parameters.tags] Gets or sets the tags attached to the
-     * resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Runbook>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
-
-    /**
-     * Update the runbook identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} parameters The update parameters for runbook.
-     *
-     * @param {string} [parameters.description] Gets or sets the description of the
-     * runbook.
-     *
-     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
-     *
-     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
-     *
-     * @param {number} [parameters.logActivityTrace] Gets or sets the
-     * activity-level tracing options of the runbook.
-     *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
-     *
-     * @param {object} [parameters.tags] Gets or sets the tags attached to the
-     * resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Runbook} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Runbook} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Runbook} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
-    update(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, callback: ServiceCallback<models.Runbook>): void;
-    update(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
-
-
-    /**
-     * Delete the runbook by name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete the runbook by name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Retrieve a list of runbooks.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RunbookListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookListResult>>;
-
-    /**
-     * Retrieve a list of runbooks.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RunbookListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RunbookListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RunbookListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookListResult>;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.RunbookListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookListResult>): void;
-
-
-    /**
-     * Retrieve a list of runbooks.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RunbookListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookListResult>>;
-
-    /**
-     * Retrieve a list of runbooks.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RunbookListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RunbookListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RunbookListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookListResult>;
-    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.RunbookListResult>): void;
-    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookListResult>): void;
-}
-
-/**
- * @class
- * TestJobStreams
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the AutomationClient.
- */
-export interface TestJobStreams {
-
-
-    /**
-     * Retrieve a test job stream of the test job identified by runbook name and
-     * stream id.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {string} jobStreamId The job stream id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<JobStream>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
-
-    /**
-     * Retrieve a test job stream of the test job identified by runbook name and
-     * stream id.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {string} jobStreamId The job stream id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {JobStream} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {JobStream} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link JobStream} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
-    get(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
-    get(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
-
-
-    /**
-     * Retrieve a list of test job streams identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<JobStreamListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByTestJobWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
-
-    /**
-     * Retrieve a list of test job streams identified by runbook name.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {JobStreamListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {JobStreamListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link JobStreamListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByTestJob(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
-    listByTestJob(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.JobStreamListResult>): void;
-    listByTestJob(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
-
-
-    /**
-     * Retrieve a list of test job streams identified by runbook name.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<JobStreamListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByTestJobNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
-
-    /**
-     * Retrieve a list of test job streams identified by runbook name.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {JobStreamListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {JobStreamListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link JobStreamListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByTestJobNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
-    listByTestJobNext(nextPageLink: string, callback: ServiceCallback<models.JobStreamListResult>): void;
-    listByTestJobNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
-}
-
-/**
- * @class
- * TestJobOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the AutomationClient.
- */
-export interface TestJobOperations {
-
-
-    /**
-     * Create a test job of the runbook.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The parameters supplied to the create test job
-     * operation.
-     *
-     * @param {object} parameters The parameters supplied to the create test job
-     * operation.
-     *
-     * @param {object} [parameters.parameters] Gets or sets the parameters of the
-     * test job.
-     *
-     * @param {string} [parameters.runOn] Gets or sets the runOn which specifies
-     * the group name where the job is to be executed.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<TestJob>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TestJob>>;
-
-    /**
-     * Create a test job of the runbook.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The parameters supplied to the create test job
-     * operation.
-     *
-     * @param {object} parameters The parameters supplied to the create test job
-     * operation.
-     *
-     * @param {object} [parameters.parameters] Gets or sets the parameters of the
-     * test job.
-     *
-     * @param {string} [parameters.runOn] Gets or sets the runOn which specifies
-     * the group name where the job is to be executed.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {TestJob} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {TestJob} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link TestJob} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    create(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TestJob>;
-    create(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, callback: ServiceCallback<models.TestJob>): void;
-    create(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TestJob>): void;
-
-
-    /**
-     * Retrieve the test job for the specified runbook.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<TestJob>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TestJob>>;
-
-    /**
-     * Retrieve the test job for the specified runbook.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {TestJob} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {TestJob} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link TestJob} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TestJob>;
-    get(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.TestJob>): void;
-    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TestJob>): void;
-
-
-    /**
-     * Resume the test job.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    resumeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Resume the test job.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    resume(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    resume(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    resume(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Stop the test job.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    stopWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Stop the test job.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    stop(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    stop(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    stop(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Suspend the test job.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    suspendWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Suspend the test job.
-     *
-     * @param {string} resourceGroupName Name of an Azure Resource group.
-     *
-     * @param {string} automationAccountName The name of the automation account.
-     *
-     * @param {string} runbookName The runbook name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    suspend(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    suspend(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
-    suspend(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-}
-
-/**
- * @class
  * ScheduleOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AutomationClient.
@@ -12950,4 +11343,1611 @@ export interface NodeCountInformation {
     get(resourceGroupName: string, automationAccountName: string, countType: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NodeCounts>;
     get(resourceGroupName: string, automationAccountName: string, countType: string, callback: ServiceCallback<models.NodeCounts>): void;
     get(resourceGroupName: string, automationAccountName: string, countType: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NodeCounts>): void;
+}
+
+/**
+ * @class
+ * RunbookDraftOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface RunbookDraftOperations {
+
+
+    /**
+     * Retrieve the content of runbook draft identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+
+    /**
+     * Retrieve the content of runbook draft identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {String} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+
+
+    /**
+     * Replaces the runbook draft content.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {string} runbookContent The runbook draft content.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    replaceContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+
+    /**
+     * Replaces the runbook draft content.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {string} runbookContent The runbook draft content.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {String} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<string>): void;
+    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+
+
+    /**
+     * Retrieve the runbook draft identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunbookDraft>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookDraft>>;
+
+    /**
+     * Retrieve the runbook draft identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunbookDraft} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunbookDraft} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunbookDraft} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookDraft>;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.RunbookDraft>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookDraft>): void;
+
+
+    /**
+     * Undo draft edit to last known published state identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunbookDraftUndoEditResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    undoEditWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookDraftUndoEditResult>>;
+
+    /**
+     * Undo draft edit to last known published state identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunbookDraftUndoEditResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunbookDraftUndoEditResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunbookDraftUndoEditResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    undoEdit(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookDraftUndoEditResult>;
+    undoEdit(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.RunbookDraftUndoEditResult>): void;
+    undoEdit(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookDraftUndoEditResult>): void;
+
+
+    /**
+     * Replaces the runbook draft content.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {string} runbookContent The runbook draft content.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginReplaceContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+
+    /**
+     * Replaces the runbook draft content.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {string} runbookContent The runbook draft content.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {String} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<string>): void;
+    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+}
+
+/**
+ * @class
+ * RunbookOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface RunbookOperations {
+
+
+    /**
+     * Publish runbook draft.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The parameters supplied to the publish runbook
+     * operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    publishWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Publish runbook draft.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The parameters supplied to the publish runbook
+     * operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    publish(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the content of runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<String>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<string>>;
+
+    /**
+     * Retrieve the content of runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {String} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {String} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<string>;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<string>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<string>): void;
+
+
+    /**
+     * Retrieve the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Runbook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
+
+    /**
+     * Retrieve the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Runbook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Runbook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Runbook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.Runbook>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
+
+
+    /**
+     * Create the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} parameters The create or update parameters for runbook.
+     * Provide either content link for a published runbook or draft, not both.
+     *
+     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
+     *
+     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
+     *
+     * @param {string} parameters.runbookType Gets or sets the type of the runbook.
+     * Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
+     * 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell'
+     *
+     * @param {object} [parameters.draft] Gets or sets the draft runbook
+     * properties.
+     *
+     * @param {boolean} [parameters.draft.inEdit] Gets or sets whether runbook is
+     * in edit mode.
+     *
+     * @param {object} [parameters.draft.draftContentLink] Gets or sets the draft
+     * runbook content link.
+     *
+     * @param {date} [parameters.draft.creationTime] Gets or sets the creation time
+     * of the runbook draft.
+     *
+     * @param {date} [parameters.draft.lastModifiedTime] Gets or sets the last
+     * modified time of the runbook draft.
+     *
+     * @param {object} [parameters.draft.parameters] Gets or sets the runbook draft
+     * parameters.
+     *
+     * @param {array} [parameters.draft.outputTypes] Gets or sets the runbook
+     * output types.
+     *
+     * @param {object} [parameters.publishContentLink] Gets or sets the published
+     * runbook content link.
+     *
+     * @param {string} [parameters.publishContentLink.uri] Gets or sets the uri of
+     * the runbook content.
+     *
+     * @param {object} [parameters.publishContentLink.contentHash] Gets or sets the
+     * hash.
+     *
+     * @param {string} parameters.publishContentLink.contentHash.algorithm Gets or
+     * sets the content hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.publishContentLink.contentHash.value Gets or sets
+     * expected hash value of the content.
+     *
+     * @param {string} [parameters.publishContentLink.version] Gets or sets the
+     * version of the content.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * runbook.
+     *
+     * @param {number} [parameters.logActivityTrace] Gets or sets the
+     * activity-level tracing options of the runbook.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Runbook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
+
+    /**
+     * Create the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} parameters The create or update parameters for runbook.
+     * Provide either content link for a published runbook or draft, not both.
+     *
+     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
+     *
+     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
+     *
+     * @param {string} parameters.runbookType Gets or sets the type of the runbook.
+     * Possible values include: 'Script', 'Graph', 'PowerShellWorkflow',
+     * 'PowerShell', 'GraphPowerShellWorkflow', 'GraphPowerShell'
+     *
+     * @param {object} [parameters.draft] Gets or sets the draft runbook
+     * properties.
+     *
+     * @param {boolean} [parameters.draft.inEdit] Gets or sets whether runbook is
+     * in edit mode.
+     *
+     * @param {object} [parameters.draft.draftContentLink] Gets or sets the draft
+     * runbook content link.
+     *
+     * @param {date} [parameters.draft.creationTime] Gets or sets the creation time
+     * of the runbook draft.
+     *
+     * @param {date} [parameters.draft.lastModifiedTime] Gets or sets the last
+     * modified time of the runbook draft.
+     *
+     * @param {object} [parameters.draft.parameters] Gets or sets the runbook draft
+     * parameters.
+     *
+     * @param {array} [parameters.draft.outputTypes] Gets or sets the runbook
+     * output types.
+     *
+     * @param {object} [parameters.publishContentLink] Gets or sets the published
+     * runbook content link.
+     *
+     * @param {string} [parameters.publishContentLink.uri] Gets or sets the uri of
+     * the runbook content.
+     *
+     * @param {object} [parameters.publishContentLink.contentHash] Gets or sets the
+     * hash.
+     *
+     * @param {string} parameters.publishContentLink.contentHash.algorithm Gets or
+     * sets the content hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.publishContentLink.contentHash.value Gets or sets
+     * expected hash value of the content.
+     *
+     * @param {string} [parameters.publishContentLink.version] Gets or sets the
+     * version of the content.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * runbook.
+     *
+     * @param {number} [parameters.logActivityTrace] Gets or sets the
+     * activity-level tracing options of the runbook.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Runbook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Runbook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Runbook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, callback: ServiceCallback<models.Runbook>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
+
+
+    /**
+     * Update the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} parameters The update parameters for runbook.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * runbook.
+     *
+     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
+     *
+     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
+     *
+     * @param {number} [parameters.logActivityTrace] Gets or sets the
+     * activity-level tracing options of the runbook.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Runbook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Runbook>>;
+
+    /**
+     * Update the runbook identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} parameters The update parameters for runbook.
+     *
+     * @param {string} [parameters.description] Gets or sets the description of the
+     * runbook.
+     *
+     * @param {boolean} [parameters.logVerbose] Gets or sets verbose log option.
+     *
+     * @param {boolean} [parameters.logProgress] Gets or sets progress log option.
+     *
+     * @param {number} [parameters.logActivityTrace] Gets or sets the
+     * activity-level tracing options of the runbook.
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Runbook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Runbook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Runbook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Runbook>;
+    update(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, callback: ServiceCallback<models.Runbook>): void;
+    update(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.RunbookUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Runbook>): void;
+
+
+    /**
+     * Delete the runbook by name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the runbook by name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve a list of runbooks.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunbookListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookListResult>>;
+
+    /**
+     * Retrieve a list of runbooks.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunbookListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunbookListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunbookListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.RunbookListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookListResult>): void;
+
+
+    /**
+     * Publish runbook draft.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The parameters supplied to the publish runbook
+     * operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginPublishWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Publish runbook draft.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The parameters supplied to the publish runbook
+     * operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    beginPublish(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve a list of runbooks.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RunbookListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunbookListResult>>;
+
+    /**
+     * Retrieve a list of runbooks.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RunbookListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RunbookListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunbookListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunbookListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.RunbookListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunbookListResult>): void;
+}
+
+/**
+ * @class
+ * TestJobStreams
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface TestJobStreams {
+
+
+    /**
+     * Retrieve a test job stream of the test job identified by runbook name and
+     * stream id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {string} jobStreamId The job stream id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStream>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
+
+    /**
+     * Retrieve a test job stream of the test job identified by runbook name and
+     * stream id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {string} jobStreamId The job stream id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStream} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStream} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStream} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, jobStreamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
+
+
+    /**
+     * Retrieve a list of test job streams identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStreamListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByTestJobWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
+
+    /**
+     * Retrieve a list of test job streams identified by runbook name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStreamListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStreamListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStreamListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByTestJob(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
+    listByTestJob(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByTestJob(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
+
+
+    /**
+     * Retrieve a list of test job streams identified by runbook name.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStreamListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByTestJobNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
+
+    /**
+     * Retrieve a list of test job streams identified by runbook name.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStreamListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStreamListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStreamListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByTestJobNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
+    listByTestJobNext(nextPageLink: string, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByTestJobNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
+}
+
+/**
+ * @class
+ * TestJobOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface TestJobOperations {
+
+
+    /**
+     * Create a test job of the runbook.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The parameters supplied to the create test job
+     * operation.
+     *
+     * @param {object} parameters The parameters supplied to the create test job
+     * operation.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * test job.
+     *
+     * @param {string} [parameters.runOn] Gets or sets the runOn which specifies
+     * the group name where the job is to be executed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TestJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TestJob>>;
+
+    /**
+     * Create a test job of the runbook.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The parameters supplied to the create test job
+     * operation.
+     *
+     * @param {object} parameters The parameters supplied to the create test job
+     * operation.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * test job.
+     *
+     * @param {string} [parameters.runOn] Gets or sets the runOn which specifies
+     * the group name where the job is to be executed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TestJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TestJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TestJob} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TestJob>;
+    create(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, callback: ServiceCallback<models.TestJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, runbookName: string, parameters: models.TestJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TestJob>): void;
+
+
+    /**
+     * Retrieve the test job for the specified runbook.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TestJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TestJob>>;
+
+    /**
+     * Retrieve the test job for the specified runbook.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TestJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TestJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TestJob} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TestJob>;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<models.TestJob>): void;
+    get(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TestJob>): void;
+
+
+    /**
+     * Resume the test job.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    resumeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resume the test job.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    resume(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    resume(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    resume(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Stop the test job.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    stopWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Stop the test job.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    stop(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    stop(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    stop(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Suspend the test job.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    suspendWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Suspend the test job.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} runbookName The runbook name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    suspend(resourceGroupName: string, automationAccountName: string, runbookName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    suspend(resourceGroupName: string, automationAccountName: string, runbookName: string, callback: ServiceCallback<void>): void;
+    suspend(resourceGroupName: string, automationAccountName: string, runbookName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
