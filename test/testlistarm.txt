@@ -46,3 +46,4 @@ services/keyVault/keyVault-storage-tests.js
 services/keyVaultManagement/keyVaultManagement-tests.js
 services/postgresqlManagement/postgreSQLManagementClient-tests.js
 services/mysqlManagement/mySQLManagementClient-tests.js
+services/loganalytics/loganalytics-query-tests.js
