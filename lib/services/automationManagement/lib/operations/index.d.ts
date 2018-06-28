@@ -12894,6 +12894,9 @@ export interface NodeCountInformation {
      *
      * @param {string} automationAccountName The name of the automation account.
      *
+     * @param {string} countType The type of counts to retrieve. Possible values
+     * include: 'status', 'nodeconfiguration'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -12905,7 +12908,7 @@ export interface NodeCountInformation {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NodeCounts>>;
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, countType: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NodeCounts>>;
 
     /**
      * Retrieve counts for Dsc Nodes.
@@ -12913,6 +12916,9 @@ export interface NodeCountInformation {
      * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} countType The type of counts to retrieve. Possible values
+     * include: 'status', 'nodeconfiguration'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12941,7 +12947,7 @@ export interface NodeCountInformation {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NodeCounts>;
-    get(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.NodeCounts>): void;
-    get(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NodeCounts>): void;
+    get(resourceGroupName: string, automationAccountName: string, countType: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NodeCounts>;
+    get(resourceGroupName: string, automationAccountName: string, countType: string, callback: ServiceCallback<models.NodeCounts>): void;
+    get(resourceGroupName: string, automationAccountName: string, countType: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NodeCounts>): void;
 }
