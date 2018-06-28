@@ -831,6 +831,8 @@ export interface Eventhub extends Resource {
  * Alias(Disaster Recovery configuration) - possible values 'Accepted' or
  * 'Succeeded' or 'Failed'. Possible values include: 'Accepted', 'Succeeded',
  * 'Failed'
+ * @member {number} [pendingReplicationOperationsCount] Number of entities
+ * pending to be replicated.
  * @member {string} [partnerNamespace] ARM Id of the Primary/Secondary eventhub
  * namespace name, which is part of GEO DR pairning
  * @member {string} [alternateName] Primary/Secondary eventhub namespace name,
@@ -841,6 +843,7 @@ export interface Eventhub extends Resource {
  */
 export interface ArmDisasterRecovery extends Resource {
   readonly provisioningState?: string;
+  readonly pendingReplicationOperationsCount?: number;
   partnerNamespace?: string;
   alternateName?: string;
   readonly role?: string;
@@ -854,6 +857,8 @@ export interface ArmDisasterRecovery extends Resource {
  *
  * @member {string} [provisioningState] Provisioning state of Migration
  * Configuration
+ * @member {number} [pendingReplicationOperationsCount] Number of entities
+ * pending to be replicated.
  * @member {string} targetNamespace Existing premium Namespace ARM Id name
  * which has no entities, will be used for migration
  * @member {string} postMigrationName Name to access Standard Namespace after
@@ -861,6 +866,7 @@ export interface ArmDisasterRecovery extends Resource {
  */
 export interface MigrationConfigProperties extends Resource {
   readonly provisioningState?: string;
+  readonly pendingReplicationOperationsCount?: number;
   targetNamespace: string;
   postMigrationName: string;
 }
