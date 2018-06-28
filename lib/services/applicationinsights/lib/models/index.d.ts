@@ -533,7 +533,7 @@ export interface ApplicationInsightsComponentProactiveDetectionConfiguration ext
 
 /**
  * @class
- * Initializes a new instance of the Resource class.
+ * Initializes a new instance of the ComponentsResource class.
  * @constructor
  * An azure resource object
  *
@@ -543,7 +543,7 @@ export interface ApplicationInsightsComponentProactiveDetectionConfiguration ext
  * @member {string} location Resource location
  * @member {object} [tags] Resource tags
  */
-export interface Resource extends BaseResource {
+export interface ComponentsResource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
@@ -605,7 +605,7 @@ export interface TagsResource {
  * application being monitored that is being sampled for Application Insights
  * telemetry.
  */
-export interface ApplicationInsightsComponent extends Resource {
+export interface ApplicationInsightsComponent extends ComponentsResource {
   kind: string;
   readonly applicationId?: string;
   readonly appId?: string;
@@ -676,7 +676,7 @@ export interface ComponentPurgeResponse {
  * Response containing status for a specific purge operation.
  *
  * @member {string} status Status of the operation represented by the requested
- * Id. Possible values include: 'Pending', 'Completed'
+ * Id. Possible values include: 'pending', 'completed'
  */
 export interface ComponentPurgeStatusResponse {
   status: string;
@@ -807,6 +807,26 @@ export interface ApplicationInsightsComponentWebTestLocation {
 
 /**
  * @class
+ * Initializes a new instance of the WebtestsResource class.
+ * @constructor
+ * An azure resource object
+ *
+ * @member {string} [id] Azure resource Id
+ * @member {string} [name] Azure resource name
+ * @member {string} [type] Azure resource type
+ * @member {string} location Resource location
+ * @member {object} [tags] Resource tags
+ */
+export interface WebtestsResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the WebTestGeolocation class.
  * @constructor
  * Geo-physical location to run a web test from. You must specify one or more
@@ -865,7 +885,7 @@ export interface WebTestPropertiesConfiguration {
  * defined. Users cannot change this value but are able to read from it. Values
  * will include Succeeded, Deploying, Canceled, and Failed.
  */
-export interface WebTest extends Resource {
+export interface WebTest extends WebtestsResource {
   kind?: string;
   syntheticMonitorId: string;
   webTestName: string;
@@ -933,6 +953,26 @@ export interface ApplicationInsightsComponentAnalyticsItem {
 
 /**
  * @class
+ * Initializes a new instance of the WorkbookResource class.
+ * @constructor
+ * An azure resource object
+ *
+ * @member {string} [id] Azure resource Id
+ * @member {string} [name] Azure resource name
+ * @member {string} [type] Azure resource type
+ * @member {string} [location] Resource location
+ * @member {object} [tags] Resource tags
+ */
+export interface WorkbookResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the Workbook class.
  * @constructor
  * An Application Insights workbook definition.
@@ -961,7 +1001,7 @@ export interface ApplicationInsightsComponentAnalyticsItem {
  * @member {string} [sourceResourceId] Optional resourceId for a source
  * resource.
  */
-export interface Workbook extends Resource {
+export interface Workbook extends WorkbookResource {
   kind?: string;
   workbookName: string;
   serializedData: string;
@@ -973,18 +1013,6 @@ export interface Workbook extends Resource {
   workbookTags?: string[];
   userId: string;
   sourceResourceId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Workbooks class.
- * @constructor
- * Workbook list result.
- *
- * @member {array} [value] An array of workbooks.
- */
-export interface Workbooks {
-  value?: Workbook[];
 }
 
 /**
@@ -1100,4 +1128,14 @@ export interface ApplicationInsightsWebTestLocationsListResult extends Array<App
  */
 export interface WebTestListResult extends Array<WebTest> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkbooksListResult class.
+ * @constructor
+ * Workbook list result.
+ *
+ */
+export interface WorkbooksListResult extends Array<Workbook> {
 }
