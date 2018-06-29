@@ -878,6 +878,19 @@ export interface LinkedWorkspace {
 
 /**
  * @class
+ * Initializes a new instance of the ActivityParameterValidationSet class.
+ * @constructor
+ * Definition of the activity parameter validation set.
+ *
+ * @member {string} [memberValue] Gets or sets the name of the activity
+ * parameter validation set member.
+ */
+export interface ActivityParameterValidationSet {
+  memberValue?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ActivityParameter class.
  * @constructor
  * Definition of the activity parameter.
@@ -906,6 +919,10 @@ export interface LinkedWorkspace {
  * command-line arguments that are associated with this parameter in the form
  * of an array. false if the cmdlet parameter does not accept all the remaining
  * argument values.
+ * @member {string} [description] Gets or sets the description of the activity
+ * parameter.
+ * @member {array} [validationSet] Gets or sets the validation set of activity
+ * parameter.
  */
 export interface ActivityParameter {
   name?: string;
@@ -916,6 +933,8 @@ export interface ActivityParameter {
   valueFromPipeline?: boolean;
   valueFromPipelineByPropertyName?: boolean;
   valueFromRemainingArguments?: boolean;
+  description?: string;
+  validationSet?: ActivityParameterValidationSet[];
 }
 
 /**
@@ -1042,6 +1061,8 @@ export interface ContentLink {
  * @member {date} [creationTime] Gets or sets the creation time.
  * @member {date} [lastModifiedTime] Gets or sets the last modified time.
  * @member {string} [description] Gets or sets the description.
+ * @member {boolean} [isComposite] Gets or sets type of module, if its
+ * composite or not.
  * @member {string} [etag] Gets or sets the etag of the resource.
  */
 export interface Module extends TrackedResource {
@@ -1055,6 +1076,7 @@ export interface Module extends TrackedResource {
   creationTime?: Date;
   lastModifiedTime?: Date;
   description?: string;
+  isComposite?: boolean;
   etag?: string;
 }
 
