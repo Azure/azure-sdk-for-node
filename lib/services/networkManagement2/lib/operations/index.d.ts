@@ -35376,6 +35376,8 @@ export interface VpnConnections {
     /**
      * Retrieves all vpn connections for a particular virtual wan vpn gateway.
      *
+     * @param {string} resourceGroupName The resource group name of the VpnGateway.
+     *
      * @param {string} gatewayName The name of the gateway.
      *
      * @param {object} [options] Optional Parameters.
@@ -35389,10 +35391,12 @@ export interface VpnConnections {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByVpnGatewayWithHttpOperationResponse(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnConnectionsResult>>;
+    listByVpnGatewayWithHttpOperationResponse(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ListVpnConnectionsResult>>;
 
     /**
      * Retrieves all vpn connections for a particular virtual wan vpn gateway.
+     *
+     * @param {string} resourceGroupName The resource group name of the VpnGateway.
      *
      * @param {string} gatewayName The name of the gateway.
      *
@@ -35424,9 +35428,9 @@ export interface VpnConnections {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByVpnGateway(gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnConnectionsResult>;
-    listByVpnGateway(gatewayName: string, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
-    listByVpnGateway(gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
+    listByVpnGateway(resourceGroupName: string, gatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ListVpnConnectionsResult>;
+    listByVpnGateway(resourceGroupName: string, gatewayName: string, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
+    listByVpnGateway(resourceGroupName: string, gatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ListVpnConnectionsResult>): void;
 
 
     /**
