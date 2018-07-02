@@ -27,6 +27,7 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} [type] The resource type.
  * @member {string} [location] The resource location.
  * @member {object} [tags] The resource tags.
+ * @member {string} [eTag] Etag identifies change in the resource.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
@@ -34,6 +35,7 @@ export interface Resource extends BaseResource {
   readonly type?: string;
   location?: string;
   tags?: { [propertyName: string]: string };
+  readonly eTag?: string;
 }
 
 /**
@@ -142,26 +144,24 @@ export interface FactoryIdentity {
 
 /**
  * @class
- * Initializes a new instance of the FactoryVSTSConfiguration class.
+ * Initializes a new instance of the FactoryRepoConfiguration class.
  * @constructor
- * Factory's VSTS repo information.
+ * Factory's git repo information.
  *
- * @member {string} [accountName] VSTS account name.
- * @member {string} [projectName] VSTS project name.
- * @member {string} [repositoryName] VSTS repository name.
- * @member {string} [collaborationBranch] VSTS collaboration branch.
- * @member {string} [rootFolder] VSTS root folder.
- * @member {string} [lastCommitId] VSTS last commit id.
- * @member {string} [tenantId] VSTS tenant id.
+ * @member {string} accountName Account name.
+ * @member {string} repositoryName Rrepository name.
+ * @member {string} collaborationBranch Collaboration branch.
+ * @member {string} rootFolder Root folder.
+ * @member {string} [lastCommitId] Last commit id.
+ * @member {string} type Polymorphic Discriminator
  */
-export interface FactoryVSTSConfiguration {
-  accountName?: string;
-  projectName?: string;
-  repositoryName?: string;
-  collaborationBranch?: string;
-  rootFolder?: string;
+export interface FactoryRepoConfiguration {
+  accountName: string;
+  repositoryName: string;
+  collaborationBranch: string;
+  rootFolder: string;
   lastCommitId?: string;
-  tenantId?: string;
+  type: string;
 }
 
 /**
@@ -177,22 +177,21 @@ export interface FactoryVSTSConfiguration {
  * Succeeded.
  * @member {date} [createTime] Time the factory was created in ISO8601 format.
  * @member {string} [version] Version of the factory.
- * @member {object} [vstsConfiguration] VSTS repo information of the factory.
- * @member {string} [vstsConfiguration.accountName] VSTS account name.
- * @member {string} [vstsConfiguration.projectName] VSTS project name.
- * @member {string} [vstsConfiguration.repositoryName] VSTS repository name.
- * @member {string} [vstsConfiguration.collaborationBranch] VSTS collaboration
+ * @member {object} [repoConfiguration] Git repo information of the factory.
+ * @member {string} [repoConfiguration.accountName] Account name.
+ * @member {string} [repoConfiguration.repositoryName] Rrepository name.
+ * @member {string} [repoConfiguration.collaborationBranch] Collaboration
  * branch.
- * @member {string} [vstsConfiguration.rootFolder] VSTS root folder.
- * @member {string} [vstsConfiguration.lastCommitId] VSTS last commit id.
- * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
+ * @member {string} [repoConfiguration.rootFolder] Root folder.
+ * @member {string} [repoConfiguration.lastCommitId] Last commit id.
+ * @member {string} [repoConfiguration.type] Polymorphic Discriminator
  */
 export interface Factory extends Resource {
   identity?: FactoryIdentity;
   readonly provisioningState?: string;
   readonly createTime?: Date;
   readonly version?: string;
-  vstsConfiguration?: FactoryVSTSConfiguration;
+  repoConfiguration?: FactoryRepoConfiguration;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.
@@ -495,12 +494,14 @@ export interface ActivityDependency {
  * @member {string} name Activity name.
  * @member {string} [description] Activity description.
  * @member {array} [dependsOn] Activity depends on condition.
+ * @member {object} [userProperties] Activity user properties.
  * @member {string} type Polymorphic Discriminator
  */
 export interface Activity {
   name: string;
   description?: string;
   dependsOn?: ActivityDependency[];
+  userProperties?: { [propertyName: string]: string };
   type: string;
   /**
    * @property Describes unknown properties. The value of an unknown property
@@ -591,45 +592,49 @@ export interface CreateRunResponse {
 
 /**
  * @class
- * Initializes a new instance of the ErrorResponse class.
+ * Initializes a new instance of the FactoryVSTSConfiguration class.
  * @constructor
- * The object that defines the structure of an Azure Data Factory response.
+ * Factory's VSTS repo information.
  *
- * @member {string} code Error code.
- * @member {string} message Error message.
- * @member {string} [target] Property name/path in request associated with
- * error.
- * @member {array} [details] Array with additional error details.
+ * @member {string} projectName VSTS project name.
+ * @member {string} [tenantId] VSTS tenant id.
  */
-export interface ErrorResponse {
-  code: string;
-  message: string;
-  target?: string;
-  details?: ErrorResponse[];
+export interface FactoryVSTSConfiguration extends FactoryRepoConfiguration {
+  projectName: string;
+  tenantId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FactoryGitHubConfiguration class.
+ * @constructor
+ * Factory's GitHub repo information.
+ *
+ * @member {string} [hostName] GitHub repo host name.
+ */
+export interface FactoryGitHubConfiguration extends FactoryRepoConfiguration {
+  readonly hostName?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the FactoryRepoUpdate class.
  * @constructor
- * Factory's VSTS repo information.
+ * Factory's git repo information.
  *
  * @member {string} [factoryResourceId] The factory resource id.
- * @member {string} [resourceGroupName] The resource group name.
- * @member {object} [vstsConfiguration] VSTS repo information of the factory.
- * @member {string} [vstsConfiguration.accountName] VSTS account name.
- * @member {string} [vstsConfiguration.projectName] VSTS project name.
- * @member {string} [vstsConfiguration.repositoryName] VSTS repository name.
- * @member {string} [vstsConfiguration.collaborationBranch] VSTS collaboration
+ * @member {object} [repoConfiguration] Git repo information of the factory.
+ * @member {string} [repoConfiguration.accountName] Account name.
+ * @member {string} [repoConfiguration.repositoryName] Rrepository name.
+ * @member {string} [repoConfiguration.collaborationBranch] Collaboration
  * branch.
- * @member {string} [vstsConfiguration.rootFolder] VSTS root folder.
- * @member {string} [vstsConfiguration.lastCommitId] VSTS last commit id.
- * @member {string} [vstsConfiguration.tenantId] VSTS tenant id.
+ * @member {string} [repoConfiguration.rootFolder] Root folder.
+ * @member {string} [repoConfiguration.lastCommitId] Last commit id.
+ * @member {string} [repoConfiguration.type] Polymorphic Discriminator
  */
 export interface FactoryRepoUpdate {
   factoryResourceId?: string;
-  resourceGroupName?: string;
-  vstsConfiguration?: FactoryVSTSConfiguration;
+  repoConfiguration?: FactoryRepoConfiguration;
 }
 
 /**
@@ -694,17 +699,23 @@ export interface DatasetReference {
 
 /**
  * @class
- * Initializes a new instance of the PipelineRunQueryFilter class.
+ * Initializes a new instance of the RunQueryFilter class.
  * @constructor
- * Query filter option for listing pipeline runs.
+ * Query filter option for listing runs.
  *
- * @member {string} operand Parameter name to be used for filter. Possible
- * values include: 'PipelineName', 'Status', 'RunStart', 'RunEnd'
+ * @member {string} operand Parameter name to be used for filter. The allowed
+ * operands to query pipeline runs are PipelineName, RunStart, RunEnd and
+ * Status; to query activity runs are ActivityName, ActivityRunStart,
+ * ActivityRunEnd, ActivityType and Status, and to query trigger runs are
+ * TriggerName, TriggerRunTimestamp and Status. Possible values include:
+ * 'PipelineName', 'Status', 'RunStart', 'RunEnd', 'ActivityName',
+ * 'ActivityRunStart', 'ActivityRunEnd', 'ActivityType', 'TriggerName',
+ * 'TriggerRunTimestamp'
  * @member {string} operator Operator to be used for filter. Possible values
  * include: 'Equals', 'NotEquals', 'In', 'NotIn'
  * @member {array} values List of filter values.
  */
-export interface PipelineRunQueryFilter {
+export interface RunQueryFilter {
   operand: string;
   operator: string;
   values: string[];
@@ -712,41 +723,46 @@ export interface PipelineRunQueryFilter {
 
 /**
  * @class
- * Initializes a new instance of the PipelineRunQueryOrderBy class.
+ * Initializes a new instance of the RunQueryOrderBy class.
  * @constructor
- * An object to provide order by options for listing pipeline runs.
+ * An object to provide order by options for listing runs.
  *
- * @member {string} orderBy Parameter name to be used for order by. Possible
- * values include: 'RunStart', 'RunEnd'
+ * @member {string} orderBy Parameter name to be used for order by. The allowed
+ * parameters to order by for pipeline runs are PipelineName, RunStart, RunEnd
+ * and Status; for activity runs are ActivityName, ActivityRunStart,
+ * ActivityRunEnd and Status; for trigger runs are TriggerName,
+ * TriggerRunTimestamp and Status. Possible values include: 'RunStart',
+ * 'RunEnd', 'PipelineName', 'Status', 'ActivityName', 'ActivityRunStart',
+ * 'ActivityRunEnd', 'TriggerName', 'TriggerRunTimestamp'
  * @member {string} order Sorting order of the parameter. Possible values
  * include: 'ASC', 'DESC'
  */
-export interface PipelineRunQueryOrderBy {
+export interface RunQueryOrderBy {
   orderBy: string;
   order: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the PipelineRunFilterParameters class.
+ * Initializes a new instance of the RunFilterParameters class.
  * @constructor
- * Query parameters for listing pipeline runs.
+ * Query parameters for listing runs.
  *
  * @member {string} [continuationToken] The continuation token for getting the
  * next page of results. Null for first page.
- * @member {date} lastUpdatedAfter The time at or after which the pipeline run
- * event was updated in 'ISO 8601' format.
- * @member {date} lastUpdatedBefore The time at or before which the pipeline
- * run event was updated in 'ISO 8601' format.
+ * @member {date} lastUpdatedAfter The time at or after which the run event was
+ * updated in 'ISO 8601' format.
+ * @member {date} lastUpdatedBefore The time at or before which the run event
+ * was updated in 'ISO 8601' format.
  * @member {array} [filters] List of filters.
  * @member {array} [orderBy] List of OrderBy option.
  */
-export interface PipelineRunFilterParameters {
+export interface RunFilterParameters {
   continuationToken?: string;
   lastUpdatedAfter: Date;
   lastUpdatedBefore: Date;
-  filters?: PipelineRunQueryFilter[];
-  orderBy?: PipelineRunQueryOrderBy[];
+  filters?: RunQueryFilter[];
+  orderBy?: RunQueryOrderBy[];
 }
 
 /**
@@ -757,10 +773,13 @@ export interface PipelineRunFilterParameters {
  *
  * @member {string} [name] Name of the entity that started the pipeline run.
  * @member {string} [id] The ID of the entity that started the run.
+ * @member {string} [invokedByType] The type of the entity that started the
+ * run.
  */
 export interface PipelineRunInvokedBy {
   readonly name?: string;
   readonly id?: string;
+  readonly invokedByType?: string;
 }
 
 /**
@@ -777,6 +796,8 @@ export interface PipelineRunInvokedBy {
  * @member {string} [invokedBy.name] Name of the entity that started the
  * pipeline run.
  * @member {string} [invokedBy.id] The ID of the entity that started the run.
+ * @member {string} [invokedBy.invokedByType] The type of the entity that
+ * started the run.
  * @member {date} [lastUpdated] The last updated timestamp for the pipeline run
  * event in ISO8601 format.
  * @member {date} [runStart] The start time of a pipeline run in ISO8601
@@ -806,7 +827,7 @@ export interface PipelineRun {
 
 /**
  * @class
- * Initializes a new instance of the PipelineRunQueryResponse class.
+ * Initializes a new instance of the PipelineRunsQueryResponse class.
  * @constructor
  * A list pipeline runs.
  *
@@ -814,7 +835,7 @@ export interface PipelineRun {
  * @member {string} [continuationToken] The continuation token for getting the
  * next page of results, if any remaining results exist, null otherwise.
  */
-export interface PipelineRunQueryResponse {
+export interface PipelineRunsQueryResponse {
   value: PipelineRun[];
   continuationToken?: string;
 }
@@ -864,6 +885,21 @@ export interface ActivityRun {
 
 /**
  * @class
+ * Initializes a new instance of the ActivityRunsQueryResponse class.
+ * @constructor
+ * A list activity runs.
+ *
+ * @member {array} value List of activity runs.
+ * @member {string} [continuationToken] The continuation token for getting the
+ * next page of results, if any remaining results exist, null otherwise.
+ */
+export interface ActivityRunsQueryResponse {
+  value: ActivityRun[];
+  continuationToken?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TriggerRun class.
  * @constructor
  * Trigger runs.
@@ -894,6 +930,21 @@ export interface TriggerRun {
    * can be of "any" type.
    */
   [property: string]: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerRunsQueryResponse class.
+ * @constructor
+ * A list of trigger runs.
+ *
+ * @member {array} value List of trigger runs.
+ * @member {string} [continuationToken] The continuation token for getting the
+ * next page of results, if any remaining results exist, null otherwise.
+ */
+export interface TriggerRunsQueryResponse {
+  value: TriggerRun[];
+  continuationToken?: string;
 }
 
 /**
@@ -949,6 +1000,23 @@ export interface OperationMetricAvailability {
 
 /**
  * @class
+ * Initializes a new instance of the OperationMetricDimension class.
+ * @constructor
+ * Defines the metric dimension.
+ *
+ * @member {string} [name] The name of the dimension for the metric.
+ * @member {string} [displayName] The display name of the metric dimension.
+ * @member {boolean} [toBeExportedForShoebox] Whether the dimension should be
+ * exported to Azure Monitor.
+ */
+export interface OperationMetricDimension {
+  name?: string;
+  displayName?: string;
+  toBeExportedForShoebox?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationMetricSpecification class.
  * @constructor
  * Details about an operation related to metrics.
@@ -964,6 +1032,7 @@ export interface OperationMetricAvailability {
  * @member {string} [sourceMdmNamespace] The name of the MDM namespace.
  * @member {array} [availabilities] Defines how often data for metrics becomes
  * available.
+ * @member {array} [dimensions] Defines the metric dimension.
  */
 export interface OperationMetricSpecification {
   name?: string;
@@ -975,6 +1044,7 @@ export interface OperationMetricSpecification {
   sourceMdmAccount?: string;
   sourceMdmNamespace?: string;
   availabilities?: OperationMetricAvailability[];
+  dimensions?: OperationMetricDimension[];
 }
 
 /**
@@ -1019,22 +1089,6 @@ export interface Operation {
   origin?: string;
   display?: OperationDisplay;
   serviceSpecification?: OperationServiceSpecification;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationListResponse class.
- * @constructor
- * A list of operations that can be performed by the Data Factory service.
- *
- * @member {array} [value] List of Data Factory operations supported by the
- * Data Factory resource provider.
- * @member {string} [nextLink] The link to the next page of results, if any
- * remaining results exist.
- */
-export interface OperationListResponse {
-  value?: Operation[];
-  nextLink?: string;
 }
 
 /**
@@ -6400,9 +6454,9 @@ export interface SapCloudForCustomerSink extends CopySink {
  * @member {object} [parallelCopies] Maximum number of concurrent sessions
  * opened on the source or sink to avoid overloading the data store. Type:
  * integer (or Expression with resultType integer), minimum: 0.
- * @member {object} [cloudDataMovementUnits] Maximum number of cloud data
- * movement units that can be used to perform this data movement. Type: integer
- * (or Expression with resultType integer), minimum: 0.
+ * @member {object} [dataIntegrationUnits] Maximum number of data integration
+ * units that can be used to perform this data movement. Type: integer (or
+ * Expression with resultType integer), minimum: 0.
  * @member {object} [enableSkipIncompatibleRow] Whether to skip incompatible
  * row. Default value is false. Type: boolean (or Expression with resultType
  * boolean).
@@ -6426,7 +6480,7 @@ export interface CopyActivity extends ExecutionActivity {
   enableStaging?: any;
   stagingSettings?: StagingSettings;
   parallelCopies?: any;
-  cloudDataMovementUnits?: any;
+  dataIntegrationUnits?: any;
   enableSkipIncompatibleRow?: any;
   redirectIncompatibleRowSettings?: RedirectIncompatibleRowSettings;
   inputs?: DatasetReference[];
@@ -6563,30 +6617,6 @@ export interface ExecutePipelineActivity extends ControlActivity {
 
 /**
  * @class
- * Initializes a new instance of the LinkedIntegrationRuntime class.
- * @constructor
- * The linked integration runtime information.
- *
- * @member {string} [name] The name of the linked integration runtime.
- * @member {string} [subscriptionId] The subscription ID for which the linked
- * integration runtime belong to.
- * @member {string} [dataFactoryName] The name of the data factory for which
- * the linked integration runtime belong to.
- * @member {string} [dataFactoryLocation] The location of the data factory for
- * which the linked integration runtime belong to.
- * @member {date} [createTime] The creating time of the linked integration
- * runtime.
- */
-export interface LinkedIntegrationRuntime {
-  readonly name?: string;
-  readonly subscriptionId?: string;
-  readonly dataFactoryName?: string;
-  readonly dataFactoryLocation?: string;
-  readonly createTime?: Date;
-}
-
-/**
- * @class
  * Initializes a new instance of the SelfHostedIntegrationRuntimeNode class.
  * @constructor
  * Properties of Self-hosted integration runtime node.
@@ -6677,8 +6707,9 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @member {string} [autoUpdate] Whether Self-hosted integration runtime auto
  * update has been turned on. Possible values include: 'On', 'Off'
  * @member {string} [versionStatus] Status of the integration runtime version.
- * @member {array} [links] The list of linked integration runtimes that are
- * created to share with this integration runtime.
+ * @member {string} [pushedVersion] The version that the integration runtime is
+ * going to update to.
+ * @member {string} [latestVersion] The latest version on download center.
  */
 export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
   readonly createTime?: Date;
@@ -6693,7 +6724,8 @@ export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeSt
   readonly serviceUrls?: string[];
   readonly autoUpdate?: string;
   readonly versionStatus?: string;
-  links?: LinkedIntegrationRuntime[];
+  readonly pushedVersion?: string;
+  readonly latestVersion?: string;
 }
 
 /**
@@ -6801,53 +6833,12 @@ export interface ManagedIntegrationRuntimeStatus extends IntegrationRuntimeStatu
 
 /**
  * @class
- * Initializes a new instance of the LinkedIntegrationRuntimeProperties class.
- * @constructor
- * The base definition of a secret type.
- *
- * @member {string} authorizationType Polymorphic Discriminator
- */
-export interface LinkedIntegrationRuntimeProperties {
-  authorizationType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the LinkedIntegrationRuntimeRbac class.
- * @constructor
- * The base definition of a secret type.
- *
- * @member {string} resourceId The resource ID of the integration runtime to be
- * shared.
- */
-export interface LinkedIntegrationRuntimeRbac extends LinkedIntegrationRuntimeProperties {
-  resourceId: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the LinkedIntegrationRuntimeKey class.
- * @constructor
- * The base definition of a secret type.
- *
- * @member {object} key Type of the secret.
- * @member {string} [key.value] Value of secure string.
- */
-export interface LinkedIntegrationRuntimeKey extends LinkedIntegrationRuntimeProperties {
-  key: SecureString;
-}
-
-/**
- * @class
  * Initializes a new instance of the SelfHostedIntegrationRuntime class.
  * @constructor
  * Self-hosted integration runtime.
  *
- * @member {object} [linkedInfo]
- * @member {string} [linkedInfo.authorizationType] Polymorphic Discriminator
  */
 export interface SelfHostedIntegrationRuntime extends IntegrationRuntime {
-  linkedInfo?: LinkedIntegrationRuntimeProperties;
 }
 
 /**
@@ -7127,23 +7118,6 @@ export interface IntegrationRuntimeMonitoringData {
 
 /**
  * @class
- * Initializes a new instance of the IntegrationRuntimeRemoveNodeRequest class.
- * @constructor
- * Request to remove a node.
- *
- * @member {string} [nodeName] The name of the node to be removed.
- */
-export interface IntegrationRuntimeRemoveNodeRequest {
-  nodeName?: string;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
-}
-
-/**
- * @class
  * Initializes a new instance of the IntegrationRuntimeAuthKeys class.
  * @constructor
  * The integration runtime authentication keys.
@@ -7205,6 +7179,19 @@ export interface IntegrationRuntimeConnectionInfo {
   [property: string]: any;
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResponse class.
+ * @constructor
+ * A list of operations that can be performed by the Data Factory service.
+ *
+ * @member {string} [nextLink] The link to the next page of results, if any
+ * remaining results exist.
+ */
+export interface OperationListResponse extends Array<Operation> {
+  nextLink?: string;
+}
 
 /**
  * @class
@@ -7273,19 +7260,6 @@ export interface PipelineListResponse extends Array<PipelineResource> {
 
 /**
  * @class
- * Initializes a new instance of the ActivityRunsListResponse class.
- * @constructor
- * A list activity runs.
- *
- * @member {string} [nextLink] The link to the next page of results, if any
- * remaining results exist.
- */
-export interface ActivityRunsListResponse extends Array<ActivityRun> {
-  nextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the TriggerListResponse class.
  * @constructor
  * A list of trigger resources.
@@ -7294,18 +7268,5 @@ export interface ActivityRunsListResponse extends Array<ActivityRun> {
  * remaining results exist.
  */
 export interface TriggerListResponse extends Array<TriggerResource> {
-  nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TriggerRunListResponse class.
- * @constructor
- * A list of trigger runs.
- *
- * @member {string} [nextLink] The link to the next page of results, if any
- * remaining results exist.
- */
-export interface TriggerRunListResponse extends Array<TriggerRun> {
   nextLink?: string;
 }
