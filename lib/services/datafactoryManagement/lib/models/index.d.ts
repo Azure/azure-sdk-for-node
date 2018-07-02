@@ -258,18 +258,13 @@ export interface IntegrationRuntimeReference {
  * integration runtime belong to.
  * @member {string} [state] The state of integration runtime. Possible values
  * include: 'Initial', 'Stopped', 'Started', 'Starting', 'Stopping',
- * 'NeedRegistration', 'Online', 'Limited', 'Offline'
+ * 'NeedRegistration', 'Online', 'Limited', 'Offline', 'AccessDenied'
  * @member {string} type Polymorphic Discriminator
  */
 export interface IntegrationRuntimeStatus {
   readonly dataFactoryName?: string;
   readonly state?: string;
   type: string;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
 }
 
 /**
@@ -284,7 +279,8 @@ export interface IntegrationRuntimeStatus {
  * the integration runtime belong to.
  * @member {string} [properties.state] The state of integration runtime.
  * Possible values include: 'Initial', 'Stopped', 'Started', 'Starting',
- * 'Stopping', 'NeedRegistration', 'Online', 'Limited', 'Offline'
+ * 'Stopping', 'NeedRegistration', 'Online', 'Limited', 'Offline',
+ * 'AccessDenied'
  * @member {string} [properties.type] Polymorphic Discriminator
  */
 export interface IntegrationRuntimeStatusResponse {
@@ -338,6 +334,34 @@ export interface UpdateIntegrationRuntimeRequest {
  */
 export interface UpdateIntegrationRuntimeNodeRequest {
   concurrentJobsLimit?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IntegrationRuntimePermissionRequest class.
+ * @constructor
+ * Grant or revoke access to integration runtime request.
+ *
+ * @member {string} [factoryName] The data factory name.
+ * @member {string} factoryIdentity The data factory identity.
+ */
+export interface IntegrationRuntimePermissionRequest {
+  factoryName?: string;
+  factoryIdentity: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IntegrationRuntimePermissionResponse class.
+ * @constructor
+ * The response of granting/revoking integration runtime permission operation.
+ *
+ * @member {number} [sharedIntegrationRuntimeCount] The number of the
+ * integration runtimes to which the given data factory has been granted
+ * access.
+ */
+export interface IntegrationRuntimePermissionResponse {
+  sharedIntegrationRuntimeCount?: number;
 }
 
 /**
@@ -6656,6 +6680,8 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @constructor
  * Self-hosted integration runtime status.
  *
+ * @member {object} [additionalProperties] Unmatched properties from the
+ * message are deserialized this collection
  * @member {date} [createTime] The time at which the integration runtime was
  * created, in ISO8601 format.
  * @member {string} [taskQueueId] The task queue id of the integration runtime.
@@ -6679,8 +6705,14 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @member {string} [versionStatus] Status of the integration runtime version.
  * @member {array} [links] The list of linked integration runtimes that are
  * created to share with this integration runtime.
+ * @member {array} [sharedWithFactories] The MSI-s of the data factories to
+ * which the integration runtime is shared.
+ * @member {string} [pushedVersion] The version that the integration runtime is
+ * going to update to.
+ * @member {string} [latestVersion] The latest version on download center.
  */
 export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
+  additionalProperties?: { [propertyName: string]: any };
   readonly createTime?: Date;
   readonly taskQueueId?: string;
   readonly internalChannelEncryption?: string;
@@ -6694,6 +6726,9 @@ export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeSt
   readonly autoUpdate?: string;
   readonly versionStatus?: string;
   links?: LinkedIntegrationRuntime[];
+  readonly sharedWithFactories?: string[];
+  readonly pushedVersion?: string;
+  readonly latestVersion?: string;
 }
 
 /**
@@ -6775,6 +6810,8 @@ export interface ManagedIntegrationRuntimeNode {
  * @constructor
  * Managed integration runtime status.
  *
+ * @member {object} [additionalProperties] Unmatched properties from the
+ * message are deserialized this collection
  * @member {date} [createTime] The time at which the integration runtime was
  * created, in ISO8601 format.
  * @member {array} [nodes] The list of nodes for managed integration runtime.
@@ -6793,6 +6830,7 @@ export interface ManagedIntegrationRuntimeNode {
  * operation request.
  */
 export interface ManagedIntegrationRuntimeStatus extends IntegrationRuntimeStatus {
+  additionalProperties?: { [propertyName: string]: any };
   readonly createTime?: Date;
   readonly nodes?: ManagedIntegrationRuntimeNode[];
   readonly otherErrors?: ManagedIntegrationRuntimeError[];
@@ -6803,7 +6841,7 @@ export interface ManagedIntegrationRuntimeStatus extends IntegrationRuntimeStatu
  * @class
  * Initializes a new instance of the LinkedIntegrationRuntimeProperties class.
  * @constructor
- * The base definition of a secret type.
+ * The base definition of a linked integration runtime properties.
  *
  * @member {string} authorizationType Polymorphic Discriminator
  */
@@ -6815,10 +6853,10 @@ export interface LinkedIntegrationRuntimeProperties {
  * @class
  * Initializes a new instance of the LinkedIntegrationRuntimeRbac class.
  * @constructor
- * The base definition of a secret type.
+ * The role based access control (RBAC) authorization type.
  *
- * @member {string} resourceId The resource ID of the integration runtime to be
- * shared.
+ * @member {string} resourceId The resource identifier of the integration
+ * runtime to be shared.
  */
 export interface LinkedIntegrationRuntimeRbac extends LinkedIntegrationRuntimeProperties {
   resourceId: string;
@@ -6828,9 +6866,9 @@ export interface LinkedIntegrationRuntimeRbac extends LinkedIntegrationRuntimePr
  * @class
  * Initializes a new instance of the LinkedIntegrationRuntimeKey class.
  * @constructor
- * The base definition of a secret type.
+ * The key authorization type.
  *
- * @member {object} key Type of the secret.
+ * @member {object} key The key used for authorization.
  * @member {string} [key.value] Value of secure string.
  */
 export interface LinkedIntegrationRuntimeKey extends LinkedIntegrationRuntimeProperties {
@@ -7006,7 +7044,7 @@ export interface IntegrationRuntimeComputeProperties {
  * @member {string} [state] Integration runtime state, only valid for managed
  * dedicated integration runtime. Possible values include: 'Initial',
  * 'Stopped', 'Started', 'Starting', 'Stopping', 'NeedRegistration', 'Online',
- * 'Limited', 'Offline'
+ * 'Limited', 'Offline', 'AccessDenied'
  * @member {object} [computeProperties] The compute resource for managed
  * integration runtime.
  * @member {string} [computeProperties.location] The location for managed

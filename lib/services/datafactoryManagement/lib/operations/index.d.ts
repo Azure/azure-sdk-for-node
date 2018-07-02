@@ -614,6 +614,131 @@ export interface Factories {
 
 
     /**
+     * List data factories which the given data factory has access.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FactoryListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSharedFactoriesWithHttpOperationResponse(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FactoryListResponse>>;
+
+    /**
+     * List data factories which the given data factory has access.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FactoryListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FactoryListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FactoryListResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSharedFactories(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
+    listSharedFactories(resourceGroupName: string, factoryName: string, callback: ServiceCallback<models.FactoryListResponse>): void;
+    listSharedFactories(resourceGroupName: string, factoryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
+
+
+    /**
+     * List integration runtimes which the given data factory has access.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.dataFactoryResourceId] The factory resource
+     * identifier.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IntegrationRuntimeListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSharedIntegrationRuntimesWithHttpOperationResponse(resourceGroupName: string, factoryName: string, options?: { dataFactoryResourceId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeListResponse>>;
+
+    /**
+     * List integration runtimes which the given data factory has access.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.dataFactoryResourceId] The factory resource
+     * identifier.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IntegrationRuntimeListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IntegrationRuntimeListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimeListResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSharedIntegrationRuntimes(resourceGroupName: string, factoryName: string, options?: { dataFactoryResourceId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeListResponse>;
+    listSharedIntegrationRuntimes(resourceGroupName: string, factoryName: string, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
+    listSharedIntegrationRuntimes(resourceGroupName: string, factoryName: string, options: { dataFactoryResourceId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
+
+
+    /**
      * Cancel a pipeline run by its run ID.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -787,6 +912,121 @@ export interface Factories {
     listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.FactoryListResponse>): void;
     listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
+
+
+    /**
+     * List data factories which the given data factory has access.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<FactoryListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSharedFactoriesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.FactoryListResponse>>;
+
+    /**
+     * List data factories which the given data factory has access.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {FactoryListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {FactoryListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link FactoryListResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSharedFactoriesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
+    listSharedFactoriesNext(nextPageLink: string, callback: ServiceCallback<models.FactoryListResponse>): void;
+    listSharedFactoriesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
+
+
+    /**
+     * List integration runtimes which the given data factory has access.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IntegrationRuntimeListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSharedIntegrationRuntimesNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeListResponse>>;
+
+    /**
+     * List integration runtimes which the given data factory has access.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IntegrationRuntimeListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IntegrationRuntimeListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimeListResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSharedIntegrationRuntimesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeListResponse>;
+    listSharedIntegrationRuntimesNext(nextPageLink: string, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
+    listSharedIntegrationRuntimesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeListResponse>): void;
 }
 
 /**
@@ -1832,6 +2072,170 @@ export interface IntegrationRuntimes {
     upgrade(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     upgrade(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<void>): void;
     upgrade(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Grant integration runtime access to other data factory.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} integrationRuntimePermissionRequest The data factory
+     * identity which will be granted the access to given integration runtime.
+     *
+     * @param {string} [integrationRuntimePermissionRequest.factoryName] The data
+     * factory name.
+     *
+     * @param {string} integrationRuntimePermissionRequest.factoryIdentity The data
+     * factory identity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IntegrationRuntimePermissionResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    addIdentityWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimePermissionResponse>>;
+
+    /**
+     * Grant integration runtime access to other data factory.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} integrationRuntimePermissionRequest The data factory
+     * identity which will be granted the access to given integration runtime.
+     *
+     * @param {string} [integrationRuntimePermissionRequest.factoryName] The data
+     * factory name.
+     *
+     * @param {string} integrationRuntimePermissionRequest.factoryIdentity The data
+     * factory identity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IntegrationRuntimePermissionResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IntegrationRuntimePermissionResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimePermissionResponse} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    addIdentity(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimePermissionResponse>;
+    addIdentity(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
+    addIdentity(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
+
+
+    /**
+     * Revoke the integration runtime access from other data factory.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} integrationRuntimePermissionRequest The data factory
+     * identity which will be revoked the access to given integration runtime.
+     *
+     * @param {string} [integrationRuntimePermissionRequest.factoryName] The data
+     * factory name.
+     *
+     * @param {string} integrationRuntimePermissionRequest.factoryIdentity The data
+     * factory identity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IntegrationRuntimePermissionResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    removeIdentityWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimePermissionResponse>>;
+
+    /**
+     * Revoke the integration runtime access from other data factory.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} integrationRuntimePermissionRequest The data factory
+     * identity which will be revoked the access to given integration runtime.
+     *
+     * @param {string} [integrationRuntimePermissionRequest.factoryName] The data
+     * factory name.
+     *
+     * @param {string} integrationRuntimePermissionRequest.factoryIdentity The data
+     * factory identity.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IntegrationRuntimePermissionResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IntegrationRuntimePermissionResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimePermissionResponse} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    removeIdentity(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimePermissionResponse>;
+    removeIdentity(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
+    removeIdentity(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, integrationRuntimePermissionRequest: models.IntegrationRuntimePermissionRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimePermissionResponse>): void;
 
 
     /**
