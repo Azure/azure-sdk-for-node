@@ -414,58 +414,6 @@ export interface AvailabilitySets {
 
 
     /**
-     * Lists all availability sets in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AvailabilitySetListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilitySetListResult>>;
-
-    /**
-     * Lists all availability sets in a subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AvailabilitySetListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AvailabilitySetListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AvailabilitySetListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilitySetListResult>;
-    listBySubscription(callback: ServiceCallback<models.AvailabilitySetListResult>): void;
-    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
-
-
-    /**
      * Lists all availability sets in a resource group.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -581,122 +529,6 @@ export interface AvailabilitySets {
     listAvailableSizes(resourceGroupName: string, availabilitySetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualMachineSizeListResult>;
     listAvailableSizes(resourceGroupName: string, availabilitySetName: string, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
     listAvailableSizes(resourceGroupName: string, availabilitySetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualMachineSizeListResult>): void;
-
-
-    /**
-     * Lists all availability sets in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AvailabilitySetListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilitySetListResult>>;
-
-    /**
-     * Lists all availability sets in a subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AvailabilitySetListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AvailabilitySetListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AvailabilitySetListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilitySetListResult>;
-    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
-    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
-
-
-    /**
-     * Lists all availability sets in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AvailabilitySetListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailabilitySetListResult>>;
-
-    /**
-     * Lists all availability sets in a resource group.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AvailabilitySetListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AvailabilitySetListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AvailabilitySetListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailabilitySetListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailabilitySetListResult>): void;
 }
 
 /**
@@ -2367,8 +2199,8 @@ export interface Images {
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -2450,8 +2282,8 @@ export interface Images {
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -2552,8 +2384,8 @@ export interface Images {
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -2633,8 +2465,8 @@ export interface Images {
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -2966,8 +2798,8 @@ export interface Images {
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -3049,8 +2881,8 @@ export interface Images {
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -3151,8 +2983,8 @@ export interface Images {
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -3232,8 +3064,8 @@ export interface Images {
      *
      * @param {string} [parameters.storageProfile.osDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.storageProfile.dataDisks] Specifies the
      * parameters that are used to add a data disk to a virtual machine. <br><br>
@@ -3755,8 +3587,8 @@ export interface VirtualMachines {
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
      * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -4153,8 +3985,8 @@ export interface VirtualMachines {
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
      * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -4570,8 +4402,8 @@ export interface VirtualMachines {
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
      * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -4966,8 +4798,8 @@ export interface VirtualMachines {
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
      * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -6376,8 +6208,8 @@ export interface VirtualMachines {
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
      * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -6774,8 +6606,8 @@ export interface VirtualMachines {
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
      * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -7191,8 +7023,8 @@ export interface VirtualMachines {
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
      * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -7587,8 +7419,8 @@ export interface VirtualMachines {
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
      * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -8773,8 +8605,8 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * Specifies the parameters that are used to add data disks to the virtual
@@ -9193,8 +9025,8 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * Specifies the parameters that are used to add data disks to the virtual
@@ -9551,8 +9383,8 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * The data disks.
@@ -9845,8 +9677,8 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * The data disks.
@@ -11404,8 +11236,8 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * Specifies the parameters that are used to add data disks to the virtual
@@ -11824,8 +11656,8 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * Specifies the parameters that are used to add data disks to the virtual
@@ -12182,8 +12014,8 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * The data disks.
@@ -12476,8 +12308,8 @@ export interface VirtualMachineScaleSets {
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
      * Specifies the storage account type for the managed disk. Possible values
-     * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
-     * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {array} [parameters.virtualMachineProfile.storageProfile.dataDisks]
      * The data disks.
@@ -14840,8 +14672,8 @@ export interface VirtualMachineScaleSetVMs {
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
      * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -15224,8 +15056,8 @@ export interface VirtualMachineScaleSetVMs {
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
      * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -16402,8 +16234,8 @@ export interface VirtualMachineScaleSetVMs {
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
      * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -16786,8 +16618,8 @@ export interface VirtualMachineScaleSetVMs {
      * @param {string}
      * [parameters.storageProfile.osDisk.managedDisk.storageAccountType] Specifies
      * the storage account type for the managed disk. Possible values are:
-     * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+     * 'Premium_LRS'
      *
      * @param {string} [parameters.storageProfile.osDisk.managedDisk.id] Resource
      * Id
@@ -18173,7 +18005,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {array} [disk.zones] The Logical zone list for Disk.
      *
@@ -18276,7 +18108,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {array} [disk.zones] The Logical zone list for Disk.
      *
@@ -18439,7 +18271,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18511,7 +18343,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18943,7 +18775,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {array} [disk.zones] The Logical zone list for Disk.
      *
@@ -19046,7 +18878,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {array} [disk.zones] The Logical zone list for Disk.
      *
@@ -19209,7 +19041,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -19281,7 +19113,7 @@ export interface Disks {
      * @param {object} [disk.sku]
      *
      * @param {string} [disk.sku.name] The sku name. Possible values include:
-     * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+     * 'Standard_LRS', 'Premium_LRS'
      *
      * @param {object} [options] Optional Parameters.
      *
