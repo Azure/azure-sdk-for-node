@@ -708,9 +708,8 @@ export interface VirtualHardDisk {
  * The parameters of a managed disk.
  *
  * @member {string} [storageAccountType] Specifies the storage account type for
- * the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
- * StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * the managed disk. Possible values are: Standard_LRS or Premium_LRS. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS'
  */
 export interface ManagedDiskParameters extends SubResource {
   storageAccountType?: string;
@@ -776,9 +775,8 @@ export interface ManagedDiskParameters extends SubResource {
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
- * account type for the managed disk. Possible values are: Standard_LRS,
- * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * account type for the managed disk. Possible values are: Standard_LRS or
+ * Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
  */
 export interface OSDisk {
   osType?: string;
@@ -829,9 +827,8 @@ export interface OSDisk {
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
- * account type for the managed disk. Possible values are: Standard_LRS,
- * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * account type for the managed disk. Possible values are: Standard_LRS or
+ * Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
  */
 export interface DataDisk {
   lun: number;
@@ -924,9 +921,8 @@ export interface DataDisk {
  * 1023 GB
  * @member {object} [osDisk.managedDisk] The managed disk parameters.
  * @member {string} [osDisk.managedDisk.storageAccountType] Specifies the
- * storage account type for the managed disk. Possible values are:
- * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * storage account type for the managed disk. Possible values are: Standard_LRS
+ * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
  * @member {array} [dataDisks] Specifies the parameters that are used to add a
  * data disk to a virtual machine. <br><br> For more information about disks,
  * see [About disks and VHDs for Azure virtual
@@ -1660,8 +1656,8 @@ export interface VirtualMachineInstanceView {
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
  * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
@@ -2047,8 +2043,8 @@ export interface VirtualMachine extends Resource {
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
  * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
@@ -2389,9 +2385,8 @@ export interface UpgradePolicy {
  * gigabytes. This element can be used to overwrite the name of the disk in a
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {string} [storageAccountType] Specifies the storage account type for
- * the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
- * StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * the managed disk. Possible values are: Standard_LRS or Premium_LRS. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS'
  */
 export interface ImageOSDisk {
   osType: string;
@@ -2426,9 +2421,8 @@ export interface ImageOSDisk {
  * gigabytes. This element can be used to overwrite the name of the disk in a
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {string} [storageAccountType] Specifies the storage account type for
- * the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
- * StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * the managed disk. Possible values are: Standard_LRS or Premium_LRS. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS'
  */
 export interface ImageDataDisk {
   lun: number;
@@ -2470,9 +2464,8 @@ export interface ImageDataDisk {
  * in gigabytes. This element can be used to overwrite the name of the disk in
  * a virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {string} [osDisk.storageAccountType] Specifies the storage account
- * type for the managed disk. Possible values are: Standard_LRS, Premium_LRS,
- * and StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * type for the managed disk. Possible values are: Standard_LRS or Premium_LRS.
+ * Possible values include: 'Standard_LRS', 'Premium_LRS'
  * @member {array} [dataDisks] Specifies the parameters that are used to add a
  * data disk to a virtual machine. <br><br> For more information about disks,
  * see [About disks and VHDs for Azure virtual
@@ -2525,9 +2518,8 @@ export interface ImageStorageProfile {
  * name of the disk in a virtual machine image. <br><br> This value cannot be
  * larger than 1023 GB
  * @member {string} [storageProfile.osDisk.storageAccountType] Specifies the
- * storage account type for the managed disk. Possible values are:
- * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * storage account type for the managed disk. Possible values are: Standard_LRS
+ * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
@@ -2579,9 +2571,8 @@ export interface Image extends Resource {
  * name of the disk in a virtual machine image. <br><br> This value cannot be
  * larger than 1023 GB
  * @member {string} [storageProfile.osDisk.storageAccountType] Specifies the
- * storage account type for the managed disk. Possible values are:
- * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * storage account type for the managed disk. Possible values are: Standard_LRS
+ * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
@@ -2764,9 +2755,8 @@ export interface VirtualMachineScaleSetUpdateOSProfile {
  * Describes the parameters of a ScaleSet managed disk.
  *
  * @member {string} [storageAccountType] Specifies the storage account type for
- * the managed disk. Possible values are: Standard_LRS, Premium_LRS, and
- * StandardSSD_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS',
- * 'StandardSSD_LRS'
+ * the managed disk. Possible values are: Standard_LRS or Premium_LRS. Possible
+ * values include: 'Standard_LRS', 'Premium_LRS'
  */
 export interface VirtualMachineScaleSetManagedDiskParameters {
   storageAccountType?: string;
@@ -2803,9 +2793,8 @@ export interface VirtualMachineScaleSetManagedDiskParameters {
  * to store operating system disks for the scale set.
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
- * account type for the managed disk. Possible values are: Standard_LRS,
- * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * account type for the managed disk. Possible values are: Standard_LRS or
+ * Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
  */
 export interface VirtualMachineScaleSetOSDisk {
   name?: string;
@@ -2838,9 +2827,8 @@ export interface VirtualMachineScaleSetOSDisk {
  * uris.
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
- * account type for the managed disk. Possible values are: Standard_LRS,
- * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * account type for the managed disk. Possible values are: Standard_LRS or
+ * Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
  */
 export interface VirtualMachineScaleSetUpdateOSDisk {
   caching?: string;
@@ -2873,9 +2861,8 @@ export interface VirtualMachineScaleSetUpdateOSDisk {
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
- * account type for the managed disk. Possible values are: Standard_LRS,
- * Premium_LRS, and StandardSSD_LRS. Possible values include: 'Standard_LRS',
- * 'Premium_LRS', 'StandardSSD_LRS'
+ * account type for the managed disk. Possible values are: Standard_LRS or
+ * Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
  */
 export interface VirtualMachineScaleSetDataDisk {
   name?: string;
@@ -2939,9 +2926,8 @@ export interface VirtualMachineScaleSetDataDisk {
  * used to store operating system disks for the scale set.
  * @member {object} [osDisk.managedDisk] The managed disk parameters.
  * @member {string} [osDisk.managedDisk.storageAccountType] Specifies the
- * storage account type for the managed disk. Possible values are:
- * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * storage account type for the managed disk. Possible values are: Standard_LRS
+ * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
  * @member {array} [dataDisks] Specifies the parameters that are used to add
  * data disks to the virtual machines in the scale set. <br><br> For more
  * information about disks, see [About disks and VHDs for Azure virtual
@@ -2985,9 +2971,8 @@ export interface VirtualMachineScaleSetStorageProfile {
  * container uris.
  * @member {object} [osDisk.managedDisk] The managed disk parameters.
  * @member {string} [osDisk.managedDisk.storageAccountType] Specifies the
- * storage account type for the managed disk. Possible values are:
- * Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * storage account type for the managed disk. Possible values are: Standard_LRS
+ * or Premium_LRS. Possible values include: 'Standard_LRS', 'Premium_LRS'
  * @member {array} [dataDisks] The data disks.
  */
 export interface VirtualMachineScaleSetUpdateStorageProfile {
@@ -3494,8 +3479,8 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
  * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add data disks to the virtual machines in the scale set. <br><br>
  * For more information about disks, see [About disks and VHDs for Azure
@@ -3626,8 +3611,8 @@ export interface VirtualMachineScaleSetVMProfile {
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
  * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
  * @member {array} [storageProfile.dataDisks] The data disks.
  * @member {object} [networkProfile] The virtual machine scale set network
  * profile.
@@ -3881,8 +3866,8 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * @member {string}
  * [virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
  * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
  * @member {array} [virtualMachineProfile.storageProfile.dataDisks] Specifies
  * the parameters that are used to add data disks to the virtual machines in
  * the scale set. <br><br> For more information about disks, see [About disks
@@ -4129,8 +4114,8 @@ export interface VirtualMachineScaleSet extends Resource {
  * @member {string}
  * [virtualMachineProfile.storageProfile.osDisk.managedDisk.storageAccountType]
  * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
  * @member {array} [virtualMachineProfile.storageProfile.dataDisks] The data
  * disks.
  * @member {object} [virtualMachineProfile.networkProfile] The virtual machine
@@ -4830,8 +4815,8 @@ export interface UpgradeOperationHistoricalStatusInfo {
  * parameters.
  * @member {string} [storageProfile.osDisk.managedDisk.storageAccountType]
  * Specifies the storage account type for the managed disk. Possible values
- * are: Standard_LRS, Premium_LRS, and StandardSSD_LRS. Possible values
- * include: 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * are: Standard_LRS or Premium_LRS. Possible values include: 'Standard_LRS',
+ * 'Premium_LRS'
  * @member {array} [storageProfile.dataDisks] Specifies the parameters that are
  * used to add a data disk to a virtual machine. <br><br> For more information
  * about disks, see [About disks and VHDs for Azure virtual
@@ -5506,10 +5491,10 @@ export interface ResourceSku {
  * @class
  * Initializes a new instance of the DiskSku class.
  * @constructor
- * The disks sku name. Can be Standard_LRS, Premium_LRS, or StandardSSD_LRS.
+ * The disks sku name. Can be Standard_LRS or Premium_LRS.
  *
  * @member {string} [name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS'
  * @member {string} [tier] The sku tier. Default value: 'Standard' .
  */
 export interface DiskSku {
@@ -5653,7 +5638,7 @@ export interface EncryptionSettings {
  * has the disk attached.
  * @member {object} [sku]
  * @member {string} [sku.name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS'
  * @member {string} [sku.tier] The sku tier.
  * @member {array} [zones] The Logical zone list for Disk.
  * @member {date} [timeCreated] The time when the disk was created.
@@ -5759,7 +5744,7 @@ export interface Disk extends Resource {
  * @member {object} [tags] Resource tags
  * @member {object} [sku]
  * @member {string} [sku.name] The sku name. Possible values include:
- * 'Standard_LRS', 'Premium_LRS', 'StandardSSD_LRS'
+ * 'Standard_LRS', 'Premium_LRS'
  * @member {string} [sku.tier] The sku tier.
  */
 export interface DiskUpdate {
@@ -6201,12 +6186,8 @@ export interface ComputeOperationListResult extends Array<ComputeOperationValue>
  * @constructor
  * The List Availability Set operation response.
  *
- * @member {string} [nextLink] The URI to fetch the next page of
- * AvailabilitySets. Call ListNext() with this URI to fetch the next page of
- * AvailabilitySets.
  */
 export interface AvailabilitySetListResult extends Array<AvailabilitySet> {
-  nextLink?: string;
 }
 
 /**
