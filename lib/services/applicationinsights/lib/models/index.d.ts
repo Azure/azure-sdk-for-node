@@ -953,7 +953,7 @@ export interface ApplicationInsightsComponentAnalyticsItem {
 
 /**
  * @class
- * Initializes a new instance of the WorkbookResource class.
+ * Initializes a new instance of the Resource class.
  * @constructor
  * An azure resource object
  *
@@ -963,7 +963,7 @@ export interface ApplicationInsightsComponentAnalyticsItem {
  * @member {string} location Resource location
  * @member {object} [tags] Resource tags
  */
-export interface WorkbookResource extends BaseResource {
+export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
@@ -1001,7 +1001,7 @@ export interface WorkbookResource extends BaseResource {
  * @member {string} [sourceResourceId] Optional resourceId for a source
  * resource.
  */
-export interface Workbook extends WorkbookResource {
+export interface Workbook extends Resource {
   kind?: string;
   workbookName: string;
   serializedData: string;
@@ -1041,6 +1041,36 @@ export interface LinkProperties {
   sourceId?: string;
   targetId?: string;
   category?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkbookUpdateParameters class.
+ * @constructor
+ * The parameters that can be provided when updating workbook properties
+ * properties.
+ *
+ * @member {string} [kind] The kind of workbook. Choices are user and shared.
+ * Possible values include: 'user', 'shared'
+ * @member {array} [tags] Resource tags
+ * @member {string} [location] Resource location
+ * @member {string} [name] The user-defined name (display name) of the
+ * workbook.
+ * @member {string} [serializedData] Configuration of this particular workbook.
+ * Configuration data is a string containing valid JSON
+ * @member {string} [category] Workbook category, as defined by the user at
+ * creation time.
+ * @member {array} [tags1] A list of 0 or more tags that are associated with
+ * this workbook definition
+ */
+export interface WorkbookUpdateParameters {
+  kind?: string;
+  tags?: any[];
+  location?: string;
+  name?: string;
+  serializedData?: string;
+  category?: string;
+  tags1?: string[];
 }
 
 /**
@@ -1095,6 +1125,16 @@ export interface OperationListResult extends Array<Operation> {
 
 /**
  * @class
+ * Initializes a new instance of the AnnotationsListResult class.
+ * @constructor
+ * Annotations list result.
+ *
+ */
+export interface AnnotationsListResult extends Array<Annotation> {
+}
+
+/**
+ * @class
  * Initializes a new instance of the ApplicationInsightsComponentAPIKeyListResult class.
  * @constructor
  * Describes the list of API Keys of an Application Insights Component.
@@ -1115,6 +1155,16 @@ export interface ApplicationInsightsComponentAPIKeyListResult extends Array<Appl
  */
 export interface ApplicationInsightsComponentListResult extends Array<ApplicationInsightsComponent> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkItemConfigurationsListResult class.
+ * @constructor
+ * Work item configuration list result.
+ *
+ */
+export interface WorkItemConfigurationsListResult extends Array<WorkItemConfiguration> {
 }
 
 /**

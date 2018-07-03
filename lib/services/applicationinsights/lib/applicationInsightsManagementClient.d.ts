@@ -68,10 +68,9 @@ export default class ApplicationInsightsManagementClient extends AzureServiceCli
   components: operations.Components;
   workItemConfigurations: operations.WorkItemConfigurations;
   favorites: operations.Favorites;
-  favorite: operations.Favorite;
   webTestLocations: operations.WebTestLocations;
   webTests: operations.WebTests;
-  analyticsItem: operations.AnalyticsItem;
+  analyticsItems: operations.AnalyticsItems;
   workbooksOperations: operations.WorkbooksOperations;
   workbookOperations: operations.WorkbookOperations;
 }
