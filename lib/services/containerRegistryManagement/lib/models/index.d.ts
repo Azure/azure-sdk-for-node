@@ -1061,8 +1061,8 @@ export interface Build extends ProxyResource {
  * 'Error', 'Timeout'
  * @member {date} [createTime] The create time for a build.
  * @member {date} [finishTime] The time the build finished.
- * @member {array} [outputImageNames] The list of all images that were
- * generated from the build.
+ * @member {string} [outputImageManifests] The list of comma-separated image
+ * manifests that were generated from the build.
  * @member {boolean} [isArchiveEnabled] The value that indicates whether
  * archiving is enabled or not.
  * @member {string} [buildTaskName] The name of the build task that the build
@@ -1074,7 +1074,7 @@ export interface BuildFilter {
   status?: string;
   createTime?: Date;
   finishTime?: Date;
-  outputImageNames?: string[];
+  outputImageManifests?: string;
   isArchiveEnabled?: boolean;
   buildTaskName?: string;
 }
