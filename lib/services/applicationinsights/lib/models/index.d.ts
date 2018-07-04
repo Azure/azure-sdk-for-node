@@ -953,21 +953,21 @@ export interface ApplicationInsightsComponentAnalyticsItem {
 
 /**
  * @class
- * Initializes a new instance of the Resource class.
+ * Initializes a new instance of the WorkbookResource class.
  * @constructor
  * An azure resource object
  *
  * @member {string} [id] Azure resource Id
  * @member {string} [name] Azure resource name
  * @member {string} [type] Azure resource type
- * @member {string} location Resource location
+ * @member {string} [location] Resource location
  * @member {object} [tags] Resource tags
  */
-export interface Resource extends BaseResource {
+export interface WorkbookResource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location: string;
+  location?: string;
   tags?: { [propertyName: string]: string };
 }
 
@@ -1001,7 +1001,7 @@ export interface Resource extends BaseResource {
  * @member {string} [sourceResourceId] Optional resourceId for a source
  * resource.
  */
-export interface Workbook extends Resource {
+export interface Workbook extends WorkbookResource {
   kind?: string;
   workbookName: string;
   serializedData: string;
@@ -1013,18 +1013,6 @@ export interface Workbook extends Resource {
   workbookTags?: string[];
   userId: string;
   sourceResourceId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Workbooks class.
- * @constructor
- * Workbook list result.
- *
- * @member {array} [value] An array of workbooks.
- */
-export interface Workbooks {
-  value?: Workbook[];
 }
 
 /**
@@ -1041,36 +1029,6 @@ export interface LinkProperties {
   sourceId?: string;
   targetId?: string;
   category?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkbookUpdateParameters class.
- * @constructor
- * The parameters that can be provided when updating workbook properties
- * properties.
- *
- * @member {string} [kind] The kind of workbook. Choices are user and shared.
- * Possible values include: 'user', 'shared'
- * @member {array} [tags] Resource tags
- * @member {string} [location] Resource location
- * @member {string} [name] The user-defined name (display name) of the
- * workbook.
- * @member {string} [serializedData] Configuration of this particular workbook.
- * Configuration data is a string containing valid JSON
- * @member {string} [category] Workbook category, as defined by the user at
- * creation time.
- * @member {array} [tags1] A list of 0 or more tags that are associated with
- * this workbook definition
- */
-export interface WorkbookUpdateParameters {
-  kind?: string;
-  tags?: any[];
-  location?: string;
-  name?: string;
-  serializedData?: string;
-  category?: string;
-  tags1?: string[];
 }
 
 /**
@@ -1190,4 +1148,14 @@ export interface ApplicationInsightsWebTestLocationsListResult extends Array<App
  */
 export interface WebTestListResult extends Array<WebTest> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the WorkbooksListResult class.
+ * @constructor
+ * Workbook list result.
+ *
+ */
+export interface WorkbooksListResult extends Array<Workbook> {
 }

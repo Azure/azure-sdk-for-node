@@ -4576,11 +4576,11 @@ export interface AnalyticsItems {
 
 /**
  * @class
- * WorkbooksOperations
+ * Workbooks
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApplicationInsightsManagementClient.
  */
-export interface WorkbooksOperations {
+export interface Workbooks {
 
 
     /**
@@ -4604,11 +4604,11 @@ export interface WorkbooksOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Workbooks>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<WorkbooksListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbooks>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkbooksListResult>>;
 
     /**
      * Get all Workbooks defined within a specified resource group and category.
@@ -4636,7 +4636,7 @@ export interface WorkbooksOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Workbooks} - The deserialized result object.
+     *                      @resolve {WorkbooksListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4644,25 +4644,16 @@ export interface WorkbooksOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Workbooks} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Workbooks} for more information.
+     *                      {WorkbooksListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WorkbooksListResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbooks>;
-    listByResourceGroup(resourceGroupName: string, category: string, callback: ServiceCallback<models.Workbooks>): void;
-    listByResourceGroup(resourceGroupName: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbooks>): void;
-}
-
-/**
- * @class
- * WorkbookOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ApplicationInsightsManagementClient.
- */
-export interface WorkbookOperations {
+    listByResourceGroup(resourceGroupName: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkbooksListResult>;
+    listByResourceGroup(resourceGroupName: string, category: string, callback: ServiceCallback<models.WorkbooksListResult>): void;
+    listByResourceGroup(resourceGroupName: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkbooksListResult>): void;
 
 
     /**
@@ -4830,7 +4821,7 @@ export interface WorkbookOperations {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} workbookProperties.location Resource location
+     * @param {string} [workbookProperties.location] Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
@@ -4891,7 +4882,7 @@ export interface WorkbookOperations {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} workbookProperties.location Resource location
+     * @param {string} [workbookProperties.location] Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
@@ -4935,28 +4926,45 @@ export interface WorkbookOperations {
      * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {object} workbookUpdateParameters Properties that need to be
-     * specified to create a new workbook.
+     * @param {object} workbookProperties Properties that need to be specified to
+     * create a new workbook.
      *
-     * @param {string} [workbookUpdateParameters.kind] The kind of workbook.
-     * Choices are user and shared. Possible values include: 'user', 'shared'
+     * @param {string} [workbookProperties.kind] The kind of workbook. Choices are
+     * user and shared. Possible values include: 'user', 'shared'
      *
-     * @param {array} [workbookUpdateParameters.tags] Resource tags
+     * @param {string} workbookProperties.workbookName The user-defined name of the
+     * workbook.
      *
-     * @param {string} [workbookUpdateParameters.location] Resource location
+     * @param {string} workbookProperties.serializedData Configuration of this
+     * particular workbook. Configuration data is a string containing valid JSON
      *
-     * @param {string} [workbookUpdateParameters.name] The user-defined name
-     * (display name) of the workbook.
+     * @param {string} [workbookProperties.version] This instance's version of the
+     * data model. This can change as new features are added that can be marked
+     * workbook.
      *
-     * @param {string} [workbookUpdateParameters.serializedData] Configuration of
-     * this particular workbook. Configuration data is a string containing valid
-     * JSON
+     * @param {string} workbookProperties.workbookId Internally assigned unique id
+     * of the workbook definition.
      *
-     * @param {string} [workbookUpdateParameters.category] Workbook category, as
-     * defined by the user at creation time.
+     * @param {string} workbookProperties.sharedTypeKind Enum indicating if this
+     * workbook definition is owned by a specific user or is shared between all
+     * users with access to the Application Insights component. Possible values
+     * include: 'user', 'shared'
      *
-     * @param {array} [workbookUpdateParameters.tags1] A list of 0 or more tags
+     * @param {string} workbookProperties.category Workbook category, as defined by
+     * the user at creation time.
+     *
+     * @param {array} [workbookProperties.workbookTags] A list of 0 or more tags
      * that are associated with this workbook definition
+     *
+     * @param {string} workbookProperties.userId Unique user id of the specific
+     * user that owns this workbook.
+     *
+     * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
+     * for a source resource.
+     *
+     * @param {string} [workbookProperties.location] Resource location
+     *
+     * @param {object} [workbookProperties.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4969,7 +4977,7 @@ export interface WorkbookOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, workbookUpdateParameters: models.WorkbookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
 
     /**
      * Updates a workbook that has already been added.
@@ -4979,28 +4987,45 @@ export interface WorkbookOperations {
      * @param {string} resourceName The name of the Application Insights component
      * resource.
      *
-     * @param {object} workbookUpdateParameters Properties that need to be
-     * specified to create a new workbook.
+     * @param {object} workbookProperties Properties that need to be specified to
+     * create a new workbook.
      *
-     * @param {string} [workbookUpdateParameters.kind] The kind of workbook.
-     * Choices are user and shared. Possible values include: 'user', 'shared'
+     * @param {string} [workbookProperties.kind] The kind of workbook. Choices are
+     * user and shared. Possible values include: 'user', 'shared'
      *
-     * @param {array} [workbookUpdateParameters.tags] Resource tags
+     * @param {string} workbookProperties.workbookName The user-defined name of the
+     * workbook.
      *
-     * @param {string} [workbookUpdateParameters.location] Resource location
+     * @param {string} workbookProperties.serializedData Configuration of this
+     * particular workbook. Configuration data is a string containing valid JSON
      *
-     * @param {string} [workbookUpdateParameters.name] The user-defined name
-     * (display name) of the workbook.
+     * @param {string} [workbookProperties.version] This instance's version of the
+     * data model. This can change as new features are added that can be marked
+     * workbook.
      *
-     * @param {string} [workbookUpdateParameters.serializedData] Configuration of
-     * this particular workbook. Configuration data is a string containing valid
-     * JSON
+     * @param {string} workbookProperties.workbookId Internally assigned unique id
+     * of the workbook definition.
      *
-     * @param {string} [workbookUpdateParameters.category] Workbook category, as
-     * defined by the user at creation time.
+     * @param {string} workbookProperties.sharedTypeKind Enum indicating if this
+     * workbook definition is owned by a specific user or is shared between all
+     * users with access to the Application Insights component. Possible values
+     * include: 'user', 'shared'
      *
-     * @param {array} [workbookUpdateParameters.tags1] A list of 0 or more tags
+     * @param {string} workbookProperties.category Workbook category, as defined by
+     * the user at creation time.
+     *
+     * @param {array} [workbookProperties.workbookTags] A list of 0 or more tags
      * that are associated with this workbook definition
+     *
+     * @param {string} workbookProperties.userId Unique user id of the specific
+     * user that owns this workbook.
+     *
+     * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
+     * for a source resource.
+     *
+     * @param {string} [workbookProperties.location] Resource location
+     *
+     * @param {object} [workbookProperties.tags] Resource tags
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5029,7 +5054,7 @@ export interface WorkbookOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, resourceName: string, workbookUpdateParameters: models.WorkbookUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
-    update(resourceGroupName: string, resourceName: string, workbookUpdateParameters: models.WorkbookUpdateParameters, callback: ServiceCallback<models.Workbook>): void;
-    update(resourceGroupName: string, resourceName: string, workbookUpdateParameters: models.WorkbookUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
+    update(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
+    update(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, callback: ServiceCallback<models.Workbook>): void;
+    update(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
 }
