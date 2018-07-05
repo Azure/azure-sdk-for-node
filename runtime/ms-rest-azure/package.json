@@ -29,7 +29,8 @@
     "async": "2.6.0",
     "moment": "^2.22.2",
     "ms-rest": "^2.3.2",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "request": "^2.87.0"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
