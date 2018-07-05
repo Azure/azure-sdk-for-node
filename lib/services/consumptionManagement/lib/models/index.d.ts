@@ -120,6 +120,8 @@ export interface Resource extends BaseResource {
  * @member {number} [totalIncludedQuantity] The total included quantity
  * associated with the offer.
  * @member {number} [pretaxStandardRate] The pretax listing price.
+ * @member {string} [serviceName] The Service Name.
+ * @member {string} [serviceTier] Service Tier.
  */
 export interface MeterDetails {
   readonly meterName?: string;
@@ -129,104 +131,8 @@ export interface MeterDetails {
   readonly meterLocation?: string;
   readonly totalIncludedQuantity?: number;
   readonly pretaxStandardRate?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the PriceSheetProperties class.
- * @constructor
- * The properties of the price sheet.
- *
- * @member {string} [billingPeriodId] The id of the billing period resource
- * that the usage belongs to.
- * @member {uuid} [meterId] The meter id (GUID)
- * @member {object} [meterDetails] The details about the meter. By default this
- * is not populated, unless it's specified in $expand.
- * @member {string} [meterDetails.meterName] The name of the meter, within the
- * given meter category
- * @member {string} [meterDetails.meterCategory] The category of the meter, for
- * example, 'Cloud services', 'Networking', etc..
- * @member {string} [meterDetails.meterSubCategory] The subcategory of the
- * meter, for example, 'A6 Cloud services', 'ExpressRoute (IXP)', etc..
- * @member {string} [meterDetails.unit] The unit in which the meter consumption
- * is charged, for example, 'Hours', 'GB', etc.
- * @member {string} [meterDetails.meterLocation] The location in which the
- * Azure service is available.
- * @member {number} [meterDetails.totalIncludedQuantity] The total included
- * quantity associated with the offer.
- * @member {number} [meterDetails.pretaxStandardRate] The pretax listing price.
- * @member {string} [unitOfMeasure] Unit of measure
- * @member {number} [includedQuantity] Included quality for an offer
- * @member {string} [partNumber] Part Number
- * @member {number} [unitPrice] Unit Price
- * @member {string} [currencyCode] Currency Code
- * @member {string} [offerId] Offer Id
- */
-export interface PriceSheetProperties {
-  readonly billingPeriodId?: string;
-  readonly meterId?: string;
-  readonly meterDetails?: MeterDetails;
-  readonly unitOfMeasure?: string;
-  readonly includedQuantity?: number;
-  readonly partNumber?: string;
-  readonly unitPrice?: number;
-  readonly currencyCode?: string;
-  readonly offerId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PriceSheetResult class.
- * @constructor
- * An pricesheet resource.
- *
- * @member {array} [pricesheets] Price sheet
- * @member {string} [nextLink] The link (url) to the next page of results.
- */
-export interface PriceSheetResult extends Resource {
-  readonly pricesheets?: PriceSheetProperties[];
-  readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ForecastPropertiesConfidenceLevelsItem class.
- * @constructor
- * @member {number} [percentage] The percentage level of the confidence
- * @member {string} [bound] The boundary of the percentage, values could be
- * 'Upper' or 'Lower'. Possible values include: 'Upper', 'Lower'
- * @member {number} [value] The amount of forecast within the percentage level
- */
-export interface ForecastPropertiesConfidenceLevelsItem {
-  readonly percentage?: number;
-  bound?: string;
-  readonly value?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the Forecast class.
- * @constructor
- * A forecast resource.
- *
- * @member {string} [usageDate] The usage date of the forecast.
- * @member {string} [grain] The granularity of forecast. Possible values
- * include: 'Daily', 'Monthly', 'Yearly'
- * @member {number} [charge] The amount of charge
- * @member {string} [currency] The ISO currency in which the meter is charged,
- * for example, USD.
- * @member {string} [chargeType] The type of the charge. Could be actual or
- * forecast. Possible values include: 'Actual', 'Forecast'
- * @member {array} [confidenceLevels] The details about the forecast confidence
- * levels. This is populated only when chargeType is Forecast.
- */
-export interface Forecast extends Resource {
-  readonly usageDate?: string;
-  grain?: string;
-  readonly charge?: number;
-  readonly currency?: string;
-  chargeType?: string;
-  readonly confidenceLevels?: ForecastPropertiesConfidenceLevelsItem[];
+  readonly serviceName?: string;
+  readonly serviceTier?: string;
 }
 
 /**
@@ -271,6 +177,8 @@ export interface Forecast extends Resource {
  * @member {number} [meterDetails.totalIncludedQuantity] The total included
  * quantity associated with the offer.
  * @member {number} [meterDetails.pretaxStandardRate] The pretax listing price.
+ * @member {string} [meterDetails.serviceName] The Service Name.
+ * @member {string} [meterDetails.serviceTier] Service Tier.
  * @member {uuid} [subscriptionGuid] Subscription guid.
  * @member {string} [subscriptionName] Subscription name.
  * @member {string} [accountName] Account name.
@@ -283,6 +191,7 @@ export interface Forecast extends Resource {
  * @member {string} [resourceGuid] Resource Guid
  * @member {string} [offerId] Offer Id
  * @member {boolean} [chargesBilledSeparately] Charges billed separately
+ * @member {string} [location] Resource Location
  * @member {string} [additionalProperties] Additional details of this usage
  * item. By default this is not populated, unless it's specified in $expand.
  */
@@ -312,6 +221,7 @@ export interface UsageDetail extends Resource {
   readonly resourceGuid?: string;
   readonly offerId?: string;
   readonly chargesBilledSeparately?: boolean;
+  readonly location?: string;
   readonly additionalProperties?: string;
 }
 
@@ -340,16 +250,6 @@ export interface QueryOptions {
  */
 export interface UsageDetailsListResult extends Array<UsageDetail> {
   readonly nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ForecastsListResult class.
- * @constructor
- * Result of listing forecasts. It contains a list of available forecasts.
- *
- */
-export interface ForecastsListResult extends Array<Forecast> {
 }
 
 /**
