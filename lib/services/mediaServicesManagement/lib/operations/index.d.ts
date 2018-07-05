@@ -2732,6 +2732,9 @@ export interface Jobs {
      * not set, the default is normal. Possible values include: 'Low', 'Normal',
      * 'High'
      *
+     * @param {object} [parameters.correlationData] Customer provided correlation
+     * data that will be returned in Job completed events.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -2781,6 +2784,9 @@ export interface Jobs {
      * processed. Higher priority jobs are processed before lower priority jobs. If
      * not set, the default is normal. Possible values include: 'Low', 'Normal',
      * 'High'
+     *
+     * @param {object} [parameters.correlationData] Customer provided correlation
+     * data that will be returned in Job completed events.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3212,8 +3218,8 @@ export interface StreamingPolicies {
      * specific tracks
      *
      * @param {string}
-     * [parameters.envelopeEncryption.customLicenseAcquisitionUrlTemplate]
-     * LicenseAcquistionUrlTemplate is used to point to user speicified service to
+     * [parameters.envelopeEncryption.customKeyAcquisitionUrlTemplate]
+     * KeyAcquistionUrlTemplate is used to point to user specified service to
      * delivery content keys
      *
      * @param {object} [parameters.commonEncryptionCenc] Configuration of
@@ -3256,7 +3262,7 @@ export interface StreamingPolicies {
      *
      * @param {string}
      * [parameters.commonEncryptionCbcs.contentKeys.defaultKey.label] Label can be
-     * used to specify Content Key when creating Stremaing Locator
+     * used to specify Content Key when creating a Streaming Locator
      *
      * @param {string}
      * [parameters.commonEncryptionCbcs.contentKeys.defaultKey.policyName] Policy
@@ -3264,12 +3270,12 @@ export interface StreamingPolicies {
      *
      * @param {array}
      * [parameters.commonEncryptionCbcs.contentKeys.keyToTrackMappings]
-     * Representing tracks needs sepearete content key
+     * Representing tracks needs separate content key
      *
      * @param {object} [parameters.commonEncryptionCbcs.drm] Configuration of DRMs
      * for current encryption scheme
      *
-     * @param {object} [parameters.commonEncryptionCbcs.drm.fairPlay] Fairplay
+     * @param {object} [parameters.commonEncryptionCbcs.drm.fairPlay] FairPlay
      * configurations
      *
      * @param {string}
@@ -3301,7 +3307,7 @@ export interface StreamingPolicies {
      * The template for a customer service to deliver keys to end users.  Not
      * needed when using Azure Media Services for issuing keys.
      *
-     * @param {object} [parameters.noEncryption] Configuations of NoEncryption
+     * @param {object} [parameters.noEncryption] Configurations of NoEncryption
      *
      * @param {object} [parameters.noEncryption.enabledProtocols] Representing
      * supported protocols
@@ -3309,10 +3315,10 @@ export interface StreamingPolicies {
      * @param {boolean} parameters.noEncryption.enabledProtocols.download Enable
      * Download protocol or not
      *
-     * @param {boolean} parameters.noEncryption.enabledProtocols.dash Enable Dash
+     * @param {boolean} parameters.noEncryption.enabledProtocols.dash Enable DASH
      * protocol or not
      *
-     * @param {boolean} parameters.noEncryption.enabledProtocols.hls Enable Hls
+     * @param {boolean} parameters.noEncryption.enabledProtocols.hls Enable HLS
      * protocol or not
      *
      * @param {boolean} parameters.noEncryption.enabledProtocols.smoothStreaming
@@ -3362,8 +3368,8 @@ export interface StreamingPolicies {
      * specific tracks
      *
      * @param {string}
-     * [parameters.envelopeEncryption.customLicenseAcquisitionUrlTemplate]
-     * LicenseAcquistionUrlTemplate is used to point to user speicified service to
+     * [parameters.envelopeEncryption.customKeyAcquisitionUrlTemplate]
+     * KeyAcquistionUrlTemplate is used to point to user specified service to
      * delivery content keys
      *
      * @param {object} [parameters.commonEncryptionCenc] Configuration of
@@ -3406,7 +3412,7 @@ export interface StreamingPolicies {
      *
      * @param {string}
      * [parameters.commonEncryptionCbcs.contentKeys.defaultKey.label] Label can be
-     * used to specify Content Key when creating Stremaing Locator
+     * used to specify Content Key when creating a Streaming Locator
      *
      * @param {string}
      * [parameters.commonEncryptionCbcs.contentKeys.defaultKey.policyName] Policy
@@ -3414,12 +3420,12 @@ export interface StreamingPolicies {
      *
      * @param {array}
      * [parameters.commonEncryptionCbcs.contentKeys.keyToTrackMappings]
-     * Representing tracks needs sepearete content key
+     * Representing tracks needs separate content key
      *
      * @param {object} [parameters.commonEncryptionCbcs.drm] Configuration of DRMs
      * for current encryption scheme
      *
-     * @param {object} [parameters.commonEncryptionCbcs.drm.fairPlay] Fairplay
+     * @param {object} [parameters.commonEncryptionCbcs.drm.fairPlay] FairPlay
      * configurations
      *
      * @param {string}
@@ -3451,7 +3457,7 @@ export interface StreamingPolicies {
      * The template for a customer service to deliver keys to end users.  Not
      * needed when using Azure Media Services for issuing keys.
      *
-     * @param {object} [parameters.noEncryption] Configuations of NoEncryption
+     * @param {object} [parameters.noEncryption] Configurations of NoEncryption
      *
      * @param {object} [parameters.noEncryption.enabledProtocols] Representing
      * supported protocols
@@ -3459,10 +3465,10 @@ export interface StreamingPolicies {
      * @param {boolean} parameters.noEncryption.enabledProtocols.download Enable
      * Download protocol or not
      *
-     * @param {boolean} parameters.noEncryption.enabledProtocols.dash Enable Dash
+     * @param {boolean} parameters.noEncryption.enabledProtocols.dash Enable DASH
      * protocol or not
      *
-     * @param {boolean} parameters.noEncryption.enabledProtocols.hls Enable Hls
+     * @param {boolean} parameters.noEncryption.enabledProtocols.hls Enable HLS
      * protocol or not
      *
      * @param {boolean} parameters.noEncryption.enabledProtocols.smoothStreaming
@@ -3829,6 +3835,13 @@ export interface StreamingLocators {
      * @param {array} [parameters.contentKeys] ContentKeys used by this Streaming
      * Locator
      *
+     * @param {string} [parameters.alternativeMediaId] An Alternative Media
+     * Identifier associated with the StreamingLocator.  This identifier can be
+     * used to distinguish different StreamingLocators for the same Asset for
+     * authorization purposes in the CustomLicenseAcquisitionUrlTemplate or the
+     * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+     * StreamingPolicyName field.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -3878,6 +3891,13 @@ export interface StreamingLocators {
      *
      * @param {array} [parameters.contentKeys] ContentKeys used by this Streaming
      * Locator
+     *
+     * @param {string} [parameters.alternativeMediaId] An Alternative Media
+     * Identifier associated with the StreamingLocator.  This identifier can be
+     * used to distinguish different StreamingLocators for the same Asset for
+     * authorization purposes in the CustomLicenseAcquisitionUrlTemplate or the
+     * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+     * StreamingPolicyName field.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4371,6 +4391,13 @@ export interface LiveEvents {
      * @param {string} [parameters.preview.streamingPolicyName] The name of
      * streaming policy used for LiveEvent preview
      *
+     * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
+     * Identifier associated with the preview url.  This identifier can be used to
+     * distinguish the preview of different live events for authorization purposes
+     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+     * StreamingPolicyName field.
+     *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
@@ -4458,6 +4485,13 @@ export interface LiveEvents {
      *
      * @param {string} [parameters.preview.streamingPolicyName] The name of
      * streaming policy used for LiveEvent preview
+     *
+     * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
+     * Identifier associated with the preview url.  This identifier can be used to
+     * distinguish the preview of different live events for authorization purposes
+     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+     * StreamingPolicyName field.
      *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
@@ -4564,6 +4598,13 @@ export interface LiveEvents {
      * @param {string} [parameters.preview.streamingPolicyName] The name of
      * streaming policy used for LiveEvent preview
      *
+     * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
+     * Identifier associated with the preview url.  This identifier can be used to
+     * distinguish the preview of different live events for authorization purposes
+     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+     * StreamingPolicyName field.
+     *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
@@ -4646,6 +4687,13 @@ export interface LiveEvents {
      *
      * @param {string} [parameters.preview.streamingPolicyName] The name of
      * streaming policy used for LiveEvent preview
+     *
+     * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
+     * Identifier associated with the preview url.  This identifier can be used to
+     * distinguish the preview of different live events for authorization purposes
+     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+     * StreamingPolicyName field.
      *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
@@ -5033,6 +5081,13 @@ export interface LiveEvents {
      * @param {string} [parameters.preview.streamingPolicyName] The name of
      * streaming policy used for LiveEvent preview
      *
+     * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
+     * Identifier associated with the preview url.  This identifier can be used to
+     * distinguish the preview of different live events for authorization purposes
+     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+     * StreamingPolicyName field.
+     *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
@@ -5120,6 +5175,13 @@ export interface LiveEvents {
      *
      * @param {string} [parameters.preview.streamingPolicyName] The name of
      * streaming policy used for LiveEvent preview
+     *
+     * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
+     * Identifier associated with the preview url.  This identifier can be used to
+     * distinguish the preview of different live events for authorization purposes
+     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+     * StreamingPolicyName field.
      *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
@@ -5226,6 +5288,13 @@ export interface LiveEvents {
      * @param {string} [parameters.preview.streamingPolicyName] The name of
      * streaming policy used for LiveEvent preview
      *
+     * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
+     * Identifier associated with the preview url.  This identifier can be used to
+     * distinguish the preview of different live events for authorization purposes
+     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+     * StreamingPolicyName field.
+     *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
      * @param {string} [parameters.encoding.encodingType] The encoding type for
@@ -5308,6 +5377,13 @@ export interface LiveEvents {
      *
      * @param {string} [parameters.preview.streamingPolicyName] The name of
      * streaming policy used for LiveEvent preview
+     *
+     * @param {string} [parameters.preview.alternativeMediaId] An Alternative Media
+     * Identifier associated with the preview url.  This identifier can be used to
+     * distinguish the preview of different live events for authorization purposes
+     * in the CustomLicenseAcquisitionUrlTemplate or the
+     * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+     * StreamingPolicyName field.
      *
      * @param {object} [parameters.encoding] The Live Event encoding.
      *
