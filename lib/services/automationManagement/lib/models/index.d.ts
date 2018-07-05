@@ -18,17 +18,19 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the ErrorResponse class.
+ * Initializes a new instance of the Sku class.
  * @constructor
- * Error response of an operation failure
+ * The account SKU.
  *
- * @member {string} [code] Error code
- * @member {string} [message] Error message indicating why the operation
- * failed.
+ * @member {string} name Gets or sets the SKU name of the account. Possible
+ * values include: 'Free', 'Basic'
+ * @member {string} [family] Gets or sets the SKU family.
+ * @member {number} [capacity] Gets or sets the SKU capacity.
  */
-export interface ErrorResponse {
-  code?: string;
-  message?: string;
+export interface Sku {
+  name: string;
+  family?: string;
+  capacity?: number;
 }
 
 /**
@@ -59,33 +61,6 @@ export interface Resource extends BaseResource {
 export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
   location?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProxyResource class.
- * @constructor
- * ARM proxy resource.
- *
- */
-export interface ProxyResource extends Resource {
-}
-
-/**
- * @class
- * Initializes a new instance of the Sku class.
- * @constructor
- * The account SKU.
- *
- * @member {string} name Gets or sets the SKU name of the account. Possible
- * values include: 'Free', 'Basic'
- * @member {string} [family] Gets or sets the SKU family.
- * @member {number} [capacity] Gets or sets the SKU capacity.
- */
-export interface Sku {
-  name: string;
-  family?: string;
-  capacity?: number;
 }
 
 /**
@@ -284,6 +259,31 @@ export interface AutomationAccountUpdateParameters {
   name?: string;
   location?: string;
   tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * ARM proxy resource.
+ *
+ */
+export interface ProxyResource extends Resource {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Error response of an operation failure
+ *
+ * @member {string} [code] Error code
+ * @member {string} [message] Error message indicating why the operation
+ * failed.
+ */
+export interface ErrorResponse {
+  code?: string;
+  message?: string;
 }
 
 /**
@@ -1150,31 +1150,6 @@ export interface TypeField {
 
 /**
  * @class
- * Initializes a new instance of the JobStream class.
- * @constructor
- * Definition of the job stream.
- *
- * @member {string} [id] Gets or sets the id of the resource.
- * @member {string} [jobStreamId] Gets or sets the id of the job stream.
- * @member {date} [time] Gets or sets the creation time of the job.
- * @member {string} [streamType] Gets or sets the stream type. Possible values
- * include: 'Progress', 'Output', 'Warning', 'Error', 'Debug', 'Verbose', 'Any'
- * @member {string} [streamText] Gets or sets the stream text.
- * @member {string} [summary] Gets or sets the summary.
- * @member {object} [value] Gets or sets the values of the job stream.
- */
-export interface JobStream {
-  id?: string;
-  jobStreamId?: string;
-  time?: Date;
-  streamType?: string;
-  streamText?: string;
-  summary?: string;
-  value?: { [propertyName: string]: any };
-}
-
-/**
- * @class
  * Initializes a new instance of the RunbookParameter class.
  * @constructor
  * Definition of the runbook parameter type.
@@ -1523,6 +1498,31 @@ export interface RunbookCreateOrUpdateDraftProperties {
  */
 export interface RunbookCreateOrUpdateDraftParameters {
   runbookContent: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the JobStream class.
+ * @constructor
+ * Definition of the job stream.
+ *
+ * @member {string} [id] Gets or sets the id of the resource.
+ * @member {string} [jobStreamId] Gets or sets the id of the job stream.
+ * @member {date} [time] Gets or sets the creation time of the job.
+ * @member {string} [streamType] Gets or sets the stream type. Possible values
+ * include: 'Progress', 'Output', 'Warning', 'Error', 'Debug', 'Verbose', 'Any'
+ * @member {string} [streamText] Gets or sets the stream text.
+ * @member {string} [summary] Gets or sets the summary.
+ * @member {object} [value] Gets or sets the values of the job stream.
+ */
+export interface JobStream {
+  id?: string;
+  jobStreamId?: string;
+  time?: Date;
+  streamType?: string;
+  streamText?: string;
+  summary?: string;
+  value?: { [propertyName: string]: any };
 }
 
 /**
