@@ -6877,39 +6877,39 @@ export interface ManagedIntegrationRuntimeStatus extends IntegrationRuntimeStatu
 
 /**
  * @class
- * Initializes a new instance of the LinkedIntegrationRuntimeProperties class.
+ * Initializes a new instance of the LinkedIntegrationRuntimeType class.
  * @constructor
- * The base definition of a linked integration runtime properties.
+ * The base definition of a linked integration runtime.
  *
  * @member {string} authorizationType Polymorphic Discriminator
  */
-export interface LinkedIntegrationRuntimeProperties {
+export interface LinkedIntegrationRuntimeType {
   authorizationType: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the LinkedIntegrationRuntimeRbac class.
+ * Initializes a new instance of the LinkedIntegrationRuntimeRbacAuthorization class.
  * @constructor
- * The role based access control (RBAC) authorization type.
+ * The role based access control (RBAC) authorization type integration runtime.
  *
  * @member {string} resourceId The resource identifier of the integration
  * runtime to be shared.
  */
-export interface LinkedIntegrationRuntimeRbac extends LinkedIntegrationRuntimeProperties {
+export interface LinkedIntegrationRuntimeRbacAuthorization extends LinkedIntegrationRuntimeType {
   resourceId: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the LinkedIntegrationRuntimeKey class.
+ * Initializes a new instance of the LinkedIntegrationRuntimeKeyAuthorization class.
  * @constructor
- * The key authorization type.
+ * The key authorization type integration runtime.
  *
  * @member {object} key The key used for authorization.
  * @member {string} [key.value] Value of secure string.
  */
-export interface LinkedIntegrationRuntimeKey extends LinkedIntegrationRuntimeProperties {
+export interface LinkedIntegrationRuntimeKeyAuthorization extends LinkedIntegrationRuntimeType {
   key: SecureString;
 }
 
@@ -6923,7 +6923,7 @@ export interface LinkedIntegrationRuntimeKey extends LinkedIntegrationRuntimePro
  * @member {string} [linkedInfo.authorizationType] Polymorphic Discriminator
  */
 export interface SelfHostedIntegrationRuntime extends IntegrationRuntime {
-  linkedInfo?: LinkedIntegrationRuntimeProperties;
+  linkedInfo?: LinkedIntegrationRuntimeType;
 }
 
 /**
