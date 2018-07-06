@@ -1281,28 +1281,19 @@ export interface ChargesByBillingProfile {
 
 /**
  * @class
- * CreditsByBillingAccount
+ * CreditSummaryByBillingAccount
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ConsumptionManagementClient.
  */
-export interface CreditsByBillingAccount {
+export interface CreditSummaryByBillingAccount {
 
 
     /**
-     * Lists the credits by billingAccountId and project id for given start and end
-     * date.
+     * The credit summary by billingAccountId.
      *
      * @param {string} billingAccountId BillingAccount ID
      *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
-     *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] May be used to expand the billingProfiles
-     * or events within a list of credits. By default, these fields are not
-     * included when listing monitory credits.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1313,23 +1304,14 @@ export interface CreditsByBillingAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(billingAccountId: string, startDate: string, endDate: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreditSummary>>;
+    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreditSummary>>;
 
     /**
-     * Lists the credits by billingAccountId and project id for given start and end
-     * date.
+     * The credit summary by billingAccountId.
      *
      * @param {string} billingAccountId BillingAccount ID
      *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
-     *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] May be used to expand the billingProfiles
-     * or events within a list of credits. By default, these fields are not
-     * included when listing monitory credits.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1356,9 +1338,470 @@ export interface CreditsByBillingAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(billingAccountId: string, startDate: string, endDate: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.CreditSummary>;
-    list(billingAccountId: string, startDate: string, endDate: string, callback: ServiceCallback<models.CreditSummary>): void;
-    list(billingAccountId: string, startDate: string, endDate: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreditSummary>): void;
+    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CreditSummary>;
+    get(billingAccountId: string, callback: ServiceCallback<models.CreditSummary>): void;
+    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreditSummary>): void;
+
+
+    /**
+     * The credit summary by billingAccountId.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CreditSummary>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreditSummary>>;
+
+    /**
+     * The credit summary by billingAccountId.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CreditSummary} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CreditSummary} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CreditSummary} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CreditSummary>;
+    getNext(nextPageLink: string, callback: ServiceCallback<models.CreditSummary>): void;
+    getNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreditSummary>): void;
+}
+
+/**
+ * @class
+ * CreditSummaryByBillingProfile
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface CreditSummaryByBillingProfile {
+
+
+    /**
+     * The credit summary by billingAccountId and billingProfileId for given start
+     * and end date.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} billingProfileId Billing Profile Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CreditSummary>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreditSummary>>;
+
+    /**
+     * The credit summary by billingAccountId and billingProfileId for given start
+     * and end date.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} billingProfileId Billing Profile Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CreditSummary} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CreditSummary} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CreditSummary} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(billingAccountId: string, billingProfileId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CreditSummary>;
+    get(billingAccountId: string, billingProfileId: string, callback: ServiceCallback<models.CreditSummary>): void;
+    get(billingAccountId: string, billingProfileId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreditSummary>): void;
+
+
+    /**
+     * The credit summary by billingAccountId and billingProfileId for given start
+     * and end date.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CreditSummary>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreditSummary>>;
+
+    /**
+     * The credit summary by billingAccountId and billingProfileId for given start
+     * and end date.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CreditSummary} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CreditSummary} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CreditSummary} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CreditSummary>;
+    getNext(nextPageLink: string, callback: ServiceCallback<models.CreditSummary>): void;
+    getNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreditSummary>): void;
+}
+
+/**
+ * @class
+ * EventsByBillingAccount
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface EventsByBillingAccount {
+
+
+    /**
+     * Lists the events by billingAccountId for given start and end date.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} startDate Start date
+     *
+     * @param {string} endDate End date
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Events>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Events>>;
+
+    /**
+     * Lists the events by billingAccountId for given start and end date.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} startDate Start date
+     *
+     * @param {string} endDate End date
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Events} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Events} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Events} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Events>;
+    list(billingAccountId: string, startDate: string, endDate: string, callback: ServiceCallback<models.Events>): void;
+    list(billingAccountId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Events>): void;
+
+
+    /**
+     * Lists the events by billingAccountId for given start and end date.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Events>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Events>>;
+
+    /**
+     * Lists the events by billingAccountId for given start and end date.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Events} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Events} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Events} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Events>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.Events>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Events>): void;
+}
+
+/**
+ * @class
+ * EventsByBillingProfile
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface EventsByBillingProfile {
+
+
+    /**
+     * Lists the events by billingAccountId and billingProfileId for given start
+     * and end date.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} billingProfileId Billing Profile Id.
+     *
+     * @param {string} startDate Start date
+     *
+     * @param {string} endDate End date
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Events>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Events>>;
+
+    /**
+     * Lists the events by billingAccountId and billingProfileId for given start
+     * and end date.
+     *
+     * @param {string} billingAccountId BillingAccount ID
+     *
+     * @param {string} billingProfileId Billing Profile Id.
+     *
+     * @param {string} startDate Start date
+     *
+     * @param {string} endDate End date
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Events} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Events} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Events} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Events>;
+    list(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, callback: ServiceCallback<models.Events>): void;
+    list(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Events>): void;
+
+
+    /**
+     * Lists the events by billingAccountId and billingProfileId for given start
+     * and end date.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Events>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Events>>;
+
+    /**
+     * Lists the events by billingAccountId and billingProfileId for given start
+     * and end date.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Events} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Events} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Events} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Events>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.Events>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Events>): void;
+}
+
+/**
+ * @class
+ * CreditsByBillingAccount
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface CreditsByBillingAccount {
 
 
     /**
@@ -1421,65 +1864,6 @@ export interface CreditsByBillingAccount {
     download(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     download(billingAccountId: string, startDate: string, endDate: string, callback: ServiceCallback<void>): void;
     download(billingAccountId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Lists the credits by billingAccountId and project id for given start and end
-     * date.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<CreditSummary>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreditSummary>>;
-
-    /**
-     * Lists the credits by billingAccountId and project id for given start and end
-     * date.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {CreditSummary} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {CreditSummary} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CreditSummary} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CreditSummary>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.CreditSummary>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreditSummary>): void;
 }
 
 /**
@@ -1489,83 +1873,6 @@ export interface CreditsByBillingAccount {
  * instance of the ConsumptionManagementClient.
  */
 export interface CreditsByBillingProfile {
-
-
-    /**
-     * Lists the credits by billingAccountId and billingProfileId for given start
-     * and end date.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} billingProfileId Billing Profile Id.
-     *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] May be used to expand the lots or events
-     * within a list of credits. By default, these fields are not included when
-     * listing monitory credits.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<CreditSummary>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreditSummary>>;
-
-    /**
-     * Lists the credits by billingAccountId and billingProfileId for given start
-     * and end date.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {string} billingProfileId Billing Profile Id.
-     *
-     * @param {string} startDate Start date
-     *
-     * @param {string} endDate End date
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] May be used to expand the lots or events
-     * within a list of credits. By default, these fields are not included when
-     * listing monitory credits.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {CreditSummary} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {CreditSummary} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CreditSummary} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.CreditSummary>;
-    list(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, callback: ServiceCallback<models.CreditSummary>): void;
-    list(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreditSummary>): void;
 
 
     /**
@@ -1632,65 +1939,6 @@ export interface CreditsByBillingProfile {
     download(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     download(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, callback: ServiceCallback<void>): void;
     download(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Lists the credits by billingAccountId and billingProfileId for given start
-     * and end date.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<CreditSummary>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreditSummary>>;
-
-    /**
-     * Lists the credits by billingAccountId and billingProfileId for given start
-     * and end date.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {CreditSummary} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {CreditSummary} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CreditSummary} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CreditSummary>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.CreditSummary>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreditSummary>): void;
 }
 
 /**
@@ -1820,129 +2068,6 @@ export interface ProductsByBillingAccount {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.ProductsListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
-}
-
-/**
- * @class
- * PaymentMethodsByBillingAccount
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ConsumptionManagementClient.
- */
-export interface PaymentMethodsByBillingAccount {
-
-
-    /**
-     * Lists the Payment Methods by billingAccountId.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PaymentMethodsListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PaymentMethodsListResult>>;
-
-    /**
-     * Lists the Payment Methods by billingAccountId.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PaymentMethodsListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PaymentMethodsListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PaymentMethodsListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PaymentMethodsListResult>;
-    list(billingAccountId: string, callback: ServiceCallback<models.PaymentMethodsListResult>): void;
-    list(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PaymentMethodsListResult>): void;
-
-
-    /**
-     * Lists the Payment Methods by billingAccountId.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<PaymentMethodsListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PaymentMethodsListResult>>;
-
-    /**
-     * Lists the Payment Methods by billingAccountId.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {PaymentMethodsListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {PaymentMethodsListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PaymentMethodsListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PaymentMethodsListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.PaymentMethodsListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PaymentMethodsListResult>): void;
 }
 
 /**

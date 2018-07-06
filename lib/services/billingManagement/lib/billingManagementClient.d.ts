@@ -62,7 +62,6 @@ export default class BillingManagementClient extends AzureServiceClient {
   eligibleOffers: operations.EligibleOffers;
   departments: operations.Departments;
   enrollmentAccounts: operations.EnrollmentAccounts;
-  operationStatusOperations: operations.OperationStatusOperations;
 }
 
 export { BillingManagementClient, models as BillingManagementModels };

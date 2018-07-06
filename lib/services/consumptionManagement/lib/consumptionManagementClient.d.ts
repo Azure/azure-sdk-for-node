@@ -57,10 +57,13 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   chargesByProject: operations.ChargesByProject;
   chargesForBillingAccountByBillingProfile: operations.ChargesForBillingAccountByBillingProfile;
   chargesByBillingProfile: operations.ChargesByBillingProfile;
+  creditSummaryByBillingAccount: operations.CreditSummaryByBillingAccount;
+  creditSummaryByBillingProfile: operations.CreditSummaryByBillingProfile;
+  eventsByBillingAccount: operations.EventsByBillingAccount;
+  eventsByBillingProfile: operations.EventsByBillingProfile;
   creditsByBillingAccount: operations.CreditsByBillingAccount;
   creditsByBillingProfile: operations.CreditsByBillingProfile;
   productsByBillingAccount: operations.ProductsByBillingAccount;
-  paymentMethodsByBillingAccount: operations.PaymentMethodsByBillingAccount;
   paymentMethodsByBillingProfile: operations.PaymentMethodsByBillingProfile;
 
 

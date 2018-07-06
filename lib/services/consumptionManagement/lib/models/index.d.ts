@@ -402,9 +402,31 @@ export interface BillingAccount extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the Event class.
+ * Initializes a new instance of the CreditSummary class.
  * @constructor
- * The credit event associated to credit summary.
+ * A credit summary resource.
+ *
+ * @member {number} [availableBalance] Available balance.
+ * @member {number} [closedAmount] Closed amount.
+ * @member {number} [pendingCreditAdjustments] Pending Credit Adjustments.
+ * @member {number} [pendingExpiredCredit] Pending Expired Credit.
+ * @member {number} [pendingEligibleCharges] Pending Eligible Charges.
+ * @member {string} [currency] Currency Code
+ */
+export interface CreditSummary extends Resource {
+  readonly availableBalance?: number;
+  readonly closedAmount?: number;
+  readonly pendingCreditAdjustments?: number;
+  readonly pendingExpiredCredit?: number;
+  readonly pendingEligibleCharges?: number;
+  readonly currency?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EventSummary class.
+ * @constructor
+ * An event summary resource.
  *
  * @member {date} [transactionDate] Transaction Date.
  * @member {number} [beginningBalance] Beginning Balance.
@@ -414,7 +436,7 @@ export interface BillingAccount extends Resource {
  * @member {number} [charges] Charges.
  * @member {number} [closedBalance] Closed Balance.
  */
-export interface Event {
+export interface EventSummary extends Resource {
   readonly transactionDate?: Date;
   readonly beginningBalance?: number;
   readonly newCredit?: number;
@@ -512,18 +534,18 @@ export interface ProductsSummary extends Resource {
  *
  * @member {string} [methodType] Payment method type. Possible values include:
  * 'Credits', 'ChequeWire'
+ * @member {string} [details] Details about the payment method.
  * @member {number} [lastBilledCharge] Last billed charge.
  * @member {number} [currentCharge] Current charge.
- * @member {number} [remainingAmount] Remaining amount.
- * @member {number} [originalAmount] Original amount.
+ * @member {string} [expiration] Expiration date.
  * @member {string} [currency] Currency code
  */
 export interface PaymentMethod extends Resource {
   methodType?: string;
+  readonly details?: string;
   readonly lastBilledCharge?: number;
   readonly currentCharge?: number;
-  readonly remainingAmount?: number;
-  readonly originalAmount?: number;
+  readonly expiration?: string;
   readonly currency?: string;
 }
 
@@ -644,19 +666,14 @@ export interface ChargesListResultByBillingProfile extends Array<ChargeSummaryBy
 
 /**
  * @class
- * Initializes a new instance of the CreditSummary class.
+ * Initializes a new instance of the Events class.
  * @constructor
- * A credit summary resource.
+ * Result of listing event summary.
  *
- * @member {number} [availableBalance] Available balance.
- * @member {number} [closedAmount] Closed amount.
- * @member {number} [pendingCreditAdjustments] Pending Credit Adjustments.
- * @member {number} [pendingExpiredCredit] Pending Expired Credit.
- * @member {number} [pendingEligibleCharges] Pending Eligible Charges.
- * @member {string} [currency] Currency Code
- * @member {array} [events] The events associated to credit summary.
+ * @member {string} [nextLink] The link (url) to the next page of results.
  */
-export interface CreditSummary extends Array<Event> {
+export interface Events extends Array<EventSummary> {
+  readonly nextLink?: string;
 }
 
 /**
