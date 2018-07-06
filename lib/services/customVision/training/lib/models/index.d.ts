@@ -539,6 +539,8 @@ export interface ImagePrediction {
  * another format for download
  * @member {uuid} [domainId] Get or sets a guid of the domain the iteration has
  * been trained on
+ * @member {string} [classificationType] Gets the classification type of the
+ * project. Possible values include: 'Multiclass', 'Multilabel'
  */
 export interface Iteration {
   readonly id?: string;
@@ -551,6 +553,7 @@ export interface Iteration {
   readonly projectId?: string;
   readonly exportable?: boolean;
   readonly domainId?: string;
+  readonly classificationType?: string;
 }
 
 /**
@@ -561,9 +564,12 @@ export interface Iteration {
  *
  * @member {uuid} [domainId] Gets or sets the id of the Domain to use with this
  * project
+ * @member {string} [classificationType] Gets or sets the classification type
+ * of the project. Possible values include: 'Multiclass', 'Multilabel'
  */
 export interface ProjectSettings {
   domainId?: string;
+  classificationType?: string;
 }
 
 /**
@@ -578,6 +584,9 @@ export interface ProjectSettings {
  * @member {object} [settings] Gets or sets the project settings
  * @member {uuid} [settings.domainId] Gets or sets the id of the Domain to use
  * with this project
+ * @member {string} [settings.classificationType] Gets or sets the
+ * classification type of the project. Possible values include: 'Multiclass',
+ * 'Multilabel'
  * @member {date} [created] Gets the date this project was created
  * @member {date} [lastModified] Gets the date this project was last modifed
  * @member {string} [thumbnailUri] Gets the thumbnail url representing the
@@ -684,12 +693,14 @@ export interface ImagePerformance {
  * 'Done'
  * @member {string} [downloadUri]
  * @member {string} [flavor] Possible values include: 'Linux', 'Windows'
+ * @member {boolean} [newerVersionAvailable]
  */
 export interface ExportModel {
   readonly platform?: string;
   readonly status?: string;
   readonly downloadUri?: string;
   readonly flavor?: string;
+  readonly newerVersionAvailable?: boolean;
 }
 
 /**
