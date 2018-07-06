@@ -346,10 +346,11 @@ export interface UpdateIntegrationRuntimeNodeRequest {
  * @constructor
  * Data factory name for linked integration runtime request.
  *
- * @member {string} factoryName The data factory name.
+ * @member {string} linkedFactoryName The data factory name for linked
+ * integration runtime.
  */
 export interface LinkedIntegrationRuntimeRequest {
-  factoryName: string;
+  linkedFactoryName: string;
 }
 
 /**

@@ -1770,8 +1770,8 @@ export interface IntegrationRuntimes {
      * @param {object} linkedIntegrationRuntimeRequest The data factory name for
      * the linked integration runtime.
      *
-     * @param {string} linkedIntegrationRuntimeRequest.factoryName The data factory
-     * name.
+     * @param {string} linkedIntegrationRuntimeRequest.linkedFactoryName The data
+     * factory name for linked integration runtime.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1799,8 +1799,8 @@ export interface IntegrationRuntimes {
      * @param {object} linkedIntegrationRuntimeRequest The data factory name for
      * the linked integration runtime.
      *
-     * @param {string} linkedIntegrationRuntimeRequest.factoryName The data factory
-     * name.
+     * @param {string} linkedIntegrationRuntimeRequest.linkedFactoryName The data
+     * factory name for linked integration runtime.
      *
      * @param {object} [options] Optional Parameters.
      *
