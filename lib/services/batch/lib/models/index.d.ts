@@ -1157,7 +1157,12 @@ export interface OutputFile {
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -1325,7 +1330,12 @@ export interface JobManagerTask {
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory.  There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the Job Preparation task.
  * @member {object} [constraints] Constraints that apply to the Job Preparation
@@ -1451,8 +1461,13 @@ export interface JobPreparationTask {
  * @member {string} [containerSettings.registry.userName]
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
- * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * download to the compute node before running the command line.  There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers. Files listed under this element are located
+ * in the task's working directory.
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the Job Release task.
  * @member {moment.duration} [maxWallClockTime] The maximum elapsed time that
@@ -1549,8 +1564,13 @@ export interface TaskSchedulingPolicy {
  * @member {string} [containerSettings.registry.userName]
  * @member {string} [containerSettings.registry.password]
  * @member {array} [resourceFiles] A list of files that the Batch service will
- * download to the compute node before running the command line. Files listed
- * under this element are located in the task's working directory.
+ * download to the compute node before running the command line.  There is a
+ * maximum size for the list of resource files. When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers. Files listed under this element are located
+ * in the task's working directory.
  * @member {array} [environmentSettings] A list of environment variable
  * settings for the start task.
  * @member {object} [userIdentity] The user identity under which the start task
@@ -2991,7 +3011,11 @@ export interface PoolInformation {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -3105,7 +3129,12 @@ export interface PoolInformation {
  * @member {string} [jobPreparationTask.containerSettings.registry.userName]
  * @member {string} [jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory.  There is a maximum
+ * size for the list of resource files.  When the max size is exceeded, the
+ * request will fail and the response error code will be RequestEntityTooLarge.
+ * If this occurs, the collection of ResourceFiles must be reduced in size.
+ * This can be achieved using .zip files, Application Packages, or Docker
+ * Containers.
  * @member {array} [jobPreparationTask.environmentSettings]
  * @member {object} [jobPreparationTask.constraints]
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
@@ -3825,7 +3854,12 @@ export interface JobScheduleStatistics {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -3952,6 +3986,11 @@ export interface JobScheduleStatistics {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -4617,7 +4656,12 @@ export interface CloudJobSchedule {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -4744,6 +4788,11 @@ export interface CloudJobSchedule {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -5394,7 +5443,11 @@ export interface JobExecutionInformation {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -5507,7 +5560,12 @@ export interface JobExecutionInformation {
  * @member {string} [jobPreparationTask.containerSettings.registry.userName]
  * @member {string} [jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory.  There is a maximum
+ * size for the list of resource files.  When the max size is exceeded, the
+ * request will fail and the response error code will be RequestEntityTooLarge.
+ * If this occurs, the collection of ResourceFiles must be reduced in size.
+ * This can be achieved using .zip files, Application Packages, or Docker
+ * Containers.
  * @member {array} [jobPreparationTask.environmentSettings]
  * @member {object} [jobPreparationTask.constraints]
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
@@ -6129,7 +6187,11 @@ export interface CloudJob {
  * @member {string} [jobManagerTask.containerSettings.registry.userName]
  * @member {string} [jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobManagerTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [jobManagerTask.outputFiles] For multi-instance tasks, the
  * files will only be uploaded from the compute node on which the primary task
  * is executed.
@@ -6243,7 +6305,12 @@ export interface CloudJob {
  * @member {string} [jobPreparationTask.containerSettings.registry.userName]
  * @member {string} [jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobPreparationTask.resourceFiles] Files listed under this
- * element are located in the task's working directory.
+ * element are located in the task's working directory.  There is a maximum
+ * size for the list of resource files.  When the max size is exceeded, the
+ * request will fail and the response error code will be RequestEntityTooLarge.
+ * If this occurs, the collection of ResourceFiles must be reduced in size.
+ * This can be achieved using .zip files, Application Packages, or Docker
+ * Containers.
  * @member {array} [jobPreparationTask.environmentSettings]
  * @member {object} [jobPreparationTask.constraints]
  * @member {moment.duration} [jobPreparationTask.constraints.maxWallClockTime]
@@ -7913,7 +7980,11 @@ export interface ComputeNodeInformation {
  * whereas task resource files are downloaded only for the primary. Also note
  * that these resource files are not downloaded to the task working directory,
  * but instead are downloaded to the task root directory (one directory above
- * the working directory).
+ * the working directory).  There is a maximum size for the list of resource
+ * files.  When the max size is exceeded, the request will fail and the
+ * response error code will be RequestEntityTooLarge. If this occurs, the
+ * collection of ResourceFiles must be reduced in size. This can be achieved
+ * using .zip files, Application Packages, or Docker Containers.
  */
 export interface MultiInstanceSettings {
   numberOfInstances?: number;
@@ -8142,7 +8213,11 @@ export interface TaskDependencies {
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
- * compute node on which the primary task is executed.
+ * compute node on which the primary task is executed. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -8259,7 +8334,11 @@ export interface TaskDependencies {
  * whereas task resource files are downloaded only for the primary. Also note
  * that these resource files are not downloaded to the task working directory,
  * but instead are downloaded to the task root directory (one directory above
- * the working directory).
+ * the working directory).  There is a maximum size for the list of resource
+ * files.  When the max size is exceeded, the request will fail and the
+ * response error code will be RequestEntityTooLarge. If this occurs, the
+ * collection of ResourceFiles must be reduced in size. This can be achieved
+ * using .zip files, Application Packages, or Docker Containers.
  * @member {object} [stats] Resource usage statistics for the task.
  * @member {string} [stats.url]
  * @member {date} [stats.startTime]
@@ -8453,7 +8532,11 @@ export interface CloudTask {
  * @member {array} [resourceFiles] A list of files that the Batch service will
  * download to the compute node before running the command line. For
  * multi-instance tasks, the resource files will only be downloaded to the
- * compute node on which the primary task is executed.
+ * compute node on which the primary task is executed. There is a maximum size
+ * for the list of resource files.  When the max size is exceeded, the request
+ * will fail and the response error code will be RequestEntityTooLarge. If this
+ * occurs, the collection of ResourceFiles must be reduced in size. This can be
+ * achieved using .zip files, Application Packages, or Docker Containers.
  * @member {array} [outputFiles] A list of files that the Batch service will
  * upload from the compute node after running the command line. For
  * multi-instance tasks, the files will only be uploaded from the compute node
@@ -8509,7 +8592,11 @@ export interface CloudTask {
  * whereas task resource files are downloaded only for the primary. Also note
  * that these resource files are not downloaded to the task working directory,
  * but instead are downloaded to the task root directory (one directory above
- * the working directory).
+ * the working directory).  There is a maximum size for the list of resource
+ * files.  When the max size is exceeded, the request will fail and the
+ * response error code will be RequestEntityTooLarge. If this occurs, the
+ * collection of ResourceFiles must be reduced in size. This can be achieved
+ * using .zip files, Application Packages, or Docker Containers.
  * @member {object} [dependsOn] The tasks that this task depends on. This task
  * will not be scheduled until all tasks that it depends on have completed
  * successfully. If any of those tasks fail and exhaust their retry counts,
@@ -8569,7 +8656,7 @@ export interface TaskAddParameter {
  * @summary A collection of Azure Batch tasks to add.
  *
  * @member {array} value The collection of tasks to add. The total serialized
- * size of this collection must be less than 4MB. If it is greater than 4MB
+ * size of this collection must be less than 1MB. If it is greater than 1MB
  * (for example if each task has 100's of resource files or environment
  * variables), the request will fail with code 'RequestBodyTooLarge' and should
  * be retried again with fewer tasks.
@@ -9344,7 +9431,12 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -9471,6 +9563,11 @@ export interface ComputeNodeGetRemoteLoginSettingsResult {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
@@ -10083,7 +10180,12 @@ export interface JobSchedulePatchParameter {
  * @member {string}
  * [jobSpecification.jobManagerTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobManagerTask.resourceFiles] Files listed
- * under this element are located in the task's working directory.
+ * under this element are located in the task's working directory. There is a
+ * maximum size for the list of resource files.  When the max size is exceeded,
+ * the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobManagerTask.outputFiles] For
  * multi-instance tasks, the files will only be uploaded from the compute node
  * on which the primary task is executed.
@@ -10210,6 +10312,11 @@ export interface JobSchedulePatchParameter {
  * [jobSpecification.jobPreparationTask.containerSettings.registry.password]
  * @member {array} [jobSpecification.jobPreparationTask.resourceFiles] Files
  * listed under this element are located in the task's working directory.
+ * There is a maximum size for the list of resource files.  When the max size
+ * is exceeded, the request will fail and the response error code will be
+ * RequestEntityTooLarge. If this occurs, the collection of ResourceFiles must
+ * be reduced in size. This can be achieved using .zip files, Application
+ * Packages, or Docker Containers.
  * @member {array} [jobSpecification.jobPreparationTask.environmentSettings]
  * @member {object} [jobSpecification.jobPreparationTask.constraints]
  * @member {moment.duration}
