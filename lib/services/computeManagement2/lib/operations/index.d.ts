@@ -6031,11 +6031,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<RunCommandResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    runCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceViewStatus[]>>;
+    runCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandResult>>;
 
     /**
      * Run command on the VM.
@@ -6066,7 +6066,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {RunCommandResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -6074,15 +6074,16 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {RunCommandResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunCommandResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceViewStatus[]>;
-    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.InstanceViewStatus[]>): void;
-    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceViewStatus[]>): void;
+    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandResult>;
+    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.RunCommandResult>): void;
+    runCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandResult>): void;
 
 
     /**
@@ -8293,11 +8294,11 @@ export interface VirtualMachines {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<RunCommandResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRunCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceViewStatus[]>>;
+    beginRunCommandWithHttpOperationResponse(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunCommandResult>>;
 
     /**
      * Run command on the VM.
@@ -8328,7 +8329,7 @@ export interface VirtualMachines {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Array} - The deserialized result object.
+     *                      @resolve {RunCommandResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -8336,15 +8337,16 @@ export interface VirtualMachines {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *                      {RunCommandResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RunCommandResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceViewStatus[]>;
-    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.InstanceViewStatus[]>): void;
-    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceViewStatus[]>): void;
+    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunCommandResult>;
+    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, callback: ServiceCallback<models.RunCommandResult>): void;
+    beginRunCommand(resourceGroupName: string, vmName: string, parameters: models.RunCommandInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunCommandResult>): void;
 
 
     /**

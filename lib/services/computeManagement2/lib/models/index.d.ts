@@ -5343,12 +5343,10 @@ export interface RunCommandDocument extends RunCommandDocumentBase {
  * @class
  * Initializes a new instance of the RunCommandResult class.
  * @constructor
- * Run command operation response.
- *
- * @member {object} [output] Operation output data (raw JSON)
+ * @member {array} [value] Run command operation response.
  */
 export interface RunCommandResult {
-  output?: any;
+  value?: InstanceViewStatus[];
 }
 
 /**
