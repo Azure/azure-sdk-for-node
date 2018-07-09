@@ -6823,7 +6823,7 @@ export interface VirtualHub extends Resource {
  * include: 'Unknown', 'Connecting', 'Connected', 'NotConnected'
  * @member {number} [ingressBytesTransferred] Ingress bytes transferred.
  * @member {number} [egressBytesTransferred] Egress bytes transferred.
- * @member {number} [connectionBandwidthInMbps] Expected bandwidth in MBPS.
+ * @member {number} [connectionBandwidth] Expected bandwidth in MBPS.
  * @member {string} [sharedKey] SharedKey for the vpn connection.
  * @member {boolean} [enableBgp] EnableBgp flag
  * @member {array} [ipsecPolicies] The IPSec Policies to be considered by this
@@ -6839,7 +6839,7 @@ export interface VpnConnection extends Resource {
   connectionStatus?: string;
   readonly ingressBytesTransferred?: number;
   readonly egressBytesTransferred?: number;
-  readonly connectionBandwidthInMbps?: number;
+  readonly connectionBandwidth?: number;
   sharedKey?: string;
   enableBgp?: boolean;
   ipsecPolicies?: IpsecPolicy[];
