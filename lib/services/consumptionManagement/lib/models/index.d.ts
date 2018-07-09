@@ -107,10 +107,20 @@ export interface ProxyResource extends BaseResource {
  *
  * @member {string} [displayName] The billing profile name.
  * @member {string} [poNumber] Purchase order number.
+ * @member {string} [billingAddress] Billing address.
+ * @member {string} [billingContact] Billing contact.
+ * @member {boolean} [emailInvoice] Email invoice.
+ * @member {string} [invoiceDay] Invoice day.
+ * @member {string} [currency] Currency.
  */
 export interface BillingProfile extends Resource {
   displayName?: string;
   poNumber?: string;
+  readonly billingAddress?: string;
+  readonly billingContact?: string;
+  readonly emailInvoice?: boolean;
+  readonly invoiceDay?: string;
+  readonly currency?: string;
 }
 
 /**
@@ -148,6 +158,11 @@ export interface ProductDetails {
  * eligible offer.
  * @member {string} [billingProfiles.displayName] The billing profile name.
  * @member {string} [billingProfiles.poNumber] Purchase order number.
+ * @member {string} [billingProfiles.billingAddress] Billing address.
+ * @member {string} [billingProfiles.billingContact] Billing contact.
+ * @member {boolean} [billingProfiles.emailInvoice] Email invoice.
+ * @member {string} [billingProfiles.invoiceDay] Invoice day.
+ * @member {string} [billingProfiles.currency] Currency.
  * @member {object} [productDetails] Information about the product.
  * @member {string} [productDetails.productName] The product name.
  * @member {string} [productDetails.skuId] The sku id.
@@ -307,6 +322,11 @@ export interface Department extends Resource {
  * @member {string} [currency] Currency Code
  * @member {string} [displayName] The billing profile name.
  * @member {string} [poNumber] Purchase order number.
+ * @member {string} [billingAddress] Billing address.
+ * @member {string} [billingContact] Billing contact.
+ * @member {boolean} [emailInvoice] Email invoice.
+ * @member {string} [invoiceDay] Invoice day.
+ * @member {string} [currency1] Currency.
  */
 export interface ChargeSummaryByBillingProfile extends Resource {
   readonly billingPeriodId?: string;
@@ -318,6 +338,11 @@ export interface ChargeSummaryByBillingProfile extends Resource {
   readonly currency?: string;
   displayName?: string;
   poNumber?: string;
+  readonly billingAddress?: string;
+  readonly billingContact?: string;
+  readonly emailInvoice?: boolean;
+  readonly invoiceDay?: string;
+  readonly currency1?: string;
 }
 
 /**
@@ -351,12 +376,13 @@ export interface ChargeSummaryProperties {
  * @constructor
  * A billing account resource.
  *
- * @member {string} [displayName] Name of the billing account.
+ * @member {string} [company] Name of the billing account.
  * @member {string} [accountType] The billing account Type. Possible values
  * include: 'CommerceRoot', 'Enrollment'
  * @member {string} [address] The address associated with billing account.
- * @member {string} [currency] The ISO currency, for example, USD.
+ * @member {string} [defaultCurrency] The ISO currency, for example, USD.
  * @member {string} [country] The country associated with billing account..
+ * @member {string} [agreements] Agreements.
  * @member {array} [projects] The projects associated to the billing account.
  * @member {array} [billingProfiles] The billing profiles associated to the
  * billing account.
@@ -388,11 +414,12 @@ export interface ChargeSummaryProperties {
  * enrollment.
  */
 export interface BillingAccount extends Resource {
-  readonly displayName?: string;
+  readonly company?: string;
   readonly accountType?: string;
   readonly address?: string;
-  readonly currency?: string;
+  readonly defaultCurrency?: string;
   readonly country?: string;
+  readonly agreements?: string;
   readonly projects?: Project[];
   readonly billingProfiles?: BillingProfile[];
   readonly enrollmentDetails?: Enrollment;
@@ -577,12 +604,13 @@ export interface ChargesListResultByBillingAccount extends Array<ChargeSummaryBy
  * @member {number} [chargesBilledSeparately] Charges Billed separately.
  * @member {number} [marketplaceCharges] Marketplace Charges.
  * @member {string} [currency] Currency Code
- * @member {string} [displayName] Name of the billing account.
+ * @member {string} [company] Name of the billing account.
  * @member {string} [accountType] The billing account Type. Possible values
  * include: 'CommerceRoot', 'Enrollment'
  * @member {string} [address] The address associated with billing account.
- * @member {string} [currency1] The ISO currency, for example, USD.
+ * @member {string} [defaultCurrency] The ISO currency, for example, USD.
  * @member {string} [country] The country associated with billing account..
+ * @member {string} [agreements] Agreements.
  * @member {array} [projects] The projects associated to the billing account.
  * @member {array} [billingProfiles] The billing profiles associated to the
  * billing account.
