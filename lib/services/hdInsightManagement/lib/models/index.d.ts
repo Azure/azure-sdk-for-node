@@ -245,13 +245,17 @@ export interface ComputeProfile {
  * @member {string} [name] The name of the storage account.
  * @member {boolean} [isDefault] Whether or not the storage account is the
  * default storage account.
- * @member {string} [container] The container in the storage account.
+ * @member {string} [container] The container in the storage account, only to
+ * be specified for WASB storage accounts.
+ * @member {string} [fileSystem] The filesystem, only to be specified for Azure
+ * Data Lake Storage type Gen 2.
  * @member {string} [key] The storage account access key.
  */
 export interface StorageAccount {
   name?: string;
   isDefault?: boolean;
   container?: string;
+  fileSystem?: string;
   key?: string;
 }
 
