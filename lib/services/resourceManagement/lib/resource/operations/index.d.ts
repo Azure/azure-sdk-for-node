@@ -3148,6 +3148,11 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -3222,6 +3227,11 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3317,6 +3327,11 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -3391,6 +3406,11 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3681,6 +3701,11 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -3747,6 +3772,11 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -3834,6 +3864,11 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -3900,6 +3935,11 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -4302,6 +4342,11 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -4376,6 +4421,11 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -4471,6 +4521,11 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -4545,6 +4600,11 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -4694,6 +4754,11 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -4760,6 +4825,11 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *
@@ -4847,6 +4917,11 @@ export interface Resources {
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
      *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     *
      * @param {string} [parameters.location] Resource location
      *
      * @param {object} [parameters.tags] Resource tags
@@ -4913,6 +4988,11 @@ export interface Resources {
      * @param {string} [parameters.identity.type] The identity type. Possible
      * values include: 'SystemAssigned', 'UserAssigned', 'SystemAssigned,
      * UserAssigned', 'None'
+     *
+     * @param {object} [parameters.identity.userAssignedIdentities] The list of
+     * user identities associated with the resource. The user identity dictionary
+     * key references will be ARM resource ids in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
      *
      * @param {string} [parameters.location] Resource location
      *

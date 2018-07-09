@@ -638,6 +638,18 @@ export interface Sku {
 
 /**
  * @class
+ * Initializes a new instance of the IdentityUserAssignedIdentitiesValue class.
+ * @constructor
+ * @member {string} [principalId] The principal id of user assigned identity.
+ * @member {string} [clientId] The client id of user assigned identity.
+ */
+export interface IdentityUserAssignedIdentitiesValue {
+  readonly principalId?: string;
+  readonly clientId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Identity class.
  * @constructor
  * Identity for the resource.
@@ -646,11 +658,16 @@ export interface Sku {
  * @member {string} [tenantId] The tenant ID of resource.
  * @member {string} [type] The identity type. Possible values include:
  * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [userAssignedIdentities] The list of user identities
+ * associated with the resource. The user identity dictionary key references
+ * will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface Identity {
   readonly principalId?: string;
   readonly tenantId?: string;
   type?: string;
+  userAssignedIdentities?: { [propertyName: string]: IdentityUserAssignedIdentitiesValue };
 }
 
 /**
@@ -701,6 +718,10 @@ export interface Resource extends BaseResource {
  * @member {string} [identity.tenantId] The tenant ID of resource.
  * @member {string} [identity.type] The identity type. Possible values include:
  * 'SystemAssigned', 'UserAssigned', 'SystemAssigned, UserAssigned', 'None'
+ * @member {object} [identity.userAssignedIdentities] The list of user
+ * identities associated with the resource. The user identity dictionary key
+ * references will be ARM resource ids in the form:
+ * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
  */
 export interface GenericResource extends Resource {
   plan?: Plan;
