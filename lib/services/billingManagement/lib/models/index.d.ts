@@ -18,6 +18,32 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the Address class.
+ * @constructor
+ * Address details.
+ *
+ * @member {string} [addressLine1] Address Line1.
+ * @member {string} [addressLine2] Address Line2.
+ * @member {string} [addressLine3] Address Line3.
+ * @member {string} [city] City.
+ * @member {string} [region] Region.
+ * @member {string} [country] Country.
+ * @member {string} [postalCode] Postal Code.
+ * @member {string} [phoneNumber] Phone Number.
+ */
+export interface Address {
+  addressLine1?: string;
+  addressLine2?: string;
+  addressLine3?: string;
+  city?: string;
+  region?: string;
+  country?: string;
+  postalCode?: string;
+  phoneNumber?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Resource class.
  * @constructor
  * The Resource model definition.
@@ -40,7 +66,15 @@ export interface Resource extends BaseResource {
  *
  * @member {string} [displayName] The billing profile name.
  * @member {string} [poNumber] Purchase order number.
- * @member {string} [billingAddress] Billing address.
+ * @member {object} [billingAddress] Billing address.
+ * @member {string} [billingAddress.addressLine1] Address Line1.
+ * @member {string} [billingAddress.addressLine2] Address Line2.
+ * @member {string} [billingAddress.addressLine3] Address Line3.
+ * @member {string} [billingAddress.city] City.
+ * @member {string} [billingAddress.region] Region.
+ * @member {string} [billingAddress.country] Country.
+ * @member {string} [billingAddress.postalCode] Postal Code.
+ * @member {string} [billingAddress.phoneNumber] Phone Number.
  * @member {string} [billingContact] Billing contact.
  * @member {boolean} [emailInvoice] Email invoice.
  * @member {string} [invoiceDay] Invoice day.
@@ -49,7 +83,7 @@ export interface Resource extends BaseResource {
 export interface BillingProfile extends Resource {
   displayName?: string;
   poNumber?: string;
-  readonly billingAddress?: string;
+  billingAddress?: Address;
   readonly billingContact?: string;
   readonly emailInvoice?: boolean;
   readonly invoiceDay?: string;
@@ -91,7 +125,18 @@ export interface ProductDetails {
  * eligible offer.
  * @member {string} [billingProfiles.displayName] The billing profile name.
  * @member {string} [billingProfiles.poNumber] Purchase order number.
- * @member {string} [billingProfiles.billingAddress] Billing address.
+ * @member {object} [billingProfiles.billingAddress] Billing address.
+ * @member {string} [billingProfiles.billingAddress.addressLine1] Address
+ * Line1.
+ * @member {string} [billingProfiles.billingAddress.addressLine2] Address
+ * Line2.
+ * @member {string} [billingProfiles.billingAddress.addressLine3] Address
+ * Line3.
+ * @member {string} [billingProfiles.billingAddress.city] City.
+ * @member {string} [billingProfiles.billingAddress.region] Region.
+ * @member {string} [billingProfiles.billingAddress.country] Country.
+ * @member {string} [billingProfiles.billingAddress.postalCode] Postal Code.
+ * @member {string} [billingProfiles.billingAddress.phoneNumber] Phone Number.
  * @member {string} [billingProfiles.billingContact] Billing contact.
  * @member {boolean} [billingProfiles.emailInvoice] Email invoice.
  * @member {string} [billingProfiles.invoiceDay] Invoice day.
@@ -245,10 +290,18 @@ export interface Department extends Resource {
  * @constructor
  * A billing account resource.
  *
- * @member {string} [company] Name of the billing account.
+ * @member {string} [company] The Company this billing account belongs to.
  * @member {string} [accountType] The billing account Type. Possible values
  * include: 'CommerceRoot', 'Enrollment'
- * @member {string} [address] The address associated with billing account.
+ * @member {object} [address] The address associated with billing account.
+ * @member {string} [address.addressLine1] Address Line1.
+ * @member {string} [address.addressLine2] Address Line2.
+ * @member {string} [address.addressLine3] Address Line3.
+ * @member {string} [address.city] City.
+ * @member {string} [address.region] Region.
+ * @member {string} [address.country] Country.
+ * @member {string} [address.postalCode] Postal Code.
+ * @member {string} [address.phoneNumber] Phone Number.
  * @member {string} [defaultCurrency] The ISO currency, for example, USD.
  * @member {string} [country] The country associated with billing account..
  * @member {string} [agreements] Agreements.
@@ -285,7 +338,7 @@ export interface Department extends Resource {
 export interface BillingAccount extends Resource {
   readonly company?: string;
   readonly accountType?: string;
-  readonly address?: string;
+  address?: Address;
   readonly defaultCurrency?: string;
   readonly country?: string;
   readonly agreements?: string;

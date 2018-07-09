@@ -366,6 +366,24 @@ export interface BillingProfiles {
      *
      * @param {string} [parameters.poNumber] Purchase order number.
      *
+     * @param {object} [parameters.billingAddress] Billing address.
+     *
+     * @param {string} [parameters.billingAddress.addressLine1] Address Line1.
+     *
+     * @param {string} [parameters.billingAddress.addressLine2] Address Line2.
+     *
+     * @param {string} [parameters.billingAddress.addressLine3] Address Line3.
+     *
+     * @param {string} [parameters.billingAddress.city] City.
+     *
+     * @param {string} [parameters.billingAddress.region] Region.
+     *
+     * @param {string} [parameters.billingAddress.country] Country.
+     *
+     * @param {string} [parameters.billingAddress.postalCode] Postal Code.
+     *
+     * @param {string} [parameters.billingAddress.phoneNumber] Phone Number.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -392,6 +410,24 @@ export interface BillingProfiles {
      * @param {string} [parameters.displayName] The billing profile name.
      *
      * @param {string} [parameters.poNumber] Purchase order number.
+     *
+     * @param {object} [parameters.billingAddress] Billing address.
+     *
+     * @param {string} [parameters.billingAddress.addressLine1] Address Line1.
+     *
+     * @param {string} [parameters.billingAddress.addressLine2] Address Line2.
+     *
+     * @param {string} [parameters.billingAddress.addressLine3] Address Line3.
+     *
+     * @param {string} [parameters.billingAddress.city] City.
+     *
+     * @param {string} [parameters.billingAddress.region] Region.
+     *
+     * @param {string} [parameters.billingAddress.country] Country.
+     *
+     * @param {string} [parameters.billingAddress.postalCode] Postal Code.
+     *
+     * @param {string} [parameters.billingAddress.phoneNumber] Phone Number.
      *
      * @param {object} [options] Optional Parameters.
      *
