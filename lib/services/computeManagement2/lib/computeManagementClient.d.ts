@@ -47,6 +47,8 @@ export default class ComputeManagementClient extends AzureServiceClient {
 
   subscriptionId: string;
 
+  apiVersion: string;
+
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -58,21 +60,19 @@ export default class ComputeManagementClient extends AzureServiceClient {
   availabilitySets: operations.AvailabilitySets;
   virtualMachineExtensionImages: operations.VirtualMachineExtensionImages;
   virtualMachineExtensions: operations.VirtualMachineExtensions;
-  virtualMachines: operations.VirtualMachines;
   virtualMachineImages: operations.VirtualMachineImages;
   usageOperations: operations.UsageOperations;
   virtualMachineSizes: operations.VirtualMachineSizes;
   images: operations.Images;
+  virtualMachines: operations.VirtualMachines;
   virtualMachineScaleSets: operations.VirtualMachineScaleSets;
   virtualMachineScaleSetExtensions: operations.VirtualMachineScaleSetExtensions;
   virtualMachineScaleSetRollingUpgrades: operations.VirtualMachineScaleSetRollingUpgrades;
   virtualMachineScaleSetVMs: operations.VirtualMachineScaleSetVMs;
   logAnalytics: operations.LogAnalytics;
-  virtualMachineRunCommands: operations.VirtualMachineRunCommands;
-  resourceSkus: operations.ResourceSkus;
-  disks: operations.Disks;
-  snapshots: operations.Snapshots;
-  containerServices: operations.ContainerServices;
+  galleries: operations.Galleries;
+  galleryImages: operations.GalleryImages;
+  galleryImageVersions: operations.GalleryImageVersions;
 }
 
 export { ComputeManagementClient, models as ComputeManagementModels };
