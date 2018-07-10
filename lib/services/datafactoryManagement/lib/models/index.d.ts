@@ -257,7 +257,7 @@ export interface IntegrationRuntimeReference {
  * integration runtime belong to.
  * @member {string} [state] The state of integration runtime. Possible values
  * include: 'Initial', 'Stopped', 'Started', 'Starting', 'Stopping',
- * 'NeedRegistration', 'Online', 'Limited', 'Offline'
+ * 'NeedRegistration', 'Online', 'Limited', 'Offline', 'AccessDenied'
  * @member {string} type Polymorphic Discriminator
  */
 export interface IntegrationRuntimeStatus {
@@ -283,7 +283,8 @@ export interface IntegrationRuntimeStatus {
  * the integration runtime belong to.
  * @member {string} [properties.state] The state of integration runtime.
  * Possible values include: 'Initial', 'Stopped', 'Started', 'Starting',
- * 'Stopping', 'NeedRegistration', 'Online', 'Limited', 'Offline'
+ * 'Stopping', 'NeedRegistration', 'Online', 'Limited', 'Offline',
+ * 'AccessDenied'
  * @member {string} [properties.type] Polymorphic Discriminator
  */
 export interface IntegrationRuntimeStatusResponse {
@@ -337,6 +338,19 @@ export interface UpdateIntegrationRuntimeRequest {
  */
 export interface UpdateIntegrationRuntimeNodeRequest {
   concurrentJobsLimit?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinkedIntegrationRuntimeRequest class.
+ * @constructor
+ * Data factory name for linked integration runtime request.
+ *
+ * @member {string} linkedFactoryName The data factory name for linked
+ * integration runtime.
+ */
+export interface LinkedIntegrationRuntimeRequest {
+  linkedFactoryName: string;
 }
 
 /**
@@ -6617,6 +6631,30 @@ export interface ExecutePipelineActivity extends ControlActivity {
 
 /**
  * @class
+ * Initializes a new instance of the LinkedIntegrationRuntime class.
+ * @constructor
+ * The linked integration runtime information.
+ *
+ * @member {string} [name] The name of the linked integration runtime.
+ * @member {string} [subscriptionId] The subscription ID for which the linked
+ * integration runtime belong to.
+ * @member {string} [dataFactoryName] The name of the data factory for which
+ * the linked integration runtime belong to.
+ * @member {string} [dataFactoryLocation] The location of the data factory for
+ * which the linked integration runtime belong to.
+ * @member {date} [createTime] The creating time of the linked integration
+ * runtime.
+ */
+export interface LinkedIntegrationRuntime {
+  readonly name?: string;
+  readonly subscriptionId?: string;
+  readonly dataFactoryName?: string;
+  readonly dataFactoryLocation?: string;
+  readonly createTime?: Date;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SelfHostedIntegrationRuntimeNode class.
  * @constructor
  * Properties of Self-hosted integration runtime node.
@@ -6707,6 +6745,10 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @member {string} [autoUpdate] Whether Self-hosted integration runtime auto
  * update has been turned on. Possible values include: 'On', 'Off'
  * @member {string} [versionStatus] Status of the integration runtime version.
+ * @member {array} [links] The list of linked integration runtimes that are
+ * created to share with this integration runtime.
+ * @member {array} [sharedWithFactories] The MSI-s of the data factories to
+ * which the integration runtime is shared.
  * @member {string} [pushedVersion] The version that the integration runtime is
  * going to update to.
  * @member {string} [latestVersion] The latest version on download center.
@@ -6724,6 +6766,8 @@ export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeSt
   readonly serviceUrls?: string[];
   readonly autoUpdate?: string;
   readonly versionStatus?: string;
+  links?: LinkedIntegrationRuntime[];
+  readonly sharedWithFactories?: string[];
   readonly pushedVersion?: string;
   readonly latestVersion?: string;
 }
@@ -6833,12 +6877,53 @@ export interface ManagedIntegrationRuntimeStatus extends IntegrationRuntimeStatu
 
 /**
  * @class
+ * Initializes a new instance of the LinkedIntegrationRuntimeType class.
+ * @constructor
+ * The base definition of a linked integration runtime.
+ *
+ * @member {string} authorizationType Polymorphic Discriminator
+ */
+export interface LinkedIntegrationRuntimeType {
+  authorizationType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinkedIntegrationRuntimeRbacAuthorization class.
+ * @constructor
+ * The role based access control (RBAC) authorization type integration runtime.
+ *
+ * @member {string} resourceId The resource identifier of the integration
+ * runtime to be shared.
+ */
+export interface LinkedIntegrationRuntimeRbacAuthorization extends LinkedIntegrationRuntimeType {
+  resourceId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LinkedIntegrationRuntimeKeyAuthorization class.
+ * @constructor
+ * The key authorization type integration runtime.
+ *
+ * @member {object} key The key used for authorization.
+ * @member {string} [key.value] Value of secure string.
+ */
+export interface LinkedIntegrationRuntimeKeyAuthorization extends LinkedIntegrationRuntimeType {
+  key: SecureString;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SelfHostedIntegrationRuntime class.
  * @constructor
  * Self-hosted integration runtime.
  *
+ * @member {object} [linkedInfo]
+ * @member {string} [linkedInfo.authorizationType] Polymorphic Discriminator
  */
 export interface SelfHostedIntegrationRuntime extends IntegrationRuntime {
+  linkedInfo?: LinkedIntegrationRuntimeType;
 }
 
 /**
@@ -6997,7 +7082,7 @@ export interface IntegrationRuntimeComputeProperties {
  * @member {string} [state] Integration runtime state, only valid for managed
  * dedicated integration runtime. Possible values include: 'Initial',
  * 'Stopped', 'Started', 'Starting', 'Stopping', 'NeedRegistration', 'Online',
- * 'Limited', 'Offline'
+ * 'Limited', 'Offline', 'AccessDenied'
  * @member {object} [computeProperties] The compute resource for managed
  * integration runtime.
  * @member {string} [computeProperties.location] The location for managed
