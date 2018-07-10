@@ -129,9 +129,9 @@ export interface TrafficFlow {
  * Microsoft.Network/trafficmanagerProfiles.
  */
 export interface Resource extends BaseResource {
-  id?: string;
-  name?: string;
-  type?: string;
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
 }
 
 /**
