@@ -4839,7 +4839,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} runbookName The runbook name.
      *
-     * @param {string} runbookContent The runbook draft content.
+     * @param {string} runbookContent The runbook draft content.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4863,7 +4863,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} runbookName The runbook name.
      *
-     * @param {string} runbookContent The runbook draft content.
+     * @param {string} runbookContent The runbook draft content.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5096,7 +5096,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} runbookName The runbook name.
      *
-     * @param {string} runbookContent The runbook draft content.
+     * @param {string} runbookContent The runbook draft content.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5120,7 +5120,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} runbookName The runbook name.
      *
-     * @param {string} runbookContent The runbook draft content.
+     * @param {string} runbookContent The runbook draft content.
      *
      * @param {object} [options] Optional Parameters.
      *
