@@ -1635,6 +1635,9 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {uuid} [options.domainId] The id of the domain to use for this
    * project. Defaults to General
    *
+   * @param {string} [options.classificationType] The type of classifier to
+   * create for this project. Possible values include: 'Multiclass', 'Multilabel'
+   *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
@@ -1644,7 +1647,7 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  createProjectWithHttpOperationResponse(name: string, options?: { description? : string, domainId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Project>>;
+  createProjectWithHttpOperationResponse(name: string, options?: { description? : string, domainId? : string, classificationType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Project>>;
 
   /**
    * @summary Create a project
@@ -1657,6 +1660,9 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {uuid} [options.domainId] The id of the domain to use for this
    * project. Defaults to General
+   *
+   * @param {string} [options.classificationType] The type of classifier to
+   * create for this project. Possible values include: 'Multiclass', 'Multilabel'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -1683,9 +1689,9 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  createProject(name: string, options?: { description? : string, domainId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Project>;
+  createProject(name: string, options?: { description? : string, domainId? : string, classificationType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Project>;
   createProject(name: string, callback: ServiceCallback<models.Project>): void;
-  createProject(name: string, options: { description? : string, domainId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Project>): void;
+  createProject(name: string, options: { description? : string, domainId? : string, classificationType? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Project>): void;
 
 
   /**
@@ -1814,6 +1820,10 @@ export default class TrainingAPIClient extends ServiceClient {
    * @param {uuid} [updatedProject.settings.domainId] Gets or sets the id of the
    * Domain to use with this project
    *
+   * @param {string} [updatedProject.settings.classificationType] Gets or sets
+   * the classification type of the project. Possible values include:
+   * 'Multiclass', 'Multilabel'
+   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1843,6 +1853,10 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {uuid} [updatedProject.settings.domainId] Gets or sets the id of the
    * Domain to use with this project
+   *
+   * @param {string} [updatedProject.settings.classificationType] Gets or sets
+   * the classification type of the project. Possible values include:
+   * 'Multiclass', 'Multilabel'
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2432,12 +2446,13 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {uuid} iterationId The iteration id
    *
-   * @param {string} platform The target platform (coreml or tensorflow)
+   * @param {string} platform The target platform (coreml or tensorflow).
+   * Possible values include: 'CoreML', 'TensorFlow', 'DockerFile', 'ONNX'
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.flavor] The flavor of the target platform (Windows,
-   * Linux, ARM, or GPU)
+   * Linux, ARM, or GPU). Possible values include: 'Linux', 'Windows'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2457,12 +2472,13 @@ export default class TrainingAPIClient extends ServiceClient {
    *
    * @param {uuid} iterationId The iteration id
    *
-   * @param {string} platform The target platform (coreml or tensorflow)
+   * @param {string} platform The target platform (coreml or tensorflow).
+   * Possible values include: 'CoreML', 'TensorFlow', 'DockerFile', 'ONNX'
    *
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.flavor] The flavor of the target platform (Windows,
-   * Linux, ARM, or GPU)
+   * Linux, ARM, or GPU). Possible values include: 'Linux', 'Windows'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
