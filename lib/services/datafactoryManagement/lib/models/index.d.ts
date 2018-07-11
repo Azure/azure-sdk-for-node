@@ -1166,6 +1166,8 @@ export interface ResponsysLinkedService extends LinkedService {
  * string (or Expression with resultType string).
  * @member {object} [newClusterSparkConf] a set of optional, user-specified
  * Spark configuration key-value pairs.
+ * @member {object} [newClusterCustomTags] Additional tags for cluster
+ * resources.
  * @member {object} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
@@ -1178,6 +1180,7 @@ export interface AzureDatabricksLinkedService extends LinkedService {
   newClusterNumOfWorker?: any;
   newClusterNodeType?: any;
   newClusterSparkConf?: { [propertyName: string]: any };
+  newClusterCustomTags?: { [propertyName: string]: any };
   encryptedCredential?: any;
 }
 
@@ -4655,6 +4658,45 @@ export interface ExecutionActivity extends Activity {
 
 /**
  * @class
+ * Initializes a new instance of the DatabricksSparkPythonActivity class.
+ * @constructor
+ * DatabricksSparkPython activity.
+ *
+ * @member {object} pythonFile The URI of the Python file to be executed. DBFS
+ * paths are supported. Type: string (or Expression with resultType string).
+ * @member {array} [parameters] Command line parameters that will be passed to
+ * the Python file.
+ * @member {array} [libraries] A list of libraries to be installed on the
+ * cluster that will execute the job.
+ */
+export interface DatabricksSparkPythonActivity extends ExecutionActivity {
+  pythonFile: any;
+  parameters?: any[];
+  libraries?: { [propertyName: string]: any }[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DatabricksSparkJarActivity class.
+ * @constructor
+ * DatabricksSparkJar activity.
+ *
+ * @member {object} mainClassName The full name of the class containing the
+ * main method to be executed. This class must be contained in a JAR provided
+ * as a library. Type: string (or Expression with resultType string).
+ * @member {array} [parameters] Parameters that will be passed to the main
+ * method.
+ * @member {array} [libraries] A list of libraries to be installed on the
+ * cluster that will execute the job.
+ */
+export interface DatabricksSparkJarActivity extends ExecutionActivity {
+  mainClassName: any;
+  parameters?: any[];
+  libraries?: { [propertyName: string]: any }[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the DatabricksNotebookActivity class.
  * @constructor
  * DatabricksNotebook activity.
@@ -4665,10 +4707,13 @@ export interface ExecutionActivity extends Activity {
  * @member {object} [baseParameters] Base parameters to be used for each run of
  * this job.If the notebook takes a parameter that is not specified, the
  * default value from the notebook will be used.
+ * @member {array} [libraries] A list of libraries to be installed on the
+ * cluster that will execute the job.
  */
 export interface DatabricksNotebookActivity extends ExecutionActivity {
   notebookPath: any;
   baseParameters?: { [propertyName: string]: any };
+  libraries?: { [propertyName: string]: any }[];
 }
 
 /**
