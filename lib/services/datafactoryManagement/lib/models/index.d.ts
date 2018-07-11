@@ -6792,8 +6792,6 @@ export interface SelfHostedIntegrationRuntimeNode {
  * @member {string} [versionStatus] Status of the integration runtime version.
  * @member {array} [links] The list of linked integration runtimes that are
  * created to share with this integration runtime.
- * @member {array} [sharedWithFactories] The MSI-s of the data factories to
- * which the integration runtime is shared.
  * @member {string} [pushedVersion] The version that the integration runtime is
  * going to update to.
  * @member {string} [latestVersion] The latest version on download center.
@@ -6812,7 +6810,6 @@ export interface SelfHostedIntegrationRuntimeStatus extends IntegrationRuntimeSt
   readonly autoUpdate?: string;
   readonly versionStatus?: string;
   links?: LinkedIntegrationRuntime[];
-  readonly sharedWithFactories?: string[];
   readonly pushedVersion?: string;
   readonly latestVersion?: string;
 }
