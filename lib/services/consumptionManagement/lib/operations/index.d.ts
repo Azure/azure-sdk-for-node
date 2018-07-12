@@ -3269,11 +3269,11 @@ export interface ReservationsDetails {
 
 /**
  * @class
- * ReservationRecommendationsOperations
+ * ReservationRecommendations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ConsumptionManagementClient.
  */
-export interface ReservationRecommendationsOperations {
+export interface ReservationRecommendations {
 
 
     /**

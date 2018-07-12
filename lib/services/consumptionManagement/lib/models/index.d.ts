@@ -296,9 +296,9 @@ export interface Balance extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ReservationSummaries class.
+ * Initializes a new instance of the ReservationSummary class.
  * @constructor
- * reservation summaries resource.
+ * reservation summary resource.
  *
  * @member {string} [reservationOrderId] The reservation order ID is the
  * identifier for a reservation purchase. Each reservation order ID represents
@@ -327,7 +327,7 @@ export interface Balance extends Resource {
  * corresponds to 12/10/2017 and on that for hour 4 and 5, utilization was
  * 100%, this field will return 100% for that day.
  */
-export interface ReservationSummaries extends Resource {
+export interface ReservationSummary extends Resource {
   readonly reservationOrderId?: string;
   readonly reservationId?: string;
   readonly skuName?: string;
@@ -341,9 +341,9 @@ export interface ReservationSummaries extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ReservationDetails class.
+ * Initializes a new instance of the ReservationDetail class.
  * @constructor
- * reservation details resource.
+ * reservation detail resource.
  *
  * @member {string} [reservationOrderId] The reservation order ID is the
  * identifier for a reservation purchase. Each reservation order ID represents
@@ -365,7 +365,7 @@ export interface ReservationSummaries extends Resource {
  * @member {number} [totalReservedQuantity] This is the total count of
  * instances that are reserved for the reservationid.
  */
-export interface ReservationDetails extends Resource {
+export interface ReservationDetail extends Resource {
   readonly reservationOrderId?: string;
   readonly reservationId?: string;
   readonly skuName?: string;
@@ -378,9 +378,9 @@ export interface ReservationDetails extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ReservationRecommendations class.
+ * Initializes a new instance of the ReservationRecommendation class.
  * @constructor
- * Reservation recommendations resource.
+ * Reservation recommendation resource.
  *
  * @member {string} [id] Resource Id.
  * @member {string} [name] Resource name.
@@ -389,7 +389,7 @@ export interface ReservationDetails extends Resource {
  * @member {string} [location] Resource location
  * @member {string} [sku] Resource sku
  * @member {string} [lookBackPeriod] The number of days of usage to look back
- * for recommendations.
+ * for recommendation.
  * @member {uuid} [meterId] The meter id (GUID)
  * @member {string} [term] RI recommendations in one or three year terms.
  * @member {number} [costWithNoReservedInstances] The total amount of cost
@@ -403,7 +403,7 @@ export interface ReservationDetails extends Resource {
  * @member {date} [firstUsageDate] The usage date for looking back.
  * @member {string} [scope] Shared or single recommendation.
  */
-export interface ReservationRecommendations {
+export interface ReservationRecommendation {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
@@ -843,7 +843,7 @@ export interface MarketplacesListResult extends Array<Marketplace> {
  *
  * @member {string} [nextLink] The link (url) to the next page of results.
  */
-export interface ReservationSummariesListResult extends Array<ReservationSummaries> {
+export interface ReservationSummariesListResult extends Array<ReservationSummary> {
   readonly nextLink?: string;
 }
 
@@ -855,7 +855,7 @@ export interface ReservationSummariesListResult extends Array<ReservationSummari
  *
  * @member {string} [nextLink] The link (url) to the next page of results.
  */
-export interface ReservationDetailsListResult extends Array<ReservationDetails> {
+export interface ReservationDetailsListResult extends Array<ReservationDetail> {
   readonly nextLink?: string;
 }
 
@@ -867,7 +867,7 @@ export interface ReservationDetailsListResult extends Array<ReservationDetails> 
  *
  * @member {string} [nextLink] The link (url) to the next page of results.
  */
-export interface ReservationRecommendationsListResult extends Array<ReservationRecommendations> {
+export interface ReservationRecommendationsListResult extends Array<ReservationRecommendation> {
   readonly nextLink?: string;
 }
 
