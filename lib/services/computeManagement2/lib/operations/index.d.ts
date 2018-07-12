@@ -8748,6 +8748,12 @@ export interface VirtualMachineScaleSets {
      * plan element previously described. Possible values include: 'FromImage',
      * 'Empty', 'Attach'
      *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
      * property allows you to specify the type of the OS that is included in the
@@ -9168,6 +9174,12 @@ export interface VirtualMachineScaleSets {
      * plan element previously described. Possible values include: 'FromImage',
      * 'Empty', 'Attach'
      *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
      * property allows you to specify the type of the OS that is included in the
@@ -9532,6 +9544,12 @@ export interface VirtualMachineScaleSets {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.image] The Source
      * User Image VirtualHardDisk. This VirtualHardDisk will be copied before using
@@ -9825,6 +9843,12 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.storageProfile.osDisk.writeAcceleratorEnabled]
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
+     *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
      *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.image] The Source
@@ -11385,6 +11409,12 @@ export interface VirtualMachineScaleSets {
      * plan element previously described. Possible values include: 'FromImage',
      * 'Empty', 'Attach'
      *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
      * property allows you to specify the type of the OS that is included in the
@@ -11805,6 +11835,12 @@ export interface VirtualMachineScaleSets {
      * plan element previously described. Possible values include: 'FromImage',
      * 'Empty', 'Attach'
      *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {string}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.osType] This
      * property allows you to specify the type of the OS that is included in the
@@ -12169,6 +12205,12 @@ export interface VirtualMachineScaleSets {
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
      *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
+     *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.image] The Source
      * User Image VirtualHardDisk. This VirtualHardDisk will be copied before using
@@ -12462,6 +12504,12 @@ export interface VirtualMachineScaleSets {
      * [parameters.virtualMachineProfile.storageProfile.osDisk.writeAcceleratorEnabled]
      * Specifies whether writeAccelerator should be enabled or disabled on the
      * disk.
+     *
+     * @param {number}
+     * [parameters.virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+     * Specifies the size of the operating system disk in gigabytes. This element
+     * can be used to overwrite the size of the disk in a virtual machine image.
+     * <br><br> This value cannot be larger than 1023 GB
      *
      * @param {object}
      * [parameters.virtualMachineProfile.storageProfile.osDisk.image] The Source
