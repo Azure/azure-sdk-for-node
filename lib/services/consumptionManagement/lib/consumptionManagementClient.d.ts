@@ -64,7 +64,7 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
   reservationRecommendations: operations.ReservationRecommendations;
   budgets: operations.Budgets;
   priceSheet: operations.PriceSheet;
-  costTagsOperations: operations.CostTagsOperations;
+  costTags: operations.CostTags;
   tagsOperations: operations.TagsOperations;
   forecasts: operations.Forecasts;
   operations: operations.Operations;

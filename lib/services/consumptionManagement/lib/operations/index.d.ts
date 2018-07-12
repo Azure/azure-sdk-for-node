@@ -4320,11 +4320,11 @@ export interface PriceSheet {
 
 /**
  * @class
- * CostTagsOperations
+ * CostTags
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ConsumptionManagementClient.
  */
-export interface CostTagsOperations {
+export interface CostTags {
 
 
     /**
@@ -4339,11 +4339,11 @@ export interface CostTagsOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<CostTags>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<CostTagsResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTags>>;
+    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTagsResult>>;
 
     /**
      * Get cost tags for a billing account.
@@ -4362,7 +4362,7 @@ export interface CostTagsOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {CostTags} - The deserialized result object.
+     *                      @resolve {CostTagsResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4370,16 +4370,16 @@ export interface CostTagsOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {CostTags} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CostTags} for more information.
+     *                      {CostTagsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CostTagsResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTags>;
-    get(billingAccountId: string, callback: ServiceCallback<models.CostTags>): void;
-    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTags>): void;
+    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTagsResult>;
+    get(billingAccountId: string, callback: ServiceCallback<models.CostTagsResult>): void;
+    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTagsResult>): void;
 
 
     /**
@@ -4406,11 +4406,11 @@ export interface CostTagsOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<CostTags>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<CostTagsResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(billingAccountId: string, parameters: models.CostTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTags>>;
+    createOrUpdateWithHttpOperationResponse(billingAccountId: string, parameters: models.CostTagsResult, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTagsResult>>;
 
     /**
      * The operation to create or update cost tags assiciated with a billing
@@ -4441,7 +4441,7 @@ export interface CostTagsOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {CostTags} - The deserialized result object.
+     *                      @resolve {CostTagsResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4449,16 +4449,16 @@ export interface CostTagsOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {CostTags} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CostTags} for more information.
+     *                      {CostTagsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CostTagsResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(billingAccountId: string, parameters: models.CostTags, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTags>;
-    createOrUpdate(billingAccountId: string, parameters: models.CostTags, callback: ServiceCallback<models.CostTags>): void;
-    createOrUpdate(billingAccountId: string, parameters: models.CostTags, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTags>): void;
+    createOrUpdate(billingAccountId: string, parameters: models.CostTagsResult, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTagsResult>;
+    createOrUpdate(billingAccountId: string, parameters: models.CostTagsResult, callback: ServiceCallback<models.CostTagsResult>): void;
+    createOrUpdate(billingAccountId: string, parameters: models.CostTagsResult, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTagsResult>): void;
 }
 
 /**

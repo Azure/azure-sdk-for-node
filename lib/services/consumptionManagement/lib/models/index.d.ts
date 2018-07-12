@@ -592,26 +592,26 @@ export interface Budget extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the CostTag class.
+ * Initializes a new instance of the CostTagProperties class.
  * @constructor
- * The cost tag.
+ * The properties of the cost tag.
  *
  * @member {string} [key] Cost tag key.
  */
-export interface CostTag {
+export interface CostTagProperties {
   key?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the CostTags class.
+ * Initializes a new instance of the CostTagsResult class.
  * @constructor
  * A cost tag resource.
  *
  * @member {array} [costTags] Cost tags.
  */
-export interface CostTags extends ProxyResource {
-  costTags?: CostTag[];
+export interface CostTagsResult extends ProxyResource {
+  costTags?: CostTagProperties[];
 }
 
 /**
