@@ -80,6 +80,11 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
+   * @param {string} [options.filter] May be used to filter by permission. The
+   * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+   * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+   * string where key and value is separated by a colon (:).
+   *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
@@ -89,7 +94,7 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  productsByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
+  productsByBillingProfileWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
 
   /**
    * Lists the products by billingProfileId for given start date and end date.
@@ -103,6 +108,11 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    * @param {string} endDate End date
    *
    * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.filter] May be used to filter by permission. The
+   * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+   * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+   * string where key and value is separated by a colon (:).
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -129,9 +139,86 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  productsByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
+  productsByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
   productsByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, callback: ServiceCallback<models.ProductsListResult>): void;
-  productsByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
+  productsByBillingProfile(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
+
+
+  /**
+   * Lists the products by projectId for given start date and end date.
+   *
+   * @param {string} billingAccountId BillingAccount ID
+   *
+   * @param {string} billingProfileId Billing Profile Id.
+   *
+   * @param {string} startDate Start date
+   *
+   * @param {string} endDate End date
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.filter] May be used to filter by permission. The
+   * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+   * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+   * string where key and value is separated by a colon (:).
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<ProductsListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  productsByProjectWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
+
+  /**
+   * Lists the products by projectId for given start date and end date.
+   *
+   * @param {string} billingAccountId BillingAccount ID
+   *
+   * @param {string} billingProfileId Billing Profile Id.
+   *
+   * @param {string} startDate Start date
+   *
+   * @param {string} endDate End date
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.filter] May be used to filter by permission. The
+   * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+   * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+   * string where key and value is separated by a colon (:).
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {ProductsListResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {ProductsListResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link ProductsListResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  productsByProject(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
+  productsByProject(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, callback: ServiceCallback<models.ProductsListResult>): void;
+  productsByProject(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };

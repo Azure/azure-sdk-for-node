@@ -1961,6 +1961,11 @@ export interface ProductsByBillingAccount {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.filter] May be used to filter by permission. The
+     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -1970,7 +1975,7 @@ export interface ProductsByBillingAccount {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
+    listWithHttpOperationResponse(billingAccountId: string, startDate: string, endDate: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
 
     /**
      * Lists the products by billingAccountId for given start and end date.
@@ -1982,6 +1987,11 @@ export interface ProductsByBillingAccount {
      * @param {string} endDate End date
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] May be used to filter by permission. The
+     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
+     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
+     * string where key and value is separated by a colon (:).
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2008,9 +2018,9 @@ export interface ProductsByBillingAccount {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(billingAccountId: string, startDate: string, endDate: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
+    list(billingAccountId: string, startDate: string, endDate: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
     list(billingAccountId: string, startDate: string, endDate: string, callback: ServiceCallback<models.ProductsListResult>): void;
-    list(billingAccountId: string, startDate: string, endDate: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
+    list(billingAccountId: string, startDate: string, endDate: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
 
 
     /**

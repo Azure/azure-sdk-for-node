@@ -29,11 +29,6 @@ export interface BillingAccounts {
      * @param {string} [options.expand] May be used to expand the projects and
      * billingProfiles.
      *
-     * @param {string} [options.filter] May be used to filter by permission. The
-     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
-     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
-     * string where key and value is separated by a colon (:).
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -43,7 +38,7 @@ export interface BillingAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingAccountListResult>>;
+    listWithHttpOperationResponse(options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingAccountListResult>>;
 
     /**
      * Lists all billing accounts for a user which he has access to.
@@ -53,11 +48,6 @@ export interface BillingAccounts {
      * @param {string} [options.expand] May be used to expand the projects and
      * billingProfiles.
      *
-     * @param {string} [options.filter] May be used to filter by permission. The
-     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
-     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
-     * string where key and value is separated by a colon (:).
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -84,9 +74,9 @@ export interface BillingAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingAccountListResult>;
+    list(options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingAccountListResult>;
     list(callback: ServiceCallback<models.BillingAccountListResult>): void;
-    list(options: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingAccountListResult>): void;
+    list(options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingAccountListResult>): void;
 
 
     /**
@@ -96,11 +86,6 @@ export interface BillingAccounts {
      *
      * @param {string} [options.expand] May be used to expand the projects and
      * billingProfiles.
-     *
-     * @param {string} [options.filter] May be used to filter by permission. The
-     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
-     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
-     * string where key and value is separated by a colon (:).
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -111,7 +96,7 @@ export interface BillingAccounts {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithCreateProjectPermissionWithHttpOperationResponse(options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingAccountListResult>>;
+    listWithCreateProjectPermissionWithHttpOperationResponse(options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingAccountListResult>>;
 
     /**
      * Lists all billing accounts with create project permission for a user.
@@ -120,11 +105,6 @@ export interface BillingAccounts {
      *
      * @param {string} [options.expand] May be used to expand the projects and
      * billingProfiles.
-     *
-     * @param {string} [options.filter] May be used to filter by permission. The
-     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
-     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
-     * string where key and value is separated by a colon (:).
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -152,9 +132,9 @@ export interface BillingAccounts {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listWithCreateProjectPermission(options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingAccountListResult>;
+    listWithCreateProjectPermission(options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingAccountListResult>;
     listWithCreateProjectPermission(callback: ServiceCallback<models.BillingAccountListResult>): void;
-    listWithCreateProjectPermission(options: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingAccountListResult>): void;
+    listWithCreateProjectPermission(options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingAccountListResult>): void;
 
 
     /**
@@ -479,11 +459,6 @@ export interface Projects {
      *
      * @param {string} [options.expand] May be used to expand the eligibleOffers.
      *
-     * @param {string} [options.filter] May be used to filter by permission. The
-     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
-     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
-     * string where key and value is separated by a colon (:).
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -493,7 +468,7 @@ export interface Projects {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByBillingAccountIdWithHttpOperationResponse(billingAccountId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProjectListResult>>;
+    listByBillingAccountIdWithHttpOperationResponse(billingAccountId: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProjectListResult>>;
 
     /**
      * Lists all projects for a user which he has access to.
@@ -503,11 +478,6 @@ export interface Projects {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the eligibleOffers.
-     *
-     * @param {string} [options.filter] May be used to filter by permission. The
-     * filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not
-     * currently support 'ne', 'or', or 'not'. Tag filter is a key value pair
-     * string where key and value is separated by a colon (:).
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -534,9 +504,9 @@ export interface Projects {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByBillingAccountId(billingAccountId: string, options?: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProjectListResult>;
+    listByBillingAccountId(billingAccountId: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProjectListResult>;
     listByBillingAccountId(billingAccountId: string, callback: ServiceCallback<models.ProjectListResult>): void;
-    listByBillingAccountId(billingAccountId: string, options: { expand? : string, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProjectListResult>): void;
+    listByBillingAccountId(billingAccountId: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProjectListResult>): void;
 
 
     /**
@@ -612,6 +582,140 @@ export interface Projects {
     create(billingAccountId: string, parameters: models.Project, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Project>;
     create(billingAccountId: string, parameters: models.Project, callback: ServiceCallback<models.Project>): void;
     create(billingAccountId: string, parameters: models.Project, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Project>): void;
+
+
+    /**
+     * Lists all projects with create subscription permission for a user.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the eligibleOffers.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ProjectListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithCreateSubscriptionPermissionWithHttpOperationResponse(billingAccountId: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProjectListResult>>;
+
+    /**
+     * Lists all projects with create subscription permission for a user.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] May be used to expand the eligibleOffers.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ProjectListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ProjectListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ProjectListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listWithCreateSubscriptionPermission(billingAccountId: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProjectListResult>;
+    listWithCreateSubscriptionPermission(billingAccountId: string, callback: ServiceCallback<models.ProjectListResult>): void;
+    listWithCreateSubscriptionPermission(billingAccountId: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProjectListResult>): void;
+
+
+    /**
+     * The operation to create a project.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} parameters Parameters supplied to the Create Project
+     * operation.
+     *
+     * @param {string} [parameters.displayName] The name of the project.
+     *
+     * @param {array} [parameters.eligibleOffers] The eligible offers attached to
+     * the project.
+     *
+     * @param {string} [parameters.costCenter] The cost center for the project.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Project>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    create1WithHttpOperationResponse(billingAccountId: string, parameters: models.Project, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Project>>;
+
+    /**
+     * The operation to create a project.
+     *
+     * @param {string} billingAccountId billing Account Id.
+     *
+     * @param {object} parameters Parameters supplied to the Create Project
+     * operation.
+     *
+     * @param {string} [parameters.displayName] The name of the project.
+     *
+     * @param {array} [parameters.eligibleOffers] The eligible offers attached to
+     * the project.
+     *
+     * @param {string} [parameters.costCenter] The cost center for the project.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Project} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Project} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Project} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create1(billingAccountId: string, parameters: models.Project, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Project>;
+    create1(billingAccountId: string, parameters: models.Project, callback: ServiceCallback<models.Project>): void;
+    create1(billingAccountId: string, parameters: models.Project, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Project>): void;
 
 
     /**
