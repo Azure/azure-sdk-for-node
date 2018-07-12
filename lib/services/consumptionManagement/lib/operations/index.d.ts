@@ -4463,11 +4463,11 @@ export interface CostTags {
 
 /**
  * @class
- * TagsOperations
+ * Tags
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ConsumptionManagementClient.
  */
-export interface TagsOperations {
+export interface Tags {
 
 
     /**
@@ -4482,11 +4482,11 @@ export interface TagsOperations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Tags>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<TagsResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Tags>>;
+    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TagsResult>>;
 
     /**
      * Get all available tag keys for a billing account.
@@ -4505,7 +4505,7 @@ export interface TagsOperations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Tags} - The deserialized result object.
+     *                      @resolve {TagsResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4513,16 +4513,16 @@ export interface TagsOperations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Tags} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Tags} for more information.
+     *                      {TagsResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TagsResult} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Tags>;
-    get(billingAccountId: string, callback: ServiceCallback<models.Tags>): void;
-    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Tags>): void;
+    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TagsResult>;
+    get(billingAccountId: string, callback: ServiceCallback<models.TagsResult>): void;
+    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TagsResult>): void;
 }
 
 /**

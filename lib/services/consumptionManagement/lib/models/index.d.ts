@@ -455,13 +455,13 @@ export interface ProxyResource extends BaseResource {
 
 /**
  * @class
- * Initializes a new instance of the Tags class.
+ * Initializes a new instance of the TagsResult class.
  * @constructor
  * A resource listing all tags.
  *
  * @member {array} [tags] A list of Tag.
  */
-export interface Tags extends ProxyResource {
+export interface TagsResult extends ProxyResource {
   tags?: Tag[];
 }
 
