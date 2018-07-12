@@ -149,7 +149,7 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @param {string} billingAccountId BillingAccount ID
    *
-   * @param {string} billingProfileId Billing Profile Id.
+   * @param {string} projectId Project Id.
    *
    * @param {string} startDate Start date
    *
@@ -171,14 +171,14 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  productsByProjectWithHttpOperationResponse(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
+  productsByProjectWithHttpOperationResponse(billingAccountId: string, projectId: string, startDate: string, endDate: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProductsListResult>>;
 
   /**
    * Lists the products by projectId for given start date and end date.
    *
    * @param {string} billingAccountId BillingAccount ID
    *
-   * @param {string} billingProfileId Billing Profile Id.
+   * @param {string} projectId Project Id.
    *
    * @param {string} startDate Start date
    *
@@ -216,9 +216,9 @@ export default class ConsumptionManagementClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  productsByProject(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
-  productsByProject(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, callback: ServiceCallback<models.ProductsListResult>): void;
-  productsByProject(billingAccountId: string, billingProfileId: string, startDate: string, endDate: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
+  productsByProject(billingAccountId: string, projectId: string, startDate: string, endDate: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProductsListResult>;
+  productsByProject(billingAccountId: string, projectId: string, startDate: string, endDate: string, callback: ServiceCallback<models.ProductsListResult>): void;
+  productsByProject(billingAccountId: string, projectId: string, startDate: string, endDate: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProductsListResult>): void;
 }
 
 export { ConsumptionManagementClient, models as ConsumptionManagementModels };
