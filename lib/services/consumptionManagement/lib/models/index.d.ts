@@ -120,6 +120,10 @@ export interface Resource extends BaseResource {
  * @member {string} [consumedService] Consumed service name.
  * @member {string} [costCenter] The cost center of this department if it is a
  * department and a costcenter exists
+ * @member {string} [partNumber] Part Number
+ * @member {string} [resourceGuid] Resource Guid
+ * @member {string} [offerId] Offer Id
+ * @member {boolean} [chargesBilledSeparately] Charges billed separately
  * @member {string} [location] Resource Location
  * @member {string} [additionalProperties] Additional details of this usage
  * item. By default this is not populated, unless it's specified in $expand.
@@ -146,6 +150,10 @@ export interface UsageDetail extends Resource {
   readonly product?: string;
   readonly consumedService?: string;
   readonly costCenter?: string;
+  readonly partNumber?: string;
+  readonly resourceGuid?: string;
+  readonly offerId?: string;
+  readonly chargesBilledSeparately?: boolean;
   readonly location?: string;
   readonly additionalProperties?: string;
 }
@@ -637,6 +645,7 @@ export interface CostTags extends ProxyResource {
  * @member {string} [partNumber] Part Number
  * @member {number} [unitPrice] Unit Price
  * @member {string} [currencyCode] Currency Code
+ * @member {string} [offerId] Offer Id
  */
 export interface PriceSheetProperties {
   readonly billingPeriodId?: string;
@@ -647,6 +656,7 @@ export interface PriceSheetProperties {
   readonly partNumber?: string;
   readonly unitPrice?: number;
   readonly currencyCode?: string;
+  readonly offerId?: string;
 }
 
 /**
