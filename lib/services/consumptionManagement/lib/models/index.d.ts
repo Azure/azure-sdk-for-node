@@ -604,13 +604,13 @@ export interface CostTagProperties {
 
 /**
  * @class
- * Initializes a new instance of the CostTagsResult class.
+ * Initializes a new instance of the CostTag class.
  * @constructor
  * A cost tag resource.
  *
  * @member {array} [costTags] Cost tags.
  */
-export interface CostTagsResult extends ProxyResource {
+export interface CostTag extends ProxyResource {
   costTags?: CostTagProperties[];
 }
 

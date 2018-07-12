@@ -1976,7 +1976,7 @@ export interface Marketplaces {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByEnrollmentAccountsWithHttpOperationResponse(enrollmentAccountId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+    listByEnrollmentAccountWithHttpOperationResponse(enrollmentAccountId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
      * Lists the marketplaces for a scope by enrollmentAccountId and current
@@ -2027,9 +2027,9 @@ export interface Marketplaces {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByEnrollmentAccounts(enrollmentAccountId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
-    listByEnrollmentAccounts(enrollmentAccountId: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
-    listByEnrollmentAccounts(enrollmentAccountId: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByEnrollmentAccount(enrollmentAccountId: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByEnrollmentAccount(enrollmentAccountId: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByEnrollmentAccount(enrollmentAccountId: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
 
 
     /**
@@ -2066,7 +2066,7 @@ export interface Marketplaces {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listForBillingPeriodByEnrollmentAccountsWithHttpOperationResponse(enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+    listForBillingPeriodByEnrollmentAccountWithHttpOperationResponse(enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
      * Lists the marketplaces for a scope by billing period and
@@ -2119,9 +2119,9 @@ export interface Marketplaces {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listForBillingPeriodByEnrollmentAccounts(enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
-    listForBillingPeriodByEnrollmentAccounts(enrollmentAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
-    listForBillingPeriodByEnrollmentAccounts(enrollmentAccountId: string, billingPeriodName: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listForBillingPeriodByEnrollmentAccount(enrollmentAccountId: string, billingPeriodName: string, options?: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listForBillingPeriodByEnrollmentAccount(enrollmentAccountId: string, billingPeriodName: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listForBillingPeriodByEnrollmentAccount(enrollmentAccountId: string, billingPeriodName: string, options: { filter? : string, top? : number, skiptoken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
 
 
     /**
@@ -2509,7 +2509,7 @@ export interface Marketplaces {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByEnrollmentAccountsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+    listByEnrollmentAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
      * Lists the marketplaces for a scope by enrollmentAccountId and current
@@ -2547,9 +2547,9 @@ export interface Marketplaces {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByEnrollmentAccountsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
-    listByEnrollmentAccountsNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
-    listByEnrollmentAccountsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByEnrollmentAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listByEnrollmentAccountNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listByEnrollmentAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
 
 
     /**
@@ -2571,7 +2571,7 @@ export interface Marketplaces {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listForBillingPeriodByEnrollmentAccountsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
+    listForBillingPeriodByEnrollmentAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MarketplacesListResult>>;
 
     /**
      * Lists the marketplaces for a scope by billing period and
@@ -2609,9 +2609,9 @@ export interface Marketplaces {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listForBillingPeriodByEnrollmentAccountsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
-    listForBillingPeriodByEnrollmentAccountsNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
-    listForBillingPeriodByEnrollmentAccountsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listForBillingPeriodByEnrollmentAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MarketplacesListResult>;
+    listForBillingPeriodByEnrollmentAccountNext(nextPageLink: string, callback: ServiceCallback<models.MarketplacesListResult>): void;
+    listForBillingPeriodByEnrollmentAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MarketplacesListResult>): void;
 }
 
 /**
@@ -4339,11 +4339,11 @@ export interface CostTags {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<CostTagsResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<CostTag>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTagsResult>>;
+    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTag>>;
 
     /**
      * Get cost tags for a billing account.
@@ -4362,7 +4362,7 @@ export interface CostTags {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {CostTagsResult} - The deserialized result object.
+     *                      @resolve {CostTag} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4370,16 +4370,16 @@ export interface CostTags {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {CostTagsResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CostTagsResult} for more information.
+     *                      {CostTag} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CostTag} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTagsResult>;
-    get(billingAccountId: string, callback: ServiceCallback<models.CostTagsResult>): void;
-    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTagsResult>): void;
+    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTag>;
+    get(billingAccountId: string, callback: ServiceCallback<models.CostTag>): void;
+    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTag>): void;
 
 
     /**
@@ -4406,11 +4406,11 @@ export interface CostTags {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<CostTagsResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<CostTag>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(billingAccountId: string, parameters: models.CostTagsResult, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTagsResult>>;
+    createOrUpdateWithHttpOperationResponse(billingAccountId: string, parameters: models.CostTag, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTag>>;
 
     /**
      * The operation to create or update cost tags assiciated with a billing
@@ -4441,7 +4441,7 @@ export interface CostTags {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {CostTagsResult} - The deserialized result object.
+     *                      @resolve {CostTag} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4449,16 +4449,16 @@ export interface CostTags {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {CostTagsResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CostTagsResult} for more information.
+     *                      {CostTag} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CostTag} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(billingAccountId: string, parameters: models.CostTagsResult, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTagsResult>;
-    createOrUpdate(billingAccountId: string, parameters: models.CostTagsResult, callback: ServiceCallback<models.CostTagsResult>): void;
-    createOrUpdate(billingAccountId: string, parameters: models.CostTagsResult, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTagsResult>): void;
+    createOrUpdate(billingAccountId: string, parameters: models.CostTag, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTag>;
+    createOrUpdate(billingAccountId: string, parameters: models.CostTag, callback: ServiceCallback<models.CostTag>): void;
+    createOrUpdate(billingAccountId: string, parameters: models.CostTag, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTag>): void;
 }
 
 /**
