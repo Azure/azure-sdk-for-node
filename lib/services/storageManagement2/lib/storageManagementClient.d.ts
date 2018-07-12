@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class StorageManagementClient extends AzureServiceClient {
+export default class StorageManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the StorageManagementClient class.
    * @constructor
@@ -20,7 +21,7 @@ declare class StorageManagementClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+   * @param {string} subscriptionId - The ID of the target subscription.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -58,7 +59,8 @@ declare class StorageManagementClient extends AzureServiceClient {
   operations: operations.Operations;
   skus: operations.Skus;
   storageAccounts: operations.StorageAccounts;
-  usageOperations: operations.UsageOperations;
+  usages: operations.Usages;
+  blobContainers: operations.BlobContainers;
 }
 
-export = StorageManagementClient;
+export { StorageManagementClient, models as StorageManagementModels };

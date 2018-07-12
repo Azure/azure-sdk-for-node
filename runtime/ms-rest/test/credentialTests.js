@@ -65,7 +65,7 @@ describe('Token credentials', function () {
 });
 
 describe('Basic Authentication credentials', function () {
-  var encodedCredentials = new Buffer(dummyuserName + ':' + dummyPassword).toString('base64')
+  var encodedCredentials = Buffer.from(dummyuserName + ':' + dummyPassword).toString('base64')
   describe('usage', function () {
     it('should base64 encode the username and password and set auth header with baisc scheme in request', function (done) {
       var creds = new BasicAuthenticationCredentials(dummyuserName, dummyPassword);

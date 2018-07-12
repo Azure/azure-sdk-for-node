@@ -34,11 +34,11 @@ export default class SqlManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
@@ -77,10 +77,10 @@ export default class SqlManagementClient extends AzureServiceClient {
   transparentDataEncryptionActivities: operations.TransparentDataEncryptionActivities;
   serverUsages: operations.ServerUsages;
   databaseUsages: operations.DatabaseUsages;
-  databaseBlobAuditingPolicies: operations.DatabaseBlobAuditingPolicies;
   databaseAutomaticTuningOperations: operations.DatabaseAutomaticTuningOperations;
   encryptionProtectors: operations.EncryptionProtectors;
   failoverGroups: operations.FailoverGroups;
+  managedInstances: operations.ManagedInstances;
   operations: operations.Operations;
   serverKeys: operations.ServerKeys;
   syncAgents: operations.SyncAgents;
@@ -88,14 +88,34 @@ export default class SqlManagementClient extends AzureServiceClient {
   syncMembers: operations.SyncMembers;
   subscriptionUsages: operations.SubscriptionUsages;
   virtualNetworkRules: operations.VirtualNetworkRules;
+  extendedDatabaseBlobAuditingPolicies: operations.ExtendedDatabaseBlobAuditingPolicies;
+  extendedServerBlobAuditingPolicies: operations.ExtendedServerBlobAuditingPolicies;
+  serverBlobAuditingPolicies: operations.ServerBlobAuditingPolicies;
+  databaseBlobAuditingPolicies: operations.DatabaseBlobAuditingPolicies;
+  databaseVulnerabilityAssessmentRuleBaselines: operations.DatabaseVulnerabilityAssessmentRuleBaselines;
+  databaseVulnerabilityAssessments: operations.DatabaseVulnerabilityAssessments;
+  jobAgents: operations.JobAgents;
+  jobCredentials: operations.JobCredentials;
+  jobExecutions: operations.JobExecutions;
+  jobs: operations.Jobs;
+  jobStepExecutions: operations.JobStepExecutions;
+  jobSteps: operations.JobSteps;
+  jobTargetExecutions: operations.JobTargetExecutions;
+  jobTargetGroups: operations.JobTargetGroups;
+  jobVersions: operations.JobVersions;
   longTermRetentionBackups: operations.LongTermRetentionBackups;
   backupLongTermRetentionPolicies: operations.BackupLongTermRetentionPolicies;
+  managedDatabases: operations.ManagedDatabases;
   serverAutomaticTuningOperations: operations.ServerAutomaticTuningOperations;
   serverDnsAliases: operations.ServerDnsAliases;
+  serverSecurityAlertPolicies: operations.ServerSecurityAlertPolicies;
   restorePoints: operations.RestorePoints;
   databaseOperations: operations.DatabaseOperations;
   elasticPoolOperations: operations.ElasticPoolOperations;
   capabilities: operations.Capabilities;
+  databaseVulnerabilityAssessmentScans: operations.DatabaseVulnerabilityAssessmentScans;
+  instanceFailoverGroups: operations.InstanceFailoverGroups;
+  backupShortTermRetentionPolicies: operations.BackupShortTermRetentionPolicies;
 }
 
 export { SqlManagementClient, models as SqlManagementModels };
