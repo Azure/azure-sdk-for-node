@@ -2792,6 +2792,10 @@ export interface VirtualMachineScaleSetManagedDiskParameters {
  * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
+ * @member {number} [diskSizeGB] Specifies the size of the operating system
+ * disk in gigabytes. This element can be used to overwrite the size of the
+ * disk in a virtual machine image. <br><br> This value cannot be larger than
+ * 1023 GB
  * @member {string} [osType] This property allows you to specify the type of
  * the OS that is included in the disk if creating a VM from user-image or a
  * specialized VHD. <br><br> Possible values are: <br><br> **Windows** <br><br>
@@ -2812,6 +2816,7 @@ export interface VirtualMachineScaleSetOSDisk {
   caching?: string;
   writeAcceleratorEnabled?: boolean;
   createOption: string;
+  diskSizeGB?: number;
   osType?: string;
   image?: VirtualHardDisk;
   vhdContainers?: string[];
@@ -2829,6 +2834,10 @@ export interface VirtualMachineScaleSetOSDisk {
  * 'None', 'ReadOnly', 'ReadWrite'
  * @member {boolean} [writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
+ * @member {number} [diskSizeGB] Specifies the size of the operating system
+ * disk in gigabytes. This element can be used to overwrite the size of the
+ * disk in a virtual machine image. <br><br> This value cannot be larger than
+ * 1023 GB
  * @member {object} [image] The Source User Image VirtualHardDisk. This
  * VirtualHardDisk will be copied before using it to attach to the Virtual
  * Machine. If SourceImage is provided, the destination VirtualHardDisk should
@@ -2845,6 +2854,7 @@ export interface VirtualMachineScaleSetOSDisk {
 export interface VirtualMachineScaleSetUpdateOSDisk {
   caching?: string;
   writeAcceleratorEnabled?: boolean;
+  diskSizeGB?: number;
   image?: VirtualHardDisk;
   vhdContainers?: string[];
   managedDisk?: VirtualMachineScaleSetManagedDiskParameters;
@@ -2869,7 +2879,7 @@ export interface VirtualMachineScaleSetUpdateOSDisk {
  * @member {string} createOption The create option. Possible values include:
  * 'FromImage', 'Empty', 'Attach'
  * @member {number} [diskSizeGB] Specifies the size of an empty data disk in
- * gigabytes. This element can be used to overwrite the name of the disk in a
+ * gigabytes. This element can be used to overwrite the size of the disk in a
  * virtual machine image. <br><br> This value cannot be larger than 1023 GB
  * @member {object} [managedDisk] The managed disk parameters.
  * @member {string} [managedDisk.storageAccountType] Specifies the storage
@@ -2928,6 +2938,10 @@ export interface VirtualMachineScaleSetDataDisk {
  * the imageReference element described above. If you are using a marketplace
  * image, you  also use the plan element previously described. Possible values
  * include: 'FromImage', 'Empty', 'Attach'
+ * @member {number} [osDisk.diskSizeGB] Specifies the size of the operating
+ * system disk in gigabytes. This element can be used to overwrite the size of
+ * the disk in a virtual machine image. <br><br> This value cannot be larger
+ * than 1023 GB
  * @member {string} [osDisk.osType] This property allows you to specify the
  * type of the OS that is included in the disk if creating a VM from user-image
  * or a specialized VHD. <br><br> Possible values are: <br><br> **Windows**
@@ -2976,6 +2990,10 @@ export interface VirtualMachineScaleSetStorageProfile {
  * 'None', 'ReadOnly', 'ReadWrite'
  * @member {boolean} [osDisk.writeAcceleratorEnabled] Specifies whether
  * writeAccelerator should be enabled or disabled on the disk.
+ * @member {number} [osDisk.diskSizeGB] Specifies the size of the operating
+ * system disk in gigabytes. This element can be used to overwrite the size of
+ * the disk in a virtual machine image. <br><br> This value cannot be larger
+ * than 1023 GB
  * @member {object} [osDisk.image] The Source User Image VirtualHardDisk. This
  * VirtualHardDisk will be copied before using it to attach to the Virtual
  * Machine. If SourceImage is provided, the destination VirtualHardDisk should
@@ -3479,6 +3497,10 @@ export interface VirtualMachineScaleSetExtensionProfile {
  * you also use the imageReference element described above. If you are using a
  * marketplace image, you  also use the plan element previously described.
  * Possible values include: 'FromImage', 'Empty', 'Attach'
+ * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of
+ * the operating system disk in gigabytes. This element can be used to
+ * overwrite the size of the disk in a virtual machine image. <br><br> This
+ * value cannot be larger than 1023 GB
  * @member {string} [storageProfile.osDisk.osType] This property allows you to
  * specify the type of the OS that is included in the disk if creating a VM
  * from user-image or a specialized VHD. <br><br> Possible values are: <br><br>
@@ -3614,6 +3636,10 @@ export interface VirtualMachineScaleSetVMProfile {
  * values include: 'None', 'ReadOnly', 'ReadWrite'
  * @member {boolean} [storageProfile.osDisk.writeAcceleratorEnabled] Specifies
  * whether writeAccelerator should be enabled or disabled on the disk.
+ * @member {number} [storageProfile.osDisk.diskSizeGB] Specifies the size of
+ * the operating system disk in gigabytes. This element can be used to
+ * overwrite the size of the disk in a virtual machine image. <br><br> This
+ * value cannot be larger than 1023 GB
  * @member {object} [storageProfile.osDisk.image] The Source User Image
  * VirtualHardDisk. This VirtualHardDisk will be copied before using it to
  * attach to the Virtual Machine. If SourceImage is provided, the destination
@@ -3863,6 +3889,10 @@ export interface VirtualMachineScaleSetUpdateVMProfile {
  * described above. If you are using a marketplace image, you  also use the
  * plan element previously described. Possible values include: 'FromImage',
  * 'Empty', 'Attach'
+ * @member {number} [virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+ * Specifies the size of the operating system disk in gigabytes. This element
+ * can be used to overwrite the size of the disk in a virtual machine image.
+ * <br><br> This value cannot be larger than 1023 GB
  * @member {string} [virtualMachineProfile.storageProfile.osDisk.osType] This
  * property allows you to specify the type of the OS that is included in the
  * disk if creating a VM from user-image or a specialized VHD. <br><br>
@@ -4116,6 +4146,10 @@ export interface VirtualMachineScaleSet extends Resource {
  * [virtualMachineProfile.storageProfile.osDisk.writeAcceleratorEnabled]
  * Specifies whether writeAccelerator should be enabled or disabled on the
  * disk.
+ * @member {number} [virtualMachineProfile.storageProfile.osDisk.diskSizeGB]
+ * Specifies the size of the operating system disk in gigabytes. This element
+ * can be used to overwrite the size of the disk in a virtual machine image.
+ * <br><br> This value cannot be larger than 1023 GB
  * @member {object} [virtualMachineProfile.storageProfile.osDisk.image] The
  * Source User Image VirtualHardDisk. This VirtualHardDisk will be copied
  * before using it to attach to the Virtual Machine. If SourceImage is
@@ -4966,6 +5000,7 @@ export interface UpgradeOperationHistoricalStatusInfo {
  * element.
  * @member {string} [plan.promotionCode] The promotion code.
  * @member {array} [resources] The virtual machine child extension resources.
+ * @member {array} [zones] The virtual machine zones.
  */
 export interface VirtualMachineScaleSetVM extends Resource {
   readonly instanceId?: string;
@@ -4983,6 +5018,7 @@ export interface VirtualMachineScaleSetVM extends Resource {
   licenseType?: string;
   plan?: Plan;
   readonly resources?: VirtualMachineExtension[];
+  readonly zones?: string[];
 }
 
 /**
