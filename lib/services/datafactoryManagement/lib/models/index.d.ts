@@ -4376,6 +4376,77 @@ export interface AmazonS3Dataset extends Dataset {
 
 /**
  * @class
+ * Initializes a new instance of the DependencyReference class.
+ * @constructor
+ * Referenced dependency.
+ *
+ * @member {string} type Polymorphic Discriminator
+ */
+export interface DependencyReference {
+  type: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SelfDependencyTumblingWindowTriggerReference class.
+ * @constructor
+ * Self referenced tumbling window trigger dependency.
+ *
+ * @member {string} offset Timespan applied to the start time of a tumbling
+ * window when evaluating dependency, .Net timespan format.
+ * @member {string} [size] The size of the window when evaluating the
+ * dependency. If undefined the frequency of the tumbling window will be used,
+ * .Net timespan format.
+ */
+export interface SelfDependencyTumblingWindowTriggerReference extends DependencyReference {
+  offset: string;
+  size?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerReference class.
+ * @constructor
+ * Trigger reference type.
+ *
+ * @member {string} referenceName Reference trigger name.
+ */
+export interface TriggerReference {
+  referenceName: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TriggerDependencyReference class.
+ * @constructor
+ * Trigger referenced dependency.
+ *
+ * @member {object} referenceTrigger Referenced trigger.
+ * @member {string} [referenceTrigger.referenceName] Reference trigger name.
+ */
+export interface TriggerDependencyReference extends DependencyReference {
+  referenceTrigger: TriggerReference;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TumblingWindowTriggerDependencyReference class.
+ * @constructor
+ * Referenced tumbling window trigger dependency.
+ *
+ * @member {string} [offset] Timespan applied to the start time of a tumbling
+ * window when evaluating dependency, .Net timespan format.
+ * @member {string} [size] The size of the window when evaluating the
+ * dependency. If undefined the frequency of the tumbling window will be used,
+ * .Net timespan format.
+ */
+export interface TumblingWindowTriggerDependencyReference extends TriggerDependencyReference {
+  offset?: string;
+  size?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RetryPolicy class.
  * @constructor
  * Execution policy for an activity.
@@ -4428,6 +4499,8 @@ export interface RetryPolicy {
  * minimum: 0.
  * @member {number} [retryPolicy.intervalInSeconds] Interval between retries in
  * seconds. Default is 30.
+ * @member {array} [dependsOn] Triggers that this trigger depends on. Only
+ * tumbling window triggers are supported.
  */
 export interface TumblingWindowTrigger extends Trigger {
   pipelineProperty: TriggerPipelineReference;
@@ -4438,6 +4511,7 @@ export interface TumblingWindowTrigger extends Trigger {
   delay?: any;
   maxConcurrency: number;
   retryPolicy?: RetryPolicy;
+  dependsOn?: DependencyReference[];
 }
 
 /**
