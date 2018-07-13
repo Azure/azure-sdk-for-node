@@ -1138,11 +1138,11 @@ export interface BackupUsageSummaries {
 
 /**
  * @class
- * Validate
+ * Operation
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the RecoveryServicesBackupClient.
  */
-export interface Validate {
+export interface Operation {
 
 
     /**
@@ -1169,7 +1169,7 @@ export interface Validate {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    operationWithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ValidateOperationsResponse>>;
+    validateWithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ValidateOperationsResponse>>;
 
     /**
      * Validate operation for specified backed up item. This is a synchronous
@@ -1212,9 +1212,9 @@ export interface Validate {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    operation(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ValidateOperationsResponse>;
-    operation(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, callback: ServiceCallback<models.ValidateOperationsResponse>): void;
-    operation(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ValidateOperationsResponse>): void;
+    validate(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ValidateOperationsResponse>;
+    validate(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, callback: ServiceCallback<models.ValidateOperationsResponse>): void;
+    validate(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ValidateOperationsResponse>): void;
 }
 
 /**
