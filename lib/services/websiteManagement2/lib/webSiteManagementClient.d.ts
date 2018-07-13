@@ -47,6 +47,8 @@ export default class WebSiteManagementClient extends AzureServiceClient {
 
   subscriptionId: string;
 
+  apiVersion: string;
+
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -64,8 +66,6 @@ export default class WebSiteManagementClient extends AzureServiceClient {
   diagnostics: operations.Diagnostics;
   provider: operations.Provider;
   recommendations: operations.Recommendations;
-  resourceHealthMetadataOperations: operations.ResourceHealthMetadataOperations;
-  billingMeters: operations.BillingMeters;
   webApps: operations.WebApps;
   appServiceEnvironments: operations.AppServiceEnvironments;
   appServicePlans: operations.AppServicePlans;
@@ -133,8 +133,6 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {object} userDetails Details of publishing user
    *
-   * @param {string} [userDetails.userName] Username
-   *
    * @param {string} userDetails.publishingUserName Username used for publishing.
    *
    * @param {string} [userDetails.publishingPassword] Password used for
@@ -145,6 +143,8 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {string} [userDetails.publishingPasswordHashSalt] Password hash salt
    * used for publishing.
+   *
+   * @param {string} [userDetails.scmUri] Url of SCM site.
    *
    * @param {string} [userDetails.kind] Kind of resource.
    *
@@ -168,8 +168,6 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {object} userDetails Details of publishing user
    *
-   * @param {string} [userDetails.userName] Username
-   *
    * @param {string} userDetails.publishingUserName Username used for publishing.
    *
    * @param {string} [userDetails.publishingPassword] Password used for
@@ -180,6 +178,8 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {string} [userDetails.publishingPasswordHashSalt] Password hash salt
    * used for publishing.
+   *
+   * @param {string} [userDetails.scmUri] Url of SCM site.
    *
    * @param {string} [userDetails.kind] Kind of resource.
    *
@@ -339,9 +339,6 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {object} requestMessage Source control token information
    *
-   * @param {string} [requestMessage.sourceControlName] Name or source control
-   * type.
-   *
    * @param {string} [requestMessage.token] OAuth access token.
    *
    * @param {string} [requestMessage.tokenSecret] OAuth access token secret.
@@ -373,9 +370,6 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    * @param {string} sourceControlType Type of source control
    *
    * @param {object} requestMessage Source control token information
-   *
-   * @param {string} [requestMessage.sourceControlName] Name or source control
-   * type.
    *
    * @param {string} [requestMessage.token] OAuth access token.
    *
@@ -417,6 +411,72 @@ export default class WebSiteManagementClient extends AzureServiceClient {
   updateSourceControl(sourceControlType: string, requestMessage: models.SourceControl, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControl>;
   updateSourceControl(sourceControlType: string, requestMessage: models.SourceControl, callback: ServiceCallback<models.SourceControl>): void;
   updateSourceControl(sourceControlType: string, requestMessage: models.SourceControl, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControl>): void;
+
+
+  /**
+   * @summary Gets a list of meters for a given location.
+   *
+   * Gets a list of meters for a given location.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.billingLocation] Azure Location of billable
+   * resource
+   *
+   * @param {string} [options.osType] App Service OS type meters used for
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<BillingMeterCollection>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  listBillingMetersWithHttpOperationResponse(options?: { billingLocation? : string, osType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingMeterCollection>>;
+
+  /**
+   * @summary Gets a list of meters for a given location.
+   *
+   * Gets a list of meters for a given location.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {string} [options.billingLocation] Azure Location of billable
+   * resource
+   *
+   * @param {string} [options.osType] App Service OS type meters used for
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {BillingMeterCollection} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {BillingMeterCollection} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link BillingMeterCollection} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listBillingMeters(options?: { billingLocation? : string, osType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingMeterCollection>;
+  listBillingMeters(callback: ServiceCallback<models.BillingMeterCollection>): void;
+  listBillingMeters(options: { billingLocation? : string, osType? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingMeterCollection>): void;
 
 
   /**
@@ -557,10 +617,13 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {string} [options.sku] Name of SKU used to filter the regions.
    * Possible values include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium',
-   * 'PremiumV2', 'Dynamic', 'Isolated'
+   * 'Dynamic', 'Isolated', 'PremiumV2'
    *
    * @param {boolean} [options.linuxWorkersEnabled] Specify <code>true</code> if
    * you want to filter to only regions that support Linux workers.
+   *
+   * @param {boolean} [options.xenonWorkersEnabled] Specify <code>true</code> if
+   * you want to filter to only regions that support Xenon workers.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -571,7 +634,7 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  listGeoRegionsWithHttpOperationResponse(options?: { sku? : string, linuxWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GeoRegionCollection>>;
+  listGeoRegionsWithHttpOperationResponse(options?: { sku? : string, linuxWorkersEnabled? : boolean, xenonWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.GeoRegionCollection>>;
 
   /**
    * @summary Get a list of available geographical regions.
@@ -582,10 +645,13 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {string} [options.sku] Name of SKU used to filter the regions.
    * Possible values include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium',
-   * 'PremiumV2', 'Dynamic', 'Isolated'
+   * 'Dynamic', 'Isolated', 'PremiumV2'
    *
    * @param {boolean} [options.linuxWorkersEnabled] Specify <code>true</code> if
    * you want to filter to only regions that support Linux workers.
+   *
+   * @param {boolean} [options.xenonWorkersEnabled] Specify <code>true</code> if
+   * you want to filter to only regions that support Xenon workers.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -612,9 +678,9 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  listGeoRegions(options?: { sku? : string, linuxWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.GeoRegionCollection>;
+  listGeoRegions(options?: { sku? : string, linuxWorkersEnabled? : boolean, xenonWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.GeoRegionCollection>;
   listGeoRegions(callback: ServiceCallback<models.GeoRegionCollection>): void;
-  listGeoRegions(options: { sku? : string, linuxWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GeoRegionCollection>): void;
+  listGeoRegions(options: { sku? : string, linuxWorkersEnabled? : boolean, xenonWorkersEnabled? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.GeoRegionCollection>): void;
 
 
   /**
@@ -978,6 +1044,9 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    * @param {string} [validateRequest.hostingEnvironment] Name of App Service
    * Environment where app or App Service plan should be created.
    *
+   * @param {boolean} [validateRequest.isXenon] <code>true</code> if App Service
+   * plan is running as a windows container
+   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -1025,6 +1094,9 @@ export default class WebSiteManagementClient extends AzureServiceClient {
    *
    * @param {string} [validateRequest.hostingEnvironment] Name of App Service
    * Environment where app or App Service plan should be created.
+   *
+   * @param {boolean} [validateRequest.isXenon] <code>true</code> if App Service
+   * plan is running as a windows container
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1192,6 +1264,68 @@ export default class WebSiteManagementClient extends AzureServiceClient {
   listSourceControlsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceControlCollection>;
   listSourceControlsNext(nextPageLink: string, callback: ServiceCallback<models.SourceControlCollection>): void;
   listSourceControlsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceControlCollection>): void;
+
+
+  /**
+   * @summary Gets a list of meters for a given location.
+   *
+   * Gets a list of meters for a given location.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<BillingMeterCollection>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  listBillingMetersNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingMeterCollection>>;
+
+  /**
+   * @summary Gets a list of meters for a given location.
+   *
+   * Gets a list of meters for a given location.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {BillingMeterCollection} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {BillingMeterCollection} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link BillingMeterCollection} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  listBillingMetersNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingMeterCollection>;
+  listBillingMetersNext(nextPageLink: string, callback: ServiceCallback<models.BillingMeterCollection>): void;
+  listBillingMetersNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingMeterCollection>): void;
 
 
   /**

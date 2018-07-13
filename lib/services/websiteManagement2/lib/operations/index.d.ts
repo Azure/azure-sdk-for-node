@@ -8124,6 +8124,10 @@ export interface Recommendations {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {boolean} [options.expiredOnly] Specify <code>false</code> to return
+     * all recommendations. The default is <code>true</code>, which returns only
+     * expired recommendations.
+     *
      * @param {string} [options.filter] Filter is specified by using OData syntax.
      * Example: $filter=channels eq 'Api' or channel eq 'Notification' and
      * startTime eq '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z'
@@ -8138,7 +8142,7 @@ export interface Recommendations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listHistoryForWebAppWithHttpOperationResponse(resourceGroupName: string, siteName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendationCollection>>;
+    listHistoryForWebAppWithHttpOperationResponse(resourceGroupName: string, siteName: string, options?: { expiredOnly? : boolean, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RecommendationCollection>>;
 
     /**
      * @summary Get past recommendations for an app, optionally specified by the
@@ -8152,6 +8156,10 @@ export interface Recommendations {
      * @param {string} siteName Name of the app.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {boolean} [options.expiredOnly] Specify <code>false</code> to return
+     * all recommendations. The default is <code>true</code>, which returns only
+     * expired recommendations.
      *
      * @param {string} [options.filter] Filter is specified by using OData syntax.
      * Example: $filter=channels eq 'Api' or channel eq 'Notification' and
@@ -8184,9 +8192,9 @@ export interface Recommendations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listHistoryForWebApp(resourceGroupName: string, siteName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendationCollection>;
+    listHistoryForWebApp(resourceGroupName: string, siteName: string, options?: { expiredOnly? : boolean, filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.RecommendationCollection>;
     listHistoryForWebApp(resourceGroupName: string, siteName: string, callback: ServiceCallback<models.RecommendationCollection>): void;
-    listHistoryForWebApp(resourceGroupName: string, siteName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendationCollection>): void;
+    listHistoryForWebApp(resourceGroupName: string, siteName: string, options: { expiredOnly? : boolean, filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RecommendationCollection>): void;
 
 
     /**
@@ -8740,818 +8748,6 @@ export interface Recommendations {
 
 /**
  * @class
- * ResourceHealthMetadataOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the WebSiteManagementClient.
- */
-export interface ResourceHealthMetadataOperations {
-
-
-    /**
-     * @summary List all ResourceHealthMetadata for all sites in the subscription.
-     *
-     * List all ResourceHealthMetadata for all sites in the subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
-
-    /**
-     * @summary List all ResourceHealthMetadata for all sites in the subscription.
-     *
-     * List all ResourceHealthMetadata for all sites in the subscription.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceHealthMetadataCollection} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
-    list(callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-
-
-    /**
-     * @summary List all ResourceHealthMetadata for all sites in the resource group
-     * in the subscription.
-     *
-     * List all ResourceHealthMetadata for all sites in the resource group in the
-     * subscription.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
-
-    /**
-     * @summary List all ResourceHealthMetadata for all sites in the resource group
-     * in the subscription.
-     *
-     * List all ResourceHealthMetadata for all sites in the resource group in the
-     * subscription.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceHealthMetadataCollection} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-
-
-    /**
-     * @summary Gets the category of ResourceHealthMetadata to use for the given
-     * site as a collection
-     *
-     * Gets the category of ResourceHealthMetadata to use for the given site as a
-     * collection
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of web app.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySiteWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
-
-    /**
-     * @summary Gets the category of ResourceHealthMetadata to use for the given
-     * site as a collection
-     *
-     * Gets the category of ResourceHealthMetadata to use for the given site as a
-     * collection
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of web app.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceHealthMetadataCollection} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySite(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
-    listBySite(resourceGroupName: string, name: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-    listBySite(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-
-
-    /**
-     * @summary Gets the category of ResourceHealthMetadata to use for the given
-     * site
-     *
-     * Gets the category of ResourceHealthMetadata to use for the given site
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of web app
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceHealthMetadata>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getBySiteWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadata>>;
-
-    /**
-     * @summary Gets the category of ResourceHealthMetadata to use for the given
-     * site
-     *
-     * Gets the category of ResourceHealthMetadata to use for the given site
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of web app
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceHealthMetadata} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceHealthMetadata} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceHealthMetadata} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getBySite(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadata>;
-    getBySite(resourceGroupName: string, name: string, callback: ServiceCallback<models.ResourceHealthMetadata>): void;
-    getBySite(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadata>): void;
-
-
-    /**
-     * @summary Gets the category of ResourceHealthMetadata to use for the given
-     * site as a collection
-     *
-     * Gets the category of ResourceHealthMetadata to use for the given site as a
-     * collection
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of web app.
-     *
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySiteSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
-
-    /**
-     * @summary Gets the category of ResourceHealthMetadata to use for the given
-     * site as a collection
-     *
-     * Gets the category of ResourceHealthMetadata to use for the given site as a
-     * collection
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of web app.
-     *
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceHealthMetadataCollection} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySiteSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
-    listBySiteSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-    listBySiteSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-
-
-    /**
-     * @summary Gets the category of ResourceHealthMetadata to use for the given
-     * site
-     *
-     * Gets the category of ResourceHealthMetadata to use for the given site
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of web app
-     *
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceHealthMetadata>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getBySiteSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadata>>;
-
-    /**
-     * @summary Gets the category of ResourceHealthMetadata to use for the given
-     * site
-     *
-     * Gets the category of ResourceHealthMetadata to use for the given site
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of web app
-     *
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceHealthMetadata} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceHealthMetadata} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceHealthMetadata} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getBySiteSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadata>;
-    getBySiteSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.ResourceHealthMetadata>): void;
-    getBySiteSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadata>): void;
-
-
-    /**
-     * @summary List all ResourceHealthMetadata for all sites in the subscription.
-     *
-     * List all ResourceHealthMetadata for all sites in the subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
-
-    /**
-     * @summary List all ResourceHealthMetadata for all sites in the subscription.
-     *
-     * List all ResourceHealthMetadata for all sites in the subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceHealthMetadataCollection} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-
-
-    /**
-     * @summary List all ResourceHealthMetadata for all sites in the resource group
-     * in the subscription.
-     *
-     * List all ResourceHealthMetadata for all sites in the resource group in the
-     * subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
-
-    /**
-     * @summary List all ResourceHealthMetadata for all sites in the resource group
-     * in the subscription.
-     *
-     * List all ResourceHealthMetadata for all sites in the resource group in the
-     * subscription.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceHealthMetadataCollection} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-
-
-    /**
-     * @summary Gets the category of ResourceHealthMetadata to use for the given
-     * site as a collection
-     *
-     * Gets the category of ResourceHealthMetadata to use for the given site as a
-     * collection
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySiteNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
-
-    /**
-     * @summary Gets the category of ResourceHealthMetadata to use for the given
-     * site as a collection
-     *
-     * Gets the category of ResourceHealthMetadata to use for the given site as a
-     * collection
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceHealthMetadataCollection} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySiteNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
-    listBySiteNext(nextPageLink: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-    listBySiteNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-
-
-    /**
-     * @summary Gets the category of ResourceHealthMetadata to use for the given
-     * site as a collection
-     *
-     * Gets the category of ResourceHealthMetadata to use for the given site as a
-     * collection
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ResourceHealthMetadataCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listBySiteSlotNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ResourceHealthMetadataCollection>>;
-
-    /**
-     * @summary Gets the category of ResourceHealthMetadata to use for the given
-     * site as a collection
-     *
-     * Gets the category of ResourceHealthMetadata to use for the given site as a
-     * collection
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ResourceHealthMetadataCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ResourceHealthMetadataCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ResourceHealthMetadataCollection} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listBySiteSlotNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ResourceHealthMetadataCollection>;
-    listBySiteSlotNext(nextPageLink: string, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-    listBySiteSlotNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ResourceHealthMetadataCollection>): void;
-}
-
-/**
- * @class
- * BillingMeters
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the WebSiteManagementClient.
- */
-export interface BillingMeters {
-
-
-    /**
-     * @summary Gets a list of meters for a given location.
-     *
-     * Gets a list of meters for a given location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.billingLocation] Azure Location of billable
-     * resource
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<BillingMeterCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(options?: { billingLocation? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingMeterCollection>>;
-
-    /**
-     * @summary Gets a list of meters for a given location.
-     *
-     * Gets a list of meters for a given location.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.billingLocation] Azure Location of billable
-     * resource
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {BillingMeterCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {BillingMeterCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BillingMeterCollection} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(options?: { billingLocation? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingMeterCollection>;
-    list(callback: ServiceCallback<models.BillingMeterCollection>): void;
-    list(options: { billingLocation? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingMeterCollection>): void;
-
-
-    /**
-     * @summary Gets a list of meters for a given location.
-     *
-     * Gets a list of meters for a given location.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<BillingMeterCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BillingMeterCollection>>;
-
-    /**
-     * @summary Gets a list of meters for a given location.
-     *
-     * Gets a list of meters for a given location.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {BillingMeterCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {BillingMeterCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link BillingMeterCollection} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BillingMeterCollection>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.BillingMeterCollection>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BillingMeterCollection>): void;
-}
-
-/**
- * @class
  * WebApps
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the WebSiteManagementClient.
@@ -9778,6 +8974,8 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
+     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
      * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
@@ -9795,6 +8993,9 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
      * and version
+     *
+     * @param {string} [siteEnvelope.siteConfig.windowsFxVersion] Xenon App
+     * Framework and version
      *
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
      * <code>true</code> if request tracing is enabled; otherwise,
@@ -9994,6 +9195,12 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
      * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteEnvelope.siteConfig.managedServiceIdentityId] Managed
+     * Service Identity Id
+     *
+     * @param {number} [siteEnvelope.siteConfig.xManagedServiceIdentityId] Explicit
+     * Managed Service Identity Id
+     *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
      * restrictions.
      *
@@ -10003,6 +9210,13 @@ export interface WebApps {
      * @param {string} [siteEnvelope.siteConfig.minTlsVersion] MinTlsVersion:
      * configures the minimum version of TLS required for SSL requests. Possible
      * values include: '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteEnvelope.siteConfig.ftpsState] State of FTP / FTPS
+     * service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteEnvelope.siteConfig.reservedInstanceCount] Number of
+     * reserved instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
      * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
@@ -10079,43 +9293,6 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
-     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
-     * if quotas should be ignored; otherwise, <code>false</code>.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
-     * creation, the app is created from a previous snapshot.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
-     * which the app recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
-     * app that snapshot contents will be written to.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
-     * Geographical location of the target web app, e.g. SouthEastAsia,
-     * SouthCentralUS
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
-     * ID of the target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
-     * the recovery operation can overwrite source app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
-     * site configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
-     * true, custom hostname conflicts will be ignored when recovering to a target
-     * web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
-     *
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
      * http requests
@@ -10123,7 +9300,10 @@ export interface WebApps {
      * @param {object} [siteEnvelope.identity]
      *
      * @param {string} [siteEnvelope.identity.type] Type of managed service
-     * identity. Possible values include: 'SystemAssigned'
+     * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
+     *
+     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
+     * managed service identities.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -10174,6 +9354,8 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
+     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
      * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
@@ -10191,6 +9373,9 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
      * and version
+     *
+     * @param {string} [siteEnvelope.siteConfig.windowsFxVersion] Xenon App
+     * Framework and version
      *
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
      * <code>true</code> if request tracing is enabled; otherwise,
@@ -10390,6 +9575,12 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
      * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteEnvelope.siteConfig.managedServiceIdentityId] Managed
+     * Service Identity Id
+     *
+     * @param {number} [siteEnvelope.siteConfig.xManagedServiceIdentityId] Explicit
+     * Managed Service Identity Id
+     *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
      * restrictions.
      *
@@ -10399,6 +9590,13 @@ export interface WebApps {
      * @param {string} [siteEnvelope.siteConfig.minTlsVersion] MinTlsVersion:
      * configures the minimum version of TLS required for SSL requests. Possible
      * values include: '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteEnvelope.siteConfig.ftpsState] State of FTP / FTPS
+     * service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteEnvelope.siteConfig.reservedInstanceCount] Number of
+     * reserved instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
      * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
@@ -10475,43 +9673,6 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
-     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
-     * if quotas should be ignored; otherwise, <code>false</code>.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
-     * creation, the app is created from a previous snapshot.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
-     * which the app recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
-     * app that snapshot contents will be written to.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
-     * Geographical location of the target web app, e.g. SouthEastAsia,
-     * SouthCentralUS
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
-     * ID of the target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
-     * the recovery operation can overwrite source app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
-     * site configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
-     * true, custom hostname conflicts will be ignored when recovering to a target
-     * web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
-     *
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
      * http requests
@@ -10519,7 +9680,10 @@ export interface WebApps {
      * @param {object} [siteEnvelope.identity]
      *
      * @param {string} [siteEnvelope.identity.type] Type of managed service
-     * identity. Possible values include: 'SystemAssigned'
+     * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
+     *
+     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
+     * managed service identities.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -10669,6 +9833,8 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
+     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
      * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
@@ -10686,6 +9852,9 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
      * and version
+     *
+     * @param {string} [siteEnvelope.siteConfig.windowsFxVersion] Xenon App
+     * Framework and version
      *
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
      * <code>true</code> if request tracing is enabled; otherwise,
@@ -10885,6 +10054,12 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
      * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteEnvelope.siteConfig.managedServiceIdentityId] Managed
+     * Service Identity Id
+     *
+     * @param {number} [siteEnvelope.siteConfig.xManagedServiceIdentityId] Explicit
+     * Managed Service Identity Id
+     *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
      * restrictions.
      *
@@ -10894,6 +10069,13 @@ export interface WebApps {
      * @param {string} [siteEnvelope.siteConfig.minTlsVersion] MinTlsVersion:
      * configures the minimum version of TLS required for SSL requests. Possible
      * values include: '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteEnvelope.siteConfig.ftpsState] State of FTP / FTPS
+     * service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteEnvelope.siteConfig.reservedInstanceCount] Number of
+     * reserved instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
      * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
@@ -10969,43 +10151,6 @@ export interface WebApps {
      * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileName] Name of
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
-     *
-     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
-     * if quotas should be ignored; otherwise, <code>false</code>.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
-     * creation, the app is created from a previous snapshot.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
-     * which the app recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
-     * app that snapshot contents will be written to.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
-     * Geographical location of the target web app, e.g. SouthEastAsia,
-     * SouthCentralUS
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
-     * ID of the target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
-     * the recovery operation can overwrite source app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
-     * site configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
-     * true, custom hostname conflicts will be ignored when recovering to a target
-     * web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
      *
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
@@ -11056,6 +10201,8 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
+     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
      * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
@@ -11073,6 +10220,9 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
      * and version
+     *
+     * @param {string} [siteEnvelope.siteConfig.windowsFxVersion] Xenon App
+     * Framework and version
      *
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
      * <code>true</code> if request tracing is enabled; otherwise,
@@ -11272,6 +10422,12 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
      * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteEnvelope.siteConfig.managedServiceIdentityId] Managed
+     * Service Identity Id
+     *
+     * @param {number} [siteEnvelope.siteConfig.xManagedServiceIdentityId] Explicit
+     * Managed Service Identity Id
+     *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
      * restrictions.
      *
@@ -11281,6 +10437,13 @@ export interface WebApps {
      * @param {string} [siteEnvelope.siteConfig.minTlsVersion] MinTlsVersion:
      * configures the minimum version of TLS required for SSL requests. Possible
      * values include: '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteEnvelope.siteConfig.ftpsState] State of FTP / FTPS
+     * service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteEnvelope.siteConfig.reservedInstanceCount] Number of
+     * reserved instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
      * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
@@ -11356,43 +10519,6 @@ export interface WebApps {
      * @param {string} [siteEnvelope.cloningInfo.trafficManagerProfileName] Name of
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
-     *
-     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
-     * if quotas should be ignored; otherwise, <code>false</code>.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
-     * creation, the app is created from a previous snapshot.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
-     * which the app recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
-     * app that snapshot contents will be written to.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
-     * Geographical location of the target web app, e.g. SouthEastAsia,
-     * SouthCentralUS
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
-     * ID of the target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
-     * the recovery operation can overwrite source app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
-     * site configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
-     * true, custom hostname conflicts will be ignored when recovering to a target
-     * web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
      *
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
@@ -11601,8 +10727,6 @@ export interface WebApps {
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
      *
-     * @param {string} request.backupRequestName Name of the backup.
-     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -11632,9 +10756,6 @@ export interface WebApps {
      * start working.
      *
      * @param {array} [request.databases] Databases included in the backup.
-     *
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
      *
      * @param {string} [request.kind] Kind of resource.
      *
@@ -11664,8 +10785,6 @@ export interface WebApps {
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
      *
-     * @param {string} request.backupRequestName Name of the backup.
-     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -11695,9 +10814,6 @@ export interface WebApps {
      * start working.
      *
      * @param {array} [request.databases] Databases included in the backup.
-     *
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
      *
      * @param {string} [request.kind] Kind of resource.
      *
@@ -11796,157 +10912,6 @@ export interface WebApps {
     listBackups(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupItemCollection>;
     listBackups(resourceGroupName: string, name: string, callback: ServiceCallback<models.BackupItemCollection>): void;
     listBackups(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItemCollection>): void;
-
-
-    /**
-     * @summary Discovers an existing app backup that can be restored from a blob
-     * in Azure storage.
-     *
-     * Discovers an existing app backup that can be restored from a blob in Azure
-     * storage.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} request A RestoreRequest object that includes Azure storage
-     * URL and blog name for discovery of backup.
-     *
-     * @param {string} request.storageAccountUrl SAS URL to the container.
-     *
-     * @param {string} [request.blobName] Name of a blob which contains the backup.
-     *
-     * @param {boolean} request.overwrite <code>true</code> if the restore
-     * operation can overwrite target app; otherwise, <code>false</code>.
-     * <code>true</code> is needed if trying to restore over an existing app.
-     *
-     * @param {string} [request.siteName] Name of an app.
-     *
-     * @param {array} [request.databases] Collection of databases which should be
-     * restored. This list has to match the list of databases included in the
-     * backup.
-     *
-     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
-     * restoring an app with custom domains. <code>true</code> to remove custom
-     * domains automatically. If <code>false</code>, custom domains are added to
-     * the app's object when it is being restored, but that might fail due to
-     * conflicts during the operation.
-     *
-     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
-     * restore the site content
-     *
-     * @param {string} [request.appServicePlan] Specify app service plan that will
-     * own restored site.
-     *
-     * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
-     *
-     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
-     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {string} [request.hostingEnvironment] App Service Environment name,
-     * if needed (only when restoring an app to an App Service Environment).
-     *
-     * @param {string} [request.kind] Kind of resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RestoreRequest>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    discoverRestoreWithHttpOperationResponse(resourceGroupName: string, name: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestoreRequest>>;
-
-    /**
-     * @summary Discovers an existing app backup that can be restored from a blob
-     * in Azure storage.
-     *
-     * Discovers an existing app backup that can be restored from a blob in Azure
-     * storage.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} request A RestoreRequest object that includes Azure storage
-     * URL and blog name for discovery of backup.
-     *
-     * @param {string} request.storageAccountUrl SAS URL to the container.
-     *
-     * @param {string} [request.blobName] Name of a blob which contains the backup.
-     *
-     * @param {boolean} request.overwrite <code>true</code> if the restore
-     * operation can overwrite target app; otherwise, <code>false</code>.
-     * <code>true</code> is needed if trying to restore over an existing app.
-     *
-     * @param {string} [request.siteName] Name of an app.
-     *
-     * @param {array} [request.databases] Collection of databases which should be
-     * restored. This list has to match the list of databases included in the
-     * backup.
-     *
-     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
-     * restoring an app with custom domains. <code>true</code> to remove custom
-     * domains automatically. If <code>false</code>, custom domains are added to
-     * the app's object when it is being restored, but that might fail due to
-     * conflicts during the operation.
-     *
-     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
-     * restore the site content
-     *
-     * @param {string} [request.appServicePlan] Specify app service plan that will
-     * own restored site.
-     *
-     * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
-     *
-     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
-     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {string} [request.hostingEnvironment] App Service Environment name,
-     * if needed (only when restoring an app to an App Service Environment).
-     *
-     * @param {string} [request.kind] Kind of resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RestoreRequest} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RestoreRequest} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RestoreRequest} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    discoverRestore(resourceGroupName: string, name: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestoreRequest>;
-    discoverRestore(resourceGroupName: string, name: string, request: models.RestoreRequest, callback: ServiceCallback<models.RestoreRequest>): void;
-    discoverRestore(resourceGroupName: string, name: string, request: models.RestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreRequest>): void;
 
 
     /**
@@ -12106,8 +11071,6 @@ export interface WebApps {
      *
      * @param {object} request Information on backup request.
      *
-     * @param {string} request.backupRequestName Name of the backup.
-     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -12137,9 +11100,6 @@ export interface WebApps {
      * start working.
      *
      * @param {array} [request.databases] Databases included in the backup.
-     *
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
      *
      * @param {string} [request.kind] Kind of resource.
      *
@@ -12176,8 +11136,6 @@ export interface WebApps {
      *
      * @param {object} request Information on backup request.
      *
-     * @param {string} request.backupRequestName Name of the backup.
-     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -12207,9 +11165,6 @@ export interface WebApps {
      * start working.
      *
      * @param {array} [request.databases] Databases included in the backup.
-     *
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
      *
      * @param {string} [request.kind] Kind of resource.
      *
@@ -12288,7 +11243,7 @@ export interface WebApps {
      * own restored site.
      *
      * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
      *
      * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
      * SiteConfig.ConnectionStrings should be set in new app; otherwise,
@@ -12306,11 +11261,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<RestoreResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    restoreWithHttpOperationResponse(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestoreResponse>>;
+    restoreWithHttpOperationResponse(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Restores a specific backup to another app (or deployment slot, if
@@ -12355,7 +11310,7 @@ export interface WebApps {
      * own restored site.
      *
      * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
      *
      * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
      * SiteConfig.ConnectionStrings should be set in new app; otherwise,
@@ -12378,7 +11333,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {RestoreResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -12386,16 +11341,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {RestoreResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RestoreResponse} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    restore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestoreResponse>;
-    restore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, callback: ServiceCallback<models.RestoreResponse>): void;
-    restore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreResponse>): void;
+    restore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, callback: ServiceCallback<void>): void;
+    restore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -12681,6 +11635,9 @@ export interface WebApps {
      * More information on OpenID Connect Discovery:
      * http://openid.net/specs/openid-connect-discovery-1_0.html
      *
+     * @param {boolean} [siteAuthSettings.validateIssuer] Gets a value indicating
+     * whether the issuer should be a valid HTTPS url and be validated as such.
+     *
      * @param {array} [siteAuthSettings.allowedAudiences] Allowed audience values
      * to consider when validating JWTs issued by
      * Azure Active Directory. Note that the <code>ClientID</code> value is always
@@ -12846,6 +11803,9 @@ export interface WebApps {
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery:
      * http://openid.net/specs/openid-connect-discovery-1_0.html
+     *
+     * @param {boolean} [siteAuthSettings.validateIssuer] Gets a value indicating
+     * whether the issuer should be a valid HTTPS url and be validated as such.
      *
      * @param {array} [siteAuthSettings.allowedAudiences] Allowed audience values
      * to consider when validating JWTs issued by
@@ -13034,8 +11994,6 @@ export interface WebApps {
      *
      * @param {object} request Edited backup configuration.
      *
-     * @param {string} request.backupRequestName Name of the backup.
-     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -13065,9 +12023,6 @@ export interface WebApps {
      * start working.
      *
      * @param {array} [request.databases] Databases included in the backup.
-     *
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
      *
      * @param {string} [request.kind] Kind of resource.
      *
@@ -13096,8 +12051,6 @@ export interface WebApps {
      *
      * @param {object} request Edited backup configuration.
      *
-     * @param {string} request.backupRequestName Name of the backup.
-     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -13127,9 +12080,6 @@ export interface WebApps {
      * start working.
      *
      * @param {array} [request.databases] Databases included in the backup.
-     *
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
      *
      * @param {string} [request.kind] Kind of resource.
      *
@@ -14284,6 +13234,339 @@ export interface WebApps {
 
 
     /**
+     * @summary Gets a Swift Virtual Network connection.
+     *
+     * Gets a Swift Virtual Network connection.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSwiftVirtualNetworkConnectionWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Gets a Swift Virtual Network connection.
+     *
+     * Gets a Swift Virtual Network connection.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    getSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    getSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateSwiftVirtualNetworkConnectionWithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    createOrUpdateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    createOrUpdateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
+     * @summary Deletes a Swift Virtual Network connection from an app (or
+     * deployment slot).
+     *
+     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteSwiftVirtualNetworkWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a Swift Virtual Network connection from an app (or
+     * deployment slot).
+     *
+     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteSwiftVirtualNetwork(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteSwiftVirtualNetwork(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
+    deleteSwiftVirtualNetwork(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateSwiftVirtualNetworkConnectionWithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    updateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    updateSwiftVirtualNetworkConnection(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
      * @summary Gets the configuration of an app, such as platform version and
      * bitness, default documents, virtual applications, Always On, etc.
      *
@@ -14379,6 +13662,9 @@ export interface WebApps {
      *
      * @param {string} [siteConfig.linuxFxVersion] Linux App Framework and version
      *
+     * @param {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+     * version
+     *
      * @param {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
      * request tracing is enabled; otherwise, <code>false</code>.
      *
@@ -14556,6 +13842,12 @@ export interface WebApps {
      * @param {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
      * local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteConfig.managedServiceIdentityId] Managed Service
+     * Identity Id
+     *
+     * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
+     * Service Identity Id
+     *
      * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
@@ -14564,6 +13856,13 @@ export interface WebApps {
      * @param {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
      * minimum version of TLS required for SSL requests. Possible values include:
      * '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteConfig.ftpsState] State of FTP / FTPS service. Possible
+     * values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteConfig.reservedInstanceCount] Number of reserved
+     * instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {string} [siteConfig.kind] Kind of resource.
      *
@@ -14607,6 +13906,9 @@ export interface WebApps {
      *
      * @param {string} [siteConfig.linuxFxVersion] Linux App Framework and version
      *
+     * @param {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+     * version
+     *
      * @param {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
      * request tracing is enabled; otherwise, <code>false</code>.
      *
@@ -14784,6 +14086,12 @@ export interface WebApps {
      * @param {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
      * local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteConfig.managedServiceIdentityId] Managed Service
+     * Identity Id
+     *
+     * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
+     * Service Identity Id
+     *
      * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
@@ -14792,6 +14100,13 @@ export interface WebApps {
      * @param {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
      * minimum version of TLS required for SSL requests. Possible values include:
      * '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteConfig.ftpsState] State of FTP / FTPS service. Possible
+     * values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteConfig.reservedInstanceCount] Number of reserved
+     * instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {string} [siteConfig.kind] Kind of resource.
      *
@@ -14854,6 +14169,9 @@ export interface WebApps {
      *
      * @param {string} [siteConfig.linuxFxVersion] Linux App Framework and version
      *
+     * @param {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+     * version
+     *
      * @param {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
      * request tracing is enabled; otherwise, <code>false</code>.
      *
@@ -15031,6 +14349,12 @@ export interface WebApps {
      * @param {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
      * local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteConfig.managedServiceIdentityId] Managed Service
+     * Identity Id
+     *
+     * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
+     * Service Identity Id
+     *
      * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
@@ -15039,6 +14363,13 @@ export interface WebApps {
      * @param {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
      * minimum version of TLS required for SSL requests. Possible values include:
      * '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteConfig.ftpsState] State of FTP / FTPS service. Possible
+     * values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteConfig.reservedInstanceCount] Number of reserved
+     * instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {string} [siteConfig.kind] Kind of resource.
      *
@@ -15082,6 +14413,9 @@ export interface WebApps {
      *
      * @param {string} [siteConfig.linuxFxVersion] Linux App Framework and version
      *
+     * @param {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+     * version
+     *
      * @param {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
      * request tracing is enabled; otherwise, <code>false</code>.
      *
@@ -15259,6 +14593,12 @@ export interface WebApps {
      * @param {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
      * local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteConfig.managedServiceIdentityId] Managed Service
+     * Identity Id
+     *
+     * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
+     * Service Identity Id
+     *
      * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
@@ -15267,6 +14607,13 @@ export interface WebApps {
      * @param {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
      * minimum version of TLS required for SSL requests. Possible values include:
      * '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteConfig.ftpsState] State of FTP / FTPS service. Possible
+     * values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteConfig.reservedInstanceCount] Number of reserved
+     * instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {string} [siteConfig.kind] Kind of resource.
      *
@@ -15596,7 +14943,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWebSiteContainerLogsZipWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    getContainerLogsZipWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary Gets the ZIP archived docker log files for the given site
@@ -15634,9 +14981,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getWebSiteContainerLogsZip(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    getWebSiteContainerLogsZip(resourceGroupName: string, name: string, callback: ServiceCallback<stream.Readable>): void;
-    getWebSiteContainerLogsZip(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    getContainerLogsZip(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getContainerLogsZip(resourceGroupName: string, name: string, callback: ServiceCallback<stream.Readable>): void;
+    getContainerLogsZip(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -16130,8 +15477,6 @@ export interface WebApps {
      *
      * @param {object} deployment Deployment details.
      *
-     * @param {string} [deployment.deploymentId] Identifier for deployment.
-     *
      * @param {number} [deployment.status] Deployment status.
      *
      * @param {string} [deployment.message] Details about deployment status.
@@ -16179,8 +15524,6 @@ export interface WebApps {
      * @param {string} id ID of an existing deployment.
      *
      * @param {object} deployment Deployment details.
-     *
-     * @param {string} [deployment.deploymentId] Identifier for deployment.
      *
      * @param {number} [deployment.status] Deployment status.
      *
@@ -16378,6 +15721,159 @@ export interface WebApps {
     listDeploymentLog(resourceGroupName: string, name: string, id: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Deployment>;
     listDeploymentLog(resourceGroupName: string, name: string, id: string, callback: ServiceCallback<models.Deployment>): void;
     listDeploymentLog(resourceGroupName: string, name: string, id: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Deployment>): void;
+
+
+    /**
+     * @summary Discovers an existing app backup that can be restored from a blob
+     * in Azure storage. Use this to get information about the databases stored in
+     * a backup.
+     *
+     * Discovers an existing app backup that can be restored from a blob in Azure
+     * storage. Use this to get information about the databases stored in a backup.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} request A RestoreRequest object that includes Azure storage
+     * URL and blog name for discovery of backup.
+     *
+     * @param {string} request.storageAccountUrl SAS URL to the container.
+     *
+     * @param {string} [request.blobName] Name of a blob which contains the backup.
+     *
+     * @param {boolean} request.overwrite <code>true</code> if the restore
+     * operation can overwrite target app; otherwise, <code>false</code>.
+     * <code>true</code> is needed if trying to restore over an existing app.
+     *
+     * @param {string} [request.siteName] Name of an app.
+     *
+     * @param {array} [request.databases] Collection of databases which should be
+     * restored. This list has to match the list of databases included in the
+     * backup.
+     *
+     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
+     * restoring an app with custom domains. <code>true</code> to remove custom
+     * domains automatically. If <code>false</code>, custom domains are added to
+     * the app's object when it is being restored, but that might fail due to
+     * conflicts during the operation.
+     *
+     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
+     * restore the site content
+     *
+     * @param {string} [request.appServicePlan] Specify app service plan that will
+     * own restored site.
+     *
+     * @param {string} [request.operationType] Operation type. Possible values
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+     *
+     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
+     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [request.hostingEnvironment] App Service Environment name,
+     * if needed (only when restoring an app to an App Service Environment).
+     *
+     * @param {string} [request.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RestoreRequest>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    discoverBackupWithHttpOperationResponse(resourceGroupName: string, name: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestoreRequest>>;
+
+    /**
+     * @summary Discovers an existing app backup that can be restored from a blob
+     * in Azure storage. Use this to get information about the databases stored in
+     * a backup.
+     *
+     * Discovers an existing app backup that can be restored from a blob in Azure
+     * storage. Use this to get information about the databases stored in a backup.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} request A RestoreRequest object that includes Azure storage
+     * URL and blog name for discovery of backup.
+     *
+     * @param {string} request.storageAccountUrl SAS URL to the container.
+     *
+     * @param {string} [request.blobName] Name of a blob which contains the backup.
+     *
+     * @param {boolean} request.overwrite <code>true</code> if the restore
+     * operation can overwrite target app; otherwise, <code>false</code>.
+     * <code>true</code> is needed if trying to restore over an existing app.
+     *
+     * @param {string} [request.siteName] Name of an app.
+     *
+     * @param {array} [request.databases] Collection of databases which should be
+     * restored. This list has to match the list of databases included in the
+     * backup.
+     *
+     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
+     * restoring an app with custom domains. <code>true</code> to remove custom
+     * domains automatically. If <code>false</code>, custom domains are added to
+     * the app's object when it is being restored, but that might fail due to
+     * conflicts during the operation.
+     *
+     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
+     * restore the site content
+     *
+     * @param {string} [request.appServicePlan] Specify app service plan that will
+     * own restored site.
+     *
+     * @param {string} [request.operationType] Operation type. Possible values
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+     *
+     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
+     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [request.hostingEnvironment] App Service Environment name,
+     * if needed (only when restoring an app to an App Service Environment).
+     *
+     * @param {string} [request.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RestoreRequest} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RestoreRequest} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RestoreRequest} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    discoverBackup(resourceGroupName: string, name: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestoreRequest>;
+    discoverBackup(resourceGroupName: string, name: string, request: models.RestoreRequest, callback: ServiceCallback<models.RestoreRequest>): void;
+    discoverBackup(resourceGroupName: string, name: string, request: models.RestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreRequest>): void;
 
 
     /**
@@ -17234,6 +16730,8 @@ export interface WebApps {
      *
      * @param {object} functionEnvelope Function details.
      *
+     * @param {string} [functionEnvelope.functionAppId] Function App ID.
+     *
      * @param {string} [functionEnvelope.scriptRootPathHref] Script root path URI.
      *
      * @param {string} [functionEnvelope.scriptHref] Script URI.
@@ -17279,6 +16777,8 @@ export interface WebApps {
      * @param {string} functionName Function name.
      *
      * @param {object} functionEnvelope Function details.
+     *
+     * @param {string} [functionEnvelope.functionAppId] Function App ID.
      *
      * @param {string} [functionEnvelope.scriptRootPathHref] Script root path URI.
      *
@@ -20885,12 +20385,6 @@ export interface WebApps {
      *
      * @param {string} [premierAddOn.vendor] Premier add on Vendor.
      *
-     * @param {string} [premierAddOn.premierAddOnName] Premier add on Name.
-     *
-     * @param {string} [premierAddOn.premierAddOnLocation] Premier add on Location.
-     *
-     * @param {object} [premierAddOn.premierAddOnTags] Premier add on Tags.
-     *
      * @param {string} [premierAddOn.marketplacePublisher] Premier add on
      * Marketplace publisher.
      *
@@ -20936,12 +20430,6 @@ export interface WebApps {
      * @param {string} [premierAddOn.product] Premier add on Product.
      *
      * @param {string} [premierAddOn.vendor] Premier add on Vendor.
-     *
-     * @param {string} [premierAddOn.premierAddOnName] Premier add on Name.
-     *
-     * @param {string} [premierAddOn.premierAddOnLocation] Premier add on Location.
-     *
-     * @param {object} [premierAddOn.premierAddOnTags] Premier add on Tags.
      *
      * @param {string} [premierAddOn.marketplacePublisher] Premier add on
      * Marketplace publisher.
@@ -21053,6 +20541,265 @@ export interface WebApps {
     deletePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deletePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, callback: ServiceCallback<void>): void;
     deletePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Updates a named add-on of an app.
+     *
+     * Updates a named add-on of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} premierAddOnName Add-on name.
+     *
+     * @param {object} premierAddOn A JSON representation of the edited premier
+     * add-on.
+     *
+     * @param {string} [premierAddOn.sku] Premier add on SKU.
+     *
+     * @param {string} [premierAddOn.product] Premier add on Product.
+     *
+     * @param {string} [premierAddOn.vendor] Premier add on Vendor.
+     *
+     * @param {string} [premierAddOn.marketplacePublisher] Premier add on
+     * Marketplace publisher.
+     *
+     * @param {string} [premierAddOn.marketplaceOffer] Premier add on Marketplace
+     * offer.
+     *
+     * @param {string} [premierAddOn.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PremierAddOn>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updatePremierAddOnWithHttpOperationResponse(resourceGroupName: string, name: string, premierAddOnName: string, premierAddOn: models.PremierAddOnPatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PremierAddOn>>;
+
+    /**
+     * @summary Updates a named add-on of an app.
+     *
+     * Updates a named add-on of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} premierAddOnName Add-on name.
+     *
+     * @param {object} premierAddOn A JSON representation of the edited premier
+     * add-on.
+     *
+     * @param {string} [premierAddOn.sku] Premier add on SKU.
+     *
+     * @param {string} [premierAddOn.product] Premier add on Product.
+     *
+     * @param {string} [premierAddOn.vendor] Premier add on Vendor.
+     *
+     * @param {string} [premierAddOn.marketplacePublisher] Premier add on
+     * Marketplace publisher.
+     *
+     * @param {string} [premierAddOn.marketplaceOffer] Premier add on Marketplace
+     * offer.
+     *
+     * @param {string} [premierAddOn.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PremierAddOn} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PremierAddOn} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PremierAddOn} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updatePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, premierAddOn: models.PremierAddOnPatchResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PremierAddOn>;
+    updatePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, premierAddOn: models.PremierAddOnPatchResource, callback: ServiceCallback<models.PremierAddOn>): void;
+    updatePremierAddOn(resourceGroupName: string, name: string, premierAddOnName: string, premierAddOn: models.PremierAddOnPatchResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PremierAddOn>): void;
+
+
+    /**
+     * @summary Gets data around private site access enablement and authorized
+     * Virtual Networks that can access the site.
+     *
+     * Gets data around private site access enablement and authorized Virtual
+     * Networks that can access the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PrivateAccess>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getPrivateAccessWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrivateAccess>>;
+
+    /**
+     * @summary Gets data around private site access enablement and authorized
+     * Virtual Networks that can access the site.
+     *
+     * Gets data around private site access enablement and authorized Virtual
+     * Networks that can access the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PrivateAccess} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PrivateAccess} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PrivateAccess} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getPrivateAccess(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrivateAccess>;
+    getPrivateAccess(resourceGroupName: string, name: string, callback: ServiceCallback<models.PrivateAccess>): void;
+    getPrivateAccess(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrivateAccess>): void;
+
+
+    /**
+     * @summary Sets data around private site access enablement and authorized
+     * Virtual Networks that can access the site.
+     *
+     * Sets data around private site access enablement and authorized Virtual
+     * Networks that can access the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {object} access The information for the private access
+     *
+     * @param {boolean} [access.enabled] Whether private access is enabled or not.
+     *
+     * @param {array} [access.virtualNetworks] The Virtual Networks (and subnets)
+     * allowed to access the site privately.
+     *
+     * @param {string} [access.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PrivateAccess>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    putPrivateAccessVnetWithHttpOperationResponse(resourceGroupName: string, name: string, access: models.PrivateAccess, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrivateAccess>>;
+
+    /**
+     * @summary Sets data around private site access enablement and authorized
+     * Virtual Networks that can access the site.
+     *
+     * Sets data around private site access enablement and authorized Virtual
+     * Networks that can access the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {object} access The information for the private access
+     *
+     * @param {boolean} [access.enabled] Whether private access is enabled or not.
+     *
+     * @param {array} [access.virtualNetworks] The Virtual Networks (and subnets)
+     * allowed to access the site privately.
+     *
+     * @param {string} [access.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PrivateAccess} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PrivateAccess} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PrivateAccess} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    putPrivateAccessVnet(resourceGroupName: string, name: string, access: models.PrivateAccess, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrivateAccess>;
+    putPrivateAccessVnet(resourceGroupName: string, name: string, access: models.PrivateAccess, callback: ServiceCallback<models.PrivateAccess>): void;
+    putPrivateAccessVnet(resourceGroupName: string, name: string, access: models.PrivateAccess, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrivateAccess>): void;
 
 
     /**
@@ -22018,134 +21765,6 @@ export interface WebApps {
 
 
     /**
-     * @summary Recovers a web app to a previous snapshot.
-     *
-     * Recovers a web app to a previous snapshot.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of web app.
-     *
-     * @param {object} recoveryEntity Snapshot data used for web app recovery.
-     * Snapshot information can be obtained by calling GetDeletedSites or
-     * GetSiteSnapshots API.
-     *
-     * @param {string} [recoveryEntity.snapshotTime] Point in time in which the app
-     * recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [recoveryEntity.recoveryTarget] Specifies the web app that
-     * snapshot contents will be written to.
-     *
-     * @param {string} [recoveryEntity.recoveryTarget.location] Geographical
-     * location of the target web app, e.g. SouthEastAsia, SouthCentralUS
-     *
-     * @param {string} [recoveryEntity.recoveryTarget.id] ARM resource ID of the
-     * target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
-     * operation can overwrite source app; otherwise, <code>false</code>.
-     *
-     * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
-     * configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [recoveryEntity.ignoreConflictingHostNames] If true, custom
-     * hostname conflicts will be ignored when recovering to a target web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [recoveryEntity.kind] Kind of resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    recoverWithHttpOperationResponse(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Recovers a web app to a previous snapshot.
-     *
-     * Recovers a web app to a previous snapshot.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of web app.
-     *
-     * @param {object} recoveryEntity Snapshot data used for web app recovery.
-     * Snapshot information can be obtained by calling GetDeletedSites or
-     * GetSiteSnapshots API.
-     *
-     * @param {string} [recoveryEntity.snapshotTime] Point in time in which the app
-     * recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [recoveryEntity.recoveryTarget] Specifies the web app that
-     * snapshot contents will be written to.
-     *
-     * @param {string} [recoveryEntity.recoveryTarget.location] Geographical
-     * location of the target web app, e.g. SouthEastAsia, SouthCentralUS
-     *
-     * @param {string} [recoveryEntity.recoveryTarget.id] ARM resource ID of the
-     * target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
-     * operation can overwrite source app; otherwise, <code>false</code>.
-     *
-     * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
-     * configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [recoveryEntity.ignoreConflictingHostNames] If true, custom
-     * hostname conflicts will be ignored when recovering to a target web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [recoveryEntity.kind] Kind of resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    recover(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    recover(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, callback: ServiceCallback<void>): void;
-    recover(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
      * @summary Resets the configuration settings of the current slot if they were
      * previously modified by calling the API with POST.
      *
@@ -22291,6 +21910,374 @@ export interface WebApps {
     restart(resourceGroupName: string, name: string, options?: { softRestart? : boolean, synchronous? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     restart(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
     restart(resourceGroupName: string, name: string, options: { softRestart? : boolean, synchronous? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Restores an app from a backup blob in Azure Storage.
+     *
+     * Restores an app from a backup blob in Azure Storage.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} request Information on restore request .
+     *
+     * @param {string} request.storageAccountUrl SAS URL to the container.
+     *
+     * @param {string} [request.blobName] Name of a blob which contains the backup.
+     *
+     * @param {boolean} request.overwrite <code>true</code> if the restore
+     * operation can overwrite target app; otherwise, <code>false</code>.
+     * <code>true</code> is needed if trying to restore over an existing app.
+     *
+     * @param {string} [request.siteName] Name of an app.
+     *
+     * @param {array} [request.databases] Collection of databases which should be
+     * restored. This list has to match the list of databases included in the
+     * backup.
+     *
+     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
+     * restoring an app with custom domains. <code>true</code> to remove custom
+     * domains automatically. If <code>false</code>, custom domains are added to
+     * the app's object when it is being restored, but that might fail due to
+     * conflicts during the operation.
+     *
+     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
+     * restore the site content
+     *
+     * @param {string} [request.appServicePlan] Specify app service plan that will
+     * own restored site.
+     *
+     * @param {string} [request.operationType] Operation type. Possible values
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+     *
+     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
+     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [request.hostingEnvironment] App Service Environment name,
+     * if needed (only when restoring an app to an App Service Environment).
+     *
+     * @param {string} [request.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    restoreFromBackupBlobWithHttpOperationResponse(resourceGroupName: string, name: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Restores an app from a backup blob in Azure Storage.
+     *
+     * Restores an app from a backup blob in Azure Storage.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} request Information on restore request .
+     *
+     * @param {string} request.storageAccountUrl SAS URL to the container.
+     *
+     * @param {string} [request.blobName] Name of a blob which contains the backup.
+     *
+     * @param {boolean} request.overwrite <code>true</code> if the restore
+     * operation can overwrite target app; otherwise, <code>false</code>.
+     * <code>true</code> is needed if trying to restore over an existing app.
+     *
+     * @param {string} [request.siteName] Name of an app.
+     *
+     * @param {array} [request.databases] Collection of databases which should be
+     * restored. This list has to match the list of databases included in the
+     * backup.
+     *
+     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
+     * restoring an app with custom domains. <code>true</code> to remove custom
+     * domains automatically. If <code>false</code>, custom domains are added to
+     * the app's object when it is being restored, but that might fail due to
+     * conflicts during the operation.
+     *
+     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
+     * restore the site content
+     *
+     * @param {string} [request.appServicePlan] Specify app service plan that will
+     * own restored site.
+     *
+     * @param {string} [request.operationType] Operation type. Possible values
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+     *
+     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
+     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [request.hostingEnvironment] App Service Environment name,
+     * if needed (only when restoring an app to an App Service Environment).
+     *
+     * @param {string} [request.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    restoreFromBackupBlob(resourceGroupName: string, name: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restoreFromBackupBlob(resourceGroupName: string, name: string, request: models.RestoreRequest, callback: ServiceCallback<void>): void;
+    restoreFromBackupBlob(resourceGroupName: string, name: string, request: models.RestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Restores a deleted web app to this web app.
+     *
+     * Restores a deleted web app to this web app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Deleted web app restore information.
+     *
+     * @param {string} [restoreRequest.deletedSiteId] ARM resource ID of the
+     * deleted app. Example:
+     * /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, deleted site
+     * configuration, in addition to content, will be restored.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
+     * deleted app from, formatted as a DateTime string.
+     * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    restoreFromDeletedAppWithHttpOperationResponse(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Restores a deleted web app to this web app.
+     *
+     * Restores a deleted web app to this web app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Deleted web app restore information.
+     *
+     * @param {string} [restoreRequest.deletedSiteId] ARM resource ID of the
+     * deleted app. Example:
+     * /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, deleted site
+     * configuration, in addition to content, will be restored.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
+     * deleted app from, formatted as a DateTime string.
+     * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    restoreFromDeletedApp(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restoreFromDeletedApp(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, callback: ServiceCallback<void>): void;
+    restoreFromDeletedApp(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Restores a web app from a snapshot.
+     *
+     * Restores a web app from a snapshot.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Snapshot restore settings. Snapshot
+     * information can be obtained by calling GetDeletedSites or GetSiteSnapshots
+     * API.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time in which the app
+     * restore should be done, formatted as a DateTime string.
+     *
+     * @param {object} [restoreRequest.recoverySource] Optional. Specifies the web
+     * app that snapshot contents will be retrieved from.
+     * If empty, the targeted web app will be used as the source.
+     *
+     * @param {string} [restoreRequest.recoverySource.location] Geographical
+     * location of the source web app, e.g. SouthEastAsia, SouthCentralUS
+     *
+     * @param {string} [restoreRequest.recoverySource.id] ARM resource ID of the
+     * source app.
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {boolean} restoreRequest.overwrite If <code>true</code> the restore
+     * operation can overwrite source app; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, site
+     * configuration, in addition to content, will be reverted.
+     *
+     * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
+     * hostname conflicts will be ignored when recovering to a target web app.
+     * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    restoreSnapshotWithHttpOperationResponse(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Restores a web app from a snapshot.
+     *
+     * Restores a web app from a snapshot.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Snapshot restore settings. Snapshot
+     * information can be obtained by calling GetDeletedSites or GetSiteSnapshots
+     * API.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time in which the app
+     * restore should be done, formatted as a DateTime string.
+     *
+     * @param {object} [restoreRequest.recoverySource] Optional. Specifies the web
+     * app that snapshot contents will be retrieved from.
+     * If empty, the targeted web app will be used as the source.
+     *
+     * @param {string} [restoreRequest.recoverySource.location] Geographical
+     * location of the source web app, e.g. SouthEastAsia, SouthCentralUS
+     *
+     * @param {string} [restoreRequest.recoverySource.id] ARM resource ID of the
+     * source app.
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {boolean} restoreRequest.overwrite If <code>true</code> the restore
+     * operation can overwrite source app; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, site
+     * configuration, in addition to content, will be reverted.
+     *
+     * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
+     * hostname conflicts will be ignored when recovering to a target web app.
+     * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    restoreSnapshot(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restoreSnapshot(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, callback: ServiceCallback<void>): void;
+    restoreSnapshot(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -22735,6 +22722,8 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
+     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
      * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
@@ -22752,6 +22741,9 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
      * and version
+     *
+     * @param {string} [siteEnvelope.siteConfig.windowsFxVersion] Xenon App
+     * Framework and version
      *
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
      * <code>true</code> if request tracing is enabled; otherwise,
@@ -22951,6 +22943,12 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
      * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteEnvelope.siteConfig.managedServiceIdentityId] Managed
+     * Service Identity Id
+     *
+     * @param {number} [siteEnvelope.siteConfig.xManagedServiceIdentityId] Explicit
+     * Managed Service Identity Id
+     *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
      * restrictions.
      *
@@ -22960,6 +22958,13 @@ export interface WebApps {
      * @param {string} [siteEnvelope.siteConfig.minTlsVersion] MinTlsVersion:
      * configures the minimum version of TLS required for SSL requests. Possible
      * values include: '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteEnvelope.siteConfig.ftpsState] State of FTP / FTPS
+     * service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteEnvelope.siteConfig.reservedInstanceCount] Number of
+     * reserved instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
      * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
@@ -23036,43 +23041,6 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
-     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
-     * if quotas should be ignored; otherwise, <code>false</code>.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
-     * creation, the app is created from a previous snapshot.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
-     * which the app recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
-     * app that snapshot contents will be written to.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
-     * Geographical location of the target web app, e.g. SouthEastAsia,
-     * SouthCentralUS
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
-     * ID of the target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
-     * the recovery operation can overwrite source app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
-     * site configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
-     * true, custom hostname conflicts will be ignored when recovering to a target
-     * web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
-     *
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
      * http requests
@@ -23080,7 +23048,10 @@ export interface WebApps {
      * @param {object} [siteEnvelope.identity]
      *
      * @param {string} [siteEnvelope.identity.type] Type of managed service
-     * identity. Possible values include: 'SystemAssigned'
+     * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
+     *
+     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
+     * managed service identities.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -23093,19 +23064,6 @@ export interface WebApps {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation.
-     *
-     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     *
-     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS.
-     *
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
-     * default domain name.
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -23115,7 +23073,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
+    createOrUpdateSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
 
     /**
      * @summary Creates a new web, mobile, or API app in an existing resource
@@ -23147,6 +23105,8 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
+     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
      * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
@@ -23164,6 +23124,9 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
      * and version
+     *
+     * @param {string} [siteEnvelope.siteConfig.windowsFxVersion] Xenon App
+     * Framework and version
      *
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
      * <code>true</code> if request tracing is enabled; otherwise,
@@ -23363,6 +23326,12 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
      * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteEnvelope.siteConfig.managedServiceIdentityId] Managed
+     * Service Identity Id
+     *
+     * @param {number} [siteEnvelope.siteConfig.xManagedServiceIdentityId] Explicit
+     * Managed Service Identity Id
+     *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
      * restrictions.
      *
@@ -23372,6 +23341,13 @@ export interface WebApps {
      * @param {string} [siteEnvelope.siteConfig.minTlsVersion] MinTlsVersion:
      * configures the minimum version of TLS required for SSL requests. Possible
      * values include: '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteEnvelope.siteConfig.ftpsState] State of FTP / FTPS
+     * service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteEnvelope.siteConfig.reservedInstanceCount] Number of
+     * reserved instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
      * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
@@ -23448,43 +23424,6 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
-     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
-     * if quotas should be ignored; otherwise, <code>false</code>.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
-     * creation, the app is created from a previous snapshot.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
-     * which the app recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
-     * app that snapshot contents will be written to.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
-     * Geographical location of the target web app, e.g. SouthEastAsia,
-     * SouthCentralUS
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
-     * ID of the target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
-     * the recovery operation can overwrite source app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
-     * site configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
-     * true, custom hostname conflicts will be ignored when recovering to a target
-     * web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
-     *
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
      * http requests
@@ -23492,7 +23431,10 @@ export interface WebApps {
      * @param {object} [siteEnvelope.identity]
      *
      * @param {string} [siteEnvelope.identity.type] Type of managed service
-     * identity. Possible values include: 'SystemAssigned'
+     * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
+     *
+     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
+     * managed service identities.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -23504,19 +23446,6 @@ export interface WebApps {
      * default, this API attempts to create or modify the production slot.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation.
-     *
-     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     *
-     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS.
-     *
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
-     * default domain name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -23543,9 +23472,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
+    createOrUpdateSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
     createOrUpdateSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, callback: ServiceCallback<models.Site>): void;
-    createOrUpdateSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
+    createOrUpdateSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
 
 
     /**
@@ -23570,9 +23499,6 @@ export interface WebApps {
      * Service plan will be empty after app deletion and you want to delete the
      * empty App Service plan. By default, the empty App Service plan is not
      * deleted.
-     *
-     * @param {boolean} [options.skipDnsRegistration] If true, DNS registration is
-     * skipped.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -23583,7 +23509,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, skipDnsRegistration? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Deletes a web, mobile, or API app, or one of the deployment slots.
@@ -23607,9 +23533,6 @@ export interface WebApps {
      * Service plan will be empty after app deletion and you want to delete the
      * empty App Service plan. By default, the empty App Service plan is not
      * deleted.
-     *
-     * @param {boolean} [options.skipDnsRegistration] If true, DNS registration is
-     * skipped.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -23635,9 +23558,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteSlot(resourceGroupName: string, name: string, slot: string, options?: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, skipDnsRegistration? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteSlot(resourceGroupName: string, name: string, slot: string, options?: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<void>): void;
-    deleteSlot(resourceGroupName: string, name: string, slot: string, options: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, skipDnsRegistration? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteSlot(resourceGroupName: string, name: string, slot: string, options: { deleteMetrics? : boolean, deleteEmptyServerFarm? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -23670,6 +23593,8 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
+     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
      * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
@@ -23687,6 +23612,9 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
      * and version
+     *
+     * @param {string} [siteEnvelope.siteConfig.windowsFxVersion] Xenon App
+     * Framework and version
      *
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
      * <code>true</code> if request tracing is enabled; otherwise,
@@ -23886,6 +23814,12 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
      * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteEnvelope.siteConfig.managedServiceIdentityId] Managed
+     * Service Identity Id
+     *
+     * @param {number} [siteEnvelope.siteConfig.xManagedServiceIdentityId] Explicit
+     * Managed Service Identity Id
+     *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
      * restrictions.
      *
@@ -23895,6 +23829,13 @@ export interface WebApps {
      * @param {string} [siteEnvelope.siteConfig.minTlsVersion] MinTlsVersion:
      * configures the minimum version of TLS required for SSL requests. Possible
      * values include: '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteEnvelope.siteConfig.ftpsState] State of FTP / FTPS
+     * service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteEnvelope.siteConfig.reservedInstanceCount] Number of
+     * reserved instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
      * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
@@ -23971,43 +23912,6 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
-     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
-     * if quotas should be ignored; otherwise, <code>false</code>.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
-     * creation, the app is created from a previous snapshot.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
-     * which the app recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
-     * app that snapshot contents will be written to.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
-     * Geographical location of the target web app, e.g. SouthEastAsia,
-     * SouthCentralUS
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
-     * ID of the target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
-     * the recovery operation can overwrite source app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
-     * site configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
-     * true, custom hostname conflicts will be ignored when recovering to a target
-     * web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
-     *
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
      * http requests
@@ -24018,19 +23922,6 @@ export interface WebApps {
      * default, this API attempts to create or modify the production slot.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation.
-     *
-     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     *
-     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS.
-     *
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
-     * default domain name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -24041,7 +23932,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, slot: string, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
+    updateSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
 
     /**
      * @summary Creates a new web, mobile, or API app in an existing resource
@@ -24073,6 +23964,8 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
+     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
      * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
@@ -24090,6 +23983,9 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
      * and version
+     *
+     * @param {string} [siteEnvelope.siteConfig.windowsFxVersion] Xenon App
+     * Framework and version
      *
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
      * <code>true</code> if request tracing is enabled; otherwise,
@@ -24289,6 +24185,12 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
      * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteEnvelope.siteConfig.managedServiceIdentityId] Managed
+     * Service Identity Id
+     *
+     * @param {number} [siteEnvelope.siteConfig.xManagedServiceIdentityId] Explicit
+     * Managed Service Identity Id
+     *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
      * restrictions.
      *
@@ -24298,6 +24200,13 @@ export interface WebApps {
      * @param {string} [siteEnvelope.siteConfig.minTlsVersion] MinTlsVersion:
      * configures the minimum version of TLS required for SSL requests. Possible
      * values include: '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteEnvelope.siteConfig.ftpsState] State of FTP / FTPS
+     * service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteEnvelope.siteConfig.reservedInstanceCount] Number of
+     * reserved instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
      * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
@@ -24374,43 +24283,6 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
-     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
-     * if quotas should be ignored; otherwise, <code>false</code>.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
-     * creation, the app is created from a previous snapshot.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
-     * which the app recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
-     * app that snapshot contents will be written to.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
-     * Geographical location of the target web app, e.g. SouthEastAsia,
-     * SouthCentralUS
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
-     * ID of the target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
-     * the recovery operation can overwrite source app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
-     * site configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
-     * true, custom hostname conflicts will be ignored when recovering to a target
-     * web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
-     *
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
      * http requests
@@ -24421,19 +24293,6 @@ export interface WebApps {
      * default, this API attempts to create or modify the production slot.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation.
-     *
-     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     *
-     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS.
-     *
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
-     * default domain name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -24460,9 +24319,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateSlot(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, slot: string, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
+    updateSlot(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
     updateSlot(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, slot: string, callback: ServiceCallback<models.Site>): void;
-    updateSlot(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, slot: string, options: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
+    updateSlot(resourceGroupName: string, name: string, siteEnvelope: models.SitePatchResource, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
 
 
     /**
@@ -24646,8 +24505,6 @@ export interface WebApps {
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
      *
-     * @param {string} request.backupRequestName Name of the backup.
-     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -24677,9 +24534,6 @@ export interface WebApps {
      * start working.
      *
      * @param {array} [request.databases] Databases included in the backup.
-     *
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
      *
      * @param {string} [request.kind] Kind of resource.
      *
@@ -24712,8 +24566,6 @@ export interface WebApps {
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
      *
-     * @param {string} request.backupRequestName Name of the backup.
-     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -24743,9 +24595,6 @@ export interface WebApps {
      * start working.
      *
      * @param {array} [request.databases] Databases included in the backup.
-     *
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
      *
      * @param {string} [request.kind] Kind of resource.
      *
@@ -24853,163 +24702,6 @@ export interface WebApps {
     listBackupsSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupItemCollection>;
     listBackupsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.BackupItemCollection>): void;
     listBackupsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupItemCollection>): void;
-
-
-    /**
-     * @summary Discovers an existing app backup that can be restored from a blob
-     * in Azure storage.
-     *
-     * Discovers an existing app backup that can be restored from a blob in Azure
-     * storage.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} request A RestoreRequest object that includes Azure storage
-     * URL and blog name for discovery of backup.
-     *
-     * @param {string} request.storageAccountUrl SAS URL to the container.
-     *
-     * @param {string} [request.blobName] Name of a blob which contains the backup.
-     *
-     * @param {boolean} request.overwrite <code>true</code> if the restore
-     * operation can overwrite target app; otherwise, <code>false</code>.
-     * <code>true</code> is needed if trying to restore over an existing app.
-     *
-     * @param {string} [request.siteName] Name of an app.
-     *
-     * @param {array} [request.databases] Collection of databases which should be
-     * restored. This list has to match the list of databases included in the
-     * backup.
-     *
-     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
-     * restoring an app with custom domains. <code>true</code> to remove custom
-     * domains automatically. If <code>false</code>, custom domains are added to
-     * the app's object when it is being restored, but that might fail due to
-     * conflicts during the operation.
-     *
-     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
-     * restore the site content
-     *
-     * @param {string} [request.appServicePlan] Specify app service plan that will
-     * own restored site.
-     *
-     * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
-     *
-     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
-     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {string} [request.hostingEnvironment] App Service Environment name,
-     * if needed (only when restoring an app to an App Service Environment).
-     *
-     * @param {string} [request.kind] Kind of resource.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will perform discovery for the production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RestoreRequest>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    discoverRestoreSlotWithHttpOperationResponse(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestoreRequest>>;
-
-    /**
-     * @summary Discovers an existing app backup that can be restored from a blob
-     * in Azure storage.
-     *
-     * Discovers an existing app backup that can be restored from a blob in Azure
-     * storage.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of the app.
-     *
-     * @param {object} request A RestoreRequest object that includes Azure storage
-     * URL and blog name for discovery of backup.
-     *
-     * @param {string} request.storageAccountUrl SAS URL to the container.
-     *
-     * @param {string} [request.blobName] Name of a blob which contains the backup.
-     *
-     * @param {boolean} request.overwrite <code>true</code> if the restore
-     * operation can overwrite target app; otherwise, <code>false</code>.
-     * <code>true</code> is needed if trying to restore over an existing app.
-     *
-     * @param {string} [request.siteName] Name of an app.
-     *
-     * @param {array} [request.databases] Collection of databases which should be
-     * restored. This list has to match the list of databases included in the
-     * backup.
-     *
-     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
-     * restoring an app with custom domains. <code>true</code> to remove custom
-     * domains automatically. If <code>false</code>, custom domains are added to
-     * the app's object when it is being restored, but that might fail due to
-     * conflicts during the operation.
-     *
-     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
-     * restore the site content
-     *
-     * @param {string} [request.appServicePlan] Specify app service plan that will
-     * own restored site.
-     *
-     * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
-     *
-     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
-     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {string} [request.hostingEnvironment] App Service Environment name,
-     * if needed (only when restoring an app to an App Service Environment).
-     *
-     * @param {string} [request.kind] Kind of resource.
-     *
-     * @param {string} slot Name of the deployment slot. If a slot is not
-     * specified, the API will perform discovery for the production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RestoreRequest} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RestoreRequest} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RestoreRequest} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    discoverRestoreSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestoreRequest>;
-    discoverRestoreSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, callback: ServiceCallback<models.RestoreRequest>): void;
-    discoverRestoreSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreRequest>): void;
 
 
     /**
@@ -25181,8 +24873,6 @@ export interface WebApps {
      *
      * @param {object} request Information on backup request.
      *
-     * @param {string} request.backupRequestName Name of the backup.
-     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -25212,9 +24902,6 @@ export interface WebApps {
      * start working.
      *
      * @param {array} [request.databases] Databases included in the backup.
-     *
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
      *
      * @param {string} [request.kind] Kind of resource.
      *
@@ -25254,8 +24941,6 @@ export interface WebApps {
      *
      * @param {object} request Information on backup request.
      *
-     * @param {string} request.backupRequestName Name of the backup.
-     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -25285,9 +24970,6 @@ export interface WebApps {
      * start working.
      *
      * @param {array} [request.databases] Databases included in the backup.
-     *
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
      *
      * @param {string} [request.kind] Kind of resource.
      *
@@ -25369,7 +25051,7 @@ export interface WebApps {
      * own restored site.
      *
      * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
      *
      * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
      * SiteConfig.ConnectionStrings should be set in new app; otherwise,
@@ -25390,11 +25072,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<RestoreResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    restoreSlotWithHttpOperationResponse(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestoreResponse>>;
+    restoreSlotWithHttpOperationResponse(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Restores a specific backup to another app (or deployment slot, if
@@ -25439,7 +25121,7 @@ export interface WebApps {
      * own restored site.
      *
      * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
      *
      * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
      * SiteConfig.ConnectionStrings should be set in new app; otherwise,
@@ -25465,7 +25147,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {RestoreResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -25473,16 +25155,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {RestoreResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RestoreResponse} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    restoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestoreResponse>;
-    restoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, callback: ServiceCallback<models.RestoreResponse>): void;
-    restoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreResponse>): void;
+    restoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, callback: ServiceCallback<void>): void;
+    restoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -25790,6 +25471,9 @@ export interface WebApps {
      * More information on OpenID Connect Discovery:
      * http://openid.net/specs/openid-connect-discovery-1_0.html
      *
+     * @param {boolean} [siteAuthSettings.validateIssuer] Gets a value indicating
+     * whether the issuer should be a valid HTTPS url and be validated as such.
+     *
      * @param {array} [siteAuthSettings.allowedAudiences] Allowed audience values
      * to consider when validating JWTs issued by
      * Azure Active Directory. Note that the <code>ClientID</code> value is always
@@ -25958,6 +25642,9 @@ export interface WebApps {
      * This URI is a case-sensitive identifier for the token issuer.
      * More information on OpenID Connect Discovery:
      * http://openid.net/specs/openid-connect-discovery-1_0.html
+     *
+     * @param {boolean} [siteAuthSettings.validateIssuer] Gets a value indicating
+     * whether the issuer should be a valid HTTPS url and be validated as such.
      *
      * @param {array} [siteAuthSettings.allowedAudiences] Allowed audience values
      * to consider when validating JWTs issued by
@@ -26155,8 +25842,6 @@ export interface WebApps {
      *
      * @param {object} request Edited backup configuration.
      *
-     * @param {string} request.backupRequestName Name of the backup.
-     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -26186,9 +25871,6 @@ export interface WebApps {
      * start working.
      *
      * @param {array} [request.databases] Databases included in the backup.
-     *
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
      *
      * @param {string} [request.kind] Kind of resource.
      *
@@ -26221,8 +25903,6 @@ export interface WebApps {
      *
      * @param {object} request Edited backup configuration.
      *
-     * @param {string} request.backupRequestName Name of the backup.
-     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -26252,9 +25932,6 @@ export interface WebApps {
      * start working.
      *
      * @param {array} [request.databases] Databases included in the backup.
-     *
-     * @param {string} [request.backupRequestType] Type of the backup. Possible
-     * values include: 'Default', 'Clone', 'Relocation', 'Snapshot'
      *
      * @param {string} [request.kind] Kind of resource.
      *
@@ -27329,6 +27006,365 @@ export interface WebApps {
 
 
     /**
+     * @summary Gets a Swift Virtual Network connection.
+     *
+     * Gets a Swift Virtual Network connection.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get a gateway for the production slot's Virtual
+     * Network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSwiftVirtualNetworkConnectionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Gets a Swift Virtual Network connection.
+     *
+     * Gets a Swift Virtual Network connection.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will get a gateway for the production slot's Virtual
+     * Network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    getSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    getSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will add or update connections for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateSwiftVirtualNetworkConnectionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will add or update connections for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    createOrUpdateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    createOrUpdateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
+     * @summary Deletes a Swift Virtual Network connection from an app (or
+     * deployment slot).
+     *
+     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will delete the connection for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteSwiftVirtualNetworkSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a Swift Virtual Network connection from an app (or
+     * deployment slot).
+     *
+     * Deletes a Swift Virtual Network connection from an app (or deployment slot).
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will delete the connection for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteSwiftVirtualNetworkSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteSwiftVirtualNetworkSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<void>): void;
+    deleteSwiftVirtualNetworkSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will add or update connections for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SwiftVirtualNetwork>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateSwiftVirtualNetworkConnectionSlotWithHttpOperationResponse(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SwiftVirtualNetwork>>;
+
+    /**
+     * @summary Integrates this Web App with a Virtual Network. This requires that
+     * 1) "swiftSupported" is true when doing a GET against this resource, and 2)
+     * that the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * Integrates this Web App with a Virtual Network. This requires that 1)
+     * "swiftSupported" is true when doing a GET against this resource, and 2) that
+     * the target Subnet has already been delegated, and is not
+     * in use by another App Service Plan other than the one this App is in.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} connectionEnvelope Properties of the Virtual Network
+     * connection. See example.
+     *
+     * @param {string} [connectionEnvelope.subnetResourceId] The Virtual Network
+     * subnet's resource ID. This is the subnet that this Web App will join. This
+     * subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+     *
+     * @param {boolean} [connectionEnvelope.swiftSupported] A flag that specifies
+     * if the scale unit this Web App is on supports Swift integration.
+     *
+     * @param {string} [connectionEnvelope.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will add or update connections for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SwiftVirtualNetwork} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SwiftVirtualNetwork} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SwiftVirtualNetwork} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SwiftVirtualNetwork>;
+    updateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+    updateSwiftVirtualNetworkConnectionSlot(resourceGroupName: string, name: string, connectionEnvelope: models.SwiftVirtualNetwork, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SwiftVirtualNetwork>): void;
+
+
+    /**
      * @summary Gets the configuration of an app, such as platform version and
      * bitness, default documents, virtual applications, Always On, etc.
      *
@@ -27430,6 +27466,9 @@ export interface WebApps {
      *
      * @param {string} [siteConfig.linuxFxVersion] Linux App Framework and version
      *
+     * @param {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+     * version
+     *
      * @param {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
      * request tracing is enabled; otherwise, <code>false</code>.
      *
@@ -27607,6 +27646,12 @@ export interface WebApps {
      * @param {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
      * local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteConfig.managedServiceIdentityId] Managed Service
+     * Identity Id
+     *
+     * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
+     * Service Identity Id
+     *
      * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
@@ -27615,6 +27660,13 @@ export interface WebApps {
      * @param {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
      * minimum version of TLS required for SSL requests. Possible values include:
      * '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteConfig.ftpsState] State of FTP / FTPS service. Possible
+     * values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteConfig.reservedInstanceCount] Number of reserved
+     * instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {string} [siteConfig.kind] Kind of resource.
      *
@@ -27661,6 +27713,9 @@ export interface WebApps {
      *
      * @param {string} [siteConfig.linuxFxVersion] Linux App Framework and version
      *
+     * @param {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+     * version
+     *
      * @param {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
      * request tracing is enabled; otherwise, <code>false</code>.
      *
@@ -27838,6 +27893,12 @@ export interface WebApps {
      * @param {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
      * local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteConfig.managedServiceIdentityId] Managed Service
+     * Identity Id
+     *
+     * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
+     * Service Identity Id
+     *
      * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
@@ -27846,6 +27907,13 @@ export interface WebApps {
      * @param {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
      * minimum version of TLS required for SSL requests. Possible values include:
      * '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteConfig.ftpsState] State of FTP / FTPS service. Possible
+     * values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteConfig.reservedInstanceCount] Number of reserved
+     * instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {string} [siteConfig.kind] Kind of resource.
      *
@@ -27911,6 +27979,9 @@ export interface WebApps {
      *
      * @param {string} [siteConfig.linuxFxVersion] Linux App Framework and version
      *
+     * @param {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+     * version
+     *
      * @param {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
      * request tracing is enabled; otherwise, <code>false</code>.
      *
@@ -28088,6 +28159,12 @@ export interface WebApps {
      * @param {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
      * local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteConfig.managedServiceIdentityId] Managed Service
+     * Identity Id
+     *
+     * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
+     * Service Identity Id
+     *
      * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
@@ -28096,6 +28173,13 @@ export interface WebApps {
      * @param {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
      * minimum version of TLS required for SSL requests. Possible values include:
      * '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteConfig.ftpsState] State of FTP / FTPS service. Possible
+     * values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteConfig.reservedInstanceCount] Number of reserved
+     * instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {string} [siteConfig.kind] Kind of resource.
      *
@@ -28142,6 +28226,9 @@ export interface WebApps {
      *
      * @param {string} [siteConfig.linuxFxVersion] Linux App Framework and version
      *
+     * @param {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+     * version
+     *
      * @param {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
      * request tracing is enabled; otherwise, <code>false</code>.
      *
@@ -28319,6 +28406,12 @@ export interface WebApps {
      * @param {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
      * local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteConfig.managedServiceIdentityId] Managed Service
+     * Identity Id
+     *
+     * @param {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
+     * Service Identity Id
+     *
      * @param {array} [siteConfig.ipSecurityRestrictions] IP security restrictions.
      *
      * @param {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
@@ -28327,6 +28420,13 @@ export interface WebApps {
      * @param {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
      * minimum version of TLS required for SSL requests. Possible values include:
      * '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteConfig.ftpsState] State of FTP / FTPS service. Possible
+     * values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteConfig.reservedInstanceCount] Number of reserved
+     * instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {string} [siteConfig.kind] Kind of resource.
      *
@@ -28686,7 +28786,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWebSiteContainerLogsZipSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    getContainerLogsZipSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary Gets the ZIP archived docker log files for the given site
@@ -28727,9 +28827,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getWebSiteContainerLogsZipSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    getWebSiteContainerLogsZipSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<stream.Readable>): void;
-    getWebSiteContainerLogsZipSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    getContainerLogsZipSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    getContainerLogsZipSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<stream.Readable>): void;
+    getContainerLogsZipSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -29268,8 +29368,6 @@ export interface WebApps {
      *
      * @param {object} deployment Deployment details.
      *
-     * @param {string} [deployment.deploymentId] Identifier for deployment.
-     *
      * @param {number} [deployment.status] Deployment status.
      *
      * @param {string} [deployment.message] Details about deployment status.
@@ -29320,8 +29418,6 @@ export interface WebApps {
      * specified, the API creates a deployment for the production slot.
      *
      * @param {object} deployment Deployment details.
-     *
-     * @param {string} [deployment.deploymentId] Identifier for deployment.
      *
      * @param {number} [deployment.status] Deployment status.
      *
@@ -29531,6 +29627,165 @@ export interface WebApps {
     listDeploymentLogSlot(resourceGroupName: string, name: string, id: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Deployment>;
     listDeploymentLogSlot(resourceGroupName: string, name: string, id: string, slot: string, callback: ServiceCallback<models.Deployment>): void;
     listDeploymentLogSlot(resourceGroupName: string, name: string, id: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Deployment>): void;
+
+
+    /**
+     * @summary Discovers an existing app backup that can be restored from a blob
+     * in Azure storage. Use this to get information about the databases stored in
+     * a backup.
+     *
+     * Discovers an existing app backup that can be restored from a blob in Azure
+     * storage. Use this to get information about the databases stored in a backup.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} request A RestoreRequest object that includes Azure storage
+     * URL and blog name for discovery of backup.
+     *
+     * @param {string} request.storageAccountUrl SAS URL to the container.
+     *
+     * @param {string} [request.blobName] Name of a blob which contains the backup.
+     *
+     * @param {boolean} request.overwrite <code>true</code> if the restore
+     * operation can overwrite target app; otherwise, <code>false</code>.
+     * <code>true</code> is needed if trying to restore over an existing app.
+     *
+     * @param {string} [request.siteName] Name of an app.
+     *
+     * @param {array} [request.databases] Collection of databases which should be
+     * restored. This list has to match the list of databases included in the
+     * backup.
+     *
+     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
+     * restoring an app with custom domains. <code>true</code> to remove custom
+     * domains automatically. If <code>false</code>, custom domains are added to
+     * the app's object when it is being restored, but that might fail due to
+     * conflicts during the operation.
+     *
+     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
+     * restore the site content
+     *
+     * @param {string} [request.appServicePlan] Specify app service plan that will
+     * own restored site.
+     *
+     * @param {string} [request.operationType] Operation type. Possible values
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+     *
+     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
+     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [request.hostingEnvironment] App Service Environment name,
+     * if needed (only when restoring an app to an App Service Environment).
+     *
+     * @param {string} [request.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will perform discovery for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RestoreRequest>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    discoverBackupSlotWithHttpOperationResponse(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestoreRequest>>;
+
+    /**
+     * @summary Discovers an existing app backup that can be restored from a blob
+     * in Azure storage. Use this to get information about the databases stored in
+     * a backup.
+     *
+     * Discovers an existing app backup that can be restored from a blob in Azure
+     * storage. Use this to get information about the databases stored in a backup.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} request A RestoreRequest object that includes Azure storage
+     * URL and blog name for discovery of backup.
+     *
+     * @param {string} request.storageAccountUrl SAS URL to the container.
+     *
+     * @param {string} [request.blobName] Name of a blob which contains the backup.
+     *
+     * @param {boolean} request.overwrite <code>true</code> if the restore
+     * operation can overwrite target app; otherwise, <code>false</code>.
+     * <code>true</code> is needed if trying to restore over an existing app.
+     *
+     * @param {string} [request.siteName] Name of an app.
+     *
+     * @param {array} [request.databases] Collection of databases which should be
+     * restored. This list has to match the list of databases included in the
+     * backup.
+     *
+     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
+     * restoring an app with custom domains. <code>true</code> to remove custom
+     * domains automatically. If <code>false</code>, custom domains are added to
+     * the app's object when it is being restored, but that might fail due to
+     * conflicts during the operation.
+     *
+     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
+     * restore the site content
+     *
+     * @param {string} [request.appServicePlan] Specify app service plan that will
+     * own restored site.
+     *
+     * @param {string} [request.operationType] Operation type. Possible values
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+     *
+     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
+     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [request.hostingEnvironment] App Service Environment name,
+     * if needed (only when restoring an app to an App Service Environment).
+     *
+     * @param {string} [request.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will perform discovery for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RestoreRequest} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RestoreRequest} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RestoreRequest} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    discoverBackupSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestoreRequest>;
+    discoverBackupSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, callback: ServiceCallback<models.RestoreRequest>): void;
+    discoverBackupSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreRequest>): void;
 
 
     /**
@@ -30456,6 +30711,8 @@ export interface WebApps {
      *
      * @param {object} functionEnvelope Function details.
      *
+     * @param {string} [functionEnvelope.functionAppId] Function App ID.
+     *
      * @param {string} [functionEnvelope.scriptRootPathHref] Script root path URI.
      *
      * @param {string} [functionEnvelope.scriptHref] Script URI.
@@ -30504,6 +30761,8 @@ export interface WebApps {
      * specified, the API deletes a deployment for the production slot.
      *
      * @param {object} functionEnvelope Function details.
+     *
+     * @param {string} [functionEnvelope.functionAppId] Function App ID.
      *
      * @param {string} [functionEnvelope.scriptRootPathHref] Script root path URI.
      *
@@ -34157,12 +34416,6 @@ export interface WebApps {
      *
      * @param {string} [premierAddOn.vendor] Premier add on Vendor.
      *
-     * @param {string} [premierAddOn.premierAddOnName] Premier add on Name.
-     *
-     * @param {string} [premierAddOn.premierAddOnLocation] Premier add on Location.
-     *
-     * @param {object} [premierAddOn.premierAddOnTags] Premier add on Tags.
-     *
      * @param {string} [premierAddOn.marketplacePublisher] Premier add on
      * Marketplace publisher.
      *
@@ -34211,12 +34464,6 @@ export interface WebApps {
      * @param {string} [premierAddOn.product] Premier add on Product.
      *
      * @param {string} [premierAddOn.vendor] Premier add on Vendor.
-     *
-     * @param {string} [premierAddOn.premierAddOnName] Premier add on Name.
-     *
-     * @param {string} [premierAddOn.premierAddOnLocation] Premier add on Location.
-     *
-     * @param {object} [premierAddOn.premierAddOnTags] Premier add on Tags.
      *
      * @param {string} [premierAddOn.marketplacePublisher] Premier add on
      * Marketplace publisher.
@@ -34337,6 +34584,279 @@ export interface WebApps {
     deletePremierAddOnSlot(resourceGroupName: string, name: string, premierAddOnName: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deletePremierAddOnSlot(resourceGroupName: string, name: string, premierAddOnName: string, slot: string, callback: ServiceCallback<void>): void;
     deletePremierAddOnSlot(resourceGroupName: string, name: string, premierAddOnName: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Updates a named add-on of an app.
+     *
+     * Updates a named add-on of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} premierAddOnName Add-on name.
+     *
+     * @param {object} premierAddOn A JSON representation of the edited premier
+     * add-on.
+     *
+     * @param {string} [premierAddOn.sku] Premier add on SKU.
+     *
+     * @param {string} [premierAddOn.product] Premier add on Product.
+     *
+     * @param {string} [premierAddOn.vendor] Premier add on Vendor.
+     *
+     * @param {string} [premierAddOn.marketplacePublisher] Premier add on
+     * Marketplace publisher.
+     *
+     * @param {string} [premierAddOn.marketplaceOffer] Premier add on Marketplace
+     * offer.
+     *
+     * @param {string} [premierAddOn.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will update the named add-on for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PremierAddOn>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updatePremierAddOnSlotWithHttpOperationResponse(resourceGroupName: string, name: string, premierAddOnName: string, premierAddOn: models.PremierAddOnPatchResource, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PremierAddOn>>;
+
+    /**
+     * @summary Updates a named add-on of an app.
+     *
+     * Updates a named add-on of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} premierAddOnName Add-on name.
+     *
+     * @param {object} premierAddOn A JSON representation of the edited premier
+     * add-on.
+     *
+     * @param {string} [premierAddOn.sku] Premier add on SKU.
+     *
+     * @param {string} [premierAddOn.product] Premier add on Product.
+     *
+     * @param {string} [premierAddOn.vendor] Premier add on Vendor.
+     *
+     * @param {string} [premierAddOn.marketplacePublisher] Premier add on
+     * Marketplace publisher.
+     *
+     * @param {string} [premierAddOn.marketplaceOffer] Premier add on Marketplace
+     * offer.
+     *
+     * @param {string} [premierAddOn.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will update the named add-on for the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PremierAddOn} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PremierAddOn} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PremierAddOn} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updatePremierAddOnSlot(resourceGroupName: string, name: string, premierAddOnName: string, premierAddOn: models.PremierAddOnPatchResource, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PremierAddOn>;
+    updatePremierAddOnSlot(resourceGroupName: string, name: string, premierAddOnName: string, premierAddOn: models.PremierAddOnPatchResource, slot: string, callback: ServiceCallback<models.PremierAddOn>): void;
+    updatePremierAddOnSlot(resourceGroupName: string, name: string, premierAddOnName: string, premierAddOn: models.PremierAddOnPatchResource, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PremierAddOn>): void;
+
+
+    /**
+     * @summary Gets data around private site access enablement and authorized
+     * Virtual Networks that can access the site.
+     *
+     * Gets data around private site access enablement and authorized Virtual
+     * Networks that can access the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {string} slot The name of the slot for the web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PrivateAccess>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getPrivateAccessSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrivateAccess>>;
+
+    /**
+     * @summary Gets data around private site access enablement and authorized
+     * Virtual Networks that can access the site.
+     *
+     * Gets data around private site access enablement and authorized Virtual
+     * Networks that can access the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {string} slot The name of the slot for the web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PrivateAccess} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PrivateAccess} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PrivateAccess} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getPrivateAccessSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrivateAccess>;
+    getPrivateAccessSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.PrivateAccess>): void;
+    getPrivateAccessSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrivateAccess>): void;
+
+
+    /**
+     * @summary Sets data around private site access enablement and authorized
+     * Virtual Networks that can access the site.
+     *
+     * Sets data around private site access enablement and authorized Virtual
+     * Networks that can access the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {object} access The information for the private access
+     *
+     * @param {boolean} [access.enabled] Whether private access is enabled or not.
+     *
+     * @param {array} [access.virtualNetworks] The Virtual Networks (and subnets)
+     * allowed to access the site privately.
+     *
+     * @param {string} [access.kind] Kind of resource.
+     *
+     * @param {string} slot The name of the slot for the web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PrivateAccess>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    putPrivateAccessVnetSlotWithHttpOperationResponse(resourceGroupName: string, name: string, access: models.PrivateAccess, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PrivateAccess>>;
+
+    /**
+     * @summary Sets data around private site access enablement and authorized
+     * Virtual Networks that can access the site.
+     *
+     * Sets data around private site access enablement and authorized Virtual
+     * Networks that can access the site.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name The name of the web app.
+     *
+     * @param {object} access The information for the private access
+     *
+     * @param {boolean} [access.enabled] Whether private access is enabled or not.
+     *
+     * @param {array} [access.virtualNetworks] The Virtual Networks (and subnets)
+     * allowed to access the site privately.
+     *
+     * @param {string} [access.kind] Kind of resource.
+     *
+     * @param {string} slot The name of the slot for the web app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PrivateAccess} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PrivateAccess} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PrivateAccess} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    putPrivateAccessVnetSlot(resourceGroupName: string, name: string, access: models.PrivateAccess, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PrivateAccess>;
+    putPrivateAccessVnetSlot(resourceGroupName: string, name: string, access: models.PrivateAccess, slot: string, callback: ServiceCallback<models.PrivateAccess>): void;
+    putPrivateAccessVnetSlot(resourceGroupName: string, name: string, access: models.PrivateAccess, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PrivateAccess>): void;
 
 
     /**
@@ -35380,140 +35900,6 @@ export interface WebApps {
 
 
     /**
-     * @summary Recovers a web app to a previous snapshot.
-     *
-     * Recovers a web app to a previous snapshot.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of web app.
-     *
-     * @param {object} recoveryEntity Snapshot data used for web app recovery.
-     * Snapshot information can be obtained by calling GetDeletedSites or
-     * GetSiteSnapshots API.
-     *
-     * @param {string} [recoveryEntity.snapshotTime] Point in time in which the app
-     * recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [recoveryEntity.recoveryTarget] Specifies the web app that
-     * snapshot contents will be written to.
-     *
-     * @param {string} [recoveryEntity.recoveryTarget.location] Geographical
-     * location of the target web app, e.g. SouthEastAsia, SouthCentralUS
-     *
-     * @param {string} [recoveryEntity.recoveryTarget.id] ARM resource ID of the
-     * target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
-     * operation can overwrite source app; otherwise, <code>false</code>.
-     *
-     * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
-     * configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [recoveryEntity.ignoreConflictingHostNames] If true, custom
-     * hostname conflicts will be ignored when recovering to a target web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [recoveryEntity.kind] Kind of resource.
-     *
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    recoverSlotWithHttpOperationResponse(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * @summary Recovers a web app to a previous snapshot.
-     *
-     * Recovers a web app to a previous snapshot.
-     *
-     * @param {string} resourceGroupName Name of the resource group to which the
-     * resource belongs.
-     *
-     * @param {string} name Name of web app.
-     *
-     * @param {object} recoveryEntity Snapshot data used for web app recovery.
-     * Snapshot information can be obtained by calling GetDeletedSites or
-     * GetSiteSnapshots API.
-     *
-     * @param {string} [recoveryEntity.snapshotTime] Point in time in which the app
-     * recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [recoveryEntity.recoveryTarget] Specifies the web app that
-     * snapshot contents will be written to.
-     *
-     * @param {string} [recoveryEntity.recoveryTarget.location] Geographical
-     * location of the target web app, e.g. SouthEastAsia, SouthCentralUS
-     *
-     * @param {string} [recoveryEntity.recoveryTarget.id] ARM resource ID of the
-     * target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
-     * operation can overwrite source app; otherwise, <code>false</code>.
-     *
-     * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
-     * configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [recoveryEntity.ignoreConflictingHostNames] If true, custom
-     * hostname conflicts will be ignored when recovering to a target web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [recoveryEntity.kind] Kind of resource.
-     *
-     * @param {string} slot Name of web app slot. If not specified then will
-     * default to production slot.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    recoverSlot(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    recoverSlot(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, slot: string, callback: ServiceCallback<void>): void;
-    recoverSlot(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
      * @summary Resets the configuration settings of the current slot if they were
      * previously modified by calling the API with POST.
      *
@@ -35671,6 +36057,392 @@ export interface WebApps {
     restartSlot(resourceGroupName: string, name: string, slot: string, options?: { softRestart? : boolean, synchronous? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     restartSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<void>): void;
     restartSlot(resourceGroupName: string, name: string, slot: string, options: { softRestart? : boolean, synchronous? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Restores an app from a backup blob in Azure Storage.
+     *
+     * Restores an app from a backup blob in Azure Storage.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} request Information on restore request .
+     *
+     * @param {string} request.storageAccountUrl SAS URL to the container.
+     *
+     * @param {string} [request.blobName] Name of a blob which contains the backup.
+     *
+     * @param {boolean} request.overwrite <code>true</code> if the restore
+     * operation can overwrite target app; otherwise, <code>false</code>.
+     * <code>true</code> is needed if trying to restore over an existing app.
+     *
+     * @param {string} [request.siteName] Name of an app.
+     *
+     * @param {array} [request.databases] Collection of databases which should be
+     * restored. This list has to match the list of databases included in the
+     * backup.
+     *
+     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
+     * restoring an app with custom domains. <code>true</code> to remove custom
+     * domains automatically. If <code>false</code>, custom domains are added to
+     * the app's object when it is being restored, but that might fail due to
+     * conflicts during the operation.
+     *
+     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
+     * restore the site content
+     *
+     * @param {string} [request.appServicePlan] Specify app service plan that will
+     * own restored site.
+     *
+     * @param {string} [request.operationType] Operation type. Possible values
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+     *
+     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
+     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [request.hostingEnvironment] App Service Environment name,
+     * if needed (only when restoring an app to an App Service Environment).
+     *
+     * @param {string} [request.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will restore a backup of the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    restoreFromBackupBlobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Restores an app from a backup blob in Azure Storage.
+     *
+     * Restores an app from a backup blob in Azure Storage.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} request Information on restore request .
+     *
+     * @param {string} request.storageAccountUrl SAS URL to the container.
+     *
+     * @param {string} [request.blobName] Name of a blob which contains the backup.
+     *
+     * @param {boolean} request.overwrite <code>true</code> if the restore
+     * operation can overwrite target app; otherwise, <code>false</code>.
+     * <code>true</code> is needed if trying to restore over an existing app.
+     *
+     * @param {string} [request.siteName] Name of an app.
+     *
+     * @param {array} [request.databases] Collection of databases which should be
+     * restored. This list has to match the list of databases included in the
+     * backup.
+     *
+     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
+     * restoring an app with custom domains. <code>true</code> to remove custom
+     * domains automatically. If <code>false</code>, custom domains are added to
+     * the app's object when it is being restored, but that might fail due to
+     * conflicts during the operation.
+     *
+     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
+     * restore the site content
+     *
+     * @param {string} [request.appServicePlan] Specify app service plan that will
+     * own restored site.
+     *
+     * @param {string} [request.operationType] Operation type. Possible values
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+     *
+     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
+     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [request.hostingEnvironment] App Service Environment name,
+     * if needed (only when restoring an app to an App Service Environment).
+     *
+     * @param {string} [request.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will restore a backup of the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    restoreFromBackupBlobSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restoreFromBackupBlobSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, callback: ServiceCallback<void>): void;
+    restoreFromBackupBlobSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Restores a deleted web app to this web app.
+     *
+     * Restores a deleted web app to this web app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Deleted web app restore information.
+     *
+     * @param {string} [restoreRequest.deletedSiteId] ARM resource ID of the
+     * deleted app. Example:
+     * /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, deleted site
+     * configuration, in addition to content, will be restored.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
+     * deleted app from, formatted as a DateTime string.
+     * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    restoreFromDeletedAppSlotWithHttpOperationResponse(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Restores a deleted web app to this web app.
+     *
+     * Restores a deleted web app to this web app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Deleted web app restore information.
+     *
+     * @param {string} [restoreRequest.deletedSiteId] ARM resource ID of the
+     * deleted app. Example:
+     * /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, deleted site
+     * configuration, in addition to content, will be restored.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
+     * deleted app from, formatted as a DateTime string.
+     * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    restoreFromDeletedAppSlot(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restoreFromDeletedAppSlot(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, slot: string, callback: ServiceCallback<void>): void;
+    restoreFromDeletedAppSlot(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Restores a web app from a snapshot.
+     *
+     * Restores a web app from a snapshot.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Snapshot restore settings. Snapshot
+     * information can be obtained by calling GetDeletedSites or GetSiteSnapshots
+     * API.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time in which the app
+     * restore should be done, formatted as a DateTime string.
+     *
+     * @param {object} [restoreRequest.recoverySource] Optional. Specifies the web
+     * app that snapshot contents will be retrieved from.
+     * If empty, the targeted web app will be used as the source.
+     *
+     * @param {string} [restoreRequest.recoverySource.location] Geographical
+     * location of the source web app, e.g. SouthEastAsia, SouthCentralUS
+     *
+     * @param {string} [restoreRequest.recoverySource.id] ARM resource ID of the
+     * source app.
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {boolean} restoreRequest.overwrite If <code>true</code> the restore
+     * operation can overwrite source app; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, site
+     * configuration, in addition to content, will be reverted.
+     *
+     * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
+     * hostname conflicts will be ignored when recovering to a target web app.
+     * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    restoreSnapshotSlotWithHttpOperationResponse(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Restores a web app from a snapshot.
+     *
+     * Restores a web app from a snapshot.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Snapshot restore settings. Snapshot
+     * information can be obtained by calling GetDeletedSites or GetSiteSnapshots
+     * API.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time in which the app
+     * restore should be done, formatted as a DateTime string.
+     *
+     * @param {object} [restoreRequest.recoverySource] Optional. Specifies the web
+     * app that snapshot contents will be retrieved from.
+     * If empty, the targeted web app will be used as the source.
+     *
+     * @param {string} [restoreRequest.recoverySource.location] Geographical
+     * location of the source web app, e.g. SouthEastAsia, SouthCentralUS
+     *
+     * @param {string} [restoreRequest.recoverySource.id] ARM resource ID of the
+     * source app.
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {boolean} restoreRequest.overwrite If <code>true</code> the restore
+     * operation can overwrite source app; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, site
+     * configuration, in addition to content, will be reverted.
+     *
+     * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
+     * hostname conflicts will be ignored when recovering to a target web app.
+     * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    restoreSnapshotSlot(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    restoreSnapshotSlot(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, slot: string, callback: ServiceCallback<void>): void;
+    restoreSnapshotSlot(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -40507,6 +41279,8 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
+     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
      * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
@@ -40524,6 +41298,9 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
      * and version
+     *
+     * @param {string} [siteEnvelope.siteConfig.windowsFxVersion] Xenon App
+     * Framework and version
      *
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
      * <code>true</code> if request tracing is enabled; otherwise,
@@ -40723,6 +41500,12 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
      * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteEnvelope.siteConfig.managedServiceIdentityId] Managed
+     * Service Identity Id
+     *
+     * @param {number} [siteEnvelope.siteConfig.xManagedServiceIdentityId] Explicit
+     * Managed Service Identity Id
+     *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
      * restrictions.
      *
@@ -40732,6 +41515,13 @@ export interface WebApps {
      * @param {string} [siteEnvelope.siteConfig.minTlsVersion] MinTlsVersion:
      * configures the minimum version of TLS required for SSL requests. Possible
      * values include: '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteEnvelope.siteConfig.ftpsState] State of FTP / FTPS
+     * service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteEnvelope.siteConfig.reservedInstanceCount] Number of
+     * reserved instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
      * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
@@ -40808,43 +41598,6 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
-     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
-     * if quotas should be ignored; otherwise, <code>false</code>.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
-     * creation, the app is created from a previous snapshot.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
-     * which the app recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
-     * app that snapshot contents will be written to.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
-     * Geographical location of the target web app, e.g. SouthEastAsia,
-     * SouthCentralUS
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
-     * ID of the target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
-     * the recovery operation can overwrite source app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
-     * site configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
-     * true, custom hostname conflicts will be ignored when recovering to a target
-     * web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
-     *
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
      * http requests
@@ -40852,7 +41605,10 @@ export interface WebApps {
      * @param {object} [siteEnvelope.identity]
      *
      * @param {string} [siteEnvelope.identity.type] Type of managed service
-     * identity. Possible values include: 'SystemAssigned'
+     * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
+     *
+     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
+     * managed service identities.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -40903,6 +41659,8 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
+     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
      * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
@@ -40920,6 +41678,9 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
      * and version
+     *
+     * @param {string} [siteEnvelope.siteConfig.windowsFxVersion] Xenon App
+     * Framework and version
      *
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
      * <code>true</code> if request tracing is enabled; otherwise,
@@ -41119,6 +41880,12 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
      * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteEnvelope.siteConfig.managedServiceIdentityId] Managed
+     * Service Identity Id
+     *
+     * @param {number} [siteEnvelope.siteConfig.xManagedServiceIdentityId] Explicit
+     * Managed Service Identity Id
+     *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
      * restrictions.
      *
@@ -41128,6 +41895,13 @@ export interface WebApps {
      * @param {string} [siteEnvelope.siteConfig.minTlsVersion] MinTlsVersion:
      * configures the minimum version of TLS required for SSL requests. Possible
      * values include: '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteEnvelope.siteConfig.ftpsState] State of FTP / FTPS
+     * service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteEnvelope.siteConfig.reservedInstanceCount] Number of
+     * reserved instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
      * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
@@ -41204,43 +41978,6 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
-     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
-     * if quotas should be ignored; otherwise, <code>false</code>.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
-     * creation, the app is created from a previous snapshot.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
-     * which the app recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
-     * app that snapshot contents will be written to.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
-     * Geographical location of the target web app, e.g. SouthEastAsia,
-     * SouthCentralUS
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
-     * ID of the target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
-     * the recovery operation can overwrite source app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
-     * site configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
-     * true, custom hostname conflicts will be ignored when recovering to a target
-     * web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
-     *
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
      * http requests
@@ -41248,7 +41985,10 @@ export interface WebApps {
      * @param {object} [siteEnvelope.identity]
      *
      * @param {string} [siteEnvelope.identity.type] Type of managed service
-     * identity. Possible values include: 'SystemAssigned'
+     * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
+     *
+     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
+     * managed service identities.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -41331,7 +42071,7 @@ export interface WebApps {
      * own restored site.
      *
      * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
      *
      * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
      * SiteConfig.ConnectionStrings should be set in new app; otherwise,
@@ -41349,11 +42089,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<RestoreResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRestoreWithHttpOperationResponse(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestoreResponse>>;
+    beginRestoreWithHttpOperationResponse(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Restores a specific backup to another app (or deployment slot, if
@@ -41398,7 +42138,7 @@ export interface WebApps {
      * own restored site.
      *
      * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
      *
      * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
      * SiteConfig.ConnectionStrings should be set in new app; otherwise,
@@ -41421,7 +42161,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {RestoreResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -41429,16 +42169,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {RestoreResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RestoreResponse} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRestore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestoreResponse>;
-    beginRestore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, callback: ServiceCallback<models.RestoreResponse>): void;
-    beginRestore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreResponse>): void;
+    beginRestore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, callback: ServiceCallback<void>): void;
+    beginRestore(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -41641,6 +42380,8 @@ export interface WebApps {
      *
      * @param {object} functionEnvelope Function details.
      *
+     * @param {string} [functionEnvelope.functionAppId] Function App ID.
+     *
      * @param {string} [functionEnvelope.scriptRootPathHref] Script root path URI.
      *
      * @param {string} [functionEnvelope.scriptHref] Script URI.
@@ -41686,6 +42427,8 @@ export interface WebApps {
      * @param {string} functionName Function name.
      *
      * @param {object} functionEnvelope Function details.
+     *
+     * @param {string} [functionEnvelope.functionAppId] Function App ID.
      *
      * @param {string} [functionEnvelope.scriptRootPathHref] Script root path URI.
      *
@@ -42057,46 +42800,54 @@ export interface WebApps {
 
 
     /**
-     * @summary Recovers a web app to a previous snapshot.
+     * @summary Restores an app from a backup blob in Azure Storage.
      *
-     * Recovers a web app to a previous snapshot.
+     * Restores an app from a backup blob in Azure Storage.
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
      *
-     * @param {string} name Name of web app.
+     * @param {string} name Name of the app.
      *
-     * @param {object} recoveryEntity Snapshot data used for web app recovery.
-     * Snapshot information can be obtained by calling GetDeletedSites or
-     * GetSiteSnapshots API.
+     * @param {object} request Information on restore request .
      *
-     * @param {string} [recoveryEntity.snapshotTime] Point in time in which the app
-     * recovery should be attempted, formatted as a DateTime string.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
-     * @param {object} [recoveryEntity.recoveryTarget] Specifies the web app that
-     * snapshot contents will be written to.
+     * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {string} [recoveryEntity.recoveryTarget.location] Geographical
-     * location of the target web app, e.g. SouthEastAsia, SouthCentralUS
+     * @param {boolean} request.overwrite <code>true</code> if the restore
+     * operation can overwrite target app; otherwise, <code>false</code>.
+     * <code>true</code> is needed if trying to restore over an existing app.
      *
-     * @param {string} [recoveryEntity.recoveryTarget.id] ARM resource ID of the
-     * target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
+     * @param {string} [request.siteName] Name of an app.
      *
-     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
-     * operation can overwrite source app; otherwise, <code>false</code>.
+     * @param {array} [request.databases] Collection of databases which should be
+     * restored. This list has to match the list of databases included in the
+     * backup.
      *
-     * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
-     * configuration, in addition to content, will be reverted.
+     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
+     * restoring an app with custom domains. <code>true</code> to remove custom
+     * domains automatically. If <code>false</code>, custom domains are added to
+     * the app's object when it is being restored, but that might fail due to
+     * conflicts during the operation.
      *
-     * @param {boolean} [recoveryEntity.ignoreConflictingHostNames] If true, custom
-     * hostname conflicts will be ignored when recovering to a target web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
+     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
+     * restore the site content
      *
-     * @param {string} [recoveryEntity.kind] Kind of resource.
+     * @param {string} [request.appServicePlan] Specify app service plan that will
+     * own restored site.
+     *
+     * @param {string} [request.operationType] Operation type. Possible values
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+     *
+     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
+     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [request.hostingEnvironment] App Service Environment name,
+     * if needed (only when restoring an app to an App Service Environment).
+     *
+     * @param {string} [request.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -42109,49 +42860,57 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRecoverWithHttpOperationResponse(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginRestoreFromBackupBlobWithHttpOperationResponse(resourceGroupName: string, name: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Recovers a web app to a previous snapshot.
+     * @summary Restores an app from a backup blob in Azure Storage.
      *
-     * Recovers a web app to a previous snapshot.
+     * Restores an app from a backup blob in Azure Storage.
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
      *
-     * @param {string} name Name of web app.
+     * @param {string} name Name of the app.
      *
-     * @param {object} recoveryEntity Snapshot data used for web app recovery.
-     * Snapshot information can be obtained by calling GetDeletedSites or
-     * GetSiteSnapshots API.
+     * @param {object} request Information on restore request .
      *
-     * @param {string} [recoveryEntity.snapshotTime] Point in time in which the app
-     * recovery should be attempted, formatted as a DateTime string.
+     * @param {string} request.storageAccountUrl SAS URL to the container.
      *
-     * @param {object} [recoveryEntity.recoveryTarget] Specifies the web app that
-     * snapshot contents will be written to.
+     * @param {string} [request.blobName] Name of a blob which contains the backup.
      *
-     * @param {string} [recoveryEntity.recoveryTarget.location] Geographical
-     * location of the target web app, e.g. SouthEastAsia, SouthCentralUS
+     * @param {boolean} request.overwrite <code>true</code> if the restore
+     * operation can overwrite target app; otherwise, <code>false</code>.
+     * <code>true</code> is needed if trying to restore over an existing app.
      *
-     * @param {string} [recoveryEntity.recoveryTarget.id] ARM resource ID of the
-     * target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
+     * @param {string} [request.siteName] Name of an app.
      *
-     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
-     * operation can overwrite source app; otherwise, <code>false</code>.
+     * @param {array} [request.databases] Collection of databases which should be
+     * restored. This list has to match the list of databases included in the
+     * backup.
      *
-     * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
-     * configuration, in addition to content, will be reverted.
+     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
+     * restoring an app with custom domains. <code>true</code> to remove custom
+     * domains automatically. If <code>false</code>, custom domains are added to
+     * the app's object when it is being restored, but that might fail due to
+     * conflicts during the operation.
      *
-     * @param {boolean} [recoveryEntity.ignoreConflictingHostNames] If true, custom
-     * hostname conflicts will be ignored when recovering to a target web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
+     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
+     * restore the site content
      *
-     * @param {string} [recoveryEntity.kind] Kind of resource.
+     * @param {string} [request.appServicePlan] Specify app service plan that will
+     * own restored site.
+     *
+     * @param {string} [request.operationType] Operation type. Possible values
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+     *
+     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
+     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [request.hostingEnvironment] App Service Environment name,
+     * if needed (only when restoring an app to an App Service Environment).
+     *
+     * @param {string} [request.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -42179,9 +42938,233 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRecover(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginRecover(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, callback: ServiceCallback<void>): void;
-    beginRecover(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginRestoreFromBackupBlob(resourceGroupName: string, name: string, request: models.RestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestoreFromBackupBlob(resourceGroupName: string, name: string, request: models.RestoreRequest, callback: ServiceCallback<void>): void;
+    beginRestoreFromBackupBlob(resourceGroupName: string, name: string, request: models.RestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Restores a deleted web app to this web app.
+     *
+     * Restores a deleted web app to this web app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Deleted web app restore information.
+     *
+     * @param {string} [restoreRequest.deletedSiteId] ARM resource ID of the
+     * deleted app. Example:
+     * /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, deleted site
+     * configuration, in addition to content, will be restored.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
+     * deleted app from, formatted as a DateTime string.
+     * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRestoreFromDeletedAppWithHttpOperationResponse(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Restores a deleted web app to this web app.
+     *
+     * Restores a deleted web app to this web app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Deleted web app restore information.
+     *
+     * @param {string} [restoreRequest.deletedSiteId] ARM resource ID of the
+     * deleted app. Example:
+     * /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, deleted site
+     * configuration, in addition to content, will be restored.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
+     * deleted app from, formatted as a DateTime string.
+     * If unspecified, default value is the time that the app was deleted.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRestoreFromDeletedApp(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestoreFromDeletedApp(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, callback: ServiceCallback<void>): void;
+    beginRestoreFromDeletedApp(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Restores a web app from a snapshot.
+     *
+     * Restores a web app from a snapshot.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Snapshot restore settings. Snapshot
+     * information can be obtained by calling GetDeletedSites or GetSiteSnapshots
+     * API.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time in which the app
+     * restore should be done, formatted as a DateTime string.
+     *
+     * @param {object} [restoreRequest.recoverySource] Optional. Specifies the web
+     * app that snapshot contents will be retrieved from.
+     * If empty, the targeted web app will be used as the source.
+     *
+     * @param {string} [restoreRequest.recoverySource.location] Geographical
+     * location of the source web app, e.g. SouthEastAsia, SouthCentralUS
+     *
+     * @param {string} [restoreRequest.recoverySource.id] ARM resource ID of the
+     * source app.
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {boolean} restoreRequest.overwrite If <code>true</code> the restore
+     * operation can overwrite source app; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, site
+     * configuration, in addition to content, will be reverted.
+     *
+     * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
+     * hostname conflicts will be ignored when recovering to a target web app.
+     * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRestoreSnapshotWithHttpOperationResponse(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Restores a web app from a snapshot.
+     *
+     * Restores a web app from a snapshot.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Snapshot restore settings. Snapshot
+     * information can be obtained by calling GetDeletedSites or GetSiteSnapshots
+     * API.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time in which the app
+     * restore should be done, formatted as a DateTime string.
+     *
+     * @param {object} [restoreRequest.recoverySource] Optional. Specifies the web
+     * app that snapshot contents will be retrieved from.
+     * If empty, the targeted web app will be used as the source.
+     *
+     * @param {string} [restoreRequest.recoverySource.location] Geographical
+     * location of the source web app, e.g. SouthEastAsia, SouthCentralUS
+     *
+     * @param {string} [restoreRequest.recoverySource.id] ARM resource ID of the
+     * source app.
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {boolean} restoreRequest.overwrite If <code>true</code> the restore
+     * operation can overwrite source app; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, site
+     * configuration, in addition to content, will be reverted.
+     *
+     * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
+     * hostname conflicts will be ignored when recovering to a target web app.
+     * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRestoreSnapshot(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestoreSnapshot(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, callback: ServiceCallback<void>): void;
+    beginRestoreSnapshot(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -42283,6 +43266,8 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
+     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
      * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
@@ -42300,6 +43285,9 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
      * and version
+     *
+     * @param {string} [siteEnvelope.siteConfig.windowsFxVersion] Xenon App
+     * Framework and version
      *
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
      * <code>true</code> if request tracing is enabled; otherwise,
@@ -42499,6 +43487,12 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
      * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteEnvelope.siteConfig.managedServiceIdentityId] Managed
+     * Service Identity Id
+     *
+     * @param {number} [siteEnvelope.siteConfig.xManagedServiceIdentityId] Explicit
+     * Managed Service Identity Id
+     *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
      * restrictions.
      *
@@ -42508,6 +43502,13 @@ export interface WebApps {
      * @param {string} [siteEnvelope.siteConfig.minTlsVersion] MinTlsVersion:
      * configures the minimum version of TLS required for SSL requests. Possible
      * values include: '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteEnvelope.siteConfig.ftpsState] State of FTP / FTPS
+     * service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteEnvelope.siteConfig.reservedInstanceCount] Number of
+     * reserved instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
      * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
@@ -42584,43 +43585,6 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
-     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
-     * if quotas should be ignored; otherwise, <code>false</code>.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
-     * creation, the app is created from a previous snapshot.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
-     * which the app recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
-     * app that snapshot contents will be written to.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
-     * Geographical location of the target web app, e.g. SouthEastAsia,
-     * SouthCentralUS
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
-     * ID of the target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
-     * the recovery operation can overwrite source app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
-     * site configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
-     * true, custom hostname conflicts will be ignored when recovering to a target
-     * web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
-     *
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
      * http requests
@@ -42628,7 +43592,10 @@ export interface WebApps {
      * @param {object} [siteEnvelope.identity]
      *
      * @param {string} [siteEnvelope.identity.type] Type of managed service
-     * identity. Possible values include: 'SystemAssigned'
+     * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
+     *
+     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
+     * managed service identities.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -42641,19 +43608,6 @@ export interface WebApps {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation.
-     *
-     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     *
-     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS.
-     *
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
-     * default domain name.
-     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -42663,7 +43617,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
+    beginCreateOrUpdateSlotWithHttpOperationResponse(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Site>>;
 
     /**
      * @summary Creates a new web, mobile, or API app in an existing resource
@@ -42695,6 +43649,8 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
+     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
      * @param {number} [siteEnvelope.siteConfig.numberOfWorkers] Number of workers.
@@ -42712,6 +43668,9 @@ export interface WebApps {
      *
      * @param {string} [siteEnvelope.siteConfig.linuxFxVersion] Linux App Framework
      * and version
+     *
+     * @param {string} [siteEnvelope.siteConfig.windowsFxVersion] Xenon App
+     * Framework and version
      *
      * @param {boolean} [siteEnvelope.siteConfig.requestTracingEnabled]
      * <code>true</code> if request tracing is enabled; otherwise,
@@ -42911,6 +43870,12 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.siteConfig.localMySqlEnabled]
      * <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
      *
+     * @param {number} [siteEnvelope.siteConfig.managedServiceIdentityId] Managed
+     * Service Identity Id
+     *
+     * @param {number} [siteEnvelope.siteConfig.xManagedServiceIdentityId] Explicit
+     * Managed Service Identity Id
+     *
      * @param {array} [siteEnvelope.siteConfig.ipSecurityRestrictions] IP security
      * restrictions.
      *
@@ -42920,6 +43885,13 @@ export interface WebApps {
      * @param {string} [siteEnvelope.siteConfig.minTlsVersion] MinTlsVersion:
      * configures the minimum version of TLS required for SSL requests. Possible
      * values include: '1.0', '1.1', '1.2'
+     *
+     * @param {string} [siteEnvelope.siteConfig.ftpsState] State of FTP / FTPS
+     * service. Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+     *
+     * @param {number} [siteEnvelope.siteConfig.reservedInstanceCount] Number of
+     * reserved instances.
+     * This setting only applies to the Consumption Plan
      *
      * @param {boolean} [siteEnvelope.scmSiteAlsoStopped] <code>true</code> to stop
      * SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The
@@ -42996,43 +43968,6 @@ export interface WebApps {
      * Traffic Manager profile to create. This is only needed if Traffic Manager
      * profile does not already exist.
      *
-     * @param {boolean} [siteEnvelope.cloningInfo.ignoreQuotas] <code>true</code>
-     * if quotas should be ignored; otherwise, <code>false</code>.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo] If specified during app
-     * creation, the app is created from a previous snapshot.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.snapshotTime] Point in time in
-     * which the app recovery should be attempted, formatted as a DateTime string.
-     *
-     * @param {object} [siteEnvelope.snapshotInfo.recoveryTarget] Specifies the web
-     * app that snapshot contents will be written to.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.location]
-     * Geographical location of the target web app, e.g. SouthEastAsia,
-     * SouthCentralUS
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.recoveryTarget.id] ARM resource
-     * ID of the target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} siteEnvelope.snapshotInfo.overwrite If <code>true</code>
-     * the recovery operation can overwrite source app; otherwise,
-     * <code>false</code>.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.recoverConfiguration] If true,
-     * site configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [siteEnvelope.snapshotInfo.ignoreConflictingHostNames] If
-     * true, custom hostname conflicts will be ignored when recovering to a target
-     * web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [siteEnvelope.snapshotInfo.kind] Kind of resource.
-     *
      * @param {boolean} [siteEnvelope.httpsOnly] HttpsOnly: configures a web site
      * to accept only https requests. Issues redirect for
      * http requests
@@ -43040,7 +43975,10 @@ export interface WebApps {
      * @param {object} [siteEnvelope.identity]
      *
      * @param {string} [siteEnvelope.identity.type] Type of managed service
-     * identity. Possible values include: 'SystemAssigned'
+     * identity. Possible values include: 'SystemAssigned', 'UserAssigned'
+     *
+     * @param {array} [siteEnvelope.identity.identityIds] Array of UserAssigned
+     * managed service identities.
      *
      * @param {string} [siteEnvelope.kind] Kind of resource.
      *
@@ -43052,19 +43990,6 @@ export interface WebApps {
      * default, this API attempts to create or modify the production slot.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {boolean} [options.skipDnsRegistration] If true web app hostname is
-     * not registered with DNS on creation. This parameter is
-     * only used for app creation.
-     *
-     * @param {boolean} [options.skipCustomDomainVerification] If true, custom (non
-     * *.azurewebsites.net) domains associated with web app are not verified.
-     *
-     * @param {boolean} [options.forceDnsRegistration] If true, web app hostname is
-     * force registered with DNS.
-     *
-     * @param {string} [options.ttlInSeconds] Time to live in seconds for web app's
-     * default domain name.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -43091,9 +44016,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdateSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options?: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
+    beginCreateOrUpdateSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Site>;
     beginCreateOrUpdateSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, callback: ServiceCallback<models.Site>): void;
-    beginCreateOrUpdateSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options: { skipDnsRegistration? : boolean, skipCustomDomainVerification? : boolean, forceDnsRegistration? : boolean, ttlInSeconds? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
+    beginCreateOrUpdateSlot(resourceGroupName: string, name: string, siteEnvelope: models.Site, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Site>): void;
 
 
     /**
@@ -43139,7 +44064,7 @@ export interface WebApps {
      * own restored site.
      *
      * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
      *
      * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
      * SiteConfig.ConnectionStrings should be set in new app; otherwise,
@@ -43160,11 +44085,11 @@ export interface WebApps {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<RestoreResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRestoreSlotWithHttpOperationResponse(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RestoreResponse>>;
+    beginRestoreSlotWithHttpOperationResponse(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * @summary Restores a specific backup to another app (or deployment slot, if
@@ -43209,7 +44134,7 @@ export interface WebApps {
      * own restored site.
      *
      * @param {string} [request.operationType] Operation type. Possible values
-     * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
      *
      * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
      * SiteConfig.ConnectionStrings should be set in new app; otherwise,
@@ -43235,7 +44160,7 @@ export interface WebApps {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {RestoreResponse} - The deserialized result object.
+     *                      @resolve {null} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -43243,16 +44168,15 @@ export interface WebApps {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {RestoreResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RestoreResponse} for more information.
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRestoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RestoreResponse>;
-    beginRestoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, callback: ServiceCallback<models.RestoreResponse>): void;
-    beginRestoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RestoreResponse>): void;
+    beginRestoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, callback: ServiceCallback<void>): void;
+    beginRestoreSlot(resourceGroupName: string, name: string, backupId: string, request: models.RestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -43472,6 +44396,8 @@ export interface WebApps {
      *
      * @param {object} functionEnvelope Function details.
      *
+     * @param {string} [functionEnvelope.functionAppId] Function App ID.
+     *
      * @param {string} [functionEnvelope.scriptRootPathHref] Script root path URI.
      *
      * @param {string} [functionEnvelope.scriptHref] Script URI.
@@ -43520,6 +44446,8 @@ export interface WebApps {
      * specified, the API deletes a deployment for the production slot.
      *
      * @param {object} functionEnvelope Function details.
+     *
+     * @param {string} [functionEnvelope.functionAppId] Function App ID.
      *
      * @param {string} [functionEnvelope.scriptRootPathHref] Script root path URI.
      *
@@ -43704,46 +44632,179 @@ export interface WebApps {
 
 
     /**
-     * @summary Recovers a web app to a previous snapshot.
+     * @summary Restores an app from a backup blob in Azure Storage.
      *
-     * Recovers a web app to a previous snapshot.
+     * Restores an app from a backup blob in Azure Storage.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} request Information on restore request .
+     *
+     * @param {string} request.storageAccountUrl SAS URL to the container.
+     *
+     * @param {string} [request.blobName] Name of a blob which contains the backup.
+     *
+     * @param {boolean} request.overwrite <code>true</code> if the restore
+     * operation can overwrite target app; otherwise, <code>false</code>.
+     * <code>true</code> is needed if trying to restore over an existing app.
+     *
+     * @param {string} [request.siteName] Name of an app.
+     *
+     * @param {array} [request.databases] Collection of databases which should be
+     * restored. This list has to match the list of databases included in the
+     * backup.
+     *
+     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
+     * restoring an app with custom domains. <code>true</code> to remove custom
+     * domains automatically. If <code>false</code>, custom domains are added to
+     * the app's object when it is being restored, but that might fail due to
+     * conflicts during the operation.
+     *
+     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
+     * restore the site content
+     *
+     * @param {string} [request.appServicePlan] Specify app service plan that will
+     * own restored site.
+     *
+     * @param {string} [request.operationType] Operation type. Possible values
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+     *
+     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
+     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [request.hostingEnvironment] App Service Environment name,
+     * if needed (only when restoring an app to an App Service Environment).
+     *
+     * @param {string} [request.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will restore a backup of the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRestoreFromBackupBlobSlotWithHttpOperationResponse(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Restores an app from a backup blob in Azure Storage.
+     *
+     * Restores an app from a backup blob in Azure Storage.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} request Information on restore request .
+     *
+     * @param {string} request.storageAccountUrl SAS URL to the container.
+     *
+     * @param {string} [request.blobName] Name of a blob which contains the backup.
+     *
+     * @param {boolean} request.overwrite <code>true</code> if the restore
+     * operation can overwrite target app; otherwise, <code>false</code>.
+     * <code>true</code> is needed if trying to restore over an existing app.
+     *
+     * @param {string} [request.siteName] Name of an app.
+     *
+     * @param {array} [request.databases] Collection of databases which should be
+     * restored. This list has to match the list of databases included in the
+     * backup.
+     *
+     * @param {boolean} [request.ignoreConflictingHostNames] Changes a logic when
+     * restoring an app with custom domains. <code>true</code> to remove custom
+     * domains automatically. If <code>false</code>, custom domains are added to
+     * the app's object when it is being restored, but that might fail due to
+     * conflicts during the operation.
+     *
+     * @param {boolean} [request.ignoreDatabases] Ignore the databases and only
+     * restore the site content
+     *
+     * @param {string} [request.appServicePlan] Specify app service plan that will
+     * own restored site.
+     *
+     * @param {string} [request.operationType] Operation type. Possible values
+     * include: 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'
+     *
+     * @param {boolean} [request.adjustConnectionStrings] <code>true</code> if
+     * SiteConfig.ConnectionStrings should be set in new app; otherwise,
+     * <code>false</code>.
+     *
+     * @param {string} [request.hostingEnvironment] App Service Environment name,
+     * if needed (only when restoring an app to an App Service Environment).
+     *
+     * @param {string} [request.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will restore a backup of the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRestoreFromBackupBlobSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestoreFromBackupBlobSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, callback: ServiceCallback<void>): void;
+    beginRestoreFromBackupBlobSlot(resourceGroupName: string, name: string, request: models.RestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Restores a deleted web app to this web app.
+     *
+     * Restores a deleted web app to this web app.
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
      *
      * @param {string} name Name of web app.
      *
-     * @param {object} recoveryEntity Snapshot data used for web app recovery.
-     * Snapshot information can be obtained by calling GetDeletedSites or
-     * GetSiteSnapshots API.
+     * @param {object} restoreRequest Deleted web app restore information.
      *
-     * @param {string} [recoveryEntity.snapshotTime] Point in time in which the app
-     * recovery should be attempted, formatted as a DateTime string.
+     * @param {string} [restoreRequest.deletedSiteId] ARM resource ID of the
+     * deleted app. Example:
+     * /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}
      *
-     * @param {object} [recoveryEntity.recoveryTarget] Specifies the web app that
-     * snapshot contents will be written to.
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, deleted site
+     * configuration, in addition to content, will be restored.
      *
-     * @param {string} [recoveryEntity.recoveryTarget.location] Geographical
-     * location of the target web app, e.g. SouthEastAsia, SouthCentralUS
+     * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
+     * deleted app from, formatted as a DateTime string.
+     * If unspecified, default value is the time that the app was deleted.
      *
-     * @param {string} [recoveryEntity.recoveryTarget.id] ARM resource ID of the
-     * target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
-     * operation can overwrite source app; otherwise, <code>false</code>.
-     *
-     * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
-     * configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [recoveryEntity.ignoreConflictingHostNames] If true, custom
-     * hostname conflicts will be ignored when recovering to a target web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [recoveryEntity.kind] Kind of resource.
+     * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
      * default to production slot.
@@ -43759,49 +44820,32 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginRecoverSlotWithHttpOperationResponse(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginRestoreFromDeletedAppSlotWithHttpOperationResponse(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * @summary Recovers a web app to a previous snapshot.
+     * @summary Restores a deleted web app to this web app.
      *
-     * Recovers a web app to a previous snapshot.
+     * Restores a deleted web app to this web app.
      *
      * @param {string} resourceGroupName Name of the resource group to which the
      * resource belongs.
      *
      * @param {string} name Name of web app.
      *
-     * @param {object} recoveryEntity Snapshot data used for web app recovery.
-     * Snapshot information can be obtained by calling GetDeletedSites or
-     * GetSiteSnapshots API.
+     * @param {object} restoreRequest Deleted web app restore information.
      *
-     * @param {string} [recoveryEntity.snapshotTime] Point in time in which the app
-     * recovery should be attempted, formatted as a DateTime string.
+     * @param {string} [restoreRequest.deletedSiteId] ARM resource ID of the
+     * deleted app. Example:
+     * /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}
      *
-     * @param {object} [recoveryEntity.recoveryTarget] Specifies the web app that
-     * snapshot contents will be written to.
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, deleted site
+     * configuration, in addition to content, will be restored.
      *
-     * @param {string} [recoveryEntity.recoveryTarget.location] Geographical
-     * location of the target web app, e.g. SouthEastAsia, SouthCentralUS
+     * @param {string} [restoreRequest.snapshotTime] Point in time to restore the
+     * deleted app from, formatted as a DateTime string.
+     * If unspecified, default value is the time that the app was deleted.
      *
-     * @param {string} [recoveryEntity.recoveryTarget.id] ARM resource ID of the
-     * target app.
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
-     * for production slots and
-     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
-     * for other slots.
-     *
-     * @param {boolean} recoveryEntity.overwrite If <code>true</code> the recovery
-     * operation can overwrite source app; otherwise, <code>false</code>.
-     *
-     * @param {boolean} [recoveryEntity.recoverConfiguration] If true, site
-     * configuration, in addition to content, will be reverted.
-     *
-     * @param {boolean} [recoveryEntity.ignoreConflictingHostNames] If true, custom
-     * hostname conflicts will be ignored when recovering to a target web app.
-     * This setting is only necessary when RecoverConfiguration is enabled.
-     *
-     * @param {string} [recoveryEntity.kind] Kind of resource.
+     * @param {string} [restoreRequest.kind] Kind of resource.
      *
      * @param {string} slot Name of web app slot. If not specified then will
      * default to production slot.
@@ -43832,9 +44876,145 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginRecoverSlot(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginRecoverSlot(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, slot: string, callback: ServiceCallback<void>): void;
-    beginRecoverSlot(resourceGroupName: string, name: string, recoveryEntity: models.SnapshotRecoveryRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginRestoreFromDeletedAppSlot(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestoreFromDeletedAppSlot(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, slot: string, callback: ServiceCallback<void>): void;
+    beginRestoreFromDeletedAppSlot(resourceGroupName: string, name: string, restoreRequest: models.DeletedAppRestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Restores a web app from a snapshot.
+     *
+     * Restores a web app from a snapshot.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Snapshot restore settings. Snapshot
+     * information can be obtained by calling GetDeletedSites or GetSiteSnapshots
+     * API.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time in which the app
+     * restore should be done, formatted as a DateTime string.
+     *
+     * @param {object} [restoreRequest.recoverySource] Optional. Specifies the web
+     * app that snapshot contents will be retrieved from.
+     * If empty, the targeted web app will be used as the source.
+     *
+     * @param {string} [restoreRequest.recoverySource.location] Geographical
+     * location of the source web app, e.g. SouthEastAsia, SouthCentralUS
+     *
+     * @param {string} [restoreRequest.recoverySource.id] ARM resource ID of the
+     * source app.
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {boolean} restoreRequest.overwrite If <code>true</code> the restore
+     * operation can overwrite source app; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, site
+     * configuration, in addition to content, will be reverted.
+     *
+     * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
+     * hostname conflicts will be ignored when recovering to a target web app.
+     * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginRestoreSnapshotSlotWithHttpOperationResponse(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Restores a web app from a snapshot.
+     *
+     * Restores a web app from a snapshot.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of web app.
+     *
+     * @param {object} restoreRequest Snapshot restore settings. Snapshot
+     * information can be obtained by calling GetDeletedSites or GetSiteSnapshots
+     * API.
+     *
+     * @param {string} [restoreRequest.snapshotTime] Point in time in which the app
+     * restore should be done, formatted as a DateTime string.
+     *
+     * @param {object} [restoreRequest.recoverySource] Optional. Specifies the web
+     * app that snapshot contents will be retrieved from.
+     * If empty, the targeted web app will be used as the source.
+     *
+     * @param {string} [restoreRequest.recoverySource.location] Geographical
+     * location of the source web app, e.g. SouthEastAsia, SouthCentralUS
+     *
+     * @param {string} [restoreRequest.recoverySource.id] ARM resource ID of the
+     * source app.
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+     * for production slots and
+     * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+     * for other slots.
+     *
+     * @param {boolean} restoreRequest.overwrite If <code>true</code> the restore
+     * operation can overwrite source app; otherwise, <code>false</code>.
+     *
+     * @param {boolean} [restoreRequest.recoverConfiguration] If true, site
+     * configuration, in addition to content, will be reverted.
+     *
+     * @param {boolean} [restoreRequest.ignoreConflictingHostNames] If true, custom
+     * hostname conflicts will be ignored when recovering to a target web app.
+     * This setting is only necessary when RecoverConfiguration is enabled.
+     *
+     * @param {string} [restoreRequest.kind] Kind of resource.
+     *
+     * @param {string} slot Name of web app slot. If not specified then will
+     * default to production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginRestoreSnapshotSlot(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginRestoreSnapshotSlot(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, slot: string, callback: ServiceCallback<void>): void;
+    beginRestoreSnapshotSlot(resourceGroupName: string, name: string, restoreRequest: models.SnapshotRestoreRequest, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -48058,6 +49238,15 @@ export interface AppServiceEnvironments {
      * @param {array} [hostingEnvironmentEnvelope.userWhitelistedIpRanges] User
      * added ip ranges to whitelist on ASE db
      *
+     * @param {boolean} [hostingEnvironmentEnvelope.hasLinuxWorkers] Flag that
+     * displays whether an ASE has linux workers or not
+     *
+     * @param {string} [hostingEnvironmentEnvelope.sslCertKeyVaultId] Key Vault ID
+     * for ILB App Service Environment default SSL certificate
+     *
+     * @param {string} [hostingEnvironmentEnvelope.sslCertKeyVaultSecretName] Key
+     * Vault Secret Name for ILB App Service Environment default SSL certificate
+     *
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource.
      *
      * @param {string} hostingEnvironmentEnvelope.location Resource Location.
@@ -48160,6 +49349,15 @@ export interface AppServiceEnvironments {
      *
      * @param {array} [hostingEnvironmentEnvelope.userWhitelistedIpRanges] User
      * added ip ranges to whitelist on ASE db
+     *
+     * @param {boolean} [hostingEnvironmentEnvelope.hasLinuxWorkers] Flag that
+     * displays whether an ASE has linux workers or not
+     *
+     * @param {string} [hostingEnvironmentEnvelope.sslCertKeyVaultId] Key Vault ID
+     * for ILB App Service Environment default SSL certificate
+     *
+     * @param {string} [hostingEnvironmentEnvelope.sslCertKeyVaultSecretName] Key
+     * Vault Secret Name for ILB App Service Environment default SSL certificate
      *
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource.
      *
@@ -48356,6 +49554,15 @@ export interface AppServiceEnvironments {
      * @param {array} [hostingEnvironmentEnvelope.userWhitelistedIpRanges] User
      * added ip ranges to whitelist on ASE db
      *
+     * @param {boolean} [hostingEnvironmentEnvelope.hasLinuxWorkers] Flag that
+     * displays whether an ASE has linux workers or not
+     *
+     * @param {string} [hostingEnvironmentEnvelope.sslCertKeyVaultId] Key Vault ID
+     * for ILB App Service Environment default SSL certificate
+     *
+     * @param {string} [hostingEnvironmentEnvelope.sslCertKeyVaultSecretName] Key
+     * Vault Secret Name for ILB App Service Environment default SSL certificate
+     *
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -48454,6 +49661,15 @@ export interface AppServiceEnvironments {
      *
      * @param {array} [hostingEnvironmentEnvelope.userWhitelistedIpRanges] User
      * added ip ranges to whitelist on ASE db
+     *
+     * @param {boolean} [hostingEnvironmentEnvelope.hasLinuxWorkers] Flag that
+     * displays whether an ASE has linux workers or not
+     *
+     * @param {string} [hostingEnvironmentEnvelope.sslCertKeyVaultId] Key Vault ID
+     * for ILB App Service Environment default SSL certificate
+     *
+     * @param {string} [hostingEnvironmentEnvelope.sslCertKeyVaultSecretName] Key
+     * Vault Secret Name for ILB App Service Environment default SSL certificate
      *
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource.
      *
@@ -48623,6 +49839,83 @@ export interface AppServiceEnvironments {
     listVips(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AddressResponse>;
     listVips(resourceGroupName: string, name: string, callback: ServiceCallback<models.AddressResponse>): void;
     listVips(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AddressResponse>): void;
+
+
+    /**
+     * @summary Move an App Service Environment to a different VNET.
+     *
+     * Move an App Service Environment to a different VNET.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {object} vnetInfo Details for the new virtual network.
+     *
+     * @param {string} [vnetInfo.id] Resource id of the Virtual Network.
+     *
+     * @param {string} [vnetInfo.subnet] Subnet within the Virtual Network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebAppCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    changeVnetWithHttpOperationResponse(resourceGroupName: string, name: string, vnetInfo: models.VirtualNetworkProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebAppCollection>>;
+
+    /**
+     * @summary Move an App Service Environment to a different VNET.
+     *
+     * Move an App Service Environment to a different VNET.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {object} vnetInfo Details for the new virtual network.
+     *
+     * @param {string} [vnetInfo.id] Resource id of the Virtual Network.
+     *
+     * @param {string} [vnetInfo.subnet] Subnet within the Virtual Network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebAppCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebAppCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebAppCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    changeVnet(resourceGroupName: string, name: string, vnetInfo: models.VirtualNetworkProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebAppCollection>;
+    changeVnet(resourceGroupName: string, name: string, vnetInfo: models.VirtualNetworkProfile, callback: ServiceCallback<models.WebAppCollection>): void;
+    changeVnet(resourceGroupName: string, name: string, vnetInfo: models.VirtualNetworkProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebAppCollection>): void;
 
 
     /**
@@ -51341,6 +52634,15 @@ export interface AppServiceEnvironments {
      * @param {array} [hostingEnvironmentEnvelope.userWhitelistedIpRanges] User
      * added ip ranges to whitelist on ASE db
      *
+     * @param {boolean} [hostingEnvironmentEnvelope.hasLinuxWorkers] Flag that
+     * displays whether an ASE has linux workers or not
+     *
+     * @param {string} [hostingEnvironmentEnvelope.sslCertKeyVaultId] Key Vault ID
+     * for ILB App Service Environment default SSL certificate
+     *
+     * @param {string} [hostingEnvironmentEnvelope.sslCertKeyVaultSecretName] Key
+     * Vault Secret Name for ILB App Service Environment default SSL certificate
+     *
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource.
      *
      * @param {string} hostingEnvironmentEnvelope.location Resource Location.
@@ -51443,6 +52745,15 @@ export interface AppServiceEnvironments {
      *
      * @param {array} [hostingEnvironmentEnvelope.userWhitelistedIpRanges] User
      * added ip ranges to whitelist on ASE db
+     *
+     * @param {boolean} [hostingEnvironmentEnvelope.hasLinuxWorkers] Flag that
+     * displays whether an ASE has linux workers or not
+     *
+     * @param {string} [hostingEnvironmentEnvelope.sslCertKeyVaultId] Key Vault ID
+     * for ILB App Service Environment default SSL certificate
+     *
+     * @param {string} [hostingEnvironmentEnvelope.sslCertKeyVaultSecretName] Key
+     * Vault Secret Name for ILB App Service Environment default SSL certificate
      *
      * @param {string} [hostingEnvironmentEnvelope.kind] Kind of resource.
      *
@@ -51553,6 +52864,83 @@ export interface AppServiceEnvironments {
     beginDeleteMethod(resourceGroupName: string, name: string, options?: { forceDelete? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginDeleteMethod(resourceGroupName: string, name: string, callback: ServiceCallback<void>): void;
     beginDeleteMethod(resourceGroupName: string, name: string, options: { forceDelete? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Move an App Service Environment to a different VNET.
+     *
+     * Move an App Service Environment to a different VNET.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {object} vnetInfo Details for the new virtual network.
+     *
+     * @param {string} [vnetInfo.id] Resource id of the Virtual Network.
+     *
+     * @param {string} [vnetInfo.subnet] Subnet within the Virtual Network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebAppCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginChangeVnetWithHttpOperationResponse(resourceGroupName: string, name: string, vnetInfo: models.VirtualNetworkProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebAppCollection>>;
+
+    /**
+     * @summary Move an App Service Environment to a different VNET.
+     *
+     * Move an App Service Environment to a different VNET.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the App Service Environment.
+     *
+     * @param {object} vnetInfo Details for the new virtual network.
+     *
+     * @param {string} [vnetInfo.id] Resource id of the Virtual Network.
+     *
+     * @param {string} [vnetInfo.subnet] Subnet within the Virtual Network.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebAppCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebAppCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebAppCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginChangeVnet(resourceGroupName: string, name: string, vnetInfo: models.VirtualNetworkProfile, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebAppCollection>;
+    beginChangeVnet(resourceGroupName: string, name: string, vnetInfo: models.VirtualNetworkProfile, callback: ServiceCallback<models.WebAppCollection>): void;
+    beginChangeVnet(resourceGroupName: string, name: string, vnetInfo: models.VirtualNetworkProfile, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebAppCollection>): void;
 
 
     /**
@@ -52215,6 +53603,67 @@ export interface AppServiceEnvironments {
     listCapacitiesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StampCapacityCollection>;
     listCapacitiesNext(nextPageLink: string, callback: ServiceCallback<models.StampCapacityCollection>): void;
     listCapacitiesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StampCapacityCollection>): void;
+
+
+    /**
+     * @summary Move an App Service Environment to a different VNET.
+     *
+     * Move an App Service Environment to a different VNET.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebAppCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    changeVnetNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebAppCollection>>;
+
+    /**
+     * @summary Move an App Service Environment to a different VNET.
+     *
+     * Move an App Service Environment to a different VNET.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebAppCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebAppCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebAppCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    changeVnetNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebAppCollection>;
+    changeVnetNext(nextPageLink: string, callback: ServiceCallback<models.WebAppCollection>): void;
+    changeVnetNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebAppCollection>): void;
 
 
     /**
@@ -53475,6 +54924,67 @@ export interface AppServiceEnvironments {
 
 
     /**
+     * @summary Move an App Service Environment to a different VNET.
+     *
+     * Move an App Service Environment to a different VNET.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<WebAppCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginChangeVnetNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebAppCollection>>;
+
+    /**
+     * @summary Move an App Service Environment to a different VNET.
+     *
+     * Move an App Service Environment to a different VNET.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {WebAppCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {WebAppCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link WebAppCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginChangeVnetNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebAppCollection>;
+    beginChangeVnetNext(nextPageLink: string, callback: ServiceCallback<models.WebAppCollection>): void;
+    beginChangeVnetNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebAppCollection>): void;
+
+
+    /**
      * @summary Resume an App Service Environment.
      *
      * Resume an App Service Environment.
@@ -53810,9 +55320,6 @@ export interface AppServicePlans {
      *
      * @param {object} appServicePlan Details of the App Service plan.
      *
-     * @param {string} appServicePlan.appServicePlanName Name for the App Service
-     * plan.
-     *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
      * to the App Service plan.
      *
@@ -53836,8 +55343,14 @@ export interface AppServicePlans {
      * @param {date} [appServicePlan.spotExpirationTime] The time when the server
      * farm expires. Valid only if it is a spot server farm.
      *
+     * @param {date} [appServicePlan.freeOfferExpirationTime] The time when the
+     * server farm free offer expires.
+     *
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
      *
@@ -53908,9 +55421,6 @@ export interface AppServicePlans {
      *
      * @param {object} appServicePlan Details of the App Service plan.
      *
-     * @param {string} appServicePlan.appServicePlanName Name for the App Service
-     * plan.
-     *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
      * to the App Service plan.
      *
@@ -53934,8 +55444,14 @@ export interface AppServicePlans {
      * @param {date} [appServicePlan.spotExpirationTime] The time when the server
      * farm expires. Valid only if it is a spot server farm.
      *
+     * @param {date} [appServicePlan.freeOfferExpirationTime] The time when the
+     * server farm free offer expires.
+     *
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
      *
@@ -54089,9 +55605,6 @@ export interface AppServicePlans {
      *
      * @param {object} appServicePlan Details of the App Service plan.
      *
-     * @param {string} appServicePlan.appServicePlanPatchResourceName Name for the
-     * App Service plan.
-     *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
      * to the App Service plan.
      *
@@ -54115,8 +55628,14 @@ export interface AppServicePlans {
      * @param {date} [appServicePlan.spotExpirationTime] The time when the server
      * farm expires. Valid only if it is a spot server farm.
      *
+     * @param {date} [appServicePlan.freeOfferExpirationTime] The time when the
+     * server farm free offer expires.
+     *
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
      *
@@ -54149,9 +55668,6 @@ export interface AppServicePlans {
      *
      * @param {object} appServicePlan Details of the App Service plan.
      *
-     * @param {string} appServicePlan.appServicePlanPatchResourceName Name for the
-     * App Service plan.
-     *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
      * to the App Service plan.
      *
@@ -54175,8 +55691,14 @@ export interface AppServicePlans {
      * @param {date} [appServicePlan.spotExpirationTime] The time when the server
      * farm expires. Valid only if it is a spot server farm.
      *
+     * @param {date} [appServicePlan.freeOfferExpirationTime] The time when the
+     * server farm free offer expires.
+     *
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
      *
@@ -55619,9 +57141,6 @@ export interface AppServicePlans {
      *
      * @param {object} route Definition of the Virtual Network route.
      *
-     * @param {string} [route.vnetRouteName] The name of this route. This is only
-     * returned by the server and does not need to be set by the client.
-     *
      * @param {string} [route.startAddress] The starting address for this route.
      * This may also include a CIDR notation, in which case the end address must
      * not be specified.
@@ -55668,9 +57187,6 @@ export interface AppServicePlans {
      * @param {string} routeName Name of the Virtual Network route.
      *
      * @param {object} route Definition of the Virtual Network route.
-     *
-     * @param {string} [route.vnetRouteName] The name of this route. This is only
-     * returned by the server and does not need to be set by the client.
      *
      * @param {string} [route.startAddress] The starting address for this route.
      * This may also include a CIDR notation, in which case the end address must
@@ -55810,9 +57326,6 @@ export interface AppServicePlans {
      *
      * @param {object} route Definition of the Virtual Network route.
      *
-     * @param {string} [route.vnetRouteName] The name of this route. This is only
-     * returned by the server and does not need to be set by the client.
-     *
      * @param {string} [route.startAddress] The starting address for this route.
      * This may also include a CIDR notation, in which case the end address must
      * not be specified.
@@ -55859,9 +57372,6 @@ export interface AppServicePlans {
      * @param {string} routeName Name of the Virtual Network route.
      *
      * @param {object} route Definition of the Virtual Network route.
-     *
-     * @param {string} [route.vnetRouteName] The name of this route. This is only
-     * returned by the server and does not need to be set by the client.
      *
      * @param {string} [route.startAddress] The starting address for this route.
      * This may also include a CIDR notation, in which case the end address must
@@ -55995,9 +57505,6 @@ export interface AppServicePlans {
      *
      * @param {object} appServicePlan Details of the App Service plan.
      *
-     * @param {string} appServicePlan.appServicePlanName Name for the App Service
-     * plan.
-     *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
      * to the App Service plan.
      *
@@ -56021,8 +57528,14 @@ export interface AppServicePlans {
      * @param {date} [appServicePlan.spotExpirationTime] The time when the server
      * farm expires. Valid only if it is a spot server farm.
      *
+     * @param {date} [appServicePlan.freeOfferExpirationTime] The time when the
+     * server farm free offer expires.
+     *
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
      *
@@ -56093,9 +57606,6 @@ export interface AppServicePlans {
      *
      * @param {object} appServicePlan Details of the App Service plan.
      *
-     * @param {string} appServicePlan.appServicePlanName Name for the App Service
-     * plan.
-     *
      * @param {string} [appServicePlan.workerTierName] Target worker tier assigned
      * to the App Service plan.
      *
@@ -56119,8 +57629,14 @@ export interface AppServicePlans {
      * @param {date} [appServicePlan.spotExpirationTime] The time when the server
      * farm expires. Valid only if it is a spot server farm.
      *
+     * @param {date} [appServicePlan.freeOfferExpirationTime] The time when the
+     * server farm free offer expires.
+     *
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
      *
