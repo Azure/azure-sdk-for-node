@@ -2539,19 +2539,6 @@ export interface ValidateIaasVMRestoreOperationRequest extends ValidateRestoreOp
 
 /**
  * @class
- * Initializes a new instance of the ValidateOperationRequestResource class.
- * @constructor
- * Base class for validate operation request.
- *
- * @member {object} [properties] ValidateOperationRequestResource properties
- * @member {string} [properties.objectType] Polymorphic Discriminator
- */
-export interface ValidateOperationRequestResource extends Resource {
-  properties?: ValidateOperationRequest;
-}
-
-/**
- * @class
  * Initializes a new instance of the ValidateOperationResponse class.
  * @constructor
  * Base class for validate operation response.

@@ -1156,16 +1156,7 @@ export interface Validate {
      *
      * @param {object} parameters resource validate operation request
      *
-     * @param {object} [parameters.properties] ValidateOperationRequestResource
-     * properties
-     *
-     * @param {string} parameters.properties.objectType Polymorphic Discriminator
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} [parameters.eTag] Optional ETag.
+     * @param {string} parameters.objectType Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1178,7 +1169,7 @@ export interface Validate {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    operationWithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequestResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ValidateOperationsResponse>>;
+    operationWithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ValidateOperationsResponse>>;
 
     /**
      * Validate operation for specified backed up item. This is a synchronous
@@ -1191,16 +1182,7 @@ export interface Validate {
      *
      * @param {object} parameters resource validate operation request
      *
-     * @param {object} [parameters.properties] ValidateOperationRequestResource
-     * properties
-     *
-     * @param {string} parameters.properties.objectType Polymorphic Discriminator
-     *
-     * @param {string} [parameters.location] Resource location.
-     *
-     * @param {object} [parameters.tags] Resource tags.
-     *
-     * @param {string} [parameters.eTag] Optional ETag.
+     * @param {string} parameters.objectType Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1230,9 +1212,9 @@ export interface Validate {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    operation(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequestResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ValidateOperationsResponse>;
-    operation(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequestResource, callback: ServiceCallback<models.ValidateOperationsResponse>): void;
-    operation(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequestResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ValidateOperationsResponse>): void;
+    operation(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ValidateOperationsResponse>;
+    operation(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, callback: ServiceCallback<models.ValidateOperationsResponse>): void;
+    operation(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ValidateOperationsResponse>): void;
 }
 
 /**
