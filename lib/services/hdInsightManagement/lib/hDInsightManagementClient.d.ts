@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class HDInsightManagementClient extends AzureServiceClient {
+export default class HDInsightManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the HDInsightManagementClient class.
    * @constructor
@@ -20,7 +21,7 @@ declare class HDInsightManagementClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+   * @param {string} subscriptionId - The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -65,4 +66,4 @@ declare class HDInsightManagementClient extends AzureServiceClient {
   operations: operations.Operations;
 }
 
-export = HDInsightManagementClient;
+export { HDInsightManagementClient, models as HDInsightManagementModels };

@@ -8,7 +8,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases?api-version=2017-12-01')
   .reply(200, "{\"value\":[{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/postgres\",\"name\":\"postgres\",\"type\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"properties\":{\"charset\":\"UTF8\",\"collation\":\"English_United States.1252\"}},{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/testdb4417\",\"name\":\"testdb4417\",\"type\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"properties\":{\"charset\":\"UTF8\",\"collation\":\"English_United States.1252\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '647',
@@ -26,7 +26,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases?api-version=2017-12-01')
   .reply(200, "{\"value\":[{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/postgres\",\"name\":\"postgres\",\"type\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"properties\":{\"charset\":\"UTF8\",\"collation\":\"English_United States.1252\"}},{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup5834/providers/Microsoft.DBforPostgreSQL/servers/testserver3266/databases/testdb4417\",\"name\":\"testdb4417\",\"type\":\"Microsoft.DBforPostgreSQL/servers/databases\",\"properties\":{\"charset\":\"UTF8\",\"collation\":\"English_United States.1252\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '647',

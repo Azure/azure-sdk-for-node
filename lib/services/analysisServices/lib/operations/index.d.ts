@@ -107,8 +107,8 @@ export interface Servers {
      * @param {array} [serverParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {string} [serverParameters.backupBlobContainerUri] The container URI
-     * of backup blob.
+     * @param {string} [serverParameters.backupBlobContainerUri] The SAS container
+     * URI to the backup container.
      *
      * @param {object} [serverParameters.gatewayDetails] The gateway details
      * configured for the AS server.
@@ -184,8 +184,8 @@ export interface Servers {
      * @param {array} [serverParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {string} [serverParameters.backupBlobContainerUri] The container URI
-     * of backup blob.
+     * @param {string} [serverParameters.backupBlobContainerUri] The SAS container
+     * URI to the backup container.
      *
      * @param {object} [serverParameters.gatewayDetails] The gateway details
      * configured for the AS server.
@@ -359,8 +359,8 @@ export interface Servers {
      * @param {array} [serverUpdateParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {string} [serverUpdateParameters.backupBlobContainerUri] The
-     * container URI of backup blob.
+     * @param {string} [serverUpdateParameters.backupBlobContainerUri] The SAS
+     * container URI to the backup container.
      *
      * @param {object} [serverUpdateParameters.gatewayDetails] The gateway details
      * configured for the AS server.
@@ -433,8 +433,8 @@ export interface Servers {
      * @param {array} [serverUpdateParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {string} [serverUpdateParameters.backupBlobContainerUri] The
-     * container URI of backup blob.
+     * @param {string} [serverUpdateParameters.backupBlobContainerUri] The SAS
+     * container URI to the backup container.
      *
      * @param {object} [serverUpdateParameters.gatewayDetails] The gateway details
      * configured for the AS server.
@@ -981,6 +981,201 @@ export interface Servers {
 
 
     /**
+     * Check the name availability in the target location.
+     *
+     * @param {string} location The region name which the operation will lookup
+     * into.
+     *
+     * @param {object} serverParameters Contains the information used to provision
+     * the Analysis Services server.
+     *
+     * @param {string} [serverParameters.name] Name for checking availability.
+     *
+     * @param {string} [serverParameters.type] The resource type of azure analysis
+     * services.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CheckServerNameAvailabilityResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    checkNameAvailabilityWithHttpOperationResponse(location: string, serverParameters: models.CheckServerNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CheckServerNameAvailabilityResult>>;
+
+    /**
+     * Check the name availability in the target location.
+     *
+     * @param {string} location The region name which the operation will lookup
+     * into.
+     *
+     * @param {object} serverParameters Contains the information used to provision
+     * the Analysis Services server.
+     *
+     * @param {string} [serverParameters.name] Name for checking availability.
+     *
+     * @param {string} [serverParameters.type] The resource type of azure analysis
+     * services.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CheckServerNameAvailabilityResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CheckServerNameAvailabilityResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CheckServerNameAvailabilityResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    checkNameAvailability(location: string, serverParameters: models.CheckServerNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckServerNameAvailabilityResult>;
+    checkNameAvailability(location: string, serverParameters: models.CheckServerNameAvailabilityParameters, callback: ServiceCallback<models.CheckServerNameAvailabilityResult>): void;
+    checkNameAvailability(location: string, serverParameters: models.CheckServerNameAvailabilityParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckServerNameAvailabilityResult>): void;
+
+
+    /**
+     * List the result of the specified operation.
+     *
+     * @param {string} location The region name which the operation will lookup
+     * into.
+     *
+     * @param {string} operationId The target operation Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listOperationResultsWithHttpOperationResponse(location: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * List the result of the specified operation.
+     *
+     * @param {string} location The region name which the operation will lookup
+     * into.
+     *
+     * @param {string} operationId The target operation Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOperationResults(location: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    listOperationResults(location: string, operationId: string, callback: ServiceCallback<void>): void;
+    listOperationResults(location: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List the status of operation.
+     *
+     * @param {string} location The region name which the operation will lookup
+     * into.
+     *
+     * @param {string} operationId The target operation Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationStatus>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listOperationStatusesWithHttpOperationResponse(location: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationStatus>>;
+
+    /**
+     * List the status of operation.
+     *
+     * @param {string} location The region name which the operation will lookup
+     * into.
+     *
+     * @param {string} operationId The target operation Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationStatus} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationStatus} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listOperationStatuses(location: string, operationId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationStatus>;
+    listOperationStatuses(location: string, operationId: string, callback: ServiceCallback<models.OperationStatus>): void;
+    listOperationStatuses(location: string, operationId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationStatus>): void;
+
+
+    /**
      * Provisions the specified Analysis Services server based on the configuration
      * specified in the request.
      *
@@ -1000,8 +1195,8 @@ export interface Servers {
      * @param {array} [serverParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {string} [serverParameters.backupBlobContainerUri] The container URI
-     * of backup blob.
+     * @param {string} [serverParameters.backupBlobContainerUri] The SAS container
+     * URI to the backup container.
      *
      * @param {object} [serverParameters.gatewayDetails] The gateway details
      * configured for the AS server.
@@ -1077,8 +1272,8 @@ export interface Servers {
      * @param {array} [serverParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {string} [serverParameters.backupBlobContainerUri] The container URI
-     * of backup blob.
+     * @param {string} [serverParameters.backupBlobContainerUri] The SAS container
+     * URI to the backup container.
      *
      * @param {object} [serverParameters.gatewayDetails] The gateway details
      * configured for the AS server.
@@ -1252,8 +1447,8 @@ export interface Servers {
      * @param {array} [serverUpdateParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {string} [serverUpdateParameters.backupBlobContainerUri] The
-     * container URI of backup blob.
+     * @param {string} [serverUpdateParameters.backupBlobContainerUri] The SAS
+     * container URI to the backup container.
      *
      * @param {object} [serverUpdateParameters.gatewayDetails] The gateway details
      * configured for the AS server.
@@ -1326,8 +1521,8 @@ export interface Servers {
      * @param {array} [serverUpdateParameters.asAdministrators.members] An array of
      * administrator user identities.
      *
-     * @param {string} [serverUpdateParameters.backupBlobContainerUri] The
-     * container URI of backup blob.
+     * @param {string} [serverUpdateParameters.backupBlobContainerUri] The SAS
+     * container URI to the backup container.
      *
      * @param {object} [serverUpdateParameters.gatewayDetails] The gateway details
      * configured for the AS server.

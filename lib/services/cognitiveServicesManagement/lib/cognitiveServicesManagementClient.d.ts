@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class CognitiveServicesManagementClient extends AzureServiceClient {
+export default class CognitiveServicesManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the CognitiveServicesManagementClient class.
    * @constructor
@@ -60,4 +61,4 @@ declare class CognitiveServicesManagementClient extends AzureServiceClient {
   checkSkuAvailability: operations.CheckSkuAvailability;
 }
 
-export = CognitiveServicesManagementClient;
+export { CognitiveServicesManagementClient, models as CognitiveServicesManagementModels };
