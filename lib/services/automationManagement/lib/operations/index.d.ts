@@ -4840,7 +4840,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} runbookName The runbook name.
      *
-     * @param {string} runbookContent The runbook draft content.
+     * @param {object} runbookContent The runbook draft content.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4853,7 +4853,7 @@ export interface RunbookDraftOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    replaceContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    replaceContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * Replaces the runbook draft content.
@@ -4864,7 +4864,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} runbookName The runbook name.
      *
-     * @param {string} runbookContent The runbook draft content.
+     * @param {object} runbookContent The runbook draft content.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4892,9 +4892,9 @@ export interface RunbookDraftOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<stream.Readable>): void;
-    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, callback: ServiceCallback<stream.Readable>): void;
+    replaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -5097,7 +5097,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} runbookName The runbook name.
      *
-     * @param {string} runbookContent The runbook draft content.
+     * @param {object} runbookContent The runbook draft content.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5110,7 +5110,7 @@ export interface RunbookDraftOperations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginReplaceContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    beginReplaceContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * Replaces the runbook draft content.
@@ -5121,7 +5121,7 @@ export interface RunbookDraftOperations {
      *
      * @param {string} runbookName The runbook name.
      *
-     * @param {string} runbookContent The runbook draft content.
+     * @param {object} runbookContent The runbook draft content.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5149,9 +5149,9 @@ export interface RunbookDraftOperations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, callback: ServiceCallback<stream.Readable>): void;
-    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, callback: ServiceCallback<stream.Readable>): void;
+    beginReplaceContent(resourceGroupName: string, automationAccountName: string, runbookName: string, runbookContent: stream.Readable, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
