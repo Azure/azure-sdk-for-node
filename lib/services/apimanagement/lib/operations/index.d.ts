@@ -830,6 +830,12 @@ export interface Api {
      * @param {string} [parameters.apiVersion] Indicates the Version identifier of
      * the API if the API is versioned
      *
+     * @param {string} [parameters.apiRevisionDescription] Description of the Api
+     * Revision.
+     *
+     * @param {string} [parameters.apiVersionDescription] Description of the Api
+     * Version.
+     *
      * @param {string} [parameters.apiVersionSetId] A resource identifier for the
      * related ApiVersionSet.
      *
@@ -950,6 +956,12 @@ export interface Api {
      *
      * @param {string} [parameters.apiVersion] Indicates the Version identifier of
      * the API if the API is versioned
+     *
+     * @param {string} [parameters.apiRevisionDescription] Description of the Api
+     * Revision.
+     *
+     * @param {string} [parameters.apiVersionDescription] Description of the Api
+     * Version.
      *
      * @param {string} [parameters.apiVersionSetId] A resource identifier for the
      * related ApiVersionSet.
@@ -1090,6 +1102,12 @@ export interface Api {
      * @param {string} [parameters.apiVersion] Indicates the Version identifier of
      * the API if the API is versioned
      *
+     * @param {string} [parameters.apiRevisionDescription] Description of the Api
+     * Revision.
+     *
+     * @param {string} [parameters.apiVersionDescription] Description of the Api
+     * Version.
+     *
      * @param {string} [parameters.apiVersionSetId] A resource identifier for the
      * related ApiVersionSet.
      *
@@ -1169,6 +1187,12 @@ export interface Api {
      *
      * @param {string} [parameters.apiVersion] Indicates the Version identifier of
      * the API if the API is versioned
+     *
+     * @param {string} [parameters.apiRevisionDescription] Description of the Api
+     * Revision.
+     *
+     * @param {string} [parameters.apiVersionDescription] Description of the Api
+     * Version.
      *
      * @param {string} [parameters.apiVersionSetId] A resource identifier for the
      * related ApiVersionSet.
