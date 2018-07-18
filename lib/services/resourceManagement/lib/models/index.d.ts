@@ -18,275 +18,66 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the Plan class.
+ * Initializes a new instance of the PolicySku class.
  * @constructor
- * Plan for the appliance.
+ * The policy sku. This property is optional, obsolete, and will be ignored.
  *
- * @member {string} name The plan name.
- * @member {string} publisher The publisher ID.
- * @member {string} product The product code.
- * @member {string} [promotionCode] The promotion code.
- * @member {string} version The plan's version.
+ * @member {string} name The name of the policy sku. Possible values are A0 and
+ * A1.
+ * @member {string} [tier] The policy sku tier. Possible values are Free and
+ * Standard.
  */
-export interface Plan {
-  name: string;
-  publisher: string;
-  product: string;
-  promotionCode?: string;
-  version: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * Resource information.
- *
- * @member {string} [id] Resource ID
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} [location] Resource location
- * @member {object} [tags] Resource tags
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the GenericResource class.
- * @constructor
- * Resource information.
- *
- * @member {string} [managedBy] ID of the resource that manages this resource.
- * @member {object} [sku] The SKU of the resource.
- * @member {string} [sku.name] The SKU name.
- * @member {string} [sku.tier] The SKU tier.
- * @member {string} [sku.size] The SKU size.
- * @member {string} [sku.family] The SKU family.
- * @member {string} [sku.model] The SKU model.
- * @member {number} [sku.capacity] The SKU capacity.
- * @member {object} [identity] The identity of the resource.
- * @member {string} [identity.principalId] The principal ID of resource
- * identity.
- * @member {string} [identity.tenantId] The tenant ID of resource.
- * @member {string} [identity.type] The identity type. Possible values include:
- * 'SystemAssigned'
- */
-export interface GenericResource extends Resource {
-  managedBy?: string;
-  sku?: Sku;
-  identity?: Identity;
-}
-
-/**
- * @class
- * Initializes a new instance of the Appliance class.
- * @constructor
- * Information about appliance.
- *
- * @member {string} managedResourceGroupId The managed resource group Id.
- * @member {string} [applianceDefinitionId] The fully qualified path of
- * appliance definition Id.
- * @member {object} [parameters] Name and value pairs that define the appliance
- * parameters. It can be a JObject or a well formed JSON string.
- * @member {object} [outputs] Name and value pairs that define the appliance
- * outputs.
- * @member {string} [provisioningState] The appliance provisioning state.
- * Possible values include: 'Accepted', 'Running', 'Ready', 'Creating',
- * 'Created', 'Deleting', 'Deleted', 'Canceled', 'Failed', 'Succeeded',
- * 'Updating'
- * @member {string} [uiDefinitionUri] The blob URI where the UI definition file
- * is located.
- * @member {object} [plan] The plan information.
- * @member {string} [plan.name] The plan name.
- * @member {string} [plan.publisher] The publisher ID.
- * @member {string} [plan.product] The product code.
- * @member {string} [plan.promotionCode] The promotion code.
- * @member {string} [plan.version] The plan's version.
- * @member {string} kind The kind of the appliance. Allowed values are
- * MarketPlace and ServiceCatalog.
- */
-export interface Appliance extends GenericResource {
-  managedResourceGroupId: string;
-  applianceDefinitionId?: string;
-  parameters?: any;
-  readonly outputs?: any;
-  readonly provisioningState?: string;
-  uiDefinitionUri?: string;
-  plan?: Plan;
-  kind: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PlanPatchable class.
- * @constructor
- * Plan for the appliance.
- *
- * @member {string} [name] The plan name.
- * @member {string} [publisher] The publisher ID.
- * @member {string} [product] The product code.
- * @member {string} [promotionCode] The promotion code.
- * @member {string} [version] The plan's version.
- */
-export interface PlanPatchable {
-  name?: string;
-  publisher?: string;
-  product?: string;
-  promotionCode?: string;
-  version?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AppliancePatchable class.
- * @constructor
- * Information about appliance.
- *
- * @member {string} [managedResourceGroupId] The managed resource group Id.
- * @member {string} [applianceDefinitionId] The fully qualified path of
- * appliance definition Id.
- * @member {object} [parameters] Name and value pairs that define the appliance
- * parameters. It can be a JObject or a well formed JSON string.
- * @member {object} [outputs] Name and value pairs that define the appliance
- * outputs.
- * @member {string} [provisioningState] The appliance provisioning state.
- * Possible values include: 'Accepted', 'Running', 'Ready', 'Creating',
- * 'Created', 'Deleting', 'Deleted', 'Canceled', 'Failed', 'Succeeded',
- * 'Updating'
- * @member {string} [uiDefinitionUri] The blob URI where the UI definition file
- * is located.
- * @member {object} [plan] The plan information.
- * @member {string} [plan.name] The plan name.
- * @member {string} [plan.publisher] The publisher ID.
- * @member {string} [plan.product] The product code.
- * @member {string} [plan.promotionCode] The promotion code.
- * @member {string} [plan.version] The plan's version.
- * @member {string} [kind] The kind of the appliance. Allowed values are
- * MarketPlace and ServiceCatalog.
- */
-export interface AppliancePatchable extends GenericResource {
-  managedResourceGroupId?: string;
-  applianceDefinitionId?: string;
-  parameters?: any;
-  readonly outputs?: any;
-  readonly provisioningState?: string;
-  uiDefinitionUri?: string;
-  plan?: PlanPatchable;
-  kind?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApplianceProviderAuthorization class.
- * @constructor
- * The appliance provider authorization.
- *
- * @member {string} principalId The provider's principal identifier. This is
- * the identity that the provider will use to call ARM to manage the appliance
- * resources.
- * @member {string} roleDefinitionId The provider's role definition identifier.
- * This role will define all the permissions that the provider must have on the
- * appliance's container resource group. This role definition cannot have
- * permission to delete the resource group.
- */
-export interface ApplianceProviderAuthorization {
-  principalId: string;
-  roleDefinitionId: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApplianceArtifact class.
- * @constructor
- * Appliance artifact.
- *
- * @member {string} [name] The appliance artifact name.
- * @member {string} [uri] The appliance artifact blob uri.
- * @member {string} [type] The the appliance artifact type. Possible values
- * include: 'Template', 'Custom'
- */
-export interface ApplianceArtifact {
-  name?: string;
-  uri?: string;
-  type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApplianceDefinition class.
- * @constructor
- * Information about appliance definition.
- *
- * @member {string} lockLevel The appliance lock level. Possible values
- * include: 'CanNotDelete', 'ReadOnly', 'None'
- * @member {string} [displayName] The appliance definition display name.
- * @member {array} authorizations The appliance provider authorizations.
- * @member {array} [artifacts] The collection of appliance artifacts. The
- * portal will use the files specified as artifacts to construct the user
- * experience of creating an appliance from an appliance definition.
- * @member {string} [description] The appliance definition description.
- * @member {string} packageFileUri The appliance definition package file Uri.
- */
-export interface ApplianceDefinition extends GenericResource {
-  lockLevel: string;
-  displayName?: string;
-  authorizations: ApplianceProviderAuthorization[];
-  artifacts?: ApplianceArtifact[];
-  description?: string;
-  packageFileUri: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Sku class.
- * @constructor
- * SKU for the resource.
- *
- * @member {string} name The SKU name.
- * @member {string} [tier] The SKU tier.
- * @member {string} [size] The SKU size.
- * @member {string} [family] The SKU family.
- * @member {string} [model] The SKU model.
- * @member {number} [capacity] The SKU capacity.
- */
-export interface Sku {
+export interface PolicySku {
   name: string;
   tier?: string;
-  size?: string;
-  family?: string;
-  model?: string;
-  capacity?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the Identity class.
+ * Initializes a new instance of the PolicyAssignment class.
  * @constructor
- * Identity for the resource.
+ * The policy assignment.
  *
- * @member {string} [principalId] The principal ID of resource identity.
- * @member {string} [tenantId] The tenant ID of resource.
- * @member {string} [type] The identity type. Possible values include:
- * 'SystemAssigned'
+ * @member {string} [displayName] The display name of the policy assignment.
+ * @member {string} [policyDefinitionId] The ID of the policy definition or
+ * policy set definition being assigned.
+ * @member {string} [scope] The scope for the policy assignment.
+ * @member {array} [notScopes] The policy's excluded scopes.
+ * @member {object} [parameters] Required if a parameter is used in policy
+ * rule.
+ * @member {string} [description] This message will be part of response in case
+ * of policy violation.
+ * @member {object} [metadata] The policy assignment metadata.
+ * @member {string} [id] The ID of the policy assignment.
+ * @member {string} [type] The type of the policy assignment.
+ * @member {string} [name] The name of the policy assignment.
+ * @member {object} [sku] The policy sku. This property is optional, obsolete,
+ * and will be ignored.
+ * @member {string} [sku.name] The name of the policy sku. Possible values are
+ * A0 and A1.
+ * @member {string} [sku.tier] The policy sku tier. Possible values are Free
+ * and Standard.
  */
-export interface Identity {
-  readonly principalId?: string;
-  readonly tenantId?: string;
-  type?: string;
+export interface PolicyAssignment extends BaseResource {
+  displayName?: string;
+  policyDefinitionId?: string;
+  scope?: string;
+  notScopes?: string[];
+  parameters?: any;
+  description?: string;
+  metadata?: any;
+  readonly id?: string;
+  readonly type?: string;
+  readonly name?: string;
+  sku?: PolicySku;
 }
 
 /**
  * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
- * Error reponse indicates ARM appliance is not able to process the incoming
- * request. The reason is provided in the error message.
+ * Error reponse indicates Azure Resource Manager is not able to process the
+ * incoming request. The reason is provided in the error message.
  *
  * @member {string} [httpStatus] Http status code.
  * @member {string} [errorCode] Error code.
@@ -299,29 +90,127 @@ export interface ErrorResponse {
   errorMessage?: string;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the PolicyDefinition class.
+ * @constructor
+ * The policy definition.
+ *
+ * @member {string} [policyType] The type of policy definition. Possible values
+ * are NotSpecified, BuiltIn, and Custom. Possible values include:
+ * 'NotSpecified', 'BuiltIn', 'Custom'
+ * @member {string} [mode] The policy definition mode. Possible values are
+ * NotSpecified, Indexed, and All. Possible values include: 'NotSpecified',
+ * 'Indexed', 'All'
+ * @member {string} [displayName] The display name of the policy definition.
+ * @member {string} [description] The policy definition description.
+ * @member {object} [policyRule] The policy rule.
+ * @member {object} [metadata] The policy definition metadata.
+ * @member {object} [parameters] Required if a parameter is used in policy
+ * rule.
+ * @member {string} [id] The ID of the policy definition.
+ * @member {string} [name] The name of the policy definition.
+ * @member {string} [type] The type of the resource
+ * (Microsoft.Authorization/policyDefinitions).
+ */
+export interface PolicyDefinition extends BaseResource {
+  policyType?: string;
+  mode?: string;
+  displayName?: string;
+  description?: string;
+  policyRule?: any;
+  metadata?: any;
+  parameters?: any;
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+}
 
 /**
  * @class
- * Initializes a new instance of the ApplianceListResult class.
+ * Initializes a new instance of the PolicyDefinitionReference class.
  * @constructor
- * List of appliances.
+ * The policy definition reference.
+ *
+ * @member {string} [policyDefinitionId] The ID of the policy definition or
+ * policy set definition.
+ * @member {object} [parameters] Required if a parameter is used in policy
+ * rule.
+ */
+export interface PolicyDefinitionReference {
+  policyDefinitionId?: string;
+  parameters?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicySetDefinition class.
+ * @constructor
+ * The policy set definition.
+ *
+ * @member {string} [policyType] The type of policy definition. Possible values
+ * are NotSpecified, BuiltIn, and Custom. Possible values include:
+ * 'NotSpecified', 'BuiltIn', 'Custom'
+ * @member {string} [displayName] The display name of the policy set
+ * definition.
+ * @member {string} [description] The policy set definition description.
+ * @member {object} [metadata] The policy set definition metadata.
+ * @member {object} [parameters] The policy set definition parameters that can
+ * be used in policy definition references.
+ * @member {array} policyDefinitions An array of policy definition references.
+ * @member {string} [id] The ID of the policy set definition.
+ * @member {string} [name] The name of the policy set definition.
+ * @member {string} [type] The type of the resource
+ * (Microsoft.Authorization/policySetDefinitions).
+ */
+export interface PolicySetDefinition extends BaseResource {
+  policyType?: string;
+  displayName?: string;
+  description?: string;
+  metadata?: any;
+  parameters?: any;
+  policyDefinitions: PolicyDefinitionReference[];
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+}
+
+
+/**
+ * @class
+ * Initializes a new instance of the PolicyAssignmentListResult class.
+ * @constructor
+ * List of policy assignments.
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
-export interface ApplianceListResult extends Array<Appliance> {
+export interface PolicyAssignmentListResult extends Array<PolicyAssignment> {
   nextLink?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the ApplianceDefinitionListResult class.
+ * Initializes a new instance of the PolicyDefinitionListResult class.
  * @constructor
- * List of appliance definitions.
+ * List of policy definitions.
  *
  * @member {string} [nextLink] The URL to use for getting the next set of
  * results.
  */
-export interface ApplianceDefinitionListResult extends Array<ApplianceDefinition> {
+export interface PolicyDefinitionListResult extends Array<PolicyDefinition> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PolicySetDefinitionListResult class.
+ * @constructor
+ * List of policy set definitions.
+ *
+ * @member {string} [nextLink] The URL to use for getting the next set of
+ * results.
+ */
+export interface PolicySetDefinitionListResult extends Array<PolicySetDefinition> {
   nextLink?: string;
 }

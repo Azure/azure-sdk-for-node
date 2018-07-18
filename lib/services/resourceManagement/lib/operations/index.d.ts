@@ -14,20 +14,32 @@ import * as models from '../models';
 
 /**
  * @class
- * Appliances
+ * PolicyAssignments
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ManagedApplicationClient.
+ * instance of the PolicyClient.
  */
-export interface Appliances {
+export interface PolicyAssignments {
 
 
     /**
-     * Gets the appliance.
+     * @summary Deletes a policy assignment.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation deletes a policy assignment, given its name and the scope it
+     * was created in. The scope of a policy assignment is the part of its ID
+     * preceding
+     * '/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
      *
-     * @param {string} applianceName The name of the appliance.
+     * @param {string} scope The scope of the policy assignment. Valid scopes are:
+     * management group (format:
+     * '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
+     * subscription (format: '/subscriptions/{subscriptionId}'), resource group
+     * (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+     * resource (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+     *
+     * @param {string} policyAssignmentName The name of the policy assignment to
+     * delete.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -36,19 +48,31 @@ export interface Appliances {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Appliance>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyAssignment>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, applianceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Appliance>>;
+    deleteMethodWithHttpOperationResponse(scope: string, policyAssignmentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignment>>;
 
     /**
-     * Gets the appliance.
+     * @summary Deletes a policy assignment.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation deletes a policy assignment, given its name and the scope it
+     * was created in. The scope of a policy assignment is the part of its ID
+     * preceding
+     * '/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
      *
-     * @param {string} applianceName The name of the appliance.
+     * @param {string} scope The scope of the policy assignment. Valid scopes are:
+     * management group (format:
+     * '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
+     * subscription (format: '/subscriptions/{subscriptionId}'), resource group
+     * (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+     * resource (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+     *
+     * @param {string} policyAssignmentName The name of the policy assignment to
+     * delete.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -62,7 +86,7 @@ export interface Appliances {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Appliance} - The deserialized result object.
+     *                      @resolve {PolicyAssignment} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -70,25 +94,65 @@ export interface Appliances {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Appliance} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Appliance} for more information.
+     *                      {PolicyAssignment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyAssignment} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, applianceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Appliance>;
-    get(resourceGroupName: string, applianceName: string, callback: ServiceCallback<models.Appliance>): void;
-    get(resourceGroupName: string, applianceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Appliance>): void;
+    deleteMethod(scope: string, policyAssignmentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignment>;
+    deleteMethod(scope: string, policyAssignmentName: string, callback: ServiceCallback<models.PolicyAssignment>): void;
+    deleteMethod(scope: string, policyAssignmentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignment>): void;
 
 
     /**
-     * Deletes the appliance.
+     * @summary Creates or updates a policy assignment.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation creates or updates a policy assignment with the given scope
+     * and name. Policy assignments apply to all resources contained within their
+     * scope. For example, when you assign a policy at resource group scope, that
+     * policy applies to all resources in the group.
      *
-     * @param {string} applianceName The name of the appliance.
+     * @param {string} scope The scope of the policy assignment. Valid scopes are:
+     * management group (format:
+     * '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
+     * subscription (format: '/subscriptions/{subscriptionId}'), resource group
+     * (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+     * resource (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+     *
+     * @param {string} policyAssignmentName The name of the policy assignment.
+     *
+     * @param {object} parameters Parameters for the policy assignment.
+     *
+     * @param {string} [parameters.displayName] The display name of the policy
+     * assignment.
+     *
+     * @param {string} [parameters.policyDefinitionId] The ID of the policy
+     * definition or policy set definition being assigned.
+     *
+     * @param {string} [parameters.scope] The scope for the policy assignment.
+     *
+     * @param {array} [parameters.notScopes] The policy's excluded scopes.
+     *
+     * @param {object} [parameters.parameters] Required if a parameter is used in
+     * policy rule.
+     *
+     * @param {string} [parameters.description] This message will be part of
+     * response in case of policy violation.
+     *
+     * @param {object} [parameters.metadata] The policy assignment metadata.
+     *
+     * @param {object} [parameters.sku] The policy sku. This property is optional,
+     * obsolete, and will be ignored.
+     *
+     * @param {string} parameters.sku.name The name of the policy sku. Possible
+     * values are A0 and A1.
+     *
+     * @param {string} [parameters.sku.tier] The policy sku tier. Possible values
+     * are Free and Standard.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -97,19 +161,59 @@ export interface Appliances {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyAssignment>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, applianceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    createWithHttpOperationResponse(scope: string, policyAssignmentName: string, parameters: models.PolicyAssignment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignment>>;
 
     /**
-     * Deletes the appliance.
+     * @summary Creates or updates a policy assignment.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation creates or updates a policy assignment with the given scope
+     * and name. Policy assignments apply to all resources contained within their
+     * scope. For example, when you assign a policy at resource group scope, that
+     * policy applies to all resources in the group.
      *
-     * @param {string} applianceName The name of the appliance.
+     * @param {string} scope The scope of the policy assignment. Valid scopes are:
+     * management group (format:
+     * '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
+     * subscription (format: '/subscriptions/{subscriptionId}'), resource group
+     * (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+     * resource (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+     *
+     * @param {string} policyAssignmentName The name of the policy assignment.
+     *
+     * @param {object} parameters Parameters for the policy assignment.
+     *
+     * @param {string} [parameters.displayName] The display name of the policy
+     * assignment.
+     *
+     * @param {string} [parameters.policyDefinitionId] The ID of the policy
+     * definition or policy set definition being assigned.
+     *
+     * @param {string} [parameters.scope] The scope for the policy assignment.
+     *
+     * @param {array} [parameters.notScopes] The policy's excluded scopes.
+     *
+     * @param {object} [parameters.parameters] Required if a parameter is used in
+     * policy rule.
+     *
+     * @param {string} [parameters.description] This message will be part of
+     * response in case of policy violation.
+     *
+     * @param {object} [parameters.metadata] The policy assignment metadata.
+     *
+     * @param {object} [parameters.sku] The policy sku. This property is optional,
+     * obsolete, and will be ignored.
+     *
+     * @param {string} parameters.sku.name The name of the policy sku. Possible
+     * values are A0 and A1.
+     *
+     * @param {string} [parameters.sku.tier] The policy sku tier. Possible values
+     * are Free and Standard.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -123,7 +227,7 @@ export interface Appliances {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {PolicyAssignment} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -131,76 +235,35 @@ export interface Appliances {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {PolicyAssignment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyAssignment} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, applianceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, applianceName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, applianceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    create(scope: string, policyAssignmentName: string, parameters: models.PolicyAssignment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignment>;
+    create(scope: string, policyAssignmentName: string, parameters: models.PolicyAssignment, callback: ServiceCallback<models.PolicyAssignment>): void;
+    create(scope: string, policyAssignmentName: string, parameters: models.PolicyAssignment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignment>): void;
 
 
     /**
-     * Creates a new appliance.
+     * @summary Retrieves a policy assignment.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation retrieves a single policy assignment, given its name and the
+     * scope it was created at.
      *
-     * @param {string} applianceName The name of the appliance.
+     * @param {string} scope The scope of the policy assignment. Valid scopes are:
+     * management group (format:
+     * '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
+     * subscription (format: '/subscriptions/{subscriptionId}'), resource group
+     * (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+     * resource (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
      *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance.
-     *
-     * @param {string} parameters.managedResourceGroupId The managed resource group
-     * Id.
-     *
-     * @param {string} [parameters.applianceDefinitionId] The fully qualified path
-     * of appliance definition Id.
-     *
-     * @param {object} [parameters.parameters] Name and value pairs that define the
-     * appliance parameters. It can be a JObject or a well formed JSON string.
-     *
-     * @param {string} [parameters.uiDefinitionUri] The blob URI where the UI
-     * definition file is located.
-     *
-     * @param {object} [parameters.plan] The plan information.
-     *
-     * @param {string} parameters.plan.name The plan name.
-     *
-     * @param {string} parameters.plan.publisher The publisher ID.
-     *
-     * @param {string} parameters.plan.product The product code.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {string} parameters.plan.version The plan's version.
-     *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
-     * are MarketPlace and ServiceCatalog.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * @param {string} policyAssignmentName The name of the policy assignment to
+     * get.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -209,71 +272,29 @@ export interface Appliances {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Appliance>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyAssignment>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, applianceName: string, parameters: models.Appliance, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Appliance>>;
+    getWithHttpOperationResponse(scope: string, policyAssignmentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignment>>;
 
     /**
-     * Creates a new appliance.
+     * @summary Retrieves a policy assignment.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation retrieves a single policy assignment, given its name and the
+     * scope it was created at.
      *
-     * @param {string} applianceName The name of the appliance.
+     * @param {string} scope The scope of the policy assignment. Valid scopes are:
+     * management group (format:
+     * '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
+     * subscription (format: '/subscriptions/{subscriptionId}'), resource group
+     * (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+     * resource (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
      *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance.
-     *
-     * @param {string} parameters.managedResourceGroupId The managed resource group
-     * Id.
-     *
-     * @param {string} [parameters.applianceDefinitionId] The fully qualified path
-     * of appliance definition Id.
-     *
-     * @param {object} [parameters.parameters] Name and value pairs that define the
-     * appliance parameters. It can be a JObject or a well formed JSON string.
-     *
-     * @param {string} [parameters.uiDefinitionUri] The blob URI where the UI
-     * definition file is located.
-     *
-     * @param {object} [parameters.plan] The plan information.
-     *
-     * @param {string} parameters.plan.name The plan name.
-     *
-     * @param {string} parameters.plan.publisher The publisher ID.
-     *
-     * @param {string} parameters.plan.product The product code.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {string} parameters.plan.version The plan's version.
-     *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
-     * are MarketPlace and ServiceCatalog.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * @param {string} policyAssignmentName The name of the policy assignment to
+     * get.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -287,7 +308,7 @@ export interface Appliances {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Appliance} - The deserialized result object.
+     *                      @resolve {PolicyAssignment} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -295,156 +316,80 @@ export interface Appliances {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Appliance} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Appliance} for more information.
+     *                      {PolicyAssignment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyAssignment} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, applianceName: string, parameters: models.Appliance, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Appliance>;
-    createOrUpdate(resourceGroupName: string, applianceName: string, parameters: models.Appliance, callback: ServiceCallback<models.Appliance>): void;
-    createOrUpdate(resourceGroupName: string, applianceName: string, parameters: models.Appliance, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Appliance>): void;
+    get(scope: string, policyAssignmentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignment>;
+    get(scope: string, policyAssignmentName: string, callback: ServiceCallback<models.PolicyAssignment>): void;
+    get(scope: string, policyAssignmentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignment>): void;
 
 
     /**
-     * Updates an existing appliance. The only value that can be updated via PATCH
-     * currently is the tags.
+     * @summary Retrieves all policy assignments that apply to a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation retrieves the list of all policy assignments associated with
+     * the given resource group in the given subscription that match the optional
+     * given $filter. Valid values for $filter are: 'atScope()' or
+     * 'policyDefinitionId eq '{value}''. If $filter is not provided, the
+     * unfiltered list includes all policy assignments associated with the resource
+     * group, including those that apply directly or apply from containing scopes,
+     * as well as any applied to resources contained within the resource group. If
+     * $filter=atScope() is provided, the returned list includes all policy
+     * assignments that apply to the resource group, which is everything in the
+     * unfiltered list except those applied to resources contained within the
+     * resource group. If $filter=policyDefinitionId eq '{value}' is provided, the
+     * returned list includes only policy assignments that apply to the resource
+     * group and assign the policy definition whose id is {value}.
      *
-     * @param {string} applianceName The name of the appliance.
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains policy assignments.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.parameters] Parameters supplied to update an
-     * existing appliance.
-     *
-     * @param {string} options.parameters.managedResourceGroupId The managed
-     * resource group Id.
-     *
-     * @param {string} [options.parameters.applianceDefinitionId] The fully
-     * qualified path of appliance definition Id.
-     *
-     * @param {object} [options.parameters.parameters] Name and value pairs that
-     * define the appliance parameters. It can be a JObject or a well formed JSON
-     * string.
-     *
-     * @param {string} [options.parameters.uiDefinitionUri] The blob URI where the
-     * UI definition file is located.
-     *
-     * @param {object} [options.parameters.plan] The plan information.
-     *
-     * @param {string} options.parameters.plan.name The plan name.
-     *
-     * @param {string} options.parameters.plan.publisher The publisher ID.
-     *
-     * @param {string} options.parameters.plan.product The product code.
-     *
-     * @param {string} [options.parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {string} options.parameters.plan.version The plan's version.
-     *
-     * @param {string} options.parameters.kind The kind of the appliance. Allowed
-     * values are MarketPlace and ServiceCatalog.
-     *
-     * @param {string} [options.parameters.managedBy] ID of the resource that
-     * manages this resource.
-     *
-     * @param {object} [options.parameters.sku] The SKU of the resource.
-     *
-     * @param {string} options.parameters.sku.name The SKU name.
-     *
-     * @param {string} [options.parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [options.parameters.sku.size] The SKU size.
-     *
-     * @param {string} [options.parameters.sku.family] The SKU family.
-     *
-     * @param {string} [options.parameters.sku.model] The SKU model.
-     *
-     * @param {number} [options.parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [options.parameters.identity] The identity of the resource.
-     *
-     * @param {string} [options.parameters.identity.type] The identity type.
-     * Possible values include: 'SystemAssigned'
+     * @param {string} [options.filter] The filter to apply on the operation. Valid
+     * values for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If
+     * $filter is not provided, no filtering is performed.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Appliance>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyAssignmentListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, applianceName: string, options?: { parameters? : models.Appliance, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Appliance>>;
+    listForResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignmentListResult>>;
 
     /**
-     * Updates an existing appliance. The only value that can be updated via PATCH
-     * currently is the tags.
+     * @summary Retrieves all policy assignments that apply to a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation retrieves the list of all policy assignments associated with
+     * the given resource group in the given subscription that match the optional
+     * given $filter. Valid values for $filter are: 'atScope()' or
+     * 'policyDefinitionId eq '{value}''. If $filter is not provided, the
+     * unfiltered list includes all policy assignments associated with the resource
+     * group, including those that apply directly or apply from containing scopes,
+     * as well as any applied to resources contained within the resource group. If
+     * $filter=atScope() is provided, the returned list includes all policy
+     * assignments that apply to the resource group, which is everything in the
+     * unfiltered list except those applied to resources contained within the
+     * resource group. If $filter=policyDefinitionId eq '{value}' is provided, the
+     * returned list includes only policy assignments that apply to the resource
+     * group and assign the policy definition whose id is {value}.
      *
-     * @param {string} applianceName The name of the appliance.
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains policy assignments.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.parameters] Parameters supplied to update an
-     * existing appliance.
-     *
-     * @param {string} options.parameters.managedResourceGroupId The managed
-     * resource group Id.
-     *
-     * @param {string} [options.parameters.applianceDefinitionId] The fully
-     * qualified path of appliance definition Id.
-     *
-     * @param {object} [options.parameters.parameters] Name and value pairs that
-     * define the appliance parameters. It can be a JObject or a well formed JSON
-     * string.
-     *
-     * @param {string} [options.parameters.uiDefinitionUri] The blob URI where the
-     * UI definition file is located.
-     *
-     * @param {object} [options.parameters.plan] The plan information.
-     *
-     * @param {string} options.parameters.plan.name The plan name.
-     *
-     * @param {string} options.parameters.plan.publisher The publisher ID.
-     *
-     * @param {string} options.parameters.plan.product The product code.
-     *
-     * @param {string} [options.parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {string} options.parameters.plan.version The plan's version.
-     *
-     * @param {string} options.parameters.kind The kind of the appliance. Allowed
-     * values are MarketPlace and ServiceCatalog.
-     *
-     * @param {string} [options.parameters.managedBy] ID of the resource that
-     * manages this resource.
-     *
-     * @param {object} [options.parameters.sku] The SKU of the resource.
-     *
-     * @param {string} options.parameters.sku.name The SKU name.
-     *
-     * @param {string} [options.parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [options.parameters.sku.size] The SKU size.
-     *
-     * @param {string} [options.parameters.sku.family] The SKU family.
-     *
-     * @param {string} [options.parameters.sku.model] The SKU model.
-     *
-     * @param {number} [options.parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [options.parameters.identity] The identity of the resource.
-     *
-     * @param {string} [options.parameters.identity.type] The identity type.
-     * Possible values include: 'SystemAssigned'
+     * @param {string} [options.filter] The filter to apply on the operation. Valid
+     * values for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If
+     * $filter is not provided, no filtering is performed.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -456,7 +401,7 @@ export interface Appliances {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Appliance} - The deserialized result object.
+     *                      @resolve {PolicyAssignmentListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -464,44 +409,133 @@ export interface Appliances {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Appliance} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Appliance} for more information.
+     *                      {PolicyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyAssignmentListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, applianceName: string, options?: { parameters? : models.Appliance, customHeaders? : { [headerName: string]: string; } }): Promise<models.Appliance>;
-    update(resourceGroupName: string, applianceName: string, callback: ServiceCallback<models.Appliance>): void;
-    update(resourceGroupName: string, applianceName: string, options: { parameters? : models.Appliance, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Appliance>): void;
+    listForResourceGroup(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignmentListResult>;
+    listForResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResourceGroup(resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
 
     /**
-     * Gets all the appliances within a resource group.
+     * @summary Retrieves all policy assignments that apply to a resource.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation retrieves the list of all policy assignments associated with
+     * the specified resource in the given resource group and subscription that
+     * match the optional given $filter. Valid values for $filter are: 'atScope()'
+     * or 'policyDefinitionId eq '{value}''. If $filter is not provided, the
+     * unfiltered list includes all policy assignments associated with the
+     * resource, including those that apply directly or from all containing scopes,
+     * as well as any applied to resources contained within the resource. If
+     * $filter=atScope() is provided, the returned list includes all policy
+     * assignments that apply to the resource, which is everything in the
+     * unfiltered list except those applied to resources contained within the
+     * resource. If $filter=policyDefinitionId eq '{value}' is provided, the
+     * returned list includes only policy assignments that apply to the resource
+     * and assign the policy definition whose id is {value}. Three parameters plus
+     * the resource name are used to identify a specific resource. If the resource
+     * is not part of a parent resource (the more common case), the parent resource
+     * path should not be provided (or provided as ''). For example a web app could
+     * be specified as ({resourceProviderNamespace} == 'Microsoft.Web',
+     * {parentResourcePath} == '', {resourceType} == 'sites', {resourceName} ==
+     * 'MyWebApp'). If the resource is part of a parent resource, then all
+     * parameters should be provided. For example a virtual machine DNS name could
+     * be specified as ({resourceProviderNamespace} == 'Microsoft.Compute',
+     * {parentResourcePath} == 'virtualMachines/MyVirtualMachine', {resourceType}
+     * == 'domainNames', {resourceName} == 'MyComputerName'). A convenient
+     * alternative to providing the namespace and type name separately is to
+     * provide both in the {resourceType} parameter, format:
+     * ({resourceProviderNamespace} == '', {parentResourcePath} == '',
+     * {resourceType} == 'Microsoft.Web/sites', {resourceName} == 'MyWebApp').
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * the resource.
+     *
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider. For example, the namespace of a virtual machine is
+     * Microsoft.Compute (from Microsoft.Compute/virtualMachines)
+     *
+     * @param {string} parentResourcePath The parent resource path. Use empty
+     * string if there is none.
+     *
+     * @param {string} resourceType The resource type name. For example the type
+     * name of a web app is 'sites' (from Microsoft.Web/sites).
+     *
+     * @param {string} resourceName The name of the resource.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. Valid
+     * values for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If
+     * $filter is not provided, no filtering is performed.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplianceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyAssignmentListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplianceListResult>>;
+    listForResourceWithHttpOperationResponse(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignmentListResult>>;
 
     /**
-     * Gets all the appliances within a resource group.
+     * @summary Retrieves all policy assignments that apply to a resource.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation retrieves the list of all policy assignments associated with
+     * the specified resource in the given resource group and subscription that
+     * match the optional given $filter. Valid values for $filter are: 'atScope()'
+     * or 'policyDefinitionId eq '{value}''. If $filter is not provided, the
+     * unfiltered list includes all policy assignments associated with the
+     * resource, including those that apply directly or from all containing scopes,
+     * as well as any applied to resources contained within the resource. If
+     * $filter=atScope() is provided, the returned list includes all policy
+     * assignments that apply to the resource, which is everything in the
+     * unfiltered list except those applied to resources contained within the
+     * resource. If $filter=policyDefinitionId eq '{value}' is provided, the
+     * returned list includes only policy assignments that apply to the resource
+     * and assign the policy definition whose id is {value}. Three parameters plus
+     * the resource name are used to identify a specific resource. If the resource
+     * is not part of a parent resource (the more common case), the parent resource
+     * path should not be provided (or provided as ''). For example a web app could
+     * be specified as ({resourceProviderNamespace} == 'Microsoft.Web',
+     * {parentResourcePath} == '', {resourceType} == 'sites', {resourceName} ==
+     * 'MyWebApp'). If the resource is part of a parent resource, then all
+     * parameters should be provided. For example a virtual machine DNS name could
+     * be specified as ({resourceProviderNamespace} == 'Microsoft.Compute',
+     * {parentResourcePath} == 'virtualMachines/MyVirtualMachine', {resourceType}
+     * == 'domainNames', {resourceName} == 'MyComputerName'). A convenient
+     * alternative to providing the namespace and type name separately is to
+     * provide both in the {resourceType} parameter, format:
+     * ({resourceProviderNamespace} == '', {parentResourcePath} == '',
+     * {resourceType} == 'Microsoft.Web/sites', {resourceName} == 'MyWebApp').
+     *
+     * @param {string} resourceGroupName The name of the resource group containing
+     * the resource.
+     *
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider. For example, the namespace of a virtual machine is
+     * Microsoft.Compute (from Microsoft.Compute/virtualMachines)
+     *
+     * @param {string} parentResourcePath The parent resource path. Use empty
+     * string if there is none.
+     *
+     * @param {string} resourceType The resource type name. For example the type
+     * name of a web app is 'sites' (from Microsoft.Web/sites).
+     *
+     * @param {string} resourceName The name of the resource.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. Valid
+     * values for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If
+     * $filter is not provided, no filtering is performed.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -513,7 +547,7 @@ export interface Appliances {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplianceListResult} - The deserialized result object.
+     *                      @resolve {PolicyAssignmentListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -521,38 +555,75 @@ export interface Appliances {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplianceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplianceListResult} for more information.
+     *                      {PolicyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyAssignmentListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplianceListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ApplianceListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplianceListResult>): void;
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignmentListResult>;
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResource(resourceGroupName: string, resourceProviderNamespace: string, parentResourcePath: string, resourceType: string, resourceName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
 
     /**
-     * Gets all the appliances within a subscription.
+     * @summary Retrieves all policy assignments that apply to a subscription.
+     *
+     * This operation retrieves the list of all policy assignments associated with
+     * the given subscription that match the optional given $filter. Valid values
+     * for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If
+     * $filter is not provided, the unfiltered list includes all policy assignments
+     * associated with the subscription, including those that apply directly or
+     * from management groups that contain the given subscription, as well as any
+     * applied to objects contained within the subscription. If $filter=atScope()
+     * is provided, the returned list includes all policy assignments that apply to
+     * the subscription, which is everything in the unfiltered list except those
+     * applied to objects contained within the subscription. If
+     * $filter=policyDefinitionId eq '{value}' is provided, the returned list
+     * includes only policy assignments that apply to the subscription and assign
+     * the policy definition whose id is {value}.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. Valid
+     * values for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If
+     * $filter is not provided, no filtering is performed.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplianceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyAssignmentListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplianceListResult>>;
+    listWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignmentListResult>>;
 
     /**
-     * Gets all the appliances within a subscription.
+     * @summary Retrieves all policy assignments that apply to a subscription.
+     *
+     * This operation retrieves the list of all policy assignments associated with
+     * the given subscription that match the optional given $filter. Valid values
+     * for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If
+     * $filter is not provided, the unfiltered list includes all policy assignments
+     * associated with the subscription, including those that apply directly or
+     * from management groups that contain the given subscription, as well as any
+     * applied to objects contained within the subscription. If $filter=atScope()
+     * is provided, the returned list includes all policy assignments that apply to
+     * the subscription, which is everything in the unfiltered list except those
+     * applied to objects contained within the subscription. If
+     * $filter=policyDefinitionId eq '{value}' is provided, the returned list
+     * includes only policy assignments that apply to the subscription and assign
+     * the policy definition whose id is {value}.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. Valid
+     * values for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If
+     * $filter is not provided, no filtering is performed.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -564,7 +635,7 @@ export interface Appliances {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplianceListResult} - The deserialized result object.
+     *                      @resolve {PolicyAssignmentListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -572,25 +643,36 @@ export interface Appliances {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplianceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplianceListResult} for more information.
+     *                      {PolicyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyAssignmentListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplianceListResult>;
-    listBySubscription(callback: ServiceCallback<models.ApplianceListResult>): void;
-    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplianceListResult>): void;
+    list(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignmentListResult>;
+    list(callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    list(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
 
     /**
-     * Gets the appliance.
+     * @summary Deletes a policy assignment.
      *
-     * @param {string} applianceId The fully qualified ID of the appliance,
-     * including the appliance name and the appliance resource type. Use the
-     * format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
+     * This operation deletes the policy with the given ID. Policy assignment IDs
+     * have this format:
+     * '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+     * Valid formats for {scope} are:
+     * '/providers/Microsoft.Management/managementGroups/{managementGroup}'
+     * (management group), '/subscriptions/{subscriptionId}' (subscription),
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'
+     * (resource group), or
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+     * (resource).
+     *
+     * @param {string} policyAssignmentId The ID of the policy assignment to
+     * delete. Use the format
+     * '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -599,244 +681,29 @@ export interface Appliances {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Appliance>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyAssignment>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getByIdWithHttpOperationResponse(applianceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Appliance>>;
+    deleteByIdWithHttpOperationResponse(policyAssignmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignment>>;
 
     /**
-     * Gets the appliance.
-     *
-     * @param {string} applianceId The fully qualified ID of the appliance,
-     * including the appliance name and the appliance resource type. Use the
-     * format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Appliance} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Appliance} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Appliance} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getById(applianceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Appliance>;
-    getById(applianceId: string, callback: ServiceCallback<models.Appliance>): void;
-    getById(applianceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Appliance>): void;
-
-
-    /**
-     * Deletes the appliance.
-     *
-     * @param {string} applianceId The fully qualified ID of the appliance,
-     * including the appliance name and the appliance resource type. Use the
-     * format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteByIdWithHttpOperationResponse(applianceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the appliance.
-     *
-     * @param {string} applianceId The fully qualified ID of the appliance,
-     * including the appliance name and the appliance resource type. Use the
-     * format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteById(applianceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteById(applianceId: string, callback: ServiceCallback<void>): void;
-    deleteById(applianceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Creates a new appliance.
-     *
-     * @param {string} applianceId The fully qualified ID of the appliance,
-     * including the appliance name and the appliance resource type. Use the
-     * format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance.
-     *
-     * @param {string} parameters.managedResourceGroupId The managed resource group
-     * Id.
-     *
-     * @param {string} [parameters.applianceDefinitionId] The fully qualified path
-     * of appliance definition Id.
-     *
-     * @param {object} [parameters.parameters] Name and value pairs that define the
-     * appliance parameters. It can be a JObject or a well formed JSON string.
-     *
-     * @param {string} [parameters.uiDefinitionUri] The blob URI where the UI
-     * definition file is located.
-     *
-     * @param {object} [parameters.plan] The plan information.
-     *
-     * @param {string} parameters.plan.name The plan name.
-     *
-     * @param {string} parameters.plan.publisher The publisher ID.
-     *
-     * @param {string} parameters.plan.product The product code.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {string} parameters.plan.version The plan's version.
-     *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
-     * are MarketPlace and ServiceCatalog.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Appliance>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateByIdWithHttpOperationResponse(applianceId: string, parameters: models.Appliance, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Appliance>>;
-
-    /**
-     * Creates a new appliance.
-     *
-     * @param {string} applianceId The fully qualified ID of the appliance,
-     * including the appliance name and the appliance resource type. Use the
-     * format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance.
-     *
-     * @param {string} parameters.managedResourceGroupId The managed resource group
-     * Id.
-     *
-     * @param {string} [parameters.applianceDefinitionId] The fully qualified path
-     * of appliance definition Id.
-     *
-     * @param {object} [parameters.parameters] Name and value pairs that define the
-     * appliance parameters. It can be a JObject or a well formed JSON string.
-     *
-     * @param {string} [parameters.uiDefinitionUri] The blob URI where the UI
-     * definition file is located.
-     *
-     * @param {object} [parameters.plan] The plan information.
-     *
-     * @param {string} parameters.plan.name The plan name.
-     *
-     * @param {string} parameters.plan.publisher The publisher ID.
-     *
-     * @param {string} parameters.plan.product The product code.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {string} parameters.plan.version The plan's version.
-     *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
-     * are MarketPlace and ServiceCatalog.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * @summary Deletes a policy assignment.
+     *
+     * This operation deletes the policy with the given ID. Policy assignment IDs
+     * have this format:
+     * '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+     * Valid formats for {scope} are:
+     * '/providers/Microsoft.Management/managementGroups/{managementGroup}'
+     * (management group), '/subscriptions/{subscriptionId}' (subscription),
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'
+     * (resource group), or
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+     * (resource).
+     *
+     * @param {string} policyAssignmentId The ID of the policy assignment to
+     * delete. Use the format
+     * '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -850,7 +717,7 @@ export interface Appliances {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Appliance} - The deserialized result object.
+     *                      @resolve {PolicyAssignment} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -858,194 +725,67 @@ export interface Appliances {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Appliance} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Appliance} for more information.
+     *                      {PolicyAssignment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyAssignment} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdateById(applianceId: string, parameters: models.Appliance, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Appliance>;
-    createOrUpdateById(applianceId: string, parameters: models.Appliance, callback: ServiceCallback<models.Appliance>): void;
-    createOrUpdateById(applianceId: string, parameters: models.Appliance, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Appliance>): void;
+    deleteById(policyAssignmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignment>;
+    deleteById(policyAssignmentId: string, callback: ServiceCallback<models.PolicyAssignment>): void;
+    deleteById(policyAssignmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignment>): void;
 
 
     /**
-     * Updates an existing appliance. The only value that can be updated via PATCH
-     * currently is the tags.
+     * @summary Creates or updates a policy assignment.
      *
-     * @param {string} applianceId The fully qualified ID of the appliance,
-     * including the appliance name and the appliance resource type. Use the
-     * format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
+     * This operation creates or updates the policy assignment with the given ID.
+     * Policy assignments made on a scope apply to all resources contained in that
+     * scope. For example, when you assign a policy to a resource group that policy
+     * applies to all resources in the group. Policy assignment IDs have this
+     * format:
+     * '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+     * Valid scopes are: management group (format:
+     * '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
+     * subscription (format: '/subscriptions/{subscriptionId}'), resource group
+     * (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+     * resource (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {string} policyAssignmentId The ID of the policy assignment to
+     * create. Use the format
+     * '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
      *
-     * @param {object} [options.parameters] Parameters supplied to update an
-     * existing appliance.
+     * @param {object} parameters Parameters for policy assignment.
      *
-     * @param {string} options.parameters.managedResourceGroupId The managed
-     * resource group Id.
+     * @param {string} [parameters.displayName] The display name of the policy
+     * assignment.
      *
-     * @param {string} [options.parameters.applianceDefinitionId] The fully
-     * qualified path of appliance definition Id.
+     * @param {string} [parameters.policyDefinitionId] The ID of the policy
+     * definition or policy set definition being assigned.
      *
-     * @param {object} [options.parameters.parameters] Name and value pairs that
-     * define the appliance parameters. It can be a JObject or a well formed JSON
-     * string.
+     * @param {string} [parameters.scope] The scope for the policy assignment.
      *
-     * @param {string} [options.parameters.uiDefinitionUri] The blob URI where the
-     * UI definition file is located.
+     * @param {array} [parameters.notScopes] The policy's excluded scopes.
      *
-     * @param {object} [options.parameters.plan] The plan information.
+     * @param {object} [parameters.parameters] Required if a parameter is used in
+     * policy rule.
      *
-     * @param {string} options.parameters.plan.name The plan name.
+     * @param {string} [parameters.description] This message will be part of
+     * response in case of policy violation.
      *
-     * @param {string} options.parameters.plan.publisher The publisher ID.
+     * @param {object} [parameters.metadata] The policy assignment metadata.
      *
-     * @param {string} options.parameters.plan.product The product code.
+     * @param {object} [parameters.sku] The policy sku. This property is optional,
+     * obsolete, and will be ignored.
      *
-     * @param {string} [options.parameters.plan.promotionCode] The promotion code.
+     * @param {string} parameters.sku.name The name of the policy sku. Possible
+     * values are A0 and A1.
      *
-     * @param {string} options.parameters.plan.version The plan's version.
-     *
-     * @param {string} options.parameters.kind The kind of the appliance. Allowed
-     * values are MarketPlace and ServiceCatalog.
-     *
-     * @param {string} [options.parameters.managedBy] ID of the resource that
-     * manages this resource.
-     *
-     * @param {object} [options.parameters.sku] The SKU of the resource.
-     *
-     * @param {string} options.parameters.sku.name The SKU name.
-     *
-     * @param {string} [options.parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [options.parameters.sku.size] The SKU size.
-     *
-     * @param {string} [options.parameters.sku.family] The SKU family.
-     *
-     * @param {string} [options.parameters.sku.model] The SKU model.
-     *
-     * @param {number} [options.parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [options.parameters.identity] The identity of the resource.
-     *
-     * @param {string} [options.parameters.identity.type] The identity type.
-     * Possible values include: 'SystemAssigned'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Appliance>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateByIdWithHttpOperationResponse(applianceId: string, options?: { parameters? : models.Appliance, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Appliance>>;
-
-    /**
-     * Updates an existing appliance. The only value that can be updated via PATCH
-     * currently is the tags.
-     *
-     * @param {string} applianceId The fully qualified ID of the appliance,
-     * including the appliance name and the appliance resource type. Use the
-     * format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.parameters] Parameters supplied to update an
-     * existing appliance.
-     *
-     * @param {string} options.parameters.managedResourceGroupId The managed
-     * resource group Id.
-     *
-     * @param {string} [options.parameters.applianceDefinitionId] The fully
-     * qualified path of appliance definition Id.
-     *
-     * @param {object} [options.parameters.parameters] Name and value pairs that
-     * define the appliance parameters. It can be a JObject or a well formed JSON
-     * string.
-     *
-     * @param {string} [options.parameters.uiDefinitionUri] The blob URI where the
-     * UI definition file is located.
-     *
-     * @param {object} [options.parameters.plan] The plan information.
-     *
-     * @param {string} options.parameters.plan.name The plan name.
-     *
-     * @param {string} options.parameters.plan.publisher The publisher ID.
-     *
-     * @param {string} options.parameters.plan.product The product code.
-     *
-     * @param {string} [options.parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {string} options.parameters.plan.version The plan's version.
-     *
-     * @param {string} options.parameters.kind The kind of the appliance. Allowed
-     * values are MarketPlace and ServiceCatalog.
-     *
-     * @param {string} [options.parameters.managedBy] ID of the resource that
-     * manages this resource.
-     *
-     * @param {object} [options.parameters.sku] The SKU of the resource.
-     *
-     * @param {string} options.parameters.sku.name The SKU name.
-     *
-     * @param {string} [options.parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [options.parameters.sku.size] The SKU size.
-     *
-     * @param {string} [options.parameters.sku.family] The SKU family.
-     *
-     * @param {string} [options.parameters.sku.model] The SKU model.
-     *
-     * @param {number} [options.parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [options.parameters.identity] The identity of the resource.
-     *
-     * @param {string} [options.parameters.identity.type] The identity type.
-     * Possible values include: 'SystemAssigned'
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Appliance} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Appliance} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Appliance} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    updateById(applianceId: string, options?: { parameters? : models.Appliance, customHeaders? : { [headerName: string]: string; } }): Promise<models.Appliance>;
-    updateById(applianceId: string, callback: ServiceCallback<models.Appliance>): void;
-    updateById(applianceId: string, options: { parameters? : models.Appliance, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Appliance>): void;
-
-
-    /**
-     * Deletes the appliance.
-     *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
-     *
-     * @param {string} applianceName The name of the appliance.
+     * @param {string} [parameters.sku.tier] The policy sku tier. Possible values
+     * are Free and Standard.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1054,19 +794,61 @@ export interface Appliances {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyAssignment>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, applianceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    createByIdWithHttpOperationResponse(policyAssignmentId: string, parameters: models.PolicyAssignment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignment>>;
 
     /**
-     * Deletes the appliance.
+     * @summary Creates or updates a policy assignment.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation creates or updates the policy assignment with the given ID.
+     * Policy assignments made on a scope apply to all resources contained in that
+     * scope. For example, when you assign a policy to a resource group that policy
+     * applies to all resources in the group. Policy assignment IDs have this
+     * format:
+     * '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+     * Valid scopes are: management group (format:
+     * '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
+     * subscription (format: '/subscriptions/{subscriptionId}'), resource group
+     * (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+     * resource (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
      *
-     * @param {string} applianceName The name of the appliance.
+     * @param {string} policyAssignmentId The ID of the policy assignment to
+     * create. Use the format
+     * '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+     *
+     * @param {object} parameters Parameters for policy assignment.
+     *
+     * @param {string} [parameters.displayName] The display name of the policy
+     * assignment.
+     *
+     * @param {string} [parameters.policyDefinitionId] The ID of the policy
+     * definition or policy set definition being assigned.
+     *
+     * @param {string} [parameters.scope] The scope for the policy assignment.
+     *
+     * @param {array} [parameters.notScopes] The policy's excluded scopes.
+     *
+     * @param {object} [parameters.parameters] Required if a parameter is used in
+     * policy rule.
+     *
+     * @param {string} [parameters.description] This message will be part of
+     * response in case of policy violation.
+     *
+     * @param {object} [parameters.metadata] The policy assignment metadata.
+     *
+     * @param {object} [parameters.sku] The policy sku. This property is optional,
+     * obsolete, and will be ignored.
+     *
+     * @param {string} parameters.sku.name The name of the policy sku. Possible
+     * values are A0 and A1.
+     *
+     * @param {string} [parameters.sku.tier] The policy sku tier. Possible values
+     * are Free and Standard.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1080,7 +862,7 @@ export interface Appliances {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {PolicyAssignment} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1088,76 +870,35 @@ export interface Appliances {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {PolicyAssignment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyAssignment} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginDeleteMethod(resourceGroupName: string, applianceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, applianceName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, applianceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    createById(policyAssignmentId: string, parameters: models.PolicyAssignment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignment>;
+    createById(policyAssignmentId: string, parameters: models.PolicyAssignment, callback: ServiceCallback<models.PolicyAssignment>): void;
+    createById(policyAssignmentId: string, parameters: models.PolicyAssignment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignment>): void;
 
 
     /**
-     * Creates a new appliance.
+     * @summary Retrieves the policy assignment with the given ID.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * The operation retrieves the policy assignment with the given ID. Policy
+     * assignment IDs have this format:
+     * '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+     * Valid scopes are: management group (format:
+     * '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
+     * subscription (format: '/subscriptions/{subscriptionId}'), resource group
+     * (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+     * resource (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
      *
-     * @param {string} applianceName The name of the appliance.
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance.
-     *
-     * @param {string} parameters.managedResourceGroupId The managed resource group
-     * Id.
-     *
-     * @param {string} [parameters.applianceDefinitionId] The fully qualified path
-     * of appliance definition Id.
-     *
-     * @param {object} [parameters.parameters] Name and value pairs that define the
-     * appliance parameters. It can be a JObject or a well formed JSON string.
-     *
-     * @param {string} [parameters.uiDefinitionUri] The blob URI where the UI
-     * definition file is located.
-     *
-     * @param {object} [parameters.plan] The plan information.
-     *
-     * @param {string} parameters.plan.name The plan name.
-     *
-     * @param {string} parameters.plan.publisher The publisher ID.
-     *
-     * @param {string} parameters.plan.product The product code.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {string} parameters.plan.version The plan's version.
-     *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
-     * are MarketPlace and ServiceCatalog.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * @param {string} policyAssignmentId The ID of the policy assignment to get.
+     * Use the format
+     * '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1166,71 +907,29 @@ export interface Appliances {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<Appliance>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyAssignment>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, applianceName: string, parameters: models.Appliance, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Appliance>>;
+    getByIdWithHttpOperationResponse(policyAssignmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignment>>;
 
     /**
-     * Creates a new appliance.
+     * @summary Retrieves the policy assignment with the given ID.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * The operation retrieves the policy assignment with the given ID. Policy
+     * assignment IDs have this format:
+     * '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+     * Valid scopes are: management group (format:
+     * '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
+     * subscription (format: '/subscriptions/{subscriptionId}'), resource group
+     * (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or
+     * resource (format:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
      *
-     * @param {string} applianceName The name of the appliance.
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance.
-     *
-     * @param {string} parameters.managedResourceGroupId The managed resource group
-     * Id.
-     *
-     * @param {string} [parameters.applianceDefinitionId] The fully qualified path
-     * of appliance definition Id.
-     *
-     * @param {object} [parameters.parameters] Name and value pairs that define the
-     * appliance parameters. It can be a JObject or a well formed JSON string.
-     *
-     * @param {string} [parameters.uiDefinitionUri] The blob URI where the UI
-     * definition file is located.
-     *
-     * @param {object} [parameters.plan] The plan information.
-     *
-     * @param {string} parameters.plan.name The plan name.
-     *
-     * @param {string} parameters.plan.publisher The publisher ID.
-     *
-     * @param {string} parameters.plan.product The product code.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {string} parameters.plan.version The plan's version.
-     *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
-     * are MarketPlace and ServiceCatalog.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * @param {string} policyAssignmentId The ID of the policy assignment to get.
+     * Use the format
+     * '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1244,7 +943,7 @@ export interface Appliances {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {Appliance} - The deserialized result object.
+     *                      @resolve {PolicyAssignment} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1252,245 +951,34 @@ export interface Appliances {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {Appliance} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Appliance} for more information.
+     *                      {PolicyAssignment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyAssignment} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, applianceName: string, parameters: models.Appliance, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Appliance>;
-    beginCreateOrUpdate(resourceGroupName: string, applianceName: string, parameters: models.Appliance, callback: ServiceCallback<models.Appliance>): void;
-    beginCreateOrUpdate(resourceGroupName: string, applianceName: string, parameters: models.Appliance, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Appliance>): void;
+    getById(policyAssignmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignment>;
+    getById(policyAssignmentId: string, callback: ServiceCallback<models.PolicyAssignment>): void;
+    getById(policyAssignmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignment>): void;
 
 
     /**
-     * Deletes the appliance.
-     *
-     * @param {string} applianceId The fully qualified ID of the appliance,
-     * including the appliance name and the appliance resource type. Use the
-     * format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteByIdWithHttpOperationResponse(applianceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the appliance.
-     *
-     * @param {string} applianceId The fully qualified ID of the appliance,
-     * including the appliance name and the appliance resource type. Use the
-     * format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteById(applianceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteById(applianceId: string, callback: ServiceCallback<void>): void;
-    beginDeleteById(applianceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Creates a new appliance.
-     *
-     * @param {string} applianceId The fully qualified ID of the appliance,
-     * including the appliance name and the appliance resource type. Use the
-     * format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance.
-     *
-     * @param {string} parameters.managedResourceGroupId The managed resource group
-     * Id.
-     *
-     * @param {string} [parameters.applianceDefinitionId] The fully qualified path
-     * of appliance definition Id.
-     *
-     * @param {object} [parameters.parameters] Name and value pairs that define the
-     * appliance parameters. It can be a JObject or a well formed JSON string.
-     *
-     * @param {string} [parameters.uiDefinitionUri] The blob URI where the UI
-     * definition file is located.
-     *
-     * @param {object} [parameters.plan] The plan information.
-     *
-     * @param {string} parameters.plan.name The plan name.
-     *
-     * @param {string} parameters.plan.publisher The publisher ID.
-     *
-     * @param {string} parameters.plan.product The product code.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {string} parameters.plan.version The plan's version.
-     *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
-     * are MarketPlace and ServiceCatalog.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Appliance>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateByIdWithHttpOperationResponse(applianceId: string, parameters: models.Appliance, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Appliance>>;
-
-    /**
-     * Creates a new appliance.
-     *
-     * @param {string} applianceId The fully qualified ID of the appliance,
-     * including the appliance name and the appliance resource type. Use the
-     * format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance.
-     *
-     * @param {string} parameters.managedResourceGroupId The managed resource group
-     * Id.
-     *
-     * @param {string} [parameters.applianceDefinitionId] The fully qualified path
-     * of appliance definition Id.
-     *
-     * @param {object} [parameters.parameters] Name and value pairs that define the
-     * appliance parameters. It can be a JObject or a well formed JSON string.
-     *
-     * @param {string} [parameters.uiDefinitionUri] The blob URI where the UI
-     * definition file is located.
-     *
-     * @param {object} [parameters.plan] The plan information.
-     *
-     * @param {string} parameters.plan.name The plan name.
-     *
-     * @param {string} parameters.plan.publisher The publisher ID.
-     *
-     * @param {string} parameters.plan.product The product code.
-     *
-     * @param {string} [parameters.plan.promotionCode] The promotion code.
-     *
-     * @param {string} parameters.plan.version The plan's version.
-     *
-     * @param {string} parameters.kind The kind of the appliance. Allowed values
-     * are MarketPlace and ServiceCatalog.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Appliance} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Appliance} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Appliance} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdateById(applianceId: string, parameters: models.Appliance, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Appliance>;
-    beginCreateOrUpdateById(applianceId: string, parameters: models.Appliance, callback: ServiceCallback<models.Appliance>): void;
-    beginCreateOrUpdateById(applianceId: string, parameters: models.Appliance, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Appliance>): void;
-
-
-    /**
-     * Gets all the appliances within a resource group.
+     * @summary Retrieves all policy assignments that apply to a resource group.
+     *
+     * This operation retrieves the list of all policy assignments associated with
+     * the given resource group in the given subscription that match the optional
+     * given $filter. Valid values for $filter are: 'atScope()' or
+     * 'policyDefinitionId eq '{value}''. If $filter is not provided, the
+     * unfiltered list includes all policy assignments associated with the resource
+     * group, including those that apply directly or apply from containing scopes,
+     * as well as any applied to resources contained within the resource group. If
+     * $filter=atScope() is provided, the returned list includes all policy
+     * assignments that apply to the resource group, which is everything in the
+     * unfiltered list except those applied to resources contained within the
+     * resource group. If $filter=policyDefinitionId eq '{value}' is provided, the
+     * returned list includes only policy assignments that apply to the resource
+     * group and assign the policy definition whose id is {value}.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1502,14 +990,28 @@ export interface Appliances {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplianceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyAssignmentListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplianceListResult>>;
+    listForResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignmentListResult>>;
 
     /**
-     * Gets all the appliances within a resource group.
+     * @summary Retrieves all policy assignments that apply to a resource group.
+     *
+     * This operation retrieves the list of all policy assignments associated with
+     * the given resource group in the given subscription that match the optional
+     * given $filter. Valid values for $filter are: 'atScope()' or
+     * 'policyDefinitionId eq '{value}''. If $filter is not provided, the
+     * unfiltered list includes all policy assignments associated with the resource
+     * group, including those that apply directly or apply from containing scopes,
+     * as well as any applied to resources contained within the resource group. If
+     * $filter=atScope() is provided, the returned list includes all policy
+     * assignments that apply to the resource group, which is everything in the
+     * unfiltered list except those applied to resources contained within the
+     * resource group. If $filter=policyDefinitionId eq '{value}' is provided, the
+     * returned list includes only policy assignments that apply to the resource
+     * group and assign the policy definition whose id is {value}.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1526,7 +1028,7 @@ export interface Appliances {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplianceListResult} - The deserialized result object.
+     *                      @resolve {PolicyAssignmentListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1534,20 +1036,49 @@ export interface Appliances {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplianceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplianceListResult} for more information.
+     *                      {PolicyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyAssignmentListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplianceListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ApplianceListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplianceListResult>): void;
+    listForResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignmentListResult>;
+    listForResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 
 
     /**
-     * Gets all the appliances within a subscription.
+     * @summary Retrieves all policy assignments that apply to a resource.
+     *
+     * This operation retrieves the list of all policy assignments associated with
+     * the specified resource in the given resource group and subscription that
+     * match the optional given $filter. Valid values for $filter are: 'atScope()'
+     * or 'policyDefinitionId eq '{value}''. If $filter is not provided, the
+     * unfiltered list includes all policy assignments associated with the
+     * resource, including those that apply directly or from all containing scopes,
+     * as well as any applied to resources contained within the resource. If
+     * $filter=atScope() is provided, the returned list includes all policy
+     * assignments that apply to the resource, which is everything in the
+     * unfiltered list except those applied to resources contained within the
+     * resource. If $filter=policyDefinitionId eq '{value}' is provided, the
+     * returned list includes only policy assignments that apply to the resource
+     * and assign the policy definition whose id is {value}. Three parameters plus
+     * the resource name are used to identify a specific resource. If the resource
+     * is not part of a parent resource (the more common case), the parent resource
+     * path should not be provided (or provided as ''). For example a web app could
+     * be specified as ({resourceProviderNamespace} == 'Microsoft.Web',
+     * {parentResourcePath} == '', {resourceType} == 'sites', {resourceName} ==
+     * 'MyWebApp'). If the resource is part of a parent resource, then all
+     * parameters should be provided. For example a virtual machine DNS name could
+     * be specified as ({resourceProviderNamespace} == 'Microsoft.Compute',
+     * {parentResourcePath} == 'virtualMachines/MyVirtualMachine', {resourceType}
+     * == 'domainNames', {resourceName} == 'MyComputerName'). A convenient
+     * alternative to providing the namespace and type name separately is to
+     * provide both in the {resourceType} parameter, format:
+     * ({resourceProviderNamespace} == '', {parentResourcePath} == '',
+     * {resourceType} == 'Microsoft.Web/sites', {resourceName} == 'MyWebApp').
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1559,14 +1090,42 @@ export interface Appliances {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplianceListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyAssignmentListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplianceListResult>>;
+    listForResourceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignmentListResult>>;
 
     /**
-     * Gets all the appliances within a subscription.
+     * @summary Retrieves all policy assignments that apply to a resource.
+     *
+     * This operation retrieves the list of all policy assignments associated with
+     * the specified resource in the given resource group and subscription that
+     * match the optional given $filter. Valid values for $filter are: 'atScope()'
+     * or 'policyDefinitionId eq '{value}''. If $filter is not provided, the
+     * unfiltered list includes all policy assignments associated with the
+     * resource, including those that apply directly or from all containing scopes,
+     * as well as any applied to resources contained within the resource. If
+     * $filter=atScope() is provided, the returned list includes all policy
+     * assignments that apply to the resource, which is everything in the
+     * unfiltered list except those applied to resources contained within the
+     * resource. If $filter=policyDefinitionId eq '{value}' is provided, the
+     * returned list includes only policy assignments that apply to the resource
+     * and assign the policy definition whose id is {value}. Three parameters plus
+     * the resource name are used to identify a specific resource. If the resource
+     * is not part of a parent resource (the more common case), the parent resource
+     * path should not be provided (or provided as ''). For example a web app could
+     * be specified as ({resourceProviderNamespace} == 'Microsoft.Web',
+     * {parentResourcePath} == '', {resourceType} == 'sites', {resourceName} ==
+     * 'MyWebApp'). If the resource is part of a parent resource, then all
+     * parameters should be provided. For example a virtual machine DNS name could
+     * be specified as ({resourceProviderNamespace} == 'Microsoft.Compute',
+     * {parentResourcePath} == 'virtualMachines/MyVirtualMachine', {resourceType}
+     * == 'domainNames', {resourceName} == 'MyComputerName'). A convenient
+     * alternative to providing the namespace and type name separately is to
+     * provide both in the {resourceType} parameter, format:
+     * ({resourceProviderNamespace} == '', {parentResourcePath} == '',
+     * {resourceType} == 'Microsoft.Web/sites', {resourceName} == 'MyWebApp').
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1583,7 +1142,7 @@ export interface Appliances {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplianceListResult} - The deserialized result object.
+     *                      @resolve {PolicyAssignmentListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1591,35 +1150,144 @@ export interface Appliances {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplianceListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplianceListResult} for more information.
+     *                      {PolicyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyAssignmentListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplianceListResult>;
-    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.ApplianceListResult>): void;
-    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplianceListResult>): void;
+    listForResourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignmentListResult>;
+    listForResourceNext(nextPageLink: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listForResourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+
+
+    /**
+     * @summary Retrieves all policy assignments that apply to a subscription.
+     *
+     * This operation retrieves the list of all policy assignments associated with
+     * the given subscription that match the optional given $filter. Valid values
+     * for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If
+     * $filter is not provided, the unfiltered list includes all policy assignments
+     * associated with the subscription, including those that apply directly or
+     * from management groups that contain the given subscription, as well as any
+     * applied to objects contained within the subscription. If $filter=atScope()
+     * is provided, the returned list includes all policy assignments that apply to
+     * the subscription, which is everything in the unfiltered list except those
+     * applied to objects contained within the subscription. If
+     * $filter=policyDefinitionId eq '{value}' is provided, the returned list
+     * includes only policy assignments that apply to the subscription and assign
+     * the policy definition whose id is {value}.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyAssignmentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyAssignmentListResult>>;
+
+    /**
+     * @summary Retrieves all policy assignments that apply to a subscription.
+     *
+     * This operation retrieves the list of all policy assignments associated with
+     * the given subscription that match the optional given $filter. Valid values
+     * for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If
+     * $filter is not provided, the unfiltered list includes all policy assignments
+     * associated with the subscription, including those that apply directly or
+     * from management groups that contain the given subscription, as well as any
+     * applied to objects contained within the subscription. If $filter=atScope()
+     * is provided, the returned list includes all policy assignments that apply to
+     * the subscription, which is everything in the unfiltered list except those
+     * applied to objects contained within the subscription. If
+     * $filter=policyDefinitionId eq '{value}' is provided, the returned list
+     * includes only policy assignments that apply to the subscription and assign
+     * the policy definition whose id is {value}.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyAssignmentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyAssignmentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyAssignmentListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyAssignmentListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyAssignmentListResult>): void;
 }
 
 /**
  * @class
- * ApplianceDefinitions
+ * PolicyDefinitions
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ManagedApplicationClient.
+ * instance of the PolicyClient.
  */
-export interface ApplianceDefinitions {
+export interface PolicyDefinitions {
 
 
     /**
-     * Gets the appliance definition.
+     * @summary Creates or updates a policy definition in a subscription.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation creates or updates a policy definition in the given
+     * subscription with the given name.
      *
-     * @param {string} applianceDefinitionName The name of the appliance
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * create.
+     *
+     * @param {object} parameters The policy definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.mode] The policy definition mode. Possible
+     * values are NotSpecified, Indexed, and All. Possible values include:
+     * 'NotSpecified', 'Indexed', 'All'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy
      * definition.
+     *
+     * @param {string} [parameters.description] The policy definition description.
+     *
+     * @param {object} [parameters.policyRule] The policy rule.
+     *
+     * @param {object} [parameters.metadata] The policy definition metadata.
+     *
+     * @param {object} [parameters.parameters] Required if a parameter is used in
+     * policy rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1628,20 +1296,42 @@ export interface ApplianceDefinitions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplianceDefinition>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyDefinition>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, applianceDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplianceDefinition>>;
+    createOrUpdateWithHttpOperationResponse(policyDefinitionName: string, parameters: models.PolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinition>>;
 
     /**
-     * Gets the appliance definition.
+     * @summary Creates or updates a policy definition in a subscription.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation creates or updates a policy definition in the given
+     * subscription with the given name.
      *
-     * @param {string} applianceDefinitionName The name of the appliance
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * create.
+     *
+     * @param {object} parameters The policy definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.mode] The policy definition mode. Possible
+     * values are NotSpecified, Indexed, and All. Possible values include:
+     * 'NotSpecified', 'Indexed', 'All'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy
      * definition.
+     *
+     * @param {string} [parameters.description] The policy definition description.
+     *
+     * @param {object} [parameters.policyRule] The policy rule.
+     *
+     * @param {object} [parameters.metadata] The policy definition metadata.
+     *
+     * @param {object} [parameters.parameters] Required if a parameter is used in
+     * policy rule.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1655,7 +1345,7 @@ export interface ApplianceDefinitions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplianceDefinition} - The deserialized result object.
+     *                      @resolve {PolicyDefinition} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1663,26 +1353,26 @@ export interface ApplianceDefinitions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplianceDefinition} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplianceDefinition} for more information.
+     *                      {PolicyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinition} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, applianceDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplianceDefinition>;
-    get(resourceGroupName: string, applianceDefinitionName: string, callback: ServiceCallback<models.ApplianceDefinition>): void;
-    get(resourceGroupName: string, applianceDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplianceDefinition>): void;
+    createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinition>;
+    createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, callback: ServiceCallback<models.PolicyDefinition>): void;
+    createOrUpdate(policyDefinitionName: string, parameters: models.PolicyDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
 
 
     /**
-     * Deletes the appliance definition.
+     * @summary Deletes a policy definition in a subscription.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation deletes the policy definition in the given subscription with
+     * the given name.
      *
-     * @param {string} applianceDefinitionName The name of the appliance definition
-     * to delete.
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * delete.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1695,16 +1385,16 @@ export interface ApplianceDefinitions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, applianceDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(policyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the appliance definition.
+     * @summary Deletes a policy definition in a subscription.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation deletes the policy definition in the given subscription with
+     * the given name.
      *
-     * @param {string} applianceDefinitionName The name of the appliance definition
-     * to delete.
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * delete.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1732,63 +1422,19 @@ export interface ApplianceDefinitions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, applianceDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, applianceDefinitionName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, applianceDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(policyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(policyDefinitionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(policyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Creates a new appliance definition.
+     * @summary Retrieves a policy definition in a subscription.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation retrieves the policy definition in the given subscription
+     * with the given name.
      *
-     * @param {string} applianceDefinitionName The name of the appliance
-     * definition.
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance definition.
-     *
-     * @param {string} parameters.lockLevel The appliance lock level. Possible
-     * values include: 'CanNotDelete', 'ReadOnly', 'None'
-     *
-     * @param {string} [parameters.displayName] The appliance definition display
-     * name.
-     *
-     * @param {array} parameters.authorizations The appliance provider
-     * authorizations.
-     *
-     * @param {array} [parameters.artifacts] The collection of appliance artifacts.
-     * The portal will use the files specified as artifacts to construct the user
-     * experience of creating an appliance from an appliance definition.
-     *
-     * @param {string} [parameters.description] The appliance definition
-     * description.
-     *
-     * @param {string} parameters.packageFileUri The appliance definition package
-     * file Uri.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * get.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1797,64 +1443,20 @@ export interface ApplianceDefinitions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplianceDefinition>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyDefinition>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, applianceDefinitionName: string, parameters: models.ApplianceDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplianceDefinition>>;
+    getWithHttpOperationResponse(policyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinition>>;
 
     /**
-     * Creates a new appliance definition.
+     * @summary Retrieves a policy definition in a subscription.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation retrieves the policy definition in the given subscription
+     * with the given name.
      *
-     * @param {string} applianceDefinitionName The name of the appliance
-     * definition.
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance definition.
-     *
-     * @param {string} parameters.lockLevel The appliance lock level. Possible
-     * values include: 'CanNotDelete', 'ReadOnly', 'None'
-     *
-     * @param {string} [parameters.displayName] The appliance definition display
-     * name.
-     *
-     * @param {array} parameters.authorizations The appliance provider
-     * authorizations.
-     *
-     * @param {array} [parameters.artifacts] The collection of appliance artifacts.
-     * The portal will use the files specified as artifacts to construct the user
-     * experience of creating an appliance from an appliance definition.
-     *
-     * @param {string} [parameters.description] The appliance definition
-     * description.
-     *
-     * @param {string} parameters.packageFileUri The appliance definition package
-     * file Uri.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * get.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1868,7 +1470,7 @@ export interface ApplianceDefinitions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplianceDefinition} - The deserialized result object.
+     *                      @resolve {PolicyDefinition} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1876,23 +1478,25 @@ export interface ApplianceDefinitions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplianceDefinition} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplianceDefinition} for more information.
+     *                      {PolicyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinition} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, applianceDefinitionName: string, parameters: models.ApplianceDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplianceDefinition>;
-    createOrUpdate(resourceGroupName: string, applianceDefinitionName: string, parameters: models.ApplianceDefinition, callback: ServiceCallback<models.ApplianceDefinition>): void;
-    createOrUpdate(resourceGroupName: string, applianceDefinitionName: string, parameters: models.ApplianceDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplianceDefinition>): void;
+    get(policyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinition>;
+    get(policyDefinitionName: string, callback: ServiceCallback<models.PolicyDefinition>): void;
+    get(policyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
 
 
     /**
-     * Lists the appliance definitions in a resource group.
+     * @summary Retrieves a built-in policy definition.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation retrieves the built-in policy definition with the given name.
+     *
+     * @param {string} policyDefinitionName The name of the built-in policy
+     * definition to get.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1901,17 +1505,19 @@ export interface ApplianceDefinitions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplianceDefinitionListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyDefinition>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplianceDefinitionListResult>>;
+    getBuiltInWithHttpOperationResponse(policyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinition>>;
 
     /**
-     * Lists the appliance definitions in a resource group.
+     * @summary Retrieves a built-in policy definition.
      *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
+     * This operation retrieves the built-in policy definition with the given name.
+     *
+     * @param {string} policyDefinitionName The name of the built-in policy
+     * definition to get.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1925,7 +1531,7 @@ export interface ApplianceDefinitions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplianceDefinitionListResult} - The deserialized result object.
+     *                      @resolve {PolicyDefinition} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1933,26 +1539,324 @@ export interface ApplianceDefinitions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplianceDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplianceDefinitionListResult} for more
+     *                      {PolicyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getBuiltIn(policyDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinition>;
+    getBuiltIn(policyDefinitionName: string, callback: ServiceCallback<models.PolicyDefinition>): void;
+    getBuiltIn(policyDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
+
+
+    /**
+     * @summary Creates or updates a policy definition in a management group.
+     *
+     * This operation creates or updates a policy definition in the given
+     * management group with the given name.
+     *
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * create.
+     *
+     * @param {object} parameters The policy definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.mode] The policy definition mode. Possible
+     * values are NotSpecified, Indexed, and All. Possible values include:
+     * 'NotSpecified', 'Indexed', 'All'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy
+     * definition.
+     *
+     * @param {string} [parameters.description] The policy definition description.
+     *
+     * @param {object} [parameters.policyRule] The policy rule.
+     *
+     * @param {object} [parameters.metadata] The policy definition metadata.
+     *
+     * @param {object} [parameters.parameters] Required if a parameter is used in
+     * policy rule.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAtManagementGroupWithHttpOperationResponse(policyDefinitionName: string, parameters: models.PolicyDefinition, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinition>>;
+
+    /**
+     * @summary Creates or updates a policy definition in a management group.
+     *
+     * This operation creates or updates a policy definition in the given
+     * management group with the given name.
+     *
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * create.
+     *
+     * @param {object} parameters The policy definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.mode] The policy definition mode. Possible
+     * values are NotSpecified, Indexed, and All. Possible values include:
+     * 'NotSpecified', 'Indexed', 'All'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy
+     * definition.
+     *
+     * @param {string} [parameters.description] The policy definition description.
+     *
+     * @param {object} [parameters.policyRule] The policy rule.
+     *
+     * @param {object} [parameters.metadata] The policy definition metadata.
+     *
+     * @param {object} [parameters.parameters] Required if a parameter is used in
+     * policy rule.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAtManagementGroup(policyDefinitionName: string, parameters: models.PolicyDefinition, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinition>;
+    createOrUpdateAtManagementGroup(policyDefinitionName: string, parameters: models.PolicyDefinition, managementGroupId: string, callback: ServiceCallback<models.PolicyDefinition>): void;
+    createOrUpdateAtManagementGroup(policyDefinitionName: string, parameters: models.PolicyDefinition, managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
+
+
+    /**
+     * @summary Deletes a policy definition in a management group.
+     *
+     * This operation deletes the policy definition in the given management group
+     * with the given name.
+     *
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * delete.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteAtManagementGroupWithHttpOperationResponse(policyDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a policy definition in a management group.
+     *
+     * This operation deletes the policy definition in the given management group
+     * with the given name.
+     *
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * delete.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteAtManagementGroup(policyDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteAtManagementGroup(policyDefinitionName: string, managementGroupId: string, callback: ServiceCallback<void>): void;
+    deleteAtManagementGroup(policyDefinitionName: string, managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Retrieve a policy definition in a management group.
+     *
+     * This operation retrieves the policy definition in the given management group
+     * with the given name.
+     *
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * get.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAtManagementGroupWithHttpOperationResponse(policyDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinition>>;
+
+    /**
+     * @summary Retrieve a policy definition in a management group.
+     *
+     * This operation retrieves the policy definition in the given management group
+     * with the given name.
+     *
+     * @param {string} policyDefinitionName The name of the policy definition to
+     * get.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAtManagementGroup(policyDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinition>;
+    getAtManagementGroup(policyDefinitionName: string, managementGroupId: string, callback: ServiceCallback<models.PolicyDefinition>): void;
+    getAtManagementGroup(policyDefinitionName: string, managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinition>): void;
+
+
+    /**
+     * @summary Retrieves policy definitions in a subscription
+     *
+     * This operation retrieves a list of all the policy definitions in a given
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
+
+    /**
+     * @summary Retrieves policy definitions in a subscription
+     *
+     * This operation retrieves a list of all the policy definitions in a given
+     * subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinitionListResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplianceDefinitionListResult>;
-    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ApplianceDefinitionListResult>): void;
-    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplianceDefinitionListResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
+    list(callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
 
 
     /**
-     * Gets the appliance definition.
+     * @summary Retrieve built-in policy definitions
      *
-     * @param {string} applianceDefinitionId The fully qualified ID of the
-     * appliance definition, including the appliance name and the appliance
-     * definition resource type. Use the format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
+     * This operation retrieves a list of all the built-in policy definitions.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1961,19 +1865,16 @@ export interface ApplianceDefinitions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplianceDefinition>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyDefinitionListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getByIdWithHttpOperationResponse(applianceDefinitionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplianceDefinition>>;
+    listBuiltInWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
 
     /**
-     * Gets the appliance definition.
+     * @summary Retrieve built-in policy definitions
      *
-     * @param {string} applianceDefinitionId The fully qualified ID of the
-     * appliance definition, including the appliance name and the appliance
-     * definition resource type. Use the format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
+     * This operation retrieves a list of all the built-in policy definitions.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1987,7 +1888,7 @@ export interface ApplianceDefinitions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplianceDefinition} - The deserialized result object.
+     *                      @resolve {PolicyDefinitionListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -1995,25 +1896,26 @@ export interface ApplianceDefinitions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplianceDefinition} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplianceDefinition} for more information.
+     *                      {PolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinitionListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getById(applianceDefinitionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplianceDefinition>;
-    getById(applianceDefinitionId: string, callback: ServiceCallback<models.ApplianceDefinition>): void;
-    getById(applianceDefinitionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplianceDefinition>): void;
+    listBuiltIn(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
+    listBuiltIn(callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    listBuiltIn(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
 
 
     /**
-     * Deletes the appliance definition.
+     * @summary Retrieve policy definitions in a management group
      *
-     * @param {string} applianceDefinitionId The fully qualified ID of the
-     * appliance definition, including the appliance name and the appliance
-     * definition resource type. Use the format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
+     * This operation retrieves a list of all the policy definitions in a given
+     * management group.
+     *
+     * @param {string} managementGroupId The ID of the management group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2022,19 +1924,19 @@ export interface ApplianceDefinitions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyDefinitionListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteByIdWithHttpOperationResponse(applianceDefinitionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    listByManagementGroupWithHttpOperationResponse(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
 
     /**
-     * Deletes the appliance definition.
+     * @summary Retrieve policy definitions in a management group
      *
-     * @param {string} applianceDefinitionId The fully qualified ID of the
-     * appliance definition, including the appliance name and the appliance
-     * definition resource type. Use the format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
+     * This operation retrieves a list of all the policy definitions in a given
+     * management group.
+     *
+     * @param {string} managementGroupId The ID of the management group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2048,7 +1950,7 @@ export interface ApplianceDefinitions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {null} - The deserialized result object.
+     *                      @resolve {PolicyDefinitionListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2056,590 +1958,24 @@ export interface ApplianceDefinitions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *                      {PolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinitionListResult} for more
+     *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteById(applianceDefinitionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteById(applianceDefinitionId: string, callback: ServiceCallback<void>): void;
-    deleteById(applianceDefinitionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    listByManagementGroup(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
+    listByManagementGroup(managementGroupId: string, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    listByManagementGroup(managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
 
 
     /**
-     * Creates a new appliance definition.
+     * @summary Retrieves policy definitions in a subscription
      *
-     * @param {string} applianceDefinitionId The fully qualified ID of the
-     * appliance definition, including the appliance name and the appliance
-     * definition resource type. Use the format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance definition.
-     *
-     * @param {string} parameters.lockLevel The appliance lock level. Possible
-     * values include: 'CanNotDelete', 'ReadOnly', 'None'
-     *
-     * @param {string} [parameters.displayName] The appliance definition display
-     * name.
-     *
-     * @param {array} parameters.authorizations The appliance provider
-     * authorizations.
-     *
-     * @param {array} [parameters.artifacts] The collection of appliance artifacts.
-     * The portal will use the files specified as artifacts to construct the user
-     * experience of creating an appliance from an appliance definition.
-     *
-     * @param {string} [parameters.description] The appliance definition
-     * description.
-     *
-     * @param {string} parameters.packageFileUri The appliance definition package
-     * file Uri.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplianceDefinition>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateByIdWithHttpOperationResponse(applianceDefinitionId: string, parameters: models.ApplianceDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplianceDefinition>>;
-
-    /**
-     * Creates a new appliance definition.
-     *
-     * @param {string} applianceDefinitionId The fully qualified ID of the
-     * appliance definition, including the appliance name and the appliance
-     * definition resource type. Use the format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance definition.
-     *
-     * @param {string} parameters.lockLevel The appliance lock level. Possible
-     * values include: 'CanNotDelete', 'ReadOnly', 'None'
-     *
-     * @param {string} [parameters.displayName] The appliance definition display
-     * name.
-     *
-     * @param {array} parameters.authorizations The appliance provider
-     * authorizations.
-     *
-     * @param {array} [parameters.artifacts] The collection of appliance artifacts.
-     * The portal will use the files specified as artifacts to construct the user
-     * experience of creating an appliance from an appliance definition.
-     *
-     * @param {string} [parameters.description] The appliance definition
-     * description.
-     *
-     * @param {string} parameters.packageFileUri The appliance definition package
-     * file Uri.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplianceDefinition} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplianceDefinition} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplianceDefinition} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdateById(applianceDefinitionId: string, parameters: models.ApplianceDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplianceDefinition>;
-    createOrUpdateById(applianceDefinitionId: string, parameters: models.ApplianceDefinition, callback: ServiceCallback<models.ApplianceDefinition>): void;
-    createOrUpdateById(applianceDefinitionId: string, parameters: models.ApplianceDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplianceDefinition>): void;
-
-
-    /**
-     * Deletes the appliance definition.
-     *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
-     *
-     * @param {string} applianceDefinitionName The name of the appliance definition
-     * to delete.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, applianceDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the appliance definition.
-     *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
-     *
-     * @param {string} applianceDefinitionName The name of the appliance definition
-     * to delete.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteMethod(resourceGroupName: string, applianceDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteMethod(resourceGroupName: string, applianceDefinitionName: string, callback: ServiceCallback<void>): void;
-    beginDeleteMethod(resourceGroupName: string, applianceDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Creates a new appliance definition.
-     *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
-     *
-     * @param {string} applianceDefinitionName The name of the appliance
-     * definition.
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance definition.
-     *
-     * @param {string} parameters.lockLevel The appliance lock level. Possible
-     * values include: 'CanNotDelete', 'ReadOnly', 'None'
-     *
-     * @param {string} [parameters.displayName] The appliance definition display
-     * name.
-     *
-     * @param {array} parameters.authorizations The appliance provider
-     * authorizations.
-     *
-     * @param {array} [parameters.artifacts] The collection of appliance artifacts.
-     * The portal will use the files specified as artifacts to construct the user
-     * experience of creating an appliance from an appliance definition.
-     *
-     * @param {string} [parameters.description] The appliance definition
-     * description.
-     *
-     * @param {string} parameters.packageFileUri The appliance definition package
-     * file Uri.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplianceDefinition>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, applianceDefinitionName: string, parameters: models.ApplianceDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplianceDefinition>>;
-
-    /**
-     * Creates a new appliance definition.
-     *
-     * @param {string} resourceGroupName The name of the resource group. The name
-     * is case insensitive.
-     *
-     * @param {string} applianceDefinitionName The name of the appliance
-     * definition.
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance definition.
-     *
-     * @param {string} parameters.lockLevel The appliance lock level. Possible
-     * values include: 'CanNotDelete', 'ReadOnly', 'None'
-     *
-     * @param {string} [parameters.displayName] The appliance definition display
-     * name.
-     *
-     * @param {array} parameters.authorizations The appliance provider
-     * authorizations.
-     *
-     * @param {array} [parameters.artifacts] The collection of appliance artifacts.
-     * The portal will use the files specified as artifacts to construct the user
-     * experience of creating an appliance from an appliance definition.
-     *
-     * @param {string} [parameters.description] The appliance definition
-     * description.
-     *
-     * @param {string} parameters.packageFileUri The appliance definition package
-     * file Uri.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplianceDefinition} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplianceDefinition} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplianceDefinition} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdate(resourceGroupName: string, applianceDefinitionName: string, parameters: models.ApplianceDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplianceDefinition>;
-    beginCreateOrUpdate(resourceGroupName: string, applianceDefinitionName: string, parameters: models.ApplianceDefinition, callback: ServiceCallback<models.ApplianceDefinition>): void;
-    beginCreateOrUpdate(resourceGroupName: string, applianceDefinitionName: string, parameters: models.ApplianceDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplianceDefinition>): void;
-
-
-    /**
-     * Deletes the appliance definition.
-     *
-     * @param {string} applianceDefinitionId The fully qualified ID of the
-     * appliance definition, including the appliance name and the appliance
-     * definition resource type. Use the format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginDeleteByIdWithHttpOperationResponse(applianceDefinitionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the appliance definition.
-     *
-     * @param {string} applianceDefinitionId The fully qualified ID of the
-     * appliance definition, including the appliance name and the appliance
-     * definition resource type. Use the format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginDeleteById(applianceDefinitionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginDeleteById(applianceDefinitionId: string, callback: ServiceCallback<void>): void;
-    beginDeleteById(applianceDefinitionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Creates a new appliance definition.
-     *
-     * @param {string} applianceDefinitionId The fully qualified ID of the
-     * appliance definition, including the appliance name and the appliance
-     * definition resource type. Use the format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance definition.
-     *
-     * @param {string} parameters.lockLevel The appliance lock level. Possible
-     * values include: 'CanNotDelete', 'ReadOnly', 'None'
-     *
-     * @param {string} [parameters.displayName] The appliance definition display
-     * name.
-     *
-     * @param {array} parameters.authorizations The appliance provider
-     * authorizations.
-     *
-     * @param {array} [parameters.artifacts] The collection of appliance artifacts.
-     * The portal will use the files specified as artifacts to construct the user
-     * experience of creating an appliance from an appliance definition.
-     *
-     * @param {string} [parameters.description] The appliance definition
-     * description.
-     *
-     * @param {string} parameters.packageFileUri The appliance definition package
-     * file Uri.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplianceDefinition>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    beginCreateOrUpdateByIdWithHttpOperationResponse(applianceDefinitionId: string, parameters: models.ApplianceDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplianceDefinition>>;
-
-    /**
-     * Creates a new appliance definition.
-     *
-     * @param {string} applianceDefinitionId The fully qualified ID of the
-     * appliance definition, including the appliance name and the appliance
-     * definition resource type. Use the format,
-     * /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
-     *
-     * @param {object} parameters Parameters supplied to the create or update an
-     * appliance definition.
-     *
-     * @param {string} parameters.lockLevel The appliance lock level. Possible
-     * values include: 'CanNotDelete', 'ReadOnly', 'None'
-     *
-     * @param {string} [parameters.displayName] The appliance definition display
-     * name.
-     *
-     * @param {array} parameters.authorizations The appliance provider
-     * authorizations.
-     *
-     * @param {array} [parameters.artifacts] The collection of appliance artifacts.
-     * The portal will use the files specified as artifacts to construct the user
-     * experience of creating an appliance from an appliance definition.
-     *
-     * @param {string} [parameters.description] The appliance definition
-     * description.
-     *
-     * @param {string} parameters.packageFileUri The appliance definition package
-     * file Uri.
-     *
-     * @param {string} [parameters.managedBy] ID of the resource that manages this
-     * resource.
-     *
-     * @param {object} [parameters.sku] The SKU of the resource.
-     *
-     * @param {string} parameters.sku.name The SKU name.
-     *
-     * @param {string} [parameters.sku.tier] The SKU tier.
-     *
-     * @param {string} [parameters.sku.size] The SKU size.
-     *
-     * @param {string} [parameters.sku.family] The SKU family.
-     *
-     * @param {string} [parameters.sku.model] The SKU model.
-     *
-     * @param {number} [parameters.sku.capacity] The SKU capacity.
-     *
-     * @param {object} [parameters.identity] The identity of the resource.
-     *
-     * @param {string} [parameters.identity.type] The identity type. Possible
-     * values include: 'SystemAssigned'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplianceDefinition} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplianceDefinition} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplianceDefinition} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    beginCreateOrUpdateById(applianceDefinitionId: string, parameters: models.ApplianceDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplianceDefinition>;
-    beginCreateOrUpdateById(applianceDefinitionId: string, parameters: models.ApplianceDefinition, callback: ServiceCallback<models.ApplianceDefinition>): void;
-    beginCreateOrUpdateById(applianceDefinitionId: string, parameters: models.ApplianceDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplianceDefinition>): void;
-
-
-    /**
-     * Lists the appliance definitions in a resource group.
+     * This operation retrieves a list of all the policy definitions in a given
+     * subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2651,14 +1987,17 @@ export interface ApplianceDefinitions {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ApplianceDefinitionListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PolicyDefinitionListResult>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplianceDefinitionListResult>>;
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
 
     /**
-     * Lists the appliance definitions in a resource group.
+     * @summary Retrieves policy definitions in a subscription
+     *
+     * This operation retrieves a list of all the policy definitions in a given
+     * subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2675,7 +2014,7 @@ export interface ApplianceDefinitions {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ApplianceDefinitionListResult} - The deserialized result object.
+     *                      @resolve {PolicyDefinitionListResult} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2683,15 +2022,1047 @@ export interface ApplianceDefinitions {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ApplianceDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplianceDefinitionListResult} for more
+     *                      {PolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinitionListResult} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplianceDefinitionListResult>;
-    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ApplianceDefinitionListResult>): void;
-    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplianceDefinitionListResult>): void;
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+
+
+    /**
+     * @summary Retrieve built-in policy definitions
+     *
+     * This operation retrieves a list of all the built-in policy definitions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBuiltInNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
+
+    /**
+     * @summary Retrieve built-in policy definitions
+     *
+     * This operation retrieves a list of all the built-in policy definitions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBuiltInNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
+    listBuiltInNext(nextPageLink: string, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    listBuiltInNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+
+
+    /**
+     * @summary Retrieve policy definitions in a management group
+     *
+     * This operation retrieves a list of all the policy definitions in a given
+     * management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicyDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByManagementGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicyDefinitionListResult>>;
+
+    /**
+     * @summary Retrieve policy definitions in a management group
+     *
+     * This operation retrieves a list of all the policy definitions in a given
+     * management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicyDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicyDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicyDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByManagementGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicyDefinitionListResult>;
+    listByManagementGroupNext(nextPageLink: string, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+    listByManagementGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicyDefinitionListResult>): void;
+}
+
+/**
+ * @class
+ * PolicySetDefinitions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the PolicyClient.
+ */
+export interface PolicySetDefinitions {
+
+
+    /**
+     * @summary Creates or updates a policy set definition.
+     *
+     * This operation creates or updates a policy set definition in the given
+     * subscription with the given name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to create.
+     *
+     * @param {object} parameters The policy set definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy set
+     * definition.
+     *
+     * @param {string} [parameters.description] The policy set definition
+     * description.
+     *
+     * @param {object} [parameters.metadata] The policy set definition metadata.
+     *
+     * @param {object} [parameters.parameters] The policy set definition parameters
+     * that can be used in policy definition references.
+     *
+     * @param {array} parameters.policyDefinitions An array of policy definition
+     * references.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(policySetDefinitionName: string, parameters: models.PolicySetDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
+
+    /**
+     * @summary Creates or updates a policy set definition.
+     *
+     * This operation creates or updates a policy set definition in the given
+     * subscription with the given name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to create.
+     *
+     * @param {object} parameters The policy set definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy set
+     * definition.
+     *
+     * @param {string} [parameters.description] The policy set definition
+     * description.
+     *
+     * @param {object} [parameters.metadata] The policy set definition metadata.
+     *
+     * @param {object} [parameters.parameters] The policy set definition parameters
+     * that can be used in policy definition references.
+     *
+     * @param {array} parameters.policyDefinitions An array of policy definition
+     * references.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(policySetDefinitionName: string, parameters: models.PolicySetDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
+    createOrUpdate(policySetDefinitionName: string, parameters: models.PolicySetDefinition, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    createOrUpdate(policySetDefinitionName: string, parameters: models.PolicySetDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
+
+
+    /**
+     * @summary Deletes a policy set definition.
+     *
+     * This operation deletes the policy set definition in the given subscription
+     * with the given name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a policy set definition.
+     *
+     * This operation deletes the policy set definition in the given subscription
+     * with the given name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(policySetDefinitionName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(policySetDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Retrieves a policy set definition.
+     *
+     * This operation retrieves the policy set definition in the given subscription
+     * with the given name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
+
+    /**
+     * @summary Retrieves a policy set definition.
+     *
+     * This operation retrieves the policy set definition in the given subscription
+     * with the given name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
+    get(policySetDefinitionName: string, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    get(policySetDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
+
+
+    /**
+     * @summary Retrieves a built in policy set definition.
+     *
+     * This operation retrieves the built-in policy set definition with the given
+     * name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getBuiltInWithHttpOperationResponse(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
+
+    /**
+     * @summary Retrieves a built in policy set definition.
+     *
+     * This operation retrieves the built-in policy set definition with the given
+     * name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getBuiltIn(policySetDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
+    getBuiltIn(policySetDefinitionName: string, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    getBuiltIn(policySetDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
+
+
+    /**
+     * @summary Retrieves the policy set definitions for a subscription.
+     *
+     * This operation retrieves a list of all the policy set definitions in the
+     * given subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+
+    /**
+     * @summary Retrieves the policy set definitions for a subscription.
+     *
+     * This operation retrieves a list of all the policy set definitions in the
+     * given subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    list(callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+
+
+    /**
+     * @summary Retrieves built-in policy set definitions.
+     *
+     * This operation retrieves a list of all the built-in policy set definitions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBuiltInWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+
+    /**
+     * @summary Retrieves built-in policy set definitions.
+     *
+     * This operation retrieves a list of all the built-in policy set definitions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBuiltIn(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    listBuiltIn(callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    listBuiltIn(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+
+
+    /**
+     * @summary Creates or updates a policy set definition.
+     *
+     * This operation creates or updates a policy set definition in the given
+     * management group with the given name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to create.
+     *
+     * @param {object} parameters The policy set definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy set
+     * definition.
+     *
+     * @param {string} [parameters.description] The policy set definition
+     * description.
+     *
+     * @param {object} [parameters.metadata] The policy set definition metadata.
+     *
+     * @param {object} [parameters.parameters] The policy set definition parameters
+     * that can be used in policy definition references.
+     *
+     * @param {array} parameters.policyDefinitions An array of policy definition
+     * references.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateAtManagementGroupWithHttpOperationResponse(policySetDefinitionName: string, parameters: models.PolicySetDefinition, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
+
+    /**
+     * @summary Creates or updates a policy set definition.
+     *
+     * This operation creates or updates a policy set definition in the given
+     * management group with the given name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to create.
+     *
+     * @param {object} parameters The policy set definition properties.
+     *
+     * @param {string} [parameters.policyType] The type of policy definition.
+     * Possible values are NotSpecified, BuiltIn, and Custom. Possible values
+     * include: 'NotSpecified', 'BuiltIn', 'Custom'
+     *
+     * @param {string} [parameters.displayName] The display name of the policy set
+     * definition.
+     *
+     * @param {string} [parameters.description] The policy set definition
+     * description.
+     *
+     * @param {object} [parameters.metadata] The policy set definition metadata.
+     *
+     * @param {object} [parameters.parameters] The policy set definition parameters
+     * that can be used in policy definition references.
+     *
+     * @param {array} parameters.policyDefinitions An array of policy definition
+     * references.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdateAtManagementGroup(policySetDefinitionName: string, parameters: models.PolicySetDefinition, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
+    createOrUpdateAtManagementGroup(policySetDefinitionName: string, parameters: models.PolicySetDefinition, managementGroupId: string, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    createOrUpdateAtManagementGroup(policySetDefinitionName: string, parameters: models.PolicySetDefinition, managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
+
+
+    /**
+     * @summary Deletes a policy set definition.
+     *
+     * This operation deletes the policy set definition in the given management
+     * group with the given name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to delete.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteAtManagementGroupWithHttpOperationResponse(policySetDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * @summary Deletes a policy set definition.
+     *
+     * This operation deletes the policy set definition in the given management
+     * group with the given name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to delete.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteAtManagementGroup(policySetDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteAtManagementGroup(policySetDefinitionName: string, managementGroupId: string, callback: ServiceCallback<void>): void;
+    deleteAtManagementGroup(policySetDefinitionName: string, managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * @summary Retrieves a policy set definition.
+     *
+     * This operation retrieves the policy set definition in the given management
+     * group with the given name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to get.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getAtManagementGroupWithHttpOperationResponse(policySetDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinition>>;
+
+    /**
+     * @summary Retrieves a policy set definition.
+     *
+     * This operation retrieves the policy set definition in the given management
+     * group with the given name.
+     *
+     * @param {string} policySetDefinitionName The name of the policy set
+     * definition to get.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getAtManagementGroup(policySetDefinitionName: string, managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinition>;
+    getAtManagementGroup(policySetDefinitionName: string, managementGroupId: string, callback: ServiceCallback<models.PolicySetDefinition>): void;
+    getAtManagementGroup(policySetDefinitionName: string, managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinition>): void;
+
+
+    /**
+     * @summary Retrieves all policy set definitions in management group.
+     *
+     * This operation retrieves a list of all the a policy set definition in the
+     * given management group.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByManagementGroupWithHttpOperationResponse(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+
+    /**
+     * @summary Retrieves all policy set definitions in management group.
+     *
+     * This operation retrieves a list of all the a policy set definition in the
+     * given management group.
+     *
+     * @param {string} managementGroupId The ID of the management group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByManagementGroup(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    listByManagementGroup(managementGroupId: string, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    listByManagementGroup(managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+
+
+    /**
+     * @summary Retrieves the policy set definitions for a subscription.
+     *
+     * This operation retrieves a list of all the policy set definitions in the
+     * given subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+
+    /**
+     * @summary Retrieves the policy set definitions for a subscription.
+     *
+     * This operation retrieves a list of all the policy set definitions in the
+     * given subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+
+
+    /**
+     * @summary Retrieves built-in policy set definitions.
+     *
+     * This operation retrieves a list of all the built-in policy set definitions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBuiltInNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+
+    /**
+     * @summary Retrieves built-in policy set definitions.
+     *
+     * This operation retrieves a list of all the built-in policy set definitions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBuiltInNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    listBuiltInNext(nextPageLink: string, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    listBuiltInNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+
+
+    /**
+     * @summary Retrieves all policy set definitions in management group.
+     *
+     * This operation retrieves a list of all the a policy set definition in the
+     * given management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PolicySetDefinitionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByManagementGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PolicySetDefinitionListResult>>;
+
+    /**
+     * @summary Retrieves all policy set definitions in management group.
+     *
+     * This operation retrieves a list of all the a policy set definition in the
+     * given management group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PolicySetDefinitionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PolicySetDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PolicySetDefinitionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByManagementGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PolicySetDefinitionListResult>;
+    listByManagementGroupNext(nextPageLink: string, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
+    listByManagementGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PolicySetDefinitionListResult>): void;
 }
