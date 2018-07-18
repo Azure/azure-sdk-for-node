@@ -634,9 +634,9 @@ export interface ExportJobsOperationResults {
 
     /**
      * Gets the operation result of operation triggered by Export Jobs API. If the
-     * operation is successful, then it also contains URL of a Blob and a SAS key
-     * to access the same. The blob contains exported jobs in JSON serialized
-     * format.
+     * operation is successful, then it also
+     * contains URL of a Blob and a SAS key to access the same. The blob contains
+     * exported jobs in JSON serialized format.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -660,9 +660,9 @@ export interface ExportJobsOperationResults {
 
     /**
      * Gets the operation result of operation triggered by Export Jobs API. If the
-     * operation is successful, then it also contains URL of a Blob and a SAS key
-     * to access the same. The blob contains exported jobs in JSON serialized
-     * format.
+     * operation is successful, then it also
+     * contains URL of a Blob and a SAS key to access the same. The blob contains
+     * exported jobs in JSON serialized format.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -790,7 +790,8 @@ export interface BackupPolicies {
 
     /**
      * Lists of backup policies associated with Recovery Services Vault. API
-     * provides pagination parameters to fetch scoped results.
+     * provides pagination parameters to fetch
+     * scoped results.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -814,7 +815,8 @@ export interface BackupPolicies {
 
     /**
      * Lists of backup policies associated with Recovery Services Vault. API
-     * provides pagination parameters to fetch scoped results.
+     * provides pagination parameters to fetch
+     * scoped results.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -858,7 +860,8 @@ export interface BackupPolicies {
 
     /**
      * Lists of backup policies associated with Recovery Services Vault. API
-     * provides pagination parameters to fetch scoped results.
+     * provides pagination parameters to fetch
+     * scoped results.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -878,7 +881,8 @@ export interface BackupPolicies {
 
     /**
      * Lists of backup policies associated with Recovery Services Vault. API
-     * provides pagination parameters to fetch scoped results.
+     * provides pagination parameters to fetch
+     * scoped results.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -1130,6 +1134,87 @@ export interface BackupUsageSummaries {
     list(vaultName: string, resourceGroupName: string, options?: { filter? : string, skipToken? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupManagementUsageList>;
     list(vaultName: string, resourceGroupName: string, callback: ServiceCallback<models.BackupManagementUsageList>): void;
     list(vaultName: string, resourceGroupName: string, options: { filter? : string, skipToken? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupManagementUsageList>): void;
+}
+
+/**
+ * @class
+ * Operation
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the RecoveryServicesBackupClient.
+ */
+export interface Operation {
+
+
+    /**
+     * Validate operation for specified backed up item. This is a synchronous
+     * operation.
+     *
+     * @param {string} vaultName The name of the recovery services vault.
+     *
+     * @param {string} resourceGroupName The name of the resource group where the
+     * recovery services vault is present.
+     *
+     * @param {object} parameters resource validate operation request
+     *
+     * @param {string} parameters.objectType Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ValidateOperationsResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    validateWithHttpOperationResponse(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ValidateOperationsResponse>>;
+
+    /**
+     * Validate operation for specified backed up item. This is a synchronous
+     * operation.
+     *
+     * @param {string} vaultName The name of the recovery services vault.
+     *
+     * @param {string} resourceGroupName The name of the resource group where the
+     * recovery services vault is present.
+     *
+     * @param {object} parameters resource validate operation request
+     *
+     * @param {string} parameters.objectType Polymorphic Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ValidateOperationsResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ValidateOperationsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ValidateOperationsResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    validate(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ValidateOperationsResponse>;
+    validate(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, callback: ServiceCallback<models.ValidateOperationsResponse>): void;
+    validate(vaultName: string, resourceGroupName: string, parameters: models.ValidateOperationRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ValidateOperationsResponse>): void;
 }
 
 /**
@@ -1832,7 +1917,8 @@ export interface ProtectionContainers {
     /**
      * Registers the container with Recovery Services vault.
      * This is an asynchronous operation. To track the operation status, use
-     * location header to call get latest status of the operation.
+     * location header to call get latest status of
+     * the operation.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -1887,7 +1973,8 @@ export interface ProtectionContainers {
     /**
      * Registers the container with Recovery Services vault.
      * This is an asynchronous operation. To track the operation status, use
-     * location header to call get latest status of the operation.
+     * location header to call get latest status of
+     * the operation.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -1960,10 +2047,10 @@ export interface ProtectionContainers {
 
 
     /**
-     * Unregisters the given container from your Recovery Services Vault.
-     * This is an asynchronous operation. To determine whether the backend service
-     * has finished processing the request, call Get Container Operation Result
-     * API.
+     * Unregisters the given container from your Recovery Services Vault. This is
+     * an asynchronous operation. To determine
+     * whether the backend service has finished processing the request, call Get
+     * Container Operation Result API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -1989,10 +2076,10 @@ export interface ProtectionContainers {
     unregisterWithHttpOperationResponse(vaultName: string, resourceGroupName: string, fabricName: string, containerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Unregisters the given container from your Recovery Services Vault.
-     * This is an asynchronous operation. To determine whether the backend service
-     * has finished processing the request, call Get Container Operation Result
-     * API.
+     * Unregisters the given container from your Recovery Services Vault. This is
+     * an asynchronous operation. To determine
+     * whether the backend service has finished processing the request, call Get
+     * Container Operation Result API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2119,8 +2206,9 @@ export interface ProtectionContainers {
 
     /**
      * Discovers all the containers in the subscription that can be backed up to
-     * Recovery Services Vault. This is an asynchronous operation. To know the
-     * status of the operation, call GetRefreshOperationResult API.
+     * Recovery Services Vault. This is an
+     * asynchronous operation. To know the status of the operation, call
+     * GetRefreshOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2146,8 +2234,9 @@ export interface ProtectionContainers {
 
     /**
      * Discovers all the containers in the subscription that can be backed up to
-     * Recovery Services Vault. This is an asynchronous operation. To know the
-     * status of the operation, call GetRefreshOperationResult API.
+     * Recovery Services Vault. This is an
+     * asynchronous operation. To know the status of the operation, call
+     * GetRefreshOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2200,7 +2289,8 @@ export interface BackupWorkloadItems {
 
     /**
      * Provides a pageable list of workload item of a specific container according
-     * to the query filter and the pagination parameters.
+     * to the query filter and the pagination
+     * parameters.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2230,7 +2320,8 @@ export interface BackupWorkloadItems {
 
     /**
      * Provides a pageable list of workload item of a specific container according
-     * to the query filter and the pagination parameters.
+     * to the query filter and the pagination
+     * parameters.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2280,7 +2371,8 @@ export interface BackupWorkloadItems {
 
     /**
      * Provides a pageable list of workload item of a specific container according
-     * to the query filter and the pagination parameters.
+     * to the query filter and the pagination
+     * parameters.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2300,7 +2392,8 @@ export interface BackupWorkloadItems {
 
     /**
      * Provides a pageable list of workload item of a specific container according
-     * to the query filter and the pagination parameters.
+     * to the query filter and the pagination
+     * parameters.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -2436,8 +2529,8 @@ export interface ProtectedItems {
 
     /**
      * Provides the details of the backed up item. This is an asynchronous
-     * operation. To know the status of the operation, call the
-     * GetItemOperationResult API.
+     * operation. To know the status of the operation,
+     * call the GetItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2469,8 +2562,8 @@ export interface ProtectedItems {
 
     /**
      * Provides the details of the backed up item. This is an asynchronous
-     * operation. To know the status of the operation, call the
-     * GetItemOperationResult API.
+     * operation. To know the status of the operation,
+     * call the GetItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2521,8 +2614,9 @@ export interface ProtectedItems {
 
     /**
      * Enables backup of an item or to modifies the backup policy information of an
-     * already backed up item. This is an asynchronous operation. To know the
-     * status of the operation, call the GetItemOperationResult API.
+     * already backed up item. This is an
+     * asynchronous operation. To know the status of the operation, call the
+     * GetItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2594,8 +2688,9 @@ export interface ProtectedItems {
 
     /**
      * Enables backup of an item or to modifies the backup policy information of an
-     * already backed up item. This is an asynchronous operation. To know the
-     * status of the operation, call the GetItemOperationResult API.
+     * already backed up item. This is an
+     * asynchronous operation. To know the status of the operation, call the
+     * GetItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2685,8 +2780,8 @@ export interface ProtectedItems {
 
     /**
      * Used to disable backup of an item within a container. This is an
-     * asynchronous operation. To know the status of the request, call the
-     * GetItemOperationResult API.
+     * asynchronous operation. To know the status of the
+     * request, call the GetItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2715,8 +2810,8 @@ export interface ProtectedItems {
 
     /**
      * Used to disable backup of an item within a container. This is an
-     * asynchronous operation. To know the status of the request, call the
-     * GetItemOperationResult API.
+     * asynchronous operation. To know the status of the
+     * request, call the GetItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2772,8 +2867,8 @@ export interface Backups {
 
     /**
      * Triggers backup for specified backed up item. This is an asynchronous
-     * operation. To know the status of the operation, call
-     * GetProtectedItemOperationResult API.
+     * operation. To know the status of the
+     * operation, call GetProtectedItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2815,8 +2910,8 @@ export interface Backups {
 
     /**
      * Triggers backup for specified backed up item. This is an asynchronous
-     * operation. To know the status of the operation, call
-     * GetProtectedItemOperationResult API.
+     * operation. To know the status of the
+     * operation, call GetProtectedItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -2977,10 +3072,11 @@ export interface ProtectedItemOperationStatuses {
 
     /**
      * Fetches the status of an operation such as triggering a backup, restore. The
-     * status can be in progress, completed or failed. You can refer to the
-     * OperationStatus enum for all the possible states of the operation. Some
-     * operations create jobs. This method returns the list of jobs associated with
-     * the operation.
+     * status can be in progress, completed
+     * or failed. You can refer to the OperationStatus enum for all the possible
+     * states of the operation. Some operations
+     * create jobs. This method returns the list of jobs associated with the
+     * operation.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3013,10 +3109,11 @@ export interface ProtectedItemOperationStatuses {
 
     /**
      * Fetches the status of an operation such as triggering a backup, restore. The
-     * status can be in progress, completed or failed. You can refer to the
-     * OperationStatus enum for all the possible states of the operation. Some
-     * operations create jobs. This method returns the list of jobs associated with
-     * the operation.
+     * status can be in progress, completed
+     * or failed. You can refer to the OperationStatus enum for all the possible
+     * states of the operation. Some operations
+     * create jobs. This method returns the list of jobs associated with the
+     * operation.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3159,8 +3256,9 @@ export interface RecoveryPoints {
 
     /**
      * Provides the information of the backed up data identified using
-     * RecoveryPointID. This is an asynchronous operation. To know the status of
-     * the operation, call the GetProtectedItemOperationResult API.
+     * RecoveryPointID. This is an asynchronous operation.
+     * To know the status of the operation, call the
+     * GetProtectedItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3192,8 +3290,9 @@ export interface RecoveryPoints {
 
     /**
      * Provides the information of the backed up data identified using
-     * RecoveryPointID. This is an asynchronous operation. To know the status of
-     * the operation, call the GetProtectedItemOperationResult API.
+     * RecoveryPointID. This is an asynchronous operation.
+     * To know the status of the operation, call the
+     * GetProtectedItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3311,8 +3410,9 @@ export interface ItemLevelRecoveryConnections {
 
     /**
      * Provisions a script which invokes an iSCSI connection to the backup data.
-     * Executing this script opens a file explorer displaying all the recoverable
-     * files and folders. This is an asynchronous operation. To know the status of
+     * Executing this script opens a file
+     * explorer displaying all the recoverable files and folders. This is an
+     * asynchronous operation. To know the status of
      * provisioning, call GetProtectedItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
@@ -3329,7 +3429,8 @@ export interface ItemLevelRecoveryConnections {
      * are to be restored.
      *
      * @param {string} recoveryPointId Recovery point ID which represents backed up
-     * data. iSCSI connection will be provisioned for this backed up data.
+     * data. iSCSI connection will be provisioned
+     * for this backed up data.
      *
      * @param {object} parameters resource ILR request
      *
@@ -3358,8 +3459,9 @@ export interface ItemLevelRecoveryConnections {
 
     /**
      * Provisions a script which invokes an iSCSI connection to the backup data.
-     * Executing this script opens a file explorer displaying all the recoverable
-     * files and folders. This is an asynchronous operation. To know the status of
+     * Executing this script opens a file
+     * explorer displaying all the recoverable files and folders. This is an
+     * asynchronous operation. To know the status of
      * provisioning, call GetProtectedItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
@@ -3376,7 +3478,8 @@ export interface ItemLevelRecoveryConnections {
      * are to be restored.
      *
      * @param {string} recoveryPointId Recovery point ID which represents backed up
-     * data. iSCSI connection will be provisioned for this backed up data.
+     * data. iSCSI connection will be provisioned
+     * for this backed up data.
      *
      * @param {object} parameters resource ILR request
      *
@@ -3423,8 +3526,9 @@ export interface ItemLevelRecoveryConnections {
 
     /**
      * Revokes an iSCSI connection which can be used to download a script.
-     * Executing this script opens a file explorer displaying all recoverable files
-     * and folders. This is an asynchronous operation.
+     * Executing this script opens a file explorer
+     * displaying all recoverable files and folders. This is an asynchronous
+     * operation.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3440,7 +3544,8 @@ export interface ItemLevelRecoveryConnections {
      * are to be restored.
      *
      * @param {string} recoveryPointId Recovery point ID which represents backed up
-     * data. iSCSI connection will be revoked for this backed up data.
+     * data. iSCSI connection will be revoked for
+     * this backed up data.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3457,8 +3562,9 @@ export interface ItemLevelRecoveryConnections {
 
     /**
      * Revokes an iSCSI connection which can be used to download a script.
-     * Executing this script opens a file explorer displaying all recoverable files
-     * and folders. This is an asynchronous operation.
+     * Executing this script opens a file explorer
+     * displaying all recoverable files and folders. This is an asynchronous
+     * operation.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3474,7 +3580,8 @@ export interface ItemLevelRecoveryConnections {
      * are to be restored.
      *
      * @param {string} recoveryPointId Recovery point ID which represents backed up
-     * data. iSCSI connection will be revoked for this backed up data.
+     * data. iSCSI connection will be revoked for
+     * this backed up data.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3518,7 +3625,8 @@ export interface Restores {
 
     /**
      * Restores the specified backed up data. This is an asynchronous operation. To
-     * know the status of this API call, use GetProtectedItemOperationResult API.
+     * know the status of this API call, use
+     * GetProtectedItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3562,7 +3670,8 @@ export interface Restores {
 
     /**
      * Restores the specified backed up data. This is an asynchronous operation. To
-     * know the status of this API call, use GetProtectedItemOperationResult API.
+     * know the status of this API call, use
+     * GetProtectedItemOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3633,7 +3742,8 @@ export interface JobCancellations {
 
     /**
      * Cancels a job. This is an asynchronous operation. To know the status of the
-     * cancellation, call GetCancelOperationResult API.
+     * cancellation, call
+     * GetCancelOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3657,7 +3767,8 @@ export interface JobCancellations {
 
     /**
      * Cancels a job. This is an asynchronous operation. To know the status of the
-     * cancellation, call GetCancelOperationResult API.
+     * cancellation, call
+     * GetCancelOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3789,11 +3900,12 @@ export interface BackupOperationResults {
 
     /**
      * Provides the status of the delete operations such as deleting backed up
-     * item. Once the operation has started, the status code in the response would
-     * be Accepted. It will continue to be in this state till it reaches
-     * completion. On successful completion, the status code will be OK. This
-     * method expects OperationID as an argument. OperationID is part of the
-     * Location header of the operation response.
+     * item. Once the operation has started, the
+     * status code in the response would be Accepted. It will continue to be in
+     * this state till it reaches completion. On
+     * successful completion, the status code will be OK. This method expects
+     * OperationID as an argument. OperationID is
+     * part of the Location header of the operation response.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3817,11 +3929,12 @@ export interface BackupOperationResults {
 
     /**
      * Provides the status of the delete operations such as deleting backed up
-     * item. Once the operation has started, the status code in the response would
-     * be Accepted. It will continue to be in this state till it reaches
-     * completion. On successful completion, the status code will be OK. This
-     * method expects OperationID as an argument. OperationID is part of the
-     * Location header of the operation response.
+     * item. Once the operation has started, the
+     * status code in the response would be Accepted. It will continue to be in
+     * this state till it reaches completion. On
+     * successful completion, the status code will be OK. This method expects
+     * OperationID as an argument. OperationID is
+     * part of the Location header of the operation response.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3872,10 +3985,11 @@ export interface BackupOperationStatuses {
 
     /**
      * Fetches the status of an operation such as triggering a backup, restore. The
-     * status can be in progress, completed or failed. You can refer to the
-     * OperationStatus enum for all the possible states of an operation. Some
-     * operations create jobs. This method returns the list of jobs when the
-     * operation is complete.
+     * status can be in progress, completed
+     * or failed. You can refer to the OperationStatus enum for all the possible
+     * states of an operation. Some operations
+     * create jobs. This method returns the list of jobs when the operation is
+     * complete.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3899,10 +4013,11 @@ export interface BackupOperationStatuses {
 
     /**
      * Fetches the status of an operation such as triggering a backup, restore. The
-     * status can be in progress, completed or failed. You can refer to the
-     * OperationStatus enum for all the possible states of an operation. Some
-     * operations create jobs. This method returns the list of jobs when the
-     * operation is complete.
+     * status can be in progress, completed
+     * or failed. You can refer to the OperationStatus enum for all the possible
+     * states of an operation. Some operations
+     * create jobs. This method returns the list of jobs when the operation is
+     * complete.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3954,8 +4069,9 @@ export interface ProtectionPolicies {
 
     /**
      * Provides the details of the backup policies associated to Recovery Services
-     * Vault. This is an asynchronous operation. Status of the operation can be
-     * fetched using GetPolicyOperationResult API.
+     * Vault. This is an asynchronous
+     * operation. Status of the operation can be fetched using
+     * GetPolicyOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -3979,8 +4095,9 @@ export interface ProtectionPolicies {
 
     /**
      * Provides the details of the backup policies associated to Recovery Services
-     * Vault. This is an asynchronous operation. Status of the operation can be
-     * fetched using GetPolicyOperationResult API.
+     * Vault. This is an asynchronous
+     * operation. Status of the operation can be fetched using
+     * GetPolicyOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -4024,7 +4141,8 @@ export interface ProtectionPolicies {
 
     /**
      * Creates or modifies a backup policy. This is an asynchronous operation.
-     * Status of the operation can be fetched using GetPolicyOperationResult API.
+     * Status of the operation can be fetched
+     * using GetPolicyOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -4064,7 +4182,8 @@ export interface ProtectionPolicies {
 
     /**
      * Creates or modifies a backup policy. This is an asynchronous operation.
-     * Status of the operation can be fetched using GetPolicyOperationResult API.
+     * Status of the operation can be fetched
+     * using GetPolicyOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -4124,8 +4243,8 @@ export interface ProtectionPolicies {
 
     /**
      * Deletes specified backup policy from your Recovery Services Vault. This is
-     * an asynchronous operation. Status of the operation can be fetched using
-     * GetPolicyOperationResult API.
+     * an asynchronous operation. Status of the
+     * operation can be fetched using GetPolicyOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -4149,8 +4268,8 @@ export interface ProtectionPolicies {
 
     /**
      * Deletes specified backup policy from your Recovery Services Vault. This is
-     * an asynchronous operation. Status of the operation can be fetched using
-     * GetPolicyOperationResult API.
+     * an asynchronous operation. Status of the
+     * operation can be fetched using GetPolicyOperationResult API.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -4284,10 +4403,10 @@ export interface ProtectionPolicyOperationStatuses {
 
     /**
      * Provides the status of the asynchronous operations like backup, restore. The
-     * status can be in progress, completed or failed. You can refer to the
-     * Operation Status enum for all the possible states of an operation. Some
-     * operations create jobs. This method returns the list of jobs associated with
-     * operation.
+     * status can be in progress, completed
+     * or failed. You can refer to the Operation Status enum for all the possible
+     * states of an operation. Some operations
+     * create jobs. This method returns the list of jobs associated with operation.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -4315,10 +4434,10 @@ export interface ProtectionPolicyOperationStatuses {
 
     /**
      * Provides the status of the asynchronous operations like backup, restore. The
-     * status can be in progress, completed or failed. You can refer to the
-     * Operation Status enum for all the possible states of an operation. Some
-     * operations create jobs. This method returns the list of jobs associated with
-     * operation.
+     * status can be in progress, completed
+     * or failed. You can refer to the Operation Status enum for all the possible
+     * states of an operation. Some operations
+     * create jobs. This method returns the list of jobs associated with operation.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -4374,7 +4493,8 @@ export interface BackupProtectableItems {
 
     /**
      * Provides a pageable list of protectable objects within your subscription
-     * according to the query filter and the pagination parameters.
+     * according to the query filter and the
+     * pagination parameters.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -4400,7 +4520,8 @@ export interface BackupProtectableItems {
 
     /**
      * Provides a pageable list of protectable objects within your subscription
-     * according to the query filter and the pagination parameters.
+     * according to the query filter and the
+     * pagination parameters.
      *
      * @param {string} vaultName The name of the recovery services vault.
      *
@@ -4446,7 +4567,8 @@ export interface BackupProtectableItems {
 
     /**
      * Provides a pageable list of protectable objects within your subscription
-     * according to the query filter and the pagination parameters.
+     * according to the query filter and the
+     * pagination parameters.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -4466,7 +4588,8 @@ export interface BackupProtectableItems {
 
     /**
      * Provides a pageable list of protectable objects within your subscription
-     * according to the query filter and the pagination parameters.
+     * according to the query filter and the
+     * pagination parameters.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.

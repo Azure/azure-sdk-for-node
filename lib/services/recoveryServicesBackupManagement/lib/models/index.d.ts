@@ -201,6 +201,81 @@ export interface AzureFileShareProtectionPolicy extends ProtectionPolicy {
 
 /**
  * @class
+ * Initializes a new instance of the RestoreFileSpecs class.
+ * @constructor
+ * Restore file specs like file path, type and target folder path info.
+ *
+ * @member {string} [path] Source File/Folder path
+ * @member {string} [fileSpecType] Indicates what the Path variable stands for
+ * @member {string} [targetFolderPath] Destination folder path in target
+ * FileShare
+ */
+export interface RestoreFileSpecs {
+  path?: string;
+  fileSpecType?: string;
+  targetFolderPath?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TargetAFSRestoreInfo class.
+ * @constructor
+ * Target Azure File Share Info.
+ *
+ * @member {string} [name] File share name
+ * @member {string} [targetResourceId] Target file share resource ARM ID
+ */
+export interface TargetAFSRestoreInfo {
+  name?: string;
+  targetResourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RestoreRequest class.
+ * @constructor
+ * Base class for restore request. Workload-specific restore requests are
+ * derived from this class.
+ *
+ * @member {string} objectType Polymorphic Discriminator
+ */
+export interface RestoreRequest {
+  objectType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureFileShareRestoreRequest class.
+ * @constructor
+ * AzureFileShare Restore Request
+ *
+ * @member {string} [recoveryType] Type of this recovery. Possible values
+ * include: 'Invalid', 'OriginalLocation', 'AlternateLocation', 'RestoreDisks'
+ * @member {string} [sourceResourceId] Source storage account ARM Id
+ * @member {string} [copyOptions] Options to resolve copy conflicts. Possible
+ * values include: 'Invalid', 'CreateCopy', 'Skip', 'Overwrite',
+ * 'FailOnConflict'
+ * @member {string} [restoreRequestType] Restore Type (FullShareRestore or
+ * ItemLevelRestore). Possible values include: 'Invalid', 'FullShareRestore',
+ * 'ItemLevelRestore'
+ * @member {array} [restoreFileSpecs] List of Source Files/Folders(which need
+ * to recover) and TargetFolderPath details
+ * @member {object} [targetDetails] Target File Share Details
+ * @member {string} [targetDetails.name] File share name
+ * @member {string} [targetDetails.targetResourceId] Target file share resource
+ * ARM ID
+ */
+export interface AzureFileShareRestoreRequest extends RestoreRequest {
+  recoveryType?: string;
+  sourceResourceId?: string;
+  copyOptions?: string;
+  restoreRequestType?: string;
+  restoreFileSpecs?: RestoreFileSpecs[];
+  targetDetails?: TargetAFSRestoreInfo;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AzureIaaSVMProtectedItem class.
  * @constructor
  * IaaS VM workload-specific backup item.
@@ -313,6 +388,8 @@ export interface AzureIaaSVMHealthDetails {
  * @member {moment.duration} [duration] Time elapsed for task.
  * @member {string} [status] The status.
  * @member {number} [progressPercentage] Progress of the task.
+ * @member {string} [taskExecutionDetails] Details about execution of the task.
+ * eg: number of bytes transfered etc
  */
 export interface AzureIaaSVMJobTaskDetails {
   taskId?: string;
@@ -322,6 +399,7 @@ export interface AzureIaaSVMJobTaskDetails {
   duration?: moment.Duration;
   status?: string;
   progressPercentage?: number;
+  taskExecutionDetails?: string;
 }
 
 /**
@@ -335,6 +413,8 @@ export interface AzureIaaSVMJobTaskDetails {
  * @member {object} [internalPropertyBag] Job internal properties.
  * @member {number} [progressPercentage] Indicates progress of the job. Null if
  * it has not started or completed.
+ * @member {string} [estimatedRemainingDuration] Time remaining for execution
+ * of this job.
  * @member {string} [dynamicErrorMessage] Non localized error message on job
  * execution.
  */
@@ -343,6 +423,7 @@ export interface AzureIaaSVMJobExtendedInfo {
   propertyBag?: { [propertyName: string]: string };
   internalPropertyBag?: { [propertyName: string]: string };
   progressPercentage?: number;
+  estimatedRemainingDuration?: string;
   dynamicErrorMessage?: string;
 }
 
@@ -396,6 +477,8 @@ export interface Job {
  * @member {object} [extendedInfo.internalPropertyBag] Job internal properties.
  * @member {number} [extendedInfo.progressPercentage] Indicates progress of the
  * job. Null if it has not started or completed.
+ * @member {string} [extendedInfo.estimatedRemainingDuration] Time remaining
+ * for execution of this job.
  * @member {string} [extendedInfo.dynamicErrorMessage] Non localized error
  * message on job execution.
  */
@@ -978,6 +1061,85 @@ export interface AzureWorkloadJob extends Job {
 
 /**
  * @class
+ * Initializes a new instance of the AzureWorkloadRestoreRequest class.
+ * @constructor
+ * AzureWorkload-specific restore.
+ *
+ * @member {string} [recoveryType] OLR/ALR, RestoreDisks is invalid option.
+ * Possible values include: 'Invalid', 'OriginalLocation', 'AlternateLocation',
+ * 'RestoreDisks'
+ * @member {string} [sourceResourceId] Fully qualified ARM ID of the VM on
+ * which workload that was running is being recovered.
+ * @member {object} [propertyBag] Workload specific property bag.
+ */
+export interface AzureWorkloadRestoreRequest extends RestoreRequest {
+  recoveryType?: string;
+  sourceResourceId?: string;
+  propertyBag?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureWorkloadSAPHanaRestoreRequest class.
+ * @constructor
+ * AzureWorkload SAP Hana-specific restore.
+ *
+ * @member {object} [targetInfo] Details of target database
+ * @member {string} [targetInfo.overwriteOption] Can Overwrite if Target
+ * DataBase already exists. Possible values include: 'Invalid',
+ * 'FailOnConflict', 'Overwrite'
+ * @member {string} [targetInfo.containerId] Resource Id name of the container
+ * in which Target DataBase resides
+ * @member {string} [targetInfo.databaseName] Database name
+ * InstanceName/DataBaseName for SQL or System/DbName for SAP Hana
+ * @member {string} [recoveryType] OLR/ALR, RestoreDisks is invalid option.
+ * Possible values include: 'Invalid', 'OriginalLocation', 'AlternateLocation',
+ * 'RestoreDisks'
+ * @member {string} [sourceResourceId] Fully qualified ARM ID of the VM on
+ * which workload that was running is being recovered.
+ * @member {object} [propertyBag] Workload specific property bag.
+ */
+export interface AzureWorkloadSAPHanaRestoreRequest extends RestoreRequest {
+  targetInfo?: TargetRestoreInfo;
+  recoveryType?: string;
+  sourceResourceId?: string;
+  propertyBag?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureWorkloadSAPHanaPointInTimeRestoreRequest class.
+ * @constructor
+ * AzureWorkload SAP Hana -specific restore. Specifically for PointInTime/Log
+ * restore
+ *
+ * @member {date} [pointInTime] PointInTime value
+ */
+export interface AzureWorkloadSAPHanaPointInTimeRestoreRequest extends AzureWorkloadSAPHanaRestoreRequest {
+  pointInTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TargetRestoreInfo class.
+ * @constructor
+ * Details about target workload during restore operation.
+ *
+ * @member {string} [overwriteOption] Can Overwrite if Target DataBase already
+ * exists. Possible values include: 'Invalid', 'FailOnConflict', 'Overwrite'
+ * @member {string} [containerId] Resource Id name of the container in which
+ * Target DataBase resides
+ * @member {string} [databaseName] Database name InstanceName/DataBaseName for
+ * SQL or System/DbName for SAP Hana
+ */
+export interface TargetRestoreInfo {
+  overwriteOption?: string;
+  containerId?: string;
+  databaseName?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AzureWorkloadSQLAutoProtectionIntent class.
  * @constructor
  * Azure Workload SQL Auto Protection intent item.
@@ -988,6 +1150,65 @@ export interface AzureWorkloadJob extends Job {
  */
 export interface AzureWorkloadSQLAutoProtectionIntent extends AzureWorkloadAutoProtectionIntent {
   workloadItemType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureWorkloadSQLRestoreRequest class.
+ * @constructor
+ * AzureWorkload SQL -specific restore. Specifically for full/diff restore
+ *
+ * @member {boolean} [shouldUseAlternateTargetLocation] Default option set to
+ * true. If this is set to false, alternate data directory must be provided
+ * @member {boolean} [isNonRecoverable] SQL specific property where user can
+ * chose to set no-recovery when restore operation is tried
+ * @member {object} [targetInfo] Details of target database
+ * @member {string} [targetInfo.overwriteOption] Can Overwrite if Target
+ * DataBase already exists. Possible values include: 'Invalid',
+ * 'FailOnConflict', 'Overwrite'
+ * @member {string} [targetInfo.containerId] Resource Id name of the container
+ * in which Target DataBase resides
+ * @member {string} [targetInfo.databaseName] Database name
+ * InstanceName/DataBaseName for SQL or System/DbName for SAP Hana
+ * @member {array} [alternateDirectoryPaths] Data directory details
+ */
+export interface AzureWorkloadSQLRestoreRequest extends AzureWorkloadRestoreRequest {
+  shouldUseAlternateTargetLocation?: boolean;
+  isNonRecoverable?: boolean;
+  targetInfo?: TargetRestoreInfo;
+  alternateDirectoryPaths?: SQLDataDirectoryMapping[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureWorkloadSQLPointInTimeRestoreRequest class.
+ * @constructor
+ * AzureWorkload SQL -specific restore. Specifically for PointInTime/Log
+ * restore
+ *
+ * @member {date} [pointInTime] PointInTime value
+ */
+export interface AzureWorkloadSQLPointInTimeRestoreRequest extends AzureWorkloadSQLRestoreRequest {
+  pointInTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SQLDataDirectoryMapping class.
+ * @constructor
+ * Encapsulates information regarding data directory
+ *
+ * @member {string} [mappingType] Type of data directory mapping. Possible
+ * values include: 'Invalid', 'Data', 'Log'
+ * @member {string} [sourceLogicalName] Restore source logical name path
+ * @member {string} [sourcePath] Restore source path
+ * @member {string} [targetPath] Target path
+ */
+export interface SQLDataDirectoryMapping {
+  mappingType?: string;
+  sourceLogicalName?: string;
+  sourcePath?: string;
+  targetPath?: string;
 }
 
 /**
@@ -1348,6 +1569,27 @@ export interface DPMProtectedItem extends ProtectedItem {
 
 /**
  * @class
+ * Initializes a new instance of the EncryptionDetails class.
+ * @constructor
+ * Details needed if the VM was encrypted at the time of backup.
+ *
+ * @member {boolean} [encryptionEnabled] Identifies whether this backup copy
+ * represents an encrypted VM at the time of backup.
+ * @member {string} [kekUrl] Key Url.
+ * @member {string} [secretKeyUrl] Secret Url.
+ * @member {string} [kekVaultId] ID of Key Vault where KEK is stored.
+ * @member {string} [secretKeyVaultId] ID of Key Vault where Secret is stored.
+ */
+export interface EncryptionDetails {
+  encryptionEnabled?: boolean;
+  kekUrl?: string;
+  secretKeyUrl?: string;
+  kekVaultId?: string;
+  secretKeyVaultId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationResultInfoBase class.
  * @constructor
  * Base class for operation result info.
@@ -1417,6 +1659,74 @@ export interface GenericProtectionPolicy extends ProtectionPolicy {
   subProtectionPolicy?: SubProtectionPolicy[];
   timeZone?: string;
   fabricName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IaasVMRestoreRequest class.
+ * @constructor
+ * IaaS VM workload-specific restore.
+ *
+ * @member {string} [recoveryPointId] ID of the backup copy to be recovered.
+ * @member {string} [recoveryType] Type of this recovery. Possible values
+ * include: 'Invalid', 'OriginalLocation', 'AlternateLocation', 'RestoreDisks'
+ * @member {string} [sourceResourceId] Fully qualified ARM ID of the VM which
+ * is being recovered.
+ * @member {string} [targetVirtualMachineId] This is the complete ARM Id of the
+ * VM that will be created.
+ * For e.g.
+ * /subscriptions/{subId}/resourcegroups/{rg}/provider/Microsoft.Compute/virtualmachines/{vm}
+ * @member {string} [targetResourceGroupId] This is the ARM Id of the resource
+ * group that you want to create for this Virtual machine and other artifacts.
+ * For e.g. /subscriptions/{subId}/resourcegroups/{rg}
+ * @member {string} [storageAccountId] Fully qualified ARM ID of the storage
+ * account to which the VM has to be restored.
+ * @member {string} [virtualNetworkId] This is the virtual network Id of the
+ * vnet that will be attached to the virtual machine.
+ * User will be validated for join action permissions in the linked access.
+ * @member {string} [subnetId] Subnet ID, is the subnet ID associated with the
+ * to be restored VM. For Classic VMs it would be
+ * {VnetID}/Subnet/{SubnetName} and, for the Azure Resource Manager VMs it
+ * would be ARM resource ID used to represent
+ * the subnet.
+ * @member {string} [targetDomainNameId] Fully qualified ARM ID of the domain
+ * name to be associated to the VM being restored. This applies only to Classic
+ * Virtual Machines.
+ * @member {string} [region] Region in which the virtual machine is restored.
+ * @member {string} [affinityGroup] Affinity group associated to VM to be
+ * restored. Used only for Classic Compute Virtual Machines.
+ * @member {boolean} [createNewCloudService] Should a new cloud service be
+ * created while restoring the VM. If this is false, VM will be restored to the
+ * same
+ * cloud service as it was at the time of backup.
+ * @member {boolean} [originalStorageAccountOption] Original Storage Account
+ * Option
+ * @member {object} [encryptionDetails] Details needed if the VM was encrypted
+ * at the time of backup.
+ * @member {boolean} [encryptionDetails.encryptionEnabled] Identifies whether
+ * this backup copy represents an encrypted VM at the time of backup.
+ * @member {string} [encryptionDetails.kekUrl] Key Url.
+ * @member {string} [encryptionDetails.secretKeyUrl] Secret Url.
+ * @member {string} [encryptionDetails.kekVaultId] ID of Key Vault where KEK is
+ * stored.
+ * @member {string} [encryptionDetails.secretKeyVaultId] ID of Key Vault where
+ * Secret is stored.
+ */
+export interface IaasVMRestoreRequest extends RestoreRequest {
+  recoveryPointId?: string;
+  recoveryType?: string;
+  sourceResourceId?: string;
+  targetVirtualMachineId?: string;
+  targetResourceGroupId?: string;
+  storageAccountId?: string;
+  virtualNetworkId?: string;
+  subnetId?: string;
+  targetDomainNameId?: string;
+  region?: string;
+  affinityGroup?: string;
+  createNewCloudService?: boolean;
+  originalStorageAccountOption?: boolean;
+  encryptionDetails?: EncryptionDetails;
 }
 
 /**
@@ -1856,8 +2166,7 @@ export interface MabJobExtendedInfo {
  * 'IaasVMServiceContainer', 'DPMContainer', 'AzureBackupServerContainer',
  * 'MABContainer', 'Cluster', 'AzureSqlContainer', 'Windows', 'VCenter',
  * 'VMAppContainer', 'SQLAGWorkLoadContainer', 'StorageContainer',
- * 'GenericContainer', 'SqlCluster', 'ExchangeDAG', 'SharepointFarm',
- * 'HyperVCluster', 'WindowsClient'
+ * 'GenericContainer'
  * @member {string} [workloadType] Workload type of backup item. Possible
  * values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb', 'SQLDB',
  * 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
@@ -2195,6 +2504,65 @@ export interface SimpleSchedulePolicy extends SchedulePolicy {
 
 /**
  * @class
+ * Initializes a new instance of the ValidateOperationRequest class.
+ * @constructor
+ * Base class for validate operation request.
+ *
+ * @member {string} objectType Polymorphic Discriminator
+ */
+export interface ValidateOperationRequest {
+  objectType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ValidateRestoreOperationRequest class.
+ * @constructor
+ * AzureRestoreValidation request.
+ *
+ * @member {object} [restoreRequest] Sets restore request to be validated
+ * @member {string} [restoreRequest.objectType] Polymorphic Discriminator
+ */
+export interface ValidateRestoreOperationRequest extends ValidateOperationRequest {
+  restoreRequest?: RestoreRequest;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ValidateIaasVMRestoreOperationRequest class.
+ * @constructor
+ * AzureRestoreValidation request.
+ *
+ */
+export interface ValidateIaasVMRestoreOperationRequest extends ValidateRestoreOperationRequest {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ValidateOperationResponse class.
+ * @constructor
+ * Base class for validate operation response.
+ *
+ * @member {array} [validationResults] Gets the validation result
+ */
+export interface ValidateOperationResponse {
+  validationResults?: ErrorDetail[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ValidateOperationsResponse class.
+ * @constructor
+ * @member {object} [validateOperationResponse]
+ * @member {array} [validateOperationResponse.validationResults] Gets the
+ * validation result
+ */
+export interface ValidateOperationsResponse {
+  validateOperationResponse?: ValidateOperationResponse;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DPMContainerExtendedInfo class.
  * @constructor
  * Additional information of the DPMContainer.
@@ -2433,81 +2801,6 @@ export interface AzureFileShareRecoveryPoint extends RecoveryPoint {
 
 /**
  * @class
- * Initializes a new instance of the RestoreFileSpecs class.
- * @constructor
- * Restore file specs like file path, type and target folder path info.
- *
- * @member {string} [path] Source File/Folder path
- * @member {string} [fileSpecType] Indicates what the Path variable stands for
- * @member {string} [targetFolderPath] Destination folder path in target
- * FileShare
- */
-export interface RestoreFileSpecs {
-  path?: string;
-  fileSpecType?: string;
-  targetFolderPath?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TargetAFSRestoreInfo class.
- * @constructor
- * Target Azure File Share Info.
- *
- * @member {string} [name] File share name
- * @member {string} [targetResourceId] Target file share resource ARM ID
- */
-export interface TargetAFSRestoreInfo {
-  name?: string;
-  targetResourceId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RestoreRequest class.
- * @constructor
- * Base class for restore request. Workload-specific restore requests are
- * derived from this class.
- *
- * @member {string} objectType Polymorphic Discriminator
- */
-export interface RestoreRequest {
-  objectType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureFileShareRestoreRequest class.
- * @constructor
- * AzureFileShare Restore Request
- *
- * @member {string} [recoveryType] Type of this recovery. Possible values
- * include: 'Invalid', 'OriginalLocation', 'AlternateLocation', 'RestoreDisks'
- * @member {string} [sourceResourceId] Source storage account ARM Id
- * @member {string} [copyOptions] Options to resolve copy conflicts. Possible
- * values include: 'Invalid', 'CreateCopy', 'Skip', 'Overwrite',
- * 'FailOnConflict'
- * @member {string} [restoreRequestType] Restore Type (FullShareRestore or
- * ItemLevelRestore). Possible values include: 'Invalid', 'FullShareRestore',
- * 'ItemLevelRestore'
- * @member {array} [restoreFileSpecs] List of Source Files/Folders(which need
- * to recover) and TargetFolderPath details
- * @member {object} [targetDetails] Target File Share Details
- * @member {string} [targetDetails.name] File share name
- * @member {string} [targetDetails.targetResourceId] Target file share resource
- * ARM ID
- */
-export interface AzureFileShareRestoreRequest extends RestoreRequest {
-  recoveryType?: string;
-  sourceResourceId?: string;
-  copyOptions?: string;
-  restoreRequestType?: string;
-  restoreFileSpecs?: RestoreFileSpecs[];
-  targetDetails?: TargetAFSRestoreInfo;
-}
-
-/**
- * @class
  * Initializes a new instance of the IaaSVMContainer class.
  * @constructor
  * IaaS VM workload-specific container.
@@ -2592,8 +2885,7 @@ export interface AzureIaaSComputeVMProtectableItem extends IaaSVMProtectableItem
  * @member {date} [lastUpdatedTime] Time stamp when this container was updated.
  * @member {object} [extendedInfo] Additional details of a workload container.
  * @member {string} [extendedInfo.hostServerName] Host Os Name in case of Stand
- * Alone and
- * Cluster Name in case of distributed container.
+ * Alone and Cluster Name in case of distributed container.
  * @member {object} [extendedInfo.inquiryInfo] Inquiry Status for the
  * container.
  * @member {string} [extendedInfo.inquiryInfo.status] Inquiry Status for this
@@ -3089,25 +3381,6 @@ export interface AzureWorkloadRecoveryPoint extends RecoveryPoint {
 
 /**
  * @class
- * Initializes a new instance of the AzureWorkloadRestoreRequest class.
- * @constructor
- * AzureWorkload-specific restore.
- *
- * @member {string} [recoveryType] OLR/ALR, RestoreDisks is invalid option.
- * Possible values include: 'Invalid', 'OriginalLocation', 'AlternateLocation',
- * 'RestoreDisks'
- * @member {string} [sourceResourceId] Fully qualified ARM ID of the VM on
- * which workload that was running is being recovered.
- * @member {object} [propertyBag] Workload specific property bag.
- */
-export interface AzureWorkloadRestoreRequest extends RestoreRequest {
-  recoveryType?: string;
-  sourceResourceId?: string;
-  propertyBag?: { [propertyName: string]: string };
-}
-
-/**
- * @class
  * Initializes a new instance of the PointInTimeRange class.
  * @constructor
  * Provides details for log ranges
@@ -3151,66 +3424,6 @@ export interface AzureWorkloadSAPHanaPointInTimeRecoveryPoint extends AzureWorkl
 
 /**
  * @class
- * Initializes a new instance of the AzureWorkloadSAPHanaRestoreRequest class.
- * @constructor
- * AzureWorkload SAP Hana-specific restore.
- *
- * @member {object} [targetInfo] Details of target database
- * @member {string} [targetInfo.overwriteOption] Can Overwrite if Target
- * DataBase already exists. Possible values include: 'Invalid',
- * 'FailOnConflict', 'Overwrite'
- * @member {string} [targetInfo.containerId] Resource Id name of the container
- * in which Target DataBase resides
- * @member {string} [targetInfo.databaseName] Database name
- * InstanceName/DataBaseName for SQL or System/DbName for SAP Hana
- * @member {string} [recoveryType] OLR/ALR, RestoreDisks is invalid option.
- * Possible values include: 'Invalid', 'OriginalLocation', 'AlternateLocation',
- * 'RestoreDisks'
- * @member {string} [sourceResourceId] Fully qualified ARM ID of the VM on
- * which workload that was running is being recovered.
- * @member {object} [propertyBag] Workload specific property bag.
- */
-export interface AzureWorkloadSAPHanaRestoreRequest extends RestoreRequest {
-  targetInfo?: TargetRestoreInfo;
-  recoveryType?: string;
-  sourceResourceId?: string;
-  propertyBag?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureWorkloadSAPHanaPointInTimeRestoreRequest class.
- * @constructor
- * AzureWorkload SAP Hana -specific restore. Specifically for PointInTime/Log
- * restore
- *
- * @member {date} [pointInTime] PointInTime value
- */
-export interface AzureWorkloadSAPHanaPointInTimeRestoreRequest extends AzureWorkloadSAPHanaRestoreRequest {
-  pointInTime?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the TargetRestoreInfo class.
- * @constructor
- * Details about target workload during restore operation.
- *
- * @member {string} [overwriteOption] Can Overwrite if Target DataBase already
- * exists. Possible values include: 'Invalid', 'FailOnConflict', 'Overwrite'
- * @member {string} [containerId] Resource Id name of the container in which
- * Target DataBase resides
- * @member {string} [databaseName] Database name InstanceName/DataBaseName for
- * SQL or System/DbName for SAP Hana
- */
-export interface TargetRestoreInfo {
-  overwriteOption?: string;
-  containerId?: string;
-  databaseName?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the AzureWorkloadSQLRecoveryPoint class.
  * @constructor
  * SQL specific recoverypoint, specifcally encaspulates full/diff recoverypoint
@@ -3244,46 +3457,6 @@ export interface AzureWorkloadSQLPointInTimeRecoveryPoint extends AzureWorkloadS
 
 /**
  * @class
- * Initializes a new instance of the AzureWorkloadSQLRestoreRequest class.
- * @constructor
- * AzureWorkload SQL -specific restore. Specifically for full/diff restore
- *
- * @member {boolean} [shouldUseAlternateTargetLocation] Default option set to
- * true. If this is set to false, alternate data directory must be provided
- * @member {boolean} [isNonRecoverable] SQL specific property where user can
- * chose to set no-recovery when restore operation is tried
- * @member {object} [targetInfo] Details of target database
- * @member {string} [targetInfo.overwriteOption] Can Overwrite if Target
- * DataBase already exists. Possible values include: 'Invalid',
- * 'FailOnConflict', 'Overwrite'
- * @member {string} [targetInfo.containerId] Resource Id name of the container
- * in which Target DataBase resides
- * @member {string} [targetInfo.databaseName] Database name
- * InstanceName/DataBaseName for SQL or System/DbName for SAP Hana
- * @member {array} [alternateDirectoryPaths] Data directory details
- */
-export interface AzureWorkloadSQLRestoreRequest extends AzureWorkloadRestoreRequest {
-  shouldUseAlternateTargetLocation?: boolean;
-  isNonRecoverable?: boolean;
-  targetInfo?: TargetRestoreInfo;
-  alternateDirectoryPaths?: SQLDataDirectoryMapping[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureWorkloadSQLPointInTimeRestoreRequest class.
- * @constructor
- * AzureWorkload SQL -specific restore. Specifically for PointInTime/Log
- * restore
- *
- * @member {date} [pointInTime] PointInTime value
- */
-export interface AzureWorkloadSQLPointInTimeRestoreRequest extends AzureWorkloadSQLRestoreRequest {
-  pointInTime?: Date;
-}
-
-/**
- * @class
  * Initializes a new instance of the AzureWorkloadSQLRecoveryPointExtendedInfo class.
  * @constructor
  * Extended info class details
@@ -3296,25 +3469,6 @@ export interface AzureWorkloadSQLPointInTimeRestoreRequest extends AzureWorkload
 export interface AzureWorkloadSQLRecoveryPointExtendedInfo {
   dataDirectoryTimeInUTC?: Date;
   dataDirectoryPaths?: SQLDataDirectory[];
-}
-
-/**
- * @class
- * Initializes a new instance of the SQLDataDirectoryMapping class.
- * @constructor
- * Encapsulates information regarding data directory
- *
- * @member {string} [mappingType] Type of data directory mapping. Possible
- * values include: 'Invalid', 'Data', 'Log'
- * @member {string} [sourceLogicalName] Restore source logical name path
- * @member {string} [sourcePath] Restore source path
- * @member {string} [targetPath] Target path
- */
-export interface SQLDataDirectoryMapping {
-  mappingType?: string;
-  sourceLogicalName?: string;
-  sourcePath?: string;
-  targetPath?: string;
 }
 
 /**
@@ -3559,8 +3713,7 @@ export interface BMSBackupEnginesQueryObject {
  * 'IaasVMServiceContainer', 'DPMContainer', 'AzureBackupServerContainer',
  * 'MABContainer', 'Cluster', 'AzureSqlContainer', 'Windows', 'VCenter',
  * 'VMAppContainer', 'SQLAGWorkLoadContainer', 'StorageContainer',
- * 'GenericContainer', 'SqlCluster', 'ExchangeDAG', 'SharepointFarm',
- * 'HyperVCluster', 'WindowsClient'
+ * 'GenericContainer'
  * @member {string} [backupEngineName] Backup engine name
  * @member {string} [fabricName] Fabric name for filter
  * @member {string} [status] Status of registration of this container with the
@@ -3768,27 +3921,6 @@ export interface DpmContainer extends ProtectionContainer {
   upgradeAvailable?: boolean;
   protectionStatus?: string;
   extendedInfo?: DPMContainerExtendedInfo;
-}
-
-/**
- * @class
- * Initializes a new instance of the EncryptionDetails class.
- * @constructor
- * Details needed if the VM was encrypted at the time of backup.
- *
- * @member {boolean} [encryptionEnabled] Identifies whether this backup copy
- * represents an encrypted VM at the time of backup.
- * @member {string} [kekUrl] Key Url.
- * @member {string} [secretKeyUrl] Secret Url.
- * @member {string} [kekVaultId] ID of Key Vault where KEK is stored.
- * @member {string} [secretKeyVaultId] ID of Key Vault where Secret is stored.
- */
-export interface EncryptionDetails {
-  encryptionEnabled?: boolean;
-  kekUrl?: string;
-  secretKeyUrl?: string;
-  kekVaultId?: string;
-  secretKeyVaultId?: string;
 }
 
 /**
@@ -4039,72 +4171,6 @@ export interface IaasVMRecoveryPoint extends RecoveryPoint {
   virtualMachineSize?: string;
   originalStorageAccountOption?: boolean;
   osType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the IaasVMRestoreRequest class.
- * @constructor
- * IaaS VM workload-specific restore.
- *
- * @member {string} [recoveryPointId] ID of the backup copy to be recovered.
- * @member {string} [recoveryType] Type of this recovery. Possible values
- * include: 'Invalid', 'OriginalLocation', 'AlternateLocation', 'RestoreDisks'
- * @member {string} [sourceResourceId] Fully qualified ARM ID of the VM which
- * is being recovered.
- * @member {string} [targetVirtualMachineId] This is the complete ARM Id of the
- * VM that will be created.
- * For e.g.
- * /subscriptions/{subId}/resourcegroups/{rg}/provider/Microsoft.Compute/virtualmachines/{vm}
- * @member {string} [targetResourceGroupId] This is the ARM Id of the resource
- * group that you want to create for this Virtual machine and other artifacts.
- * For e.g. /subscriptions/{subId}/resourcegroups/{rg}
- * @member {string} [storageAccountId] Fully qualified ARM ID of the storage
- * account to which the VM has to be restored.
- * @member {string} [virtualNetworkId] This is the virtual network Id of the
- * vnet that will be attached to the virtual machine.
- * User will be validated for join action permissions in the linked access.
- * @member {string} [subnetId] Subnet ID, is the subnet ID associated with the
- * to be restored VM. For Classic VMs it would be {VnetID}/Subnet/{SubnetName}
- * and, for the Azure Resource Manager VMs it would be ARM resource ID used to
- * represent the subnet.
- * @member {string} [targetDomainNameId] Fully qualified ARM ID of the domain
- * name to be associated to the VM being restored. This applies only to Classic
- * Virtual Machines.
- * @member {string} [region] Region in which the virtual machine is restored.
- * @member {string} [affinityGroup] Affinity group associated to VM to be
- * restored. Used only for Classic Compute Virtual Machines.
- * @member {boolean} [createNewCloudService] Should a new cloud service be
- * created while restoring the VM. If this is false, VM will be restored to the
- * same cloud service as it was at the time of backup.
- * @member {boolean} [originalStorageAccountOption] Original Storage Account
- * Option
- * @member {object} [encryptionDetails] Details needed if the VM was encrypted
- * at the time of backup.
- * @member {boolean} [encryptionDetails.encryptionEnabled] Identifies whether
- * this backup copy represents an encrypted VM at the time of backup.
- * @member {string} [encryptionDetails.kekUrl] Key Url.
- * @member {string} [encryptionDetails.secretKeyUrl] Secret Url.
- * @member {string} [encryptionDetails.kekVaultId] ID of Key Vault where KEK is
- * stored.
- * @member {string} [encryptionDetails.secretKeyVaultId] ID of Key Vault where
- * Secret is stored.
- */
-export interface IaasVMRestoreRequest extends RestoreRequest {
-  recoveryPointId?: string;
-  recoveryType?: string;
-  sourceResourceId?: string;
-  targetVirtualMachineId?: string;
-  targetResourceGroupId?: string;
-  storageAccountId?: string;
-  virtualNetworkId?: string;
-  subnetId?: string;
-  targetDomainNameId?: string;
-  region?: string;
-  affinityGroup?: string;
-  createNewCloudService?: boolean;
-  originalStorageAccountOption?: boolean;
-  encryptionDetails?: EncryptionDetails;
 }
 
 /**

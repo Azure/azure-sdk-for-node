@@ -64,6 +64,7 @@ export default class RecoveryServicesBackupClient extends AzureServiceClient {
   backupPolicies: operations.BackupPolicies;
   backupProtectedItems: operations.BackupProtectedItems;
   backupUsageSummaries: operations.BackupUsageSummaries;
+  operation: operations.Operation;
   backupResourceVaultConfigs: operations.BackupResourceVaultConfigs;
   backupEngines: operations.BackupEngines;
   protectionContainerRefreshOperationResults: operations.ProtectionContainerRefreshOperationResults;
