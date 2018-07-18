@@ -543,6 +543,18 @@ export interface OperationValue {
 
 /**
  * @class
+ * Initializes a new instance of the TagsObject class.
+ * @constructor
+ * Tags object for patch operations.
+ *
+ * @member {object} [tags] Resource tags.
+ */
+export interface TagsObject {
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the ManagedClusterAgentPoolProfile class.
  * @constructor
  * Profile for the container service agent pool.
