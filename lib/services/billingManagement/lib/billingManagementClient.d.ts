@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class BillingManagementClient extends AzureServiceClient {
+export default class BillingManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the BillingManagementClient class.
    * @constructor
@@ -55,9 +56,10 @@ declare class BillingManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  enrollmentAccounts: operations.EnrollmentAccounts;
   billingPeriods: operations.BillingPeriods;
   invoices: operations.Invoices;
   operations: operations.Operations;
 }
 
-export = BillingManagementClient;
+export { BillingManagementClient, models as BillingManagementModels };

@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ContainerServiceClient extends AzureServiceClient {
+export default class ContainerServiceClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ContainerServiceClient class.
    * @constructor
@@ -54,7 +55,8 @@ declare class ContainerServiceClient extends AzureServiceClient {
 
   // Operation groups
   containerServices: operations.ContainerServices;
+  operations: operations.Operations;
   managedClusters: operations.ManagedClusters;
 }
 
-export = ContainerServiceClient;
+export { ContainerServiceClient, models as ContainerServiceModels };

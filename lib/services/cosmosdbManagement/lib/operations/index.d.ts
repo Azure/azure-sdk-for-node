@@ -201,6 +201,9 @@ export interface DatabaseAccounts {
      * database account. IP addresses/ranges must be comma separated and must not
      * contain any spaces.
      *
+     * @param {boolean} [createUpdateParameters.isVirtualNetworkFilterEnabled] Flag
+     * to indicate whether to enable/disable Virtual Network ACL rules.
+     *
      * @param {boolean} [createUpdateParameters.enableAutomaticFailover] Enables
      * automatic failover of the write region in the rare event that the region is
      * unavailable due to an outage. Automatic failover will result in a new write
@@ -209,6 +212,9 @@ export interface DatabaseAccounts {
      *
      * @param {array} [createUpdateParameters.capabilities] List of Cosmos DB
      * capabilities for the account
+     *
+     * @param {array} [createUpdateParameters.virtualNetworkRules] List of Virtual
+     * Network ACL rules configured for the Cosmos DB account.
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -274,6 +280,9 @@ export interface DatabaseAccounts {
      * database account. IP addresses/ranges must be comma separated and must not
      * contain any spaces.
      *
+     * @param {boolean} [createUpdateParameters.isVirtualNetworkFilterEnabled] Flag
+     * to indicate whether to enable/disable Virtual Network ACL rules.
+     *
      * @param {boolean} [createUpdateParameters.enableAutomaticFailover] Enables
      * automatic failover of the write region in the rare event that the region is
      * unavailable due to an outage. Automatic failover will result in a new write
@@ -282,6 +291,9 @@ export interface DatabaseAccounts {
      *
      * @param {array} [createUpdateParameters.capabilities] List of Cosmos DB
      * capabilities for the account
+     *
+     * @param {array} [createUpdateParameters.virtualNetworkRules] List of Virtual
+     * Network ACL rules configured for the Cosmos DB account.
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -686,6 +698,212 @@ export interface DatabaseAccounts {
     listConnectionStrings(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseAccountListConnectionStringsResult>;
     listConnectionStrings(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DatabaseAccountListConnectionStringsResult>): void;
     listConnectionStrings(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseAccountListConnectionStringsResult>): void;
+
+
+    /**
+     * Offline the specified region for the specified Azure Cosmos DB database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} regionParameterForOffline Cosmos DB region to offline for
+     * the database account.
+     *
+     * @param {string} regionParameterForOffline.region Cosmos DB region, with
+     * spaces between words and each word capitalized.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    offlineRegionWithHttpOperationResponse(resourceGroupName: string, accountName: string, regionParameterForOffline: models.RegionForOnlineOffline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Offline the specified region for the specified Azure Cosmos DB database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} regionParameterForOffline Cosmos DB region to offline for
+     * the database account.
+     *
+     * @param {string} regionParameterForOffline.region Cosmos DB region, with
+     * spaces between words and each word capitalized.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    offlineRegion(resourceGroupName: string, accountName: string, regionParameterForOffline: models.RegionForOnlineOffline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    offlineRegion(resourceGroupName: string, accountName: string, regionParameterForOffline: models.RegionForOnlineOffline, callback: ServiceCallback<void>): void;
+    offlineRegion(resourceGroupName: string, accountName: string, regionParameterForOffline: models.RegionForOnlineOffline, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Online the specified region for the specified Azure Cosmos DB database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} regionParameterForOnline Cosmos DB region to online for the
+     * database account.
+     *
+     * @param {string} regionParameterForOnline.region Cosmos DB region, with
+     * spaces between words and each word capitalized.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    onlineRegionWithHttpOperationResponse(resourceGroupName: string, accountName: string, regionParameterForOnline: models.RegionForOnlineOffline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Online the specified region for the specified Azure Cosmos DB database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} regionParameterForOnline Cosmos DB region to online for the
+     * database account.
+     *
+     * @param {string} regionParameterForOnline.region Cosmos DB region, with
+     * spaces between words and each word capitalized.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    onlineRegion(resourceGroupName: string, accountName: string, regionParameterForOnline: models.RegionForOnlineOffline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    onlineRegion(resourceGroupName: string, accountName: string, regionParameterForOnline: models.RegionForOnlineOffline, callback: ServiceCallback<void>): void;
+    onlineRegion(resourceGroupName: string, accountName: string, regionParameterForOnline: models.RegionForOnlineOffline, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists the read-only access keys for the specified Azure Cosmos DB database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseAccountListReadOnlyKeysResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getReadOnlyKeysWithHttpOperationResponse(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseAccountListReadOnlyKeysResult>>;
+
+    /**
+     * Lists the read-only access keys for the specified Azure Cosmos DB database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseAccountListReadOnlyKeysResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseAccountListReadOnlyKeysResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseAccountListReadOnlyKeysResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getReadOnlyKeys(resourceGroupName: string, accountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseAccountListReadOnlyKeysResult>;
+    getReadOnlyKeys(resourceGroupName: string, accountName: string, callback: ServiceCallback<models.DatabaseAccountListReadOnlyKeysResult>): void;
+    getReadOnlyKeys(resourceGroupName: string, accountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseAccountListReadOnlyKeysResult>): void;
 
 
     /**
@@ -1199,6 +1417,9 @@ export interface DatabaseAccounts {
      * database account. IP addresses/ranges must be comma separated and must not
      * contain any spaces.
      *
+     * @param {boolean} [createUpdateParameters.isVirtualNetworkFilterEnabled] Flag
+     * to indicate whether to enable/disable Virtual Network ACL rules.
+     *
      * @param {boolean} [createUpdateParameters.enableAutomaticFailover] Enables
      * automatic failover of the write region in the rare event that the region is
      * unavailable due to an outage. Automatic failover will result in a new write
@@ -1207,6 +1428,9 @@ export interface DatabaseAccounts {
      *
      * @param {array} [createUpdateParameters.capabilities] List of Cosmos DB
      * capabilities for the account
+     *
+     * @param {array} [createUpdateParameters.virtualNetworkRules] List of Virtual
+     * Network ACL rules configured for the Cosmos DB account.
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -1272,6 +1496,9 @@ export interface DatabaseAccounts {
      * database account. IP addresses/ranges must be comma separated and must not
      * contain any spaces.
      *
+     * @param {boolean} [createUpdateParameters.isVirtualNetworkFilterEnabled] Flag
+     * to indicate whether to enable/disable Virtual Network ACL rules.
+     *
      * @param {boolean} [createUpdateParameters.enableAutomaticFailover] Enables
      * automatic failover of the write region in the rare event that the region is
      * unavailable due to an outage. Automatic failover will result in a new write
@@ -1280,6 +1507,9 @@ export interface DatabaseAccounts {
      *
      * @param {array} [createUpdateParameters.capabilities] List of Cosmos DB
      * capabilities for the account
+     *
+     * @param {array} [createUpdateParameters.virtualNetworkRules] List of Virtual
+     * Network ACL rules configured for the Cosmos DB account.
      *
      * @param {string} createUpdateParameters.location The location of the resource
      * group to which the resource belongs.
@@ -1450,6 +1680,150 @@ export interface DatabaseAccounts {
     beginFailoverPriorityChange(resourceGroupName: string, accountName: string, failoverParameters: models.FailoverPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     beginFailoverPriorityChange(resourceGroupName: string, accountName: string, failoverParameters: models.FailoverPolicies, callback: ServiceCallback<void>): void;
     beginFailoverPriorityChange(resourceGroupName: string, accountName: string, failoverParameters: models.FailoverPolicies, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Offline the specified region for the specified Azure Cosmos DB database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} regionParameterForOffline Cosmos DB region to offline for
+     * the database account.
+     *
+     * @param {string} regionParameterForOffline.region Cosmos DB region, with
+     * spaces between words and each word capitalized.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginOfflineRegionWithHttpOperationResponse(resourceGroupName: string, accountName: string, regionParameterForOffline: models.RegionForOnlineOffline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Offline the specified region for the specified Azure Cosmos DB database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} regionParameterForOffline Cosmos DB region to offline for
+     * the database account.
+     *
+     * @param {string} regionParameterForOffline.region Cosmos DB region, with
+     * spaces between words and each word capitalized.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginOfflineRegion(resourceGroupName: string, accountName: string, regionParameterForOffline: models.RegionForOnlineOffline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginOfflineRegion(resourceGroupName: string, accountName: string, regionParameterForOffline: models.RegionForOnlineOffline, callback: ServiceCallback<void>): void;
+    beginOfflineRegion(resourceGroupName: string, accountName: string, regionParameterForOffline: models.RegionForOnlineOffline, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Online the specified region for the specified Azure Cosmos DB database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} regionParameterForOnline Cosmos DB region to online for the
+     * database account.
+     *
+     * @param {string} regionParameterForOnline.region Cosmos DB region, with
+     * spaces between words and each word capitalized.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginOnlineRegionWithHttpOperationResponse(resourceGroupName: string, accountName: string, regionParameterForOnline: models.RegionForOnlineOffline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Online the specified region for the specified Azure Cosmos DB database
+     * account.
+     *
+     * @param {string} resourceGroupName Name of an Azure resource group.
+     *
+     * @param {string} accountName Cosmos DB database account name.
+     *
+     * @param {object} regionParameterForOnline Cosmos DB region to online for the
+     * database account.
+     *
+     * @param {string} regionParameterForOnline.region Cosmos DB region, with
+     * spaces between words and each word capitalized.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginOnlineRegion(resourceGroupName: string, accountName: string, regionParameterForOnline: models.RegionForOnlineOffline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginOnlineRegion(resourceGroupName: string, accountName: string, regionParameterForOnline: models.RegionForOnlineOffline, callback: ServiceCallback<void>): void;
+    beginOnlineRegion(resourceGroupName: string, accountName: string, regionParameterForOnline: models.RegionForOnlineOffline, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**

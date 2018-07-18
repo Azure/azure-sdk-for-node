@@ -139,7 +139,7 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Get the non-security related metadata of an IoT hub.
+     * @summary Get the non-security related metadata of an IoT hub
      *
      * Get the non-security related metadata of an IoT hub.
      *
@@ -162,7 +162,7 @@ export interface IotHubResource {
     getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubDescription>>;
 
     /**
-     * @summary Get the non-security related metadata of an IoT hub.
+     * @summary Get the non-security related metadata of an IoT hub
      *
      * Get the non-security related metadata of an IoT hub.
      *
@@ -222,7 +222,7 @@ export interface IotHubResource {
      * If it is provided in the response body, it must also be provided as a header
      * per the normal ETag convention.
      *
-     * @param {object} [iotHubDescription.properties]
+     * @param {object} [iotHubDescription.properties] IotHub properties
      *
      * @param {array} [iotHubDescription.properties.authorizationPolicies] The
      * shared access policies you can use to secure a connection to the IoT hub.
@@ -349,7 +349,7 @@ export interface IotHubResource {
      * features enabled for the IoT hub. Possible values include: 'None',
      * 'DeviceManagement'
      *
-     * @param {object} iotHubDescription.sku
+     * @param {object} iotHubDescription.sku IotHub SKU info
      *
      * @param {string} iotHubDescription.sku.name The name of the SKU. Possible
      * values include: 'F1', 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
@@ -397,7 +397,7 @@ export interface IotHubResource {
      * If it is provided in the response body, it must also be provided as a header
      * per the normal ETag convention.
      *
-     * @param {object} [iotHubDescription.properties]
+     * @param {object} [iotHubDescription.properties] IotHub properties
      *
      * @param {array} [iotHubDescription.properties.authorizationPolicies] The
      * shared access policies you can use to secure a connection to the IoT hub.
@@ -524,7 +524,7 @@ export interface IotHubResource {
      * features enabled for the IoT hub. Possible values include: 'None',
      * 'DeviceManagement'
      *
-     * @param {object} iotHubDescription.sku
+     * @param {object} iotHubDescription.sku IotHub SKU info
      *
      * @param {string} iotHubDescription.sku.name The name of the SKU. Possible
      * values include: 'F1', 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
@@ -642,7 +642,7 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Delete an IoT hub.
+     * @summary Delete an IoT hub
      *
      * Delete an IoT hub.
      *
@@ -665,7 +665,7 @@ export interface IotHubResource {
     deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
-     * @summary Delete an IoT hub.
+     * @summary Delete an IoT hub
      *
      * Delete an IoT hub.
      *
@@ -706,7 +706,7 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Get all the IoT hubs in a subscription.
+     * @summary Get all the IoT hubs in a subscription
      *
      * Get all the IoT hubs in a subscription.
      *
@@ -724,7 +724,7 @@ export interface IotHubResource {
     listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubDescriptionListResult>>;
 
     /**
-     * @summary Get all the IoT hubs in a subscription.
+     * @summary Get all the IoT hubs in a subscription
      *
      * Get all the IoT hubs in a subscription.
      *
@@ -762,7 +762,7 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Get all the IoT hubs in a resource group.
+     * @summary Get all the IoT hubs in a resource group
      *
      * Get all the IoT hubs in a resource group.
      *
@@ -783,7 +783,7 @@ export interface IotHubResource {
     listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubDescriptionListResult>>;
 
     /**
-     * @summary Get all the IoT hubs in a resource group.
+     * @summary Get all the IoT hubs in a resource group
      *
      * Get all the IoT hubs in a resource group.
      *
@@ -824,7 +824,7 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Get the statistics from an IoT hub.
+     * @summary Get the statistics from an IoT hub
      *
      * Get the statistics from an IoT hub.
      *
@@ -847,7 +847,7 @@ export interface IotHubResource {
     getStatsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegistryStatistics>>;
 
     /**
-     * @summary Get the statistics from an IoT hub.
+     * @summary Get the statistics from an IoT hub
      *
      * Get the statistics from an IoT hub.
      *
@@ -889,7 +889,7 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Get the list of valid SKUs for an IoT hub.
+     * @summary Get the list of valid SKUs for an IoT hub
      *
      * Get the list of valid SKUs for an IoT hub.
      *
@@ -912,7 +912,7 @@ export interface IotHubResource {
     getValidSkusWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubSkuDescriptionListResult>>;
 
     /**
-     * @summary Get the list of valid SKUs for an IoT hub.
+     * @summary Get the list of valid SKUs for an IoT hub
      *
      * Get the list of valid SKUs for an IoT hub.
      *
@@ -956,7 +956,7 @@ export interface IotHubResource {
 
     /**
      * @summary Get a list of the consumer groups in the Event Hub-compatible
-     * device-to-cloud endpoint in an IoT hub.
+     * device-to-cloud endpoint in an IoT hub
      *
      * Get a list of the consumer groups in the Event Hub-compatible
      * device-to-cloud endpoint in an IoT hub.
@@ -984,7 +984,7 @@ export interface IotHubResource {
 
     /**
      * @summary Get a list of the consumer groups in the Event Hub-compatible
-     * device-to-cloud endpoint in an IoT hub.
+     * device-to-cloud endpoint in an IoT hub
      *
      * Get a list of the consumer groups in the Event Hub-compatible
      * device-to-cloud endpoint in an IoT hub.
@@ -1032,7 +1032,7 @@ export interface IotHubResource {
 
     /**
      * @summary Get a consumer group from the Event Hub-compatible device-to-cloud
-     * endpoint for an IoT hub.
+     * endpoint for an IoT hub
      *
      * Get a consumer group from the Event Hub-compatible device-to-cloud endpoint
      * for an IoT hub.
@@ -1062,7 +1062,7 @@ export interface IotHubResource {
 
     /**
      * @summary Get a consumer group from the Event Hub-compatible device-to-cloud
-     * endpoint for an IoT hub.
+     * endpoint for an IoT hub
      *
      * Get a consumer group from the Event Hub-compatible device-to-cloud endpoint
      * for an IoT hub.
@@ -1112,7 +1112,7 @@ export interface IotHubResource {
 
     /**
      * @summary Add a consumer group to an Event Hub-compatible endpoint in an IoT
-     * hub.
+     * hub
      *
      * Add a consumer group to an Event Hub-compatible endpoint in an IoT hub.
      *
@@ -1141,7 +1141,7 @@ export interface IotHubResource {
 
     /**
      * @summary Add a consumer group to an Event Hub-compatible endpoint in an IoT
-     * hub.
+     * hub
      *
      * Add a consumer group to an Event Hub-compatible endpoint in an IoT hub.
      *
@@ -1190,7 +1190,7 @@ export interface IotHubResource {
 
     /**
      * @summary Delete a consumer group from an Event Hub-compatible endpoint in an
-     * IoT hub.
+     * IoT hub
      *
      * Delete a consumer group from an Event Hub-compatible endpoint in an IoT hub.
      *
@@ -1219,7 +1219,7 @@ export interface IotHubResource {
 
     /**
      * @summary Delete a consumer group from an Event Hub-compatible endpoint in an
-     * IoT hub.
+     * IoT hub
      *
      * Delete a consumer group from an Event Hub-compatible endpoint in an IoT hub.
      *
@@ -1267,7 +1267,7 @@ export interface IotHubResource {
     /**
      * @summary Get a list of all the jobs in an IoT hub. For more information,
      * see:
-     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry
      *
      * Get a list of all the jobs in an IoT hub. For more information, see:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
@@ -1293,7 +1293,7 @@ export interface IotHubResource {
     /**
      * @summary Get a list of all the jobs in an IoT hub. For more information,
      * see:
-     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry
      *
      * Get a list of all the jobs in an IoT hub. For more information, see:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
@@ -1338,7 +1338,7 @@ export interface IotHubResource {
     /**
      * @summary Get the details of a job from an IoT hub. For more information,
      * see:
-     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry
      *
      * Get the details of a job from an IoT hub. For more information, see:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
@@ -1366,7 +1366,7 @@ export interface IotHubResource {
     /**
      * @summary Get the details of a job from an IoT hub. For more information,
      * see:
-     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry
      *
      * Get the details of a job from an IoT hub. For more information, see:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
@@ -1411,7 +1411,7 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Get the quota metrics for an IoT hub.
+     * @summary Get the quota metrics for an IoT hub
      *
      * Get the quota metrics for an IoT hub.
      *
@@ -1434,7 +1434,7 @@ export interface IotHubResource {
     getQuotaMetricsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubQuotaMetricInfoListResult>>;
 
     /**
-     * @summary Get the quota metrics for an IoT hub.
+     * @summary Get the quota metrics for an IoT hub
      *
      * Get the quota metrics for an IoT hub.
      *
@@ -1477,7 +1477,71 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Check if an IoT hub name is available.
+     * @summary Get the health for routing endpoints
+     *
+     * Get the health for routing endpoints.
+     *
+     * @param {string} resourceGroupName
+     *
+     * @param {string} iotHubName
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EndpointHealthDataListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getEndpointHealthWithHttpOperationResponse(resourceGroupName: string, iotHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EndpointHealthDataListResult>>;
+
+    /**
+     * @summary Get the health for routing endpoints
+     *
+     * Get the health for routing endpoints.
+     *
+     * @param {string} resourceGroupName
+     *
+     * @param {string} iotHubName
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EndpointHealthDataListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EndpointHealthDataListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EndpointHealthDataListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getEndpointHealth(resourceGroupName: string, iotHubName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EndpointHealthDataListResult>;
+    getEndpointHealth(resourceGroupName: string, iotHubName: string, callback: ServiceCallback<models.EndpointHealthDataListResult>): void;
+    getEndpointHealth(resourceGroupName: string, iotHubName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EndpointHealthDataListResult>): void;
+
+
+    /**
+     * @summary Check if an IoT hub name is available
      *
      * Check if an IoT hub name is available.
      *
@@ -1497,7 +1561,7 @@ export interface IotHubResource {
     checkNameAvailabilityWithHttpOperationResponse(name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubNameAvailabilityInfo>>;
 
     /**
-     * @summary Check if an IoT hub name is available.
+     * @summary Check if an IoT hub name is available
      *
      * Check if an IoT hub name is available.
      *
@@ -1537,8 +1601,228 @@ export interface IotHubResource {
 
 
     /**
+     * @summary Test all routes
+     *
+     * Test all routes configured in this Iot Hub
+     *
+     * @param {object} input Input for testing all routes
+     *
+     * @param {string} [input.routingSource] Routing source. Possible values
+     * include: 'Invalid', 'DeviceMessages', 'TwinChangeEvents',
+     * 'DeviceLifecycleEvents', 'DeviceJobLifecycleEvents'
+     *
+     * @param {object} [input.message] Routing message
+     *
+     * @param {string} [input.message.body] Body of routing message
+     *
+     * @param {object} [input.message.appProperties] App properties
+     *
+     * @param {object} [input.message.systemProperties] System properties
+     *
+     * @param {string} iotHubName IotHub to be tested
+     *
+     * @param {string} resourceGroupName resource group which Iot Hub belongs to
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TestAllRoutesResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    testAllRoutesWithHttpOperationResponse(input: models.TestAllRoutesInput, iotHubName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TestAllRoutesResult>>;
+
+    /**
+     * @summary Test all routes
+     *
+     * Test all routes configured in this Iot Hub
+     *
+     * @param {object} input Input for testing all routes
+     *
+     * @param {string} [input.routingSource] Routing source. Possible values
+     * include: 'Invalid', 'DeviceMessages', 'TwinChangeEvents',
+     * 'DeviceLifecycleEvents', 'DeviceJobLifecycleEvents'
+     *
+     * @param {object} [input.message] Routing message
+     *
+     * @param {string} [input.message.body] Body of routing message
+     *
+     * @param {object} [input.message.appProperties] App properties
+     *
+     * @param {object} [input.message.systemProperties] System properties
+     *
+     * @param {string} iotHubName IotHub to be tested
+     *
+     * @param {string} resourceGroupName resource group which Iot Hub belongs to
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TestAllRoutesResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TestAllRoutesResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TestAllRoutesResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    testAllRoutes(input: models.TestAllRoutesInput, iotHubName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TestAllRoutesResult>;
+    testAllRoutes(input: models.TestAllRoutesInput, iotHubName: string, resourceGroupName: string, callback: ServiceCallback<models.TestAllRoutesResult>): void;
+    testAllRoutes(input: models.TestAllRoutesInput, iotHubName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TestAllRoutesResult>): void;
+
+
+    /**
+     * @summary Test the new route
+     *
+     * Test the new route for this Iot Hub
+     *
+     * @param {object} input Route that needs to be tested
+     *
+     * @param {object} [input.message] Routing message
+     *
+     * @param {string} [input.message.body] Body of routing message
+     *
+     * @param {object} [input.message.appProperties] App properties
+     *
+     * @param {object} [input.message.systemProperties] System properties
+     *
+     * @param {object} input.route Route properties
+     *
+     * @param {string} input.route.name The name of the route. The name can only
+     * include alphanumeric characters, periods, underscores, hyphens, has a
+     * maximum length of 64 characters, and must be unique.
+     *
+     * @param {string} input.route.source The source that the routing rule is to be
+     * applied to, such as DeviceMessages. Possible values include: 'Invalid',
+     * 'DeviceMessages', 'TwinChangeEvents', 'DeviceLifecycleEvents',
+     * 'DeviceJobLifecycleEvents'
+     *
+     * @param {string} [input.route.condition] The condition that is evaluated to
+     * apply the routing rule. If no condition is provided, it evaluates to true by
+     * default. For grammar, see:
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
+     *
+     * @param {array} input.route.endpointNames The list of endpoints to which
+     * messages that satisfy the condition are routed. Currently only one endpoint
+     * is allowed.
+     *
+     * @param {boolean} input.route.isEnabled Used to specify whether a route is
+     * enabled.
+     *
+     * @param {string} iotHubName IotHub to be tested
+     *
+     * @param {string} resourceGroupName resource group which Iot Hub belongs to
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TestRouteResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    testRouteWithHttpOperationResponse(input: models.TestRouteInput, iotHubName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TestRouteResult>>;
+
+    /**
+     * @summary Test the new route
+     *
+     * Test the new route for this Iot Hub
+     *
+     * @param {object} input Route that needs to be tested
+     *
+     * @param {object} [input.message] Routing message
+     *
+     * @param {string} [input.message.body] Body of routing message
+     *
+     * @param {object} [input.message.appProperties] App properties
+     *
+     * @param {object} [input.message.systemProperties] System properties
+     *
+     * @param {object} input.route Route properties
+     *
+     * @param {string} input.route.name The name of the route. The name can only
+     * include alphanumeric characters, periods, underscores, hyphens, has a
+     * maximum length of 64 characters, and must be unique.
+     *
+     * @param {string} input.route.source The source that the routing rule is to be
+     * applied to, such as DeviceMessages. Possible values include: 'Invalid',
+     * 'DeviceMessages', 'TwinChangeEvents', 'DeviceLifecycleEvents',
+     * 'DeviceJobLifecycleEvents'
+     *
+     * @param {string} [input.route.condition] The condition that is evaluated to
+     * apply the routing rule. If no condition is provided, it evaluates to true by
+     * default. For grammar, see:
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
+     *
+     * @param {array} input.route.endpointNames The list of endpoints to which
+     * messages that satisfy the condition are routed. Currently only one endpoint
+     * is allowed.
+     *
+     * @param {boolean} input.route.isEnabled Used to specify whether a route is
+     * enabled.
+     *
+     * @param {string} iotHubName IotHub to be tested
+     *
+     * @param {string} resourceGroupName resource group which Iot Hub belongs to
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TestRouteResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TestRouteResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TestRouteResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    testRoute(input: models.TestRouteInput, iotHubName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TestRouteResult>;
+    testRoute(input: models.TestRouteInput, iotHubName: string, resourceGroupName: string, callback: ServiceCallback<models.TestRouteResult>): void;
+    testRoute(input: models.TestRouteInput, iotHubName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TestRouteResult>): void;
+
+
+    /**
      * @summary Get the security metadata for an IoT hub. For more information,
-     * see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
+     * see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security
      *
      * Get the security metadata for an IoT hub. For more information, see:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
@@ -1563,7 +1847,7 @@ export interface IotHubResource {
 
     /**
      * @summary Get the security metadata for an IoT hub. For more information,
-     * see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
+     * see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security
      *
      * Get the security metadata for an IoT hub. For more information, see:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
@@ -1610,7 +1894,7 @@ export interface IotHubResource {
     /**
      * @summary Get a shared access policy by name from an IoT hub. For more
      * information, see:
-     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security
      *
      * Get a shared access policy by name from an IoT hub. For more information,
      * see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
@@ -1638,7 +1922,7 @@ export interface IotHubResource {
     /**
      * @summary Get a shared access policy by name from an IoT hub. For more
      * information, see:
-     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security
      *
      * Get a shared access policy by name from an IoT hub. For more information,
      * see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
@@ -1686,7 +1970,7 @@ export interface IotHubResource {
     /**
      * @summary Exports all the device identities in the IoT hub identity registry
      * to an Azure Storage blob container. For more information, see:
-     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities
      *
      * Exports all the device identities in the IoT hub identity registry to an
      * Azure Storage blob container. For more information, see:
@@ -1722,7 +2006,7 @@ export interface IotHubResource {
     /**
      * @summary Exports all the device identities in the IoT hub identity registry
      * to an Azure Storage blob container. For more information, see:
-     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities
      *
      * Exports all the device identities in the IoT hub identity registry to an
      * Azure Storage blob container. For more information, see:
@@ -1777,7 +2061,7 @@ export interface IotHubResource {
     /**
      * @summary Import, update, or delete device identities in the IoT hub identity
      * registry from a blob. For more information, see:
-     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities
      *
      * Import, update, or delete device identities in the IoT hub identity registry
      * from a blob. For more information, see:
@@ -1813,7 +2097,7 @@ export interface IotHubResource {
     /**
      * @summary Import, update, or delete device identities in the IoT hub identity
      * registry from a blob. For more information, see:
-     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities.
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities
      *
      * Import, update, or delete device identities in the IoT hub identity registry
      * from a blob. For more information, see:
@@ -1884,7 +2168,7 @@ export interface IotHubResource {
      * If it is provided in the response body, it must also be provided as a header
      * per the normal ETag convention.
      *
-     * @param {object} [iotHubDescription.properties]
+     * @param {object} [iotHubDescription.properties] IotHub properties
      *
      * @param {array} [iotHubDescription.properties.authorizationPolicies] The
      * shared access policies you can use to secure a connection to the IoT hub.
@@ -2011,7 +2295,7 @@ export interface IotHubResource {
      * features enabled for the IoT hub. Possible values include: 'None',
      * 'DeviceManagement'
      *
-     * @param {object} iotHubDescription.sku
+     * @param {object} iotHubDescription.sku IotHub SKU info
      *
      * @param {string} iotHubDescription.sku.name The name of the SKU. Possible
      * values include: 'F1', 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
@@ -2059,7 +2343,7 @@ export interface IotHubResource {
      * If it is provided in the response body, it must also be provided as a header
      * per the normal ETag convention.
      *
-     * @param {object} [iotHubDescription.properties]
+     * @param {object} [iotHubDescription.properties] IotHub properties
      *
      * @param {array} [iotHubDescription.properties.authorizationPolicies] The
      * shared access policies you can use to secure a connection to the IoT hub.
@@ -2186,7 +2470,7 @@ export interface IotHubResource {
      * features enabled for the IoT hub. Possible values include: 'None',
      * 'DeviceManagement'
      *
-     * @param {object} iotHubDescription.sku
+     * @param {object} iotHubDescription.sku IotHub SKU info
      *
      * @param {string} iotHubDescription.sku.name The name of the SKU. Possible
      * values include: 'F1', 'S1', 'S2', 'S3', 'B1', 'B2', 'B3'
@@ -2304,7 +2588,7 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Delete an IoT hub.
+     * @summary Delete an IoT hub
      *
      * Delete an IoT hub.
      *
@@ -2327,7 +2611,7 @@ export interface IotHubResource {
     beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
 
     /**
-     * @summary Delete an IoT hub.
+     * @summary Delete an IoT hub
      *
      * Delete an IoT hub.
      *
@@ -2368,7 +2652,7 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Get all the IoT hubs in a subscription.
+     * @summary Get all the IoT hubs in a subscription
      *
      * Get all the IoT hubs in a subscription.
      *
@@ -2389,7 +2673,7 @@ export interface IotHubResource {
     listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubDescriptionListResult>>;
 
     /**
-     * @summary Get all the IoT hubs in a subscription.
+     * @summary Get all the IoT hubs in a subscription
      *
      * Get all the IoT hubs in a subscription.
      *
@@ -2430,7 +2714,7 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Get all the IoT hubs in a resource group.
+     * @summary Get all the IoT hubs in a resource group
      *
      * Get all the IoT hubs in a resource group.
      *
@@ -2451,7 +2735,7 @@ export interface IotHubResource {
     listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubDescriptionListResult>>;
 
     /**
-     * @summary Get all the IoT hubs in a resource group.
+     * @summary Get all the IoT hubs in a resource group
      *
      * Get all the IoT hubs in a resource group.
      *
@@ -2492,7 +2776,7 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Get the list of valid SKUs for an IoT hub.
+     * @summary Get the list of valid SKUs for an IoT hub
      *
      * Get the list of valid SKUs for an IoT hub.
      *
@@ -2513,7 +2797,7 @@ export interface IotHubResource {
     getValidSkusNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubSkuDescriptionListResult>>;
 
     /**
-     * @summary Get the list of valid SKUs for an IoT hub.
+     * @summary Get the list of valid SKUs for an IoT hub
      *
      * Get the list of valid SKUs for an IoT hub.
      *
@@ -2555,7 +2839,7 @@ export interface IotHubResource {
 
     /**
      * @summary Get a list of the consumer groups in the Event Hub-compatible
-     * device-to-cloud endpoint in an IoT hub.
+     * device-to-cloud endpoint in an IoT hub
      *
      * Get a list of the consumer groups in the Event Hub-compatible
      * device-to-cloud endpoint in an IoT hub.
@@ -2578,7 +2862,7 @@ export interface IotHubResource {
 
     /**
      * @summary Get a list of the consumer groups in the Event Hub-compatible
-     * device-to-cloud endpoint in an IoT hub.
+     * device-to-cloud endpoint in an IoT hub
      *
      * Get a list of the consumer groups in the Event Hub-compatible
      * device-to-cloud endpoint in an IoT hub.
@@ -2622,7 +2906,7 @@ export interface IotHubResource {
     /**
      * @summary Get a list of all the jobs in an IoT hub. For more information,
      * see:
-     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry
      *
      * Get a list of all the jobs in an IoT hub. For more information, see:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
@@ -2646,7 +2930,7 @@ export interface IotHubResource {
     /**
      * @summary Get a list of all the jobs in an IoT hub. For more information,
      * see:
-     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
+     * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry
      *
      * Get a list of all the jobs in an IoT hub. For more information, see:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry.
@@ -2687,7 +2971,7 @@ export interface IotHubResource {
 
 
     /**
-     * @summary Get the quota metrics for an IoT hub.
+     * @summary Get the quota metrics for an IoT hub
      *
      * Get the quota metrics for an IoT hub.
      *
@@ -2708,7 +2992,7 @@ export interface IotHubResource {
     getQuotaMetricsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IotHubQuotaMetricInfoListResult>>;
 
     /**
-     * @summary Get the quota metrics for an IoT hub.
+     * @summary Get the quota metrics for an IoT hub
      *
      * Get the quota metrics for an IoT hub.
      *
@@ -2749,8 +3033,70 @@ export interface IotHubResource {
 
 
     /**
+     * @summary Get the health for routing endpoints
+     *
+     * Get the health for routing endpoints.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EndpointHealthDataListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getEndpointHealthNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EndpointHealthDataListResult>>;
+
+    /**
+     * @summary Get the health for routing endpoints
+     *
+     * Get the health for routing endpoints.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EndpointHealthDataListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EndpointHealthDataListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EndpointHealthDataListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getEndpointHealthNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EndpointHealthDataListResult>;
+    getEndpointHealthNext(nextPageLink: string, callback: ServiceCallback<models.EndpointHealthDataListResult>): void;
+    getEndpointHealthNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EndpointHealthDataListResult>): void;
+
+
+    /**
      * @summary Get the security metadata for an IoT hub. For more information,
-     * see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
+     * see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security
      *
      * Get the security metadata for an IoT hub. For more information, see:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
@@ -2773,7 +3119,7 @@ export interface IotHubResource {
 
     /**
      * @summary Get the security metadata for an IoT hub. For more information,
-     * see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
+     * see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security
      *
      * Get the security metadata for an IoT hub. For more information, see:
      * https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
@@ -2813,6 +3159,71 @@ export interface IotHubResource {
     listKeysNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessSignatureAuthorizationRuleListResult>;
     listKeysNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRuleListResult>): void;
     listKeysNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRuleListResult>): void;
+}
+
+/**
+ * @class
+ * ResourceProviderCommon
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the IotHubClient.
+ */
+export interface ResourceProviderCommon {
+
+
+    /**
+     * @summary Get the number of iot hubs in the subscription
+     *
+     * Get the number of free and paid iot hubs in the subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UserSubscriptionQuotaListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getSubscriptionQuotaWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UserSubscriptionQuotaListResult>>;
+
+    /**
+     * @summary Get the number of iot hubs in the subscription
+     *
+     * Get the number of free and paid iot hubs in the subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UserSubscriptionQuotaListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UserSubscriptionQuotaListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UserSubscriptionQuotaListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getSubscriptionQuota(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UserSubscriptionQuotaListResult>;
+    getSubscriptionQuota(callback: ServiceCallback<models.UserSubscriptionQuotaListResult>): void;
+    getSubscriptionQuota(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UserSubscriptionQuotaListResult>): void;
 }
 
 /**
