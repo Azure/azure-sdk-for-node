@@ -2000,6 +2000,79 @@ export interface ManagedClusters {
 
 
     /**
+     * @summary Updates tags on a managed cluster.
+     *
+     * Updates a managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update Managed Cluster
+     * Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedCluster>>;
+
+    /**
+     * @summary Updates tags on a managed cluster.
+     *
+     * Updates a managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update Managed Cluster
+     * Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedCluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ManagedCluster>): void;
+    updateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
+
+
+    /**
      * @summary Deletes a managed cluster.
      *
      * Deletes the managed cluster with a specified resource group and name.
@@ -2322,6 +2395,79 @@ export interface ManagedClusters {
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, callback: ServiceCallback<models.ManagedCluster>): void;
     beginCreateOrUpdate(resourceGroupName: string, resourceName: string, parameters: models.ManagedCluster, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
+
+
+    /**
+     * @summary Updates tags on a managed cluster.
+     *
+     * Updates a managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update Managed Cluster
+     * Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedCluster>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedCluster>>;
+
+    /**
+     * @summary Updates tags on a managed cluster.
+     *
+     * Updates a managed cluster with the specified tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} resourceName The name of the managed cluster resource.
+     *
+     * @param {object} parameters Parameters supplied to the Update Managed Cluster
+     * Tags operation.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedCluster} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedCluster} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedCluster} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedCluster>;
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ManagedCluster>): void;
+    beginUpdateTags(resourceGroupName: string, resourceName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedCluster>): void;
 
 
     /**
