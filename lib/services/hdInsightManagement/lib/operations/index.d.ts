@@ -1773,7 +1773,7 @@ export interface Configurations {
 
 
     /**
-     * Configures the HTTP settings on the specified cluster.
+     * Configures the configuration on the specified cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1794,10 +1794,10 @@ export interface Configurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateHTTPSettingsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Configures the HTTP settings on the specified cluster.
+     * Configures the configuration on the specified cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1833,9 +1833,9 @@ export interface Configurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateHTTPSettings(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    updateHTTPSettings(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, callback: ServiceCallback<void>): void;
-    updateHTTPSettings(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, callback: ServiceCallback<void>): void;
+    update(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1901,7 +1901,7 @@ export interface Configurations {
 
 
     /**
-     * Configures the HTTP settings on the specified cluster.
+     * Configures the configuration on the specified cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1922,10 +1922,10 @@ export interface Configurations {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateHTTPSettingsWithHttpOperationResponse(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Configures the HTTP settings on the specified cluster.
+     * Configures the configuration on the specified cluster.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -1961,9 +1961,9 @@ export interface Configurations {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateHTTPSettings(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    beginUpdateHTTPSettings(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, callback: ServiceCallback<void>): void;
-    beginUpdateHTTPSettings(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    beginUpdate(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginUpdate(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, callback: ServiceCallback<void>): void;
+    beginUpdate(resourceGroupName: string, clusterName: string, configurationName: string, parameters: { [propertyName: string]: string }, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
