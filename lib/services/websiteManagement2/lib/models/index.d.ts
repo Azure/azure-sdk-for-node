@@ -1112,6 +1112,32 @@ export interface ConnStringInfo {
 
 /**
  * @class
+ * Initializes a new instance of the AzureStorageInfoValue class.
+ * @constructor
+ * Azure Files or Blob Storage access information value for dictionary storage.
+ *
+ * @member {string} [type] Type of storage. Possible values include:
+ * 'AzureFiles', 'AzureBlob'
+ * @member {string} [accountName] Name of the storage account.
+ * @member {string} [shareName] Name of the file share (container name, for
+ * Blob storage).
+ * @member {string} [accessKey] Access key for the storage account.
+ * @member {string} [mountPath] Path to mount the storage within the site's
+ * runtime environment.
+ * @member {string} [state] State of the storage account. Possible values
+ * include: 'Ok', 'InvalidCredentials', 'InvalidShare'
+ */
+export interface AzureStorageInfoValue {
+  type?: string;
+  accountName?: string;
+  shareName?: string;
+  accessKey?: string;
+  mountPath?: string;
+  state?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NameValuePair class.
  * @constructor
  * Name value pair.
@@ -1153,6 +1179,8 @@ export interface NameValuePair {
  * detailed error logging is enabled; otherwise, <code>false</code>.
  * @member {string} [publishingUsername] Publishing user name.
  * @member {array} [appSettings] Application settings.
+ * @member {object} [azureStorageAccounts] User-provided Azure storage
+ * accounts.
  * @member {array} [connectionStrings] Connection strings.
  * @member {object} [machineKey] Site MachineKey.
  * @member {string} [machineKey.validation] MachineKey validation.
@@ -1281,6 +1309,7 @@ export interface SiteConfig {
   detailedErrorLoggingEnabled?: boolean;
   publishingUsername?: string;
   appSettings?: NameValuePair[];
+  azureStorageAccounts?: { [propertyName: string]: AzureStorageInfoValue };
   connectionStrings?: ConnStringInfo[];
   readonly machineKey?: SiteMachineKey;
   handlerMappings?: HandlerMapping[];
@@ -1398,6 +1427,8 @@ export interface HostNameSslState {
  * if detailed error logging is enabled; otherwise, <code>false</code>.
  * @member {string} [siteConfig.publishingUsername] Publishing user name.
  * @member {array} [siteConfig.appSettings] Application settings.
+ * @member {object} [siteConfig.azureStorageAccounts] User-provided Azure
+ * storage accounts.
  * @member {array} [siteConfig.connectionStrings] Connection strings.
  * @member {object} [siteConfig.machineKey] Site MachineKey.
  * @member {string} [siteConfig.machineKey.validation] MachineKey validation.
@@ -4186,6 +4217,18 @@ export interface AzureBlobStorageHttpLogsConfig {
 
 /**
  * @class
+ * Initializes a new instance of the AzureStoragePropertyDictionaryResource class.
+ * @constructor
+ * AzureStorageInfo dictionary resource.
+ *
+ * @member {object} [properties] Azure storage accounts.
+ */
+export interface AzureStoragePropertyDictionaryResource extends ProxyOnlyResource {
+  properties?: { [propertyName: string]: AzureStorageInfoValue };
+}
+
+/**
+ * @class
  * Initializes a new instance of the DatabaseBackupSetting class.
  * @constructor
  * Database backup settings.
@@ -5423,6 +5466,8 @@ export interface SiteCloneability {
  * detailed error logging is enabled; otherwise, <code>false</code>.
  * @member {string} [publishingUsername] Publishing user name.
  * @member {array} [appSettings] Application settings.
+ * @member {object} [azureStorageAccounts] User-provided Azure storage
+ * accounts.
  * @member {array} [connectionStrings] Connection strings.
  * @member {object} [machineKey] Site MachineKey.
  * @member {string} [machineKey.validation] MachineKey validation.
@@ -5551,6 +5596,7 @@ export interface SiteConfigResource extends ProxyOnlyResource {
   detailedErrorLoggingEnabled?: boolean;
   publishingUsername?: string;
   appSettings?: NameValuePair[];
+  azureStorageAccounts?: { [propertyName: string]: AzureStorageInfoValue };
   connectionStrings?: ConnStringInfo[];
   readonly machineKey?: SiteMachineKey;
   handlerMappings?: HandlerMapping[];
@@ -5786,6 +5832,8 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * if detailed error logging is enabled; otherwise, <code>false</code>.
  * @member {string} [siteConfig.publishingUsername] Publishing user name.
  * @member {array} [siteConfig.appSettings] Application settings.
+ * @member {object} [siteConfig.azureStorageAccounts] User-provided Azure
+ * storage accounts.
  * @member {array} [siteConfig.connectionStrings] Connection strings.
  * @member {object} [siteConfig.machineKey] Site MachineKey.
  * @member {string} [siteConfig.machineKey.validation] MachineKey validation.
@@ -6080,10 +6128,13 @@ export interface SiteSourceControl extends ProxyOnlyResource {
  *
  * @member {array} [connectionStringNames] List of connection string names.
  * @member {array} [appSettingNames] List of application settings names.
+ * @member {array} [azureStorageConfigNames] List of external Azure storage
+ * account identifiers.
  */
 export interface SlotConfigNamesResource extends ProxyOnlyResource {
   connectionStringNames?: string[];
   appSettingNames?: string[];
+  azureStorageConfigNames?: string[];
 }
 
 /**
