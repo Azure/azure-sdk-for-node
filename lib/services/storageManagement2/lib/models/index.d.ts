@@ -566,6 +566,8 @@ export interface Identity {
  * 'Hot', 'Cool'
  * @member {boolean} [enableHttpsTrafficOnly] Allows https traffic only to
  * storage service if sets to true. Default value: false .
+ * @member {boolean} [isHnsEnabled] Account HierarchicalNamespace enabled if
+ * sets to true. Default value: false .
  */
 export interface StorageAccountCreateParameters {
   sku: Sku;
@@ -578,46 +580,60 @@ export interface StorageAccountCreateParameters {
   networkRuleSet?: NetworkRuleSet;
   accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
+  isHnsEnabled?: boolean;
 }
 
 /**
  * @class
  * Initializes a new instance of the Endpoints class.
  * @constructor
- * The URIs that are used to perform a retrieval of a public blob, queue, or
- * table object.
+ * The URIs that are used to perform a retrieval of a public blob, queue,
+ * table, web or dfs object.
  *
  * @member {string} [blob] Gets the blob endpoint.
  * @member {string} [queue] Gets the queue endpoint.
  * @member {string} [table] Gets the table endpoint.
  * @member {string} [file] Gets the file endpoint.
+ * @member {string} [web] Gets the web endpoint.
+ * @member {string} [dfs] Gets the dfs endpoint.
  */
 export interface Endpoints {
   readonly blob?: string;
   readonly queue?: string;
   readonly table?: string;
   readonly file?: string;
+  readonly web?: string;
+  readonly dfs?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * Describes a storage resource.
- *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} [location] Resource location
- * @member {object} [tags] Tags assigned to a resource; can be used for viewing
- * and grouping a resource (across resource groups).
+ * @member {string} [id] Fully qualified resource Id for the resource. Ex -
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+ * @member {string} [name] The name of the resource
+ * @member {string} [type] The type of the resource. Ex-
+ * Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * The resource model definition for a ARM tracked top level resource
+ *
+ * @member {object} [tags] Resource tags.
+ * @member {string} location The geo-location where the resource lives
+ */
+export interface TrackedResource extends Resource {
   tags?: { [propertyName: string]: string };
+  location: string;
 }
 
 /**
@@ -661,6 +677,8 @@ export interface Resource extends BaseResource {
  * @member {string} [primaryEndpoints.queue] Gets the queue endpoint.
  * @member {string} [primaryEndpoints.table] Gets the table endpoint.
  * @member {string} [primaryEndpoints.file] Gets the file endpoint.
+ * @member {string} [primaryEndpoints.web] Gets the web endpoint.
+ * @member {string} [primaryEndpoints.dfs] Gets the dfs endpoint.
  * @member {string} [primaryLocation] Gets the location of the primary data
  * center for the storage account.
  * @member {string} [statusOfPrimary] Gets the status indicating whether the
@@ -695,6 +713,8 @@ export interface Resource extends BaseResource {
  * @member {string} [secondaryEndpoints.queue] Gets the queue endpoint.
  * @member {string} [secondaryEndpoints.table] Gets the table endpoint.
  * @member {string} [secondaryEndpoints.file] Gets the file endpoint.
+ * @member {string} [secondaryEndpoints.web] Gets the web endpoint.
+ * @member {string} [secondaryEndpoints.dfs] Gets the dfs endpoint.
  * @member {object} [encryption] Gets the encryption settings on the account.
  * If unspecified, the account is unencrypted.
  * @member {object} [encryption.services] List of services which support
@@ -759,8 +779,10 @@ export interface Resource extends BaseResource {
  * @member {string} [networkRuleSet.defaultAction] Specifies the default action
  * of allow or deny when no other rules match. Possible values include:
  * 'Allow', 'Deny'
+ * @member {boolean} [isHnsEnabled] Account HierarchicalNamespace enabled if
+ * sets to true. Default value: false .
  */
-export interface StorageAccount extends Resource {
+export interface StorageAccount extends TrackedResource {
   readonly sku?: Sku;
   readonly kind?: string;
   identity?: Identity;
@@ -778,6 +800,7 @@ export interface StorageAccount extends Resource {
   readonly accessTier?: string;
   enableHttpsTrafficOnly?: boolean;
   readonly networkRuleSet?: NetworkRuleSet;
+  isHnsEnabled?: boolean;
 }
 
 /**
@@ -1114,6 +1137,329 @@ export interface ServiceSasParameters {
  */
 export interface ListServiceSasResponse {
   readonly serviceSasToken?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageAccountManagementPolicies class.
+ * @constructor
+ * The Get Storage Account ManagementPolicies operation response.
+ *
+ * @member {object} [policy] The Storage Account ManagementPolicies Rules, in
+ * JSON format. See more details in:
+ * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+ * @member {date} [lastModifiedTime] Returns the date and time the
+ * ManagementPolicies was last modified.
+ */
+export interface StorageAccountManagementPolicies extends Resource {
+  policy?: any;
+  readonly lastModifiedTime?: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ManagementPoliciesRulesSetParameter class.
+ * @constructor
+ * The Storage Account ManagementPolicies Rules, in JSON format. See more
+ * details in:
+ * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+ *
+ * @member {object} [policy] The Storage Account ManagementPolicies Rules, in
+ * JSON format. See more details in:
+ * https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+ */
+export interface ManagementPoliciesRulesSetParameter {
+  policy?: any;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The resource model definition for a ARM proxy resource. It will have
+ * everything other than required location and tags
+ *
+ */
+export interface ProxyResource extends Resource {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureEntityResource class.
+ * @constructor
+ * The resource model definition for a Azure Resource Manager resource with an
+ * etag.
+ *
+ * @member {string} [etag] Resource Etag.
+ */
+export interface AzureEntityResource extends Resource {
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateHistoryProperty class.
+ * @constructor
+ * An update history of the ImmutabilityPolicy of a blob container.
+ *
+ * @member {string} [update] The ImmutabilityPolicy update type of a blob
+ * container, possible values include: put, lock and extend. Possible values
+ * include: 'put', 'lock', 'extend'
+ * @member {number} [immutabilityPeriodSinceCreationInDays] The immutability
+ * period for the blobs in the container since the policy creation, in days.
+ * @member {date} [timestamp] Returns the date and time the ImmutabilityPolicy
+ * was updated.
+ * @member {string} [objectIdentifier] Returns the Object ID of the user who
+ * updated the ImmutabilityPolicy.
+ * @member {string} [tenantId] Returns the Tenant ID that issued the token for
+ * the user who updated the ImmutabilityPolicy.
+ * @member {string} [upn] Returns the User Principal Name of the user who
+ * updated the ImmutabilityPolicy.
+ */
+export interface UpdateHistoryProperty {
+  readonly update?: string;
+  readonly immutabilityPeriodSinceCreationInDays?: number;
+  readonly timestamp?: Date;
+  readonly objectIdentifier?: string;
+  readonly tenantId?: string;
+  readonly upn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImmutabilityPolicyProperties class.
+ * @constructor
+ * The properties of an ImmutabilityPolicy of a blob container.
+ *
+ * @member {number} immutabilityPeriodSinceCreationInDays The immutability
+ * period for the blobs in the container since the policy creation, in days.
+ * @member {string} [state] The ImmutabilityPolicy state of a blob container,
+ * possible values include: Locked and Unlocked. Possible values include:
+ * 'Locked', 'Unlocked'
+ * @member {string} [etag] ImmutabilityPolicy Etag.
+ * @member {array} [updateHistory] The ImmutabilityPolicy update history of the
+ * blob container.
+ */
+export interface ImmutabilityPolicyProperties {
+  immutabilityPeriodSinceCreationInDays: number;
+  readonly state?: string;
+  readonly etag?: string;
+  readonly updateHistory?: UpdateHistoryProperty[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagProperty class.
+ * @constructor
+ * A tag of the LegalHold of a blob container.
+ *
+ * @member {string} [tag] The tag value.
+ * @member {date} [timestamp] Returns the date and time the tag was added.
+ * @member {string} [objectIdentifier] Returns the Object ID of the user who
+ * added the tag.
+ * @member {string} [tenantId] Returns the Tenant ID that issued the token for
+ * the user who added the tag.
+ * @member {string} [upn] Returns the User Principal Name of the user who added
+ * the tag.
+ */
+export interface TagProperty {
+  readonly tag?: string;
+  readonly timestamp?: Date;
+  readonly objectIdentifier?: string;
+  readonly tenantId?: string;
+  readonly upn?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LegalHoldProperties class.
+ * @constructor
+ * The LegalHold property of a blob container.
+ *
+ * @member {boolean} [hasLegalHold] The hasLegalHold public property is set to
+ * true by SRP if there are at least one existing tag. The hasLegalHold public
+ * property is set to false by SRP if all existing legal hold tags are cleared
+ * out. There can be a maximum of 1000 blob containers with hasLegalHold=true
+ * for a given account.
+ * @member {array} [tags] The list of LegalHold tags of a blob container.
+ */
+export interface LegalHoldProperties {
+  readonly hasLegalHold?: boolean;
+  tags?: TagProperty[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BlobContainer class.
+ * @constructor
+ * Properties of the blob container, including Id, resource name, resource
+ * type, Etag.
+ *
+ * @member {string} [publicAccess] Specifies whether data in the container may
+ * be accessed publicly and the level of access. Possible values include:
+ * 'Container', 'Blob', 'None'
+ * @member {date} [lastModifiedTime] Returns the date and time the container
+ * was last modified.
+ * @member {string} [leaseStatus] The lease status of the container. Possible
+ * values include: 'Locked', 'Unlocked'
+ * @member {string} [leaseState] Lease state of the container. Possible values
+ * include: 'Available', 'Leased', 'Expired', 'Breaking', 'Broken'
+ * @member {string} [leaseDuration] Specifies whether the lease on a container
+ * is of infinite or fixed duration, only when the container is leased.
+ * Possible values include: 'Infinite', 'Fixed'
+ * @member {object} [metadata] A name-value pair to associate with the
+ * container as metadata.
+ * @member {object} [immutabilityPolicy] The ImmutabilityPolicy property of the
+ * container.
+ * @member {number} [immutabilityPolicy.immutabilityPeriodSinceCreationInDays]
+ * The immutability period for the blobs in the container since the policy
+ * creation, in days.
+ * @member {string} [immutabilityPolicy.state] The ImmutabilityPolicy state of
+ * a blob container, possible values include: Locked and Unlocked. Possible
+ * values include: 'Locked', 'Unlocked'
+ * @member {string} [immutabilityPolicy.etag] ImmutabilityPolicy Etag.
+ * @member {array} [immutabilityPolicy.updateHistory] The ImmutabilityPolicy
+ * update history of the blob container.
+ * @member {object} [legalHold] The LegalHold property of the container.
+ * @member {boolean} [legalHold.hasLegalHold] The hasLegalHold public property
+ * is set to true by SRP if there are at least one existing tag. The
+ * hasLegalHold public property is set to false by SRP if all existing legal
+ * hold tags are cleared out. There can be a maximum of 1000 blob containers
+ * with hasLegalHold=true for a given account.
+ * @member {array} [legalHold.tags] The list of LegalHold tags of a blob
+ * container.
+ * @member {boolean} [hasLegalHold] The hasLegalHold public property is set to
+ * true by SRP if there are at least one existing tag. The hasLegalHold public
+ * property is set to false by SRP if all existing legal hold tags are cleared
+ * out. There can be a maximum of 1000 blob containers with hasLegalHold=true
+ * for a given account.
+ * @member {boolean} [hasImmutabilityPolicy] The hasImmutabilityPolicy public
+ * property is set to true by SRP if ImmutabilityPolicy has been created for
+ * this container. The hasImmutabilityPolicy public property is set to false by
+ * SRP if ImmutabilityPolicy has not been created for this container.
+ */
+export interface BlobContainer extends AzureEntityResource {
+  publicAccess?: string;
+  readonly lastModifiedTime?: Date;
+  readonly leaseStatus?: string;
+  readonly leaseState?: string;
+  readonly leaseDuration?: string;
+  metadata?: { [propertyName: string]: string };
+  readonly immutabilityPolicy?: ImmutabilityPolicyProperties;
+  readonly legalHold?: LegalHoldProperties;
+  readonly hasLegalHold?: boolean;
+  readonly hasImmutabilityPolicy?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ImmutabilityPolicy class.
+ * @constructor
+ * The ImmutabilityPolicy property of a blob container, including Id, resource
+ * name, resource type, Etag.
+ *
+ * @member {number} immutabilityPeriodSinceCreationInDays The immutability
+ * period for the blobs in the container since the policy creation, in days.
+ * @member {string} [state] The ImmutabilityPolicy state of a blob container,
+ * possible values include: Locked and Unlocked. Possible values include:
+ * 'Locked', 'Unlocked'
+ */
+export interface ImmutabilityPolicy extends AzureEntityResource {
+  immutabilityPeriodSinceCreationInDays: number;
+  readonly state?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LegalHold class.
+ * @constructor
+ * The LegalHold property of a blob container.
+ *
+ * @member {boolean} [hasLegalHold] The hasLegalHold public property is set to
+ * true by SRP if there are at least one existing tag. The hasLegalHold public
+ * property is set to false by SRP if all existing legal hold tags are cleared
+ * out. There can be a maximum of 1000 blob containers with hasLegalHold=true
+ * for a given account.
+ * @member {array} tags Each tag should be 3 to 23 alphanumeric characters and
+ * is normalized to lower case at SRP.
+ */
+export interface LegalHold {
+  readonly hasLegalHold?: boolean;
+  tags: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListContainerItem class.
+ * @constructor
+ * The blob container properties be listed out.
+ *
+ * @member {string} [publicAccess] Specifies whether data in the container may
+ * be accessed publicly and the level of access. Possible values include:
+ * 'Container', 'Blob', 'None'
+ * @member {date} [lastModifiedTime] Returns the date and time the container
+ * was last modified.
+ * @member {string} [leaseStatus] The lease status of the container. Possible
+ * values include: 'Locked', 'Unlocked'
+ * @member {string} [leaseState] Lease state of the container. Possible values
+ * include: 'Available', 'Leased', 'Expired', 'Breaking', 'Broken'
+ * @member {string} [leaseDuration] Specifies whether the lease on a container
+ * is of infinite or fixed duration, only when the container is leased.
+ * Possible values include: 'Infinite', 'Fixed'
+ * @member {object} [metadata] A name-value pair to associate with the
+ * container as metadata.
+ * @member {object} [immutabilityPolicy] The ImmutabilityPolicy property of the
+ * container.
+ * @member {number} [immutabilityPolicy.immutabilityPeriodSinceCreationInDays]
+ * The immutability period for the blobs in the container since the policy
+ * creation, in days.
+ * @member {string} [immutabilityPolicy.state] The ImmutabilityPolicy state of
+ * a blob container, possible values include: Locked and Unlocked. Possible
+ * values include: 'Locked', 'Unlocked'
+ * @member {string} [immutabilityPolicy.etag] ImmutabilityPolicy Etag.
+ * @member {array} [immutabilityPolicy.updateHistory] The ImmutabilityPolicy
+ * update history of the blob container.
+ * @member {object} [legalHold] The LegalHold property of the container.
+ * @member {boolean} [legalHold.hasLegalHold] The hasLegalHold public property
+ * is set to true by SRP if there are at least one existing tag. The
+ * hasLegalHold public property is set to false by SRP if all existing legal
+ * hold tags are cleared out. There can be a maximum of 1000 blob containers
+ * with hasLegalHold=true for a given account.
+ * @member {array} [legalHold.tags] The list of LegalHold tags of a blob
+ * container.
+ * @member {boolean} [hasLegalHold] The hasLegalHold public property is set to
+ * true by SRP if there are at least one existing tag. The hasLegalHold public
+ * property is set to false by SRP if all existing legal hold tags are cleared
+ * out. There can be a maximum of 1000 blob containers with hasLegalHold=true
+ * for a given account.
+ * @member {boolean} [hasImmutabilityPolicy] The hasImmutabilityPolicy public
+ * property is set to true by SRP if ImmutabilityPolicy has been created for
+ * this container. The hasImmutabilityPolicy public property is set to false by
+ * SRP if ImmutabilityPolicy has not been created for this container.
+ */
+export interface ListContainerItem extends AzureEntityResource {
+  publicAccess?: string;
+  readonly lastModifiedTime?: Date;
+  readonly leaseStatus?: string;
+  readonly leaseState?: string;
+  readonly leaseDuration?: string;
+  metadata?: { [propertyName: string]: string };
+  readonly immutabilityPolicy?: ImmutabilityPolicyProperties;
+  readonly legalHold?: LegalHoldProperties;
+  readonly hasLegalHold?: boolean;
+  readonly hasImmutabilityPolicy?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListContainerItems class.
+ * @constructor
+ * The list of blob containers.
+ *
+ * @member {array} [value] The list of blob containers.
+ */
+export interface ListContainerItems {
+  value?: ListContainerItem[];
 }
 
 
