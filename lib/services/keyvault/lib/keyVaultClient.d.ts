@@ -89,7 +89,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.curve] Elliptic curve name. For valid values, see
    * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
-   * 'SECP256K1'
+   * 'P-256K'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -141,7 +141,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.curve] Elliptic curve name. For valid values, see
    * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
-   * 'SECP256K1'
+   * 'P-256K'
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -190,8 +190,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [key.kid] Key identifier.
    *
-   * @param {string} [key.kty] JsonWebKey key type (kty). Possible values
-   * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} [key.kty] JsonWebKey Key Type (kty), as defined in
+   * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+   * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {array} [key.keyOps]
    *
@@ -218,7 +219,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [key.crv] Elliptic curve name. For valid values, see
    * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
-   * 'SECP256K1'
+   * 'P-256K'
    *
    * @param {buffer} [key.x] X component of an EC public key.
    *
@@ -269,8 +270,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [key.kid] Key identifier.
    *
-   * @param {string} [key.kty] JsonWebKey key type (kty). Possible values
-   * include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
+   * @param {string} [key.kty] JsonWebKey Key Type (kty), as defined in
+   * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40. Possible
+   * values include: 'EC', 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {array} [key.keyOps]
    *
@@ -297,7 +299,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [key.crv] Elliptic curve name. For valid values, see
    * JsonWebKeyCurveName. Possible values include: 'P-256', 'P-384', 'P-521',
-   * 'SECP256K1'
+   * 'P-256K'
    *
    * @param {buffer} [key.x] X component of an EC public key.
    *
@@ -1145,7 +1147,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * more information on possible algorithm types, see
    * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
    * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
-   * 'ECDSA256'
+   * 'ES256K'
    *
    * @param {buffer} value
    *
@@ -1180,7 +1182,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * more information on possible algorithm types, see
    * JsonWebKeySignatureAlgorithm. Possible values include: 'PS256', 'PS384',
    * 'PS512', 'RS256', 'RS384', 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512',
-   * 'ECDSA256'
+   * 'ES256K'
    *
    * @param {buffer} value
    *
@@ -1236,7 +1238,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm The signing/verification algorithm. For more
    * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
    * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
-   * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ECDSA256'
+   * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ES256K'
    *
    * @param {buffer} digest The digest used for signing.
    *
@@ -1275,7 +1277,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {string} algorithm The signing/verification algorithm. For more
    * information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
    * Possible values include: 'PS256', 'PS384', 'PS512', 'RS256', 'RS384',
-   * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ECDSA256'
+   * 'RS512', 'RSNULL', 'ES256', 'ES384', 'ES512', 'ES256K'
    *
    * @param {buffer} digest The digest used for signing.
    *
@@ -2715,6 +2717,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {number} [options.maxresults] Maximum number of results to return in
    * a page. If not specified the service will return up to 25 results.
    *
+   * @param {boolean} [options.includePending] Specifies whether to include
+   * certificates which are not completely provisioned.
+   *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
@@ -2724,7 +2729,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getCertificatesWithHttpOperationResponse(vaultBaseUrl: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListResult>>;
+  getCertificatesWithHttpOperationResponse(vaultBaseUrl: string, options?: { maxresults? : number, includePending? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListResult>>;
 
   /**
    * @summary List certificates in a specified key vault
@@ -2740,6 +2745,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {number} [options.maxresults] Maximum number of results to return in
    * a page. If not specified the service will return up to 25 results.
+   *
+   * @param {boolean} [options.includePending] Specifies whether to include
+   * certificates which are not completely provisioned.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -2766,9 +2774,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getCertificates(vaultBaseUrl: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListResult>;
+  getCertificates(vaultBaseUrl: string, options?: { maxresults? : number, includePending? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListResult>;
   getCertificates(vaultBaseUrl: string, callback: ServiceCallback<models.CertificateListResult>): void;
-  getCertificates(vaultBaseUrl: string, options: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListResult>): void;
+  getCertificates(vaultBaseUrl: string, options: { maxresults? : number, includePending? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListResult>): void;
 
 
   /**
@@ -3508,14 +3516,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.keyType] The type
+   * of key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
    * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -3569,6 +3582,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.certificatePolicy.issuerParameters.certificateType]
    * Type of certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.issuerParameters.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -3620,14 +3638,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.keyType] The type
+   * of key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
    * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -3681,6 +3704,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.certificatePolicy.issuerParameters.certificateType]
    * Type of certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.issuerParameters.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -3761,14 +3789,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.keyType] The type
+   * of key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
    * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -3822,6 +3855,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.certificatePolicy.issuerParameters.certificateType]
    * Type of certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.issuerParameters.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -3883,14 +3921,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.keyType] The type
+   * of key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
    * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -3944,6 +3987,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.certificatePolicy.issuerParameters.certificateType]
    * Type of certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.issuerParameters.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -4158,13 +4206,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
    * the private key can be exported.
    *
-   * @param {string} [certificatePolicy.keyProperties.keyType] The key type.
+   * @param {string} [certificatePolicy.keyProperties.keyType] The type of key
+   * pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [certificatePolicy.keyProperties.keySize] The key size in
    * bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if the
    * same key pair will be used on certificate renewal.
+   *
+   * @param {string} [certificatePolicy.keyProperties.curve] Elliptic curve name.
+   * For valid values, see JsonWebKeyCurveName. Possible values include: 'P-256',
+   * 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [certificatePolicy.secretProperties] Properties of the
    * secret backing a certificate.
@@ -4216,6 +4270,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [certificatePolicy.issuerParameters.certificateType] Type of
    * certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [certificatePolicy.issuerParameters.certificateTransparency] Indicates if
+   * the certificates generated under this policy should be published to
+   * certificate transparency logs.
    *
    * @param {object} [certificatePolicy.attributes] The certificate attributes.
    *
@@ -4260,13 +4319,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [certificatePolicy.keyProperties.exportable] Indicates if
    * the private key can be exported.
    *
-   * @param {string} [certificatePolicy.keyProperties.keyType] The key type.
+   * @param {string} [certificatePolicy.keyProperties.keyType] The type of key
+   * pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [certificatePolicy.keyProperties.keySize] The key size in
    * bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [certificatePolicy.keyProperties.reuseKey] Indicates if the
    * same key pair will be used on certificate renewal.
+   *
+   * @param {string} [certificatePolicy.keyProperties.curve] Elliptic curve name.
+   * For valid values, see JsonWebKeyCurveName. Possible values include: 'P-256',
+   * 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [certificatePolicy.secretProperties] Properties of the
    * secret backing a certificate.
@@ -4318,6 +4383,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [certificatePolicy.issuerParameters.certificateType] Type of
    * certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [certificatePolicy.issuerParameters.certificateTransparency] Indicates if
+   * the certificates generated under this policy should be published to
+   * certificate transparency logs.
    *
    * @param {object} [certificatePolicy.attributes] The certificate attributes.
    *
@@ -4388,14 +4458,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.keyType] The type
+   * of key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
    * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -4449,6 +4524,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.certificatePolicy.issuerParameters.certificateType]
    * Type of certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.issuerParameters.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -4505,14 +4585,19 @@ export default class KeyVaultClient extends AzureServiceClient {
    * @param {boolean} [options.certificatePolicy.keyProperties.exportable]
    * Indicates if the private key can be exported.
    *
-   * @param {string} [options.certificatePolicy.keyProperties.keyType] The key
-   * type.
+   * @param {string} [options.certificatePolicy.keyProperties.keyType] The type
+   * of key pair to be used for the certificate. Possible values include: 'EC',
+   * 'EC-HSM', 'RSA', 'RSA-HSM', 'oct'
    *
    * @param {number} [options.certificatePolicy.keyProperties.keySize] The key
    * size in bits. For example: 2048, 3072, or 4096 for RSA.
    *
    * @param {boolean} [options.certificatePolicy.keyProperties.reuseKey]
    * Indicates if the same key pair will be used on certificate renewal.
+   *
+   * @param {string} [options.certificatePolicy.keyProperties.curve] Elliptic
+   * curve name. For valid values, see JsonWebKeyCurveName. Possible values
+   * include: 'P-256', 'P-384', 'P-521', 'P-256K'
    *
    * @param {object} [options.certificatePolicy.secretProperties] Properties of
    * the secret backing a certificate.
@@ -4566,6 +4651,11 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} [options.certificatePolicy.issuerParameters.certificateType]
    * Type of certificate to be requested from the issuer provider.
+   *
+   * @param {boolean}
+   * [options.certificatePolicy.issuerParameters.certificateTransparency]
+   * Indicates if the certificates generated under this policy should be
+   * published to certificate transparency logs.
    *
    * @param {object} [options.certificatePolicy.attributes] The certificate
    * attributes.
@@ -5002,33 +5092,143 @@ export default class KeyVaultClient extends AzureServiceClient {
 
 
   /**
-   * @summary Lists the deleted certificates in the specified vault currently
-   * available for recovery.
+   * @summary Backs up the specified certificate.
    *
-   * The GetDeletedCertificates operation retrieves the certificates in the
-   * current vault which are in a deleted state and ready for recovery or
-   * purging. This operation includes deletion-specific information. This
-   * operation requires the certificates/get/list permission. This operation can
-   * only be enabled on soft-delete enabled vaults.
+   * Requests that a backup of the specified certificate be downloaded to the
+   * client. All versions of the certificate will be downloaded. This operation
+   * requires the certificates/backup permission.
    *
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
    *
-   * @param {object} [options] Optional Parameters.
+   * @param {string} certificateName The name of the certificate.
    *
-   * @param {number} [options.maxresults] Maximum number of results to return in
-   * a page. If not specified the service will return up to 25 results.
+   * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
    *
    * @returns {Promise} A promise is returned
    *
-   * @resolve {HttpOperationResponse<DeletedCertificateListResult>} - The deserialized result object.
+   * @resolve {HttpOperationResponse<BackupCertificateResult>} - The deserialized result object.
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  getDeletedCertificatesWithHttpOperationResponse(vaultBaseUrl: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedCertificateListResult>>;
+  backupCertificateWithHttpOperationResponse(vaultBaseUrl: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupCertificateResult>>;
+
+  /**
+   * @summary Backs up the specified certificate.
+   *
+   * Requests that a backup of the specified certificate be downloaded to the
+   * client. All versions of the certificate will be downloaded. This operation
+   * requires the certificates/backup permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} certificateName The name of the certificate.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {BackupCertificateResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {BackupCertificateResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link BackupCertificateResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  backupCertificate(vaultBaseUrl: string, certificateName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupCertificateResult>;
+  backupCertificate(vaultBaseUrl: string, certificateName: string, callback: ServiceCallback<models.BackupCertificateResult>): void;
+  backupCertificate(vaultBaseUrl: string, certificateName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupCertificateResult>): void;
+
+
+  /**
+   * @summary Restores a backed up certificate to a vault.
+   *
+   * Restores a backed up certificate, and all its versions, to a vault. This
+   * operation requires the certificates/restore permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {buffer} certificateBundleBackup The backup blob associated with a
+   * certificate bundle.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<CertificateBundle>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  restoreCertificateWithHttpOperationResponse(vaultBaseUrl: string, certificateBundleBackup: Buffer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateBundle>>;
+
+  /**
+   * @summary Restores a backed up certificate to a vault.
+   *
+   * Restores a backed up certificate, and all its versions, to a vault. This
+   * operation requires the certificates/restore permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {buffer} certificateBundleBackup The backup blob associated with a
+   * certificate bundle.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {CertificateBundle} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {CertificateBundle} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link CertificateBundle} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  restoreCertificate(vaultBaseUrl: string, certificateBundleBackup: Buffer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateBundle>;
+  restoreCertificate(vaultBaseUrl: string, certificateBundleBackup: Buffer, callback: ServiceCallback<models.CertificateBundle>): void;
+  restoreCertificate(vaultBaseUrl: string, certificateBundleBackup: Buffer, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateBundle>): void;
+
 
   /**
    * @summary Lists the deleted certificates in the specified vault currently
@@ -5047,6 +5247,41 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {number} [options.maxresults] Maximum number of results to return in
    * a page. If not specified the service will return up to 25 results.
+   *
+   * @param {boolean} [options.includePending] Specifies whether to include
+   * certificates which are not completely provisioned.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeletedCertificateListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeletedCertificatesWithHttpOperationResponse(vaultBaseUrl: string, options?: { maxresults? : number, includePending? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedCertificateListResult>>;
+
+  /**
+   * @summary Lists the deleted certificates in the specified vault currently
+   * available for recovery.
+   *
+   * The GetDeletedCertificates operation retrieves the certificates in the
+   * current vault which are in a deleted state and ready for recovery or
+   * purging. This operation includes deletion-specific information. This
+   * operation requires the certificates/get/list permission. This operation can
+   * only be enabled on soft-delete enabled vaults.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.maxresults] Maximum number of results to return in
+   * a page. If not specified the service will return up to 25 results.
+   *
+   * @param {boolean} [options.includePending] Specifies whether to include
+   * certificates which are not completely provisioned.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -5074,9 +5309,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  getDeletedCertificates(vaultBaseUrl: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedCertificateListResult>;
+  getDeletedCertificates(vaultBaseUrl: string, options?: { maxresults? : number, includePending? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedCertificateListResult>;
   getDeletedCertificates(vaultBaseUrl: string, callback: ServiceCallback<models.DeletedCertificateListResult>): void;
-  getDeletedCertificates(vaultBaseUrl: string, options: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedCertificateListResult>): void;
+  getDeletedCertificates(vaultBaseUrl: string, options: { maxresults? : number, includePending? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedCertificateListResult>): void;
 
 
   /**
@@ -5362,8 +5597,222 @@ export default class KeyVaultClient extends AzureServiceClient {
 
 
   /**
-   * Deletes a storage account. This operation requires the storage/delete
+   * @summary Lists deleted storage accounts for the specified vault.
+   *
+   * The Get Deleted Storage Accounts operation returns the storage accounts that
+   * have been deleted for a vault enabled for soft-delete. This operation
+   * requires the storage/list permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.maxresults] Maximum number of results to return in
+   * a page. If not specified the service will return up to 25 results.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeletedStorageListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeletedStorageAccountsWithHttpOperationResponse(vaultBaseUrl: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedStorageListResult>>;
+
+  /**
+   * @summary Lists deleted storage accounts for the specified vault.
+   *
+   * The Get Deleted Storage Accounts operation returns the storage accounts that
+   * have been deleted for a vault enabled for soft-delete. This operation
+   * requires the storage/list permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.maxresults] Maximum number of results to return in
+   * a page. If not specified the service will return up to 25 results.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeletedStorageListResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeletedStorageListResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeletedStorageListResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeletedStorageAccounts(vaultBaseUrl: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedStorageListResult>;
+  getDeletedStorageAccounts(vaultBaseUrl: string, callback: ServiceCallback<models.DeletedStorageListResult>): void;
+  getDeletedStorageAccounts(vaultBaseUrl: string, options: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedStorageListResult>): void;
+
+
+  /**
+   * @summary Gets the specified deleted storage account.
+   *
+   * The Get Deleted Storage Account operation returns the specified deleted
+   * storage account along with its attributes. This operation requires the
+   * storage/get permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeletedStorageBundle>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeletedStorageAccountWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedStorageBundle>>;
+
+  /**
+   * @summary Gets the specified deleted storage account.
+   *
+   * The Get Deleted Storage Account operation returns the specified deleted
+   * storage account along with its attributes. This operation requires the
+   * storage/get permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeletedStorageBundle} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeletedStorageBundle} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeletedStorageBundle} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeletedStorageAccount(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedStorageBundle>;
+  getDeletedStorageAccount(vaultBaseUrl: string, storageAccountName: string, callback: ServiceCallback<models.DeletedStorageBundle>): void;
+  getDeletedStorageAccount(vaultBaseUrl: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedStorageBundle>): void;
+
+
+  /**
+   * @summary Permanently deletes the specified storage account.
+   *
+   * The purge deleted storage account operation removes the secret permanently,
+   * without the possibility of recovery. This operation can only be performed on
+   * a soft-delete enabled vault. This operation requires the storage/purge
    * permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  purgeDeletedStorageAccountWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+  /**
+   * @summary Permanently deletes the specified storage account.
+   *
+   * The purge deleted storage account operation removes the secret permanently,
+   * without the possibility of recovery. This operation can only be performed on
+   * a soft-delete enabled vault. This operation requires the storage/purge
+   * permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {null} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {null} [result]   - The deserialized result object if an error did not occur.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  purgeDeletedStorageAccount(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+  purgeDeletedStorageAccount(vaultBaseUrl: string, storageAccountName: string, callback: ServiceCallback<void>): void;
+  purgeDeletedStorageAccount(vaultBaseUrl: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+  /**
+   * @summary Recovers the deleted storage account.
+   *
+   * Recovers the deleted storage account in the specified vault. This operation
+   * can only be performed on a soft-delete enabled vault. This operation
+   * requires the storage/recover permission.
    *
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
@@ -5381,11 +5830,14 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  deleteStorageAccountWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageBundle>>;
+  recoverDeletedStorageAccountWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageBundle>>;
 
   /**
-   * Deletes a storage account. This operation requires the storage/delete
-   * permission.
+   * @summary Recovers the deleted storage account.
+   *
+   * Recovers the deleted storage account in the specified vault. This operation
+   * can only be performed on a soft-delete enabled vault. This operation
+   * requires the storage/recover permission.
    *
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
@@ -5419,9 +5871,208 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  deleteStorageAccount(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageBundle>;
-  deleteStorageAccount(vaultBaseUrl: string, storageAccountName: string, callback: ServiceCallback<models.StorageBundle>): void;
-  deleteStorageAccount(vaultBaseUrl: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageBundle>): void;
+  recoverDeletedStorageAccount(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageBundle>;
+  recoverDeletedStorageAccount(vaultBaseUrl: string, storageAccountName: string, callback: ServiceCallback<models.StorageBundle>): void;
+  recoverDeletedStorageAccount(vaultBaseUrl: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageBundle>): void;
+
+
+  /**
+   * @summary Backs up the specified storage account.
+   *
+   * Requests that a backup of the specified storage account be downloaded to the
+   * client. This operation requires the storage/backup permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<BackupStorageResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  backupStorageAccountWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupStorageResult>>;
+
+  /**
+   * @summary Backs up the specified storage account.
+   *
+   * Requests that a backup of the specified storage account be downloaded to the
+   * client. This operation requires the storage/backup permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {BackupStorageResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {BackupStorageResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link BackupStorageResult} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  backupStorageAccount(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupStorageResult>;
+  backupStorageAccount(vaultBaseUrl: string, storageAccountName: string, callback: ServiceCallback<models.BackupStorageResult>): void;
+  backupStorageAccount(vaultBaseUrl: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupStorageResult>): void;
+
+
+  /**
+   * @summary Restores a backed up storage account to a vault.
+   *
+   * Restores a backed up storage account to a vault. This operation requires the
+   * storage/restore permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {buffer} storageBundleBackup The backup blob associated with a
+   * storage account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<StorageBundle>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  restoreStorageAccountWithHttpOperationResponse(vaultBaseUrl: string, storageBundleBackup: Buffer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.StorageBundle>>;
+
+  /**
+   * @summary Restores a backed up storage account to a vault.
+   *
+   * Restores a backed up storage account to a vault. This operation requires the
+   * storage/restore permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {buffer} storageBundleBackup The backup blob associated with a
+   * storage account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {StorageBundle} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {StorageBundle} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link StorageBundle} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  restoreStorageAccount(vaultBaseUrl: string, storageBundleBackup: Buffer, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.StorageBundle>;
+  restoreStorageAccount(vaultBaseUrl: string, storageBundleBackup: Buffer, callback: ServiceCallback<models.StorageBundle>): void;
+  restoreStorageAccount(vaultBaseUrl: string, storageBundleBackup: Buffer, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.StorageBundle>): void;
+
+
+  /**
+   * Deletes a storage account. This operation requires the storage/delete
+   * permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeletedStorageBundle>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deleteStorageAccountWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedStorageBundle>>;
+
+  /**
+   * Deletes a storage account. This operation requires the storage/delete
+   * permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeletedStorageBundle} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeletedStorageBundle} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeletedStorageBundle} for more information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteStorageAccount(vaultBaseUrl: string, storageAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedStorageBundle>;
+  deleteStorageAccount(vaultBaseUrl: string, storageAccountName: string, callback: ServiceCallback<models.DeletedStorageBundle>): void;
+  deleteStorageAccount(vaultBaseUrl: string, storageAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedStorageBundle>): void;
 
 
   /**
@@ -5825,8 +6476,163 @@ export default class KeyVaultClient extends AzureServiceClient {
 
 
   /**
-   * Deletes a SAS definition from a specified storage account. This operation
-   * requires the storage/deletesas permission.
+   * @summary Lists deleted SAS definitions for the specified vault and storage
+   * account.
+   *
+   * The Get Deleted Sas Definitions operation returns the SAS definitions that
+   * have been deleted for a vault enabled for soft-delete. This operation
+   * requires the storage/listsas permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.maxresults] Maximum number of results to return in
+   * a page. If not specified the service will return up to 25 results.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeletedSasDefinitionListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeletedSasDefinitionsWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedSasDefinitionListResult>>;
+
+  /**
+   * @summary Lists deleted SAS definitions for the specified vault and storage
+   * account.
+   *
+   * The Get Deleted Sas Definitions operation returns the SAS definitions that
+   * have been deleted for a vault enabled for soft-delete. This operation
+   * requires the storage/listsas permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {number} [options.maxresults] Maximum number of results to return in
+   * a page. If not specified the service will return up to 25 results.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeletedSasDefinitionListResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeletedSasDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeletedSasDefinitionListResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeletedSasDefinitions(vaultBaseUrl: string, storageAccountName: string, options?: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedSasDefinitionListResult>;
+  getDeletedSasDefinitions(vaultBaseUrl: string, storageAccountName: string, callback: ServiceCallback<models.DeletedSasDefinitionListResult>): void;
+  getDeletedSasDefinitions(vaultBaseUrl: string, storageAccountName: string, options: { maxresults? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedSasDefinitionListResult>): void;
+
+
+  /**
+   * @summary Gets the specified deleted sas definition.
+   *
+   * The Get Deleted SAS Definition operation returns the specified deleted SAS
+   * definition along with its attributes. This operation requires the
+   * storage/getsas permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {string} sasDefinitionName The name of the SAS definition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeletedSasDefinitionBundle>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeletedSasDefinitionWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedSasDefinitionBundle>>;
+
+  /**
+   * @summary Gets the specified deleted sas definition.
+   *
+   * The Get Deleted SAS Definition operation returns the specified deleted SAS
+   * definition along with its attributes. This operation requires the
+   * storage/getsas permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {string} sasDefinitionName The name of the SAS definition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeletedSasDefinitionBundle} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeletedSasDefinitionBundle} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeletedSasDefinitionBundle} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeletedSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedSasDefinitionBundle>;
+  getDeletedSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, callback: ServiceCallback<models.DeletedSasDefinitionBundle>): void;
+  getDeletedSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedSasDefinitionBundle>): void;
+
+
+  /**
+   * @summary Recovers the deleted SAS definition.
+   *
+   * Recovers the deleted SAS definition for the specified storage account. This
+   * operation can only be performed on a soft-delete enabled vault. This
+   * operation requires the storage/recover permission.
    *
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
@@ -5846,11 +6652,14 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  deleteSasDefinitionWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SasDefinitionBundle>>;
+  recoverDeletedSasDefinitionWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SasDefinitionBundle>>;
 
   /**
-   * Deletes a SAS definition from a specified storage account. This operation
-   * requires the storage/deletesas permission.
+   * @summary Recovers the deleted SAS definition.
+   *
+   * Recovers the deleted SAS definition for the specified storage account. This
+   * operation can only be performed on a soft-delete enabled vault. This
+   * operation requires the storage/recover permission.
    *
    * @param {string} vaultBaseUrl The vault name, for example
    * https://myvault.vault.azure.net.
@@ -5886,9 +6695,77 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  deleteSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SasDefinitionBundle>;
-  deleteSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, callback: ServiceCallback<models.SasDefinitionBundle>): void;
-  deleteSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SasDefinitionBundle>): void;
+  recoverDeletedSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SasDefinitionBundle>;
+  recoverDeletedSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, callback: ServiceCallback<models.SasDefinitionBundle>): void;
+  recoverDeletedSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SasDefinitionBundle>): void;
+
+
+  /**
+   * Deletes a SAS definition from a specified storage account. This operation
+   * requires the storage/deletesas permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {string} sasDefinitionName The name of the SAS definition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeletedSasDefinitionBundle>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  deleteSasDefinitionWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedSasDefinitionBundle>>;
+
+  /**
+   * Deletes a SAS definition from a specified storage account. This operation
+   * requires the storage/deletesas permission.
+   *
+   * @param {string} vaultBaseUrl The vault name, for example
+   * https://myvault.vault.azure.net.
+   *
+   * @param {string} storageAccountName The name of the storage account.
+   *
+   * @param {string} sasDefinitionName The name of the SAS definition.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeletedSasDefinitionBundle} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeletedSasDefinitionBundle} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeletedSasDefinitionBundle} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  deleteSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedSasDefinitionBundle>;
+  deleteSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, callback: ServiceCallback<models.DeletedSasDefinitionBundle>): void;
+  deleteSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedSasDefinitionBundle>): void;
 
 
   /**
@@ -5969,8 +6846,15 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} sasDefinitionName The name of the SAS definition.
    *
-   * @param {object} parameters Sas definition creation metadata in the form of
-   * key-value pairs.
+   * @param {string} templateUri The SAS definition token template signed with an
+   * arbitrary key.  Tokens created according to the SAS definition will have the
+   * same properties as the template.
+   *
+   * @param {string} sasType The type of SAS token the SAS definition will
+   * create. Possible values include: 'account', 'service'
+   *
+   * @param {string} validityPeriod The validity period of SAS tokens created
+   * according to the SAS definition.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -5992,7 +6876,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  setSasDefinitionWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, parameters: { [propertyName: string]: string }, options?: { sasDefinitionAttributes? : models.SasDefinitionAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SasDefinitionBundle>>;
+  setSasDefinitionWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, templateUri: string, sasType: string, validityPeriod: string, options?: { sasDefinitionAttributes? : models.SasDefinitionAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SasDefinitionBundle>>;
 
   /**
    * Creates or updates a new SAS definition for the specified storage account.
@@ -6005,8 +6889,15 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {string} sasDefinitionName The name of the SAS definition.
    *
-   * @param {object} parameters Sas definition creation metadata in the form of
-   * key-value pairs.
+   * @param {string} templateUri The SAS definition token template signed with an
+   * arbitrary key.  Tokens created according to the SAS definition will have the
+   * same properties as the template.
+   *
+   * @param {string} sasType The type of SAS token the SAS definition will
+   * create. Possible values include: 'account', 'service'
+   *
+   * @param {string} validityPeriod The validity period of SAS tokens created
+   * according to the SAS definition.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -6044,9 +6935,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  setSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, parameters: { [propertyName: string]: string }, options?: { sasDefinitionAttributes? : models.SasDefinitionAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.SasDefinitionBundle>;
-  setSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, parameters: { [propertyName: string]: string }, callback: ServiceCallback<models.SasDefinitionBundle>): void;
-  setSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, parameters: { [propertyName: string]: string }, options: { sasDefinitionAttributes? : models.SasDefinitionAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SasDefinitionBundle>): void;
+  setSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, templateUri: string, sasType: string, validityPeriod: string, options?: { sasDefinitionAttributes? : models.SasDefinitionAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.SasDefinitionBundle>;
+  setSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, templateUri: string, sasType: string, validityPeriod: string, callback: ServiceCallback<models.SasDefinitionBundle>): void;
+  setSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, templateUri: string, sasType: string, validityPeriod: string, options: { sasDefinitionAttributes? : models.SasDefinitionAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SasDefinitionBundle>): void;
 
 
   /**
@@ -6062,8 +6953,15 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {object} [options.parameters] Sas definition update metadata in the
-   * form of key-value pairs.
+   * @param {string} [options.templateUri] The SAS definition token template
+   * signed with an arbitrary key.  Tokens created according to the SAS
+   * definition will have the same properties as the template.
+   *
+   * @param {string} [options.sasType] The type of SAS token the SAS definition
+   * will create. Possible values include: 'account', 'service'
+   *
+   * @param {string} [options.validityPeriod] The validity period of SAS tokens
+   * created according to the SAS definition.
    *
    * @param {object} [options.sasDefinitionAttributes] The attributes of the SAS
    * definition.
@@ -6083,7 +6981,7 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  updateSasDefinitionWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options?: { parameters? : { [propertyName: string]: string }, sasDefinitionAttributes? : models.SasDefinitionAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SasDefinitionBundle>>;
+  updateSasDefinitionWithHttpOperationResponse(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options?: { templateUri? : string, sasType? : string, validityPeriod? : string, sasDefinitionAttributes? : models.SasDefinitionAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SasDefinitionBundle>>;
 
   /**
    * Updates the specified attributes associated with the given SAS definition.
@@ -6098,8 +6996,15 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {object} [options.parameters] Sas definition update metadata in the
-   * form of key-value pairs.
+   * @param {string} [options.templateUri] The SAS definition token template
+   * signed with an arbitrary key.  Tokens created according to the SAS
+   * definition will have the same properties as the template.
+   *
+   * @param {string} [options.sasType] The type of SAS token the SAS definition
+   * will create. Possible values include: 'account', 'service'
+   *
+   * @param {string} [options.validityPeriod] The validity period of SAS tokens
+   * created according to the SAS definition.
    *
    * @param {object} [options.sasDefinitionAttributes] The attributes of the SAS
    * definition.
@@ -6135,9 +7040,9 @@ export default class KeyVaultClient extends AzureServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  updateSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options?: { parameters? : { [propertyName: string]: string }, sasDefinitionAttributes? : models.SasDefinitionAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.SasDefinitionBundle>;
+  updateSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options?: { templateUri? : string, sasType? : string, validityPeriod? : string, sasDefinitionAttributes? : models.SasDefinitionAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }): Promise<models.SasDefinitionBundle>;
   updateSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, callback: ServiceCallback<models.SasDefinitionBundle>): void;
-  updateSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options: { parameters? : { [propertyName: string]: string }, sasDefinitionAttributes? : models.SasDefinitionAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SasDefinitionBundle>): void;
+  updateSasDefinition(vaultBaseUrl: string, storageAccountName: string, sasDefinitionName: string, options: { templateUri? : string, sasType? : string, validityPeriod? : string, sasDefinitionAttributes? : models.SasDefinitionAttributes, tags? : { [propertyName: string]: string }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SasDefinitionBundle>): void;
 
 
   /**
@@ -6871,6 +7776,72 @@ export default class KeyVaultClient extends AzureServiceClient {
 
 
   /**
+   * @summary Lists deleted storage accounts for the specified vault.
+   *
+   * The Get Deleted Storage Accounts operation returns the storage accounts that
+   * have been deleted for a vault enabled for soft-delete. This operation
+   * requires the storage/list permission.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeletedStorageListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeletedStorageAccountsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedStorageListResult>>;
+
+  /**
+   * @summary Lists deleted storage accounts for the specified vault.
+   *
+   * The Get Deleted Storage Accounts operation returns the storage accounts that
+   * have been deleted for a vault enabled for soft-delete. This operation
+   * requires the storage/list permission.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeletedStorageListResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeletedStorageListResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeletedStorageListResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeletedStorageAccountsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedStorageListResult>;
+  getDeletedStorageAccountsNext(nextPageLink: string, callback: ServiceCallback<models.DeletedStorageListResult>): void;
+  getDeletedStorageAccountsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedStorageListResult>): void;
+
+
+  /**
    * List storage SAS definitions for the given storage account. This operation
    * requires the storage/listsas permission.
    *
@@ -6928,6 +7899,74 @@ export default class KeyVaultClient extends AzureServiceClient {
   getSasDefinitionsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SasDefinitionListResult>;
   getSasDefinitionsNext(nextPageLink: string, callback: ServiceCallback<models.SasDefinitionListResult>): void;
   getSasDefinitionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SasDefinitionListResult>): void;
+
+
+  /**
+   * @summary Lists deleted SAS definitions for the specified vault and storage
+   * account.
+   *
+   * The Get Deleted Sas Definitions operation returns the SAS definitions that
+   * have been deleted for a vault enabled for soft-delete. This operation
+   * requires the storage/listsas permission.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @returns {Promise} A promise is returned
+   *
+   * @resolve {HttpOperationResponse<DeletedSasDefinitionListResult>} - The deserialized result object.
+   *
+   * @reject {Error|ServiceError} - The error object.
+   */
+  getDeletedSasDefinitionsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DeletedSasDefinitionListResult>>;
+
+  /**
+   * @summary Lists deleted SAS definitions for the specified vault and storage
+   * account.
+   *
+   * The Get Deleted Sas Definitions operation returns the SAS definitions that
+   * have been deleted for a vault enabled for soft-delete. This operation
+   * requires the storage/listsas permission.
+   *
+   * @param {string} nextPageLink The NextLink from the previous successful call
+   * to List operation.
+   *
+   * @param {object} [options] Optional Parameters.
+   *
+   * @param {object} [options.customHeaders] Headers that will be added to the
+   * request
+   *
+   * @param {ServiceCallback} [optionalCallback] - The optional callback.
+   *
+   * @returns {ServiceCallback|Promise} If a callback was passed as the last
+   * parameter then it returns the callback else returns a Promise.
+   *
+   * {Promise} A promise is returned.
+   *
+   *                      @resolve {DeletedSasDefinitionListResult} - The deserialized result object.
+   *
+   *                      @reject {Error|ServiceError} - The error object.
+   *
+   * {ServiceCallback} optionalCallback(err, result, request, response)
+   *
+   *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+   *
+   *                      {DeletedSasDefinitionListResult} [result]   - The deserialized result object if an error did not occur.
+   *                      See {@link DeletedSasDefinitionListResult} for more
+   *                      information.
+   *
+   *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+   *
+   *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+   */
+  getDeletedSasDefinitionsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DeletedSasDefinitionListResult>;
+  getDeletedSasDefinitionsNext(nextPageLink: string, callback: ServiceCallback<models.DeletedSasDefinitionListResult>): void;
+  getDeletedSasDefinitionsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DeletedSasDefinitionListResult>): void;
 }
 
 export { KeyVaultClient, models as KeyVaultModels };
