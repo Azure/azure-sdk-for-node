@@ -270,6 +270,8 @@ export interface BackendAddressPool extends SubResource {
  * resolves to this public IP address. If the reverseFqdn is specified, then a
  * PTR DNS record is created pointing from the IP address in the in-addr.arpa
  * domain to the reverse FQDN.
+ * @member {array} [backendIPConfiguration.publicIPAddress.ipTags] The list of
+ * tags associated with the public IP address.
  * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress] The IP
  * address associated with the public IP address resource.
  * @member {number}
@@ -687,6 +689,22 @@ export interface PublicIPAddressDnsSettings {
 
 /**
  * @class
+ * Initializes a new instance of the IpTag class.
+ * @constructor
+ * Contains the IpTag associated with the public IP address
+ *
+ * @member {string} [ipTagType] Gets or sets the ipTag type: Example
+ * FirstPartyUsage.
+ * @member {string} [tag] Gets or sets value of the IpTag associated with the
+ * public IP. Example SQL, Storage etc
+ */
+export interface IpTag {
+  ipTagType?: string;
+  tag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PublicIPAddress class.
  * @constructor
  * Public IP address resource.
@@ -783,6 +801,8 @@ export interface PublicIPAddressDnsSettings {
  * user-visible, fully qualified domain name that resolves to this public IP
  * address. If the reverseFqdn is specified, then a PTR DNS record is created
  * pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+ * @member {array} [ipTags] The list of tags associated with the public IP
+ * address.
  * @member {string} [ipAddress] The IP address associated with the public IP
  * address resource.
  * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
@@ -802,6 +822,7 @@ export interface PublicIPAddress extends Resource {
   publicIPAddressVersion?: string;
   readonly ipConfiguration?: IPConfiguration;
   dnsSettings?: PublicIPAddressDnsSettings;
+  ipTags?: IpTag[];
   ipAddress?: string;
   idleTimeoutInMinutes?: number;
   resourceGuid?: string;
@@ -893,6 +914,8 @@ export interface PublicIPAddress extends Resource {
  * this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
+ * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
@@ -1177,6 +1200,8 @@ export interface Subnet extends SubResource {
  * this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
+ * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
@@ -1536,6 +1561,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * that resolves to this public IP address. If the reverseFqdn is specified,
  * then a PTR DNS record is created pointing from the IP address in the
  * in-addr.arpa domain to the reverse FQDN.
+ * @member {array} [ipConfiguration.publicIPAddress.ipTags] The list of tags
+ * associated with the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.ipAddress] The IP address
  * associated with the public IP address resource.
  * @member {number} [ipConfiguration.publicIPAddress.idleTimeoutInMinutes] The
@@ -2151,6 +2178,9 @@ export interface ApplicationGatewayFirewallDisabledRuleGroup {
  * set. Possible values are: 'OWASP'.
  * @member {string} ruleSetVersion The version of the rule set type.
  * @member {array} [disabledRuleGroups] The disabled rule groups.
+ * @member {boolean} [requestBodyCheck] Whether allow WAF to check request
+ * Body.
+ * @member {number} [maxRequestBodySize] Maxium request body size for WAF.
  */
 export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   enabled: boolean;
@@ -2158,6 +2188,8 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
   ruleSetType: string;
   ruleSetVersion: string;
   disabledRuleGroups?: ApplicationGatewayFirewallDisabledRuleGroup[];
+  requestBodyCheck?: boolean;
+  maxRequestBodySize?: number;
 }
 
 /**
@@ -2226,6 +2258,10 @@ export interface ApplicationGatewayWebApplicationFirewallConfiguration {
  * version of the rule set type.
  * @member {array} [webApplicationFirewallConfiguration.disabledRuleGroups] The
  * disabled rule groups.
+ * @member {boolean} [webApplicationFirewallConfiguration.requestBodyCheck]
+ * Whether allow WAF to check request Body.
+ * @member {number} [webApplicationFirewallConfiguration.maxRequestBodySize]
+ * Maxium request body size for WAF.
  * @member {boolean} [enableHttp2] Whether HTTP2 is enabled on the application
  * gateway resource.
  * @member {string} [resourceGuid] Resource GUID property of the application
@@ -2392,6 +2428,31 @@ export interface DnsNameAvailabilityResult {
 
 /**
  * @class
+ * Initializes a new instance of the DdosProtectionPlan class.
+ * @constructor
+ * A DDoS protection plan in a resource group.
+ *
+ * @member {string} [resourceGuid] The resource GUID property of the DDoS
+ * protection plan resource. It uniquely identifies the resource, even if the
+ * user changes its name or migrate the resource across subscriptions or
+ * resource groups.
+ * @member {string} [provisioningState] The provisioning state of the DDoS
+ * protection plan resource. Possible values are: 'Succeeded', 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {array} [virtualNetworks] The list of virtual networks associated
+ * with the DDoS protection plan resource. This list is read-only.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface DdosProtectionPlan extends Resource {
+  readonly resourceGuid?: string;
+  readonly provisioningState?: string;
+  readonly virtualNetworks?: SubResource[];
+  readonly etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EndpointServiceResult class.
  * @constructor
  * Endpoint service.
@@ -2475,7 +2536,6 @@ export interface ExpressRouteCircuitPeeringConfig {
  * @member {string} [location] Resource location.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
- * @member {object} [tags] Resource tags.
  */
 export interface RouteFilterRule extends SubResource {
   access: string;
@@ -2484,7 +2544,6 @@ export interface RouteFilterRule extends SubResource {
   name?: string;
   location?: string;
   readonly etag?: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -2507,16 +2566,51 @@ export interface ExpressRouteCircuitStats {
 
 /**
  * @class
+ * Initializes a new instance of the ExpressRouteCircuitConnection class.
+ * @constructor
+ * Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
+ *
+ * @member {object} [expressRouteCircuitPeering] Reference to Express Route
+ * Circuit Private Peering Resource of the circuit initiating connection.
+ * @member {string} [expressRouteCircuitPeering.id] Resource ID.
+ * @member {object} [peerExpressRouteCircuitPeering] Reference to Express Route
+ * Circuit Private Peering Resource of the peered circuit.
+ * @member {string} [peerExpressRouteCircuitPeering.id] Resource ID.
+ * @member {string} [addressPrefix] /29 IP address space to carve out Customer
+ * addresses for tunnels.
+ * @member {string} [authorizationKey] The authorization key.
+ * @member {string} [circuitConnectionStatus] Express Route Circuit Connection
+ * State. Possible values are: 'Connected' and 'Disconnected'. Possible values
+ * include: 'Connected', 'Connecting', 'Disconnected'
+ * @member {string} [provisioningState] Provisioning state of the circuit
+ * connection resource. Possible values are: 'Succeded', 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ExpressRouteCircuitConnection extends SubResource {
+  expressRouteCircuitPeering?: SubResource;
+  peerExpressRouteCircuitPeering?: SubResource;
+  addressPrefix?: string;
+  authorizationKey?: string;
+  readonly circuitConnectionStatus?: string;
+  readonly provisioningState?: string;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ExpressRouteCircuitPeering class.
  * @constructor
  * Peering in an ExpressRouteCircuit resource.
  *
- * @member {string} [peeringType] The PeeringType. Possible values are:
- * 'AzurePublicPeering', 'AzurePrivatePeering', and 'MicrosoftPeering'.
- * Possible values include: 'AzurePublicPeering', 'AzurePrivatePeering',
- * 'MicrosoftPeering'
- * @member {string} [state] The state of peering. Possible values are:
- * 'Disabled' and 'Enabled'. Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [peeringType] The peering type. Possible values include:
+ * 'AzurePublicPeering', 'AzurePrivatePeering', 'MicrosoftPeering'
+ * @member {string} [state] The peering state. Possible values include:
+ * 'Disabled', 'Enabled'
  * @member {number} [azureASN] The Azure ASN.
  * @member {number} [peerASN] The peer ASN.
  * @member {string} [primaryPeerAddressPrefix] The primary address prefix.
@@ -2603,6 +2697,8 @@ export interface ExpressRouteCircuitStats {
  * @member {string} [ipv6PeeringConfig.state] The state of peering. Possible
  * values are: 'Disabled' and 'Enabled'. Possible values include: 'Disabled',
  * 'Enabled'
+ * @member {array} [connections] The list of circuit connections associated
+ * with Azure Private Peering for this circuit.
  * @member {string} [name] Gets name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -2626,6 +2722,7 @@ export interface ExpressRouteCircuitPeering extends SubResource {
   lastModifiedBy?: string;
   routeFilter?: RouteFilter;
   ipv6PeeringConfig?: Ipv6ExpressRouteCircuitPeeringConfig;
+  connections?: ExpressRouteCircuitConnection[];
   name?: string;
   readonly etag?: string;
 }
@@ -2923,6 +3020,201 @@ export interface ExpressRouteServiceProvider extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the ExpressRouteCrossConnectionRoutesTableSummary class.
+ * @constructor
+ * The routes table associated with the ExpressRouteCircuit.
+ *
+ * @member {string} [neighbor] IP address of Neighbor router
+ * @member {number} [asn] Autonomous system number.
+ * @member {string} [upDown] The length of time that the BGP session has been
+ * in the Established state, or the current status if not in the Established
+ * state.
+ * @member {string} [stateOrPrefixesReceived] Current state of the BGP session,
+ * and the number of prefixes that have been received from a neighbor or peer
+ * group.
+ */
+export interface ExpressRouteCrossConnectionRoutesTableSummary {
+  neighbor?: string;
+  asn?: number;
+  upDown?: string;
+  stateOrPrefixesReceived?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCrossConnectionsRoutesTableSummaryListResult class.
+ * @constructor
+ * Response for ListRoutesTable associated with the Express Route Cross
+ * Connections.
+ *
+ * @member {array} [value] A list of the routes table.
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ExpressRouteCrossConnectionsRoutesTableSummaryListResult {
+  value?: ExpressRouteCrossConnectionRoutesTableSummary[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCircuitReference class.
+ * @constructor
+ * @member {string} [id] Corresponding Express Route Circuit Id.
+ */
+export interface ExpressRouteCircuitReference {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCrossConnectionPeering class.
+ * @constructor
+ * Peering in an ExpressRoute Cross Connection resource.
+ *
+ * @member {string} [peeringType] The peering type. Possible values include:
+ * 'AzurePublicPeering', 'AzurePrivatePeering', 'MicrosoftPeering'
+ * @member {string} [state] The peering state. Possible values include:
+ * 'Disabled', 'Enabled'
+ * @member {number} [azureASN] The Azure ASN.
+ * @member {number} [peerASN] The peer ASN.
+ * @member {string} [primaryPeerAddressPrefix] The primary address prefix.
+ * @member {string} [secondaryPeerAddressPrefix] The secondary address prefix.
+ * @member {string} [primaryAzurePort] The primary port.
+ * @member {string} [secondaryAzurePort] The secondary port.
+ * @member {string} [sharedKey] The shared key.
+ * @member {number} [vlanId] The VLAN ID.
+ * @member {object} [microsoftPeeringConfig] The Microsoft peering
+ * configuration.
+ * @member {array} [microsoftPeeringConfig.advertisedPublicPrefixes] The
+ * reference of AdvertisedPublicPrefixes.
+ * @member {array} [microsoftPeeringConfig.advertisedCommunities] The
+ * communities of bgp peering. Spepcified for microsoft peering
+ * @member {string} [microsoftPeeringConfig.advertisedPublicPrefixesState]
+ * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+ * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+ * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+ * 'ValidationNeeded'
+ * @member {number} [microsoftPeeringConfig.legacyMode] The legacy mode of the
+ * peering.
+ * @member {number} [microsoftPeeringConfig.customerASN] The CustomerASN of the
+ * peering.
+ * @member {string} [microsoftPeeringConfig.routingRegistryName] The
+ * RoutingRegistryName of the configuration.
+ * @member {string} [provisioningState] Gets the provisioning state of the
+ * public IP resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {string} [gatewayManagerEtag] The GatewayManager Etag.
+ * @member {string} [lastModifiedBy] Gets whether the provider or the customer
+ * last modified the peering.
+ * @member {object} [ipv6PeeringConfig] The IPv6 peering configuration.
+ * @member {string} [ipv6PeeringConfig.primaryPeerAddressPrefix] The primary
+ * address prefix.
+ * @member {string} [ipv6PeeringConfig.secondaryPeerAddressPrefix] The
+ * secondary address prefix.
+ * @member {object} [ipv6PeeringConfig.microsoftPeeringConfig] The Microsoft
+ * peering configuration.
+ * @member {array}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixes] The
+ * reference of AdvertisedPublicPrefixes.
+ * @member {array}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedCommunities] The
+ * communities of bgp peering. Spepcified for microsoft peering
+ * @member {string}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.advertisedPublicPrefixesState]
+ * AdvertisedPublicPrefixState of the Peering resource. Possible values are
+ * 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
+ * Possible values include: 'NotConfigured', 'Configuring', 'Configured',
+ * 'ValidationNeeded'
+ * @member {number} [ipv6PeeringConfig.microsoftPeeringConfig.legacyMode] The
+ * legacy mode of the peering.
+ * @member {number} [ipv6PeeringConfig.microsoftPeeringConfig.customerASN] The
+ * CustomerASN of the peering.
+ * @member {string}
+ * [ipv6PeeringConfig.microsoftPeeringConfig.routingRegistryName] The
+ * RoutingRegistryName of the configuration.
+ * @member {object} [ipv6PeeringConfig.routeFilter] The reference of the
+ * RouteFilter resource.
+ * @member {array} [ipv6PeeringConfig.routeFilter.rules] Collection of
+ * RouteFilterRules contained within a route filter.
+ * @member {array} [ipv6PeeringConfig.routeFilter.peerings] A collection of
+ * references to express route circuit peerings.
+ * @member {string} [ipv6PeeringConfig.routeFilter.provisioningState] The
+ * provisioning state of the resource. Possible values are: 'Updating',
+ * 'Deleting', 'Succeeded' and 'Failed'.
+ * @member {string} [ipv6PeeringConfig.routeFilter.etag] Gets a unique
+ * read-only string that changes whenever the resource is updated.
+ * @member {string} [ipv6PeeringConfig.state] The state of peering. Possible
+ * values are: 'Disabled' and 'Enabled'. Possible values include: 'Disabled',
+ * 'Enabled'
+ * @member {string} [name] Gets name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ExpressRouteCrossConnectionPeering extends SubResource {
+  peeringType?: string;
+  state?: string;
+  readonly azureASN?: number;
+  peerASN?: number;
+  primaryPeerAddressPrefix?: string;
+  secondaryPeerAddressPrefix?: string;
+  readonly primaryAzurePort?: string;
+  readonly secondaryAzurePort?: string;
+  sharedKey?: string;
+  vlanId?: number;
+  microsoftPeeringConfig?: ExpressRouteCircuitPeeringConfig;
+  readonly provisioningState?: string;
+  readonly gatewayManagerEtag?: string;
+  lastModifiedBy?: string;
+  ipv6PeeringConfig?: Ipv6ExpressRouteCircuitPeeringConfig;
+  name?: string;
+  readonly etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCrossConnection class.
+ * @constructor
+ * ExpressRouteCrossConnection resource
+ *
+ * @member {string} [primaryAzurePort] The name of the primary  port.
+ * @member {string} [secondaryAzurePort] The name of the secondary  port.
+ * @member {number} [sTag] The identifier of the circuit traffic.
+ * @member {string} [peeringLocation] The peering location of the ExpressRoute
+ * circuit.
+ * @member {number} [bandwidthInMbps] The circuit bandwidth In Mbps.
+ * @member {object} [expressRouteCircuit] The ExpressRouteCircuit
+ * @member {string} [expressRouteCircuit.id] Corresponding Express Route
+ * Circuit Id.
+ * @member {string} [serviceProviderProvisioningState] The provisioning state
+ * of the circuit in the connectivity provider system. Possible values are
+ * 'NotProvisioned', 'Provisioning', 'Provisioned'. Possible values include:
+ * 'NotProvisioned', 'Provisioning', 'Provisioned', 'Deprovisioning'
+ * @member {string} [serviceProviderNotes] Additional read only notes set by
+ * the connectivity provider.
+ * @member {string} [provisioningState] Gets the provisioning state of the
+ * public IP resource. Possible values are: 'Updating', 'Deleting', and
+ * 'Failed'.
+ * @member {array} [peerings] The list of peerings.
+ * @member {string} [etag] Gets a unique read-only string that changes whenever
+ * the resource is updated.
+ */
+export interface ExpressRouteCrossConnection extends Resource {
+  readonly primaryAzurePort?: string;
+  readonly secondaryAzurePort?: string;
+  readonly sTag?: number;
+  readonly peeringLocation?: string;
+  readonly bandwidthInMbps?: number;
+  readonly expressRouteCircuit?: ExpressRouteCircuitReference;
+  serviceProviderProvisioningState?: string;
+  serviceProviderNotes?: string;
+  readonly provisioningState?: string;
+  peerings?: ExpressRouteCrossConnectionPeering[];
+  readonly etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the LoadBalancerSku class.
  * @constructor
  * SKU of a load balancer
@@ -3101,6 +3393,8 @@ export interface LoadBalancerSku {
  * this public IP address. If the reverseFqdn is specified, then a PTR DNS
  * record is created pointing from the IP address in the in-addr.arpa domain to
  * the reverse FQDN.
+ * @member {array} [publicIPAddress.ipTags] The list of tags associated with
+ * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
@@ -3265,6 +3559,14 @@ export interface Probe extends SubResource {
  * with a load balancer. Acceptable values range between 1 and 65535.
  * @member {number} backendPort The port used for internal connections on the
  * endpoint. Acceptable values are between 1 and 65535.
+ * @member {number} [idleTimeoutInMinutes] The timeout for the TCP idle
+ * connection. The value can be set between 4 and 30 minutes. The default value
+ * is 4 minutes. This element is only used when the protocol is set to TCP.
+ * @member {boolean} [enableFloatingIP] Configures a virtual machine's endpoint
+ * for the floating IP capability required to configure a SQL AlwaysOn
+ * Availability Group. This setting is required when using the SQL AlwaysOn
+ * Availability Groups in SQL server. This setting can't be changed after you
+ * create the endpoint.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -3279,6 +3581,8 @@ export interface InboundNatPool extends SubResource {
   frontendPortRangeStart: number;
   frontendPortRangeEnd: number;
   backendPort: number;
+  idleTimeoutInMinutes?: number;
+  enableFloatingIP?: boolean;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -4267,6 +4571,52 @@ export interface ConnectivityDestination {
 
 /**
  * @class
+ * Initializes a new instance of the HTTPHeader class.
+ * @constructor
+ * Describes the HTTP header.
+ *
+ * @member {string} [name] The name in HTTP header.
+ * @member {string} [value] The value in HTTP header.
+ */
+export interface HTTPHeader {
+  name?: string;
+  value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HTTPConfiguration class.
+ * @constructor
+ * HTTP configuration of the connectivity check.
+ *
+ * @member {string} [method] HTTP method. Possible values include: 'Get'
+ * @member {array} [headers] List of HTTP headers.
+ * @member {array} [validStatusCodes] Valid status codes.
+ */
+export interface HTTPConfiguration {
+  method?: string;
+  headers?: HTTPHeader[];
+  validStatusCodes?: number[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProtocolConfiguration class.
+ * @constructor
+ * Configuration of the protocol.
+ *
+ * @member {object} [hTTPConfiguration]
+ * @member {string} [hTTPConfiguration.method] HTTP method. Possible values
+ * include: 'Get'
+ * @member {array} [hTTPConfiguration.headers] List of HTTP headers.
+ * @member {array} [hTTPConfiguration.validStatusCodes] Valid status codes.
+ */
+export interface ProtocolConfiguration {
+  hTTPConfiguration?: HTTPConfiguration;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ConnectivityParameters class.
  * @constructor
  * Parameters that determine how the connectivity check will be performed.
@@ -4283,10 +4633,22 @@ export interface ConnectivityDestination {
  * which a connection attempt will be made.
  * @member {number} [destination.port] Port on which check connectivity will be
  * performed.
+ * @member {string} [protocol] Network protocol. Possible values include:
+ * 'Tcp', 'Http', 'Https', 'Icmp'
+ * @member {object} [protocolConfiguration]
+ * @member {object} [protocolConfiguration.hTTPConfiguration]
+ * @member {string} [protocolConfiguration.hTTPConfiguration.method] HTTP
+ * method. Possible values include: 'Get'
+ * @member {array} [protocolConfiguration.hTTPConfiguration.headers] List of
+ * HTTP headers.
+ * @member {array} [protocolConfiguration.hTTPConfiguration.validStatusCodes]
+ * Valid status codes.
  */
 export interface ConnectivityParameters {
   source: ConnectivitySource;
   destination: ConnectivityDestination;
+  protocol?: string;
+  protocolConfiguration?: ProtocolConfiguration;
 }
 
 /**
@@ -4530,6 +4892,190 @@ export interface AvailableProvidersList {
 
 /**
  * @class
+ * Initializes a new instance of the ConnectionMonitorSource class.
+ * @constructor
+ * Describes the source of connection monitor.
+ *
+ * @member {string} resourceId The ID of the resource used as the source by
+ * connection monitor.
+ * @member {number} [port] The source port used by connection monitor.
+ */
+export interface ConnectionMonitorSource {
+  resourceId: string;
+  port?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorDestination class.
+ * @constructor
+ * Describes the destination of connection monitor.
+ *
+ * @member {string} [resourceId] The ID of the resource used as the destination
+ * by connection monitor.
+ * @member {string} [address] Address of the connection monitor destination (IP
+ * or domain name).
+ * @member {number} [port] The destination port used by connection monitor.
+ */
+export interface ConnectionMonitorDestination {
+  resourceId?: string;
+  address?: string;
+  port?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorParameters class.
+ * @constructor
+ * Parameters that define the operation to create a connection monitor.
+ *
+ * @member {object} source
+ * @member {string} [source.resourceId] The ID of the resource used as the
+ * source by connection monitor.
+ * @member {number} [source.port] The source port used by connection monitor.
+ * @member {object} destination
+ * @member {string} [destination.resourceId] The ID of the resource used as the
+ * destination by connection monitor.
+ * @member {string} [destination.address] Address of the connection monitor
+ * destination (IP or domain name).
+ * @member {number} [destination.port] The destination port used by connection
+ * monitor.
+ * @member {boolean} [autoStart] Determines if the connection monitor will
+ * start automatically once created. Default value: true .
+ * @member {number} [monitoringIntervalInSeconds] Monitoring interval in
+ * seconds. Default value: 60 .
+ */
+export interface ConnectionMonitorParameters {
+  source: ConnectionMonitorSource;
+  destination: ConnectionMonitorDestination;
+  autoStart?: boolean;
+  monitoringIntervalInSeconds?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitor class.
+ * @constructor
+ * Parameters that define the operation to create a connection monitor.
+ *
+ * @member {string} [location] Connection monitor location.
+ * @member {object} [tags] Connection monitor tags.
+ * @member {object} source
+ * @member {string} [source.resourceId] The ID of the resource used as the
+ * source by connection monitor.
+ * @member {number} [source.port] The source port used by connection monitor.
+ * @member {object} destination
+ * @member {string} [destination.resourceId] The ID of the resource used as the
+ * destination by connection monitor.
+ * @member {string} [destination.address] Address of the connection monitor
+ * destination (IP or domain name).
+ * @member {number} [destination.port] The destination port used by connection
+ * monitor.
+ * @member {boolean} [autoStart] Determines if the connection monitor will
+ * start automatically once created. Default value: true .
+ * @member {number} [monitoringIntervalInSeconds] Monitoring interval in
+ * seconds. Default value: 60 .
+ */
+export interface ConnectionMonitor {
+  location?: string;
+  tags?: { [propertyName: string]: string };
+  source: ConnectionMonitorSource;
+  destination: ConnectionMonitorDestination;
+  autoStart?: boolean;
+  monitoringIntervalInSeconds?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorResult class.
+ * @constructor
+ * Information about the connection monitor.
+ *
+ * @member {string} [name] Name of the connection monitor.
+ * @member {string} [id] ID of the connection monitor.
+ * @member {string} [etag] Default value: 'A unique read-only string that
+ * changes whenever the resource is updated.' .
+ * @member {string} [type] Connection monitor type.
+ * @member {string} [location] Connection monitor location.
+ * @member {object} [tags] Connection monitor tags.
+ * @member {object} source
+ * @member {string} [source.resourceId] The ID of the resource used as the
+ * source by connection monitor.
+ * @member {number} [source.port] The source port used by connection monitor.
+ * @member {object} destination
+ * @member {string} [destination.resourceId] The ID of the resource used as the
+ * destination by connection monitor.
+ * @member {string} [destination.address] Address of the connection monitor
+ * destination (IP or domain name).
+ * @member {number} [destination.port] The destination port used by connection
+ * monitor.
+ * @member {boolean} [autoStart] Determines if the connection monitor will
+ * start automatically once created. Default value: true .
+ * @member {number} [monitoringIntervalInSeconds] Monitoring interval in
+ * seconds. Default value: 60 .
+ * @member {string} [provisioningState] The provisioning state of the
+ * connection monitor. Possible values include: 'Succeeded', 'Updating',
+ * 'Deleting', 'Failed'
+ * @member {date} [startTime] The date and time when the connection monitor was
+ * started.
+ * @member {string} [monitoringStatus] The monitoring status of the connection
+ * monitor.
+ */
+export interface ConnectionMonitorResult extends BaseResource {
+  readonly name?: string;
+  readonly id?: string;
+  etag?: string;
+  readonly type?: string;
+  location?: string;
+  tags?: { [propertyName: string]: string };
+  source: ConnectionMonitorSource;
+  destination: ConnectionMonitorDestination;
+  autoStart?: boolean;
+  monitoringIntervalInSeconds?: number;
+  provisioningState?: string;
+  startTime?: Date;
+  monitoringStatus?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionStateSnapshot class.
+ * @constructor
+ * Connection state snapshot.
+ *
+ * @member {string} [connectionState] The connection state. Possible values
+ * include: 'Reachable', 'Unreachable', 'Unknown'
+ * @member {date} [startTime] The start time of the connection snapshot.
+ * @member {date} [endTime] The end time of the connection snapshot.
+ * @member {string} [evaluationState] Connectivity analysis evaluation state.
+ * Possible values include: 'NotStarted', 'InProgress', 'Completed'
+ * @member {array} [hops] List of hops between the source and the destination.
+ */
+export interface ConnectionStateSnapshot {
+  connectionState?: string;
+  startTime?: Date;
+  endTime?: Date;
+  evaluationState?: string;
+  readonly hops?: ConnectivityHop[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorQueryResult class.
+ * @constructor
+ * List of connection states snaphots.
+ *
+ * @member {string} [sourceStatus] Status of connection monitor source.
+ * Possible values include: 'Uknown', 'Active', 'Inactive'
+ * @member {array} [states] Information about connection states.
+ */
+export interface ConnectionMonitorQueryResult {
+  sourceStatus?: string;
+  states?: ConnectionStateSnapshot[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * Display metadata associated with the operation.
@@ -4692,7 +5238,6 @@ export interface Operation {
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
- * @member {object} [tags] Resource tags.
  */
 export interface PatchRouteFilterRule extends SubResource {
   access: string;
@@ -4700,7 +5245,6 @@ export interface PatchRouteFilterRule extends SubResource {
   readonly provisioningState?: string;
   readonly name?: string;
   readonly etag?: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -4909,9 +5453,13 @@ export interface DhcpOptions {
  * @member {string} [provisioningState] The provisioning state of the PublicIP
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {boolean} [enableDdosProtection] Indicates if DDoS protection is
- * enabled for all the protected resources in a Virtual Network.
- * @member {boolean} [enableVmProtection] Indicates if Vm protection is enabled
- * for all the subnets in a Virtual Network.
+ * enabled for all the protected resources in the virtual network. It requires
+ * a DDoS protection plan associated with the resource. Default value: false .
+ * @member {boolean} [enableVmProtection] Indicates if VM protection is enabled
+ * for all the subnets in the virtual network. Default value: false .
+ * @member {object} [ddosProtectionPlan] The DDoS protection plan associated
+ * with the virtual network.
+ * @member {string} [ddosProtectionPlan.id] Resource ID.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -4924,6 +5472,7 @@ export interface VirtualNetwork extends Resource {
   provisioningState?: string;
   enableDdosProtection?: boolean;
   enableVmProtection?: boolean;
+  ddosProtectionPlan?: SubResource;
   etag?: string;
 }
 
@@ -5076,6 +5625,48 @@ export interface VpnClientRevokedCertificate extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the IpsecPolicy class.
+ * @constructor
+ * An IPSec Policy configuration for a virtual network gateway connection
+ *
+ * @member {number} saLifeTimeSeconds The IPSec Security Association (also
+ * called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN
+ * tunnel.
+ * @member {number} saDataSizeKilobytes The IPSec Security Association (also
+ * called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN
+ * tunnel.
+ * @member {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
+ * 1). Possible values include: 'None', 'DES', 'DES3', 'AES128', 'AES192',
+ * 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
+ * @member {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase 1).
+ * Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128', 'GCMAES192',
+ * 'GCMAES256'
+ * @member {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
+ * Possible values include: 'DES', 'DES3', 'AES128', 'AES192', 'AES256',
+ * 'GCMAES256', 'GCMAES128'
+ * @member {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
+ * Possible values include: 'MD5', 'SHA1', 'SHA256', 'SHA384', 'GCMAES256',
+ * 'GCMAES128'
+ * @member {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
+ * Possible values include: 'None', 'DHGroup1', 'DHGroup2', 'DHGroup14',
+ * 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
+ * @member {string} pfsGroup The Pfs Groups used in IKE Phase 2 for new child
+ * SA. Possible values include: 'None', 'PFS1', 'PFS2', 'PFS2048', 'ECP256',
+ * 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
+ */
+export interface IpsecPolicy {
+  saLifeTimeSeconds: number;
+  saDataSizeKilobytes: number;
+  ipsecEncryption: string;
+  ipsecIntegrity: string;
+  ikeEncryption: string;
+  ikeIntegrity: string;
+  dhGroup: string;
+  pfsGroup: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VpnClientConfiguration class.
  * @constructor
  * VpnClientConfiguration for P2S client.
@@ -5090,6 +5681,8 @@ export interface VpnClientRevokedCertificate extends SubResource {
  * for Virtual network gateway.
  * @member {array} [vpnClientProtocols] VpnClientProtocols for Virtual network
  * gateway.
+ * @member {array} [vpnClientIpsecPolicies] VpnClientIpsecPolicies for virtual
+ * network gateway P2S client.
  * @member {string} [radiusServerAddress] The radius server address property of
  * the VirtualNetworkGateway resource for vpn client connection.
  * @member {string} [radiusServerSecret] The radius secret property of the
@@ -5100,6 +5693,7 @@ export interface VpnClientConfiguration {
   vpnClientRootCertificates?: VpnClientRootCertificate[];
   vpnClientRevokedCertificates?: VpnClientRevokedCertificate[];
   vpnClientProtocols?: string[];
+  vpnClientIpsecPolicies?: IpsecPolicy[];
   radiusServerAddress?: string;
   radiusServerSecret?: string;
 }
@@ -5220,6 +5814,8 @@ export interface GatewayRoute {
  * VpnClientRevokedCertificate for Virtual network gateway.
  * @member {array} [vpnClientConfiguration.vpnClientProtocols]
  * VpnClientProtocols for Virtual network gateway.
+ * @member {array} [vpnClientConfiguration.vpnClientIpsecPolicies]
+ * VpnClientIpsecPolicies for virtual network gateway P2S client.
  * @member {string} [vpnClientConfiguration.radiusServerAddress] The radius
  * server address property of the VirtualNetworkGateway resource for vpn client
  * connection.
@@ -5368,46 +5964,6 @@ export interface LocalNetworkGateway extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the IpsecPolicy class.
- * @constructor
- * An IPSec Policy configuration for a virtual network gateway connection
- *
- * @member {number} saLifeTimeSeconds The IPSec Security Association (also
- * called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN
- * tunnel.
- * @member {number} saDataSizeKilobytes The IPSec Security Association (also
- * called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN
- * tunnel.
- * @member {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
- * 1). Possible values include: 'None', 'DES', 'DES3', 'AES128', 'AES192',
- * 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
- * @member {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase 1).
- * Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128', 'GCMAES192',
- * 'GCMAES256'
- * @member {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
- * Possible values include: 'DES', 'DES3', 'AES128', 'AES192', 'AES256'
- * @member {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
- * Possible values include: 'MD5', 'SHA1', 'SHA256', 'SHA384'
- * @member {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
- * Possible values include: 'None', 'DHGroup1', 'DHGroup2', 'DHGroup14',
- * 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
- * @member {string} pfsGroup The DH Groups used in IKE Phase 2 for new child
- * SA. Possible values include: 'None', 'PFS1', 'PFS2', 'PFS2048', 'ECP256',
- * 'ECP384', 'PFS24'
- */
-export interface IpsecPolicy {
-  saLifeTimeSeconds: number;
-  saDataSizeKilobytes: number;
-  ipsecEncryption: string;
-  ipsecIntegrity: string;
-  ikeEncryption: string;
-  ikeIntegrity: string;
-  dhGroup: string;
-  pfsGroup: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the VirtualNetworkGatewayConnection class.
  * @constructor
  * A common class for general resource information
@@ -5460,6 +6016,9 @@ export interface IpsecPolicy {
  * @member {array}
  * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientProtocols]
  * VpnClientProtocols for Virtual network gateway.
+ * @member {array}
+ * [virtualNetworkGateway1.vpnClientConfiguration.vpnClientIpsecPolicies]
+ * VpnClientIpsecPolicies for virtual network gateway P2S client.
  * @member {string}
  * [virtualNetworkGateway1.vpnClientConfiguration.radiusServerAddress] The
  * radius server address property of the VirtualNetworkGateway resource for vpn
@@ -5530,6 +6089,9 @@ export interface IpsecPolicy {
  * @member {array}
  * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientProtocols]
  * VpnClientProtocols for Virtual network gateway.
+ * @member {array}
+ * [virtualNetworkGateway2.vpnClientConfiguration.vpnClientIpsecPolicies]
+ * VpnClientIpsecPolicies for virtual network gateway P2S client.
  * @member {string}
  * [virtualNetworkGateway2.vpnClientConfiguration.radiusServerAddress] The
  * radius server address property of the VirtualNetworkGateway resource for vpn
@@ -5651,6 +6213,46 @@ export interface ConnectionResetSharedKey {
  */
 export interface ConnectionSharedKey {
   value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VpnClientIPsecParameters class.
+ * @constructor
+ * An IPSec parameters for a virtual network gateway P2S connection.
+ *
+ * @member {number} saLifeTimeSeconds The IPSec Security Association (also
+ * called Quick Mode or Phase 2 SA) lifetime in seconds for P2S client.
+ * @member {number} saDataSizeKilobytes The IPSec Security Association (also
+ * called Quick Mode or Phase 2 SA) payload size in KB for P2S client..
+ * @member {string} ipsecEncryption The IPSec encryption algorithm (IKE phase
+ * 1). Possible values include: 'None', 'DES', 'DES3', 'AES128', 'AES192',
+ * 'AES256', 'GCMAES128', 'GCMAES192', 'GCMAES256'
+ * @member {string} ipsecIntegrity The IPSec integrity algorithm (IKE phase 1).
+ * Possible values include: 'MD5', 'SHA1', 'SHA256', 'GCMAES128', 'GCMAES192',
+ * 'GCMAES256'
+ * @member {string} ikeEncryption The IKE encryption algorithm (IKE phase 2).
+ * Possible values include: 'DES', 'DES3', 'AES128', 'AES192', 'AES256',
+ * 'GCMAES256', 'GCMAES128'
+ * @member {string} ikeIntegrity The IKE integrity algorithm (IKE phase 2).
+ * Possible values include: 'MD5', 'SHA1', 'SHA256', 'SHA384', 'GCMAES256',
+ * 'GCMAES128'
+ * @member {string} dhGroup The DH Groups used in IKE Phase 1 for initial SA.
+ * Possible values include: 'None', 'DHGroup1', 'DHGroup2', 'DHGroup14',
+ * 'DHGroup2048', 'ECP256', 'ECP384', 'DHGroup24'
+ * @member {string} pfsGroup The Pfs Groups used in IKE Phase 2 for new child
+ * SA. Possible values include: 'None', 'PFS1', 'PFS2', 'PFS2048', 'ECP256',
+ * 'ECP384', 'PFS24', 'PFS14', 'PFSMM'
+ */
+export interface VpnClientIPsecParameters {
+  saLifeTimeSeconds: number;
+  saDataSizeKilobytes: number;
+  ipsecEncryption: string;
+  ipsecIntegrity: string;
+  ikeEncryption: string;
+  ikeIntegrity: string;
+  dhGroup: string;
+  pfsGroup: string;
 }
 
 /**
@@ -5791,6 +6393,18 @@ export interface ApplicationSecurityGroupListResult extends Array<ApplicationSec
 
 /**
  * @class
+ * Initializes a new instance of the DdosProtectionPlanListResult class.
+ * @constructor
+ * A list of DDoS protection plans.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface DdosProtectionPlanListResult extends Array<DdosProtectionPlan> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EndpointServicesListResult class.
  * @constructor
  * Response for the ListAvailableEndpointServices API service call.
@@ -5849,6 +6463,31 @@ export interface ExpressRouteCircuitListResult extends Array<ExpressRouteCircuit
  */
 export interface ExpressRouteServiceProviderListResult extends Array<ExpressRouteServiceProvider> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCrossConnectionListResult class.
+ * @constructor
+ * Response for ListExpressRouteCrossConnection API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ExpressRouteCrossConnectionListResult extends Array<ExpressRouteCrossConnection> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ExpressRouteCrossConnectionPeeringList class.
+ * @constructor
+ * Response for ListPeering API service call retrieves all peerings that belong
+ * to an ExpressRouteCrossConnection.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ExpressRouteCrossConnectionPeeringList extends Array<ExpressRouteCrossConnectionPeering> {
+  readonly nextLink?: string;
 }
 
 /**
@@ -6002,6 +6641,16 @@ export interface NetworkWatcherListResult extends Array<NetworkWatcher> {
  *
  */
 export interface PacketCaptureListResult extends Array<PacketCaptureResult> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorListResult class.
+ * @constructor
+ * List of connection monitors.
+ *
+ */
+export interface ConnectionMonitorListResult extends Array<ConnectionMonitorResult> {
 }
 
 /**

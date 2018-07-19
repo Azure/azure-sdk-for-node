@@ -111,7 +111,7 @@ export interface ServerPropertiesForDefaultCreate extends ServerPropertiesForCre
  * @class
  * Initializes a new instance of the ServerPropertiesForRestore class.
  * @constructor
- * The properties to a new server by restoring from a backup.
+ * The properties used to create a new server by restoring from a backup.
  *
  * @member {string} sourceServerId The source server id to restore from.
  * @member {date} restorePointInTime Restore point creation time (ISO8601
@@ -120,6 +120,19 @@ export interface ServerPropertiesForDefaultCreate extends ServerPropertiesForCre
 export interface ServerPropertiesForRestore extends ServerPropertiesForCreate {
   sourceServerId: string;
   restorePointInTime: Date;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServerPropertiesForGeoRestore class.
+ * @constructor
+ * The properties used to create a new server by restoring to a different
+ * region from a geo replicated backup.
+ *
+ * @member {string} sourceServerId The source server id to restore from.
+ */
+export interface ServerPropertiesForGeoRestore extends ServerPropertiesForCreate {
+  sourceServerId: string;
 }
 
 /**
@@ -290,6 +303,25 @@ export interface ServerUpdateParameters {
 export interface FirewallRule extends ProxyResource {
   startIpAddress: string;
   endIpAddress: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkRule class.
+ * @constructor
+ * A virtual network rule.
+ *
+ * @member {string} virtualNetworkSubnetId The ARM resource id of the virtual
+ * network subnet.
+ * @member {boolean} [ignoreMissingVnetServiceEndpoint] Create firewall rule
+ * before the virtual network has vnet service endpoint enabled.
+ * @member {string} [state] Virtual Network Rule State. Possible values
+ * include: 'Initializing', 'InProgress', 'Ready', 'Deleting', 'Unknown'
+ */
+export interface VirtualNetworkRule extends ProxyResource {
+  virtualNetworkSubnetId: string;
+  ignoreMissingVnetServiceEndpoint?: boolean;
+  readonly state?: string;
 }
 
 /**
@@ -499,6 +531,18 @@ export interface ServerListResult extends Array<Server> {
  *
  */
 export interface FirewallRuleListResult extends Array<FirewallRule> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkRuleListResult class.
+ * @constructor
+ * A list of virtual network rules.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface VirtualNetworkRuleListResult extends Array<VirtualNetworkRule> {
+  readonly nextLink?: string;
 }
 
 /**

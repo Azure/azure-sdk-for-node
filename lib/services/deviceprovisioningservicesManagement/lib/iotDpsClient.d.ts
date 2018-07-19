@@ -59,7 +59,6 @@ export default class IotDpsClient extends AzureServiceClient {
   operations: operations.Operations;
   dpsCertificate: operations.DpsCertificate;
   iotDpsResource: operations.IotDpsResource;
-  dpsCertificates: operations.DpsCertificates;
 }
 
 export { IotDpsClient, models as IotDpsModels };

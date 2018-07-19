@@ -421,6 +421,68 @@ export interface DpsCertificate {
 
 
     /**
+     * Get all the certificates tied to the provisioning service.
+     *
+     * @param {string} resourceGroupName Name of resource group.
+     *
+     * @param {string} provisioningServiceName Name of provisioning service to
+     * retrieve certificates for.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CertificateListDescription>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, provisioningServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListDescription>>;
+
+    /**
+     * Get all the certificates tied to the provisioning service.
+     *
+     * @param {string} resourceGroupName Name of resource group.
+     *
+     * @param {string} provisioningServiceName Name of provisioning service to
+     * retrieve certificates for.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CertificateListDescription} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CertificateListDescription} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CertificateListDescription} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, provisioningServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListDescription>;
+    list(resourceGroupName: string, provisioningServiceName: string, callback: ServiceCallback<models.CertificateListDescription>): void;
+    list(resourceGroupName: string, provisioningServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListDescription>): void;
+
+
+    /**
      * Generate verification code for Proof of Possession.
      *
      * @param {string} certificateName The mandatory logical name of the
@@ -2033,75 +2095,4 @@ export interface IotDpsResource {
     listKeysNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SharedAccessSignatureAuthorizationRuleListResult>;
     listKeysNext(nextPageLink: string, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRuleListResult>): void;
     listKeysNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SharedAccessSignatureAuthorizationRuleListResult>): void;
-}
-
-/**
- * @class
- * DpsCertificates
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the IotDpsClient.
- */
-export interface DpsCertificates {
-
-
-    /**
-     * Get all the certificates tied to the provisioning service.
-     *
-     * @param {string} resourceGroupName Name of resource group.
-     *
-     * @param {string} provisioningServiceName Name of provisioning service to
-     * retrieve certificates for.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<CertificateListDescription>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, provisioningServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CertificateListDescription>>;
-
-    /**
-     * Get all the certificates tied to the provisioning service.
-     *
-     * @param {string} resourceGroupName Name of resource group.
-     *
-     * @param {string} provisioningServiceName Name of provisioning service to
-     * retrieve certificates for.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {CertificateListDescription} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {CertificateListDescription} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CertificateListDescription} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, provisioningServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CertificateListDescription>;
-    list(resourceGroupName: string, provisioningServiceName: string, callback: ServiceCallback<models.CertificateListDescription>): void;
-    list(resourceGroupName: string, provisioningServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CertificateListDescription>): void;
 }

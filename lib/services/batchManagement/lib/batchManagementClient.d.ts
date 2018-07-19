@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class BatchManagementClient extends AzureServiceClient {
+export default class BatchManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the BatchManagementClient class.
    * @constructor
@@ -64,4 +65,4 @@ declare class BatchManagementClient extends AzureServiceClient {
   poolOperations: operations.PoolOperations;
 }
 
-export = BatchManagementClient;
+export { BatchManagementClient, models as BatchManagementModels };

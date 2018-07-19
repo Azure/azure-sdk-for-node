@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ApplicationInsightsManagementClient extends AzureServiceClient {
+export default class ApplicationInsightsManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ApplicationInsightsManagementClient class.
    * @constructor
@@ -56,12 +57,23 @@ declare class ApplicationInsightsManagementClient extends AzureServiceClient {
 
   // Operation groups
   operations: operations.Operations;
-  components: operations.Components;
-  webTests: operations.WebTests;
+  annotations: operations.Annotations;
+  aPIKeys: operations.APIKeys;
   exportConfigurations: operations.ExportConfigurations;
   componentCurrentBillingFeatures: operations.ComponentCurrentBillingFeatures;
   componentQuotaStatus: operations.ComponentQuotaStatus;
-  aPIKeys: operations.APIKeys;
+  componentFeatureCapabilities: operations.ComponentFeatureCapabilities;
+  componentAvailableFeatures: operations.ComponentAvailableFeatures;
+  proactiveDetectionConfigurations: operations.ProactiveDetectionConfigurations;
+  components: operations.Components;
+  workItemConfigurations: operations.WorkItemConfigurations;
+  favorites: operations.Favorites;
+  favorite: operations.Favorite;
+  webTestLocations: operations.WebTestLocations;
+  webTests: operations.WebTests;
+  analyticsItem: operations.AnalyticsItem;
+  workbooksOperations: operations.WorkbooksOperations;
+  workbookOperations: operations.WorkbookOperations;
 }
 
-export = ApplicationInsightsManagementClient;
+export { ApplicationInsightsManagementClient, models as ApplicationInsightsManagementModels };

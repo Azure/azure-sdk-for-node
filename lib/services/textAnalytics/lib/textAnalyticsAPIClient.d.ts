@@ -11,7 +11,7 @@
 import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import * as models from "./models";
 
-declare class TextAnalyticsAPIClient extends ServiceClient {
+export default class TextAnalyticsAPIClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the TextAnalyticsAPIClient class.
@@ -257,4 +257,4 @@ declare class TextAnalyticsAPIClient extends ServiceClient {
   sentiment(input: models.MultiLanguageBatchInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SentimentBatchResult>): void;
 }
 
-export = TextAnalyticsAPIClient;
+export { TextAnalyticsAPIClient, models as TextAnalyticsAPIModels };

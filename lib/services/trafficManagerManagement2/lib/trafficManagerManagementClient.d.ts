@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class TrafficManagerManagementClient extends AzureServiceClient {
+export default class TrafficManagerManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the TrafficManagerManagementClient class.
    * @constructor
@@ -46,8 +47,6 @@ declare class TrafficManagerManagementClient extends AzureServiceClient {
 
   subscriptionId: string;
 
-  apiVersion: string;
-
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -59,6 +58,7 @@ declare class TrafficManagerManagementClient extends AzureServiceClient {
   profiles: operations.Profiles;
   geographicHierarchies: operations.GeographicHierarchies;
   heatMap: operations.HeatMap;
+  trafficManagerUserMetricsKeys: operations.TrafficManagerUserMetricsKeys;
 }
 
-export = TrafficManagerManagementClient;
+export { TrafficManagerManagementClient, models as TrafficManagerManagementModels };

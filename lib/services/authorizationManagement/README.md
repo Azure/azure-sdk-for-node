@@ -1,7 +1,11 @@
-# Microsoft Azure SDK for Node.js - Authorization
+---
+uid: azure-arm-authorization
+summary: *content
 
-This project provides a Node.js package for accessing the Azure PAS. Right now it supports:
-- **Node.js version: 6.x.x or higher**
+---
+# Microsoft Azure SDK for Node.js - AuthorizationManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
 
 ## Features
 
@@ -12,25 +16,24 @@ This project provides a Node.js package for accessing the Azure PAS. Right now i
 npm install azure-arm-authorization
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing role assignments as an example
+### Authentication, client creation and list classicAdministrators as an example.
 
- ```javascript
- var msRestAzure = require('ms-rest-azure');
- var authorizationManagement = require("azure-arm-authorization");
-
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin(function(err, credentials) {
-  var client = new authorizationManagement(credentials, 'your-subscription-id');
-  client.roleAssignments.listForResourceGroup(rgName, function(err, result) {
-    if (err) console.log(err);
-    console.log(result);
-  });
- });
- ```
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const AuthorizationManagementClient = require("azure-arm-authorization");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new AuthorizationManagementClient(creds, subscriptionId);
+    return client.classicAdministrators.list().then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
+}).catch((err) => {
+  console.log('An error ocurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 
