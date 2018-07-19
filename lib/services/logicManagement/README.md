@@ -1,8 +1,14 @@
-# Microsoft Azure SDK for Node.js - LogicManagement
+---
+uid: azure-arm-logic
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure Logic.
-## API-Version: 2016-06-01
-## Minimum node.js version >= 6.x.x
+---
+# Microsoft Azure SDK for Node.js - LogicManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
@@ -10,28 +16,26 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 npm install azure-arm-logic
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing workflows as an example
+### Authentication, client creation and listBySubscription workflows as an example.
 
- ```javascript
- const msRestAzure = require('ms-rest-azure');
- const LogicManagement = require("azure-arm-logic");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin().then((credentials) => {
-   let client = new LogicManagement(credentials, 'your-subscription-id');
-   return client.workflows.listBySubscription();
- }).then((workflows) => {
-  console.log('List of workflows:');
-  console.dir(workflows, {depth: null, colors: true});
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const LogicManagementClient = require("azure-arm-logic");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new LogicManagementClient(creds, subscriptionId);
+    const top = 1;
+    const filter = "testfilter";
+    return client.workflows.listBySubscription(top, filter).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
 }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
- });
-```
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 
