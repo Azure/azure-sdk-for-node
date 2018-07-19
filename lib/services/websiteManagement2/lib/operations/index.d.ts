@@ -9026,6 +9026,9 @@ export interface WebApps {
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
+     *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
      *
@@ -9405,6 +9408,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -9885,6 +9891,9 @@ export interface WebApps {
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
+     *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
      *
@@ -10252,6 +10261,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -11983,6 +11995,150 @@ export interface WebApps {
 
 
     /**
+     * @summary Updates the Azure storage account configurations of an app.
+     *
+     * Updates the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} azureStorageAccounts Azure storage accounts of the app.
+     *
+     * @param {object} [azureStorageAccounts.properties] Azure storage accounts.
+     *
+     * @param {string} [azureStorageAccounts.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureStoragePropertyDictionaryResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateAzureStorageAccountsWithHttpOperationResponse(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureStoragePropertyDictionaryResource>>;
+
+    /**
+     * @summary Updates the Azure storage account configurations of an app.
+     *
+     * Updates the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} azureStorageAccounts Azure storage accounts of the app.
+     *
+     * @param {object} [azureStorageAccounts.properties] Azure storage accounts.
+     *
+     * @param {string} [azureStorageAccounts.kind] Kind of resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureStoragePropertyDictionaryResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureStoragePropertyDictionaryResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureStoragePropertyDictionaryResource} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateAzureStorageAccounts(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureStoragePropertyDictionaryResource>;
+    updateAzureStorageAccounts(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+    updateAzureStorageAccounts(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+
+
+    /**
+     * @summary Gets the Azure storage account configurations of an app.
+     *
+     * Gets the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureStoragePropertyDictionaryResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAzureStorageAccountsWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureStoragePropertyDictionaryResource>>;
+
+    /**
+     * @summary Gets the Azure storage account configurations of an app.
+     *
+     * Gets the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureStoragePropertyDictionaryResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureStoragePropertyDictionaryResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureStoragePropertyDictionaryResource} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAzureStorageAccounts(resourceGroupName: string, name: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureStoragePropertyDictionaryResource>;
+    listAzureStorageAccounts(resourceGroupName: string, name: string, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+    listAzureStorageAccounts(resourceGroupName: string, name: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+
+
+    /**
      * @summary Updates the backup configuration of an app.
      *
      * Updates the backup configuration of an app.
@@ -13162,6 +13318,9 @@ export interface WebApps {
      * @param {array} [slotConfigNames.appSettingNames] List of application
      * settings names.
      *
+     * @param {array} [slotConfigNames.azureStorageConfigNames] List of external
+     * Azure storage account identifiers.
+     *
      * @param {string} [slotConfigNames.kind] Kind of resource.
      *
      * @param {object} [options] Optional Parameters.
@@ -13197,6 +13356,9 @@ export interface WebApps {
      *
      * @param {array} [slotConfigNames.appSettingNames] List of application
      * settings names.
+     *
+     * @param {array} [slotConfigNames.azureStorageConfigNames] List of external
+     * Azure storage account identifiers.
      *
      * @param {string} [slotConfigNames.kind] Kind of resource.
      *
@@ -13690,6 +13852,9 @@ export interface WebApps {
      *
      * @param {array} [siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
+     *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
      * @param {array} [siteConfig.handlerMappings] Handler mappings.
@@ -13933,6 +14098,9 @@ export interface WebApps {
      * @param {string} [siteConfig.publishingUsername] Publishing user name.
      *
      * @param {array} [siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
      *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
@@ -14197,6 +14365,9 @@ export interface WebApps {
      *
      * @param {array} [siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
+     *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
      * @param {array} [siteConfig.handlerMappings] Handler mappings.
@@ -14440,6 +14611,9 @@ export interface WebApps {
      * @param {string} [siteConfig.publishingUsername] Publishing user name.
      *
      * @param {array} [siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
      *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
@@ -22774,6 +22948,9 @@ export interface WebApps {
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
+     *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
      *
@@ -23156,6 +23333,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -23645,6 +23825,9 @@ export interface WebApps {
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
+     *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
      *
@@ -24015,6 +24198,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -25831,6 +26017,166 @@ export interface WebApps {
 
 
     /**
+     * @summary Updates the Azure storage account configurations of an app.
+     *
+     * Updates the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} azureStorageAccounts Azure storage accounts of the app.
+     *
+     * @param {object} [azureStorageAccounts.properties] Azure storage accounts.
+     *
+     * @param {string} [azureStorageAccounts.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will update the Azure storage account configurations for
+     * the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureStoragePropertyDictionaryResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateAzureStorageAccountsSlotWithHttpOperationResponse(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureStoragePropertyDictionaryResource>>;
+
+    /**
+     * @summary Updates the Azure storage account configurations of an app.
+     *
+     * Updates the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {object} azureStorageAccounts Azure storage accounts of the app.
+     *
+     * @param {object} [azureStorageAccounts.properties] Azure storage accounts.
+     *
+     * @param {string} [azureStorageAccounts.kind] Kind of resource.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will update the Azure storage account configurations for
+     * the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureStoragePropertyDictionaryResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureStoragePropertyDictionaryResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureStoragePropertyDictionaryResource} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateAzureStorageAccountsSlot(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureStoragePropertyDictionaryResource>;
+    updateAzureStorageAccountsSlot(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, slot: string, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+    updateAzureStorageAccountsSlot(resourceGroupName: string, name: string, azureStorageAccounts: models.AzureStoragePropertyDictionaryResource, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+
+
+    /**
+     * @summary Gets the Azure storage account configurations of an app.
+     *
+     * Gets the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will update the Azure storage account configurations for
+     * the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AzureStoragePropertyDictionaryResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAzureStorageAccountsSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AzureStoragePropertyDictionaryResource>>;
+
+    /**
+     * @summary Gets the Azure storage account configurations of an app.
+     *
+     * Gets the Azure storage account configurations of an app.
+     *
+     * @param {string} resourceGroupName Name of the resource group to which the
+     * resource belongs.
+     *
+     * @param {string} name Name of the app.
+     *
+     * @param {string} slot Name of the deployment slot. If a slot is not
+     * specified, the API will update the Azure storage account configurations for
+     * the production slot.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AzureStoragePropertyDictionaryResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AzureStoragePropertyDictionaryResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AzureStoragePropertyDictionaryResource} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAzureStorageAccountsSlot(resourceGroupName: string, name: string, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AzureStoragePropertyDictionaryResource>;
+    listAzureStorageAccountsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+    listAzureStorageAccountsSlot(resourceGroupName: string, name: string, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AzureStoragePropertyDictionaryResource>): void;
+
+
+    /**
      * @summary Updates the backup configuration of an app.
      *
      * Updates the backup configuration of an app.
@@ -27494,6 +27840,9 @@ export interface WebApps {
      *
      * @param {array} [siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
+     *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
      * @param {array} [siteConfig.handlerMappings] Handler mappings.
@@ -27740,6 +28089,9 @@ export interface WebApps {
      * @param {string} [siteConfig.publishingUsername] Publishing user name.
      *
      * @param {array} [siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
      *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
@@ -28007,6 +28359,9 @@ export interface WebApps {
      *
      * @param {array} [siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
+     *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
      * @param {array} [siteConfig.handlerMappings] Handler mappings.
@@ -28253,6 +28608,9 @@ export interface WebApps {
      * @param {string} [siteConfig.publishingUsername] Publishing user name.
      *
      * @param {array} [siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteConfig.azureStorageAccounts] User-provided Azure
+     * storage accounts.
      *
      * @param {array} [siteConfig.connectionStrings] Connection strings.
      *
@@ -41331,6 +41689,9 @@ export interface WebApps {
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
+     *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
      *
@@ -41710,6 +42071,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
@@ -43318,6 +43682,9 @@ export interface WebApps {
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
      *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
+     *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
      *
@@ -43700,6 +44067,9 @@ export interface WebApps {
      * name.
      *
      * @param {array} [siteEnvelope.siteConfig.appSettings] Application settings.
+     *
+     * @param {object} [siteEnvelope.siteConfig.azureStorageAccounts] User-provided
+     * Azure storage accounts.
      *
      * @param {array} [siteEnvelope.siteConfig.connectionStrings] Connection
      * strings.
