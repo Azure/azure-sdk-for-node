@@ -8,7 +8,7 @@ exports.scopes = [[function (nock) {
 var result = 
 nock('http://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/providers/Microsoft.Devices/checkNameAvailability?api-version=2017-07-01', '*')
+.post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/providers/Microsoft.Devices/checkNameAvailability?api-version=2018-04-01', '*')
   .reply(200, "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"IotHub name 'nodeTestHub' not available\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '100',
@@ -27,7 +27,7 @@ function (nock) {
 var result = 
 nock('https://management.azure.com:443')
   .filteringRequestBody(function (path) { return '*';})
-.post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/providers/Microsoft.Devices/checkNameAvailability?api-version=2017-07-01', '*')
+.post('/subscriptions/e0b81f36-36ba-44f7-b550-7c9344a35893/providers/Microsoft.Devices/checkNameAvailability?api-version=2018-04-01', '*')
   .reply(200, "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"IotHub name 'nodeTestHub' not available\"}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '100',

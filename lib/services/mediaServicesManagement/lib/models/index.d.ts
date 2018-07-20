@@ -206,7 +206,7 @@ export interface ODataError {
  * @constructor
  * The API error.
  *
- * @member {object} [error] ApiError. The error properties.
+ * @member {object} [error] The error properties.
  * @member {string} [error.code] A language-independent error name.
  * @member {string} [error.message] The error message.
  * @member {string} [error.target] The target of the error (for example, the
@@ -1688,6 +1688,8 @@ export interface JobOutputAsset extends JobOutput {
  * @member {string} [priority] Priority with which the job should be processed.
  * Higher priority jobs are processed before lower priority jobs. If not set,
  * the default is normal. Possible values include: 'Low', 'Normal', 'High'
+ * @member {object} [correlationData] Customer provided correlation data that
+ * will be returned in Job completed events.
  */
 export interface Job extends ProxyResource {
   readonly created?: Date;
@@ -1697,6 +1699,7 @@ export interface Job extends ProxyResource {
   readonly lastModified?: Date;
   outputs: JobOutput[];
   priority?: string;
+  correlationData?: { [propertyName: string]: string };
 }
 
 /**
@@ -1709,7 +1712,7 @@ export interface Job extends ProxyResource {
  * 'Unknown', 'FourCC'
  * @member {string} operation Track property condition operation. Possible
  * values include: 'Unknown', 'Equal'
- * @member {string} [value] Track proprty value
+ * @member {string} [value] Track property value
  */
 export interface TrackPropertyCondition {
   property: string;
@@ -1738,7 +1741,7 @@ export interface TrackSelection {
  * scheme
  *
  * @member {string} [label] Label can be used to specify Content Key when
- * creating Stremaing Locator
+ * creating a Streaming Locator
  * @member {string} [policyName] Policy used by Default Key
  */
 export interface DefaultKey {
@@ -1753,7 +1756,7 @@ export interface DefaultKey {
  * Class to specify properties of content key
  *
  * @member {string} [label] Label can be used to specify Content Key when
- * creating Stremaing Locator
+ * creating a Streaming Locator
  * @member {string} [policyName] Policy used by Content Key
  * @member {array} [tracks] Tracks which use this content key
  */
@@ -1771,9 +1774,9 @@ export interface StreamingPolicyContentKey {
  *
  * @member {object} [defaultKey] Default content key for an encryption scheme
  * @member {string} [defaultKey.label] Label can be used to specify Content Key
- * when creating Stremaing Locator
+ * when creating a Streaming Locator
  * @member {string} [defaultKey.policyName] Policy used by Default Key
- * @member {array} [keyToTrackMappings] Representing tracks needs sepearete
+ * @member {array} [keyToTrackMappings] Representing tracks needs separate
  * content key
  */
 export interface StreamingPolicyContentKeys {
@@ -1831,10 +1834,10 @@ export interface StreamingPolicyFairPlayConfiguration {
  * @class
  * Initializes a new instance of the CbcsDrmConfiguration class.
  * @constructor
- * Class to specify drm configurations of CommonEncryptionCbcs scheme in
+ * Class to specify DRM configurations of CommonEncryptionCbcs scheme in
  * Streaming Policy
  *
- * @member {object} [fairPlay] Fairplay configurations
+ * @member {object} [fairPlay] FairPlay configurations
  * @member {string} [fairPlay.customLicenseAcquisitionUrlTemplate] The template
  * for a customer service to deliver keys to end users.  Not needed when using
  * Azure Media Services for issuing keys.
@@ -1861,7 +1864,7 @@ export interface CbcsDrmConfiguration {
  * @class
  * Initializes a new instance of the CencDrmConfiguration class.
  * @constructor
- * Class to specify drm configurations of CommonEncryptionCenc scheme in
+ * Class to specify DRM configurations of CommonEncryptionCenc scheme in
  * Streaming Policy
  *
  * @member {object} [playReady] PlayReady configurations
@@ -1887,8 +1890,8 @@ export interface CencDrmConfiguration {
  * Class to specify which protocols are enabled
  *
  * @member {boolean} download Enable Download protocol or not
- * @member {boolean} dash Enable Dash protocol or not
- * @member {boolean} hls Enable Hls protocol or not
+ * @member {boolean} dash Enable DASH protocol or not
+ * @member {boolean} hls Enable HLS protocol or not
  * @member {boolean} smoothStreaming Enable SmoothStreaming protocol or not
  */
 export interface EnabledProtocols {
@@ -1907,8 +1910,8 @@ export interface EnabledProtocols {
  * @member {object} [enabledProtocols] Representing supported protocols
  * @member {boolean} [enabledProtocols.download] Enable Download protocol or
  * not
- * @member {boolean} [enabledProtocols.dash] Enable Dash protocol or not
- * @member {boolean} [enabledProtocols.hls] Enable Hls protocol or not
+ * @member {boolean} [enabledProtocols.dash] Enable DASH protocol or not
+ * @member {boolean} [enabledProtocols.hls] Enable HLS protocol or not
  * @member {boolean} [enabledProtocols.smoothStreaming] Enable SmoothStreaming
  * protocol or not
  */
@@ -1925,8 +1928,8 @@ export interface NoEncryption {
  * @member {object} [enabledProtocols] Representing supported protocols
  * @member {boolean} [enabledProtocols.download] Enable Download protocol or
  * not
- * @member {boolean} [enabledProtocols.dash] Enable Dash protocol or not
- * @member {boolean} [enabledProtocols.hls] Enable Hls protocol or not
+ * @member {boolean} [enabledProtocols.dash] Enable DASH protocol or not
+ * @member {boolean} [enabledProtocols.hls] Enable HLS protocol or not
  * @member {boolean} [enabledProtocols.smoothStreaming] Enable SmoothStreaming
  * protocol or not
  * @member {array} [clearTracks] Representing which tracks should not be
@@ -1936,20 +1939,19 @@ export interface NoEncryption {
  * @member {object} [contentKeys.defaultKey] Default content key for an
  * encryption scheme
  * @member {string} [contentKeys.defaultKey.label] Label can be used to specify
- * Content Key when creating Stremaing Locator
+ * Content Key when creating a Streaming Locator
  * @member {string} [contentKeys.defaultKey.policyName] Policy used by Default
  * Key
  * @member {array} [contentKeys.keyToTrackMappings] Representing tracks needs
- * sepearete content key
- * @member {string} [customLicenseAcquisitionUrlTemplate]
- * LicenseAcquistionUrlTemplate is used to point to user speicified service to
- * delivery content keys
+ * separate content key
+ * @member {string} [customKeyAcquisitionUrlTemplate] KeyAcquistionUrlTemplate
+ * is used to point to user specified service to delivery content keys
  */
 export interface EnvelopeEncryption {
   enabledProtocols?: EnabledProtocols;
   clearTracks?: TrackSelection[];
   contentKeys?: StreamingPolicyContentKeys;
-  customLicenseAcquisitionUrlTemplate?: string;
+  customKeyAcquisitionUrlTemplate?: string;
 }
 
 /**
@@ -1961,8 +1963,8 @@ export interface EnvelopeEncryption {
  * @member {object} [enabledProtocols] Representing supported protocols
  * @member {boolean} [enabledProtocols.download] Enable Download protocol or
  * not
- * @member {boolean} [enabledProtocols.dash] Enable Dash protocol or not
- * @member {boolean} [enabledProtocols.hls] Enable Hls protocol or not
+ * @member {boolean} [enabledProtocols.dash] Enable DASH protocol or not
+ * @member {boolean} [enabledProtocols.hls] Enable HLS protocol or not
  * @member {boolean} [enabledProtocols.smoothStreaming] Enable SmoothStreaming
  * protocol or not
  * @member {array} [clearTracks] Representing which tracks should not be
@@ -1972,11 +1974,11 @@ export interface EnvelopeEncryption {
  * @member {object} [contentKeys.defaultKey] Default content key for an
  * encryption scheme
  * @member {string} [contentKeys.defaultKey.label] Label can be used to specify
- * Content Key when creating Stremaing Locator
+ * Content Key when creating a Streaming Locator
  * @member {string} [contentKeys.defaultKey.policyName] Policy used by Default
  * Key
  * @member {array} [contentKeys.keyToTrackMappings] Representing tracks needs
- * sepearete content key
+ * separate content key
  * @member {object} [drm] Configuration of DRMs for CommonEncryptionCenc
  * encryption scheme
  * @member {object} [drm.playReady] PlayReady configurations
@@ -2006,8 +2008,8 @@ export interface CommonEncryptionCenc {
  * @member {object} [enabledProtocols] Representing supported protocols
  * @member {boolean} [enabledProtocols.download] Enable Download protocol or
  * not
- * @member {boolean} [enabledProtocols.dash] Enable Dash protocol or not
- * @member {boolean} [enabledProtocols.hls] Enable Hls protocol or not
+ * @member {boolean} [enabledProtocols.dash] Enable DASH protocol or not
+ * @member {boolean} [enabledProtocols.hls] Enable HLS protocol or not
  * @member {boolean} [enabledProtocols.smoothStreaming] Enable SmoothStreaming
  * protocol or not
  * @member {array} [clearTracks] Representing which tracks should not be
@@ -2017,13 +2019,13 @@ export interface CommonEncryptionCenc {
  * @member {object} [contentKeys.defaultKey] Default content key for an
  * encryption scheme
  * @member {string} [contentKeys.defaultKey.label] Label can be used to specify
- * Content Key when creating Stremaing Locator
+ * Content Key when creating a Streaming Locator
  * @member {string} [contentKeys.defaultKey.policyName] Policy used by Default
  * Key
  * @member {array} [contentKeys.keyToTrackMappings] Representing tracks needs
- * sepearete content key
+ * separate content key
  * @member {object} [drm] Configuration of DRMs for current encryption scheme
- * @member {object} [drm.fairPlay] Fairplay configurations
+ * @member {object} [drm.fairPlay] FairPlay configurations
  * @member {string} [drm.fairPlay.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
@@ -2061,9 +2063,9 @@ export interface CommonEncryptionCbcs {
  * supported protocols
  * @member {boolean} [envelopeEncryption.enabledProtocols.download] Enable
  * Download protocol or not
- * @member {boolean} [envelopeEncryption.enabledProtocols.dash] Enable Dash
+ * @member {boolean} [envelopeEncryption.enabledProtocols.dash] Enable DASH
  * protocol or not
- * @member {boolean} [envelopeEncryption.enabledProtocols.hls] Enable Hls
+ * @member {boolean} [envelopeEncryption.enabledProtocols.hls] Enable HLS
  * protocol or not
  * @member {boolean} [envelopeEncryption.enabledProtocols.smoothStreaming]
  * Enable SmoothStreaming protocol or not
@@ -2075,13 +2077,13 @@ export interface CommonEncryptionCbcs {
  * @member {object} [envelopeEncryption.contentKeys.defaultKey] Default content
  * key for an encryption scheme
  * @member {string} [envelopeEncryption.contentKeys.defaultKey.label] Label can
- * be used to specify Content Key when creating Stremaing Locator
+ * be used to specify Content Key when creating a Streaming Locator
  * @member {string} [envelopeEncryption.contentKeys.defaultKey.policyName]
  * Policy used by Default Key
  * @member {array} [envelopeEncryption.contentKeys.keyToTrackMappings]
- * Representing tracks needs sepearete content key
- * @member {string} [envelopeEncryption.customLicenseAcquisitionUrlTemplate]
- * LicenseAcquistionUrlTemplate is used to point to user speicified service to
+ * Representing tracks needs separate content key
+ * @member {string} [envelopeEncryption.customKeyAcquisitionUrlTemplate]
+ * KeyAcquistionUrlTemplate is used to point to user specified service to
  * delivery content keys
  * @member {object} [commonEncryptionCenc] Configuration of
  * CommonEncryptionCenc
@@ -2089,9 +2091,9 @@ export interface CommonEncryptionCbcs {
  * supported protocols
  * @member {boolean} [commonEncryptionCenc.enabledProtocols.download] Enable
  * Download protocol or not
- * @member {boolean} [commonEncryptionCenc.enabledProtocols.dash] Enable Dash
+ * @member {boolean} [commonEncryptionCenc.enabledProtocols.dash] Enable DASH
  * protocol or not
- * @member {boolean} [commonEncryptionCenc.enabledProtocols.hls] Enable Hls
+ * @member {boolean} [commonEncryptionCenc.enabledProtocols.hls] Enable HLS
  * protocol or not
  * @member {boolean} [commonEncryptionCenc.enabledProtocols.smoothStreaming]
  * Enable SmoothStreaming protocol or not
@@ -2103,11 +2105,11 @@ export interface CommonEncryptionCbcs {
  * @member {object} [commonEncryptionCenc.contentKeys.defaultKey] Default
  * content key for an encryption scheme
  * @member {string} [commonEncryptionCenc.contentKeys.defaultKey.label] Label
- * can be used to specify Content Key when creating Stremaing Locator
+ * can be used to specify Content Key when creating a Streaming Locator
  * @member {string} [commonEncryptionCenc.contentKeys.defaultKey.policyName]
  * Policy used by Default Key
  * @member {array} [commonEncryptionCenc.contentKeys.keyToTrackMappings]
- * Representing tracks needs sepearete content key
+ * Representing tracks needs separate content key
  * @member {object} [commonEncryptionCenc.drm] Configuration of DRMs for
  * CommonEncryptionCenc encryption scheme
  * @member {object} [commonEncryptionCenc.drm.playReady] PlayReady
@@ -2130,9 +2132,9 @@ export interface CommonEncryptionCbcs {
  * supported protocols
  * @member {boolean} [commonEncryptionCbcs.enabledProtocols.download] Enable
  * Download protocol or not
- * @member {boolean} [commonEncryptionCbcs.enabledProtocols.dash] Enable Dash
+ * @member {boolean} [commonEncryptionCbcs.enabledProtocols.dash] Enable DASH
  * protocol or not
- * @member {boolean} [commonEncryptionCbcs.enabledProtocols.hls] Enable Hls
+ * @member {boolean} [commonEncryptionCbcs.enabledProtocols.hls] Enable HLS
  * protocol or not
  * @member {boolean} [commonEncryptionCbcs.enabledProtocols.smoothStreaming]
  * Enable SmoothStreaming protocol or not
@@ -2144,14 +2146,14 @@ export interface CommonEncryptionCbcs {
  * @member {object} [commonEncryptionCbcs.contentKeys.defaultKey] Default
  * content key for an encryption scheme
  * @member {string} [commonEncryptionCbcs.contentKeys.defaultKey.label] Label
- * can be used to specify Content Key when creating Stremaing Locator
+ * can be used to specify Content Key when creating a Streaming Locator
  * @member {string} [commonEncryptionCbcs.contentKeys.defaultKey.policyName]
  * Policy used by Default Key
  * @member {array} [commonEncryptionCbcs.contentKeys.keyToTrackMappings]
- * Representing tracks needs sepearete content key
+ * Representing tracks needs separate content key
  * @member {object} [commonEncryptionCbcs.drm] Configuration of DRMs for
  * current encryption scheme
- * @member {object} [commonEncryptionCbcs.drm.fairPlay] Fairplay configurations
+ * @member {object} [commonEncryptionCbcs.drm.fairPlay] FairPlay configurations
  * @member {string}
  * [commonEncryptionCbcs.drm.fairPlay.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
@@ -2172,14 +2174,14 @@ export interface CommonEncryptionCbcs {
  * [commonEncryptionCbcs.drm.widevine.customLicenseAcquisitionUrlTemplate] The
  * template for a customer service to deliver keys to end users.  Not needed
  * when using Azure Media Services for issuing keys.
- * @member {object} [noEncryption] Configuations of NoEncryption
+ * @member {object} [noEncryption] Configurations of NoEncryption
  * @member {object} [noEncryption.enabledProtocols] Representing supported
  * protocols
  * @member {boolean} [noEncryption.enabledProtocols.download] Enable Download
  * protocol or not
- * @member {boolean} [noEncryption.enabledProtocols.dash] Enable Dash protocol
+ * @member {boolean} [noEncryption.enabledProtocols.dash] Enable DASH protocol
  * or not
- * @member {boolean} [noEncryption.enabledProtocols.hls] Enable Hls protocol or
+ * @member {boolean} [noEncryption.enabledProtocols.hls] Enable HLS protocol or
  * not
  * @member {boolean} [noEncryption.enabledProtocols.smoothStreaming] Enable
  * SmoothStreaming protocol or not
@@ -2195,42 +2197,25 @@ export interface StreamingPolicy extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the StreamingLocatorUserDefinedContentKey class.
- * @constructor
- * Describes the properties of a user-defined content key in the Streaming
- * Locator
- *
- * @member {uuid} id ID of Content Key
- * @member {string} [label] The Content Key description
- * @member {string} [value] The Content Key secret
- */
-export interface StreamingLocatorUserDefinedContentKey {
-  id: string;
-  label?: string;
-  value?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the StreamingLocatorContentKey class.
  * @constructor
  * Class for content key in Streaming Locator
  *
- * @member {string} [label] Label of Content Key
- * @member {string} type Encryption type of Content Key. Possible values
+ * @member {uuid} id ID of Content Key
+ * @member {string} [type] Encryption type of Content Key. Possible values
  * include: 'CommonEncryptionCenc', 'CommonEncryptionCbcs',
  * 'EnvelopeEncryption'
- * @member {uuid} id ID of Content Key
+ * @member {string} [label] Label of Content Key
  * @member {string} [value] Value of  of Content Key
  * @member {string} [policyName] ContentKeyPolicy used by Content Key
  * @member {array} [tracks] Tracks which use this Content Key
  */
 export interface StreamingLocatorContentKey {
-  label?: string;
-  type: string;
   id: string;
+  readonly type?: string;
+  label?: string;
   value?: string;
-  policyName?: string;
+  readonly policyName?: string;
   tracks?: TrackSelection[];
 }
 
@@ -2303,6 +2288,12 @@ export interface ListPathsResponse {
  * @member {string} [defaultContentKeyPolicyName] Default ContentKeyPolicy used
  * by this Streaming Locator
  * @member {array} [contentKeys] ContentKeys used by this Streaming Locator
+ * @member {string} [alternativeMediaId] An Alternative Media Identifier
+ * associated with the StreamingLocator.  This identifier can be used to
+ * distinguish different StreamingLocators for the same Asset for authorization
+ * purposes in the CustomLicenseAcquisitionUrlTemplate or the
+ * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+ * StreamingPolicyName field.
  */
 export interface StreamingLocator extends ProxyResource {
   assetName: string;
@@ -2312,7 +2303,8 @@ export interface StreamingLocator extends ProxyResource {
   streamingLocatorId?: string;
   streamingPolicyName: string;
   defaultContentKeyPolicyName?: string;
-  contentKeys?: StreamingLocatorUserDefinedContentKey[];
+  contentKeys?: StreamingLocatorContentKey[];
+  alternativeMediaId?: string;
 }
 
 /**
@@ -2454,12 +2446,18 @@ export interface LiveEventPreviewAccessControl {
  * @member {string} [previewLocator] The preview locator Guid.
  * @member {string} [streamingPolicyName] The name of streaming policy used for
  * LiveEvent preview
+ * @member {string} [alternativeMediaId] An Alternative Media Identifier
+ * associated with the preview url.  This identifier can be used to distinguish
+ * the preview of different live events for authorization purposes in the
+ * CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate
+ * of the StreamingPolicy specified in the StreamingPolicyName field.
  */
 export interface LiveEventPreview {
   endpoints?: LiveEventEndpoint[];
   accessControl?: LiveEventPreviewAccessControl;
   previewLocator?: string;
   streamingPolicyName?: string;
+  alternativeMediaId?: string;
 }
 
 /**
@@ -2530,6 +2528,12 @@ export interface LiveEventActionInput {
  * @member {string} [preview.previewLocator] The preview locator Guid.
  * @member {string} [preview.streamingPolicyName] The name of streaming policy
  * used for LiveEvent preview
+ * @member {string} [preview.alternativeMediaId] An Alternative Media
+ * Identifier associated with the preview url.  This identifier can be used to
+ * distinguish the preview of different live events for authorization purposes
+ * in the CustomLicenseAcquisitionUrlTemplate or the
+ * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
+ * StreamingPolicyName field.
  * @member {object} [encoding] The Live Event encoding.
  * @member {string} [encoding.encodingType] The encoding type for Live Event.
  * Possible values include: 'None', 'Basic'
