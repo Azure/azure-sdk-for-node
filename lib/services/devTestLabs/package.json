@@ -2,9 +2,9 @@
   "name": "azure-arm-devtestlabs",
   "author": "Microsoft Corporation",
   "description": "DevTestLabsClient Library with typescript type definitions for node",
-  "version": "2.1.0-preview",
+  "version": "2.1.1",
   "dependencies": {
-    "ms-rest": "^2.3.3",
+    "ms-rest": "^2.3.2",
     "ms-rest-azure": "^2.5.5"
   },
   "keywords": [ "node", "azure" ],

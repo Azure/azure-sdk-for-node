@@ -782,7 +782,7 @@ export interface Keys {
     /**
      * Retrieve the automation keys for an account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -802,7 +802,7 @@ export interface Keys {
     /**
      * Retrieve the automation keys for an account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -850,7 +850,7 @@ export interface CertificateOperations {
     /**
      * Delete the certificate.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -872,7 +872,7 @@ export interface CertificateOperations {
     /**
      * Delete the certificate.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -912,7 +912,7 @@ export interface CertificateOperations {
     /**
      * Retrieve the certificate identified by certificate name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -934,7 +934,7 @@ export interface CertificateOperations {
     /**
      * Retrieve the certificate identified by certificate name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -975,7 +975,7 @@ export interface CertificateOperations {
     /**
      * Create a certificate.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1015,7 +1015,7 @@ export interface CertificateOperations {
     /**
      * Create a certificate.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1074,7 +1074,7 @@ export interface CertificateOperations {
     /**
      * Update a certificate.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1105,7 +1105,7 @@ export interface CertificateOperations {
     /**
      * Update a certificate.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1155,7 +1155,7 @@ export interface CertificateOperations {
     /**
      * Retrieve a list of certificates.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1175,7 +1175,7 @@ export interface CertificateOperations {
     /**
      * Retrieve a list of certificates.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1280,7 +1280,7 @@ export interface ConnectionOperations {
     /**
      * Delete the connection.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1302,7 +1302,7 @@ export interface ConnectionOperations {
     /**
      * Delete the connection.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1343,7 +1343,7 @@ export interface ConnectionOperations {
     /**
      * Retrieve the connection identified by connection name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1365,7 +1365,7 @@ export interface ConnectionOperations {
     /**
      * Retrieve the connection identified by connection name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1406,7 +1406,7 @@ export interface ConnectionOperations {
     /**
      * Create or update a connection.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1446,7 +1446,7 @@ export interface ConnectionOperations {
     /**
      * Create or update a connection.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1505,7 +1505,7 @@ export interface ConnectionOperations {
     /**
      * Update a connection.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1539,7 +1539,7 @@ export interface ConnectionOperations {
     /**
      * Update a connection.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1592,7 +1592,7 @@ export interface ConnectionOperations {
     /**
      * Retrieve a list of connections.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1612,7 +1612,7 @@ export interface ConnectionOperations {
     /**
      * Retrieve a list of connections.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1717,7 +1717,7 @@ export interface ConnectionTypeOperations {
     /**
      * Delete the connectiontype.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1739,7 +1739,7 @@ export interface ConnectionTypeOperations {
     /**
      * Delete the connectiontype.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1779,7 +1779,7 @@ export interface ConnectionTypeOperations {
     /**
      * Retrieve the connectiontype identified by connectiontype name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1801,7 +1801,7 @@ export interface ConnectionTypeOperations {
     /**
      * Retrieve the connectiontype identified by connectiontype name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1842,7 +1842,7 @@ export interface ConnectionTypeOperations {
     /**
      * Create a connectiontype.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1877,7 +1877,7 @@ export interface ConnectionTypeOperations {
     /**
      * Create a connectiontype.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1931,7 +1931,7 @@ export interface ConnectionTypeOperations {
     /**
      * Retrieve a list of connectiontypes.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -1951,7 +1951,7 @@ export interface ConnectionTypeOperations {
     /**
      * Retrieve a list of connectiontypes.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2058,7 +2058,7 @@ export interface CredentialOperations {
     /**
      * Delete the credential.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2080,7 +2080,7 @@ export interface CredentialOperations {
     /**
      * Delete the credential.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2120,7 +2120,7 @@ export interface CredentialOperations {
     /**
      * Retrieve the credential identified by credential name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2142,7 +2142,7 @@ export interface CredentialOperations {
     /**
      * Retrieve the credential identified by credential name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2183,7 +2183,7 @@ export interface CredentialOperations {
     /**
      * Create a credential.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2220,7 +2220,7 @@ export interface CredentialOperations {
     /**
      * Create a credential.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2276,7 +2276,7 @@ export interface CredentialOperations {
     /**
      * Update a credential.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2313,7 +2313,7 @@ export interface CredentialOperations {
     /**
      * Update a credential.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2369,7 +2369,7 @@ export interface CredentialOperations {
     /**
      * Retrieve a list of credentials.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2389,7 +2389,7 @@ export interface CredentialOperations {
     /**
      * Retrieve a list of credentials.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2484,446 +2484,6 @@ export interface CredentialOperations {
 
 /**
  * @class
- * DscCompilationJobOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the AutomationClient.
- */
-export interface DscCompilationJobOperations {
-
-
-    /**
-     * Creates the Dsc compilation job of the configuration.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {uuid} compilationJobId The the DSC configuration Id.
-     *
-     * @param {object} parameters The parameters supplied to the create compilation
-     * job operation.
-     *
-     * @param {object} parameters.configuration Gets or sets the configuration.
-     *
-     * @param {string} [parameters.configuration.name] Gets or sets the name of the
-     * Dsc configuration.
-     *
-     * @param {object} [parameters.parameters] Gets or sets the parameters of the
-     * job.
-     *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
-     *
-     * @param {string} [parameters.name] Gets or sets name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
-     *
-     * @param {object} [parameters.tags] Gets or sets the tags attached to the
-     * resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscCompilationJob>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJob>>;
-
-    /**
-     * Creates the Dsc compilation job of the configuration.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {uuid} compilationJobId The the DSC configuration Id.
-     *
-     * @param {object} parameters The parameters supplied to the create compilation
-     * job operation.
-     *
-     * @param {object} parameters.configuration Gets or sets the configuration.
-     *
-     * @param {string} [parameters.configuration.name] Gets or sets the name of the
-     * Dsc configuration.
-     *
-     * @param {object} [parameters.parameters] Gets or sets the parameters of the
-     * job.
-     *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
-     *
-     * @param {string} [parameters.name] Gets or sets name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
-     *
-     * @param {object} [parameters.tags] Gets or sets the tags attached to the
-     * resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscCompilationJob} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscCompilationJob} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscCompilationJob} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    create(resourceGroupName: string, automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJob>;
-    create(resourceGroupName: string, automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, callback: ServiceCallback<models.DscCompilationJob>): void;
-    create(resourceGroupName: string, automationAccountName: string, compilationJobId: string, parameters: models.DscCompilationJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJob>): void;
-
-
-    /**
-     * Retrieve the Dsc configuration compilation job identified by job id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {uuid} compilationJobId The Dsc configuration compilation job id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscCompilationJob>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, compilationJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJob>>;
-
-    /**
-     * Retrieve the Dsc configuration compilation job identified by job id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {uuid} compilationJobId The Dsc configuration compilation job id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscCompilationJob} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscCompilationJob} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscCompilationJob} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, automationAccountName: string, compilationJobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJob>;
-    get(resourceGroupName: string, automationAccountName: string, compilationJobId: string, callback: ServiceCallback<models.DscCompilationJob>): void;
-    get(resourceGroupName: string, automationAccountName: string, compilationJobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJob>): void;
-
-
-    /**
-     * Retrieve a list of dsc compilation jobs.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscCompilationJobListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJobListResult>>;
-
-    /**
-     * Retrieve a list of dsc compilation jobs.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscCompilationJobListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscCompilationJobListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscCompilationJobListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJobListResult>;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
-
-
-    /**
-     * Retrieve the job stream identified by job stream id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {uuid} jobId The job id.
-     *
-     * @param {string} jobStreamId The job stream id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<JobStream>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getStreamWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
-
-    /**
-     * Retrieve the job stream identified by job stream id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {uuid} jobId The job id.
-     *
-     * @param {string} jobStreamId The job stream id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {JobStream} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {JobStream} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link JobStream} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getStream(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
-    getStream(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
-    getStream(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
-
-
-    /**
-     * Retrieve a list of dsc compilation jobs.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscCompilationJobListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJobListResult>>;
-
-    /**
-     * Retrieve a list of dsc compilation jobs.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscCompilationJobListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscCompilationJobListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscCompilationJobListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJobListResult>;
-    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
-    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
-}
-
-/**
- * @class
- * DscCompilationJobStream
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the AutomationClient.
- */
-export interface DscCompilationJobStream {
-
-
-    /**
-     * Retrieve all the job streams for the compilation Job.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {uuid} jobId The job id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<JobStreamListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByJobWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
-
-    /**
-     * Retrieve all the job streams for the compilation Job.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {uuid} jobId The job id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {JobStreamListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {JobStreamListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link JobStreamListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByJob(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
-    listByJob(resourceGroupName: string, automationAccountName: string, jobId: string, callback: ServiceCallback<models.JobStreamListResult>): void;
-    listByJob(resourceGroupName: string, automationAccountName: string, jobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
-}
-
-/**
- * @class
  * DscConfigurationOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AutomationClient.
@@ -2934,7 +2494,7 @@ export interface DscConfigurationOperations {
     /**
      * Delete the dsc configuration identified by configuration name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2956,7 +2516,7 @@ export interface DscConfigurationOperations {
     /**
      * Delete the dsc configuration identified by configuration name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -2996,7 +2556,7 @@ export interface DscConfigurationOperations {
     /**
      * Retrieve the configuration identified by configuration name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3018,7 +2578,7 @@ export interface DscConfigurationOperations {
     /**
      * Retrieve the configuration identified by configuration name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3059,7 +2619,7 @@ export interface DscConfigurationOperations {
     /**
      * Create the configuration identified by configuration name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3122,7 +2682,7 @@ export interface DscConfigurationOperations {
     /**
      * Create the configuration identified by configuration name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3204,7 +2764,7 @@ export interface DscConfigurationOperations {
     /**
      * Create the configuration identified by configuration name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3266,7 +2826,7 @@ export interface DscConfigurationOperations {
     /**
      * Create the configuration identified by configuration name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3347,7 +2907,7 @@ export interface DscConfigurationOperations {
     /**
      * Retrieve the configuration script identified by configuration name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3369,7 +2929,7 @@ export interface DscConfigurationOperations {
     /**
      * Retrieve the configuration script identified by configuration name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3409,7 +2969,7 @@ export interface DscConfigurationOperations {
     /**
      * Retrieve a list of configurations.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3429,7 +2989,7 @@ export interface DscConfigurationOperations {
     /**
      * Retrieve a list of configurations.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -3526,1154 +3086,6 @@ export interface DscConfigurationOperations {
 
 /**
  * @class
- * AgentRegistrationInformation
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the AutomationClient.
- */
-export interface AgentRegistrationInformation {
-
-
-    /**
-     * Retrieve the automation agent registration information.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AgentRegistration>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgentRegistration>>;
-
-    /**
-     * Retrieve the automation agent registration information.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AgentRegistration} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AgentRegistration} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AgentRegistration} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgentRegistration>;
-    get(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.AgentRegistration>): void;
-    get(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgentRegistration>): void;
-
-
-    /**
-     * Regenerate a primary or secondary agent registration key
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {object} parameters The name of the agent registration key to be
-     * regenerated
-     *
-     * @param {string} parameters.keyName Gets or sets the agent registration key
-     * name - primary or secondary. Possible values include: 'primary', 'secondary'
-     *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
-     *
-     * @param {object} [parameters.tags] Gets or sets the tags attached to the
-     * resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<AgentRegistration>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    regenerateKeyWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgentRegistration>>;
-
-    /**
-     * Regenerate a primary or secondary agent registration key
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {object} parameters The name of the agent registration key to be
-     * regenerated
-     *
-     * @param {string} parameters.keyName Gets or sets the agent registration key
-     * name - primary or secondary. Possible values include: 'primary', 'secondary'
-     *
-     * @param {string} [parameters.name] Gets or sets the name of the resource.
-     *
-     * @param {string} [parameters.location] Gets or sets the location of the
-     * resource.
-     *
-     * @param {object} [parameters.tags] Gets or sets the tags attached to the
-     * resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {AgentRegistration} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {AgentRegistration} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AgentRegistration} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    regenerateKey(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgentRegistration>;
-    regenerateKey(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, callback: ServiceCallback<models.AgentRegistration>): void;
-    regenerateKey(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgentRegistration>): void;
-}
-
-/**
- * @class
- * DscNodeOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the AutomationClient.
- */
-export interface DscNodeOperations {
-
-
-    /**
-     * Delete the dsc node identified by node id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName Automation account name.
-     *
-     * @param {string} nodeId The node id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscNode>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
-
-    /**
-     * Delete the dsc node identified by node id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName Automation account name.
-     *
-     * @param {string} nodeId The node id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscNode} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscNode} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscNode} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
-    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNode>): void;
-    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
-
-
-    /**
-     * Retrieve the dsc node identified by node id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeId The node id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscNode>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
-
-    /**
-     * Retrieve the dsc node identified by node id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeId The node id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscNode} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscNode} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscNode} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
-    get(resourceGroupName: string, automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNode>): void;
-    get(resourceGroupName: string, automationAccountName: string, nodeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
-
-
-    /**
-     * Update the dsc node.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeId Parameters supplied to the update dsc node.
-     *
-     * @param {object} parameters Parameters supplied to the update dsc node.
-     *
-     * @param {string} [parameters.nodeId] Gets or sets the id of the dsc node.
-     *
-     * @param {object} [parameters.nodeConfiguration] Gets or sets the
-     * configuration of the node.
-     *
-     * @param {string} [parameters.nodeConfiguration.name] Gets or sets the name of
-     * the dsc nodeconfiguration.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscNode>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
-
-    /**
-     * Update the dsc node.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeId Parameters supplied to the update dsc node.
-     *
-     * @param {object} parameters Parameters supplied to the update dsc node.
-     *
-     * @param {string} [parameters.nodeId] Gets or sets the id of the dsc node.
-     *
-     * @param {object} [parameters.nodeConfiguration] Gets or sets the
-     * configuration of the node.
-     *
-     * @param {string} [parameters.nodeConfiguration.name] Gets or sets the name of
-     * the dsc nodeconfiguration.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscNode} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscNode} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscNode} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
-    update(resourceGroupName: string, automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, callback: ServiceCallback<models.DscNode>): void;
-    update(resourceGroupName: string, automationAccountName: string, nodeId: string, parameters: models.DscNodeUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
-
-
-    /**
-     * Retrieve a list of dsc nodes.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscNodeListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeListResult>>;
-
-    /**
-     * Retrieve a list of dsc nodes.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscNodeListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscNodeListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscNodeListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeListResult>;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscNodeListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeListResult>): void;
-
-
-    /**
-     * Retrieve a list of dsc nodes.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscNodeListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeListResult>>;
-
-    /**
-     * Retrieve a list of dsc nodes.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscNodeListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscNodeListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscNodeListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeListResult>;
-    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.DscNodeListResult>): void;
-    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeListResult>): void;
-}
-
-/**
- * @class
- * NodeReports
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the AutomationClient.
- */
-export interface NodeReports {
-
-
-    /**
-     * Retrieve the Dsc node report list by node id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeId The parameters supplied to the list operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscNodeReportListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByNodeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReportListResult>>;
-
-    /**
-     * Retrieve the Dsc node report list by node id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeId The parameters supplied to the list operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscNodeReportListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscNodeReportListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscNodeReportListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByNode(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReportListResult>;
-    listByNode(resourceGroupName: string, automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNodeReportListResult>): void;
-    listByNode(resourceGroupName: string, automationAccountName: string, nodeId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReportListResult>): void;
-
-
-    /**
-     * Retrieve the Dsc node report data by node id and report id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeId The Dsc node id.
-     *
-     * @param {string} reportId The report id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscNodeReport>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReport>>;
-
-    /**
-     * Retrieve the Dsc node report data by node id and report id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeId The Dsc node id.
-     *
-     * @param {string} reportId The report id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscNodeReport} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscNodeReport} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscNodeReport} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReport>;
-    get(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, callback: ServiceCallback<models.DscNodeReport>): void;
-    get(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReport>): void;
-
-
-    /**
-     * Retrieve the Dsc node reports by node id and report id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeId The Dsc node id.
-     *
-     * @param {string} reportId The report id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
-
-    /**
-     * Retrieve the Dsc node reports by node id and report id.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeId The Dsc node id.
-     *
-     * @param {string} reportId The report id.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Object} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getContent(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getContent(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, callback: ServiceCallback<any>): void;
-    getContent(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
-
-
-    /**
-     * Retrieve the Dsc node report list by node id.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscNodeReportListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByNodeNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReportListResult>>;
-
-    /**
-     * Retrieve the Dsc node report list by node id.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscNodeReportListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscNodeReportListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscNodeReportListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByNodeNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReportListResult>;
-    listByNodeNext(nextPageLink: string, callback: ServiceCallback<models.DscNodeReportListResult>): void;
-    listByNodeNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReportListResult>): void;
-}
-
-/**
- * @class
- * DscNodeConfigurationOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the AutomationClient.
- */
-export interface DscNodeConfigurationOperations {
-
-
-    /**
-     * Delete the Dsc node configurations by node configuration.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeConfigurationName The Dsc node configuration name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Delete the Dsc node configurations by node configuration.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeConfigurationName The Dsc node configuration name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Retrieve the Dsc node configurations by node configuration.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeConfigurationName The Dsc node configuration name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscNodeConfiguration>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
-
-    /**
-     * Retrieve the Dsc node configurations by node configuration.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeConfigurationName The Dsc node configuration name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscNodeConfiguration} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscNodeConfiguration} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscNodeConfiguration} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
-    get(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, callback: ServiceCallback<models.DscNodeConfiguration>): void;
-    get(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
-
-
-    /**
-     * Create the node configuration identified by node configuration name.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeConfigurationName The create or update parameters for
-     * configuration.
-     *
-     * @param {object} parameters The create or update parameters for
-     * configuration.
-     *
-     * @param {object} parameters.source Gets or sets the source.
-     *
-     * @param {object} [parameters.source.hash] Gets or sets the hash.
-     *
-     * @param {string} parameters.source.hash.algorithm Gets or sets the content
-     * hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.source.hash.value Gets or sets expected hash
-     * value of the content.
-     *
-     * @param {string} [parameters.source.type] Gets or sets the content source
-     * type. Possible values include: 'embeddedContent', 'uri'
-     *
-     * @param {string} [parameters.source.value] Gets or sets the value of the
-     * content. This is based on the content source type.
-     *
-     * @param {string} [parameters.source.version] Gets or sets the version of the
-     * content.
-     *
-     * @param {string} parameters.name Gets or sets the type of the parameter.
-     *
-     * @param {object} parameters.configuration Gets or sets the configuration of
-     * the node.
-     *
-     * @param {string} [parameters.configuration.name] Gets or sets the name of the
-     * Dsc configuration.
-     *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscNodeConfiguration>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
-
-    /**
-     * Create the node configuration identified by node configuration name.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {string} nodeConfigurationName The create or update parameters for
-     * configuration.
-     *
-     * @param {object} parameters The create or update parameters for
-     * configuration.
-     *
-     * @param {object} parameters.source Gets or sets the source.
-     *
-     * @param {object} [parameters.source.hash] Gets or sets the hash.
-     *
-     * @param {string} parameters.source.hash.algorithm Gets or sets the content
-     * hash algorithm used to hash the content.
-     *
-     * @param {string} parameters.source.hash.value Gets or sets expected hash
-     * value of the content.
-     *
-     * @param {string} [parameters.source.type] Gets or sets the content source
-     * type. Possible values include: 'embeddedContent', 'uri'
-     *
-     * @param {string} [parameters.source.value] Gets or sets the value of the
-     * content. This is based on the content source type.
-     *
-     * @param {string} [parameters.source.version] Gets or sets the version of the
-     * content.
-     *
-     * @param {string} parameters.name Gets or sets the type of the parameter.
-     *
-     * @param {object} parameters.configuration Gets or sets the configuration of
-     * the node.
-     *
-     * @param {string} [parameters.configuration.name] Gets or sets the name of the
-     * Dsc configuration.
-     *
-     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
-     * new build version of NodeConfiguration is required.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscNodeConfiguration} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscNodeConfiguration} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscNodeConfiguration} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, callback: ServiceCallback<models.DscNodeConfiguration>): void;
-    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
-
-
-    /**
-     * Retrieve a list of dsc node configurations.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscNodeConfigurationListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfigurationListResult>>;
-
-    /**
-     * Retrieve a list of dsc node configurations.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} automationAccountName The automation account name.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] The filter to apply on the operation.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscNodeConfigurationListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscNodeConfigurationListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscNodeConfigurationListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
-    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
-
-
-    /**
-     * Retrieve a list of dsc node configurations.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DscNodeConfigurationListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfigurationListResult>>;
-
-    /**
-     * Retrieve a list of dsc node configurations.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DscNodeConfigurationListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DscNodeConfigurationListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DscNodeConfigurationListResult} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
-    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
-    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
-}
-
-/**
- * @class
  * HybridRunbookWorkerGroupOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AutomationClient.
@@ -4684,7 +3096,7 @@ export interface HybridRunbookWorkerGroupOperations {
     /**
      * Delete a hybrid runbook worker group.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName Automation account name.
      *
@@ -4707,7 +3119,7 @@ export interface HybridRunbookWorkerGroupOperations {
     /**
      * Delete a hybrid runbook worker group.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName Automation account name.
      *
@@ -4748,7 +3160,7 @@ export interface HybridRunbookWorkerGroupOperations {
     /**
      * Retrieve a hybrid runbook worker group.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4771,7 +3183,7 @@ export interface HybridRunbookWorkerGroupOperations {
     /**
      * Retrieve a hybrid runbook worker group.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4814,7 +3226,7 @@ export interface HybridRunbookWorkerGroupOperations {
     /**
      * Update a hybrid runbook worker group.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4845,7 +3257,7 @@ export interface HybridRunbookWorkerGroupOperations {
     /**
      * Update a hybrid runbook worker group.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4896,7 +3308,7 @@ export interface HybridRunbookWorkerGroupOperations {
     /**
      * Retrieve a list of hybrid runbook worker groups.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -4916,7 +3328,7 @@ export interface HybridRunbookWorkerGroupOperations {
     /**
      * Retrieve a list of hybrid runbook worker groups.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5023,7 +3435,7 @@ export interface JobScheduleOperations {
     /**
      * Delete the job schedule identified by job schedule name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5045,7 +3457,7 @@ export interface JobScheduleOperations {
     /**
      * Delete the job schedule identified by job schedule name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5085,7 +3497,7 @@ export interface JobScheduleOperations {
     /**
      * Retrieve the job schedule identified by job schedule name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5107,7 +3519,7 @@ export interface JobScheduleOperations {
     /**
      * Retrieve the job schedule identified by job schedule name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5148,7 +3560,7 @@ export interface JobScheduleOperations {
     /**
      * Create a job schedule.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5189,7 +3601,7 @@ export interface JobScheduleOperations {
     /**
      * Create a job schedule.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5249,7 +3661,7 @@ export interface JobScheduleOperations {
     /**
      * Retrieve a list of job schedules.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5269,7 +3681,7 @@ export interface JobScheduleOperations {
     /**
      * Retrieve a list of job schedules.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5374,7 +3786,7 @@ export interface LinkedWorkspaceOperations {
     /**
      * Retrieve the linked workspace for the account id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5394,7 +3806,7 @@ export interface LinkedWorkspaceOperations {
     /**
      * Retrieve the linked workspace for the account id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5443,7 +3855,7 @@ export interface ActivityOperations {
      * Retrieve the activity in the module identified by module name and activity
      * name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5468,7 +3880,7 @@ export interface ActivityOperations {
      * Retrieve the activity in the module identified by module name and activity
      * name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5511,7 +3923,7 @@ export interface ActivityOperations {
     /**
      * Retrieve a list of activities in the module identified by module name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5533,7 +3945,7 @@ export interface ActivityOperations {
     /**
      * Retrieve a list of activities in the module identified by module name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5640,7 +4052,7 @@ export interface ModuleOperations {
     /**
      * Delete the module by name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5662,7 +4074,7 @@ export interface ModuleOperations {
     /**
      * Delete the module by name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5702,7 +4114,7 @@ export interface ModuleOperations {
     /**
      * Retrieve the module identified by module name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5724,7 +4136,7 @@ export interface ModuleOperations {
     /**
      * Retrieve the module identified by module name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5765,7 +4177,7 @@ export interface ModuleOperations {
     /**
      * Create or Update the module identified by module name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5813,7 +4225,7 @@ export interface ModuleOperations {
     /**
      * Create or Update the module identified by module name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5880,7 +4292,7 @@ export interface ModuleOperations {
     /**
      * Update the module identified by module name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5929,7 +4341,7 @@ export interface ModuleOperations {
     /**
      * Update the module identified by module name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -5997,7 +4409,7 @@ export interface ModuleOperations {
     /**
      * Retrieve a list of modules.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6017,7 +4429,7 @@ export interface ModuleOperations {
     /**
      * Retrieve a list of modules.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6122,7 +4534,7 @@ export interface ObjectDataTypes {
     /**
      * Retrieve a list of fields of a given type identified by module name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6146,7 +4558,7 @@ export interface ObjectDataTypes {
     /**
      * Retrieve a list of fields of a given type identified by module name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6189,7 +4601,7 @@ export interface ObjectDataTypes {
     /**
      * Retrieve a list of fields of a given type across all accessible modules.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6211,7 +4623,7 @@ export interface ObjectDataTypes {
     /**
      * Retrieve a list of fields of a given type across all accessible modules.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6261,7 +4673,7 @@ export interface Fields {
     /**
      * Retrieve a list of fields of a given type identified by module name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6285,7 +4697,7 @@ export interface Fields {
     /**
      * Retrieve a list of fields of a given type identified by module name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6337,7 +4749,7 @@ export interface RunbookDraftOperations {
     /**
      * Retrieve the content of runbook draft identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6359,7 +4771,7 @@ export interface RunbookDraftOperations {
     /**
      * Retrieve the content of runbook draft identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6399,7 +4811,7 @@ export interface RunbookDraftOperations {
     /**
      * Replaces the runbook draft content.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6423,7 +4835,7 @@ export interface RunbookDraftOperations {
     /**
      * Replaces the runbook draft content.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6465,7 +4877,7 @@ export interface RunbookDraftOperations {
     /**
      * Retrieve the runbook draft identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6487,7 +4899,7 @@ export interface RunbookDraftOperations {
     /**
      * Retrieve the runbook draft identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6528,7 +4940,7 @@ export interface RunbookDraftOperations {
     /**
      * Publish runbook draft.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6551,7 +4963,7 @@ export interface RunbookDraftOperations {
     /**
      * Publish runbook draft.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6592,7 +5004,7 @@ export interface RunbookDraftOperations {
     /**
      * Undo draft edit to last known published state identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6614,7 +5026,7 @@ export interface RunbookDraftOperations {
     /**
      * Undo draft edit to last known published state identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6656,7 +5068,7 @@ export interface RunbookDraftOperations {
     /**
      * Replaces the runbook draft content.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6680,7 +5092,7 @@ export interface RunbookDraftOperations {
     /**
      * Replaces the runbook draft content.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6722,7 +5134,7 @@ export interface RunbookDraftOperations {
     /**
      * Publish runbook draft.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6745,7 +5157,7 @@ export interface RunbookDraftOperations {
     /**
      * Publish runbook draft.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6795,7 +5207,7 @@ export interface RunbookOperations {
     /**
      * Retrieve the content of runbook identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6817,7 +5229,7 @@ export interface RunbookOperations {
     /**
      * Retrieve the content of runbook identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6857,7 +5269,7 @@ export interface RunbookOperations {
     /**
      * Retrieve the runbook identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6879,7 +5291,7 @@ export interface RunbookOperations {
     /**
      * Retrieve the runbook identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -6920,7 +5332,7 @@ export interface RunbookOperations {
     /**
      * Create the runbook identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7006,7 +5418,7 @@ export interface RunbookOperations {
     /**
      * Create the runbook identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7111,7 +5523,7 @@ export interface RunbookOperations {
     /**
      * Update the runbook identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7153,7 +5565,7 @@ export interface RunbookOperations {
     /**
      * Update the runbook identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7214,7 +5626,7 @@ export interface RunbookOperations {
     /**
      * Delete the runbook by name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7236,7 +5648,7 @@ export interface RunbookOperations {
     /**
      * Delete the runbook by name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7276,7 +5688,7 @@ export interface RunbookOperations {
     /**
      * Retrieve a list of runbooks.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7296,7 +5708,7 @@ export interface RunbookOperations {
     /**
      * Retrieve a list of runbooks.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7402,7 +5814,7 @@ export interface TestJobStreams {
      * Retrieve a test job stream of the test job identified by runbook name and
      * stream id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7427,7 +5839,7 @@ export interface TestJobStreams {
      * Retrieve a test job stream of the test job identified by runbook name and
      * stream id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7470,7 +5882,7 @@ export interface TestJobStreams {
     /**
      * Retrieve a list of test job streams identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7494,7 +5906,7 @@ export interface TestJobStreams {
     /**
      * Retrieve a list of test job streams identified by runbook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7603,7 +6015,7 @@ export interface TestJobOperations {
     /**
      * Create a test job of the runbook.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7635,7 +6047,7 @@ export interface TestJobOperations {
     /**
      * Create a test job of the runbook.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7686,7 +6098,7 @@ export interface TestJobOperations {
     /**
      * Retrieve the test job for the specified runbook.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7708,7 +6120,7 @@ export interface TestJobOperations {
     /**
      * Retrieve the test job for the specified runbook.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7749,7 +6161,7 @@ export interface TestJobOperations {
     /**
      * Resume the test job.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7771,7 +6183,7 @@ export interface TestJobOperations {
     /**
      * Resume the test job.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7811,7 +6223,7 @@ export interface TestJobOperations {
     /**
      * Stop the test job.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7833,7 +6245,7 @@ export interface TestJobOperations {
     /**
      * Stop the test job.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7873,7 +6285,7 @@ export interface TestJobOperations {
     /**
      * Suspend the test job.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7895,7 +6307,7 @@ export interface TestJobOperations {
     /**
      * Suspend the test job.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -7944,7 +6356,7 @@ export interface ScheduleOperations {
     /**
      * Create a schedule.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8001,7 +6413,7 @@ export interface ScheduleOperations {
     /**
      * Create a schedule.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8077,7 +6489,7 @@ export interface ScheduleOperations {
     /**
      * Update the schedule identified by schedule name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8110,7 +6522,7 @@ export interface ScheduleOperations {
     /**
      * Update the schedule identified by schedule name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8162,7 +6574,7 @@ export interface ScheduleOperations {
     /**
      * Retrieve the schedule identified by schedule name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8184,7 +6596,7 @@ export interface ScheduleOperations {
     /**
      * Retrieve the schedule identified by schedule name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8225,7 +6637,7 @@ export interface ScheduleOperations {
     /**
      * Delete the schedule identified by schedule name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8247,7 +6659,7 @@ export interface ScheduleOperations {
     /**
      * Delete the schedule identified by schedule name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8287,7 +6699,7 @@ export interface ScheduleOperations {
     /**
      * Retrieve a list of schedules.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8307,7 +6719,7 @@ export interface ScheduleOperations {
     /**
      * Retrieve a list of schedules.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8412,7 +6824,7 @@ export interface VariableOperations {
     /**
      * Create a variable.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8447,7 +6859,7 @@ export interface VariableOperations {
     /**
      * Create a variable.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8501,7 +6913,7 @@ export interface VariableOperations {
     /**
      * Update a variable.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8533,7 +6945,7 @@ export interface VariableOperations {
     /**
      * Update a variable.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8584,7 +6996,7 @@ export interface VariableOperations {
     /**
      * Delete the variable.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8606,7 +7018,7 @@ export interface VariableOperations {
     /**
      * Delete the variable.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8646,7 +7058,7 @@ export interface VariableOperations {
     /**
      * Retrieve the variable identified by variable name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8668,7 +7080,7 @@ export interface VariableOperations {
     /**
      * Retrieve the variable identified by variable name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8709,7 +7121,7 @@ export interface VariableOperations {
     /**
      * Retrieve a list of variables.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8729,7 +7141,7 @@ export interface VariableOperations {
     /**
      * Retrieve a list of variables.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8834,7 +7246,7 @@ export interface WebhookOperations {
     /**
      * Generates a Uri for use in creating a webhook.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8854,7 +7266,7 @@ export interface WebhookOperations {
     /**
      * Generates a Uri for use in creating a webhook.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8892,7 +7304,7 @@ export interface WebhookOperations {
     /**
      * Delete the webhook by name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8914,7 +7326,7 @@ export interface WebhookOperations {
     /**
      * Delete the webhook by name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8954,7 +7366,7 @@ export interface WebhookOperations {
     /**
      * Retrieve the webhook identified by webhook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -8976,7 +7388,7 @@ export interface WebhookOperations {
     /**
      * Retrieve the webhook identified by webhook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9017,7 +7429,7 @@ export interface WebhookOperations {
     /**
      * Create the webhook identified by webhook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9061,7 +7473,7 @@ export interface WebhookOperations {
     /**
      * Create the webhook identified by webhook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9124,7 +7536,7 @@ export interface WebhookOperations {
     /**
      * Update the webhook identified by webhook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9162,7 +7574,7 @@ export interface WebhookOperations {
     /**
      * Update the webhook identified by webhook name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9219,7 +7631,7 @@ export interface WebhookOperations {
     /**
      * Retrieve a list of webhooks.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9241,7 +7653,7 @@ export interface WebhookOperations {
     /**
      * Retrieve a list of webhooks.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The automation account name.
      *
@@ -9348,7 +7760,7 @@ export interface SoftwareUpdateConfigurations {
     /**
      * Create a new software update configuration with the name given in the URI.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -9421,7 +7833,7 @@ export interface SoftwareUpdateConfigurations {
      * @param {number} [parameters.scheduleInfo.nextRunOffsetMinutes] Gets or sets
      * the next run time's offset in minutes.
      *
-     * @param {object} [parameters.scheduleInfo.interval] Gets or sets the interval
+     * @param {number} [parameters.scheduleInfo.interval] Gets or sets the interval
      * of the schedule.
      *
      * @param {string} [parameters.scheduleInfo.frequency] Gets or sets the
@@ -9478,7 +7890,7 @@ export interface SoftwareUpdateConfigurations {
     /**
      * Create a new software update configuration with the name given in the URI.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -9551,7 +7963,7 @@ export interface SoftwareUpdateConfigurations {
      * @param {number} [parameters.scheduleInfo.nextRunOffsetMinutes] Gets or sets
      * the next run time's offset in minutes.
      *
-     * @param {object} [parameters.scheduleInfo.interval] Gets or sets the interval
+     * @param {number} [parameters.scheduleInfo.interval] Gets or sets the interval
      * of the schedule.
      *
      * @param {string} [parameters.scheduleInfo.frequency] Gets or sets the
@@ -9628,7 +8040,7 @@ export interface SoftwareUpdateConfigurations {
     /**
      * Get a single software update configuration by name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -9654,7 +8066,7 @@ export interface SoftwareUpdateConfigurations {
     /**
      * Get a single software update configuration by name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -9700,7 +8112,7 @@ export interface SoftwareUpdateConfigurations {
     /**
      * delete a specific software update configuration.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -9726,7 +8138,7 @@ export interface SoftwareUpdateConfigurations {
     /**
      * delete a specific software update configuration.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -9770,7 +8182,7 @@ export interface SoftwareUpdateConfigurations {
     /**
      * Get all software update configurations for the account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -9795,7 +8207,7 @@ export interface SoftwareUpdateConfigurations {
     /**
      * Get all software update configurations for the account.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -9849,7 +8261,7 @@ export interface SoftwareUpdateConfigurationRuns {
     /**
      * Get a single software update configuration Run by Id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -9875,7 +8287,7 @@ export interface SoftwareUpdateConfigurationRuns {
     /**
      * Get a single software update configuration Run by Id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -9921,7 +8333,7 @@ export interface SoftwareUpdateConfigurationRuns {
     /**
      * Return list of software update configuration runs
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -9954,7 +8366,7 @@ export interface SoftwareUpdateConfigurationRuns {
     /**
      * Return list of software update configuration runs
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -10016,7 +8428,7 @@ export interface SoftwareUpdateConfigurationMachineRuns {
     /**
      * Get a single software update configuration machine run by Id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -10042,7 +8454,7 @@ export interface SoftwareUpdateConfigurationMachineRuns {
     /**
      * Get a single software update configuration machine run by Id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -10088,7 +8500,7 @@ export interface SoftwareUpdateConfigurationMachineRuns {
     /**
      * Return list of software update configuration machine runs
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -10121,7 +8533,7 @@ export interface SoftwareUpdateConfigurationMachineRuns {
     /**
      * Return list of software update configuration machine runs
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -10184,9 +8596,9 @@ export interface SourceControlOperations {
     /**
      * Create a source control.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The source control name.
      *
@@ -10234,9 +8646,9 @@ export interface SourceControlOperations {
     /**
      * Create a source control.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The source control name.
      *
@@ -10303,9 +8715,9 @@ export interface SourceControlOperations {
     /**
      * Update a source control.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The source control name.
      *
@@ -10346,9 +8758,9 @@ export interface SourceControlOperations {
     /**
      * Update a source control.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The source control name.
      *
@@ -10408,9 +8820,9 @@ export interface SourceControlOperations {
     /**
      * Delete the source control.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The name of source control.
      *
@@ -10430,9 +8842,9 @@ export interface SourceControlOperations {
     /**
      * Delete the source control.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The name of source control.
      *
@@ -10470,9 +8882,9 @@ export interface SourceControlOperations {
     /**
      * Retrieve the source control identified by source control name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The name of source control.
      *
@@ -10492,9 +8904,9 @@ export interface SourceControlOperations {
     /**
      * Retrieve the source control identified by source control name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The name of source control.
      *
@@ -10533,9 +8945,9 @@ export interface SourceControlOperations {
     /**
      * Retrieve a list of source controls.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10555,9 +8967,9 @@ export interface SourceControlOperations {
     /**
      * Retrieve a list of source controls.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -10664,9 +9076,9 @@ export interface SourceControlSyncJobOperations {
     /**
      * Creates the sync job for a source control.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The source control name.
      *
@@ -10688,9 +9100,9 @@ export interface SourceControlSyncJobOperations {
     /**
      * Creates the sync job for a source control.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The source control name.
      *
@@ -10731,9 +9143,9 @@ export interface SourceControlSyncJobOperations {
     /**
      * Retrieve the source control sync job identified by job id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The source control name.
      *
@@ -10755,9 +9167,9 @@ export interface SourceControlSyncJobOperations {
     /**
      * Retrieve the source control sync job identified by job id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The source control name.
      *
@@ -10799,9 +9211,9 @@ export interface SourceControlSyncJobOperations {
     /**
      * Retrieve a list of source control sync jobs.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The source control name.
      *
@@ -10823,9 +9235,9 @@ export interface SourceControlSyncJobOperations {
     /**
      * Retrieve a list of source control sync jobs.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
-     * @param {string} automationAccountName The automation account name.
+     * @param {string} automationAccountName The name of the automation account.
      *
      * @param {string} sourceControlName The source control name.
      *
@@ -10934,7 +9346,7 @@ export interface JobOperations {
     /**
      * Retrieve the job output identified by job name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -10959,7 +9371,7 @@ export interface JobOperations {
     /**
      * Retrieve the job output identified by job name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11002,7 +9414,7 @@ export interface JobOperations {
     /**
      * Retrieve the runbook content of the job identified by job name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11027,7 +9439,7 @@ export interface JobOperations {
     /**
      * Retrieve the runbook content of the job identified by job name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11070,7 +9482,7 @@ export interface JobOperations {
     /**
      * Suspend the job identified by job name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11095,7 +9507,7 @@ export interface JobOperations {
     /**
      * Suspend the job identified by job name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11138,7 +9550,7 @@ export interface JobOperations {
     /**
      * Stop the job identified by jobName.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11163,7 +9575,7 @@ export interface JobOperations {
     /**
      * Stop the job identified by jobName.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11206,7 +9618,7 @@ export interface JobOperations {
     /**
      * Retrieve the job identified by job name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11231,7 +9643,7 @@ export interface JobOperations {
     /**
      * Retrieve the job identified by job name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11275,7 +9687,7 @@ export interface JobOperations {
     /**
      * Create a job of the runbook.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11314,7 +9726,7 @@ export interface JobOperations {
     /**
      * Create a job of the runbook.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11372,7 +9784,7 @@ export interface JobOperations {
     /**
      * Retrieve a list of jobs.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11397,7 +9809,7 @@ export interface JobOperations {
     /**
      * Retrieve a list of jobs.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11441,7 +9853,7 @@ export interface JobOperations {
     /**
      * Resume the job identified by jobName.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11466,7 +9878,7 @@ export interface JobOperations {
     /**
      * Resume the job identified by jobName.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11581,7 +9993,7 @@ export interface JobStreamOperations {
     /**
      * Retrieve the job stream identified by job stream id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11608,7 +10020,7 @@ export interface JobStreamOperations {
     /**
      * Retrieve the job stream identified by job stream id.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11654,7 +10066,7 @@ export interface JobStreamOperations {
     /**
      * Retrieve a list of jobs streams identified by job name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11681,7 +10093,7 @@ export interface JobStreamOperations {
     /**
      * Retrieve a list of jobs streams identified by job name.
      *
-     * @param {string} resourceGroupName The resource group name.
+     * @param {string} resourceGroupName Name of an Azure Resource group.
      *
      * @param {string} automationAccountName The name of the automation account.
      *
@@ -11785,4 +10197,1840 @@ export interface JobStreamOperations {
     listByJobNext(nextPageLink: string, options?: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
     listByJobNext(nextPageLink: string, callback: ServiceCallback<models.JobStreamListResult>): void;
     listByJobNext(nextPageLink: string, options: { clientRequestId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
+}
+
+/**
+ * @class
+ * AgentRegistrationInformation
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface AgentRegistrationInformation {
+
+
+    /**
+     * Retrieve the automation agent registration information.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AgentRegistration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgentRegistration>>;
+
+    /**
+     * Retrieve the automation agent registration information.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AgentRegistration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AgentRegistration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AgentRegistration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgentRegistration>;
+    get(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.AgentRegistration>): void;
+    get(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgentRegistration>): void;
+
+
+    /**
+     * Regenerate a primary or secondary agent registration key
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} parameters The name of the agent registration key to be
+     * regenerated
+     *
+     * @param {string} parameters.keyName Gets or sets the agent registration key
+     * name - primary or secondary. Possible values include: 'primary', 'secondary'
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AgentRegistration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    regenerateKeyWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AgentRegistration>>;
+
+    /**
+     * Regenerate a primary or secondary agent registration key
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} parameters The name of the agent registration key to be
+     * regenerated
+     *
+     * @param {string} parameters.keyName Gets or sets the agent registration key
+     * name - primary or secondary. Possible values include: 'primary', 'secondary'
+     *
+     * @param {string} [parameters.name] Gets or sets the name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AgentRegistration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AgentRegistration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AgentRegistration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    regenerateKey(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AgentRegistration>;
+    regenerateKey(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, callback: ServiceCallback<models.AgentRegistration>): void;
+    regenerateKey(resourceGroupName: string, automationAccountName: string, parameters: models.AgentRegistrationRegenerateKeyParameter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AgentRegistration>): void;
+}
+
+/**
+ * @class
+ * DscNodeOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface DscNodeOperations {
+
+
+    /**
+     * Delete the dsc node identified by node id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeId The node id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNode>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
+
+    /**
+     * Delete the dsc node identified by node id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeId The node id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNode} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNode} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNode} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNode>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
+
+
+    /**
+     * Retrieve the dsc node identified by node id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeId The node id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNode>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
+
+    /**
+     * Retrieve the dsc node identified by node id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeId The node id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNode} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNode} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNode} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNode>): void;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
+
+
+    /**
+     * Update the dsc node.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeId Parameters supplied to the update dsc node.
+     *
+     * @param {object} dscNodeUpdateParameters Parameters supplied to the update
+     * dsc node.
+     *
+     * @param {string} [dscNodeUpdateParameters.nodeId] Gets or sets the id of the
+     * dsc node.
+     *
+     * @param {object} [dscNodeUpdateParameters.nodeConfiguration] Gets or sets the
+     * configuration of the node.
+     *
+     * @param {string} [dscNodeUpdateParameters.nodeConfiguration.name] Gets or
+     * sets the name of the dsc nodeconfiguration.
+     *
+     * @param {object} [dscNodeUpdateParameters.properties]
+     *
+     * @param {string} [dscNodeUpdateParameters.properties.name] Gets or sets the
+     * name of the dsc nodeconfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNode>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, dscNodeUpdateParameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNode>>;
+
+    /**
+     * Update the dsc node.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeId Parameters supplied to the update dsc node.
+     *
+     * @param {object} dscNodeUpdateParameters Parameters supplied to the update
+     * dsc node.
+     *
+     * @param {string} [dscNodeUpdateParameters.nodeId] Gets or sets the id of the
+     * dsc node.
+     *
+     * @param {object} [dscNodeUpdateParameters.nodeConfiguration] Gets or sets the
+     * configuration of the node.
+     *
+     * @param {string} [dscNodeUpdateParameters.nodeConfiguration.name] Gets or
+     * sets the name of the dsc nodeconfiguration.
+     *
+     * @param {object} [dscNodeUpdateParameters.properties]
+     *
+     * @param {string} [dscNodeUpdateParameters.properties.name] Gets or sets the
+     * name of the dsc nodeconfiguration.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNode} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNode} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNode} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, nodeId: string, dscNodeUpdateParameters: models.DscNodeUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNode>;
+    update(resourceGroupName: string, automationAccountName: string, nodeId: string, dscNodeUpdateParameters: models.DscNodeUpdateParameters, callback: ServiceCallback<models.DscNode>): void;
+    update(resourceGroupName: string, automationAccountName: string, nodeId: string, dscNodeUpdateParameters: models.DscNodeUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNode>): void;
+
+
+    /**
+     * Retrieve a list of dsc nodes.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeListResult>>;
+
+    /**
+     * Retrieve a list of dsc nodes.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscNodeListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeListResult>): void;
+
+
+    /**
+     * Retrieve a list of dsc nodes.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeListResult>>;
+
+    /**
+     * Retrieve a list of dsc nodes.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.DscNodeListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeListResult>): void;
+}
+
+/**
+ * @class
+ * NodeReports
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface NodeReports {
+
+
+    /**
+     * Retrieve the Dsc node report list by node id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeId The parameters supplied to the list operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeReportListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByNodeWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReportListResult>>;
+
+    /**
+     * Retrieve the Dsc node report list by node id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeId The parameters supplied to the list operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeReportListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeReportListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeReportListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByNode(resourceGroupName: string, automationAccountName: string, nodeId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReportListResult>;
+    listByNode(resourceGroupName: string, automationAccountName: string, nodeId: string, callback: ServiceCallback<models.DscNodeReportListResult>): void;
+    listByNode(resourceGroupName: string, automationAccountName: string, nodeId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReportListResult>): void;
+
+
+    /**
+     * Retrieve the Dsc node report data by node id and report id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeId The Dsc node id.
+     *
+     * @param {string} reportId The report id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeReport>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReport>>;
+
+    /**
+     * Retrieve the Dsc node report data by node id and report id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeId The Dsc node id.
+     *
+     * @param {string} reportId The report id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeReport} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeReport} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeReport} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReport>;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, callback: ServiceCallback<models.DscNodeReport>): void;
+    get(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReport>): void;
+
+
+    /**
+     * Retrieve the Dsc node reports by node id and report id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeId The Dsc node id.
+     *
+     * @param {string} reportId The report id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getContentWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
+
+    /**
+     * Retrieve the Dsc node reports by node id and report id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeId The Dsc node id.
+     *
+     * @param {string} reportId The report id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Object} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Object} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getContent(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
+    getContent(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, callback: ServiceCallback<any>): void;
+    getContent(resourceGroupName: string, automationAccountName: string, nodeId: string, reportId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
+
+
+    /**
+     * Retrieve the Dsc node report list by node id.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeReportListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByNodeNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeReportListResult>>;
+
+    /**
+     * Retrieve the Dsc node report list by node id.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeReportListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeReportListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeReportListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByNodeNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeReportListResult>;
+    listByNodeNext(nextPageLink: string, callback: ServiceCallback<models.DscNodeReportListResult>): void;
+    listByNodeNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeReportListResult>): void;
+}
+
+/**
+ * @class
+ * DscCompilationJobOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface DscCompilationJobOperations {
+
+
+    /**
+     * Creates the Dsc compilation job of the configuration.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} compilationJobName The the DSC configuration Id.
+     *
+     * @param {object} parameters The parameters supplied to the create compilation
+     * job operation.
+     *
+     * @param {object} parameters.configuration Gets or sets the configuration.
+     *
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * job.
+     *
+     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
+     * new build version of NodeConfiguration is required.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscCompilationJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, compilationJobName: string, parameters: models.DscCompilationJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJob>>;
+
+    /**
+     * Creates the Dsc compilation job of the configuration.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} compilationJobName The the DSC configuration Id.
+     *
+     * @param {object} parameters The parameters supplied to the create compilation
+     * job operation.
+     *
+     * @param {object} parameters.configuration Gets or sets the configuration.
+     *
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * job.
+     *
+     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
+     * new build version of NodeConfiguration is required.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscCompilationJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscCompilationJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscCompilationJob} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, automationAccountName: string, compilationJobName: string, parameters: models.DscCompilationJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJob>;
+    create(resourceGroupName: string, automationAccountName: string, compilationJobName: string, parameters: models.DscCompilationJobCreateParameters, callback: ServiceCallback<models.DscCompilationJob>): void;
+    create(resourceGroupName: string, automationAccountName: string, compilationJobName: string, parameters: models.DscCompilationJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJob>): void;
+
+
+    /**
+     * Retrieve the Dsc configuration compilation job identified by job id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} compilationJobName The the DSC configuration Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscCompilationJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, compilationJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJob>>;
+
+    /**
+     * Retrieve the Dsc configuration compilation job identified by job id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} compilationJobName The the DSC configuration Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscCompilationJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscCompilationJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscCompilationJob} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, compilationJobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJob>;
+    get(resourceGroupName: string, automationAccountName: string, compilationJobName: string, callback: ServiceCallback<models.DscCompilationJob>): void;
+    get(resourceGroupName: string, automationAccountName: string, compilationJobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJob>): void;
+
+
+    /**
+     * Retrieve a list of dsc compilation jobs.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscCompilationJobListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJobListResult>>;
+
+    /**
+     * Retrieve a list of dsc compilation jobs.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscCompilationJobListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscCompilationJobListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscCompilationJobListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJobListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
+
+
+    /**
+     * Retrieve the job stream identified by job stream id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {string} jobStreamId The job stream id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStream>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getStreamWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStream>>;
+
+    /**
+     * Retrieve the job stream identified by job stream id.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {string} jobStreamId The job stream id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStream} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStream} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStream} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getStream(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStream>;
+    getStream(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, callback: ServiceCallback<models.JobStream>): void;
+    getStream(resourceGroupName: string, automationAccountName: string, jobId: string, jobStreamId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStream>): void;
+
+
+    /**
+     * Creates the Dsc compilation job of the configuration.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} compilationJobName The the DSC configuration Id.
+     *
+     * @param {object} parameters The parameters supplied to the create compilation
+     * job operation.
+     *
+     * @param {object} parameters.configuration Gets or sets the configuration.
+     *
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * job.
+     *
+     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
+     * new build version of NodeConfiguration is required.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscCompilationJob>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, compilationJobName: string, parameters: models.DscCompilationJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJob>>;
+
+    /**
+     * Creates the Dsc compilation job of the configuration.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} compilationJobName The the DSC configuration Id.
+     *
+     * @param {object} parameters The parameters supplied to the create compilation
+     * job operation.
+     *
+     * @param {object} parameters.configuration Gets or sets the configuration.
+     *
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
+     *
+     * @param {object} [parameters.parameters] Gets or sets the parameters of the
+     * job.
+     *
+     * @param {boolean} [parameters.newNodeConfigurationBuildVersionRequired] If a
+     * new build version of NodeConfiguration is required.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscCompilationJob} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscCompilationJob} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscCompilationJob} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, automationAccountName: string, compilationJobName: string, parameters: models.DscCompilationJobCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJob>;
+    beginCreate(resourceGroupName: string, automationAccountName: string, compilationJobName: string, parameters: models.DscCompilationJobCreateParameters, callback: ServiceCallback<models.DscCompilationJob>): void;
+    beginCreate(resourceGroupName: string, automationAccountName: string, compilationJobName: string, parameters: models.DscCompilationJobCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJob>): void;
+
+
+    /**
+     * Retrieve a list of dsc compilation jobs.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscCompilationJobListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscCompilationJobListResult>>;
+
+    /**
+     * Retrieve a list of dsc compilation jobs.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscCompilationJobListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscCompilationJobListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscCompilationJobListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscCompilationJobListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscCompilationJobListResult>): void;
+}
+
+/**
+ * @class
+ * DscCompilationJobStream
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface DscCompilationJobStream {
+
+
+    /**
+     * Retrieve all the job streams for the compilation Job.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStreamListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStreamListResult>>;
+
+    /**
+     * Retrieve all the job streams for the compilation Job.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {uuid} jobId The job id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStreamListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStreamListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStreamListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJob(resourceGroupName: string, automationAccountName: string, jobId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStreamListResult>;
+    listByJob(resourceGroupName: string, automationAccountName: string, jobId: string, callback: ServiceCallback<models.JobStreamListResult>): void;
+    listByJob(resourceGroupName: string, automationAccountName: string, jobId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStreamListResult>): void;
+}
+
+/**
+ * @class
+ * DscNodeConfigurationOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface DscNodeConfigurationOperations {
+
+
+    /**
+     * Delete the Dsc node configurations by node configuration.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeConfigurationName The Dsc node configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the Dsc node configurations by node configuration.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeConfigurationName The Dsc node configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the Dsc node configurations by node configuration.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeConfigurationName The Dsc node configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
+
+    /**
+     * Retrieve the Dsc node configurations by node configuration.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeConfigurationName The Dsc node configuration name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeConfiguration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
+    get(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    get(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+
+
+    /**
+     * Create the node configuration identified by node configuration name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeConfigurationName The Dsc node configuration name.
+     *
+     * @param {object} parameters The create or update parameters for
+     * configuration.
+     *
+     * @param {object} parameters.source Gets or sets the source.
+     *
+     * @param {object} [parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source.version] Gets or sets the version of the
+     * content.
+     *
+     * @param {string} parameters.name Gets or sets the type of the parameter.
+     *
+     * @param {object} parameters.configuration Gets or sets the configuration of
+     * the node.
+     *
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
+     *
+     * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
+     * version of NodeConfiguration is required.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
+
+    /**
+     * Create the node configuration identified by node configuration name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeConfigurationName The Dsc node configuration name.
+     *
+     * @param {object} parameters The create or update parameters for
+     * configuration.
+     *
+     * @param {object} parameters.source Gets or sets the source.
+     *
+     * @param {object} [parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source.version] Gets or sets the version of the
+     * content.
+     *
+     * @param {string} parameters.name Gets or sets the type of the parameter.
+     *
+     * @param {object} parameters.configuration Gets or sets the configuration of
+     * the node.
+     *
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
+     *
+     * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
+     * version of NodeConfiguration is required.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeConfiguration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+
+
+    /**
+     * Retrieve a list of dsc node configurations.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeConfigurationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfigurationListResult>>;
+
+    /**
+     * Retrieve a list of dsc node configurations.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeConfigurationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeConfigurationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeConfigurationListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
+
+
+    /**
+     * Create the node configuration identified by node configuration name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeConfigurationName The Dsc node configuration name.
+     *
+     * @param {object} parameters The create or update parameters for
+     * configuration.
+     *
+     * @param {object} parameters.source Gets or sets the source.
+     *
+     * @param {object} [parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source.version] Gets or sets the version of the
+     * content.
+     *
+     * @param {string} parameters.name Gets or sets the type of the parameter.
+     *
+     * @param {object} parameters.configuration Gets or sets the configuration of
+     * the node.
+     *
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
+     *
+     * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
+     * version of NodeConfiguration is required.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeConfiguration>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfiguration>>;
+
+    /**
+     * Create the node configuration identified by node configuration name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} nodeConfigurationName The Dsc node configuration name.
+     *
+     * @param {object} parameters The create or update parameters for
+     * configuration.
+     *
+     * @param {object} parameters.source Gets or sets the source.
+     *
+     * @param {object} [parameters.source.hash] Gets or sets the hash.
+     *
+     * @param {string} parameters.source.hash.algorithm Gets or sets the content
+     * hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.source.hash.value Gets or sets expected hash
+     * value of the content.
+     *
+     * @param {string} [parameters.source.type] Gets or sets the content source
+     * type. Possible values include: 'embeddedContent', 'uri'
+     *
+     * @param {string} [parameters.source.value] Gets or sets the value of the
+     * content. This is based on the content source type.
+     *
+     * @param {string} [parameters.source.version] Gets or sets the version of the
+     * content.
+     *
+     * @param {string} parameters.name Gets or sets the type of the parameter.
+     *
+     * @param {object} parameters.configuration Gets or sets the configuration of
+     * the node.
+     *
+     * @param {string} [parameters.configuration.name] Gets or sets the name of the
+     * Dsc configuration.
+     *
+     * @param {boolean} [parameters.incrementNodeConfigurationBuild] If a new build
+     * version of NodeConfiguration is required.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeConfiguration} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeConfiguration} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeConfiguration} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfiguration>;
+    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+    beginCreateOrUpdate(resourceGroupName: string, automationAccountName: string, nodeConfigurationName: string, parameters: models.DscNodeConfigurationCreateOrUpdateParametersProperties, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfiguration>): void;
+
+
+    /**
+     * Retrieve a list of dsc node configurations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DscNodeConfigurationListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DscNodeConfigurationListResult>>;
+
+    /**
+     * Retrieve a list of dsc node configurations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DscNodeConfigurationListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DscNodeConfigurationListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DscNodeConfigurationListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DscNodeConfigurationListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DscNodeConfigurationListResult>): void;
 }

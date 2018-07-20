@@ -9,9 +9,10 @@
  */
 
 import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'ms-rest';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ImageSearchAPIClient extends ServiceClient {
+export default class ImageSearchAPIClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the ImageSearchAPIClient class.
@@ -39,4 +40,4 @@ declare class ImageSearchAPIClient extends ServiceClient {
   imagesOperations: operations.ImagesOperations;
 }
 
-export = ImageSearchAPIClient;
+export { ImageSearchAPIClient, models as ImageSearchAPIModels };
