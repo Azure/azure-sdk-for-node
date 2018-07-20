@@ -232,6 +232,8 @@ export interface ApiVersionSetContractDetails {
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
  * @member {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  */
@@ -244,6 +246,8 @@ export interface ApiEntityBaseContract {
   apiVersion?: string;
   readonly isCurrent?: boolean;
   readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
   apiVersionSetId?: string;
 }
 
@@ -314,6 +318,8 @@ export interface ApiContractProperties extends ApiEntityBaseContract {
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
  * @member {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  * @member {string} [displayName] API name.
@@ -347,6 +353,8 @@ export interface ApiContract extends Resource {
   apiVersion?: string;
   readonly isCurrent?: boolean;
   readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
   apiVersionSetId?: string;
   displayName?: string;
   serviceUrl?: string;
@@ -401,6 +409,8 @@ export interface ApiCreateOrUpdatePropertiesWsdlSelector {
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
  * @member {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  * @member {string} [displayName] API name.
@@ -448,6 +458,8 @@ export interface ApiCreateOrUpdateParameter {
   apiVersion?: string;
   readonly isCurrent?: boolean;
   readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
   apiVersionSetId?: string;
   displayName?: string;
   serviceUrl?: string;
@@ -491,6 +503,8 @@ export interface ApiCreateOrUpdateParameter {
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
  * @member {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  * @member {string} [displayName] API name.
@@ -512,6 +526,8 @@ export interface ApiUpdateContract {
   apiVersion?: string;
   readonly isCurrent?: boolean;
   readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
   apiVersionSetId?: string;
   displayName?: string;
   serviceUrl?: string;
@@ -2560,7 +2576,7 @@ export interface EmailTemplateUpdateParameters {
  * 'system', 'external'
  * @member {string} [externalId] For external groups, this property contains
  * the id of the group from the external identity provider, e.g. for Azure
- * Active Directory aad://<tenant>.onmicrosoft.com/groups/<group object id>;
+ * Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`;
  * otherwise the value is null.
  */
 export interface GroupContractProperties {
@@ -2586,7 +2602,7 @@ export interface GroupContractProperties {
  * 'custom', 'system', 'external'
  * @member {string} [externalId] For external groups, this property contains
  * the id of the group from the external identity provider, e.g. for Azure
- * Active Directory aad://<tenant>.onmicrosoft.com/groups/<group object id>;
+ * Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`;
  * otherwise the value is null.
  */
 export interface GroupContract extends Resource {
@@ -2609,8 +2625,9 @@ export interface GroupContract extends Resource {
  * 'system', 'external'
  * @member {string} [externalId] Identifier of the external groups, this
  * property contains the id of the group from the external identity provider,
- * e.g. for Azure Active Directory aad://<tenant>.onmicrosoft.com/groups/<group
- * object id>; otherwise the value is null.
+ * e.g. for Azure Active Directory
+ * `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the
+ * value is null.
  */
 export interface GroupCreateParameters {
   displayName: string;
@@ -2631,8 +2648,9 @@ export interface GroupCreateParameters {
  * 'system', 'external'
  * @member {string} [externalId] Identifier of the external groups, this
  * property contains the id of the group from the external identity provider,
- * e.g. for Azure Active Directory aad://<tenant>.onmicrosoft.com/groups/<group
- * object id>; otherwise the value is null.
+ * e.g. for Azure Active Directory
+ * `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the
+ * value is null.
  */
 export interface GroupUpdateParameters {
   displayName?: string;
