@@ -4643,6 +4643,97 @@ export interface UpgradeOperationHistoricalStatusInfo {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualMachineHealthStatus class.
+ * @constructor
+ * The health status of the VM.
+ *
+ * @member {object} [status] The health status information for the VM.
+ * @member {string} [status.code] The status code.
+ * @member {string} [status.level] The level code. Possible values include:
+ * 'Info', 'Warning', 'Error'
+ * @member {string} [status.displayStatus] The short localizable label for the
+ * status.
+ * @member {string} [status.message] The detailed status message, including for
+ * alerts and error messages.
+ * @member {date} [status.time] The time of the status.
+ */
+export interface VirtualMachineHealthStatus {
+  readonly status?: InstanceViewStatus;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualMachineScaleSetVMInstanceView class.
+ * @constructor
+ * The instance view of a virtual machine scale set VM.
+ *
+ * @member {number} [platformUpdateDomain] The Update Domain count.
+ * @member {number} [platformFaultDomain] The Fault Domain count.
+ * @member {string} [rdpThumbPrint] The Remote desktop certificate thumbprint.
+ * @member {object} [vmAgent] The VM Agent running on the virtual machine.
+ * @member {string} [vmAgent.vmAgentVersion] The VM Agent full version.
+ * @member {array} [vmAgent.extensionHandlers] The virtual machine extension
+ * handler instance view.
+ * @member {array} [vmAgent.statuses] The resource status information.
+ * @member {object} [maintenanceRedeployStatus] The Maintenance Operation
+ * status on the virtual machine.
+ * @member {boolean}
+ * [maintenanceRedeployStatus.isCustomerInitiatedMaintenanceAllowed] True, if
+ * customer is allowed to perform Maintenance.
+ * @member {date} [maintenanceRedeployStatus.preMaintenanceWindowStartTime]
+ * Start Time for the Pre Maintenance Window.
+ * @member {date} [maintenanceRedeployStatus.preMaintenanceWindowEndTime] End
+ * Time for the Pre Maintenance Window.
+ * @member {date} [maintenanceRedeployStatus.maintenanceWindowStartTime] Start
+ * Time for the Maintenance Window.
+ * @member {date} [maintenanceRedeployStatus.maintenanceWindowEndTime] End Time
+ * for the Maintenance Window.
+ * @member {string} [maintenanceRedeployStatus.lastOperationResultCode] The
+ * Last Maintenance Operation Result Code. Possible values include: 'None',
+ * 'RetryLater', 'MaintenanceAborted', 'MaintenanceCompleted'
+ * @member {string} [maintenanceRedeployStatus.lastOperationMessage] Message
+ * returned for the last Maintenance Operation.
+ * @member {array} [disks] The disks information.
+ * @member {array} [extensions] The extensions information.
+ * @member {object} [vmHealth] The health status for the VM.
+ * @member {object} [vmHealth.status] The health status information for the VM.
+ * @member {string} [vmHealth.status.code] The status code.
+ * @member {string} [vmHealth.status.level] The level code. Possible values
+ * include: 'Info', 'Warning', 'Error'
+ * @member {string} [vmHealth.status.displayStatus] The short localizable label
+ * for the status.
+ * @member {string} [vmHealth.status.message] The detailed status message,
+ * including for alerts and error messages.
+ * @member {date} [vmHealth.status.time] The time of the status.
+ * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
+ * which allows you to view Console Output and Screenshot to diagnose VM
+ * status. <br><br> For Linux Virtual Machines, you can easily view the output
+ * of your console log. <br><br> For both Windows and Linux virtual machines,
+ * Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] The console
+ * screenshot blob URI.
+ * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] The Linux serial
+ * console log blob Uri.
+ * @member {array} [statuses] The resource status information.
+ * @member {string} [placementGroupId] The placement group in which the VM is
+ * running. If the VM is deallocated it will not have a placementGroupId.
+ */
+export interface VirtualMachineScaleSetVMInstanceView {
+  platformUpdateDomain?: number;
+  platformFaultDomain?: number;
+  rdpThumbPrint?: string;
+  vmAgent?: VirtualMachineAgentInstanceView;
+  maintenanceRedeployStatus?: MaintenanceRedeployStatus;
+  disks?: DiskInstanceView[];
+  extensions?: VirtualMachineExtensionInstanceView[];
+  readonly vmHealth?: VirtualMachineHealthStatus;
+  bootDiagnostics?: BootDiagnosticsInstanceView;
+  statuses?: InstanceViewStatus[];
+  placementGroupId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualMachineScaleSetVM class.
  * @constructor
  * Describes a virtual machine scale set virtual machine.
@@ -4659,16 +4750,9 @@ export interface UpgradeOperationHistoricalStatusInfo {
  * has been applied to the virtual machine.
  * @member {string} [vmId] Azure VM unique ID.
  * @member {object} [instanceView] The virtual machine instance view.
- * @member {number} [instanceView.platformUpdateDomain] Specifies the update
- * domain of the virtual machine.
- * @member {number} [instanceView.platformFaultDomain] Specifies the fault
- * domain of the virtual machine.
- * @member {string} [instanceView.computerName] The computer name assigned to
- * the virtual machine.
- * @member {string} [instanceView.osName] The Operating System running on the
- * virtual machine.
- * @member {string} [instanceView.osVersion] The version of Operating System
- * running on the virtual machine.
+ * @member {number} [instanceView.platformUpdateDomain] The Update Domain
+ * count.
+ * @member {number} [instanceView.platformFaultDomain] The Fault Domain count.
  * @member {string} [instanceView.rdpThumbPrint] The Remote desktop certificate
  * thumbprint.
  * @member {object} [instanceView.vmAgent] The VM Agent running on the virtual
@@ -4703,8 +4787,19 @@ export interface UpgradeOperationHistoricalStatusInfo {
  * @member {string}
  * [instanceView.maintenanceRedeployStatus.lastOperationMessage] Message
  * returned for the last Maintenance Operation.
- * @member {array} [instanceView.disks] The virtual machine disk information.
+ * @member {array} [instanceView.disks] The disks information.
  * @member {array} [instanceView.extensions] The extensions information.
+ * @member {object} [instanceView.vmHealth] The health status for the VM.
+ * @member {object} [instanceView.vmHealth.status] The health status
+ * information for the VM.
+ * @member {string} [instanceView.vmHealth.status.code] The status code.
+ * @member {string} [instanceView.vmHealth.status.level] The level code.
+ * Possible values include: 'Info', 'Warning', 'Error'
+ * @member {string} [instanceView.vmHealth.status.displayStatus] The short
+ * localizable label for the status.
+ * @member {string} [instanceView.vmHealth.status.message] The detailed status
+ * message, including for alerts and error messages.
+ * @member {date} [instanceView.vmHealth.status.time] The time of the status.
  * @member {object} [instanceView.bootDiagnostics] Boot Diagnostics is a
  * debugging feature which allows you to view Console Output and Screenshot to
  * diagnose VM status. <br><br> For Linux Virtual Machines, you can easily view
@@ -4716,6 +4811,9 @@ export interface UpgradeOperationHistoricalStatusInfo {
  * @member {string} [instanceView.bootDiagnostics.serialConsoleLogBlobUri] The
  * Linux serial console log blob Uri.
  * @member {array} [instanceView.statuses] The resource status information.
+ * @member {string} [instanceView.placementGroupId] The placement group in
+ * which the VM is running. If the VM is deallocated it will not have a
+ * placementGroupId.
  * @member {object} [hardwareProfile] Specifies the hardware settings for the
  * virtual machine.
  * @member {string} [hardwareProfile.vmSize] Specifies the size of the virtual
@@ -5007,7 +5105,7 @@ export interface VirtualMachineScaleSetVM extends Resource {
   readonly sku?: Sku;
   readonly latestModelApplied?: boolean;
   readonly vmId?: string;
-  readonly instanceView?: VirtualMachineInstanceView;
+  readonly instanceView?: VirtualMachineScaleSetVMInstanceView;
   hardwareProfile?: HardwareProfile;
   storageProfile?: StorageProfile;
   osProfile?: OSProfile;
@@ -5019,97 +5117,6 @@ export interface VirtualMachineScaleSetVM extends Resource {
   plan?: Plan;
   readonly resources?: VirtualMachineExtension[];
   readonly zones?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineHealthStatus class.
- * @constructor
- * The health status of the VM.
- *
- * @member {object} [status] The health status information for the VM.
- * @member {string} [status.code] The status code.
- * @member {string} [status.level] The level code. Possible values include:
- * 'Info', 'Warning', 'Error'
- * @member {string} [status.displayStatus] The short localizable label for the
- * status.
- * @member {string} [status.message] The detailed status message, including for
- * alerts and error messages.
- * @member {date} [status.time] The time of the status.
- */
-export interface VirtualMachineHealthStatus {
-  readonly status?: InstanceViewStatus;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualMachineScaleSetVMInstanceView class.
- * @constructor
- * The instance view of a virtual machine scale set VM.
- *
- * @member {number} [platformUpdateDomain] The Update Domain count.
- * @member {number} [platformFaultDomain] The Fault Domain count.
- * @member {string} [rdpThumbPrint] The Remote desktop certificate thumbprint.
- * @member {object} [vmAgent] The VM Agent running on the virtual machine.
- * @member {string} [vmAgent.vmAgentVersion] The VM Agent full version.
- * @member {array} [vmAgent.extensionHandlers] The virtual machine extension
- * handler instance view.
- * @member {array} [vmAgent.statuses] The resource status information.
- * @member {object} [maintenanceRedeployStatus] The Maintenance Operation
- * status on the virtual machine.
- * @member {boolean}
- * [maintenanceRedeployStatus.isCustomerInitiatedMaintenanceAllowed] True, if
- * customer is allowed to perform Maintenance.
- * @member {date} [maintenanceRedeployStatus.preMaintenanceWindowStartTime]
- * Start Time for the Pre Maintenance Window.
- * @member {date} [maintenanceRedeployStatus.preMaintenanceWindowEndTime] End
- * Time for the Pre Maintenance Window.
- * @member {date} [maintenanceRedeployStatus.maintenanceWindowStartTime] Start
- * Time for the Maintenance Window.
- * @member {date} [maintenanceRedeployStatus.maintenanceWindowEndTime] End Time
- * for the Maintenance Window.
- * @member {string} [maintenanceRedeployStatus.lastOperationResultCode] The
- * Last Maintenance Operation Result Code. Possible values include: 'None',
- * 'RetryLater', 'MaintenanceAborted', 'MaintenanceCompleted'
- * @member {string} [maintenanceRedeployStatus.lastOperationMessage] Message
- * returned for the last Maintenance Operation.
- * @member {array} [disks] The disks information.
- * @member {array} [extensions] The extensions information.
- * @member {object} [vmHealth] The health status for the VM.
- * @member {object} [vmHealth.status] The health status information for the VM.
- * @member {string} [vmHealth.status.code] The status code.
- * @member {string} [vmHealth.status.level] The level code. Possible values
- * include: 'Info', 'Warning', 'Error'
- * @member {string} [vmHealth.status.displayStatus] The short localizable label
- * for the status.
- * @member {string} [vmHealth.status.message] The detailed status message,
- * including for alerts and error messages.
- * @member {date} [vmHealth.status.time] The time of the status.
- * @member {object} [bootDiagnostics] Boot Diagnostics is a debugging feature
- * which allows you to view Console Output and Screenshot to diagnose VM
- * status. <br><br> For Linux Virtual Machines, you can easily view the output
- * of your console log. <br><br> For both Windows and Linux virtual machines,
- * Azure also enables you to see a screenshot of the VM from the hypervisor.
- * @member {string} [bootDiagnostics.consoleScreenshotBlobUri] The console
- * screenshot blob URI.
- * @member {string} [bootDiagnostics.serialConsoleLogBlobUri] The Linux serial
- * console log blob Uri.
- * @member {array} [statuses] The resource status information.
- * @member {string} [placementGroupId] The placement group in which the VM is
- * running. If the VM is deallocated it will not have a placementGroupId.
- */
-export interface VirtualMachineScaleSetVMInstanceView {
-  platformUpdateDomain?: number;
-  platformFaultDomain?: number;
-  rdpThumbPrint?: string;
-  vmAgent?: VirtualMachineAgentInstanceView;
-  maintenanceRedeployStatus?: MaintenanceRedeployStatus;
-  disks?: DiskInstanceView[];
-  extensions?: VirtualMachineExtensionInstanceView[];
-  readonly vmHealth?: VirtualMachineHealthStatus;
-  bootDiagnostics?: BootDiagnosticsInstanceView;
-  statuses?: InstanceViewStatus[];
-  placementGroupId?: string;
 }
 
 /**
