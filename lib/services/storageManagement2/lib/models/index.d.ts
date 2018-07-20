@@ -159,9 +159,9 @@ export interface SKUCapability {
  * is set to location. This would be different locations where the SKU is
  * restricted.
  * @member {string} [reasonCode] The reason for the restriction. As of now this
- * can be “QuotaId” or “NotAvailableForSubscription”. Quota Id is set when the
+ * can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the
  * SKU has requiredQuotas parameter as the subscription does not belong to that
- * quota. The “NotAvailableForSubscription” is related to capacity at DC.
+ * quota. The "NotAvailableForSubscription" is related to capacity at DC.
  * Possible values include: 'QuotaId', 'NotAvailableForSubscription'
  */
 export interface Restriction {
@@ -1071,7 +1071,7 @@ export interface ListAccountSasResponse {
  *
  * @member {string} canonicalizedResource The canonical path to the signed
  * resource.
- * @member {string} resource The signed services accessible with the service
+ * @member {string} [resource] The signed services accessible with the service
  * SAS. Possible values include: Blob (b), Container (c), File (f), Share (s).
  * Possible values include: 'b', 'c', 'f', 's'
  * @member {string} [permissions] The signed permissions for the service SAS.
@@ -1107,7 +1107,7 @@ export interface ListAccountSasResponse {
  */
 export interface ServiceSasParameters {
   canonicalizedResource: string;
-  resource: string;
+  resource?: string;
   permissions?: string;
   iPAddressOrRange?: string;
   protocols?: string;
