@@ -8,12 +8,7 @@
  * regenerated.
  */
 
-import { BaseResource } from 'ms-rest-azure';
-import { CloudError } from 'ms-rest-azure';
-import * as moment from 'moment';
-
-export { BaseResource } from 'ms-rest-azure';
-export { CloudError } from 'ms-rest-azure';
+import * as moment from "moment";
 
 
 /**
@@ -316,4 +311,3 @@ export interface ErrorModel {
 export interface ErrorResponse extends Response {
   errors: ErrorModel[];
 }
-

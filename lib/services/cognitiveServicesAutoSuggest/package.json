@@ -4,8 +4,7 @@
   "description": "AutoSuggestAPIClient Library with typescript type definitions for node",
   "version": "0.1.0-preview",
   "dependencies": {
-    "ms-rest": "^2.3.3",
-    "ms-rest-azure": "^2.5.5"
+    "ms-rest": "^2.3.3"
   },
   "keywords": [
     "node",
@@ -14,7 +13,7 @@
   "license": "MIT",
   "main": "./lib/autoSuggestAPIClient.js",
   "types": "./lib/autoSuggestAPIClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/autosuggest",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/cognitiveServicesAutoSuggest",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
