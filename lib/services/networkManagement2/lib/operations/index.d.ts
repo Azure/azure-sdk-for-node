@@ -25281,6 +25281,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.serviceEndpoints] An array of service
      * endpoints.
      *
+     * @param {array} [subnetParameters.serviceEndpointPolicies] An array of
+     * service endpoint policies.
+     *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
@@ -25375,6 +25378,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.serviceEndpoints] An array of service
      * endpoints.
+     *
+     * @param {array} [subnetParameters.serviceEndpointPolicies] An array of
+     * service endpoint policies.
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
@@ -25611,6 +25617,9 @@ export interface Subnets {
      * @param {array} [subnetParameters.serviceEndpoints] An array of service
      * endpoints.
      *
+     * @param {array} [subnetParameters.serviceEndpointPolicies] An array of
+     * service endpoint policies.
+     *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
      *
@@ -25705,6 +25714,9 @@ export interface Subnets {
      *
      * @param {array} [subnetParameters.serviceEndpoints] An array of service
      * endpoints.
+     *
+     * @param {array} [subnetParameters.serviceEndpointPolicies] An array of
+     * service endpoint policies.
      *
      * @param {array} [subnetParameters.resourceNavigationLinks] Gets an array of
      * references to the external resources using subnet.
