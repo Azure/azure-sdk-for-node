@@ -26,11 +26,13 @@ export { CloudError } from 'ms-rest-azure';
  * @member {string} [resource] Resource on which the operation is performed
  * etc.
  * @member {string} [operation] Type of operation: get, read, delete, etc.
+ * @member {string} [description] Description of the operation.
  */
 export interface OperationDisplay {
   provider?: string;
   resource?: string;
   operation?: string;
+  description?: string;
 }
 
 /**
@@ -104,6 +106,7 @@ export interface ServiceSpecification {
  * performed etc.
  * @member {string} [display.operation] Type of operation: get, read, delete,
  * etc.
+ * @member {string} [display.description] Description of the operation.
  * @member {string} [origin] The origin of operations.
  * @member {object} [serviceSpecification] One property of operation, include
  * metric specifications.
