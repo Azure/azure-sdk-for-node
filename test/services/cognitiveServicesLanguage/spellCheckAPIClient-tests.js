@@ -54,10 +54,7 @@ describe('Spell Check', () => {
 
   describe('Spell Checker.', () => {
     it('should correct spelling', (done) => {
-      let options = {
-          text: 'cognituve services'
-      };
-      client.spellChecker(options, (err, result, request, response) => {
+      client.spellChecker('cognituve services', (err, result, request, response) => {
         if (err) done(err);
         assert.equal(result.flaggedTokens[0].token, "cognituve");
         assert.equal(result.flaggedTokens[0].suggestions[0].suggestion, "cognitive");

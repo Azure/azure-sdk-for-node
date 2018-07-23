@@ -78,6 +78,57 @@ export interface AccessPolicyEntry {
 
 /**
  * @class
+ * Initializes a new instance of the IPRule class.
+ * @constructor
+ * A rule governing the accesibility of a vault from a specific ip address or
+ * ip range.
+ *
+ * @member {string} value An IPv4 address range in CIDR notation, such as
+ * '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that
+ * start with 124.56.78).
+ */
+export interface IPRule {
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkRule class.
+ * @constructor
+ * A rule governing the accesibility of a vault from a specific virtual
+ * network.
+ *
+ * @member {string} id Full resource id of a vnet subnet, such as
+ * '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
+ */
+export interface VirtualNetworkRule {
+  id: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkRuleSet class.
+ * @constructor
+ * A set of rules governing the network accessibility of a vault.
+ *
+ * @member {string} [bypass] Tells what traffic can bypass network rules. This
+ * can be 'AzureServices' or 'None'.  If not specified the default is
+ * 'AzureServices'. Possible values include: 'AzureServices', 'None'
+ * @member {string} [defaultAction] The default action when no rule from
+ * ipRules and from virtualNetworkRules match. This is only used after the
+ * bypass property has been evaluated. Possible values include: 'Allow', 'Deny'
+ * @member {array} [ipRules] The list of IP address rules.
+ * @member {array} [virtualNetworkRules] The list of virtual network rules.
+ */
+export interface NetworkRuleSet {
+  bypass?: string;
+  defaultAction?: string;
+  ipRules?: IPRule[];
+  virtualNetworkRules?: VirtualNetworkRule[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the VaultProperties class.
  * @constructor
  * Properties of the vault
@@ -101,11 +152,9 @@ export interface AccessPolicyEntry {
  * unwrap keys.
  * @member {boolean} [enabledForTemplateDeployment] Property to specify whether
  * Azure Resource Manager is permitted to retrieve secrets from the key vault.
- * @member {boolean} [enableSoftDelete] Property specifying whether recoverable
- * deletion is enabled for this key vault. Setting this property to true
- * activates the soft delete feature, whereby vaults or vault entities can be
- * recovered after deletion. Enabling this functionality is irreversible - that
- * is, the property does not accept false as its value.
+ * @member {boolean} [enableSoftDelete] Property to specify whether the 'soft
+ * delete' functionality is enabled for this key vault. It does not accept
+ * false value.
  * @member {string} [createMode] The vault's create mode to indicate whether
  * the vault need to be recovered or not. Possible values include: 'recover',
  * 'default'
@@ -116,6 +165,17 @@ export interface AccessPolicyEntry {
  * setting is effective only if soft delete is also enabled. Enabling this
  * functionality is irreversible - that is, the property does not accept false
  * as its value.
+ * @member {object} [networkAcls] A collection of rules governing the
+ * accessibility of the vault from specific network locations.
+ * @member {string} [networkAcls.bypass] Tells what traffic can bypass network
+ * rules. This can be 'AzureServices' or 'None'.  If not specified the default
+ * is 'AzureServices'. Possible values include: 'AzureServices', 'None'
+ * @member {string} [networkAcls.defaultAction] The default action when no rule
+ * from ipRules and from virtualNetworkRules match. This is only used after the
+ * bypass property has been evaluated. Possible values include: 'Allow', 'Deny'
+ * @member {array} [networkAcls.ipRules] The list of IP address rules.
+ * @member {array} [networkAcls.virtualNetworkRules] The list of virtual
+ * network rules.
  */
 export interface VaultProperties {
   tenantId: string;
@@ -128,6 +188,7 @@ export interface VaultProperties {
   enableSoftDelete?: boolean;
   createMode?: string;
   enablePurgeProtection?: boolean;
+  networkAcls?: NetworkRuleSet;
 }
 
 /**
@@ -153,16 +214,30 @@ export interface VaultProperties {
  * unwrap keys.
  * @member {boolean} [enabledForTemplateDeployment] Property to specify whether
  * Azure Resource Manager is permitted to retrieve secrets from the key vault.
- * @member {boolean} [enableSoftDelete] Property specifying whether recoverable
- * deletion ('soft' delete) is enabled for this key vault. The property may not
- * be set to false.
+ * @member {boolean} [enableSoftDelete] Property to specify whether the 'soft
+ * delete' functionality is enabled for this key vault. It does not accept
+ * false value.
  * @member {string} [createMode] The vault's create mode to indicate whether
  * the vault need to be recovered or not. Possible values include: 'recover',
  * 'default'
  * @member {boolean} [enablePurgeProtection] Property specifying whether
- * protection against purge is enabled for this vault; it is only effective if
- * soft delete is also enabled. Once activated, the property may no longer be
- * reset to false.
+ * protection against purge is enabled for this vault. Setting this property to
+ * true activates protection against purge for this vault and its content -
+ * only the Key Vault service may initiate a hard, irrecoverable deletion. The
+ * setting is effective only if soft delete is also enabled. Enabling this
+ * functionality is irreversible - that is, the property does not accept false
+ * as its value.
+ * @member {object} [networkAcls] A collection of rules governing the
+ * accessibility of the vault from specific network locations.
+ * @member {string} [networkAcls.bypass] Tells what traffic can bypass network
+ * rules. This can be 'AzureServices' or 'None'.  If not specified the default
+ * is 'AzureServices'. Possible values include: 'AzureServices', 'None'
+ * @member {string} [networkAcls.defaultAction] The default action when no rule
+ * from ipRules and from virtualNetworkRules match. This is only used after the
+ * bypass property has been evaluated. Possible values include: 'Allow', 'Deny'
+ * @member {array} [networkAcls.ipRules] The list of IP address rules.
+ * @member {array} [networkAcls.virtualNetworkRules] The list of virtual
+ * network rules.
  */
 export interface VaultPatchProperties {
   tenantId?: string;
@@ -174,6 +249,7 @@ export interface VaultPatchProperties {
   enableSoftDelete?: boolean;
   createMode?: string;
   enablePurgeProtection?: boolean;
+  networkAcls?: NetworkRuleSet;
 }
 
 /**
@@ -240,11 +316,9 @@ export interface DeletedVaultProperties {
  * @member {boolean} [properties.enabledForTemplateDeployment] Property to
  * specify whether Azure Resource Manager is permitted to retrieve secrets from
  * the key vault.
- * @member {boolean} [properties.enableSoftDelete] Property specifying whether
- * recoverable deletion is enabled for this key vault. Setting this property to
- * true activates the soft delete feature, whereby vaults or vault entities can
- * be recovered after deletion. Enabling this functionality is irreversible -
- * that is, the property does not accept false as its value.
+ * @member {boolean} [properties.enableSoftDelete] Property to specify whether
+ * the 'soft delete' functionality is enabled for this key vault. It does not
+ * accept false value.
  * @member {string} [properties.createMode] The vault's create mode to indicate
  * whether the vault need to be recovered or not. Possible values include:
  * 'recover', 'default'
@@ -255,6 +329,20 @@ export interface DeletedVaultProperties {
  * deletion. The setting is effective only if soft delete is also enabled.
  * Enabling this functionality is irreversible - that is, the property does not
  * accept false as its value.
+ * @member {object} [properties.networkAcls] A collection of rules governing
+ * the accessibility of the vault from specific network locations.
+ * @member {string} [properties.networkAcls.bypass] Tells what traffic can
+ * bypass network rules. This can be 'AzureServices' or 'None'.  If not
+ * specified the default is 'AzureServices'. Possible values include:
+ * 'AzureServices', 'None'
+ * @member {string} [properties.networkAcls.defaultAction] The default action
+ * when no rule from ipRules and from virtualNetworkRules match. This is only
+ * used after the bypass property has been evaluated. Possible values include:
+ * 'Allow', 'Deny'
+ * @member {array} [properties.networkAcls.ipRules] The list of IP address
+ * rules.
+ * @member {array} [properties.networkAcls.virtualNetworkRules] The list of
+ * virtual network rules.
  */
 export interface VaultCreateOrUpdateParameters extends BaseResource {
   location: string;
@@ -288,16 +376,33 @@ export interface VaultCreateOrUpdateParameters extends BaseResource {
  * @member {boolean} [properties.enabledForTemplateDeployment] Property to
  * specify whether Azure Resource Manager is permitted to retrieve secrets from
  * the key vault.
- * @member {boolean} [properties.enableSoftDelete] Property specifying whether
- * recoverable deletion ('soft' delete) is enabled for this key vault. The
- * property may not be set to false.
+ * @member {boolean} [properties.enableSoftDelete] Property to specify whether
+ * the 'soft delete' functionality is enabled for this key vault. It does not
+ * accept false value.
  * @member {string} [properties.createMode] The vault's create mode to indicate
  * whether the vault need to be recovered or not. Possible values include:
  * 'recover', 'default'
  * @member {boolean} [properties.enablePurgeProtection] Property specifying
- * whether protection against purge is enabled for this vault; it is only
- * effective if soft delete is also enabled. Once activated, the property may
- * no longer be reset to false.
+ * whether protection against purge is enabled for this vault. Setting this
+ * property to true activates protection against purge for this vault and its
+ * content - only the Key Vault service may initiate a hard, irrecoverable
+ * deletion. The setting is effective only if soft delete is also enabled.
+ * Enabling this functionality is irreversible - that is, the property does not
+ * accept false as its value.
+ * @member {object} [properties.networkAcls] A collection of rules governing
+ * the accessibility of the vault from specific network locations.
+ * @member {string} [properties.networkAcls.bypass] Tells what traffic can
+ * bypass network rules. This can be 'AzureServices' or 'None'.  If not
+ * specified the default is 'AzureServices'. Possible values include:
+ * 'AzureServices', 'None'
+ * @member {string} [properties.networkAcls.defaultAction] The default action
+ * when no rule from ipRules and from virtualNetworkRules match. This is only
+ * used after the bypass property has been evaluated. Possible values include:
+ * 'Allow', 'Deny'
+ * @member {array} [properties.networkAcls.ipRules] The list of IP address
+ * rules.
+ * @member {array} [properties.networkAcls.virtualNetworkRules] The list of
+ * virtual network rules.
  */
 export interface VaultPatchParameters extends BaseResource {
   tags?: { [propertyName: string]: string };
@@ -376,11 +481,9 @@ export interface Resource extends BaseResource {
  * @member {boolean} [properties.enabledForTemplateDeployment] Property to
  * specify whether Azure Resource Manager is permitted to retrieve secrets from
  * the key vault.
- * @member {boolean} [properties.enableSoftDelete] Property specifying whether
- * recoverable deletion is enabled for this key vault. Setting this property to
- * true activates the soft delete feature, whereby vaults or vault entities can
- * be recovered after deletion. Enabling this functionality is irreversible -
- * that is, the property does not accept false as its value.
+ * @member {boolean} [properties.enableSoftDelete] Property to specify whether
+ * the 'soft delete' functionality is enabled for this key vault. It does not
+ * accept false value.
  * @member {string} [properties.createMode] The vault's create mode to indicate
  * whether the vault need to be recovered or not. Possible values include:
  * 'recover', 'default'
@@ -391,6 +494,20 @@ export interface Resource extends BaseResource {
  * deletion. The setting is effective only if soft delete is also enabled.
  * Enabling this functionality is irreversible - that is, the property does not
  * accept false as its value.
+ * @member {object} [properties.networkAcls] A collection of rules governing
+ * the accessibility of the vault from specific network locations.
+ * @member {string} [properties.networkAcls.bypass] Tells what traffic can
+ * bypass network rules. This can be 'AzureServices' or 'None'.  If not
+ * specified the default is 'AzureServices'. Possible values include:
+ * 'AzureServices', 'None'
+ * @member {string} [properties.networkAcls.defaultAction] The default action
+ * when no rule from ipRules and from virtualNetworkRules match. This is only
+ * used after the bypass property has been evaluated. Possible values include:
+ * 'Allow', 'Deny'
+ * @member {array} [properties.networkAcls.ipRules] The list of IP address
+ * rules.
+ * @member {array} [properties.networkAcls.virtualNetworkRules] The list of
+ * virtual network rules.
  */
 export interface Vault extends Resource {
   properties: VaultProperties;

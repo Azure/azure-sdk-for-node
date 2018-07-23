@@ -4,8 +4,8 @@
   "description": "GraphRbacManagementClient Library with typescript type definitions for node",
   "version": "3.0.0",
   "dependencies": {
-    "ms-rest": "^2.3.2",
-    "ms-rest-azure": "^2.5.5"
+    "ms-rest": "^2.3.4",
+    "ms-rest-azure": "^2.5.7"
   },
   "keywords": [
     "node",

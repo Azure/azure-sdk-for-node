@@ -2,12 +2,15 @@
   "name": "azure-arm-mysql",
   "author": "Microsoft Corporation",
   "description": "MySQLManagementClient Library with typescript type definitions for node",
-  "version": "2.0.0-preview",
+  "version": "3.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
   },
-  "keywords": [ "node", "azure" ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
   "license": "MIT",
   "main": "./lib/mySQLManagementClient.js",
   "types": "./lib/mySQLManagementClient.d.ts",
