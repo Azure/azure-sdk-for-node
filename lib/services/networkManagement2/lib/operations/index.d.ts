@@ -15862,6 +15862,23 @@ export interface NetworkWatchers {
      * @param {number} [parameters.destination.port] Port on which check
      * connectivity will be performed.
      *
+     * @param {string} [parameters.protocol] Network protocol. Possible values
+     * include: 'Tcp', 'Http', 'Https', 'Icmp'
+     *
+     * @param {object} [parameters.protocolConfiguration]
+     *
+     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration]
+     *
+     * @param {string} [parameters.protocolConfiguration.hTTPConfiguration.method]
+     * HTTP method. Possible values include: 'Get'
+     *
+     * @param {array} [parameters.protocolConfiguration.hTTPConfiguration.headers]
+     * List of HTTP headers.
+     *
+     * @param {array}
+     * [parameters.protocolConfiguration.hTTPConfiguration.validStatusCodes] Valid
+     * status codes.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -15906,6 +15923,23 @@ export interface NetworkWatchers {
      *
      * @param {number} [parameters.destination.port] Port on which check
      * connectivity will be performed.
+     *
+     * @param {string} [parameters.protocol] Network protocol. Possible values
+     * include: 'Tcp', 'Http', 'Https', 'Icmp'
+     *
+     * @param {object} [parameters.protocolConfiguration]
+     *
+     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration]
+     *
+     * @param {string} [parameters.protocolConfiguration.hTTPConfiguration.method]
+     * HTTP method. Possible values include: 'Get'
+     *
+     * @param {array} [parameters.protocolConfiguration.hTTPConfiguration.headers]
+     * List of HTTP headers.
+     *
+     * @param {array}
+     * [parameters.protocolConfiguration.hTTPConfiguration.validStatusCodes] Valid
+     * status codes.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16833,6 +16867,23 @@ export interface NetworkWatchers {
      * @param {number} [parameters.destination.port] Port on which check
      * connectivity will be performed.
      *
+     * @param {string} [parameters.protocol] Network protocol. Possible values
+     * include: 'Tcp', 'Http', 'Https', 'Icmp'
+     *
+     * @param {object} [parameters.protocolConfiguration]
+     *
+     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration]
+     *
+     * @param {string} [parameters.protocolConfiguration.hTTPConfiguration.method]
+     * HTTP method. Possible values include: 'Get'
+     *
+     * @param {array} [parameters.protocolConfiguration.hTTPConfiguration.headers]
+     * List of HTTP headers.
+     *
+     * @param {array}
+     * [parameters.protocolConfiguration.hTTPConfiguration.validStatusCodes] Valid
+     * status codes.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -16877,6 +16928,23 @@ export interface NetworkWatchers {
      *
      * @param {number} [parameters.destination.port] Port on which check
      * connectivity will be performed.
+     *
+     * @param {string} [parameters.protocol] Network protocol. Possible values
+     * include: 'Tcp', 'Http', 'Https', 'Icmp'
+     *
+     * @param {object} [parameters.protocolConfiguration]
+     *
+     * @param {object} [parameters.protocolConfiguration.hTTPConfiguration]
+     *
+     * @param {string} [parameters.protocolConfiguration.hTTPConfiguration.method]
+     * HTTP method. Possible values include: 'Get'
+     *
+     * @param {array} [parameters.protocolConfiguration.hTTPConfiguration.headers]
+     * List of HTTP headers.
+     *
+     * @param {array}
+     * [parameters.protocolConfiguration.hTTPConfiguration.validStatusCodes] Valid
+     * status codes.
      *
      * @param {object} [options] Optional Parameters.
      *

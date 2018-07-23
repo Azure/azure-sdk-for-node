@@ -63,13 +63,7 @@ export default class AutomationClient extends AzureServiceClient {
   connectionOperations: operations.ConnectionOperations;
   connectionTypeOperations: operations.ConnectionTypeOperations;
   credentialOperations: operations.CredentialOperations;
-  dscCompilationJobOperations: operations.DscCompilationJobOperations;
-  dscCompilationJobStream: operations.DscCompilationJobStream;
   dscConfigurationOperations: operations.DscConfigurationOperations;
-  agentRegistrationInformation: operations.AgentRegistrationInformation;
-  dscNodeOperations: operations.DscNodeOperations;
-  nodeReports: operations.NodeReports;
-  dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
   hybridRunbookWorkerGroupOperations: operations.HybridRunbookWorkerGroupOperations;
   jobScheduleOperations: operations.JobScheduleOperations;
   linkedWorkspaceOperations: operations.LinkedWorkspaceOperations;
@@ -91,6 +85,12 @@ export default class AutomationClient extends AzureServiceClient {
   sourceControlSyncJobOperations: operations.SourceControlSyncJobOperations;
   jobOperations: operations.JobOperations;
   jobStreamOperations: operations.JobStreamOperations;
+  agentRegistrationInformation: operations.AgentRegistrationInformation;
+  dscNodeOperations: operations.DscNodeOperations;
+  nodeReports: operations.NodeReports;
+  dscCompilationJobOperations: operations.DscCompilationJobOperations;
+  dscCompilationJobStream: operations.DscCompilationJobStream;
+  dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
 }
 
 export { AutomationClient, models as AutomationModels };
