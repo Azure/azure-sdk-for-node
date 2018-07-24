@@ -532,6 +532,11 @@ export interface Activity {
   dependsOn?: ActivityDependency[];
   userProperties?: UserProperty[];
   type: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * can be of "any" type.
+   */
+  [property: string]: any;
 }
 
 /**
