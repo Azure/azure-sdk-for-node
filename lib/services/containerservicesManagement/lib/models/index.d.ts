@@ -620,9 +620,6 @@ export interface TagsObject {
  * @member {string} [dnsPrefix] DNS prefix to be used to create the FQDN for
  * the agent pool.
  * @member {string} [fqdn] FDQN for the agent pool.
- * @member {array} [ports] Ports number array used to expose on this agent
- * pool. The default opened ports are different based on your choice of
- * orchestrator.
  * @member {string} [storageProfile] Storage profile specifies what kind of
  * storage used. Choose from StorageAccount and ManagedDisks. Leave it empty,
  * we will choose for you based on the orchestrator choice. Possible values
@@ -641,7 +638,6 @@ export interface ManagedClusterAgentPoolProfile {
   osDiskSizeGB?: number;
   dnsPrefix?: string;
   readonly fqdn?: string;
-  ports?: number[];
   storageProfile?: string;
   vnetSubnetID?: string;
   maxPods?: number;
