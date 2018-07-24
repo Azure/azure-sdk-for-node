@@ -555,6 +555,22 @@ export interface TagsObject {
 
 /**
  * @class
+ * Initializes a new instance of the ManagedClusterServicePrincipalProfile class.
+ * @constructor
+ * Information about a service principal identity for the cluster to use for
+ * manipulating Azure APIs.
+ *
+ * @member {string} clientId The ID for the service principal.
+ * @member {string} [secret] The secret password associated with the service
+ * principal in plain text.
+ */
+export interface ManagedClusterServicePrincipalProfile {
+  clientId: string;
+  secret?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ManagedClusterAgentPoolProfile class.
  * @constructor
  * Profile for the container service agent pool.
@@ -737,19 +753,10 @@ export interface ManagedClusterAADProfile {
  * used to authenticate with Linux-based VMs. Only expect one key specified.
  * @member {object} [servicePrincipalProfile] Information about a service
  * principal identity for the cluster to use for manipulating Azure APIs.
- * Either secret or keyVaultSecretRef must be specified.
  * @member {string} [servicePrincipalProfile.clientId] The ID for the service
  * principal.
  * @member {string} [servicePrincipalProfile.secret] The secret password
  * associated with the service principal in plain text.
- * @member {object} [servicePrincipalProfile.keyVaultSecretRef] Reference to a
- * secret stored in Azure Key Vault.
- * @member {string} [servicePrincipalProfile.keyVaultSecretRef.vaultID] Key
- * vault identifier.
- * @member {string} [servicePrincipalProfile.keyVaultSecretRef.secretName] The
- * secret name.
- * @member {string} [servicePrincipalProfile.keyVaultSecretRef.version] The
- * secret version.
  * @member {object} [addonProfiles] Profile of managed cluster add-on.
  * @member {string} [nodeResourceGroup] Name of the resource group containing
  * agent pool nodes.
@@ -788,7 +795,7 @@ export interface ManagedCluster extends Resource {
   readonly fqdn?: string;
   agentPoolProfiles?: ManagedClusterAgentPoolProfile[];
   linuxProfile?: ContainerServiceLinuxProfile;
-  servicePrincipalProfile?: ContainerServiceServicePrincipalProfile;
+  servicePrincipalProfile?: ManagedClusterServicePrincipalProfile;
   addonProfiles?: { [propertyName: string]: ManagedClusterAddonProfile };
   readonly nodeResourceGroup?: string;
   enableRBAC?: boolean;
