@@ -103,6 +103,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   hubVirtualNetworkConnections: operations.HubVirtualNetworkConnections;
   vpnGateways: operations.VpnGateways;
   vpnConnections: operations.VpnConnections;
+  serviceEndpointPolicies: operations.ServiceEndpointPolicies;
 
 
   /**

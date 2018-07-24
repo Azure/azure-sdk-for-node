@@ -7560,3 +7560,15 @@ export interface ListVpnGatewaysResult extends Array<VpnGateway> {
 export interface ListVpnConnectionsResult extends Array<VpnConnection> {
   nextLink?: string;
 }
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicyListResult class.
+ * @constructor
+ * Response for ListServiceEndpointPolicies API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ServiceEndpointPolicyListResult extends Array<ServiceEndpointPolicy> {
+  nextLink?: string;
+}
