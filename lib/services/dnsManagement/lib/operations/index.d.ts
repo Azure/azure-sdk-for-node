@@ -24,7 +24,8 @@ export interface RecordSets {
     /**
      * Updates a record set within a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -120,7 +121,8 @@ export interface RecordSets {
     /**
      * Updates a record set within a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -235,7 +237,8 @@ export interface RecordSets {
     /**
      * Creates or updates a record set within a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -337,7 +340,8 @@ export interface RecordSets {
     /**
      * Creates or updates a record set within a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -458,7 +462,8 @@ export interface RecordSets {
     /**
      * Deletes a record set from a DNS zone. This operation cannot be undone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -491,7 +496,8 @@ export interface RecordSets {
     /**
      * Deletes a record set from a DNS zone. This operation cannot be undone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -542,7 +548,8 @@ export interface RecordSets {
     /**
      * Gets a record set.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -570,7 +577,8 @@ export interface RecordSets {
     /**
      * Gets a record set.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -617,7 +625,8 @@ export interface RecordSets {
     /**
      * Lists the record sets of a specified type in a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -650,7 +659,8 @@ export interface RecordSets {
     /**
      * Lists the record sets of a specified type in a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -702,7 +712,8 @@ export interface RecordSets {
     /**
      * Lists all record sets in a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -731,7 +742,8 @@ export interface RecordSets {
     /**
      * Lists all record sets in a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -779,7 +791,8 @@ export interface RecordSets {
     /**
      * Lists all record sets in a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -808,7 +821,8 @@ export interface RecordSets {
     /**
      * Lists all record sets in a DNS zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1036,7 +1050,8 @@ export interface Zones {
     /**
      * Creates or updates a DNS zone. Does not modify DNS records within the zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1085,7 +1100,8 @@ export interface Zones {
     /**
      * Creates or updates a DNS zone. Does not modify DNS records within the zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1154,7 +1170,8 @@ export interface Zones {
      * Deletes a DNS zone. WARNING: All DNS records in the zone will also be
      * deleted. This operation cannot be undone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1180,7 +1197,8 @@ export interface Zones {
      * Deletes a DNS zone. WARNING: All DNS records in the zone will also be
      * deleted. This operation cannot be undone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1224,7 +1242,8 @@ export interface Zones {
      * Gets a DNS zone. Retrieves the zone properties, but not the record sets
      * within the zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1246,7 +1265,8 @@ export interface Zones {
      * Gets a DNS zone. Retrieves the zone properties, but not the record sets
      * within the zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1286,7 +1306,8 @@ export interface Zones {
     /**
      * Updates a DNS zone. Does not modify DNS records within the zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1315,7 +1336,8 @@ export interface Zones {
     /**
      * Updates a DNS zone. Does not modify DNS records within the zone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1363,7 +1385,8 @@ export interface Zones {
     /**
      * Lists the DNS zones within a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1384,7 +1407,8 @@ export interface Zones {
     /**
      * Lists the DNS zones within a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1482,7 +1506,8 @@ export interface Zones {
      * Deletes a DNS zone. WARNING: All DNS records in the zone will also be
      * deleted. This operation cannot be undone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
@@ -1508,7 +1533,8 @@ export interface Zones {
      * Deletes a DNS zone. WARNING: All DNS records in the zone will also be
      * deleted. This operation cannot be undone.
      *
-     * @param {string} resourceGroupName The name of the resource group.
+     * @param {string} resourceGroupName The name of the resource group. The name
+     * is case insensitive.
      *
      * @param {string} zoneName The name of the DNS zone (without a terminating
      * dot).
