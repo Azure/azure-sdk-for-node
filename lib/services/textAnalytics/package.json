@@ -1,15 +1,18 @@
 {
   "name": "azure-cognitiveservices-textanalytics",
   "author": "Microsoft Corporation",
-  "description": "TextAnalyticsAPIClient Library with typescript type definitions for node",
+  "description": "TextAnalyticsClient Library with typescript type definitions for node",
   "version": "1.0.0",
   "dependencies": {
-    "ms-rest": "^2.3.2"
+    "ms-rest": "^2.3.3"
   },
-  "keywords": [ "node", "azure" ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
   "license": "MIT",
-  "main": "./lib/textAnalyticsAPIClient.js",
-  "types": "./lib/textAnalyticsAPIClient.d.ts",
+  "main": "./lib/textAnalyticsClient.js",
+  "types": "./lib/textAnalyticsClient.d.ts",
   "homepage": "http://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
