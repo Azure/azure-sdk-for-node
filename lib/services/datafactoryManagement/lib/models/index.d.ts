@@ -501,6 +501,21 @@ export interface ActivityDependency {
 
 /**
  * @class
+ * Initializes a new instance of the UserProperty class.
+ * @constructor
+ * User property.
+ *
+ * @member {string} name User proprety name.
+ * @member {object} value User proprety value. Type: string (or Expression with
+ * resultType string).
+ */
+export interface UserProperty {
+  name: string;
+  value: any;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Activity class.
  * @constructor
  * A pipeline activity.
@@ -508,20 +523,15 @@ export interface ActivityDependency {
  * @member {string} name Activity name.
  * @member {string} [description] Activity description.
  * @member {array} [dependsOn] Activity depends on condition.
- * @member {object} [userProperties] Activity user properties.
+ * @member {array} [userProperties] Activity user properties.
  * @member {string} type Polymorphic Discriminator
  */
 export interface Activity {
   name: string;
   description?: string;
   dependsOn?: ActivityDependency[];
-  userProperties?: { [propertyName: string]: string };
+  userProperties?: UserProperty[];
   type: string;
-  /**
-   * @property Describes unknown properties. The value of an unknown property
-   * can be of "any" type.
-   */
-  [property: string]: any;
 }
 
 /**
