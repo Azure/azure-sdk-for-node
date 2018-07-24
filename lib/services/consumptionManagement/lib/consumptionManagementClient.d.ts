@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ConsumptionManagementClient extends AzureServiceClient {
+export default class ConsumptionManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ConsumptionManagementClient class.
    * @constructor
@@ -55,13 +56,10 @@ declare class ConsumptionManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  usageDetails: operations.UsageDetails;
-  marketplaces: operations.Marketplaces;
-  reservationsSummaries: operations.ReservationsSummaries;
-  reservationsDetails: operations.ReservationsDetails;
-  budgets: operations.Budgets;
-  operations: operations.Operations;
   priceSheet: operations.PriceSheet;
+  usageDetails: operations.UsageDetails;
+  forecasts: operations.Forecasts;
+  operations: operations.Operations;
 }
 
-export = ConsumptionManagementClient;
+export { ConsumptionManagementClient, models as ConsumptionManagementModels };

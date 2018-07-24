@@ -9,6 +9,7 @@
 */
 
 import { ServiceClientOptions, RequestOptions, ServiceCallback, HttpOperationResponse } from 'ms-rest';
+import * as moment from 'moment';
 import * as models from '../models';
 
 
@@ -404,6 +405,58 @@ export interface AutoscaleSettings {
 
 
     /**
+     * Lists the autoscale settings for a subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AutoscaleSettingResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutoscaleSettingResourceCollection>>;
+
+    /**
+     * Lists the autoscale settings for a subscription
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AutoscaleSettingResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AutoscaleSettingResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AutoscaleSettingResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutoscaleSettingResourceCollection>;
+    listBySubscription(callback: ServiceCallback<models.AutoscaleSettingResourceCollection>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutoscaleSettingResourceCollection>): void;
+
+
+    /**
      * Lists the autoscale settings for a resource group
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
@@ -459,6 +512,64 @@ export interface AutoscaleSettings {
     listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutoscaleSettingResourceCollection>;
     listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.AutoscaleSettingResourceCollection>): void;
     listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutoscaleSettingResourceCollection>): void;
+
+
+    /**
+     * Lists the autoscale settings for a subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AutoscaleSettingResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AutoscaleSettingResourceCollection>>;
+
+    /**
+     * Lists the autoscale settings for a subscription
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AutoscaleSettingResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AutoscaleSettingResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AutoscaleSettingResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscriptionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AutoscaleSettingResourceCollection>;
+    listBySubscriptionNext(nextPageLink: string, callback: ServiceCallback<models.AutoscaleSettingResourceCollection>): void;
+    listBySubscriptionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AutoscaleSettingResourceCollection>): void;
 }
 
 /**
@@ -1084,6 +1195,58 @@ export interface AlertRules {
     listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRuleResourceCollection>;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.AlertRuleResourceCollection>): void;
     listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRuleResourceCollection>): void;
+
+
+    /**
+     * List the alert rules within a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AlertRuleResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AlertRuleResourceCollection>>;
+
+    /**
+     * List the alert rules within a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AlertRuleResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AlertRuleResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AlertRuleResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AlertRuleResourceCollection>;
+    listBySubscription(callback: ServiceCallback<models.AlertRuleResourceCollection>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AlertRuleResourceCollection>): void;
 }
 
 /**
@@ -1566,6 +1729,9 @@ export interface DiagnosticSettingsOperations {
      * @param {string} [parameters.storageAccountId] The resource ID of the storage
      * account to which you would like to send Diagnostic Logs.
      *
+     * @param {string} [parameters.serviceBusRuleId] The service bus rule Id of the
+     * diagnostic setting. This is here to maintain backwards compatibility.
+     *
      * @param {string} [parameters.eventHubAuthorizationRuleId] The resource Id for
      * the event hub authorization rule.
      *
@@ -1605,6 +1771,9 @@ export interface DiagnosticSettingsOperations {
      *
      * @param {string} [parameters.storageAccountId] The resource ID of the storage
      * account to which you would like to send Diagnostic Logs.
+     *
+     * @param {string} [parameters.serviceBusRuleId] The service bus rule Id of the
+     * diagnostic setting. This is here to maintain backwards compatibility.
      *
      * @param {string} [parameters.eventHubAuthorizationRuleId] The resource Id for
      * the event hub authorization rule.
@@ -1931,6 +2100,24 @@ export interface ActionGroups {
      * @param {array} [actionGroup.webhookReceivers] The list of webhook receivers
      * that are part of this action group.
      *
+     * @param {array} [actionGroup.itsmReceivers] The list of ITSM receivers that
+     * are part of this action group.
+     *
+     * @param {array} [actionGroup.azureAppPushReceivers] The list of AzureAppPush
+     * receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.automationRunbookReceivers] The list of
+     * AutomationRunbook receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.voiceReceivers] The list of voice receivers that
+     * are part of this action group.
+     *
+     * @param {array} [actionGroup.logicAppReceivers] The list of logic app
+     * receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
+     * function receivers that are part of this action group.
+     *
      * @param {string} actionGroup.location Resource location
      *
      * @param {object} [actionGroup.tags] Resource tags
@@ -1973,6 +2160,24 @@ export interface ActionGroups {
      *
      * @param {array} [actionGroup.webhookReceivers] The list of webhook receivers
      * that are part of this action group.
+     *
+     * @param {array} [actionGroup.itsmReceivers] The list of ITSM receivers that
+     * are part of this action group.
+     *
+     * @param {array} [actionGroup.azureAppPushReceivers] The list of AzureAppPush
+     * receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.automationRunbookReceivers] The list of
+     * AutomationRunbook receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.voiceReceivers] The list of voice receivers that
+     * are part of this action group.
+     *
+     * @param {array} [actionGroup.logicAppReceivers] The list of logic app
+     * receivers that are part of this action group.
+     *
+     * @param {array} [actionGroup.azureFunctionReceivers] The list of azure
+     * function receivers that are part of this action group.
      *
      * @param {string} actionGroup.location Resource location
      *
@@ -2128,6 +2333,83 @@ export interface ActionGroups {
 
 
     /**
+     * Updates an existing action group's tags. To update other fields use the
+     * CreateOrUpdate method.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} actionGroupName The name of the action group.
+     *
+     * @param {object} actionGroupPatch Parameters supplied to the operation.
+     *
+     * @param {object} [actionGroupPatch.tags] Resource tags
+     *
+     * @param {boolean} [actionGroupPatch.enabled] Indicates whether this action
+     * group is enabled. If an action group is not enabled, then none of its
+     * actions will be activated.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ActionGroupResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, actionGroupName: string, actionGroupPatch: models.ActionGroupPatchBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActionGroupResource>>;
+
+    /**
+     * Updates an existing action group's tags. To update other fields use the
+     * CreateOrUpdate method.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} actionGroupName The name of the action group.
+     *
+     * @param {object} actionGroupPatch Parameters supplied to the operation.
+     *
+     * @param {object} [actionGroupPatch.tags] Resource tags
+     *
+     * @param {boolean} [actionGroupPatch.enabled] Indicates whether this action
+     * group is enabled. If an action group is not enabled, then none of its
+     * actions will be activated.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ActionGroupResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ActionGroupResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ActionGroupResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, actionGroupName: string, actionGroupPatch: models.ActionGroupPatchBody, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActionGroupResource>;
+    update(resourceGroupName: string, actionGroupName: string, actionGroupPatch: models.ActionGroupPatchBody, callback: ServiceCallback<models.ActionGroupResource>): void;
+    update(resourceGroupName: string, actionGroupName: string, actionGroupPatch: models.ActionGroupPatchBody, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActionGroupResource>): void;
+
+
+    /**
      * Get a list of all action groups in a subscription.
      *
      * @param {object} [options] Optional Parameters.
@@ -2235,7 +2517,8 @@ export interface ActionGroups {
 
     /**
      * Enable a receiver in an action group. This changes the receiver's status
-     * from Disabled to Enabled.
+     * from Disabled to Enabled. This operation is only supported for Email or SMS
+     * receivers.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2258,7 +2541,8 @@ export interface ActionGroups {
 
     /**
      * Enable a receiver in an action group. This changes the receiver's status
-     * from Disabled to Enabled.
+     * from Disabled to Enabled. This operation is only supported for Email or SMS
+     * receivers.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2728,4 +3012,1923 @@ export interface ActivityLogAlerts {
     listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActivityLogAlertList>;
     listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ActivityLogAlertList>): void;
     listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActivityLogAlertList>): void;
+}
+
+/**
+ * @class
+ * ActivityLogs
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MonitorManagementClient.
+ */
+export interface ActivityLogs {
+
+
+    /**
+     * Provides the list of records from the activity logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] Reduces the set of data collected.<br>The
+     * **$filter** argument is very restricted and allows only the following
+     * patterns.<br>- *List events for a resource group*: $filter=eventTimestamp ge
+     * '2014-07-16T04:36:37.6407898Z' and eventTimestamp le
+     * '2014-07-20T04:36:37.6407898Z' and resourceGroupName eq
+     * 'resourceGroupName'.<br>- *List events for resource*: $filter=eventTimestamp
+     * ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le
+     * '2014-07-20T04:36:37.6407898Z' and resourceUri eq 'resourceURI'.<br>- *List
+     * events for a subscription in a time range*: $filter=eventTimestamp ge
+     * '2014-07-16T04:36:37.6407898Z' and eventTimestamp le
+     * '2014-07-20T04:36:37.6407898Z'.<br>- *List events for a resource provider*:
+     * $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp
+     * le '2014-07-20T04:36:37.6407898Z' and resourceProvider eq
+     * 'resourceProviderName'.<br>- *List events for a correlation Id*:
+     * $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp
+     * le '2014-07-20T04:36:37.6407898Z' and correlationId eq
+     * 'correlationID'.<br><br>**NOTE**: No other syntax is allowed.
+     *
+     * @param {string} [options.select] Used to fetch events with only the given
+     * properties.<br>The **$select** argument is a comma separated list of
+     * property names to be returned. Possible values are: *authorization*,
+     * *claims*, *correlationId*, *description*, *eventDataId*, *eventName*,
+     * *eventTimestamp*, *httpRequest*, *level*, *operationId*, *operationName*,
+     * *properties*, *resourceGroupName*, *resourceProviderName*, *resourceId*,
+     * *status*, *submissionTimestamp*, *subStatus*, *subscriptionId*
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EventDataCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { filter? : string, select? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventDataCollection>>;
+
+    /**
+     * Provides the list of records from the activity logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] Reduces the set of data collected.<br>The
+     * **$filter** argument is very restricted and allows only the following
+     * patterns.<br>- *List events for a resource group*: $filter=eventTimestamp ge
+     * '2014-07-16T04:36:37.6407898Z' and eventTimestamp le
+     * '2014-07-20T04:36:37.6407898Z' and resourceGroupName eq
+     * 'resourceGroupName'.<br>- *List events for resource*: $filter=eventTimestamp
+     * ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le
+     * '2014-07-20T04:36:37.6407898Z' and resourceUri eq 'resourceURI'.<br>- *List
+     * events for a subscription in a time range*: $filter=eventTimestamp ge
+     * '2014-07-16T04:36:37.6407898Z' and eventTimestamp le
+     * '2014-07-20T04:36:37.6407898Z'.<br>- *List events for a resource provider*:
+     * $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp
+     * le '2014-07-20T04:36:37.6407898Z' and resourceProvider eq
+     * 'resourceProviderName'.<br>- *List events for a correlation Id*:
+     * $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp
+     * le '2014-07-20T04:36:37.6407898Z' and correlationId eq
+     * 'correlationID'.<br><br>**NOTE**: No other syntax is allowed.
+     *
+     * @param {string} [options.select] Used to fetch events with only the given
+     * properties.<br>The **$select** argument is a comma separated list of
+     * property names to be returned. Possible values are: *authorization*,
+     * *claims*, *correlationId*, *description*, *eventDataId*, *eventName*,
+     * *eventTimestamp*, *httpRequest*, *level*, *operationId*, *operationName*,
+     * *properties*, *resourceGroupName*, *resourceProviderName*, *resourceId*,
+     * *status*, *submissionTimestamp*, *subStatus*, *subscriptionId*
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EventDataCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EventDataCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EventDataCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { filter? : string, select? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventDataCollection>;
+    list(callback: ServiceCallback<models.EventDataCollection>): void;
+    list(options: { filter? : string, select? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventDataCollection>): void;
+
+
+    /**
+     * Provides the list of records from the activity logs.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EventDataCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventDataCollection>>;
+
+    /**
+     * Provides the list of records from the activity logs.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EventDataCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EventDataCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EventDataCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventDataCollection>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.EventDataCollection>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventDataCollection>): void;
+}
+
+/**
+ * @class
+ * EventCategories
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MonitorManagementClient.
+ */
+export interface EventCategories {
+
+
+    /**
+     * Get the list of available event categories supported in the Activity Logs
+     * Service.<br>The current list includes the following: Administrative,
+     * Security, ServiceHealth, Alert, Recommendation, Policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EventCategoryCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventCategoryCollection>>;
+
+    /**
+     * Get the list of available event categories supported in the Activity Logs
+     * Service.<br>The current list includes the following: Administrative,
+     * Security, ServiceHealth, Alert, Recommendation, Policy.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EventCategoryCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EventCategoryCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EventCategoryCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventCategoryCollection>;
+    list(callback: ServiceCallback<models.EventCategoryCollection>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventCategoryCollection>): void;
+}
+
+/**
+ * @class
+ * TenantActivityLogs
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MonitorManagementClient.
+ */
+export interface TenantActivityLogs {
+
+
+    /**
+     * Gets the Activity Logs for the Tenant.<br>Everything that is applicable to
+     * the API to get the Activity Logs for the subscription is applicable to this
+     * API (the parameters, $filter, etc.).<br>One thing to point out here is that
+     * this API does *not* retrieve the logs at the individual subscription of the
+     * tenant but only surfaces the logs that were generated at the tenant level.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] Reduces the set of data collected. <br>The
+     * **$filter** is very restricted and allows only the following patterns.<br>-
+     * List events for a resource group: $filter=eventTimestamp ge '<Start Time>'
+     * and eventTimestamp le '<End Time>' and eventChannels eq 'Admin, Operation'
+     * and resourceGroupName eq '<ResourceGroupName>'.<br>- List events for
+     * resource: $filter=eventTimestamp ge '<Start Time>' and eventTimestamp le
+     * '<End Time>' and eventChannels eq 'Admin, Operation' and resourceUri eq
+     * '<ResourceURI>'.<br>- List events for a subscription: $filter=eventTimestamp
+     * ge '<Start Time>' and eventTimestamp le '<End Time>' and eventChannels eq
+     * 'Admin, Operation'.<br>- List events for a resource provider:
+     * $filter=eventTimestamp ge '<Start Time>' and eventTimestamp le '<End Time>'
+     * and eventChannels eq 'Admin, Operation' and resourceProvider eq
+     * '<ResourceProviderName>'.<br>- List events for a correlation Id:
+     * api-version=2014-04-01&$filter=eventTimestamp ge
+     * '2014-07-16T04:36:37.6407898Z' and eventTimestamp le
+     * '2014-07-20T04:36:37.6407898Z' and eventChannels eq 'Admin, Operation' and
+     * correlationId eq '<CorrelationID>'.<br>**NOTE**: No other syntax is allowed.
+     *
+     * @param {string} [options.select] Used to fetch events with only the given
+     * properties.<br>The **$select** argument is a comma separated list of
+     * property names to be returned. Possible values are: *authorization*,
+     * *claims*, *correlationId*, *description*, *eventDataId*, *eventName*,
+     * *eventTimestamp*, *httpRequest*, *level*, *operationId*, *operationName*,
+     * *properties*, *resourceGroupName*, *resourceProviderName*, *resourceId*,
+     * *status*, *submissionTimestamp*, *subStatus*, *subscriptionId*
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EventDataCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { filter? : string, select? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventDataCollection>>;
+
+    /**
+     * Gets the Activity Logs for the Tenant.<br>Everything that is applicable to
+     * the API to get the Activity Logs for the subscription is applicable to this
+     * API (the parameters, $filter, etc.).<br>One thing to point out here is that
+     * this API does *not* retrieve the logs at the individual subscription of the
+     * tenant but only surfaces the logs that were generated at the tenant level.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] Reduces the set of data collected. <br>The
+     * **$filter** is very restricted and allows only the following patterns.<br>-
+     * List events for a resource group: $filter=eventTimestamp ge '<Start Time>'
+     * and eventTimestamp le '<End Time>' and eventChannels eq 'Admin, Operation'
+     * and resourceGroupName eq '<ResourceGroupName>'.<br>- List events for
+     * resource: $filter=eventTimestamp ge '<Start Time>' and eventTimestamp le
+     * '<End Time>' and eventChannels eq 'Admin, Operation' and resourceUri eq
+     * '<ResourceURI>'.<br>- List events for a subscription: $filter=eventTimestamp
+     * ge '<Start Time>' and eventTimestamp le '<End Time>' and eventChannels eq
+     * 'Admin, Operation'.<br>- List events for a resource provider:
+     * $filter=eventTimestamp ge '<Start Time>' and eventTimestamp le '<End Time>'
+     * and eventChannels eq 'Admin, Operation' and resourceProvider eq
+     * '<ResourceProviderName>'.<br>- List events for a correlation Id:
+     * api-version=2014-04-01&$filter=eventTimestamp ge
+     * '2014-07-16T04:36:37.6407898Z' and eventTimestamp le
+     * '2014-07-20T04:36:37.6407898Z' and eventChannels eq 'Admin, Operation' and
+     * correlationId eq '<CorrelationID>'.<br>**NOTE**: No other syntax is allowed.
+     *
+     * @param {string} [options.select] Used to fetch events with only the given
+     * properties.<br>The **$select** argument is a comma separated list of
+     * property names to be returned. Possible values are: *authorization*,
+     * *claims*, *correlationId*, *description*, *eventDataId*, *eventName*,
+     * *eventTimestamp*, *httpRequest*, *level*, *operationId*, *operationName*,
+     * *properties*, *resourceGroupName*, *resourceProviderName*, *resourceId*,
+     * *status*, *submissionTimestamp*, *subStatus*, *subscriptionId*
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EventDataCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EventDataCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EventDataCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { filter? : string, select? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventDataCollection>;
+    list(callback: ServiceCallback<models.EventDataCollection>): void;
+    list(options: { filter? : string, select? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventDataCollection>): void;
+
+
+    /**
+     * Gets the Activity Logs for the Tenant.<br>Everything that is applicable to
+     * the API to get the Activity Logs for the subscription is applicable to this
+     * API (the parameters, $filter, etc.).<br>One thing to point out here is that
+     * this API does *not* retrieve the logs at the individual subscription of the
+     * tenant but only surfaces the logs that were generated at the tenant level.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<EventDataCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.EventDataCollection>>;
+
+    /**
+     * Gets the Activity Logs for the Tenant.<br>Everything that is applicable to
+     * the API to get the Activity Logs for the subscription is applicable to this
+     * API (the parameters, $filter, etc.).<br>One thing to point out here is that
+     * this API does *not* retrieve the logs at the individual subscription of the
+     * tenant but only surfaces the logs that were generated at the tenant level.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {EventDataCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {EventDataCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link EventDataCollection} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.EventDataCollection>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.EventDataCollection>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventDataCollection>): void;
+}
+
+/**
+ * @class
+ * MetricDefinitions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MonitorManagementClient.
+ */
+export interface MetricDefinitions {
+
+
+    /**
+     * Lists the metric definitions for the resource.
+     *
+     * @param {string} resourceUri The identifier of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.metricnamespace] Metric namespace to query metric
+     * definitions for.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricDefinitionCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceUri: string, options?: { metricnamespace? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricDefinitionCollection>>;
+
+    /**
+     * Lists the metric definitions for the resource.
+     *
+     * @param {string} resourceUri The identifier of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.metricnamespace] Metric namespace to query metric
+     * definitions for.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricDefinitionCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricDefinitionCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricDefinitionCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceUri: string, options?: { metricnamespace? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricDefinitionCollection>;
+    list(resourceUri: string, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+    list(resourceUri: string, options: { metricnamespace? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricDefinitionCollection>): void;
+}
+
+/**
+ * @class
+ * Metrics
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MonitorManagementClient.
+ */
+export interface Metrics {
+
+
+    /**
+     * **Lists the metric values for a resource**.
+     *
+     * @param {string} resourceUri The identifier of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.timespan] The timespan of the query. It is a string
+     * with the following format 'startDateTime_ISO/endDateTime_ISO'.
+     *
+     * @param {moment.duration} [options.interval] The interval (i.e. timegrain) of
+     * the query.
+     *
+     * @param {string} [options.metricnames] The names of the metrics (comma
+     * separated) to retrieve.
+     *
+     * @param {string} [options.aggregation] The list of aggregation types (comma
+     * separated) to retrieve.
+     *
+     * @param {number} [options.top] The maximum number of records to retrieve.
+     * Valid only if $filter is specified.
+     * Defaults to 10.
+     *
+     * @param {string} [options.orderby] The aggregation to use for sorting results
+     * and the direction of the sort.
+     * Only one order can be specified.
+     * Examples: sum asc.
+     *
+     * @param {string} [options.filter] The **$filter** is used to reduce the set
+     * of metric data returned.<br>Example:<br>Metric contains metadata A, B and
+     * C.<br>- Return all time series of C where A = a1 and B = b1 or
+     * b2<br>**$filter=A eq ‘a1’ and B eq ‘b1’ or B eq ‘b2’ and C eq ‘*’**<br>-
+     * Invalid variant:<br>**$filter=A eq ‘a1’ and B eq ‘b1’ and C eq ‘*’ or B =
+     * ‘b2’**<br>This is invalid because the logical or operator cannot separate
+     * two different metadata names.<br>- Return all time series where A = a1, B =
+     * b1 and C = c1:<br>**$filter=A eq ‘a1’ and B eq ‘b1’ and C eq ‘c1’**<br>-
+     * Return all time series where A = a1<br>**$filter=A eq ‘a1’ and B eq ‘*’ and
+     * C eq ‘*’**.
+     *
+     * @param {string} [options.resultType] Reduces the set of data collected. The
+     * syntax allowed depends on the operation. See the operation's description for
+     * details. Possible values include: 'Data', 'Metadata'
+     *
+     * @param {string} [options.metricnamespace] Metric namespace to query metric
+     * definitions for.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Response>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceUri: string, options?: { timespan? : string, interval? : moment.Duration, metricnames? : string, aggregation? : string, top? : number, orderby? : string, filter? : string, resultType? : string, metricnamespace? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Response>>;
+
+    /**
+     * **Lists the metric values for a resource**.
+     *
+     * @param {string} resourceUri The identifier of the resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.timespan] The timespan of the query. It is a string
+     * with the following format 'startDateTime_ISO/endDateTime_ISO'.
+     *
+     * @param {moment.duration} [options.interval] The interval (i.e. timegrain) of
+     * the query.
+     *
+     * @param {string} [options.metricnames] The names of the metrics (comma
+     * separated) to retrieve.
+     *
+     * @param {string} [options.aggregation] The list of aggregation types (comma
+     * separated) to retrieve.
+     *
+     * @param {number} [options.top] The maximum number of records to retrieve.
+     * Valid only if $filter is specified.
+     * Defaults to 10.
+     *
+     * @param {string} [options.orderby] The aggregation to use for sorting results
+     * and the direction of the sort.
+     * Only one order can be specified.
+     * Examples: sum asc.
+     *
+     * @param {string} [options.filter] The **$filter** is used to reduce the set
+     * of metric data returned.<br>Example:<br>Metric contains metadata A, B and
+     * C.<br>- Return all time series of C where A = a1 and B = b1 or
+     * b2<br>**$filter=A eq ‘a1’ and B eq ‘b1’ or B eq ‘b2’ and C eq ‘*’**<br>-
+     * Invalid variant:<br>**$filter=A eq ‘a1’ and B eq ‘b1’ and C eq ‘*’ or B =
+     * ‘b2’**<br>This is invalid because the logical or operator cannot separate
+     * two different metadata names.<br>- Return all time series where A = a1, B =
+     * b1 and C = c1:<br>**$filter=A eq ‘a1’ and B eq ‘b1’ and C eq ‘c1’**<br>-
+     * Return all time series where A = a1<br>**$filter=A eq ‘a1’ and B eq ‘*’ and
+     * C eq ‘*’**.
+     *
+     * @param {string} [options.resultType] Reduces the set of data collected. The
+     * syntax allowed depends on the operation. See the operation's description for
+     * details. Possible values include: 'Data', 'Metadata'
+     *
+     * @param {string} [options.metricnamespace] Metric namespace to query metric
+     * definitions for.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Response} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Response} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Response} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceUri: string, options?: { timespan? : string, interval? : moment.Duration, metricnames? : string, aggregation? : string, top? : number, orderby? : string, filter? : string, resultType? : string, metricnamespace? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Response>;
+    list(resourceUri: string, callback: ServiceCallback<models.Response>): void;
+    list(resourceUri: string, options: { timespan? : string, interval? : moment.Duration, metricnames? : string, aggregation? : string, top? : number, orderby? : string, filter? : string, resultType? : string, metricnamespace? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Response>): void;
+}
+
+/**
+ * @class
+ * MetricBaseline
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MonitorManagementClient.
+ */
+export interface MetricBaseline {
+
+
+    /**
+     * **Gets the baseline values for a specific metric**.
+     *
+     * @param {string} resourceUri The identifier of the resource. It has the
+     * following structure:
+     * subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/{providerName}/{resourceName}.
+     * For example:
+     * subscriptions/b368ca2f-e298-46b7-b0ab-012281956afa/resourceGroups/vms/providers/Microsoft.Compute/virtualMachines/vm1
+     *
+     * @param {string} metricName The name of the metric to retrieve the baseline
+     * for.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.timespan] The timespan of the query. It is a string
+     * with the following format 'startDateTime_ISO/endDateTime_ISO'.
+     *
+     * @param {moment.duration} [options.interval] The interval (i.e. timegrain) of
+     * the query.
+     *
+     * @param {string} [options.aggregation] The aggregation type of the metric to
+     * retrieve the baseline for.
+     *
+     * @param {string} [options.sensitivities] The list of sensitivities (comma
+     * separated) to retrieve.
+     *
+     * @param {string} [options.resultType] Allows retrieving only metadata of the
+     * baseline. On data request all information is retrieved. Possible values
+     * include: 'Data', 'Metadata'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BaselineResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceUri: string, metricName: string, options?: { timespan? : string, interval? : moment.Duration, aggregation? : string, sensitivities? : string, resultType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BaselineResponse>>;
+
+    /**
+     * **Gets the baseline values for a specific metric**.
+     *
+     * @param {string} resourceUri The identifier of the resource. It has the
+     * following structure:
+     * subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/{providerName}/{resourceName}.
+     * For example:
+     * subscriptions/b368ca2f-e298-46b7-b0ab-012281956afa/resourceGroups/vms/providers/Microsoft.Compute/virtualMachines/vm1
+     *
+     * @param {string} metricName The name of the metric to retrieve the baseline
+     * for.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.timespan] The timespan of the query. It is a string
+     * with the following format 'startDateTime_ISO/endDateTime_ISO'.
+     *
+     * @param {moment.duration} [options.interval] The interval (i.e. timegrain) of
+     * the query.
+     *
+     * @param {string} [options.aggregation] The aggregation type of the metric to
+     * retrieve the baseline for.
+     *
+     * @param {string} [options.sensitivities] The list of sensitivities (comma
+     * separated) to retrieve.
+     *
+     * @param {string} [options.resultType] Allows retrieving only metadata of the
+     * baseline. On data request all information is retrieved. Possible values
+     * include: 'Data', 'Metadata'
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BaselineResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BaselineResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BaselineResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceUri: string, metricName: string, options?: { timespan? : string, interval? : moment.Duration, aggregation? : string, sensitivities? : string, resultType? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.BaselineResponse>;
+    get(resourceUri: string, metricName: string, callback: ServiceCallback<models.BaselineResponse>): void;
+    get(resourceUri: string, metricName: string, options: { timespan? : string, interval? : moment.Duration, aggregation? : string, sensitivities? : string, resultType? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BaselineResponse>): void;
+
+
+    /**
+     * **Lists the baseline values for a resource**.
+     *
+     * @param {string} resourceUri The identifier of the resource. It has the
+     * following structure:
+     * subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/{providerName}/{resourceName}.
+     * For example:
+     * subscriptions/b368ca2f-e298-46b7-b0ab-012281956afa/resourceGroups/vms/providers/Microsoft.Compute/virtualMachines/vm1
+     *
+     * @param {object} timeSeriesInformation Information that need to be specified
+     * to calculate a baseline on a time series.
+     *
+     * @param {array} timeSeriesInformation.sensitivities the list of sensitivities
+     * for calculating the baseline.
+     *
+     * @param {array} timeSeriesInformation.values The metric values to calculate
+     * the baseline.
+     *
+     * @param {array} [timeSeriesInformation.timestamps] the array of timestamps of
+     * the baselines.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<CalculateBaselineResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    calculateBaselineWithHttpOperationResponse(resourceUri: string, timeSeriesInformation: models.TimeSeriesInformation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CalculateBaselineResponse>>;
+
+    /**
+     * **Lists the baseline values for a resource**.
+     *
+     * @param {string} resourceUri The identifier of the resource. It has the
+     * following structure:
+     * subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/{providerName}/{resourceName}.
+     * For example:
+     * subscriptions/b368ca2f-e298-46b7-b0ab-012281956afa/resourceGroups/vms/providers/Microsoft.Compute/virtualMachines/vm1
+     *
+     * @param {object} timeSeriesInformation Information that need to be specified
+     * to calculate a baseline on a time series.
+     *
+     * @param {array} timeSeriesInformation.sensitivities the list of sensitivities
+     * for calculating the baseline.
+     *
+     * @param {array} timeSeriesInformation.values The metric values to calculate
+     * the baseline.
+     *
+     * @param {array} [timeSeriesInformation.timestamps] the array of timestamps of
+     * the baselines.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {CalculateBaselineResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {CalculateBaselineResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link CalculateBaselineResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    calculateBaseline(resourceUri: string, timeSeriesInformation: models.TimeSeriesInformation, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CalculateBaselineResponse>;
+    calculateBaseline(resourceUri: string, timeSeriesInformation: models.TimeSeriesInformation, callback: ServiceCallback<models.CalculateBaselineResponse>): void;
+    calculateBaseline(resourceUri: string, timeSeriesInformation: models.TimeSeriesInformation, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CalculateBaselineResponse>): void;
+}
+
+/**
+ * @class
+ * MetricAlerts
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MonitorManagementClient.
+ */
+export interface MetricAlerts {
+
+
+    /**
+     * Retrieve alert rule definitions in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricAlertResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricAlertResourceCollection>>;
+
+    /**
+     * Retrieve alert rule definitions in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricAlertResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricAlertResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricAlertResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricAlertResourceCollection>;
+    listBySubscription(callback: ServiceCallback<models.MetricAlertResourceCollection>): void;
+    listBySubscription(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricAlertResourceCollection>): void;
+
+
+    /**
+     * Retrieve alert rule defintions in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricAlertResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricAlertResourceCollection>>;
+
+    /**
+     * Retrieve alert rule defintions in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricAlertResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricAlertResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricAlertResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricAlertResourceCollection>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.MetricAlertResourceCollection>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricAlertResourceCollection>): void;
+
+
+    /**
+     * Retrieve an alert rule definiton.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricAlertResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricAlertResource>>;
+
+    /**
+     * Retrieve an alert rule definiton.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricAlertResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricAlertResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricAlertResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricAlertResource>;
+    get(resourceGroupName: string, ruleName: string, callback: ServiceCallback<models.MetricAlertResource>): void;
+    get(resourceGroupName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricAlertResource>): void;
+
+
+    /**
+     * Create or update an metric alert definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} parameters The parameters of the rule to create or update.
+     *
+     * @param {string} parameters.description the description of the metric alert
+     * that will be included in the alert email.
+     *
+     * @param {number} parameters.severity Alert severity {0, 1, 2, 3, 4}
+     *
+     * @param {boolean} parameters.enabled the flag that indicates whether the
+     * metric alert is enabled.
+     *
+     * @param {array} [parameters.scopes] the list of resource id's that this
+     * metric alert is scoped to.
+     *
+     * @param {moment.duration} parameters.evaluationFrequency how often the metric
+     * alert is evaluated represented in ISO 8601 duration format.
+     *
+     * @param {moment.duration} parameters.windowSize the period of time (in ISO
+     * 8601 duration format) that is used to monitor alert activity based on the
+     * threshold.
+     *
+     * @param {object} parameters.criteria defines the specific alert criteria
+     * information.
+     *
+     * @param {string} parameters.criteria.odatatype Polymorphic Discriminator
+     *
+     * @param {boolean} [parameters.autoMitigate] the flag that indicates whether
+     * the alert should be auto resolved or not.
+     *
+     * @param {array} [parameters.actions] the array of actions that are performed
+     * when the alert rule becomes active, and when an alert condition is resolved.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricAlertResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, ruleName: string, parameters: models.MetricAlertResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricAlertResource>>;
+
+    /**
+     * Create or update an metric alert definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} parameters The parameters of the rule to create or update.
+     *
+     * @param {string} parameters.description the description of the metric alert
+     * that will be included in the alert email.
+     *
+     * @param {number} parameters.severity Alert severity {0, 1, 2, 3, 4}
+     *
+     * @param {boolean} parameters.enabled the flag that indicates whether the
+     * metric alert is enabled.
+     *
+     * @param {array} [parameters.scopes] the list of resource id's that this
+     * metric alert is scoped to.
+     *
+     * @param {moment.duration} parameters.evaluationFrequency how often the metric
+     * alert is evaluated represented in ISO 8601 duration format.
+     *
+     * @param {moment.duration} parameters.windowSize the period of time (in ISO
+     * 8601 duration format) that is used to monitor alert activity based on the
+     * threshold.
+     *
+     * @param {object} parameters.criteria defines the specific alert criteria
+     * information.
+     *
+     * @param {string} parameters.criteria.odatatype Polymorphic Discriminator
+     *
+     * @param {boolean} [parameters.autoMitigate] the flag that indicates whether
+     * the alert should be auto resolved or not.
+     *
+     * @param {array} [parameters.actions] the array of actions that are performed
+     * when the alert rule becomes active, and when an alert condition is resolved.
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricAlertResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricAlertResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricAlertResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, ruleName: string, parameters: models.MetricAlertResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricAlertResource>;
+    createOrUpdate(resourceGroupName: string, ruleName: string, parameters: models.MetricAlertResource, callback: ServiceCallback<models.MetricAlertResource>): void;
+    createOrUpdate(resourceGroupName: string, ruleName: string, parameters: models.MetricAlertResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricAlertResource>): void;
+
+
+    /**
+     * Update an metric alert definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} parameters The parameters of the rule to update.
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {string} parameters.description the description of the metric alert
+     * that will be included in the alert email.
+     *
+     * @param {number} parameters.severity Alert severity {0, 1, 2, 3, 4}
+     *
+     * @param {boolean} parameters.enabled the flag that indicates whether the
+     * metric alert is enabled.
+     *
+     * @param {array} [parameters.scopes] the list of resource id's that this
+     * metric alert is scoped to.
+     *
+     * @param {moment.duration} parameters.evaluationFrequency how often the metric
+     * alert is evaluated represented in ISO 8601 duration format.
+     *
+     * @param {moment.duration} parameters.windowSize the period of time (in ISO
+     * 8601 duration format) that is used to monitor alert activity based on the
+     * threshold.
+     *
+     * @param {object} parameters.criteria defines the specific alert criteria
+     * information.
+     *
+     * @param {string} parameters.criteria.odatatype Polymorphic Discriminator
+     *
+     * @param {boolean} [parameters.autoMitigate] the flag that indicates whether
+     * the alert should be auto resolved or not.
+     *
+     * @param {array} [parameters.actions] the array of actions that are performed
+     * when the alert rule becomes active, and when an alert condition is resolved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricAlertResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, ruleName: string, parameters: models.MetricAlertResourcePatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricAlertResource>>;
+
+    /**
+     * Update an metric alert definition.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} parameters The parameters of the rule to update.
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {string} parameters.description the description of the metric alert
+     * that will be included in the alert email.
+     *
+     * @param {number} parameters.severity Alert severity {0, 1, 2, 3, 4}
+     *
+     * @param {boolean} parameters.enabled the flag that indicates whether the
+     * metric alert is enabled.
+     *
+     * @param {array} [parameters.scopes] the list of resource id's that this
+     * metric alert is scoped to.
+     *
+     * @param {moment.duration} parameters.evaluationFrequency how often the metric
+     * alert is evaluated represented in ISO 8601 duration format.
+     *
+     * @param {moment.duration} parameters.windowSize the period of time (in ISO
+     * 8601 duration format) that is used to monitor alert activity based on the
+     * threshold.
+     *
+     * @param {object} parameters.criteria defines the specific alert criteria
+     * information.
+     *
+     * @param {string} parameters.criteria.odatatype Polymorphic Discriminator
+     *
+     * @param {boolean} [parameters.autoMitigate] the flag that indicates whether
+     * the alert should be auto resolved or not.
+     *
+     * @param {array} [parameters.actions] the array of actions that are performed
+     * when the alert rule becomes active, and when an alert condition is resolved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricAlertResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricAlertResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricAlertResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, ruleName: string, parameters: models.MetricAlertResourcePatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricAlertResource>;
+    update(resourceGroupName: string, ruleName: string, parameters: models.MetricAlertResourcePatch, callback: ServiceCallback<models.MetricAlertResource>): void;
+    update(resourceGroupName: string, ruleName: string, parameters: models.MetricAlertResourcePatch, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricAlertResource>): void;
+
+
+    /**
+     * Delete an alert rule defitiniton.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete an alert rule defitiniton.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, ruleName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * MetricAlertsStatus
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MonitorManagementClient.
+ */
+export interface MetricAlertsStatus {
+
+
+    /**
+     * Retrieve an alert rule status.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricAlertStatusCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricAlertStatusCollection>>;
+
+    /**
+     * Retrieve an alert rule status.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricAlertStatusCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricAlertStatusCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricAlertStatusCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricAlertStatusCollection>;
+    list(resourceGroupName: string, ruleName: string, callback: ServiceCallback<models.MetricAlertStatusCollection>): void;
+    list(resourceGroupName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricAlertStatusCollection>): void;
+
+
+    /**
+     * Retrieve an alert rule status.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {string} statusName The name of the status.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MetricAlertStatusCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByNameWithHttpOperationResponse(resourceGroupName: string, ruleName: string, statusName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MetricAlertStatusCollection>>;
+
+    /**
+     * Retrieve an alert rule status.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {string} statusName The name of the status.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MetricAlertStatusCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MetricAlertStatusCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MetricAlertStatusCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByName(resourceGroupName: string, ruleName: string, statusName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MetricAlertStatusCollection>;
+    listByName(resourceGroupName: string, ruleName: string, statusName: string, callback: ServiceCallback<models.MetricAlertStatusCollection>): void;
+    listByName(resourceGroupName: string, ruleName: string, statusName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MetricAlertStatusCollection>): void;
+}
+
+/**
+ * @class
+ * ScheduledQueryRules
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MonitorManagementClient.
+ */
+export interface ScheduledQueryRules {
+
+
+    /**
+     * Creates or updates an log search rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} parameters The parameters of the rule to create or update.
+     *
+     * @param {string} [parameters.description] The description of the Log Search
+     * rule.
+     *
+     * @param {string} [parameters.enabled] The flag which indicates whether the
+     * Log Search rule is enabled. Value should be true or false. Possible values
+     * include: 'true', 'false'
+     *
+     * @param {object} parameters.source Data Source against which rule will Query
+     * Data
+     *
+     * @param {string} parameters.source.query Log search query.
+     *
+     * @param {array} [parameters.source.authorizedResources] List of  Resource
+     * referred into query
+     *
+     * @param {string} parameters.source.dataSourceId The resource uri over which
+     * log search query is to be run.
+     *
+     * @param {string} [parameters.source.queryType] Set value to 'ResultCount'.
+     * Possible values include: 'ResultCount'
+     *
+     * @param {object} parameters.schedule Schedule (Frequnecy, Time Window) for
+     * rule.
+     *
+     * @param {number} parameters.schedule.frequencyInMinutes frequency (in
+     * minutes) at which rule condition should be evaluated.
+     *
+     * @param {number} parameters.schedule.timeWindowInMinutes Time window for
+     * which data needs to be fetched for query (should be greater than or equal to
+     * frequencyInMinutes).
+     *
+     * @param {object} parameters.action Action needs to be taken on rule
+     * execution.
+     *
+     * @param {string} parameters.action.odatatype Polymorphic Discriminator
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LogSearchRuleResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogSearchRuleResource>>;
+
+    /**
+     * Creates or updates an log search rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} parameters The parameters of the rule to create or update.
+     *
+     * @param {string} [parameters.description] The description of the Log Search
+     * rule.
+     *
+     * @param {string} [parameters.enabled] The flag which indicates whether the
+     * Log Search rule is enabled. Value should be true or false. Possible values
+     * include: 'true', 'false'
+     *
+     * @param {object} parameters.source Data Source against which rule will Query
+     * Data
+     *
+     * @param {string} parameters.source.query Log search query.
+     *
+     * @param {array} [parameters.source.authorizedResources] List of  Resource
+     * referred into query
+     *
+     * @param {string} parameters.source.dataSourceId The resource uri over which
+     * log search query is to be run.
+     *
+     * @param {string} [parameters.source.queryType] Set value to 'ResultCount'.
+     * Possible values include: 'ResultCount'
+     *
+     * @param {object} parameters.schedule Schedule (Frequnecy, Time Window) for
+     * rule.
+     *
+     * @param {number} parameters.schedule.frequencyInMinutes frequency (in
+     * minutes) at which rule condition should be evaluated.
+     *
+     * @param {number} parameters.schedule.timeWindowInMinutes Time window for
+     * which data needs to be fetched for query (should be greater than or equal to
+     * frequencyInMinutes).
+     *
+     * @param {object} parameters.action Action needs to be taken on rule
+     * execution.
+     *
+     * @param {string} parameters.action.odatatype Polymorphic Discriminator
+     *
+     * @param {string} parameters.location Resource location
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LogSearchRuleResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LogSearchRuleResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LogSearchRuleResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogSearchRuleResource>;
+    createOrUpdate(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResource, callback: ServiceCallback<models.LogSearchRuleResource>): void;
+    createOrUpdate(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogSearchRuleResource>): void;
+
+
+    /**
+     * Gets an Log Search rule
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LogSearchRuleResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogSearchRuleResource>>;
+
+    /**
+     * Gets an Log Search rule
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LogSearchRuleResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LogSearchRuleResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LogSearchRuleResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogSearchRuleResource>;
+    get(resourceGroupName: string, ruleName: string, callback: ServiceCallback<models.LogSearchRuleResource>): void;
+    get(resourceGroupName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogSearchRuleResource>): void;
+
+
+    /**
+     * Update log search Rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} parameters The parameters of the rule to update.
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {string} [parameters.enabled] The flag which indicates whether the
+     * Log Search rule is enabled. Value should be true or false. Possible values
+     * include: 'true', 'false'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LogSearchRuleResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResourcePatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogSearchRuleResource>>;
+
+    /**
+     * Update log search Rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} parameters The parameters of the rule to update.
+     *
+     * @param {object} [parameters.tags] Resource tags
+     *
+     * @param {string} [parameters.enabled] The flag which indicates whether the
+     * Log Search rule is enabled. Value should be true or false. Possible values
+     * include: 'true', 'false'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LogSearchRuleResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LogSearchRuleResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LogSearchRuleResource} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResourcePatch, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LogSearchRuleResource>;
+    update(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResourcePatch, callback: ServiceCallback<models.LogSearchRuleResource>): void;
+    update(resourceGroupName: string, ruleName: string, parameters: models.LogSearchRuleResourcePatch, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogSearchRuleResource>): void;
+
+
+    /**
+     * Deletes a Log Search rule
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a Log Search rule
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} ruleName The name of the rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, ruleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, ruleName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, ruleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * List the Log Search rules within a subscription group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * more information please see
+     * https://msdn.microsoft.com/en-us/library/azure/dn931934.aspx
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LogSearchRuleResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySubscriptionWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogSearchRuleResourceCollection>>;
+
+    /**
+     * List the Log Search rules within a subscription group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * more information please see
+     * https://msdn.microsoft.com/en-us/library/azure/dn931934.aspx
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LogSearchRuleResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LogSearchRuleResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LogSearchRuleResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySubscription(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LogSearchRuleResourceCollection>;
+    listBySubscription(callback: ServiceCallback<models.LogSearchRuleResourceCollection>): void;
+    listBySubscription(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogSearchRuleResourceCollection>): void;
+
+
+    /**
+     * List the Log Search rules within a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * more information please see
+     * https://msdn.microsoft.com/en-us/library/azure/dn931934.aspx
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LogSearchRuleResourceCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LogSearchRuleResourceCollection>>;
+
+    /**
+     * List the Log Search rules within a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] The filter to apply on the operation. For
+     * more information please see
+     * https://msdn.microsoft.com/en-us/library/azure/dn931934.aspx
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LogSearchRuleResourceCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LogSearchRuleResourceCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LogSearchRuleResourceCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LogSearchRuleResourceCollection>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.LogSearchRuleResourceCollection>): void;
+    listByResourceGroup(resourceGroupName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LogSearchRuleResourceCollection>): void;
 }

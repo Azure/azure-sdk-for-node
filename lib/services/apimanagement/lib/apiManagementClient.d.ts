@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ApiManagementClient extends AzureServiceClient {
+export default class ApiManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ApiManagementClient class.
    * @constructor
@@ -113,4 +114,4 @@ declare class ApiManagementClient extends AzureServiceClient {
   apiExport: operations.ApiExport;
 }
 
-export = ApiManagementClient;
+export { ApiManagementClient, models as ApiManagementModels };

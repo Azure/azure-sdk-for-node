@@ -42,5 +42,8 @@ services/iothub/iothubClient-tests.js
 services/keyVault/keyVault-key-tests.js
 services/keyVault/keyVault-secret-tests.js
 services/keyVault/keyVault-certificate-tests.js
+services/keyVault/keyVault-storage-tests.js
+services/keyVaultManagement/keyVaultManagement-tests.js
 services/postgresqlManagement/postgreSQLManagementClient-tests.js
 services/mysqlManagement/mySQLManagementClient-tests.js
+services/loganalytics/loganalytics-query-tests.js
