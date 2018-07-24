@@ -338,6 +338,8 @@ export interface BackendAddressPool extends SubResource {
  * unique read-only string that changes whenever the resource is updated.
  * @member {array} [backendIPConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
+ * @member {array} [backendIPConfiguration.subnet.serviceEndpointPolicies] An
+ * array of service endpoint policies.
  * @member {array} [backendIPConfiguration.subnet.ipConfigurations] Gets an
  * array of references to the network interface IP configurations using subnet.
  * @member {array} [backendIPConfiguration.subnet.resourceNavigationLinks] Gets
@@ -429,6 +431,9 @@ export interface BackendAddressPool extends SubResource {
  * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
  * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
@@ -839,6 +844,38 @@ export interface ServiceEndpointPropertiesFormat {
 
 /**
  * @class
+ * Initializes a new instance of the ServiceEndpointPolicyDefinitionsFormat class.
+ * @constructor
+ * The service endpoint definition properties.
+ *
+ * @member {string} [description] The description of service endpoint policy
+ * definition.
+ * @member {string} [service] service endpoint name.
+ * @member {array} [serviceResources] A list of service resources.
+ * @member {string} [provisioningState] The provisioning state of the resource.
+ */
+export interface ServiceEndpointPolicyDefinitionsFormat {
+  description?: string;
+  service?: string;
+  serviceResources?: string[];
+  provisioningState?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicy class.
+ * @constructor
+ * Service endpoint policy.
+ *
+ * @member {array} [serviceEndpointPolicyDefinitions] List of service endpoint
+ * definitions.
+ */
+export interface ServiceEndpointPolicy extends Resource {
+  serviceEndpointPolicyDefinitions?: ServiceEndpointPolicyDefinitionsFormat[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the PublicIPAddressSku class.
  * @constructor
  * SKU of a public IP address
@@ -954,6 +991,8 @@ export interface IpTag {
  * read-only string that changes whenever the resource is updated.
  * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
+ * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
@@ -1064,6 +1103,8 @@ export interface PublicIPAddress extends Resource {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -1194,6 +1235,8 @@ export interface ResourceNavigationLink extends SubResource {
  * @member {string} [routeTable.etag] Gets a unique read-only string that
  * changes whenever the resource is updated.
  * @member {array} [serviceEndpoints] An array of service endpoints.
+ * @member {array} [serviceEndpointPolicies] An array of service endpoint
+ * policies.
  * @member {array} [ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [resourceNavigationLinks] Gets an array of references to the
@@ -1209,6 +1252,7 @@ export interface Subnet extends SubResource {
   networkSecurityGroup?: NetworkSecurityGroup;
   routeTable?: RouteTable;
   serviceEndpoints?: ServiceEndpointPropertiesFormat[];
+  serviceEndpointPolicies?: ServiceEndpointPolicy[];
   readonly ipConfigurations?: IPConfiguration[];
   resourceNavigationLinks?: ResourceNavigationLink[];
   provisioningState?: string;
@@ -1271,6 +1315,8 @@ export interface Subnet extends SubResource {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -1349,6 +1395,9 @@ export interface Subnet extends SubResource {
  * updated.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -1616,6 +1665,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * read-only string that changes whenever the resource is updated.
  * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
+ * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
@@ -1704,6 +1755,9 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
  * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
@@ -3524,6 +3578,8 @@ export interface LoadBalancerSku {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -3599,6 +3655,9 @@ export interface LoadBalancerSku {
  * updated.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -7499,5 +7558,17 @@ export interface ListVpnGatewaysResult extends Array<VpnGateway> {
  * results if there are any.
  */
 export interface ListVpnConnectionsResult extends Array<VpnConnection> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicyListResult class.
+ * @constructor
+ * Response for ListServiceEndpointPolicies API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ServiceEndpointPolicyListResult extends Array<ServiceEndpointPolicy> {
   nextLink?: string;
 }
