@@ -344,18 +344,18 @@ export interface CertificateEmail extends ProxyOnlyResource {
  * @constructor
  * Certificate order action.
  *
- * @member {string} [certificateOrderActionType] Action type. Possible values
- * include: 'CertificateIssued', 'CertificateOrderCanceled',
- * 'CertificateOrderCreated', 'CertificateRevoked', 'DomainValidationComplete',
- * 'FraudDetected', 'OrgNameChange', 'OrgValidationComplete', 'SanDrop',
- * 'FraudCleared', 'CertificateExpired', 'CertificateExpirationWarning',
+ * @member {string} [actionType] Action type. Possible values include:
+ * 'CertificateIssued', 'CertificateOrderCanceled', 'CertificateOrderCreated',
+ * 'CertificateRevoked', 'DomainValidationComplete', 'FraudDetected',
+ * 'OrgNameChange', 'OrgValidationComplete', 'SanDrop', 'FraudCleared',
+ * 'CertificateExpired', 'CertificateExpirationWarning',
  * 'FraudDocumentationRequired', 'Unknown'
  * @member {date} [createdAt] Time at which the certificate action was
  * performed.
  */
 export interface CertificateOrderAction extends ProxyOnlyResource {
-  certificateOrderActionType?: string;
-  createdAt?: Date;
+  readonly actionType?: string;
+  readonly createdAt?: Date;
 }
 
 /**
@@ -429,8 +429,6 @@ export interface SiteSealRequest {
  * Virtual Network route contract used to pass routing information for a
  * Virtual Network.
  *
- * @member {string} [vnetRouteName] The name of this route. This is only
- * returned by the server and does not need to be set by the client.
  * @member {string} [startAddress] The starting address for this route. This
  * may also include a CIDR notation, in which case the end address must not be
  * specified.
@@ -446,7 +444,6 @@ export interface SiteSealRequest {
  * Virtual Network. Possible values include: 'DEFAULT', 'INHERITED', 'STATIC'
  */
 export interface VnetRoute extends ProxyOnlyResource {
-  vnetRouteName?: string;
   startAddress?: string;
   endAddress?: string;
   routeType?: string;
@@ -501,71 +498,31 @@ export interface VnetGateway extends ProxyOnlyResource {
  * @constructor
  * User crendentials used for publishing activity.
  *
- * @member {string} [userName] Username
  * @member {string} publishingUserName Username used for publishing.
  * @member {string} [publishingPassword] Password used for publishing.
  * @member {string} [publishingPasswordHash] Password hash used for publishing.
  * @member {string} [publishingPasswordHashSalt] Password hash salt used for
  * publishing.
+ * @member {string} [scmUri] Url of SCM site.
  */
 export interface User extends ProxyOnlyResource {
-  userName?: string;
   publishingUserName: string;
   publishingPassword?: string;
   publishingPasswordHash?: string;
   publishingPasswordHashSalt?: string;
+  scmUri?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the SnapshotRecoveryTarget class.
+ * Initializes a new instance of the Snapshot class.
  * @constructor
- * Specifies the web app that snapshot contents will be written to.
+ * A snapshot of an app.
  *
- * @member {string} [location] Geographical location of the target web app,
- * e.g. SouthEastAsia, SouthCentralUS
- * @member {string} [id] ARM resource ID of the target app.
- * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
- * for production slots and
- * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
- * for other slots.
+ * @member {string} [time] The time the snapshot was taken.
  */
-export interface SnapshotRecoveryTarget {
-  location?: string;
-  id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SnapshotRecoveryRequest class.
- * @constructor
- * Details about app recovery operation.
- *
- * @member {string} [snapshotTime] Point in time in which the app recovery
- * should be attempted, formatted as a DateTime string.
- * @member {object} [recoveryTarget] Specifies the web app that snapshot
- * contents will be written to.
- * @member {string} [recoveryTarget.location] Geographical location of the
- * target web app, e.g. SouthEastAsia, SouthCentralUS
- * @member {string} [recoveryTarget.id] ARM resource ID of the target app.
- * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
- * for production slots and
- * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
- * for other slots.
- * @member {boolean} overwrite If <code>true</code> the recovery operation can
- * overwrite source app; otherwise, <code>false</code>.
- * @member {boolean} [recoverConfiguration] If true, site configuration, in
- * addition to content, will be reverted.
- * @member {boolean} [ignoreConflictingHostNames] If true, custom hostname
- * conflicts will be ignored when recovering to a target web app.
- * This setting is only necessary when RecoverConfiguration is enabled.
- */
-export interface SnapshotRecoveryRequest extends ProxyOnlyResource {
-  snapshotTime?: string;
-  recoveryTarget?: SnapshotRecoveryTarget;
-  overwrite: boolean;
-  recoverConfiguration?: boolean;
-  ignoreConflictingHostNames?: boolean;
+export interface Snapshot extends ProxyOnlyResource {
+  readonly time?: string;
 }
 
 /**
@@ -584,43 +541,22 @@ export interface ResourceMetricAvailability {
 
 /**
  * @class
- * Initializes a new instance of the ResourceMetricName class.
- * @constructor
- * Name of a metric for any resource .
- *
- * @member {string} [value] metric name value.
- * @member {string} [localizedValue] Localized metric name value.
- */
-export interface ResourceMetricName {
-  readonly value?: string;
-  readonly localizedValue?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ResourceMetricDefinition class.
  * @constructor
  * Metadata for the metrics.
  *
- * @member {object} [resourceMetricDefinitionName] Name of the metric.
- * @member {string} [resourceMetricDefinitionName.value] metric name value.
- * @member {string} [resourceMetricDefinitionName.localizedValue] Localized
- * metric name value.
  * @member {string} [unit] Unit of the metric.
  * @member {string} [primaryAggregationType] Primary aggregation type.
  * @member {array} [metricAvailabilities] List of time grains supported for the
  * metric together with retention period.
  * @member {string} [resourceUri] Resource URI.
- * @member {string} [resourceMetricDefinitionId] Resource ID.
  * @member {object} [properties] Resource metric definition properties.
  */
 export interface ResourceMetricDefinition extends ProxyOnlyResource {
-  readonly resourceMetricDefinitionName?: ResourceMetricName;
   readonly unit?: string;
   readonly primaryAggregationType?: string;
   readonly metricAvailabilities?: ResourceMetricAvailability[];
   readonly resourceUri?: string;
-  readonly resourceMetricDefinitionId?: string;
   readonly properties?: { [propertyName: string]: string };
 }
 
@@ -715,14 +651,18 @@ export interface HybridConnection extends ProxyOnlyResource {
  * @constructor
  * Managed service identity.
  *
- * @member {object} [type] Type of managed service identity.
+ * @member {string} [type] Type of managed service identity. Possible values
+ * include: 'SystemAssigned', 'UserAssigned'
  * @member {string} [tenantId] Tenant of managed service identity.
  * @member {string} [principalId] Principal Id of managed service identity.
+ * @member {array} [identityIds] Array of UserAssigned managed service
+ * identities.
  */
 export interface ManagedServiceIdentity {
-  type?: any;
+  type?: string;
   readonly tenantId?: string;
   readonly principalId?: string;
+  identityIds?: string[];
 }
 
 /**
@@ -779,8 +719,6 @@ export interface SlotSwapStatus {
  * @member {string} [trafficManagerProfileName] Name of Traffic Manager profile
  * to create. This is only needed if Traffic Manager profile does not already
  * exist.
- * @member {boolean} [ignoreQuotas] <code>true</code> if quotas should be
- * ignored; otherwise, <code>false</code>.
  */
 export interface CloningInfo {
   correlationId?: string;
@@ -793,7 +731,6 @@ export interface CloningInfo {
   configureLoadBalancing?: boolean;
   trafficManagerProfileId?: string;
   trafficManagerProfileName?: string;
-  ignoreQuotas?: boolean;
 }
 
 /**
@@ -819,12 +756,27 @@ export interface HostingEnvironmentProfile {
  * IP security restriction on an app.
  *
  * @member {string} ipAddress IP address the security restriction is valid for.
+ * It can be in form of pure ipv4 address (required SubnetMask property) or
+ * CIDR notation such as ipv4/mask (leading bit match). For CIDR,
+ * SubnetMask property must not be specified.
  * @member {string} [subnetMask] Subnet mask for the range of IP addresses the
  * restriction is valid for.
+ * @member {string} [action] Allow or Deny access for this IP range.
+ * @member {string} [tag] Defines what this IP filter will be used for. This is
+ * to support IP filtering on proxies. Possible values include: 'Default',
+ * 'XffProxy'
+ * @member {number} [priority] Priority of IP restriction rule.
+ * @member {string} [name] IP restriction rule name.
+ * @member {string} [description] IP restriction rule description.
  */
 export interface IpSecurityRestriction {
   ipAddress: string;
   subnetMask?: string;
+  action?: string;
+  tag?: string;
+  priority?: number;
+  name?: string;
+  description?: string;
 }
 
 /**
@@ -1113,13 +1065,13 @@ export interface VirtualApplication {
  * using the specified FastCGI application.
  * @member {string} [scriptProcessor] The absolute path to the FastCGI
  * application.
- * @member {string} [arguments] Command-line arguments to be passed to the
- * script processor.
+ * @member {string} [argumentsProperty] Command-line arguments to be passed to
+ * the script processor.
  */
 export interface HandlerMapping {
   extension?: string;
   scriptProcessor?: string;
-  arguments?: string;
+  argumentsProperty?: string;
 }
 
 /**
@@ -1186,6 +1138,7 @@ export interface NameValuePair {
  * @member {string} [pythonVersion] Version of Python.
  * @member {string} [nodeVersion] Version of Node.js.
  * @member {string} [linuxFxVersion] Linux App Framework and version
+ * @member {string} [windowsFxVersion] Xenon App Framework and version
  * @member {boolean} [requestTracingEnabled] <code>true</code> if request
  * tracing is enabled; otherwise, <code>false</code>.
  * @member {date} [requestTracingExpirationTime] Request tracing expiration
@@ -1296,7 +1249,19 @@ export interface NameValuePair {
  * @member {string} [autoSwapSlotName] Auto-swap slot name.
  * @member {boolean} [localMySqlEnabled] <code>true</code> to enable local
  * MySQL; otherwise, <code>false</code>. Default value: false .
+ * @member {number} [managedServiceIdentityId] Managed Service Identity Id
+ * @member {number} [xManagedServiceIdentityId] Explicit Managed Service
+ * Identity Id
  * @member {array} [ipSecurityRestrictions] IP security restrictions.
+ * @member {boolean} [http20Enabled] Http20Enabled: configures a web site to
+ * allow clients to connect over http2.0. Default value: true .
+ * @member {string} [minTlsVersion] MinTlsVersion: configures the minimum
+ * version of TLS required for SSL requests. Possible values include: '1.0',
+ * '1.1', '1.2'
+ * @member {string} [ftpsState] State of FTP / FTPS service. Possible values
+ * include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+ * @member {number} [reservedInstanceCount] Number of reserved instances.
+ * This setting only applies to the Consumption Plan
  */
 export interface SiteConfig {
   numberOfWorkers?: number;
@@ -1306,6 +1271,7 @@ export interface SiteConfig {
   pythonVersion?: string;
   nodeVersion?: string;
   linuxFxVersion?: string;
+  windowsFxVersion?: string;
   requestTracingEnabled?: boolean;
   requestTracingExpirationTime?: Date;
   remoteDebuggingEnabled?: boolean;
@@ -1341,7 +1307,13 @@ export interface SiteConfig {
   apiDefinition?: ApiDefinitionInfo;
   autoSwapSlotName?: string;
   localMySqlEnabled?: boolean;
+  managedServiceIdentityId?: number;
+  xManagedServiceIdentityId?: number;
   ipSecurityRestrictions?: IpSecurityRestriction[];
+  http20Enabled?: boolean;
+  minTlsVersion?: string;
+  ftpsState?: string;
+  reservedInstanceCount?: number;
 }
 
 /**
@@ -1397,6 +1369,7 @@ export interface HostNameSslState {
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
  * @member {boolean} [reserved] <code>true</code> if reserved; otherwise,
  * <code>false</code>. Default value: false .
+ * @member {boolean} [isXenon] Hyper-V sandbox. Default value: false .
  * @member {date} [lastModifiedTimeUtc] Last time the app was modified, in UTC.
  * Read-only.
  * @member {object} [siteConfig] Configuration of the app.
@@ -1407,6 +1380,8 @@ export interface HostNameSslState {
  * @member {string} [siteConfig.pythonVersion] Version of Python.
  * @member {string} [siteConfig.nodeVersion] Version of Node.js.
  * @member {string} [siteConfig.linuxFxVersion] Linux App Framework and version
+ * @member {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+ * version
  * @member {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
  * request tracing is enabled; otherwise, <code>false</code>.
  * @member {date} [siteConfig.requestTracingExpirationTime] Request tracing
@@ -1528,8 +1503,22 @@ export interface HostNameSslState {
  * @member {string} [siteConfig.autoSwapSlotName] Auto-swap slot name.
  * @member {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
  * local MySQL; otherwise, <code>false</code>.
+ * @member {number} [siteConfig.managedServiceIdentityId] Managed Service
+ * Identity Id
+ * @member {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
+ * Service Identity Id
  * @member {array} [siteConfig.ipSecurityRestrictions] IP security
  * restrictions.
+ * @member {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
+ * site to allow clients to connect over http2.0
+ * @member {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
+ * minimum version of TLS required for SSL requests. Possible values include:
+ * '1.0', '1.1', '1.2'
+ * @member {string} [siteConfig.ftpsState] State of FTP / FTPS service.
+ * Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+ * @member {number} [siteConfig.reservedInstanceCount] Number of reserved
+ * instances.
+ * This setting only applies to the Consumption Plan
  * @member {array} [trafficManagerHostNames] Azure Traffic Manager hostnames
  * associated with the app. Read-only.
  * @member {boolean} [scmSiteAlsoStopped] <code>true</code> to stop SCM (KUDU)
@@ -1600,29 +1589,6 @@ export interface HostNameSslState {
  * @member {string} [cloningInfo.trafficManagerProfileName] Name of Traffic
  * Manager profile to create. This is only needed if Traffic Manager profile
  * does not already exist.
- * @member {boolean} [cloningInfo.ignoreQuotas] <code>true</code> if quotas
- * should be ignored; otherwise, <code>false</code>.
- * @member {object} [snapshotInfo] If specified during app creation, the app is
- * created from a previous snapshot.
- * @member {string} [snapshotInfo.snapshotTime] Point in time in which the app
- * recovery should be attempted, formatted as a DateTime string.
- * @member {object} [snapshotInfo.recoveryTarget] Specifies the web app that
- * snapshot contents will be written to.
- * @member {string} [snapshotInfo.recoveryTarget.location] Geographical
- * location of the target web app, e.g. SouthEastAsia, SouthCentralUS
- * @member {string} [snapshotInfo.recoveryTarget.id] ARM resource ID of the
- * target app.
- * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
- * for production slots and
- * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
- * for other slots.
- * @member {boolean} [snapshotInfo.overwrite] If <code>true</code> the recovery
- * operation can overwrite source app; otherwise, <code>false</code>.
- * @member {boolean} [snapshotInfo.recoverConfiguration] If true, site
- * configuration, in addition to content, will be reverted.
- * @member {boolean} [snapshotInfo.ignoreConflictingHostNames] If true, custom
- * hostname conflicts will be ignored when recovering to a target web app.
- * This setting is only necessary when RecoverConfiguration is enabled.
  * @member {string} [resourceGroup] Name of the resource group the app belongs
  * to. Read-only.
  * @member {boolean} [isDefaultContainer] <code>true</code> if the app is a
@@ -1640,10 +1606,13 @@ export interface HostNameSslState {
  * only https requests. Issues redirect for
  * http requests
  * @member {object} [identity]
- * @member {object} [identity.type] Type of managed service identity.
+ * @member {string} [identity.type] Type of managed service identity. Possible
+ * values include: 'SystemAssigned', 'UserAssigned'
  * @member {string} [identity.tenantId] Tenant of managed service identity.
  * @member {string} [identity.principalId] Principal Id of managed service
  * identity.
+ * @member {array} [identity.identityIds] Array of UserAssigned managed service
+ * identities.
  */
 export interface Site extends Resource {
   readonly state?: string;
@@ -1656,6 +1625,7 @@ export interface Site extends Resource {
   hostNameSslStates?: HostNameSslState[];
   serverFarmId?: string;
   reserved?: boolean;
+  isXenon?: boolean;
   readonly lastModifiedTimeUtc?: Date;
   siteConfig?: SiteConfig;
   readonly trafficManagerHostNames?: string[];
@@ -1672,7 +1642,6 @@ export interface Site extends Resource {
   readonly suspendedTill?: Date;
   readonly maxNumberOfWorkers?: number;
   cloningInfo?: CloningInfo;
-  snapshotInfo?: SnapshotRecoveryRequest;
   readonly resourceGroup?: string;
   readonly isDefaultContainer?: boolean;
   readonly defaultHostName?: string;
@@ -1762,7 +1731,6 @@ export interface SkuDescription {
  * @constructor
  * App Service plan.
  *
- * @member {string} appServicePlanName Name for the App Service plan.
  * @member {string} [workerTierName] Target worker tier assigned to the App
  * Service plan.
  * @member {string} [status] App Service plan status. Possible values include:
@@ -1790,9 +1758,13 @@ export interface SkuDescription {
  * spot instances.
  * @member {date} [spotExpirationTime] The time when the server farm expires.
  * Valid only if it is a spot server farm.
+ * @member {date} [freeOfferExpirationTime] The time when the server farm free
+ * offer expires.
  * @member {string} [resourceGroup] Resource group of the App Service plan.
  * @member {boolean} [reserved] If Linux app service plan <code>true</code>,
  * <code>false</code> otherwise. Default value: false .
+ * @member {boolean} [isXenon] If Hyper-V container app service plan
+ * <code>true</code>, <code>false</code> otherwise. Default value: false .
  * @member {number} [targetWorkerCount] Scaling worker count.
  * @member {number} [targetWorkerSizeId] Scaling worker size ID.
  * @member {string} [provisioningState] Provisioning state of the App Service
@@ -1820,7 +1792,6 @@ export interface SkuDescription {
  * manager enabled?
  */
 export interface AppServicePlan extends Resource {
-  appServicePlanName: string;
   workerTierName?: string;
   readonly status?: string;
   readonly subscription?: string;
@@ -1832,12 +1803,76 @@ export interface AppServicePlan extends Resource {
   readonly numberOfSites?: number;
   isSpot?: boolean;
   spotExpirationTime?: Date;
+  freeOfferExpirationTime?: Date;
   readonly resourceGroup?: string;
   reserved?: boolean;
+  isXenon?: boolean;
   targetWorkerCount?: number;
   targetWorkerSizeId?: number;
   readonly provisioningState?: string;
   sku?: SkuDescription;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DefaultErrorResponseErrorDetailsItem class.
+ * @constructor
+ * Detailed errors.
+ *
+ * @member {string} [code] Standardized string to programmatically identify the
+ * error.
+ * @member {string} [message] Detailed error description and debugging
+ * information.
+ * @member {string} [target] Detailed error description and debugging
+ * information.
+ */
+export interface DefaultErrorResponseErrorDetailsItem {
+  readonly code?: string;
+  readonly message?: string;
+  readonly target?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DefaultErrorResponseError class.
+ * @constructor
+ * Error model.
+ *
+ * @member {string} [code] Standardized string to programmatically identify the
+ * error.
+ * @member {string} [message] Detailed error description and debugging
+ * information.
+ * @member {string} [target] Detailed error description and debugging
+ * information.
+ * @member {array} [details]
+ * @member {string} [innererror] More information to debug error.
+ */
+export interface DefaultErrorResponseError {
+  readonly code?: string;
+  readonly message?: string;
+  readonly target?: string;
+  details?: DefaultErrorResponseErrorDetailsItem[];
+  readonly innererror?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DefaultErrorResponse class.
+ * @constructor
+ * App Service error response.
+ *
+ * @member {object} [error] Error model.
+ * @member {string} [error.code] Standardized string to programmatically
+ * identify the error.
+ * @member {string} [error.message] Detailed error description and debugging
+ * information.
+ * @member {string} [error.target] Detailed error description and debugging
+ * information.
+ * @member {array} [error.details]
+ * @member {string} [error.innererror] More information to debug error.
+ */
+export interface DefaultErrorResponse {
+  readonly error?: DefaultErrorResponseError;
 }
 
 /**
@@ -1850,6 +1885,22 @@ export interface AppServicePlan extends Resource {
  */
 export interface NameIdentifier {
   name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogSpecification class.
+ * @constructor
+ * Log Definition of a single resource metric.
+ *
+ * @member {string} [name]
+ * @member {string} [displayName]
+ * @member {string} [blobDuration]
+ */
+export interface LogSpecification {
+  name?: string;
+  displayName?: string;
+  blobDuration?: string;
 }
 
 /**
@@ -1933,9 +1984,11 @@ export interface MetricSpecification {
  * Resource metrics service provided by Microsoft.Insights resource provider.
  *
  * @member {array} [metricSpecifications]
+ * @member {array} [logSpecifications]
  */
 export interface ServiceSpecification {
   metricSpecifications?: MetricSpecification[];
+  logSpecifications?: LogSpecification[];
 }
 
 /**
@@ -1946,6 +1999,7 @@ export interface ServiceSpecification {
  *
  * @member {object} [serviceSpecification]
  * @member {array} [serviceSpecification.metricSpecifications]
+ * @member {array} [serviceSpecification.logSpecifications]
  */
 export interface CsmOperationDescriptionProperties {
   serviceSpecification?: ServiceSpecification;
@@ -1985,6 +2039,7 @@ export interface CsmOperationDisplay {
  * @member {object} [properties]
  * @member {object} [properties.serviceSpecification]
  * @member {array} [properties.serviceSpecification.metricSpecifications]
+ * @member {array} [properties.serviceSpecification.logSpecifications]
  */
 export interface CsmOperationDescription {
   name?: string;
@@ -2508,12 +2563,10 @@ export interface TldLegalAgreement {
  * @constructor
  * A top level domain object.
  *
- * @member {string} [domainName] Name of the top level domain.
  * @member {boolean} [privacy] If <code>true</code>, then the top level domain
  * supports domain privacy; otherwise, <code>false</code>.
  */
 export interface TopLevelDomain extends ProxyOnlyResource {
-  readonly domainName?: string;
   privacy?: boolean;
 }
 
@@ -2571,7 +2624,6 @@ export interface TopLevelDomainAgreementOption {
  * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
  * 'KeyVaultSecretDoesNotExist', 'UnknownError', 'ExternalPrivateKey',
  * 'Unknown'
- * @member {string} [geoRegion] Region of the certificate.
  * @member {string} [serverFarmId] Resource ID of the associated App Service
  * plan, formatted as:
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
@@ -2595,7 +2647,6 @@ export interface Certificate extends Resource {
   keyVaultId?: string;
   keyVaultSecretName?: string;
   readonly keyVaultSecretStatus?: string;
-  readonly geoRegion?: string;
   serverFarmId?: string;
 }
 
@@ -2635,7 +2686,6 @@ export interface Certificate extends Resource {
  * 'AzureServiceUnauthorizedToAccessKeyVault', 'KeyVaultDoesNotExist',
  * 'KeyVaultSecretDoesNotExist', 'UnknownError', 'ExternalPrivateKey',
  * 'Unknown'
- * @member {string} [geoRegion] Region of the certificate.
  * @member {string} [serverFarmId] Resource ID of the associated App Service
  * plan, formatted as:
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
@@ -2659,7 +2709,6 @@ export interface CertificatePatchResource extends ProxyOnlyResource {
   keyVaultId?: string;
   keyVaultSecretName?: string;
   readonly keyVaultSecretStatus?: string;
-  readonly geoRegion?: string;
   serverFarmId?: string;
 }
 
@@ -2737,7 +2786,7 @@ export interface VirtualIPMapping {
  * @member {string} [computeMode] Shared/dedicated workers. Possible values
  * include: 'Shared', 'Dedicated', 'Dynamic'
  * @member {string} [workerSize] Size of the machines. Possible values include:
- * 'Default', 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3'
+ * 'Small', 'Medium', 'Large', 'D1', 'D2', 'D3', 'Default'
  * @member {number} [workerSizeId] Size ID of machines:
  * 0 - Small
  * 1 - Medium
@@ -2748,6 +2797,7 @@ export interface VirtualIPMapping {
  * @member {boolean} [isApplicableForAllComputeModes] <code>true</code> if
  * capacity is applicable for all apps; otherwise, <code>false</code>.
  * @member {string} [siteMode] Shared or Dedicated.
+ * @member {boolean} [isLinux] Is this a linux stamp capacity
  */
 export interface StampCapacity {
   name?: string;
@@ -2760,6 +2810,7 @@ export interface StampCapacity {
   excludeFromCapacityAllocation?: boolean;
   isApplicableForAllComputeModes?: boolean;
   siteMode?: string;
+  isLinux?: boolean;
 }
 
 /**
@@ -2864,6 +2915,12 @@ export interface NetworkAccessControlEntry {
  * of the App Service Environment.
  * @member {array} [userWhitelistedIpRanges] User added ip ranges to whitelist
  * on ASE db
+ * @member {boolean} [hasLinuxWorkers] Flag that displays whether an ASE has
+ * linux workers or not
+ * @member {string} [sslCertKeyVaultId] Key Vault ID for ILB App Service
+ * Environment default SSL certificate
+ * @member {string} [sslCertKeyVaultSecretName] Key Vault Secret Name for ILB
+ * App Service Environment default SSL certificate
  */
 export interface AppServiceEnvironment {
   name: string;
@@ -2902,6 +2959,9 @@ export interface AppServiceEnvironment {
   dynamicCacheEnabled?: boolean;
   clusterSettings?: NameValuePair[];
   userWhitelistedIpRanges?: string[];
+  hasLinuxWorkers?: boolean;
+  sslCertKeyVaultId?: string;
+  sslCertKeyVaultSecretName?: string;
 }
 
 /**
@@ -2938,6 +2998,29 @@ export interface CsmUsageQuota {
   currentValue?: number;
   limit?: number;
   name?: LocalizableString;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DeletedSite class.
+ * @constructor
+ * A deleted app.
+ *
+ * @member {number} [deletedSiteId] Numeric id for the deleted site
+ * @member {string} [deletedTimestamp] Time in UTC when the app was deleted.
+ * @member {string} [subscription] Subscription containing the deleted site
+ * @member {string} [resourceGroup] ResourceGroup that contained the deleted
+ * site
+ * @member {string} [deletedSiteName] Name of the deleted site
+ * @member {string} [slot] Slot of the deleted site
+ */
+export interface DeletedSite {
+  readonly deletedSiteId?: number;
+  readonly deletedTimestamp?: string;
+  readonly subscription?: string;
+  readonly resourceGroup?: string;
+  readonly deletedSiteName?: string;
+  readonly slot?: string;
 }
 
 /**
@@ -2988,6 +3071,20 @@ export interface Operation {
   modifiedTime?: Date;
   expirationTime?: Date;
   geoMasterOperationId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceMetricName class.
+ * @constructor
+ * Name of a metric for any resource .
+ *
+ * @member {string} [value] metric name value.
+ * @member {string} [localizedValue] Localized metric name value.
+ */
+export interface ResourceMetricName {
+  readonly value?: string;
+  readonly localizedValue?: string;
 }
 
 /**
@@ -3056,29 +3153,6 @@ export interface ResourceMetric {
   readonly id?: string;
   readonly metricValues?: ResourceMetricValue[];
   readonly properties?: ResourceMetricProperty[];
-}
-
-/**
- * @class
- * Initializes a new instance of the DeletedSite class.
- * @constructor
- * A deleted app.
- *
- * @member {number} [id] Numeric id for the deleted site
- * @member {string} [deletedTimestamp] Time in UTC when the app was deleted.
- * @member {string} [subscription] Subscription containing the deleted site
- * @member {string} [resourceGroup] ResourceGroup that contained the deleted
- * site
- * @member {string} [name] Name of the deleted site
- * @member {string} [slot] Slot of the deleted site
- */
-export interface DeletedSite {
-  id?: number;
-  readonly deletedTimestamp?: string;
-  readonly subscription?: string;
-  readonly resourceGroup?: string;
-  readonly name?: string;
-  readonly slot?: string;
 }
 
 /**
@@ -3302,6 +3376,117 @@ export interface AnalysisDefinition extends ProxyOnlyResource {
 
 /**
  * @class
+ * Initializes a new instance of the DataTableResponseColumn class.
+ * @constructor
+ * Column definition
+ *
+ * @member {string} [columnName] Name of the column
+ * @member {string} [dataType] Data type which looks like 'String' or 'Int32'.
+ * @member {string} [columnType] Column Type
+ */
+export interface DataTableResponseColumn {
+  columnName?: string;
+  dataType?: string;
+  columnType?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DataTableResponseObject class.
+ * @constructor
+ * Data Table which defines columns and raw row values
+ *
+ * @member {string} [tableName] Name of the table
+ * @member {array} [columns] List of columns with data types
+ * @member {array} [rows] Raw row values
+ */
+export interface DataTableResponseObject {
+  tableName?: string;
+  columns?: DataTableResponseColumn[];
+  rows?: string[][];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DetectorInfo class.
+ * @constructor
+ * Definition of Detector
+ *
+ * @member {string} [description] Short description of the detector and its
+ * purpose
+ * @member {string} [category] Support Category
+ * @member {string} [subCategory] Support Sub Category
+ * @member {string} [supportTopicId] Support Topic Id
+ */
+export interface DetectorInfo {
+  readonly description?: string;
+  readonly category?: string;
+  readonly subCategory?: string;
+  readonly supportTopicId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Rendering class.
+ * @constructor
+ * Instructions for rendering the data
+ *
+ * @member {string} [type] Rendering Type. Possible values include: 'NoGraph',
+ * 'Table', 'TimeSeries', 'TimeSeriesPerInstance'
+ * @member {string} [title] Title of data
+ * @member {string} [description] Description of the data that will help it be
+ * interpreted
+ */
+export interface Rendering {
+  type?: string;
+  title?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiagnosticData class.
+ * @constructor
+ * Set of data with rendering instructions
+ *
+ * @member {object} [table] Data in table form
+ * @member {string} [table.tableName] Name of the table
+ * @member {array} [table.columns] List of columns with data types
+ * @member {array} [table.rows] Raw row values
+ * @member {object} [renderingProperties] Properties that describe how the
+ * table should be rendered
+ * @member {string} [renderingProperties.type] Rendering Type. Possible values
+ * include: 'NoGraph', 'Table', 'TimeSeries', 'TimeSeriesPerInstance'
+ * @member {string} [renderingProperties.title] Title of data
+ * @member {string} [renderingProperties.description] Description of the data
+ * that will help it be interpreted
+ */
+export interface DiagnosticData {
+  table?: DataTableResponseObject;
+  renderingProperties?: Rendering;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DetectorResponse class.
+ * @constructor
+ * Class representing Response from Detector
+ *
+ * @member {object} [metadata] metadata for the detector
+ * @member {string} [metadata.description] Short description of the detector
+ * and its purpose
+ * @member {string} [metadata.category] Support Category
+ * @member {string} [metadata.subCategory] Support Sub Category
+ * @member {string} [metadata.supportTopicId] Support Topic Id
+ * @member {array} [dataset] Data Set
+ */
+export interface DetectorResponse extends ProxyOnlyResource {
+  metadata?: DetectorInfo;
+  dataset?: DiagnosticData[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the DiagnosticAnalysis class.
  * @constructor
  * Class representing a diagnostic analysis done on an application
@@ -3374,6 +3559,68 @@ export interface DiagnosticDetectorResponse extends ProxyOnlyResource {
 
 /**
  * @class
+ * Initializes a new instance of the StackMinorVersion class.
+ * @constructor
+ * Application stack minor version.
+ *
+ * @member {string} [displayVersion] Application stack minor version (display
+ * only).
+ * @member {string} [runtimeVersion] Application stack minor version (runtime
+ * only).
+ * @member {boolean} [isDefault] <code>true</code> if this is the default minor
+ * version; otherwise, <code>false</code>.
+ */
+export interface StackMinorVersion {
+  displayVersion?: string;
+  runtimeVersion?: string;
+  isDefault?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StackMajorVersion class.
+ * @constructor
+ * Application stack major version.
+ *
+ * @member {string} [displayVersion] Application stack major version (display
+ * only).
+ * @member {string} [runtimeVersion] Application stack major version (runtime
+ * only).
+ * @member {boolean} [isDefault] <code>true</code> if this is the default major
+ * version; otherwise, <code>false</code>.
+ * @member {array} [minorVersions] Minor versions associated with the major
+ * version.
+ */
+export interface StackMajorVersion {
+  displayVersion?: string;
+  runtimeVersion?: string;
+  isDefault?: boolean;
+  minorVersions?: StackMinorVersion[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApplicationStack class.
+ * @constructor
+ * Application stack.
+ *
+ * @member {string} [name] Application stack name.
+ * @member {string} [display] Application stack display name.
+ * @member {string} [dependency] Application stack dependency.
+ * @member {array} [majorVersions] List of major versions available.
+ * @member {array} [frameworks] List of frameworks associated with application
+ * stack.
+ */
+export interface ApplicationStack {
+  name?: string;
+  display?: string;
+  dependency?: string;
+  majorVersions?: StackMajorVersion[];
+  frameworks?: ApplicationStack[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the Recommendation class.
  * @constructor
  * Represents a recommendation result generated by the recommendation engine.
@@ -3396,9 +3643,13 @@ export interface DiagnosticDetectorResponse extends ProxyOnlyResource {
  * @member {string} [channels] List of channels that this recommendation can
  * apply. Possible values include: 'Notification', 'Api', 'Email', 'Webhook',
  * 'All'
- * @member {array} [tags] The list of category tags that this recommendation
- * belongs to.
+ * @member {array} [categoryTags] The list of category tags that this
+ * recommendation belongs to.
  * @member {string} [actionName] Name of action recommended by this object.
+ * @member {number} [enabled] True if this recommendation is still valid (i.e.
+ * "actionable"). False if it is invalid.
+ * @member {array} [states] The list of states of this recommendation. If it's
+ * null then it shoud be considered "Active".
  * @member {date} [startTime] The beginning time in UTC of a range that the
  * recommendation refers to.
  * @member {date} [endTime] The end time in UTC of a range that the
@@ -3418,7 +3669,7 @@ export interface DiagnosticDetectorResponse extends ProxyOnlyResource {
  * @member {string} [forwardLink] Forward link to an external document
  * associated with the rule.
  */
-export interface Recommendation {
+export interface Recommendation extends ProxyOnlyResource {
   creationTime?: Date;
   recommendationId?: string;
   resourceId?: string;
@@ -3428,8 +3679,10 @@ export interface Recommendation {
   message?: string;
   level?: string;
   channels?: string;
-  tags?: string[];
+  readonly categoryTags?: string[];
   actionName?: string;
+  enabled?: number;
+  states?: string[];
   startTime?: Date;
   endTime?: Date;
   nextNotificationTime?: Date;
@@ -3448,7 +3701,7 @@ export interface Recommendation {
  * @constructor
  * Represents a recommendation rule that the recommendation engine can perform.
  *
- * @member {string} [name] Unique name of the rule.
+ * @member {string} [recommendationName] Unique name of the rule.
  * @member {string} [displayName] UI friendly name of the rule.
  * @member {string} [message] Localized name of the rule (Good for UI).
  * @member {uuid} [recommendationId] Recommendation ID of an associated
@@ -3463,7 +3716,8 @@ export interface Recommendation {
  * @member {string} [channels] List of available channels that this rule
  * applies. Possible values include: 'Notification', 'Api', 'Email', 'Webhook',
  * 'All'
- * @member {array} [tags] An array of category tags that the rule contains.
+ * @member {array} [categoryTags] The list of category tags that this
+ * recommendation rule belongs to.
  * @member {boolean} [isDynamic] True if this is associated with a dynamically
  * added rule
  * @member {string} [extensionName] Extension name of the portal if exists.
@@ -3473,8 +3727,8 @@ export interface Recommendation {
  * @member {string} [forwardLink] Forward link to an external document
  * associated with the rule. Applicable to dynamic rule only.
  */
-export interface RecommendationRule {
-  name?: string;
+export interface RecommendationRule extends ProxyOnlyResource {
+  recommendationName?: string;
   displayName?: string;
   message?: string;
   recommendationId?: string;
@@ -3482,11 +3736,34 @@ export interface RecommendationRule {
   actionName?: string;
   level?: string;
   channels?: string;
-  tags?: string[];
+  readonly categoryTags?: string[];
   isDynamic?: boolean;
   extensionName?: string;
   bladeName?: string;
   forwardLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BillingMeter class.
+ * @constructor
+ * App Service billing entity that contains information about meter which the
+ * Azure billing system utilizes to charge users for services.
+ *
+ * @member {string} [meterId] Meter GUID onboarded in Commerce
+ * @member {string} [billingLocation] Azure Location of billable resource
+ * @member {string} [shortName] Short Name from App Service Azure pricing Page
+ * @member {string} [friendlyName] Friendly name of the meter
+ * @member {string} [resourceType] App Service ResourceType meter used for
+ * @member {string} [osType] App Service OS type meter used for
+ */
+export interface BillingMeter extends ProxyOnlyResource {
+  meterId?: string;
+  billingLocation?: string;
+  shortName?: string;
+  friendlyName?: string;
+  resourceType?: string;
+  osType?: string;
 }
 
 /**
@@ -3510,12 +3787,10 @@ export interface CsmMoveResourceEnvelope {
  * @constructor
  * Geographical region.
  *
- * @member {string} [geoRegionName] Region name.
  * @member {string} [description] Region description.
  * @member {string} [displayName] Display name for region.
  */
 export interface GeoRegion extends ProxyOnlyResource {
-  readonly geoRegionName?: string;
   readonly description?: string;
   readonly displayName?: string;
 }
@@ -3595,7 +3870,6 @@ export interface GlobalCsmSkuDescription {
  * @member {string} [sku] Premier add on SKU.
  * @member {string} [product] Premier add on offer Product.
  * @member {string} [vendor] Premier add on offer Vendor.
- * @member {string} [premierAddOnOfferName] Premier add on offer Name.
  * @member {boolean} [promoCodeRequired] <code>true</code> if promotion code is
  * required; otherwise, <code>false</code>.
  * @member {number} [quota] Premier add on offer Quota.
@@ -3611,7 +3885,6 @@ export interface PremierAddOnOffer extends ProxyOnlyResource {
   sku?: string;
   product?: string;
   vendor?: string;
-  premierAddOnOfferName?: string;
   promoCodeRequired?: boolean;
   quota?: number;
   webHostingPlanRestrictions?: string;
@@ -3685,14 +3958,12 @@ export interface SkuInfos {
  * @constructor
  * The source control OAuth token.
  *
- * @member {string} [sourceControlName] Name or source control type.
  * @member {string} [token] OAuth access token.
  * @member {string} [tokenSecret] OAuth access token secret.
  * @member {string} [refreshToken] OAuth refresh token.
  * @member {date} [expirationTime] OAuth token expiration.
  */
 export interface SourceControl extends ProxyOnlyResource {
-  sourceControlName?: string;
   token?: string;
   tokenSecret?: string;
   refreshToken?: string;
@@ -3720,6 +3991,8 @@ export interface SourceControl extends ProxyOnlyResource {
  * of VM's).
  * @member {string} [hostingEnvironment] Name of App Service Environment where
  * app or App Service plan should be created.
+ * @member {boolean} [isXenon] <code>true</code> if App Service plan is running
+ * as a windows container
  */
 export interface ValidateRequest {
   name: string;
@@ -3731,6 +4004,7 @@ export interface ValidateRequest {
   isSpot?: boolean;
   capacity?: number;
   hostingEnvironment?: string;
+  isXenon?: boolean;
 }
 
 /**
@@ -4018,7 +4292,6 @@ export interface BackupSchedule {
  * @constructor
  * Description of a backup which will be performed.
  *
- * @member {string} backupRequestName Name of the backup.
  * @member {boolean} [enabled] True if the backup schedule is enabled (must be
  * included in that case), false if the backup schedule should be disabled.
  * @member {string} storageAccountUrl SAS URL to the container.
@@ -4041,16 +4314,12 @@ export interface BackupSchedule {
  * @member {date} [backupSchedule.lastExecutionTime] Last time when this
  * schedule was triggered.
  * @member {array} [databases] Databases included in the backup.
- * @member {string} [backupRequestType] Type of the backup. Possible values
- * include: 'Default', 'Clone', 'Relocation', 'Snapshot'
  */
 export interface BackupRequest extends ProxyOnlyResource {
-  backupRequestName: string;
   enabled?: boolean;
   storageAccountUrl: string;
   backupSchedule?: BackupSchedule;
   databases?: DatabaseBackupSetting[];
-  backupRequestType?: string;
 }
 
 /**
@@ -4091,13 +4360,11 @@ export interface ConnectionStringDictionary extends ProxyOnlyResource {
  * 'Initializing', 'Starting', 'Running', 'PendingRestart', 'Stopped'
  * @member {string} [detailedStatus] Detailed status.
  * @member {string} [logUrl] Log URL.
- * @member {string} [continuousWebJobName] Job name. Used as job identifier in
- * ARM resource URI.
  * @member {string} [runCommand] Run command.
  * @member {string} [url] Job URL.
  * @member {string} [extraInfoUrl] Extra Info URL.
- * @member {string} [jobType] Job type. Possible values include: 'Continuous',
- * 'Triggered'
+ * @member {string} [webJobType] Job type. Possible values include:
+ * 'Continuous', 'Triggered'
  * @member {string} [error] Error information.
  * @member {boolean} [usingSdk] Using SDK?
  * @member {object} [settings] Job settings.
@@ -4106,11 +4373,10 @@ export interface ContinuousWebJob extends ProxyOnlyResource {
   status?: string;
   detailedStatus?: string;
   logUrl?: string;
-  readonly continuousWebJobName?: string;
   runCommand?: string;
   url?: string;
   extraInfoUrl?: string;
-  jobType?: string;
+  webJobType?: string;
   error?: string;
   usingSdk?: boolean;
   settings?: { [propertyName: string]: any };
@@ -4203,11 +4469,31 @@ export interface CustomHostnameAnalysisResult extends ProxyOnlyResource {
 
 /**
  * @class
+ * Initializes a new instance of the DeletedAppRestoreRequest class.
+ * @constructor
+ * Details about restoring a deleted app.
+ *
+ * @member {string} [deletedSiteId] ARM resource ID of the deleted app.
+ * Example:
+ * /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}
+ * @member {boolean} [recoverConfiguration] If true, deleted site
+ * configuration, in addition to content, will be restored.
+ * @member {string} [snapshotTime] Point in time to restore the deleted app
+ * from, formatted as a DateTime string.
+ * If unspecified, default value is the time that the app was deleted.
+ */
+export interface DeletedAppRestoreRequest extends ProxyOnlyResource {
+  deletedSiteId?: string;
+  recoverConfiguration?: boolean;
+  snapshotTime?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Deployment class.
  * @constructor
  * User crendentials used for publishing activity.
  *
- * @member {string} [deploymentId] Identifier for deployment.
  * @member {number} [status] Deployment status.
  * @member {string} [message] Details about deployment status.
  * @member {string} [author] Who authored the deployment.
@@ -4220,7 +4506,6 @@ export interface CustomHostnameAnalysisResult extends ProxyOnlyResource {
  * @member {string} [details] Details on deployment.
  */
 export interface Deployment extends ProxyOnlyResource {
-  deploymentId?: string;
   status?: number;
   message?: string;
   author?: string;
@@ -4273,7 +4558,6 @@ export interface FileSystemHttpLogsConfig {
  * @constructor
  * Web Job Information.
  *
- * @member {string} [functionEnvelopeName] Function name.
  * @member {string} [functionAppId] Function App ID.
  * @member {string} [scriptRootPathHref] Script root path URI.
  * @member {string} [scriptHref] Script URI.
@@ -4286,8 +4570,7 @@ export interface FileSystemHttpLogsConfig {
  * Portal.
  */
 export interface FunctionEnvelope extends ProxyOnlyResource {
-  readonly functionEnvelopeName?: string;
-  readonly functionAppId?: string;
+  functionAppId?: string;
   scriptRootPathHref?: string;
   scriptHref?: string;
   configHref?: string;
@@ -4565,13 +4848,11 @@ export interface NetworkFeatures extends ProxyOnlyResource {
  * @member {string} [instanceName] Name of the server on which the measurement
  * is made.
  * @member {number} [value] Value of counter at a certain time.
- * @member {number} [coreCount] Core Count of worker. Not a data member
  */
 export interface PerfMonSample {
   time?: Date;
   instanceName?: string;
   value?: number;
-  coreCount?: number;
 }
 
 /**
@@ -4626,9 +4907,6 @@ export interface PerfMonResponse {
  * @member {string} [sku] Premier add on SKU.
  * @member {string} [product] Premier add on Product.
  * @member {string} [vendor] Premier add on Vendor.
- * @member {string} [premierAddOnName] Premier add on Name.
- * @member {string} [premierAddOnLocation] Premier add on Location.
- * @member {object} [premierAddOnTags] Premier add on Tags.
  * @member {string} [marketplacePublisher] Premier add on Marketplace
  * publisher.
  * @member {string} [marketplaceOffer] Premier add on Marketplace offer.
@@ -4637,11 +4915,79 @@ export interface PremierAddOn extends Resource {
   sku?: string;
   product?: string;
   vendor?: string;
-  premierAddOnName?: string;
-  premierAddOnLocation?: string;
-  premierAddOnTags?: { [propertyName: string]: string };
   marketplacePublisher?: string;
   marketplaceOffer?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PremierAddOnPatchResource class.
+ * @constructor
+ * ARM resource for a PremierAddOn.
+ *
+ * @member {string} [sku] Premier add on SKU.
+ * @member {string} [product] Premier add on Product.
+ * @member {string} [vendor] Premier add on Vendor.
+ * @member {string} [marketplacePublisher] Premier add on Marketplace
+ * publisher.
+ * @member {string} [marketplaceOffer] Premier add on Marketplace offer.
+ */
+export interface PremierAddOnPatchResource extends ProxyOnlyResource {
+  sku?: string;
+  product?: string;
+  vendor?: string;
+  marketplacePublisher?: string;
+  marketplaceOffer?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PrivateAccessSubnet class.
+ * @constructor
+ * Description of a Virtual Network subnet that is useable for private site
+ * access.
+ *
+ * @member {string} [name] The name of the subnet.
+ * @member {number} [key] The key (ID) of the subnet.
+ */
+export interface PrivateAccessSubnet {
+  name?: string;
+  key?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PrivateAccessVirtualNetwork class.
+ * @constructor
+ * Description of a Virtual Network that is useable for private site access.
+ *
+ * @member {string} [name] The name of the Virtual Network.
+ * @member {number} [key] The key (ID) of the Virtual Network.
+ * @member {string} [resourceId] The ARM uri of the Virtual Network
+ * @member {array} [subnets] A List of subnets that access is allowed to on
+ * this Virtual Network. An empty array (but not null) is interpreted to mean
+ * that all subnets are allowed within this Virtual Network.
+ */
+export interface PrivateAccessVirtualNetwork {
+  name?: string;
+  key?: number;
+  resourceId?: string;
+  subnets?: PrivateAccessSubnet[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PrivateAccess class.
+ * @constructor
+ * Description of the parameters of Private Access for a Web Site.
+ *
+ * @member {boolean} [enabled] Whether private access is enabled or not.
+ * @member {array} [virtualNetworks] The Virtual Networks (and subnets) allowed
+ * to access the site privately.
+ */
+export interface PrivateAccess extends ProxyOnlyResource {
+  enabled?: boolean;
+  virtualNetworks?: PrivateAccessVirtualNetwork[];
 }
 
 /**
@@ -4650,7 +4996,7 @@ export interface PremierAddOn extends Resource {
  * @constructor
  * Process Thread Information.
  *
- * @member {number} [processThreadInfoId] ARM Identifier for deployment.
+ * @member {number} [identifier] Site extension ID.
  * @member {string} [href] HRef URI.
  * @member {string} [process] Process URI.
  * @member {string} [startAddress] Start address.
@@ -4665,7 +5011,7 @@ export interface PremierAddOn extends Resource {
  * @member {string} [waitReason] Wait reason.
  */
 export interface ProcessThreadInfo extends ProxyOnlyResource {
-  processThreadInfoId?: number;
+  readonly identifier?: number;
   href?: string;
   process?: string;
   startAddress?: string;
@@ -4719,10 +5065,10 @@ export interface ProcessModuleInfo extends ProxyOnlyResource {
  * @constructor
  * Process Information.
  *
- * @member {number} [processInfoId] ARM Identifier for deployment.
- * @member {string} [processInfoName] Deployment name.
+ * @member {number} [identifier] ARM Identifier for deployment.
+ * @member {string} [deploymentName] Deployment name.
  * @member {string} [href] HRef URI.
- * @member {string} [miniDump] Minidump URI.
+ * @member {string} [minidump] Minidump URI.
  * @member {boolean} [isProfileRunning] Is profile running?
  * @member {boolean} [isIisProfileRunning] Is the IIS Profile running?
  * @member {number} [iisProfileTimeoutInSeconds] IIS Profile timeout (seconds).
@@ -4738,29 +5084,29 @@ export interface ProcessModuleInfo extends ProxyOnlyResource {
  * @member {number} [moduleCount] Module count.
  * @member {number} [threadCount] Thread count.
  * @member {date} [startTime] Start time.
- * @member {string} [totalProcessorTime] Total CPU time.
- * @member {string} [userProcessorTime] User CPU time.
- * @member {string} [privilegedProcessorTime] Privileged CPU time.
- * @member {number} [workingSet64] Working set.
- * @member {number} [peakWorkingSet64] Peak working set.
- * @member {number} [privateMemorySize64] Private memory size.
- * @member {number} [virtualMemorySize64] Virtual memory size.
- * @member {number} [peakVirtualMemorySize64] Peak virtual memory usage.
- * @member {number} [pagedSystemMemorySize64] Paged system memory.
- * @member {number} [nonpagedSystemMemorySize64] Non-paged system memory.
- * @member {number} [pagedMemorySize64] Paged memory.
- * @member {number} [peakPagedMemorySize64] Peak paged memory.
+ * @member {string} [totalCpuTime] Total CPU time.
+ * @member {string} [userCpuTime] User CPU time.
+ * @member {string} [privilegedCpuTime] Privileged CPU time.
+ * @member {number} [workingSet] Working set.
+ * @member {number} [peakWorkingSet] Peak working set.
+ * @member {number} [privateMemory] Private memory size.
+ * @member {number} [virtualMemory] Virtual memory size.
+ * @member {number} [peakVirtualMemory] Peak virtual memory usage.
+ * @member {number} [pagedSystemMemory] Paged system memory.
+ * @member {number} [nonPagedSystemMemory] Non-paged system memory.
+ * @member {number} [pagedMemory] Paged memory.
+ * @member {number} [peakPagedMemory] Peak paged memory.
  * @member {date} [timeStamp] Time stamp.
  * @member {object} [environmentVariables] List of environment variables.
  * @member {boolean} [isScmSite] Is this the SCM site?
- * @member {boolean} [isWebJob] Is this a Web Job?
+ * @member {boolean} [isWebjob] Is this a Web Job?
  * @member {string} [description] Description of process.
  */
 export interface ProcessInfo extends ProxyOnlyResource {
-  processInfoId?: number;
-  processInfoName?: string;
+  readonly identifier?: number;
+  deploymentName?: string;
   href?: string;
-  miniDump?: string;
+  minidump?: string;
   isProfileRunning?: boolean;
   isIisProfileRunning?: boolean;
   iisProfileTimeoutInSeconds?: number;
@@ -4776,22 +5122,22 @@ export interface ProcessInfo extends ProxyOnlyResource {
   moduleCount?: number;
   threadCount?: number;
   startTime?: Date;
-  totalProcessorTime?: string;
-  userProcessorTime?: string;
-  privilegedProcessorTime?: string;
-  workingSet64?: number;
-  peakWorkingSet64?: number;
-  privateMemorySize64?: number;
-  virtualMemorySize64?: number;
-  peakVirtualMemorySize64?: number;
-  pagedSystemMemorySize64?: number;
-  nonpagedSystemMemorySize64?: number;
-  pagedMemorySize64?: number;
-  peakPagedMemorySize64?: number;
+  totalCpuTime?: string;
+  userCpuTime?: string;
+  privilegedCpuTime?: string;
+  workingSet?: number;
+  peakWorkingSet?: number;
+  privateMemory?: number;
+  virtualMemory?: number;
+  peakVirtualMemory?: number;
+  pagedSystemMemory?: number;
+  nonPagedSystemMemory?: number;
+  pagedMemory?: number;
+  peakPagedMemory?: number;
   timeStamp?: Date;
   environmentVariables?: { [propertyName: string]: string };
   isScmSite?: boolean;
-  isWebJob?: boolean;
+  isWebjob?: boolean;
   description?: string;
 }
 
@@ -4837,7 +5183,8 @@ export interface PublicCertificate extends ProxyOnlyResource {
  * @member {string} [appServicePlan] Specify app service plan that will own
  * restored site.
  * @member {string} [operationType] Operation type. Possible values include:
- * 'Default', 'Clone', 'Relocation', 'Snapshot'. Default value: 'Default' .
+ * 'Default', 'Clone', 'Relocation', 'Snapshot', 'CloudFS'. Default value:
+ * 'Default' .
  * @member {boolean} [adjustConnectionStrings] <code>true</code> if
  * SiteConfig.ConnectionStrings should be set in new app; otherwise,
  * <code>false</code>.
@@ -4856,19 +5203,6 @@ export interface RestoreRequest extends ProxyOnlyResource {
   operationType?: string;
   adjustConnectionStrings?: boolean;
   hostingEnvironment?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RestoreResponse class.
- * @constructor
- * Response for an app restore request.
- *
- * @member {string} [operationId] When server starts the restore process, it
- * will return an operation ID identifying that particular restore operation.
- */
-export interface RestoreResponse extends ProxyOnlyResource {
-  readonly operationId?: string;
 }
 
 /**
@@ -4930,6 +5264,8 @@ export interface RestoreResponse extends ProxyOnlyResource {
  * This URI is a case-sensitive identifier for the token issuer.
  * More information on OpenID Connect Discovery:
  * http://openid.net/specs/openid-connect-discovery-1_0.html
+ * @member {boolean} [validateIssuer] Gets a value indicating whether the
+ * issuer should be a valid HTTPS url and be validated as such.
  * @member {array} [allowedAudiences] Allowed audience values to consider when
  * validating JWTs issued by
  * Azure Active Directory. Note that the <code>ClientID</code> value is always
@@ -5005,6 +5341,7 @@ export interface SiteAuthSettings extends ProxyOnlyResource {
   clientId?: string;
   clientSecret?: string;
   issuer?: string;
+  validateIssuer?: boolean;
   allowedAudiences?: string[];
   additionalLoginParams?: string[];
   googleClientId?: string;
@@ -5071,6 +5408,7 @@ export interface SiteCloneability {
  * @member {string} [pythonVersion] Version of Python.
  * @member {string} [nodeVersion] Version of Node.js.
  * @member {string} [linuxFxVersion] Linux App Framework and version
+ * @member {string} [windowsFxVersion] Xenon App Framework and version
  * @member {boolean} [requestTracingEnabled] <code>true</code> if request
  * tracing is enabled; otherwise, <code>false</code>.
  * @member {date} [requestTracingExpirationTime] Request tracing expiration
@@ -5181,7 +5519,19 @@ export interface SiteCloneability {
  * @member {string} [autoSwapSlotName] Auto-swap slot name.
  * @member {boolean} [localMySqlEnabled] <code>true</code> to enable local
  * MySQL; otherwise, <code>false</code>. Default value: false .
+ * @member {number} [managedServiceIdentityId] Managed Service Identity Id
+ * @member {number} [xManagedServiceIdentityId] Explicit Managed Service
+ * Identity Id
  * @member {array} [ipSecurityRestrictions] IP security restrictions.
+ * @member {boolean} [http20Enabled] Http20Enabled: configures a web site to
+ * allow clients to connect over http2.0. Default value: true .
+ * @member {string} [minTlsVersion] MinTlsVersion: configures the minimum
+ * version of TLS required for SSL requests. Possible values include: '1.0',
+ * '1.1', '1.2'
+ * @member {string} [ftpsState] State of FTP / FTPS service. Possible values
+ * include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+ * @member {number} [reservedInstanceCount] Number of reserved instances.
+ * This setting only applies to the Consumption Plan
  */
 export interface SiteConfigResource extends ProxyOnlyResource {
   numberOfWorkers?: number;
@@ -5191,6 +5541,7 @@ export interface SiteConfigResource extends ProxyOnlyResource {
   pythonVersion?: string;
   nodeVersion?: string;
   linuxFxVersion?: string;
+  windowsFxVersion?: string;
   requestTracingEnabled?: boolean;
   requestTracingExpirationTime?: Date;
   remoteDebuggingEnabled?: boolean;
@@ -5226,7 +5577,13 @@ export interface SiteConfigResource extends ProxyOnlyResource {
   apiDefinition?: ApiDefinitionInfo;
   autoSwapSlotName?: string;
   localMySqlEnabled?: boolean;
+  managedServiceIdentityId?: number;
+  xManagedServiceIdentityId?: number;
   ipSecurityRestrictions?: IpSecurityRestriction[];
+  http20Enabled?: boolean;
+  minTlsVersion?: string;
+  ftpsState?: string;
+  reservedInstanceCount?: number;
 }
 
 /**
@@ -5236,11 +5593,11 @@ export interface SiteConfigResource extends ProxyOnlyResource {
  * A snapshot of a web app configuration.
  *
  * @member {date} [time] The time the snapshot was taken.
- * @member {number} [siteConfigurationSnapshotInfoId] The id of the snapshot
+ * @member {number} [snapshotId] The id of the snapshot
  */
 export interface SiteConfigurationSnapshotInfo extends ProxyOnlyResource {
   readonly time?: Date;
-  readonly siteConfigurationSnapshotInfoId?: number;
+  readonly snapshotId?: number;
 }
 
 /**
@@ -5249,10 +5606,10 @@ export interface SiteConfigurationSnapshotInfo extends ProxyOnlyResource {
  * @constructor
  * Site Extension Information.
  *
- * @member {string} [siteExtensionInfoId] Site extension ID.
- * @member {string} [title] Site extension title.
- * @member {string} [siteExtensionInfoType] Site extension type. Possible
- * values include: 'Gallery', 'WebRoot'
+ * @member {string} [extensionId] Site extension ID.
+ * @member {string} [title]
+ * @member {string} [extensionType] Site extension type. Possible values
+ * include: 'Gallery', 'WebRoot'
  * @member {string} [summary] Summary description.
  * @member {string} [description] Detailed description.
  * @member {string} [version] Version information.
@@ -5262,7 +5619,8 @@ export interface SiteConfigurationSnapshotInfo extends ProxyOnlyResource {
  * @member {string} [licenseUrl] License URL.
  * @member {string} [feedUrl] Feed URL.
  * @member {array} [authors] List of authors.
- * @member {string} [installationArgs] Installer command line parameters.
+ * @member {string} [installerCommandLineParams] Installer command line
+ * parameters.
  * @member {date} [publishedDateTime] Published timestamp.
  * @member {number} [downloadCount] Count of downloads.
  * @member {boolean} [localIsLatestVersion] <code>true</code> if the local
@@ -5273,9 +5631,9 @@ export interface SiteConfigurationSnapshotInfo extends ProxyOnlyResource {
  * @member {string} [comment] Site Extension comment.
  */
 export interface SiteExtensionInfo extends ProxyOnlyResource {
-  siteExtensionInfoId?: string;
+  extensionId?: string;
   title?: string;
-  siteExtensionInfoType?: string;
+  extensionType?: string;
   summary?: string;
   description?: string;
   version?: string;
@@ -5285,7 +5643,7 @@ export interface SiteExtensionInfo extends ProxyOnlyResource {
   licenseUrl?: string;
   feedUrl?: string;
   authors?: string[];
-  installationArgs?: string;
+  installerCommandLineParams?: string;
   publishedDateTime?: Date;
   downloadCount?: number;
   localIsLatestVersion?: boolean;
@@ -5399,6 +5757,7 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
  * @member {boolean} [reserved] <code>true</code> if reserved; otherwise,
  * <code>false</code>. Default value: false .
+ * @member {boolean} [isXenon] Hyper-V sandbox. Default value: false .
  * @member {date} [lastModifiedTimeUtc] Last time the app was modified, in UTC.
  * Read-only.
  * @member {object} [siteConfig] Configuration of the app.
@@ -5409,6 +5768,8 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * @member {string} [siteConfig.pythonVersion] Version of Python.
  * @member {string} [siteConfig.nodeVersion] Version of Node.js.
  * @member {string} [siteConfig.linuxFxVersion] Linux App Framework and version
+ * @member {string} [siteConfig.windowsFxVersion] Xenon App Framework and
+ * version
  * @member {boolean} [siteConfig.requestTracingEnabled] <code>true</code> if
  * request tracing is enabled; otherwise, <code>false</code>.
  * @member {date} [siteConfig.requestTracingExpirationTime] Request tracing
@@ -5530,8 +5891,22 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * @member {string} [siteConfig.autoSwapSlotName] Auto-swap slot name.
  * @member {boolean} [siteConfig.localMySqlEnabled] <code>true</code> to enable
  * local MySQL; otherwise, <code>false</code>.
+ * @member {number} [siteConfig.managedServiceIdentityId] Managed Service
+ * Identity Id
+ * @member {number} [siteConfig.xManagedServiceIdentityId] Explicit Managed
+ * Service Identity Id
  * @member {array} [siteConfig.ipSecurityRestrictions] IP security
  * restrictions.
+ * @member {boolean} [siteConfig.http20Enabled] Http20Enabled: configures a web
+ * site to allow clients to connect over http2.0
+ * @member {string} [siteConfig.minTlsVersion] MinTlsVersion: configures the
+ * minimum version of TLS required for SSL requests. Possible values include:
+ * '1.0', '1.1', '1.2'
+ * @member {string} [siteConfig.ftpsState] State of FTP / FTPS service.
+ * Possible values include: 'AllAllowed', 'FtpsOnly', 'Disabled'
+ * @member {number} [siteConfig.reservedInstanceCount] Number of reserved
+ * instances.
+ * This setting only applies to the Consumption Plan
  * @member {array} [trafficManagerHostNames] Azure Traffic Manager hostnames
  * associated with the app. Read-only.
  * @member {boolean} [scmSiteAlsoStopped] <code>true</code> to stop SCM (KUDU)
@@ -5602,29 +5977,6 @@ export interface SiteLogsConfig extends ProxyOnlyResource {
  * @member {string} [cloningInfo.trafficManagerProfileName] Name of Traffic
  * Manager profile to create. This is only needed if Traffic Manager profile
  * does not already exist.
- * @member {boolean} [cloningInfo.ignoreQuotas] <code>true</code> if quotas
- * should be ignored; otherwise, <code>false</code>.
- * @member {object} [snapshotInfo] If specified during app creation, the app is
- * created from a previous snapshot.
- * @member {string} [snapshotInfo.snapshotTime] Point in time in which the app
- * recovery should be attempted, formatted as a DateTime string.
- * @member {object} [snapshotInfo.recoveryTarget] Specifies the web app that
- * snapshot contents will be written to.
- * @member {string} [snapshotInfo.recoveryTarget.location] Geographical
- * location of the target web app, e.g. SouthEastAsia, SouthCentralUS
- * @member {string} [snapshotInfo.recoveryTarget.id] ARM resource ID of the
- * target app.
- * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
- * for production slots and
- * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
- * for other slots.
- * @member {boolean} [snapshotInfo.overwrite] If <code>true</code> the recovery
- * operation can overwrite source app; otherwise, <code>false</code>.
- * @member {boolean} [snapshotInfo.recoverConfiguration] If true, site
- * configuration, in addition to content, will be reverted.
- * @member {boolean} [snapshotInfo.ignoreConflictingHostNames] If true, custom
- * hostname conflicts will be ignored when recovering to a target web app.
- * This setting is only necessary when RecoverConfiguration is enabled.
  * @member {string} [resourceGroup] Name of the resource group the app belongs
  * to. Read-only.
  * @member {boolean} [isDefaultContainer] <code>true</code> if the app is a
@@ -5653,6 +6005,7 @@ export interface SitePatchResource extends ProxyOnlyResource {
   hostNameSslStates?: HostNameSslState[];
   serverFarmId?: string;
   reserved?: boolean;
+  isXenon?: boolean;
   readonly lastModifiedTimeUtc?: Date;
   siteConfig?: SiteConfig;
   readonly trafficManagerHostNames?: string[];
@@ -5669,7 +6022,6 @@ export interface SitePatchResource extends ProxyOnlyResource {
   readonly suspendedTill?: Date;
   readonly maxNumberOfWorkers?: number;
   cloningInfo?: CloningInfo;
-  snapshotInfo?: SnapshotRecoveryRequest;
   readonly resourceGroup?: string;
   readonly isDefaultContainer?: boolean;
   readonly defaultHostName?: string;
@@ -5740,8 +6092,8 @@ export interface SlotConfigNamesResource extends ProxyOnlyResource {
  * @constructor
  * A setting difference between two deployment slots of an app.
  *
- * @member {string} [slotDifferenceType] Type of the difference: Information,
- * Warning or Error.
+ * @member {string} [level] Level of the difference: Information, Warning or
+ * Error.
  * @member {string} [settingType] The type of the setting: General, AppSetting
  * or ConnectionString.
  * @member {string} [diffRule] Rule that describes how to process the setting
@@ -5754,7 +6106,7 @@ export interface SlotConfigNamesResource extends ProxyOnlyResource {
  * @member {string} [description] Description of the setting difference.
  */
 export interface SlotDifference extends ProxyOnlyResource {
-  readonly slotDifferenceType?: string;
+  readonly level?: string;
   readonly settingType?: string;
   readonly diffRule?: string;
   readonly settingName?: string;
@@ -5765,14 +6117,55 @@ export interface SlotDifference extends ProxyOnlyResource {
 
 /**
  * @class
- * Initializes a new instance of the Snapshot class.
+ * Initializes a new instance of the SnapshotRecoverySource class.
  * @constructor
- * A snapshot of an app.
+ * Specifies the web app that snapshot contents will be retrieved from.
  *
- * @member {string} [time] The time the snapshot was taken.
+ * @member {string} [location] Geographical location of the source web app,
+ * e.g. SouthEastAsia, SouthCentralUS
+ * @member {string} [id] ARM resource ID of the source app.
+ * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+ * for production slots and
+ * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+ * for other slots.
  */
-export interface Snapshot extends ProxyOnlyResource {
-  readonly time?: string;
+export interface SnapshotRecoverySource {
+  location?: string;
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SnapshotRestoreRequest class.
+ * @constructor
+ * Details about app recovery operation.
+ *
+ * @member {string} [snapshotTime] Point in time in which the app restore
+ * should be done, formatted as a DateTime string.
+ * @member {object} [recoverySource] Optional. Specifies the web app that
+ * snapshot contents will be retrieved from.
+ * If empty, the targeted web app will be used as the source.
+ * @member {string} [recoverySource.location] Geographical location of the
+ * source web app, e.g. SouthEastAsia, SouthCentralUS
+ * @member {string} [recoverySource.id] ARM resource ID of the source app.
+ * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}
+ * for production slots and
+ * /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName}
+ * for other slots.
+ * @member {boolean} overwrite If <code>true</code> the restore operation can
+ * overwrite source app; otherwise, <code>false</code>.
+ * @member {boolean} [recoverConfiguration] If true, site configuration, in
+ * addition to content, will be reverted.
+ * @member {boolean} [ignoreConflictingHostNames] If true, custom hostname
+ * conflicts will be ignored when recovering to a target web app.
+ * This setting is only necessary when RecoverConfiguration is enabled.
+ */
+export interface SnapshotRestoreRequest extends ProxyOnlyResource {
+  snapshotTime?: string;
+  recoverySource?: SnapshotRecoverySource;
+  overwrite: boolean;
+  recoverConfiguration?: boolean;
+  ignoreConflictingHostNames?: boolean;
 }
 
 /**
@@ -5824,12 +6217,30 @@ export interface StringDictionary extends ProxyOnlyResource {
 
 /**
  * @class
+ * Initializes a new instance of the SwiftVirtualNetwork class.
+ * @constructor
+ * Swift Virtual Network Contract. This is used to enable the new Swift way of
+ * doing virtual network integration.
+ *
+ * @member {string} [subnetResourceId] The Virtual Network subnet's resource
+ * ID. This is the subnet that this Web App will join. This subnet must have a
+ * delegation to Microsoft.Web/serverFarms defined first.
+ * @member {boolean} [swiftSupported] A flag that specifies if the scale unit
+ * this Web App is on supports Swift integration.
+ */
+export interface SwiftVirtualNetwork extends ProxyOnlyResource {
+  subnetResourceId?: string;
+  swiftSupported?: boolean;
+}
+
+/**
+ * @class
  * Initializes a new instance of the TriggeredJobRun class.
  * @constructor
  * Triggered Web Job Run Information.
  *
- * @member {string} [triggeredJobRunId] Job ID.
- * @member {string} [triggeredJobRunName] Job name.
+ * @member {string} [webJobId] Job ID.
+ * @member {string} [webJobName] Job name.
  * @member {string} [status] Job status. Possible values include: 'Success',
  * 'Failed', 'Error'
  * @member {date} [startTime] Start time.
@@ -5842,8 +6253,8 @@ export interface StringDictionary extends ProxyOnlyResource {
  * @member {string} [trigger] Job trigger.
  */
 export interface TriggeredJobRun extends ProxyOnlyResource {
-  triggeredJobRunId?: string;
-  readonly triggeredJobRunName?: string;
+  webJobId?: string;
+  webJobName?: string;
   status?: string;
   startTime?: Date;
   endTime?: Date;
@@ -5862,10 +6273,10 @@ export interface TriggeredJobRun extends ProxyOnlyResource {
  * Triggered Web Job History. List of Triggered Web Job Run Information
  * elements.
  *
- * @member {array} [triggeredJobRuns] List of triggered web job runs.
+ * @member {array} [runs] List of triggered web job runs.
  */
 export interface TriggeredJobHistory extends ProxyOnlyResource {
-  triggeredJobRuns?: TriggeredJobRun[];
+  runs?: TriggeredJobRun[];
 }
 
 /**
@@ -5875,8 +6286,8 @@ export interface TriggeredJobHistory extends ProxyOnlyResource {
  * Triggered Web Job Information.
  *
  * @member {object} [latestRun] Latest job run information.
- * @member {string} [latestRun.triggeredJobRunId] Job ID.
- * @member {string} [latestRun.triggeredJobRunName] Job name.
+ * @member {string} [latestRun.webJobId] Job ID.
+ * @member {string} [latestRun.webJobName] Job name.
  * @member {string} [latestRun.status] Job status. Possible values include:
  * 'Success', 'Failed', 'Error'
  * @member {date} [latestRun.startTime] Start time.
@@ -5889,13 +6300,11 @@ export interface TriggeredJobHistory extends ProxyOnlyResource {
  * @member {string} [latestRun.trigger] Job trigger.
  * @member {string} [historyUrl] History URL.
  * @member {string} [schedulerLogsUrl] Scheduler Logs URL.
- * @member {string} [triggeredWebJobName] Job name. Used as job identifier in
- * ARM resource URI.
  * @member {string} [runCommand] Run command.
  * @member {string} [url] Job URL.
  * @member {string} [extraInfoUrl] Extra Info URL.
- * @member {string} [jobType] Job type. Possible values include: 'Continuous',
- * 'Triggered'
+ * @member {string} [webJobType] Job type. Possible values include:
+ * 'Continuous', 'Triggered'
  * @member {string} [error] Error information.
  * @member {boolean} [usingSdk] Using SDK?
  * @member {object} [settings] Job settings.
@@ -5904,11 +6313,10 @@ export interface TriggeredWebJob extends ProxyOnlyResource {
   latestRun?: TriggeredJobRun;
   historyUrl?: string;
   schedulerLogsUrl?: string;
-  readonly triggeredWebJobName?: string;
   runCommand?: string;
   url?: string;
   extraInfoUrl?: string;
-  jobType?: string;
+  webJobType?: string;
   error?: string;
   usingSdk?: boolean;
   settings?: { [propertyName: string]: any };
@@ -5920,23 +6328,20 @@ export interface TriggeredWebJob extends ProxyOnlyResource {
  * @constructor
  * Web Job Information.
  *
- * @member {string} [webJobName] Job name. Used as job identifier in ARM
- * resource URI.
  * @member {string} [runCommand] Run command.
  * @member {string} [url] Job URL.
  * @member {string} [extraInfoUrl] Extra Info URL.
- * @member {string} [jobType] Job type. Possible values include: 'Continuous',
- * 'Triggered'
+ * @member {string} [webJobType] Job type. Possible values include:
+ * 'Continuous', 'Triggered'
  * @member {string} [error] Error information.
  * @member {boolean} [usingSdk] Using SDK?
  * @member {object} [settings] Job settings.
  */
 export interface WebJob extends ProxyOnlyResource {
-  readonly webJobName?: string;
   runCommand?: string;
   url?: string;
   extraInfoUrl?: string;
-  jobType?: string;
+  webJobType?: string;
   error?: string;
   usingSdk?: boolean;
   settings?: { [propertyName: string]: any };
@@ -6046,6 +6451,12 @@ export interface AddressResponse {
  * of the App Service Environment.
  * @member {array} [userWhitelistedIpRanges] User added ip ranges to whitelist
  * on ASE db
+ * @member {boolean} [hasLinuxWorkers] Flag that displays whether an ASE has
+ * linux workers or not
+ * @member {string} [sslCertKeyVaultId] Key Vault ID for ILB App Service
+ * Environment default SSL certificate
+ * @member {string} [sslCertKeyVaultSecretName] Key Vault Secret Name for ILB
+ * App Service Environment default SSL certificate
  */
 export interface AppServiceEnvironmentResource extends Resource {
   appServiceEnvironmentResourceName: string;
@@ -6084,6 +6495,9 @@ export interface AppServiceEnvironmentResource extends Resource {
   dynamicCacheEnabled?: boolean;
   clusterSettings?: NameValuePair[];
   userWhitelistedIpRanges?: string[];
+  hasLinuxWorkers?: boolean;
+  sslCertKeyVaultId?: string;
+  sslCertKeyVaultSecretName?: string;
 }
 
 /**
@@ -6170,6 +6584,12 @@ export interface AppServiceEnvironmentResource extends Resource {
  * of the App Service Environment.
  * @member {array} [userWhitelistedIpRanges] User added ip ranges to whitelist
  * on ASE db
+ * @member {boolean} [hasLinuxWorkers] Flag that displays whether an ASE has
+ * linux workers or not
+ * @member {string} [sslCertKeyVaultId] Key Vault ID for ILB App Service
+ * Environment default SSL certificate
+ * @member {string} [sslCertKeyVaultSecretName] Key Vault Secret Name for ILB
+ * App Service Environment default SSL certificate
  */
 export interface AppServiceEnvironmentPatchResource extends ProxyOnlyResource {
   appServiceEnvironmentPatchResourceName: string;
@@ -6208,6 +6628,9 @@ export interface AppServiceEnvironmentPatchResource extends ProxyOnlyResource {
   dynamicCacheEnabled?: boolean;
   clusterSettings?: NameValuePair[];
   userWhitelistedIpRanges?: string[];
+  hasLinuxWorkers?: boolean;
+  sslCertKeyVaultId?: string;
+  sslCertKeyVaultSecretName?: string;
 }
 
 /**
@@ -6244,7 +6667,6 @@ export interface MetricAvailabilily {
  * @constructor
  * Metadata for a metric.
  *
- * @member {string} [metricDefinitionName] Name of the metric.
  * @member {string} [unit] Unit of the metric.
  * @member {string} [primaryAggregationType] Primary aggregation type.
  * @member {array} [metricAvailabilities] List of time grains supported for the
@@ -6252,7 +6674,6 @@ export interface MetricAvailabilily {
  * @member {string} [displayName] Friendly name shown in the UI.
  */
 export interface MetricDefinition extends ProxyOnlyResource {
-  readonly metricDefinitionName?: string;
   readonly unit?: string;
   readonly primaryAggregationType?: string;
   readonly metricAvailabilities?: MetricAvailabilily[];
@@ -6309,7 +6730,6 @@ export interface SkuInfo {
  * Usage of the quota resource.
  *
  * @member {string} [displayName] Friendly name shown in the UI.
- * @member {string} [usageName] Name of the quota.
  * @member {string} [resourceName] Name of the quota resource.
  * @member {string} [unit] Units of measurement for the quota resource.
  * @member {number} [currentValue] The current value of the resource counter.
@@ -6321,7 +6741,6 @@ export interface SkuInfo {
  */
 export interface Usage extends ProxyOnlyResource {
   readonly displayName?: string;
-  readonly usageName?: string;
   readonly resourceName?: string;
   readonly unit?: string;
   readonly currentValue?: number;
@@ -6381,8 +6800,6 @@ export interface WorkerPoolResource extends ProxyOnlyResource {
  * @constructor
  * ARM resource for a app service plan.
  *
- * @member {string} appServicePlanPatchResourceName Name for the App Service
- * plan.
  * @member {string} [workerTierName] Target worker tier assigned to the App
  * Service plan.
  * @member {string} [status] App Service plan status. Possible values include:
@@ -6410,9 +6827,13 @@ export interface WorkerPoolResource extends ProxyOnlyResource {
  * spot instances.
  * @member {date} [spotExpirationTime] The time when the server farm expires.
  * Valid only if it is a spot server farm.
+ * @member {date} [freeOfferExpirationTime] The time when the server farm free
+ * offer expires.
  * @member {string} [resourceGroup] Resource group of the App Service plan.
  * @member {boolean} [reserved] If Linux app service plan <code>true</code>,
  * <code>false</code> otherwise. Default value: false .
+ * @member {boolean} [isXenon] If Hyper-V container app service plan
+ * <code>true</code>, <code>false</code> otherwise. Default value: false .
  * @member {number} [targetWorkerCount] Scaling worker count.
  * @member {number} [targetWorkerSizeId] Scaling worker size ID.
  * @member {string} [provisioningState] Provisioning state of the App Service
@@ -6420,7 +6841,6 @@ export interface WorkerPoolResource extends ProxyOnlyResource {
  * 'InProgress', 'Deleting'
  */
 export interface AppServicePlanPatchResource extends ProxyOnlyResource {
-  appServicePlanPatchResourceName: string;
   workerTierName?: string;
   readonly status?: string;
   readonly subscription?: string;
@@ -6432,8 +6852,10 @@ export interface AppServicePlanPatchResource extends ProxyOnlyResource {
   readonly numberOfSites?: number;
   isSpot?: boolean;
   spotExpirationTime?: Date;
+  freeOfferExpirationTime?: Date;
   readonly resourceGroup?: string;
   reserved?: boolean;
+  isXenon?: boolean;
   targetWorkerCount?: number;
   targetWorkerSizeId?: number;
   readonly provisioningState?: string;
@@ -6577,6 +6999,18 @@ export interface DeletedWebAppCollection extends Array<DeletedSite> {
 
 /**
  * @class
+ * Initializes a new instance of the DetectorResponseCollection class.
+ * @constructor
+ * Collection of detector responses
+ *
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface DetectorResponseCollection extends Array<DetectorResponse> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the DiagnosticCategoryCollection class.
  * @constructor
  * Collection of Diagnostic Categories
@@ -6613,6 +7047,30 @@ export interface DiagnosticDetectorCollection extends Array<DetectorDefinition> 
 
 /**
  * @class
+ * Initializes a new instance of the ApplicationStackCollection class.
+ * @constructor
+ * Collection of Application Stacks
+ *
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface ApplicationStackCollection extends Array<ApplicationStack> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the RecommendationCollection class.
+ * @constructor
+ * Collection of recommendations.
+ *
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface RecommendationCollection extends Array<Recommendation> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SourceControlCollection class.
  * @constructor
  * Collection of source controls.
@@ -6620,6 +7078,18 @@ export interface DiagnosticDetectorCollection extends Array<DetectorDefinition> 
  * @member {string} [nextLink] Link to next page of resources.
  */
 export interface SourceControlCollection extends Array<SourceControl> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BillingMeterCollection class.
+ * @constructor
+ * Collection of Billing Meters
+ *
+ * @member {string} [nextLink] Link to next page of resources.
+ */
+export interface BillingMeterCollection extends Array<BillingMeter> {
   readonly nextLink?: string;
 }
 
@@ -6717,7 +7187,7 @@ export interface SiteConfigurationSnapshotInfoCollection extends Array<SiteConfi
  * @member {string} [nextLink] Link to next page of resources.
  */
 export interface ContinuousWebJobCollection extends Array<ContinuousWebJob> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -7006,7 +7476,7 @@ export interface UsageCollection extends Array<Usage> {
  * @member {string} [nextLink] Link to next page of resources.
  */
 export interface AppServicePlanCollection extends Array<AppServicePlan> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
