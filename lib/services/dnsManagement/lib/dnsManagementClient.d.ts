@@ -21,7 +21,7 @@ export default class DnsManagementClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
+   * @param {string} subscriptionId - The ID of the target subscription.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
