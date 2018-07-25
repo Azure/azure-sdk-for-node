@@ -47,8 +47,6 @@ export default class NetworkManagementClient extends AzureServiceClient {
 
   subscriptionId: string;
 
-  apiVersion: string;
-
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -56,6 +54,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  azureFirewalls: operations.AzureFirewalls;
   applicationGateways: operations.ApplicationGateways;
   applicationSecurityGroups: operations.ApplicationSecurityGroups;
   ddosProtectionPlans: operations.DdosProtectionPlans;
@@ -97,6 +96,13 @@ export default class NetworkManagementClient extends AzureServiceClient {
   virtualNetworkGateways: operations.VirtualNetworkGateways;
   virtualNetworkGatewayConnections: operations.VirtualNetworkGatewayConnections;
   localNetworkGateways: operations.LocalNetworkGateways;
+  virtualWANs: operations.VirtualWANs;
+  vpnSites: operations.VpnSites;
+  vpnSitesConfiguration: operations.VpnSitesConfiguration;
+  virtualHubs: operations.VirtualHubs;
+  hubVirtualNetworkConnections: operations.HubVirtualNetworkConnections;
+  vpnGateways: operations.VpnGateways;
+  vpnConnections: operations.VpnConnections;
 
 
   /**
