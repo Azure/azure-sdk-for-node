@@ -1072,9 +1072,10 @@ export interface Zones {
      * to virtual networks that resolve records in this DNS zone. This is a only
      * when ZoneType is Private.
      *
-     * @param {string} parameters.location Resource location.
-     *
      * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location The geo-location where the resource
+     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1122,9 +1123,10 @@ export interface Zones {
      * to virtual networks that resolve records in this DNS zone. This is a only
      * when ZoneType is Private.
      *
-     * @param {string} parameters.location Resource location.
-     *
      * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {string} parameters.location The geo-location where the resource
+     * lives
      *
      * @param {object} [options] Optional Parameters.
      *
