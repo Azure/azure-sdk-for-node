@@ -17,7 +17,7 @@ import * as models from '../models';
  * @class
  * ImageModeration
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ContentModeratorAPIClient.
+ * instance of the ContentModeratorClient.
  */
 export interface ImageModeration {
 
@@ -910,7 +910,7 @@ export interface ImageModeration {
  * @class
  * TextModeration
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ContentModeratorAPIClient.
+ * instance of the ContentModeratorClient.
  */
 export interface TextModeration {
 
@@ -1073,7 +1073,7 @@ export interface TextModeration {
  * @class
  * ListManagementImageLists
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ContentModeratorAPIClient.
+ * instance of the ContentModeratorClient.
  */
 export interface ListManagementImageLists {
 
@@ -1466,7 +1466,7 @@ export interface ListManagementImageLists {
  * @class
  * ListManagementTermLists
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ContentModeratorAPIClient.
+ * instance of the ContentModeratorClient.
  */
 export interface ListManagementTermLists {
 
@@ -1865,7 +1865,7 @@ export interface ListManagementTermLists {
  * @class
  * ListManagementImage
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ContentModeratorAPIClient.
+ * instance of the ContentModeratorClient.
  */
 export interface ListManagementImage {
 
@@ -2250,7 +2250,7 @@ export interface ListManagementImage {
  * @class
  * ListManagementTerm
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ContentModeratorAPIClient.
+ * instance of the ContentModeratorClient.
  */
 export interface ListManagementTerm {
 
@@ -2508,7 +2508,7 @@ export interface ListManagementTerm {
  * @class
  * Reviews
  * __NOTE__: An instance of this class is automatically created for an
- * instance of the ContentModeratorAPIClient.
+ * instance of the ContentModeratorClient.
  */
 export interface Reviews {
 

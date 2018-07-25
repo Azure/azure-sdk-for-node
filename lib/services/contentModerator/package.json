@@ -1,15 +1,18 @@
 {
   "name": "azure-cognitiveservices-contentmoderator",
   "author": "Microsoft Corporation",
-  "description": "ContentModeratorAPIClient Library with typescript type definitions for node",
+  "description": "ContentModeratorClient Library with typescript type definitions for node",
   "version": "1.0.0-preview",
   "dependencies": {
-    "ms-rest": "^2.3.2"
+    "ms-rest": "^2.3.3"
   },
-  "keywords": [ "node", "azure" ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
   "license": "MIT",
-  "main": "./lib/contentModeratorAPIClient.js",
-  "types": "./lib/contentModeratorAPIClient.d.ts",
+  "main": "./lib/contentModeratorClient.js",
+  "types": "./lib/contentModeratorClient.d.ts",
   "homepage": "http://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
