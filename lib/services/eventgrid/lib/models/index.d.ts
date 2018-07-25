@@ -343,6 +343,114 @@ export interface ResourceDeleteCancelData {
 
 /**
  * @class
+ * Initializes a new instance of the ResourceActionSuccessData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.Resources.ResourceActionSuccess event. This is raised when a
+ * resource action operation succeeds.
+ *
+ * @member {string} [tenantId] The tenant ID of the resource.
+ * @member {string} [subscriptionId] The subscription ID of the resource.
+ * @member {string} [resourceGroup] The resource group of the resource.
+ * @member {string} [resourceProvider] The resource provider performing the
+ * operation.
+ * @member {string} [resourceUri] The URI of the resource in the operation.
+ * @member {string} [operationName] The operation that was performed.
+ * @member {string} [status] The status of the operation.
+ * @member {string} [authorization] The requested authorization for the
+ * operation.
+ * @member {string} [claims] The properties of the claims.
+ * @member {string} [correlationId] An operation ID used for troubleshooting.
+ * @member {string} [httpRequest] The details of the operation.
+ */
+export interface ResourceActionSuccessData {
+  tenantId?: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+  resourceProvider?: string;
+  resourceUri?: string;
+  operationName?: string;
+  status?: string;
+  authorization?: string;
+  claims?: string;
+  correlationId?: string;
+  httpRequest?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceActionFailureData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for a
+ * Microsoft.Resources.ResourceActionFailure event. This is raised when a
+ * resource action operation fails.
+ *
+ * @member {string} [tenantId] The tenant ID of the resource.
+ * @member {string} [subscriptionId] The subscription ID of the resource.
+ * @member {string} [resourceGroup] The resource group of the resource.
+ * @member {string} [resourceProvider] The resource provider performing the
+ * operation.
+ * @member {string} [resourceUri] The URI of the resource in the operation.
+ * @member {string} [operationName] The operation that was performed.
+ * @member {string} [status] The status of the operation.
+ * @member {string} [authorization] The requested authorization for the
+ * operation.
+ * @member {string} [claims] The properties of the claims.
+ * @member {string} [correlationId] An operation ID used for troubleshooting.
+ * @member {string} [httpRequest] The details of the operation.
+ */
+export interface ResourceActionFailureData {
+  tenantId?: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+  resourceProvider?: string;
+  resourceUri?: string;
+  operationName?: string;
+  status?: string;
+  authorization?: string;
+  claims?: string;
+  correlationId?: string;
+  httpRequest?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceActionCancelData class.
+ * @constructor
+ * Schema of the Data property of an EventGridEvent for an
+ * Microsoft.Resources.ResourceActionCancel event. This is raised when a
+ * resource action operation is canceled.
+ *
+ * @member {string} [tenantId] The tenant ID of the resource.
+ * @member {string} [subscriptionId] The subscription ID of the resource.
+ * @member {string} [resourceGroup] The resource group of the resource.
+ * @member {string} [resourceProvider] The resource provider performing the
+ * operation.
+ * @member {string} [resourceUri] The URI of the resource in the operation.
+ * @member {string} [operationName] The operation that was performed.
+ * @member {string} [status] The status of the operation.
+ * @member {string} [authorization] The requested authorization for the
+ * operation.
+ * @member {string} [claims] The properties of the claims.
+ * @member {string} [correlationId] An operation ID used for troubleshooting.
+ * @member {string} [httpRequest] The details of the operation.
+ */
+export interface ResourceActionCancelData {
+  tenantId?: string;
+  subscriptionId?: string;
+  resourceGroup?: string;
+  resourceProvider?: string;
+  resourceUri?: string;
+  operationName?: string;
+  status?: string;
+  authorization?: string;
+  claims?: string;
+  correlationId?: string;
+  httpRequest?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EventGridEvent class.
  * @constructor
  * Properties of an event published to an Event Grid topic.
