@@ -9,9 +9,10 @@
  */
 
 import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'ms-rest';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class VideoSearchAPIClient extends ServiceClient {
+export default class VideoSearchAPIClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the VideoSearchAPIClient class.
@@ -39,4 +40,4 @@ declare class VideoSearchAPIClient extends ServiceClient {
   videosOperations: operations.VideosOperations;
 }
 
-export = VideoSearchAPIClient;
+export { VideoSearchAPIClient, models as VideoSearchAPIModels };
