@@ -1772,27 +1772,13 @@ export interface ManagedClusters {
      *
      * @param {object} [parameters.servicePrincipalProfile] Information about a
      * service principal identity for the cluster to use for manipulating Azure
-     * APIs. Either secret or keyVaultSecretRef must be specified.
+     * APIs.
      *
      * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
      * service principal.
      *
      * @param {string} [parameters.servicePrincipalProfile.secret] The secret
      * password associated with the service principal in plain text.
-     *
-     * @param {object} [parameters.servicePrincipalProfile.keyVaultSecretRef]
-     * Reference to a secret stored in Azure Key Vault.
-     *
-     * @param {string} parameters.servicePrincipalProfile.keyVaultSecretRef.vaultID
-     * Key vault identifier.
-     *
-     * @param {string}
-     * parameters.servicePrincipalProfile.keyVaultSecretRef.secretName The secret
-     * name.
-     *
-     * @param {string}
-     * [parameters.servicePrincipalProfile.keyVaultSecretRef.version] The secret
-     * version.
      *
      * @param {object} [parameters.addonProfiles] Profile of managed cluster
      * add-on.
@@ -1894,27 +1880,13 @@ export interface ManagedClusters {
      *
      * @param {object} [parameters.servicePrincipalProfile] Information about a
      * service principal identity for the cluster to use for manipulating Azure
-     * APIs. Either secret or keyVaultSecretRef must be specified.
+     * APIs.
      *
      * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
      * service principal.
      *
      * @param {string} [parameters.servicePrincipalProfile.secret] The secret
      * password associated with the service principal in plain text.
-     *
-     * @param {object} [parameters.servicePrincipalProfile.keyVaultSecretRef]
-     * Reference to a secret stored in Azure Key Vault.
-     *
-     * @param {string} parameters.servicePrincipalProfile.keyVaultSecretRef.vaultID
-     * Key vault identifier.
-     *
-     * @param {string}
-     * parameters.servicePrincipalProfile.keyVaultSecretRef.secretName The secret
-     * name.
-     *
-     * @param {string}
-     * [parameters.servicePrincipalProfile.keyVaultSecretRef.version] The secret
-     * version.
      *
      * @param {object} [parameters.addonProfiles] Profile of managed cluster
      * add-on.
@@ -2170,27 +2142,13 @@ export interface ManagedClusters {
      *
      * @param {object} [parameters.servicePrincipalProfile] Information about a
      * service principal identity for the cluster to use for manipulating Azure
-     * APIs. Either secret or keyVaultSecretRef must be specified.
+     * APIs.
      *
      * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
      * service principal.
      *
      * @param {string} [parameters.servicePrincipalProfile.secret] The secret
      * password associated with the service principal in plain text.
-     *
-     * @param {object} [parameters.servicePrincipalProfile.keyVaultSecretRef]
-     * Reference to a secret stored in Azure Key Vault.
-     *
-     * @param {string} parameters.servicePrincipalProfile.keyVaultSecretRef.vaultID
-     * Key vault identifier.
-     *
-     * @param {string}
-     * parameters.servicePrincipalProfile.keyVaultSecretRef.secretName The secret
-     * name.
-     *
-     * @param {string}
-     * [parameters.servicePrincipalProfile.keyVaultSecretRef.version] The secret
-     * version.
      *
      * @param {object} [parameters.addonProfiles] Profile of managed cluster
      * add-on.
@@ -2292,27 +2250,13 @@ export interface ManagedClusters {
      *
      * @param {object} [parameters.servicePrincipalProfile] Information about a
      * service principal identity for the cluster to use for manipulating Azure
-     * APIs. Either secret or keyVaultSecretRef must be specified.
+     * APIs.
      *
      * @param {string} parameters.servicePrincipalProfile.clientId The ID for the
      * service principal.
      *
      * @param {string} [parameters.servicePrincipalProfile.secret] The secret
      * password associated with the service principal in plain text.
-     *
-     * @param {object} [parameters.servicePrincipalProfile.keyVaultSecretRef]
-     * Reference to a secret stored in Azure Key Vault.
-     *
-     * @param {string} parameters.servicePrincipalProfile.keyVaultSecretRef.vaultID
-     * Key vault identifier.
-     *
-     * @param {string}
-     * parameters.servicePrincipalProfile.keyVaultSecretRef.secretName The secret
-     * name.
-     *
-     * @param {string}
-     * [parameters.servicePrincipalProfile.keyVaultSecretRef.version] The secret
-     * version.
      *
      * @param {object} [parameters.addonProfiles] Profile of managed cluster
      * add-on.
