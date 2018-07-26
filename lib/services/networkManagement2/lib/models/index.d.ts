@@ -482,6 +482,8 @@ export interface BackendAddressPool extends SubResource {
  * tags associated with the public IP address.
  * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress] The IP
  * address associated with the public IP address resource.
+ * @member {string} [backendIPConfiguration.publicIPAddress.publicIPPrefix] The
+ * Public IP Prefix this Public IP Address should be allocated from.
  * @member {number}
  * [backendIPConfiguration.publicIPAddress.idleTimeoutInMinutes] The idle
  * timeout of the public IP address.
@@ -993,6 +995,8 @@ export interface IpTag {
  * address.
  * @member {string} [ipAddress] The IP address associated with the public IP
  * address resource.
+ * @member {string} [publicIPPrefix] The Public IP Prefix this Public IP
+ * Address should be allocated from.
  * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
  * address.
  * @member {string} [resourceGuid] The resource GUID property of the public IP
@@ -1012,6 +1016,7 @@ export interface PublicIPAddress extends Resource {
   dnsSettings?: PublicIPAddressDnsSettings;
   ipTags?: IpTag[];
   ipAddress?: string;
+  publicIPPrefix?: string;
   idleTimeoutInMinutes?: number;
   resourceGuid?: string;
   provisioningState?: string;
@@ -1106,6 +1111,8 @@ export interface PublicIPAddress extends Resource {
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
+ * @member {string} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -1392,6 +1399,8 @@ export interface Subnet extends SubResource {
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
+ * @member {string} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -1754,6 +1763,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * associated with the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.ipAddress] The IP address
  * associated with the public IP address resource.
+ * @member {string} [ipConfiguration.publicIPAddress.publicIPPrefix] The Public
+ * IP Prefix this Public IP Address should be allocated from.
  * @member {number} [ipConfiguration.publicIPAddress.idleTimeoutInMinutes] The
  * idle timeout of the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.resourceGuid] The resource
@@ -3642,6 +3653,8 @@ export interface LoadBalancerSku {
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
+ * @member {string} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property

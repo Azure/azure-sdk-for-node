@@ -19969,6 +19969,9 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
      *
+     * @param {string} [parameters.publicIPPrefix] The Public IP Prefix this Public
+     * IP Address should be allocated from.
+     *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP address.
      *
@@ -20051,6 +20054,9 @@ export interface PublicIPAddresses {
      *
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
+     *
+     * @param {string} [parameters.publicIPPrefix] The Public IP Prefix this Public
+     * IP Address should be allocated from.
      *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP address.
@@ -20610,6 +20616,9 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
      *
+     * @param {string} [parameters.publicIPPrefix] The Public IP Prefix this Public
+     * IP Address should be allocated from.
+     *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP address.
      *
@@ -20692,6 +20701,9 @@ export interface PublicIPAddresses {
      *
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
+     *
+     * @param {string} [parameters.publicIPPrefix] The Public IP Prefix this Public
+     * IP Address should be allocated from.
      *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP address.
