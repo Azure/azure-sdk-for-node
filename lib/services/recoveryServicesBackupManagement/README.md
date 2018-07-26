@@ -1,36 +1,43 @@
-# Microsoft Azure SDK for Node.js - RecoveryServicesBackupManagement
+---
+uid: azure-arm-recoveryservicesbackup
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure RecoveryServicesBackup.
-## Minimum node.js version >= 6.x.x
+---
+# Microsoft Azure SDK for Node.js - RecoveryServicesBackupClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
 ```bash
-npm install azure-arm-recoveryservices
+npm install azure-arm-recoveryservicesbackup
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing jobs as an example
+### Authentication, client creation and list backupJobs as an example.
 
- ```javascript
- const msRestAzure = require('ms-rest-azure');
- const RecoveryServicesBackupManagement = require("azure-arm-recoveryservicesbackup");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin().then((credentials) => {
-   let client = new RecoveryServicesBackupManagement(credentials, 'your-subscription-id');
-   return client.jobs.list();
- }).then((jobs) => {
-  console.log('List of jobs:');
-  console.dir(jobs, {depth: null, colors: true});
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const RecoveryServicesBackupClient = require("azure-arm-recoveryservicesbackup");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new RecoveryServicesBackupClient(creds, subscriptionId);
+    const vaultName = "testvaultName";
+    const resourceGroupName = "testresourceGroupName";
+    const filter = "testfilter";
+    const skipToken = "testskipToken";
+    return client.backupJobs.list(vaultName, resourceGroupName, filter, skipToken).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
 }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
- });
-```
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 

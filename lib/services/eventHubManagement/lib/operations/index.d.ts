@@ -1420,6 +1420,76 @@ export interface Namespaces {
 
 /**
  * @class
+ * MessagingPlanOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the EventHubManagementClient.
+ */
+export interface MessagingPlanOperations {
+
+
+    /**
+     * Gets a description for the specified namespace.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MessagingPlan>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MessagingPlan>>;
+
+    /**
+     * Gets a description for the specified namespace.
+     *
+     * @param {string} resourceGroupName Name of the resource group within the
+     * azure subscription.
+     *
+     * @param {string} namespaceName The Namespace name
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MessagingPlan} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MessagingPlan} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MessagingPlan} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, namespaceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MessagingPlan>;
+    get(resourceGroupName: string, namespaceName: string, callback: ServiceCallback<models.MessagingPlan>): void;
+    get(resourceGroupName: string, namespaceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MessagingPlan>): void;
+}
+
+/**
+ * @class
  * DisasterRecoveryConfigs
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the EventHubManagementClient.
@@ -3509,4 +3579,127 @@ export interface ConsumerGroups {
     listByEventHubNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ConsumerGroupListResult>;
     listByEventHubNext(nextPageLink: string, callback: ServiceCallback<models.ConsumerGroupListResult>): void;
     listByEventHubNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ConsumerGroupListResult>): void;
+}
+
+/**
+ * @class
+ * Regions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the EventHubManagementClient.
+ */
+export interface Regions {
+
+
+    /**
+     * Gets the available Regions for a given sku
+     *
+     * @param {string} sku The sku type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MessagingRegionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySkuWithHttpOperationResponse(sku: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MessagingRegionsListResult>>;
+
+    /**
+     * Gets the available Regions for a given sku
+     *
+     * @param {string} sku The sku type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MessagingRegionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MessagingRegionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MessagingRegionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySku(sku: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MessagingRegionsListResult>;
+    listBySku(sku: string, callback: ServiceCallback<models.MessagingRegionsListResult>): void;
+    listBySku(sku: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MessagingRegionsListResult>): void;
+
+
+    /**
+     * Gets the available Regions for a given sku
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<MessagingRegionsListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listBySkuNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.MessagingRegionsListResult>>;
+
+    /**
+     * Gets the available Regions for a given sku
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {MessagingRegionsListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {MessagingRegionsListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link MessagingRegionsListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listBySkuNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.MessagingRegionsListResult>;
+    listBySkuNext(nextPageLink: string, callback: ServiceCallback<models.MessagingRegionsListResult>): void;
+    listBySkuNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.MessagingRegionsListResult>): void;
 }

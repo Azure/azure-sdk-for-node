@@ -1,8 +1,11 @@
-# Microsoft Azure SDK for Node.js - commerceManagement
+---
+uid: azure-arm-commerce
+summary: *content
 
+---
+# Microsoft Azure SDK for Node.js - UsageManagementClient
 This project provides a Node.js package for accessing Azure. Right now it supports:
-- **Node.js version: 6.x.x or higher**
-- **API version: 2015-06-01-preview**
+- **Node.js version 6.x.x or higher**
 
 ## Features
 
@@ -13,28 +16,29 @@ This project provides a Node.js package for accessing Azure. Right now it suppor
 npm install azure-arm-commerce
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing invoices as an example
+### Authentication, client creation and list usageAggregates as an example.
 
- ```javascript
- const msRestAzure = require('ms-rest-azure');
- const CommerceManagement = require("azure-arm-commerce");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin().then((credentials) => {
-   let client = new CommerceManagement(credentials, 'your-subscription-id');
-   client.usageAggregates.list().then((usageAggregates) => {
-     console.log('List of usageAggregates:');
-     console.dir(usageAggregates, {depth: null, colors: true});
-   });
- }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
- });
-```
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const UsageManagementClient = require("azure-arm-commerce");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new UsageManagementClient(creds, subscriptionId);
+    const reportedStartTime = new Date().toISOString();
+    const reportedEndTime = new Date().toISOString();
+    const showDetails = true;
+    const aggregationGranularity = "Daily";
+    const continuationToken = "testcontinuationToken";
+    return client.usageAggregates.list(reportedStartTime, reportedEndTime, showDetails, aggregationGranularity, continuationToken).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
+}).catch((err) => {
+  console.log('An error ocurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 
