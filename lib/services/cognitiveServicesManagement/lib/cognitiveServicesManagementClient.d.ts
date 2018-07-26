@@ -57,6 +57,7 @@ export default class CognitiveServicesManagementClient extends AzureServiceClien
 
   // Operation groups
   accounts: operations.Accounts;
+  resourceSkus: operations.ResourceSkus;
   operations: operations.Operations;
   checkSkuAvailability: operations.CheckSkuAvailability;
 }
