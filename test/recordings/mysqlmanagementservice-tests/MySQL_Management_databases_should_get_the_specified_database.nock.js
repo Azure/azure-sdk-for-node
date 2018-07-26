@@ -8,7 +8,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver1466/databases/testdb5259?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver1466/databases/testdb5259?api-version=2017-12-01')
   .reply(200, "{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver1466/databases/testdb5259\",\"name\":\"testdb5259\",\"type\":\"Microsoft.DBforMySQL/servers/databases\",\"properties\":{\"charset\":\"latin1\",\"collation\":\"latin1_swedish_ci\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '301',
@@ -26,7 +26,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver1466/databases/testdb5259?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver1466/databases/testdb5259?api-version=2017-12-01')
   .reply(200, "{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver1466/databases/testdb5259\",\"name\":\"testdb5259\",\"type\":\"Microsoft.DBforMySQL/servers/databases\",\"properties\":{\"charset\":\"latin1\",\"collation\":\"latin1_swedish_ci\"}}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '301',

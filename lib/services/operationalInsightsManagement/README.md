@@ -1,7 +1,14 @@
-# Microsoft Azure SDK for Node.js - OperationalInsightsManagement
+---
+uid: azure-arm-operationalinsights
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure OperationalInsights.
-## Minimum node.js version >= 6.x.x
+---
+# Microsoft Azure SDK for Node.js - OperationalInsightsManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
@@ -9,28 +16,27 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 npm install azure-arm-operationalinsights
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing workspaces as an example
+### Authentication, client creation and get linkedServices as an example.
 
- ```javascript
- const msRestAzure = require('ms-rest-azure');
- const OperationalInsightsManagement = require("azure-arm-operationalinsights");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin().then((credentials) => {
-   let client = new OperationalInsightsManagement(credentials, 'your-subscription-id');
-   return client.workspaces.listByResourceGroup('testworkspace');
- }).then((workspaces) => {
-  console.log('List of workspaces:');
-  console.dir(workspaces, {depth: null, colors: true});
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const OperationalInsightsManagementClient = require("azure-arm-operationalinsights");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new OperationalInsightsManagementClient(creds, subscriptionId);
+    const resourceGroupName = "testresourceGroupName";
+    const workspaceName = "testworkspaceName";
+    const linkedServiceName = "testlinkedServiceName";
+    return client.linkedServices.get(resourceGroupName, workspaceName, linkedServiceName).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
 }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
- });
-```
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 

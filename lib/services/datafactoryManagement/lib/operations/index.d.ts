@@ -856,6 +856,94 @@ export interface IntegrationRuntimes {
 
 
     /**
+     * Updates an integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} updateIntegrationRuntimeRequest The parameters for updating
+     * an integration runtime.
+     *
+     * @param {string} [updateIntegrationRuntimeRequest.autoUpdate] Enables or
+     * disables the auto-update feature of the self-hosted integration runtime. See
+     * https://go.microsoft.com/fwlink/?linkid=854189. Possible values include:
+     * 'On', 'Off'
+     *
+     * @param {string} [updateIntegrationRuntimeRequest.updateDelayOffset] The time
+     * offset (in hours) in the day, e.g., PT03H is 3 hours. The integration
+     * runtime auto update will happen on that time.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IntegrationRuntimeStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeStatusResponse>>;
+
+    /**
+     * Updates an integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} updateIntegrationRuntimeRequest The parameters for updating
+     * an integration runtime.
+     *
+     * @param {string} [updateIntegrationRuntimeRequest.autoUpdate] Enables or
+     * disables the auto-update feature of the self-hosted integration runtime. See
+     * https://go.microsoft.com/fwlink/?linkid=854189. Possible values include:
+     * 'On', 'Off'
+     *
+     * @param {string} [updateIntegrationRuntimeRequest.updateDelayOffset] The time
+     * offset (in hours) in the day, e.g., PT03H is 3 hours. The integration
+     * runtime auto update will happen on that time.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IntegrationRuntimeStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IntegrationRuntimeStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimeStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeStatusResponse>;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, callback: ServiceCallback<models.IntegrationRuntimeStatusResponse>): void;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeStatusResponse>): void;
+
+
+    /**
      * Deletes an integration runtime.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -1390,8 +1478,11 @@ export interface IntegrationRuntimes {
 
 
     /**
-     * Force the integration runtime to synchronize credentials among integration
-     * runtime nodes.
+     * Force the integration runtime to synchronize credentials across integration
+     * runtime nodes, and this will override the credentials across all worker
+     * nodes with those available on the dispatcher node. If you already have the
+     * latest credential backup file, you should manually import it (preferred) on
+     * any self-hosted integration runtime node than using this API directly.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -1413,8 +1504,11 @@ export interface IntegrationRuntimes {
     syncCredentialsWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Force the integration runtime to synchronize credentials among integration
-     * runtime nodes.
+     * Force the integration runtime to synchronize credentials across integration
+     * runtime nodes, and this will override the credentials across all worker
+     * nodes with those available on the dispatcher node. If you already have the
+     * latest credential backup file, you should manually import it (preferred) on
+     * any self-hosted integration runtime node than using this API directly.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -1517,6 +1611,68 @@ export interface IntegrationRuntimes {
     getMonitoringData(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeMonitoringData>;
     getMonitoringData(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<models.IntegrationRuntimeMonitoringData>): void;
     getMonitoringData(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeMonitoringData>): void;
+
+
+    /**
+     * Upgrade self-hosted integration runtime to latest version if availably.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    upgradeWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Upgrade self-hosted integration runtime to latest version if availably.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    upgrade(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    upgrade(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<void>): void;
+    upgrade(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -1705,6 +1861,231 @@ export interface IntegrationRuntimes {
 
 /**
  * @class
+ * IntegrationRuntimeNodes
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataFactoryManagementClient.
+ */
+export interface IntegrationRuntimeNodes {
+
+
+    /**
+     * Deletes a self-hosted integration runtime node.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {string} nodeName The integration runtime node name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a self-hosted integration runtime node.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {string} nodeName The integration runtime node name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a self-hosted integration runtime node.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {string} nodeName The integration runtime node name.
+     *
+     * @param {object} updateIntegrationRuntimeNodeRequest The parameters for
+     * updating an integration runtime node.
+     *
+     * @param {number} [updateIntegrationRuntimeNodeRequest.concurrentJobsLimit]
+     * The number of concurrent jobs permitted to run on the integration runtime
+     * node. Values between 1 and maxConcurrentJobs(inclusive) are allowed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SelfHostedIntegrationRuntimeNode>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, updateIntegrationRuntimeNodeRequest: models.UpdateIntegrationRuntimeNodeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SelfHostedIntegrationRuntimeNode>>;
+
+    /**
+     * Updates a self-hosted integration runtime node.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {string} nodeName The integration runtime node name.
+     *
+     * @param {object} updateIntegrationRuntimeNodeRequest The parameters for
+     * updating an integration runtime node.
+     *
+     * @param {number} [updateIntegrationRuntimeNodeRequest.concurrentJobsLimit]
+     * The number of concurrent jobs permitted to run on the integration runtime
+     * node. Values between 1 and maxConcurrentJobs(inclusive) are allowed.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SelfHostedIntegrationRuntimeNode} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SelfHostedIntegrationRuntimeNode} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SelfHostedIntegrationRuntimeNode} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, updateIntegrationRuntimeNodeRequest: models.UpdateIntegrationRuntimeNodeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SelfHostedIntegrationRuntimeNode>;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, updateIntegrationRuntimeNodeRequest: models.UpdateIntegrationRuntimeNodeRequest, callback: ServiceCallback<models.SelfHostedIntegrationRuntimeNode>): void;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, updateIntegrationRuntimeNodeRequest: models.UpdateIntegrationRuntimeNodeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SelfHostedIntegrationRuntimeNode>): void;
+
+
+    /**
+     * Get the IP address of self-hosted integration runtime node.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {string} nodeName The integration runtime node name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IntegrationRuntimeNodeIpAddress>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getIpAddressWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeNodeIpAddress>>;
+
+    /**
+     * Get the IP address of self-hosted integration runtime node.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {string} nodeName The integration runtime node name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IntegrationRuntimeNodeIpAddress} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IntegrationRuntimeNodeIpAddress} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimeNodeIpAddress} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getIpAddress(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeNodeIpAddress>;
+    getIpAddress(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, callback: ServiceCallback<models.IntegrationRuntimeNodeIpAddress>): void;
+    getIpAddress(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeNodeIpAddress>): void;
+}
+
+/**
+ * @class
  * LinkedServices
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the DataFactoryManagementClient.
@@ -1797,6 +2178,12 @@ export interface LinkedServices {
      * @param {string} [linkedService.properties.description] Linked service
      * description.
      *
+     * @param {object} [linkedService.properties.parameters] Parameters for linked
+     * service.
+     *
+     * @param {array} [linkedService.properties.annotations] List of tags that can
+     * be used for describing the Dataset.
+     *
      * @param {string} linkedService.properties.type Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
@@ -1840,6 +2227,12 @@ export interface LinkedServices {
      *
      * @param {string} [linkedService.properties.description] Linked service
      * description.
+     *
+     * @param {object} [linkedService.properties.parameters] Parameters for linked
+     * service.
+     *
+     * @param {array} [linkedService.properties.annotations] List of tags that can
+     * be used for describing the Dataset.
      *
      * @param {string} linkedService.properties.type Polymorphic Discriminator
      *
@@ -2155,7 +2548,13 @@ export interface Datasets {
      * @param {string} dataset.properties.linkedServiceName.referenceName Reference
      * LinkedService name.
      *
+     * @param {object} [dataset.properties.linkedServiceName.parameters] Arguments
+     * for LinkedService.
+     *
      * @param {object} [dataset.properties.parameters] Parameters for dataset.
+     *
+     * @param {array} [dataset.properties.annotations] List of tags that can be
+     * used for describing the Dataset.
      *
      * @param {string} dataset.properties.type Polymorphic Discriminator
      *
@@ -2201,7 +2600,13 @@ export interface Datasets {
      * @param {string} dataset.properties.linkedServiceName.referenceName Reference
      * LinkedService name.
      *
+     * @param {object} [dataset.properties.linkedServiceName.parameters] Arguments
+     * for LinkedService.
+     *
      * @param {object} [dataset.properties.parameters] Parameters for dataset.
+     *
+     * @param {array} [dataset.properties.annotations] List of tags that can be
+     * used for describing the Dataset.
      *
      * @param {string} dataset.properties.type Polymorphic Discriminator
      *
@@ -2514,6 +2919,9 @@ export interface Pipelines {
      * @param {number} [pipelineParameter.concurrency] The max number of concurrent
      * runs for the pipeline.
      *
+     * @param {array} [pipelineParameter.annotations] List of tags that can be used
+     * for describing the Pipeline.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.ifMatch] ETag of the pipeline entity.  Should only
@@ -2553,6 +2961,9 @@ export interface Pipelines {
      *
      * @param {number} [pipelineParameter.concurrency] The max number of concurrent
      * runs for the pipeline.
+     *
+     * @param {array} [pipelineParameter.annotations] List of tags that can be used
+     * for describing the Pipeline.
      *
      * @param {object} [options] Optional Parameters.
      *

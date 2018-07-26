@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class KeyVaultManagementClient extends AzureServiceClient {
+export default class KeyVaultManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the KeyVaultManagementClient class.
    * @constructor
@@ -20,7 +21,7 @@ declare class KeyVaultManagementClient extends AzureServiceClient {
    * @class
    * @param {credentials} credentials - Credentials needed for the client to connect to Azure.
    *
-   * @param {string} subscriptionId - Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+   * @param {string} subscriptionId - Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
    *
    * @param {string} [baseUri] - The base URI of the service.
    *
@@ -56,6 +57,7 @@ declare class KeyVaultManagementClient extends AzureServiceClient {
 
   // Operation groups
   vaults: operations.Vaults;
+  operations: operations.Operations;
 }
 
-export = KeyVaultManagementClient;
+export { KeyVaultManagementClient, models as KeyVaultManagementModels };

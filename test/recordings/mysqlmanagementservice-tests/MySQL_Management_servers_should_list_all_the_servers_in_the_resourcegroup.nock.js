@@ -8,7 +8,7 @@ exports.setEnvironment = function() {
 exports.scopes = [[function (nock) { 
 var result = 
 nock('http://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers?api-version=2017-12-01')
   .reply(200, "{\"value\":[{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888\",\"name\":\"testserver3888\",\"type\":\"Microsoft.DBforMySQL/servers\",\"location\":\"westus\",\"sku\":{\"name\":\"MYSQLB100\",\"tier\":\"Basic\",\"capacity\":100},\"properties\":{\"administratorLogin\":\"mysql\",\"storageMB\":51200,\"version\":\"5.6\",\"sslEnforcement\":\"Enabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"testserver3888.mysql.database.azure.com\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '498',
@@ -26,7 +26,7 @@ nock('http://management.azure.com:443')
 function (nock) { 
 var result = 
 nock('https://management.azure.com:443')
-  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers?api-version=2017-04-30-preview')
+  .get('/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers?api-version=2017-12-01')
   .reply(200, "{\"value\":[{\"id\":\"/subscriptions/d466671a-79ad-4ca5-878f-599df8bcd17e/resourceGroups/nodeTestGroup505/providers/Microsoft.DBforMySQL/servers/testserver3888\",\"name\":\"testserver3888\",\"type\":\"Microsoft.DBforMySQL/servers\",\"location\":\"westus\",\"sku\":{\"name\":\"MYSQLB100\",\"tier\":\"Basic\",\"capacity\":100},\"properties\":{\"administratorLogin\":\"mysql\",\"storageMB\":51200,\"version\":\"5.6\",\"sslEnforcement\":\"Enabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"testserver3888.mysql.database.azure.com\"}}]}", { 'cache-control': 'no-cache',
   pragma: 'no-cache',
   'content-length': '498',

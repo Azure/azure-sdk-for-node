@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class AutomationClient extends AzureServiceClient {
+export default class AutomationClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the AutomationClient class.
    * @constructor
@@ -44,8 +45,6 @@ declare class AutomationClient extends AzureServiceClient {
 
   credentials: ServiceClientCredentials;
 
-  apiVersion: string;
-
   subscriptionId: string;
 
   acceptLanguage: string;
@@ -59,20 +58,15 @@ declare class AutomationClient extends AzureServiceClient {
   operations: operations.Operations;
   statisticsOperations: operations.StatisticsOperations;
   usages: operations.Usages;
+  keys: operations.Keys;
   certificateOperations: operations.CertificateOperations;
   connectionOperations: operations.ConnectionOperations;
   connectionTypeOperations: operations.ConnectionTypeOperations;
   credentialOperations: operations.CredentialOperations;
-  dscCompilationJobOperations: operations.DscCompilationJobOperations;
   dscConfigurationOperations: operations.DscConfigurationOperations;
-  agentRegistrationInformation: operations.AgentRegistrationInformation;
-  dscNodeOperations: operations.DscNodeOperations;
-  nodeReports: operations.NodeReports;
-  dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
   hybridRunbookWorkerGroupOperations: operations.HybridRunbookWorkerGroupOperations;
-  jobOperations: operations.JobOperations;
-  jobStreamOperations: operations.JobStreamOperations;
   jobScheduleOperations: operations.JobScheduleOperations;
+  linkedWorkspaceOperations: operations.LinkedWorkspaceOperations;
   activityOperations: operations.ActivityOperations;
   moduleOperations: operations.ModuleOperations;
   objectDataTypes: operations.ObjectDataTypes;
@@ -80,10 +74,23 @@ declare class AutomationClient extends AzureServiceClient {
   runbookDraftOperations: operations.RunbookDraftOperations;
   runbookOperations: operations.RunbookOperations;
   testJobStreams: operations.TestJobStreams;
-  testJobs: operations.TestJobs;
+  testJobOperations: operations.TestJobOperations;
   scheduleOperations: operations.ScheduleOperations;
   variableOperations: operations.VariableOperations;
   webhookOperations: operations.WebhookOperations;
+  softwareUpdateConfigurations: operations.SoftwareUpdateConfigurations;
+  softwareUpdateConfigurationRuns: operations.SoftwareUpdateConfigurationRuns;
+  softwareUpdateConfigurationMachineRuns: operations.SoftwareUpdateConfigurationMachineRuns;
+  sourceControlOperations: operations.SourceControlOperations;
+  sourceControlSyncJobOperations: operations.SourceControlSyncJobOperations;
+  jobOperations: operations.JobOperations;
+  jobStreamOperations: operations.JobStreamOperations;
+  agentRegistrationInformation: operations.AgentRegistrationInformation;
+  dscNodeOperations: operations.DscNodeOperations;
+  nodeReports: operations.NodeReports;
+  dscCompilationJobOperations: operations.DscCompilationJobOperations;
+  dscCompilationJobStream: operations.DscCompilationJobStream;
+  dscNodeConfigurationOperations: operations.DscNodeConfigurationOperations;
 }
 
-export = AutomationClient;
+export { AutomationClient, models as AutomationModels };

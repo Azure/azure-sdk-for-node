@@ -12,7 +12,7 @@ import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResp
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 
-declare class EventGridClient extends AzureServiceClient {
+export default class EventGridClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the EventGridClient class.
    * @constructor
@@ -110,4 +110,4 @@ declare class EventGridClient extends AzureServiceClient {
   publishEvents(topicHostname: string, events: models.EventGridEvent[], options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
-export = EventGridClient;
+export { EventGridClient, models as EventGridModels };

@@ -11,7 +11,7 @@
     "Tavares, Chris <ctavares@microsoft.com>",
     "Kulshrestha, Ankur <ankurkul@microsoft.com>"
   ],
-  "version": "0.9.19",
+  "version": "0.9.20",
   "description": "Microsoft Azure Common Client Library for node",
   "tags": [
     "azure",
@@ -30,7 +30,7 @@
     "underscore": "1.4.x",
     "tunnel": "~0.0.2",
     "request": "^2.81.0",
-    "validator": "~3.22.2",
+    "validator": "^9.4.1",
     "envconf": "~0.0.4",
     "duplexer": "~0.1.1",
     "through": "~2.3.4"

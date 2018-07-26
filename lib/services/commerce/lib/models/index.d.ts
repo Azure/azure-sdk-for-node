@@ -46,7 +46,7 @@ export interface InfoField {
  * this usage aggregate belongs.
  * @member {date} [usageEndTime] UTC end time for the usage bucket to which
  * this usage aggregate belongs.
- * @member {object} [quantity] The amount of the resource consumption that
+ * @member {number} [quantity] The amount of the resource consumption that
  * occurred in this time frame.
  * @member {string} [unit] The unit in which the usage for this resource is
  * being counted, e.g. Hours, GB.
@@ -70,7 +70,7 @@ export interface UsageAggregation {
   meterId?: string;
   usageStartTime?: Date;
   usageEndTime?: Date;
-  quantity?: any;
+  quantity?: number;
   unit?: string;
   meterName?: string;
   meterCategory?: string;

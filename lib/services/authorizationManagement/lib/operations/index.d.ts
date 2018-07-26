@@ -25,8 +25,6 @@ export interface ClassicAdministrators {
      * Gets service administrator, account administrator, and co-administrators for
      * the subscription.
      *
-     * @param {string} apiVersion The API version to use for this operation.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -38,13 +36,11 @@ export interface ClassicAdministrators {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(apiVersion: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClassicAdministratorListResult>>;
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ClassicAdministratorListResult>>;
 
     /**
      * Gets service administrator, account administrator, and co-administrators for
      * the subscription.
-     *
-     * @param {string} apiVersion The API version to use for this operation.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -74,9 +70,9 @@ export interface ClassicAdministrators {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(apiVersion: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClassicAdministratorListResult>;
-    list(apiVersion: string, callback: ServiceCallback<models.ClassicAdministratorListResult>): void;
-    list(apiVersion: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClassicAdministratorListResult>): void;
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ClassicAdministratorListResult>;
+    list(callback: ServiceCallback<models.ClassicAdministratorListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ClassicAdministratorListResult>): void;
 
 
     /**
@@ -141,6 +137,191 @@ export interface ClassicAdministrators {
 
 /**
  * @class
+ * ProviderOperationsMetadataOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AuthorizationManagementClient.
+ */
+export interface ProviderOperationsMetadataOperations {
+
+
+    /**
+     * Gets provider operations metadata for the specified resource provider.
+     *
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Specifies whether to expand the values.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ProviderOperationsMetadata>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceProviderNamespace: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProviderOperationsMetadata>>;
+
+    /**
+     * Gets provider operations metadata for the specified resource provider.
+     *
+     * @param {string} resourceProviderNamespace The namespace of the resource
+     * provider.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Specifies whether to expand the values.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ProviderOperationsMetadata} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ProviderOperationsMetadata} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ProviderOperationsMetadata} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceProviderNamespace: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProviderOperationsMetadata>;
+    get(resourceProviderNamespace: string, callback: ServiceCallback<models.ProviderOperationsMetadata>): void;
+    get(resourceProviderNamespace: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProviderOperationsMetadata>): void;
+
+
+    /**
+     * Gets provider operations metadata for all resource providers.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Specifies whether to expand the values.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ProviderOperationsMetadataListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProviderOperationsMetadataListResult>>;
+
+    /**
+     * Gets provider operations metadata for all resource providers.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Specifies whether to expand the values.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ProviderOperationsMetadataListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ProviderOperationsMetadataListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ProviderOperationsMetadataListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProviderOperationsMetadataListResult>;
+    list(callback: ServiceCallback<models.ProviderOperationsMetadataListResult>): void;
+    list(options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProviderOperationsMetadataListResult>): void;
+
+
+    /**
+     * Gets provider operations metadata for all resource providers.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ProviderOperationsMetadataListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProviderOperationsMetadataListResult>>;
+
+    /**
+     * Gets provider operations metadata for all resource providers.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ProviderOperationsMetadataListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ProviderOperationsMetadataListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ProviderOperationsMetadataListResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProviderOperationsMetadataListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ProviderOperationsMetadataListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProviderOperationsMetadataListResult>): void;
+}
+
+/**
+ * @class
  * Permissions
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AuthorizationManagementClient.
@@ -151,8 +332,7 @@ export interface Permissions {
     /**
      * Gets all permissions the caller has for a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group to get the
-     * permissions for. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -170,8 +350,7 @@ export interface Permissions {
     /**
      * Gets all permissions the caller has for a resource group.
      *
-     * @param {string} resourceGroupName The name of the resource group to get the
-     * permissions for. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -208,8 +387,7 @@ export interface Permissions {
     /**
      * Gets all permissions the caller has for a resource.
      *
-     * @param {string} resourceGroupName The name of the resource group containing
-     * the resource. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceProviderNamespace The namespace of the resource
      * provider.
@@ -237,8 +415,7 @@ export interface Permissions {
     /**
      * Gets all permissions the caller has for a resource.
      *
-     * @param {string} resourceGroupName The name of the resource group containing
-     * the resource. The name is case insensitive.
+     * @param {string} resourceGroupName The name of the resource group.
      *
      * @param {string} resourceProviderNamespace The namespace of the resource
      * provider.
@@ -394,199 +571,6 @@ export interface Permissions {
     listForResourceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PermissionGetResult>;
     listForResourceNext(nextPageLink: string, callback: ServiceCallback<models.PermissionGetResult>): void;
     listForResourceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PermissionGetResult>): void;
-}
-
-/**
- * @class
- * ProviderOperationsMetadataOperations
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the AuthorizationManagementClient.
- */
-export interface ProviderOperationsMetadataOperations {
-
-
-    /**
-     * Gets provider operations metadata for the specified resource provider.
-     *
-     * @param {string} resourceProviderNamespace The namespace of the resource
-     * provider.
-     *
-     * @param {string} apiVersion The API version to use for the operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specifies whether to expand the values.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ProviderOperationsMetadata>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceProviderNamespace: string, apiVersion: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProviderOperationsMetadata>>;
-
-    /**
-     * Gets provider operations metadata for the specified resource provider.
-     *
-     * @param {string} resourceProviderNamespace The namespace of the resource
-     * provider.
-     *
-     * @param {string} apiVersion The API version to use for the operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specifies whether to expand the values.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ProviderOperationsMetadata} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ProviderOperationsMetadata} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ProviderOperationsMetadata} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceProviderNamespace: string, apiVersion: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProviderOperationsMetadata>;
-    get(resourceProviderNamespace: string, apiVersion: string, callback: ServiceCallback<models.ProviderOperationsMetadata>): void;
-    get(resourceProviderNamespace: string, apiVersion: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProviderOperationsMetadata>): void;
-
-
-    /**
-     * Gets provider operations metadata for all resource providers.
-     *
-     * @param {string} apiVersion The API version to use for this operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specifies whether to expand the values.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ProviderOperationsMetadataListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(apiVersion: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProviderOperationsMetadataListResult>>;
-
-    /**
-     * Gets provider operations metadata for all resource providers.
-     *
-     * @param {string} apiVersion The API version to use for this operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.expand] Specifies whether to expand the values.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ProviderOperationsMetadataListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ProviderOperationsMetadataListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ProviderOperationsMetadataListResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(apiVersion: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ProviderOperationsMetadataListResult>;
-    list(apiVersion: string, callback: ServiceCallback<models.ProviderOperationsMetadataListResult>): void;
-    list(apiVersion: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProviderOperationsMetadataListResult>): void;
-
-
-    /**
-     * Gets provider operations metadata for all resource providers.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ProviderOperationsMetadataListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProviderOperationsMetadataListResult>>;
-
-    /**
-     * Gets provider operations metadata for all resource providers.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ProviderOperationsMetadataListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ProviderOperationsMetadataListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ProviderOperationsMetadataListResult} for
-     *                      more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ProviderOperationsMetadataListResult>;
-    listNext(nextPageLink: string, callback: ServiceCallback<models.ProviderOperationsMetadataListResult>): void;
-    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ProviderOperationsMetadataListResult>): void;
 }
 
 /**
@@ -825,16 +809,19 @@ export interface RoleAssignments {
      * @param {string} roleAssignmentName The name of the role assignment to
      * create. It can be any valid GUID.
      *
+     * @param {object} parameters Parameters for the role assignment.
+     *
+     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * the role assignment.
+     *
+     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * role. This maps to the ID inside the Active Directory. It can point to a
+     * user, service principal, or security group.
+     *
+     * @param {boolean} [parameters.canDelegate] The delgation flag used for
+     * creating a role assignment
+     *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.properties] Role assignment properties.
-     *
-     * @param {string} [options.properties.roleDefinitionId] The role definition ID
-     * used in the role assignment.
-     *
-     * @param {string} [options.properties.principalId] The principal ID assigned
-     * to the role. This maps to the ID inside the Active Directory. It can point
-     * to a user, service principal, or security group.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -845,7 +832,7 @@ export interface RoleAssignments {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createWithHttpOperationResponse(scope: string, roleAssignmentName: string, options?: { properties? : models.RoleAssignmentProperties, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RoleAssignment>>;
+    createWithHttpOperationResponse(scope: string, roleAssignmentName: string, parameters: models.RoleAssignmentCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RoleAssignment>>;
 
     /**
      * Creates a role assignment.
@@ -861,16 +848,19 @@ export interface RoleAssignments {
      * @param {string} roleAssignmentName The name of the role assignment to
      * create. It can be any valid GUID.
      *
+     * @param {object} parameters Parameters for the role assignment.
+     *
+     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * the role assignment.
+     *
+     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * role. This maps to the ID inside the Active Directory. It can point to a
+     * user, service principal, or security group.
+     *
+     * @param {boolean} [parameters.canDelegate] The delgation flag used for
+     * creating a role assignment
+     *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.properties] Role assignment properties.
-     *
-     * @param {string} [options.properties.roleDefinitionId] The role definition ID
-     * used in the role assignment.
-     *
-     * @param {string} [options.properties.principalId] The principal ID assigned
-     * to the role. This maps to the ID inside the Active Directory. It can point
-     * to a user, service principal, or security group.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -897,9 +887,9 @@ export interface RoleAssignments {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    create(scope: string, roleAssignmentName: string, options?: { properties? : models.RoleAssignmentProperties, customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleAssignment>;
-    create(scope: string, roleAssignmentName: string, callback: ServiceCallback<models.RoleAssignment>): void;
-    create(scope: string, roleAssignmentName: string, options: { properties? : models.RoleAssignmentProperties, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleAssignment>): void;
+    create(scope: string, roleAssignmentName: string, parameters: models.RoleAssignmentCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleAssignment>;
+    create(scope: string, roleAssignmentName: string, parameters: models.RoleAssignmentCreateParameters, callback: ServiceCallback<models.RoleAssignment>): void;
+    create(scope: string, roleAssignmentName: string, parameters: models.RoleAssignmentCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleAssignment>): void;
 
 
     /**
@@ -964,7 +954,7 @@ export interface RoleAssignments {
     /**
      * Deletes a role assignment.
      *
-     * @param {string} roleAssignmentId The ID of the role assignment to delete.
+     * @param {string} roleId The ID of the role assignment to delete.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -977,12 +967,12 @@ export interface RoleAssignments {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteByIdWithHttpOperationResponse(roleAssignmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RoleAssignment>>;
+    deleteByIdWithHttpOperationResponse(roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RoleAssignment>>;
 
     /**
      * Deletes a role assignment.
      *
-     * @param {string} roleAssignmentId The ID of the role assignment to delete.
+     * @param {string} roleId The ID of the role assignment to delete.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1011,88 +1001,27 @@ export interface RoleAssignments {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteById(roleAssignmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleAssignment>;
-    deleteById(roleAssignmentId: string, callback: ServiceCallback<models.RoleAssignment>): void;
-    deleteById(roleAssignmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleAssignment>): void;
+    deleteById(roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleAssignment>;
+    deleteById(roleId: string, callback: ServiceCallback<models.RoleAssignment>): void;
+    deleteById(roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleAssignment>): void;
 
 
     /**
      * Creates a role assignment by ID.
      *
-     * @param {string} roleAssignmentId The ID of the role assignment to create.
+     * @param {string} roleId The ID of the role assignment to create.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {object} parameters Parameters for the role assignment.
      *
-     * @param {object} [options.properties] Role assignment properties.
+     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * the role assignment.
      *
-     * @param {string} [options.properties.roleDefinitionId] The role definition ID
-     * used in the role assignment.
+     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * role. This maps to the ID inside the Active Directory. It can point to a
+     * user, service principal, or security group.
      *
-     * @param {string} [options.properties.principalId] The principal ID assigned
-     * to the role. This maps to the ID inside the Active Directory. It can point
-     * to a user, service principal, or security group.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RoleAssignment>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createByIdWithHttpOperationResponse(roleAssignmentId: string, options?: { properties? : models.RoleAssignmentProperties, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RoleAssignment>>;
-
-    /**
-     * Creates a role assignment by ID.
-     *
-     * @param {string} roleAssignmentId The ID of the role assignment to create.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.properties] Role assignment properties.
-     *
-     * @param {string} [options.properties.roleDefinitionId] The role definition ID
-     * used in the role assignment.
-     *
-     * @param {string} [options.properties.principalId] The principal ID assigned
-     * to the role. This maps to the ID inside the Active Directory. It can point
-     * to a user, service principal, or security group.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RoleAssignment} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RoleAssignment} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RoleAssignment} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createById(roleAssignmentId: string, options?: { properties? : models.RoleAssignmentProperties, customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleAssignment>;
-    createById(roleAssignmentId: string, callback: ServiceCallback<models.RoleAssignment>): void;
-    createById(roleAssignmentId: string, options: { properties? : models.RoleAssignmentProperties, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleAssignment>): void;
-
-
-    /**
-     * Gets a role assignment by ID.
-     *
-     * @param {string} roleAssignmentId The ID of the role assignment to get.
+     * @param {boolean} [parameters.canDelegate] The delgation flag used for
+     * creating a role assignment
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1105,12 +1034,24 @@ export interface RoleAssignments {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getByIdWithHttpOperationResponse(roleAssignmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RoleAssignment>>;
+    createByIdWithHttpOperationResponse(roleId: string, parameters: models.RoleAssignmentCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RoleAssignment>>;
 
     /**
-     * Gets a role assignment by ID.
+     * Creates a role assignment by ID.
      *
-     * @param {string} roleAssignmentId The ID of the role assignment to get.
+     * @param {string} roleId The ID of the role assignment to create.
+     *
+     * @param {object} parameters Parameters for the role assignment.
+     *
+     * @param {string} [parameters.roleDefinitionId] The role definition ID used in
+     * the role assignment.
+     *
+     * @param {string} [parameters.principalId] The principal ID assigned to the
+     * role. This maps to the ID inside the Active Directory. It can point to a
+     * user, service principal, or security group.
+     *
+     * @param {boolean} [parameters.canDelegate] The delgation flag used for
+     * creating a role assignment
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1139,9 +1080,64 @@ export interface RoleAssignments {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getById(roleAssignmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleAssignment>;
-    getById(roleAssignmentId: string, callback: ServiceCallback<models.RoleAssignment>): void;
-    getById(roleAssignmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleAssignment>): void;
+    createById(roleId: string, parameters: models.RoleAssignmentCreateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleAssignment>;
+    createById(roleId: string, parameters: models.RoleAssignmentCreateParameters, callback: ServiceCallback<models.RoleAssignment>): void;
+    createById(roleId: string, parameters: models.RoleAssignmentCreateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleAssignment>): void;
+
+
+    /**
+     * Gets a role assignment by ID.
+     *
+     * @param {string} roleId The ID of the role assignment to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RoleAssignment>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getByIdWithHttpOperationResponse(roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RoleAssignment>>;
+
+    /**
+     * Gets a role assignment by ID.
+     *
+     * @param {string} roleId The ID of the role assignment to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RoleAssignment} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RoleAssignment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RoleAssignment} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getById(roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleAssignment>;
+    getById(roleId: string, callback: ServiceCallback<models.RoleAssignment>): void;
+    getById(roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleAssignment>): void;
 
 
     /**
@@ -1640,26 +1636,17 @@ export interface RoleDefinitions {
      *
      * @param {object} roleDefinition The values for the role definition.
      *
-     * @param {string} [roleDefinition.id] The role definition ID.
+     * @param {string} [roleDefinition.roleName] The role name.
      *
-     * @param {string} [roleDefinition.name] The role definition name.
-     *
-     * @param {string} [roleDefinition.type] The role definition type.
-     *
-     * @param {object} [roleDefinition.properties] Role definition properties.
-     *
-     * @param {string} [roleDefinition.properties.roleName] The role name.
-     *
-     * @param {string} [roleDefinition.properties.description] The role definition
+     * @param {string} [roleDefinition.description] The role definition
      * description.
      *
-     * @param {string} [roleDefinition.properties.type] The role type.
+     * @param {string} [roleDefinition.roleType] The role type.
      *
-     * @param {array} [roleDefinition.properties.permissions] Role definition
-     * permissions.
+     * @param {array} [roleDefinition.permissions] Role definition permissions.
      *
-     * @param {array} [roleDefinition.properties.assignableScopes] Role definition
-     * assignable scopes.
+     * @param {array} [roleDefinition.assignableScopes] Role definition assignable
+     * scopes.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1683,26 +1670,17 @@ export interface RoleDefinitions {
      *
      * @param {object} roleDefinition The values for the role definition.
      *
-     * @param {string} [roleDefinition.id] The role definition ID.
+     * @param {string} [roleDefinition.roleName] The role name.
      *
-     * @param {string} [roleDefinition.name] The role definition name.
-     *
-     * @param {string} [roleDefinition.type] The role definition type.
-     *
-     * @param {object} [roleDefinition.properties] Role definition properties.
-     *
-     * @param {string} [roleDefinition.properties.roleName] The role name.
-     *
-     * @param {string} [roleDefinition.properties.description] The role definition
+     * @param {string} [roleDefinition.description] The role definition
      * description.
      *
-     * @param {string} [roleDefinition.properties.type] The role type.
+     * @param {string} [roleDefinition.roleType] The role type.
      *
-     * @param {array} [roleDefinition.properties.permissions] Role definition
-     * permissions.
+     * @param {array} [roleDefinition.permissions] Role definition permissions.
      *
-     * @param {array} [roleDefinition.properties.assignableScopes] Role definition
-     * assignable scopes.
+     * @param {array} [roleDefinition.assignableScopes] Role definition assignable
+     * scopes.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1734,63 +1712,6 @@ export interface RoleDefinitions {
     createOrUpdate(scope: string, roleDefinitionId: string, roleDefinition: models.RoleDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleDefinition>;
     createOrUpdate(scope: string, roleDefinitionId: string, roleDefinition: models.RoleDefinition, callback: ServiceCallback<models.RoleDefinition>): void;
     createOrUpdate(scope: string, roleDefinitionId: string, roleDefinition: models.RoleDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleDefinition>): void;
-
-
-    /**
-     * Gets a role definition by ID.
-     *
-     * @param {string} roleDefinitionId The fully qualified role definition ID to
-     * get.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RoleDefinition>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getByIdWithHttpOperationResponse(roleDefinitionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RoleDefinition>>;
-
-    /**
-     * Gets a role definition by ID.
-     *
-     * @param {string} roleDefinitionId The fully qualified role definition ID to
-     * get.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RoleDefinition} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RoleDefinition} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RoleDefinition} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getById(roleDefinitionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleDefinition>;
-    getById(roleDefinitionId: string, callback: ServiceCallback<models.RoleDefinition>): void;
-    getById(roleDefinitionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleDefinition>): void;
 
 
     /**
@@ -1853,6 +1774,71 @@ export interface RoleDefinitions {
     list(scope: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleDefinitionListResult>;
     list(scope: string, callback: ServiceCallback<models.RoleDefinitionListResult>): void;
     list(scope: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleDefinitionListResult>): void;
+
+
+    /**
+     * Gets a role definition by ID.
+     *
+     * @param {string} roleId The fully qualified role definition ID. Use the
+     * format,
+     * /subscriptions/{guid}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}
+     * for subscription level role definitions, or
+     * /providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId} for
+     * tenant level role definitions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RoleDefinition>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getByIdWithHttpOperationResponse(roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RoleDefinition>>;
+
+    /**
+     * Gets a role definition by ID.
+     *
+     * @param {string} roleId The fully qualified role definition ID. Use the
+     * format,
+     * /subscriptions/{guid}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}
+     * for subscription level role definitions, or
+     * /providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId} for
+     * tenant level role definitions.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RoleDefinition} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RoleDefinition} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RoleDefinition} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getById(roleId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RoleDefinition>;
+    getById(roleId: string, callback: ServiceCallback<models.RoleDefinition>): void;
+    getById(roleId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RoleDefinition>): void;
 
 
     /**
