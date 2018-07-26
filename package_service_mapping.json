@@ -27,6 +27,10 @@
     "service_name": "Automation",
     "category": "Management"
   },
+  "azure-arm-azurestack": {
+    "category": "Management",
+    "service_name": "Azure Stack"
+  },
   "azure-arm-batch": {
     "category": "Management",
     "service_name": "Batch Management"
@@ -67,6 +71,10 @@
     "service_name": "Container Registry",
     "category": "Management"
   },
+  "azure-arm-containerservice": {
+    "category": "Management",
+    "service_name": "Container Services"
+  },
   "azure-arm-cosmosdb": {
     "category": "Management",
     "service_name": "CosmosDB Management"
@@ -74,6 +82,14 @@
   "azure-arm-customerinsights": {
     "category": "Management",
     "service_name": "CustomerInsights Management"
+  },
+  "azure-arm-databricks": {
+    "category": "Management",
+    "service_name": "Databricks"
+  },
+  "azure-arm-datacatalog": {
+    "category": "Management",
+    "service_name": "Data Catalog Management"
   },
   "azure-arm-datafactory": {
     "category": "Management",
@@ -86,6 +102,14 @@
   "azure-arm-datalake-store": {
     "service_name": "Data Lake Store",
     "category": "Management"
+  },
+  "azure-arm-datamigration": {
+    "category": "Management",
+    "service_name": "Data Migration"
+  },
+  "azure-arm-deviceprovisioningservices": {
+    "category": "Management",
+    "service_name": "Device Provisioning Services"
   },
   "azure-arm-devtestlabs": {
     "service_name": "DevTest Labs",
@@ -111,6 +135,10 @@
     "service_name": "Event Hub",
     "category": "Management"
   },
+  "azure-arm-hanaonazure": {
+    "category": "Management",
+    "service_name": "HANA on Azure"
+  },
   "azure-arm-hdinsight": {
     "service_name": "HDInsight",
     "category": "Management"
@@ -123,6 +151,10 @@
     "service_name": "Monitor",
     "category": "Management"
   },
+  "azure-arm-intune": {
+    "category": "Management",
+    "service_name": "Intune"
+  },
   "azure-arm-iothub": {
     "service_name": "IoT Hub",
     "category": "Management"
@@ -130,6 +162,10 @@
   "azure-arm-keyvault": {
     "service_name": "Key Vault",
     "category": "Management"
+  },
+  "azure-arm-locationbasedservices": {
+    "category": "Management",
+    "service_name": "Location Based Services"
   },
   "azure-arm-logic": {
     "service_name": "Logic Apps",
@@ -143,6 +179,18 @@
     "category": "Management",
     "service_name": "MachinelearningCompute Management"
   },
+  "azure-arm-machinelearningexperimentation": {
+    "category": "Management",
+    "service_name": "Machine Learning Experimentation"
+  },
+  "azure-arm-managementgroups": {
+    "category": "Management",
+    "service_name": "Management Groups"
+  },
+  "azure-arm-managementpartner": {
+    "category": "Management",
+    "service_name": "Management Partner"
+  },
   "azure-arm-marketplaceordering": {
     "category": "Management",
     "service_name": "Marketplaceordering Management"
@@ -151,13 +199,17 @@
     "service_name": "Media Services",
     "category": "Management"
   },
-  "azure-arm-mobileengagement": {
+  "azure-arm-migrate": {
     "category": "Management",
-    "service_name": "Mobile Engagement"
+    "service_name": "Migrate"
   },
   "azure-arm-monitor": {
     "category": "Management",
     "service_name": "Monitor Management"
+  },
+  "azure-arm-msi": {
+    "category": "Management",
+    "service_name": "MSI"
   },
   "azure-arm-mysql": {
     "category": "Management",
@@ -179,9 +231,17 @@
     "category": "Management",
     "service_name": "Operations Management"
   },
+  "azure-arm-policyinsights": {
+    "category": "Management",
+    "service_name": "Policy Insights"
+  },
   "azure-arm-postgresql": {
     "category": "Management",
     "service_name": "Postgresql Management"
+  },
+  "azure-arm-powerbidedicated": {
+    "category": "Management",
+    "service_name": "Power BI Dedicated"
   },
   "azure-arm-powerbiembedded": {
     "service_name": "PowerBI Embedded",
@@ -206,6 +266,10 @@
   "azure-arm-relay": {
     "service_name": "Relay",
     "category": "Management"
+  },
+  "azure-arm-reservations": {
+    "category": "Management",
+    "service_name": "Reservations"
   },
   "azure-arm-resource": {
     "service_name": "Resources",
@@ -259,13 +323,21 @@
     "category": "Management",
     "service_name": "Streamanalytics Management"
   },
+  "azure-arm-subscription": {
+    "category": "Management",
+    "service_name": "Subscription Management"
+  },
+  "azure-arm-timeseriesinsights": {
+    "category": "Management",
+    "service_name": "Time Series Insights"
+  },
   "azure-arm-trafficmanager": {
     "service_name": "Traffic Manager",
     "category": "Management"
   },
   "azure-arm-visualstudio": {
     "category": "Management",
-    "service_name": "Visualstudio Management"
+    "service_name": "Visual Studio Management"
   },
   "azure-arm-website": {
     "service_name": "App Service",
@@ -343,9 +415,9 @@
     "category": "Client",
     "service_name": "Keyvault"
   },
-  "azure-monitor": {
+  "azure-loganalytics": {
     "category": "Client",
-    "service_name": "Monitor"
+    "service_name": "Log Analytics"
   },
   "azure-servicefabric": {
     "category": "Client",

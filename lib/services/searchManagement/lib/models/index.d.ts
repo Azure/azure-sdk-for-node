@@ -116,18 +116,24 @@ export interface Sku {
  * Azure Resource Manager to link resources together.
  * @member {string} [name] The name of the resource.
  * @member {string} [type] The resource type.
- * @member {string} location The geographic location of the resource. This must
- * be one of the supported and registered Azure Geo Regions (for example, West
- * US, East US, Southeast Asia, and so forth).
+ * @member {string} [location] The geographic location of the resource. This
+ * must be one of the supported and registered Azure Geo Regions (for example,
+ * West US, East US, Southeast Asia, and so forth). This property is required
+ * when creating a new resource.
  * @member {object} [tags] Tags to help categorize the resource in the Azure
  * portal.
+ * @member {object} [identity] The identity of the resource.
+ * @member {string} [identity.principalId] The principal ID of resource
+ * identity.
+ * @member {string} [identity.tenantId] The tenant ID of resource.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location: string;
+  location?: string;
   tags?: { [propertyName: string]: string };
+  identity?: Identity;
 }
 
 /**
@@ -176,8 +182,9 @@ export interface Resource extends BaseResource {
  * the call to Create Search service. This is because the free service uses
  * capacity that is already set up. Possible values include: 'succeeded',
  * 'provisioning', 'failed'
- * @member {object} sku The SKU of the Search Service, which determines price
- * tier and capacity limits.
+ * @member {object} [sku] The SKU of the Search Service, which determines price
+ * tier and capacity limits. This property is required when creating a new
+ * Search Service.
  * @member {string} [sku.name] The SKU of the Search service. Valid values
  * include: 'free': Shared service. 'basic': Dedicated service with up to 3
  * replicas. 'standard': Dedicated service with up to 12 partitions and 12
@@ -194,7 +201,63 @@ export interface SearchService extends Resource {
   readonly status?: string;
   readonly statusDetails?: string;
   readonly provisioningState?: string;
-  sku: Sku;
+  sku?: Sku;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Identity class.
+ * @constructor
+ * Identity for the resource.
+ *
+ * @member {string} [principalId] The principal ID of resource identity.
+ * @member {string} [tenantId] The tenant ID of resource.
+ */
+export interface Identity {
+  readonly principalId?: string;
+  readonly tenantId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * The object that describes the operation.
+ *
+ * @member {string} [provider] The friendly name of the resource provider.
+ * @member {string} [operation] The operation type: read, write, delete,
+ * listKeys/action, etc.
+ * @member {string} [resource] The resource type on which the operation is
+ * performed.
+ * @member {string} [description] The friendly name of the operation.
+ */
+export interface OperationDisplay {
+  readonly provider?: string;
+  readonly operation?: string;
+  readonly resource?: string;
+  readonly description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * Describes a REST API operation.
+ *
+ * @member {string} [name] The name of the operation. This name is of the form
+ * {provider}/{resource}/{operation}.
+ * @member {object} [display] The object that describes the operation.
+ * @member {string} [display.provider] The friendly name of the resource
+ * provider.
+ * @member {string} [display.operation] The operation type: read, write,
+ * delete, listKeys/action, etc.
+ * @member {string} [display.resource] The resource type on which the operation
+ * is performed.
+ * @member {string} [display.description] The friendly name of the operation.
+ */
+export interface Operation {
+  readonly name?: string;
+  readonly display?: OperationDisplay;
 }
 
 /**
@@ -211,6 +274,20 @@ export interface SearchManagementRequestOptions {
   clientRequestId?: string;
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * The result of the request to list REST API operations. It contains a list of
+ * operations and a URL  to get the next set of results.
+ *
+ * @member {string} [nextLink] The URL to get the next set of operation list
+ * results, if any.
+ */
+export interface OperationListResult extends Array<Operation> {
+  readonly nextLink?: string;
+}
 
 /**
  * @class

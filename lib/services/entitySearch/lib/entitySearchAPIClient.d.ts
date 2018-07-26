@@ -9,9 +9,10 @@
  */
 
 import { ServiceClient, ServiceClientOptions, ServiceClientCredentials } from 'ms-rest';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class EntitySearchAPIClient extends ServiceClient {
+export default class EntitySearchAPIClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the EntitySearchAPIClient class.
@@ -39,4 +40,4 @@ declare class EntitySearchAPIClient extends ServiceClient {
   entitiesOperations: operations.EntitiesOperations;
 }
 
-export = EntitySearchAPIClient;
+export { EntitySearchAPIClient, models as EntitySearchAPIModels };
