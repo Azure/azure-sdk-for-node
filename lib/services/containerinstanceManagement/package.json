@@ -2,7 +2,7 @@
   "name": "azure-arm-containerinstance",
   "author": "Microsoft Corporation",
   "description": "ContainerInstanceManagementClient Library with typescript type definitions for node",
-  "version": "1.2.0-preview",
+  "version": "3.0.0",
   "dependencies": {
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
