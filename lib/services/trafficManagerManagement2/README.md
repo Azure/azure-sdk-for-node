@@ -1,6 +1,14 @@
-# Microsoft Azure SDK for Node.js - Traffic Manager Management
+---
+uid: azure-arm-trafficmanager
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure Traffic Manager ARM Resources. 
+---
+# Microsoft Azure SDK for Node.js - TrafficManagerManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
@@ -8,23 +16,29 @@ This project provides a Node.js package that makes it easy to manage Microsoft A
 npm install azure-arm-trafficmanager
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing profiles in a resource group as an example
+### Authentication, client creation and get endpoints as an example.
 
- ```javascript
- var msRestAzure = require('ms-rest-azure');
- var trafficManager = require('azure-arm-trafficmanager');
- 
- // Interactive Login
- msRestAzure.interactiveLogin(function(err, credentials) {
-  var client = new trafficManager(credentials, 'your-subscription-id');
-  var resourceGroupName = 'test-group';
-  client.profiles.listByResourceGroup(resourceGroupName, function(err, profiles, request, response) {
-    if (err) console.log(err);
-    profiles.map(function (profile, index, array) {
-      console.log('found profile :' + profile.name);
-    }));
-  });
- });
- ```
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const TrafficManagerManagementClient = require("azure-arm-trafficmanager");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new TrafficManagerManagementClient(creds, subscriptionId);
+    const resourceGroupName = "testresourceGroupName";
+    const profileName = "testprofileName";
+    const endpointType = "testendpointType";
+    const endpointName = "testendpointName";
+    return client.endpoints.get(resourceGroupName, profileName, endpointType, endpointName).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
+}).catch((err) => {
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
+
+## Related projects
+
+- [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)

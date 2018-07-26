@@ -13,7 +13,7 @@ import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
 import * as models from "./models";
 import * as operations from "./operations";
 
-declare class NetworkManagementClient extends AzureServiceClient {
+export default class NetworkManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the NetworkManagementClient class.
    * @constructor
@@ -34,11 +34,11 @@ declare class NetworkManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
@@ -54,13 +54,18 @@ declare class NetworkManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  azureFirewalls: operations.AzureFirewalls;
   applicationGateways: operations.ApplicationGateways;
   applicationSecurityGroups: operations.ApplicationSecurityGroups;
+  ddosProtectionPlans: operations.DdosProtectionPlans;
   availableEndpointServices: operations.AvailableEndpointServices;
   expressRouteCircuitAuthorizations: operations.ExpressRouteCircuitAuthorizations;
   expressRouteCircuitPeerings: operations.ExpressRouteCircuitPeerings;
+  expressRouteCircuitConnections: operations.ExpressRouteCircuitConnections;
   expressRouteCircuits: operations.ExpressRouteCircuits;
   expressRouteServiceProviders: operations.ExpressRouteServiceProviders;
+  expressRouteCrossConnections: operations.ExpressRouteCrossConnections;
+  expressRouteCrossConnectionPeerings: operations.ExpressRouteCrossConnectionPeerings;
   loadBalancers: operations.LoadBalancers;
   loadBalancerBackendAddressPools: operations.LoadBalancerBackendAddressPools;
   loadBalancerFrontendIPConfigurations: operations.LoadBalancerFrontendIPConfigurations;
@@ -76,6 +81,7 @@ declare class NetworkManagementClient extends AzureServiceClient {
   defaultSecurityRules: operations.DefaultSecurityRules;
   networkWatchers: operations.NetworkWatchers;
   packetCaptures: operations.PacketCaptures;
+  connectionMonitors: operations.ConnectionMonitors;
   operations: operations.Operations;
   publicIPAddresses: operations.PublicIPAddresses;
   routeFilters: operations.RouteFilters;
@@ -90,6 +96,13 @@ declare class NetworkManagementClient extends AzureServiceClient {
   virtualNetworkGateways: operations.VirtualNetworkGateways;
   virtualNetworkGatewayConnections: operations.VirtualNetworkGatewayConnections;
   localNetworkGateways: operations.LocalNetworkGateways;
+  virtualWANs: operations.VirtualWANs;
+  vpnSites: operations.VpnSites;
+  vpnSitesConfiguration: operations.VpnSitesConfiguration;
+  virtualHubs: operations.VirtualHubs;
+  hubVirtualNetworkConnections: operations.HubVirtualNetworkConnections;
+  vpnGateways: operations.VpnGateways;
+  vpnConnections: operations.VpnConnections;
 
 
   /**
@@ -156,4 +169,4 @@ declare class NetworkManagementClient extends AzureServiceClient {
   checkDnsNameAvailability(location: string, domainNameLabel: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DnsNameAvailabilityResult>): void;
 }
 
-export = NetworkManagementClient;
+export { NetworkManagementClient, models as NetworkManagementModels };

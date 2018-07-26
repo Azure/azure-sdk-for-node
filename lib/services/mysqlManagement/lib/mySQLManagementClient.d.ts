@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class MySQLManagementClient extends AzureServiceClient {
+export default class MySQLManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the MySQLManagementClient class.
    * @constructor
@@ -57,13 +58,13 @@ declare class MySQLManagementClient extends AzureServiceClient {
   // Operation groups
   servers: operations.Servers;
   firewallRules: operations.FirewallRules;
+  virtualNetworkRules: operations.VirtualNetworkRules;
   databases: operations.Databases;
   configurations: operations.Configurations;
   logFiles: operations.LogFiles;
-  performanceTiers: operations.PerformanceTiers;
   locationBasedPerformanceTier: operations.LocationBasedPerformanceTier;
   checkNameAvailability: operations.CheckNameAvailability;
   operations: operations.Operations;
 }
 
-export = MySQLManagementClient;
+export { MySQLManagementClient, models as MySQLManagementModels };

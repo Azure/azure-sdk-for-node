@@ -1522,14 +1522,14 @@ export interface SuggestRelationshipLinksResponse {
  * @constructor
  * Definition of the link mapping of prediction.
  *
- * @member {string} [score] The score of the link mapping.
- * @member {string} [grade] The grade of the link mapping.
- * @member {string} [reason] The reason of the link mapping.
+ * @member {string} score The score of the link mapping.
+ * @member {string} grade The grade of the link mapping.
+ * @member {string} reason The reason of the link mapping.
  */
 export interface PredictionMappings {
-  score?: string;
-  grade?: string;
-  reason?: string;
+  score: string;
+  grade: string;
+  reason: string;
 }
 
 /**
@@ -1758,6 +1758,57 @@ export interface PredictionResourceFormat extends ProxyResource {
   readonly systemGeneratedEntities?: PredictionSystemGeneratedEntities;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * The object that represents the operation.
+ *
+ * @member {string} [provider] Service provider: Microsoft.CustomerInsights
+ * @member {string} [resource] Resource on which the operation is performed:
+ * Invoice, etc.
+ * @member {string} [operation] Operation type: Read, write, delete, etc.
+ */
+export interface OperationDisplay {
+  readonly provider?: string;
+  readonly resource?: string;
+  readonly operation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * A Customer Insights REST API operation
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] Service provider:
+ * Microsoft.CustomerInsights
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed: Invoice, etc.
+ * @member {string} [display.operation] Operation type: Read, write, delete,
+ * etc.
+ */
+export interface Operation {
+  readonly name?: string;
+  display?: OperationDisplay;
+}
+
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list Customer Insights operations. It contains a
+ * list of operations and a URL link to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface OperationListResult extends Array<Operation> {
+  readonly nextLink?: string;
+}
 
 /**
  * @class

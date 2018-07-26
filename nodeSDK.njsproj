@@ -76,7 +76,6 @@
     <Content Include="examples\service-bus.md" />
     <Content Include="examples\service-runtime.md" />
     <Content Include="jsdocs\jsdoc.conf.json" />
-    <Compile Include="gruntfile.js" />
     <Compile Include="gulpfile.js" />
     <Compile Include="lib\azure.js" />
     <Compile Include="lib\services\batchManagement\lib\batchManagementClient.js" />

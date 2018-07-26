@@ -282,6 +282,8 @@ export interface MessageCountDetails {
  * messaging entity. Possible values include: 'Active', 'Disabled',
  * 'Restoring', 'SendDisabled', 'ReceiveDisabled', 'Creating', 'Deleting',
  * 'Renaming', 'Unknown'
+ * @member {boolean} [enableBatchedOperations] Value that indicates whether
+ * server-side batched operations are enabled.
  * @member {moment.duration} [autoDeleteOnIdle] ISO 8061 timeSpan idle interval
  * after which the queue is automatically deleted. The minimum duration is 5
  * minutes.
@@ -310,6 +312,7 @@ export interface SBQueue extends Resource {
   duplicateDetectionHistoryTimeWindow?: moment.Duration;
   maxDeliveryCount?: number;
   status?: string;
+  enableBatchedOperations?: boolean;
   autoDeleteOnIdle?: moment.Duration;
   enablePartitioning?: boolean;
   enableExpress?: boolean;
@@ -592,6 +595,7 @@ export interface SqlFilter {
  * @constructor
  * Represents the correlation filter expression.
  *
+ * @member {object} [properties] dictionary object for custom filters
  * @member {string} [correlationId] Identifier of the correlation.
  * @member {string} [messageId] Identifier of the message.
  * @member {string} [to] Address to send to.
@@ -604,6 +608,7 @@ export interface SqlFilter {
  * rule action requires preprocessing. Default value: true .
  */
 export interface CorrelationFilter {
+  properties?: { [propertyName: string]: string };
   correlationId?: string;
   messageId?: string;
   to?: string;
@@ -642,6 +647,8 @@ export interface CorrelationFilter {
  * @member {boolean} [sqlFilter.requiresPreprocessing] Value that indicates
  * whether the rule action requires preprocessing.
  * @member {object} [correlationFilter] Properties of correlationFilter
+ * @member {object} [correlationFilter.properties] dictionary object for custom
+ * filters
  * @member {string} [correlationFilter.correlationId] Identifier of the
  * correlation.
  * @member {string} [correlationFilter.messageId] Identifier of the message.

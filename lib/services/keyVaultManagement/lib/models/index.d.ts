@@ -78,6 +78,57 @@ export interface AccessPolicyEntry {
 
 /**
  * @class
+ * Initializes a new instance of the IPRule class.
+ * @constructor
+ * A rule governing the accesibility of a vault from a specific ip address or
+ * ip range.
+ *
+ * @member {string} value An IPv4 address range in CIDR notation, such as
+ * '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that
+ * start with 124.56.78).
+ */
+export interface IPRule {
+  value: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VirtualNetworkRule class.
+ * @constructor
+ * A rule governing the accesibility of a vault from a specific virtual
+ * network.
+ *
+ * @member {string} id Full resource id of a vnet subnet, such as
+ * '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
+ */
+export interface VirtualNetworkRule {
+  id: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkRuleSet class.
+ * @constructor
+ * A set of rules governing the network accessibility of a vault.
+ *
+ * @member {string} [bypass] Tells what traffic can bypass network rules. This
+ * can be 'AzureServices' or 'None'.  If not specified the default is
+ * 'AzureServices'. Possible values include: 'AzureServices', 'None'
+ * @member {string} [defaultAction] The default action when no rule from
+ * ipRules and from virtualNetworkRules match. This is only used after the
+ * bypass property has been evaluated. Possible values include: 'Allow', 'Deny'
+ * @member {array} [ipRules] The list of IP address rules.
+ * @member {array} [virtualNetworkRules] The list of virtual network rules.
+ */
+export interface NetworkRuleSet {
+  bypass?: string;
+  defaultAction?: string;
+  ipRules?: IPRule[];
+  virtualNetworkRules?: VirtualNetworkRule[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the VaultProperties class.
  * @constructor
  * Properties of the vault
@@ -107,6 +158,24 @@ export interface AccessPolicyEntry {
  * @member {string} [createMode] The vault's create mode to indicate whether
  * the vault need to be recovered or not. Possible values include: 'recover',
  * 'default'
+ * @member {boolean} [enablePurgeProtection] Property specifying whether
+ * protection against purge is enabled for this vault. Setting this property to
+ * true activates protection against purge for this vault and its content -
+ * only the Key Vault service may initiate a hard, irrecoverable deletion. The
+ * setting is effective only if soft delete is also enabled. Enabling this
+ * functionality is irreversible - that is, the property does not accept false
+ * as its value.
+ * @member {object} [networkAcls] A collection of rules governing the
+ * accessibility of the vault from specific network locations.
+ * @member {string} [networkAcls.bypass] Tells what traffic can bypass network
+ * rules. This can be 'AzureServices' or 'None'.  If not specified the default
+ * is 'AzureServices'. Possible values include: 'AzureServices', 'None'
+ * @member {string} [networkAcls.defaultAction] The default action when no rule
+ * from ipRules and from virtualNetworkRules match. This is only used after the
+ * bypass property has been evaluated. Possible values include: 'Allow', 'Deny'
+ * @member {array} [networkAcls.ipRules] The list of IP address rules.
+ * @member {array} [networkAcls.virtualNetworkRules] The list of virtual
+ * network rules.
  */
 export interface VaultProperties {
   tenantId: string;
@@ -118,6 +187,83 @@ export interface VaultProperties {
   enabledForTemplateDeployment?: boolean;
   enableSoftDelete?: boolean;
   createMode?: string;
+  enablePurgeProtection?: boolean;
+  networkAcls?: NetworkRuleSet;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VaultPatchProperties class.
+ * @constructor
+ * Properties of the vault
+ *
+ * @member {uuid} [tenantId] The Azure Active Directory tenant ID that should
+ * be used for authenticating requests to the key vault.
+ * @member {object} [sku] SKU details
+ * @member {string} [sku.name] SKU name to specify whether the key vault is a
+ * standard vault or a premium vault. Possible values include: 'standard',
+ * 'premium'
+ * @member {array} [accessPolicies] An array of 0 to 16 identities that have
+ * access to the key vault. All identities in the array must use the same
+ * tenant ID as the key vault's tenant ID.
+ * @member {boolean} [enabledForDeployment] Property to specify whether Azure
+ * Virtual Machines are permitted to retrieve certificates stored as secrets
+ * from the key vault.
+ * @member {boolean} [enabledForDiskEncryption] Property to specify whether
+ * Azure Disk Encryption is permitted to retrieve secrets from the vault and
+ * unwrap keys.
+ * @member {boolean} [enabledForTemplateDeployment] Property to specify whether
+ * Azure Resource Manager is permitted to retrieve secrets from the key vault.
+ * @member {boolean} [enableSoftDelete] Property to specify whether the 'soft
+ * delete' functionality is enabled for this key vault. It does not accept
+ * false value.
+ * @member {string} [createMode] The vault's create mode to indicate whether
+ * the vault need to be recovered or not. Possible values include: 'recover',
+ * 'default'
+ * @member {boolean} [enablePurgeProtection] Property specifying whether
+ * protection against purge is enabled for this vault. Setting this property to
+ * true activates protection against purge for this vault and its content -
+ * only the Key Vault service may initiate a hard, irrecoverable deletion. The
+ * setting is effective only if soft delete is also enabled. Enabling this
+ * functionality is irreversible - that is, the property does not accept false
+ * as its value.
+ * @member {object} [networkAcls] A collection of rules governing the
+ * accessibility of the vault from specific network locations.
+ * @member {string} [networkAcls.bypass] Tells what traffic can bypass network
+ * rules. This can be 'AzureServices' or 'None'.  If not specified the default
+ * is 'AzureServices'. Possible values include: 'AzureServices', 'None'
+ * @member {string} [networkAcls.defaultAction] The default action when no rule
+ * from ipRules and from virtualNetworkRules match. This is only used after the
+ * bypass property has been evaluated. Possible values include: 'Allow', 'Deny'
+ * @member {array} [networkAcls.ipRules] The list of IP address rules.
+ * @member {array} [networkAcls.virtualNetworkRules] The list of virtual
+ * network rules.
+ */
+export interface VaultPatchProperties {
+  tenantId?: string;
+  sku?: Sku;
+  accessPolicies?: AccessPolicyEntry[];
+  enabledForDeployment?: boolean;
+  enabledForDiskEncryption?: boolean;
+  enabledForTemplateDeployment?: boolean;
+  enableSoftDelete?: boolean;
+  createMode?: string;
+  enablePurgeProtection?: boolean;
+  networkAcls?: NetworkRuleSet;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VaultAccessPolicyProperties class.
+ * @constructor
+ * Properties of the vault access policy
+ *
+ * @member {array} accessPolicies An array of 0 to 16 identities that have
+ * access to the key vault. All identities in the array must use the same
+ * tenant ID as the key vault's tenant ID.
+ */
+export interface VaultAccessPolicyProperties {
+  accessPolicies: AccessPolicyEntry[];
 }
 
 /**
@@ -176,11 +322,114 @@ export interface DeletedVaultProperties {
  * @member {string} [properties.createMode] The vault's create mode to indicate
  * whether the vault need to be recovered or not. Possible values include:
  * 'recover', 'default'
+ * @member {boolean} [properties.enablePurgeProtection] Property specifying
+ * whether protection against purge is enabled for this vault. Setting this
+ * property to true activates protection against purge for this vault and its
+ * content - only the Key Vault service may initiate a hard, irrecoverable
+ * deletion. The setting is effective only if soft delete is also enabled.
+ * Enabling this functionality is irreversible - that is, the property does not
+ * accept false as its value.
+ * @member {object} [properties.networkAcls] A collection of rules governing
+ * the accessibility of the vault from specific network locations.
+ * @member {string} [properties.networkAcls.bypass] Tells what traffic can
+ * bypass network rules. This can be 'AzureServices' or 'None'.  If not
+ * specified the default is 'AzureServices'. Possible values include:
+ * 'AzureServices', 'None'
+ * @member {string} [properties.networkAcls.defaultAction] The default action
+ * when no rule from ipRules and from virtualNetworkRules match. This is only
+ * used after the bypass property has been evaluated. Possible values include:
+ * 'Allow', 'Deny'
+ * @member {array} [properties.networkAcls.ipRules] The list of IP address
+ * rules.
+ * @member {array} [properties.networkAcls.virtualNetworkRules] The list of
+ * virtual network rules.
  */
 export interface VaultCreateOrUpdateParameters extends BaseResource {
   location: string;
   tags?: { [propertyName: string]: string };
   properties: VaultProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VaultPatchParameters class.
+ * @constructor
+ * Parameters for creating or updating a vault
+ *
+ * @member {object} [tags] The tags that will be assigned to the key vault.
+ * @member {object} [properties] Properties of the vault
+ * @member {uuid} [properties.tenantId] The Azure Active Directory tenant ID
+ * that should be used for authenticating requests to the key vault.
+ * @member {object} [properties.sku] SKU details
+ * @member {string} [properties.sku.name] SKU name to specify whether the key
+ * vault is a standard vault or a premium vault. Possible values include:
+ * 'standard', 'premium'
+ * @member {array} [properties.accessPolicies] An array of 0 to 16 identities
+ * that have access to the key vault. All identities in the array must use the
+ * same tenant ID as the key vault's tenant ID.
+ * @member {boolean} [properties.enabledForDeployment] Property to specify
+ * whether Azure Virtual Machines are permitted to retrieve certificates stored
+ * as secrets from the key vault.
+ * @member {boolean} [properties.enabledForDiskEncryption] Property to specify
+ * whether Azure Disk Encryption is permitted to retrieve secrets from the
+ * vault and unwrap keys.
+ * @member {boolean} [properties.enabledForTemplateDeployment] Property to
+ * specify whether Azure Resource Manager is permitted to retrieve secrets from
+ * the key vault.
+ * @member {boolean} [properties.enableSoftDelete] Property to specify whether
+ * the 'soft delete' functionality is enabled for this key vault. It does not
+ * accept false value.
+ * @member {string} [properties.createMode] The vault's create mode to indicate
+ * whether the vault need to be recovered or not. Possible values include:
+ * 'recover', 'default'
+ * @member {boolean} [properties.enablePurgeProtection] Property specifying
+ * whether protection against purge is enabled for this vault. Setting this
+ * property to true activates protection against purge for this vault and its
+ * content - only the Key Vault service may initiate a hard, irrecoverable
+ * deletion. The setting is effective only if soft delete is also enabled.
+ * Enabling this functionality is irreversible - that is, the property does not
+ * accept false as its value.
+ * @member {object} [properties.networkAcls] A collection of rules governing
+ * the accessibility of the vault from specific network locations.
+ * @member {string} [properties.networkAcls.bypass] Tells what traffic can
+ * bypass network rules. This can be 'AzureServices' or 'None'.  If not
+ * specified the default is 'AzureServices'. Possible values include:
+ * 'AzureServices', 'None'
+ * @member {string} [properties.networkAcls.defaultAction] The default action
+ * when no rule from ipRules and from virtualNetworkRules match. This is only
+ * used after the bypass property has been evaluated. Possible values include:
+ * 'Allow', 'Deny'
+ * @member {array} [properties.networkAcls.ipRules] The list of IP address
+ * rules.
+ * @member {array} [properties.networkAcls.virtualNetworkRules] The list of
+ * virtual network rules.
+ */
+export interface VaultPatchParameters extends BaseResource {
+  tags?: { [propertyName: string]: string };
+  properties?: VaultPatchProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the VaultAccessPolicyParameters class.
+ * @constructor
+ * Parameters for updating the access policy in a vault
+ *
+ * @member {string} [id] The resource id of the access policy.
+ * @member {string} [name] The resource name of the access policy.
+ * @member {string} [type] The resource name of the access policy.
+ * @member {string} [location] The resource type of the the access policy.
+ * @member {object} properties Properties of the access policy
+ * @member {array} [properties.accessPolicies] An array of 0 to 16 identities
+ * that have access to the key vault. All identities in the array must use the
+ * same tenant ID as the key vault's tenant ID.
+ */
+export interface VaultAccessPolicyParameters extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  readonly location?: string;
+  properties: VaultAccessPolicyProperties;
 }
 
 /**
@@ -191,7 +440,7 @@ export interface VaultCreateOrUpdateParameters extends BaseResource {
  *
  * @member {string} [id] The Azure Resource Manager resource ID for the key
  * vault.
- * @member {string} name The name of the key vault.
+ * @member {string} [name] The name of the key vault.
  * @member {string} [type] The resource type of the key vault.
  * @member {string} location The supported Azure location where the key vault
  * should be created.
@@ -199,7 +448,7 @@ export interface VaultCreateOrUpdateParameters extends BaseResource {
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
-  name: string;
+  readonly name?: string;
   readonly type?: string;
   location: string;
   tags?: { [propertyName: string]: string };
@@ -238,6 +487,27 @@ export interface Resource extends BaseResource {
  * @member {string} [properties.createMode] The vault's create mode to indicate
  * whether the vault need to be recovered or not. Possible values include:
  * 'recover', 'default'
+ * @member {boolean} [properties.enablePurgeProtection] Property specifying
+ * whether protection against purge is enabled for this vault. Setting this
+ * property to true activates protection against purge for this vault and its
+ * content - only the Key Vault service may initiate a hard, irrecoverable
+ * deletion. The setting is effective only if soft delete is also enabled.
+ * Enabling this functionality is irreversible - that is, the property does not
+ * accept false as its value.
+ * @member {object} [properties.networkAcls] A collection of rules governing
+ * the accessibility of the vault from specific network locations.
+ * @member {string} [properties.networkAcls.bypass] Tells what traffic can
+ * bypass network rules. This can be 'AzureServices' or 'None'.  If not
+ * specified the default is 'AzureServices'. Possible values include:
+ * 'AzureServices', 'None'
+ * @member {string} [properties.networkAcls.defaultAction] The default action
+ * when no rule from ipRules and from virtualNetworkRules match. This is only
+ * used after the bypass property has been evaluated. Possible values include:
+ * 'Allow', 'Deny'
+ * @member {array} [properties.networkAcls.ipRules] The list of IP address
+ * rules.
+ * @member {array} [properties.networkAcls.virtualNetworkRules] The list of
+ * virtual network rules.
  */
 export interface Vault extends Resource {
   properties: VaultProperties;
@@ -266,6 +536,113 @@ export interface DeletedVault {
   properties?: DeletedVaultProperties;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the VaultCheckNameAvailabilityParameters class.
+ * @constructor
+ * The parameters used to check the availabity of the vault name.
+ *
+ * @member {string} name The vault name.
+ */
+export interface VaultCheckNameAvailabilityParameters {
+  name: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckNameAvailabilityResult class.
+ * @constructor
+ * The CheckNameAvailability operation response.
+ *
+ * @member {boolean} [nameAvailable] A boolean value that indicates whether the
+ * name is available for you to use. If true, the name is available. If false,
+ * the name has already been taken or is invalid and cannot be used.
+ * @member {string} [reason] The reason that a vault name could not be used.
+ * The Reason element is only returned if NameAvailable is false. Possible
+ * values include: 'AccountNameInvalid', 'AlreadyExists'
+ * @member {string} [message] An error message explaining the Reason value in
+ * more detail.
+ */
+export interface CheckNameAvailabilityResult {
+  readonly nameAvailable?: boolean;
+  readonly reason?: string;
+  readonly message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * Display metadata associated with the operation.
+ *
+ * @member {string} [provider] Service provider: Microsoft Key Vault.
+ * @member {string} [resource] Resource on which the operation is performed
+ * etc.
+ * @member {string} [operation] Type of operation: get, read, delete, etc.
+ * @member {string} [description] Decription of operation.
+ */
+export interface OperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LogSpecification class.
+ * @constructor
+ * Log specification of operation.
+ *
+ * @member {string} [name] Name of log specification.
+ * @member {string} [displayName] Display name of log specification.
+ * @member {string} [blobDuration] Blob duration of specification.
+ */
+export interface LogSpecification {
+  name?: string;
+  displayName?: string;
+  blobDuration?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceSpecification class.
+ * @constructor
+ * One property of operation, include log specifications.
+ *
+ * @member {array} [logSpecifications] Log specifications of operation.
+ */
+export interface ServiceSpecification {
+  logSpecifications?: LogSpecification[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * Key Vault REST API operation definition.
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] Display metadata associated with the operation.
+ * @member {string} [display.provider] Service provider: Microsoft Key Vault.
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed etc.
+ * @member {string} [display.operation] Type of operation: get, read, delete,
+ * etc.
+ * @member {string} [display.description] Decription of operation.
+ * @member {string} [origin] The origin of operations.
+ * @member {object} [serviceSpecification] One property of operation, include
+ * metric specifications.
+ * @member {array} [serviceSpecification.logSpecifications] Log specifications
+ * of operation.
+ */
+export interface Operation {
+  name?: string;
+  display?: OperationDisplay;
+  origin?: string;
+  serviceSpecification?: ServiceSpecification;
+}
+
 
 /**
  * @class
@@ -273,8 +650,7 @@ export interface DeletedVault {
  * @constructor
  * List of vaults
  *
- * @member {string} [nextLink] Gets or sets the URL to get the next set of
- * vaults.
+ * @member {string} [nextLink] The URL to get the next set of vaults.
  */
 export interface VaultListResult extends Array<Vault> {
   nextLink?: string;
@@ -298,9 +674,21 @@ export interface DeletedVaultListResult extends Array<DeletedVault> {
  * @constructor
  * List of vault resources.
  *
- * @member {string} [nextLink] Gets the URL to get the next set of vault
- * resources.
+ * @member {string} [nextLink] The URL to get the next set of vault resources.
  */
 export interface ResourceListResult extends Array<Resource> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list Storage operations. It contains a list of
+ * operations and a URL link to get the next set of results.
+ *
+ * @member {string} [nextLink] The URL to get the next set of operations.
+ */
+export interface OperationListResult extends Array<Operation> {
   nextLink?: string;
 }
