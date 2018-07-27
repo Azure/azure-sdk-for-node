@@ -19969,8 +19969,45 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
      *
-     * @param {string} [parameters.publicIPPrefix] The Public IP Prefix this Public
+     * @param {object} [parameters.publicIPPrefix] The Public IP Prefix this Public
      * IP Address should be allocated from.
+     *
+     * @param {object} [parameters.publicIPPrefix.sku] The public IP prefix SKU.
+     *
+     * @param {string} [parameters.publicIPPrefix.sku.name] Name of a public IP
+     * prefix SKU. Possible values include: 'Standard'
+     *
+     * @param {string} [parameters.publicIPPrefix.publicIPAddressVersion] The
+     * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
+     * values include: 'IPv4', 'IPv6'
+     *
+     * @param {array} [parameters.publicIPPrefix.ipTags] The list of tags
+     * associated with the public IP prefix.
+     *
+     * @param {number} [parameters.publicIPPrefix.prefixLength] The Length of the
+     * Public IP Prefix.
+     *
+     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
+     * timeout of the public IP prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
+     * property of the public IP prefix resource.
+     *
+     * @param {string} [parameters.publicIPPrefix.provisioningState] The
+     * provisioning state of the Public IP prefix resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.publicIPPrefix.etag] A unique read-only string
+     * that changes whenever the resource is updated.
+     *
+     * @param {array} [parameters.publicIPPrefix.zones] A list of availability
+     * zones denoting the IP allocated for the resource needs to come from.
+     *
+     * @param {string} [parameters.publicIPPrefix.id] Resource ID.
+     *
+     * @param {string} [parameters.publicIPPrefix.location] Resource location.
+     *
+     * @param {object} [parameters.publicIPPrefix.tags] Resource tags.
      *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP address.
@@ -20055,8 +20092,45 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
      *
-     * @param {string} [parameters.publicIPPrefix] The Public IP Prefix this Public
+     * @param {object} [parameters.publicIPPrefix] The Public IP Prefix this Public
      * IP Address should be allocated from.
+     *
+     * @param {object} [parameters.publicIPPrefix.sku] The public IP prefix SKU.
+     *
+     * @param {string} [parameters.publicIPPrefix.sku.name] Name of a public IP
+     * prefix SKU. Possible values include: 'Standard'
+     *
+     * @param {string} [parameters.publicIPPrefix.publicIPAddressVersion] The
+     * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
+     * values include: 'IPv4', 'IPv6'
+     *
+     * @param {array} [parameters.publicIPPrefix.ipTags] The list of tags
+     * associated with the public IP prefix.
+     *
+     * @param {number} [parameters.publicIPPrefix.prefixLength] The Length of the
+     * Public IP Prefix.
+     *
+     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
+     * timeout of the public IP prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
+     * property of the public IP prefix resource.
+     *
+     * @param {string} [parameters.publicIPPrefix.provisioningState] The
+     * provisioning state of the Public IP prefix resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.publicIPPrefix.etag] A unique read-only string
+     * that changes whenever the resource is updated.
+     *
+     * @param {array} [parameters.publicIPPrefix.zones] A list of availability
+     * zones denoting the IP allocated for the resource needs to come from.
+     *
+     * @param {string} [parameters.publicIPPrefix.id] Resource ID.
+     *
+     * @param {string} [parameters.publicIPPrefix.location] Resource location.
+     *
+     * @param {object} [parameters.publicIPPrefix.tags] Resource tags.
      *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP address.
@@ -20616,8 +20690,45 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
      *
-     * @param {string} [parameters.publicIPPrefix] The Public IP Prefix this Public
+     * @param {object} [parameters.publicIPPrefix] The Public IP Prefix this Public
      * IP Address should be allocated from.
+     *
+     * @param {object} [parameters.publicIPPrefix.sku] The public IP prefix SKU.
+     *
+     * @param {string} [parameters.publicIPPrefix.sku.name] Name of a public IP
+     * prefix SKU. Possible values include: 'Standard'
+     *
+     * @param {string} [parameters.publicIPPrefix.publicIPAddressVersion] The
+     * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
+     * values include: 'IPv4', 'IPv6'
+     *
+     * @param {array} [parameters.publicIPPrefix.ipTags] The list of tags
+     * associated with the public IP prefix.
+     *
+     * @param {number} [parameters.publicIPPrefix.prefixLength] The Length of the
+     * Public IP Prefix.
+     *
+     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
+     * timeout of the public IP prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
+     * property of the public IP prefix resource.
+     *
+     * @param {string} [parameters.publicIPPrefix.provisioningState] The
+     * provisioning state of the Public IP prefix resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.publicIPPrefix.etag] A unique read-only string
+     * that changes whenever the resource is updated.
+     *
+     * @param {array} [parameters.publicIPPrefix.zones] A list of availability
+     * zones denoting the IP allocated for the resource needs to come from.
+     *
+     * @param {string} [parameters.publicIPPrefix.id] Resource ID.
+     *
+     * @param {string} [parameters.publicIPPrefix.location] Resource location.
+     *
+     * @param {object} [parameters.publicIPPrefix.tags] Resource tags.
      *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP address.
@@ -20702,8 +20813,45 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
      *
-     * @param {string} [parameters.publicIPPrefix] The Public IP Prefix this Public
+     * @param {object} [parameters.publicIPPrefix] The Public IP Prefix this Public
      * IP Address should be allocated from.
+     *
+     * @param {object} [parameters.publicIPPrefix.sku] The public IP prefix SKU.
+     *
+     * @param {string} [parameters.publicIPPrefix.sku.name] Name of a public IP
+     * prefix SKU. Possible values include: 'Standard'
+     *
+     * @param {string} [parameters.publicIPPrefix.publicIPAddressVersion] The
+     * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
+     * values include: 'IPv4', 'IPv6'
+     *
+     * @param {array} [parameters.publicIPPrefix.ipTags] The list of tags
+     * associated with the public IP prefix.
+     *
+     * @param {number} [parameters.publicIPPrefix.prefixLength] The Length of the
+     * Public IP Prefix.
+     *
+     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
+     * timeout of the public IP prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
+     * property of the public IP prefix resource.
+     *
+     * @param {string} [parameters.publicIPPrefix.provisioningState] The
+     * provisioning state of the Public IP prefix resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.publicIPPrefix.etag] A unique read-only string
+     * that changes whenever the resource is updated.
+     *
+     * @param {array} [parameters.publicIPPrefix.zones] A list of availability
+     * zones denoting the IP allocated for the resource needs to come from.
+     *
+     * @param {string} [parameters.publicIPPrefix.id] Resource ID.
+     *
+     * @param {string} [parameters.publicIPPrefix.location] Resource location.
+     *
+     * @param {object} [parameters.publicIPPrefix.tags] Resource tags.
      *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP address.
