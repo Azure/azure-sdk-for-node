@@ -84,6 +84,7 @@ export default class NetworkManagementClient extends AzureServiceClient {
   connectionMonitors: operations.ConnectionMonitors;
   operations: operations.Operations;
   publicIPAddresses: operations.PublicIPAddresses;
+  publicIPPrefixes: operations.PublicIPPrefixes;
   routeFilters: operations.RouteFilters;
   routeFilterRules: operations.RouteFilterRules;
   routeTables: operations.RouteTables;

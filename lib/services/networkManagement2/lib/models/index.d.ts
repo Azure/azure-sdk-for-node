@@ -881,7 +881,7 @@ export interface PublicIPAddressDnsSettings {
  * @class
  * Initializes a new instance of the IpTag class.
  * @constructor
- * Contains the IpTag associated with the public IP address
+ * Contains the IpTag associated with the object
  *
  * @member {string} [ipTagType] Gets or sets the ipTag type: Example
  * FirstPartyUsage.
@@ -5539,6 +5539,57 @@ export interface Operation {
 
 /**
  * @class
+ * Initializes a new instance of the PublicIPPrefixSku class.
+ * @constructor
+ * SKU of a public IP prefix
+ *
+ * @member {string} [name] Name of a public IP prefix SKU. Possible values
+ * include: 'Standard'
+ */
+export interface PublicIPPrefixSku {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPPrefix class.
+ * @constructor
+ * Public IP prefix resource.
+ *
+ * @member {object} [sku] The public IP prefix SKU.
+ * @member {string} [sku.name] Name of a public IP prefix SKU. Possible values
+ * include: 'Standard'
+ * @member {string} [publicIPAddressVersion] The public IP address version.
+ * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+ * 'IPv6'
+ * @member {array} [ipTags] The list of tags associated with the public IP
+ * prefix.
+ * @member {number} [prefixLength] The Length of the Public IP Prefix.
+ * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
+ * prefix.
+ * @member {string} [resourceGuid] The resource GUID property of the public IP
+ * prefix resource.
+ * @member {string} [provisioningState] The provisioning state of the Public IP
+ * prefix resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ * @member {array} [zones] A list of availability zones denoting the IP
+ * allocated for the resource needs to come from.
+ */
+export interface PublicIPPrefix extends Resource {
+  sku?: PublicIPPrefixSku;
+  publicIPAddressVersion?: string;
+  ipTags?: IpTag[];
+  prefixLength?: number;
+  idleTimeoutInMinutes?: number;
+  resourceGuid?: string;
+  provisioningState?: string;
+  etag?: string;
+  zones?: string[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the PatchRouteFilterRule class.
  * @constructor
  * Route Filter Rule Resource
@@ -7257,6 +7308,18 @@ export interface OperationListResult extends Array<Operation> {
  * @member {string} [nextLink] The URL to get the next set of results.
  */
 export interface PublicIPAddressListResult extends Array<PublicIPAddress> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPPrefixListResult class.
+ * @constructor
+ * Response for ListPublicIpPrefixes API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface PublicIPPrefixListResult extends Array<PublicIPPrefix> {
   nextLink?: string;
 }
 
