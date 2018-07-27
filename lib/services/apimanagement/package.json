@@ -2,12 +2,15 @@
   "name": "azure-arm-apimanagement",
   "author": "Microsoft Corporation",
   "description": "ApiManagementClient Library with typescript type definitions for node",
-  "version": "2.1.1-preview",
+  "version": "3.0.0-preview",
   "dependencies": {
-    "ms-rest": "^2.3.2",
+    "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
   },
-  "keywords": [ "node", "azure" ],
+  "keywords": [
+    "node",
+    "azure"
+  ],
   "license": "MIT",
   "main": "./lib/apiManagementClient.js",
   "types": "./lib/apiManagementClient.d.ts",
