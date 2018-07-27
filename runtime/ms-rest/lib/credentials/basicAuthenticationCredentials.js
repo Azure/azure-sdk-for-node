@@ -1,5 +1,5 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License. See License.txt in the project root for license information. 
+// Licensed under the MIT License. See License.txt in the project root for license information.
 
 'use strict';
 
@@ -40,7 +40,7 @@ class BasicAuthenticationCredentials {
    */
   signRequest(webResource, callback) {
     let credentials = `${this.userName}:${this.password}`;
-    let encodedCredentials = `${this.authorizationScheme} ${new Buffer(credentials).toString('base64')}`;
+    let encodedCredentials = `${this.authorizationScheme} ${Buffer.from(credentials).toString('base64')}`;
     webResource.headers[HeaderConstants.AUTHORIZATION] = encodedCredentials;
     return callback(null);
   }
