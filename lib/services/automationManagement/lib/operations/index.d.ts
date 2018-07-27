@@ -4762,6 +4762,490 @@ export interface Fields {
 
 /**
  * @class
+ * Python2Package
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the AutomationClient.
+ */
+export interface Python2Package {
+
+
+    /**
+     * Delete the python 2 package by name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} packageName The python package name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, packageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete the python 2 package by name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} packageName The python package name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, automationAccountName: string, packageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, packageName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, automationAccountName: string, packageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the python 2 package identified by package name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} packageName The python package name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Module>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, packageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
+
+    /**
+     * Retrieve the python 2 package identified by package name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} packageName The python package name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Module} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Module} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Module} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, automationAccountName: string, packageName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
+    get(resourceGroupName: string, automationAccountName: string, packageName: string, callback: ServiceCallback<models.Module>): void;
+    get(resourceGroupName: string, automationAccountName: string, packageName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
+
+
+    /**
+     * Create or Update the python 2 package identified by package name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} packageName The name of python package.
+     *
+     * @param {object} parameters The create or update parameters for python
+     * package.
+     *
+     * @param {object} parameters.contentLink Gets or sets the module content link.
+     *
+     * @param {string} [parameters.contentLink.uri] Gets or sets the uri of the
+     * runbook content.
+     *
+     * @param {object} [parameters.contentLink.contentHash] Gets or sets the hash.
+     *
+     * @param {string} parameters.contentLink.contentHash.algorithm Gets or sets
+     * the content hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.contentLink.contentHash.value Gets or sets
+     * expected hash value of the content.
+     *
+     * @param {string} [parameters.contentLink.version] Gets or sets the version of
+     * the content.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Module>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
+
+    /**
+     * Create or Update the python 2 package identified by package name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} packageName The name of python package.
+     *
+     * @param {object} parameters The create or update parameters for python
+     * package.
+     *
+     * @param {object} parameters.contentLink Gets or sets the module content link.
+     *
+     * @param {string} [parameters.contentLink.uri] Gets or sets the uri of the
+     * runbook content.
+     *
+     * @param {object} [parameters.contentLink.contentHash] Gets or sets the hash.
+     *
+     * @param {string} parameters.contentLink.contentHash.algorithm Gets or sets
+     * the content hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.contentLink.contentHash.value Gets or sets
+     * expected hash value of the content.
+     *
+     * @param {string} [parameters.contentLink.version] Gets or sets the version of
+     * the content.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Module} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Module} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Module} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleCreateOrUpdateParameters, callback: ServiceCallback<models.Module>): void;
+    createOrUpdate(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
+
+
+    /**
+     * Update the python 2 package identified by package name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} packageName The name of python package.
+     *
+     * @param {object} parameters The update parameters for python package.
+     *
+     * @param {object} [parameters.contentLink] Gets or sets the module content
+     * link.
+     *
+     * @param {string} [parameters.contentLink.uri] Gets or sets the uri of the
+     * runbook content.
+     *
+     * @param {object} [parameters.contentLink.contentHash] Gets or sets the hash.
+     *
+     * @param {string} parameters.contentLink.contentHash.algorithm Gets or sets
+     * the content hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.contentLink.contentHash.value Gets or sets
+     * expected hash value of the content.
+     *
+     * @param {string} [parameters.contentLink.version] Gets or sets the version of
+     * the content.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Module>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Module>>;
+
+    /**
+     * Update the python 2 package identified by package name.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {string} packageName The name of python package.
+     *
+     * @param {object} parameters The update parameters for python package.
+     *
+     * @param {object} [parameters.contentLink] Gets or sets the module content
+     * link.
+     *
+     * @param {string} [parameters.contentLink.uri] Gets or sets the uri of the
+     * runbook content.
+     *
+     * @param {object} [parameters.contentLink.contentHash] Gets or sets the hash.
+     *
+     * @param {string} parameters.contentLink.contentHash.algorithm Gets or sets
+     * the content hash algorithm used to hash the content.
+     *
+     * @param {string} parameters.contentLink.contentHash.value Gets or sets
+     * expected hash value of the content.
+     *
+     * @param {string} [parameters.contentLink.version] Gets or sets the version of
+     * the content.
+     *
+     * @param {string} [parameters.name] Gets or sets name of the resource.
+     *
+     * @param {string} [parameters.location] Gets or sets the location of the
+     * resource.
+     *
+     * @param {object} [parameters.tags] Gets or sets the tags attached to the
+     * resource.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Module} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Module} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Module} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Module>;
+    update(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleUpdateParameters, callback: ServiceCallback<models.Module>): void;
+    update(resourceGroupName: string, automationAccountName: string, packageName: string, parameters: models.ModuleUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Module>): void;
+
+
+    /**
+     * Retrieve a list of python 2 packages.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ModuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountWithHttpOperationResponse(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModuleListResult>>;
+
+    /**
+     * Retrieve a list of python 2 packages.
+     *
+     * @param {string} resourceGroupName Name of an Azure Resource group.
+     *
+     * @param {string} automationAccountName The name of the automation account.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ModuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ModuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ModuleListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ModuleListResult>;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, callback: ServiceCallback<models.ModuleListResult>): void;
+    listByAutomationAccount(resourceGroupName: string, automationAccountName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ModuleListResult>): void;
+
+
+    /**
+     * Retrieve a list of python 2 packages.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ModuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAutomationAccountNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ModuleListResult>>;
+
+    /**
+     * Retrieve a list of python 2 packages.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ModuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ModuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ModuleListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAutomationAccountNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ModuleListResult>;
+    listByAutomationAccountNext(nextPageLink: string, callback: ServiceCallback<models.ModuleListResult>): void;
+    listByAutomationAccountNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ModuleListResult>): void;
+}
+
+/**
+ * @class
  * RunbookDraftOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the AutomationClient.
