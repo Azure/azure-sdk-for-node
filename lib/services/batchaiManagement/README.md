@@ -1,9 +1,14 @@
-# Microsoft Azure SDK for Node.js - Batch AI Management
+---
+uid: azure-arm-batchai
+summary: *content
 
-This project provides a Node.js package that makes it easy to work with Microsoft Azure Batch AI Service. Right now it supports:
-- **Node.js version: 6.x.x or higher**
+---
+# Microsoft Azure SDK for Node.js - BatchAIManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
 
-Please check details on [API reference documents](http://azure.github.io/azure-sdk-for-node/azure-batchai/latest/).
+## Features
+
 
 ## How to Install
 
@@ -13,4 +18,23 @@ npm install azure-arm-batchai
 
 ## How to use
 
-Please refer to unit tests and https://github.com/Azure/BatchAI.
+### Authentication, client creation and list operations as an example.
+
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const BatchAIManagementClient = require("azure-arm-batchai");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new BatchAIManagementClient(creds, subscriptionId);
+    return client.operations.list().then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
+}).catch((err) => {
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
+
+## Related projects
+
+- [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)

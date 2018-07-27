@@ -64,12 +64,12 @@ npm install azure-cognitiveservices-face
  ```javascript
  const FaceAPIClient = require('azure-cognitiveservices-face');
 
- let client = new FaceAPIClient(credentials);
+ let client = new FaceAPIClient(credentials, azureRegion);
 
  let fileStream = fs.createReadStream('pathToSomeImage.jpg');
  client.face.detectInStreamWithHttpOperationResponse(fileStream, {
    returnFaceId: true,
-   returnFaceAttributes: 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,exposure,noise'
+   returnFaceAttributes: ['age','gender','headPose','smile','facialHair','glasses','emotion','hair','makeup','occlusion','accessories','exposure','noise']
  }).then((httpResponse) => {
    console.log(httpResponse.response.body);
  }).catch((err) => {

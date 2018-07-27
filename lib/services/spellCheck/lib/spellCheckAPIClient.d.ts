@@ -11,7 +11,7 @@
 import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import * as models from "./models";
 
-declare class SpellCheckAPIClient extends ServiceClient {
+export default class SpellCheckAPIClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the SpellCheckAPIClient class.
@@ -43,6 +43,13 @@ declare class SpellCheckAPIClient extends ServiceClient {
    * constantly evolving and highly contextual algorithm. The spell-checker is
    * based on a massive corpus of web searches and documents.
    *
+   * @param {string} text The text string to check for spelling and grammar
+   * errors. The combined length of the text string, preContextText string, and
+   * postContextText string may not exceed 10,000 characters. You may specify
+   * this parameter in the query string of a GET request or in the body of a POST
+   * request. Because of the query string length limit, you'll typically use a
+   * POST request unless you're checking only short strings.
+   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.acceptLanguage] A comma-delimited list of one or
@@ -218,7 +225,7 @@ declare class SpellCheckAPIClient extends ServiceClient {
    * insensitive). The default is Proof. 1) Proof—Finds most spelling and grammar
    * mistakes. 2) Spell—Finds most spelling mistakes but does not find some of
    * the grammar errors that Proof catches (for example, capitalization and
-   * repeated words). Possible values include: 'Proof', 'Spell'
+   * repeated words). Possible values include: 'proof', 'spell'
    *
    * @param {string} [options.preContextText] A string that gives context to the
    * text string. For example, the text string petal is valid. However, if you
@@ -239,13 +246,6 @@ declare class SpellCheckAPIClient extends ServiceClient {
    * postContextText string may not exceed 10,000 characters. You may specify
    * this parameter in the query string of a GET request or in the body of a POST
    * request.
-   *
-   * @param {string} [options.text] The text string to check for spelling and
-   * grammar errors. The combined length of the text string, preContextText
-   * string, and postContextText string may not exceed 10,000 characters. You may
-   * specify this parameter in the query string of a GET request or in the body
-   * of a POST request. Because of the query string length limit, you'll
-   * typically use a POST request unless you're checking only short strings.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -256,7 +256,7 @@ declare class SpellCheckAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  spellCheckerWithHttpOperationResponse(options?: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, actionType? : string, appName? : string, countryCode? : string, clientMachineName? : string, docId? : string, market? : string, sessionId? : string, setLang? : string, userId? : string, mode? : string, preContextText? : string, postContextText? : string, text? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SpellCheck>>;
+  spellCheckerWithHttpOperationResponse(text: string, options?: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, actionType? : string, appName? : string, countryCode? : string, clientMachineName? : string, docId? : string, market? : string, sessionId? : string, setLang? : string, userId? : string, mode? : string, preContextText? : string, postContextText? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SpellCheck>>;
 
   /**
    * @summary The Bing Spell Check API lets you perform contextual grammar and
@@ -264,6 +264,13 @@ declare class SpellCheckAPIClient extends ServiceClient {
    * machine learning and statistical machine translation to dynamically train a
    * constantly evolving and highly contextual algorithm. The spell-checker is
    * based on a massive corpus of web searches and documents.
+   *
+   * @param {string} text The text string to check for spelling and grammar
+   * errors. The combined length of the text string, preContextText string, and
+   * postContextText string may not exceed 10,000 characters. You may specify
+   * this parameter in the query string of a GET request or in the body of a POST
+   * request. Because of the query string length limit, you'll typically use a
+   * POST request unless you're checking only short strings.
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -440,7 +447,7 @@ declare class SpellCheckAPIClient extends ServiceClient {
    * insensitive). The default is Proof. 1) Proof—Finds most spelling and grammar
    * mistakes. 2) Spell—Finds most spelling mistakes but does not find some of
    * the grammar errors that Proof catches (for example, capitalization and
-   * repeated words). Possible values include: 'Proof', 'Spell'
+   * repeated words). Possible values include: 'proof', 'spell'
    *
    * @param {string} [options.preContextText] A string that gives context to the
    * text string. For example, the text string petal is valid. However, if you
@@ -461,13 +468,6 @@ declare class SpellCheckAPIClient extends ServiceClient {
    * postContextText string may not exceed 10,000 characters. You may specify
    * this parameter in the query string of a GET request or in the body of a POST
    * request.
-   *
-   * @param {string} [options.text] The text string to check for spelling and
-   * grammar errors. The combined length of the text string, preContextText
-   * string, and postContextText string may not exceed 10,000 characters. You may
-   * specify this parameter in the query string of a GET request or in the body
-   * of a POST request. Because of the query string length limit, you'll
-   * typically use a POST request unless you're checking only short strings.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -494,9 +494,9 @@ declare class SpellCheckAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  spellChecker(options?: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, actionType? : string, appName? : string, countryCode? : string, clientMachineName? : string, docId? : string, market? : string, sessionId? : string, setLang? : string, userId? : string, mode? : string, preContextText? : string, postContextText? : string, text? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SpellCheck>;
-  spellChecker(callback: ServiceCallback<models.SpellCheck>): void;
-  spellChecker(options: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, actionType? : string, appName? : string, countryCode? : string, clientMachineName? : string, docId? : string, market? : string, sessionId? : string, setLang? : string, userId? : string, mode? : string, preContextText? : string, postContextText? : string, text? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SpellCheck>): void;
+  spellChecker(text: string, options?: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, actionType? : string, appName? : string, countryCode? : string, clientMachineName? : string, docId? : string, market? : string, sessionId? : string, setLang? : string, userId? : string, mode? : string, preContextText? : string, postContextText? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SpellCheck>;
+  spellChecker(text: string, callback: ServiceCallback<models.SpellCheck>): void;
+  spellChecker(text: string, options: { acceptLanguage? : string, pragma? : string, userAgent? : string, clientId? : string, clientIp? : string, location? : string, actionType? : string, appName? : string, countryCode? : string, clientMachineName? : string, docId? : string, market? : string, sessionId? : string, setLang? : string, userId? : string, mode? : string, preContextText? : string, postContextText? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SpellCheck>): void;
 }
 
-export = SpellCheckAPIClient;
+export { SpellCheckAPIClient, models as SpellCheckAPIModels };

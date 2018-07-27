@@ -1,7 +1,14 @@
-# Microsoft Azure SDK for Node.js - ConsumptionManagement
+---
+uid: azure-arm-consumption
+summary: *content
 
-This project provides a Node.js package for accessing the Azure PAS. Right now it supports:
-- **Node.js version: 6.x.x or higher**
+---
+# Microsoft Azure SDK for Node.js - ConsumptionManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
@@ -9,29 +16,29 @@ This project provides a Node.js package for accessing the Azure PAS. Right now i
 npm install azure-arm-consumption
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing usageDetails as an example
+### Authentication, client creation and list usageDetails as an example.
 
- ```javascript
- var msRestAzure = require('ms-rest-azure');
- var ConsumptionManagementClient = require("azure-arm-consumption");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin(function(err, credentials) {
-  let client = new ConsumptionManagementClient(credentials, 'your-subscription-id');
-  client.usageDetails.list().then((usageDetails) => {
-    console.log('List of usageDetails:');
-    console.dir(usageDetails, {depth: null, colors: true});
-   });
-  }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
-  });
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const ConsumptionManagementClient = require("azure-arm-consumption");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new ConsumptionManagementClient(creds, subscriptionId);
+    const expand = "testexpand";
+    const filter = "testfilter";
+    const skiptoken = "testskiptoken";
+    const top = 1;
+    const apply = "testapply";
+    return client.usageDetails.list(expand, filter, skiptoken, top, apply).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
+}).catch((err) => {
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
 });
-```
 
 ## Related projects
 
