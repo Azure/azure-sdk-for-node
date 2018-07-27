@@ -49,7 +49,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * users are not expected to take a dependency on the format of the file
    * contents or its interpretation.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -84,7 +83,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The contents of the cluster manifest are for informational purposes only and
    * users are not expected to take a dependency on the format of the file
    * contents or its interpretation.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -132,7 +130,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * filter the collection of nodes and applications returned based on their
    * aggregated health state.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.nodesHealthStateFilter] Allows filtering of the
@@ -157,7 +154,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.applicationsHealthStateFilter] Allows filtering of
    * the application health state objects returned in the result of cluster
@@ -185,7 +181,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.eventsHealthStateFilter] Allows filtering the
    * collection of HealthEvent objects returned based on health state.
    * The possible values for this parameter include integer value of one of the
@@ -209,13 +204,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {boolean} [options.includeSystemApplicationHealthStatistics]
    * Indicates whether the health statistics should include the fabric:/System
@@ -227,7 +220,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * applications.
    * The health statistics must be included in the query result for this
    * parameter to be applied.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -254,7 +246,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * filter the collection of nodes and applications returned based on their
    * aggregated health state.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.nodesHealthStateFilter] Allows filtering of the
@@ -279,7 +270,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.applicationsHealthStateFilter] Allows filtering of
    * the application health state objects returned in the result of cluster
@@ -307,7 +297,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.eventsHealthStateFilter] Allows filtering the
    * collection of HealthEvent objects returned based on health state.
    * The possible values for this parameter include integer value of one of the
@@ -331,13 +320,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {boolean} [options.includeSystemApplicationHealthStatistics]
    * Indicates whether the health statistics should include the fabric:/System
@@ -349,7 +336,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * applications.
    * The health statistics must be included in the query result for this
    * parameter to be applied.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -398,7 +384,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Use ClusterHealthPolicies to override the health policies used to evaluate
    * the health.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.nodesHealthStateFilter] Allows filtering of the
@@ -423,7 +408,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.applicationsHealthStateFilter] Allows filtering of
    * the application health state objects returned in the result of cluster
@@ -451,7 +435,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.eventsHealthStateFilter] Allows filtering the
    * collection of HealthEvent objects returned based on health state.
    * The possible values for this parameter include integer value of one of the
@@ -475,13 +458,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {boolean} [options.includeSystemApplicationHealthStatistics]
    * Indicates whether the health statistics should include the fabric:/System
@@ -494,7 +475,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The health statistics must be included in the query result for this
    * parameter to be applied.
    *
-   *
    * @param {object} [options.clusterHealthPolicies] Describes the health
    * policies used to evaluate the cluster health.
    * If not present, the health evaluation uses the cluster health policy defined
@@ -505,7 +485,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * If the application health policy map is specified, and it has an entry for
    * an application, the specified application health policy
    * is used to evaluate the application health.
-   *
    *
    * @param {array} [options.clusterHealthPolicies.applicationHealthPolicyMap]
    * Defines a map that contains specific application health policies for
@@ -518,11 +497,9 @@ export default class ServiceFabricClient extends ServiceClient {
    * defined in the manifest).
    * The map is empty by default.
    *
-   *
    * @param {object} [options.clusterHealthPolicies.clusterHealthPolicy] Defines
    * a health policy used to evaluate the health of the cluster or of a cluster
    * node.
-   *
    *
    * @param {boolean}
    * [options.clusterHealthPolicies.clusterHealthPolicy.considerWarningAsError]
@@ -545,7 +522,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In large clusters, some nodes will always be down or out for repairs, so
    * this percentage should be configured to tolerate that.
    *
-   *
    * @param {number}
    * [options.clusterHealthPolicies.clusterHealthPolicy.maxPercentUnhealthyApplications]
    * The maximum allowed percentage of unhealthy applications before reporting an
@@ -562,7 +538,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * ApplicationTypeHealthPolicyMap.
    * The computation rounds up to tolerate one failure on small numbers of
    * applications. Default percentage is zero.
-   *
    *
    * @param {array}
    * [options.clusterHealthPolicies.clusterHealthPolicy.applicationTypeHealthPolicyMap]
@@ -588,7 +563,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The application type health policy map is used only if the cluster manifest
    * enables application type health evaluation using the configuration entry for
    * HealthManager/EnableApplicationTypeHealthEvaluation.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -618,7 +592,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Use ClusterHealthPolicies to override the health policies used to evaluate
    * the health.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.nodesHealthStateFilter] Allows filtering of the
@@ -643,7 +616,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.applicationsHealthStateFilter] Allows filtering of
    * the application health state objects returned in the result of cluster
@@ -671,7 +643,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.eventsHealthStateFilter] Allows filtering the
    * collection of HealthEvent objects returned based on health state.
    * The possible values for this parameter include integer value of one of the
@@ -695,13 +666,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {boolean} [options.includeSystemApplicationHealthStatistics]
    * Indicates whether the health statistics should include the fabric:/System
@@ -714,7 +683,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The health statistics must be included in the query result for this
    * parameter to be applied.
    *
-   *
    * @param {object} [options.clusterHealthPolicies] Describes the health
    * policies used to evaluate the cluster health.
    * If not present, the health evaluation uses the cluster health policy defined
@@ -725,7 +693,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * If the application health policy map is specified, and it has an entry for
    * an application, the specified application health policy
    * is used to evaluate the application health.
-   *
    *
    * @param {array} [options.clusterHealthPolicies.applicationHealthPolicyMap]
    * Defines a map that contains specific application health policies for
@@ -738,11 +705,9 @@ export default class ServiceFabricClient extends ServiceClient {
    * defined in the manifest).
    * The map is empty by default.
    *
-   *
    * @param {object} [options.clusterHealthPolicies.clusterHealthPolicy] Defines
    * a health policy used to evaluate the health of the cluster or of a cluster
    * node.
-   *
    *
    * @param {boolean}
    * [options.clusterHealthPolicies.clusterHealthPolicy.considerWarningAsError]
@@ -765,7 +730,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In large clusters, some nodes will always be down or out for repairs, so
    * this percentage should be configured to tolerate that.
    *
-   *
    * @param {number}
    * [options.clusterHealthPolicies.clusterHealthPolicy.maxPercentUnhealthyApplications]
    * The maximum allowed percentage of unhealthy applications before reporting an
@@ -782,7 +746,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * ApplicationTypeHealthPolicyMap.
    * The computation rounds up to tolerate one failure on small numbers of
    * applications. Default percentage is zero.
-   *
    *
    * @param {array}
    * [options.clusterHealthPolicies.clusterHealthPolicy.applicationTypeHealthPolicyMap]
@@ -808,7 +771,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The application type health policy map is used only if the cluster manifest
    * enables application type health evaluation using the configuration entry for
    * HealthManager/EnableApplicationTypeHealthEvaluation.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -855,7 +817,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * entities, use the POST URI and specify the cluster health chunk query
    * description.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -883,7 +844,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * To expand the cluster health and get the health state of all or some of the
    * entities, use the POST URI and specify the cluster health chunk query
    * description.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -939,7 +899,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * only services that are in Error or Warning, and all partitions and replicas
    * for one of these services.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.clusterHealthChunkQueryDescription] Describes the
@@ -964,7 +923,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * only services that are in Error or Warning, and all partitions and replicas
    * for one of these services.
    *
-   *
    * @param {array} [options.clusterHealthChunkQueryDescription.nodeFilters]
    * Defines a list of filters that specify which nodes to be included in the
    * returned cluster health chunk.
@@ -975,7 +933,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, it can specify a filter to return all nodes with health state
    * Error and another filter to always include a node identified by its
    * NodeName.
-   *
    *
    * @param {array}
    * [options.clusterHealthChunkQueryDescription.applicationFilters] Defines a
@@ -989,12 +946,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * state Error and another filter to always include applications of a specified
    * application type.
    *
-   *
    * @param {object}
    * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy] Defines a
    * health policy used to evaluate the health of the cluster or of a cluster
    * node.
-   *
    *
    * @param {boolean}
    * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.considerWarningAsError]
@@ -1017,7 +972,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In large clusters, some nodes will always be down or out for repairs, so
    * this percentage should be configured to tolerate that.
    *
-   *
    * @param {number}
    * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.maxPercentUnhealthyApplications]
    * The maximum allowed percentage of unhealthy applications before reporting an
@@ -1034,7 +988,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * ApplicationTypeHealthPolicyMap.
    * The computation rounds up to tolerate one failure on small numbers of
    * applications. Default percentage is zero.
-   *
    *
    * @param {array}
    * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
@@ -1061,12 +1014,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * enables application type health evaluation using the configuration entry for
    * HealthManager/EnableApplicationTypeHealthEvaluation.
    *
-   *
    * @param {object}
    * [options.clusterHealthChunkQueryDescription.applicationHealthPolicies]
    * Defines the application health policy map used to evaluate the health of an
    * application or one of its children entities.
-   *
    *
    * @param {array}
    * [options.clusterHealthChunkQueryDescription.applicationHealthPolicies.applicationHealthPolicyMap]
@@ -1106,7 +1057,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * only services that are in Error or Warning, and all partitions and replicas
    * for one of these services.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.clusterHealthChunkQueryDescription] Describes the
@@ -1131,7 +1081,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * only services that are in Error or Warning, and all partitions and replicas
    * for one of these services.
    *
-   *
    * @param {array} [options.clusterHealthChunkQueryDescription.nodeFilters]
    * Defines a list of filters that specify which nodes to be included in the
    * returned cluster health chunk.
@@ -1142,7 +1091,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, it can specify a filter to return all nodes with health state
    * Error and another filter to always include a node identified by its
    * NodeName.
-   *
    *
    * @param {array}
    * [options.clusterHealthChunkQueryDescription.applicationFilters] Defines a
@@ -1156,12 +1104,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * state Error and another filter to always include applications of a specified
    * application type.
    *
-   *
    * @param {object}
    * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy] Defines a
    * health policy used to evaluate the health of the cluster or of a cluster
    * node.
-   *
    *
    * @param {boolean}
    * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.considerWarningAsError]
@@ -1184,7 +1130,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In large clusters, some nodes will always be down or out for repairs, so
    * this percentage should be configured to tolerate that.
    *
-   *
    * @param {number}
    * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.maxPercentUnhealthyApplications]
    * The maximum allowed percentage of unhealthy applications before reporting an
@@ -1201,7 +1146,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * ApplicationTypeHealthPolicyMap.
    * The computation rounds up to tolerate one failure on small numbers of
    * applications. Default percentage is zero.
-   *
    *
    * @param {array}
    * [options.clusterHealthChunkQueryDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
@@ -1228,12 +1172,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * enables application type health evaluation using the configuration entry for
    * HealthManager/EnableApplicationTypeHealthEvaluation.
    *
-   *
    * @param {object}
    * [options.clusterHealthChunkQueryDescription.applicationHealthPolicies]
    * Defines the application health policy map used to evaluate the health of an
    * application or one of its children entities.
-   *
    *
    * @param {array}
    * [options.clusterHealthChunkQueryDescription.applicationHealthPolicies.applicationHealthPolicyMap]
@@ -1291,14 +1233,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * GetClusterHealth and check that the report appears in the HealthEvents
    * section.
    *
-   *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
    * reports sent to the health manager.
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -1314,7 +1254,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -1334,7 +1273,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -1346,14 +1284,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -1366,7 +1302,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1388,7 +1323,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -1422,14 +1356,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * GetClusterHealth and check that the report appears in the HealthEvents
    * section.
    *
-   *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
    * reports sent to the health manager.
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -1445,7 +1377,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -1465,7 +1396,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -1477,14 +1407,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -1497,7 +1425,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -1519,7 +1446,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -1780,7 +1706,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * different node types on the cluster,
    * security configurations, fault, and upgrade domain topologies, etc.
    *
-   *
    * @param {string} configurationApiVersion The API version of the Standalone
    * cluster json configuration.
    *
@@ -1808,7 +1733,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The cluster configuration contains properties of the cluster that include
    * different node types on the cluster,
    * security configurations, fault, and upgrade domain topologies, etc.
-   *
    *
    * @param {string} configurationApiVersion The API version of the Standalone
    * cluster json configuration.
@@ -1857,7 +1781,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Get the cluster configuration upgrade status details of a Service Fabric
    * standalone cluster.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -1882,7 +1805,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Get the cluster configuration upgrade status details of a Service Fabric
    * standalone cluster.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -2435,8 +2357,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Invalid indicates the failure action is invalid. Rollback specifies that the
    * upgrade will start rolling back automatically.
    * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
-   * mode.
-   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [startClusterUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
@@ -2479,7 +2400,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * a health policy used to evaluate the health of the cluster or of a cluster
    * node.
    *
-   *
    * @param {boolean}
    * [startClusterUpgradeDescription.clusterHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -2501,7 +2421,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In large clusters, some nodes will always be down or out for repairs, so
    * this percentage should be configured to tolerate that.
    *
-   *
    * @param {number}
    * [startClusterUpgradeDescription.clusterHealthPolicy.maxPercentUnhealthyApplications]
    * The maximum allowed percentage of unhealthy applications before reporting an
@@ -2518,7 +2437,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * ApplicationTypeHealthPolicyMap.
    * The computation rounds up to tolerate one failure on small numbers of
    * applications. Default percentage is zero.
-   *
    *
    * @param {array}
    * [startClusterUpgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
@@ -2544,7 +2462,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The application type health policy map is used only if the cluster manifest
    * enables application type health evaluation using the configuration entry for
    * HealthManager/EnableApplicationTypeHealthEvaluation.
-   *
    *
    * @param {boolean}
    * [startClusterUpgradeDescription.enableDeltaHealthEvaluation] When true,
@@ -2577,7 +2494,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {object} [startClusterUpgradeDescription.applicationHealthPolicyMap]
    * Defines the application health policy map used to evaluate the health of an
    * application or one of its children entities.
-   *
    *
    * @param {array}
    * [startClusterUpgradeDescription.applicationHealthPolicyMap.applicationHealthPolicyMap]
@@ -2651,8 +2567,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Invalid indicates the failure action is invalid. Rollback specifies that the
    * upgrade will start rolling back automatically.
    * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
-   * mode.
-   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [startClusterUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
@@ -2695,7 +2610,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * a health policy used to evaluate the health of the cluster or of a cluster
    * node.
    *
-   *
    * @param {boolean}
    * [startClusterUpgradeDescription.clusterHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -2717,7 +2631,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In large clusters, some nodes will always be down or out for repairs, so
    * this percentage should be configured to tolerate that.
    *
-   *
    * @param {number}
    * [startClusterUpgradeDescription.clusterHealthPolicy.maxPercentUnhealthyApplications]
    * The maximum allowed percentage of unhealthy applications before reporting an
@@ -2734,7 +2647,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * ApplicationTypeHealthPolicyMap.
    * The computation rounds up to tolerate one failure on small numbers of
    * applications. Default percentage is zero.
-   *
    *
    * @param {array}
    * [startClusterUpgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
@@ -2760,7 +2672,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The application type health policy map is used only if the cluster manifest
    * enables application type health evaluation using the configuration entry for
    * HealthManager/EnableApplicationTypeHealthEvaluation.
-   *
    *
    * @param {boolean}
    * [startClusterUpgradeDescription.enableDeltaHealthEvaluation] When true,
@@ -2793,7 +2704,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {object} [startClusterUpgradeDescription.applicationHealthPolicyMap]
    * Defines the application health policy map used to evaluate the health of an
    * application or one of its children entities.
-   *
    *
    * @param {array}
    * [startClusterUpgradeDescription.applicationHealthPolicyMap.applicationHealthPolicyMap]
@@ -2896,7 +2806,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the application health policy map used to evaluate the health of an
    * application or one of its children entities.
    *
-   *
    * @param {array}
    * [clusterConfigurationUpgradeDescription.applicationHealthPolicies.applicationHealthPolicyMap]
    * The wrapper that contains the map with application health policies used to
@@ -2979,7 +2888,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * [clusterConfigurationUpgradeDescription.applicationHealthPolicies] Defines
    * the application health policy map used to evaluate the health of an
    * application or one of its children entities.
-   *
    *
    * @param {array}
    * [clusterConfigurationUpgradeDescription.applicationHealthPolicies.applicationHealthPolicyMap]
@@ -3065,8 +2973,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Invalid indicates the failure action is invalid. Rollback specifies that the
    * upgrade will start rolling back automatically.
    * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
-   * mode.
-   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [updateClusterUpgradeDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
@@ -3109,7 +3016,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Defines a health policy used to evaluate the health of the cluster or of a
    * cluster node.
    *
-   *
    * @param {boolean}
    * [updateClusterUpgradeDescription.clusterHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -3131,7 +3037,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In large clusters, some nodes will always be down or out for repairs, so
    * this percentage should be configured to tolerate that.
    *
-   *
    * @param {number}
    * [updateClusterUpgradeDescription.clusterHealthPolicy.maxPercentUnhealthyApplications]
    * The maximum allowed percentage of unhealthy applications before reporting an
@@ -3148,7 +3053,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * ApplicationTypeHealthPolicyMap.
    * The computation rounds up to tolerate one failure on small numbers of
    * applications. Default percentage is zero.
-   *
    *
    * @param {array}
    * [updateClusterUpgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
@@ -3174,7 +3078,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The application type health policy map is used only if the cluster manifest
    * enables application type health evaluation using the configuration entry for
    * HealthManager/EnableApplicationTypeHealthEvaluation.
-   *
    *
    * @param {boolean}
    * [updateClusterUpgradeDescription.enableDeltaHealthEvaluation] When true,
@@ -3207,7 +3110,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {object} [updateClusterUpgradeDescription.applicationHealthPolicyMap]
    * Defines the application health policy map used to evaluate the health of an
    * application or one of its children entities.
-   *
    *
    * @param {array}
    * [updateClusterUpgradeDescription.applicationHealthPolicyMap.applicationHealthPolicyMap]
@@ -3275,8 +3177,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Invalid indicates the failure action is invalid. Rollback specifies that the
    * upgrade will start rolling back automatically.
    * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
-   * mode.
-   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [updateClusterUpgradeDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
@@ -3319,7 +3220,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Defines a health policy used to evaluate the health of the cluster or of a
    * cluster node.
    *
-   *
    * @param {boolean}
    * [updateClusterUpgradeDescription.clusterHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -3341,7 +3241,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In large clusters, some nodes will always be down or out for repairs, so
    * this percentage should be configured to tolerate that.
    *
-   *
    * @param {number}
    * [updateClusterUpgradeDescription.clusterHealthPolicy.maxPercentUnhealthyApplications]
    * The maximum allowed percentage of unhealthy applications before reporting an
@@ -3358,7 +3257,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * ApplicationTypeHealthPolicyMap.
    * The computation rounds up to tolerate one failure on small numbers of
    * applications. Default percentage is zero.
-   *
    *
    * @param {array}
    * [updateClusterUpgradeDescription.clusterHealthPolicy.applicationTypeHealthPolicyMap]
@@ -3384,7 +3282,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The application type health policy map is used only if the cluster manifest
    * enables application type health evaluation using the configuration entry for
    * HealthManager/EnableApplicationTypeHealthEvaluation.
-   *
    *
    * @param {boolean}
    * [updateClusterUpgradeDescription.enableDeltaHealthEvaluation] When true,
@@ -3417,7 +3314,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {object} [updateClusterUpgradeDescription.applicationHealthPolicyMap]
    * Defines the application health policy map used to evaluate the health of an
    * application or one of its children entities.
-   *
    *
    * @param {array}
    * [updateClusterUpgradeDescription.applicationHealthPolicyMap.applicationHealthPolicyMap]
@@ -3470,7 +3366,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * needed to set up an Azure Active Directory secured connection with a Service
    * Fabric cluster.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -3498,7 +3393,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API is not supposed to be called separately. It provides information
    * needed to set up an Azure Active Directory secured connection with a Service
    * Fabric cluster.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -3756,7 +3650,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
    * client is willing to wait for the requested operation to complete. The
@@ -3807,7 +3700,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -3881,7 +3773,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {object} [options.clusterHealthPolicy] Describes the health policies
    * used to evaluate the health of a cluster or node. If not present, the health
    * evaluation uses the health policy from cluster manifest or the default
@@ -3906,7 +3797,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In large clusters, some nodes will always be down or out for repairs, so
    * this percentage should be configured to tolerate that.
    *
-   *
    * @param {number}
    * [options.clusterHealthPolicy.maxPercentUnhealthyApplications] The maximum
    * allowed percentage of unhealthy applications before reporting an error. For
@@ -3923,7 +3813,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * ApplicationTypeHealthPolicyMap.
    * The computation rounds up to tolerate one failure on small numbers of
    * applications. Default percentage is zero.
-   *
    *
    * @param {array} [options.clusterHealthPolicy.applicationTypeHealthPolicyMap]
    * Defines a map with max percentage unhealthy applications for specific
@@ -3948,7 +3837,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The application type health policy map is used only if the cluster manifest
    * enables application type health evaluation using the configuration entry for
    * HealthManager/EnableApplicationTypeHealthEvaluation.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -4003,7 +3891,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {object} [options.clusterHealthPolicy] Describes the health policies
    * used to evaluate the health of a cluster or node. If not present, the health
    * evaluation uses the health policy from cluster manifest or the default
@@ -4028,7 +3915,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In large clusters, some nodes will always be down or out for repairs, so
    * this percentage should be configured to tolerate that.
    *
-   *
    * @param {number}
    * [options.clusterHealthPolicy.maxPercentUnhealthyApplications] The maximum
    * allowed percentage of unhealthy applications before reporting an error. For
@@ -4045,7 +3931,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * ApplicationTypeHealthPolicyMap.
    * The computation rounds up to tolerate one failure on small numbers of
    * applications. Default percentage is zero.
-   *
    *
    * @param {array} [options.clusterHealthPolicy.applicationTypeHealthPolicyMap]
    * Defines a map with max percentage unhealthy applications for specific
@@ -4070,7 +3955,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The application type health policy map is used only if the cluster manifest
    * enables application type health evaluation using the configuration entry for
    * HealthManager/EnableApplicationTypeHealthEvaluation.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -4122,7 +4006,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * To see whether the report was applied in the health store, run GetNodeHealth
    * and check that the report appears in the HealthEvents section.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {object} healthInformation Describes the health information for the
@@ -4131,7 +4014,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -4147,7 +4029,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -4167,7 +4048,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -4179,14 +4059,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -4199,7 +4077,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -4221,7 +4098,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -4254,7 +4130,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * To see whether the report was applied in the health store, run GetNodeHealth
    * and check that the report appears in the HealthEvents section.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {object} healthInformation Describes the health information for the
@@ -4263,7 +4138,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -4279,7 +4153,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -4299,7 +4172,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -4311,14 +4183,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -4331,7 +4201,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -4353,7 +4222,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -4481,8 +4349,7 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} [deactivationIntentDescription.deactivationIntent] Describes
    * the intent or reason for deactivating the node. The possible values are
-   * following.
-   * . Possible values include: 'Pause', 'Restart', 'RemoveData'
+   * following. Possible values include: 'Pause', 'Restart', 'RemoveData'
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -4523,8 +4390,7 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} [deactivationIntentDescription.deactivationIntent] Describes
    * the intent or reason for deactivating the node. The possible values are
-   * following.
-   * . Possible values include: 'Pause', 'Restart', 'RemoveData'
+   * following. Possible values include: 'Pause', 'Restart', 'RemoveData'
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -4845,7 +4711,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - Compose - Filter that matches input with ApplicationTypeDefinitionKind
    * value Compose. The value is 2.
    *
-   *
    * @param {boolean} [options.excludeApplicationParameters] The flag that
    * specifies whether application parameters will be excluded from the result.
    *
@@ -4911,7 +4776,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * value is 1.
    * - Compose - Filter that matches input with ApplicationTypeDefinitionKind
    * value Compose. The value is 2.
-   *
    *
    * @param {boolean} [options.excludeApplicationParameters] The flag that
    * specifies whether application parameters will be excluded from the result.
@@ -5123,7 +4987,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * specified by the relativePathInImageStore, or by using the URI of the
    * external '.sfpkg'.
    *
-   *
    * @param {object} provisionApplicationTypeDescriptionBaseRequiredBodyParam The
    * base type of provision application type description which supports either
    * image store-based provision or external store-based provision.
@@ -5168,7 +5031,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The provision operation can be performed either on the application package
    * specified by the relativePathInImageStore, or by using the URI of the
    * external '.sfpkg'.
-   *
    *
    * @param {object} provisionApplicationTypeDescriptionBaseRequiredBodyParam The
    * base type of provision application type description which supports either
@@ -5595,7 +5457,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.serviceManifestName] The name of the service
@@ -5637,7 +5498,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -5701,7 +5561,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {string} serviceTypeName Specifies the name of a Service Fabric
    * service type.
    *
@@ -5748,7 +5607,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {string} serviceTypeName Specifies the name of a Service Fabric
    * service type.
@@ -5824,7 +5682,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - Limiting the custom capacity metrics to limit the total consumption of
    * this metric by the services of this application
    *
-   *
    * @param {number} [applicationDescription.applicationCapacity.minimumNodes]
    * The minimum number of nodes where Service Fabric will reserve capacity for
    * this application. Note that this does not mean that the services of this
@@ -5890,7 +5747,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * run on
    * - Limiting the custom capacity metrics to limit the total consumption of
    * this metric by the services of this application
-   *
    *
    * @param {number} [applicationDescription.applicationCapacity.minimumNodes]
    * The minimum number of nodes where Service Fabric will reserve capacity for
@@ -5965,7 +5821,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {boolean} [options.forceRemove] Remove a Service Fabric application
@@ -6008,7 +5863,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -6070,7 +5924,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -6106,7 +5959,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -6171,7 +6023,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * value is 1.
    * - Compose - Filter that matches input with ApplicationDefinitionKind value
    * Compose. The value is 2.
-   *
    *
    * @param {string} [options.applicationTypeName] The application type name used
    * to filter the applications to query for. This value should not contain the
@@ -6238,7 +6089,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * value is 1.
    * - Compose - Filter that matches input with ApplicationDefinitionKind value
    * Compose. The value is 2.
-   *
    *
    * @param {string} [options.applicationTypeName] The application type name used
    * to filter the applications to query for. This value should not contain the
@@ -6315,7 +6165,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {boolean} [options.excludeApplicationParameters] The flag that
@@ -6352,7 +6201,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -6409,7 +6257,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.eventsHealthStateFilter] Allows filtering the
@@ -6435,7 +6282,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.deployedApplicationsHealthStateFilter] Allows
    * filtering of the deployed applications health state objects returned in the
    * result of application health query based on their health state.
@@ -6459,7 +6305,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.servicesHealthStateFilter] Allows filtering of the
    * services health state objects returned in the result of services health
@@ -6485,13 +6330,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -6524,7 +6367,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.eventsHealthStateFilter] Allows filtering the
@@ -6550,7 +6392,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.deployedApplicationsHealthStateFilter] Allows
    * filtering of the deployed applications health state objects returned in the
    * result of application health query based on their health state.
@@ -6574,7 +6415,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.servicesHealthStateFilter] Allows filtering of the
    * services health state objects returned in the result of services health
@@ -6600,13 +6440,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -6660,7 +6498,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.eventsHealthStateFilter] Allows filtering the
@@ -6686,7 +6523,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.deployedApplicationsHealthStateFilter] Allows
    * filtering of the deployed applications health state objects returned in the
    * result of application health query based on their health state.
@@ -6710,7 +6546,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.servicesHealthStateFilter] Allows filtering of the
    * services health state objects returned in the result of services health
@@ -6736,20 +6571,17 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
    *
-   *
    * @param {object} [options.applicationHealthPolicy] Describes the health
    * policies used to evaluate the health of an application or one of its
    * children.
    * If not present, the health evaluation uses the health policy from
    * application manifest or the default health policy.
-   *
    *
    * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -6766,7 +6598,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
@@ -6786,7 +6617,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -6800,7 +6630,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -6816,7 +6645,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service type.
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
-   *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
    * The map with service type health policy per service type name. The map is
@@ -6855,7 +6683,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.eventsHealthStateFilter] Allows filtering the
@@ -6881,7 +6708,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.deployedApplicationsHealthStateFilter] Allows
    * filtering of the deployed applications health state objects returned in the
    * result of application health query based on their health state.
@@ -6905,7 +6731,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.servicesHealthStateFilter] Allows filtering of the
    * services health state objects returned in the result of services health
@@ -6931,20 +6756,17 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
    *
-   *
    * @param {object} [options.applicationHealthPolicy] Describes the health
    * policies used to evaluate the health of an application or one of its
    * children.
    * If not present, the health evaluation uses the health policy from
    * application manifest or the default health policy.
-   *
    *
    * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -6961,7 +6783,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
@@ -6981,7 +6802,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -6995,7 +6815,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -7011,7 +6830,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service type.
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
-   *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
    * The map with service type health policy per service type name. The map is
@@ -7067,7 +6885,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * To see whether the report was applied in the health store, get application
    * health and check that the report appears in the HealthEvents section.
    *
-   *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -7076,14 +6893,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
    * reports sent to the health manager.
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -7099,7 +6914,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -7119,7 +6933,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -7131,14 +6944,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -7151,7 +6962,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -7173,7 +6983,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -7206,7 +7015,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * To see whether the report was applied in the health store, get application
    * health and check that the report appears in the HealthEvents section.
    *
-   *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -7215,14 +7023,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
    * reports sent to the health manager.
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -7238,7 +7044,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -7258,7 +7063,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -7270,14 +7074,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -7290,7 +7092,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -7312,7 +7113,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -7362,7 +7162,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} applicationUpgradeDescription Parameters for an application
    * upgrade.
    *
@@ -7409,8 +7208,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Invalid indicates the failure action is invalid. Rollback specifies that the
    * upgrade will start rolling back automatically.
    * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
-   * mode.
-   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [applicationUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
@@ -7453,7 +7251,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Defines a health policy used to evaluate the health of an application or one
    * of its children entities.
    *
-   *
    * @param {boolean}
    * [applicationUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -7470,7 +7267,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
@@ -7490,7 +7286,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -7504,7 +7299,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -7520,7 +7314,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service type.
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
-   *
    *
    * @param {array}
    * [applicationUpgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
@@ -7559,7 +7352,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} applicationUpgradeDescription Parameters for an application
    * upgrade.
    *
@@ -7606,8 +7398,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Invalid indicates the failure action is invalid. Rollback specifies that the
    * upgrade will start rolling back automatically.
    * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
-   * mode.
-   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [applicationUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
@@ -7650,7 +7441,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Defines a health policy used to evaluate the health of an application or one
    * of its children entities.
    *
-   *
    * @param {boolean}
    * [applicationUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -7667,7 +7457,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
@@ -7687,7 +7476,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -7701,7 +7489,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [applicationUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -7717,7 +7504,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service type.
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
-   *
    *
    * @param {array}
    * [applicationUpgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
@@ -7774,7 +7560,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -7806,7 +7591,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -7863,7 +7647,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} applicationUpgradeUpdateDescription Parameters for updating
    * an existing application upgrade.
    *
@@ -7878,7 +7661,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy] Defines a
    * health policy used to evaluate the health of an application or one of its
    * children entities.
-   *
    *
    * @param {boolean}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.considerWarningAsError]
@@ -7896,7 +7678,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
@@ -7916,7 +7697,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -7930,7 +7710,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -7946,7 +7725,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service type.
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
-   *
    *
    * @param {array}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
@@ -7985,8 +7763,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Invalid indicates the failure action is invalid. Rollback specifies that the
    * upgrade will start rolling back automatically.
    * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
-   * mode.
-   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [applicationUpgradeUpdateDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
@@ -8060,7 +7837,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} applicationUpgradeUpdateDescription Parameters for updating
    * an existing application upgrade.
    *
@@ -8075,7 +7851,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy] Defines a
    * health policy used to evaluate the health of an application or one of its
    * children entities.
-   *
    *
    * @param {boolean}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.considerWarningAsError]
@@ -8093,7 +7868,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
@@ -8113,7 +7887,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -8127,7 +7900,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -8143,7 +7915,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service type.
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
-   *
    *
    * @param {array}
    * [applicationUpgradeUpdateDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
@@ -8182,8 +7953,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Invalid indicates the failure action is invalid. Rollback specifies that the
    * upgrade will start rolling back automatically.
    * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
-   * mode.
-   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [applicationUpgradeUpdateDescription.updateDescription.healthCheckWaitDurationInMilliseconds]
@@ -8274,7 +8044,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} resumeApplicationUpgradeDescription Describes the parameters
    * for resuming an application upgrade.
    *
@@ -8314,7 +8083,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} resumeApplicationUpgradeDescription Describes the parameters
    * for resuming an application upgrade.
@@ -8376,7 +8144,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -8412,7 +8179,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -8461,7 +8227,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * provided node name does not point to any active Service Fabric nodes on the
    * cluster.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {object} [options] Optional Parameters.
@@ -8478,7 +8243,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * When set to true, the query goes in parallel to the node and the health
    * system service before the results are merged.
    * As a result, the query is more expensive and may take a longer time.
-   *
    *
    * @param {string} [options.continuationToken] The continuation token parameter
    * is used to obtain next set of results. A continuation token with a non-empty
@@ -8518,7 +8282,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * provided node name does not point to any active Service Fabric nodes on the
    * cluster.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {object} [options] Optional Parameters.
@@ -8535,7 +8298,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * When set to true, the query goes in parallel to the node and the health
    * system service before the results are merged.
    * As a result, the query is more expensive and may take a longer time.
-   *
    *
    * @param {string} [options.continuationToken] The continuation token parameter
    * is used to obtain next set of results. A continuation token with a non-empty
@@ -8595,7 +8357,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * provided node name does not point to any active Service Fabric nodes on the
    * cluster.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
@@ -8605,7 +8366,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -8621,7 +8381,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * When set to true, the query goes in parallel to the node and the health
    * system service before the results are merged.
    * As a result, the query is more expensive and may take a longer time.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8645,7 +8404,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * provided node name does not point to any active Service Fabric nodes on the
    * cluster.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
@@ -8655,7 +8413,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -8671,7 +8428,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * When set to true, the query goes in parallel to the node and the health
    * system service before the results are merged.
    * As a result, the query is more expensive and may take a longer time.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -8724,7 +8480,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.eventsHealthStateFilter] Allows filtering the
@@ -8749,7 +8504,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.deployedServicePackagesHealthStateFilter] Allows
    * filtering of the deployed service package health state objects returned in
@@ -8776,13 +8530,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -8820,7 +8572,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.eventsHealthStateFilter] Allows filtering the
@@ -8845,7 +8596,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.deployedServicePackagesHealthStateFilter] Allows
    * filtering of the deployed service package health state objects returned in
@@ -8872,13 +8622,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -8931,7 +8679,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the ApplicationHealthPolicy. The rest of the fields are ignored while
    * evaluating the health of the deployed application.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
@@ -8941,7 +8688,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -8968,7 +8714,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.deployedServicePackagesHealthStateFilter] Allows
    * filtering of the deployed service package health state objects returned in
    * the result of deployed application health query based on their health state.
@@ -8994,13 +8739,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {object} [options.applicationHealthPolicy] Describes the health
    * policies used to evaluate the health of an application or one of its
    * children.
    * If not present, the health evaluation uses the health policy from
    * application manifest or the default health policy.
-   *
    *
    * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -9017,7 +8760,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
@@ -9037,7 +8779,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -9051,7 +8792,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -9068,7 +8808,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
    *
-   *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
    * The map with service type health policy per service type name. The map is
    * empty by default.
@@ -9078,7 +8817,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -9111,7 +8849,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the ApplicationHealthPolicy. The rest of the fields are ignored while
    * evaluating the health of the deployed application.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
@@ -9121,7 +8858,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9148,7 +8884,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.deployedServicePackagesHealthStateFilter] Allows
    * filtering of the deployed service package health state objects returned in
    * the result of deployed application health query based on their health state.
@@ -9174,13 +8909,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {object} [options.applicationHealthPolicy] Describes the health
    * policies used to evaluate the health of an application or one of its
    * children.
    * If not present, the health evaluation uses the health policy from
    * application manifest or the default health policy.
-   *
    *
    * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -9197,7 +8930,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
@@ -9217,7 +8949,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -9231,7 +8962,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -9248,7 +8978,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
    *
-   *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
    * The map with service type health policy per service type name. The map is
    * empty by default.
@@ -9258,7 +8987,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -9313,7 +9041,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application health and check that the report appears in the HealthEvents
    * section.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
@@ -9324,14 +9051,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
    * reports sent to the health manager.
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -9347,7 +9072,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -9367,7 +9091,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -9379,14 +9102,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -9399,7 +9120,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9421,7 +9141,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -9456,7 +9175,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application health and check that the report appears in the HealthEvents
    * section.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
@@ -9467,14 +9185,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
    * reports sent to the health manager.
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -9490,7 +9206,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -9510,7 +9225,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -9522,14 +9236,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -9542,7 +9254,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9564,7 +9275,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -9689,7 +9399,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.serviceTypeName] The service type name used to
@@ -9733,7 +9442,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9798,7 +9506,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -9806,7 +9513,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9841,7 +9547,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -9849,7 +9554,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9903,7 +9607,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -9936,7 +9639,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -9991,7 +9693,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} serviceDescription The information necessary to create a
    * service.
@@ -10083,7 +9784,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} serviceDescription The information necessary to create a
    * service.
@@ -10194,7 +9894,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} serviceFromTemplateDescription Describes the service that
    * needs to be created from the template defined in the application manifest.
    *
@@ -10253,7 +9952,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} serviceFromTemplateDescription Describes the service that
    * needs to be created from the template defined in the application manifest.
@@ -10333,7 +10031,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {boolean} [options.forceRemove] Remove a Service Fabric application
@@ -10375,7 +10072,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -10441,7 +10137,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} serviceUpdateDescription The information necessary to update
    * a service.
    *
@@ -10478,7 +10173,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 512.
    * - ScalingPolicy - Indicates the ScalingPolicies property is set. The value
    * is 1024.
-   *
    *
    * @param {string} [serviceUpdateDescription.placementConstraints] The
    * placement constraints as a string. Placement constraints are boolean
@@ -10545,7 +10239,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} serviceUpdateDescription The information necessary to update
    * a service.
    *
@@ -10582,7 +10275,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 512.
    * - ScalingPolicy - Indicates the ScalingPolicies property is set. The value
    * is 1024.
-   *
    *
    * @param {string} [serviceUpdateDescription.placementConstraints] The
    * placement constraints as a string. Placement constraints are boolean
@@ -10659,7 +10351,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -10691,7 +10382,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -10741,7 +10431,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * If you specify a service that does not exist in the health store, this
    * request returns an error.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -10749,7 +10438,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -10776,7 +10464,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.partitionsHealthStateFilter] Allows filtering of
    * the partitions health state objects returned in the result of service health
    * query based on their health state.
@@ -10801,13 +10488,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -10836,7 +10521,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * If you specify a service that does not exist in the health store, this
    * request returns an error.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -10844,7 +10528,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -10871,7 +10554,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.partitionsHealthStateFilter] Allows filtering of
    * the partitions health state objects returned in the result of service health
    * query based on their health state.
@@ -10896,13 +10578,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -10956,7 +10636,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * If you specify a service that does not exist in the health store, this
    * request returns an error.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -10964,7 +10643,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -10991,7 +10669,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.partitionsHealthStateFilter] Allows filtering of
    * the partitions health state objects returned in the result of service health
    * query based on their health state.
@@ -11016,13 +10693,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {object} [options.applicationHealthPolicy] Describes the health
    * policies used to evaluate the health of an application or one of its
    * children.
    * If not present, the health evaluation uses the health policy from
    * application manifest or the default health policy.
-   *
    *
    * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -11039,7 +10714,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
@@ -11059,7 +10733,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -11073,7 +10746,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -11090,7 +10762,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
    *
-   *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
    * The map with service type health policy per service type name. The map is
    * empty by default.
@@ -11100,7 +10771,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -11135,7 +10805,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * If you specify a service that does not exist in the health store, this
    * request returns an error.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -11143,7 +10812,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -11170,7 +10838,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.partitionsHealthStateFilter] Allows filtering of
    * the partitions health state objects returned in the result of service health
    * query based on their health state.
@@ -11195,13 +10862,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {object} [options.applicationHealthPolicy] Describes the health
    * policies used to evaluate the health of an application or one of its
    * children.
    * If not present, the health evaluation uses the health policy from
    * application manifest or the default health policy.
-   *
    *
    * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -11218,7 +10883,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
@@ -11238,7 +10902,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -11252,7 +10915,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -11269,7 +10931,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
    *
-   *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
    * The map with service type health policy per service type name. The map is
    * empty by default.
@@ -11279,7 +10940,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -11332,7 +10992,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * GetServiceHealth and check that the report appears in the HealthEvents
    * section.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -11341,14 +11000,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
    * reports sent to the health manager.
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -11364,7 +11021,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -11384,7 +11040,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -11396,14 +11051,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -11416,7 +11069,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -11438,7 +11090,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -11472,7 +11123,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * GetServiceHealth and check that the report appears in the HealthEvents
    * section.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -11481,14 +11131,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} healthInformation Describes the health information for the
    * health report. This information needs to be present in all of the health
    * reports sent to the health manager.
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -11504,7 +11152,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -11524,7 +11171,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -11536,14 +11182,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -11556,7 +11200,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -11578,7 +11221,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -11628,7 +11270,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.partitionKeyType] Key type for the partition. This
@@ -11643,7 +11284,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - Named (3) - Indicates that the PartitionKeyValue parameter is a name of
    * the partition. This is valid for the partitions with partitioning scheme as
    * Named. The value is 3.
-   *
    *
    * @param {string} [options.partitionKeyValue] Partition key. This is required
    * if the partition scheme for the service is Int64Range or Named.
@@ -11682,7 +11322,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.partitionKeyType] Key type for the partition. This
@@ -11697,7 +11336,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - Named (3) - Indicates that the PartitionKeyValue parameter is a name of
    * the partition. This is valid for the partitions with partitioning scheme as
    * Named. The value is 3.
-   *
    *
    * @param {string} [options.partitionKeyValue] Partition key. This is required
    * if the partition scheme for the service is Int64Range or Named.
@@ -11757,7 +11395,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.continuationToken] The continuation token parameter
@@ -11798,7 +11435,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -12000,7 +11636,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * If you specify a partition that does not exist in the health store, this
    * request returns an error.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
@@ -12028,7 +11663,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.replicasHealthStateFilter] Allows filtering the
    * collection of ReplicaHealthState objects on the partition. The value can be
    * obtained from members or bitwise operations on members of HealthStateFilter.
@@ -12052,13 +11686,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -12086,7 +11718,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * If you specify a partition that does not exist in the health store, this
    * request returns an error.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
@@ -12114,7 +11745,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.replicasHealthStateFilter] Allows filtering the
    * collection of ReplicaHealthState objects on the partition. The value can be
    * obtained from members or bitwise operations on members of HealthStateFilter.
@@ -12138,13 +11768,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {boolean} [options.excludeHealthStatistics] Indicates whether the
    * health statistics should be returned as part of the query result. False by
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -12199,7 +11827,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * If you specify a partition that does not exist in the health store, this
    * request returns an error.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
@@ -12227,7 +11854,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.replicasHealthStateFilter] Allows filtering the
    * collection of ReplicaHealthState objects on the partition. The value can be
    * obtained from members or bitwise operations on members of HealthStateFilter.
@@ -12251,13 +11877,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {object} [options.applicationHealthPolicy] Describes the health
    * policies used to evaluate the health of an application or one of its
    * children.
    * If not present, the health evaluation uses the health policy from
    * application manifest or the default health policy.
-   *
    *
    * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -12274,7 +11898,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
@@ -12294,7 +11917,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -12308,7 +11930,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -12325,7 +11946,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
    *
-   *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
    * The map with service type health policy per service type name. The map is
    * empty by default.
@@ -12335,7 +11955,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -12371,7 +11990,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * If you specify a partition that does not exist in the health store, this
    * request returns an error.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
@@ -12399,7 +12017,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {number} [options.replicasHealthStateFilter] Allows filtering the
    * collection of ReplicaHealthState objects on the partition. The value can be
    * obtained from members or bitwise operations on members of HealthStateFilter.
@@ -12423,13 +12040,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {object} [options.applicationHealthPolicy] Describes the health
    * policies used to evaluate the health of an application or one of its
    * children.
    * If not present, the health evaluation uses the health policy from
    * application manifest or the default health policy.
-   *
    *
    * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -12446,7 +12061,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
@@ -12466,7 +12080,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -12480,7 +12093,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -12497,7 +12109,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
    *
-   *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
    * The map with service type health policy per service type name. The map is
    * empty by default.
@@ -12507,7 +12118,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * default.
    * The statistics show the number of children entities in health state Ok,
    * Warning, and Error.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -12560,7 +12170,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * GetPartitionHealth and check that the report appears in the HealthEvents
    * section.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} healthInformation Describes the health information for the
@@ -12569,7 +12178,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -12585,7 +12193,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -12605,7 +12212,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -12617,14 +12223,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -12637,7 +12241,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -12659,7 +12262,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -12693,7 +12295,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * GetPartitionHealth and check that the report appears in the HealthEvents
    * section.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} healthInformation Describes the health information for the
@@ -12702,7 +12303,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -12718,7 +12318,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -12738,7 +12337,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -12750,14 +12348,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -12770,7 +12366,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -12792,7 +12387,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -12837,7 +12431,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Each report includes the load metric name, value, and last reported time in
    * UTC.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
@@ -12866,7 +12459,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The response includes a list of load reports for a Service Fabric partition.
    * Each report includes the load metric name, value, and last reported time in
    * UTC.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -13070,7 +12662,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -13106,7 +12697,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -13310,7 +12900,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
    *
-   *
    * @param {object} repairTask Describes the repair task to be created or
    * updated.
    *
@@ -13325,11 +12914,9 @@ export default class ServiceFabricClient extends ServiceClient {
    * update will only succeed if the actual current version of the repair task
    * matches this value.
    *
-   *
    * @param {string} [repairTask.description] A description of the purpose of the
    * repair task, or other informational details.
    * May be set when the repair task is created, and is immutable once set.
-   *
    *
    * @param {string} repairTask.state The workflow state of the repair task.
    * Valid initial states are Created, Claimed, and Preparing. Possible values
@@ -13342,16 +12929,13 @@ export default class ServiceFabricClient extends ServiceClient {
    * - 2 - Abort of the repair has been requested
    * - 4 - Approval of the repair was forced via client request
    *
-   *
    * @param {string} repairTask.action The requested repair action. Must be
    * specified when the repair task is created, and is immutable once set.
-   *
    *
    * @param {object} [repairTask.target] The target object determines what
    * actions the system will take to prepare for the impact of the repair, prior
    * to approving execution of the repair.
    * May be set when the repair task is created, and is immutable once set.
-   *
    *
    * @param {string} repairTask.target.kind Polymorphic Discriminator
    *
@@ -13367,7 +12951,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Impact must be specified by the repair executor when transitioning to the
    * Preparing state, and is immutable once set.
    *
-   *
    * @param {string} repairTask.impact.kind Polymorphic Discriminator
    *
    * @param {string} [repairTask.resultStatus] A value describing the overall
@@ -13380,17 +12963,14 @@ export default class ServiceFabricClient extends ServiceClient {
    * May be specified in the Restoring and later states, and is immutable once
    * set.
    *
-   *
    * @param {string} [repairTask.resultDetails] A string providing additional
    * details about the result of the repair task execution.
    * May be specified in the Restoring and later states, and is immutable once
    * set.
    *
-   *
    * @param {object} [repairTask.history] An object that contains timestamps of
    * the repair task's state transitions.
    * These timestamps are updated by the system, and cannot be directly modified.
-   *
    *
    * @param {date} [repairTask.history.createdUtcTimestamp] The time when the
    * repair task entered the Created state.
@@ -13476,7 +13056,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
    *
-   *
    * @param {object} repairTask Describes the repair task to be created or
    * updated.
    *
@@ -13491,11 +13070,9 @@ export default class ServiceFabricClient extends ServiceClient {
    * update will only succeed if the actual current version of the repair task
    * matches this value.
    *
-   *
    * @param {string} [repairTask.description] A description of the purpose of the
    * repair task, or other informational details.
    * May be set when the repair task is created, and is immutable once set.
-   *
    *
    * @param {string} repairTask.state The workflow state of the repair task.
    * Valid initial states are Created, Claimed, and Preparing. Possible values
@@ -13508,16 +13085,13 @@ export default class ServiceFabricClient extends ServiceClient {
    * - 2 - Abort of the repair has been requested
    * - 4 - Approval of the repair was forced via client request
    *
-   *
    * @param {string} repairTask.action The requested repair action. Must be
    * specified when the repair task is created, and is immutable once set.
-   *
    *
    * @param {object} [repairTask.target] The target object determines what
    * actions the system will take to prepare for the impact of the repair, prior
    * to approving execution of the repair.
    * May be set when the repair task is created, and is immutable once set.
-   *
    *
    * @param {string} repairTask.target.kind Polymorphic Discriminator
    *
@@ -13533,7 +13107,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Impact must be specified by the repair executor when transitioning to the
    * Preparing state, and is immutable once set.
    *
-   *
    * @param {string} repairTask.impact.kind Polymorphic Discriminator
    *
    * @param {string} [repairTask.resultStatus] A value describing the overall
@@ -13546,17 +13119,14 @@ export default class ServiceFabricClient extends ServiceClient {
    * May be specified in the Restoring and later states, and is immutable once
    * set.
    *
-   *
    * @param {string} [repairTask.resultDetails] A string providing additional
    * details about the result of the repair task execution.
    * May be specified in the Restoring and later states, and is immutable once
    * set.
    *
-   *
    * @param {object} [repairTask.history] An object that contains timestamps of
    * the repair task's state transitions.
    * These timestamps are updated by the system, and cannot be directly modified.
-   *
    *
    * @param {date} [repairTask.history.createdUtcTimestamp] The time when the
    * repair task entered the Created state.
@@ -13647,7 +13217,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
    *
-   *
    * @param {object} repairTaskCancelDescription Describes the repair task to be
    * cancelled.
    *
@@ -13682,7 +13251,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
-   *
    *
    * @param {object} repairTaskCancelDescription Describes the repair task to be
    * cancelled.
@@ -13738,7 +13306,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
    *
-   *
    * @param {object} repairTaskDeleteDescription Describes the repair task to be
    * deleted.
    *
@@ -13768,7 +13335,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
-   *
    *
    * @param {object} repairTaskDeleteDescription Describes the repair task to be
    * deleted.
@@ -13818,7 +13384,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.taskIdFilter] The repair task ID prefix to be
@@ -13834,7 +13399,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - 16 - Executing
    * - 32 - Restoring
    * - 64 - Completed
-   *
    *
    * @param {string} [options.executorFilter] The name of the repair executor
    * whose claimed tasks should be included in the list.
@@ -13856,7 +13420,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.taskIdFilter] The repair task ID prefix to be
@@ -13872,7 +13435,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - 16 - Executing
    * - 32 - Restoring
    * - 64 - Completed
-   *
    *
    * @param {string} [options.executorFilter] The name of the repair executor
    * whose claimed tasks should be included in the list.
@@ -13912,7 +13474,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
    *
-   *
    * @param {object} repairTaskApproveDescription Describes the repair task to be
    * approved.
    *
@@ -13942,7 +13503,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
-   *
    *
    * @param {object} repairTaskApproveDescription Describes the repair task to be
    * approved.
@@ -13993,7 +13553,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
    *
-   *
    * @param {object} repairTaskUpdateHealthPolicyDescription Describes the repair
    * task healthy policy to be updated.
    *
@@ -14035,7 +13594,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
-   *
    *
    * @param {object} repairTaskUpdateHealthPolicyDescription Describes the repair
    * task healthy policy to be updated.
@@ -14098,7 +13656,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
    *
-   *
    * @param {object} repairTask Describes the repair task to be created or
    * updated.
    *
@@ -14113,11 +13670,9 @@ export default class ServiceFabricClient extends ServiceClient {
    * update will only succeed if the actual current version of the repair task
    * matches this value.
    *
-   *
    * @param {string} [repairTask.description] A description of the purpose of the
    * repair task, or other informational details.
    * May be set when the repair task is created, and is immutable once set.
-   *
    *
    * @param {string} repairTask.state The workflow state of the repair task.
    * Valid initial states are Created, Claimed, and Preparing. Possible values
@@ -14130,16 +13685,13 @@ export default class ServiceFabricClient extends ServiceClient {
    * - 2 - Abort of the repair has been requested
    * - 4 - Approval of the repair was forced via client request
    *
-   *
    * @param {string} repairTask.action The requested repair action. Must be
    * specified when the repair task is created, and is immutable once set.
-   *
    *
    * @param {object} [repairTask.target] The target object determines what
    * actions the system will take to prepare for the impact of the repair, prior
    * to approving execution of the repair.
    * May be set when the repair task is created, and is immutable once set.
-   *
    *
    * @param {string} repairTask.target.kind Polymorphic Discriminator
    *
@@ -14155,7 +13707,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Impact must be specified by the repair executor when transitioning to the
    * Preparing state, and is immutable once set.
    *
-   *
    * @param {string} repairTask.impact.kind Polymorphic Discriminator
    *
    * @param {string} [repairTask.resultStatus] A value describing the overall
@@ -14168,17 +13719,14 @@ export default class ServiceFabricClient extends ServiceClient {
    * May be specified in the Restoring and later states, and is immutable once
    * set.
    *
-   *
    * @param {string} [repairTask.resultDetails] A string providing additional
    * details about the result of the repair task execution.
    * May be specified in the Restoring and later states, and is immutable once
    * set.
    *
-   *
    * @param {object} [repairTask.history] An object that contains timestamps of
    * the repair task's state transitions.
    * These timestamps are updated by the system, and cannot be directly modified.
-   *
    *
    * @param {date} [repairTask.history.createdUtcTimestamp] The time when the
    * repair task entered the Created state.
@@ -14250,7 +13798,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
    *
-   *
    * @param {object} repairTask Describes the repair task to be created or
    * updated.
    *
@@ -14265,11 +13812,9 @@ export default class ServiceFabricClient extends ServiceClient {
    * update will only succeed if the actual current version of the repair task
    * matches this value.
    *
-   *
    * @param {string} [repairTask.description] A description of the purpose of the
    * repair task, or other informational details.
    * May be set when the repair task is created, and is immutable once set.
-   *
    *
    * @param {string} repairTask.state The workflow state of the repair task.
    * Valid initial states are Created, Claimed, and Preparing. Possible values
@@ -14282,16 +13827,13 @@ export default class ServiceFabricClient extends ServiceClient {
    * - 2 - Abort of the repair has been requested
    * - 4 - Approval of the repair was forced via client request
    *
-   *
    * @param {string} repairTask.action The requested repair action. Must be
    * specified when the repair task is created, and is immutable once set.
-   *
    *
    * @param {object} [repairTask.target] The target object determines what
    * actions the system will take to prepare for the impact of the repair, prior
    * to approving execution of the repair.
    * May be set when the repair task is created, and is immutable once set.
-   *
    *
    * @param {string} repairTask.target.kind Polymorphic Discriminator
    *
@@ -14307,7 +13849,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Impact must be specified by the repair executor when transitioning to the
    * Preparing state, and is immutable once set.
    *
-   *
    * @param {string} repairTask.impact.kind Polymorphic Discriminator
    *
    * @param {string} [repairTask.resultStatus] A value describing the overall
@@ -14320,17 +13861,14 @@ export default class ServiceFabricClient extends ServiceClient {
    * May be specified in the Restoring and later states, and is immutable once
    * set.
    *
-   *
    * @param {string} [repairTask.resultDetails] A string providing additional
    * details about the result of the repair task execution.
    * May be specified in the Restoring and later states, and is immutable once
    * set.
    *
-   *
    * @param {object} [repairTask.history] An object that contains timestamps of
    * the repair task's state transitions.
    * These timestamps are updated by the system, and cannot be directly modified.
-   *
    *
    * @param {date} [repairTask.history.createdUtcTimestamp] The time when the
    * repair task entered the Created state.
@@ -14589,7 +14127,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Use EventsHealthStateFilter to filter the collection of health events
    * reported on the replica based on the health state.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {string} replicaId The identifier of the replica.
@@ -14618,7 +14155,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -14644,7 +14180,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Use EventsHealthStateFilter to filter the collection of health events
    * reported on the replica based on the health state.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {string} replicaId The identifier of the replica.
@@ -14673,7 +14208,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -14723,7 +14257,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the ApplicationHealthPolicy. The rest of the fields are ignored while
    * evaluating the health of the replica.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {string} replicaId The identifier of the replica.
@@ -14753,13 +14286,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {object} [options.applicationHealthPolicy] Describes the health
    * policies used to evaluate the health of an application or one of its
    * children.
    * If not present, the health evaluation uses the health policy from
    * application manifest or the default health policy.
-   *
    *
    * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -14776,7 +14307,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
@@ -14796,7 +14326,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -14810,7 +14339,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -14826,7 +14354,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service type.
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
-   *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
    * The map with service type health policy per service type name. The map is
@@ -14861,7 +14388,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the ApplicationHealthPolicy. The rest of the fields are ignored while
    * evaluating the health of the replica.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {string} replicaId The identifier of the replica.
@@ -14891,13 +14417,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {object} [options.applicationHealthPolicy] Describes the health
    * policies used to evaluate the health of an application or one of its
    * children.
    * If not present, the health evaluation uses the health policy from
    * application manifest or the default health policy.
-   *
    *
    * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -14914,7 +14438,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
@@ -14934,7 +14457,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -14948,7 +14470,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -14964,7 +14485,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service type.
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
-   *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
    * The map with service type health policy per service type name. The map is
@@ -15021,7 +14541,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * GetReplicaHealth and check that the report appears in the HealthEvents
    * section.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {string} replicaId The identifier of the replica.
@@ -15037,7 +14556,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
    *
-   *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
    * The property is a string and not a fixed enumeration to allow the reporter
@@ -15052,7 +14570,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -15072,7 +14589,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -15084,14 +14600,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -15104,7 +14618,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -15126,7 +14639,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -15160,7 +14672,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * GetReplicaHealth and check that the report appears in the HealthEvents
    * section.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {string} replicaId The identifier of the replica.
@@ -15176,7 +14687,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
    *
-   *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
    * The property is a string and not a fixed enumeration to allow the reporter
@@ -15191,7 +14701,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -15211,7 +14720,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -15223,14 +14731,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -15243,7 +14749,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -15265,7 +14770,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -15321,7 +14825,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {uuid} [options.partitionId] The identity of the partition.
@@ -15364,7 +14867,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -15774,7 +15276,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -15809,7 +15310,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -15866,7 +15366,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {string} servicePackageName The name of the service package.
    *
    * @param {object} [options] Optional Parameters.
@@ -15905,7 +15404,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {string} servicePackageName The name of the service package.
    *
@@ -15964,7 +15462,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {string} servicePackageName The name of the service package.
    *
    * @param {object} [options] Optional Parameters.
@@ -15991,7 +15488,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -16028,7 +15524,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {string} servicePackageName The name of the service package.
    *
    * @param {object} [options] Optional Parameters.
@@ -16055,7 +15550,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 8.
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -16107,7 +15601,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the fields are ignored while evaluating the health of the deployed service
    * package.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
@@ -16117,7 +15610,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {string} servicePackageName The name of the service package.
    *
@@ -16146,13 +15638,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {object} [options.applicationHealthPolicy] Describes the health
    * policies used to evaluate the health of an application or one of its
    * children.
    * If not present, the health evaluation uses the health policy from
    * application manifest or the default health policy.
-   *
    *
    * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -16169,7 +15659,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
@@ -16189,7 +15678,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -16203,7 +15691,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -16219,7 +15706,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service type.
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
-   *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
    * The map with service type health policy per service type name. The map is
@@ -16255,7 +15741,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the fields are ignored while evaluating the health of the deployed service
    * package.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
@@ -16265,7 +15750,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {string} servicePackageName The name of the service package.
    *
@@ -16294,13 +15778,11 @@ export default class ServiceFabricClient extends ServiceClient {
    * - All - Filter that matches input with any HealthState value. The value is
    * 65535.
    *
-   *
    * @param {object} [options.applicationHealthPolicy] Describes the health
    * policies used to evaluate the health of an application or one of its
    * children.
    * If not present, the health evaluation uses the health policy from
    * application manifest or the default health policy.
-   *
    *
    * @param {boolean} [options.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -16317,7 +15799,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy] The health
@@ -16337,7 +15818,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -16351,7 +15831,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [options.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -16367,7 +15846,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service type.
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
-   *
    *
    * @param {array} [options.applicationHealthPolicy.serviceTypeHealthPolicyMap]
    * The map with service type health policy per service type name. The map is
@@ -16426,7 +15904,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service package health and check that the report appears in the HealthEvents
    * section.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
@@ -16437,7 +15914,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {string} servicePackageName The name of the service package.
    *
    * @param {object} healthInformation Describes the health information for the
@@ -16446,7 +15922,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -16462,7 +15937,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -16482,7 +15956,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -16494,14 +15967,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -16514,7 +15985,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -16536,7 +16006,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -16571,7 +16040,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service package health and check that the report appears in the HealthEvents
    * section.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {string} applicationId The identity of the application. This is
@@ -16582,7 +16050,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {string} servicePackageName The name of the service package.
    *
    * @param {object} healthInformation Describes the health information for the
@@ -16591,7 +16058,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} healthInformation.sourceId The source name that identifies
    * the client/watchdog/system component that generated the health information.
-   *
    *
    * @param {string} healthInformation.property The property of the health
    * information. An entity can have health reports for different properties.
@@ -16607,7 +16073,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Together with the SourceId, the property uniquely identifies the health
    * information.
-   *
    *
    * @param {string} healthInformation.healthState The health state of a Service
    * Fabric entity such as Cluster, Node, Application, Service, Partition,
@@ -16627,7 +16092,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * If not specified, time to live defaults to infinite value.
    *
-   *
    * @param {string} [healthInformation.description] The description of the
    * health information. It represents free text used to add human readable
    * information about the report.
@@ -16639,14 +16103,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note that when truncated, the description has less than 4096 characters from
    * the original string.
    *
-   *
    * @param {string} [healthInformation.sequenceNumber] The sequence number for
    * this health report as a numeric string.
    * The report sequence number is used by the health store to detect stale
    * reports.
    * If not specified, a sequence number is auto-generated by the health client
    * when a report is added.
-   *
    *
    * @param {boolean} [healthInformation.removeWhenExpired] Value that indicates
    * whether the report is removed from health store when it expires.
@@ -16659,7 +16121,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This way, is the reporter has issues (eg. deadlock) and can't report, the
    * entity is evaluated at error when the health report expires.
    * This flags the entity as being in Error health state.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -16681,7 +16142,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * optimize health reporting messages to health store as well as health report
    * processing.
    * By default, reports are not sent immediately.
-   *
    *
    * @param {number} [options.timeout] The server timeout for performing the
    * operation in seconds. This timeout specifies the time duration that the
@@ -16727,7 +16187,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * images to be present on the node before the actual application deployment
    * and upgrade, thus significantly reducing the total time required for the
    * deployment or upgrade.
-   *
    *
    * @param {string} nodeName The name of the node.
    *
@@ -16777,7 +16236,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * images to be present on the node before the actual application deployment
    * and upgrade, thus significantly reducing the total time required for the
    * deployment or upgrade.
-   *
    *
    * @param {string} nodeName The name of the node.
    *
@@ -16851,7 +16309,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.serviceManifestName] The name of a service manifest
@@ -16892,7 +16349,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -16955,7 +16411,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} restartDeployedCodePackageDescription Describes the deployed
    * code package on Service Fabric node to restart.
    *
@@ -16969,7 +16424,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 'SharedProcess' (or if it is not specified, in which case it defaults to
    * 'SharedProcess'), then value of ServicePackageActivationId
    * is always an empty string.
-   *
    *
    * @param {string} restartDeployedCodePackageDescription.codePackageName The
    * name of the code package defined in the service manifest.
@@ -16985,7 +16439,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * package only if the current Instance ID matches the passed in instance ID.
    * Note, passing in the exact instance ID (not 0) in the API is safer, because
    * if ensures at most one restart of the code package.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -17023,7 +16476,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} restartDeployedCodePackageDescription Describes the deployed
    * code package on Service Fabric node to restart.
    *
@@ -17037,7 +16489,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * is 'SharedProcess' (or if it is not specified, in which case it defaults to
    * 'SharedProcess'), then value of ServicePackageActivationId
    * is always an empty string.
-   *
    *
    * @param {string} restartDeployedCodePackageDescription.codePackageName The
    * name of the code package defined in the service manifest.
@@ -17053,7 +16504,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * package only if the current Instance ID matches the passed in instance ID.
    * Note, passing in the exact instance ID (not 0) in the API is safer, because
    * if ensures at most one restart of the code package.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -17108,7 +16558,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {string} serviceManifestName The name of a service manifest
    * registered as part of an application type in a Service Fabric cluster.
    *
@@ -17156,7 +16605,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {string} serviceManifestName The name of a service manifest
    * registered as part of an application type in a Service Fabric cluster.
@@ -17225,7 +16673,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {string} serviceManifestName The name of a service manifest
    * registered as part of an application type in a Service Fabric cluster.
    *
@@ -17285,7 +16732,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {string} serviceManifestName The name of a service manifest
    * registered as part of an application type in a Service Fabric cluster.
@@ -17860,8 +17306,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Invalid indicates the failure action is invalid. Rollback specifies that the
    * upgrade will start rolling back automatically.
    * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
-   * mode.
-   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
@@ -17905,7 +17350,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * health policy used to evaluate the health of an application or one of its
    * children entities.
    *
-   *
    * @param {boolean}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -17922,7 +17366,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
@@ -17942,7 +17385,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -17956,7 +17398,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -17972,7 +17413,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service type.
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
-   *
    *
    * @param {array}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
@@ -18062,8 +17502,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Invalid indicates the failure action is invalid. Rollback specifies that the
    * upgrade will start rolling back automatically.
    * Manual indicates that the upgrade will switch to UnmonitoredManual upgrade
-   * mode.
-   * . Possible values include: 'Invalid', 'Rollback', 'Manual'
+   * mode. Possible values include: 'Invalid', 'Rollback', 'Manual'
    *
    * @param {string}
    * [composeDeploymentUpgradeDescription.monitoringPolicy.healthCheckWaitDurationInMilliseconds]
@@ -18107,7 +17546,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * health policy used to evaluate the health of an application or one of its
    * children entities.
    *
-   *
    * @param {boolean}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.considerWarningAsError]
    * Indicates whether warnings are treated with the same severity as errors.
@@ -18124,7 +17562,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the cluster.
    * The computation rounds up to tolerate one failure on small numbers of nodes.
    * Default percentage is zero.
-   *
    *
    * @param {object}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy]
@@ -18144,7 +17581,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The computation rounds up to tolerate one failure on small numbers of
    * partitions. Default percentage is zero.
    *
-   *
    * @param {number}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyReplicasPerPartition]
    * The maximum allowed percentage of unhealthy replicas per partition. Allowed
@@ -18158,7 +17594,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * over the total number of replicas in the partition.
    * The computation rounds up to tolerate one failure on small numbers of
    * replicas. Default percentage is zero.
-   *
    *
    * @param {number}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.defaultServiceTypeHealthPolicy.maxPercentUnhealthyServices]
@@ -18174,7 +17609,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service type.
    * The computation rounds up to tolerate one failure on small numbers of
    * services. Default percentage is zero.
-   *
    *
    * @param {array}
    * [composeDeploymentUpgradeDescription.applicationHealthPolicy.serviceTypeHealthPolicyMap]
@@ -18224,7 +17658,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Chaos parameters used for running Chaos and the status of the Chaos
    * Schedule.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -18249,7 +17682,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Get the status of Chaos indicating whether or not Chaos is running, the
    * Chaos parameters used for running Chaos and the status of the Chaos
    * Schedule.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -18299,14 +17731,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * clusters](https://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)
    * for more details.
    *
-   *
    * @param {object} chaosParameters Describes all the parameters to configure a
    * Chaos run.
    *
    * @param {string} [chaosParameters.timeToRunInSeconds] Total time (in seconds)
    * for which Chaos will run before automatically stopping. The maximum allowed
    * value is 4,294,967,295 (System.UInt32.MaxValue).
-   *
    *
    * @param {number} [chaosParameters.maxClusterStabilizationTimeoutInSeconds]
    * The maximum amount of time to wait for all cluster entities to become stable
@@ -18315,7 +17745,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * During validation if a cluster entity is not stable and healthy within
    * MaxClusterStabilizationTimeoutInSeconds, Chaos generates a validation failed
    * event.
-   *
    *
    * @param {number} [chaosParameters.maxConcurrentFaults] MaxConcurrentFaults is
    * the maximum number of concurrent faults induced per iteration.
@@ -18326,10 +17755,8 @@ export default class ServiceFabricClient extends ServiceClient {
    * The recommendation is to start with a value of 2 or 3 and to exercise
    * caution while moving up.
    *
-   *
    * @param {boolean} [chaosParameters.enableMoveReplicaFaults] Enables or
    * disables the move primary and move secondary faults.
-   *
    *
    * @param {number} [chaosParameters.waitTimeBetweenFaultsInSeconds] Wait time
    * (in seconds) between consecutive faults within a single iteration.
@@ -18338,18 +17765,15 @@ export default class ServiceFabricClient extends ServiceClient {
    * The recommendation is to start with a value between 1 and 5 and exercise
    * caution while moving up.
    *
-   *
    * @param {number} [chaosParameters.waitTimeBetweenIterationsInSeconds]
    * Time-separation (in seconds) between two consecutive iterations of Chaos.
    * The larger the value, the lower the fault injection rate.
-   *
    *
    * @param {object} [chaosParameters.clusterHealthPolicy] Passed-in cluster
    * health policy is used to validate health of the cluster in between Chaos
    * iterations. If the cluster health is in error or if an unexpected exception
    * happens during fault execution--to provide the cluster with some time to
    * recuperate--Chaos will wait for 30 minutes before the next health-check.
-   *
    *
    * @param {boolean}
    * [chaosParameters.clusterHealthPolicy.considerWarningAsError] Indicates
@@ -18372,7 +17796,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In large clusters, some nodes will always be down or out for repairs, so
    * this percentage should be configured to tolerate that.
    *
-   *
    * @param {number}
    * [chaosParameters.clusterHealthPolicy.maxPercentUnhealthyApplications] The
    * maximum allowed percentage of unhealthy applications before reporting an
@@ -18389,7 +17812,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * ApplicationTypeHealthPolicyMap.
    * The computation rounds up to tolerate one failure on small numbers of
    * applications. Default percentage is zero.
-   *
    *
    * @param {array}
    * [chaosParameters.clusterHealthPolicy.applicationTypeHealthPolicyMap] Defines
@@ -18416,7 +17838,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * enables application type health evaluation using the configuration entry for
    * HealthManager/EnableApplicationTypeHealthEvaluation.
    *
-   *
    * @param {object} [chaosParameters.context] Describes a map, which is a
    * collection of (string, string) type key-value pairs. The map can be used to
    * record information about
@@ -18425,10 +17846,8 @@ export default class ServiceFabricClient extends ServiceClient {
    * This map is set by the starter of the Chaos run to optionally store the
    * context about the specific run.
    *
-   *
    * @param {object} [chaosParameters.context.map] Describes a map that contains
    * a collection of ChaosContextMapItem's.
-   *
    *
    * @param {object} [chaosParameters.chaosTargetFilter] List of cluster entities
    * to target for Chaos faults.
@@ -18437,7 +17856,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Chaos faults all cluster entities.
    * If ChaosTargetFilter is used, Chaos faults only the entities that meet the
    * ChaosTargetFilter specification.
-   *
    *
    * @param {array} [chaosParameters.chaosTargetFilter.nodeTypeInclusionList] A
    * list of node types to include in Chaos faults.
@@ -18453,7 +17871,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * At most 100 node type names can be included in this list, to increase this
    * number, a config upgrade is required for
    * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
-   *
    *
    * @param {array} [chaosParameters.chaosTargetFilter.applicationInclusionList]
    * A list of application URI's to include in Chaos faults.
@@ -18471,7 +17888,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * At most 1000 application names can be included in this list, to increase
    * this number, a config upgrade is required for
    * MaxNumberOfApplicationsInChaosEntityFilter configuration.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -18502,14 +17918,12 @@ export default class ServiceFabricClient extends ServiceClient {
    * clusters](https://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)
    * for more details.
    *
-   *
    * @param {object} chaosParameters Describes all the parameters to configure a
    * Chaos run.
    *
    * @param {string} [chaosParameters.timeToRunInSeconds] Total time (in seconds)
    * for which Chaos will run before automatically stopping. The maximum allowed
    * value is 4,294,967,295 (System.UInt32.MaxValue).
-   *
    *
    * @param {number} [chaosParameters.maxClusterStabilizationTimeoutInSeconds]
    * The maximum amount of time to wait for all cluster entities to become stable
@@ -18518,7 +17932,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * During validation if a cluster entity is not stable and healthy within
    * MaxClusterStabilizationTimeoutInSeconds, Chaos generates a validation failed
    * event.
-   *
    *
    * @param {number} [chaosParameters.maxConcurrentFaults] MaxConcurrentFaults is
    * the maximum number of concurrent faults induced per iteration.
@@ -18529,10 +17942,8 @@ export default class ServiceFabricClient extends ServiceClient {
    * The recommendation is to start with a value of 2 or 3 and to exercise
    * caution while moving up.
    *
-   *
    * @param {boolean} [chaosParameters.enableMoveReplicaFaults] Enables or
    * disables the move primary and move secondary faults.
-   *
    *
    * @param {number} [chaosParameters.waitTimeBetweenFaultsInSeconds] Wait time
    * (in seconds) between consecutive faults within a single iteration.
@@ -18541,18 +17952,15 @@ export default class ServiceFabricClient extends ServiceClient {
    * The recommendation is to start with a value between 1 and 5 and exercise
    * caution while moving up.
    *
-   *
    * @param {number} [chaosParameters.waitTimeBetweenIterationsInSeconds]
    * Time-separation (in seconds) between two consecutive iterations of Chaos.
    * The larger the value, the lower the fault injection rate.
-   *
    *
    * @param {object} [chaosParameters.clusterHealthPolicy] Passed-in cluster
    * health policy is used to validate health of the cluster in between Chaos
    * iterations. If the cluster health is in error or if an unexpected exception
    * happens during fault execution--to provide the cluster with some time to
    * recuperate--Chaos will wait for 30 minutes before the next health-check.
-   *
    *
    * @param {boolean}
    * [chaosParameters.clusterHealthPolicy.considerWarningAsError] Indicates
@@ -18575,7 +17983,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In large clusters, some nodes will always be down or out for repairs, so
    * this percentage should be configured to tolerate that.
    *
-   *
    * @param {number}
    * [chaosParameters.clusterHealthPolicy.maxPercentUnhealthyApplications] The
    * maximum allowed percentage of unhealthy applications before reporting an
@@ -18592,7 +17999,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * ApplicationTypeHealthPolicyMap.
    * The computation rounds up to tolerate one failure on small numbers of
    * applications. Default percentage is zero.
-   *
    *
    * @param {array}
    * [chaosParameters.clusterHealthPolicy.applicationTypeHealthPolicyMap] Defines
@@ -18619,7 +18025,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * enables application type health evaluation using the configuration entry for
    * HealthManager/EnableApplicationTypeHealthEvaluation.
    *
-   *
    * @param {object} [chaosParameters.context] Describes a map, which is a
    * collection of (string, string) type key-value pairs. The map can be used to
    * record information about
@@ -18628,10 +18033,8 @@ export default class ServiceFabricClient extends ServiceClient {
    * This map is set by the starter of the Chaos run to optionally store the
    * context about the specific run.
    *
-   *
    * @param {object} [chaosParameters.context.map] Describes a map that contains
    * a collection of ChaosContextMapItem's.
-   *
    *
    * @param {object} [chaosParameters.chaosTargetFilter] List of cluster entities
    * to target for Chaos faults.
@@ -18640,7 +18043,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Chaos faults all cluster entities.
    * If ChaosTargetFilter is used, Chaos faults only the entities that meet the
    * ChaosTargetFilter specification.
-   *
    *
    * @param {array} [chaosParameters.chaosTargetFilter.nodeTypeInclusionList] A
    * list of node types to include in Chaos faults.
@@ -18656,7 +18058,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * At most 100 node type names can be included in this list, to increase this
    * number, a config upgrade is required for
    * MaxNumberOfNodeTypesInChaosEntityFilter configuration.
-   *
    *
    * @param {array} [chaosParameters.chaosTargetFilter.applicationInclusionList]
    * A list of application URI's to include in Chaos faults.
@@ -18674,7 +18075,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * At most 1000 application names can be included in this list, to increase
    * this number, a config upgrade is required for
    * MaxNumberOfApplicationsInChaosEntityFilter configuration.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -18723,7 +18123,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * used to Chaos Schedule new runs of Chaos. A new Chaos Schedule must be set
    * in order to resume scheduling.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -18752,7 +18151,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Once a schedule is stopped, it will stay in the stopped state and not be
    * used to Chaos Schedule new runs of Chaos. A new Chaos Schedule must be set
    * in order to resume scheduling.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -18803,7 +18201,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * multiple segments where a segment contains no more than 100 Chaos events and
    * to get the next segment you make a call to this API with the continuation
    * token.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -18864,7 +18261,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * multiple segments where a segment contains no more than 100 Chaos events and
    * to get the next segment you make a call to this API with the continuation
    * token.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -18937,7 +18333,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the version of the Chaos Schedule in use and the Chaos Schedule that
    * defines when and how to run Chaos.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -18961,7 +18356,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Gets the version of the Chaos Schedule in use and the Chaos Schedule that
    * defines when and how to run Chaos.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -19012,7 +18406,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The version on the server will wrap back to 0 after reaching a large number.
    * If Chaos is running when this call is made, the call will fail.
    *
-   *
    * @param {object} chaosSchedule Describes the schedule used by Chaos.
    *
    * @param {number} [chaosSchedule.version] The version number of the Schedule.
@@ -19022,18 +18415,14 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {date} [chaosSchedule.schedule.startDate] The date and time Chaos
    * will start using this schedule.
    *
-   *
    * @param {date} [chaosSchedule.schedule.expiryDate] The date and time Chaos
    * will continue to use this schedule until.
-   *
    *
    * @param {array} [chaosSchedule.schedule.chaosParametersDictionary] A mapping
    * of string names to Chaos Parameters to be referenced by Chaos Schedule Jobs.
    *
-   *
    * @param {array} [chaosSchedule.schedule.jobs] A list of all Chaos Schedule
    * Jobs that will be automated by the schedule.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -19064,7 +18453,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The version on the server will wrap back to 0 after reaching a large number.
    * If Chaos is running when this call is made, the call will fail.
    *
-   *
    * @param {object} chaosSchedule Describes the schedule used by Chaos.
    *
    * @param {number} [chaosSchedule.version] The version number of the Schedule.
@@ -19074,18 +18462,14 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {date} [chaosSchedule.schedule.startDate] The date and time Chaos
    * will start using this schedule.
    *
-   *
    * @param {date} [chaosSchedule.schedule.expiryDate] The date and time Chaos
    * will continue to use this schedule until.
-   *
    *
    * @param {array} [chaosSchedule.schedule.chaosParametersDictionary] A mapping
    * of string names to Chaos Parameters to be referenced by Chaos Schedule Jobs.
    *
-   *
    * @param {array} [chaosSchedule.schedule.jobs] A list of all Chaos Schedule
    * Jobs that will be automated by the schedule.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -19138,7 +18522,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * upload it last, to let the image store service know that the folder is
    * complete.
    *
-   *
    * @param {string} contentPath Relative path to file or folder in the image
    * store from its root.
    *
@@ -19174,7 +18557,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * of the application package; you need to create a mark file per folder and
    * upload it last, to let the image store service know that the folder is
    * complete.
-   *
    *
    * @param {string} contentPath Relative path to file or folder in the image
    * store from its root.
@@ -19537,7 +18919,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * The DELETE request will cause the existing upload session to expire and
    * remove any previously uploaded file chunks.
    *
-   *
    * @param {uuid} sessionId A GUID generated by the user for a file uploading.
    * It identifies an image store upload session which keeps track of all file
    * chunks until it is committed.
@@ -19565,7 +18946,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * The DELETE request will cause the existing upload session to expire and
    * remove any previously uploaded file chunks.
-   *
    *
    * @param {uuid} sessionId A GUID generated by the user for a file uploading.
    * It identifies an image store upload session which keeps track of all file
@@ -19615,7 +18995,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * upload session until the expiration time, which is 30 minutes after the last
    * chunk received.
    *
-   *
    * @param {uuid} sessionId A GUID generated by the user for a file uploading.
    * It identifies an image store upload session which keeps track of all file
    * chunks until it is committed.
@@ -19645,7 +19024,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * committed explicitly to complete the upload. Image store preserves the
    * upload session until the expiration time, which is 30 minutes after the last
    * chunk received.
-   *
    *
    * @param {uuid} sessionId A GUID generated by the user for a file uploading.
    * It identifies an image store upload session which keeps track of all file
@@ -19693,7 +19071,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the image store upload session identified by the given ID. User can
    * query the upload session at any time during uploading.
    *
-   *
    * @param {uuid} sessionId A GUID generated by the user for a file uploading.
    * It identifies an image store upload session which keeps track of all file
    * chunks until it is committed.
@@ -19721,7 +19098,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Gets the image store upload session identified by the given ID. User can
    * query the upload session at any time during uploading.
-   *
    *
    * @param {uuid} sessionId A GUID generated by the user for a file uploading.
    * It identifies an image store upload session which keeps track of all file
@@ -19771,7 +19147,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * relative path. User can query the upload session at any time during
    * uploading.
    *
-   *
    * @param {string} contentPath Relative path to file or folder in the image
    * store from its root.
    *
@@ -19799,7 +19174,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the image store upload session associated with the given image store
    * relative path. User can query the upload session at any time during
    * uploading.
-   *
    *
    * @param {string} contentPath Relative path to file or folder in the image
    * store from its root.
@@ -19856,7 +19230,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * image store relative path already exists, it will be overwritten when the
    * upload session commits.
    *
-   *
    * @param {string} contentPath Relative path to file or folder in the image
    * store from its root.
    *
@@ -19903,7 +19276,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Chunks don't have to be uploaded in order. If the file represented by the
    * image store relative path already exists, it will be overwritten when the
    * upload session commits.
-   *
    *
    * @param {string} contentPath Relative path to file or folder in the image
    * store from its root.
@@ -19972,7 +19344,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
    *
-   *
    * @param {string} command The text of the command to be invoked. The content
    * of the command is infrastructure-specific.
    *
@@ -20015,7 +19386,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
-   *
    *
    * @param {string} command The text of the command to be invoked. The content
    * of the command is infrastructure-specific.
@@ -20078,7 +19448,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
    *
-   *
    * @param {string} command The text of the command to be invoked. The content
    * of the command is infrastructure-specific.
    *
@@ -20121,7 +19490,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * This API supports the Service Fabric platform; it is not meant to be used
    * directly from your code.
-   *
    *
    * @param {string} command The text of the command to be invoked. The content
    * of the command is infrastructure-specific.
@@ -20193,7 +19561,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Call the GetDataLossProgress API with the same OperationId to return
    * information on the operation started with this API.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -20201,7 +19568,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -20256,7 +19622,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Call the GetDataLossProgress API with the same OperationId to return
    * information on the operation started with this API.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -20264,7 +19629,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -20318,7 +19682,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the progress of a data loss operation started with StartDataLoss, using
    * the OperationId.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -20326,7 +19689,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -20358,7 +19720,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the progress of a data loss operation started with StartDataLoss, using
    * the OperationId.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -20366,7 +19727,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -20423,7 +19783,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * services.  Do not use this API on stateless services or stateful in-memory
    * only services.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -20431,7 +19790,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -20475,7 +19833,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * services.  Do not use this API on stateless services or stateful in-memory
    * only services.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -20483,7 +19840,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -20540,7 +19896,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the progress of a quorum loss operation started with StartQuorumLoss,
    * using the provided OperationId.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -20548,7 +19903,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -20580,7 +19934,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the progress of a quorum loss operation started with StartQuorumLoss,
    * using the provided OperationId.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -20588,7 +19941,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -20645,7 +19997,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Call the GetPartitionRestartProgress API using the same OperationId to get
    * the progress.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -20653,7 +20004,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -20694,7 +20044,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Call the GetPartitionRestartProgress API using the same OperationId to get
    * the progress.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -20702,7 +20051,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -20756,7 +20104,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the progress of a PartitionRestart started with StartPartitionRestart
    * using the provided OperationId.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -20764,7 +20111,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -20796,7 +20142,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the progress of a PartitionRestart started with StartPartitionRestart
    * using the provided OperationId.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -20804,7 +20149,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -20861,7 +20205,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Call GetNodeTransitionProgress with the same OperationId to get the progress
    * of the operation.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {uuid} operationId A GUID that identifies a call of this API.  This
@@ -20908,7 +20251,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * finished transitioning yet.
    * Call GetNodeTransitionProgress with the same OperationId to get the progress
    * of the operation.
-   *
    *
    * @param {string} nodeName The name of the node.
    *
@@ -20970,7 +20312,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the progress of an operation started with StartNodeTransition using the
    * provided OperationId.
    *
-   *
    * @param {string} nodeName The name of the node.
    *
    * @param {uuid} operationId A GUID that identifies a call of this API.  This
@@ -21000,7 +20341,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Gets the progress of an operation started with StartNodeTransition using the
    * provided OperationId.
-   *
    *
    * @param {string} nodeName The name of the node.
    *
@@ -21060,7 +20400,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - 4 - select PartitionRestart.
    * - 8 - select NodeTransition.
    *
-   *
    * @param {number} stateFilter Used to filter on OperationState's for
    * user-induced operations.
    *
@@ -21071,7 +20410,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - 16 - select Faulted
    * - 32 - select Cancelled
    * - 64 - select ForceCancelled
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -21106,7 +20444,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - 4 - select PartitionRestart.
    * - 8 - select NodeTransition.
    *
-   *
    * @param {number} stateFilter Used to filter on OperationState's for
    * user-induced operations.
    *
@@ -21117,7 +20454,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - 16 - select Faulted
    * - 32 - select Cancelled
    * - 64 - select ForceCancelled
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -21183,7 +20519,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Important note:  if this API is invoked with force==true, internal state may
    * be left behind.
    *
-   *
    * @param {uuid} operationId A GUID that identifies a call of this API.  This
    * is passed into the corresponding GetProgress API
    *
@@ -21236,7 +20571,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Important note:  if this API is invoked with force==true, internal state may
    * be left behind.
    *
-   *
    * @param {uuid} operationId A GUID that identifies a call of this API.  This
    * is passed into the corresponding GetProgress API
    *
@@ -21285,7 +20619,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Creates a backup policy which can be associated later with a Service Fabric
    * application, service or a partition for periodic backup.
    *
-   *
    * @param {object} backupPolicyDescription Describes the backup policy.
    *
    * @param {string} backupPolicyDescription.name The unique name identifying
@@ -21303,7 +20636,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - The replica has never taken a full backup since it has become primary,
    * - Some of the log records since the last backup has been truncated, or
    * - Replica passed the MaxAccumulatedBackupLogSizeInMB limit.
-   *
    *
    * @param {object} backupPolicyDescription.schedule Describes the backup
    * schedule parameters.
@@ -21344,7 +20676,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Creates a backup policy which can be associated later with a Service Fabric
    * application, service or a partition for periodic backup.
    *
-   *
    * @param {object} backupPolicyDescription Describes the backup policy.
    *
    * @param {string} backupPolicyDescription.name The unique name identifying
@@ -21362,7 +20693,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - The replica has never taken a full backup since it has become primary,
    * - Some of the log records since the last backup has been truncated, or
    * - Replica passed the MaxAccumulatedBackupLogSizeInMB limit.
-   *
    *
    * @param {object} backupPolicyDescription.schedule Describes the backup
    * schedule parameters.
@@ -21423,7 +20753,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Service Fabric application, service or partition, cannot be deleted without
    * first deleting the mapping.
    *
-   *
    * @param {string} backupPolicyName The name of the backup policy.
    *
    * @param {object} [options] Optional Parameters.
@@ -21451,7 +20780,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * can be deleted. A currently active backup policy, associated with any
    * Service Fabric application, service or partition, cannot be deleted without
    * first deleting the mapping.
-   *
    *
    * @param {string} backupPolicyName The name of the backup policy.
    *
@@ -21496,7 +20824,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Get a list of all the backup policies configured.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {string} [options.continuationToken] The continuation token parameter
@@ -21535,7 +20862,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @summary Gets all the backup policies configured.
    *
    * Get a list of all the backup policies configured.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -21596,7 +20922,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Gets a particular backup policy identified by {backupPolicyName}
    *
-   *
    * @param {string} backupPolicyName The name of the backup policy.
    *
    * @param {object} [options] Optional Parameters.
@@ -21621,7 +20946,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @summary Gets a particular backup policy by name.
    *
    * Gets a particular backup policy identified by {backupPolicyName}
-   *
    *
    * @param {string} backupPolicyName The name of the backup policy.
    *
@@ -21670,7 +20994,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Returns a list of Service Fabric application, service or partition which are
    * associated with this backup policy.
    *
-   *
    * @param {string} backupPolicyName The name of the backup policy.
    *
    * @param {object} [options] Optional Parameters.
@@ -21713,7 +21036,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Returns a list of Service Fabric application, service or partition which are
    * associated with this backup policy.
-   *
    *
    * @param {string} backupPolicyName The name of the backup policy.
    *
@@ -21775,7 +21097,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Updates the backup policy identified by {backupPolicyName}
    *
-   *
    * @param {object} backupPolicyDescription Describes the backup policy.
    *
    * @param {string} backupPolicyDescription.name The unique name identifying
@@ -21793,7 +21114,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - The replica has never taken a full backup since it has become primary,
    * - Some of the log records since the last backup has been truncated, or
    * - Replica passed the MaxAccumulatedBackupLogSizeInMB limit.
-   *
    *
    * @param {object} backupPolicyDescription.schedule Describes the backup
    * schedule parameters.
@@ -21835,7 +21155,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Updates the backup policy identified by {backupPolicyName}
    *
-   *
    * @param {object} backupPolicyDescription Describes the backup policy.
    *
    * @param {string} backupPolicyDescription.name The unique name identifying
@@ -21853,7 +21172,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * - The replica has never taken a full backup since it has become primary,
    * - Some of the log records since the last backup has been truncated, or
    * - Replica passed the MaxAccumulatedBackupLogSizeInMB limit.
-   *
    *
    * @param {object} backupPolicyDescription.schedule Describes the backup
    * schedule parameters.
@@ -21918,7 +21236,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note only C# based Reliable Actor and Reliable Stateful services are
    * currently supported for periodic backup.
    *
-   *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -21926,7 +21243,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} enableBackupDescription Specifies the parameters for
    * enabling backup.
@@ -21962,7 +21278,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note only C# based Reliable Actor and Reliable Stateful services are
    * currently supported for periodic backup.
    *
-   *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -21970,7 +21285,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} enableBackupDescription Specifies the parameters for
    * enabling backup.
@@ -22020,7 +21334,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Disables periodic backup of Service Fabric application which was previously
    * enabled.
    *
-   *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22028,7 +21341,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22054,7 +21366,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Disables periodic backup of Service Fabric application which was previously
    * enabled.
    *
-   *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22062,7 +21373,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22107,7 +21417,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the Service Fabric backup configuration information for the application
    * and the services and partitions under this application.
    *
-   *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22115,7 +21424,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22158,7 +21466,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the Service Fabric backup configuration information for the application
    * and the services and partitions under this application.
    *
-   *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22166,7 +21473,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22232,7 +21538,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the result based on start and end datetime or just fetching the latest
    * available backup for every partition.
    *
-   *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22240,7 +21545,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22299,7 +21603,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the result based on start and end datetime or just fetching the latest
    * available backup for every partition.
    *
-   *
    * @param {string} applicationId The identity of the application. This is
    * typically the full name of the application without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22307,7 +21610,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22392,7 +21694,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -22427,7 +21728,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22480,7 +21780,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -22513,7 +21812,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the application name is "fabric:/myapp/app1", the
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22564,7 +21862,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note only C# based Reliable Actor and Reliable Stateful services are
    * currently supported for periodic backup.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22572,7 +21869,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} enableBackupDescription Specifies the parameters for
    * enabling backup.
@@ -22611,7 +21907,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note only C# based Reliable Actor and Reliable Stateful services are
    * currently supported for periodic backup.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22619,7 +21914,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} enableBackupDescription Specifies the parameters for
    * enabling backup.
@@ -22673,7 +21967,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service is part of, this service would continue to be periodically backed up
    * as per the policy mapped at the application level.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22681,7 +21974,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22711,7 +22003,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * service is part of, this service would continue to be periodically backed up
    * as per the policy mapped at the application level.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22719,7 +22010,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22763,7 +22053,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the Service Fabric backup configuration information for the service and
    * the partitions under this service.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22771,7 +22060,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22813,7 +22101,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the Service Fabric backup configuration information for the service and
    * the partitions under this service.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22821,7 +22108,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22887,7 +22173,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the result based on start and end datetime or just fetching the latest
    * available backup for every partition.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22895,7 +22180,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -22954,7 +22238,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the result based on start and end datetime or just fetching the latest
    * available backup for every partition.
    *
-   *
    * @param {string} serviceId The identity of the service. This ID is typically
    * the full name of the service without the 'fabric:' URI scheme.
    * Starting from version 6.0, hierarchical names are delimited with the "~"
@@ -22962,7 +22245,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -23046,7 +22328,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -23080,7 +22361,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -23133,7 +22413,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {number} [options.timeout] The server timeout for performing the
@@ -23166,7 +22445,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * For example, if the service name is "fabric:/myapp/app1/svc1", the service
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -23215,7 +22493,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Note only C# based Reliable Actor and Reliable Stateful services are
    * currently supported for periodic backup.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} enableBackupDescription Specifies the parameters for
@@ -23252,7 +22529,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * the periodic backup of this partition.
    * Note only C# based Reliable Actor and Reliable Stateful services are
    * currently supported for periodic backup.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -23308,7 +22584,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * which this partition is part of, this partition would continue to be
    * periodically backed up as per the policy mapped at the higher level entity.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
@@ -23338,7 +22613,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In case the backup is enabled for the Service Fabric application or service,
    * which this partition is part of, this partition would continue to be
    * periodically backed up as per the policy mapped at the higher level entity.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -23384,7 +22658,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the Service Fabric Backup configuration information for the specified
    * partition.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
@@ -23410,7 +22683,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Gets the Service Fabric Backup configuration information for the specified
    * partition.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -23460,7 +22732,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * backup policy. It also allows filtering of the result based on start and end
    * datetime or just fetching the latest available backup for the partition.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
@@ -23501,7 +22772,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * enumerates all the backups available in the backup store configured in the
    * backup policy. It also allows filtering of the result based on start and end
    * datetime or just fetching the latest available backup for the partition.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -23709,7 +22979,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * In case, the operation times out, specify a greater backup timeout value in
    * the query parameter.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
@@ -23764,7 +23033,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * GetBackupProgress operation.
    * In case, the operation times out, specify a greater backup timeout value in
    * the query parameter.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -23833,7 +23101,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Returns information about the state of the latest backup along with details
    * or failure reason in case of completion.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
@@ -23859,7 +23126,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Returns information about the state of the latest backup along with details
    * or failure reason in case of completion.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -23913,7 +23179,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * GetRestoreProgress operation.
    * In case, the operation times out, specify a greater restore timeout value in
    * the query parameter.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -23973,7 +23238,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * GetRestoreProgress operation.
    * In case, the operation times out, specify a greater restore timeout value in
    * the query parameter.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -24045,7 +23309,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Returns information about the state of the latest restore operation along
    * with details or failure reason in case of completion.
    *
-   *
    * @param {uuid} partitionId The identity of the partition.
    *
    * @param {object} [options] Optional Parameters.
@@ -24072,7 +23335,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * Returns information about the state of the latest restore operation along
    * with details or failure reason in case of completion.
-   *
    *
    * @param {uuid} partitionId The identity of the partition.
    *
@@ -24120,7 +23382,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the list of backups available for the specified backed up entity
    * (Application, Service or Partition) at the specified backup location
    * (FileShare or Azure Blob Storage).
-   *
    *
    * @param {object} getBackupByStorageQueryDescription Describes the filters and
    * backup storage details to be used for enumerating backups.
@@ -24197,7 +23458,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the list of backups available for the specified backed up entity
    * (Application, Service or Partition) at the specified backup location
    * (FileShare or Azure Blob Storage).
-   *
    *
    * @param {object} getBackupByStorageQueryDescription Describes the filters and
    * backup storage details to be used for enumerating backups.
@@ -25069,12 +24329,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25112,12 +24370,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25173,12 +24429,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25216,12 +24470,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25279,12 +24531,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25324,12 +24574,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25385,12 +24633,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25428,12 +24674,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25477,7 +24721,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
    * yyyy-MM-ddTHH:mm:ssZ.
    *
@@ -25498,12 +24741,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25529,7 +24770,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * application identity would be "myapp~app1" in 6.0+ and "myapp/app1" in
    * previous versions.
    *
-   *
    * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
    * yyyy-MM-ddTHH:mm:ssZ.
    *
@@ -25550,12 +24790,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25611,12 +24849,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25654,12 +24890,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25703,7 +24937,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
    * yyyy-MM-ddTHH:mm:ssZ.
    *
@@ -25724,12 +24957,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25755,7 +24986,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * identity would be "myapp~app1~svc1" in 6.0+ and "myapp/app1/svc1" in
    * previous versions.
    *
-   *
    * @param {string} startTimeUtc The start time of a lookup query in ISO UTC
    * yyyy-MM-ddTHH:mm:ssZ.
    *
@@ -25776,12 +25006,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25837,12 +25065,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25880,12 +25106,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25943,12 +25167,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -25988,12 +25210,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -26049,12 +25269,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -26092,12 +25310,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -26157,12 +25373,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -26204,12 +25418,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -26267,12 +25479,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -26312,12 +25522,10 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {boolean} [options.excludeAnalysisEvents] This param disables the
    * retrieval of AnalysisEvents if true is passed.
    *
-   *
    * @param {boolean} [options.skipCorrelationLookup] This param disables the
    * search of CorrelatedEvents information if true is passed. otherwise the
    * CorrelationEvents get processed and HasCorrelatedEvents field in every
    * FabricEvent gets populated.
-   *
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
    * request
@@ -26426,7 +25634,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
    *
-   *
    * @param {object} applicationResourceDescription Description for creating an
    * application resource.
    *
@@ -26453,7 +25660,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} applicationResourceDescription.name Application resource
    * name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -26478,7 +25684,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
    *
-   *
    * @param {object} applicationResourceDescription Description for creating an
    * application resource.
    *
@@ -26505,7 +25710,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} applicationResourceDescription.name Application resource
    * name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -26547,7 +25751,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -26569,7 +25772,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -26612,7 +25814,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -26633,7 +25834,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -26675,7 +25875,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -26697,7 +25896,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -26741,9 +25939,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
    *
-   *
    * @param {string} serviceResourceName Service Fabric service resource name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -26767,9 +25963,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
    *
-   *
    * @param {string} serviceResourceName Service Fabric service resource name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -26814,9 +26008,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
    *
-   *
    * @param {string} serviceResourceName Service Fabric service resource name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -26841,9 +26033,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
    *
-   *
    * @param {string} serviceResourceName Service Fabric service resource name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -26889,12 +26079,9 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
    *
-   *
    * @param {string} serviceResourceName Service Fabric service resource name.
    *
-   *
    * @param {string} replicaName Service Fabric replica name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -26920,12 +26107,9 @@ export default class ServiceFabricClient extends ServiceClient {
    * @param {string} applicationResourceName Service Fabric application resource
    * name.
    *
-   *
    * @param {string} serviceResourceName Service Fabric service resource name.
    *
-   *
    * @param {string} replicaName Service Fabric replica name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -26967,9 +26151,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * volume with the same name already exists, then its description is updated to
    * the one indicated in this request.
    *
-   *
    * @param {string} volumeResourceName Service Fabric volume resource name.
-   *
    *
    * @param {object} volumeResourceDescription Description for creating a volume
    * resource.
@@ -27011,9 +26193,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * volume with the same name already exists, then its description is updated to
    * the one indicated in this request.
    *
-   *
    * @param {string} volumeResourceName Service Fabric volume resource name.
-   *
    *
    * @param {object} volumeResourceDescription Description for creating a volume
    * resource.
@@ -27072,9 +26252,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the information about the volume resource with a given name. This
    * information includes the volume description and other runtime information.
    *
-   *
    * @param {string} volumeResourceName Service Fabric volume resource name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -27095,9 +26273,7 @@ export default class ServiceFabricClient extends ServiceClient {
    * Gets the information about the volume resource with a given name. This
    * information includes the volume description and other runtime information.
    *
-   *
    * @param {string} volumeResourceName Service Fabric volume resource name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
@@ -27139,7 +26315,6 @@ export default class ServiceFabricClient extends ServiceClient {
    *
    * @param {string} volumeResourceName Service Fabric volume resource name.
    *
-   *
    * @param {object} [options] Optional Parameters.
    *
    * @param {object} [options.customHeaders] Headers that will be added to the
@@ -27159,7 +26334,6 @@ export default class ServiceFabricClient extends ServiceClient {
    * Deletes the volume identified by the name.
    *
    * @param {string} volumeResourceName Service Fabric volume resource name.
-   *
    *
    * @param {object} [options] Optional Parameters.
    *
