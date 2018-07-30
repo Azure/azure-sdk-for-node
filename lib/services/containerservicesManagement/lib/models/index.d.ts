@@ -883,6 +883,32 @@ export interface ManagedClusterUpgradeProfile {
 
 /**
  * @class
+ * Initializes a new instance of the CredentialResult class.
+ * @constructor
+ * The credential result response.
+ *
+ * @member {string} [name] The name of the credential.
+ * @member {string} [value] The value of the credential.
+ */
+export interface CredentialResult {
+  readonly name?: string;
+  readonly value?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CredentialResults class.
+ * @constructor
+ * The list of credential result response.
+ *
+ * @member {array} [values]
+ */
+export interface CredentialResults {
+  readonly values?: CredentialResult[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the OrchestratorVersionProfile class.
  * @constructor
  * The profile of an orchestrator and its available versions.
