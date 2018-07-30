@@ -324,16 +324,16 @@ export interface HeatMapEndpoint {
  * @constructor
  * Class representing a Traffic Manager HeatMap query experience properties.
  *
- * @member {number} [endpointId] The id of the endpoint from the 'endpoints'
+ * @member {number} endpointId The id of the endpoint from the 'endpoints'
  * array which these queries were routed to.
- * @member {number} [queryCount] The number of queries originating from this
+ * @member {number} queryCount The number of queries originating from this
  * location.
  * @member {number} [latency] The latency experienced by queries originating
  * from this location.
  */
 export interface QueryExperience {
-  endpointId?: number;
-  queryCount?: number;
+  endpointId: number;
+  queryCount: number;
   latency?: number;
 }
 
@@ -378,6 +378,18 @@ export interface HeatMapModel extends ProxyResource {
   endTime?: Date;
   endpoints?: HeatMapEndpoint[];
   trafficFlows?: TrafficFlow[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrafficManagerUserMetricsKeyModel class.
+ * @constructor
+ * Class representing a Traffic Manager Real User Metrics key response.
+ *
+ * @member {string} [key] The key returned by the Real User Metrics operation.
+ */
+export interface TrafficManagerUserMetricsKeyModel extends ProxyResource {
+  key?: string;
 }
 
 

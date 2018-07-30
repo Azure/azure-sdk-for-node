@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class EventGridManagementClient extends AzureServiceClient {
+export default class EventGridManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the EventGridManagementClient class.
    * @constructor
@@ -61,4 +62,4 @@ declare class EventGridManagementClient extends AzureServiceClient {
   topicTypes: operations.TopicTypes;
 }
 
-export = EventGridManagementClient;
+export { EventGridManagementClient, models as EventGridManagementModels };

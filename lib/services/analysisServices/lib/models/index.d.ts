@@ -109,7 +109,8 @@ export interface Resource extends BaseResource {
  * @member {object} [asAdministrators] A collection of AS server administrators
  * @member {array} [asAdministrators.members] An array of administrator user
  * identities.
- * @member {string} [backupBlobContainerUri] The container URI of backup blob.
+ * @member {string} [backupBlobContainerUri] The SAS container URI to the
+ * backup container.
  * @member {object} [gatewayDetails] The gateway details configured for the AS
  * server.
  * @member {string} [gatewayDetails.gatewayResourceId] Gateway resource to be
@@ -232,7 +233,8 @@ export interface IPv4FirewallSettings {
  * @member {object} [asAdministrators] A collection of AS server administrators
  * @member {array} [asAdministrators.members] An array of administrator user
  * identities.
- * @member {string} [backupBlobContainerUri] The container URI of backup blob.
+ * @member {string} [backupBlobContainerUri] The SAS container URI to the
+ * backup container.
  * @member {object} [gatewayDetails] The gateway details configured for the AS
  * server.
  * @member {string} [gatewayDetails.gatewayResourceId] Gateway resource to be
@@ -307,6 +309,78 @@ export interface GatewayListStatusError {
 
 /**
  * @class
+ * Initializes a new instance of the CheckServerNameAvailabilityParameters class.
+ * @constructor
+ * Details of server name request body.
+ *
+ * @member {string} [name] Name for checking availability.
+ * @member {string} [type] The resource type of azure analysis services.
+ * Default value: 'Microsoft.AnalysisServices/servers' .
+ */
+export interface CheckServerNameAvailabilityParameters {
+  name?: string;
+  type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CheckServerNameAvailabilityResult class.
+ * @constructor
+ * The checking result of server name availibility.
+ *
+ * @member {boolean} [nameAvailable] Indicator of available of the server name.
+ * @member {string} [reason] The reason of unavailability.
+ * @member {string} [message] The detailed message of the request
+ * unavailability.
+ */
+export interface CheckServerNameAvailabilityResult {
+  nameAvailable?: boolean;
+  reason?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Describes the format of Error response.
+ *
+ * @member {string} [code] Error code
+ * @member {string} [message] Error message indicating why the operation
+ * failed.
+ */
+export interface ErrorResponse {
+  code?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationStatus class.
+ * @constructor
+ * The status of operation.
+ *
+ * @member {string} [id] The operation Id.
+ * @member {string} [name] The operation name.
+ * @member {string} [startTime] The start time of the operation.
+ * @member {string} [endTime] The end time of the operation.
+ * @member {string} [status] The status of the operation.
+ * @member {object} [error] The error detail of the operation if any.
+ * @member {string} [error.code] Error code
+ * @member {string} [error.message] Error message indicating why the operation
+ * failed.
+ */
+export interface OperationStatus {
+  id?: string;
+  name?: string;
+  startTime?: string;
+  endTime?: string;
+  status?: string;
+  error?: ErrorResponse;
+}
+
+/**
+ * @class
  * Initializes a new instance of the SkuEnumerationForNewResourceResult class.
  * @constructor
  * An object that represents enumerating SKUs for new resources.
@@ -345,21 +419,6 @@ export interface SkuDetailsForExistingResource {
  */
 export interface SkuEnumerationForExistingResourceResult {
   value?: SkuDetailsForExistingResource[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ErrorResponse class.
- * @constructor
- * Describes the format of Error response.
- *
- * @member {string} [code] Error code
- * @member {string} [message] Error message indicating why the operation
- * failed.
- */
-export interface ErrorResponse {
-  code?: string;
-  message?: string;
 }
 
 
