@@ -7933,9 +7933,9 @@ export interface Recommendations {
      * returns all recommendations.
      *
      * @param {string} [options.filter] Filter is specified by using OData syntax.
-     * Example: $filter=channels eq 'Api' or channel eq 'Notification' and
-     * startTime eq '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z'
-     * and timeGrain eq duration'[PT1H|PT1M|P1D]
+     * Example: $filter=channel eq 'Api' or channel eq 'Notification' and startTime
+     * eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[PT1H|PT1M|P1D]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -7960,9 +7960,9 @@ export interface Recommendations {
      * returns all recommendations.
      *
      * @param {string} [options.filter] Filter is specified by using OData syntax.
-     * Example: $filter=channels eq 'Api' or channel eq 'Notification' and
-     * startTime eq '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z'
-     * and timeGrain eq duration'[PT1H|PT1M|P1D]
+     * Example: $filter=channel eq 'Api' or channel eq 'Notification' and startTime
+     * eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[PT1H|PT1M|P1D]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8129,9 +8129,9 @@ export interface Recommendations {
      * expired recommendations.
      *
      * @param {string} [options.filter] Filter is specified by using OData syntax.
-     * Example: $filter=channels eq 'Api' or channel eq 'Notification' and
-     * startTime eq '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z'
-     * and timeGrain eq duration'[PT1H|PT1M|P1D]
+     * Example: $filter=channel eq 'Api' or channel eq 'Notification' and startTime
+     * eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[PT1H|PT1M|P1D]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8162,9 +8162,9 @@ export interface Recommendations {
      * expired recommendations.
      *
      * @param {string} [options.filter] Filter is specified by using OData syntax.
-     * Example: $filter=channels eq 'Api' or channel eq 'Notification' and
-     * startTime eq '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z'
-     * and timeGrain eq duration'[PT1H|PT1M|P1D]
+     * Example: $filter=channel eq 'Api' or channel eq 'Notification' and startTime
+     * eq 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[PT1H|PT1M|P1D]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -8214,7 +8214,7 @@ export interface Recommendations {
      * returns all recommendations.
      *
      * @param {string} [options.filter] Return only channels specified in the
-     * filter. Filter is specified by using OData syntax. Example: $filter=channels
+     * filter. Filter is specified by using OData syntax. Example: $filter=channel
      * eq 'Api' or channel eq 'Notification'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -8245,7 +8245,7 @@ export interface Recommendations {
      * returns all recommendations.
      *
      * @param {string} [options.filter] Return only channels specified in the
-     * filter. Filter is specified by using OData syntax. Example: $filter=channels
+     * filter. Filter is specified by using OData syntax. Example: $filter=channel
      * eq 'Api' or channel eq 'Notification'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -19474,8 +19474,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only metrics specified in the filter
      * (using OData syntax). For example: $filter=(name.value eq 'Metric1' or
-     * name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-     * eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+     * name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime
+     * eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -19506,8 +19506,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only metrics specified in the filter
      * (using OData syntax). For example: $filter=(name.value eq 'Metric1' or
-     * name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-     * eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+     * name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime
+     * eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -20103,8 +20103,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -20131,8 +20131,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -33645,8 +33645,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only metrics specified in the filter
      * (using OData syntax). For example: $filter=(name.value eq 'Metric1' or
-     * name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-     * eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+     * name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime
+     * eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -33680,8 +33680,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only metrics specified in the filter
      * (using OData syntax). For example: $filter=(name.value eq 'Metric1' or
-     * name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and endTime
-     * eq '2014-12-31T23:59:59Z' and timeGrain eq duration'[Hour|Minute|Day]'.
+     * name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and endTime
+     * eq 2014-12-31T23:59:59Z and timeGrain eq duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -34113,8 +34113,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -34144,8 +34144,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 2014-01-01T00:00:00Z and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -38132,8 +38132,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only information specified in the
      * filter (using OData syntax). For example: $filter=(name.value eq 'Metric1'
-     * or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-     * endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+     * or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+     * endTime eq 2014-12-31T23:59:59Z and timeGrain eq
      * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -38166,8 +38166,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only information specified in the
      * filter (using OData syntax). For example: $filter=(name.value eq 'Metric1'
-     * or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-     * endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+     * or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+     * endTime eq 2014-12-31T23:59:59Z and timeGrain eq
      * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -40365,8 +40365,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only information specified in the
      * filter (using OData syntax). For example: $filter=(name.value eq 'Metric1'
-     * or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-     * endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+     * or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+     * endTime eq 2014-12-31T23:59:59Z and timeGrain eq
      * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -40396,8 +40396,8 @@ export interface WebApps {
      *
      * @param {string} [options.filter] Return only information specified in the
      * filter (using OData syntax). For example: $filter=(name.value eq 'Metric1'
-     * or name.value eq 'Metric2') and startTime eq '2014-01-01T00:00:00Z' and
-     * endTime eq '2014-12-31T23:59:59Z' and timeGrain eq
+     * or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z and
+     * endTime eq 2014-12-31T23:59:59Z and timeGrain eq
      * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -50134,9 +50134,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -50166,9 +50166,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -50914,9 +50914,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -50952,9 +50952,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -51530,9 +51530,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -51559,9 +51559,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -52175,9 +52175,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -52213,9 +52213,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -52341,9 +52341,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -52377,9 +52377,9 @@ export interface AppServiceEnvironments {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -56314,9 +56314,9 @@ export interface AppServicePlans {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -56346,9 +56346,9 @@ export interface AppServicePlans {
      *
      * @param {string} [options.filter] Return only usages/metrics specified in the
      * filter. Filter conforms to odata syntax. Example: $filter=(name.value eq
-     * 'Metric1' or name.value eq 'Metric2') and startTime eq
-     * '2014-01-01T00:00:00Z' and endTime eq '2014-12-31T23:59:59Z' and timeGrain
-     * eq duration'[Hour|Minute|Day]'.
+     * 'Metric1' or name.value eq 'Metric2') and startTime eq 2014-01-01T00:00:00Z
+     * and endTime eq 2014-12-31T23:59:59Z and timeGrain eq
+     * duration'[Hour|Minute|Day]'.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
