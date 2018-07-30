@@ -394,12 +394,59 @@ export interface ErrorResponse {
  * @member {string} [role] role of namespace in GEO DR - possible values
  * 'Primary' or 'PrimaryNotReplicating' or 'Secondary'. Possible values
  * include: 'Primary', 'PrimaryNotReplicating', 'Secondary'
+ * @member {number} [pendingReplicationOperationsCount] Number of entities
+ * pending to be replicated.
  */
 export interface ArmDisasterRecovery extends Resource {
   readonly provisioningState?: string;
   partnerNamespace?: string;
   alternateName?: string;
   readonly role?: string;
+  readonly pendingReplicationOperationsCount?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MessagingRegionsProperties class.
+ * @constructor
+ * @member {string} [code] Region code
+ * @member {string} [fullName] Full name of the region
+ */
+export interface MessagingRegionsProperties {
+  readonly code?: string;
+  readonly fullName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MessagingRegions class.
+ * @constructor
+ * Messaging Region
+ *
+ * @member {object} [properties]
+ * @member {string} [properties.code] Region code
+ * @member {string} [properties.fullName] Full name of the region
+ */
+export interface MessagingRegions extends TrackedResource {
+  properties?: MessagingRegionsProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MessagingPlan class.
+ * @constructor
+ * Messaging Plan for the namespace
+ *
+ * @member {number} [sku] Sku type
+ * @member {number} [selectedEventHubUnit] Selected event hub unit
+ * @member {date} [updatedAt] The exact time the messaging plan was updated.
+ * @member {number} [revision] revision number
+ */
+export interface MessagingPlan extends TrackedResource {
+  readonly sku?: number;
+  readonly selectedEventHubUnit?: number;
+  readonly updatedAt?: Date;
+  readonly revision?: number;
 }
 
 
@@ -480,4 +527,17 @@ export interface EventHubListResult extends Array<Eventhub> {
  */
 export interface ConsumerGroupListResult extends Array<ConsumerGroup> {
   nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MessagingRegionsListResult class.
+ * @constructor
+ * The response of the List MessagingRegions operation.
+ *
+ * @member {string} [nextLink] Link to the next set of results. Not empty if
+ * Value contains incomplete list of MessagingRegions.
+ */
+export interface MessagingRegionsListResult extends Array<MessagingRegions> {
+  readonly nextLink?: string;
 }

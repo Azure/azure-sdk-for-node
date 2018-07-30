@@ -1,3 +1,9 @@
+### 2.5.7 (06/12/2018)
+- Added `validateAuthority` to AzureEnvironment type definitions
+
+### 2.5.6 (06/12/2018)
+- Updated vulnerable dependencies
+
 ### 2.5.5 (03/12/2018)
 - Added an `interface TokenResponse` that extends `adal.TokenResponse`. This interface would be the return type of `getToken()` method on the credential classes.
 - Added `getToken()` method on `DeviceTokenCredentials` to make it consistent with other credential classes.
@@ -21,7 +27,7 @@
 - Convert underscore_seperated properties in MSI tokenResponses to CamelCase.
 
 ### 2.4.5 (11/17/2017)
-- Added `innererror` field to `CloudError` class. #2328 
+- Added `innererror` field to `CloudError` class. #2328
 
 ### 2.4.4 (11/07/2017)
 - Fixed a bug in the request url creation for AppService MSI.
@@ -36,7 +42,7 @@
  - Added support for `MSIAppServiceTokenCredentials` and `loginWithAppServiceMSI()` #2292.
 
 ### 2.4.1 (10/11/2017)
-- Restricted dependency on "moment" from "^2.18.1" to "~2.18.1" due to bugs in 2.19.0 
+- Restricted dependency on "moment" from "^2.18.1" to "~2.18.1" due to bugs in 2.19.0
 
 ### 2.4.0 (10/03/2017)
 - Bug fix: Renamed `loginwithAuthFile` to `loginWithAuthFile`.
@@ -56,7 +62,7 @@
 
 ### 2.3.1 (09/11/2017)
 - Fixed endpoint information for Azure environments
-- Added typings for authfile and msi auth 
+- Added typings for authfile and msi auth
 
 ### 2.3.0 (08/25/2017)
 - Added support to authenticate using service principal from auth file. #2225
