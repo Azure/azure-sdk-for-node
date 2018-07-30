@@ -533,7 +533,7 @@ export interface ApplicationInsightsComponentProactiveDetectionConfiguration ext
 
 /**
  * @class
- * Initializes a new instance of the ComponentsResource class.
+ * Initializes a new instance of the Resource class.
  * @constructor
  * An azure resource object
  *
@@ -543,7 +543,7 @@ export interface ApplicationInsightsComponentProactiveDetectionConfiguration ext
  * @member {string} location Resource location
  * @member {object} [tags] Resource tags
  */
-export interface ComponentsResource extends BaseResource {
+export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
@@ -605,7 +605,7 @@ export interface TagsResource {
  * application being monitored that is being sampled for Application Insights
  * telemetry.
  */
-export interface ApplicationInsightsComponent extends ComponentsResource {
+export interface ApplicationInsightsComponent extends Resource {
   kind: string;
   readonly applicationId?: string;
   readonly appId?: string;
@@ -629,16 +629,12 @@ export interface ApplicationInsightsComponent extends ComponentsResource {
  *
  * @member {string} [column] The column of the table over which the given query
  * should run
- * @member {string} [operator] A query operator to evaluate over the provided
- * column and value(s).
- * @member {object} [value] the value for the operator to function over. This
- * can be a number (e.g., > 100), a string (timestamp >= '2017-09-01') or array
- * of values.
+ * @member {string} [filter] A query to to run over the provided table and
+ * column to purge the corresponding data.
  */
 export interface ComponentPurgeBodyFilters {
   column?: string;
-  operator?: string;
-  value?: any;
+  filter?: string;
 }
 
 /**
@@ -676,7 +672,7 @@ export interface ComponentPurgeResponse {
  * Response containing status for a specific purge operation.
  *
  * @member {string} status Status of the operation represented by the requested
- * Id. Possible values include: 'pending', 'completed'
+ * Id. Possible values include: 'Pending', 'Completed'
  */
 export interface ComponentPurgeStatusResponse {
   status: string;
@@ -807,26 +803,6 @@ export interface ApplicationInsightsComponentWebTestLocation {
 
 /**
  * @class
- * Initializes a new instance of the WebtestsResource class.
- * @constructor
- * An azure resource object
- *
- * @member {string} [id] Azure resource Id
- * @member {string} [name] Azure resource name
- * @member {string} [type] Azure resource type
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
- */
-export interface WebtestsResource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location: string;
-  tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
  * Initializes a new instance of the WebTestGeolocation class.
  * @constructor
  * Geo-physical location to run a web test from. You must specify one or more
@@ -885,7 +861,7 @@ export interface WebTestPropertiesConfiguration {
  * defined. Users cannot change this value but are able to read from it. Values
  * will include Succeeded, Deploying, Canceled, and Failed.
  */
-export interface WebTest extends WebtestsResource {
+export interface WebTest extends Resource {
   kind?: string;
   syntheticMonitorId: string;
   webTestName: string;
@@ -898,77 +874,6 @@ export interface WebTest extends WebtestsResource {
   locations: WebTestGeolocation[];
   configuration?: WebTestPropertiesConfiguration;
   readonly provisioningState?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApplicationInsightsComponentAnalyticsItemProperties class.
- * @constructor
- * A set of properties that can be defined in the context of a specific item
- * type. Each type may have its own properties.
- *
- * @member {string} [functionAlias] A function alias, used when the type of the
- * item is Function
- */
-export interface ApplicationInsightsComponentAnalyticsItemProperties {
-  functionAlias?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ApplicationInsightsComponentAnalyticsItem class.
- * @constructor
- * Properties that define an Analytics item that is associated to an
- * Application Insights component.
- *
- * @member {string} [id] Internally assigned unique id of the item definition.
- * @member {string} [name] The user-defined name of the item.
- * @member {string} [content] The content of this item
- * @member {string} [version] This instance's version of the data model. This
- * can change as new features are added.
- * @member {string} [scope] Enum indicating if this item definition is owned by
- * a specific user or is shared between all users with access to the
- * Application Insights component. Possible values include: 'shared', 'user'
- * @member {string} [type] Enum indicating the type of the Analytics item.
- * Possible values include: 'query', 'function', 'folder', 'recent'
- * @member {string} [timeCreated] Date and time in UTC when this item was
- * created.
- * @member {string} [timeModified] Date and time in UTC of the last
- * modification that was made to this item.
- * @member {object} [properties]
- * @member {string} [properties.functionAlias] A function alias, used when the
- * type of the item is Function
- */
-export interface ApplicationInsightsComponentAnalyticsItem {
-  id?: string;
-  name?: string;
-  content?: string;
-  readonly version?: string;
-  scope?: string;
-  type?: string;
-  readonly timeCreated?: string;
-  readonly timeModified?: string;
-  properties?: ApplicationInsightsComponentAnalyticsItemProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkbookResource class.
- * @constructor
- * An azure resource object
- *
- * @member {string} [id] Azure resource Id
- * @member {string} [name] Azure resource name
- * @member {string} [type] Azure resource type
- * @member {string} [location] Resource location
- * @member {object} [tags] Resource tags
- */
-export interface WorkbookResource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  location?: string;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -1001,7 +906,7 @@ export interface WorkbookResource extends BaseResource {
  * @member {string} [sourceResourceId] Optional resourceId for a source
  * resource.
  */
-export interface Workbook extends WorkbookResource {
+export interface Workbook extends Resource {
   kind?: string;
   workbookName: string;
   serializedData: string;
@@ -1013,6 +918,18 @@ export interface Workbook extends WorkbookResource {
   workbookTags?: string[];
   userId: string;
   sourceResourceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Workbooks class.
+ * @constructor
+ * Workbook list result.
+ *
+ * @member {array} [value] An array of workbooks.
+ */
+export interface Workbooks {
+  value?: Workbook[];
 }
 
 /**
@@ -1083,16 +1000,6 @@ export interface OperationListResult extends Array<Operation> {
 
 /**
  * @class
- * Initializes a new instance of the AnnotationsListResult class.
- * @constructor
- * Annotations list result.
- *
- */
-export interface AnnotationsListResult extends Array<Annotation> {
-}
-
-/**
- * @class
  * Initializes a new instance of the ApplicationInsightsComponentAPIKeyListResult class.
  * @constructor
  * Describes the list of API Keys of an Application Insights Component.
@@ -1113,16 +1020,6 @@ export interface ApplicationInsightsComponentAPIKeyListResult extends Array<Appl
  */
 export interface ApplicationInsightsComponentListResult extends Array<ApplicationInsightsComponent> {
   nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkItemConfigurationsListResult class.
- * @constructor
- * Work item configuration list result.
- *
- */
-export interface WorkItemConfigurationsListResult extends Array<WorkItemConfiguration> {
 }
 
 /**
@@ -1148,14 +1045,4 @@ export interface ApplicationInsightsWebTestLocationsListResult extends Array<App
  */
 export interface WebTestListResult extends Array<WebTest> {
   nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkbooksListResult class.
- * @constructor
- * Workbook list result.
- *
- */
-export interface WorkbooksListResult extends Array<Workbook> {
 }

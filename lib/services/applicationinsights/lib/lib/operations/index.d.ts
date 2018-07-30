@@ -158,11 +158,11 @@ export interface Annotations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<AnnotationsListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, start: string, end: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AnnotationsListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, start: string, end: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Annotation[]>>;
 
     /**
      * Gets the list of annotations for a component for given time range
@@ -189,7 +189,7 @@ export interface Annotations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {AnnotationsListResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -197,16 +197,15 @@ export interface Annotations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {AnnotationsListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link AnnotationsListResult} for more information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, resourceName: string, start: string, end: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AnnotationsListResult>;
-    list(resourceGroupName: string, resourceName: string, start: string, end: string, callback: ServiceCallback<models.AnnotationsListResult>): void;
-    list(resourceGroupName: string, resourceName: string, start: string, end: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AnnotationsListResult>): void;
+    list(resourceGroupName: string, resourceName: string, start: string, end: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Annotation[]>;
+    list(resourceGroupName: string, resourceName: string, start: string, end: string, callback: ServiceCallback<models.Annotation[]>): void;
+    list(resourceGroupName: string, resourceName: string, start: string, end: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Annotation[]>): void;
 
 
     /**
@@ -2424,7 +2423,8 @@ export interface Components {
 
 
     /**
-     * Get status for an ongoing purge operation.
+     * Gets the status of a previously submitted purge using the id returned from
+     * the original purge request.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2448,7 +2448,8 @@ export interface Components {
     getPurgeStatusWithHttpOperationResponse(resourceGroupName: string, resourceName: string, purgeId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ComponentPurgeStatusResponse>>;
 
     /**
-     * Get status for an ongoing purge operation.
+     * Gets the status of a previously submitted purge using the id returned from
+     * the original purge request.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -2631,11 +2632,11 @@ export interface WorkItemConfigurations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WorkItemConfigurationsListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkItemConfigurationsListResult>>;
+    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkItemConfiguration[]>>;
 
     /**
      * Gets the list work item configurations that exist for the application
@@ -2657,7 +2658,7 @@ export interface WorkItemConfigurations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WorkItemConfigurationsListResult} - The deserialized result object.
+     *                      @resolve {Array} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -2665,17 +2666,15 @@ export interface WorkItemConfigurations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WorkItemConfigurationsListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WorkItemConfigurationsListResult} for more
-     *                      information.
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkItemConfigurationsListResult>;
-    list(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.WorkItemConfigurationsListResult>): void;
-    list(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkItemConfigurationsListResult>): void;
+    list(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkItemConfiguration[]>;
+    list(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.WorkItemConfiguration[]>): void;
+    list(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkItemConfiguration[]>): void;
 
 
     /**
@@ -2997,6 +2996,15 @@ export interface Favorites {
     list(resourceGroupName: string, resourceName: string, options?: { favoriteType? : string, sourceType? : string, canFetchContent? : boolean, tags? : string[], customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentFavorite[]>;
     list(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.ApplicationInsightsComponentFavorite[]>): void;
     list(resourceGroupName: string, resourceName: string, options: { favoriteType? : string, sourceType? : string, canFetchContent? : boolean, tags? : string[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentFavorite[]>): void;
+}
+
+/**
+ * @class
+ * Favorite
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface Favorite {
 
 
     /**
@@ -3936,67 +3944,6 @@ export interface WebTests {
 
 
     /**
-     * Get all Application Insights web tests defined for the specified component.
-     *
-     * @param {string} componentName The name of the Application Insights component
-     * resource.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<WebTestListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByComponentWithHttpOperationResponse(componentName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTestListResult>>;
-
-    /**
-     * Get all Application Insights web tests defined for the specified component.
-     *
-     * @param {string} componentName The name of the Application Insights component
-     * resource.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {WebTestListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {WebTestListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebTestListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByComponent(componentName: string, resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTestListResult>;
-    listByComponent(componentName: string, resourceGroupName: string, callback: ServiceCallback<models.WebTestListResult>): void;
-    listByComponent(componentName: string, resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTestListResult>): void;
-
-
-    /**
      * Get all Application Insights web tests defined within a specified resource
      * group.
      *
@@ -4112,481 +4059,23 @@ export interface WebTests {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTestListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.WebTestListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTestListResult>): void;
-
-
-    /**
-     * Get all Application Insights web tests defined for the specified component.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<WebTestListResult>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByComponentNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WebTestListResult>>;
-
-    /**
-     * Get all Application Insights web tests defined for the specified component.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {WebTestListResult} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {WebTestListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WebTestListResult} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByComponentNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.WebTestListResult>;
-    listByComponentNext(nextPageLink: string, callback: ServiceCallback<models.WebTestListResult>): void;
-    listByComponentNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WebTestListResult>): void;
 }
 
 /**
  * @class
- * AnalyticsItems
+ * WorkbooksOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApplicationInsightsManagementClient.
  */
-export interface AnalyticsItems {
-
-
-    /**
-     * Gets a list of Analytics Items defined within an Application Insights
-     * component.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {string} scopePath Enum indicating if this item definition is owned
-     * by a specific user or is shared between all users with access to the
-     * Application Insights component. Possible values include: 'analyticsItems',
-     * 'myanalyticsItems'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.scope] Enum indicating if this item definition is
-     * owned by a specific user or is shared between all users with access to the
-     * Application Insights component. Possible values include: 'shared', 'user'
-     *
-     * @param {string} [options.type] Enum indicating the type of the Analytics
-     * item. Possible values include: 'none', 'query', 'function', 'folder',
-     * 'recent'
-     *
-     * @param {boolean} [options.includeContent] Flag indicating whether or not to
-     * return the content of each applicable item. If false, only return the item
-     * information.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(resourceGroupName: string, resourceName: string, scopePath: string, options?: { scope? : string, type? : string, includeContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentAnalyticsItem[]>>;
-
-    /**
-     * Gets a list of Analytics Items defined within an Application Insights
-     * component.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {string} scopePath Enum indicating if this item definition is owned
-     * by a specific user or is shared between all users with access to the
-     * Application Insights component. Possible values include: 'analyticsItems',
-     * 'myanalyticsItems'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.scope] Enum indicating if this item definition is
-     * owned by a specific user or is shared between all users with access to the
-     * Application Insights component. Possible values include: 'shared', 'user'
-     *
-     * @param {string} [options.type] Enum indicating the type of the Analytics
-     * item. Possible values include: 'none', 'query', 'function', 'folder',
-     * 'recent'
-     *
-     * @param {boolean} [options.includeContent] Flag indicating whether or not to
-     * return the content of each applicable item. If false, only return the item
-     * information.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(resourceGroupName: string, resourceName: string, scopePath: string, options?: { scope? : string, type? : string, includeContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentAnalyticsItem[]>;
-    list(resourceGroupName: string, resourceName: string, scopePath: string, callback: ServiceCallback<models.ApplicationInsightsComponentAnalyticsItem[]>): void;
-    list(resourceGroupName: string, resourceName: string, scopePath: string, options: { scope? : string, type? : string, includeContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentAnalyticsItem[]>): void;
-
-
-    /**
-     * Gets a specific Analytics Items defined within an Application Insights
-     * component.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {string} scopePath Enum indicating if this item definition is owned
-     * by a specific user or is shared between all users with access to the
-     * Application Insights component. Possible values include: 'analyticsItems',
-     * 'myanalyticsItems'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.id] The Id of a specific item defined in the
-     * Application Insights component
-     *
-     * @param {string} [options.name] The name of a specific item defined in the
-     * Application Insights component
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponentAnalyticsItem>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, scopePath: string, options?: { id? : string, name? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentAnalyticsItem>>;
-
-    /**
-     * Gets a specific Analytics Items defined within an Application Insights
-     * component.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {string} scopePath Enum indicating if this item definition is owned
-     * by a specific user or is shared between all users with access to the
-     * Application Insights component. Possible values include: 'analyticsItems',
-     * 'myanalyticsItems'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.id] The Id of a specific item defined in the
-     * Application Insights component
-     *
-     * @param {string} [options.name] The name of a specific item defined in the
-     * Application Insights component
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationInsightsComponentAnalyticsItem} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationInsightsComponentAnalyticsItem} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInsightsComponentAnalyticsItem}
-     *                      for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, resourceName: string, scopePath: string, options?: { id? : string, name? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentAnalyticsItem>;
-    get(resourceGroupName: string, resourceName: string, scopePath: string, callback: ServiceCallback<models.ApplicationInsightsComponentAnalyticsItem>): void;
-    get(resourceGroupName: string, resourceName: string, scopePath: string, options: { id? : string, name? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentAnalyticsItem>): void;
-
-
-    /**
-     * Adds or Updates a specific Analytics Item within an Application Insights
-     * component.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {string} scopePath Enum indicating if this item definition is owned
-     * by a specific user or is shared between all users with access to the
-     * Application Insights component. Possible values include: 'analyticsItems',
-     * 'myanalyticsItems'
-     *
-     * @param {object} itemProperties Properties that need to be specified to
-     * create a new item and add it to an Application Insights component.
-     *
-     * @param {string} [itemProperties.id] Internally assigned unique id of the
-     * item definition.
-     *
-     * @param {string} [itemProperties.name] The user-defined name of the item.
-     *
-     * @param {string} [itemProperties.content] The content of this item
-     *
-     * @param {string} [itemProperties.scope] Enum indicating if this item
-     * definition is owned by a specific user or is shared between all users with
-     * access to the Application Insights component. Possible values include:
-     * 'shared', 'user'
-     *
-     * @param {string} [itemProperties.type] Enum indicating the type of the
-     * Analytics item. Possible values include: 'query', 'function', 'folder',
-     * 'recent'
-     *
-     * @param {object} [itemProperties.properties]
-     *
-     * @param {string} [itemProperties.properties.functionAlias] A function alias,
-     * used when the type of the item is Function
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {boolean} [options.overrideItem] Flag indicating whether or not to
-     * force save an item. This allows overriding an item if it already exists.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ApplicationInsightsComponentAnalyticsItem>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    putWithHttpOperationResponse(resourceGroupName: string, resourceName: string, scopePath: string, itemProperties: models.ApplicationInsightsComponentAnalyticsItem, options?: { overrideItem? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ApplicationInsightsComponentAnalyticsItem>>;
-
-    /**
-     * Adds or Updates a specific Analytics Item within an Application Insights
-     * component.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {string} scopePath Enum indicating if this item definition is owned
-     * by a specific user or is shared between all users with access to the
-     * Application Insights component. Possible values include: 'analyticsItems',
-     * 'myanalyticsItems'
-     *
-     * @param {object} itemProperties Properties that need to be specified to
-     * create a new item and add it to an Application Insights component.
-     *
-     * @param {string} [itemProperties.id] Internally assigned unique id of the
-     * item definition.
-     *
-     * @param {string} [itemProperties.name] The user-defined name of the item.
-     *
-     * @param {string} [itemProperties.content] The content of this item
-     *
-     * @param {string} [itemProperties.scope] Enum indicating if this item
-     * definition is owned by a specific user or is shared between all users with
-     * access to the Application Insights component. Possible values include:
-     * 'shared', 'user'
-     *
-     * @param {string} [itemProperties.type] Enum indicating the type of the
-     * Analytics item. Possible values include: 'query', 'function', 'folder',
-     * 'recent'
-     *
-     * @param {object} [itemProperties.properties]
-     *
-     * @param {string} [itemProperties.properties.functionAlias] A function alias,
-     * used when the type of the item is Function
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {boolean} [options.overrideItem] Flag indicating whether or not to
-     * force save an item. This allows overriding an item if it already exists.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ApplicationInsightsComponentAnalyticsItem} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ApplicationInsightsComponentAnalyticsItem} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ApplicationInsightsComponentAnalyticsItem}
-     *                      for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    put(resourceGroupName: string, resourceName: string, scopePath: string, itemProperties: models.ApplicationInsightsComponentAnalyticsItem, options?: { overrideItem? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.ApplicationInsightsComponentAnalyticsItem>;
-    put(resourceGroupName: string, resourceName: string, scopePath: string, itemProperties: models.ApplicationInsightsComponentAnalyticsItem, callback: ServiceCallback<models.ApplicationInsightsComponentAnalyticsItem>): void;
-    put(resourceGroupName: string, resourceName: string, scopePath: string, itemProperties: models.ApplicationInsightsComponentAnalyticsItem, options: { overrideItem? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ApplicationInsightsComponentAnalyticsItem>): void;
-
-
-    /**
-     * Deletes a specific Analytics Items defined within an Application Insights
-     * component.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {string} scopePath Enum indicating if this item definition is owned
-     * by a specific user or is shared between all users with access to the
-     * Application Insights component. Possible values include: 'analyticsItems',
-     * 'myanalyticsItems'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.id] The Id of a specific item defined in the
-     * Application Insights component
-     *
-     * @param {string} [options.name] The name of a specific item defined in the
-     * Application Insights component
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, scopePath: string, options?: { id? : string, name? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes a specific Analytics Items defined within an Application Insights
-     * component.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {string} scopePath Enum indicating if this item definition is owned
-     * by a specific user or is shared between all users with access to the
-     * Application Insights component. Possible values include: 'analyticsItems',
-     * 'myanalyticsItems'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.id] The Id of a specific item defined in the
-     * Application Insights component
-     *
-     * @param {string} [options.name] The name of a specific item defined in the
-     * Application Insights component
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, resourceName: string, scopePath: string, options?: { id? : string, name? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, resourceName: string, scopePath: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, resourceName: string, scopePath: string, options: { id? : string, name? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-}
-
-/**
- * @class
- * Workbooks
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ApplicationInsightsManagementClient.
- */
-export interface Workbooks {
+export interface WorkbooksOperations {
 
 
     /**
      * Get all Workbooks defined within a specified resource group and category.
      *
      * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} location The name of location where workbook is stored.
      *
      * @param {string} category Category of workbook to return. Possible values
      * include: 'workbook', 'TSG', 'performance', 'retention'
@@ -4604,16 +4093,18 @@ export interface Workbooks {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<WorkbooksListResult>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Workbooks>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.WorkbooksListResult>>;
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, location: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbooks>>;
 
     /**
      * Get all Workbooks defined within a specified resource group and category.
      *
      * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} location The name of location where workbook is stored.
      *
      * @param {string} category Category of workbook to return. Possible values
      * include: 'workbook', 'TSG', 'performance', 'retention'
@@ -4636,7 +4127,7 @@ export interface Workbooks {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {WorkbooksListResult} - The deserialized result object.
+     *                      @resolve {Workbooks} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4644,77 +4135,25 @@ export interface Workbooks {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {WorkbooksListResult} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link WorkbooksListResult} for more information.
+     *                      {Workbooks} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Workbooks} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByResourceGroup(resourceGroupName: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.WorkbooksListResult>;
-    listByResourceGroup(resourceGroupName: string, category: string, callback: ServiceCallback<models.WorkbooksListResult>): void;
-    listByResourceGroup(resourceGroupName: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.WorkbooksListResult>): void;
+    listByResourceGroup(resourceGroupName: string, location: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbooks>;
+    listByResourceGroup(resourceGroupName: string, location: string, category: string, callback: ServiceCallback<models.Workbooks>): void;
+    listByResourceGroup(resourceGroupName: string, location: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbooks>): void;
+}
 
-
-    /**
-     * Get a single workbook by its resourceName.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Workbook>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
-
-    /**
-     * Get a single workbook by its resourceName.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} resourceName The name of the Application Insights component
-     * resource.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Workbook} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Workbook} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link Workbook} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
-    get(resourceGroupName: string, resourceName: string, callback: ServiceCallback<models.Workbook>): void;
-    get(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
+/**
+ * @class
+ * WorkbookOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApplicationInsightsManagementClient.
+ */
+export interface WorkbookOperations {
 
 
     /**
@@ -4724,6 +4163,8 @@ export interface Workbooks {
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
+     *
+     * @param {string} location The name of location where workbook is stored.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4736,7 +4177,7 @@ export interface Workbooks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, resourceName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
      * Delete a workbook.
@@ -4745,6 +4186,8 @@ export interface Workbooks {
      *
      * @param {string} resourceName The name of the Application Insights component
      * resource.
+     *
+     * @param {string} location The name of location where workbook is stored.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4772,9 +4215,9 @@ export interface Workbooks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, resourceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, resourceName: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, resourceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, resourceName: string, location: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, resourceName: string, location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -4821,7 +4264,7 @@ export interface Workbooks {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} [workbookProperties.location] Resource location
+     * @param {string} workbookProperties.location Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
@@ -4882,7 +4325,7 @@ export interface Workbooks {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} [workbookProperties.location] Resource location
+     * @param {string} workbookProperties.location Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
@@ -4962,7 +4405,7 @@ export interface Workbooks {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} [workbookProperties.location] Resource location
+     * @param {string} workbookProperties.location Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
@@ -5023,7 +4466,7 @@ export interface Workbooks {
      * @param {string} [workbookProperties.sourceResourceId] Optional resourceId
      * for a source resource.
      *
-     * @param {string} [workbookProperties.location] Resource location
+     * @param {string} workbookProperties.location Resource location
      *
      * @param {object} [workbookProperties.tags] Resource tags
      *
@@ -5057,4 +4500,139 @@ export interface Workbooks {
     update(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
     update(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, callback: ServiceCallback<models.Workbook>): void;
     update(resourceGroupName: string, resourceName: string, workbookProperties: models.Workbook, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
+
+
+    /**
+     * Get a single workbook by its resourceName.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} location The name of location where workbook is stored.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Workbook>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook>>;
+
+    /**
+     * Get a single workbook by its resourceName.
+     *
+     * @param {string} resourceName The name of the Application Insights component
+     * resource.
+     *
+     * @param {string} location The name of location where workbook is stored.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Workbook} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Workbook} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Workbook} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceName: string, location: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook>;
+    get(resourceName: string, location: string, callback: ServiceCallback<models.Workbook>): void;
+    get(resourceName: string, location: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook>): void;
+
+
+    /**
+     * Gets a list of workbooks by sourceId.
+     *
+     * @param {string} sourceId Azure Resource Id that will fetch all linked
+     * workbooks.
+     *
+     * @param {string} category Category of workbook to return. Possible values
+     * include: 'workbook', 'TSG', 'performance', 'retention'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.tags] Tags presents on each workbook returned.
+     *
+     * @param {boolean} [options.canFetchContent] Flag indicating whether or not to
+     * return the full content for each applicable workbook. If false, only return
+     * summary content for workbooks.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(sourceId: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Workbook[]>>;
+
+    /**
+     * Gets a list of workbooks by sourceId.
+     *
+     * @param {string} sourceId Azure Resource Id that will fetch all linked
+     * workbooks.
+     *
+     * @param {string} category Category of workbook to return. Possible values
+     * include: 'workbook', 'TSG', 'performance', 'retention'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {array} [options.tags] Tags presents on each workbook returned.
+     *
+     * @param {boolean} [options.canFetchContent] Flag indicating whether or not to
+     * return the full content for each applicable workbook. If false, only return
+     * summary content for workbooks.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(sourceId: string, category: string, options?: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }): Promise<models.Workbook[]>;
+    list(sourceId: string, category: string, callback: ServiceCallback<models.Workbook[]>): void;
+    list(sourceId: string, category: string, options: { tags? : string[], canFetchContent? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Workbook[]>): void;
 }
