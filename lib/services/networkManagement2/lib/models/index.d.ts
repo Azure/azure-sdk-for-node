@@ -519,6 +519,9 @@ export interface BackendAddressPool extends SubResource {
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -535,6 +538,7 @@ export interface InboundNatRule extends SubResource {
   backendPort?: number;
   idleTimeoutInMinutes?: number;
   enableFloatingIP?: boolean;
+  enableTcpReset?: boolean;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -3711,6 +3715,9 @@ export interface FrontendIPConfiguration extends SubResource {
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
  * @member {boolean} [disableOutboundSnat] Configures SNAT for the VMs in the
  * backend pool to use the publicIP address specified in the frontend of the
  * load balancing rule.
@@ -3732,6 +3739,7 @@ export interface LoadBalancingRule extends SubResource {
   backendPort?: number;
   idleTimeoutInMinutes?: number;
   enableFloatingIP?: boolean;
+  enableTcpReset?: boolean;
   disableOutboundSnat?: boolean;
   provisioningState?: string;
   name?: string;
@@ -3812,6 +3820,9 @@ export interface Probe extends SubResource {
  * Availability Group. This setting is required when using the SQL AlwaysOn
  * Availability Groups in SQL server. This setting can't be changed after you
  * create the endpoint.
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -3828,6 +3839,7 @@ export interface InboundNatPool extends SubResource {
   backendPort: number;
   idleTimeoutInMinutes?: number;
   enableFloatingIP?: boolean;
+  enableTcpReset?: boolean;
   provisioningState?: string;
   name?: string;
   etag?: string;
