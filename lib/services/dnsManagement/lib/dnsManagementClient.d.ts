@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class DnsManagementClient extends AzureServiceClient {
+export default class DnsManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the DnsManagementClient class.
    * @constructor
@@ -59,4 +60,4 @@ declare class DnsManagementClient extends AzureServiceClient {
   zones: operations.Zones;
 }
 
-export = DnsManagementClient;
+export { DnsManagementClient, models as DnsManagementModels };

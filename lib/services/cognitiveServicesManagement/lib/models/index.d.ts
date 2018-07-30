@@ -391,6 +391,70 @@ export interface CheckSkuAvailabilityResultList {
   value?: CheckSkuAvailabilityResult[];
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuRestrictionInfo class.
+ * @constructor
+ * @member {array} [locations] Locations where the SKU is restricted
+ * @member {array} [zones] List of availability zones where the SKU is
+ * restricted.
+ */
+export interface ResourceSkuRestrictionInfo {
+  readonly locations?: string[];
+  readonly zones?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuRestrictions class.
+ * @constructor
+ * Describes restrictions of a SKU.
+ *
+ * @member {string} [type] The type of restrictions. Possible values include:
+ * 'Location', 'Zone'
+ * @member {array} [values] The value of restrictions. If the restriction type
+ * is set to location. This would be different locations where the SKU is
+ * restricted.
+ * @member {object} [restrictionInfo] The information about the restriction
+ * where the SKU cannot be used.
+ * @member {array} [restrictionInfo.locations] Locations where the SKU is
+ * restricted
+ * @member {array} [restrictionInfo.zones] List of availability zones where the
+ * SKU is restricted.
+ * @member {string} [reasonCode] The reason for restriction. Possible values
+ * include: 'QuotaId', 'NotAvailableForSubscription'
+ */
+export interface ResourceSkuRestrictions {
+  readonly type?: string;
+  readonly values?: string[];
+  readonly restrictionInfo?: ResourceSkuRestrictionInfo;
+  readonly reasonCode?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSku class.
+ * @constructor
+ * Describes an available Cognitive Services SKU.
+ *
+ * @member {string} [resourceType] The type of resource the SKU applies to.
+ * @member {string} [name] The name of SKU.
+ * @member {string} [tier] Specifies the tier of Cognitive Services account.
+ * @member {string} [kind] The Kind of resources that are supported in this
+ * SKU.
+ * @member {array} [locations] The set of locations that the SKU is available.
+ * @member {array} [restrictions] The restrictions because of which SKU cannot
+ * be used. This is empty if there are no restrictions.
+ */
+export interface ResourceSku {
+  readonly resourceType?: string;
+  readonly name?: string;
+  readonly tier?: string;
+  readonly kind?: string;
+  readonly locations?: string[];
+  readonly restrictions?: ResourceSkuRestrictions[];
+}
+
 
 /**
  * @class
@@ -401,6 +465,18 @@ export interface CheckSkuAvailabilityResultList {
  * @member {string} [nextLink] The link used to get the next page of accounts.
  */
 export interface CognitiveServicesAccountListResult extends Array<CognitiveServicesAccount> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkusResult class.
+ * @constructor
+ * The Get Skus operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of Skus.
+ */
+export interface ResourceSkusResult extends Array<ResourceSku> {
   nextLink?: string;
 }
 

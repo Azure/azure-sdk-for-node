@@ -297,7 +297,8 @@ export class AzureEnvironment {
     storageEndpointSuffix: '.core.windows.net',
     keyVaultDnsSuffix: '.vault.azure.net',
     azureDataLakeStoreFileSystemEndpointSuffix: 'azuredatalakestore.net',
-    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'azuredatalakeanalytics.net'
+    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'azuredatalakeanalytics.net',
+    validateAuthority: true
   };
 
   static readonly AzureChina: {
@@ -318,7 +319,8 @@ export class AzureEnvironment {
     keyVaultDnsSuffix: '.vault.azure.cn',
     // TODO: add dns suffixes for the china cloud for datalake store and datalake analytics once they are defined.
     azureDataLakeStoreFileSystemEndpointSuffix: 'N/A',
-    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'N/A'
+    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'N/A',
+    validateAuthority: true
   };
 
   static readonly AzureUSGovernment: {
@@ -338,7 +340,8 @@ export class AzureEnvironment {
     storageEndpointSuffix: '.core.usgovcloudapi.net',
     keyVaultDnsSuffix: '.vault.usgovcloudapi.net',
     azureDataLakeStoreFileSystemEndpointSuffix: 'N/A',
-    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'N/A'
+    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'N/A',
+    validateAuthority: true
   };
 
   static readonly AzureGermanCloud: {
@@ -358,7 +361,8 @@ export class AzureEnvironment {
     storageEndpointSuffix: '.core.cloudapi.de',
     keyVaultDnsSuffix: '.vault.microsoftazure.de',
     azureDataLakeStoreFileSystemEndpointSuffix: 'N/A',
-    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'N/A'
+    azureDataLakeAnalyticsCatalogAndJobEndpointSuffix: 'N/A',
+    validateAuthority: true
   };
 }
 
