@@ -19987,6 +19987,11 @@ export interface PublicIPAddresses {
      * @param {number} [parameters.publicIPPrefix.prefixLength] The Length of the
      * Public IP Prefix.
      *
+     * @param {string} [parameters.publicIPPrefix.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
+     * referenced PublicIPAddresses
+     *
      * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
      * timeout of the public IP prefix.
      *
@@ -20109,6 +20114,11 @@ export interface PublicIPAddresses {
      *
      * @param {number} [parameters.publicIPPrefix.prefixLength] The Length of the
      * Public IP Prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
+     * referenced PublicIPAddresses
      *
      * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
      * timeout of the public IP prefix.
@@ -20708,6 +20718,11 @@ export interface PublicIPAddresses {
      * @param {number} [parameters.publicIPPrefix.prefixLength] The Length of the
      * Public IP Prefix.
      *
+     * @param {string} [parameters.publicIPPrefix.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
+     * referenced PublicIPAddresses
+     *
      * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
      * timeout of the public IP prefix.
      *
@@ -20830,6 +20845,11 @@ export interface PublicIPAddresses {
      *
      * @param {number} [parameters.publicIPPrefix.prefixLength] The Length of the
      * Public IP Prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
+     * referenced PublicIPAddresses
      *
      * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
      * timeout of the public IP prefix.
@@ -21367,6 +21387,11 @@ export interface PublicIPPrefixes {
      * @param {number} [parameters.prefixLength] The Length of the Public IP
      * Prefix.
      *
+     * @param {string} [parameters.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPAddresses] The list of all referenced
+     * PublicIPAddresses
+     *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP prefix.
      *
@@ -21426,6 +21451,11 @@ export interface PublicIPPrefixes {
      *
      * @param {number} [parameters.prefixLength] The Length of the Public IP
      * Prefix.
+     *
+     * @param {string} [parameters.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPAddresses] The list of all referenced
+     * PublicIPAddresses
      *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP prefix.
@@ -21741,6 +21771,11 @@ export interface PublicIPPrefixes {
      * @param {number} [parameters.prefixLength] The Length of the Public IP
      * Prefix.
      *
+     * @param {string} [parameters.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPAddresses] The list of all referenced
+     * PublicIPAddresses
+     *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP prefix.
      *
@@ -21800,6 +21835,11 @@ export interface PublicIPPrefixes {
      *
      * @param {number} [parameters.prefixLength] The Length of the Public IP
      * Prefix.
+     *
+     * @param {string} [parameters.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPAddresses] The list of all referenced
+     * PublicIPAddresses
      *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP prefix.
