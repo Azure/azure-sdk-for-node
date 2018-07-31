@@ -11,7 +11,7 @@
 import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import * as models from "./models";
 
-declare class ComputerVisionAPIClient extends ServiceClient {
+export default class ComputerVisionAPIClient extends ServiceClient {
   /**
    * @class
    * Initializes a new instance of the ComputerVisionAPIClient class.
@@ -1284,4 +1284,4 @@ declare class ComputerVisionAPIClient extends ServiceClient {
   recognizeTextInStream(image: stream.Readable, options: { detectHandwriting? : boolean, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
-export = ComputerVisionAPIClient;
+export { ComputerVisionAPIClient, models as ComputerVisionAPIModels };

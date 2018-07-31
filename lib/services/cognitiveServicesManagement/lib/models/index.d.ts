@@ -46,10 +46,11 @@ export interface Sku {
  * @member {string} [sku.tier] Gets the sku tier. This is based on the SKU
  * name. Possible values include: 'Free', 'Standard', 'Premium'
  * @member {string} kind Required. Gets or sets the Kind of the resource.
- * Possible values include: 'Academic', 'Bing.Autosuggest', 'Bing.Search',
- * 'Bing.Speech', 'Bing.SpellCheck', 'ComputerVision', 'ContentModerator',
- * 'CustomSpeech', 'Emotion', 'Face', 'LUIS', 'Recommendations',
- * 'SpeakerRecognition', 'Speech', 'SpeechTranslation', 'TextAnalytics',
+ * Possible values include: 'Bing.Autosuggest.v7', 'Bing.CustomSearch',
+ * 'Bing.Search.v7', 'Bing.Speech', 'Bing.SpellCheck.v7', 'ComputerVision',
+ * 'ContentModerator', 'CustomSpeech', 'CustomVision.Prediction',
+ * 'CustomVision.Training', 'Emotion', 'Face', 'LUIS', 'QnAMaker',
+ * 'SpeakerRecognition', 'SpeechTranslation', 'TextAnalytics',
  * 'TextTranslation', 'WebLM'
  * @member {string} location Required. Gets or sets the location of the
  * resource. This will be one of the supported and registered Azure Geo Regions
@@ -109,7 +110,8 @@ export interface CognitiveServicesAccountUpdateParameters {
  * @member {string} [name] The name of the created account
  * @member {string} [provisioningState] Gets the status of the cognitive
  * services account at the time the operation was called. Possible values
- * include: 'Creating', 'ResolvingDNS', 'Succeeded', 'Failed'
+ * include: 'Creating', 'ResolvingDNS', 'Moving', 'Deleting', 'Succeeded',
+ * 'Failed'
  * @member {string} [endpoint] Endpoint of the created account.
  * @member {string} [internalId] The internal identifier.
  * @member {object} [sku] The SKU of Cognitive Services account.
@@ -200,6 +202,62 @@ export interface CognitiveServicesAccountEnumerateSkusResult {
 
 /**
  * @class
+ * Initializes a new instance of the MetricName class.
+ * @constructor
+ * A metric name.
+ *
+ * @member {string} [value] The name of the metric.
+ * @member {string} [localizedValue] The friendly name of the metric.
+ */
+export interface MetricName {
+  readonly value?: string;
+  readonly localizedValue?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Usage class.
+ * @constructor
+ * The usage data for a usage request.
+ *
+ * @member {string} [unit] The unit of the metric. Possible values include:
+ * 'Count', 'Bytes', 'Seconds', 'Percent', 'CountPerSecond', 'BytesPerSecond',
+ * 'Milliseconds'
+ * @member {object} [name] The name information for the metric.
+ * @member {string} [name.value] The name of the metric.
+ * @member {string} [name.localizedValue] The friendly name of the metric.
+ * @member {string} [quotaPeriod] The quota period used to summarize the usage
+ * values.
+ * @member {number} [limit] Maximum value for this metric.
+ * @member {number} [currentValue] Current value for this metric.
+ * @member {string} [nextResetTime] Next reset time for current quota.
+ * @member {string} [status] Cognitive Services account quota usage status.
+ * Possible values include: 'Included', 'Blocked', 'InOverage', 'Unknown'
+ */
+export interface Usage {
+  unit?: string;
+  readonly name?: MetricName;
+  readonly quotaPeriod?: string;
+  readonly limit?: number;
+  readonly currentValue?: number;
+  readonly nextResetTime?: string;
+  status?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UsagesResult class.
+ * @constructor
+ * The response to a list usage request.
+ *
+ * @member {array} [value] The list of usages for Cognitive Service account.
+ */
+export interface UsagesResult {
+  readonly value?: Usage[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ErrorBody class.
  * @constructor
  * Cognitive Services error body.
@@ -278,10 +336,11 @@ export interface OperationEntity {
  *
  * @member {array} skus The SKU of the resource.
  * @member {string} kind The Kind of the resource. Possible values include:
- * 'Academic', 'Bing.Autosuggest', 'Bing.Search', 'Bing.Speech',
- * 'Bing.SpellCheck', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
- * 'Emotion', 'Face', 'LUIS', 'Recommendations', 'SpeakerRecognition',
- * 'Speech', 'SpeechTranslation', 'TextAnalytics', 'TextTranslation', 'WebLM'
+ * 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
+ * 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
+ * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
+ * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
+ * 'TextAnalytics', 'TextTranslation', 'WebLM'
  * @member {string} type The Type of the resource.
  */
 export interface CheckSkuAvailabilityParameter {
@@ -297,10 +356,11 @@ export interface CheckSkuAvailabilityParameter {
  * Check SKU availability result.
  *
  * @member {string} [kind] The Kind of the resource. Possible values include:
- * 'Academic', 'Bing.Autosuggest', 'Bing.Search', 'Bing.Speech',
- * 'Bing.SpellCheck', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
- * 'Emotion', 'Face', 'LUIS', 'Recommendations', 'SpeakerRecognition',
- * 'Speech', 'SpeechTranslation', 'TextAnalytics', 'TextTranslation', 'WebLM'
+ * 'Bing.Autosuggest.v7', 'Bing.CustomSearch', 'Bing.Search.v7', 'Bing.Speech',
+ * 'Bing.SpellCheck.v7', 'ComputerVision', 'ContentModerator', 'CustomSpeech',
+ * 'CustomVision.Prediction', 'CustomVision.Training', 'Emotion', 'Face',
+ * 'LUIS', 'QnAMaker', 'SpeakerRecognition', 'SpeechTranslation',
+ * 'TextAnalytics', 'TextTranslation', 'WebLM'
  * @member {string} [type] The Type of the resource.
  * @member {string} [skuName] The SKU of Cognitive Services account. Possible
  * values include: 'F0', 'P0', 'P1', 'P2', 'S0', 'S1', 'S2', 'S3', 'S4', 'S5',
@@ -331,6 +391,70 @@ export interface CheckSkuAvailabilityResultList {
   value?: CheckSkuAvailabilityResult[];
 }
 
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuRestrictionInfo class.
+ * @constructor
+ * @member {array} [locations] Locations where the SKU is restricted
+ * @member {array} [zones] List of availability zones where the SKU is
+ * restricted.
+ */
+export interface ResourceSkuRestrictionInfo {
+  readonly locations?: string[];
+  readonly zones?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkuRestrictions class.
+ * @constructor
+ * Describes restrictions of a SKU.
+ *
+ * @member {string} [type] The type of restrictions. Possible values include:
+ * 'Location', 'Zone'
+ * @member {array} [values] The value of restrictions. If the restriction type
+ * is set to location. This would be different locations where the SKU is
+ * restricted.
+ * @member {object} [restrictionInfo] The information about the restriction
+ * where the SKU cannot be used.
+ * @member {array} [restrictionInfo.locations] Locations where the SKU is
+ * restricted
+ * @member {array} [restrictionInfo.zones] List of availability zones where the
+ * SKU is restricted.
+ * @member {string} [reasonCode] The reason for restriction. Possible values
+ * include: 'QuotaId', 'NotAvailableForSubscription'
+ */
+export interface ResourceSkuRestrictions {
+  readonly type?: string;
+  readonly values?: string[];
+  readonly restrictionInfo?: ResourceSkuRestrictionInfo;
+  readonly reasonCode?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSku class.
+ * @constructor
+ * Describes an available Cognitive Services SKU.
+ *
+ * @member {string} [resourceType] The type of resource the SKU applies to.
+ * @member {string} [name] The name of SKU.
+ * @member {string} [tier] Specifies the tier of Cognitive Services account.
+ * @member {string} [kind] The Kind of resources that are supported in this
+ * SKU.
+ * @member {array} [locations] The set of locations that the SKU is available.
+ * @member {array} [restrictions] The restrictions because of which SKU cannot
+ * be used. This is empty if there are no restrictions.
+ */
+export interface ResourceSku {
+  readonly resourceType?: string;
+  readonly name?: string;
+  readonly tier?: string;
+  readonly kind?: string;
+  readonly locations?: string[];
+  readonly restrictions?: ResourceSkuRestrictions[];
+}
+
 
 /**
  * @class
@@ -341,6 +465,18 @@ export interface CheckSkuAvailabilityResultList {
  * @member {string} [nextLink] The link used to get the next page of accounts.
  */
 export interface CognitiveServicesAccountListResult extends Array<CognitiveServicesAccount> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ResourceSkusResult class.
+ * @constructor
+ * The Get Skus operation response.
+ *
+ * @member {string} [nextLink] The uri to fetch the next page of Skus.
+ */
+export interface ResourceSkusResult extends Array<ResourceSku> {
   nextLink?: string;
 }
 

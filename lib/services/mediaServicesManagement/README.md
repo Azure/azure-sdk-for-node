@@ -1,36 +1,39 @@
-# Microsoft Azure SDK for Node.js - MediaServicesManagement
+---
+uid: azure-arm-mediaservices
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Microsoft Azure MediaServices.
-## Minimum node.js version >= 6.x.x
+---
+# Microsoft Azure SDK for Node.js - AzureMediaServices
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
 ```bash
-npm install azure-arm-mediaservice
+npm install azure-arm-mediaservices
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing mediaServices as an example
+### Authentication, client creation and list operations as an example.
 
- ```javascript
- const msRestAzure = require('ms-rest-azure');
- const MediaServicesManagement = require('azure-arm-mediaservices');
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin().then((credentials) => {
-   let client = new MediaServicesManagement(credentials, 'your-subscription-id');
-   return client.mediaServiceOperations.listByResourceGroup('testrg');
- }).then((mediaServices) => {
-  console.log('List of zones:');
-  console.dir(mediaServices, {depth: null, colors: true});
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const AzureMediaServices = require("azure-arm-mediaservices");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new AzureMediaServices(creds, subscriptionId);
+    return client.operations.list().then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
 }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
- });
-```
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 

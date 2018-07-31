@@ -1,3 +1,8 @@
+---
+uid: azure-batch
+summary: *content
+
+---
 # Microsoft Azure SDK for Node.js - Batch Service
 
 This project provides a Node.js package that makes it easy to work with Microsoft Azure Batch Service. Right now it supports:

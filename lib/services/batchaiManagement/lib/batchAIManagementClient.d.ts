@@ -57,10 +57,12 @@ export default class BatchAIManagementClient extends AzureServiceClient {
 
   // Operation groups
   operations: operations.Operations;
-  usageOperations: operations.UsageOperations;
-  clusters: operations.Clusters;
+  usages: operations.Usages;
+  workspaces: operations.Workspaces;
+  experiments: operations.Experiments;
   jobs: operations.Jobs;
   fileServers: operations.FileServers;
+  clusters: operations.Clusters;
 }
 
 export { BatchAIManagementClient, models as BatchAIManagementModels };

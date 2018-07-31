@@ -1,7 +1,14 @@
-# Microsoft Azure SDK for Node.js - EventHubManagement
+---
+uid: azure-arm-eventhub
+summary: *content
 
-This project provides a Node.js package that makes it easy to manage Azure EventHub Resources. Right now it supports:
-- **Node.js version: 6.0.0 or higher**
+---
+# Microsoft Azure SDK for Node.js - EventHubManagementClient
+This project provides a Node.js package for accessing Azure. Right now it supports:
+- **Node.js version 6.x.x or higher**
+
+## Features
+
 
 ## How to Install
 
@@ -9,32 +16,25 @@ This project provides a Node.js package that makes it easy to manage Azure Event
 npm install azure-arm-eventhub
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and getting information about an eventhub as an example
+### Authentication, client creation and list operations as an example.
 
- ```javascript
- var msRestAzure = require('ms-rest-azure');
- var EventHubManagement = require('azure-arm-eventhub');
- 
- // Interactive Login
- msRestAzure.interactiveLogin(function(err, credentials) {
-  var client = new EventHubManagement(credentials, 'your-subscription-id');
-  var resourceGroupName = 'testRG';
-  var namespaceName = 'testNS';
-  var eventHubName = 'testEH';
-  client.eventHubs.get(resourceGroupName, namespaceName, eventHubName, function(err, eventHubs, request, response) {
-    if (err) {
-      console.log(err);
-    } else {
-      eventHubs.map(function (hub, index, array) {
-        console.log('found hub :' + hub.name);
-      }));
-    }
-  });
- });
- ```
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const EventHubManagementClient = require("azure-arm-eventhub");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new EventHubManagementClient(creds, subscriptionId);
+    return client.operations.list().then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
+}).catch((err) => {
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 
-- [Microsoft Azure SDK for Node.js - All-up](https://github.com/WindowsAzure/azure-sdk-for-node)
+- [Microsoft Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)

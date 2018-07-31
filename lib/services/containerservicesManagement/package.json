@@ -1,35 +1,25 @@
 {
   "name": "azure-arm-containerservice",
   "author": "Microsoft Corporation",
-  "contributors": [
-    "Zavery, Amar <amzavery@microsoft.com>"
-  ],
-  "version": "1.0.0-preview",
-  "description": "Microsoft Azure Container Services Management Client Library for Node",
-  "tags": [
-    "azure",
-    "sdk"
-  ],
+  "description": "ContainerServiceClient Library with typescript type definitions for node",
+  "version": "4.0.0",
+  "dependencies": {
+    "ms-rest": "^2.3.3",
+    "ms-rest-azure": "^2.5.5"
+  },
   "keywords": [
     "node",
     "azure"
   ],
+  "license": "MIT",
   "main": "./lib/containerServiceClient.js",
   "types": "./lib/containerServiceClient.d.ts",
-  "license": "MIT",
-  "dependencies": {
-    "ms-rest": "^2.3.1",
-    "ms-rest-azure": "^2.5.4"
-  },
-  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/containerservicesManagement",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
-  },
-  "scripts": {
-    "test": "npm -s run-script jshint"
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
   }
 }
