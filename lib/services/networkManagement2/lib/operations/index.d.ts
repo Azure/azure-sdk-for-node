@@ -19969,6 +19969,51 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
      *
+     * @param {object} [parameters.publicIPPrefix] The Public IP Prefix this Public
+     * IP Address should be allocated from.
+     *
+     * @param {object} [parameters.publicIPPrefix.sku] The public IP prefix SKU.
+     *
+     * @param {string} [parameters.publicIPPrefix.sku.name] Name of a public IP
+     * prefix SKU. Possible values include: 'Standard'
+     *
+     * @param {string} [parameters.publicIPPrefix.publicIPAddressVersion] The
+     * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
+     * values include: 'IPv4', 'IPv6'
+     *
+     * @param {array} [parameters.publicIPPrefix.ipTags] The list of tags
+     * associated with the public IP prefix.
+     *
+     * @param {number} [parameters.publicIPPrefix.prefixLength] The Length of the
+     * Public IP Prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
+     * referenced PublicIPAddresses
+     *
+     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
+     * timeout of the public IP prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
+     * property of the public IP prefix resource.
+     *
+     * @param {string} [parameters.publicIPPrefix.provisioningState] The
+     * provisioning state of the Public IP prefix resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.publicIPPrefix.etag] A unique read-only string
+     * that changes whenever the resource is updated.
+     *
+     * @param {array} [parameters.publicIPPrefix.zones] A list of availability
+     * zones denoting the IP allocated for the resource needs to come from.
+     *
+     * @param {string} [parameters.publicIPPrefix.id] Resource ID.
+     *
+     * @param {string} [parameters.publicIPPrefix.location] Resource location.
+     *
+     * @param {object} [parameters.publicIPPrefix.tags] Resource tags.
+     *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP address.
      *
@@ -20051,6 +20096,51 @@ export interface PublicIPAddresses {
      *
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
+     *
+     * @param {object} [parameters.publicIPPrefix] The Public IP Prefix this Public
+     * IP Address should be allocated from.
+     *
+     * @param {object} [parameters.publicIPPrefix.sku] The public IP prefix SKU.
+     *
+     * @param {string} [parameters.publicIPPrefix.sku.name] Name of a public IP
+     * prefix SKU. Possible values include: 'Standard'
+     *
+     * @param {string} [parameters.publicIPPrefix.publicIPAddressVersion] The
+     * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
+     * values include: 'IPv4', 'IPv6'
+     *
+     * @param {array} [parameters.publicIPPrefix.ipTags] The list of tags
+     * associated with the public IP prefix.
+     *
+     * @param {number} [parameters.publicIPPrefix.prefixLength] The Length of the
+     * Public IP Prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
+     * referenced PublicIPAddresses
+     *
+     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
+     * timeout of the public IP prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
+     * property of the public IP prefix resource.
+     *
+     * @param {string} [parameters.publicIPPrefix.provisioningState] The
+     * provisioning state of the Public IP prefix resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.publicIPPrefix.etag] A unique read-only string
+     * that changes whenever the resource is updated.
+     *
+     * @param {array} [parameters.publicIPPrefix.zones] A list of availability
+     * zones denoting the IP allocated for the resource needs to come from.
+     *
+     * @param {string} [parameters.publicIPPrefix.id] Resource ID.
+     *
+     * @param {string} [parameters.publicIPPrefix.location] Resource location.
+     *
+     * @param {object} [parameters.publicIPPrefix.tags] Resource tags.
      *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP address.
@@ -20610,6 +20700,51 @@ export interface PublicIPAddresses {
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
      *
+     * @param {object} [parameters.publicIPPrefix] The Public IP Prefix this Public
+     * IP Address should be allocated from.
+     *
+     * @param {object} [parameters.publicIPPrefix.sku] The public IP prefix SKU.
+     *
+     * @param {string} [parameters.publicIPPrefix.sku.name] Name of a public IP
+     * prefix SKU. Possible values include: 'Standard'
+     *
+     * @param {string} [parameters.publicIPPrefix.publicIPAddressVersion] The
+     * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
+     * values include: 'IPv4', 'IPv6'
+     *
+     * @param {array} [parameters.publicIPPrefix.ipTags] The list of tags
+     * associated with the public IP prefix.
+     *
+     * @param {number} [parameters.publicIPPrefix.prefixLength] The Length of the
+     * Public IP Prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
+     * referenced PublicIPAddresses
+     *
+     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
+     * timeout of the public IP prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
+     * property of the public IP prefix resource.
+     *
+     * @param {string} [parameters.publicIPPrefix.provisioningState] The
+     * provisioning state of the Public IP prefix resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.publicIPPrefix.etag] A unique read-only string
+     * that changes whenever the resource is updated.
+     *
+     * @param {array} [parameters.publicIPPrefix.zones] A list of availability
+     * zones denoting the IP allocated for the resource needs to come from.
+     *
+     * @param {string} [parameters.publicIPPrefix.id] Resource ID.
+     *
+     * @param {string} [parameters.publicIPPrefix.location] Resource location.
+     *
+     * @param {object} [parameters.publicIPPrefix.tags] Resource tags.
+     *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP address.
      *
@@ -20692,6 +20827,51 @@ export interface PublicIPAddresses {
      *
      * @param {string} [parameters.ipAddress] The IP address associated with the
      * public IP address resource.
+     *
+     * @param {object} [parameters.publicIPPrefix] The Public IP Prefix this Public
+     * IP Address should be allocated from.
+     *
+     * @param {object} [parameters.publicIPPrefix.sku] The public IP prefix SKU.
+     *
+     * @param {string} [parameters.publicIPPrefix.sku.name] Name of a public IP
+     * prefix SKU. Possible values include: 'Standard'
+     *
+     * @param {string} [parameters.publicIPPrefix.publicIPAddressVersion] The
+     * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
+     * values include: 'IPv4', 'IPv6'
+     *
+     * @param {array} [parameters.publicIPPrefix.ipTags] The list of tags
+     * associated with the public IP prefix.
+     *
+     * @param {number} [parameters.publicIPPrefix.prefixLength] The Length of the
+     * Public IP Prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
+     * referenced PublicIPAddresses
+     *
+     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
+     * timeout of the public IP prefix.
+     *
+     * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
+     * property of the public IP prefix resource.
+     *
+     * @param {string} [parameters.publicIPPrefix.provisioningState] The
+     * provisioning state of the Public IP prefix resource. Possible values are:
+     * 'Updating', 'Deleting', and 'Failed'.
+     *
+     * @param {string} [parameters.publicIPPrefix.etag] A unique read-only string
+     * that changes whenever the resource is updated.
+     *
+     * @param {array} [parameters.publicIPPrefix.zones] A list of availability
+     * zones denoting the IP allocated for the resource needs to come from.
+     *
+     * @param {string} [parameters.publicIPPrefix.id] Resource ID.
+     *
+     * @param {string} [parameters.publicIPPrefix.location] Resource location.
+     *
+     * @param {object} [parameters.publicIPPrefix.tags] Resource tags.
      *
      * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
      * public IP address.
@@ -21050,6 +21230,854 @@ export interface PublicIPAddresses {
     listVirtualMachineScaleSetVMPublicIPAddressesNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPAddressListResult>;
     listVirtualMachineScaleSetVMPublicIPAddressesNext(nextPageLink: string, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
     listVirtualMachineScaleSetVMPublicIPAddressesNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPAddressListResult>): void;
+}
+
+/**
+ * @class
+ * PublicIPPrefixes
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the NetworkManagementClient.
+ */
+export interface PublicIPPrefixes {
+
+
+    /**
+     * Deletes the specified public IP prefix.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the PublicIpPrefix.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, publicIpPrefixName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified public IP prefix.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the PublicIpPrefix.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, publicIpPrefixName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, publicIpPrefixName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, publicIpPrefixName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the specified public IP prefix in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the PublicIPPrefx.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPPrefix>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, publicIpPrefixName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPPrefix>>;
+
+    /**
+     * Gets the specified public IP prefix in a specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the PublicIPPrefx.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.expand] Expands referenced resources.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPPrefix} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPPrefix} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPPrefix} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, publicIpPrefixName: string, options?: { expand? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPPrefix>;
+    get(resourceGroupName: string, publicIpPrefixName: string, callback: ServiceCallback<models.PublicIPPrefix>): void;
+    get(resourceGroupName: string, publicIpPrefixName: string, options: { expand? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPPrefix>): void;
+
+
+    /**
+     * Creates or updates a static or dynamic public IP prefix.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the public IP prefix.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * public IP prefix operation.
+     *
+     * @param {object} [parameters.sku] The public IP prefix SKU.
+     *
+     * @param {string} [parameters.sku.name] Name of a public IP prefix SKU.
+     * Possible values include: 'Standard'
+     *
+     * @param {string} [parameters.publicIPAddressVersion] The public IP address
+     * version. Possible values are: 'IPv4' and 'IPv6'. Possible values include:
+     * 'IPv4', 'IPv6'
+     *
+     * @param {array} [parameters.ipTags] The list of tags associated with the
+     * public IP prefix.
+     *
+     * @param {number} [parameters.prefixLength] The Length of the Public IP
+     * Prefix.
+     *
+     * @param {string} [parameters.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPAddresses] The list of all referenced
+     * PublicIPAddresses
+     *
+     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
+     * public IP prefix.
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * public IP prefix resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * Public IP prefix resource. Possible values are: 'Updating', 'Deleting', and
+     * 'Failed'.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {array} [parameters.zones] A list of availability zones denoting the
+     * IP allocated for the resource needs to come from.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPPrefix>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, publicIpPrefixName: string, parameters: models.PublicIPPrefix, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPPrefix>>;
+
+    /**
+     * Creates or updates a static or dynamic public IP prefix.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the public IP prefix.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * public IP prefix operation.
+     *
+     * @param {object} [parameters.sku] The public IP prefix SKU.
+     *
+     * @param {string} [parameters.sku.name] Name of a public IP prefix SKU.
+     * Possible values include: 'Standard'
+     *
+     * @param {string} [parameters.publicIPAddressVersion] The public IP address
+     * version. Possible values are: 'IPv4' and 'IPv6'. Possible values include:
+     * 'IPv4', 'IPv6'
+     *
+     * @param {array} [parameters.ipTags] The list of tags associated with the
+     * public IP prefix.
+     *
+     * @param {number} [parameters.prefixLength] The Length of the Public IP
+     * Prefix.
+     *
+     * @param {string} [parameters.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPAddresses] The list of all referenced
+     * PublicIPAddresses
+     *
+     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
+     * public IP prefix.
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * public IP prefix resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * Public IP prefix resource. Possible values are: 'Updating', 'Deleting', and
+     * 'Failed'.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {array} [parameters.zones] A list of availability zones denoting the
+     * IP allocated for the resource needs to come from.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPPrefix} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPPrefix} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPPrefix} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, publicIpPrefixName: string, parameters: models.PublicIPPrefix, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPPrefix>;
+    createOrUpdate(resourceGroupName: string, publicIpPrefixName: string, parameters: models.PublicIPPrefix, callback: ServiceCallback<models.PublicIPPrefix>): void;
+    createOrUpdate(resourceGroupName: string, publicIpPrefixName: string, parameters: models.PublicIPPrefix, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPPrefix>): void;
+
+
+    /**
+     * Updates public IP prefix tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the public IP prefix.
+     *
+     * @param {object} parameters Parameters supplied to update public IP prefix
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPPrefix>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateTagsWithHttpOperationResponse(resourceGroupName: string, publicIpPrefixName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPPrefix>>;
+
+    /**
+     * Updates public IP prefix tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the public IP prefix.
+     *
+     * @param {object} parameters Parameters supplied to update public IP prefix
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPPrefix} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPPrefix} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPPrefix} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateTags(resourceGroupName: string, publicIpPrefixName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPPrefix>;
+    updateTags(resourceGroupName: string, publicIpPrefixName: string, parameters: models.TagsObject, callback: ServiceCallback<models.PublicIPPrefix>): void;
+    updateTags(resourceGroupName: string, publicIpPrefixName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPPrefix>): void;
+
+
+    /**
+     * Gets all the public IP prefixes in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPPrefixListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPPrefixListResult>>;
+
+    /**
+     * Gets all the public IP prefixes in a subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPPrefixListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPPrefixListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPPrefixListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAll(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPPrefixListResult>;
+    listAll(callback: ServiceCallback<models.PublicIPPrefixListResult>): void;
+    listAll(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPPrefixListResult>): void;
+
+
+    /**
+     * Gets all public IP prefixes in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPPrefixListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPPrefixListResult>>;
+
+    /**
+     * Gets all public IP prefixes in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPPrefixListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPPrefixListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPPrefixListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPPrefixListResult>;
+    list(resourceGroupName: string, callback: ServiceCallback<models.PublicIPPrefixListResult>): void;
+    list(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPPrefixListResult>): void;
+
+
+    /**
+     * Deletes the specified public IP prefix.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the PublicIpPrefix.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, publicIpPrefixName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified public IP prefix.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the PublicIpPrefix.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, publicIpPrefixName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, publicIpPrefixName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, publicIpPrefixName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates or updates a static or dynamic public IP prefix.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the public IP prefix.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * public IP prefix operation.
+     *
+     * @param {object} [parameters.sku] The public IP prefix SKU.
+     *
+     * @param {string} [parameters.sku.name] Name of a public IP prefix SKU.
+     * Possible values include: 'Standard'
+     *
+     * @param {string} [parameters.publicIPAddressVersion] The public IP address
+     * version. Possible values are: 'IPv4' and 'IPv6'. Possible values include:
+     * 'IPv4', 'IPv6'
+     *
+     * @param {array} [parameters.ipTags] The list of tags associated with the
+     * public IP prefix.
+     *
+     * @param {number} [parameters.prefixLength] The Length of the Public IP
+     * Prefix.
+     *
+     * @param {string} [parameters.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPAddresses] The list of all referenced
+     * PublicIPAddresses
+     *
+     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
+     * public IP prefix.
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * public IP prefix resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * Public IP prefix resource. Possible values are: 'Updating', 'Deleting', and
+     * 'Failed'.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {array} [parameters.zones] A list of availability zones denoting the
+     * IP allocated for the resource needs to come from.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPPrefix>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, publicIpPrefixName: string, parameters: models.PublicIPPrefix, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPPrefix>>;
+
+    /**
+     * Creates or updates a static or dynamic public IP prefix.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the public IP prefix.
+     *
+     * @param {object} parameters Parameters supplied to the create or update
+     * public IP prefix operation.
+     *
+     * @param {object} [parameters.sku] The public IP prefix SKU.
+     *
+     * @param {string} [parameters.sku.name] Name of a public IP prefix SKU.
+     * Possible values include: 'Standard'
+     *
+     * @param {string} [parameters.publicIPAddressVersion] The public IP address
+     * version. Possible values are: 'IPv4' and 'IPv6'. Possible values include:
+     * 'IPv4', 'IPv6'
+     *
+     * @param {array} [parameters.ipTags] The list of tags associated with the
+     * public IP prefix.
+     *
+     * @param {number} [parameters.prefixLength] The Length of the Public IP
+     * Prefix.
+     *
+     * @param {string} [parameters.ipPrefix] The allocated Prefix
+     *
+     * @param {array} [parameters.publicIPAddresses] The list of all referenced
+     * PublicIPAddresses
+     *
+     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
+     * public IP prefix.
+     *
+     * @param {string} [parameters.resourceGuid] The resource GUID property of the
+     * public IP prefix resource.
+     *
+     * @param {string} [parameters.provisioningState] The provisioning state of the
+     * Public IP prefix resource. Possible values are: 'Updating', 'Deleting', and
+     * 'Failed'.
+     *
+     * @param {string} [parameters.etag] A unique read-only string that changes
+     * whenever the resource is updated.
+     *
+     * @param {array} [parameters.zones] A list of availability zones denoting the
+     * IP allocated for the resource needs to come from.
+     *
+     * @param {string} [parameters.id] Resource ID.
+     *
+     * @param {string} [parameters.location] Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPPrefix} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPPrefix} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPPrefix} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, publicIpPrefixName: string, parameters: models.PublicIPPrefix, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPPrefix>;
+    beginCreateOrUpdate(resourceGroupName: string, publicIpPrefixName: string, parameters: models.PublicIPPrefix, callback: ServiceCallback<models.PublicIPPrefix>): void;
+    beginCreateOrUpdate(resourceGroupName: string, publicIpPrefixName: string, parameters: models.PublicIPPrefix, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPPrefix>): void;
+
+
+    /**
+     * Updates public IP prefix tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the public IP prefix.
+     *
+     * @param {object} parameters Parameters supplied to update public IP prefix
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPPrefix>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, publicIpPrefixName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPPrefix>>;
+
+    /**
+     * Updates public IP prefix tags.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} publicIpPrefixName The name of the public IP prefix.
+     *
+     * @param {object} parameters Parameters supplied to update public IP prefix
+     * tags.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPPrefix} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPPrefix} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPPrefix} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdateTags(resourceGroupName: string, publicIpPrefixName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPPrefix>;
+    beginUpdateTags(resourceGroupName: string, publicIpPrefixName: string, parameters: models.TagsObject, callback: ServiceCallback<models.PublicIPPrefix>): void;
+    beginUpdateTags(resourceGroupName: string, publicIpPrefixName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPPrefix>): void;
+
+
+    /**
+     * Gets all the public IP prefixes in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPPrefixListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listAllNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPPrefixListResult>>;
+
+    /**
+     * Gets all the public IP prefixes in a subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPPrefixListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPPrefixListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPPrefixListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listAllNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPPrefixListResult>;
+    listAllNext(nextPageLink: string, callback: ServiceCallback<models.PublicIPPrefixListResult>): void;
+    listAllNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPPrefixListResult>): void;
+
+
+    /**
+     * Gets all public IP prefixes in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PublicIPPrefixListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PublicIPPrefixListResult>>;
+
+    /**
+     * Gets all public IP prefixes in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PublicIPPrefixListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PublicIPPrefixListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PublicIPPrefixListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PublicIPPrefixListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.PublicIPPrefixListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PublicIPPrefixListResult>): void;
 }
 
 /**
