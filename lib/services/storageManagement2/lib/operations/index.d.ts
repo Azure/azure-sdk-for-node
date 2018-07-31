@@ -1282,8 +1282,8 @@ export interface StorageAccounts {
      * @param {string} parameters.canonicalizedResource The canonical path to the
      * signed resource.
      *
-     * @param {string} parameters.resource The signed services accessible with the
-     * service SAS. Possible values include: Blob (b), Container (c), File (f),
+     * @param {string} [parameters.resource] The signed services accessible with
+     * the service SAS. Possible values include: Blob (b), Container (c), File (f),
      * Share (s). Possible values include: 'b', 'c', 'f', 's'
      *
      * @param {string} [parameters.permissions] The signed permissions for the
@@ -1362,8 +1362,8 @@ export interface StorageAccounts {
      * @param {string} parameters.canonicalizedResource The canonical path to the
      * signed resource.
      *
-     * @param {string} parameters.resource The signed services accessible with the
-     * service SAS. Possible values include: Blob (b), Container (c), File (f),
+     * @param {string} [parameters.resource] The signed services accessible with
+     * the service SAS. Possible values include: Blob (b), Container (c), File (f),
      * Share (s). Possible values include: 'b', 'c', 'f', 's'
      *
      * @param {string} [parameters.permissions] The signed permissions for the
