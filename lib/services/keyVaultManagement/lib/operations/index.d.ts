@@ -67,12 +67,9 @@ export interface Vaults {
      * Property to specify whether Azure Resource Manager is permitted to retrieve
      * secrets from the key vault.
      *
-     * @param {boolean} [parameters.properties.enableSoftDelete] Property
-     * specifying whether recoverable deletion is enabled for this key vault.
-     * Setting this property to true activates the soft delete feature, whereby
-     * vaults or vault entities can be recovered after deletion. Enabling this
-     * functionality is irreversible - that is, the property does not accept false
-     * as its value.
+     * @param {boolean} [parameters.properties.enableSoftDelete] Property to
+     * specify whether the 'soft delete' functionality is enabled for this key
+     * vault. It does not accept false value.
      *
      * @param {string} [parameters.properties.createMode] The vault's create mode
      * to indicate whether the vault need to be recovered or not. Possible values
@@ -85,6 +82,25 @@ export interface Vaults {
      * irrecoverable deletion. The setting is effective only if soft delete is also
      * enabled. Enabling this functionality is irreversible - that is, the property
      * does not accept false as its value.
+     *
+     * @param {object} [parameters.properties.networkAcls] A collection of rules
+     * governing the accessibility of the vault from specific network locations.
+     *
+     * @param {string} [parameters.properties.networkAcls.bypass] Tells what
+     * traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If
+     * not specified the default is 'AzureServices'. Possible values include:
+     * 'AzureServices', 'None'
+     *
+     * @param {string} [parameters.properties.networkAcls.defaultAction] The
+     * default action when no rule from ipRules and from virtualNetworkRules match.
+     * This is only used after the bypass property has been evaluated. Possible
+     * values include: 'Allow', 'Deny'
+     *
+     * @param {array} [parameters.properties.networkAcls.ipRules] The list of IP
+     * address rules.
+     *
+     * @param {array} [parameters.properties.networkAcls.virtualNetworkRules] The
+     * list of virtual network rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -145,12 +161,9 @@ export interface Vaults {
      * Property to specify whether Azure Resource Manager is permitted to retrieve
      * secrets from the key vault.
      *
-     * @param {boolean} [parameters.properties.enableSoftDelete] Property
-     * specifying whether recoverable deletion is enabled for this key vault.
-     * Setting this property to true activates the soft delete feature, whereby
-     * vaults or vault entities can be recovered after deletion. Enabling this
-     * functionality is irreversible - that is, the property does not accept false
-     * as its value.
+     * @param {boolean} [parameters.properties.enableSoftDelete] Property to
+     * specify whether the 'soft delete' functionality is enabled for this key
+     * vault. It does not accept false value.
      *
      * @param {string} [parameters.properties.createMode] The vault's create mode
      * to indicate whether the vault need to be recovered or not. Possible values
@@ -163,6 +176,25 @@ export interface Vaults {
      * irrecoverable deletion. The setting is effective only if soft delete is also
      * enabled. Enabling this functionality is irreversible - that is, the property
      * does not accept false as its value.
+     *
+     * @param {object} [parameters.properties.networkAcls] A collection of rules
+     * governing the accessibility of the vault from specific network locations.
+     *
+     * @param {string} [parameters.properties.networkAcls.bypass] Tells what
+     * traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If
+     * not specified the default is 'AzureServices'. Possible values include:
+     * 'AzureServices', 'None'
+     *
+     * @param {string} [parameters.properties.networkAcls.defaultAction] The
+     * default action when no rule from ipRules and from virtualNetworkRules match.
+     * This is only used after the bypass property has been evaluated. Possible
+     * values include: 'Allow', 'Deny'
+     *
+     * @param {array} [parameters.properties.networkAcls.ipRules] The list of IP
+     * address rules.
+     *
+     * @param {array} [parameters.properties.networkAcls.virtualNetworkRules] The
+     * list of virtual network rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -236,18 +268,40 @@ export interface Vaults {
      * Property to specify whether Azure Resource Manager is permitted to retrieve
      * secrets from the key vault.
      *
-     * @param {boolean} [parameters.properties.enableSoftDelete] Property
-     * specifying whether recoverable deletion ('soft' delete) is enabled for this
-     * key vault. The property may not be set to false.
+     * @param {boolean} [parameters.properties.enableSoftDelete] Property to
+     * specify whether the 'soft delete' functionality is enabled for this key
+     * vault. It does not accept false value.
      *
      * @param {string} [parameters.properties.createMode] The vault's create mode
      * to indicate whether the vault need to be recovered or not. Possible values
      * include: 'recover', 'default'
      *
      * @param {boolean} [parameters.properties.enablePurgeProtection] Property
-     * specifying whether protection against purge is enabled for this vault; it is
-     * only effective if soft delete is also enabled. Once activated, the property
-     * may no longer be reset to false.
+     * specifying whether protection against purge is enabled for this vault.
+     * Setting this property to true activates protection against purge for this
+     * vault and its content - only the Key Vault service may initiate a hard,
+     * irrecoverable deletion. The setting is effective only if soft delete is also
+     * enabled. Enabling this functionality is irreversible - that is, the property
+     * does not accept false as its value.
+     *
+     * @param {object} [parameters.properties.networkAcls] A collection of rules
+     * governing the accessibility of the vault from specific network locations.
+     *
+     * @param {string} [parameters.properties.networkAcls.bypass] Tells what
+     * traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If
+     * not specified the default is 'AzureServices'. Possible values include:
+     * 'AzureServices', 'None'
+     *
+     * @param {string} [parameters.properties.networkAcls.defaultAction] The
+     * default action when no rule from ipRules and from virtualNetworkRules match.
+     * This is only used after the bypass property has been evaluated. Possible
+     * values include: 'Allow', 'Deny'
+     *
+     * @param {array} [parameters.properties.networkAcls.ipRules] The list of IP
+     * address rules.
+     *
+     * @param {array} [parameters.properties.networkAcls.virtualNetworkRules] The
+     * list of virtual network rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -302,18 +356,40 @@ export interface Vaults {
      * Property to specify whether Azure Resource Manager is permitted to retrieve
      * secrets from the key vault.
      *
-     * @param {boolean} [parameters.properties.enableSoftDelete] Property
-     * specifying whether recoverable deletion ('soft' delete) is enabled for this
-     * key vault. The property may not be set to false.
+     * @param {boolean} [parameters.properties.enableSoftDelete] Property to
+     * specify whether the 'soft delete' functionality is enabled for this key
+     * vault. It does not accept false value.
      *
      * @param {string} [parameters.properties.createMode] The vault's create mode
      * to indicate whether the vault need to be recovered or not. Possible values
      * include: 'recover', 'default'
      *
      * @param {boolean} [parameters.properties.enablePurgeProtection] Property
-     * specifying whether protection against purge is enabled for this vault; it is
-     * only effective if soft delete is also enabled. Once activated, the property
-     * may no longer be reset to false.
+     * specifying whether protection against purge is enabled for this vault.
+     * Setting this property to true activates protection against purge for this
+     * vault and its content - only the Key Vault service may initiate a hard,
+     * irrecoverable deletion. The setting is effective only if soft delete is also
+     * enabled. Enabling this functionality is irreversible - that is, the property
+     * does not accept false as its value.
+     *
+     * @param {object} [parameters.properties.networkAcls] A collection of rules
+     * governing the accessibility of the vault from specific network locations.
+     *
+     * @param {string} [parameters.properties.networkAcls.bypass] Tells what
+     * traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If
+     * not specified the default is 'AzureServices'. Possible values include:
+     * 'AzureServices', 'None'
+     *
+     * @param {string} [parameters.properties.networkAcls.defaultAction] The
+     * default action when no rule from ipRules and from virtualNetworkRules match.
+     * This is only used after the bypass property has been evaluated. Possible
+     * values include: 'Allow', 'Deny'
+     *
+     * @param {array} [parameters.properties.networkAcls.ipRules] The list of IP
+     * address rules.
+     *
+     * @param {array} [parameters.properties.networkAcls.virtualNetworkRules] The
+     * list of virtual network rules.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -958,6 +1034,213 @@ export interface Vaults {
     checkNameAvailability(vaultName: models.VaultCheckNameAvailabilityParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CheckNameAvailabilityResult>;
     checkNameAvailability(vaultName: models.VaultCheckNameAvailabilityParameters, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
     checkNameAvailability(vaultName: models.VaultCheckNameAvailabilityParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CheckNameAvailabilityResult>): void;
+
+
+    /**
+     * Create or update a key vault in the specified subscription.
+     *
+     * @param {string} resourceGroupName The name of the Resource Group to which
+     * the server belongs.
+     *
+     * @param {string} vaultName Name of the vault
+     *
+     * @param {object} parameters Parameters to create or update the vault
+     *
+     * @param {string} parameters.location The supported Azure location where the
+     * key vault should be created.
+     *
+     * @param {object} [parameters.tags] The tags that will be assigned to the key
+     * vault.
+     *
+     * @param {object} parameters.properties Properties of the vault
+     *
+     * @param {uuid} parameters.properties.tenantId The Azure Active Directory
+     * tenant ID that should be used for authenticating requests to the key vault.
+     *
+     * @param {object} parameters.properties.sku SKU details
+     *
+     * @param {string} parameters.properties.sku.name SKU name to specify whether
+     * the key vault is a standard vault or a premium vault. Possible values
+     * include: 'standard', 'premium'
+     *
+     * @param {array} [parameters.properties.accessPolicies] An array of 0 to 16
+     * identities that have access to the key vault. All identities in the array
+     * must use the same tenant ID as the key vault's tenant ID.
+     *
+     * @param {string} [parameters.properties.vaultUri] The URI of the vault for
+     * performing operations on keys and secrets.
+     *
+     * @param {boolean} [parameters.properties.enabledForDeployment] Property to
+     * specify whether Azure Virtual Machines are permitted to retrieve
+     * certificates stored as secrets from the key vault.
+     *
+     * @param {boolean} [parameters.properties.enabledForDiskEncryption] Property
+     * to specify whether Azure Disk Encryption is permitted to retrieve secrets
+     * from the vault and unwrap keys.
+     *
+     * @param {boolean} [parameters.properties.enabledForTemplateDeployment]
+     * Property to specify whether Azure Resource Manager is permitted to retrieve
+     * secrets from the key vault.
+     *
+     * @param {boolean} [parameters.properties.enableSoftDelete] Property to
+     * specify whether the 'soft delete' functionality is enabled for this key
+     * vault. It does not accept false value.
+     *
+     * @param {string} [parameters.properties.createMode] The vault's create mode
+     * to indicate whether the vault need to be recovered or not. Possible values
+     * include: 'recover', 'default'
+     *
+     * @param {boolean} [parameters.properties.enablePurgeProtection] Property
+     * specifying whether protection against purge is enabled for this vault.
+     * Setting this property to true activates protection against purge for this
+     * vault and its content - only the Key Vault service may initiate a hard,
+     * irrecoverable deletion. The setting is effective only if soft delete is also
+     * enabled. Enabling this functionality is irreversible - that is, the property
+     * does not accept false as its value.
+     *
+     * @param {object} [parameters.properties.networkAcls] A collection of rules
+     * governing the accessibility of the vault from specific network locations.
+     *
+     * @param {string} [parameters.properties.networkAcls.bypass] Tells what
+     * traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If
+     * not specified the default is 'AzureServices'. Possible values include:
+     * 'AzureServices', 'None'
+     *
+     * @param {string} [parameters.properties.networkAcls.defaultAction] The
+     * default action when no rule from ipRules and from virtualNetworkRules match.
+     * This is only used after the bypass property has been evaluated. Possible
+     * values include: 'Allow', 'Deny'
+     *
+     * @param {array} [parameters.properties.networkAcls.ipRules] The list of IP
+     * address rules.
+     *
+     * @param {array} [parameters.properties.networkAcls.virtualNetworkRules] The
+     * list of virtual network rules.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Vault>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, vaultName: string, parameters: models.VaultCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Vault>>;
+
+    /**
+     * Create or update a key vault in the specified subscription.
+     *
+     * @param {string} resourceGroupName The name of the Resource Group to which
+     * the server belongs.
+     *
+     * @param {string} vaultName Name of the vault
+     *
+     * @param {object} parameters Parameters to create or update the vault
+     *
+     * @param {string} parameters.location The supported Azure location where the
+     * key vault should be created.
+     *
+     * @param {object} [parameters.tags] The tags that will be assigned to the key
+     * vault.
+     *
+     * @param {object} parameters.properties Properties of the vault
+     *
+     * @param {uuid} parameters.properties.tenantId The Azure Active Directory
+     * tenant ID that should be used for authenticating requests to the key vault.
+     *
+     * @param {object} parameters.properties.sku SKU details
+     *
+     * @param {string} parameters.properties.sku.name SKU name to specify whether
+     * the key vault is a standard vault or a premium vault. Possible values
+     * include: 'standard', 'premium'
+     *
+     * @param {array} [parameters.properties.accessPolicies] An array of 0 to 16
+     * identities that have access to the key vault. All identities in the array
+     * must use the same tenant ID as the key vault's tenant ID.
+     *
+     * @param {string} [parameters.properties.vaultUri] The URI of the vault for
+     * performing operations on keys and secrets.
+     *
+     * @param {boolean} [parameters.properties.enabledForDeployment] Property to
+     * specify whether Azure Virtual Machines are permitted to retrieve
+     * certificates stored as secrets from the key vault.
+     *
+     * @param {boolean} [parameters.properties.enabledForDiskEncryption] Property
+     * to specify whether Azure Disk Encryption is permitted to retrieve secrets
+     * from the vault and unwrap keys.
+     *
+     * @param {boolean} [parameters.properties.enabledForTemplateDeployment]
+     * Property to specify whether Azure Resource Manager is permitted to retrieve
+     * secrets from the key vault.
+     *
+     * @param {boolean} [parameters.properties.enableSoftDelete] Property to
+     * specify whether the 'soft delete' functionality is enabled for this key
+     * vault. It does not accept false value.
+     *
+     * @param {string} [parameters.properties.createMode] The vault's create mode
+     * to indicate whether the vault need to be recovered or not. Possible values
+     * include: 'recover', 'default'
+     *
+     * @param {boolean} [parameters.properties.enablePurgeProtection] Property
+     * specifying whether protection against purge is enabled for this vault.
+     * Setting this property to true activates protection against purge for this
+     * vault and its content - only the Key Vault service may initiate a hard,
+     * irrecoverable deletion. The setting is effective only if soft delete is also
+     * enabled. Enabling this functionality is irreversible - that is, the property
+     * does not accept false as its value.
+     *
+     * @param {object} [parameters.properties.networkAcls] A collection of rules
+     * governing the accessibility of the vault from specific network locations.
+     *
+     * @param {string} [parameters.properties.networkAcls.bypass] Tells what
+     * traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If
+     * not specified the default is 'AzureServices'. Possible values include:
+     * 'AzureServices', 'None'
+     *
+     * @param {string} [parameters.properties.networkAcls.defaultAction] The
+     * default action when no rule from ipRules and from virtualNetworkRules match.
+     * This is only used after the bypass property has been evaluated. Possible
+     * values include: 'Allow', 'Deny'
+     *
+     * @param {array} [parameters.properties.networkAcls.ipRules] The list of IP
+     * address rules.
+     *
+     * @param {array} [parameters.properties.networkAcls.virtualNetworkRules] The
+     * list of virtual network rules.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Vault} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Vault} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Vault} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, vaultName: string, parameters: models.VaultCreateOrUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Vault>;
+    beginCreateOrUpdate(resourceGroupName: string, vaultName: string, parameters: models.VaultCreateOrUpdateParameters, callback: ServiceCallback<models.Vault>): void;
+    beginCreateOrUpdate(resourceGroupName: string, vaultName: string, parameters: models.VaultCreateOrUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Vault>): void;
 
 
     /**
