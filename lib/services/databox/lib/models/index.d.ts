@@ -156,17 +156,16 @@ export interface AvailableSkuRequest {
  * @class
  * Initializes a new instance of the Sku class.
  * @constructor
- * The sku type.
+ * The Sku.
  *
- * @member {string} [name] The sku name. Optional for job resource creation and
- * update.
+ * @member {string} name The sku name.
  * @member {string} [displayName] The display name of the sku.
- * @member {string} [tier] The sku tier. This is based on the SKU name.
+ * @member {string} [family] The sku family.
  */
 export interface Sku {
-  name?: string;
+  name: string;
   displayName?: string;
-  tier?: string;
+  family?: string;
 }
 
 /**
@@ -218,12 +217,11 @@ export interface SkuCost {
  * Information of the sku.
  *
  * @member {object} sku The Sku.
- * @member {string} [sku.name] The sku name. Optional for job resource creation
- * and update.
+ * @member {string} [sku.name] The sku name.
  * @member {string} [sku.displayName] The display name of the sku.
- * @member {string} [sku.tier] The sku tier. This is based on the SKU name.
+ * @member {string} [sku.family] The sku family.
  * @member {boolean} enabled The sku is enabled or not.
- * @member {array} destinationToServiceLocationMap The map of destination
+ * @member {array} [destinationToServiceLocationMap] The map of destination
  * location to service location.
  * @member {object} capacity Capacity of the Sku.
  * @member {string} [capacity.usable] Usable capacity in TB.
@@ -235,7 +233,7 @@ export interface SkuCost {
 export interface SkuInformation {
   sku: Sku;
   enabled: boolean;
-  destinationToServiceLocationMap: DestinationToServiceLocationMap[];
+  destinationToServiceLocationMap?: DestinationToServiceLocationMap[];
   capacity: SkuCapacity;
   costs: SkuCost[];
   apiVersions: string[];
@@ -561,7 +559,7 @@ export interface JobErrorDetails {
  * @member {string} stageStatus Status of the job stage. Possible values
  * include: 'None', 'InProgress', 'Succeeded', 'Failed', 'Cancelled',
  * 'Cancelling', 'SucceededWithErrors'
- * @member {date} stageTime Time for the job stage in UTC ISO 8601 format.
+ * @member {date} [stageTime] Time for the job stage in UTC ISO 8601 format.
  * @member {object} [jobStageDetails] Job Stage Details
  * @member {array} [errorDetails] Error details for the stage.
  */
@@ -569,7 +567,7 @@ export interface JobStages {
   stageName: string;
   displayName?: string;
   stageStatus: string;
-  stageTime: Date;
+  stageTime?: Date;
   jobStageDetails?: any;
   errorDetails?: JobErrorDetails[];
 }
@@ -603,16 +601,15 @@ export interface PackageShippingDetails {
  * @member {object} [tags] The list of key value pairs that describe the
  * resource. These tags can be used in viewing and grouping this resource
  * (across resource groups).
- * @member {object} [sku] The sku type.
- * @member {string} [sku.name] The sku name. Optional for job resource creation
- * and update.
+ * @member {object} sku The sku type.
+ * @member {string} [sku.name] The sku name.
  * @member {string} [sku.displayName] The display name of the sku.
- * @member {string} [sku.tier] The sku tier. This is based on the SKU name.
+ * @member {string} [sku.family] The sku family.
  */
 export interface Resource extends BaseResource {
   location: string;
   tags?: { [propertyName: string]: string };
-  sku?: Sku;
+  sku: Sku;
 }
 
 /**
@@ -650,8 +647,8 @@ export interface Resource extends BaseResource {
  * @member {string} [returnPackage.trackingUrl] Url where shipment can be
  * tracked.
  * @member {array} destinationAccountDetails Destination account details.
- * @member {object} details Details of a job run. This field will only be sent
- * for expand details filter.
+ * @member {object} [details] Details of a job run. This field will only be
+ * sent for expand details filter.
  * @member {number} [details.expectedDataSizeInTeraBytes] The expected size of
  * the data, which needs to be transfered in this job, in tera bytes.
  * @member {array} [details.jobStages] List of stages that run in the job.
@@ -704,7 +701,7 @@ export interface JobResource extends Resource {
   deliveryPackage?: PackageShippingDetails;
   returnPackage?: PackageShippingDetails;
   destinationAccountDetails: DestinationAccountDetails[];
-  details: JobDetails;
+  details?: JobDetails;
   cancellationReason?: string;
   readonly name?: string;
   readonly id?: string;
@@ -885,55 +882,6 @@ export interface PodJobSecrets extends JobSecrets {
 
 /**
  * @class
- * Initializes a new instance of the RegionAvailabilityInput class.
- * @constructor
- * Inputs to get list of supported storage regions and service regions for job
- * creation.
- *
- * @member {string} countryCode Country for which the supported regions are
- * requested. Possible values include: 'US', 'NL', 'IE', 'AT', 'IT', 'BE',
- * 'LV', 'BG', 'LT', 'HR', 'LU', 'CY', 'MT', 'CZ', 'DK', 'PL', 'EE', 'PT',
- * 'FI', 'RO', 'FR', 'SK', 'DE', 'SI', 'GR', 'ES', 'HU', 'SE', 'GB'
- * @member {string} deviceType Device type for which the supported regions have
- * to be fetched. Possible values include: 'Pod', 'Disk', 'Cabinet'
- */
-export interface RegionAvailabilityInput {
-  countryCode: string;
-  deviceType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SupportedRegions class.
- * @constructor
- * Storage region and service region mapping
- *
- * @member {string} storageRegion Storage Region. Possible values include:
- * 'westus', 'centralus', 'eastus', 'northcentralus', 'southcentralus',
- * 'eastus2', 'westus2', 'westcentralus', 'westeurope', 'northeurope',
- * 'ukwest', 'uksouth', 'germanycentral', 'germanynortheast'
- * @member {string} serviceRegion Service Region. Possible values include:
- * 'westus', 'westeurope', 'eastus2euap', 'centraluseuap'
- */
-export interface SupportedRegions {
-  storageRegion: string;
-  serviceRegion: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RegionAvailabilityResponse class.
- * @constructor
- * List of service regions and storage regions
- *
- * @member {array} supportedRegions List of supported region.
- */
-export interface RegionAvailabilityResponse {
-  supportedRegions: SupportedRegions[];
-}
-
-/**
- * @class
  * Initializes a new instance of the ReportIssueDetails class.
  * @constructor
  * Details of the reported issue.
@@ -949,38 +897,6 @@ export interface RegionAvailabilityResponse {
 export interface ReportIssueDetails {
   issueType?: string;
   deviceIssueType?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceHealthResponse class.
- * @constructor
- * Response of the GetServiceHealth api.
- *
- * @member {string} [connectorType]
- * @member {date} [startTime]
- * @member {date} [endTime]
- * @member {boolean} [status]
- */
-export interface ServiceHealthResponse {
-  connectorType?: string;
-  startTime?: Date;
-  endTime?: Date;
-  status?: boolean;
-}
-
-/**
- * @class
- * Initializes a new instance of the ServiceHealthResponseList class.
- * @constructor
- * List of service health response.
- *
- * @member {string} [serviceVersion]
- * @member {array} [dependencies] List of ServiceHealthResponse.
- */
-export interface ServiceHealthResponseList {
-  serviceVersion?: string;
-  dependencies?: ServiceHealthResponse[];
 }
 
 /**
@@ -1108,8 +1024,8 @@ export interface JobResourceList extends Array<JobResource> {
  * @constructor
  * The available skus operation response.
  *
- * @member {string} nextLink Link for the next set of skus.
+ * @member {string} [nextLink] Link for the next set of skus.
  */
 export interface AvailableSkusResult extends Array<SkuInformation> {
-  nextLink: string;
+  nextLink?: string;
 }

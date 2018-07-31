@@ -379,7 +379,7 @@ export interface Jobs {
      * @param {array} jobResource.destinationAccountDetails Destination account
      * details.
      *
-     * @param {object} jobResource.details Details of a job run. This field will
+     * @param {object} [jobResource.details] Details of a job run. This field will
      * only be sent for expand details filter.
      *
      * @param {number} [jobResource.details.expectedDataSizeInTeraBytes] The
@@ -458,15 +458,13 @@ export interface Jobs {
      * the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
      *
-     * @param {object} [jobResource.sku] The sku type.
+     * @param {object} jobResource.sku The sku type.
      *
-     * @param {string} [jobResource.sku.name] The sku name. Optional for job
-     * resource creation and update.
+     * @param {string} jobResource.sku.name The sku name.
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
-     * @param {string} [jobResource.sku.tier] The sku tier. This is based on the
-     * SKU name.
+     * @param {string} [jobResource.sku.family] The sku family.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -535,7 +533,7 @@ export interface Jobs {
      * @param {array} jobResource.destinationAccountDetails Destination account
      * details.
      *
-     * @param {object} jobResource.details Details of a job run. This field will
+     * @param {object} [jobResource.details] Details of a job run. This field will
      * only be sent for expand details filter.
      *
      * @param {number} [jobResource.details.expectedDataSizeInTeraBytes] The
@@ -614,15 +612,13 @@ export interface Jobs {
      * the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
      *
-     * @param {object} [jobResource.sku] The sku type.
+     * @param {object} jobResource.sku The sku type.
      *
-     * @param {string} [jobResource.sku.name] The sku name. Optional for job
-     * resource creation and update.
+     * @param {string} jobResource.sku.name The sku name.
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
-     * @param {string} [jobResource.sku.tier] The sku tier. This is based on the
-     * SKU name.
+     * @param {string} [jobResource.sku.family] The sku family.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1220,6 +1216,69 @@ export interface Jobs {
 
 
     /**
+     * This method gets the unencrypted secrets related to the job.
+     *
+     * @param {string} resourceGroupName The Resource Group Name
+     *
+     * @param {string} jobName The name of the job Resource within the specified
+     * resource group. job names must be between 3 and 24 characters in length and
+     * use any alphanumeric and underscore only
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<UnencryptedSecrets>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listSecretsWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UnencryptedSecrets>>;
+
+    /**
+     * This method gets the unencrypted secrets related to the job.
+     *
+     * @param {string} resourceGroupName The Resource Group Name
+     *
+     * @param {string} jobName The name of the job Resource within the specified
+     * resource group. job names must be between 3 and 24 characters in length and
+     * use any alphanumeric and underscore only
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {UnencryptedSecrets} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {UnencryptedSecrets} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link UnencryptedSecrets} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listSecrets(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UnencryptedSecrets>;
+    listSecrets(resourceGroupName: string, jobName: string, callback: ServiceCallback<models.UnencryptedSecrets>): void;
+    listSecrets(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UnencryptedSecrets>): void;
+
+
+    /**
      * Reports an issue.
      *
      * @param {string} resourceGroupName The Resource Group Name
@@ -1357,7 +1416,7 @@ export interface Jobs {
      * @param {array} jobResource.destinationAccountDetails Destination account
      * details.
      *
-     * @param {object} jobResource.details Details of a job run. This field will
+     * @param {object} [jobResource.details] Details of a job run. This field will
      * only be sent for expand details filter.
      *
      * @param {number} [jobResource.details.expectedDataSizeInTeraBytes] The
@@ -1436,15 +1495,13 @@ export interface Jobs {
      * the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
      *
-     * @param {object} [jobResource.sku] The sku type.
+     * @param {object} jobResource.sku The sku type.
      *
-     * @param {string} [jobResource.sku.name] The sku name. Optional for job
-     * resource creation and update.
+     * @param {string} jobResource.sku.name The sku name.
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
-     * @param {string} [jobResource.sku.tier] The sku tier. This is based on the
-     * SKU name.
+     * @param {string} [jobResource.sku.family] The sku family.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1513,7 +1570,7 @@ export interface Jobs {
      * @param {array} jobResource.destinationAccountDetails Destination account
      * details.
      *
-     * @param {object} jobResource.details Details of a job run. This field will
+     * @param {object} [jobResource.details] Details of a job run. This field will
      * only be sent for expand details filter.
      *
      * @param {number} [jobResource.details.expectedDataSizeInTeraBytes] The
@@ -1592,15 +1649,13 @@ export interface Jobs {
      * the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
      *
-     * @param {object} [jobResource.sku] The sku type.
+     * @param {object} jobResource.sku The sku type.
      *
-     * @param {string} [jobResource.sku.name] The sku name. Optional for job
-     * resource creation and update.
+     * @param {string} jobResource.sku.name The sku name.
      *
      * @param {string} [jobResource.sku.displayName] The display name of the sku.
      *
-     * @param {string} [jobResource.sku.tier] The sku tier. This is based on the
-     * SKU name.
+     * @param {string} [jobResource.sku.family] The sku family.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1980,6 +2035,8 @@ export interface Service {
      * This method provides the list of available skus for the given subscription
      * and location.
      *
+     * @param {string} location The location of the resource
+     *
      * @param {object} availableSkuRequest Filters for showing the available skus.
      *
      * @param {string} availableSkuRequest.country ISO country code. Country for
@@ -2001,11 +2058,13 @@ export interface Service {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    availableSkusWithHttpOperationResponse(availableSkuRequest: models.AvailableSkuRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableSkusResult>>;
+    listAvailableSkusWithHttpOperationResponse(location: string, availableSkuRequest: models.AvailableSkuRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableSkusResult>>;
 
     /**
      * This method provides the list of available skus for the given subscription
      * and location.
+     *
+     * @param {string} location The location of the resource
      *
      * @param {object} availableSkuRequest Filters for showing the available skus.
      *
@@ -2044,144 +2103,16 @@ export interface Service {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    availableSkus(availableSkuRequest: models.AvailableSkuRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableSkusResult>;
-    availableSkus(availableSkuRequest: models.AvailableSkuRequest, callback: ServiceCallback<models.AvailableSkusResult>): void;
-    availableSkus(availableSkuRequest: models.AvailableSkuRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableSkusResult>): void;
-
-
-    /**
-     * This method returns the list of supported service regions and regions for
-     * destination storage accounts
-     *
-     * @param {object} regionAvailabilityInput Country Code and Device Type.
-     *
-     * @param {string} regionAvailabilityInput.countryCode Country for which the
-     * supported regions are requested. Possible values include: 'US', 'NL', 'IE',
-     * 'AT', 'IT', 'BE', 'LV', 'BG', 'LT', 'HR', 'LU', 'CY', 'MT', 'CZ', 'DK',
-     * 'PL', 'EE', 'PT', 'FI', 'RO', 'FR', 'SK', 'DE', 'SI', 'GR', 'ES', 'HU',
-     * 'SE', 'GB'
-     *
-     * @param {string} regionAvailabilityInput.deviceType Device type for which the
-     * supported regions have to be fetched. Possible values include: 'Pod',
-     * 'Disk', 'Cabinet'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<RegionAvailabilityResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    regionAvailabilityWithHttpOperationResponse(regionAvailabilityInput: models.RegionAvailabilityInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegionAvailabilityResponse>>;
-
-    /**
-     * This method returns the list of supported service regions and regions for
-     * destination storage accounts
-     *
-     * @param {object} regionAvailabilityInput Country Code and Device Type.
-     *
-     * @param {string} regionAvailabilityInput.countryCode Country for which the
-     * supported regions are requested. Possible values include: 'US', 'NL', 'IE',
-     * 'AT', 'IT', 'BE', 'LV', 'BG', 'LT', 'HR', 'LU', 'CY', 'MT', 'CZ', 'DK',
-     * 'PL', 'EE', 'PT', 'FI', 'RO', 'FR', 'SK', 'DE', 'SI', 'GR', 'ES', 'HU',
-     * 'SE', 'GB'
-     *
-     * @param {string} regionAvailabilityInput.deviceType Device type for which the
-     * supported regions have to be fetched. Possible values include: 'Pod',
-     * 'Disk', 'Cabinet'
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {RegionAvailabilityResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {RegionAvailabilityResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link RegionAvailabilityResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    regionAvailability(regionAvailabilityInput: models.RegionAvailabilityInput, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegionAvailabilityResponse>;
-    regionAvailability(regionAvailabilityInput: models.RegionAvailabilityInput, callback: ServiceCallback<models.RegionAvailabilityResponse>): void;
-    regionAvailability(regionAvailabilityInput: models.RegionAvailabilityInput, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegionAvailabilityResponse>): void;
-
-
-    /**
-     * This method returns the health of partner services.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ServiceHealthResponseList>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getServiceHealthWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceHealthResponseList>>;
-
-    /**
-     * This method returns the health of partner services.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ServiceHealthResponseList} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ServiceHealthResponseList} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ServiceHealthResponseList} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getServiceHealth(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceHealthResponseList>;
-    getServiceHealth(callback: ServiceCallback<models.ServiceHealthResponseList>): void;
-    getServiceHealth(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceHealthResponseList>): void;
+    listAvailableSkus(location: string, availableSkuRequest: models.AvailableSkuRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableSkusResult>;
+    listAvailableSkus(location: string, availableSkuRequest: models.AvailableSkuRequest, callback: ServiceCallback<models.AvailableSkusResult>): void;
+    listAvailableSkus(location: string, availableSkuRequest: models.AvailableSkuRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableSkusResult>): void;
 
 
     /**
      * This method validates the customer shipping address and provide alternate
      * addresses if any.
+     *
+     * @param {string} location The location of the resource
      *
      * @param {object} validateAddress Shipping address of the customer.
      *
@@ -2229,11 +2160,13 @@ export interface Service {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    validateAddressMethodWithHttpOperationResponse(validateAddress: models.ValidateAddress, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AddressValidationOutput>>;
+    validateAddressMethodWithHttpOperationResponse(location: string, validateAddress: models.ValidateAddress, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AddressValidationOutput>>;
 
     /**
      * This method validates the customer shipping address and provide alternate
      * addresses if any.
+     *
+     * @param {string} location The location of the resource
      *
      * @param {object} validateAddress Shipping address of the customer.
      *
@@ -2298,9 +2231,9 @@ export interface Service {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    validateAddressMethod(validateAddress: models.ValidateAddress, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AddressValidationOutput>;
-    validateAddressMethod(validateAddress: models.ValidateAddress, callback: ServiceCallback<models.AddressValidationOutput>): void;
-    validateAddressMethod(validateAddress: models.ValidateAddress, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AddressValidationOutput>): void;
+    validateAddressMethod(location: string, validateAddress: models.ValidateAddress, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AddressValidationOutput>;
+    validateAddressMethod(location: string, validateAddress: models.ValidateAddress, callback: ServiceCallback<models.AddressValidationOutput>): void;
+    validateAddressMethod(location: string, validateAddress: models.ValidateAddress, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AddressValidationOutput>): void;
 
 
     /**
@@ -2321,7 +2254,7 @@ export interface Service {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    availableSkusNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableSkusResult>>;
+    listAvailableSkusNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AvailableSkusResult>>;
 
     /**
      * This method provides the list of available skus for the given subscription
@@ -2357,79 +2290,7 @@ export interface Service {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    availableSkusNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableSkusResult>;
-    availableSkusNext(nextPageLink: string, callback: ServiceCallback<models.AvailableSkusResult>): void;
-    availableSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableSkusResult>): void;
-}
-
-/**
- * @class
- * ListSecrets
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the DataBoxManagementClient.
- */
-export interface ListSecrets {
-
-
-    /**
-     * This method gets the unencrypted secrets related to the job.
-     *
-     * @param {string} resourceGroupName The Resource Group Name
-     *
-     * @param {string} jobName The name of the job Resource within the specified
-     * resource group. job names must be between 3 and 24 characters in length and
-     * use any alphanumeric and underscore only
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<UnencryptedSecrets>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByJobsWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UnencryptedSecrets>>;
-
-    /**
-     * This method gets the unencrypted secrets related to the job.
-     *
-     * @param {string} resourceGroupName The Resource Group Name
-     *
-     * @param {string} jobName The name of the job Resource within the specified
-     * resource group. job names must be between 3 and 24 characters in length and
-     * use any alphanumeric and underscore only
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {UnencryptedSecrets} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {UnencryptedSecrets} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link UnencryptedSecrets} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByJobs(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.UnencryptedSecrets>;
-    listByJobs(resourceGroupName: string, jobName: string, callback: ServiceCallback<models.UnencryptedSecrets>): void;
-    listByJobs(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UnencryptedSecrets>): void;
+    listAvailableSkusNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableSkusResult>;
+    listAvailableSkusNext(nextPageLink: string, callback: ServiceCallback<models.AvailableSkusResult>): void;
+    listAvailableSkusNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableSkusResult>): void;
 }
