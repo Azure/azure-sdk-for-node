@@ -43,6 +43,10 @@ export default class FaceClient extends ServiceClient {
   personGroupPerson: operations.PersonGroupPerson;
   personGroupOperations: operations.PersonGroupOperations;
   faceListOperations: operations.FaceListOperations;
+  largePersonGroupPerson: operations.LargePersonGroupPerson;
+  largePersonGroupOperations: operations.LargePersonGroupOperations;
+  largeFaceListOperations: operations.LargeFaceListOperations;
+  largeFaceListFace: operations.LargeFaceListFace;
 }
 
 export { FaceClient, models as FaceModels };
