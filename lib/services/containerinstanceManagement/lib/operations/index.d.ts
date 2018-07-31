@@ -264,6 +264,18 @@ export interface ContainerGroups {
      * @param {array} [containerGroup.volumes] The list of volumes that can be
      * mounted by containers in this container group.
      *
+     * @param {object} [containerGroup.diagnostics] The diagnostic information for
+     * a container group.
+     *
+     * @param {object} [containerGroup.diagnostics.logAnalytics] Container group
+     * log analytics information.
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceId The
+     * workspace id for log analytics
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceKey The
+     * workspace key for log analytics
+     *
      * @param {string} [containerGroup.location] The resource location.
      *
      * @param {object} [containerGroup.tags] The resource tags.
@@ -325,6 +337,18 @@ export interface ContainerGroups {
      * @param {array} [containerGroup.volumes] The list of volumes that can be
      * mounted by containers in this container group.
      *
+     * @param {object} [containerGroup.diagnostics] The diagnostic information for
+     * a container group.
+     *
+     * @param {object} [containerGroup.diagnostics.logAnalytics] Container group
+     * log analytics information.
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceId The
+     * workspace id for log analytics
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceKey The
+     * workspace key for log analytics
+     *
      * @param {string} [containerGroup.location] The resource location.
      *
      * @param {object} [containerGroup.tags] The resource tags.
@@ -370,14 +394,14 @@ export interface ContainerGroups {
      *
      * @param {string} containerGroupName The name of the container group.
      *
+     * @param {object} resource The container group resource with just the tags to
+     * be updated.
+     *
+     * @param {string} [resource.location] The resource location.
+     *
+     * @param {object} [resource.tags] The resource tags.
+     *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.resource] The container group resource with just
-     * the tags to be updated.
-     *
-     * @param {string} [options.resource.location] The resource location.
-     *
-     * @param {object} [options.resource.tags] The resource tags.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -388,7 +412,7 @@ export interface ContainerGroups {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, options?: { resource? : models.Resource, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerGroup>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, resource: models.Resource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerGroup>>;
 
     /**
      * @summary Update container groups.
@@ -399,14 +423,14 @@ export interface ContainerGroups {
      *
      * @param {string} containerGroupName The name of the container group.
      *
+     * @param {object} resource The container group resource with just the tags to
+     * be updated.
+     *
+     * @param {string} [resource.location] The resource location.
+     *
+     * @param {object} [resource.tags] The resource tags.
+     *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.resource] The container group resource with just
-     * the tags to be updated.
-     *
-     * @param {string} [options.resource.location] The resource location.
-     *
-     * @param {object} [options.resource.tags] The resource tags.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -433,9 +457,9 @@ export interface ContainerGroups {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, containerGroupName: string, options?: { resource? : models.Resource, customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerGroup>;
-    update(resourceGroupName: string, containerGroupName: string, callback: ServiceCallback<models.ContainerGroup>): void;
-    update(resourceGroupName: string, containerGroupName: string, options: { resource? : models.Resource, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerGroup>): void;
+    update(resourceGroupName: string, containerGroupName: string, resource: models.Resource, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerGroup>;
+    update(resourceGroupName: string, containerGroupName: string, resource: models.Resource, callback: ServiceCallback<models.ContainerGroup>): void;
+    update(resourceGroupName: string, containerGroupName: string, resource: models.Resource, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerGroup>): void;
 
 
     /**
@@ -503,6 +527,171 @@ export interface ContainerGroups {
     deleteMethod(resourceGroupName: string, containerGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerGroup>;
     deleteMethod(resourceGroupName: string, containerGroupName: string, callback: ServiceCallback<models.ContainerGroup>): void;
     deleteMethod(resourceGroupName: string, containerGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerGroup>): void;
+
+
+    /**
+     * @summary Create or update container groups.
+     *
+     * Create or update container groups with specified configurations.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
+     *
+     * @param {object} containerGroup The properties of the container group to be
+     * created or updated.
+     *
+     * @param {array} containerGroup.containers The containers within the container
+     * group.
+     *
+     * @param {array} [containerGroup.imageRegistryCredentials] The image registry
+     * credentials by which the container group is created from.
+     *
+     * @param {string} [containerGroup.restartPolicy] Restart policy for all
+     * containers within the container group.
+     * - `Always` Always restart
+     * - `OnFailure` Restart on failure
+     * - `Never` Never restart
+     * . Possible values include: 'Always', 'OnFailure', 'Never'
+     *
+     * @param {object} [containerGroup.ipAddress] The IP address type of the
+     * container group.
+     *
+     * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
+     * the container group.
+     *
+     * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
+     * internet.
+     *
+     * @param {string} [containerGroup.ipAddress.dnsNameLabel] The Dns name label
+     * for the IP.
+     *
+     * @param {string} containerGroup.osType The operating system type required by
+     * the containers in the container group. Possible values include: 'Windows',
+     * 'Linux'
+     *
+     * @param {array} [containerGroup.volumes] The list of volumes that can be
+     * mounted by containers in this container group.
+     *
+     * @param {object} [containerGroup.diagnostics] The diagnostic information for
+     * a container group.
+     *
+     * @param {object} [containerGroup.diagnostics.logAnalytics] Container group
+     * log analytics information.
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceId The
+     * workspace id for log analytics
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceKey The
+     * workspace key for log analytics
+     *
+     * @param {string} [containerGroup.location] The resource location.
+     *
+     * @param {object} [containerGroup.tags] The resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, containerGroup: models.ContainerGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerGroup>>;
+
+    /**
+     * @summary Create or update container groups.
+     *
+     * Create or update container groups with specified configurations.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
+     *
+     * @param {object} containerGroup The properties of the container group to be
+     * created or updated.
+     *
+     * @param {array} containerGroup.containers The containers within the container
+     * group.
+     *
+     * @param {array} [containerGroup.imageRegistryCredentials] The image registry
+     * credentials by which the container group is created from.
+     *
+     * @param {string} [containerGroup.restartPolicy] Restart policy for all
+     * containers within the container group.
+     * - `Always` Always restart
+     * - `OnFailure` Restart on failure
+     * - `Never` Never restart
+     * . Possible values include: 'Always', 'OnFailure', 'Never'
+     *
+     * @param {object} [containerGroup.ipAddress] The IP address type of the
+     * container group.
+     *
+     * @param {array} containerGroup.ipAddress.ports The list of ports exposed on
+     * the container group.
+     *
+     * @param {string} [containerGroup.ipAddress.ip] The IP exposed to the public
+     * internet.
+     *
+     * @param {string} [containerGroup.ipAddress.dnsNameLabel] The Dns name label
+     * for the IP.
+     *
+     * @param {string} containerGroup.osType The operating system type required by
+     * the containers in the container group. Possible values include: 'Windows',
+     * 'Linux'
+     *
+     * @param {array} [containerGroup.volumes] The list of volumes that can be
+     * mounted by containers in this container group.
+     *
+     * @param {object} [containerGroup.diagnostics] The diagnostic information for
+     * a container group.
+     *
+     * @param {object} [containerGroup.diagnostics.logAnalytics] Container group
+     * log analytics information.
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceId The
+     * workspace id for log analytics
+     *
+     * @param {string} containerGroup.diagnostics.logAnalytics.workspaceKey The
+     * workspace key for log analytics
+     *
+     * @param {string} [containerGroup.location] The resource location.
+     *
+     * @param {object} [containerGroup.tags] The resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, containerGroupName: string, containerGroup: models.ContainerGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerGroup>;
+    beginCreateOrUpdate(resourceGroupName: string, containerGroupName: string, containerGroup: models.ContainerGroup, callback: ServiceCallback<models.ContainerGroup>): void;
+    beginCreateOrUpdate(resourceGroupName: string, containerGroupName: string, containerGroup: models.ContainerGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerGroup>): void;
 
 
     /**
@@ -769,11 +958,11 @@ export interface ContainerGroupUsage {
 
 /**
  * @class
- * ContainerLogs
+ * ContainerOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ContainerInstanceManagementClient.
  */
-export interface ContainerLogs {
+export interface ContainerOperations {
 
 
     /**
@@ -803,7 +992,7 @@ export interface ContainerLogs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, containerName: string, options?: { tail? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Logs>>;
+    listLogsWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, containerName: string, options?: { tail? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Logs>>;
 
     /**
      * @summary Get the logs for a specified container instance.
@@ -848,7 +1037,102 @@ export interface ContainerLogs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    list(resourceGroupName: string, containerGroupName: string, containerName: string, options?: { tail? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Logs>;
-    list(resourceGroupName: string, containerGroupName: string, containerName: string, callback: ServiceCallback<models.Logs>): void;
-    list(resourceGroupName: string, containerGroupName: string, containerName: string, options: { tail? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Logs>): void;
+    listLogs(resourceGroupName: string, containerGroupName: string, containerName: string, options?: { tail? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Logs>;
+    listLogs(resourceGroupName: string, containerGroupName: string, containerName: string, callback: ServiceCallback<models.Logs>): void;
+    listLogs(resourceGroupName: string, containerGroupName: string, containerName: string, options: { tail? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Logs>): void;
+
+
+    /**
+     * @summary Executes a command in a specific container instance.
+     *
+     * Executes a command for a specific container instance in a specified resource
+     * group and container group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
+     *
+     * @param {string} containerName The name of the container instance.
+     *
+     * @param {object} containerExecRequest The request for the exec command.
+     *
+     * @param {string} [containerExecRequest.command] The command to be executed.
+     *
+     * @param {object} [containerExecRequest.terminalSize] The size of the
+     * terminal.
+     *
+     * @param {number} [containerExecRequest.terminalSize.rows] The row size of the
+     * terminal
+     *
+     * @param {number} [containerExecRequest.terminalSize.cols] The column size of
+     * the terminal
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ContainerExecResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    executeCommandWithHttpOperationResponse(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ContainerExecResponse>>;
+
+    /**
+     * @summary Executes a command in a specific container instance.
+     *
+     * Executes a command for a specific container instance in a specified resource
+     * group and container group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} containerGroupName The name of the container group.
+     *
+     * @param {string} containerName The name of the container instance.
+     *
+     * @param {object} containerExecRequest The request for the exec command.
+     *
+     * @param {string} [containerExecRequest.command] The command to be executed.
+     *
+     * @param {object} [containerExecRequest.terminalSize] The size of the
+     * terminal.
+     *
+     * @param {number} [containerExecRequest.terminalSize.rows] The row size of the
+     * terminal
+     *
+     * @param {number} [containerExecRequest.terminalSize.cols] The column size of
+     * the terminal
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ContainerExecResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ContainerExecResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ContainerExecResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    executeCommand(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ContainerExecResponse>;
+    executeCommand(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, callback: ServiceCallback<models.ContainerExecResponse>): void;
+    executeCommand(resourceGroupName: string, containerGroupName: string, containerName: string, containerExecRequest: models.ContainerExecRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ContainerExecResponse>): void;
 }

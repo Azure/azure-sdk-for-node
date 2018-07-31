@@ -35,6 +35,8 @@ export { CloudError } from 'ms-rest-azure';
  * @member {number} [totalIncludedQuantity] The total included quantity
  * associated with the offer.
  * @member {number} [pretaxStandardRate] The pretax listing price.
+ * @member {string} [serviceName] The name of the service.
+ * @member {string} [serviceTier] The service tier.
  */
 export interface MeterDetails {
   readonly meterName?: string;
@@ -44,6 +46,8 @@ export interface MeterDetails {
   readonly meterLocation?: string;
   readonly totalIncludedQuantity?: number;
   readonly pretaxStandardRate?: number;
+  readonly serviceName?: string;
+  readonly serviceTier?: string;
 }
 
 /**
@@ -90,7 +94,7 @@ export interface Resource extends BaseResource {
  * @member {number} [billableQuantity] The billable usage quantity.
  * @member {number} [pretaxCost] The amount of cost before tax.
  * @member {boolean} [isEstimated] The estimated usage is subject to change.
- * @member {string} [meterId] The meter id.
+ * @member {uuid} [meterId] The meter id (GUID).
  * @member {object} [meterDetails] The details about the meter. By default this
  * is not populated, unless it's specified in $expand.
  * @member {string} [meterDetails.meterName] The name of the meter, within the
@@ -106,7 +110,9 @@ export interface Resource extends BaseResource {
  * @member {number} [meterDetails.totalIncludedQuantity] The total included
  * quantity associated with the offer.
  * @member {number} [meterDetails.pretaxStandardRate] The pretax listing price.
- * @member {string} [subscriptionGuid] Subscription guid.
+ * @member {string} [meterDetails.serviceName] The name of the service.
+ * @member {string} [meterDetails.serviceTier] The service tier.
+ * @member {uuid} [subscriptionGuid] Subscription guid.
  * @member {string} [subscriptionName] Subscription name.
  * @member {string} [accountName] Account name.
  * @member {string} [departmentName] Department name.
@@ -114,6 +120,11 @@ export interface Resource extends BaseResource {
  * @member {string} [consumedService] Consumed service name.
  * @member {string} [costCenter] The cost center of this department if it is a
  * department and a costcenter exists
+ * @member {string} [partNumber] Part Number
+ * @member {string} [resourceGuid] Resource Guid
+ * @member {string} [offerId] Offer Id
+ * @member {boolean} [chargesBilledSeparately] Charges billed separately
+ * @member {string} [location] Resource Location
  * @member {string} [additionalProperties] Additional details of this usage
  * item. By default this is not populated, unless it's specified in $expand.
  */
@@ -139,6 +150,11 @@ export interface UsageDetail extends Resource {
   readonly product?: string;
   readonly consumedService?: string;
   readonly costCenter?: string;
+  readonly partNumber?: string;
+  readonly resourceGuid?: string;
+  readonly offerId?: string;
+  readonly chargesBilledSeparately?: boolean;
+  readonly location?: string;
   readonly additionalProperties?: string;
 }
 
@@ -168,8 +184,8 @@ export interface UsageDetail extends Resource {
  * @member {string} [unitOfMeasure] The unit of measure.
  * @member {number} [pretaxCost] The amount of cost before tax.
  * @member {boolean} [isEstimated] The estimated usage is subject to change.
- * @member {string} [meterId] The meter id.
- * @member {string} [subscriptionGuid] Subscription guid.
+ * @member {uuid} [meterId] The meter id (GUID).
+ * @member {uuid} [subscriptionGuid] Subscription guid.
  * @member {string} [subscriptionName] Subscription name.
  * @member {string} [accountName] Account name.
  * @member {string} [departmentName] Department name.
@@ -210,9 +226,79 @@ export interface Marketplace extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ReservationSummaries class.
+ * Initializes a new instance of the BalancePropertiesNewPurchasesDetailsItem class.
  * @constructor
- * reservation summaries resource.
+ * @member {string} [name] the name of new purchase.
+ * @member {number} [value] the value of new purchase.
+ */
+export interface BalancePropertiesNewPurchasesDetailsItem {
+  readonly name?: string;
+  readonly value?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BalancePropertiesAdjustmentDetailsItem class.
+ * @constructor
+ * @member {string} [name] the name of new adjustment.
+ * @member {number} [value] the value of new adjustment.
+ */
+export interface BalancePropertiesAdjustmentDetailsItem {
+  readonly name?: string;
+  readonly value?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Balance class.
+ * @constructor
+ * A balance resource.
+ *
+ * @member {string} [currency] The ISO currency in which the meter is charged,
+ * for example, USD.
+ * @member {number} [beginningBalance] The beginning balance for the billing
+ * period.
+ * @member {number} [endingBalance] The ending balance for the billing period
+ * (for open periods this will be updated daily).
+ * @member {number} [newPurchases] Total new purchase amount.
+ * @member {number} [adjustments] Total adjustment amount.
+ * @member {number} [utilized] Total Commitment usage.
+ * @member {number} [serviceOverage] Overage for Azure services.
+ * @member {number} [chargesBilledSeparately] Charges Billed separately.
+ * @member {number} [totalOverage] serviceOverage + chargesBilledSeparately.
+ * @member {number} [totalUsage] Azure service commitment + total Overage.
+ * @member {number} [azureMarketplaceServiceCharges] Total charges for Azure
+ * Marketplace.
+ * @member {string} [billingFrequency] The billing frequency. Possible values
+ * include: 'Month', 'Quarter', 'Year'
+ * @member {boolean} [priceHidden] Price is hidden or not.
+ * @member {array} [newPurchasesDetails] List of new purchases.
+ * @member {array} [adjustmentDetails] List of Adjustments (Promo credit, SIE
+ * credit etc.).
+ */
+export interface Balance extends Resource {
+  readonly currency?: string;
+  readonly beginningBalance?: number;
+  readonly endingBalance?: number;
+  readonly newPurchases?: number;
+  readonly adjustments?: number;
+  readonly utilized?: number;
+  readonly serviceOverage?: number;
+  readonly chargesBilledSeparately?: number;
+  readonly totalOverage?: number;
+  readonly totalUsage?: number;
+  readonly azureMarketplaceServiceCharges?: number;
+  billingFrequency?: string;
+  readonly priceHidden?: boolean;
+  readonly newPurchasesDetails?: BalancePropertiesNewPurchasesDetailsItem[];
+  readonly adjustmentDetails?: BalancePropertiesAdjustmentDetailsItem[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReservationSummary class.
+ * @constructor
+ * reservation summary resource.
  *
  * @member {string} [reservationOrderId] The reservation order ID is the
  * identifier for a reservation purchase. Each reservation order ID represents
@@ -241,7 +327,7 @@ export interface Marketplace extends Resource {
  * corresponds to 12/10/2017 and on that for hour 4 and 5, utilization was
  * 100%, this field will return 100% for that day.
  */
-export interface ReservationSummaries extends Resource {
+export interface ReservationSummary extends Resource {
   readonly reservationOrderId?: string;
   readonly reservationId?: string;
   readonly skuName?: string;
@@ -255,9 +341,9 @@ export interface ReservationSummaries extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the ReservationDetails class.
+ * Initializes a new instance of the ReservationDetail class.
  * @constructor
- * reservation details resource.
+ * reservation detail resource.
  *
  * @member {string} [reservationOrderId] The reservation order ID is the
  * identifier for a reservation purchase. Each reservation order ID represents
@@ -279,7 +365,7 @@ export interface ReservationSummaries extends Resource {
  * @member {number} [totalReservedQuantity] This is the total count of
  * instances that are reserved for the reservationid.
  */
-export interface ReservationDetails extends Resource {
+export interface ReservationDetail extends Resource {
   readonly reservationOrderId?: string;
   readonly reservationId?: string;
   readonly skuName?: string;
@@ -288,6 +374,95 @@ export interface ReservationDetails extends Resource {
   readonly usedHours?: number;
   readonly instanceId?: string;
   readonly totalReservedQuantity?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReservationRecommendation class.
+ * @constructor
+ * Reservation recommendation resource.
+ *
+ * @member {string} [id] Resource Id.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {object} [tags] Resource tags.
+ * @member {string} [location] Resource location
+ * @member {string} [sku] Resource sku
+ * @member {string} [lookBackPeriod] The number of days of usage to look back
+ * for recommendation.
+ * @member {uuid} [meterId] The meter id (GUID)
+ * @member {string} [term] RI recommendations in one or three year terms.
+ * @member {number} [costWithNoReservedInstances] The total amount of cost
+ * without reserved instances.
+ * @member {number} [recommendedQuantity] Recomended quality for reserved
+ * instances.
+ * @member {number} [totalCostWithReservedInstances] The total amount of cost
+ * with reserved instances.
+ * @member {number} [netSavings] Total estimated savings with reserved
+ * instances.
+ * @member {date} [firstUsageDate] The usage date for looking back.
+ * @member {string} [scope] Shared or single recommendation.
+ */
+export interface ReservationRecommendation {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  readonly tags?: { [propertyName: string]: string };
+  readonly location?: string;
+  readonly sku?: string;
+  readonly lookBackPeriod?: string;
+  readonly meterId?: string;
+  readonly term?: string;
+  readonly costWithNoReservedInstances?: number;
+  readonly recommendedQuantity?: number;
+  readonly totalCostWithReservedInstances?: number;
+  readonly netSavings?: number;
+  readonly firstUsageDate?: Date;
+  readonly scope?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Tag class.
+ * @constructor
+ * The tag resource.
+ *
+ * @member {string} [key] Tag key.
+ */
+export interface Tag {
+  key?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The Resource model definition.
+ *
+ * @member {string} [id] Resource Id.
+ * @member {string} [name] Resource name.
+ * @member {string} [type] Resource type.
+ * @member {string} [eTag] eTag of the resource. To handle concurrent update
+ * scenarion, this field will be used to determine whether the user is updating
+ * the latest version or not.
+ */
+export interface ProxyResource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+  eTag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TagsResult class.
+ * @constructor
+ * A resource listing all tags.
+ *
+ * @member {array} [tags] A list of Tag.
+ */
+export interface TagsResult extends ProxyResource {
+  tags?: Tag[];
 }
 
 /**
@@ -314,13 +489,15 @@ export interface BudgetTimePeriod {
  * @member {array} [resourceGroups] The list of filters on resource groups,
  * allowed at subscription level only.
  * @member {array} [resources] The list of filters on resources.
- * @member {array} [meters] The list of filters on meters, mandatory for
+ * @member {array} [meters] The list of filters on meters (GUID), mandatory for
  * budgets of usage category.
+ * @member {object} [tags] The dictionary of filters on tags.
  */
 export interface Filters {
   resourceGroups?: string[];
   resources?: string[];
   meters?: string[];
+  tags?: { [propertyName: string]: string[] };
 }
 
 /**
@@ -368,26 +545,6 @@ export interface Notification {
 
 /**
  * @class
- * Initializes a new instance of the ProxyResource class.
- * @constructor
- * The Resource model definition.
- *
- * @member {string} [id] Resource Id.
- * @member {string} [name] Resource name.
- * @member {string} [type] Resource type.
- * @member {string} [eTag] eTag of the resource. To handle concurrent update
- * scenarion, this field will be used to determine whether the user is updating
- * the latest version or not.
- */
-export interface ProxyResource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-  eTag?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Budget class.
  * @constructor
  * A budget resource.
@@ -411,8 +568,9 @@ export interface ProxyResource extends BaseResource {
  * @member {array} [filters.resourceGroups] The list of filters on resource
  * groups, allowed at subscription level only.
  * @member {array} [filters.resources] The list of filters on resources.
- * @member {array} [filters.meters] The list of filters on meters, mandatory
- * for budgets of usage category.
+ * @member {array} [filters.meters] The list of filters on meters (GUID),
+ * mandatory for budgets of usage category.
+ * @member {object} [filters.tags] The dictionary of filters on tags.
  * @member {object} [currentSpend] The current amount of cost which is being
  * tracked for a budget.
  * @member {number} [currentSpend.amount] The total amount of cost which is
@@ -430,6 +588,130 @@ export interface Budget extends ProxyResource {
   filters?: Filters;
   readonly currentSpend?: CurrentSpend;
   notifications?: { [propertyName: string]: Notification };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CostTagProperties class.
+ * @constructor
+ * The properties of the cost tag.
+ *
+ * @member {string} [key] Cost tag key.
+ */
+export interface CostTagProperties {
+  key?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the CostTag class.
+ * @constructor
+ * A cost tag resource.
+ *
+ * @member {array} [costTags] Cost tags.
+ */
+export interface CostTag extends ProxyResource {
+  costTags?: CostTagProperties[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PriceSheetProperties class.
+ * @constructor
+ * The properties of the price sheet.
+ *
+ * @member {string} [billingPeriodId] The id of the billing period resource
+ * that the usage belongs to.
+ * @member {uuid} [meterId] The meter id (GUID)
+ * @member {object} [meterDetails] The details about the meter. By default this
+ * is not populated, unless it's specified in $expand.
+ * @member {string} [meterDetails.meterName] The name of the meter, within the
+ * given meter category
+ * @member {string} [meterDetails.meterCategory] The category of the meter, for
+ * example, 'Cloud services', 'Networking', etc..
+ * @member {string} [meterDetails.meterSubCategory] The subcategory of the
+ * meter, for example, 'A6 Cloud services', 'ExpressRoute (IXP)', etc..
+ * @member {string} [meterDetails.unit] The unit in which the meter consumption
+ * is charged, for example, 'Hours', 'GB', etc.
+ * @member {string} [meterDetails.meterLocation] The location in which the
+ * Azure service is available.
+ * @member {number} [meterDetails.totalIncludedQuantity] The total included
+ * quantity associated with the offer.
+ * @member {number} [meterDetails.pretaxStandardRate] The pretax listing price.
+ * @member {string} [meterDetails.serviceName] The name of the service.
+ * @member {string} [meterDetails.serviceTier] The service tier.
+ * @member {string} [unitOfMeasure] Unit of measure
+ * @member {number} [includedQuantity] Included quality for an offer
+ * @member {string} [partNumber] Part Number
+ * @member {number} [unitPrice] Unit Price
+ * @member {string} [currencyCode] Currency Code
+ * @member {string} [offerId] Offer Id
+ */
+export interface PriceSheetProperties {
+  readonly billingPeriodId?: string;
+  readonly meterId?: string;
+  readonly meterDetails?: MeterDetails;
+  readonly unitOfMeasure?: string;
+  readonly includedQuantity?: number;
+  readonly partNumber?: string;
+  readonly unitPrice?: number;
+  readonly currencyCode?: string;
+  readonly offerId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PriceSheetResult class.
+ * @constructor
+ * An pricesheet resource.
+ *
+ * @member {array} [pricesheets] Price sheet
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface PriceSheetResult extends Resource {
+  readonly pricesheets?: PriceSheetProperties[];
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ForecastPropertiesConfidenceLevelsItem class.
+ * @constructor
+ * @member {number} [percentage] The percentage level of the confidence
+ * @member {string} [bound] The boundary of the percentage, values could be
+ * 'Upper' or 'Lower'. Possible values include: 'Upper', 'Lower'
+ * @member {number} [value] The amount of forecast within the percentage level
+ */
+export interface ForecastPropertiesConfidenceLevelsItem {
+  readonly percentage?: number;
+  bound?: string;
+  readonly value?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Forecast class.
+ * @constructor
+ * A forecast resource.
+ *
+ * @member {string} [usageDate] The usage date of the forecast.
+ * @member {string} [grain] The granularity of forecast. Possible values
+ * include: 'Daily', 'Monthly', 'Yearly'
+ * @member {number} [charge] The amount of charge
+ * @member {string} [currency] The ISO currency in which the meter is charged,
+ * for example, USD.
+ * @member {string} [chargeType] The type of the charge. Could be actual or
+ * forecast. Possible values include: 'Actual', 'Forecast'
+ * @member {array} [confidenceLevels] The details about the forecast confidence
+ * levels. This is populated only when chargeType is Forecast.
+ */
+export interface Forecast extends Resource {
+  readonly usageDate?: string;
+  grain?: string;
+  readonly charge?: number;
+  readonly currency?: string;
+  chargeType?: string;
+  readonly confidenceLevels?: ForecastPropertiesConfidenceLevelsItem[];
 }
 
 /**
@@ -501,57 +783,29 @@ export interface Operation {
 
 /**
  * @class
- * Initializes a new instance of the PriceSheetProperties class.
+ * Initializes a new instance of the ResourceAttributes class.
  * @constructor
- * The properties of the price sheet.
+ * The Resource model definition.
  *
- * @member {string} [billingPeriodId] The id of the billing period resource
- * that the usage belongs to.
- * @member {string} [meterId] The meter id
- * @member {object} [meterDetails] The details about the meter. By default this
- * is not populated, unless it's specified in $expand.
- * @member {string} [meterDetails.meterName] The name of the meter, within the
- * given meter category
- * @member {string} [meterDetails.meterCategory] The category of the meter, for
- * example, 'Cloud services', 'Networking', etc..
- * @member {string} [meterDetails.meterSubCategory] The subcategory of the
- * meter, for example, 'A6 Cloud services', 'ExpressRoute (IXP)', etc..
- * @member {string} [meterDetails.unit] The unit in which the meter consumption
- * is charged, for example, 'Hours', 'GB', etc.
- * @member {string} [meterDetails.meterLocation] The location in which the
- * Azure service is available.
- * @member {number} [meterDetails.totalIncludedQuantity] The total included
- * quantity associated with the offer.
- * @member {number} [meterDetails.pretaxStandardRate] The pretax listing price.
- * @member {string} [unitOfMeasure] Unit of measure
- * @member {number} [includedQuantity] Included quality for an offer
- * @member {string} [partNumber] Part Number
- * @member {number} [unitPrice] Unit Price
- * @member {string} [currencyCode] Currency Code
+ * @member {string} [location] Resource location
+ * @member {string} [sku] Resource sku
  */
-export interface PriceSheetProperties {
-  readonly billingPeriodId?: string;
-  readonly meterId?: string;
-  readonly meterDetails?: MeterDetails;
-  readonly unitOfMeasure?: string;
-  readonly includedQuantity?: number;
-  readonly partNumber?: string;
-  readonly unitPrice?: number;
-  readonly currencyCode?: string;
+export interface ResourceAttributes {
+  readonly location?: string;
+  readonly sku?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the PriceSheetResult class.
+ * Initializes a new instance of the QueryOptions class.
  * @constructor
- * An pricesheet resource.
+ * Additional parameters for a set of operations.
  *
- * @member {array} [pricesheets] Price sheet
- * @member {string} [nextLink] The link (url) to the next page of results.
+ * @member {string} [apply] OData apply expression to aggregate usageDetails by
+ * tags or (tags and properties/usageStart)
  */
-export interface PriceSheetResult extends Resource {
-  readonly pricesheets?: PriceSheetProperties[];
-  readonly nextLink?: string;
+export interface QueryOptions {
+  apply?: string;
 }
 
 
@@ -589,7 +843,7 @@ export interface MarketplacesListResult extends Array<Marketplace> {
  *
  * @member {string} [nextLink] The link (url) to the next page of results.
  */
-export interface ReservationSummariesListResult extends Array<ReservationSummaries> {
+export interface ReservationSummariesListResult extends Array<ReservationSummary> {
   readonly nextLink?: string;
 }
 
@@ -601,7 +855,19 @@ export interface ReservationSummariesListResult extends Array<ReservationSummari
  *
  * @member {string} [nextLink] The link (url) to the next page of results.
  */
-export interface ReservationDetailsListResult extends Array<ReservationDetails> {
+export interface ReservationDetailsListResult extends Array<ReservationDetail> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReservationRecommendationsListResult class.
+ * @constructor
+ * Result of listing reservation recommendations.
+ *
+ * @member {string} [nextLink] The link (url) to the next page of results.
+ */
+export interface ReservationRecommendationsListResult extends Array<ReservationRecommendation> {
   readonly nextLink?: string;
 }
 
@@ -616,6 +882,16 @@ export interface ReservationDetailsListResult extends Array<ReservationDetails> 
  */
 export interface BudgetsListResult extends Array<Budget> {
   readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ForecastsListResult class.
+ * @constructor
+ * Result of listing forecasts. It contains a list of available forecasts.
+ *
+ */
+export interface ForecastsListResult extends Array<Forecast> {
 }
 
 /**

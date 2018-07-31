@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class DomainservicesManagementClient extends AzureServiceClient {
+export default class DomainservicesManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the DomainservicesManagementClient class.
    * @constructor
@@ -59,4 +60,4 @@ declare class DomainservicesManagementClient extends AzureServiceClient {
   domainServices: operations.DomainServices;
 }
 
-export = DomainservicesManagementClient;
+export { DomainservicesManagementClient, models as DomainservicesManagementModels };

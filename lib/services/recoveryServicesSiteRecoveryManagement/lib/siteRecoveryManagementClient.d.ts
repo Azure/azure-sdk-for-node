@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class SiteRecoveryManagementClient extends AzureServiceClient {
+export default class SiteRecoveryManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the SiteRecoveryManagementClient class.
    * @constructor
@@ -37,11 +38,11 @@ declare class SiteRecoveryManagementClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, subscriptionId: string, resourceGroupName: string, resourceName: string, baseUri?: string, options?: AzureServiceClientOptions);
@@ -63,26 +64,27 @@ declare class SiteRecoveryManagementClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
-  replicationVaultHealth: operations.ReplicationVaultHealth;
-  replicationProtectedItems: operations.ReplicationProtectedItems;
-  replicationNetworkMappings: operations.ReplicationNetworkMappings;
-  replicationFabrics: operations.ReplicationFabrics;
-  replicationvCenters: operations.ReplicationvCenters;
-  replicationStorageClassificationMappings: operations.ReplicationStorageClassificationMappings;
-  replicationStorageClassifications: operations.ReplicationStorageClassifications;
-  replicationRecoveryServicesProviders: operations.ReplicationRecoveryServicesProviders;
-  recoveryPoints: operations.RecoveryPoints;
-  replicationRecoveryPlans: operations.ReplicationRecoveryPlans;
-  replicationProtectionContainers: operations.ReplicationProtectionContainers;
-  replicationProtectionContainerMappings: operations.ReplicationProtectionContainerMappings;
-  replicationProtectableItems: operations.ReplicationProtectableItems;
-  replicationPolicies: operations.ReplicationPolicies;
   operations: operations.Operations;
-  replicationNetworks: operations.ReplicationNetworks;
-  replicationLogicalNetworks: operations.ReplicationLogicalNetworks;
-  replicationJobs: operations.ReplicationJobs;
-  replicationEvents: operations.ReplicationEvents;
   replicationAlertSettings: operations.ReplicationAlertSettings;
+  replicationEvents: operations.ReplicationEvents;
+  replicationFabrics: operations.ReplicationFabrics;
+  replicationLogicalNetworks: operations.ReplicationLogicalNetworks;
+  replicationNetworks: operations.ReplicationNetworks;
+  replicationNetworkMappings: operations.ReplicationNetworkMappings;
+  replicationProtectionContainers: operations.ReplicationProtectionContainers;
+  replicationProtectableItems: operations.ReplicationProtectableItems;
+  replicationProtectedItems: operations.ReplicationProtectedItems;
+  recoveryPoints: operations.RecoveryPoints;
+  targetComputeSizes: operations.TargetComputeSizes;
+  replicationProtectionContainerMappings: operations.ReplicationProtectionContainerMappings;
+  replicationRecoveryServicesProviders: operations.ReplicationRecoveryServicesProviders;
+  replicationStorageClassifications: operations.ReplicationStorageClassifications;
+  replicationStorageClassificationMappings: operations.ReplicationStorageClassificationMappings;
+  replicationvCenters: operations.ReplicationvCenters;
+  replicationJobs: operations.ReplicationJobs;
+  replicationPolicies: operations.ReplicationPolicies;
+  replicationRecoveryPlans: operations.ReplicationRecoveryPlans;
+  replicationVaultHealth: operations.ReplicationVaultHealth;
 }
 
-export = SiteRecoveryManagementClient;
+export { SiteRecoveryManagementClient, models as SiteRecoveryManagementModels };

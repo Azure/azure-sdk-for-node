@@ -39,41 +39,27 @@ function getServiceNameFromOutputFolderValue(outputFolderValue) {
   return outputFolderSegments[outputFolderSegments.length - 1];
 }
 
+function npmInstall(packageFolderPath) {
+  execSync(`npm install`, { cwd: packageFolderPath, stdio: ['ignore', 'ignore', 'pipe'] });
+}
+
 gulp.task('default', function () {
-  console.log('Usage: gulp codegen [--azure-rest-api-specs-root <azure-rest-api-specs root>] [--use <autorest.nodejs root>] [--package <package name>]\n');
-  console.log('--azure-rest-api-specs-root');
-  console.log('\tRoot location of the local clone of the azure-rest-api-specs-root repository.');
-  console.log('--use');
-  console.log('\tRoot location of autorest.nodejs repository. If this is not specified, then the latest installed generator for NodeJS will be used.');
-  console.log('--package');
-  console.log('\tNPM package to regenerate. If no package is specified, then all packages will be regenerated.');
+  console.log('gulp codegen [--azure-rest-api-specs-root <azure-rest-api-specs root>] [--use <autorest.nodejs root>] [--package <package name>]');
+  console.log('  --azure-rest-api-specs-root');
+  console.log('    Root location of the local clone of the azure-rest-api-specs-root repository.');
+  console.log('  --use');
+  console.log('    Root location of autorest.nodejs repository. If this is not specified, then the latest installed generator for NodeJS will be used.');
+  console.log('  --package');
+  console.log('    NPM package to regenerate. If no package is specified, then all packages will be regenerated.');
+  console.log();
+  console.log('gulp publish [--package <package name>]');
+  console.log('  --package');
+  console.log('    The name of the package to publish. If no package is specified, then all packages will be published.');
 });
 
 //This task is used to generate libraries based on the mappings specified above.
 gulp.task('codegen', function (cb) {
   const nodejsReadmeFilePaths = findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot);
-
-  const specificationFolderPath = path.resolve(azureRestAPISpecsRoot, 'specification');
-
-  const folderPathsToSearch = [specificationFolderPath];
-  while (folderPathsToSearch.length > 0) {
-    const folderPathToSearch = folderPathsToSearch.pop();
-
-    const folderEntryPaths = fs.readdirSync(folderPathToSearch);
-    for (let i = 0; i < folderEntryPaths.length; ++i) {
-      const folderEntryPath = path.resolve(folderPathToSearch, folderEntryPaths[i]);
-      const folderEntryStats = fs.lstatSync(folderEntryPath);
-      if (folderEntryStats.isDirectory()) {
-        folderPathsToSearch.push(folderEntryPath);
-      }
-      else if (folderEntryStats.isFile()) {
-        const fileName = path.basename(folderEntryPath);
-        if (fileName === 'readme.nodejs.md') {
-          nodejsReadmeFilePaths.push(folderEntryPath);
-        }
-      }
-    }
-  }
 
   let packageName;
   for (let i = 0; i < nodejsReadmeFilePaths.length; ++i) {
@@ -91,6 +77,12 @@ gulp.task('codegen', function (cb) {
       if (use) {
         cmd += ` --use=${use}`;
       }
+      else {
+        const localAutorestNodejsFolderPath = path.resolve(azureSDKForNodeRepoRoot, '..', 'autorest.nodejs');
+        if (fs.existsSync(localAutorestNodejsFolderPath) && fs.lstatSync(localAutorestNodejsFolderPath).isDirectory()) {
+          cmd += ` --use=${localAutorestNodejsFolderPath}`;
+        }
+      }
 
       try {
         console.log('Executing command:');
@@ -100,6 +92,12 @@ gulp.task('codegen', function (cb) {
         const result = execSync(cmd, { encoding: 'utf8' });
         console.log('Output:');
         console.log(result);
+
+        console.log('Installing dependencies...');
+        const outputFolderPath = getOutputFolderFromReadmeNodeJsMdFileContents(nodejsReadmeFileContents);
+        const outputFolderPathRelativeToAzureSDKForNodeRepoRoot = outputFolderPath.substring('$(node-sdks-folder)/'.length);
+        const packageFolderPath = path.resolve(azureSDKForNodeRepoRoot, outputFolderPathRelativeToAzureSDKForNodeRepoRoot);
+        npmInstall(packageFolderPath);
       } catch (err) {
         console.log('Error:');
         console.log(`An error occurred while generating client for package: "${packageName}":\n ${err.stderr}`);
@@ -237,7 +235,7 @@ gulp.task('sync-deps-rollup', (cb) => {
   fs.writeFileSync('./package.json', JSON.stringify(rollupPackage, null, 2), { 'encoding': 'utf8' });
 });
 
-gulp.task('publish-packages', (cb) => {
+gulp.task('publish', (cb) => {
   const nodejsReadmeFilePaths = findReadmeNodejsMdFilePaths(azureRestAPISpecsRoot);
 
   let errorPackages = 0;
@@ -264,32 +262,36 @@ gulp.task('publish-packages', (cb) => {
       else {
         const packageJson = require(packageJsonFilePath);
         const packageName = packageJson.name;
-        const localPackageVersion = packageJson.version;
-        if (!localPackageVersion) {
-          console.log(`ERROR: "${packageJsonFilePath}" doesn't have a non-empty version property.`);
-          errorPackages++;
-        }
-        else {
-          let npmPackageVersion;
-          try {
-            const npmViewResult = JSON.parse(execSync(`npm view ${packageName} --json`, { stdio: ['pipe', 'pipe', 'ignore'] }));
-            npmPackageVersion = npmViewResult['dist-tags']['latest'];
-          }
-          catch (error) {
-            // This happens if the package doesn't exist in NPM.
-          }
 
-          if (localPackageVersion === npmPackageVersion) {
-            upToDatePackages++;
+        if (!package || package === packageName || packageName.endsWith(`-${package}`)) {
+          const localPackageVersion = packageJson.version;
+          if (!localPackageVersion) {
+            console.log(`ERROR: "${packageJsonFilePath}" doesn't have a version specified.`);
+            errorPackages++;
           }
           else {
-            console.log(`Publishing package "${packageName}" with version "${localPackageVersion}"...`);
+            let npmPackageVersion;
             try {
-              execSync(`npm publish`, { cwd: packageFolderPath });
-              publishedPackages++;
+              const npmViewResult = JSON.parse(execSync(`npm view ${packageName} --json`, { stdio: ['pipe', 'pipe', 'ignore'] }));
+              npmPackageVersion = npmViewResult['dist-tags']['latest'];
             }
             catch (error) {
-              errorPackages++;
+              // This happens if the package doesn't exist in NPM.
+            }
+
+            if (localPackageVersion === npmPackageVersion) {
+              upToDatePackages++;
+            }
+            else {
+              console.log(`Publishing package "${packageName}" with version "${localPackageVersion}"...`);
+              try {
+                npmInstall(packageFolderPath);
+                execSync(`npm publish`, { cwd: packageFolderPath });
+                publishedPackages++;
+              }
+              catch (error) {
+                errorPackages++;
+              }
             }
           }
         }

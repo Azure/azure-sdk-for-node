@@ -568,9 +568,9 @@ export interface Servers {
      *
      * @param {string} [parameters.version] The version of the server.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -612,9 +612,9 @@ export interface Servers {
      *
      * @param {string} [parameters.version] The version of the server.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -824,9 +824,9 @@ export interface Servers {
      *
      * @param {string} [parameters.version] The version of the server.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -868,9 +868,9 @@ export interface Servers {
      *
      * @param {string} [parameters.version] The version of the server.
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3190,18 +3190,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -3294,9 +3299,9 @@ export interface Databases {
      * connection string may be routed to a readonly secondary replica in the same
      * region. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3326,18 +3331,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -3430,9 +3440,9 @@ export interface Databases {
      * connection string may be routed to a readonly secondary replica in the same
      * region. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3547,18 +3557,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -3681,18 +3696,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -4546,18 +4566,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -4650,9 +4675,9 @@ export interface Databases {
      * connection string may be routed to a readonly secondary replica in the same
      * region. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4682,18 +4707,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -4786,9 +4816,9 @@ export interface Databases {
      * connection string may be routed to a readonly secondary replica in the same
      * region. Possible values include: 'Enabled', 'Disabled'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4903,18 +4933,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -5037,18 +5072,23 @@ export interface Databases {
      *
      * @param {object} [parameters.sku] The name and tier of the SKU.
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {string} [parameters.createMode] Specifies the mode of database
      * creation.
@@ -5724,18 +5764,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -5756,9 +5801,9 @@ export interface ElasticPools {
      * @param {string} [parameters.licenseType] The license type to apply for this
      * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5788,18 +5833,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -5820,9 +5870,9 @@ export interface ElasticPools {
      * @param {string} [parameters.licenseType] The license type to apply for this
      * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5937,18 +5987,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -5999,18 +6054,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -6080,18 +6140,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -6112,9 +6177,9 @@ export interface ElasticPools {
      * @param {string} [parameters.licenseType] The license type to apply for this
      * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6144,18 +6209,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -6176,9 +6246,9 @@ export interface ElasticPools {
      * @param {string} [parameters.licenseType] The license type to apply for this
      * elastic pool. Possible values include: 'LicenseIncluded', 'BasePrice'
      *
-     * @param {object} [parameters.tags] Resource tags.
-     *
      * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -6293,18 +6363,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -6355,18 +6430,23 @@ export interface ElasticPools {
      *
      * @param {object} [parameters.sku]
      *
-     * @param {string} parameters.sku.name The name of the SKU, typically, a letter
-     * + Number code, e.g. P3.
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
      *
-     * @param {string} [parameters.sku.tier] The tier of the particular SKU, e.g.
-     * Basic, Premium.
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
      *
-     * @param {string} [parameters.sku.size] Size of the particular SKU
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
      *
      * @param {string} [parameters.sku.family] If the service has different
      * generations of hardware, for the same SKU, then that can be captured here.
      *
-     * @param {number} [parameters.sku.capacity] Capacity of the particular SKU.
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
      *
      * @param {number} [parameters.maxSizeBytes] The storage limit for the database
      * elastic pool in bytes.
@@ -8852,207 +8932,6 @@ export interface DatabaseUsages {
 
 /**
  * @class
- * DatabaseBlobAuditingPolicies
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the SqlManagementClient.
- */
-export interface DatabaseBlobAuditingPolicies {
-
-
-    /**
-     * Gets a database's blob auditing policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database for which the blob
-     * audit policy is defined.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DatabaseBlobAuditingPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseBlobAuditingPolicy>>;
-
-    /**
-     * Gets a database's blob auditing policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database for which the blob
-     * audit policy is defined.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DatabaseBlobAuditingPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DatabaseBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DatabaseBlobAuditingPolicy} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseBlobAuditingPolicy>;
-    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
-    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
-
-
-    /**
-     * Creates or updates a database's blob auditing policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database for which the blob
-     * auditing policy will be defined.
-     *
-     * @param {object} parameters The database blob auditing policy.
-     *
-     * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
-     * Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
-     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
-     * Enabled, storageEndpoint is required.
-     *
-     * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
-     *
-     * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
-     *
-     * @param {array} [parameters.auditActionsAndGroups] Specifies the Actions and
-     * Actions-Groups to audit.
-     *
-     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
-     * storage subscription Id.
-     *
-     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
-     * storageAccountAccessKey value is the storage’s secondary key.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<DatabaseBlobAuditingPolicy>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseBlobAuditingPolicy>>;
-
-    /**
-     * Creates or updates a database's blob auditing policy.
-     *
-     * @param {string} resourceGroupName The name of the resource group that
-     * contains the resource. You can obtain this value from the Azure Resource
-     * Manager API or the portal.
-     *
-     * @param {string} serverName The name of the server.
-     *
-     * @param {string} databaseName The name of the database for which the blob
-     * auditing policy will be defined.
-     *
-     * @param {object} parameters The database blob auditing policy.
-     *
-     * @param {string} parameters.state Specifies the state of the policy. If state
-     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
-     * Possible values include: 'Enabled', 'Disabled'
-     *
-     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
-     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
-     * Enabled, storageEndpoint is required.
-     *
-     * @param {string} [parameters.storageAccountAccessKey] Specifies the
-     * identifier key of the auditing storage account. If state is Enabled,
-     * storageAccountAccessKey is required.
-     *
-     * @param {number} [parameters.retentionDays] Specifies the number of days to
-     * keep in the audit logs.
-     *
-     * @param {array} [parameters.auditActionsAndGroups] Specifies the Actions and
-     * Actions-Groups to audit.
-     *
-     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
-     * storage subscription Id.
-     *
-     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
-     * storageAccountAccessKey value is the storage’s secondary key.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {DatabaseBlobAuditingPolicy} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {DatabaseBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link DatabaseBlobAuditingPolicy} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseBlobAuditingPolicy>;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
-    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
-}
-
-/**
- * @class
  * DatabaseAutomaticTuningOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
@@ -10706,6 +10585,1050 @@ export interface FailoverGroups {
     listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FailoverGroupListResult>;
     listByServerNext(nextPageLink: string, callback: ServiceCallback<models.FailoverGroupListResult>): void;
     listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FailoverGroupListResult>): void;
+}
+
+/**
+ * @class
+ * ManagedInstances
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ManagedInstances {
+
+
+    /**
+     * Gets a list of all managed instances in the subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceListResult>>;
+
+    /**
+     * Gets a list of all managed instances in the subscription.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceListResult>;
+    list(callback: ServiceCallback<models.ManagedInstanceListResult>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceListResult>): void;
+
+
+    /**
+     * Gets a list of managed instances in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupWithHttpOperationResponse(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceListResult>>;
+
+    /**
+     * Gets a list of managed instances in a resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroup(resourceGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceListResult>;
+    listByResourceGroup(resourceGroupName: string, callback: ServiceCallback<models.ManagedInstanceListResult>): void;
+    listByResourceGroup(resourceGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceListResult>): void;
+
+
+    /**
+     * Gets a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstance>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstance>>;
+
+    /**
+     * Gets a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstance} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstance} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstance} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstance>;
+    get(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedInstance>): void;
+    get(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstance>): void;
+
+
+    /**
+     * Creates or updates a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested managed instance resource state.
+     *
+     * @param {object} [parameters.identity] The Azure Active Directory identity of
+     * the managed instance.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Set this to
+     * 'SystemAssigned' in order to automatically create and assign an Azure Active
+     * Directory principal for the resource. Possible values include:
+     * 'SystemAssigned'
+     *
+     * @param {object} [parameters.sku] Managed instance sku
+     *
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
+     *
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
+     *
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
+     *
+     * @param {string} [parameters.administratorLogin] Administrator username for
+     * the managed instance. Can only be specified when the managed instance is
+     * being created (and is required for creation).
+     *
+     * @param {string} [parameters.administratorLoginPassword] The administrator
+     * login password (required for managed instance creation).
+     *
+     * @param {string} [parameters.subnetId] Subnet resource ID for the managed
+     * instance.
+     *
+     * @param {string} [parameters.licenseType] The license type. Possible values
+     * are 'LicenseIncluded' and 'BasePrice'.
+     *
+     * @param {number} [parameters.vCores] The number of VCores.
+     *
+     * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstance>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstance, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstance>>;
+
+    /**
+     * Creates or updates a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested managed instance resource state.
+     *
+     * @param {object} [parameters.identity] The Azure Active Directory identity of
+     * the managed instance.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Set this to
+     * 'SystemAssigned' in order to automatically create and assign an Azure Active
+     * Directory principal for the resource. Possible values include:
+     * 'SystemAssigned'
+     *
+     * @param {object} [parameters.sku] Managed instance sku
+     *
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
+     *
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
+     *
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
+     *
+     * @param {string} [parameters.administratorLogin] Administrator username for
+     * the managed instance. Can only be specified when the managed instance is
+     * being created (and is required for creation).
+     *
+     * @param {string} [parameters.administratorLoginPassword] The administrator
+     * login password (required for managed instance creation).
+     *
+     * @param {string} [parameters.subnetId] Subnet resource ID for the managed
+     * instance.
+     *
+     * @param {string} [parameters.licenseType] The license type. Possible values
+     * are 'LicenseIncluded' and 'BasePrice'.
+     *
+     * @param {number} [parameters.vCores] The number of VCores.
+     *
+     * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstance} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstance} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstance} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstance, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstance>;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstance, callback: ServiceCallback<models.ManagedInstance>): void;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstance, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstance>): void;
+
+
+    /**
+     * Deletes a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested managed instance resource state.
+     *
+     * @param {object} [parameters.sku] Managed instance sku
+     *
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
+     *
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
+     *
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
+     *
+     * @param {string} [parameters.administratorLogin] Administrator username for
+     * the managed instance. Can only be specified when the managed instance is
+     * being created (and is required for creation).
+     *
+     * @param {string} [parameters.administratorLoginPassword] The administrator
+     * login password (required for managed instance creation).
+     *
+     * @param {string} [parameters.subnetId] Subnet resource ID for the managed
+     * instance.
+     *
+     * @param {string} [parameters.licenseType] The license type. Possible values
+     * are 'LicenseIncluded' and 'BasePrice'.
+     *
+     * @param {number} [parameters.vCores] The number of VCores.
+     *
+     * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstance>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstance>>;
+
+    /**
+     * Updates a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested managed instance resource state.
+     *
+     * @param {object} [parameters.sku] Managed instance sku
+     *
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
+     *
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
+     *
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
+     *
+     * @param {string} [parameters.administratorLogin] Administrator username for
+     * the managed instance. Can only be specified when the managed instance is
+     * being created (and is required for creation).
+     *
+     * @param {string} [parameters.administratorLoginPassword] The administrator
+     * login password (required for managed instance creation).
+     *
+     * @param {string} [parameters.subnetId] Subnet resource ID for the managed
+     * instance.
+     *
+     * @param {string} [parameters.licenseType] The license type. Possible values
+     * are 'LicenseIncluded' and 'BasePrice'.
+     *
+     * @param {number} [parameters.vCores] The number of VCores.
+     *
+     * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstance} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstance} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstance} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstance>;
+    update(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceUpdate, callback: ServiceCallback<models.ManagedInstance>): void;
+    update(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstance>): void;
+
+
+    /**
+     * Creates or updates a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested managed instance resource state.
+     *
+     * @param {object} [parameters.identity] The Azure Active Directory identity of
+     * the managed instance.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Set this to
+     * 'SystemAssigned' in order to automatically create and assign an Azure Active
+     * Directory principal for the resource. Possible values include:
+     * 'SystemAssigned'
+     *
+     * @param {object} [parameters.sku] Managed instance sku
+     *
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
+     *
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
+     *
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
+     *
+     * @param {string} [parameters.administratorLogin] Administrator username for
+     * the managed instance. Can only be specified when the managed instance is
+     * being created (and is required for creation).
+     *
+     * @param {string} [parameters.administratorLoginPassword] The administrator
+     * login password (required for managed instance creation).
+     *
+     * @param {string} [parameters.subnetId] Subnet resource ID for the managed
+     * instance.
+     *
+     * @param {string} [parameters.licenseType] The license type. Possible values
+     * are 'LicenseIncluded' and 'BasePrice'.
+     *
+     * @param {number} [parameters.vCores] The number of VCores.
+     *
+     * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstance>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstance, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstance>>;
+
+    /**
+     * Creates or updates a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested managed instance resource state.
+     *
+     * @param {object} [parameters.identity] The Azure Active Directory identity of
+     * the managed instance.
+     *
+     * @param {string} [parameters.identity.type] The identity type. Set this to
+     * 'SystemAssigned' in order to automatically create and assign an Azure Active
+     * Directory principal for the resource. Possible values include:
+     * 'SystemAssigned'
+     *
+     * @param {object} [parameters.sku] Managed instance sku
+     *
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
+     *
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
+     *
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
+     *
+     * @param {string} [parameters.administratorLogin] Administrator username for
+     * the managed instance. Can only be specified when the managed instance is
+     * being created (and is required for creation).
+     *
+     * @param {string} [parameters.administratorLoginPassword] The administrator
+     * login password (required for managed instance creation).
+     *
+     * @param {string} [parameters.subnetId] Subnet resource ID for the managed
+     * instance.
+     *
+     * @param {string} [parameters.licenseType] The license type. Possible values
+     * are 'LicenseIncluded' and 'BasePrice'.
+     *
+     * @param {number} [parameters.vCores] The number of VCores.
+     *
+     * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstance} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstance} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstance} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstance, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstance>;
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstance, callback: ServiceCallback<models.ManagedInstance>): void;
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstance, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstance>): void;
+
+
+    /**
+     * Deletes a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested managed instance resource state.
+     *
+     * @param {object} [parameters.sku] Managed instance sku
+     *
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
+     *
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
+     *
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
+     *
+     * @param {string} [parameters.administratorLogin] Administrator username for
+     * the managed instance. Can only be specified when the managed instance is
+     * being created (and is required for creation).
+     *
+     * @param {string} [parameters.administratorLoginPassword] The administrator
+     * login password (required for managed instance creation).
+     *
+     * @param {string} [parameters.subnetId] Subnet resource ID for the managed
+     * instance.
+     *
+     * @param {string} [parameters.licenseType] The license type. Possible values
+     * are 'LicenseIncluded' and 'BasePrice'.
+     *
+     * @param {number} [parameters.vCores] The number of VCores.
+     *
+     * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstance>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstance>>;
+
+    /**
+     * Updates a managed instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested managed instance resource state.
+     *
+     * @param {object} [parameters.sku] Managed instance sku
+     *
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
+     *
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
+     *
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
+     *
+     * @param {string} [parameters.administratorLogin] Administrator username for
+     * the managed instance. Can only be specified when the managed instance is
+     * being created (and is required for creation).
+     *
+     * @param {string} [parameters.administratorLoginPassword] The administrator
+     * login password (required for managed instance creation).
+     *
+     * @param {string} [parameters.subnetId] Subnet resource ID for the managed
+     * instance.
+     *
+     * @param {string} [parameters.licenseType] The license type. Possible values
+     * are 'LicenseIncluded' and 'BasePrice'.
+     *
+     * @param {number} [parameters.vCores] The number of VCores.
+     *
+     * @param {number} [parameters.storageSizeInGB] The maximum storage size in GB.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstance} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstance} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstance} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstance>;
+    beginUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceUpdate, callback: ServiceCallback<models.ManagedInstance>): void;
+    beginUpdate(resourceGroupName: string, managedInstanceName: string, parameters: models.ManagedInstanceUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstance>): void;
+
+
+    /**
+     * Gets a list of all managed instances in the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceListResult>>;
+
+    /**
+     * Gets a list of all managed instances in the subscription.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceListResult>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceListResult>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceListResult>): void;
+
+
+    /**
+     * Gets a list of managed instances in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedInstanceListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByResourceGroupNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedInstanceListResult>>;
+
+    /**
+     * Gets a list of managed instances in a resource group.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedInstanceListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedInstanceListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedInstanceListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByResourceGroupNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedInstanceListResult>;
+    listByResourceGroupNext(nextPageLink: string, callback: ServiceCallback<models.ManagedInstanceListResult>): void;
+    listByResourceGroupNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedInstanceListResult>): void;
 }
 
 /**
@@ -15471,6 +16394,6651 @@ export interface VirtualNetworkRules {
 
 /**
  * @class
+ * ExtendedDatabaseBlobAuditingPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ExtendedDatabaseBlobAuditingPolicies {
+
+
+    /**
+     * Gets an extended database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExtendedDatabaseBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExtendedDatabaseBlobAuditingPolicy>>;
+
+    /**
+     * Gets an extended database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExtendedDatabaseBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExtendedDatabaseBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExtendedDatabaseBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExtendedDatabaseBlobAuditingPolicy>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.ExtendedDatabaseBlobAuditingPolicy>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExtendedDatabaseBlobAuditingPolicy>): void;
+
+
+    /**
+     * Creates or updates an extended database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The extended database blob auditing policy.
+     *
+     * @param {string} [parameters.predicateExpression] Specifies condition of
+     * where clause when creating an audit.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExtendedDatabaseBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExtendedDatabaseBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExtendedDatabaseBlobAuditingPolicy>>;
+
+    /**
+     * Creates or updates an extended database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The extended database blob auditing policy.
+     *
+     * @param {string} [parameters.predicateExpression] Specifies condition of
+     * where clause when creating an audit.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExtendedDatabaseBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExtendedDatabaseBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExtendedDatabaseBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExtendedDatabaseBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExtendedDatabaseBlobAuditingPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExtendedDatabaseBlobAuditingPolicy, callback: ServiceCallback<models.ExtendedDatabaseBlobAuditingPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.ExtendedDatabaseBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExtendedDatabaseBlobAuditingPolicy>): void;
+}
+
+/**
+ * @class
+ * ExtendedServerBlobAuditingPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ExtendedServerBlobAuditingPolicies {
+
+
+    /**
+     * Gets an extended server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExtendedServerBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExtendedServerBlobAuditingPolicy>>;
+
+    /**
+     * Gets an extended server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExtendedServerBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExtendedServerBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExtendedServerBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExtendedServerBlobAuditingPolicy>;
+    get(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.ExtendedServerBlobAuditingPolicy>): void;
+    get(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExtendedServerBlobAuditingPolicy>): void;
+
+
+    /**
+     * Creates or updates an extended server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of extended blob auditing policy
+     *
+     * @param {string} [parameters.predicateExpression] Specifies condition of
+     * where clause when creating an audit.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExtendedServerBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExtendedServerBlobAuditingPolicy>>;
+
+    /**
+     * Creates or updates an extended server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of extended blob auditing policy
+     *
+     * @param {string} [parameters.predicateExpression] Specifies condition of
+     * where clause when creating an audit.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExtendedServerBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExtendedServerBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExtendedServerBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExtendedServerBlobAuditingPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, callback: ServiceCallback<models.ExtendedServerBlobAuditingPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExtendedServerBlobAuditingPolicy>): void;
+
+
+    /**
+     * Creates or updates an extended server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of extended blob auditing policy
+     *
+     * @param {string} [parameters.predicateExpression] Specifies condition of
+     * where clause when creating an audit.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ExtendedServerBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ExtendedServerBlobAuditingPolicy>>;
+
+    /**
+     * Creates or updates an extended server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of extended blob auditing policy
+     *
+     * @param {string} [parameters.predicateExpression] Specifies condition of
+     * where clause when creating an audit.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ExtendedServerBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ExtendedServerBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ExtendedServerBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ExtendedServerBlobAuditingPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, callback: ServiceCallback<models.ExtendedServerBlobAuditingPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ExtendedServerBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ExtendedServerBlobAuditingPolicy>): void;
+}
+
+/**
+ * @class
+ * ServerBlobAuditingPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ServerBlobAuditingPolicies {
+
+
+    /**
+     * Gets a server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerBlobAuditingPolicy>>;
+
+    /**
+     * Gets a server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerBlobAuditingPolicy>;
+    get(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.ServerBlobAuditingPolicy>): void;
+    get(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerBlobAuditingPolicy>): void;
+
+
+    /**
+     * Creates or updates a server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of blob auditing policy
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerBlobAuditingPolicy>>;
+
+    /**
+     * Creates or updates a server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of blob auditing policy
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerBlobAuditingPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, callback: ServiceCallback<models.ServerBlobAuditingPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerBlobAuditingPolicy>): void;
+
+
+    /**
+     * Creates or updates a server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of blob auditing policy
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerBlobAuditingPolicy>>;
+
+    /**
+     * Creates or updates a server's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters Properties of blob auditing policy
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerBlobAuditingPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, callback: ServiceCallback<models.ServerBlobAuditingPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerBlobAuditingPolicy>): void;
+}
+
+/**
+ * @class
+ * DatabaseBlobAuditingPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface DatabaseBlobAuditingPolicies {
+
+
+    /**
+     * Gets a database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseBlobAuditingPolicy>>;
+
+    /**
+     * Gets a database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseBlobAuditingPolicy>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
+
+
+    /**
+     * Creates or updates a database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The database blob auditing policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseBlobAuditingPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseBlobAuditingPolicy>>;
+
+    /**
+     * Creates or updates a database's blob auditing policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The database blob auditing policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy. If state
+     * is Enabled, storageEndpoint and storageAccountAccessKey are required.
+     * Possible values include: 'Enabled', 'Disabled'
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is
+     * Enabled, storageEndpoint is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the auditing storage account. If state is Enabled,
+     * storageAccountAccessKey is required.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the audit logs.
+     *
+     * @param {array} [parameters.auditActionsAndGroups] Specifies the
+     * Actions-Groups and Actions to audit.
+     *
+     * The recommended set of action groups to use is the following combination -
+     * this will audit all the queries and stored procedures executed against the
+     * database, as well as successful and failed logins:
+     *
+     * BATCH_COMPLETED_GROUP,
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
+     * FAILED_DATABASE_AUTHENTICATION_GROUP.
+     *
+     * This above combination is also the set that is configured by default when
+     * enabling auditing from the Azure portal.
+     *
+     * The supported action groups to audit are (note: choose only specific groups
+     * that cover your auditing needs. Using unnecessary groups could lead to very
+     * large quantities of audit records):
+     *
+     * APPLICATION_ROLE_CHANGE_PASSWORD_GROUP
+     * BACKUP_RESTORE_GROUP
+     * DATABASE_LOGOUT_GROUP
+     * DATABASE_OBJECT_CHANGE_GROUP
+     * DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * DATABASE_OBJECT_PERMISSION_CHANGE_GROUP
+     * DATABASE_OPERATION_GROUP
+     * DATABASE_PERMISSION_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_CHANGE_GROUP
+     * DATABASE_PRINCIPAL_IMPERSONATION_GROUP
+     * DATABASE_ROLE_MEMBER_CHANGE_GROUP
+     * FAILED_DATABASE_AUTHENTICATION_GROUP
+     * SCHEMA_OBJECT_ACCESS_GROUP
+     * SCHEMA_OBJECT_CHANGE_GROUP
+     * SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP
+     * SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP
+     * SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP
+     * USER_CHANGE_PASSWORD_GROUP
+     * BATCH_STARTED_GROUP
+     * BATCH_COMPLETED_GROUP
+     *
+     * These are groups that cover all sql statements and stored procedures
+     * executed against the database, and should not be used in combination with
+     * other groups as this will result in duplicate audit logs.
+     *
+     * For more information, see [Database-Level Audit Action
+     * Groups](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups).
+     *
+     * For Database auditing policy, specific Actions can also be specified (note
+     * that Actions cannot be specified for Server auditing policy). The supported
+     * actions to audit are:
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * EXECUTE
+     * RECEIVE
+     * REFERENCES
+     *
+     * The general form for defining an action to be audited is:
+     * <action> ON <object> BY <principal>
+     *
+     * Note that <object> in the above format can refer to an object like a table,
+     * view, or stored procedure, or an entire database or schema. For the latter
+     * cases, the forms DATABASE::<db_name> and SCHEMA::<schema_name> are used,
+     * respectively.
+     *
+     * For example:
+     * SELECT on dbo.myTable by public
+     * SELECT on DATABASE::myDatabase by public
+     * SELECT on SCHEMA::mySchema by public
+     *
+     * For more information, see [Database-Level Audit
+     * Actions](https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions)
+     *
+     * @param {uuid} [parameters.storageAccountSubscriptionId] Specifies the blob
+     * storage subscription Id.
+     *
+     * @param {boolean} [parameters.isStorageSecondaryKeyInUse] Specifies whether
+     * storageAccountAccessKey value is the storage's secondary key.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseBlobAuditingPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseBlobAuditingPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseBlobAuditingPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseBlobAuditingPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseBlobAuditingPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseBlobAuditingPolicy>): void;
+}
+
+/**
+ * @class
+ * DatabaseVulnerabilityAssessmentRuleBaselines
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface DatabaseVulnerabilityAssessmentRuleBaselines {
+
+
+    /**
+     * Gets a database's vulnerability assessment rule baseline.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment rule baseline is defined.
+     *
+     * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentRuleBaseline>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentRuleBaseline>>;
+
+    /**
+     * Gets a database's vulnerability assessment rule baseline.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment rule baseline is defined.
+     *
+     * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentRuleBaseline} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentRuleBaseline} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentRuleBaseline}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentRuleBaseline>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+
+
+    /**
+     * Creates or updates a database's vulnerability assessment rule baseline.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment rule baseline is defined.
+     *
+     * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
+     * @param {object} parameters The requested rule baseline resource.
+     *
+     * @param {array} parameters.baselineResults The rule baseline result
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentRuleBaseline>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentRuleBaseline>>;
+
+    /**
+     * Creates or updates a database's vulnerability assessment rule baseline.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment rule baseline is defined.
+     *
+     * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
+     * @param {object} parameters The requested rule baseline resource.
+     *
+     * @param {array} parameters.baselineResults The rule baseline result
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentRuleBaseline} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentRuleBaseline} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentRuleBaseline}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentRuleBaseline>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, parameters: models.DatabaseVulnerabilityAssessmentRuleBaseline, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentRuleBaseline>): void;
+
+
+    /**
+     * Removes the database's vulnerability assessment rule baseline.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment rule baseline is defined.
+     *
+     * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Removes the database's vulnerability assessment rule baseline.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment rule baseline is defined.
+     *
+     * @param {string} ruleId The vulnerability assessment rule ID.
+     *
+     * @param {string} baselineName The name of the vulnerability assessment rule
+     * baseline (default implies a baseline on a database level rule and master for
+     * server level rule). Possible values include: 'master', 'default'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, ruleId: string, baselineName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * DatabaseVulnerabilityAssessments
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface DatabaseVulnerabilityAssessments {
+
+
+    /**
+     * Gets the database's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessment>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessment>>;
+
+    /**
+     * Gets the database's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessment} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessment} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessment>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessment>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessment>): void;
+
+
+    /**
+     * Creates or updates the database's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} parameters The requested resource.
+     *
+     * @param {string} parameters.storageContainerPath A blob storage container
+     * path to hold the scan results (e.g.
+     * https://myStorage.blob.core.windows.net/VaScans/).
+     *
+     * @param {string} parameters.storageContainerSasKey A shared access signature
+     * (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter.
+     *
+     * @param {object} [parameters.recurringScans] The recurring scans settings
+     *
+     * @param {boolean} [parameters.recurringScans.isEnabled] Recurring scans
+     * state.
+     *
+     * @param {boolean} [parameters.recurringScans.emailSubscriptionAdmins]
+     * Specifies that the schedule scan notification will be is sent to the
+     * subscription administrators.
+     *
+     * @param {array} [parameters.recurringScans.emails] Specifies an array of
+     * e-mail addresses to which the scan notification is sent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessment>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseVulnerabilityAssessment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessment>>;
+
+    /**
+     * Creates or updates the database's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} parameters The requested resource.
+     *
+     * @param {string} parameters.storageContainerPath A blob storage container
+     * path to hold the scan results (e.g.
+     * https://myStorage.blob.core.windows.net/VaScans/).
+     *
+     * @param {string} parameters.storageContainerSasKey A shared access signature
+     * (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter.
+     *
+     * @param {object} [parameters.recurringScans] The recurring scans settings
+     *
+     * @param {boolean} [parameters.recurringScans.isEnabled] Recurring scans
+     * state.
+     *
+     * @param {boolean} [parameters.recurringScans.emailSubscriptionAdmins]
+     * Specifies that the schedule scan notification will be is sent to the
+     * subscription administrators.
+     *
+     * @param {array} [parameters.recurringScans.emails] Specifies an array of
+     * e-mail addresses to which the scan notification is sent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessment} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessment} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessment} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseVulnerabilityAssessment, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessment>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseVulnerabilityAssessment, callback: ServiceCallback<models.DatabaseVulnerabilityAssessment>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.DatabaseVulnerabilityAssessment, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessment>): void;
+
+
+    /**
+     * Removes the database's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Removes the database's vulnerability assessment.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database for which the
+     * vulnerability assessment is defined.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * JobAgents
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface JobAgents {
+
+
+    /**
+     * Gets a list of job agents in a server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobAgentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobAgentListResult>>;
+
+    /**
+     * Gets a list of job agents in a server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobAgentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobAgentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobAgentListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobAgentListResult>;
+    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.JobAgentListResult>): void;
+    listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobAgentListResult>): void;
+
+
+    /**
+     * Gets a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobAgent>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobAgent>>;
+
+    /**
+     * Gets a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be retrieved.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobAgent} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobAgent} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobAgent} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobAgent>;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, callback: ServiceCallback<models.JobAgent>): void;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobAgent>): void;
+
+
+    /**
+     * Creates or updates a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be created or
+     * updated.
+     *
+     * @param {object} parameters The requested job agent resource state.
+     *
+     * @param {object} [parameters.sku] The name and tier of the SKU.
+     *
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
+     *
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
+     *
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
+     *
+     * @param {string} parameters.databaseId Resource ID of the database to store
+     * job metadata in.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobAgent>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgent, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobAgent>>;
+
+    /**
+     * Creates or updates a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be created or
+     * updated.
+     *
+     * @param {object} parameters The requested job agent resource state.
+     *
+     * @param {object} [parameters.sku] The name and tier of the SKU.
+     *
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
+     *
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
+     *
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
+     *
+     * @param {string} parameters.databaseId Resource ID of the database to store
+     * job metadata in.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobAgent} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobAgent} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobAgent} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgent, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobAgent>;
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgent, callback: ServiceCallback<models.JobAgent>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgent, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobAgent>): void;
+
+
+    /**
+     * Deletes a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be updated.
+     *
+     * @param {object} parameters The update to the job agent.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobAgent>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgentUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobAgent>>;
+
+    /**
+     * Updates a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be updated.
+     *
+     * @param {object} parameters The update to the job agent.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobAgent} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobAgent} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobAgent} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgentUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobAgent>;
+    update(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgentUpdate, callback: ServiceCallback<models.JobAgent>): void;
+    update(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgentUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobAgent>): void;
+
+
+    /**
+     * Creates or updates a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be created or
+     * updated.
+     *
+     * @param {object} parameters The requested job agent resource state.
+     *
+     * @param {object} [parameters.sku] The name and tier of the SKU.
+     *
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
+     *
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
+     *
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
+     *
+     * @param {string} parameters.databaseId Resource ID of the database to store
+     * job metadata in.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobAgent>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgent, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobAgent>>;
+
+    /**
+     * Creates or updates a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be created or
+     * updated.
+     *
+     * @param {object} parameters The requested job agent resource state.
+     *
+     * @param {object} [parameters.sku] The name and tier of the SKU.
+     *
+     * @param {string} parameters.sku.name The name of the SKU. Ex - P3. It is
+     * typically a letter+number code
+     *
+     * @param {string} [parameters.sku.tier] This field is required to be
+     * implemented by the Resource Provider if the service has more than one tier,
+     * but is not required on a PUT.
+     *
+     * @param {string} [parameters.sku.size] The SKU size. When the name field is
+     * the combination of tier and some other value, this would be the standalone
+     * code.
+     *
+     * @param {string} [parameters.sku.family] If the service has different
+     * generations of hardware, for the same SKU, then that can be captured here.
+     *
+     * @param {number} [parameters.sku.capacity] If the SKU supports scale out/in
+     * then the capacity integer should be included. If scale out/in is not
+     * possible for the resource this may be omitted.
+     *
+     * @param {string} parameters.databaseId Resource ID of the database to store
+     * job metadata in.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobAgent} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobAgent} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobAgent} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgent, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobAgent>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgent, callback: ServiceCallback<models.JobAgent>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgent, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobAgent>): void;
+
+
+    /**
+     * Deletes a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be deleted.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be updated.
+     *
+     * @param {object} parameters The update to the job agent.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobAgent>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgentUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobAgent>>;
+
+    /**
+     * Updates a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent to be updated.
+     *
+     * @param {object} parameters The update to the job agent.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobAgent} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobAgent} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobAgent} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgentUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobAgent>;
+    beginUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgentUpdate, callback: ServiceCallback<models.JobAgent>): void;
+    beginUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, parameters: models.JobAgentUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobAgent>): void;
+
+
+    /**
+     * Gets a list of job agents in a server.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobAgentListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobAgentListResult>>;
+
+    /**
+     * Gets a list of job agents in a server.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobAgentListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobAgentListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobAgentListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobAgentListResult>;
+    listByServerNext(nextPageLink: string, callback: ServiceCallback<models.JobAgentListResult>): void;
+    listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobAgentListResult>): void;
+}
+
+/**
+ * @class
+ * JobCredentials
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface JobCredentials {
+
+
+    /**
+     * Gets a list of jobs credentials.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobCredentialListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAgentWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobCredentialListResult>>;
+
+    /**
+     * Gets a list of jobs credentials.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobCredentialListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobCredentialListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobCredentialListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAgent(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobCredentialListResult>;
+    listByAgent(resourceGroupName: string, serverName: string, jobAgentName: string, callback: ServiceCallback<models.JobCredentialListResult>): void;
+    listByAgent(resourceGroupName: string, serverName: string, jobAgentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobCredentialListResult>): void;
+
+
+    /**
+     * Gets a jobs credential.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} credentialName The name of the credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobCredential>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobCredential>>;
+
+    /**
+     * Gets a jobs credential.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} credentialName The name of the credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobCredential} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobCredential} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobCredential} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobCredential>;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, credentialName: string, callback: ServiceCallback<models.JobCredential>): void;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobCredential>): void;
+
+
+    /**
+     * Creates or updates a job credential.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} credentialName The name of the credential.
+     *
+     * @param {object} parameters The requested job credential state.
+     *
+     * @param {string} parameters.username The credential user name.
+     *
+     * @param {string} parameters.password The credential password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobCredential>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, credentialName: string, parameters: models.JobCredential, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobCredential>>;
+
+    /**
+     * Creates or updates a job credential.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} credentialName The name of the credential.
+     *
+     * @param {object} parameters The requested job credential state.
+     *
+     * @param {string} parameters.username The credential user name.
+     *
+     * @param {string} parameters.password The credential password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobCredential} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobCredential} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobCredential} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, credentialName: string, parameters: models.JobCredential, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobCredential>;
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, credentialName: string, parameters: models.JobCredential, callback: ServiceCallback<models.JobCredential>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, credentialName: string, parameters: models.JobCredential, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobCredential>): void;
+
+
+    /**
+     * Deletes a job credential.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} credentialName The name of the credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a job credential.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} credentialName The name of the credential.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, credentialName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, credentialName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, credentialName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a list of jobs credentials.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobCredentialListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAgentNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobCredentialListResult>>;
+
+    /**
+     * Gets a list of jobs credentials.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobCredentialListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobCredentialListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobCredentialListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAgentNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobCredentialListResult>;
+    listByAgentNext(nextPageLink: string, callback: ServiceCallback<models.JobCredentialListResult>): void;
+    listByAgentNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobCredentialListResult>): void;
+}
+
+/**
+ * @class
+ * JobExecutions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface JobExecutions {
+
+
+    /**
+     * Lists all executions in a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.createTimeMin] If specified, only job executions
+     * created at or after the specified time are included.
+     *
+     * @param {date} [options.createTimeMax] If specified, only job executions
+     * created before the specified time are included.
+     *
+     * @param {date} [options.endTimeMin] If specified, only job executions
+     * completed at or after the specified time are included.
+     *
+     * @param {date} [options.endTimeMax] If specified, only job executions
+     * completed before the specified time are included.
+     *
+     * @param {boolean} [options.isActive] If specified, only active or only
+     * completed job executions are included.
+     *
+     * @param {number} [options.skip] The number of elements in the collection to
+     * skip.
+     *
+     * @param {number} [options.top] The number of elements to return from the
+     * collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecutionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAgentWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecutionListResult>>;
+
+    /**
+     * Lists all executions in a job agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.createTimeMin] If specified, only job executions
+     * created at or after the specified time are included.
+     *
+     * @param {date} [options.createTimeMax] If specified, only job executions
+     * created before the specified time are included.
+     *
+     * @param {date} [options.endTimeMin] If specified, only job executions
+     * completed at or after the specified time are included.
+     *
+     * @param {date} [options.endTimeMax] If specified, only job executions
+     * completed before the specified time are included.
+     *
+     * @param {boolean} [options.isActive] If specified, only active or only
+     * completed job executions are included.
+     *
+     * @param {number} [options.skip] The number of elements in the collection to
+     * skip.
+     *
+     * @param {number} [options.top] The number of elements to return from the
+     * collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecutionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecutionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecutionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAgent(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecutionListResult>;
+    listByAgent(resourceGroupName: string, serverName: string, jobAgentName: string, callback: ServiceCallback<models.JobExecutionListResult>): void;
+    listByAgent(resourceGroupName: string, serverName: string, jobAgentName: string, options: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecutionListResult>): void;
+
+
+    /**
+     * Requests cancellation of a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {uuid} jobExecutionId The id of the job execution to cancel.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    cancelWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Requests cancellation of a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {uuid} jobExecutionId The id of the job execution to cancel.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancel(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    cancel(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, callback: ServiceCallback<void>): void;
+    cancel(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Starts an elastic job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecution>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecution>>;
+
+    /**
+     * Starts an elastic job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecution} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecution} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecution} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecution>;
+    create(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, callback: ServiceCallback<models.JobExecution>): void;
+    create(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecution>): void;
+
+
+    /**
+     * Lists a job's executions.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.createTimeMin] If specified, only job executions
+     * created at or after the specified time are included.
+     *
+     * @param {date} [options.createTimeMax] If specified, only job executions
+     * created before the specified time are included.
+     *
+     * @param {date} [options.endTimeMin] If specified, only job executions
+     * completed at or after the specified time are included.
+     *
+     * @param {date} [options.endTimeMax] If specified, only job executions
+     * completed before the specified time are included.
+     *
+     * @param {boolean} [options.isActive] If specified, only active or only
+     * completed job executions are included.
+     *
+     * @param {number} [options.skip] The number of elements in the collection to
+     * skip.
+     *
+     * @param {number} [options.top] The number of elements to return from the
+     * collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecutionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecutionListResult>>;
+
+    /**
+     * Lists a job's executions.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.createTimeMin] If specified, only job executions
+     * created at or after the specified time are included.
+     *
+     * @param {date} [options.createTimeMax] If specified, only job executions
+     * created before the specified time are included.
+     *
+     * @param {date} [options.endTimeMin] If specified, only job executions
+     * completed at or after the specified time are included.
+     *
+     * @param {date} [options.endTimeMax] If specified, only job executions
+     * completed before the specified time are included.
+     *
+     * @param {boolean} [options.isActive] If specified, only active or only
+     * completed job executions are included.
+     *
+     * @param {number} [options.skip] The number of elements in the collection to
+     * skip.
+     *
+     * @param {number} [options.top] The number of elements to return from the
+     * collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecutionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecutionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecutionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJob(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecutionListResult>;
+    listByJob(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, callback: ServiceCallback<models.JobExecutionListResult>): void;
+    listByJob(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecutionListResult>): void;
+
+
+    /**
+     * Gets a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {uuid} jobExecutionId The id of the job execution
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecution>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecution>>;
+
+    /**
+     * Gets a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {uuid} jobExecutionId The id of the job execution
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecution} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecution} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecution} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecution>;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, callback: ServiceCallback<models.JobExecution>): void;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecution>): void;
+
+
+    /**
+     * Creates or updatess a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The job execution id to create the job
+     * execution under.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecution>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecution>>;
+
+    /**
+     * Creates or updatess a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The job execution id to create the job
+     * execution under.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecution} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecution} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecution} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecution>;
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, callback: ServiceCallback<models.JobExecution>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecution>): void;
+
+
+    /**
+     * Starts an elastic job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecution>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecution>>;
+
+    /**
+     * Starts an elastic job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecution} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecution} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecution} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecution>;
+    beginCreate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, callback: ServiceCallback<models.JobExecution>): void;
+    beginCreate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecution>): void;
+
+
+    /**
+     * Creates or updatess a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The job execution id to create the job
+     * execution under.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecution>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecution>>;
+
+    /**
+     * Creates or updatess a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The job execution id to create the job
+     * execution under.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecution} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecution} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecution} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecution>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, callback: ServiceCallback<models.JobExecution>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecution>): void;
+
+
+    /**
+     * Lists all executions in a job agent.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecutionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAgentNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecutionListResult>>;
+
+    /**
+     * Lists all executions in a job agent.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecutionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecutionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecutionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAgentNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecutionListResult>;
+    listByAgentNext(nextPageLink: string, callback: ServiceCallback<models.JobExecutionListResult>): void;
+    listByAgentNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecutionListResult>): void;
+
+
+    /**
+     * Lists a job's executions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecutionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecutionListResult>>;
+
+    /**
+     * Lists a job's executions.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecutionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecutionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecutionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJobNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecutionListResult>;
+    listByJobNext(nextPageLink: string, callback: ServiceCallback<models.JobExecutionListResult>): void;
+    listByJobNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecutionListResult>): void;
+}
+
+/**
+ * @class
+ * Jobs
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface Jobs {
+
+
+    /**
+     * Gets a list of jobs.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAgentWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResult>>;
+
+    /**
+     * Gets a list of jobs.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAgent(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResult>;
+    listByAgent(resourceGroupName: string, serverName: string, jobAgentName: string, callback: ServiceCallback<models.JobListResult>): void;
+    listByAgent(resourceGroupName: string, serverName: string, jobAgentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResult>): void;
+
+
+    /**
+     * Gets a job.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Job>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+
+    /**
+     * Gets a job.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Job} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Job} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Job} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, callback: ServiceCallback<models.Job>): void;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+
+
+    /**
+     * Creates or updates a job.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} parameters The requested job state.
+     *
+     * @param {string} [parameters.description] User-defined description of the
+     * job.
+     *
+     * @param {object} [parameters.schedule] Schedule properties of the job.
+     *
+     * @param {date} [parameters.schedule.startTime] Schedule start time.
+     *
+     * @param {date} [parameters.schedule.endTime] Schedule end time.
+     *
+     * @param {string} [parameters.schedule.type] Schedule interval type. Possible
+     * values include: 'Once', 'Recurring'
+     *
+     * @param {boolean} [parameters.schedule.enabled] Whether or not the schedule
+     * is enabled.
+     *
+     * @param {string} [parameters.schedule.interval] Value of the schedule's
+     * recurring interval, if the scheduletype is recurring. ISO8601 duration
+     * format.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Job>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, parameters: models.Job, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Job>>;
+
+    /**
+     * Creates or updates a job.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} parameters The requested job state.
+     *
+     * @param {string} [parameters.description] User-defined description of the
+     * job.
+     *
+     * @param {object} [parameters.schedule] Schedule properties of the job.
+     *
+     * @param {date} [parameters.schedule.startTime] Schedule start time.
+     *
+     * @param {date} [parameters.schedule.endTime] Schedule end time.
+     *
+     * @param {string} [parameters.schedule.type] Schedule interval type. Possible
+     * values include: 'Once', 'Recurring'
+     *
+     * @param {boolean} [parameters.schedule.enabled] Whether or not the schedule
+     * is enabled.
+     *
+     * @param {string} [parameters.schedule.interval] Value of the schedule's
+     * recurring interval, if the scheduletype is recurring. ISO8601 duration
+     * format.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Job} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Job} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Job} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, parameters: models.Job, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Job>;
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, parameters: models.Job, callback: ServiceCallback<models.Job>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, parameters: models.Job, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Job>): void;
+
+
+    /**
+     * Deletes a job.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a job.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a list of jobs.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAgentNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobListResult>>;
+
+    /**
+     * Gets a list of jobs.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAgentNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobListResult>;
+    listByAgentNext(nextPageLink: string, callback: ServiceCallback<models.JobListResult>): void;
+    listByAgentNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobListResult>): void;
+}
+
+/**
+ * @class
+ * JobStepExecutions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface JobStepExecutions {
+
+
+    /**
+     * Lists the step executions of a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The id of the job execution
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.createTimeMin] If specified, only job executions
+     * created at or after the specified time are included.
+     *
+     * @param {date} [options.createTimeMax] If specified, only job executions
+     * created before the specified time are included.
+     *
+     * @param {date} [options.endTimeMin] If specified, only job executions
+     * completed at or after the specified time are included.
+     *
+     * @param {date} [options.endTimeMax] If specified, only job executions
+     * completed before the specified time are included.
+     *
+     * @param {boolean} [options.isActive] If specified, only active or only
+     * completed job executions are included.
+     *
+     * @param {number} [options.skip] The number of elements in the collection to
+     * skip.
+     *
+     * @param {number} [options.top] The number of elements to return from the
+     * collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecutionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobExecutionWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecutionListResult>>;
+
+    /**
+     * Lists the step executions of a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The id of the job execution
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.createTimeMin] If specified, only job executions
+     * created at or after the specified time are included.
+     *
+     * @param {date} [options.createTimeMax] If specified, only job executions
+     * created before the specified time are included.
+     *
+     * @param {date} [options.endTimeMin] If specified, only job executions
+     * completed at or after the specified time are included.
+     *
+     * @param {date} [options.endTimeMax] If specified, only job executions
+     * completed before the specified time are included.
+     *
+     * @param {boolean} [options.isActive] If specified, only active or only
+     * completed job executions are included.
+     *
+     * @param {number} [options.skip] The number of elements in the collection to
+     * skip.
+     *
+     * @param {number} [options.top] The number of elements to return from the
+     * collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecutionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecutionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecutionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJobExecution(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecutionListResult>;
+    listByJobExecution(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, callback: ServiceCallback<models.JobExecutionListResult>): void;
+    listByJobExecution(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecutionListResult>): void;
+
+
+    /**
+     * Gets a step execution of a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The unique id of the job execution
+     *
+     * @param {string} stepName The name of the step.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecution>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecution>>;
+
+    /**
+     * Gets a step execution of a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The unique id of the job execution
+     *
+     * @param {string} stepName The name of the step.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecution} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecution} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecution} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecution>;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, stepName: string, callback: ServiceCallback<models.JobExecution>): void;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, stepName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecution>): void;
+
+
+    /**
+     * Lists the step executions of a job execution.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecutionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobExecutionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecutionListResult>>;
+
+    /**
+     * Lists the step executions of a job execution.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecutionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecutionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecutionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJobExecutionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecutionListResult>;
+    listByJobExecutionNext(nextPageLink: string, callback: ServiceCallback<models.JobExecutionListResult>): void;
+    listByJobExecutionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecutionListResult>): void;
+}
+
+/**
+ * @class
+ * JobSteps
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface JobSteps {
+
+
+    /**
+     * Gets all job steps in the specified job version.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {number} jobVersion The version of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStepListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByVersionWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobVersion: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStepListResult>>;
+
+    /**
+     * Gets all job steps in the specified job version.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {number} jobVersion The version of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStepListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStepListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStepListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByVersion(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobVersion: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStepListResult>;
+    listByVersion(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobVersion: number, callback: ServiceCallback<models.JobStepListResult>): void;
+    listByVersion(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobVersion: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStepListResult>): void;
+
+
+    /**
+     * Gets the specified version of a job step.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {number} jobVersion The version of the job to get.
+     *
+     * @param {string} stepName The name of the job step.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStep>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getByVersionWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobVersion: number, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStep>>;
+
+    /**
+     * Gets the specified version of a job step.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {number} jobVersion The version of the job to get.
+     *
+     * @param {string} stepName The name of the job step.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStep} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStep} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStep} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getByVersion(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobVersion: number, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStep>;
+    getByVersion(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobVersion: number, stepName: string, callback: ServiceCallback<models.JobStep>): void;
+    getByVersion(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobVersion: number, stepName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStep>): void;
+
+
+    /**
+     * Gets all job steps for a job's current version.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStepListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStepListResult>>;
+
+    /**
+     * Gets all job steps for a job's current version.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStepListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStepListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStepListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJob(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStepListResult>;
+    listByJob(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, callback: ServiceCallback<models.JobStepListResult>): void;
+    listByJob(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStepListResult>): void;
+
+
+    /**
+     * Gets a job step in a job's current version.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {string} stepName The name of the job step.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStep>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStep>>;
+
+    /**
+     * Gets a job step in a job's current version.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {string} stepName The name of the job step.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStep} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStep} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStep} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStep>;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, stepName: string, callback: ServiceCallback<models.JobStep>): void;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, stepName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStep>): void;
+
+
+    /**
+     * Creates or updates a job step. This will implicitly create a new job
+     * version.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {string} stepName The name of the job step.
+     *
+     * @param {object} parameters The requested state of the job step.
+     *
+     * @param {number} [parameters.stepId] The job step's index within the job. If
+     * not specified when creating the job step, it will be created as the last
+     * step. If not specified when updating the job step, the step id is not
+     * modified.
+     *
+     * @param {string} parameters.targetGroup The resource ID of the target group
+     * that the job step will be executed on.
+     *
+     * @param {string} parameters.credential The resource ID of the job credential
+     * that will be used to connect to the targets.
+     *
+     * @param {object} parameters.action The action payload of the job step.
+     *
+     * @param {string} [parameters.action.type] Type of action being executed by
+     * the job step. Possible values include: 'TSql'
+     *
+     * @param {string} [parameters.action.source] The source of the action to
+     * execute. Possible values include: 'Inline'
+     *
+     * @param {string} parameters.action.value The action value, for example the
+     * text of the T-SQL script to execute.
+     *
+     * @param {object} [parameters.output] Output destination properties of the job
+     * step.
+     *
+     * @param {string} [parameters.output.type] The output destination type.
+     * Possible values include: 'SqlDatabase'
+     *
+     * @param {uuid} [parameters.output.subscriptionId] The output destination
+     * subscription id.
+     *
+     * @param {string} [parameters.output.resourceGroupName] The output destination
+     * resource group.
+     *
+     * @param {string} parameters.output.serverName The output destination server
+     * name.
+     *
+     * @param {string} parameters.output.databaseName The output destination
+     * database.
+     *
+     * @param {string} [parameters.output.schemaName] The output destination
+     * schema.
+     *
+     * @param {string} parameters.output.tableName The output destination table.
+     *
+     * @param {string} parameters.output.credential The resource ID of the
+     * credential to use to connect to the output destination.
+     *
+     * @param {object} [parameters.executionOptions] Execution options for the job
+     * step.
+     *
+     * @param {number} [parameters.executionOptions.timeoutSeconds] Execution
+     * timeout for the job step.
+     *
+     * @param {number} [parameters.executionOptions.retryAttempts] Maximum number
+     * of times the job step will be reattempted if the first attempt fails.
+     *
+     * @param {number} [parameters.executionOptions.initialRetryIntervalSeconds]
+     * Initial delay between retries for job step execution.
+     *
+     * @param {number} [parameters.executionOptions.maximumRetryIntervalSeconds]
+     * The maximum amount of time to wait between retries for job step execution.
+     *
+     * @param {number} [parameters.executionOptions.retryIntervalBackoffMultiplier]
+     * The backoff multiplier for the time between retries.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStep>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, stepName: string, parameters: models.JobStep, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStep>>;
+
+    /**
+     * Creates or updates a job step. This will implicitly create a new job
+     * version.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {string} stepName The name of the job step.
+     *
+     * @param {object} parameters The requested state of the job step.
+     *
+     * @param {number} [parameters.stepId] The job step's index within the job. If
+     * not specified when creating the job step, it will be created as the last
+     * step. If not specified when updating the job step, the step id is not
+     * modified.
+     *
+     * @param {string} parameters.targetGroup The resource ID of the target group
+     * that the job step will be executed on.
+     *
+     * @param {string} parameters.credential The resource ID of the job credential
+     * that will be used to connect to the targets.
+     *
+     * @param {object} parameters.action The action payload of the job step.
+     *
+     * @param {string} [parameters.action.type] Type of action being executed by
+     * the job step. Possible values include: 'TSql'
+     *
+     * @param {string} [parameters.action.source] The source of the action to
+     * execute. Possible values include: 'Inline'
+     *
+     * @param {string} parameters.action.value The action value, for example the
+     * text of the T-SQL script to execute.
+     *
+     * @param {object} [parameters.output] Output destination properties of the job
+     * step.
+     *
+     * @param {string} [parameters.output.type] The output destination type.
+     * Possible values include: 'SqlDatabase'
+     *
+     * @param {uuid} [parameters.output.subscriptionId] The output destination
+     * subscription id.
+     *
+     * @param {string} [parameters.output.resourceGroupName] The output destination
+     * resource group.
+     *
+     * @param {string} parameters.output.serverName The output destination server
+     * name.
+     *
+     * @param {string} parameters.output.databaseName The output destination
+     * database.
+     *
+     * @param {string} [parameters.output.schemaName] The output destination
+     * schema.
+     *
+     * @param {string} parameters.output.tableName The output destination table.
+     *
+     * @param {string} parameters.output.credential The resource ID of the
+     * credential to use to connect to the output destination.
+     *
+     * @param {object} [parameters.executionOptions] Execution options for the job
+     * step.
+     *
+     * @param {number} [parameters.executionOptions.timeoutSeconds] Execution
+     * timeout for the job step.
+     *
+     * @param {number} [parameters.executionOptions.retryAttempts] Maximum number
+     * of times the job step will be reattempted if the first attempt fails.
+     *
+     * @param {number} [parameters.executionOptions.initialRetryIntervalSeconds]
+     * Initial delay between retries for job step execution.
+     *
+     * @param {number} [parameters.executionOptions.maximumRetryIntervalSeconds]
+     * The maximum amount of time to wait between retries for job step execution.
+     *
+     * @param {number} [parameters.executionOptions.retryIntervalBackoffMultiplier]
+     * The backoff multiplier for the time between retries.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStep} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStep} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStep} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, stepName: string, parameters: models.JobStep, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStep>;
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, stepName: string, parameters: models.JobStep, callback: ServiceCallback<models.JobStep>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, stepName: string, parameters: models.JobStep, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStep>): void;
+
+
+    /**
+     * Deletes a job step. This will implicitly create a new job version.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {string} stepName The name of the job step to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a job step. This will implicitly create a new job version.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {string} stepName The name of the job step to delete.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, stepName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, stepName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, stepName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all job steps in the specified job version.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStepListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByVersionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStepListResult>>;
+
+    /**
+     * Gets all job steps in the specified job version.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStepListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStepListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStepListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByVersionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStepListResult>;
+    listByVersionNext(nextPageLink: string, callback: ServiceCallback<models.JobStepListResult>): void;
+    listByVersionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStepListResult>): void;
+
+
+    /**
+     * Gets all job steps for a job's current version.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobStepListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobStepListResult>>;
+
+    /**
+     * Gets all job steps for a job's current version.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobStepListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobStepListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobStepListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJobNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobStepListResult>;
+    listByJobNext(nextPageLink: string, callback: ServiceCallback<models.JobStepListResult>): void;
+    listByJobNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobStepListResult>): void;
+}
+
+/**
+ * @class
+ * JobTargetExecutions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface JobTargetExecutions {
+
+
+    /**
+     * Lists target executions for all steps of a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The id of the job execution
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.createTimeMin] If specified, only job executions
+     * created at or after the specified time are included.
+     *
+     * @param {date} [options.createTimeMax] If specified, only job executions
+     * created before the specified time are included.
+     *
+     * @param {date} [options.endTimeMin] If specified, only job executions
+     * completed at or after the specified time are included.
+     *
+     * @param {date} [options.endTimeMax] If specified, only job executions
+     * completed before the specified time are included.
+     *
+     * @param {boolean} [options.isActive] If specified, only active or only
+     * completed job executions are included.
+     *
+     * @param {number} [options.skip] The number of elements in the collection to
+     * skip.
+     *
+     * @param {number} [options.top] The number of elements to return from the
+     * collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecutionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobExecutionWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecutionListResult>>;
+
+    /**
+     * Lists target executions for all steps of a job execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The id of the job execution
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.createTimeMin] If specified, only job executions
+     * created at or after the specified time are included.
+     *
+     * @param {date} [options.createTimeMax] If specified, only job executions
+     * created before the specified time are included.
+     *
+     * @param {date} [options.endTimeMin] If specified, only job executions
+     * completed at or after the specified time are included.
+     *
+     * @param {date} [options.endTimeMax] If specified, only job executions
+     * completed before the specified time are included.
+     *
+     * @param {boolean} [options.isActive] If specified, only active or only
+     * completed job executions are included.
+     *
+     * @param {number} [options.skip] The number of elements in the collection to
+     * skip.
+     *
+     * @param {number} [options.top] The number of elements to return from the
+     * collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecutionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecutionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecutionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJobExecution(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options?: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecutionListResult>;
+    listByJobExecution(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, callback: ServiceCallback<models.JobExecutionListResult>): void;
+    listByJobExecution(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, options: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecutionListResult>): void;
+
+
+    /**
+     * Lists the target executions of a job step execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The id of the job execution
+     *
+     * @param {string} stepName The name of the step.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.createTimeMin] If specified, only job executions
+     * created at or after the specified time are included.
+     *
+     * @param {date} [options.createTimeMax] If specified, only job executions
+     * created before the specified time are included.
+     *
+     * @param {date} [options.endTimeMin] If specified, only job executions
+     * completed at or after the specified time are included.
+     *
+     * @param {date} [options.endTimeMax] If specified, only job executions
+     * completed before the specified time are included.
+     *
+     * @param {boolean} [options.isActive] If specified, only active or only
+     * completed job executions are included.
+     *
+     * @param {number} [options.skip] The number of elements in the collection to
+     * skip.
+     *
+     * @param {number} [options.top] The number of elements to return from the
+     * collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecutionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByStepWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, stepName: string, options?: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecutionListResult>>;
+
+    /**
+     * Lists the target executions of a job step execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The id of the job execution
+     *
+     * @param {string} stepName The name of the step.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {date} [options.createTimeMin] If specified, only job executions
+     * created at or after the specified time are included.
+     *
+     * @param {date} [options.createTimeMax] If specified, only job executions
+     * created before the specified time are included.
+     *
+     * @param {date} [options.endTimeMin] If specified, only job executions
+     * completed at or after the specified time are included.
+     *
+     * @param {date} [options.endTimeMax] If specified, only job executions
+     * completed before the specified time are included.
+     *
+     * @param {boolean} [options.isActive] If specified, only active or only
+     * completed job executions are included.
+     *
+     * @param {number} [options.skip] The number of elements in the collection to
+     * skip.
+     *
+     * @param {number} [options.top] The number of elements to return from the
+     * collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecutionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecutionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecutionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByStep(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, stepName: string, options?: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecutionListResult>;
+    listByStep(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, stepName: string, callback: ServiceCallback<models.JobExecutionListResult>): void;
+    listByStep(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, stepName: string, options: { createTimeMin? : Date, createTimeMax? : Date, endTimeMin? : Date, endTimeMax? : Date, isActive? : boolean, skip? : number, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecutionListResult>): void;
+
+
+    /**
+     * Gets a target execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The unique id of the job execution
+     *
+     * @param {string} stepName The name of the step.
+     *
+     * @param {uuid} targetId The target id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecution>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, stepName: string, targetId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecution>>;
+
+    /**
+     * Gets a target execution.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {uuid} jobExecutionId The unique id of the job execution
+     *
+     * @param {string} stepName The name of the step.
+     *
+     * @param {uuid} targetId The target id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecution} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecution} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecution} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, stepName: string, targetId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecution>;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, stepName: string, targetId: string, callback: ServiceCallback<models.JobExecution>): void;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobExecutionId: string, stepName: string, targetId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecution>): void;
+
+
+    /**
+     * Lists target executions for all steps of a job execution.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecutionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobExecutionNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecutionListResult>>;
+
+    /**
+     * Lists target executions for all steps of a job execution.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecutionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecutionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecutionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJobExecutionNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecutionListResult>;
+    listByJobExecutionNext(nextPageLink: string, callback: ServiceCallback<models.JobExecutionListResult>): void;
+    listByJobExecutionNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecutionListResult>): void;
+
+
+    /**
+     * Lists the target executions of a job step execution.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobExecutionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByStepNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobExecutionListResult>>;
+
+    /**
+     * Lists the target executions of a job step execution.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobExecutionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobExecutionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobExecutionListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByStepNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobExecutionListResult>;
+    listByStepNext(nextPageLink: string, callback: ServiceCallback<models.JobExecutionListResult>): void;
+    listByStepNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobExecutionListResult>): void;
+}
+
+/**
+ * @class
+ * JobTargetGroups
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface JobTargetGroups {
+
+
+    /**
+     * Gets all target groups in an agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobTargetGroupListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAgentWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobTargetGroupListResult>>;
+
+    /**
+     * Gets all target groups in an agent.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobTargetGroupListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobTargetGroupListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobTargetGroupListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAgent(resourceGroupName: string, serverName: string, jobAgentName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobTargetGroupListResult>;
+    listByAgent(resourceGroupName: string, serverName: string, jobAgentName: string, callback: ServiceCallback<models.JobTargetGroupListResult>): void;
+    listByAgent(resourceGroupName: string, serverName: string, jobAgentName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobTargetGroupListResult>): void;
+
+
+    /**
+     * Gets a target group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} targetGroupName The name of the target group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobTargetGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, targetGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobTargetGroup>>;
+
+    /**
+     * Gets a target group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} targetGroupName The name of the target group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobTargetGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobTargetGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobTargetGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, targetGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobTargetGroup>;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, targetGroupName: string, callback: ServiceCallback<models.JobTargetGroup>): void;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, targetGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobTargetGroup>): void;
+
+
+    /**
+     * Creates or updates a target group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} targetGroupName The name of the target group.
+     *
+     * @param {object} parameters The requested state of the target group.
+     *
+     * @param {array} parameters.members Members of the target group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobTargetGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, targetGroupName: string, parameters: models.JobTargetGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobTargetGroup>>;
+
+    /**
+     * Creates or updates a target group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} targetGroupName The name of the target group.
+     *
+     * @param {object} parameters The requested state of the target group.
+     *
+     * @param {array} parameters.members Members of the target group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobTargetGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobTargetGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobTargetGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, targetGroupName: string, parameters: models.JobTargetGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobTargetGroup>;
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, targetGroupName: string, parameters: models.JobTargetGroup, callback: ServiceCallback<models.JobTargetGroup>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, jobAgentName: string, targetGroupName: string, parameters: models.JobTargetGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobTargetGroup>): void;
+
+
+    /**
+     * Deletes a target group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} targetGroupName The name of the target group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, targetGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a target group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} targetGroupName The name of the target group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, targetGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, targetGroupName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, jobAgentName: string, targetGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets all target groups in an agent.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobTargetGroupListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByAgentNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobTargetGroupListResult>>;
+
+    /**
+     * Gets all target groups in an agent.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobTargetGroupListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobTargetGroupListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobTargetGroupListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByAgentNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobTargetGroupListResult>;
+    listByAgentNext(nextPageLink: string, callback: ServiceCallback<models.JobTargetGroupListResult>): void;
+    listByAgentNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobTargetGroupListResult>): void;
+}
+
+/**
+ * @class
+ * JobVersions
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface JobVersions {
+
+
+    /**
+     * Gets all versions of a job.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobVersionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobVersionListResult>>;
+
+    /**
+     * Gets all versions of a job.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobVersionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobVersionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobVersionListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJob(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobVersionListResult>;
+    listByJob(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, callback: ServiceCallback<models.JobVersionListResult>): void;
+    listByJob(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobVersionListResult>): void;
+
+
+    /**
+     * Gets a job version.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {number} jobVersion The version of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobVersion>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobVersion: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobVersion>>;
+
+    /**
+     * Gets a job version.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} jobAgentName The name of the job agent.
+     *
+     * @param {string} jobName The name of the job.
+     *
+     * @param {number} jobVersion The version of the job to get.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobVersion} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobVersion} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobVersion} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobVersion: number, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobVersion>;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobVersion: number, callback: ServiceCallback<models.JobVersion>): void;
+    get(resourceGroupName: string, serverName: string, jobAgentName: string, jobName: string, jobVersion: number, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobVersion>): void;
+
+
+    /**
+     * Gets all versions of a job.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<JobVersionListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByJobNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.JobVersionListResult>>;
+
+    /**
+     * Gets all versions of a job.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {JobVersionListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {JobVersionListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link JobVersionListResult} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByJobNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.JobVersionListResult>;
+    listByJobNext(nextPageLink: string, callback: ServiceCallback<models.JobVersionListResult>): void;
+    listByJobNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.JobVersionListResult>): void;
+}
+
+/**
+ * @class
  * LongTermRetentionBackups
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
@@ -16413,6 +23981,1423 @@ export interface BackupLongTermRetentionPolicies {
 
 /**
  * @class
+ * ManagedDatabases
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ManagedDatabases {
+
+
+    /**
+     * Completes the restore operation on a managed database.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {uuid} operationId Management operation id that this request tries to
+     * complete.
+     *
+     * @param {object} parameters The definition for completing the restore of this
+     * managed database.
+     *
+     * @param {string} parameters.lastBackupName The last backup name to apply
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    completeRestoreWithHttpOperationResponse(locationName: string, operationId: string, parameters: models.CompleteDatabaseRestoreDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Completes the restore operation on a managed database.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {uuid} operationId Management operation id that this request tries to
+     * complete.
+     *
+     * @param {object} parameters The definition for completing the restore of this
+     * managed database.
+     *
+     * @param {string} parameters.lastBackupName The last backup name to apply
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    completeRestore(locationName: string, operationId: string, parameters: models.CompleteDatabaseRestoreDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    completeRestore(locationName: string, operationId: string, parameters: models.CompleteDatabaseRestoreDefinition, callback: ServiceCallback<void>): void;
+    completeRestore(locationName: string, operationId: string, parameters: models.CompleteDatabaseRestoreDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a list of managed databases.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedDatabaseListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedDatabaseListResult>>;
+
+    /**
+     * Gets a list of managed databases.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedDatabaseListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedDatabaseListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedDatabaseListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedDatabaseListResult>;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, callback: ServiceCallback<models.ManagedDatabaseListResult>): void;
+    listByInstance(resourceGroupName: string, managedInstanceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedDatabaseListResult>): void;
+
+
+    /**
+     * Gets a managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedDatabase>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedDatabase>>;
+
+    /**
+     * Gets a managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedDatabase} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedDatabase} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedDatabase} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedDatabase>;
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<models.ManagedDatabase>): void;
+    get(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedDatabase>): void;
+
+
+    /**
+     * Creates a new database or updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {string} [parameters.collation] Collation of the managed database.
+     *
+     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
+     * PointInTimeRestore, this value is required. Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {string} [parameters.createMode] Managed database create mode.
+     * PointInTimeRestore: Create a database by restoring a point in time backup of
+     * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+     * PointInTime must be specified. RestoreExternalBackup: Create a database by
+     * restoring from external backup files. Collation, StorageContainerUri and
+     * StorageContainerSasToken must be specified. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     *
+     * @param {string} [parameters.storageContainerUri] Conditional. If createMode
+     * is RestoreExternalBackup, this value is required. Specifies the uri of the
+     * storage container where backups for this restore are stored.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {string} [parameters.storageContainerSasToken] Conditional. If
+     * createMode is RestoreExternalBackup, this value is required. Specifies the
+     * storage container sas token.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedDatabase>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabase, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedDatabase>>;
+
+    /**
+     * Creates a new database or updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {string} [parameters.collation] Collation of the managed database.
+     *
+     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
+     * PointInTimeRestore, this value is required. Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {string} [parameters.createMode] Managed database create mode.
+     * PointInTimeRestore: Create a database by restoring a point in time backup of
+     * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+     * PointInTime must be specified. RestoreExternalBackup: Create a database by
+     * restoring from external backup files. Collation, StorageContainerUri and
+     * StorageContainerSasToken must be specified. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     *
+     * @param {string} [parameters.storageContainerUri] Conditional. If createMode
+     * is RestoreExternalBackup, this value is required. Specifies the uri of the
+     * storage container where backups for this restore are stored.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {string} [parameters.storageContainerSasToken] Conditional. If
+     * createMode is RestoreExternalBackup, this value is required. Specifies the
+     * storage container sas token.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedDatabase} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedDatabase} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedDatabase} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabase, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedDatabase>;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabase, callback: ServiceCallback<models.ManagedDatabase>): void;
+    createOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabase, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedDatabase>): void;
+
+
+    /**
+     * Deletes the managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {string} [parameters.collation] Collation of the managed database.
+     *
+     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
+     * PointInTimeRestore, this value is required. Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {string} [parameters.createMode] Managed database create mode.
+     * PointInTimeRestore: Create a database by restoring a point in time backup of
+     * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+     * PointInTime must be specified. RestoreExternalBackup: Create a database by
+     * restoring from external backup files. Collation, StorageContainerUri and
+     * StorageContainerSasToken must be specified. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     *
+     * @param {string} [parameters.storageContainerUri] Conditional. If createMode
+     * is RestoreExternalBackup, this value is required. Specifies the uri of the
+     * storage container where backups for this restore are stored.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {string} [parameters.storageContainerSasToken] Conditional. If
+     * createMode is RestoreExternalBackup, this value is required. Specifies the
+     * storage container sas token.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedDatabase>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabaseUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedDatabase>>;
+
+    /**
+     * Updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {string} [parameters.collation] Collation of the managed database.
+     *
+     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
+     * PointInTimeRestore, this value is required. Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {string} [parameters.createMode] Managed database create mode.
+     * PointInTimeRestore: Create a database by restoring a point in time backup of
+     * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+     * PointInTime must be specified. RestoreExternalBackup: Create a database by
+     * restoring from external backup files. Collation, StorageContainerUri and
+     * StorageContainerSasToken must be specified. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     *
+     * @param {string} [parameters.storageContainerUri] Conditional. If createMode
+     * is RestoreExternalBackup, this value is required. Specifies the uri of the
+     * storage container where backups for this restore are stored.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {string} [parameters.storageContainerSasToken] Conditional. If
+     * createMode is RestoreExternalBackup, this value is required. Specifies the
+     * storage container sas token.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedDatabase} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedDatabase} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedDatabase} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabaseUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedDatabase>;
+    update(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabaseUpdate, callback: ServiceCallback<models.ManagedDatabase>): void;
+    update(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabaseUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedDatabase>): void;
+
+
+    /**
+     * Completes the restore operation on a managed database.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {uuid} operationId Management operation id that this request tries to
+     * complete.
+     *
+     * @param {object} parameters The definition for completing the restore of this
+     * managed database.
+     *
+     * @param {string} parameters.lastBackupName The last backup name to apply
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCompleteRestoreWithHttpOperationResponse(locationName: string, operationId: string, parameters: models.CompleteDatabaseRestoreDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Completes the restore operation on a managed database.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {uuid} operationId Management operation id that this request tries to
+     * complete.
+     *
+     * @param {object} parameters The definition for completing the restore of this
+     * managed database.
+     *
+     * @param {string} parameters.lastBackupName The last backup name to apply
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCompleteRestore(locationName: string, operationId: string, parameters: models.CompleteDatabaseRestoreDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCompleteRestore(locationName: string, operationId: string, parameters: models.CompleteDatabaseRestoreDefinition, callback: ServiceCallback<void>): void;
+    beginCompleteRestore(locationName: string, operationId: string, parameters: models.CompleteDatabaseRestoreDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates a new database or updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {string} [parameters.collation] Collation of the managed database.
+     *
+     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
+     * PointInTimeRestore, this value is required. Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {string} [parameters.createMode] Managed database create mode.
+     * PointInTimeRestore: Create a database by restoring a point in time backup of
+     * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+     * PointInTime must be specified. RestoreExternalBackup: Create a database by
+     * restoring from external backup files. Collation, StorageContainerUri and
+     * StorageContainerSasToken must be specified. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     *
+     * @param {string} [parameters.storageContainerUri] Conditional. If createMode
+     * is RestoreExternalBackup, this value is required. Specifies the uri of the
+     * storage container where backups for this restore are stored.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {string} [parameters.storageContainerSasToken] Conditional. If
+     * createMode is RestoreExternalBackup, this value is required. Specifies the
+     * storage container sas token.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedDatabase>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabase, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedDatabase>>;
+
+    /**
+     * Creates a new database or updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {string} [parameters.collation] Collation of the managed database.
+     *
+     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
+     * PointInTimeRestore, this value is required. Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {string} [parameters.createMode] Managed database create mode.
+     * PointInTimeRestore: Create a database by restoring a point in time backup of
+     * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+     * PointInTime must be specified. RestoreExternalBackup: Create a database by
+     * restoring from external backup files. Collation, StorageContainerUri and
+     * StorageContainerSasToken must be specified. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     *
+     * @param {string} [parameters.storageContainerUri] Conditional. If createMode
+     * is RestoreExternalBackup, this value is required. Specifies the uri of the
+     * storage container where backups for this restore are stored.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {string} [parameters.storageContainerSasToken] Conditional. If
+     * createMode is RestoreExternalBackup, this value is required. Specifies the
+     * storage container sas token.
+     *
+     * @param {string} parameters.location Resource location.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedDatabase} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedDatabase} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedDatabase} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabase, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedDatabase>;
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabase, callback: ServiceCallback<models.ManagedDatabase>): void;
+    beginCreateOrUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabase, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedDatabase>): void;
+
+
+    /**
+     * Deletes the managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the managed database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, managedInstanceName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {string} [parameters.collation] Collation of the managed database.
+     *
+     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
+     * PointInTimeRestore, this value is required. Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {string} [parameters.createMode] Managed database create mode.
+     * PointInTimeRestore: Create a database by restoring a point in time backup of
+     * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+     * PointInTime must be specified. RestoreExternalBackup: Create a database by
+     * restoring from external backup files. Collation, StorageContainerUri and
+     * StorageContainerSasToken must be specified. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     *
+     * @param {string} [parameters.storageContainerUri] Conditional. If createMode
+     * is RestoreExternalBackup, this value is required. Specifies the uri of the
+     * storage container where backups for this restore are stored.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {string} [parameters.storageContainerSasToken] Conditional. If
+     * createMode is RestoreExternalBackup, this value is required. Specifies the
+     * storage container sas token.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedDatabase>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabaseUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedDatabase>>;
+
+    /**
+     * Updates an existing database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The requested database resource state.
+     *
+     * @param {string} [parameters.collation] Collation of the managed database.
+     *
+     * @param {date} [parameters.restorePointInTime] Conditional. If createMode is
+     * PointInTimeRestore, this value is required. Specifies the point in time
+     * (ISO8601 format) of the source database that will be restored to create the
+     * new database.
+     *
+     * @param {string} [parameters.catalogCollation] Collation of the metadata
+     * catalog. Possible values include: 'DATABASE_DEFAULT',
+     * 'SQL_Latin1_General_CP1_CI_AS'
+     *
+     * @param {string} [parameters.createMode] Managed database create mode.
+     * PointInTimeRestore: Create a database by restoring a point in time backup of
+     * an existing database. SourceDatabaseName, SourceManagedInstanceName and
+     * PointInTime must be specified. RestoreExternalBackup: Create a database by
+     * restoring from external backup files. Collation, StorageContainerUri and
+     * StorageContainerSasToken must be specified. Possible values include:
+     * 'Default', 'RestoreExternalBackup', 'PointInTimeRestore'
+     *
+     * @param {string} [parameters.storageContainerUri] Conditional. If createMode
+     * is RestoreExternalBackup, this value is required. Specifies the uri of the
+     * storage container where backups for this restore are stored.
+     *
+     * @param {string} [parameters.sourceDatabaseId] The resource identifier of the
+     * source database associated with create operation of this database.
+     *
+     * @param {string} [parameters.storageContainerSasToken] Conditional. If
+     * createMode is RestoreExternalBackup, this value is required. Specifies the
+     * storage container sas token.
+     *
+     * @param {object} [parameters.tags] Resource tags.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedDatabase} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedDatabase} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedDatabase} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabaseUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedDatabase>;
+    beginUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabaseUpdate, callback: ServiceCallback<models.ManagedDatabase>): void;
+    beginUpdate(resourceGroupName: string, managedInstanceName: string, databaseName: string, parameters: models.ManagedDatabaseUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedDatabase>): void;
+
+
+    /**
+     * Gets a list of managed databases.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagedDatabaseListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByInstanceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagedDatabaseListResult>>;
+
+    /**
+     * Gets a list of managed databases.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagedDatabaseListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagedDatabaseListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagedDatabaseListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByInstanceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagedDatabaseListResult>;
+    listByInstanceNext(nextPageLink: string, callback: ServiceCallback<models.ManagedDatabaseListResult>): void;
+    listByInstanceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagedDatabaseListResult>): void;
+}
+
+/**
+ * @class
+ * SensitivityLabels
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface SensitivityLabels {
+
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that filters
+     * elements in the collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] An OData filter expression that filters
+     * elements in the collection.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabelListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+
+
+    /**
+     * Gets the sensitivity label of a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {string} sensitivityLabelSource The source of the sensitivity label.
+     * Possible values include: 'current', 'recommended'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabel>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, sensitivityLabelSource: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabel>>;
+
+    /**
+     * Gets the sensitivity label of a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {string} sensitivityLabelSource The source of the sensitivity label.
+     * Possible values include: 'current', 'recommended'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabel} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabel} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabel} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, sensitivityLabelSource: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabel>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, sensitivityLabelSource: string, callback: ServiceCallback<models.SensitivityLabel>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, sensitivityLabelSource: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabel>): void;
+
+
+    /**
+     * Creates or updates the sensitivity label of a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} parameters The column sensitivity label resource.
+     *
+     * @param {string} [parameters.labelName] The label name.
+     *
+     * @param {string} [parameters.informationType] The information type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabel>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, parameters: models.SensitivityLabel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabel>>;
+
+    /**
+     * Creates or updates the sensitivity label of a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} parameters The column sensitivity label resource.
+     *
+     * @param {string} [parameters.labelName] The label name.
+     *
+     * @param {string} [parameters.informationType] The information type.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabel} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabel} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabel} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, parameters: models.SensitivityLabel, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabel>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, parameters: models.SensitivityLabel, callback: ServiceCallback<models.SensitivityLabel>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, parameters: models.SensitivityLabel, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabel>): void;
+
+
+    /**
+     * Deletes the sensitivity label of a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the sensitivity label of a given column
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} schemaName The name of the schema.
+     *
+     * @param {string} tableName The name of the table.
+     *
+     * @param {string} columnName The name of the column.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, databaseName: string, schemaName: string, tableName: string, columnName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SensitivityLabelListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SensitivityLabelListResult>>;
+
+    /**
+     * Gets the sensitivity labels of a given database
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SensitivityLabelListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SensitivityLabelListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SensitivityLabelListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SensitivityLabelListResult>;
+    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SensitivityLabelListResult>): void;
+}
+
+/**
+ * @class
  * ServerAutomaticTuningOperations
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the SqlManagementClient.
@@ -17190,6 +26175,311 @@ export interface ServerDnsAliases {
     listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerDnsAliasListResult>;
     listByServerNext(nextPageLink: string, callback: ServiceCallback<models.ServerDnsAliasListResult>): void;
     listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerDnsAliasListResult>): void;
+}
+
+/**
+ * @class
+ * ServerSecurityAlertPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ServerSecurityAlertPolicies {
+
+
+    /**
+     * Get a server's security alert policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerSecurityAlertPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerSecurityAlertPolicy>>;
+
+    /**
+     * Get a server's security alert policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerSecurityAlertPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerSecurityAlertPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerSecurityAlertPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerSecurityAlertPolicy>;
+    get(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+    get(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+
+
+    /**
+     * Creates or updates a threat detection policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The server security alert policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy, whether
+     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
+     * are disabled. Allowed values are: Sql_Injection,
+     * Sql_Injection_Vulnerability, Access_Anomaly
+     *
+     * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
+     * addresses to which the alert is sent.
+     *
+     * @param {boolean} [parameters.emailAccountAdmins] Specifies that the alert is
+     * sent to the account administrators.
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage
+     * will hold all Threat Detection audit logs.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the Threat Detection audit storage account.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the Threat Detection audit logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerSecurityAlertPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerSecurityAlertPolicy>>;
+
+    /**
+     * Creates or updates a threat detection policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The server security alert policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy, whether
+     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
+     * are disabled. Allowed values are: Sql_Injection,
+     * Sql_Injection_Vulnerability, Access_Anomaly
+     *
+     * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
+     * addresses to which the alert is sent.
+     *
+     * @param {boolean} [parameters.emailAccountAdmins] Specifies that the alert is
+     * sent to the account administrators.
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage
+     * will hold all Threat Detection audit logs.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the Threat Detection audit storage account.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the Threat Detection audit logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerSecurityAlertPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerSecurityAlertPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerSecurityAlertPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerSecurityAlertPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+
+
+    /**
+     * Creates or updates a threat detection policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The server security alert policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy, whether
+     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
+     * are disabled. Allowed values are: Sql_Injection,
+     * Sql_Injection_Vulnerability, Access_Anomaly
+     *
+     * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
+     * addresses to which the alert is sent.
+     *
+     * @param {boolean} [parameters.emailAccountAdmins] Specifies that the alert is
+     * sent to the account administrators.
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage
+     * will hold all Threat Detection audit logs.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the Threat Detection audit storage account.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the Threat Detection audit logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ServerSecurityAlertPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServerSecurityAlertPolicy>>;
+
+    /**
+     * Creates or updates a threat detection policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The server security alert policy.
+     *
+     * @param {string} parameters.state Specifies the state of the policy, whether
+     * it is enabled or disabled. Possible values include: 'New', 'Enabled',
+     * 'Disabled'
+     *
+     * @param {array} [parameters.disabledAlerts] Specifies an array of alerts that
+     * are disabled. Allowed values are: Sql_Injection,
+     * Sql_Injection_Vulnerability, Access_Anomaly
+     *
+     * @param {array} [parameters.emailAddresses] Specifies an array of e-mail
+     * addresses to which the alert is sent.
+     *
+     * @param {boolean} [parameters.emailAccountAdmins] Specifies that the alert is
+     * sent to the account administrators.
+     *
+     * @param {string} [parameters.storageEndpoint] Specifies the blob storage
+     * endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage
+     * will hold all Threat Detection audit logs.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the Threat Detection audit storage account.
+     *
+     * @param {number} [parameters.retentionDays] Specifies the number of days to
+     * keep in the Threat Detection audit logs.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ServerSecurityAlertPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ServerSecurityAlertPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ServerSecurityAlertPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServerSecurityAlertPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, parameters: models.ServerSecurityAlertPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServerSecurityAlertPolicy>): void;
 }
 
 /**
@@ -18052,4 +27342,2152 @@ export interface Capabilities {
     listByLocation(locationName: string, options?: { include? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LocationCapabilities>;
     listByLocation(locationName: string, callback: ServiceCallback<models.LocationCapabilities>): void;
     listByLocation(locationName: string, options: { include? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LocationCapabilities>): void;
+}
+
+/**
+ * @class
+ * DatabaseVulnerabilityAssessmentScans
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface DatabaseVulnerabilityAssessmentScans {
+
+
+    /**
+     * Gets a vulnerability assessment scan record of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id of the scan to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecord>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecord>>;
+
+    /**
+     * Gets a vulnerability assessment scan record of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id of the scan to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VulnerabilityAssessmentScanRecord} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VulnerabilityAssessmentScanRecord} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VulnerabilityAssessmentScanRecord} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecord>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecord>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecord>): void;
+
+
+    /**
+     * Executes a Vulnerability Assessment database scan.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id of the scan to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    initiateScanWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Executes a Vulnerability Assessment database scan.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id of the scan to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
+    initiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecordListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecordListResult>>;
+
+    /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VulnerabilityAssessmentScanRecordListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VulnerabilityAssessmentScanRecordListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VulnerabilityAssessmentScanRecordListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+
+
+    /**
+     * Convert an existing scan result to a human readable format. If already
+     * exists nothing happens
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the scanned database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<DatabaseVulnerabilityAssessmentScansExport>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    exportMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatabaseVulnerabilityAssessmentScansExport>>;
+
+    /**
+     * Convert an existing scan result to a human readable format. If already
+     * exists nothing happens
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the scanned database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {DatabaseVulnerabilityAssessmentScansExport} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {DatabaseVulnerabilityAssessmentScansExport} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link DatabaseVulnerabilityAssessmentScansExport}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    exportMethod(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatabaseVulnerabilityAssessmentScansExport>;
+    exportMethod(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentScansExport>): void;
+    exportMethod(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatabaseVulnerabilityAssessmentScansExport>): void;
+
+
+    /**
+     * Executes a Vulnerability Assessment database scan.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id of the scan to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginInitiateScanWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Executes a Vulnerability Assessment database scan.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {string} scanId The vulnerability assessment scan Id of the scan to
+     * retrieve.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginInitiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginInitiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, callback: ServiceCallback<void>): void;
+    beginInitiateScan(resourceGroupName: string, serverName: string, databaseName: string, scanId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VulnerabilityAssessmentScanRecordListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VulnerabilityAssessmentScanRecordListResult>>;
+
+    /**
+     * Lists the vulnerability assessment scans of a database.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VulnerabilityAssessmentScanRecordListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VulnerabilityAssessmentScanRecordListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VulnerabilityAssessmentScanRecordListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VulnerabilityAssessmentScanRecordListResult>;
+    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VulnerabilityAssessmentScanRecordListResult>): void;
+}
+
+/**
+ * @class
+ * InstanceFailoverGroups
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface InstanceFailoverGroups {
+
+
+    /**
+     * Gets a failover group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InstanceFailoverGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceFailoverGroup>>;
+
+    /**
+     * Gets a failover group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InstanceFailoverGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InstanceFailoverGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InstanceFailoverGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceFailoverGroup>;
+    get(resourceGroupName: string, locationName: string, failoverGroupName: string, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+    get(resourceGroupName: string, locationName: string, failoverGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+
+
+    /**
+     * Creates or updates a failover group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} parameters The failover group parameters.
+     *
+     * @param {object} parameters.readWriteEndpoint Read-write endpoint of the
+     * failover group instance.
+     *
+     * @param {string} parameters.readWriteEndpoint.failoverPolicy Failover policy
+     * of the read-write endpoint for the failover group. If failoverPolicy is
+     * Automatic then failoverWithDataLossGracePeriodMinutes is required. Possible
+     * values include: 'Manual', 'Automatic'
+     *
+     * @param {number}
+     * [parameters.readWriteEndpoint.failoverWithDataLossGracePeriodMinutes] Grace
+     * period before failover with data loss is attempted for the read-write
+     * endpoint. If failoverPolicy is Automatic then
+     * failoverWithDataLossGracePeriodMinutes is required.
+     *
+     * @param {object} [parameters.readOnlyEndpoint] Read-only endpoint of the
+     * failover group instance.
+     *
+     * @param {string} [parameters.readOnlyEndpoint.failoverPolicy] Failover policy
+     * of the read-only endpoint for the failover group. Possible values include:
+     * 'Disabled', 'Enabled'
+     *
+     * @param {array} parameters.partnerRegions Partner region information for the
+     * failover group.
+     *
+     * @param {array} parameters.managedInstancePairs List of managed instance
+     * pairs in the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InstanceFailoverGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, locationName: string, failoverGroupName: string, parameters: models.InstanceFailoverGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceFailoverGroup>>;
+
+    /**
+     * Creates or updates a failover group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} parameters The failover group parameters.
+     *
+     * @param {object} parameters.readWriteEndpoint Read-write endpoint of the
+     * failover group instance.
+     *
+     * @param {string} parameters.readWriteEndpoint.failoverPolicy Failover policy
+     * of the read-write endpoint for the failover group. If failoverPolicy is
+     * Automatic then failoverWithDataLossGracePeriodMinutes is required. Possible
+     * values include: 'Manual', 'Automatic'
+     *
+     * @param {number}
+     * [parameters.readWriteEndpoint.failoverWithDataLossGracePeriodMinutes] Grace
+     * period before failover with data loss is attempted for the read-write
+     * endpoint. If failoverPolicy is Automatic then
+     * failoverWithDataLossGracePeriodMinutes is required.
+     *
+     * @param {object} [parameters.readOnlyEndpoint] Read-only endpoint of the
+     * failover group instance.
+     *
+     * @param {string} [parameters.readOnlyEndpoint.failoverPolicy] Failover policy
+     * of the read-only endpoint for the failover group. Possible values include:
+     * 'Disabled', 'Enabled'
+     *
+     * @param {array} parameters.partnerRegions Partner region information for the
+     * failover group.
+     *
+     * @param {array} parameters.managedInstancePairs List of managed instance
+     * pairs in the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InstanceFailoverGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InstanceFailoverGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InstanceFailoverGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, locationName: string, failoverGroupName: string, parameters: models.InstanceFailoverGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceFailoverGroup>;
+    createOrUpdate(resourceGroupName: string, locationName: string, failoverGroupName: string, parameters: models.InstanceFailoverGroup, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+    createOrUpdate(resourceGroupName: string, locationName: string, failoverGroupName: string, parameters: models.InstanceFailoverGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+
+
+    /**
+     * Deletes a failover group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a failover group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, locationName: string, failoverGroupName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, locationName: string, failoverGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists the failover groups in a location.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InstanceFailoverGroupListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByLocationWithHttpOperationResponse(resourceGroupName: string, locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceFailoverGroupListResult>>;
+
+    /**
+     * Lists the failover groups in a location.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InstanceFailoverGroupListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InstanceFailoverGroupListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InstanceFailoverGroupListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByLocation(resourceGroupName: string, locationName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceFailoverGroupListResult>;
+    listByLocation(resourceGroupName: string, locationName: string, callback: ServiceCallback<models.InstanceFailoverGroupListResult>): void;
+    listByLocation(resourceGroupName: string, locationName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceFailoverGroupListResult>): void;
+
+
+    /**
+     * Fails over from the current primary managed instance to this managed
+     * instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InstanceFailoverGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    failoverWithHttpOperationResponse(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceFailoverGroup>>;
+
+    /**
+     * Fails over from the current primary managed instance to this managed
+     * instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InstanceFailoverGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InstanceFailoverGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InstanceFailoverGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    failover(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceFailoverGroup>;
+    failover(resourceGroupName: string, locationName: string, failoverGroupName: string, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+    failover(resourceGroupName: string, locationName: string, failoverGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+
+
+    /**
+     * Fails over from the current primary managed instance to this managed
+     * instance. This operation might result in data loss.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InstanceFailoverGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    forceFailoverAllowDataLossWithHttpOperationResponse(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceFailoverGroup>>;
+
+    /**
+     * Fails over from the current primary managed instance to this managed
+     * instance. This operation might result in data loss.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InstanceFailoverGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InstanceFailoverGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InstanceFailoverGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    forceFailoverAllowDataLoss(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceFailoverGroup>;
+    forceFailoverAllowDataLoss(resourceGroupName: string, locationName: string, failoverGroupName: string, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+    forceFailoverAllowDataLoss(resourceGroupName: string, locationName: string, failoverGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+
+
+    /**
+     * Creates or updates a failover group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} parameters The failover group parameters.
+     *
+     * @param {object} parameters.readWriteEndpoint Read-write endpoint of the
+     * failover group instance.
+     *
+     * @param {string} parameters.readWriteEndpoint.failoverPolicy Failover policy
+     * of the read-write endpoint for the failover group. If failoverPolicy is
+     * Automatic then failoverWithDataLossGracePeriodMinutes is required. Possible
+     * values include: 'Manual', 'Automatic'
+     *
+     * @param {number}
+     * [parameters.readWriteEndpoint.failoverWithDataLossGracePeriodMinutes] Grace
+     * period before failover with data loss is attempted for the read-write
+     * endpoint. If failoverPolicy is Automatic then
+     * failoverWithDataLossGracePeriodMinutes is required.
+     *
+     * @param {object} [parameters.readOnlyEndpoint] Read-only endpoint of the
+     * failover group instance.
+     *
+     * @param {string} [parameters.readOnlyEndpoint.failoverPolicy] Failover policy
+     * of the read-only endpoint for the failover group. Possible values include:
+     * 'Disabled', 'Enabled'
+     *
+     * @param {array} parameters.partnerRegions Partner region information for the
+     * failover group.
+     *
+     * @param {array} parameters.managedInstancePairs List of managed instance
+     * pairs in the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InstanceFailoverGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, locationName: string, failoverGroupName: string, parameters: models.InstanceFailoverGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceFailoverGroup>>;
+
+    /**
+     * Creates or updates a failover group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} parameters The failover group parameters.
+     *
+     * @param {object} parameters.readWriteEndpoint Read-write endpoint of the
+     * failover group instance.
+     *
+     * @param {string} parameters.readWriteEndpoint.failoverPolicy Failover policy
+     * of the read-write endpoint for the failover group. If failoverPolicy is
+     * Automatic then failoverWithDataLossGracePeriodMinutes is required. Possible
+     * values include: 'Manual', 'Automatic'
+     *
+     * @param {number}
+     * [parameters.readWriteEndpoint.failoverWithDataLossGracePeriodMinutes] Grace
+     * period before failover with data loss is attempted for the read-write
+     * endpoint. If failoverPolicy is Automatic then
+     * failoverWithDataLossGracePeriodMinutes is required.
+     *
+     * @param {object} [parameters.readOnlyEndpoint] Read-only endpoint of the
+     * failover group instance.
+     *
+     * @param {string} [parameters.readOnlyEndpoint.failoverPolicy] Failover policy
+     * of the read-only endpoint for the failover group. Possible values include:
+     * 'Disabled', 'Enabled'
+     *
+     * @param {array} parameters.partnerRegions Partner region information for the
+     * failover group.
+     *
+     * @param {array} parameters.managedInstancePairs List of managed instance
+     * pairs in the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InstanceFailoverGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InstanceFailoverGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InstanceFailoverGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, locationName: string, failoverGroupName: string, parameters: models.InstanceFailoverGroup, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceFailoverGroup>;
+    beginCreateOrUpdate(resourceGroupName: string, locationName: string, failoverGroupName: string, parameters: models.InstanceFailoverGroup, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+    beginCreateOrUpdate(resourceGroupName: string, locationName: string, failoverGroupName: string, parameters: models.InstanceFailoverGroup, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+
+
+    /**
+     * Deletes a failover group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a failover group.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, locationName: string, failoverGroupName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, locationName: string, failoverGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Fails over from the current primary managed instance to this managed
+     * instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InstanceFailoverGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginFailoverWithHttpOperationResponse(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceFailoverGroup>>;
+
+    /**
+     * Fails over from the current primary managed instance to this managed
+     * instance.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InstanceFailoverGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InstanceFailoverGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InstanceFailoverGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginFailover(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceFailoverGroup>;
+    beginFailover(resourceGroupName: string, locationName: string, failoverGroupName: string, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+    beginFailover(resourceGroupName: string, locationName: string, failoverGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+
+
+    /**
+     * Fails over from the current primary managed instance to this managed
+     * instance. This operation might result in data loss.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InstanceFailoverGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginForceFailoverAllowDataLossWithHttpOperationResponse(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceFailoverGroup>>;
+
+    /**
+     * Fails over from the current primary managed instance to this managed
+     * instance. This operation might result in data loss.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} locationName The name of the region where the resource is
+     * located.
+     *
+     * @param {string} failoverGroupName The name of the failover group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InstanceFailoverGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InstanceFailoverGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InstanceFailoverGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginForceFailoverAllowDataLoss(resourceGroupName: string, locationName: string, failoverGroupName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceFailoverGroup>;
+    beginForceFailoverAllowDataLoss(resourceGroupName: string, locationName: string, failoverGroupName: string, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+    beginForceFailoverAllowDataLoss(resourceGroupName: string, locationName: string, failoverGroupName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceFailoverGroup>): void;
+
+
+    /**
+     * Lists the failover groups in a location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<InstanceFailoverGroupListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByLocationNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.InstanceFailoverGroupListResult>>;
+
+    /**
+     * Lists the failover groups in a location.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {InstanceFailoverGroupListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {InstanceFailoverGroupListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link InstanceFailoverGroupListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByLocationNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.InstanceFailoverGroupListResult>;
+    listByLocationNext(nextPageLink: string, callback: ServiceCallback<models.InstanceFailoverGroupListResult>): void;
+    listByLocationNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.InstanceFailoverGroupListResult>): void;
+}
+
+/**
+ * @class
+ * BackupShortTermRetentionPolicies
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface BackupShortTermRetentionPolicies {
+
+
+    /**
+     * Gets a database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
+
+    /**
+     * Gets a database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    get(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    get(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+
+
+    /**
+     * Updates a database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
+
+    /**
+     * Updates a database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+
+
+    /**
+     * Updates a database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
+
+    /**
+     * Updates a database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    update(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+
+
+    /**
+     * Gets a database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicyListResult>>;
+
+    /**
+     * Gets a database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BackupShortTermRetentionPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BackupShortTermRetentionPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicyListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicyListResult>;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, callback: ServiceCallback<models.BackupShortTermRetentionPolicyListResult>): void;
+    listByDatabase(resourceGroupName: string, serverName: string, databaseName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicyListResult>): void;
+
+
+    /**
+     * Updates a database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
+
+    /**
+     * Updates a database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+
+
+    /**
+     * Updates a database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicy>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicy>>;
+
+    /**
+     * Updates a database's short term retention policy.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} databaseName The name of the database.
+     *
+     * @param {object} parameters The short term retention policy info.
+     *
+     * @param {number} [parameters.retentionDays] The backup retention period in
+     * days. This is how many days Point-in-Time Restore will be supported.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BackupShortTermRetentionPolicy} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BackupShortTermRetentionPolicy} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicy} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicy>;
+    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+    beginUpdate(resourceGroupName: string, serverName: string, databaseName: string, parameters: models.BackupShortTermRetentionPolicy, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicy>): void;
+
+
+    /**
+     * Gets a database's short term retention policy.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<BackupShortTermRetentionPolicyListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByDatabaseNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.BackupShortTermRetentionPolicyListResult>>;
+
+    /**
+     * Gets a database's short term retention policy.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {BackupShortTermRetentionPolicyListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {BackupShortTermRetentionPolicyListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link BackupShortTermRetentionPolicyListResult}
+     *                      for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByDatabaseNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.BackupShortTermRetentionPolicyListResult>;
+    listByDatabaseNext(nextPageLink: string, callback: ServiceCallback<models.BackupShortTermRetentionPolicyListResult>): void;
+    listByDatabaseNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.BackupShortTermRetentionPolicyListResult>): void;
+}
+
+/**
+ * @class
+ * TdeCertificates
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface TdeCertificates {
+
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    create(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, callback: ServiceCallback<void>): void;
+    create(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCreate(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, callback: ServiceCallback<void>): void;
+    beginCreate(resourceGroupName: string, serverName: string, parameters: models.TdeCertificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * ManagedInstanceTdeCertificates
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the SqlManagementClient.
+ */
+export interface ManagedInstanceTdeCertificates {
+
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    create(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, callback: ServiceCallback<void>): void;
+    create(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateWithHttpOperationResponse(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Creates a TDE certificate for a given server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} managedInstanceName The name of the managed instance.
+     *
+     * @param {object} parameters The requested TDE certificate to be created or
+     * updated.
+     *
+     * @param {string} parameters.privateBlob The base64 encoded certificate
+     * private blob.
+     *
+     * @param {string} [parameters.certPassword] The certificate password.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreate(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginCreate(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, callback: ServiceCallback<void>): void;
+    beginCreate(resourceGroupName: string, managedInstanceName: string, parameters: models.TdeCertificate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }

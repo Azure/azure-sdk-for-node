@@ -203,10 +203,6 @@
     "category": "Management",
     "service_name": "Migrate"
   },
-  "azure-arm-mobileengagement": {
-    "category": "Management",
-    "service_name": "Mobile Engagement"
-  },
   "azure-arm-monitor": {
     "category": "Management",
     "service_name": "Monitor Management"
@@ -419,9 +415,9 @@
     "category": "Client",
     "service_name": "Keyvault"
   },
-  "azure-monitor": {
+  "azure-loganalytics": {
     "category": "Client",
-    "service_name": "Monitor"
+    "service_name": "Log Analytics"
   },
   "azure-servicefabric": {
     "category": "Client",
