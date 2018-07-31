@@ -5883,6 +5883,9 @@ export interface ExpressRouteCircuits {
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
      *
+     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
+     * on the circuit.
+     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -5960,6 +5963,9 @@ export interface ExpressRouteCircuits {
      * 'Failed'.
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
+     *
+     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
+     * on the circuit.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -6628,6 +6634,9 @@ export interface ExpressRouteCircuits {
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
      *
+     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
+     * on the circuit.
+     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -6705,6 +6714,9 @@ export interface ExpressRouteCircuits {
      * 'Failed'.
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
+     *
+     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
+     * on the circuit.
      *
      * @param {string} [parameters.id] Resource ID.
      *

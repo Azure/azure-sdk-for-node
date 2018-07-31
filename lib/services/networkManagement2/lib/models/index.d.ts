@@ -3336,6 +3336,8 @@ export interface ExpressRouteCircuitServiceProviderProperties {
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
  * @member {string} [gatewayManagerEtag] The GatewayManager Etag.
+ * @member {boolean} [allowGlobalReach] Flag to enable Global Reach on the
+ * circuit.
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -3351,6 +3353,7 @@ export interface ExpressRouteCircuit extends Resource {
   serviceProviderProperties?: ExpressRouteCircuitServiceProviderProperties;
   provisioningState?: string;
   gatewayManagerEtag?: string;
+  allowGlobalReach?: boolean;
   readonly etag?: string;
 }
 
