@@ -4101,6 +4101,74 @@ export interface LargeFaceListOperations {
 
 
     /**
+     * List all faces in a large face list, and retrieve face information
+     * (including userData and persistedFaceIds of registered faces of the face).
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.start] Starting face id to return (used to list a
+     * range of faces).
+     *
+     * @param {number} [options.top] Number of faces to return starting with the
+     * face id indicated by the 'start' parameter.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listFacesWithHttpOperationResponse(largeFaceListId: string, options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace[]>>;
+
+    /**
+     * List all faces in a large face list, and retrieve face information
+     * (including userData and persistedFaceIds of registered faces of the face).
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.start] Starting face id to return (used to list a
+     * range of faces).
+     *
+     * @param {number} [options.top] Number of faces to return starting with the
+     * face id indicated by the 'start' parameter.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listFaces(largeFaceListId: string, options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace[]>;
+    listFaces(largeFaceListId: string, callback: ServiceCallback<models.PersistedFace[]>): void;
+    listFaces(largeFaceListId: string, options: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace[]>): void;
+
+
+    /**
      * Add a face to a large face list. The input face is specified as an image
      * with a targetFace rectangle. It returns a persistedFaceId representing the
      * added face, and persistedFaceId will not expire.
@@ -4181,81 +4249,4 @@ export interface LargeFaceListOperations {
     addFaceFromStream(largeFaceListId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
     addFaceFromStream(largeFaceListId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFace>): void;
     addFaceFromStream(largeFaceListId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
-}
-
-/**
- * @class
- * LargeFaceListFace
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the FaceClient.
- */
-export interface LargeFaceListFace {
-
-
-    /**
-     * List all faces in a large face list, and retrieve face information
-     * (including userData and persistedFaceIds of registered faces of the face).
-     *
-     * @param {string} largeFaceListId Id referencing a particular large face list.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.start] Starting face id to return (used to list a
-     * range of faces).
-     *
-     * @param {number} [options.top] Number of faces to return starting with the
-     * face id indicated by the 'start' parameter.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listWithHttpOperationResponse(largeFaceListId: string, options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace[]>>;
-
-    /**
-     * List all faces in a large face list, and retrieve face information
-     * (including userData and persistedFaceIds of registered faces of the face).
-     *
-     * @param {string} largeFaceListId Id referencing a particular large face list.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.start] Starting face id to return (used to list a
-     * range of faces).
-     *
-     * @param {number} [options.top] Number of faces to return starting with the
-     * face id indicated by the 'start' parameter.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Array} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Array} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    list(largeFaceListId: string, options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace[]>;
-    list(largeFaceListId: string, callback: ServiceCallback<models.PersistedFace[]>): void;
-    list(largeFaceListId: string, options: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace[]>): void;
 }
