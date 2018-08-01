@@ -1310,6 +1310,9 @@ export interface HeatMap {
      *
      * @param {string} profileName The name of the Traffic Manager profile.
      *
+     * @param {string} heatMapType The type of HeatMap for the Traffic Manager
+     * profile. Possible values include: 'default', 'ASN', 'Country', 'State'
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {array} [options.topLeft] The top left latitude,longitude pair of the
@@ -1327,7 +1330,7 @@ export interface HeatMap {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, profileName: string, options?: { topLeft? : number[], botRight? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HeatMapModel>>;
+    getWithHttpOperationResponse(resourceGroupName: string, profileName: string, heatMapType: string, options?: { topLeft? : number[], botRight? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.HeatMapModel>>;
 
     /**
      * Gets latest heatmap for Traffic Manager profile.
@@ -1336,6 +1339,9 @@ export interface HeatMap {
      * the Traffic Manager endpoint.
      *
      * @param {string} profileName The name of the Traffic Manager profile.
+     *
+     * @param {string} heatMapType The type of HeatMap for the Traffic Manager
+     * profile. Possible values include: 'default', 'ASN', 'Country', 'State'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1370,9 +1376,9 @@ export interface HeatMap {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, profileName: string, options?: { topLeft? : number[], botRight? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.HeatMapModel>;
-    get(resourceGroupName: string, profileName: string, callback: ServiceCallback<models.HeatMapModel>): void;
-    get(resourceGroupName: string, profileName: string, options: { topLeft? : number[], botRight? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HeatMapModel>): void;
+    get(resourceGroupName: string, profileName: string, heatMapType: string, options?: { topLeft? : number[], botRight? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.HeatMapModel>;
+    get(resourceGroupName: string, profileName: string, heatMapType: string, callback: ServiceCallback<models.HeatMapModel>): void;
+    get(resourceGroupName: string, profileName: string, heatMapType: string, options: { topLeft? : number[], botRight? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.HeatMapModel>): void;
 }
 
 /**
