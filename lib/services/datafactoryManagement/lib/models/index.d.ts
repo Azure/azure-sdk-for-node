@@ -3473,6 +3473,65 @@ export interface AzureSqlDWLinkedService extends LinkedService {
 
 /**
  * @class
+ * Initializes a new instance of the AzureTableStorageLinkedService class.
+ * @constructor
+ * The azure table storage linked service.
+ *
+ * @member {object} [connectionString] The connection string. It is mutually
+ * exclusive with sasUri property. Type: string, SecureString or
+ * AzureKeyVaultSecretReference.
+ * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
+ * mutually exclusive with connectionString property.
+ * @member {string} [sasUri.type] Polymorphic Discriminator
+ * @member {string} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface AzureTableStorageLinkedService extends LinkedService {
+  connectionString?: any;
+  sasUri?: SecretBase;
+  encryptedCredential?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AzureBlobStorageLinkedService class.
+ * @constructor
+ * The azure blob storage linked service.
+ *
+ * @member {object} [connectionString] The connection string. It is mutually
+ * exclusive with sasUri, serviceEndpoint property. Type: string, SecureString
+ * or AzureKeyVaultSecretReference.
+ * @member {object} [sasUri] SAS URI of the Azure Blob Storage resource. It is
+ * mutually exclusive with connectionString, serviceEndpoint property.
+ * @member {string} [sasUri.type] Polymorphic Discriminator
+ * @member {string} [serviceEndpoint] Blob service endpoint of the Azure Blob
+ * Storage resource. It is mutually exclusive with connectionString, sasUri
+ * property.
+ * @member {object} [servicePrincipalId] The ID of the service principal used
+ * to authenticate against Azure SQL Data Warehouse. Type: string (or
+ * Expression with resultType string).
+ * @member {object} [servicePrincipalKey] The key of the service principal used
+ * to authenticate against Azure SQL Data Warehouse.
+ * @member {string} [servicePrincipalKey.type] Polymorphic Discriminator
+ * @member {object} [tenant] The name or ID of the tenant to which the service
+ * principal belongs. Type: string (or Expression with resultType string).
+ * @member {string} [encryptedCredential] The encrypted credential used for
+ * authentication. Credentials are encrypted using the integration runtime
+ * credential manager. Type: string (or Expression with resultType string).
+ */
+export interface AzureBlobStorageLinkedService extends LinkedService {
+  connectionString?: any;
+  sasUri?: SecretBase;
+  serviceEndpoint?: string;
+  servicePrincipalId?: any;
+  servicePrincipalKey?: SecretBase;
+  tenant?: any;
+  encryptedCredential?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the AzureStorageLinkedService class.
  * @constructor
  * The storage account linked service.
@@ -3483,14 +3542,14 @@ export interface AzureSqlDWLinkedService extends LinkedService {
  * @member {object} [sasUri] SAS URI of the Azure Storage resource. It is
  * mutually exclusive with connectionString property.
  * @member {string} [sasUri.type] Polymorphic Discriminator
- * @member {object} [encryptedCredential] The encrypted credential used for
+ * @member {string} [encryptedCredential] The encrypted credential used for
  * authentication. Credentials are encrypted using the integration runtime
  * credential manager. Type: string (or Expression with resultType string).
  */
 export interface AzureStorageLinkedService extends LinkedService {
   connectionString?: any;
   sasUri?: SecretBase;
-  encryptedCredential?: any;
+  encryptedCredential?: string;
 }
 
 /**
