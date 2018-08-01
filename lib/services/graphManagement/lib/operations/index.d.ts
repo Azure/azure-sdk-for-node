@@ -2980,3 +2980,154 @@ export interface Domains {
     get(domainName: string, callback: ServiceCallback<models.Domain>): void;
     get(domainName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Domain>): void;
 }
+
+/**
+ * @class
+ * OAuth2Operations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the GraphRbacManagementClient.
+ */
+export interface OAuth2Operations {
+
+
+    /**
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter]
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OAuth2>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OAuth2>>;
+
+    /**
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter]
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OAuth2} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OAuth2} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OAuth2} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.OAuth2>;
+    get(callback: ServiceCallback<models.OAuth2>): void;
+    get(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OAuth2>): void;
+
+
+    /**
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.body]
+     *
+     * @param {string} [options.body.odatatype]
+     * Microsoft.DirectoryServices.OAuth2PermissionGrant
+     *
+     * @param {string} [options.body.clientId] The objectId of the Service
+     * Principal associated with the app
+     *
+     * @param {string} [options.body.consentType] Typically set to AllPrincipals
+     *
+     * @param {object} [options.body.principalId] Set to null if AllPrincipals is
+     * set
+     *
+     * @param {string} [options.body.resourceId] Service Principal Id of the
+     * resource you want to grant
+     *
+     * @param {string} [options.body.scope] Typically set to user_impersonation
+     *
+     * @param {string} [options.body.startTime] Start time for TTL
+     *
+     * @param {string} [options.body.expiryTime] Expiry time for TTL
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OAuth2>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    postWithHttpOperationResponse(options?: { body? : models.OAuth2, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OAuth2>>;
+
+    /**
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.body]
+     *
+     * @param {string} [options.body.odatatype]
+     * Microsoft.DirectoryServices.OAuth2PermissionGrant
+     *
+     * @param {string} [options.body.clientId] The objectId of the Service
+     * Principal associated with the app
+     *
+     * @param {string} [options.body.consentType] Typically set to AllPrincipals
+     *
+     * @param {object} [options.body.principalId] Set to null if AllPrincipals is
+     * set
+     *
+     * @param {string} [options.body.resourceId] Service Principal Id of the
+     * resource you want to grant
+     *
+     * @param {string} [options.body.scope] Typically set to user_impersonation
+     *
+     * @param {string} [options.body.startTime] Start time for TTL
+     *
+     * @param {string} [options.body.expiryTime] Expiry time for TTL
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OAuth2} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OAuth2} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OAuth2} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    post(options?: { body? : models.OAuth2, customHeaders? : { [headerName: string]: string; } }): Promise<models.OAuth2>;
+    post(callback: ServiceCallback<models.OAuth2>): void;
+    post(options: { body? : models.OAuth2, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OAuth2>): void;
+}

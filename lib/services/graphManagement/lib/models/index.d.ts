@@ -748,6 +748,33 @@ export interface Domain {
   [property: string]: any;
 }
 
+/**
+ * @class
+ * Initializes a new instance of the OAuth2 class.
+ * @constructor
+ * @member {string} [odatatype]
+ * Microsoft.DirectoryServices.OAuth2PermissionGrant
+ * @member {string} [clientId] The objectId of the Service Principal associated
+ * with the app
+ * @member {string} [consentType] Typically set to AllPrincipals
+ * @member {object} [principalId] Set to null if AllPrincipals is set
+ * @member {string} [resourceId] Service Principal Id of the resource you want
+ * to grant
+ * @member {string} [scope] Typically set to user_impersonation
+ * @member {string} [startTime] Start time for TTL
+ * @member {string} [expiryTime] Expiry time for TTL
+ */
+export interface OAuth2 {
+  odatatype?: string;
+  clientId?: string;
+  consentType?: string;
+  principalId?: any;
+  resourceId?: string;
+  scope?: string;
+  startTime?: string;
+  expiryTime?: string;
+}
+
 
 /**
  * @class
