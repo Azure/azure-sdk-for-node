@@ -639,10 +639,11 @@ export interface FactoryVSTSConfiguration extends FactoryRepoConfiguration {
  * @constructor
  * Factory's GitHub repo information.
  *
- * @member {string} [hostName] GitHub repo host name.
+ * @member {string} [hostName] GitHub Enterprise host name. For example:
+ * https://github.mydomain.com
  */
 export interface FactoryGitHubConfiguration extends FactoryRepoConfiguration {
-  readonly hostName?: string;
+  hostName?: string;
 }
 
 /**
