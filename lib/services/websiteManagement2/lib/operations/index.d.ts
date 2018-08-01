@@ -10727,6 +10727,8 @@ export interface WebApps {
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
      *
+     * @param {string} [request.backupName] Name of the backup.
+     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -10784,6 +10786,8 @@ export interface WebApps {
      *
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -11071,6 +11075,8 @@ export interface WebApps {
      *
      * @param {object} request Information on backup request.
      *
+     * @param {string} [request.backupName] Name of the backup.
+     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -11135,6 +11141,8 @@ export interface WebApps {
      * @param {string} backupId ID of backup.
      *
      * @param {object} request Information on backup request.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -11994,6 +12002,8 @@ export interface WebApps {
      *
      * @param {object} request Edited backup configuration.
      *
+     * @param {string} [request.backupName] Name of the backup.
+     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -12050,6 +12060,8 @@ export interface WebApps {
      * @param {string} name Name of the app.
      *
      * @param {object} request Edited backup configuration.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -24505,6 +24517,8 @@ export interface WebApps {
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
      *
+     * @param {string} [request.backupName] Name of the backup.
+     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -24565,6 +24579,8 @@ export interface WebApps {
      *
      * @param {object} request Backup configuration. You can use the JSON response
      * from the POST action as input here.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -24873,6 +24889,8 @@ export interface WebApps {
      *
      * @param {object} request Information on backup request.
      *
+     * @param {string} [request.backupName] Name of the backup.
+     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -24940,6 +24958,8 @@ export interface WebApps {
      * @param {string} backupId ID of backup.
      *
      * @param {object} request Information on backup request.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
@@ -25842,6 +25862,8 @@ export interface WebApps {
      *
      * @param {object} request Edited backup configuration.
      *
+     * @param {string} [request.backupName] Name of the backup.
+     *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be
      * disabled.
@@ -25902,6 +25924,8 @@ export interface WebApps {
      * @param {string} name Name of the app.
      *
      * @param {object} request Edited backup configuration.
+     *
+     * @param {string} [request.backupName] Name of the backup.
      *
      * @param {boolean} [request.enabled] True if the backup schedule is enabled
      * (must be included in that case), false if the backup schedule should be

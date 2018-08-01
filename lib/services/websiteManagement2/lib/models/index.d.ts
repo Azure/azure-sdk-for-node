@@ -4218,7 +4218,7 @@ export interface DatabaseBackupSetting {
  * container which contains this backup.
  * @member {string} [blobName] Name of the blob which contains data for this
  * backup.
- * @member {string} [backupItemName] Name of this backup.
+ * @member {string} [backupName] Name of this backup.
  * @member {string} [status] Backup status. Possible values include:
  * 'InProgress', 'Failed', 'Succeeded', 'TimedOut', 'Created', 'Skipped',
  * 'PartiallySucceeded', 'DeleteInProgress', 'DeleteFailed', 'Deleted'
@@ -4241,7 +4241,7 @@ export interface BackupItem extends ProxyOnlyResource {
   readonly backupId?: number;
   readonly storageAccountUrl?: string;
   readonly blobName?: string;
-  readonly backupItemName?: string;
+  readonly backupName?: string;
   readonly status?: string;
   readonly sizeInBytes?: number;
   readonly created?: Date;
@@ -4292,6 +4292,7 @@ export interface BackupSchedule {
  * @constructor
  * Description of a backup which will be performed.
  *
+ * @member {string} [backupName] Name of the backup.
  * @member {boolean} [enabled] True if the backup schedule is enabled (must be
  * included in that case), false if the backup schedule should be disabled.
  * @member {string} storageAccountUrl SAS URL to the container.
@@ -4316,6 +4317,7 @@ export interface BackupSchedule {
  * @member {array} [databases] Databases included in the backup.
  */
 export interface BackupRequest extends ProxyOnlyResource {
+  backupName?: string;
   enabled?: boolean;
   storageAccountUrl: string;
   backupSchedule?: BackupSchedule;
