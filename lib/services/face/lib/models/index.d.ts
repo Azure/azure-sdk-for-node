@@ -726,10 +726,18 @@ export interface DetectedFace {
  * @member {string} [faceListId] An existing user-specified unique candidate
  * face list, created in Face List - Create a Face List. Face list contains a
  * set of persistedFaceIds which are persisted and will never expire. Parameter
- * faceListId and faceIds should not be provided at the same time
+ * faceListId, largeFaceListId and faceIds should not be provided at the same
+ * time。
+ * @member {string} [largeFaceListId] An existing user-specified unique
+ * candidate large face list, created in LargeFaceList - Create. Large face
+ * list contains a set of persistedFaceIds which are persisted and will never
+ * expire. Parameter faceListId, largeFaceListId and faceIds should not be
+ * provided at the same time.
  * @member {array} [faceIds] An array of candidate faceIds. All of them are
  * created by Face - Detect and the faceIds will expire 24 hours after the
- * detection call.
+ * detection call. The number of faceIds is limited to 1000. Parameter
+ * faceListId, largeFaceListId and faceIds should not be provided at the same
+ * time.
  * @member {number} [maxNumOfCandidatesReturned] The number of top similar
  * faces returned. The valid range is [1, 1000]. Default value: 20 .
  * @member {string} [mode] Similar face searching mode. It can be "matchPerson"
@@ -739,6 +747,7 @@ export interface DetectedFace {
 export interface FindSimilarRequest {
   faceId: string;
   faceListId?: string;
+  largeFaceListId?: string;
   faceIds?: string[];
   maxNumOfCandidatesReturned?: number;
   mode?: string;
@@ -800,11 +809,15 @@ export interface GroupResult {
  * @constructor
  * Request body for identify face operation.
  *
- * @member {string} personGroupId PersonGroupId of the target person group,
- * created by PersonGroups.Create
  * @member {array} faceIds Array of query faces faceIds, created by the Face -
  * Detect. Each of the faces are identified independently. The valid number of
  * faceIds is between [1, 10].
+ * @member {string} [personGroupId] PersonGroupId of the target person group,
+ * created by PersonGroup - Create. Parameter personGroupId and
+ * largePersonGroupId should not be provided at the same time.
+ * @member {string} [largePersonGroupId] LargePersonGroupId of the target large
+ * person group, created by LargePersonGroup - Create. Parameter personGroupId
+ * and largePersonGroupId should not be provided at the same time.
  * @member {number} [maxNumOfCandidatesReturned] The range of
  * maxNumOfCandidatesReturned is between 1 and 5 (default is 1). Default value:
  * 1 .
@@ -813,8 +826,9 @@ export interface GroupResult {
  * range of confidenceThreshold is [0, 1] (default specified by algorithm).
  */
 export interface IdentifyRequest {
-  personGroupId: string;
   faceIds: string[];
+  personGroupId?: string;
+  largePersonGroupId?: string;
   maxNumOfCandidatesReturned?: number;
   confidenceThreshold?: number;
 }
@@ -856,18 +870,25 @@ export interface IdentifyResult {
  * @class
  * Initializes a new instance of the VerifyFaceToPersonRequest class.
  * @constructor
- * Request body for verify operation.
+ * Request body for face to person verification.
  *
- * @member {uuid} faceId FaceId the face, comes from Face - Detect
- * @member {string} personGroupId Using existing personGroupId and personId for
- * fast loading a specified person. personGroupId is created in Person
- * Groups.Create.
- * @member {uuid} personId Specify a certain person in a person group. personId
- * is created in Persons.Create.
+ * @member {uuid} faceId FaceId of the face, comes from Face - Detect
+ * @member {string} [personGroupId] Using existing personGroupId and personId
+ * for fast loading a specified person. personGroupId is created in PersonGroup
+ * - Create. Parameter personGroupId and largePersonGroupId should not be
+ * provided at the same time.
+ * @member {string} [largePersonGroupId] Using existing largePersonGroupId and
+ * personId for fast loading a specified person. largePersonGroupId is created
+ * in LargePersonGroup - Create. Parameter personGroupId and largePersonGroupId
+ * should not be provided at the same time.
+ * @member {uuid} personId Specify a certain person in a person group or a
+ * large person group. personId is created in PersonGroup Person - Create or
+ * LargePersonGroup Person - Create.
  */
 export interface VerifyFaceToPersonRequest {
   faceId: string;
-  personGroupId: string;
+  personGroupId?: string;
+  largePersonGroupId?: string;
   personId: string;
 }
 
@@ -875,7 +896,7 @@ export interface VerifyFaceToPersonRequest {
  * @class
  * Initializes a new instance of the VerifyFaceToFaceRequest class.
  * @constructor
- * Request body for verify operation.
+ * Request body for face to face verification.
  *
  * @member {uuid} faceId1 FaceId of the first face, comes from Face - Detect
  * @member {uuid} faceId2 FaceId of the second face, comes from Face - Detect
@@ -926,7 +947,7 @@ export interface PersistedFace {
  * Initializes a new instance of the NameAndUserDataContract class.
  * @constructor
  * A combination of user defined name and user specified data for the person,
- * personGroup, and faceList
+ * largePersonGroup/personGroup, and largeFaceList/faceList.
  *
  * @member {string} [name] User defined name, maximum length is 128.
  * @member {string} [userData] User specified data. Length should not exceed
@@ -957,7 +978,7 @@ export interface FaceList extends NameAndUserDataContract {
  * @constructor
  * Person group object.
  *
- * @member {string} personGroupId PersonGroupId of the existing person groups.
+ * @member {string} personGroupId PersonGroupId of the target person group.
  */
 export interface PersonGroup extends NameAndUserDataContract {
   personGroupId: string;
@@ -981,14 +1002,40 @@ export interface Person extends NameAndUserDataContract {
 
 /**
  * @class
- * Initializes a new instance of the UpdatePersonFaceRequest class.
+ * Initializes a new instance of the LargeFaceList class.
  * @constructor
- * Request to update person face data.
+ * Large face list object.
+ *
+ * @member {string} largeFaceListId LargeFaceListId of the target large face
+ * list.
+ */
+export interface LargeFaceList extends NameAndUserDataContract {
+  largeFaceListId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LargePersonGroup class.
+ * @constructor
+ * Large person group object.
+ *
+ * @member {string} largePersonGroupId LargePersonGroupId of the target large
+ * person groups
+ */
+export interface LargePersonGroup extends NameAndUserDataContract {
+  largePersonGroupId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UpdateFaceRequest class.
+ * @constructor
+ * Request to update face data.
  *
  * @member {string} [userData] User-provided data attached to the face. The
  * size limit is 1KB.
  */
-export interface UpdatePersonFaceRequest {
+export interface UpdateFaceRequest {
   userData?: string;
 }
 
@@ -1001,13 +1048,21 @@ export interface UpdatePersonFaceRequest {
  * @member {string} status Training status: notstarted, running, succeeded,
  * failed. If the training process is waiting to perform, the status is
  * notstarted. If the training is ongoing, the status is running. Status
- * succeed means this person group is ready for Face - Identify. Status failed
- * is often caused by no person or no persisted face exist in the person group.
- * Possible values include: 'nonstarted', 'running', 'succeeded', 'failed'
+ * succeed means this person group or large person group is ready for Face -
+ * Identify, or this large face list is ready for Face - Find Similar. Status
+ * failed is often caused by no person or no persisted face exist in the person
+ * group or large person group, or no persisted face exist in the large face
+ * list. Possible values include: 'nonstarted', 'running', 'succeeded',
+ * 'failed'
  * @member {date} created A combined UTC date and time string that describes
- * person group created time.
- * @member {date} [lastAction] Person group last modify time in the UTC, could
- * be null value when the person group is not successfully trained.
+ * the created time of the person group, large person group or large face list.
+ * @member {date} [lastAction] A combined UTC date and time string that
+ * describes the last modify time of the person group, large person group or
+ * large face list, could be null value when the group is not successfully
+ * trained.
+ * @member {date} [lastSuccessfulTraining] A combined UTC date and time string
+ * that describes the last successful training time of the person group, large
+ * person group or large face list.
  * @member {string} [message] Show failure message when training failed
  * (omitted when training succeed).
  */
@@ -1015,6 +1070,7 @@ export interface TrainingStatus {
   status: string;
   created: Date;
   lastAction?: Date;
+  lastSuccessfulTraining?: Date;
   message?: string;
 }
 

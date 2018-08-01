@@ -24,7 +24,7 @@ export interface Face {
 
     /**
      * Given query face's faceId, find the similar-looking faces from a faceId
-     * array or a faceListId.
+     * array, a face list or a large face list.
      *
      * @param {uuid} faceId FaceId of the query face. User needs to call Face -
      * Detect first to get a valid faceId. Note that this faceId is not persisted
@@ -35,12 +35,20 @@ export interface Face {
      * @param {string} [options.faceListId] An existing user-specified unique
      * candidate face list, created in Face List - Create a Face List. Face list
      * contains a set of persistedFaceIds which are persisted and will never
-     * expire. Parameter faceListId and faceIds should not be provided at the same
-     * time
+     * expire. Parameter faceListId, largeFaceListId and faceIds should not be
+     * provided at the same time。
+     *
+     * @param {string} [options.largeFaceListId] An existing user-specified unique
+     * candidate large face list, created in LargeFaceList - Create. Large face
+     * list contains a set of persistedFaceIds which are persisted and will never
+     * expire. Parameter faceListId, largeFaceListId and faceIds should not be
+     * provided at the same time.
      *
      * @param {array} [options.faceIds] An array of candidate faceIds. All of them
      * are created by Face - Detect and the faceIds will expire 24 hours after the
-     * detection call.
+     * detection call. The number of faceIds is limited to 1000. Parameter
+     * faceListId, largeFaceListId and faceIds should not be provided at the same
+     * time.
      *
      * @param {number} [options.maxNumOfCandidatesReturned] The number of top
      * similar faces returned. The valid range is [1, 1000].
@@ -58,11 +66,11 @@ export interface Face {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    findSimilarWithHttpOperationResponse(faceId: string, options?: { faceListId? : string, faceIds? : string[], maxNumOfCandidatesReturned? : number, mode? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SimilarFace[]>>;
+    findSimilarWithHttpOperationResponse(faceId: string, options?: { faceListId? : string, largeFaceListId? : string, faceIds? : string[], maxNumOfCandidatesReturned? : number, mode? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SimilarFace[]>>;
 
     /**
      * Given query face's faceId, find the similar-looking faces from a faceId
-     * array or a faceListId.
+     * array, a face list or a large face list.
      *
      * @param {uuid} faceId FaceId of the query face. User needs to call Face -
      * Detect first to get a valid faceId. Note that this faceId is not persisted
@@ -73,12 +81,20 @@ export interface Face {
      * @param {string} [options.faceListId] An existing user-specified unique
      * candidate face list, created in Face List - Create a Face List. Face list
      * contains a set of persistedFaceIds which are persisted and will never
-     * expire. Parameter faceListId and faceIds should not be provided at the same
-     * time
+     * expire. Parameter faceListId, largeFaceListId and faceIds should not be
+     * provided at the same time。
+     *
+     * @param {string} [options.largeFaceListId] An existing user-specified unique
+     * candidate large face list, created in LargeFaceList - Create. Large face
+     * list contains a set of persistedFaceIds which are persisted and will never
+     * expire. Parameter faceListId, largeFaceListId and faceIds should not be
+     * provided at the same time.
      *
      * @param {array} [options.faceIds] An array of candidate faceIds. All of them
      * are created by Face - Detect and the faceIds will expire 24 hours after the
-     * detection call.
+     * detection call. The number of faceIds is limited to 1000. Parameter
+     * faceListId, largeFaceListId and faceIds should not be provided at the same
+     * time.
      *
      * @param {number} [options.maxNumOfCandidatesReturned] The number of top
      * similar faces returned. The valid range is [1, 1000].
@@ -111,9 +127,9 @@ export interface Face {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    findSimilar(faceId: string, options?: { faceListId? : string, faceIds? : string[], maxNumOfCandidatesReturned? : number, mode? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SimilarFace[]>;
+    findSimilar(faceId: string, options?: { faceListId? : string, largeFaceListId? : string, faceIds? : string[], maxNumOfCandidatesReturned? : number, mode? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.SimilarFace[]>;
     findSimilar(faceId: string, callback: ServiceCallback<models.SimilarFace[]>): void;
-    findSimilar(faceId: string, options: { faceListId? : string, faceIds? : string[], maxNumOfCandidatesReturned? : number, mode? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SimilarFace[]>): void;
+    findSimilar(faceId: string, options: { faceListId? : string, largeFaceListId? : string, faceIds? : string[], maxNumOfCandidatesReturned? : number, mode? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SimilarFace[]>): void;
 
 
     /**
@@ -174,16 +190,23 @@ export interface Face {
 
 
     /**
-     * Identify unknown faces from a person group.
-     *
-     * @param {string} personGroupId PersonGroupId of the target person group,
-     * created by PersonGroups.Create
+     * 1-to-many identification to find the closest matches of the specific query
+     * person face from a person group or large person group.
      *
      * @param {array} faceIds Array of query faces faceIds, created by the Face -
      * Detect. Each of the faces are identified independently. The valid number of
      * faceIds is between [1, 10].
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.personGroupId] PersonGroupId of the target person
+     * group, created by PersonGroup - Create. Parameter personGroupId and
+     * largePersonGroupId should not be provided at the same time.
+     *
+     * @param {string} [options.largePersonGroupId] LargePersonGroupId of the
+     * target large person group, created by LargePersonGroup - Create. Parameter
+     * personGroupId and largePersonGroupId should not be provided at the same
+     * time.
      *
      * @param {number} [options.maxNumOfCandidatesReturned] The range of
      * maxNumOfCandidatesReturned is between 1 and 5 (default is 1).
@@ -201,19 +224,26 @@ export interface Face {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    identifyWithHttpOperationResponse(personGroupId: string, faceIds: string[], options?: { maxNumOfCandidatesReturned? : number, confidenceThreshold? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IdentifyResult[]>>;
+    identifyWithHttpOperationResponse(faceIds: string[], options?: { personGroupId? : string, largePersonGroupId? : string, maxNumOfCandidatesReturned? : number, confidenceThreshold? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IdentifyResult[]>>;
 
     /**
-     * Identify unknown faces from a person group.
-     *
-     * @param {string} personGroupId PersonGroupId of the target person group,
-     * created by PersonGroups.Create
+     * 1-to-many identification to find the closest matches of the specific query
+     * person face from a person group or large person group.
      *
      * @param {array} faceIds Array of query faces faceIds, created by the Face -
      * Detect. Each of the faces are identified independently. The valid number of
      * faceIds is between [1, 10].
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.personGroupId] PersonGroupId of the target person
+     * group, created by PersonGroup - Create. Parameter personGroupId and
+     * largePersonGroupId should not be provided at the same time.
+     *
+     * @param {string} [options.largePersonGroupId] LargePersonGroupId of the
+     * target large person group, created by LargePersonGroup - Create. Parameter
+     * personGroupId and largePersonGroupId should not be provided at the same
+     * time.
      *
      * @param {number} [options.maxNumOfCandidatesReturned] The range of
      * maxNumOfCandidatesReturned is between 1 and 5 (default is 1).
@@ -246,9 +276,9 @@ export interface Face {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    identify(personGroupId: string, faceIds: string[], options?: { maxNumOfCandidatesReturned? : number, confidenceThreshold? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IdentifyResult[]>;
-    identify(personGroupId: string, faceIds: string[], callback: ServiceCallback<models.IdentifyResult[]>): void;
-    identify(personGroupId: string, faceIds: string[], options: { maxNumOfCandidatesReturned? : number, confidenceThreshold? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IdentifyResult[]>): void;
+    identify(faceIds: string[], options?: { personGroupId? : string, largePersonGroupId? : string, maxNumOfCandidatesReturned? : number, confidenceThreshold? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IdentifyResult[]>;
+    identify(faceIds: string[], callback: ServiceCallback<models.IdentifyResult[]>): void;
+    identify(faceIds: string[], options: { personGroupId? : string, largePersonGroupId? : string, maxNumOfCandidatesReturned? : number, confidenceThreshold? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IdentifyResult[]>): void;
 
 
     /**
@@ -396,16 +426,24 @@ export interface Face {
      * Verify whether two faces belong to a same person. Compares a face Id with a
      * Person Id
      *
-     * @param {uuid} faceId FaceId the face, comes from Face - Detect
+     * @param {uuid} faceId FaceId of the face, comes from Face - Detect
      *
-     * @param {string} personGroupId Using existing personGroupId and personId for
-     * fast loading a specified person. personGroupId is created in Person
-     * Groups.Create.
-     *
-     * @param {uuid} personId Specify a certain person in a person group. personId
-     * is created in Persons.Create.
+     * @param {uuid} personId Specify a certain person in a person group or a large
+     * person group. personId is created in PersonGroup Person - Create or
+     * LargePersonGroup Person - Create.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.personGroupId] Using existing personGroupId and
+     * personId for fast loading a specified person. personGroupId is created in
+     * PersonGroup - Create. Parameter personGroupId and largePersonGroupId should
+     * not be provided at the same time.
+     *
+     * @param {string} [options.largePersonGroupId] Using existing
+     * largePersonGroupId and personId for fast loading a specified person.
+     * largePersonGroupId is created in LargePersonGroup - Create. Parameter
+     * personGroupId and largePersonGroupId should not be provided at the same
+     * time.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -416,22 +454,30 @@ export interface Face {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    verifyFaceToPersonWithHttpOperationResponse(faceId: string, personGroupId: string, personId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VerifyResult>>;
+    verifyFaceToPersonWithHttpOperationResponse(faceId: string, personId: string, options?: { personGroupId? : string, largePersonGroupId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VerifyResult>>;
 
     /**
      * Verify whether two faces belong to a same person. Compares a face Id with a
      * Person Id
      *
-     * @param {uuid} faceId FaceId the face, comes from Face - Detect
+     * @param {uuid} faceId FaceId of the face, comes from Face - Detect
      *
-     * @param {string} personGroupId Using existing personGroupId and personId for
-     * fast loading a specified person. personGroupId is created in Person
-     * Groups.Create.
-     *
-     * @param {uuid} personId Specify a certain person in a person group. personId
-     * is created in Persons.Create.
+     * @param {uuid} personId Specify a certain person in a person group or a large
+     * person group. personId is created in PersonGroup Person - Create or
+     * LargePersonGroup Person - Create.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.personGroupId] Using existing personGroupId and
+     * personId for fast loading a specified person. personGroupId is created in
+     * PersonGroup - Create. Parameter personGroupId and largePersonGroupId should
+     * not be provided at the same time.
+     *
+     * @param {string} [options.largePersonGroupId] Using existing
+     * largePersonGroupId and personId for fast loading a specified person.
+     * largePersonGroupId is created in LargePersonGroup - Create. Parameter
+     * personGroupId and largePersonGroupId should not be provided at the same
+     * time.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -458,9 +504,9 @@ export interface Face {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    verifyFaceToPerson(faceId: string, personGroupId: string, personId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VerifyResult>;
-    verifyFaceToPerson(faceId: string, personGroupId: string, personId: string, callback: ServiceCallback<models.VerifyResult>): void;
-    verifyFaceToPerson(faceId: string, personGroupId: string, personId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VerifyResult>): void;
+    verifyFaceToPerson(faceId: string, personId: string, options?: { personGroupId? : string, largePersonGroupId? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VerifyResult>;
+    verifyFaceToPerson(faceId: string, personId: string, callback: ServiceCallback<models.VerifyResult>): void;
+    verifyFaceToPerson(faceId: string, personId: string, options: { personGroupId? : string, largePersonGroupId? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VerifyResult>): void;
 
 
     /**
@@ -688,8 +734,8 @@ export interface PersonGroupPerson {
 
 
     /**
-     * Delete an existing person from a person group. Persisted face images of the
-     * person will also be deleted.
+     * Delete an existing person from a person group. All stored person data, and
+     * face features in the person entry will be deleted.
      *
      * @param {string} personGroupId Id referencing a particular person group.
      *
@@ -709,8 +755,8 @@ export interface PersonGroupPerson {
     deleteMethodWithHttpOperationResponse(personGroupId: string, personId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete an existing person from a person group. Persisted face images of the
-     * person will also be deleted.
+     * Delete an existing person from a person group. All stored person data, and
+     * face features in the person entry will be deleted.
      *
      * @param {string} personGroupId Id referencing a particular person group.
      *
@@ -877,8 +923,8 @@ export interface PersonGroupPerson {
 
 
     /**
-     * Delete a face from a person. Relative image for the persisted face will also
-     * be deleted.
+     * Delete a face from a person. Relative feature for the persisted face will
+     * also be deleted.
      *
      * @param {string} personGroupId Id referencing a particular person group.
      *
@@ -901,8 +947,8 @@ export interface PersonGroupPerson {
     deleteFaceWithHttpOperationResponse(personGroupId: string, personId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete a face from a person. Relative image for the persisted face will also
-     * be deleted.
+     * Delete a face from a person. Relative feature for the persisted face will
+     * also be deleted.
      *
      * @param {string} personGroupId Id referencing a particular person group.
      *
@@ -1110,7 +1156,7 @@ export interface PersonGroupPerson {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addPersonFaceFromUrlWithHttpOperationResponse(personGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
+    addFaceFromUrlWithHttpOperationResponse(personGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
 
     /**
      * Add a representative face to a person for identification. The input face is
@@ -1159,9 +1205,9 @@ export interface PersonGroupPerson {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addPersonFaceFromUrl(personGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
-    addPersonFaceFromUrl(personGroupId: string, personId: string, url: string, callback: ServiceCallback<models.PersistedFace>): void;
-    addPersonFaceFromUrl(personGroupId: string, personId: string, url: string, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromUrl(personGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
+    addFaceFromUrl(personGroupId: string, personId: string, url: string, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromUrl(personGroupId: string, personId: string, url: string, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
 
 
     /**
@@ -1195,7 +1241,7 @@ export interface PersonGroupPerson {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addPersonFaceFromStreamWithHttpOperationResponse(personGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
+    addFaceFromStreamWithHttpOperationResponse(personGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
 
     /**
      * Add a representative face to a person for identification. The input face is
@@ -1244,9 +1290,9 @@ export interface PersonGroupPerson {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addPersonFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
-    addPersonFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFace>): void;
-    addPersonFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
+    addFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
 }
 
 /**
@@ -1325,8 +1371,8 @@ export interface PersonGroupOperations {
 
 
     /**
-     * Delete an existing person group. Persisted face images of all people in the
-     * person group will also be deleted.
+     * Delete an existing person group. Persisted face features of all people in
+     * the person group will also be deleted.
      *
      * @param {string} personGroupId Id referencing a particular person group.
      *
@@ -1344,8 +1390,8 @@ export interface PersonGroupOperations {
     deleteMethodWithHttpOperationResponse(personGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Delete an existing person group. Persisted face images of all people in the
-     * person group will also be deleted.
+     * Delete an existing person group. Persisted face features of all people in
+     * the person group will also be deleted.
      *
      * @param {string} personGroupId Id referencing a particular person group.
      *
@@ -2200,4 +2246,2007 @@ export interface FaceListOperations {
     addFaceFromStream(faceListId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
     addFaceFromStream(faceListId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFace>): void;
     addFaceFromStream(faceListId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+}
+
+/**
+ * @class
+ * LargePersonGroupPerson
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the FaceClient.
+ */
+export interface LargePersonGroupPerson {
+
+
+    /**
+     * Create a new person in a specified large person group.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] User defined name, maximum length is 128.
+     *
+     * @param {string} [options.userData] User specified data. Length should not
+     * exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Person>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(largePersonGroupId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Person>>;
+
+    /**
+     * Create a new person in a specified large person group.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] User defined name, maximum length is 128.
+     *
+     * @param {string} [options.userData] User specified data. Length should not
+     * exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Person} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Person} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Person} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(largePersonGroupId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Person>;
+    create(largePersonGroupId: string, callback: ServiceCallback<models.Person>): void;
+    create(largePersonGroupId: string, options: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Person>): void;
+
+
+    /**
+     * List all persons in a large person group, and retrieve person information
+     * (including personId, name, userData and persistedFaceIds of registered faces
+     * of the person).
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.start] Starting person id to return (used to list a
+     * range of persons).
+     *
+     * @param {number} [options.top] Number of persons to return starting with the
+     * person id indicated by the 'start' parameter.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(largePersonGroupId: string, options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Person[]>>;
+
+    /**
+     * List all persons in a large person group, and retrieve person information
+     * (including personId, name, userData and persistedFaceIds of registered faces
+     * of the person).
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.start] Starting person id to return (used to list a
+     * range of persons).
+     *
+     * @param {number} [options.top] Number of persons to return starting with the
+     * person id indicated by the 'start' parameter.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(largePersonGroupId: string, options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.Person[]>;
+    list(largePersonGroupId: string, callback: ServiceCallback<models.Person[]>): void;
+    list(largePersonGroupId: string, options: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Person[]>): void;
+
+
+    /**
+     * Delete an existing person from a large person group. All stored person data,
+     * and face features in the person entry will be deleted.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(largePersonGroupId: string, personId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete an existing person from a large person group. All stored person data,
+     * and face features in the person entry will be deleted.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(largePersonGroupId: string, personId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(largePersonGroupId: string, personId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(largePersonGroupId: string, personId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve a person's information, including registered persisted faces, name
+     * and userData.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Person>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(largePersonGroupId: string, personId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Person>>;
+
+    /**
+     * Retrieve a person's information, including registered persisted faces, name
+     * and userData.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Person} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Person} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Person} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(largePersonGroupId: string, personId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Person>;
+    get(largePersonGroupId: string, personId: string, callback: ServiceCallback<models.Person>): void;
+    get(largePersonGroupId: string, personId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Person>): void;
+
+
+    /**
+     * Update name or userData of a person.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] User defined name, maximum length is 128.
+     *
+     * @param {string} [options.userData] User specified data. Length should not
+     * exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(largePersonGroupId: string, personId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Update name or userData of a person.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] User defined name, maximum length is 128.
+     *
+     * @param {string} [options.userData] User specified data. Length should not
+     * exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(largePersonGroupId: string, personId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(largePersonGroupId: string, personId: string, callback: ServiceCallback<void>): void;
+    update(largePersonGroupId: string, personId: string, options: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Delete a face from a person. Relative feature for the persisted face will
+     * also be deleted.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {uuid} persistedFaceId Id referencing a particular persistedFaceId of
+     * an existing face.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteFaceWithHttpOperationResponse(largePersonGroupId: string, personId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete a face from a person. Relative feature for the persisted face will
+     * also be deleted.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {uuid} persistedFaceId Id referencing a particular persistedFaceId of
+     * an existing face.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteFace(largePersonGroupId: string, personId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteFace(largePersonGroupId: string, personId: string, persistedFaceId: string, callback: ServiceCallback<void>): void;
+    deleteFace(largePersonGroupId: string, personId: string, persistedFaceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve information about a persisted face (specified by persistedFaceId,
+     * personId and its belonging largePersonGroupId).
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {uuid} persistedFaceId Id referencing a particular persistedFaceId of
+     * an existing face.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PersistedFace>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getFaceWithHttpOperationResponse(largePersonGroupId: string, personId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
+
+    /**
+     * Retrieve information about a persisted face (specified by persistedFaceId,
+     * personId and its belonging largePersonGroupId).
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {uuid} persistedFaceId Id referencing a particular persistedFaceId of
+     * an existing face.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PersistedFace} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PersistedFace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PersistedFace} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getFace(largePersonGroupId: string, personId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
+    getFace(largePersonGroupId: string, personId: string, persistedFaceId: string, callback: ServiceCallback<models.PersistedFace>): void;
+    getFace(largePersonGroupId: string, personId: string, persistedFaceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+
+
+    /**
+     * Update a person persisted face's userData field.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {uuid} persistedFaceId Id referencing a particular persistedFaceId of
+     * an existing face.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User-provided data attached to the face.
+     * The size limit is 1KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateFaceWithHttpOperationResponse(largePersonGroupId: string, personId: string, persistedFaceId: string, options?: { userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Update a person persisted face's userData field.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {uuid} persistedFaceId Id referencing a particular persistedFaceId of
+     * an existing face.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User-provided data attached to the face.
+     * The size limit is 1KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateFace(largePersonGroupId: string, personId: string, persistedFaceId: string, options?: { userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    updateFace(largePersonGroupId: string, personId: string, persistedFaceId: string, callback: ServiceCallback<void>): void;
+    updateFace(largePersonGroupId: string, personId: string, persistedFaceId: string, options: { userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Add a representative face to a person for identification. The input face is
+     * specified as an image with a targetFace rectangle.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {string} url Publicly reachable URL of an image
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User-specified data about the face for
+     * any purpose. The maximum length is 1KB.
+     *
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
+     * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
+     * there is more than one face in the image, targetFace is required to specify
+     * which face to add. No targetFace means there is only one face detected in
+     * the entire image.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PersistedFace>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    addFaceFromUrlWithHttpOperationResponse(largePersonGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
+
+    /**
+     * Add a representative face to a person for identification. The input face is
+     * specified as an image with a targetFace rectangle.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {string} url Publicly reachable URL of an image
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User-specified data about the face for
+     * any purpose. The maximum length is 1KB.
+     *
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
+     * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
+     * there is more than one face in the image, targetFace is required to specify
+     * which face to add. No targetFace means there is only one face detected in
+     * the entire image.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PersistedFace} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PersistedFace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PersistedFace} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    addFaceFromUrl(largePersonGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
+    addFaceFromUrl(largePersonGroupId: string, personId: string, url: string, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromUrl(largePersonGroupId: string, personId: string, url: string, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+
+
+    /**
+     * Add a representative face to a person for identification. The input face is
+     * specified as an image with a targetFace rectangle.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {object} image An image stream.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User-specified data about the face for
+     * any purpose. The maximum length is 1KB.
+     *
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
+     * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
+     * there is more than one face in the image, targetFace is required to specify
+     * which face to add. No targetFace means there is only one face detected in
+     * the entire image.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PersistedFace>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    addFaceFromStreamWithHttpOperationResponse(largePersonGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
+
+    /**
+     * Add a representative face to a person for identification. The input face is
+     * specified as an image with a targetFace rectangle.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {uuid} personId Id referencing a particular person.
+     *
+     * @param {object} image An image stream.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User-specified data about the face for
+     * any purpose. The maximum length is 1KB.
+     *
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
+     * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
+     * there is more than one face in the image, targetFace is required to specify
+     * which face to add. No targetFace means there is only one face detected in
+     * the entire image.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PersistedFace} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PersistedFace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PersistedFace} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    addFaceFromStream(largePersonGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
+    addFaceFromStream(largePersonGroupId: string, personId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromStream(largePersonGroupId: string, personId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+}
+
+/**
+ * @class
+ * LargePersonGroupOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the FaceClient.
+ */
+export interface LargePersonGroupOperations {
+
+
+    /**
+     * Create a new large person group with specified largePersonGroupId, name and
+     * user-provided userData.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] User defined name, maximum length is 128.
+     *
+     * @param {string} [options.userData] User specified data. Length should not
+     * exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(largePersonGroupId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Create a new large person group with specified largePersonGroupId, name and
+     * user-provided userData.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] User defined name, maximum length is 128.
+     *
+     * @param {string} [options.userData] User specified data. Length should not
+     * exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(largePersonGroupId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    create(largePersonGroupId: string, callback: ServiceCallback<void>): void;
+    create(largePersonGroupId: string, options: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Delete an existing large person group. Persisted face features of all people
+     * in the large person group will also be deleted.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(largePersonGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete an existing large person group. Persisted face features of all people
+     * in the large person group will also be deleted.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(largePersonGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(largePersonGroupId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(largePersonGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the information of a large person group, including its name and
+     * userData.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LargePersonGroup>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(largePersonGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargePersonGroup>>;
+
+    /**
+     * Retrieve the information of a large person group, including its name and
+     * userData.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LargePersonGroup} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LargePersonGroup} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LargePersonGroup} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(largePersonGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LargePersonGroup>;
+    get(largePersonGroupId: string, callback: ServiceCallback<models.LargePersonGroup>): void;
+    get(largePersonGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LargePersonGroup>): void;
+
+
+    /**
+     * Update an existing large person group's display name and userData. The
+     * properties which does not appear in request body will not be updated.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] User defined name, maximum length is 128.
+     *
+     * @param {string} [options.userData] User specified data. Length should not
+     * exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(largePersonGroupId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Update an existing large person group's display name and userData. The
+     * properties which does not appear in request body will not be updated.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] User defined name, maximum length is 128.
+     *
+     * @param {string} [options.userData] User specified data. Length should not
+     * exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(largePersonGroupId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(largePersonGroupId: string, callback: ServiceCallback<void>): void;
+    update(largePersonGroupId: string, options: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the training status of a large person group (completed or ongoing).
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TrainingStatus>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getTrainingStatusWithHttpOperationResponse(largePersonGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TrainingStatus>>;
+
+    /**
+     * Retrieve the training status of a large person group (completed or ongoing).
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TrainingStatus} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TrainingStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TrainingStatus} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getTrainingStatus(largePersonGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TrainingStatus>;
+    getTrainingStatus(largePersonGroupId: string, callback: ServiceCallback<models.TrainingStatus>): void;
+    getTrainingStatus(largePersonGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TrainingStatus>): void;
+
+
+    /**
+     * List large person groups and their information.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.start] List large person groups from the least
+     * largePersonGroupId greater than the "start".
+     *
+     * @param {number} [options.top] The number of large person groups to list.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargePersonGroup[]>>;
+
+    /**
+     * List large person groups and their information.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.start] List large person groups from the least
+     * largePersonGroupId greater than the "start".
+     *
+     * @param {number} [options.top] The number of large person groups to list.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.LargePersonGroup[]>;
+    list(callback: ServiceCallback<models.LargePersonGroup[]>): void;
+    list(options: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LargePersonGroup[]>): void;
+
+
+    /**
+     * Queue a large person group training task, the training task may not be
+     * started immediately.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    trainWithHttpOperationResponse(largePersonGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Queue a large person group training task, the training task may not be
+     * started immediately.
+     *
+     * @param {string} largePersonGroupId Id referencing a particular large person
+     * group.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    train(largePersonGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    train(largePersonGroupId: string, callback: ServiceCallback<void>): void;
+    train(largePersonGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+}
+
+/**
+ * @class
+ * LargeFaceListOperations
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the FaceClient.
+ */
+export interface LargeFaceListOperations {
+
+
+    /**
+     * Create an empty large face list. Up to 64 large face lists are allowed to
+     * exist in one subscription.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] User defined name, maximum length is 128.
+     *
+     * @param {string} [options.userData] User specified data. Length should not
+     * exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createWithHttpOperationResponse(largeFaceListId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Create an empty large face list. Up to 64 large face lists are allowed to
+     * exist in one subscription.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] User defined name, maximum length is 128.
+     *
+     * @param {string} [options.userData] User specified data. Length should not
+     * exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    create(largeFaceListId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    create(largeFaceListId: string, callback: ServiceCallback<void>): void;
+    create(largeFaceListId: string, options: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve a large face list's information.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<LargeFaceList>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(largeFaceListId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargeFaceList>>;
+
+    /**
+     * Retrieve a large face list's information.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {LargeFaceList} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {LargeFaceList} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link LargeFaceList} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(largeFaceListId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LargeFaceList>;
+    get(largeFaceListId: string, callback: ServiceCallback<models.LargeFaceList>): void;
+    get(largeFaceListId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LargeFaceList>): void;
+
+
+    /**
+     * Update information of a large face list.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] User defined name, maximum length is 128.
+     *
+     * @param {string} [options.userData] User specified data. Length should not
+     * exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(largeFaceListId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Update information of a large face list.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.name] User defined name, maximum length is 128.
+     *
+     * @param {string} [options.userData] User specified data. Length should not
+     * exceed 16KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    update(largeFaceListId: string, options?: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    update(largeFaceListId: string, callback: ServiceCallback<void>): void;
+    update(largeFaceListId: string, options: { name? : string, userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Delete an existing large face list according to faceListId. Persisted face
+     * images in the large face list will also be deleted.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(largeFaceListId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete an existing large face list according to faceListId. Persisted face
+     * images in the large face list will also be deleted.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(largeFaceListId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(largeFaceListId: string, callback: ServiceCallback<void>): void;
+    deleteMethod(largeFaceListId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve the training status of a large face list (completed or ongoing).
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<TrainingStatus>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getTrainingStatusWithHttpOperationResponse(largeFaceListId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TrainingStatus>>;
+
+    /**
+     * Retrieve the training status of a large face list (completed or ongoing).
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {TrainingStatus} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {TrainingStatus} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TrainingStatus} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getTrainingStatus(largeFaceListId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TrainingStatus>;
+    getTrainingStatus(largeFaceListId: string, callback: ServiceCallback<models.TrainingStatus>): void;
+    getTrainingStatus(largeFaceListId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TrainingStatus>): void;
+
+
+    /**
+     * Retrieve information about all existing large face lists. Only
+     * largeFaceListId, name and userData will be returned.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LargeFaceList[]>>;
+
+    /**
+     * Retrieve information about all existing large face lists. Only
+     * largeFaceListId, name and userData will be returned.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LargeFaceList[]>;
+    list(callback: ServiceCallback<models.LargeFaceList[]>): void;
+    list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LargeFaceList[]>): void;
+
+
+    /**
+     * Queue a large face list training task, the training task may not be started
+     * immediately.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    trainWithHttpOperationResponse(largeFaceListId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Queue a large face list training task, the training task may not be started
+     * immediately.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    train(largeFaceListId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    train(largeFaceListId: string, callback: ServiceCallback<void>): void;
+    train(largeFaceListId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Delete an existing face from a large face list (given by a persisitedFaceId
+     * and a largeFaceListId). Persisted image related to the face will also be
+     * deleted.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {uuid} persistedFaceId Id referencing a particular persistedFaceId of
+     * an existing face.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteFaceWithHttpOperationResponse(largeFaceListId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Delete an existing face from a large face list (given by a persisitedFaceId
+     * and a largeFaceListId). Persisted image related to the face will also be
+     * deleted.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {uuid} persistedFaceId Id referencing a particular persistedFaceId of
+     * an existing face.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteFace(largeFaceListId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteFace(largeFaceListId: string, persistedFaceId: string, callback: ServiceCallback<void>): void;
+    deleteFace(largeFaceListId: string, persistedFaceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Retrieve information about a persisted face (specified by persistedFaceId
+     * and its belonging largeFaceListId).
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {uuid} persistedFaceId Id referencing a particular persistedFaceId of
+     * an existing face.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PersistedFace>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getFaceWithHttpOperationResponse(largeFaceListId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
+
+    /**
+     * Retrieve information about a persisted face (specified by persistedFaceId
+     * and its belonging largeFaceListId).
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {uuid} persistedFaceId Id referencing a particular persistedFaceId of
+     * an existing face.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PersistedFace} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PersistedFace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PersistedFace} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getFace(largeFaceListId: string, persistedFaceId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
+    getFace(largeFaceListId: string, persistedFaceId: string, callback: ServiceCallback<models.PersistedFace>): void;
+    getFace(largeFaceListId: string, persistedFaceId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+
+
+    /**
+     * Update a persisted face's userData field.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {uuid} persistedFaceId Id referencing a particular persistedFaceId of
+     * an existing face.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User-provided data attached to the face.
+     * The size limit is 1KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateFaceWithHttpOperationResponse(largeFaceListId: string, persistedFaceId: string, options?: { userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Update a persisted face's userData field.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {uuid} persistedFaceId Id referencing a particular persistedFaceId of
+     * an existing face.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User-provided data attached to the face.
+     * The size limit is 1KB.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updateFace(largeFaceListId: string, persistedFaceId: string, options?: { userData? : string, customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    updateFace(largeFaceListId: string, persistedFaceId: string, callback: ServiceCallback<void>): void;
+    updateFace(largeFaceListId: string, persistedFaceId: string, options: { userData? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Add a face to a large face list. The input face is specified as an image
+     * with a targetFace rectangle. It returns a persistedFaceId representing the
+     * added face, and persistedFaceId will not expire.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {string} url Publicly reachable URL of an image
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User-specified data about the face for
+     * any purpose. The maximum length is 1KB.
+     *
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
+     * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
+     * there is more than one face in the image, targetFace is required to specify
+     * which face to add. No targetFace means there is only one face detected in
+     * the entire image.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PersistedFace>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    addFaceFromUrlWithHttpOperationResponse(largeFaceListId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
+
+    /**
+     * Add a face to a large face list. The input face is specified as an image
+     * with a targetFace rectangle. It returns a persistedFaceId representing the
+     * added face, and persistedFaceId will not expire.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {string} url Publicly reachable URL of an image
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User-specified data about the face for
+     * any purpose. The maximum length is 1KB.
+     *
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
+     * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
+     * there is more than one face in the image, targetFace is required to specify
+     * which face to add. No targetFace means there is only one face detected in
+     * the entire image.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PersistedFace} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PersistedFace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PersistedFace} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    addFaceFromUrl(largeFaceListId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
+    addFaceFromUrl(largeFaceListId: string, url: string, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromUrl(largeFaceListId: string, url: string, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+
+
+    /**
+     * List all faces in a large face list, and retrieve face information
+     * (including userData and persistedFaceIds of registered faces of the face).
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.start] Starting face id to return (used to list a
+     * range of faces).
+     *
+     * @param {number} [options.top] Number of faces to return starting with the
+     * face id indicated by the 'start' parameter.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Array>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listFacesWithHttpOperationResponse(largeFaceListId: string, options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace[]>>;
+
+    /**
+     * List all faces in a large face list, and retrieve face information
+     * (including userData and persistedFaceIds of registered faces of the face).
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.start] Starting face id to return (used to list a
+     * range of faces).
+     *
+     * @param {number} [options.top] Number of faces to return starting with the
+     * face id indicated by the 'start' parameter.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Array} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Array} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listFaces(largeFaceListId: string, options?: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace[]>;
+    listFaces(largeFaceListId: string, callback: ServiceCallback<models.PersistedFace[]>): void;
+    listFaces(largeFaceListId: string, options: { start? : string, top? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace[]>): void;
+
+
+    /**
+     * Add a face to a large face list. The input face is specified as an image
+     * with a targetFace rectangle. It returns a persistedFaceId representing the
+     * added face, and persistedFaceId will not expire.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} image An image stream.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User-specified data about the face for
+     * any purpose. The maximum length is 1KB.
+     *
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
+     * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
+     * there is more than one face in the image, targetFace is required to specify
+     * which face to add. No targetFace means there is only one face detected in
+     * the entire image.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<PersistedFace>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    addFaceFromStreamWithHttpOperationResponse(largeFaceListId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
+
+    /**
+     * Add a face to a large face list. The input face is specified as an image
+     * with a targetFace rectangle. It returns a persistedFaceId representing the
+     * added face, and persistedFaceId will not expire.
+     *
+     * @param {string} largeFaceListId Id referencing a particular large face list.
+     *
+     * @param {object} image An image stream.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.userData] User-specified data about the face for
+     * any purpose. The maximum length is 1KB.
+     *
+     * @param {array} [options.targetFace] A face rectangle to specify the target
+     * face to be added to a person in the format of
+     * "targetFace=left,top,width,height". E.g. "targetFace=10,10,100,100". If
+     * there is more than one face in the image, targetFace is required to specify
+     * which face to add. No targetFace means there is only one face detected in
+     * the entire image.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {PersistedFace} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {PersistedFace} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PersistedFace} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    addFaceFromStream(largeFaceListId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
+    addFaceFromStream(largeFaceListId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromStream(largeFaceListId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
 }
