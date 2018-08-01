@@ -1241,7 +1241,7 @@ export interface PersonGroupPerson {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addPersonFaceFromStreamWithHttpOperationResponse(personGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
+    addFaceFromStreamWithHttpOperationResponse(personGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
 
     /**
      * Add a representative face to a person for identification. The input face is
@@ -1290,9 +1290,9 @@ export interface PersonGroupPerson {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addPersonFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
-    addPersonFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFace>): void;
-    addPersonFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
+    addFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromStream(personGroupId: string, personId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
 }
 
 /**
@@ -2919,7 +2919,7 @@ export interface LargePersonGroupPerson {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addPersonFaceFromStreamWithHttpOperationResponse(largePersonGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
+    addFaceFromStreamWithHttpOperationResponse(largePersonGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
 
     /**
      * Add a representative face to a person for identification. The input face is
@@ -2969,9 +2969,9 @@ export interface LargePersonGroupPerson {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addPersonFaceFromStream(largePersonGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
-    addPersonFaceFromStream(largePersonGroupId: string, personId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFace>): void;
-    addPersonFaceFromStream(largePersonGroupId: string, personId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromStream(largePersonGroupId: string, personId: string, image: stream.Readable, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
+    addFaceFromStream(largePersonGroupId: string, personId: string, image: stream.Readable, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromStream(largePersonGroupId: string, personId: string, image: stream.Readable, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
 }
 
 /**
