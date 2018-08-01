@@ -180,6 +180,21 @@ export interface UserMetricsModel extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the HeatMapLocation class.
+ * @constructor
+ * Class which represents locations of traffic sources and percentage.
+ *
+ * @member {string} [location] Location of heatmap traffic sources.
+ * @member {number} [percentage] Percentage of traffic from a specific
+ * location.
+ */
+export interface HeatMapLocation {
+  location?: string;
+  percentage?: number;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Endpoint class.
  * @constructor
  * Class representing a Traffic Manager endpoint.
