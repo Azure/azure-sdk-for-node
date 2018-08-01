@@ -1156,7 +1156,7 @@ export interface PersonGroupPerson {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addPersonFaceFromUrlWithHttpOperationResponse(personGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
+    addFaceFromUrlWithHttpOperationResponse(personGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
 
     /**
      * Add a representative face to a person for identification. The input face is
@@ -1205,9 +1205,9 @@ export interface PersonGroupPerson {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addPersonFaceFromUrl(personGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
-    addPersonFaceFromUrl(personGroupId: string, personId: string, url: string, callback: ServiceCallback<models.PersistedFace>): void;
-    addPersonFaceFromUrl(personGroupId: string, personId: string, url: string, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromUrl(personGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
+    addFaceFromUrl(personGroupId: string, personId: string, url: string, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromUrl(personGroupId: string, personId: string, url: string, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
 
 
     /**
@@ -2832,7 +2832,7 @@ export interface LargePersonGroupPerson {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    addPersonFaceFromUrlWithHttpOperationResponse(largePersonGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
+    addFaceFromUrlWithHttpOperationResponse(largePersonGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PersistedFace>>;
 
     /**
      * Add a representative face to a person for identification. The input face is
@@ -2882,9 +2882,9 @@ export interface LargePersonGroupPerson {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    addPersonFaceFromUrl(largePersonGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
-    addPersonFaceFromUrl(largePersonGroupId: string, personId: string, url: string, callback: ServiceCallback<models.PersistedFace>): void;
-    addPersonFaceFromUrl(largePersonGroupId: string, personId: string, url: string, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromUrl(largePersonGroupId: string, personId: string, url: string, options?: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }): Promise<models.PersistedFace>;
+    addFaceFromUrl(largePersonGroupId: string, personId: string, url: string, callback: ServiceCallback<models.PersistedFace>): void;
+    addFaceFromUrl(largePersonGroupId: string, personId: string, url: string, options: { userData? : string, targetFace? : number[], customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PersistedFace>): void;
 
 
     /**
