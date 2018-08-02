@@ -1,0 +1,41 @@
+{
+  "name": "azure-applicationinsights-query",
+  "author": "Microsoft Corporation",
+  "description": "ApplicationInsightsDataClient Library with typescript type definitions and works in node.js and browser javascript.",
+  "version": "1.0.0-Preview-1",
+  "dependencies": {
+    "ms-rest-azure-js": "~0.8.82",
+    "ms-rest-js": "^0.12.293",
+    "ms-rest-nodeauth": "^0.2.0"
+  },
+  "keywords": [
+    "node",
+    "azure",
+    "typescript",
+    "browser",
+    "isomorphic"
+  ],
+  "license": "MIT",
+  "main": "./dist/lib/applicationInsightsDataClient.js",
+  "types": "./typings/lib/applicationInsightsDataClient.d.ts",
+  "devDependencies": {
+    "ts-loader": "^2.3.7",
+    "tslib": "^1.9.2",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.2",
+    "webpack": "^3.6.0",
+    "uglify-es": "^3.1.0"
+  },
+  "homepage": "http://github.com/azure/azure-sdk-for-javascript",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azure/azure-sdk-for-javascript.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Azure/azure-sdk-for-javascript/issues"
+  },
+  "scripts": {
+    "tsc": "tsc -p tsconfig.json",
+    "build": "npm -s run-script tsc && webpack && node node_modules/uglify-es/bin/uglifyjs --source-map -c -m -o applicationInsightsDataClientBundle.min.js applicationInsightsDataClientBundle.js"
+  }
+}
