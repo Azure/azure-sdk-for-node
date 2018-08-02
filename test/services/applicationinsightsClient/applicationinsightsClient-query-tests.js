@@ -71,6 +71,9 @@ describe('App Insights query', function () {
  
       // This call should be able to retrieve 10 rows successfully
       should.equal(result.tables[0].rows.length, 10);
+
+      // Field should be a float-y number
+      should(result.tables[0].rows[0][7]).be.a.Number();
       done();
     })
   });

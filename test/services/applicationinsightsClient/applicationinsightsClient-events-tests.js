@@ -93,14 +93,4 @@ describe('App Insights events', function () {
       done();
     });
   });
-
-  it('can get events metadata', function (done) {
-    client.events.getOdataMetadata(appId, (err, result, req, res) => {
-      if (err) {
-        // ERROR: Can't deserialize XML
-        return done(err);
-      }
-      done();
-    });
-  });
 });

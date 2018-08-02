@@ -544,66 +544,6 @@ export interface Events {
     get(appId: string, eventType: string, eventId: string, options?: { timespan? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.EventsResults>;
     get(appId: string, eventType: string, eventId: string, callback: ServiceCallback<models.EventsResults>): void;
     get(appId: string, eventType: string, eventId: string, options: { timespan? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.EventsResults>): void;
-
-
-    /**
-     * @summary Get OData metadata
-     *
-     * Gets OData EDMX metadata describing the event data model
-     *
-     * @param {string} appId ID of the application. This is Application ID from the
-     * API Access settings blade in the Azure portal.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Object>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getOdataMetadataWithHttpOperationResponse(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<any>>;
-
-    /**
-     * @summary Get OData metadata
-     *
-     * Gets OData EDMX metadata describing the event data model
-     *
-     * @param {string} appId ID of the application. This is Application ID from the
-     * API Access settings blade in the Azure portal.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Object} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Object} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    getOdataMetadata(appId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<any>;
-    getOdataMetadata(appId: string, callback: ServiceCallback<any>): void;
-    getOdataMetadata(appId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<any>): void;
 }
 
 /**
