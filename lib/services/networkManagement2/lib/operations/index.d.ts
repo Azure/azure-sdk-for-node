@@ -19992,9 +19992,6 @@ export interface PublicIPAddresses {
      * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
      * referenced PublicIPAddresses
      *
-     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
-     * timeout of the public IP prefix.
-     *
      * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
      * property of the public IP prefix resource.
      *
@@ -20119,9 +20116,6 @@ export interface PublicIPAddresses {
      *
      * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
      * referenced PublicIPAddresses
-     *
-     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
-     * timeout of the public IP prefix.
      *
      * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
      * property of the public IP prefix resource.
@@ -20723,9 +20717,6 @@ export interface PublicIPAddresses {
      * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
      * referenced PublicIPAddresses
      *
-     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
-     * timeout of the public IP prefix.
-     *
      * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
      * property of the public IP prefix resource.
      *
@@ -20850,9 +20841,6 @@ export interface PublicIPAddresses {
      *
      * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
      * referenced PublicIPAddresses
-     *
-     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
-     * timeout of the public IP prefix.
      *
      * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
      * property of the public IP prefix resource.
@@ -21392,9 +21380,6 @@ export interface PublicIPPrefixes {
      * @param {array} [parameters.publicIPAddresses] The list of all referenced
      * PublicIPAddresses
      *
-     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
-     * public IP prefix.
-     *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * public IP prefix resource.
      *
@@ -21456,9 +21441,6 @@ export interface PublicIPPrefixes {
      *
      * @param {array} [parameters.publicIPAddresses] The list of all referenced
      * PublicIPAddresses
-     *
-     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
-     * public IP prefix.
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * public IP prefix resource.
@@ -21776,9 +21758,6 @@ export interface PublicIPPrefixes {
      * @param {array} [parameters.publicIPAddresses] The list of all referenced
      * PublicIPAddresses
      *
-     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
-     * public IP prefix.
-     *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * public IP prefix resource.
      *
@@ -21840,9 +21819,6 @@ export interface PublicIPPrefixes {
      *
      * @param {array} [parameters.publicIPAddresses] The list of all referenced
      * PublicIPAddresses
-     *
-     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
-     * public IP prefix.
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * public IP prefix resource.
