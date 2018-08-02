@@ -1,4 +1,7 @@
-## 2018.06.24 version 2.3.1-preview
+## 2018.06.17 version 2.3.2-preview
+* Added client library for Application Insights
+
+## 2018.06.14 version 2.3.1-preview
 * Added client library for Log Analytics
 
 ## 2018.06.12 version 2.3.0-preview

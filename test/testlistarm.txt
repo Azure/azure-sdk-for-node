@@ -47,3 +47,6 @@ services/keyVaultManagement/keyVaultManagement-tests.js
 services/postgresqlManagement/postgreSQLManagementClient-tests.js
 services/mysqlManagement/mySQLManagementClient-tests.js
 services/loganalytics/loganalytics-query-tests.js
+services/applicationinsightsClient/applicationinsightsClient-query-tests.js
+services/applicationinsightsClient/applicationinsightsClient-metrics-tests.js
+services/applicationinsightsClient/applicationinsightsClient-events-tests.js

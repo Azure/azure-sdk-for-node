@@ -3,6 +3,10 @@
     "service_name": "Azure",
     "category": "Management"
   },
+  "azure-applicationinsights" : {
+    "service_name": "Application Insights",
+    "category": "Client"
+  },
   "azure-arm-advisor": {
     "service_name": "Advisor",
     "category": "Management"
