@@ -19992,9 +19992,6 @@ export interface PublicIPAddresses {
      * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
      * referenced PublicIPAddresses
      *
-     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
-     * timeout of the public IP prefix.
-     *
      * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
      * property of the public IP prefix resource.
      *
@@ -20119,9 +20116,6 @@ export interface PublicIPAddresses {
      *
      * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
      * referenced PublicIPAddresses
-     *
-     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
-     * timeout of the public IP prefix.
      *
      * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
      * property of the public IP prefix resource.
@@ -20723,9 +20717,6 @@ export interface PublicIPAddresses {
      * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
      * referenced PublicIPAddresses
      *
-     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
-     * timeout of the public IP prefix.
-     *
      * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
      * property of the public IP prefix resource.
      *
@@ -20850,9 +20841,6 @@ export interface PublicIPAddresses {
      *
      * @param {array} [parameters.publicIPPrefix.publicIPAddresses] The list of all
      * referenced PublicIPAddresses
-     *
-     * @param {number} [parameters.publicIPPrefix.idleTimeoutInMinutes] The idle
-     * timeout of the public IP prefix.
      *
      * @param {string} [parameters.publicIPPrefix.resourceGuid] The resource GUID
      * property of the public IP prefix resource.
@@ -21392,9 +21380,6 @@ export interface PublicIPPrefixes {
      * @param {array} [parameters.publicIPAddresses] The list of all referenced
      * PublicIPAddresses
      *
-     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
-     * public IP prefix.
-     *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * public IP prefix resource.
      *
@@ -21456,9 +21441,6 @@ export interface PublicIPPrefixes {
      *
      * @param {array} [parameters.publicIPAddresses] The list of all referenced
      * PublicIPAddresses
-     *
-     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
-     * public IP prefix.
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * public IP prefix resource.
@@ -21776,9 +21758,6 @@ export interface PublicIPPrefixes {
      * @param {array} [parameters.publicIPAddresses] The list of all referenced
      * PublicIPAddresses
      *
-     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
-     * public IP prefix.
-     *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * public IP prefix resource.
      *
@@ -21840,9 +21819,6 @@ export interface PublicIPPrefixes {
      *
      * @param {array} [parameters.publicIPAddresses] The list of all referenced
      * PublicIPAddresses
-     *
-     * @param {number} [parameters.idleTimeoutInMinutes] The idle timeout of the
-     * public IP prefix.
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * public IP prefix resource.
@@ -36964,7 +36940,7 @@ export interface ServiceEndpointPolicies {
 
 
     /**
-     * Updates service Endpoint Policies tags.
+     * Updates service Endpoint Policies.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -36987,10 +36963,10 @@ export interface ServiceEndpointPolicies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateTagsWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
 
     /**
-     * Updates service Endpoint Policies tags.
+     * Updates service Endpoint Policies.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -37029,9 +37005,9 @@ export interface ServiceEndpointPolicies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    updateTags(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
-    updateTags(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
-    updateTags(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+    update(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
+    update(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+    update(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
 
 
     /**
@@ -37308,7 +37284,7 @@ export interface ServiceEndpointPolicies {
 
 
     /**
-     * Updates service Endpoint Policies tags.
+     * Updates service Endpoint Policies.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -37331,10 +37307,10 @@ export interface ServiceEndpointPolicies {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateTagsWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicy>>;
 
     /**
-     * Updates service Endpoint Policies tags.
+     * Updates service Endpoint Policies.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -37373,9 +37349,9 @@ export interface ServiceEndpointPolicies {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdateTags(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
-    beginUpdateTags(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
-    beginUpdateTags(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+    beginUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicy>;
+    beginUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
+    beginUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, parameters: models.TagsObject, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicy>): void;
 
 
     /**
@@ -37511,8 +37487,8 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} serviceEndpointPolicyName The name of the Service Endpoint
      * Policy.
      *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the security
-     * rule.
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -37535,8 +37511,8 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} serviceEndpointPolicyName The name of the Service Endpoint
      * Policy.
      *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the security
-     * rule.
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -37640,7 +37616,8 @@ export interface ServiceEndpointPolicyDefinitions {
 
 
     /**
-     * Creates or updates a security rule in the specified service endpoint policy.
+     * Creates or updates a service endpoint policy definition in the specified
+     * service endpoint policy.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -37650,31 +37627,30 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} serviceEndpointPolicyDefinitionName The name of the service
      * endpoint policy definition name.
      *
-     * @param {object} serviceEndpointPolicyDefinitionParameters Parameters
-     * supplied to the create or update service endpoint policy operation.
+     * @param {object} serviceEndpointPolicyDefinitions Parameters supplied to the
+     * create or update service endpoint policy operation.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.description] A
-     * description for this rule. Restricted to 140 chars.
+     * @param {string} [serviceEndpointPolicyDefinitions.description] A description
+     * for this rule. Restricted to 140 chars.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.service] service
-     * endpoint name.
+     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * name.
      *
-     * @param {array} [serviceEndpointPolicyDefinitionParameters.serviceResources]
-     * A list of service resources.
+     * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
+     * service resources.
      *
-     * @param {string}
-     * [serviceEndpointPolicyDefinitionParameters.provisioningState] The
+     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
      * provisioning state of the service end point policy definition. Possible
      * values are: 'Updating', 'Deleting', and 'Failed'.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.name] The name of
-     * the resource that is unique within a resource group. This name can be used
-     * to access the resource.
+     * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.etag] A unique
-     * read-only string that changes whenever the resource is updated.
+     * @param {string} [serviceEndpointPolicyDefinitions.etag] A unique read-only
+     * string that changes whenever the resource is updated.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.id] Resource ID.
+     * @param {string} [serviceEndpointPolicyDefinitions.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -37687,10 +37663,11 @@ export interface ServiceEndpointPolicyDefinitions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitionParameters: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinition>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinition>>;
 
     /**
-     * Creates or updates a security rule in the specified service endpoint policy.
+     * Creates or updates a service endpoint policy definition in the specified
+     * service endpoint policy.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -37700,31 +37677,30 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} serviceEndpointPolicyDefinitionName The name of the service
      * endpoint policy definition name.
      *
-     * @param {object} serviceEndpointPolicyDefinitionParameters Parameters
-     * supplied to the create or update service endpoint policy operation.
+     * @param {object} serviceEndpointPolicyDefinitions Parameters supplied to the
+     * create or update service endpoint policy operation.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.description] A
-     * description for this rule. Restricted to 140 chars.
+     * @param {string} [serviceEndpointPolicyDefinitions.description] A description
+     * for this rule. Restricted to 140 chars.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.service] service
-     * endpoint name.
+     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * name.
      *
-     * @param {array} [serviceEndpointPolicyDefinitionParameters.serviceResources]
-     * A list of service resources.
+     * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
+     * service resources.
      *
-     * @param {string}
-     * [serviceEndpointPolicyDefinitionParameters.provisioningState] The
+     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
      * provisioning state of the service end point policy definition. Possible
      * values are: 'Updating', 'Deleting', and 'Failed'.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.name] The name of
-     * the resource that is unique within a resource group. This name can be used
-     * to access the resource.
+     * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.etag] A unique
-     * read-only string that changes whenever the resource is updated.
+     * @param {string} [serviceEndpointPolicyDefinitions.etag] A unique read-only
+     * string that changes whenever the resource is updated.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.id] Resource ID.
+     * @param {string} [serviceEndpointPolicyDefinitions.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -37754,9 +37730,9 @@ export interface ServiceEndpointPolicyDefinitions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitionParameters: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinition>;
-    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitionParameters: models.ServiceEndpointPolicyDefinition, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
-    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitionParameters: models.ServiceEndpointPolicyDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
+    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinition>;
+    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
+    createOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
 
 
     /**
@@ -37829,8 +37805,8 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} serviceEndpointPolicyName The name of the Service Endpoint
      * Policy.
      *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the security
-     * rule.
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -37853,8 +37829,8 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} serviceEndpointPolicyName The name of the Service Endpoint
      * Policy.
      *
-     * @param {string} serviceEndpointPolicyDefinitionName The name of the security
-     * rule.
+     * @param {string} serviceEndpointPolicyDefinitionName The name of the service
+     * endpoint policy definition.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -37888,7 +37864,8 @@ export interface ServiceEndpointPolicyDefinitions {
 
 
     /**
-     * Creates or updates a security rule in the specified service endpoint policy.
+     * Creates or updates a service endpoint policy definition in the specified
+     * service endpoint policy.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -37898,31 +37875,30 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} serviceEndpointPolicyDefinitionName The name of the service
      * endpoint policy definition name.
      *
-     * @param {object} serviceEndpointPolicyDefinitionParameters Parameters
-     * supplied to the create or update service endpoint policy operation.
+     * @param {object} serviceEndpointPolicyDefinitions Parameters supplied to the
+     * create or update service endpoint policy operation.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.description] A
-     * description for this rule. Restricted to 140 chars.
+     * @param {string} [serviceEndpointPolicyDefinitions.description] A description
+     * for this rule. Restricted to 140 chars.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.service] service
-     * endpoint name.
+     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * name.
      *
-     * @param {array} [serviceEndpointPolicyDefinitionParameters.serviceResources]
-     * A list of service resources.
+     * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
+     * service resources.
      *
-     * @param {string}
-     * [serviceEndpointPolicyDefinitionParameters.provisioningState] The
+     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
      * provisioning state of the service end point policy definition. Possible
      * values are: 'Updating', 'Deleting', and 'Failed'.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.name] The name of
-     * the resource that is unique within a resource group. This name can be used
-     * to access the resource.
+     * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.etag] A unique
-     * read-only string that changes whenever the resource is updated.
+     * @param {string} [serviceEndpointPolicyDefinitions.etag] A unique read-only
+     * string that changes whenever the resource is updated.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.id] Resource ID.
+     * @param {string} [serviceEndpointPolicyDefinitions.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -37935,10 +37911,11 @@ export interface ServiceEndpointPolicyDefinitions {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitionParameters: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinition>>;
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServiceEndpointPolicyDefinition>>;
 
     /**
-     * Creates or updates a security rule in the specified service endpoint policy.
+     * Creates or updates a service endpoint policy definition in the specified
+     * service endpoint policy.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -37948,31 +37925,30 @@ export interface ServiceEndpointPolicyDefinitions {
      * @param {string} serviceEndpointPolicyDefinitionName The name of the service
      * endpoint policy definition name.
      *
-     * @param {object} serviceEndpointPolicyDefinitionParameters Parameters
-     * supplied to the create or update service endpoint policy operation.
+     * @param {object} serviceEndpointPolicyDefinitions Parameters supplied to the
+     * create or update service endpoint policy operation.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.description] A
-     * description for this rule. Restricted to 140 chars.
+     * @param {string} [serviceEndpointPolicyDefinitions.description] A description
+     * for this rule. Restricted to 140 chars.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.service] service
-     * endpoint name.
+     * @param {string} [serviceEndpointPolicyDefinitions.service] service endpoint
+     * name.
      *
-     * @param {array} [serviceEndpointPolicyDefinitionParameters.serviceResources]
-     * A list of service resources.
+     * @param {array} [serviceEndpointPolicyDefinitions.serviceResources] A list of
+     * service resources.
      *
-     * @param {string}
-     * [serviceEndpointPolicyDefinitionParameters.provisioningState] The
+     * @param {string} [serviceEndpointPolicyDefinitions.provisioningState] The
      * provisioning state of the service end point policy definition. Possible
      * values are: 'Updating', 'Deleting', and 'Failed'.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.name] The name of
-     * the resource that is unique within a resource group. This name can be used
-     * to access the resource.
+     * @param {string} [serviceEndpointPolicyDefinitions.name] The name of the
+     * resource that is unique within a resource group. This name can be used to
+     * access the resource.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.etag] A unique
-     * read-only string that changes whenever the resource is updated.
+     * @param {string} [serviceEndpointPolicyDefinitions.etag] A unique read-only
+     * string that changes whenever the resource is updated.
      *
-     * @param {string} [serviceEndpointPolicyDefinitionParameters.id] Resource ID.
+     * @param {string} [serviceEndpointPolicyDefinitions.id] Resource ID.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -38002,9 +37978,9 @@ export interface ServiceEndpointPolicyDefinitions {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitionParameters: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinition>;
-    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitionParameters: models.ServiceEndpointPolicyDefinition, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
-    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitionParameters: models.ServiceEndpointPolicyDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServiceEndpointPolicyDefinition>;
+    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serviceEndpointPolicyName: string, serviceEndpointPolicyDefinitionName: string, serviceEndpointPolicyDefinitions: models.ServiceEndpointPolicyDefinition, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServiceEndpointPolicyDefinition>): void;
 
 
     /**
