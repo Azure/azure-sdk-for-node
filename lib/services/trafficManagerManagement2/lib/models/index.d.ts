@@ -61,18 +61,65 @@ export interface EndpointPropertiesCustomHeadersItem {
 
 /**
  * @class
- * Initializes a new instance of the HeatMapEndpoint class.
+ * Initializes a new instance of the HeatMapPropertyBase class.
  * @constructor
- * Class which is a sparse representation of a Traffic Manager endpoint.
- *
- * @member {string} [resourceId] The ARM Resource ID of this Traffic Manager
- * endpoint.
- * @member {number} [endpointId] A number uniquely identifying this endpoint in
- * query experiences.
+ * @member {string} heatMapType Polymorphic Discriminator
  */
-export interface HeatMapEndpoint {
-  resourceId?: string;
-  endpointId?: number;
+export interface HeatMapPropertyBase {
+  heatMapType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * The core properties of ARM resources
+ *
+ * @member {string} [id] Fully qualified resource Id for the resource. Ex -
+ * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
+ * @member {string} [name] The name of the resource
+ * @member {string} [type] The type of the resource. Ex-
+ * Microsoft.Network/trafficmanagerProfiles.
+ */
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The resource model definition for a ARM proxy resource. It will have
+ * everything other than required location and tags
+ *
+ */
+export interface ProxyResource extends Resource {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HeatMapModel class.
+ * @constructor
+ * Class representing a Traffic Manager HeatMap.
+ *
+ * @member {string} heatMapType Polymorphic Discriminator
+ */
+export interface HeatMapModel extends ProxyResource {
+  heatMapType: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the UserMetricsModel class.
+ * @constructor
+ * Class representing Traffic Manager User Metrics.
+ *
+ * @member {string} [key] The key returned by the User Metrics operation.
+ */
+export interface UserMetricsModel extends ProxyResource {
+  key?: string;
 }
 
 /**
@@ -118,38 +165,25 @@ export interface TrafficFlow {
 
 /**
  * @class
- * Initializes a new instance of the Resource class.
+ * Initializes a new instance of the HeatMapEndpoint class.
  * @constructor
- * The core properties of ARM resources
+ * Class which is a sparse representation of a Traffic Manager endpoint.
  *
- * @member {string} [id] Fully qualified resource Id for the resource. Ex -
- * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
- * @member {string} [name] The name of the resource
- * @member {string} [type] The type of the resource. Ex-
- * Microsoft.Network/trafficmanagerProfiles.
+ * @member {string} [resourceId] The ARM Resource ID of this Traffic Manager
+ * endpoint.
+ * @member {number} [endpointId] A number uniquely identifying this endpoint in
+ * query experiences.
  */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
+export interface HeatMapEndpoint {
+  resourceId?: string;
+  endpointId?: number;
 }
 
 /**
  * @class
- * Initializes a new instance of the ProxyResource class.
+ * Initializes a new instance of the HeatMapProperties class.
  * @constructor
- * The resource model definition for a ARM proxy resource. It will have
- * everything other than required location and tags
- *
- */
-export interface ProxyResource extends Resource {
-}
-
-/**
- * @class
- * Initializes a new instance of the HeatMapModel class.
- * @constructor
- * Class representing a Traffic Manager HeatMap.
+ * Sub-class representing default Traffic Manager HeatMap properties.
  *
  * @member {date} [startTime] The beginning of the time window for this
  * HeatMap, inclusive.
@@ -159,7 +193,7 @@ export interface ProxyResource extends Resource {
  * @member {array} [trafficFlows] The traffic flows produced in this HeatMap
  * calculation.
  */
-export interface HeatMapModel extends ProxyResource {
+export interface HeatMapProperties extends HeatMapPropertyBase {
   startTime?: Date;
   endTime?: Date;
   endpoints?: HeatMapEndpoint[];
@@ -168,19 +202,7 @@ export interface HeatMapModel extends ProxyResource {
 
 /**
  * @class
- * Initializes a new instance of the UserMetricsModel class.
- * @constructor
- * Class representing Traffic Manager User Metrics.
- *
- * @member {string} [key] The key returned by the User Metrics operation.
- */
-export interface UserMetricsModel extends ProxyResource {
-  key?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the HeatMapLocation class.
+ * Initializes a new instance of the TrafficLocation class.
  * @constructor
  * Class which represents locations of traffic sources and percentage.
  *
@@ -188,9 +210,45 @@ export interface UserMetricsModel extends ProxyResource {
  * @member {number} [percentage] Percentage of traffic from a specific
  * location.
  */
-export interface HeatMapLocation {
+export interface TrafficLocation {
   location?: string;
   percentage?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HeatMapPropertyAsn class.
+ * @constructor
+ * Sub-class representing Traffic Manager HeatMap ASN location properties.
+ *
+ * @member {array} [trafficFlows]
+ */
+export interface HeatMapPropertyAsn extends HeatMapPropertyBase {
+  trafficFlows?: TrafficLocation[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HeatMapPropertyCountry class.
+ * @constructor
+ * Sub-class representing Traffic Manager HeatMap country location properties.
+ *
+ * @member {array} [trafficFlows]
+ */
+export interface HeatMapPropertyCountry extends HeatMapPropertyBase {
+  trafficFlows?: TrafficLocation[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HeatMapPropertyState class.
+ * @constructor
+ * Sub-class representing Traffic Manager HeatMap state location properties.
+ *
+ * @member {array} [trafficFlows]
+ */
+export interface HeatMapPropertyState extends HeatMapPropertyBase {
+  trafficFlows?: TrafficLocation[];
 }
 
 /**

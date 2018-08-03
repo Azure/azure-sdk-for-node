@@ -1311,7 +1311,7 @@ export interface HeatMap {
      * @param {string} profileName The name of the Traffic Manager profile.
      *
      * @param {string} heatMapType The type of HeatMap for the Traffic Manager
-     * profile. Possible values include: 'default', 'ASN', 'Country', 'State'
+     * profile. Possible values include: 'default', 'asn', 'country', 'state'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -1341,7 +1341,7 @@ export interface HeatMap {
      * @param {string} profileName The name of the Traffic Manager profile.
      *
      * @param {string} heatMapType The type of HeatMap for the Traffic Manager
-     * profile. Possible values include: 'default', 'ASN', 'Country', 'State'
+     * profile. Possible values include: 'default', 'asn', 'country', 'state'
      *
      * @param {object} [options] Optional Parameters.
      *
