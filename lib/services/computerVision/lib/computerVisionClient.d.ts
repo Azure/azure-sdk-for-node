@@ -11,15 +11,15 @@
 import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import * as models from "./models";
 
-export default class ComputerVisionAPIClient extends ServiceClient {
+export default class ComputerVisionClient extends ServiceClient {
   /**
    * @class
-   * Initializes a new instance of the ComputerVisionAPIClient class.
+   * Initializes a new instance of the ComputerVisionClient class.
    * @constructor
    *
    * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
    *
-   * @param {azureRegions} azureRegion - Supported Azure regions for Cognitive Services endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia', 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus', 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth'
+   * @param {string} endpoint - Supported Cognitive Services endpoints
    *
    * @param {object} [options] - The parameter options
    *
@@ -31,11 +31,11 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
    */
-  constructor(credentials: ServiceClientCredentials, azureRegion: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, endpoint: string, options?: ServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
-  azureRegion: string;
+  endpoint: string;
 
 
   /**
@@ -392,7 +392,7 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {string} [options.maxCandidates] Maximum number of candidate
+   * @param {number} [options.maxCandidates] Maximum number of candidate
    * descriptions to be returned.  The default is 1.
    *
    * @param {string} [options.language] The desired language for output
@@ -410,7 +410,7 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  describeImageWithHttpOperationResponse(url: string, options?: { maxCandidates? : string, language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageDescription>>;
+  describeImageWithHttpOperationResponse(url: string, options?: { maxCandidates? : number, language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageDescription>>;
 
   /**
    * This operation generates a description of an image in human readable
@@ -427,7 +427,7 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {string} [options.maxCandidates] Maximum number of candidate
+   * @param {number} [options.maxCandidates] Maximum number of candidate
    * descriptions to be returned.  The default is 1.
    *
    * @param {string} [options.language] The desired language for output
@@ -461,9 +461,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  describeImage(url: string, options?: { maxCandidates? : string, language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageDescription>;
+  describeImage(url: string, options?: { maxCandidates? : number, language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageDescription>;
   describeImage(url: string, callback: ServiceCallback<models.ImageDescription>): void;
-  describeImage(url: string, options: { maxCandidates? : string, language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageDescription>): void;
+  describeImage(url: string, options: { maxCandidates? : number, language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageDescription>): void;
 
 
   /**
@@ -777,10 +777,10 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    * black&white.Adult - detects if the image is pornographic in nature (depicts
    * nudity or a sex act).  Sexually suggestive content is also detected.
    *
-   * @param {string} [options.details] A string indicating which domain-specific
+   * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
    * feature types include:Celebrities - identifies celebrities if detected in
-   * the image. Possible values include: 'Celebrities', 'Landmarks'
+   * the image.
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
@@ -797,7 +797,7 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  analyzeImageInStreamWithHttpOperationResponse(image: stream.Readable, options?: { visualFeatures? : string[], details? : string, language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageAnalysis>>;
+  analyzeImageInStreamWithHttpOperationResponse(image: stream.Readable, options?: { visualFeatures? : string[], details? : string[], language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageAnalysis>>;
 
   /**
    * This operation extracts a rich set of visual features based on the image
@@ -819,10 +819,10 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    * black&white.Adult - detects if the image is pornographic in nature (depicts
    * nudity or a sex act).  Sexually suggestive content is also detected.
    *
-   * @param {string} [options.details] A string indicating which domain-specific
+   * @param {array} [options.details] A string indicating which domain-specific
    * details to return. Multiple values should be comma-separated. Valid visual
    * feature types include:Celebrities - identifies celebrities if detected in
-   * the image. Possible values include: 'Celebrities', 'Landmarks'
+   * the image.
    *
    * @param {string} [options.language] The desired language for output
    * generation. If this parameter is not specified, the default value is
@@ -855,9 +855,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  analyzeImageInStream(image: stream.Readable, options?: { visualFeatures? : string[], details? : string, language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageAnalysis>;
+  analyzeImageInStream(image: stream.Readable, options?: { visualFeatures? : string[], details? : string[], language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageAnalysis>;
   analyzeImageInStream(image: stream.Readable, callback: ServiceCallback<models.ImageAnalysis>): void;
-  analyzeImageInStream(image: stream.Readable, options: { visualFeatures? : string[], details? : string, language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageAnalysis>): void;
+  analyzeImageInStream(image: stream.Readable, options: { visualFeatures? : string[], details? : string[], language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageAnalysis>): void;
 
 
   /**
@@ -1046,7 +1046,7 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {string} [options.maxCandidates] Maximum number of candidate
+   * @param {number} [options.maxCandidates] Maximum number of candidate
    * descriptions to be returned.  The default is 1.
    *
    * @param {string} [options.language] The desired language for output
@@ -1064,7 +1064,7 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @reject {Error|ServiceError} - The error object.
    */
-  describeImageInStreamWithHttpOperationResponse(image: stream.Readable, options?: { maxCandidates? : string, language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageDescription>>;
+  describeImageInStreamWithHttpOperationResponse(image: stream.Readable, options?: { maxCandidates? : number, language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ImageDescription>>;
 
   /**
    * This operation generates a description of an image in human readable
@@ -1081,7 +1081,7 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    * @param {object} [options] Optional Parameters.
    *
-   * @param {string} [options.maxCandidates] Maximum number of candidate
+   * @param {number} [options.maxCandidates] Maximum number of candidate
    * descriptions to be returned.  The default is 1.
    *
    * @param {string} [options.language] The desired language for output
@@ -1115,9 +1115,9 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    *
    *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
    */
-  describeImageInStream(image: stream.Readable, options?: { maxCandidates? : string, language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageDescription>;
+  describeImageInStream(image: stream.Readable, options?: { maxCandidates? : number, language? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ImageDescription>;
   describeImageInStream(image: stream.Readable, callback: ServiceCallback<models.ImageDescription>): void;
-  describeImageInStream(image: stream.Readable, options: { maxCandidates? : string, language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageDescription>): void;
+  describeImageInStream(image: stream.Readable, options: { maxCandidates? : number, language? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ImageDescription>): void;
 
 
   /**
@@ -1350,4 +1350,4 @@ export default class ComputerVisionAPIClient extends ServiceClient {
   recognizeTextInStream(image: stream.Readable, mode: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
-export { ComputerVisionAPIClient, models as ComputerVisionAPIModels };
+export { ComputerVisionClient, models as ComputerVisionModels };
