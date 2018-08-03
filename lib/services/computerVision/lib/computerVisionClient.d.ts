@@ -11,15 +11,15 @@
 import { ServiceClient, ServiceClientOptions, ServiceCallback, HttpOperationResponse, ServiceClientCredentials } from 'ms-rest';
 import * as models from "./models";
 
-export default class ComputerVisionAPIClient extends ServiceClient {
+export default class ComputerVisionClient extends ServiceClient {
   /**
    * @class
-   * Initializes a new instance of the ComputerVisionAPIClient class.
+   * Initializes a new instance of the ComputerVisionClient class.
    * @constructor
    *
    * @param {credentials} credentials - Subscription credentials which uniquely identify client subscription.
    *
-   * @param {azureRegions} azureRegion - Supported Azure regions for Cognitive Services endpoints. Possible values include: 'westus', 'westeurope', 'southeastasia', 'eastus2', 'westcentralus', 'westus2', 'eastus', 'southcentralus', 'northeurope', 'eastasia', 'australiaeast', 'brazilsouth'
+   * @param {string} endpoint - Supported Cognitive Services endpoints
    *
    * @param {object} [options] - The parameter options
    *
@@ -31,11 +31,11 @@ export default class ComputerVisionAPIClient extends ServiceClient {
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
    */
-  constructor(credentials: ServiceClientCredentials, azureRegion: string, options?: ServiceClientOptions);
+  constructor(credentials: ServiceClientCredentials, endpoint: string, options?: ServiceClientOptions);
 
   credentials: ServiceClientCredentials;
 
-  azureRegion: string;
+  endpoint: string;
 
 
   /**
@@ -1350,4 +1350,4 @@ export default class ComputerVisionAPIClient extends ServiceClient {
   recognizeTextInStream(image: stream.Readable, mode: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
-export { ComputerVisionAPIClient, models as ComputerVisionAPIModels };
+export { ComputerVisionClient, models as ComputerVisionModels };
