@@ -505,9 +505,6 @@ export interface BackendAddressPool extends SubResource {
  * @member {array}
  * [backendIPConfiguration.publicIPAddress.publicIPPrefix.publicIPAddresses]
  * The list of all referenced PublicIPAddresses
- * @member {number}
- * [backendIPConfiguration.publicIPAddress.publicIPPrefix.idleTimeoutInMinutes]
- * The idle timeout of the public IP prefix.
  * @member {string}
  * [backendIPConfiguration.publicIPAddress.publicIPPrefix.resourceGuid] The
  * resource GUID property of the public IP prefix resource.
@@ -972,8 +969,6 @@ export interface ReferencedPublicIpAddress {
  * @member {string} [ipPrefix] The allocated Prefix
  * @member {array} [publicIPAddresses] The list of all referenced
  * PublicIPAddresses
- * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
- * prefix.
  * @member {string} [resourceGuid] The resource GUID property of the public IP
  * prefix resource.
  * @member {string} [provisioningState] The provisioning state of the Public IP
@@ -990,7 +985,6 @@ export interface PublicIPPrefix extends Resource {
   prefixLength?: number;
   ipPrefix?: string;
   publicIPAddresses?: ReferencedPublicIpAddress[];
-  idleTimeoutInMinutes?: number;
   resourceGuid?: string;
   provisioningState?: string;
   etag?: string;
@@ -1114,8 +1108,6 @@ export interface PublicIPPrefix extends Resource {
  * @member {string} [publicIPPrefix.ipPrefix] The allocated Prefix
  * @member {array} [publicIPPrefix.publicIPAddresses] The list of all
  * referenced PublicIPAddresses
- * @member {number} [publicIPPrefix.idleTimeoutInMinutes] The idle timeout of
- * the public IP prefix.
  * @member {string} [publicIPPrefix.resourceGuid] The resource GUID property of
  * the public IP prefix resource.
  * @member {string} [publicIPPrefix.provisioningState] The provisioning state
@@ -1256,8 +1248,6 @@ export interface PublicIPAddress extends Resource {
  * Prefix
  * @member {array} [publicIPAddress.publicIPPrefix.publicIPAddresses] The list
  * of all referenced PublicIPAddresses
- * @member {number} [publicIPAddress.publicIPPrefix.idleTimeoutInMinutes] The
- * idle timeout of the public IP prefix.
  * @member {string} [publicIPAddress.publicIPPrefix.resourceGuid] The resource
  * GUID property of the public IP prefix resource.
  * @member {string} [publicIPAddress.publicIPPrefix.provisioningState] The
@@ -1571,8 +1561,6 @@ export interface Subnet extends SubResource {
  * Prefix
  * @member {array} [publicIPAddress.publicIPPrefix.publicIPAddresses] The list
  * of all referenced PublicIPAddresses
- * @member {number} [publicIPAddress.publicIPPrefix.idleTimeoutInMinutes] The
- * idle timeout of the public IP prefix.
  * @member {string} [publicIPAddress.publicIPPrefix.resourceGuid] The resource
  * GUID property of the public IP prefix resource.
  * @member {string} [publicIPAddress.publicIPPrefix.provisioningState] The
@@ -1965,9 +1953,6 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * @member {array}
  * [ipConfiguration.publicIPAddress.publicIPPrefix.publicIPAddresses] The list
  * of all referenced PublicIPAddresses
- * @member {number}
- * [ipConfiguration.publicIPAddress.publicIPPrefix.idleTimeoutInMinutes] The
- * idle timeout of the public IP prefix.
  * @member {string}
  * [ipConfiguration.publicIPAddress.publicIPPrefix.resourceGuid] The resource
  * GUID property of the public IP prefix resource.
@@ -3885,8 +3870,6 @@ export interface LoadBalancerSku {
  * Prefix
  * @member {array} [publicIPAddress.publicIPPrefix.publicIPAddresses] The list
  * of all referenced PublicIPAddresses
- * @member {number} [publicIPAddress.publicIPPrefix.idleTimeoutInMinutes] The
- * idle timeout of the public IP prefix.
  * @member {string} [publicIPAddress.publicIPPrefix.resourceGuid] The resource
  * GUID property of the public IP prefix resource.
  * @member {string} [publicIPAddress.publicIPPrefix.provisioningState] The
