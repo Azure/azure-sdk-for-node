@@ -338,10 +338,13 @@ export interface Jobs {
      * @param {object} jobResource Job details from request body.
      *
      * @param {string} [jobResource.deviceType] Type of the device to be used for
-     * the job. Possible values include: 'Pod', 'Disk', 'Cabinet'
+     * the job. Possible values include: 'Pod', 'Disk', 'Heavy'
      *
      * @param {boolean} [jobResource.isCancellable] Describes whether the job is
      * cancellable or not.
+     *
+     * @param {boolean} [jobResource.isDeletable] Describes whether the job is
+     * deletable or not.
      *
      * @param {boolean} [jobResource.isShippingAddressEditable] Describes whether
      * the shipping address is editable or not.
@@ -350,7 +353,7 @@ export interface Jobs {
      * Possible values include: 'DeviceOrdered', 'DevicePrepared', 'Dispatched',
      * 'Delivered', 'PickedUp', 'AtAzureDC', 'DataCopy', 'Completed',
      * 'CompletedWithErrors', 'Cancelled', 'Failed_IssueReportedAtCustomer',
-     * 'Failed_IssueDetectedAtAzureDC', 'Aborted'
+     * 'Failed_IssueDetectedAtAzureDC', 'Aborted', 'Current'
      *
      * @param {date} [jobResource.startTime] Time at which the job was started in
      * UTC ISO 8601 format.
@@ -448,6 +451,15 @@ export interface Jobs {
      *
      * @param {string} [jobResource.cancellationReason] Reason for cancellation.
      *
+     * @param {string} [jobResource.reverseShipmentLabelSasKey] Sas Key of the
+     * return shipment label blob
+     *
+     * @param {string} [jobResource.chainOfCustodySasKey] chain of custody blob Sas
+     * key
+     *
+     * @param {string} [jobResource.passkey] User entered passkey for  DataBox Disk
+     * job.
+     *
      * @param {string} jobResource.location The location of the resource. This will
      * be one of the supported and registered Azure Regions (e.g. West US, East US,
      * Southeast Asia, etc.). The region of a resource cannot be changed once it is
@@ -458,7 +470,7 @@ export interface Jobs {
      * the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
      *
-     * @param {object} jobResource.sku The sku type.
+     * @param {object} [jobResource.sku] The sku type.
      *
      * @param {string} jobResource.sku.name The sku name.
      *
@@ -492,10 +504,13 @@ export interface Jobs {
      * @param {object} jobResource Job details from request body.
      *
      * @param {string} [jobResource.deviceType] Type of the device to be used for
-     * the job. Possible values include: 'Pod', 'Disk', 'Cabinet'
+     * the job. Possible values include: 'Pod', 'Disk', 'Heavy'
      *
      * @param {boolean} [jobResource.isCancellable] Describes whether the job is
      * cancellable or not.
+     *
+     * @param {boolean} [jobResource.isDeletable] Describes whether the job is
+     * deletable or not.
      *
      * @param {boolean} [jobResource.isShippingAddressEditable] Describes whether
      * the shipping address is editable or not.
@@ -504,7 +519,7 @@ export interface Jobs {
      * Possible values include: 'DeviceOrdered', 'DevicePrepared', 'Dispatched',
      * 'Delivered', 'PickedUp', 'AtAzureDC', 'DataCopy', 'Completed',
      * 'CompletedWithErrors', 'Cancelled', 'Failed_IssueReportedAtCustomer',
-     * 'Failed_IssueDetectedAtAzureDC', 'Aborted'
+     * 'Failed_IssueDetectedAtAzureDC', 'Aborted', 'Current'
      *
      * @param {date} [jobResource.startTime] Time at which the job was started in
      * UTC ISO 8601 format.
@@ -602,6 +617,15 @@ export interface Jobs {
      *
      * @param {string} [jobResource.cancellationReason] Reason for cancellation.
      *
+     * @param {string} [jobResource.reverseShipmentLabelSasKey] Sas Key of the
+     * return shipment label blob
+     *
+     * @param {string} [jobResource.chainOfCustodySasKey] chain of custody blob Sas
+     * key
+     *
+     * @param {string} [jobResource.passkey] User entered passkey for  DataBox Disk
+     * job.
+     *
      * @param {string} jobResource.location The location of the resource. This will
      * be one of the supported and registered Azure Regions (e.g. West US, East US,
      * Southeast Asia, etc.). The region of a resource cannot be changed once it is
@@ -612,7 +636,7 @@ export interface Jobs {
      * the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
      *
-     * @param {object} jobResource.sku The sku type.
+     * @param {object} [jobResource.sku] The sku type.
      *
      * @param {string} jobResource.sku.name The sku name.
      *
@@ -726,7 +750,7 @@ export interface Jobs {
      * @param {object} jobResourceUpdateParameter Job update parameters from
      * request body.
      *
-     * @param {object} jobResourceUpdateParameter.details Details of a job to be
+     * @param {object} [jobResourceUpdateParameter.details] Details of a job to be
      * updated.
      *
      * @param {object} [jobResourceUpdateParameter.details.contactDetails] Contact
@@ -792,6 +816,9 @@ export interface Jobs {
      * @param {string}
      * [jobResourceUpdateParameter.details.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
+     *
+     * @param {array} [jobResourceUpdateParameter.destinationAccountDetails]
+     * Destination account details.
      *
      * @param {object} [jobResourceUpdateParameter.tags] The list of key value
      * pairs that describe the resource. These tags can be used in viewing and
@@ -826,7 +853,7 @@ export interface Jobs {
      * @param {object} jobResourceUpdateParameter Job update parameters from
      * request body.
      *
-     * @param {object} jobResourceUpdateParameter.details Details of a job to be
+     * @param {object} [jobResourceUpdateParameter.details] Details of a job to be
      * updated.
      *
      * @param {object} [jobResourceUpdateParameter.details.contactDetails] Contact
@@ -892,6 +919,9 @@ export interface Jobs {
      * @param {string}
      * [jobResourceUpdateParameter.details.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
+     *
+     * @param {array} [jobResourceUpdateParameter.destinationAccountDetails]
+     * Destination account details.
      *
      * @param {object} [jobResourceUpdateParameter.tags] The list of key value
      * pairs that describe the resource. These tags can be used in viewing and
@@ -1375,10 +1405,13 @@ export interface Jobs {
      * @param {object} jobResource Job details from request body.
      *
      * @param {string} [jobResource.deviceType] Type of the device to be used for
-     * the job. Possible values include: 'Pod', 'Disk', 'Cabinet'
+     * the job. Possible values include: 'Pod', 'Disk', 'Heavy'
      *
      * @param {boolean} [jobResource.isCancellable] Describes whether the job is
      * cancellable or not.
+     *
+     * @param {boolean} [jobResource.isDeletable] Describes whether the job is
+     * deletable or not.
      *
      * @param {boolean} [jobResource.isShippingAddressEditable] Describes whether
      * the shipping address is editable or not.
@@ -1387,7 +1420,7 @@ export interface Jobs {
      * Possible values include: 'DeviceOrdered', 'DevicePrepared', 'Dispatched',
      * 'Delivered', 'PickedUp', 'AtAzureDC', 'DataCopy', 'Completed',
      * 'CompletedWithErrors', 'Cancelled', 'Failed_IssueReportedAtCustomer',
-     * 'Failed_IssueDetectedAtAzureDC', 'Aborted'
+     * 'Failed_IssueDetectedAtAzureDC', 'Aborted', 'Current'
      *
      * @param {date} [jobResource.startTime] Time at which the job was started in
      * UTC ISO 8601 format.
@@ -1485,6 +1518,15 @@ export interface Jobs {
      *
      * @param {string} [jobResource.cancellationReason] Reason for cancellation.
      *
+     * @param {string} [jobResource.reverseShipmentLabelSasKey] Sas Key of the
+     * return shipment label blob
+     *
+     * @param {string} [jobResource.chainOfCustodySasKey] chain of custody blob Sas
+     * key
+     *
+     * @param {string} [jobResource.passkey] User entered passkey for  DataBox Disk
+     * job.
+     *
      * @param {string} jobResource.location The location of the resource. This will
      * be one of the supported and registered Azure Regions (e.g. West US, East US,
      * Southeast Asia, etc.). The region of a resource cannot be changed once it is
@@ -1495,7 +1537,7 @@ export interface Jobs {
      * the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
      *
-     * @param {object} jobResource.sku The sku type.
+     * @param {object} [jobResource.sku] The sku type.
      *
      * @param {string} jobResource.sku.name The sku name.
      *
@@ -1529,10 +1571,13 @@ export interface Jobs {
      * @param {object} jobResource Job details from request body.
      *
      * @param {string} [jobResource.deviceType] Type of the device to be used for
-     * the job. Possible values include: 'Pod', 'Disk', 'Cabinet'
+     * the job. Possible values include: 'Pod', 'Disk', 'Heavy'
      *
      * @param {boolean} [jobResource.isCancellable] Describes whether the job is
      * cancellable or not.
+     *
+     * @param {boolean} [jobResource.isDeletable] Describes whether the job is
+     * deletable or not.
      *
      * @param {boolean} [jobResource.isShippingAddressEditable] Describes whether
      * the shipping address is editable or not.
@@ -1541,7 +1586,7 @@ export interface Jobs {
      * Possible values include: 'DeviceOrdered', 'DevicePrepared', 'Dispatched',
      * 'Delivered', 'PickedUp', 'AtAzureDC', 'DataCopy', 'Completed',
      * 'CompletedWithErrors', 'Cancelled', 'Failed_IssueReportedAtCustomer',
-     * 'Failed_IssueDetectedAtAzureDC', 'Aborted'
+     * 'Failed_IssueDetectedAtAzureDC', 'Aborted', 'Current'
      *
      * @param {date} [jobResource.startTime] Time at which the job was started in
      * UTC ISO 8601 format.
@@ -1639,6 +1684,15 @@ export interface Jobs {
      *
      * @param {string} [jobResource.cancellationReason] Reason for cancellation.
      *
+     * @param {string} [jobResource.reverseShipmentLabelSasKey] Sas Key of the
+     * return shipment label blob
+     *
+     * @param {string} [jobResource.chainOfCustodySasKey] chain of custody blob Sas
+     * key
+     *
+     * @param {string} [jobResource.passkey] User entered passkey for  DataBox Disk
+     * job.
+     *
      * @param {string} jobResource.location The location of the resource. This will
      * be one of the supported and registered Azure Regions (e.g. West US, East US,
      * Southeast Asia, etc.). The region of a resource cannot be changed once it is
@@ -1649,7 +1703,7 @@ export interface Jobs {
      * the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
      *
-     * @param {object} jobResource.sku The sku type.
+     * @param {object} [jobResource.sku] The sku type.
      *
      * @param {string} jobResource.sku.name The sku name.
      *
@@ -1690,6 +1744,68 @@ export interface Jobs {
 
 
     /**
+     * Deletes a job.
+     *
+     * @param {string} resourceGroupName The Resource Group Name
+     *
+     * @param {string} jobName The name of the job Resource within the specified
+     * resource group. job names must be between 3 and 24 characters in length and
+     * use any alphanumeric and underscore only
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes a job.
+     *
+     * @param {string} resourceGroupName The Resource Group Name
+     *
+     * @param {string} jobName The name of the job Resource within the specified
+     * resource group. job names must be between 3 and 24 characters in length and
+     * use any alphanumeric and underscore only
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, jobName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, jobName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, jobName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Updates the properties of an existing job.
      *
      * @param {string} resourceGroupName The Resource Group Name
@@ -1701,7 +1817,7 @@ export interface Jobs {
      * @param {object} jobResourceUpdateParameter Job update parameters from
      * request body.
      *
-     * @param {object} jobResourceUpdateParameter.details Details of a job to be
+     * @param {object} [jobResourceUpdateParameter.details] Details of a job to be
      * updated.
      *
      * @param {object} [jobResourceUpdateParameter.details.contactDetails] Contact
@@ -1767,6 +1883,9 @@ export interface Jobs {
      * @param {string}
      * [jobResourceUpdateParameter.details.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
+     *
+     * @param {array} [jobResourceUpdateParameter.destinationAccountDetails]
+     * Destination account details.
      *
      * @param {object} [jobResourceUpdateParameter.tags] The list of key value
      * pairs that describe the resource. These tags can be used in viewing and
@@ -1801,7 +1920,7 @@ export interface Jobs {
      * @param {object} jobResourceUpdateParameter Job update parameters from
      * request body.
      *
-     * @param {object} jobResourceUpdateParameter.details Details of a job to be
+     * @param {object} [jobResourceUpdateParameter.details] Details of a job to be
      * updated.
      *
      * @param {object} [jobResourceUpdateParameter.details.contactDetails] Contact
@@ -1867,6 +1986,9 @@ export interface Jobs {
      * @param {string}
      * [jobResourceUpdateParameter.details.shippingAddress.addressType] Type of
      * address. Possible values include: 'None', 'Residential', 'Commercial'
+     *
+     * @param {array} [jobResourceUpdateParameter.destinationAccountDetails]
+     * Destination account details.
      *
      * @param {object} [jobResourceUpdateParameter.tags] The list of key value
      * pairs that describe the resource. These tags can be used in viewing and
@@ -2147,7 +2269,7 @@ export interface Service {
      * address. Possible values include: 'None', 'Residential', 'Commercial'
      *
      * @param {string} [validateAddress.deviceType] Device type to be used for the
-     * job. Possible values include: 'Pod', 'Disk', 'Cabinet'
+     * job. Possible values include: 'Pod', 'Disk', 'Heavy'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -2201,7 +2323,7 @@ export interface Service {
      * address. Possible values include: 'None', 'Residential', 'Commercial'
      *
      * @param {string} [validateAddress.deviceType] Device type to be used for the
-     * job. Possible values include: 'Pod', 'Disk', 'Cabinet'
+     * job. Possible values include: 'Pod', 'Disk', 'Heavy'
      *
      * @param {object} [options] Optional Parameters.
      *
