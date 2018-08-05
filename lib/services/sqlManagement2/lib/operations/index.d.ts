@@ -18612,9 +18612,15 @@ export interface DatabaseVulnerabilityAssessments {
      * path to hold the scan results (e.g.
      * https://myStorage.blob.core.windows.net/VaScans/).
      *
-     * @param {string} parameters.storageContainerSasKey A shared access signature
-     * (SAS Key) that has write access to the blob container specified in
-     * 'storageContainerPath' parameter.
+     * @param {string} [parameters.storageContainerSasKey] A shared access
+     * signature (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+     * specified, StorageContainerSasKey is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the vulnerability assessment storage account. If
+     * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
+     * required.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
      *
@@ -18659,9 +18665,15 @@ export interface DatabaseVulnerabilityAssessments {
      * path to hold the scan results (e.g.
      * https://myStorage.blob.core.windows.net/VaScans/).
      *
-     * @param {string} parameters.storageContainerSasKey A shared access signature
-     * (SAS Key) that has write access to the blob container specified in
-     * 'storageContainerPath' parameter.
+     * @param {string} [parameters.storageContainerSasKey] A shared access
+     * signature (SAS Key) that has write access to the blob container specified in
+     * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+     * specified, StorageContainerSasKey is required.
+     *
+     * @param {string} [parameters.storageAccountAccessKey] Specifies the
+     * identifier key of the vulnerability assessment storage account. If
+     * 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is
+     * required.
      *
      * @param {object} [parameters.recurringScans] The recurring scans settings
      *
