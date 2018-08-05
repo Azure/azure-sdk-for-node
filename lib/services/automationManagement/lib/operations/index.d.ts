@@ -9237,8 +9237,18 @@ export interface SourceControlOperations {
      * VsoGit, VsoTfvc, GitHub, case sensitive. Possible values include: 'VsoGit',
      * 'VsoTfvc', 'GitHub'
      *
-     * @param {string} [parameters.securityToken] Gets or sets the authorization
+     * @param {object} [parameters.securityToken] Gets or sets the authorization
      * token for the repo of the source control.
+     *
+     * @param {string} [parameters.securityToken.accessToken] Gets or sets the
+     * access token.
+     *
+     * @param {string} [parameters.securityToken.refreshToken] Gets or sets the
+     * refresh token.
+     *
+     * @param {string} [parameters.securityToken.tokenType] The token type. Must be
+     * either PersonalAccessToken or Oauth. Possible values include:
+     * 'PersonalAccessToken', 'Oauth'
      *
      * @param {string} [parameters.description] Gets or sets the user description
      * of the source control.
@@ -9287,8 +9297,18 @@ export interface SourceControlOperations {
      * VsoGit, VsoTfvc, GitHub, case sensitive. Possible values include: 'VsoGit',
      * 'VsoTfvc', 'GitHub'
      *
-     * @param {string} [parameters.securityToken] Gets or sets the authorization
+     * @param {object} [parameters.securityToken] Gets or sets the authorization
      * token for the repo of the source control.
+     *
+     * @param {string} [parameters.securityToken.accessToken] Gets or sets the
+     * access token.
+     *
+     * @param {string} [parameters.securityToken.refreshToken] Gets or sets the
+     * refresh token.
+     *
+     * @param {string} [parameters.securityToken.tokenType] The token type. Must be
+     * either PersonalAccessToken or Oauth. Possible values include:
+     * 'PersonalAccessToken', 'Oauth'
      *
      * @param {string} [parameters.description] Gets or sets the user description
      * of the source control.
@@ -9349,8 +9369,18 @@ export interface SourceControlOperations {
      * @param {boolean} [parameters.publishRunbook] Gets or sets the auto publish
      * of the source control. Default is true.
      *
-     * @param {string} [parameters.securityToken] Gets or sets the authorization
+     * @param {object} [parameters.securityToken] Gets or sets the authorization
      * token for the repo of the source control.
+     *
+     * @param {string} [parameters.securityToken.accessToken] Gets or sets the
+     * access token.
+     *
+     * @param {string} [parameters.securityToken.refreshToken] Gets or sets the
+     * refresh token.
+     *
+     * @param {string} [parameters.securityToken.tokenType] The token type. Must be
+     * either PersonalAccessToken or Oauth. Possible values include:
+     * 'PersonalAccessToken', 'Oauth'
      *
      * @param {string} [parameters.description] Gets or sets the user description
      * of the source control.
@@ -9392,8 +9422,18 @@ export interface SourceControlOperations {
      * @param {boolean} [parameters.publishRunbook] Gets or sets the auto publish
      * of the source control. Default is true.
      *
-     * @param {string} [parameters.securityToken] Gets or sets the authorization
+     * @param {object} [parameters.securityToken] Gets or sets the authorization
      * token for the repo of the source control.
+     *
+     * @param {string} [parameters.securityToken.accessToken] Gets or sets the
+     * access token.
+     *
+     * @param {string} [parameters.securityToken.refreshToken] Gets or sets the
+     * refresh token.
+     *
+     * @param {string} [parameters.securityToken.tokenType] The token type. Must be
+     * either PersonalAccessToken or Oauth. Possible values include:
+     * 'PersonalAccessToken', 'Oauth'
      *
      * @param {string} [parameters.description] Gets or sets the user description
      * of the source control.
@@ -9700,8 +9740,8 @@ export interface SourceControlSyncJobOperations {
      * @param {object} parameters The parameters supplied to the create source
      * control sync job operation.
      *
-     * @param {string} [parameters.commitId] Sets the commit id of the source
-     * control sync job.
+     * @param {string} parameters.commitId Sets the commit id of the source control
+     * sync job. If not syncing to a commitId, enter an empty string.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9730,8 +9770,8 @@ export interface SourceControlSyncJobOperations {
      * @param {object} parameters The parameters supplied to the create source
      * control sync job operation.
      *
-     * @param {string} [parameters.commitId] Sets the commit id of the source
-     * control sync job.
+     * @param {string} parameters.commitId Sets the commit id of the source control
+     * sync job. If not syncing to a commitId, enter an empty string.
      *
      * @param {object} [options] Optional Parameters.
      *

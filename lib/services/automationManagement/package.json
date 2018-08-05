@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/automationClient.js",
   "types": "./lib/automationClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/automationManagement",
+  "homepage": "https://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
