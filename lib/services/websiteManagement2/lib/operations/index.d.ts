@@ -21873,12 +21873,20 @@ export interface WebApps {
      *
      * @param {string} name Name of the app.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {object} publishingProfileOptions Specifies publishingProfileOptions
+     * for publishing profile. For example, use {"format": "FileZilla3"} to get a
+     * FileZilla publishing profile.
      *
-     * @param {string} [options.format] Name of the format. Valid values are:
+     * @param {string} [publishingProfileOptions.format] Name of the format. Valid
+     * values are:
      * FileZilla3
      * WebDeploy -- default
      * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
+     *
+     * @param {boolean} [publishingProfileOptions.includeDisasterRecoveryEndpoints]
+     * Include the DisasterRecover endpoint if true
+     *
+     * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -21889,7 +21897,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listPublishingProfileXmlWithSecretsWithHttpOperationResponse(resourceGroupName: string, name: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    listPublishingProfileXmlWithSecretsWithHttpOperationResponse(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary Gets the publishing profile for an app (or deployment slot, if
@@ -21902,12 +21910,20 @@ export interface WebApps {
      *
      * @param {string} name Name of the app.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {object} publishingProfileOptions Specifies publishingProfileOptions
+     * for publishing profile. For example, use {"format": "FileZilla3"} to get a
+     * FileZilla publishing profile.
      *
-     * @param {string} [options.format] Name of the format. Valid values are:
+     * @param {string} [publishingProfileOptions.format] Name of the format. Valid
+     * values are:
      * FileZilla3
      * WebDeploy -- default
      * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
+     *
+     * @param {boolean} [publishingProfileOptions.includeDisasterRecoveryEndpoints]
+     * Include the DisasterRecover endpoint if true
+     *
+     * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -21933,9 +21949,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listPublishingProfileXmlWithSecrets(resourceGroupName: string, name: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    listPublishingProfileXmlWithSecrets(resourceGroupName: string, name: string, callback: ServiceCallback<stream.Readable>): void;
-    listPublishingProfileXmlWithSecrets(resourceGroupName: string, name: string, options: { format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    listPublishingProfileXmlWithSecrets(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    listPublishingProfileXmlWithSecrets(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, callback: ServiceCallback<stream.Readable>): void;
+    listPublishingProfileXmlWithSecrets(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
@@ -36186,15 +36202,23 @@ export interface WebApps {
      *
      * @param {string} name Name of the app.
      *
+     * @param {object} publishingProfileOptions Specifies publishingProfileOptions
+     * for publishing profile. For example, use {"format": "FileZilla3"} to get a
+     * FileZilla publishing profile.
+     *
+     * @param {string} [publishingProfileOptions.format] Name of the format. Valid
+     * values are:
+     * FileZilla3
+     * WebDeploy -- default
+     * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
+     *
+     * @param {boolean} [publishingProfileOptions.includeDisasterRecoveryEndpoints]
+     * Include the DisasterRecover endpoint if true
+     *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API will get the publishing profile for the production slot.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.format] Name of the format. Valid values are:
-     * FileZilla3
-     * WebDeploy -- default
-     * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -36205,7 +36229,7 @@ export interface WebApps {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listPublishingProfileXmlWithSecretsSlotWithHttpOperationResponse(resourceGroupName: string, name: string, slot: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
+    listPublishingProfileXmlWithSecretsSlotWithHttpOperationResponse(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<stream.Readable>>;
 
     /**
      * @summary Gets the publishing profile for an app (or deployment slot, if
@@ -36218,15 +36242,23 @@ export interface WebApps {
      *
      * @param {string} name Name of the app.
      *
+     * @param {object} publishingProfileOptions Specifies publishingProfileOptions
+     * for publishing profile. For example, use {"format": "FileZilla3"} to get a
+     * FileZilla publishing profile.
+     *
+     * @param {string} [publishingProfileOptions.format] Name of the format. Valid
+     * values are:
+     * FileZilla3
+     * WebDeploy -- default
+     * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
+     *
+     * @param {boolean} [publishingProfileOptions.includeDisasterRecoveryEndpoints]
+     * Include the DisasterRecover endpoint if true
+     *
      * @param {string} slot Name of the deployment slot. If a slot is not
      * specified, the API will get the publishing profile for the production slot.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.format] Name of the format. Valid values are:
-     * FileZilla3
-     * WebDeploy -- default
-     * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -36252,9 +36284,9 @@ export interface WebApps {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listPublishingProfileXmlWithSecretsSlot(resourceGroupName: string, name: string, slot: string, options?: { format? : string, customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
-    listPublishingProfileXmlWithSecretsSlot(resourceGroupName: string, name: string, slot: string, callback: ServiceCallback<stream.Readable>): void;
-    listPublishingProfileXmlWithSecretsSlot(resourceGroupName: string, name: string, slot: string, options: { format? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
+    listPublishingProfileXmlWithSecretsSlot(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, slot: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<stream.Readable>;
+    listPublishingProfileXmlWithSecretsSlot(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, slot: string, callback: ServiceCallback<stream.Readable>): void;
+    listPublishingProfileXmlWithSecretsSlot(resourceGroupName: string, name: string, publishingProfileOptions: models.CsmPublishingProfileOptions, slot: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<stream.Readable>): void;
 
 
     /**
