@@ -5,7 +5,6 @@
   "version": "1.0.0-Preview-1",
   "dependencies": {
     "ms-rest-azure-js": "~0.8.82",
-    "ms-rest-js": "^0.12.293",
     "ms-rest-nodeauth": "^0.2.0"
   },
   "keywords": [
