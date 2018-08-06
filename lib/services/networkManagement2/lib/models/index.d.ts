@@ -338,6 +338,8 @@ export interface BackendAddressPool extends SubResource {
  * unique read-only string that changes whenever the resource is updated.
  * @member {array} [backendIPConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
+ * @member {array} [backendIPConfiguration.subnet.serviceEndpointPolicies] An
+ * array of service endpoint policies.
  * @member {array} [backendIPConfiguration.subnet.ipConfigurations] Gets an
  * array of references to the network interface IP configurations using subnet.
  * @member {array} [backendIPConfiguration.subnet.resourceNavigationLinks] Gets
@@ -430,6 +432,9 @@ export interface BackendAddressPool extends SubResource {
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints]
  * An array of service endpoints.
  * @member {array}
+ * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
+ * @member {array}
  * [backendIPConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -482,6 +487,43 @@ export interface BackendAddressPool extends SubResource {
  * tags associated with the public IP address.
  * @member {string} [backendIPConfiguration.publicIPAddress.ipAddress] The IP
  * address associated with the public IP address resource.
+ * @member {object} [backendIPConfiguration.publicIPAddress.publicIPPrefix] The
+ * Public IP Prefix this Public IP Address should be allocated from.
+ * @member {object} [backendIPConfiguration.publicIPAddress.publicIPPrefix.sku]
+ * The public IP prefix SKU.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.publicIPPrefix.sku.name] Name of a
+ * public IP prefix SKU. Possible values include: 'Standard'
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.publicIPPrefix.publicIPAddressVersion]
+ * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
+ * Possible values include: 'IPv4', 'IPv6'
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.publicIPPrefix.ipTags] The list of
+ * tags associated with the public IP prefix.
+ * @member {number}
+ * [backendIPConfiguration.publicIPAddress.publicIPPrefix.prefixLength] The
+ * Length of the Public IP Prefix.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.publicIPPrefix.ipPrefix] The
+ * allocated Prefix
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.publicIPPrefix.publicIPAddresses]
+ * The list of all referenced PublicIPAddresses
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.publicIPPrefix.resourceGuid] The
+ * resource GUID property of the public IP prefix resource.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.publicIPPrefix.provisioningState]
+ * The provisioning state of the Public IP prefix resource. Possible values
+ * are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string}
+ * [backendIPConfiguration.publicIPAddress.publicIPPrefix.etag] A unique
+ * read-only string that changes whenever the resource is updated.
+ * @member {array}
+ * [backendIPConfiguration.publicIPAddress.publicIPPrefix.zones] A list of
+ * availability zones denoting the IP allocated for the resource needs to come
+ * from.
  * @member {number}
  * [backendIPConfiguration.publicIPAddress.idleTimeoutInMinutes] The idle
  * timeout of the public IP address.
@@ -843,6 +885,55 @@ export interface ServiceEndpointPropertiesFormat {
 
 /**
  * @class
+ * Initializes a new instance of the ServiceEndpointPolicyDefinition class.
+ * @constructor
+ * Service Endpoint policy definitions.
+ *
+ * @member {string} [description] A description for this rule. Restricted to
+ * 140 chars.
+ * @member {string} [service] service endpoint name.
+ * @member {array} [serviceResources] A list of service resources.
+ * @member {string} [provisioningState] The provisioning state of the service
+ * end point policy definition. Possible values are: 'Updating', 'Deleting',
+ * and 'Failed'.
+ * @member {string} [name] The name of the resource that is unique within a
+ * resource group. This name can be used to access the resource.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ServiceEndpointPolicyDefinition extends SubResource {
+  description?: string;
+  service?: string;
+  serviceResources?: string[];
+  provisioningState?: string;
+  name?: string;
+  etag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicy class.
+ * @constructor
+ * Service End point policy resource.
+ *
+ * @member {array} [serviceEndpointPolicyDefinitions] A collection of service
+ * endpoint policy definitions of the service endpoint policy.
+ * @member {string} [resourceGuid] The resource GUID property of the service
+ * endpoint policy resource.
+ * @member {string} [provisioningState] The provisioning state of the service
+ * endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ */
+export interface ServiceEndpointPolicy extends Resource {
+  serviceEndpointPolicyDefinitions?: ServiceEndpointPolicyDefinition[];
+  resourceGuid?: string;
+  provisioningState?: string;
+  etag?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PublicIPAddressSku class.
  * @constructor
  * SKU of a public IP address
@@ -883,7 +974,7 @@ export interface PublicIPAddressDnsSettings {
  * @class
  * Initializes a new instance of the IpTag class.
  * @constructor
- * Contains the IpTag associated with the public IP address
+ * Contains the IpTag associated with the object
  *
  * @member {string} [ipTagType] Gets or sets the ipTag type: Example
  * FirstPartyUsage.
@@ -893,6 +984,69 @@ export interface PublicIPAddressDnsSettings {
 export interface IpTag {
   ipTagType?: string;
   tag?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPPrefixSku class.
+ * @constructor
+ * SKU of a public IP prefix
+ *
+ * @member {string} [name] Name of a public IP prefix SKU. Possible values
+ * include: 'Standard'
+ */
+export interface PublicIPPrefixSku {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReferencedPublicIpAddress class.
+ * @constructor
+ * @member {string} [id] The PublicIPAddress Reference
+ */
+export interface ReferencedPublicIpAddress {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPPrefix class.
+ * @constructor
+ * Public IP prefix resource.
+ *
+ * @member {object} [sku] The public IP prefix SKU.
+ * @member {string} [sku.name] Name of a public IP prefix SKU. Possible values
+ * include: 'Standard'
+ * @member {string} [publicIPAddressVersion] The public IP address version.
+ * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+ * 'IPv6'
+ * @member {array} [ipTags] The list of tags associated with the public IP
+ * prefix.
+ * @member {number} [prefixLength] The Length of the Public IP Prefix.
+ * @member {string} [ipPrefix] The allocated Prefix
+ * @member {array} [publicIPAddresses] The list of all referenced
+ * PublicIPAddresses
+ * @member {string} [resourceGuid] The resource GUID property of the public IP
+ * prefix resource.
+ * @member {string} [provisioningState] The provisioning state of the Public IP
+ * prefix resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ * @member {array} [zones] A list of availability zones denoting the IP
+ * allocated for the resource needs to come from.
+ */
+export interface PublicIPPrefix extends Resource {
+  sku?: PublicIPPrefixSku;
+  publicIPAddressVersion?: string;
+  ipTags?: IpTag[];
+  prefixLength?: number;
+  ipPrefix?: string;
+  publicIPAddresses?: ReferencedPublicIpAddress[];
+  resourceGuid?: string;
+  provisioningState?: string;
+  etag?: string;
+  zones?: string[];
 }
 
 /**
@@ -958,6 +1112,8 @@ export interface IpTag {
  * read-only string that changes whenever the resource is updated.
  * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
+ * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
@@ -997,6 +1153,30 @@ export interface IpTag {
  * address.
  * @member {string} [ipAddress] The IP address associated with the public IP
  * address resource.
+ * @member {object} [publicIPPrefix] The Public IP Prefix this Public IP
+ * Address should be allocated from.
+ * @member {object} [publicIPPrefix.sku] The public IP prefix SKU.
+ * @member {string} [publicIPPrefix.sku.name] Name of a public IP prefix SKU.
+ * Possible values include: 'Standard'
+ * @member {string} [publicIPPrefix.publicIPAddressVersion] The public IP
+ * address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
+ * include: 'IPv4', 'IPv6'
+ * @member {array} [publicIPPrefix.ipTags] The list of tags associated with the
+ * public IP prefix.
+ * @member {number} [publicIPPrefix.prefixLength] The Length of the Public IP
+ * Prefix.
+ * @member {string} [publicIPPrefix.ipPrefix] The allocated Prefix
+ * @member {array} [publicIPPrefix.publicIPAddresses] The list of all
+ * referenced PublicIPAddresses
+ * @member {string} [publicIPPrefix.resourceGuid] The resource GUID property of
+ * the public IP prefix resource.
+ * @member {string} [publicIPPrefix.provisioningState] The provisioning state
+ * of the Public IP prefix resource. Possible values are: 'Updating',
+ * 'Deleting', and 'Failed'.
+ * @member {string} [publicIPPrefix.etag] A unique read-only string that
+ * changes whenever the resource is updated.
+ * @member {array} [publicIPPrefix.zones] A list of availability zones denoting
+ * the IP allocated for the resource needs to come from.
  * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
  * address.
  * @member {string} [resourceGuid] The resource GUID property of the public IP
@@ -1016,6 +1196,7 @@ export interface PublicIPAddress extends Resource {
   dnsSettings?: PublicIPAddressDnsSettings;
   ipTags?: IpTag[];
   ipAddress?: string;
+  publicIPPrefix?: PublicIPPrefix;
   idleTimeoutInMinutes?: number;
   resourceGuid?: string;
   provisioningState?: string;
@@ -1068,6 +1249,8 @@ export interface PublicIPAddress extends Resource {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -1110,6 +1293,33 @@ export interface PublicIPAddress extends Resource {
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
+ * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
+ * @member {object} [publicIPAddress.publicIPPrefix.sku] The public IP prefix
+ * SKU.
+ * @member {string} [publicIPAddress.publicIPPrefix.sku.name] Name of a public
+ * IP prefix SKU. Possible values include: 'Standard'
+ * @member {string} [publicIPAddress.publicIPPrefix.publicIPAddressVersion] The
+ * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
+ * values include: 'IPv4', 'IPv6'
+ * @member {array} [publicIPAddress.publicIPPrefix.ipTags] The list of tags
+ * associated with the public IP prefix.
+ * @member {number} [publicIPAddress.publicIPPrefix.prefixLength] The Length of
+ * the Public IP Prefix.
+ * @member {string} [publicIPAddress.publicIPPrefix.ipPrefix] The allocated
+ * Prefix
+ * @member {array} [publicIPAddress.publicIPPrefix.publicIPAddresses] The list
+ * of all referenced PublicIPAddresses
+ * @member {string} [publicIPAddress.publicIPPrefix.resourceGuid] The resource
+ * GUID property of the public IP prefix resource.
+ * @member {string} [publicIPAddress.publicIPPrefix.provisioningState] The
+ * provisioning state of the Public IP prefix resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [publicIPAddress.publicIPPrefix.etag] A unique read-only
+ * string that changes whenever the resource is updated.
+ * @member {array} [publicIPAddress.publicIPPrefix.zones] A list of
+ * availability zones denoting the IP allocated for the resource needs to come
+ * from.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -1198,6 +1408,8 @@ export interface ResourceNavigationLink extends SubResource {
  * @member {string} [routeTable.etag] Gets a unique read-only string that
  * changes whenever the resource is updated.
  * @member {array} [serviceEndpoints] An array of service endpoints.
+ * @member {array} [serviceEndpointPolicies] An array of service endpoint
+ * policies.
  * @member {array} [ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [resourceNavigationLinks] Gets an array of references to the
@@ -1213,6 +1425,7 @@ export interface Subnet extends SubResource {
   networkSecurityGroup?: NetworkSecurityGroup;
   routeTable?: RouteTable;
   serviceEndpoints?: ServiceEndpointPropertiesFormat[];
+  serviceEndpointPolicies?: ServiceEndpointPolicy[];
   readonly ipConfigurations?: IPConfiguration[];
   resourceNavigationLinks?: ResourceNavigationLink[];
   provisioningState?: string;
@@ -1275,6 +1488,8 @@ export interface Subnet extends SubResource {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -1353,6 +1568,9 @@ export interface Subnet extends SubResource {
  * updated.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -1396,6 +1614,33 @@ export interface Subnet extends SubResource {
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
+ * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
+ * @member {object} [publicIPAddress.publicIPPrefix.sku] The public IP prefix
+ * SKU.
+ * @member {string} [publicIPAddress.publicIPPrefix.sku.name] Name of a public
+ * IP prefix SKU. Possible values include: 'Standard'
+ * @member {string} [publicIPAddress.publicIPPrefix.publicIPAddressVersion] The
+ * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
+ * values include: 'IPv4', 'IPv6'
+ * @member {array} [publicIPAddress.publicIPPrefix.ipTags] The list of tags
+ * associated with the public IP prefix.
+ * @member {number} [publicIPAddress.publicIPPrefix.prefixLength] The Length of
+ * the Public IP Prefix.
+ * @member {string} [publicIPAddress.publicIPPrefix.ipPrefix] The allocated
+ * Prefix
+ * @member {array} [publicIPAddress.publicIPPrefix.publicIPAddresses] The list
+ * of all referenced PublicIPAddresses
+ * @member {string} [publicIPAddress.publicIPPrefix.resourceGuid] The resource
+ * GUID property of the public IP prefix resource.
+ * @member {string} [publicIPAddress.publicIPPrefix.provisioningState] The
+ * provisioning state of the Public IP prefix resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [publicIPAddress.publicIPPrefix.etag] A unique read-only
+ * string that changes whenever the resource is updated.
+ * @member {array} [publicIPAddress.publicIPPrefix.zones] A list of
+ * availability zones denoting the IP allocated for the resource needs to come
+ * from.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -1620,6 +1865,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * read-only string that changes whenever the resource is updated.
  * @member {array} [ipConfiguration.subnet.serviceEndpoints] An array of
  * service endpoints.
+ * @member {array} [ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [ipConfiguration.subnet.ipConfigurations] Gets an array of
  * references to the network interface IP configurations using subnet.
  * @member {array} [ipConfiguration.subnet.resourceNavigationLinks] Gets an
@@ -1709,6 +1956,9 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
  * @member {array}
+ * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies]
+ * An array of service endpoint policies.
+ * @member {array}
  * [ipConfiguration.publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -1758,6 +2008,38 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * associated with the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.ipAddress] The IP address
  * associated with the public IP address resource.
+ * @member {object} [ipConfiguration.publicIPAddress.publicIPPrefix] The Public
+ * IP Prefix this Public IP Address should be allocated from.
+ * @member {object} [ipConfiguration.publicIPAddress.publicIPPrefix.sku] The
+ * public IP prefix SKU.
+ * @member {string} [ipConfiguration.publicIPAddress.publicIPPrefix.sku.name]
+ * Name of a public IP prefix SKU. Possible values include: 'Standard'
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.publicIPPrefix.publicIPAddressVersion] The
+ * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
+ * values include: 'IPv4', 'IPv6'
+ * @member {array} [ipConfiguration.publicIPAddress.publicIPPrefix.ipTags] The
+ * list of tags associated with the public IP prefix.
+ * @member {number}
+ * [ipConfiguration.publicIPAddress.publicIPPrefix.prefixLength] The Length of
+ * the Public IP Prefix.
+ * @member {string} [ipConfiguration.publicIPAddress.publicIPPrefix.ipPrefix]
+ * The allocated Prefix
+ * @member {array}
+ * [ipConfiguration.publicIPAddress.publicIPPrefix.publicIPAddresses] The list
+ * of all referenced PublicIPAddresses
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.publicIPPrefix.resourceGuid] The resource
+ * GUID property of the public IP prefix resource.
+ * @member {string}
+ * [ipConfiguration.publicIPAddress.publicIPPrefix.provisioningState] The
+ * provisioning state of the Public IP prefix resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [ipConfiguration.publicIPAddress.publicIPPrefix.etag] A
+ * unique read-only string that changes whenever the resource is updated.
+ * @member {array} [ipConfiguration.publicIPAddress.publicIPPrefix.zones] A
+ * list of availability zones denoting the IP allocated for the resource needs
+ * to come from.
  * @member {number} [ipConfiguration.publicIPAddress.idleTimeoutInMinutes] The
  * idle timeout of the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.resourceGuid] The resource
@@ -3528,6 +3810,8 @@ export interface LoadBalancerSku {
  * @member {string} [subnet.routeTable.etag] Gets a unique read-only string
  * that changes whenever the resource is updated.
  * @member {array} [subnet.serviceEndpoints] An array of service endpoints.
+ * @member {array} [subnet.serviceEndpointPolicies] An array of service
+ * endpoint policies.
  * @member {array} [subnet.ipConfigurations] Gets an array of references to the
  * network interface IP configurations using subnet.
  * @member {array} [subnet.resourceNavigationLinks] Gets an array of references
@@ -3603,6 +3887,9 @@ export interface LoadBalancerSku {
  * updated.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.serviceEndpoints] An
  * array of service endpoints.
+ * @member {array}
+ * [publicIPAddress.ipConfiguration.subnet.serviceEndpointPolicies] An array of
+ * service endpoint policies.
  * @member {array} [publicIPAddress.ipConfiguration.subnet.ipConfigurations]
  * Gets an array of references to the network interface IP configurations using
  * subnet.
@@ -3646,6 +3933,33 @@ export interface LoadBalancerSku {
  * the public IP address.
  * @member {string} [publicIPAddress.ipAddress] The IP address associated with
  * the public IP address resource.
+ * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
+ * Public IP Address should be allocated from.
+ * @member {object} [publicIPAddress.publicIPPrefix.sku] The public IP prefix
+ * SKU.
+ * @member {string} [publicIPAddress.publicIPPrefix.sku.name] Name of a public
+ * IP prefix SKU. Possible values include: 'Standard'
+ * @member {string} [publicIPAddress.publicIPPrefix.publicIPAddressVersion] The
+ * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
+ * values include: 'IPv4', 'IPv6'
+ * @member {array} [publicIPAddress.publicIPPrefix.ipTags] The list of tags
+ * associated with the public IP prefix.
+ * @member {number} [publicIPAddress.publicIPPrefix.prefixLength] The Length of
+ * the Public IP Prefix.
+ * @member {string} [publicIPAddress.publicIPPrefix.ipPrefix] The allocated
+ * Prefix
+ * @member {array} [publicIPAddress.publicIPPrefix.publicIPAddresses] The list
+ * of all referenced PublicIPAddresses
+ * @member {string} [publicIPAddress.publicIPPrefix.resourceGuid] The resource
+ * GUID property of the public IP prefix resource.
+ * @member {string} [publicIPAddress.publicIPPrefix.provisioningState] The
+ * provisioning state of the Public IP prefix resource. Possible values are:
+ * 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [publicIPAddress.publicIPPrefix.etag] A unique read-only
+ * string that changes whenever the resource is updated.
+ * @member {array} [publicIPAddress.publicIPPrefix.zones] A list of
+ * availability zones denoting the IP allocated for the resource needs to come
+ * from.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -7261,6 +7575,18 @@ export interface PublicIPAddressListResult extends Array<PublicIPAddress> {
 
 /**
  * @class
+ * Initializes a new instance of the PublicIPPrefixListResult class.
+ * @constructor
+ * Response for ListPublicIpPrefixes API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface PublicIPPrefixListResult extends Array<PublicIPPrefix> {
+  nextLink?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the RouteFilterListResult class.
  * @constructor
  * Response for the ListRouteFilters API service call.
@@ -7511,5 +7837,31 @@ export interface ListVpnGatewaysResult extends Array<VpnGateway> {
  * results if there are any.
  */
 export interface ListVpnConnectionsResult extends Array<VpnConnection> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicyListResult class.
+ * @constructor
+ * Response for ListServiceEndpointPolicies API service call.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ServiceEndpointPolicyListResult extends Array<ServiceEndpointPolicy> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceEndpointPolicyDefinitionListResult class.
+ * @constructor
+ * Response for ListServiceEndpointPolicyDefinition API service call. Retrieves
+ * all service endpoint policy definition that belongs to a service endpoint
+ * policy.
+ *
+ * @member {string} [nextLink] The URL to get the next set of results.
+ */
+export interface ServiceEndpointPolicyDefinitionListResult extends Array<ServiceEndpointPolicyDefinition> {
   nextLink?: string;
 }
