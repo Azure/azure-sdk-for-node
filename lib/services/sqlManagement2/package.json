@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/sqlManagementClient.js",
   "types": "./lib/sqlManagementClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/sqlManagement2",
+  "homepage": "https://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
