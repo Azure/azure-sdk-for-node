@@ -882,12 +882,24 @@ export interface LocalizedName {
  * @member {string} [name.value] The name of the used resource.
  * @member {string} [name.localizedValue] The localized name of the used
  * resource.
+ * @member {object} [newProp] The details about the localizable name of the
+ * used resource.
+ * @member {string} [newProp.value] The name of the used resource.
+ * @member {string} [newProp.localizedValue] The localized name of the used
+ * resource.
+ * @member {object} [vmSizeFilter] The details about the localizable name of
+ * the used resource.
+ * @member {string} [vmSizeFilter.value] The name of the used resource.
+ * @member {string} [vmSizeFilter.localizedValue] The localized name of the
+ * used resource.
  */
 export interface Usage {
   unit?: string;
   currentValue?: number;
   limit?: number;
   name?: LocalizedName;
+  newProp?: LocalizedName;
+  vmSizeFilter?: LocalizedName;
 }
 
 /**
