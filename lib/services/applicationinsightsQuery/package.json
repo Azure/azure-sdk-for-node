@@ -4,8 +4,7 @@
   "description": "ApplicationInsightsDataClient Library with typescript type definitions for node.js and browser.",
   "version": "",
   "dependencies": {
-    "ms-rest-azure-js": "~0.12.123",
-    "ms-rest-nodeauth": "^0.3.0"
+    "ms-rest-azure-js": "~0.12.123"
   },
   "keywords": [
     "node",
