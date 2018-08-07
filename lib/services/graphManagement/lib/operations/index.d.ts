@@ -1887,13 +1887,12 @@ export interface ServicePrincipals {
 
 
     /**
-     * Gets service principal information from the directory.
+     * Gets service principal information from the directory. Query by objectId or
+     * pass a filter to query by appId
      *
      * @param {string} objectId The object ID of the service principal to get.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1904,16 +1903,15 @@ export interface ServicePrincipals {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(objectId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
+    getWithHttpOperationResponse(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
 
     /**
-     * Gets service principal information from the directory.
+     * Gets service principal information from the directory. Query by objectId or
+     * pass a filter to query by appId
      *
      * @param {string} objectId The object ID of the service principal to get.
      *
      * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1940,9 +1938,9 @@ export interface ServicePrincipals {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(objectId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
+    get(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
     get(objectId: string, callback: ServiceCallback<models.ServicePrincipal>): void;
-    get(objectId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
+    get(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
 
 
     /**
@@ -2995,6 +2993,8 @@ export interface OAuth2Operations {
 
 
     /**
+     * Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter]
@@ -3011,6 +3011,8 @@ export interface OAuth2Operations {
     getWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OAuth2>>;
 
     /**
+     * Queries OAuth2 permissions for the relevant SP ObjectId of an app.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter]
@@ -3046,6 +3048,8 @@ export interface OAuth2Operations {
 
 
     /**
+     * Grants OAuth2 permissions for the relevant resource Ids of an app.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.body]
@@ -3082,6 +3086,8 @@ export interface OAuth2Operations {
     postWithHttpOperationResponse(options?: { body? : models.OAuth2, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OAuth2>>;
 
     /**
+     * Grants OAuth2 permissions for the relevant resource Ids of an app.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.body]
