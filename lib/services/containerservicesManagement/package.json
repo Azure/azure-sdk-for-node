@@ -14,7 +14,7 @@
   "license": "MIT",
   "main": "./lib/containerServiceClient.js",
   "types": "./lib/containerServiceClient.d.ts",
-  "homepage": "https://github.com/azure/azure-sdk-for-node/lib/services/containerservicesManagement",
+  "homepage": "https://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/azure-sdk-for-node.git"
