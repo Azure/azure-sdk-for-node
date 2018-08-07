@@ -5883,6 +5883,9 @@ export interface ExpressRouteCircuits {
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
      *
+     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
+     * on the circuit.
+     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -5960,6 +5963,9 @@ export interface ExpressRouteCircuits {
      * 'Failed'.
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
+     *
+     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
+     * on the circuit.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -6628,6 +6634,9 @@ export interface ExpressRouteCircuits {
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
      *
+     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
+     * on the circuit.
+     *
      * @param {string} [parameters.id] Resource ID.
      *
      * @param {string} [parameters.location] Resource location.
@@ -6705,6 +6714,9 @@ export interface ExpressRouteCircuits {
      * 'Failed'.
      *
      * @param {string} [parameters.gatewayManagerEtag] The GatewayManager Etag.
+     *
+     * @param {boolean} [parameters.allowGlobalReach] Flag to enable Global Reach
+     * on the circuit.
      *
      * @param {string} [parameters.id] Resource ID.
      *
@@ -10735,6 +10747,10 @@ export interface InboundNatRules {
      * using the SQL AlwaysOn Availability Groups in SQL server. This setting can't
      * be changed after you create the endpoint.
      *
+     * @param {boolean} [inboundNatRuleParameters.enableTcpReset] Receive
+     * bidirectional TCP Reset on TCP flow idle timeout or unexpected connection
+     * termination. This element is only used when the protocol is set to TCP.
+     *
      * @param {string} [inboundNatRuleParameters.provisioningState] Gets the
      * provisioning state of the public IP resource. Possible values are:
      * 'Updating', 'Deleting', and 'Failed'.
@@ -10799,6 +10815,10 @@ export interface InboundNatRules {
      * configure a SQL AlwaysOn Availability Group. This setting is required when
      * using the SQL AlwaysOn Availability Groups in SQL server. This setting can't
      * be changed after you create the endpoint.
+     *
+     * @param {boolean} [inboundNatRuleParameters.enableTcpReset] Receive
+     * bidirectional TCP Reset on TCP flow idle timeout or unexpected connection
+     * termination. This element is only used when the protocol is set to TCP.
      *
      * @param {string} [inboundNatRuleParameters.provisioningState] Gets the
      * provisioning state of the public IP resource. Possible values are:
@@ -10946,6 +10966,10 @@ export interface InboundNatRules {
      * using the SQL AlwaysOn Availability Groups in SQL server. This setting can't
      * be changed after you create the endpoint.
      *
+     * @param {boolean} [inboundNatRuleParameters.enableTcpReset] Receive
+     * bidirectional TCP Reset on TCP flow idle timeout or unexpected connection
+     * termination. This element is only used when the protocol is set to TCP.
+     *
      * @param {string} [inboundNatRuleParameters.provisioningState] Gets the
      * provisioning state of the public IP resource. Possible values are:
      * 'Updating', 'Deleting', and 'Failed'.
@@ -11010,6 +11034,10 @@ export interface InboundNatRules {
      * configure a SQL AlwaysOn Availability Group. This setting is required when
      * using the SQL AlwaysOn Availability Groups in SQL server. This setting can't
      * be changed after you create the endpoint.
+     *
+     * @param {boolean} [inboundNatRuleParameters.enableTcpReset] Receive
+     * bidirectional TCP Reset on TCP flow idle timeout or unexpected connection
+     * termination. This element is only used when the protocol is set to TCP.
      *
      * @param {string} [inboundNatRuleParameters.provisioningState] Gets the
      * provisioning state of the public IP resource. Possible values are:
