@@ -16954,6 +16954,8 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
+     * @param {array} parameters.queries List of traffic queries.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -16980,6 +16982,8 @@ export interface NetworkWatchers {
      * @param {string} parameters.targetResourceId The ID of the target resource to
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
+     *
+     * @param {array} parameters.queries List of traffic queries.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -18079,6 +18083,8 @@ export interface NetworkWatchers {
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
      *
+     * @param {array} parameters.queries List of traffic queries.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -18105,6 +18111,8 @@ export interface NetworkWatchers {
      * @param {string} parameters.targetResourceId The ID of the target resource to
      * perform network configuration diagnostic. Valid options are VM,
      * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
+     *
+     * @param {array} parameters.queries List of traffic queries.
      *
      * @param {object} [options] Optional Parameters.
      *

@@ -5414,7 +5414,7 @@ export interface TrafficQuery {
  */
 export interface NetworkConfigurationDiagnosticParameters {
   targetResourceId: string;
-  readonly queries: TrafficQuery[];
+  queries: TrafficQuery[];
 }
 
 /**
