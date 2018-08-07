@@ -9,7 +9,7 @@ export { BaseResource, CloudError };
  */
 export interface MetricsPostBodySchemaParameters {
     /**
-     * @member {MetricId} [metricId] Possible values include: 'requests/count',
+     * @member {MetricId} metricId Possible values include: 'requests/count',
      * 'requests/duration', 'requests/failed', 'users/count',
      * 'users/authenticated', 'pageViews/count', 'pageViews/duration',
      * 'client/processingDuration', 'client/receiveDuration',
@@ -29,7 +29,7 @@ export interface MetricsPostBodySchemaParameters {
      * 'availabilityResults/duration', 'billing/telemetryCount',
      * 'customEvents/count'
      */
-    metricId?: MetricId;
+    metricId: MetricId;
     /**
      * @member {string} [timespan]
      */
@@ -158,17 +158,17 @@ export interface MetricsResult {
  */
 export interface MetricsResultsItem {
     /**
-     * @member {string} [id] The specified ID for this metric.
+     * @member {string} id The specified ID for this metric.
      */
-    id?: string;
+    id: string;
     /**
-     * @member {number} [status] The HTTP status code of this metric query.
+     * @member {number} status The HTTP status code of this metric query.
      */
-    status?: number;
+    status: number;
     /**
-     * @member {MetricsResult} [body] The results of this metric query.
+     * @member {MetricsResult} body The results of this metric query.
      */
-    body?: MetricsResult;
+    body: MetricsResult;
 }
 /**
  * @interface
@@ -406,12 +406,137 @@ export interface EventsClientInfo {
     countryOrRegion?: string;
 }
 /**
+ * Contains the possible cases for EventsResultData.
+ */
+export declare type EventsResultDataUnion = EventsResultData | EventsTraceResult | EventsCustomEventResult | EventsPageViewResult | EventsBrowserTimingResult | EventsRequestResult | EventsDependencyResult | EventsExceptionResult | EventsAvailabilityResultResult | EventsPerformanceCounterResult | EventsCustomMetricResult;
+/**
  * @interface
  * An interface representing EventsResultData.
  * Events query result data.
  *
  */
 export interface EventsResultData {
+    /**
+     * @member {string} type Polymorphic Discriminator
+     */
+    type: "eventsResultData";
+    /**
+     * @member {string} [id] The unique ID for this event.
+     */
+    id?: string;
+    /**
+     * @member {number} [count] Count of the event
+     */
+    count?: number;
+    /**
+     * @member {Date} [timestamp] Timestamp of the event
+     */
+    timestamp?: Date;
+    /**
+     * @member {EventsResultDataCustomDimensions} [customDimensions] Custom
+     * dimensions of the event
+     */
+    customDimensions?: EventsResultDataCustomDimensions;
+    /**
+     * @member {EventsResultDataCustomMeasurements} [customMeasurements] Custom
+     * measurements of the event
+     */
+    customMeasurements?: EventsResultDataCustomMeasurements;
+    /**
+     * @member {EventsOperationInfo} [operation] Operation info of the event
+     */
+    operation?: EventsOperationInfo;
+    /**
+     * @member {EventsSessionInfo} [session] Session info of the event
+     */
+    session?: EventsSessionInfo;
+    /**
+     * @member {EventsUserInfo} [user] User info of the event
+     */
+    user?: EventsUserInfo;
+    /**
+     * @member {EventsCloudInfo} [cloud] Cloud info of the event
+     */
+    cloud?: EventsCloudInfo;
+    /**
+     * @member {EventsAiInfo} [ai] AI info of the event
+     */
+    ai?: EventsAiInfo;
+    /**
+     * @member {EventsApplicationInfo} [application] Application info of the
+     * event
+     */
+    application?: EventsApplicationInfo;
+    /**
+     * @member {EventsClientInfo} [client] Client info of the event
+     */
+    client?: EventsClientInfo;
+}
+/**
+ * @interface
+ * An interface representing EventsResults.
+ * An events query result.
+ *
+ */
+export interface EventsResults {
+    /**
+     * @member {string} [odatacontext] OData context metadata endpoint for this
+     * response
+     */
+    odatacontext?: string;
+    /**
+     * @member {ErrorInfo[]} [aimessages] OData messages for this response.
+     */
+    aimessages?: ErrorInfo[];
+    /**
+     * @member {EventsResultDataUnion[]} [value] Contents of the events query
+     * result.
+     */
+    value?: EventsResultDataUnion[];
+}
+/**
+ * @interface
+ * An interface representing EventsResult.
+ * An event query result.
+ *
+ */
+export interface EventsResult {
+    /**
+     * @member {ErrorInfo[]} [aimessages] OData messages for this response.
+     */
+    aimessages?: ErrorInfo[];
+    /**
+     * @member {EventsResultDataUnion} [value]
+     */
+    value?: EventsResultDataUnion;
+}
+/**
+ * @interface
+ * An interface representing EventsTraceInfo.
+ * The trace information
+ *
+ */
+export interface EventsTraceInfo {
+    /**
+     * @member {string} [message] The trace message
+     */
+    message?: string;
+    /**
+     * @member {number} [severityLevel] The trace severity level
+     */
+    severityLevel?: number;
+}
+/**
+ * @interface
+ * An interface representing EventsTraceResult.
+ * A trace result
+ *
+ */
+export interface EventsTraceResult {
+    /**
+     * @member {string} type Polymorphic Discriminator
+     */
+    type: "trace";
     /**
      * @member {string} [id] The unique ID for this event.
      */
@@ -464,72 +589,6 @@ export interface EventsResultData {
      */
     client?: EventsClientInfo;
     /**
-     * @member {string} type Polymorphic Discriminator
-     */
-    type: string;
-}
-/**
- * @interface
- * An interface representing EventsResults.
- * An events query result.
- *
- */
-export interface EventsResults {
-    /**
-     * @member {string} [odatacontext] OData context metadata endpoint for this
-     * response
-     */
-    odatacontext?: string;
-    /**
-     * @member {ErrorInfo[]} [aimessages] OData messages for this response.
-     */
-    aimessages?: ErrorInfo[];
-    /**
-     * @member {EventsResultData[]} [value] Contents of the events query result.
-     */
-    value?: EventsResultData[];
-}
-/**
- * @interface
- * An interface representing EventsResult.
- * An event query result.
- *
- */
-export interface EventsResult {
-    /**
-     * @member {ErrorInfo[]} [aimessages] OData messages for this response.
-     */
-    aimessages?: ErrorInfo[];
-    /**
-     * @member {EventsResultData} [value]
-     */
-    value?: EventsResultData;
-}
-/**
- * @interface
- * An interface representing EventsTraceInfo.
- * The trace information
- *
- */
-export interface EventsTraceInfo {
-    /**
-     * @member {string} [message] The trace message
-     */
-    message?: string;
-    /**
-     * @member {number} [severityLevel] The trace severity level
-     */
-    severityLevel?: number;
-}
-/**
- * @interface
- * An interface representing EventsTraceResult.
- * A trace result
- *
- * @extends EventsResultData
- */
-export interface EventsTraceResult extends EventsResultData {
-    /**
      * @member {EventsTraceInfo} [trace]
      */
     trace?: EventsTraceInfo;
@@ -551,9 +610,63 @@ export interface EventsCustomEventInfo {
  * An interface representing EventsCustomEventResult.
  * A custom event result
  *
- * @extends EventsResultData
  */
-export interface EventsCustomEventResult extends EventsResultData {
+export interface EventsCustomEventResult {
+    /**
+     * @member {string} type Polymorphic Discriminator
+     */
+    type: "customEvent";
+    /**
+     * @member {string} [id] The unique ID for this event.
+     */
+    id?: string;
+    /**
+     * @member {number} [count] Count of the event
+     */
+    count?: number;
+    /**
+     * @member {Date} [timestamp] Timestamp of the event
+     */
+    timestamp?: Date;
+    /**
+     * @member {EventsResultDataCustomDimensions} [customDimensions] Custom
+     * dimensions of the event
+     */
+    customDimensions?: EventsResultDataCustomDimensions;
+    /**
+     * @member {EventsResultDataCustomMeasurements} [customMeasurements] Custom
+     * measurements of the event
+     */
+    customMeasurements?: EventsResultDataCustomMeasurements;
+    /**
+     * @member {EventsOperationInfo} [operation] Operation info of the event
+     */
+    operation?: EventsOperationInfo;
+    /**
+     * @member {EventsSessionInfo} [session] Session info of the event
+     */
+    session?: EventsSessionInfo;
+    /**
+     * @member {EventsUserInfo} [user] User info of the event
+     */
+    user?: EventsUserInfo;
+    /**
+     * @member {EventsCloudInfo} [cloud] Cloud info of the event
+     */
+    cloud?: EventsCloudInfo;
+    /**
+     * @member {EventsAiInfo} [ai] AI info of the event
+     */
+    ai?: EventsAiInfo;
+    /**
+     * @member {EventsApplicationInfo} [application] Application info of the
+     * event
+     */
+    application?: EventsApplicationInfo;
+    /**
+     * @member {EventsClientInfo} [client] Client info of the event
+     */
+    client?: EventsClientInfo;
     /**
      * @member {EventsCustomEventInfo} [customEvent]
      */
@@ -589,9 +702,63 @@ export interface EventsPageViewInfo {
  * An interface representing EventsPageViewResult.
  * A page view result
  *
- * @extends EventsResultData
  */
-export interface EventsPageViewResult extends EventsResultData {
+export interface EventsPageViewResult {
+    /**
+     * @member {string} type Polymorphic Discriminator
+     */
+    type: "pageView";
+    /**
+     * @member {string} [id] The unique ID for this event.
+     */
+    id?: string;
+    /**
+     * @member {number} [count] Count of the event
+     */
+    count?: number;
+    /**
+     * @member {Date} [timestamp] Timestamp of the event
+     */
+    timestamp?: Date;
+    /**
+     * @member {EventsResultDataCustomDimensions} [customDimensions] Custom
+     * dimensions of the event
+     */
+    customDimensions?: EventsResultDataCustomDimensions;
+    /**
+     * @member {EventsResultDataCustomMeasurements} [customMeasurements] Custom
+     * measurements of the event
+     */
+    customMeasurements?: EventsResultDataCustomMeasurements;
+    /**
+     * @member {EventsOperationInfo} [operation] Operation info of the event
+     */
+    operation?: EventsOperationInfo;
+    /**
+     * @member {EventsSessionInfo} [session] Session info of the event
+     */
+    session?: EventsSessionInfo;
+    /**
+     * @member {EventsUserInfo} [user] User info of the event
+     */
+    user?: EventsUserInfo;
+    /**
+     * @member {EventsCloudInfo} [cloud] Cloud info of the event
+     */
+    cloud?: EventsCloudInfo;
+    /**
+     * @member {EventsAiInfo} [ai] AI info of the event
+     */
+    ai?: EventsAiInfo;
+    /**
+     * @member {EventsApplicationInfo} [application] Application info of the
+     * event
+     */
+    application?: EventsApplicationInfo;
+    /**
+     * @member {EventsClientInfo} [client] Client info of the event
+     */
+    client?: EventsClientInfo;
     /**
      * @member {EventsPageViewInfo} [pageView]
      */
@@ -662,9 +829,63 @@ export interface EventsClientPerformanceInfo {
  * An interface representing EventsBrowserTimingResult.
  * A browser timing result
  *
- * @extends EventsResultData
  */
-export interface EventsBrowserTimingResult extends EventsResultData {
+export interface EventsBrowserTimingResult {
+    /**
+     * @member {string} type Polymorphic Discriminator
+     */
+    type: "browserTiming";
+    /**
+     * @member {string} [id] The unique ID for this event.
+     */
+    id?: string;
+    /**
+     * @member {number} [count] Count of the event
+     */
+    count?: number;
+    /**
+     * @member {Date} [timestamp] Timestamp of the event
+     */
+    timestamp?: Date;
+    /**
+     * @member {EventsResultDataCustomDimensions} [customDimensions] Custom
+     * dimensions of the event
+     */
+    customDimensions?: EventsResultDataCustomDimensions;
+    /**
+     * @member {EventsResultDataCustomMeasurements} [customMeasurements] Custom
+     * measurements of the event
+     */
+    customMeasurements?: EventsResultDataCustomMeasurements;
+    /**
+     * @member {EventsOperationInfo} [operation] Operation info of the event
+     */
+    operation?: EventsOperationInfo;
+    /**
+     * @member {EventsSessionInfo} [session] Session info of the event
+     */
+    session?: EventsSessionInfo;
+    /**
+     * @member {EventsUserInfo} [user] User info of the event
+     */
+    user?: EventsUserInfo;
+    /**
+     * @member {EventsCloudInfo} [cloud] Cloud info of the event
+     */
+    cloud?: EventsCloudInfo;
+    /**
+     * @member {EventsAiInfo} [ai] AI info of the event
+     */
+    ai?: EventsAiInfo;
+    /**
+     * @member {EventsApplicationInfo} [application] Application info of the
+     * event
+     */
+    application?: EventsApplicationInfo;
+    /**
+     * @member {EventsClientInfo} [client] Client info of the event
+     */
+    client?: EventsClientInfo;
     /**
      * @member {EventsBrowserTimingInfo} [browserTiming]
      */
@@ -719,9 +940,63 @@ export interface EventsRequestInfo {
  * An interface representing EventsRequestResult.
  * A request result
  *
- * @extends EventsResultData
  */
-export interface EventsRequestResult extends EventsResultData {
+export interface EventsRequestResult {
+    /**
+     * @member {string} type Polymorphic Discriminator
+     */
+    type: "request";
+    /**
+     * @member {string} [id] The unique ID for this event.
+     */
+    id?: string;
+    /**
+     * @member {number} [count] Count of the event
+     */
+    count?: number;
+    /**
+     * @member {Date} [timestamp] Timestamp of the event
+     */
+    timestamp?: Date;
+    /**
+     * @member {EventsResultDataCustomDimensions} [customDimensions] Custom
+     * dimensions of the event
+     */
+    customDimensions?: EventsResultDataCustomDimensions;
+    /**
+     * @member {EventsResultDataCustomMeasurements} [customMeasurements] Custom
+     * measurements of the event
+     */
+    customMeasurements?: EventsResultDataCustomMeasurements;
+    /**
+     * @member {EventsOperationInfo} [operation] Operation info of the event
+     */
+    operation?: EventsOperationInfo;
+    /**
+     * @member {EventsSessionInfo} [session] Session info of the event
+     */
+    session?: EventsSessionInfo;
+    /**
+     * @member {EventsUserInfo} [user] User info of the event
+     */
+    user?: EventsUserInfo;
+    /**
+     * @member {EventsCloudInfo} [cloud] Cloud info of the event
+     */
+    cloud?: EventsCloudInfo;
+    /**
+     * @member {EventsAiInfo} [ai] AI info of the event
+     */
+    ai?: EventsAiInfo;
+    /**
+     * @member {EventsApplicationInfo} [application] Application info of the
+     * event
+     */
+    application?: EventsApplicationInfo;
+    /**
+     * @member {EventsClientInfo} [client] Client info of the event
+     */
+    client?: EventsClientInfo;
     /**
      * @member {EventsRequestInfo} [request]
      */
@@ -777,9 +1052,63 @@ export interface EventsDependencyInfo {
  * An interface representing EventsDependencyResult.
  * A dependency result
  *
- * @extends EventsResultData
  */
-export interface EventsDependencyResult extends EventsResultData {
+export interface EventsDependencyResult {
+    /**
+     * @member {string} type Polymorphic Discriminator
+     */
+    type: "dependency";
+    /**
+     * @member {string} [id] The unique ID for this event.
+     */
+    id?: string;
+    /**
+     * @member {number} [count] Count of the event
+     */
+    count?: number;
+    /**
+     * @member {Date} [timestamp] Timestamp of the event
+     */
+    timestamp?: Date;
+    /**
+     * @member {EventsResultDataCustomDimensions} [customDimensions] Custom
+     * dimensions of the event
+     */
+    customDimensions?: EventsResultDataCustomDimensions;
+    /**
+     * @member {EventsResultDataCustomMeasurements} [customMeasurements] Custom
+     * measurements of the event
+     */
+    customMeasurements?: EventsResultDataCustomMeasurements;
+    /**
+     * @member {EventsOperationInfo} [operation] Operation info of the event
+     */
+    operation?: EventsOperationInfo;
+    /**
+     * @member {EventsSessionInfo} [session] Session info of the event
+     */
+    session?: EventsSessionInfo;
+    /**
+     * @member {EventsUserInfo} [user] User info of the event
+     */
+    user?: EventsUserInfo;
+    /**
+     * @member {EventsCloudInfo} [cloud] Cloud info of the event
+     */
+    cloud?: EventsCloudInfo;
+    /**
+     * @member {EventsAiInfo} [ai] AI info of the event
+     */
+    ai?: EventsAiInfo;
+    /**
+     * @member {EventsApplicationInfo} [application] Application info of the
+     * event
+     */
+    application?: EventsApplicationInfo;
+    /**
+     * @member {EventsClientInfo} [client] Client info of the event
+     */
+    client?: EventsClientInfo;
     /**
      * @member {EventsDependencyInfo} [dependency]
      */
@@ -922,9 +1251,63 @@ export interface EventsExceptionInfo {
  * An interface representing EventsExceptionResult.
  * An exception result
  *
- * @extends EventsResultData
  */
-export interface EventsExceptionResult extends EventsResultData {
+export interface EventsExceptionResult {
+    /**
+     * @member {string} type Polymorphic Discriminator
+     */
+    type: "exception";
+    /**
+     * @member {string} [id] The unique ID for this event.
+     */
+    id?: string;
+    /**
+     * @member {number} [count] Count of the event
+     */
+    count?: number;
+    /**
+     * @member {Date} [timestamp] Timestamp of the event
+     */
+    timestamp?: Date;
+    /**
+     * @member {EventsResultDataCustomDimensions} [customDimensions] Custom
+     * dimensions of the event
+     */
+    customDimensions?: EventsResultDataCustomDimensions;
+    /**
+     * @member {EventsResultDataCustomMeasurements} [customMeasurements] Custom
+     * measurements of the event
+     */
+    customMeasurements?: EventsResultDataCustomMeasurements;
+    /**
+     * @member {EventsOperationInfo} [operation] Operation info of the event
+     */
+    operation?: EventsOperationInfo;
+    /**
+     * @member {EventsSessionInfo} [session] Session info of the event
+     */
+    session?: EventsSessionInfo;
+    /**
+     * @member {EventsUserInfo} [user] User info of the event
+     */
+    user?: EventsUserInfo;
+    /**
+     * @member {EventsCloudInfo} [cloud] Cloud info of the event
+     */
+    cloud?: EventsCloudInfo;
+    /**
+     * @member {EventsAiInfo} [ai] AI info of the event
+     */
+    ai?: EventsAiInfo;
+    /**
+     * @member {EventsApplicationInfo} [application] Application info of the
+     * event
+     */
+    application?: EventsApplicationInfo;
+    /**
+     * @member {EventsClientInfo} [client] Client info of the event
+     */
+    client?: EventsClientInfo;
     /**
      * @member {EventsExceptionInfo} [exception]
      */
@@ -977,9 +1360,63 @@ export interface EventsAvailabilityResultInfo {
  * An interface representing EventsAvailabilityResultResult.
  * An availability result result
  *
- * @extends EventsResultData
  */
-export interface EventsAvailabilityResultResult extends EventsResultData {
+export interface EventsAvailabilityResultResult {
+    /**
+     * @member {string} type Polymorphic Discriminator
+     */
+    type: "availabilityResult";
+    /**
+     * @member {string} [id] The unique ID for this event.
+     */
+    id?: string;
+    /**
+     * @member {number} [count] Count of the event
+     */
+    count?: number;
+    /**
+     * @member {Date} [timestamp] Timestamp of the event
+     */
+    timestamp?: Date;
+    /**
+     * @member {EventsResultDataCustomDimensions} [customDimensions] Custom
+     * dimensions of the event
+     */
+    customDimensions?: EventsResultDataCustomDimensions;
+    /**
+     * @member {EventsResultDataCustomMeasurements} [customMeasurements] Custom
+     * measurements of the event
+     */
+    customMeasurements?: EventsResultDataCustomMeasurements;
+    /**
+     * @member {EventsOperationInfo} [operation] Operation info of the event
+     */
+    operation?: EventsOperationInfo;
+    /**
+     * @member {EventsSessionInfo} [session] Session info of the event
+     */
+    session?: EventsSessionInfo;
+    /**
+     * @member {EventsUserInfo} [user] User info of the event
+     */
+    user?: EventsUserInfo;
+    /**
+     * @member {EventsCloudInfo} [cloud] Cloud info of the event
+     */
+    cloud?: EventsCloudInfo;
+    /**
+     * @member {EventsAiInfo} [ai] AI info of the event
+     */
+    ai?: EventsAiInfo;
+    /**
+     * @member {EventsApplicationInfo} [application] Application info of the
+     * event
+     */
+    application?: EventsApplicationInfo;
+    /**
+     * @member {EventsClientInfo} [client] Client info of the event
+     */
+    client?: EventsClientInfo;
     /**
      * @member {EventsAvailabilityResultInfo} [availabilityResult]
      */
@@ -1023,9 +1460,63 @@ export interface EventsPerformanceCounterInfo {
  * An interface representing EventsPerformanceCounterResult.
  * A performance counter result
  *
- * @extends EventsResultData
  */
-export interface EventsPerformanceCounterResult extends EventsResultData {
+export interface EventsPerformanceCounterResult {
+    /**
+     * @member {string} type Polymorphic Discriminator
+     */
+    type: "performanceCounter";
+    /**
+     * @member {string} [id] The unique ID for this event.
+     */
+    id?: string;
+    /**
+     * @member {number} [count] Count of the event
+     */
+    count?: number;
+    /**
+     * @member {Date} [timestamp] Timestamp of the event
+     */
+    timestamp?: Date;
+    /**
+     * @member {EventsResultDataCustomDimensions} [customDimensions] Custom
+     * dimensions of the event
+     */
+    customDimensions?: EventsResultDataCustomDimensions;
+    /**
+     * @member {EventsResultDataCustomMeasurements} [customMeasurements] Custom
+     * measurements of the event
+     */
+    customMeasurements?: EventsResultDataCustomMeasurements;
+    /**
+     * @member {EventsOperationInfo} [operation] Operation info of the event
+     */
+    operation?: EventsOperationInfo;
+    /**
+     * @member {EventsSessionInfo} [session] Session info of the event
+     */
+    session?: EventsSessionInfo;
+    /**
+     * @member {EventsUserInfo} [user] User info of the event
+     */
+    user?: EventsUserInfo;
+    /**
+     * @member {EventsCloudInfo} [cloud] Cloud info of the event
+     */
+    cloud?: EventsCloudInfo;
+    /**
+     * @member {EventsAiInfo} [ai] AI info of the event
+     */
+    ai?: EventsAiInfo;
+    /**
+     * @member {EventsApplicationInfo} [application] Application info of the
+     * event
+     */
+    application?: EventsApplicationInfo;
+    /**
+     * @member {EventsClientInfo} [client] Client info of the event
+     */
+    client?: EventsClientInfo;
     /**
      * @member {EventsPerformanceCounterInfo} [performanceCounter]
      */
@@ -1072,9 +1563,63 @@ export interface EventsCustomMetricInfo {
  * An interface representing EventsCustomMetricResult.
  * A custom metric result
  *
- * @extends EventsResultData
  */
-export interface EventsCustomMetricResult extends EventsResultData {
+export interface EventsCustomMetricResult {
+    /**
+     * @member {string} type Polymorphic Discriminator
+     */
+    type: "customMetric";
+    /**
+     * @member {string} [id] The unique ID for this event.
+     */
+    id?: string;
+    /**
+     * @member {number} [count] Count of the event
+     */
+    count?: number;
+    /**
+     * @member {Date} [timestamp] Timestamp of the event
+     */
+    timestamp?: Date;
+    /**
+     * @member {EventsResultDataCustomDimensions} [customDimensions] Custom
+     * dimensions of the event
+     */
+    customDimensions?: EventsResultDataCustomDimensions;
+    /**
+     * @member {EventsResultDataCustomMeasurements} [customMeasurements] Custom
+     * measurements of the event
+     */
+    customMeasurements?: EventsResultDataCustomMeasurements;
+    /**
+     * @member {EventsOperationInfo} [operation] Operation info of the event
+     */
+    operation?: EventsOperationInfo;
+    /**
+     * @member {EventsSessionInfo} [session] Session info of the event
+     */
+    session?: EventsSessionInfo;
+    /**
+     * @member {EventsUserInfo} [user] User info of the event
+     */
+    user?: EventsUserInfo;
+    /**
+     * @member {EventsCloudInfo} [cloud] Cloud info of the event
+     */
+    cloud?: EventsCloudInfo;
+    /**
+     * @member {EventsAiInfo} [ai] AI info of the event
+     */
+    ai?: EventsAiInfo;
+    /**
+     * @member {EventsApplicationInfo} [application] Application info of the
+     * event
+     */
+    application?: EventsApplicationInfo;
+    /**
+     * @member {EventsClientInfo} [client] Client info of the event
+     */
+    client?: EventsClientInfo;
     /**
      * @member {EventsCustomMetricInfo} [customMetric]
      */

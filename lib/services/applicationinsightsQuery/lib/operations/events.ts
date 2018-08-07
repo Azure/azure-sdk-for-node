@@ -11,14 +11,13 @@
 import * as msRest from "ms-rest-js";
 import * as Models from "../models";
 import * as Mappers from "../models/eventsMappers";
+import * as Parameters from "../models/parameters";
 import { ApplicationInsightsDataClientContext } from "../applicationInsightsDataClientContext";
-
-const WebResource = msRest.WebResource;
 
 /** Class representing a Events. */
 export class Events {
   private readonly client: ApplicationInsightsDataClientContext;
-  private readonly serializer = new msRest.Serializer(Mappers);
+
   /**
    * Create a Events.
    * @param {ApplicationInsightsDataClientContext} client Reference to the service client.
@@ -49,202 +48,14 @@ export class Events {
    *
    * @reject {Error|ServiceError} The error object.
    */
-  async getByTypeWithHttpOperationResponse(appId: string, eventType: Models.EventType, options?: Models.EventsGetByTypeOptionalParams): Promise<msRest.HttpOperationResponse<Models.EventsResults>> {
-    let timespan = (options && options.timespan !== undefined) ? options.timespan : undefined;
-    let filter = (options && options.filter !== undefined) ? options.filter : undefined;
-    let search = (options && options.search !== undefined) ? options.search : undefined;
-    let orderby = (options && options.orderby !== undefined) ? options.orderby : undefined;
-    let select = (options && options.select !== undefined) ? options.select : undefined;
-    let skip = (options && options.skip !== undefined) ? options.skip : undefined;
-    let top = (options && options.top !== undefined) ? options.top : undefined;
-    let format = (options && options.format !== undefined) ? options.format : undefined;
-    let count = (options && options.count !== undefined) ? options.count : undefined;
-    let apply = (options && options.apply !== undefined) ? options.apply : undefined;
-
-    // Create HTTP transport objects
-    const httpRequest = new WebResource();
-    let operationRes: msRest.HttpOperationResponse;
-    try {
-      const operationArguments: msRest.OperationArguments = msRest.createOperationArguments(
-        {
-          appId,
-          eventType,
-          timespan,
-          filter,
-          search,
-          orderby,
-          select,
-          skip,
-          top,
-          format,
-          count,
-          apply,
-          "this.client.acceptLanguage": this.client.acceptLanguage
-        },
-        options);
-      operationRes = await this.client.sendOperationRequest(
-        httpRequest,
-        operationArguments,
-        {
-          httpMethod: "GET",
-          baseUrl: this.client.baseUri,
-          path: "v1/apps/{appId}/events/{eventType}",
-          urlParameters: [
-            {
-              parameterPath: "appId",
-              mapper: {
-                required: true,
-                serializedName: "appId",
-                type: {
-                  name: "String"
-                }
-              }
-            },
-            {
-              parameterPath: "eventType",
-              mapper: {
-                required: true,
-                serializedName: "eventType",
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          queryParameters: [
-            {
-              parameterPath: "timespan",
-              mapper: {
-                serializedName: "timespan",
-                type: {
-                  name: "String"
-                }
-              }
-            },
-            {
-              parameterPath: "filter",
-              mapper: {
-                serializedName: "$filter",
-                type: {
-                  name: "String"
-                }
-              }
-            },
-            {
-              parameterPath: "search",
-              mapper: {
-                serializedName: "$search",
-                type: {
-                  name: "String"
-                }
-              }
-            },
-            {
-              parameterPath: "orderby",
-              mapper: {
-                serializedName: "$orderby",
-                type: {
-                  name: "String"
-                }
-              }
-            },
-            {
-              parameterPath: "select",
-              mapper: {
-                serializedName: "$select",
-                type: {
-                  name: "String"
-                }
-              }
-            },
-            {
-              parameterPath: "skip",
-              mapper: {
-                serializedName: "$skip",
-                type: {
-                  name: "Number"
-                }
-              }
-            },
-            {
-              parameterPath: "top",
-              mapper: {
-                serializedName: "$top",
-                type: {
-                  name: "Number"
-                }
-              }
-            },
-            {
-              parameterPath: "format",
-              mapper: {
-                serializedName: "$format",
-                type: {
-                  name: "String"
-                }
-              }
-            },
-            {
-              parameterPath: "count",
-              mapper: {
-                serializedName: "$count",
-                type: {
-                  name: "Boolean"
-                }
-              }
-            },
-            {
-              parameterPath: "apply",
-              mapper: {
-                serializedName: "$apply",
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          headerParameters: [
-            {
-              parameterPath: "this.client.acceptLanguage",
-              mapper: {
-                serializedName: "accept-language",
-                defaultValue: 'en-US',
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          responses: {
-            200: {
-              bodyMapper: Mappers.EventsResults
-            },
-            default: {
-              bodyMapper: Mappers.ErrorResponse
-            }
-          },
-          serializer: this.serializer
-        });
-      // Deserialize Response
-      let statusCode = operationRes.status;
-      if (statusCode === 200) {
-        let parsedResponse = operationRes.parsedBody as { [key: string]: any };
-        try {
-          if (parsedResponse != undefined) {
-            const resultMapper = Mappers.EventsResults;
-            operationRes.parsedBody = this.serializer.deserialize(resultMapper, parsedResponse, 'operationRes.parsedBody');
-          }
-        } catch (error) {
-          let deserializationError = new msRest.RestError(`Error ${error} occurred in deserializing the responseBody - ${operationRes.bodyAsText}`);
-          deserializationError.request = msRest.stripRequest(httpRequest);
-          deserializationError.response = msRest.stripResponse(operationRes);
-          return Promise.reject(deserializationError);
-        }
-      }
-    } catch (err) {
-      return Promise.reject(err);
-    }
-    return Promise.resolve(operationRes);
+  getByTypeWithHttpOperationResponse(appId: string, eventType: Models.EventType, options?: Models.EventsGetByTypeOptionalParams): Promise<msRest.HttpOperationResponse<Models.EventsResults>> {
+    return this.client.sendOperationRequest(
+      {
+        appId,
+        eventType,
+        options
+      },
+      getByTypeOperationSpec);
   }
 
   /**
@@ -271,114 +82,15 @@ export class Events {
    *
    * @reject {Error|ServiceError} The error object.
    */
-  async getWithHttpOperationResponse(appId: string, eventType: Models.EventType, eventId: string, options?: Models.EventsGetOptionalParams): Promise<msRest.HttpOperationResponse<Models.EventsResults>> {
-    let timespan = (options && options.timespan !== undefined) ? options.timespan : undefined;
-
-    // Create HTTP transport objects
-    const httpRequest = new WebResource();
-    let operationRes: msRest.HttpOperationResponse;
-    try {
-      const operationArguments: msRest.OperationArguments = msRest.createOperationArguments(
-        {
-          appId,
-          eventType,
-          timespan,
-          eventId,
-          "this.client.acceptLanguage": this.client.acceptLanguage
-        },
-        options);
-      operationRes = await this.client.sendOperationRequest(
-        httpRequest,
-        operationArguments,
-        {
-          httpMethod: "GET",
-          baseUrl: this.client.baseUri,
-          path: "v1/apps/{appId}/events/{eventType}/{eventId}",
-          urlParameters: [
-            {
-              parameterPath: "appId",
-              mapper: {
-                required: true,
-                serializedName: "appId",
-                type: {
-                  name: "String"
-                }
-              }
-            },
-            {
-              parameterPath: "eventType",
-              mapper: {
-                required: true,
-                serializedName: "eventType",
-                type: {
-                  name: "String"
-                }
-              }
-            },
-            {
-              parameterPath: "eventId",
-              mapper: {
-                required: true,
-                serializedName: "eventId",
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          queryParameters: [
-            {
-              parameterPath: "timespan",
-              mapper: {
-                serializedName: "timespan",
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          headerParameters: [
-            {
-              parameterPath: "this.client.acceptLanguage",
-              mapper: {
-                serializedName: "accept-language",
-                defaultValue: 'en-US',
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          responses: {
-            200: {
-              bodyMapper: Mappers.EventsResults
-            },
-            default: {
-              bodyMapper: Mappers.ErrorResponse
-            }
-          },
-          serializer: this.serializer
-        });
-      // Deserialize Response
-      let statusCode = operationRes.status;
-      if (statusCode === 200) {
-        let parsedResponse = operationRes.parsedBody as { [key: string]: any };
-        try {
-          if (parsedResponse != undefined) {
-            const resultMapper = Mappers.EventsResults;
-            operationRes.parsedBody = this.serializer.deserialize(resultMapper, parsedResponse, 'operationRes.parsedBody');
-          }
-        } catch (error) {
-          let deserializationError = new msRest.RestError(`Error ${error} occurred in deserializing the responseBody - ${operationRes.bodyAsText}`);
-          deserializationError.request = msRest.stripRequest(httpRequest);
-          deserializationError.response = msRest.stripResponse(operationRes);
-          return Promise.reject(deserializationError);
-        }
-      }
-    } catch (err) {
-      return Promise.reject(err);
-    }
-    return Promise.resolve(operationRes);
+  getWithHttpOperationResponse(appId: string, eventType: Models.EventType, eventId: string, options?: Models.EventsGetOptionalParams): Promise<msRest.HttpOperationResponse<Models.EventsResults>> {
+    return this.client.sendOperationRequest(
+      {
+        appId,
+        eventType,
+        eventId,
+        options
+      },
+      getOperationSpec);
   }
 
   /**
@@ -397,89 +109,13 @@ export class Events {
    *
    * @reject {Error|ServiceError} The error object.
    */
-  async getOdataMetadataWithHttpOperationResponse(appId: string, options?: msRest.RequestOptionsBase): Promise<msRest.HttpOperationResponse<any>> {
-
-    // Create HTTP transport objects
-    const httpRequest = new WebResource();
-    let operationRes: msRest.HttpOperationResponse;
-    try {
-      const operationArguments: msRest.OperationArguments = msRest.createOperationArguments(
-        {
-          appId,
-          "this.client.acceptLanguage": this.client.acceptLanguage
-        },
-        options);
-      operationRes = await this.client.sendOperationRequest(
-        httpRequest,
-        operationArguments,
-        {
-          httpMethod: "GET",
-          baseUrl: this.client.baseUri,
-          path: "v1/apps/{appId}/events/$metadata",
-          urlParameters: [
-            {
-              parameterPath: "appId",
-              mapper: {
-                required: true,
-                serializedName: "appId",
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          headerParameters: [
-            {
-              parameterPath: "this.client.acceptLanguage",
-              mapper: {
-                serializedName: "accept-language",
-                defaultValue: 'en-US',
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          responses: {
-            200: {
-              bodyMapper: {
-                serializedName: "parsedResponse",
-                type: {
-                  name: "Object"
-                }
-              }
-            },
-            default: {
-              bodyMapper: Mappers.ErrorResponse
-            }
-          },
-          serializer: this.serializer
-        });
-      // Deserialize Response
-      let statusCode = operationRes.status;
-      if (statusCode === 200) {
-        let parsedResponse = operationRes.parsedBody as { [key: string]: any };
-        try {
-          if (parsedResponse != undefined) {
-            const resultMapper = {
-              serializedName: "parsedResponse",
-              type: {
-                name: "Object"
-              }
-            };
-            operationRes.parsedBody = this.serializer.deserialize(resultMapper, parsedResponse, 'operationRes.parsedBody');
-          }
-        } catch (error) {
-          let deserializationError = new msRest.RestError(`Error ${error} occurred in deserializing the responseBody - ${operationRes.bodyAsText}`);
-          deserializationError.request = msRest.stripRequest(httpRequest);
-          deserializationError.response = msRest.stripResponse(operationRes);
-          return Promise.reject(deserializationError);
-        }
-      }
-    } catch (err) {
-      return Promise.reject(err);
-    }
-    return Promise.resolve(operationRes);
+  getOdataMetadataWithHttpOperationResponse(appId: string, options?: msRest.RequestOptionsBase): Promise<msRest.HttpOperationResponse<any>> {
+    return this.client.sendOperationRequest(
+      {
+        appId,
+        options
+      },
+      getOdataMetadataOperationSpec);
   }
 
   /**
@@ -511,27 +147,8 @@ export class Events {
   getByType(appId: string, eventType: Models.EventType, options: Models.EventsGetByTypeOptionalParams): Promise<Models.EventsResults>;
   getByType(appId: string, eventType: Models.EventType, callback: msRest.ServiceCallback<Models.EventsResults>): void;
   getByType(appId: string, eventType: Models.EventType, options: Models.EventsGetByTypeOptionalParams, callback: msRest.ServiceCallback<Models.EventsResults>): void;
-  getByType(appId: string, eventType: Models.EventType, options?: any, callback?: msRest.ServiceCallback<Models.EventsResults>): any {
-    if (!callback && typeof options === 'function') {
-      callback = options;
-      options = undefined;
-    }
-    let cb = callback as msRest.ServiceCallback<Models.EventsResults>;
-    if (!callback) {
-      return this.getByTypeWithHttpOperationResponse(appId, eventType, options).then((operationRes: msRest.HttpOperationResponse) => {
-        return Promise.resolve(operationRes.parsedBody as Models.EventsResults);
-      }).catch((err: Error) => {
-        return Promise.reject(err);
-      });
-    } else {
-      msRest.promiseToCallback(this.getByTypeWithHttpOperationResponse(appId, eventType, options))((err: Error, data: msRest.HttpOperationResponse) => {
-        if (err) {
-          return cb(err);
-        }
-        let result = data.parsedBody as Models.EventsResults;
-        return cb(err, result, data.request, data);
-      });
-    }
+  getByType(appId: string, eventType: Models.EventType, options?: Models.EventsGetByTypeOptionalParams, callback?: msRest.ServiceCallback<Models.EventsResults>): any {
+    return msRest.responseToBody(this.getByTypeWithHttpOperationResponse.bind(this), appId, eventType, options, callback);
   }
 
   /**
@@ -566,26 +183,7 @@ export class Events {
   get(appId: string, eventType: Models.EventType, eventId: string, callback: msRest.ServiceCallback<Models.EventsResults>): void;
   get(appId: string, eventType: Models.EventType, eventId: string, options: Models.EventsGetOptionalParams, callback: msRest.ServiceCallback<Models.EventsResults>): void;
   get(appId: string, eventType: Models.EventType, eventId: string, options?: Models.EventsGetOptionalParams, callback?: msRest.ServiceCallback<Models.EventsResults>): any {
-    if (!callback && typeof options === 'function') {
-      callback = options;
-      options = undefined;
-    }
-    let cb = callback as msRest.ServiceCallback<Models.EventsResults>;
-    if (!callback) {
-      return this.getWithHttpOperationResponse(appId, eventType, eventId, options).then((operationRes: msRest.HttpOperationResponse) => {
-        return Promise.resolve(operationRes.parsedBody as Models.EventsResults);
-      }).catch((err: Error) => {
-        return Promise.reject(err);
-      });
-    } else {
-      msRest.promiseToCallback(this.getWithHttpOperationResponse(appId, eventType, eventId, options))((err: Error, data: msRest.HttpOperationResponse) => {
-        if (err) {
-          return cb(err);
-        }
-        let result = data.parsedBody as Models.EventsResults;
-        return cb(err, result, data.request, data);
-      });
-    }
+    return msRest.responseToBody(this.getWithHttpOperationResponse.bind(this), appId, eventType, eventId, options, callback);
   }
 
   /**
@@ -612,26 +210,92 @@ export class Events {
   getOdataMetadata(appId: string, callback: msRest.ServiceCallback<any>): void;
   getOdataMetadata(appId: string, options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<any>): void;
   getOdataMetadata(appId: string, options?: msRest.RequestOptionsBase, callback?: msRest.ServiceCallback<any>): any {
-    if (!callback && typeof options === 'function') {
-      callback = options;
-      options = undefined;
-    }
-    let cb = callback as msRest.ServiceCallback<any>;
-    if (!callback) {
-      return this.getOdataMetadataWithHttpOperationResponse(appId, options).then((operationRes: msRest.HttpOperationResponse) => {
-        return Promise.resolve(operationRes.parsedBody as any);
-      }).catch((err: Error) => {
-        return Promise.reject(err);
-      });
-    } else {
-      msRest.promiseToCallback(this.getOdataMetadataWithHttpOperationResponse(appId, options))((err: Error, data: msRest.HttpOperationResponse) => {
-        if (err) {
-          return cb(err);
-        }
-        let result = data.parsedBody as any;
-        return cb(err, result, data.request, data);
-      });
-    }
+    return msRest.responseToBody(this.getOdataMetadataWithHttpOperationResponse.bind(this), appId, options, callback);
   }
 
 }
+
+// Operation Specifications
+const serializer = new msRest.Serializer(Mappers);
+const getByTypeOperationSpec: msRest.OperationSpec = {
+  httpMethod: "GET",
+  path: "v1/apps/{appId}/events/{eventType}",
+  urlParameters: [
+    Parameters.appId,
+    Parameters.eventType
+  ],
+  queryParameters: [
+    Parameters.timespan,
+    Parameters.filter1,
+    Parameters.search,
+    Parameters.orderby1,
+    Parameters.select,
+    Parameters.skip,
+    Parameters.top1,
+    Parameters.format,
+    Parameters.count,
+    Parameters.apply
+  ],
+  headerParameters: [
+    Parameters.acceptLanguage
+  ],
+  responses: {
+    200: {
+      bodyMapper: Mappers.EventsResults
+    },
+    default: {
+      bodyMapper: Mappers.ErrorResponse
+    }
+  },
+  serializer
+};
+
+const getOperationSpec: msRest.OperationSpec = {
+  httpMethod: "GET",
+  path: "v1/apps/{appId}/events/{eventType}/{eventId}",
+  urlParameters: [
+    Parameters.appId,
+    Parameters.eventType,
+    Parameters.eventId
+  ],
+  queryParameters: [
+    Parameters.timespan
+  ],
+  headerParameters: [
+    Parameters.acceptLanguage
+  ],
+  responses: {
+    200: {
+      bodyMapper: Mappers.EventsResults
+    },
+    default: {
+      bodyMapper: Mappers.ErrorResponse
+    }
+  },
+  serializer
+};
+
+const getOdataMetadataOperationSpec: msRest.OperationSpec = {
+  httpMethod: "GET",
+  path: "v1/apps/{appId}/events/$metadata",
+  urlParameters: [
+    Parameters.appId
+  ],
+  headerParameters: [
+    Parameters.acceptLanguage
+  ],
+  responses: {
+    200: {
+      bodyMapper: {
+        serializedName: "parsedResponse",
+        type: {
+          name: "Object"
+        }
+      }
+    },
+    default: {
+      bodyMapper: Mappers.ErrorResponse
+    }
+  },
+  serializer
+};

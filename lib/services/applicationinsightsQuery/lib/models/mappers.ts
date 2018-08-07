@@ -9,17 +9,19 @@
  */
 
 import {CloudErrorMapper, BaseResourceMapper } from "ms-rest-azure-js";
+import * as msRest from "ms-rest-js";
 
 export const CloudError = CloudErrorMapper;
 export const BaseResource = BaseResourceMapper;
 
-export const MetricsPostBodySchemaParameters = {
+export const MetricsPostBodySchemaParameters: msRest.CompositeMapper = {
   serializedName: "metricsPostBodySchema_parameters",
   type: {
     name: "Composite",
     className: "MetricsPostBodySchemaParameters",
     modelProperties: {
       metricId: {
+        required: true,
         serializedName: "metricId",
         type: {
           name: "String"
@@ -36,7 +38,6 @@ export const MetricsPostBodySchemaParameters = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "MetricsAggregationElementType",
             type: {
               name: "Enum",
               allowedValues: [
@@ -62,7 +63,6 @@ export const MetricsPostBodySchemaParameters = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "MetricsSegmentElementType",
             type: {
               name: "String"
             }
@@ -91,7 +91,7 @@ export const MetricsPostBodySchemaParameters = {
   }
 };
 
-export const MetricsPostBodySchema = {
+export const MetricsPostBodySchema: msRest.CompositeMapper = {
   serializedName: "metricsPostBodySchema",
   type: {
     name: "Composite",
@@ -116,7 +116,7 @@ export const MetricsPostBodySchema = {
   }
 };
 
-export const MetricsSegmentInfo = {
+export const MetricsSegmentInfo: msRest.CompositeMapper = {
   serializedName: "metricsSegmentInfo",
   type: {
     name: "Composite",
@@ -126,7 +126,6 @@ export const MetricsSegmentInfo = {
         type: {
           name: "Dictionary",
           value: {
-            serializedName: "ObjectElementType",
             type: {
               name: "Object"
             }
@@ -150,7 +149,6 @@ export const MetricsSegmentInfo = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "MetricsSegmentInfoElementType",
             type: {
               name: "Composite",
               className: "MetricsSegmentInfo"
@@ -162,7 +160,7 @@ export const MetricsSegmentInfo = {
   }
 };
 
-export const MetricsResultInfo = {
+export const MetricsResultInfo: msRest.CompositeMapper = {
   serializedName: "metricsResultInfo",
   type: {
     name: "Composite",
@@ -172,7 +170,6 @@ export const MetricsResultInfo = {
         type: {
           name: "Dictionary",
           value: {
-            serializedName: "ObjectElementType",
             type: {
               name: "Object"
             }
@@ -202,7 +199,6 @@ export const MetricsResultInfo = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "MetricsSegmentInfoElementType",
             type: {
               name: "Composite",
               className: "MetricsSegmentInfo"
@@ -214,7 +210,7 @@ export const MetricsResultInfo = {
   }
 };
 
-export const MetricsResult = {
+export const MetricsResult: msRest.CompositeMapper = {
   serializedName: "metricsResult",
   type: {
     name: "Composite",
@@ -231,25 +227,28 @@ export const MetricsResult = {
   }
 };
 
-export const MetricsResultsItem = {
+export const MetricsResultsItem: msRest.CompositeMapper = {
   serializedName: "metricsResultsItem",
   type: {
     name: "Composite",
     className: "MetricsResultsItem",
     modelProperties: {
       id: {
+        required: true,
         serializedName: "id",
         type: {
           name: "String"
         }
       },
       status: {
+        required: true,
         serializedName: "status",
         type: {
           name: "Number"
         }
       },
       body: {
+        required: true,
         serializedName: "body",
         type: {
           name: "Composite",
@@ -260,7 +259,7 @@ export const MetricsResultsItem = {
   }
 };
 
-export const ErrorDetail = {
+export const ErrorDetail: msRest.CompositeMapper = {
   serializedName: "errorDetail",
   type: {
     name: "Composite",
@@ -297,7 +296,6 @@ export const ErrorDetail = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "stringElementType",
             type: {
               name: "String"
             }
@@ -314,7 +312,7 @@ export const ErrorDetail = {
   }
 };
 
-export const ErrorInfo = {
+export const ErrorInfo: msRest.CompositeMapper = {
   serializedName: "errorInfo",
   type: {
     name: "Composite",
@@ -339,7 +337,6 @@ export const ErrorInfo = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "ErrorDetailElementType",
             type: {
               name: "Composite",
               className: "ErrorDetail"
@@ -364,7 +361,7 @@ export const ErrorInfo = {
   }
 };
 
-export const EventsResultDataCustomDimensions = {
+export const EventsResultDataCustomDimensions: msRest.CompositeMapper = {
   serializedName: "eventsResultData_customDimensions",
   type: {
     name: "Composite",
@@ -380,7 +377,7 @@ export const EventsResultDataCustomDimensions = {
   }
 };
 
-export const EventsResultDataCustomMeasurements = {
+export const EventsResultDataCustomMeasurements: msRest.CompositeMapper = {
   serializedName: "eventsResultData_customMeasurements",
   type: {
     name: "Composite",
@@ -396,7 +393,7 @@ export const EventsResultDataCustomMeasurements = {
   }
 };
 
-export const EventsOperationInfo = {
+export const EventsOperationInfo: msRest.CompositeMapper = {
   serializedName: "eventsOperationInfo",
   type: {
     name: "Composite",
@@ -430,7 +427,7 @@ export const EventsOperationInfo = {
   }
 };
 
-export const EventsSessionInfo = {
+export const EventsSessionInfo: msRest.CompositeMapper = {
   serializedName: "eventsSessionInfo",
   type: {
     name: "Composite",
@@ -446,7 +443,7 @@ export const EventsSessionInfo = {
   }
 };
 
-export const EventsUserInfo = {
+export const EventsUserInfo: msRest.CompositeMapper = {
   serializedName: "eventsUserInfo",
   type: {
     name: "Composite",
@@ -474,7 +471,7 @@ export const EventsUserInfo = {
   }
 };
 
-export const EventsCloudInfo = {
+export const EventsCloudInfo: msRest.CompositeMapper = {
   serializedName: "eventsCloudInfo",
   type: {
     name: "Composite",
@@ -496,7 +493,7 @@ export const EventsCloudInfo = {
   }
 };
 
-export const EventsAiInfo = {
+export const EventsAiInfo: msRest.CompositeMapper = {
   serializedName: "eventsAiInfo",
   type: {
     name: "Composite",
@@ -530,7 +527,7 @@ export const EventsAiInfo = {
   }
 };
 
-export const EventsApplicationInfo = {
+export const EventsApplicationInfo: msRest.CompositeMapper = {
   serializedName: "eventsApplicationInfo",
   type: {
     name: "Composite",
@@ -546,7 +543,7 @@ export const EventsApplicationInfo = {
   }
 };
 
-export const EventsClientInfo = {
+export const EventsClientInfo: msRest.CompositeMapper = {
   serializedName: "eventsClientInfo",
   type: {
     name: "Composite",
@@ -604,7 +601,7 @@ export const EventsClientInfo = {
   }
 };
 
-export const EventsResultData = {
+export const EventsResultData: msRest.CompositeMapper = {
   serializedName: "eventsResultData",
   type: {
     name: "Composite",
@@ -707,7 +704,7 @@ export const EventsResultData = {
   }
 };
 
-export const EventsResults = {
+export const EventsResults: msRest.CompositeMapper = {
   serializedName: "eventsResults",
   type: {
     name: "Composite",
@@ -724,7 +721,6 @@ export const EventsResults = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "ErrorInfoElementType",
             type: {
               name: "Composite",
               className: "ErrorInfo"
@@ -737,7 +733,6 @@ export const EventsResults = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "EventsResultDataElementType",
             type: {
               name: "Composite",
               polymorphicDiscriminator: {
@@ -754,7 +749,7 @@ export const EventsResults = {
   }
 };
 
-export const EventsResult = {
+export const EventsResult: msRest.CompositeMapper = {
   serializedName: "eventsResult",
   type: {
     name: "Composite",
@@ -765,7 +760,6 @@ export const EventsResult = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "ErrorInfoElementType",
             type: {
               name: "Composite",
               className: "ErrorInfo"
@@ -789,7 +783,7 @@ export const EventsResult = {
   }
 };
 
-export const EventsTraceInfo = {
+export const EventsTraceInfo: msRest.CompositeMapper = {
   serializedName: "eventsTraceInfo",
   type: {
     name: "Composite",
@@ -811,7 +805,7 @@ export const EventsTraceInfo = {
   }
 };
 
-export const EventsTraceResult = {
+export const EventsTraceResult: msRest.CompositeMapper = {
   serializedName: "trace",
   type: {
     name: "Composite",
@@ -829,7 +823,7 @@ export const EventsTraceResult = {
   }
 };
 
-export const EventsCustomEventInfo = {
+export const EventsCustomEventInfo: msRest.CompositeMapper = {
   serializedName: "eventsCustomEventInfo",
   type: {
     name: "Composite",
@@ -845,7 +839,7 @@ export const EventsCustomEventInfo = {
   }
 };
 
-export const EventsCustomEventResult = {
+export const EventsCustomEventResult: msRest.CompositeMapper = {
   serializedName: "customEvent",
   type: {
     name: "Composite",
@@ -863,7 +857,7 @@ export const EventsCustomEventResult = {
   }
 };
 
-export const EventsPageViewInfo = {
+export const EventsPageViewInfo: msRest.CompositeMapper = {
   serializedName: "eventsPageViewInfo",
   type: {
     name: "Composite",
@@ -897,7 +891,7 @@ export const EventsPageViewInfo = {
   }
 };
 
-export const EventsPageViewResult = {
+export const EventsPageViewResult: msRest.CompositeMapper = {
   serializedName: "pageView",
   type: {
     name: "Composite",
@@ -915,7 +909,7 @@ export const EventsPageViewResult = {
   }
 };
 
-export const EventsBrowserTimingInfo = {
+export const EventsBrowserTimingInfo: msRest.CompositeMapper = {
   serializedName: "eventsBrowserTimingInfo",
   type: {
     name: "Composite",
@@ -985,7 +979,7 @@ export const EventsBrowserTimingInfo = {
   }
 };
 
-export const EventsClientPerformanceInfo = {
+export const EventsClientPerformanceInfo: msRest.CompositeMapper = {
   serializedName: "eventsClientPerformanceInfo",
   type: {
     name: "Composite",
@@ -1001,7 +995,7 @@ export const EventsClientPerformanceInfo = {
   }
 };
 
-export const EventsBrowserTimingResult = {
+export const EventsBrowserTimingResult: msRest.CompositeMapper = {
   serializedName: "browserTiming",
   type: {
     name: "Composite",
@@ -1026,7 +1020,7 @@ export const EventsBrowserTimingResult = {
   }
 };
 
-export const EventsRequestInfo = {
+export const EventsRequestInfo: msRest.CompositeMapper = {
   serializedName: "eventsRequestInfo",
   type: {
     name: "Composite",
@@ -1084,7 +1078,7 @@ export const EventsRequestInfo = {
   }
 };
 
-export const EventsRequestResult = {
+export const EventsRequestResult: msRest.CompositeMapper = {
   serializedName: "request",
   type: {
     name: "Composite",
@@ -1102,7 +1096,7 @@ export const EventsRequestResult = {
   }
 };
 
-export const EventsDependencyInfo = {
+export const EventsDependencyInfo: msRest.CompositeMapper = {
   serializedName: "eventsDependencyInfo",
   type: {
     name: "Composite",
@@ -1166,7 +1160,7 @@ export const EventsDependencyInfo = {
   }
 };
 
-export const EventsDependencyResult = {
+export const EventsDependencyResult: msRest.CompositeMapper = {
   serializedName: "dependency",
   type: {
     name: "Composite",
@@ -1184,7 +1178,7 @@ export const EventsDependencyResult = {
   }
 };
 
-export const EventsExceptionDetailsParsedStack = {
+export const EventsExceptionDetailsParsedStack: msRest.CompositeMapper = {
   serializedName: "eventsExceptionDetailsParsedStack",
   type: {
     name: "Composite",
@@ -1218,7 +1212,7 @@ export const EventsExceptionDetailsParsedStack = {
   }
 };
 
-export const EventsExceptionDetail = {
+export const EventsExceptionDetail: msRest.CompositeMapper = {
   serializedName: "eventsExceptionDetail",
   type: {
     name: "Composite",
@@ -1259,7 +1253,6 @@ export const EventsExceptionDetail = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "EventsExceptionDetailsParsedStackElementType",
             type: {
               name: "Composite",
               className: "EventsExceptionDetailsParsedStack"
@@ -1271,7 +1264,7 @@ export const EventsExceptionDetail = {
   }
 };
 
-export const EventsExceptionInfo = {
+export const EventsExceptionInfo: msRest.CompositeMapper = {
   serializedName: "eventsExceptionInfo",
   type: {
     name: "Composite",
@@ -1372,7 +1365,6 @@ export const EventsExceptionInfo = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "EventsExceptionDetailElementType",
             type: {
               name: "Composite",
               className: "EventsExceptionDetail"
@@ -1384,7 +1376,7 @@ export const EventsExceptionInfo = {
   }
 };
 
-export const EventsExceptionResult = {
+export const EventsExceptionResult: msRest.CompositeMapper = {
   serializedName: "exception",
   type: {
     name: "Composite",
@@ -1402,7 +1394,7 @@ export const EventsExceptionResult = {
   }
 };
 
-export const EventsAvailabilityResultInfo = {
+export const EventsAvailabilityResultInfo: msRest.CompositeMapper = {
   serializedName: "eventsAvailabilityResultInfo",
   type: {
     name: "Composite",
@@ -1460,7 +1452,7 @@ export const EventsAvailabilityResultInfo = {
   }
 };
 
-export const EventsAvailabilityResultResult = {
+export const EventsAvailabilityResultResult: msRest.CompositeMapper = {
   serializedName: "availabilityResult",
   type: {
     name: "Composite",
@@ -1478,7 +1470,7 @@ export const EventsAvailabilityResultResult = {
   }
 };
 
-export const EventsPerformanceCounterInfo = {
+export const EventsPerformanceCounterInfo: msRest.CompositeMapper = {
   serializedName: "eventsPerformanceCounterInfo",
   type: {
     name: "Composite",
@@ -1524,7 +1516,7 @@ export const EventsPerformanceCounterInfo = {
   }
 };
 
-export const EventsPerformanceCounterResult = {
+export const EventsPerformanceCounterResult: msRest.CompositeMapper = {
   serializedName: "performanceCounter",
   type: {
     name: "Composite",
@@ -1542,7 +1534,7 @@ export const EventsPerformanceCounterResult = {
   }
 };
 
-export const EventsCustomMetricInfo = {
+export const EventsCustomMetricInfo: msRest.CompositeMapper = {
   serializedName: "eventsCustomMetricInfo",
   type: {
     name: "Composite",
@@ -1594,7 +1586,7 @@ export const EventsCustomMetricInfo = {
   }
 };
 
-export const EventsCustomMetricResult = {
+export const EventsCustomMetricResult: msRest.CompositeMapper = {
   serializedName: "customMetric",
   type: {
     name: "Composite",
@@ -1612,7 +1604,7 @@ export const EventsCustomMetricResult = {
   }
 };
 
-export const QueryBody = {
+export const QueryBody: msRest.CompositeMapper = {
   serializedName: "queryBody",
   type: {
     name: "Composite",
@@ -1636,7 +1628,6 @@ export const QueryBody = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "stringElementType",
             type: {
               name: "String"
             }
@@ -1647,7 +1638,7 @@ export const QueryBody = {
   }
 };
 
-export const Column = {
+export const Column: msRest.CompositeMapper = {
   serializedName: "column",
   type: {
     name: "Composite",
@@ -1669,7 +1660,7 @@ export const Column = {
   }
 };
 
-export const Table = {
+export const Table: msRest.CompositeMapper = {
   serializedName: "table",
   type: {
     name: "Composite",
@@ -1688,7 +1679,6 @@ export const Table = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "ColumnElementType",
             type: {
               name: "Composite",
               className: "Column"
@@ -1702,11 +1692,9 @@ export const Table = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "ArrayElementType",
             type: {
               name: "Sequence",
               element: {
-                serializedName: "ObjectElementType",
                 type: {
                   name: "Object"
                 }
@@ -1719,7 +1707,7 @@ export const Table = {
   }
 };
 
-export const QueryResults = {
+export const QueryResults: msRest.CompositeMapper = {
   serializedName: "queryResults",
   type: {
     name: "Composite",
@@ -1731,7 +1719,6 @@ export const QueryResults = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "TableElementType",
             type: {
               name: "Composite",
               className: "Table"
@@ -1743,7 +1730,7 @@ export const QueryResults = {
   }
 };
 
-export const ErrorResponse = {
+export const ErrorResponse: msRest.CompositeMapper = {
   serializedName: "errorResponse",
   type: {
     name: "Composite",
@@ -1761,7 +1748,7 @@ export const ErrorResponse = {
   }
 };
 
-export const MetricsGetOptionalParams = {
+export const MetricsGetOptionalParams: msRest.CompositeMapper = {
   serializedName: "GetOptions",
   type: {
     name: "Composite",
@@ -1787,7 +1774,6 @@ export const MetricsGetOptionalParams = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "MetricsAggregationElementType",
             type: {
               name: "Enum",
               allowedValues: [
@@ -1810,7 +1796,6 @@ export const MetricsGetOptionalParams = {
         type: {
           name: "Sequence",
           element: {
-            serializedName: "MetricsSegmentElementType",
             type: {
               name: "String"
             }
@@ -1839,7 +1824,7 @@ export const MetricsGetOptionalParams = {
   }
 };
 
-export const EventsGetByTypeOptionalParams = {
+export const EventsGetByTypeOptionalParams: msRest.CompositeMapper = {
   serializedName: "GetByTypeOptions",
   type: {
     name: "Composite",
@@ -1909,7 +1894,7 @@ export const EventsGetByTypeOptionalParams = {
   }
 };
 
-export const EventsGetOptionalParams = {
+export const EventsGetOptionalParams: msRest.CompositeMapper = {
   serializedName: "GetOptions",
   type: {
     name: "Composite",

@@ -4,7 +4,6 @@ import { ApplicationInsightsDataClientContext } from "../applicationInsightsData
 /** Class representing a Events. */
 export declare class Events {
     private readonly client;
-    private readonly serializer;
     /**
      * Create a Events.
      * @param {ApplicationInsightsDataClientContext} client Reference to the service client.

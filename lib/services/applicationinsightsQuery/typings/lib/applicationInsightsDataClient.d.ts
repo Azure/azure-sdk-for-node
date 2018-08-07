@@ -1,11 +1,10 @@
-import * as Models from "./models";
-import * as Mappers from "./models/mappers";
 import * as msRest from "ms-rest-js";
 import * as msRestAzure from "ms-rest-azure-js";
-import { ApplicationInsightsDataClientContext } from "./applicationInsightsDataClientContext";
+import * as Models from "./models";
+import * as Mappers from "./models/mappers";
 import * as operations from "./operations";
+import { ApplicationInsightsDataClientContext } from "./applicationInsightsDataClientContext";
 declare class ApplicationInsightsDataClient extends ApplicationInsightsDataClientContext {
-    serializer: msRest.Serializer;
     metrics: operations.Metrics;
     events: operations.Events;
     query: operations.Query;

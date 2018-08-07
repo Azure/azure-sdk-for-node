@@ -8,17 +8,15 @@
  * regenerated.
  */
 
-import * as Models from "./models";
-import * as Mappers from "./models/mappers";
 import * as msRest from "ms-rest-js";
 import * as msRestAzure from "ms-rest-azure-js";
-import { ApplicationInsightsDataClientContext } from "./applicationInsightsDataClientContext";
+import * as Models from "./models";
+import * as Mappers from "./models/mappers";
 import * as operations from "./operations";
+import { ApplicationInsightsDataClientContext } from "./applicationInsightsDataClientContext";
 
 
 class ApplicationInsightsDataClient extends ApplicationInsightsDataClientContext {
-  serializer = new msRest.Serializer(Mappers);
-
   // Operation groups
   metrics: operations.Metrics;
   events: operations.Events;
@@ -56,5 +54,7 @@ class ApplicationInsightsDataClient extends ApplicationInsightsDataClientContext
     this.query = new operations.Query(this);
   }
 }
+
+// Operation Specifications
 
 export { ApplicationInsightsDataClient, Models as ApplicationInsightsDataModels, Mappers as ApplicationInsightsDataMappers };

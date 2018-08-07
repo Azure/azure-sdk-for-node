@@ -1,1 +1,1 @@
-export { discriminators, MetricsResult, MetricsResultInfo, MetricsSegmentInfo, ErrorResponse, ErrorInfo, ErrorDetail, MetricsPostBodySchema, MetricsPostBodySchemaParameters, MetricsResultsItem } from "../models/mappers";
+export { discriminators, MetricsResult, MetricsResultInfo, MetricsSegmentInfo, ErrorResponse, MetricsPostBodySchema, MetricsPostBodySchemaParameters, MetricsResultsItem } from "../models/mappers";

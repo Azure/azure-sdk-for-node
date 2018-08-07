@@ -11,14 +11,13 @@
 import * as msRest from "ms-rest-js";
 import * as Models from "../models";
 import * as Mappers from "../models/metricsMappers";
+import * as Parameters from "../models/parameters";
 import { ApplicationInsightsDataClientContext } from "../applicationInsightsDataClientContext";
-
-const WebResource = msRest.WebResource;
 
 /** Class representing a Metrics. */
 export class Metrics {
   private readonly client: ApplicationInsightsDataClientContext;
-  private readonly serializer = new msRest.Serializer(Mappers);
+
   /**
    * Create a Metrics.
    * @param {ApplicationInsightsDataClientContext} client Reference to the service client.
@@ -57,197 +56,14 @@ export class Metrics {
    *
    * @reject {Error|ServiceError} The error object.
    */
-  async getWithHttpOperationResponse(appId: string, metricId: Models.MetricId, options?: Models.MetricsGetOptionalParams): Promise<msRest.HttpOperationResponse<Models.MetricsResult>> {
-    let timespan = (options && options.timespan !== undefined) ? options.timespan : undefined;
-    let interval = (options && options.interval !== undefined) ? options.interval : undefined;
-    let aggregation = (options && options.aggregation !== undefined) ? options.aggregation : undefined;
-    let segment = (options && options.segment !== undefined) ? options.segment : undefined;
-    let top = (options && options.top !== undefined) ? options.top : undefined;
-    let orderby = (options && options.orderby !== undefined) ? options.orderby : undefined;
-    let filter = (options && options.filter !== undefined) ? options.filter : undefined;
-
-    // Create HTTP transport objects
-    const httpRequest = new WebResource();
-    let operationRes: msRest.HttpOperationResponse;
-    try {
-      const operationArguments: msRest.OperationArguments = msRest.createOperationArguments(
-        {
-          appId,
-          metricId,
-          timespan,
-          interval,
-          aggregation,
-          segment,
-          top,
-          orderby,
-          filter,
-          "this.client.acceptLanguage": this.client.acceptLanguage
-        },
-        options);
-      operationRes = await this.client.sendOperationRequest(
-        httpRequest,
-        operationArguments,
-        {
-          httpMethod: "GET",
-          baseUrl: this.client.baseUri,
-          path: "v1/apps/{appId}/metrics/{metricId}",
-          urlParameters: [
-            {
-              parameterPath: "appId",
-              mapper: {
-                required: true,
-                serializedName: "appId",
-                type: {
-                  name: "String"
-                }
-              }
-            },
-            {
-              parameterPath: "metricId",
-              mapper: {
-                required: true,
-                serializedName: "metricId",
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          queryParameters: [
-            {
-              parameterPath: "timespan",
-              mapper: {
-                serializedName: "timespan",
-                type: {
-                  name: "String"
-                }
-              }
-            },
-            {
-              parameterPath: "interval",
-              mapper: {
-                serializedName: "interval",
-                type: {
-                  name: "TimeSpan"
-                }
-              }
-            },
-            {
-              parameterPath: "aggregation",
-              collectionFormat: msRest.QueryCollectionFormat.Csv,
-              mapper: {
-                serializedName: "aggregation",
-                constraints: {
-                  MinItems: 1
-                },
-                type: {
-                  name: "Sequence",
-                  element: {
-                    serializedName: "MetricsAggregationElementType",
-                    type: {
-                      name: "Enum",
-                      allowedValues: [
-                        "min",
-                        "max",
-                        "avg",
-                        "sum",
-                        "count",
-                        "unique"
-                      ]
-                    }
-                  }
-                }
-              }
-            },
-            {
-              parameterPath: "segment",
-              collectionFormat: msRest.QueryCollectionFormat.Csv,
-              mapper: {
-                serializedName: "segment",
-                constraints: {
-                  MinItems: 1
-                },
-                type: {
-                  name: "Sequence",
-                  element: {
-                    serializedName: "MetricsSegmentElementType",
-                    type: {
-                      name: "String"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              parameterPath: "top",
-              mapper: {
-                serializedName: "top",
-                type: {
-                  name: "Number"
-                }
-              }
-            },
-            {
-              parameterPath: "orderby",
-              mapper: {
-                serializedName: "orderby",
-                type: {
-                  name: "String"
-                }
-              }
-            },
-            {
-              parameterPath: "filter",
-              mapper: {
-                serializedName: "filter",
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          headerParameters: [
-            {
-              parameterPath: "this.client.acceptLanguage",
-              mapper: {
-                serializedName: "accept-language",
-                defaultValue: 'en-US',
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          responses: {
-            200: {
-              bodyMapper: Mappers.MetricsResult
-            },
-            default: {
-              bodyMapper: Mappers.ErrorResponse
-            }
-          },
-          serializer: this.serializer
-        });
-      // Deserialize Response
-      let statusCode = operationRes.status;
-      if (statusCode === 200) {
-        let parsedResponse = operationRes.parsedBody as { [key: string]: any };
-        try {
-          if (parsedResponse != undefined) {
-            const resultMapper = Mappers.MetricsResult;
-            operationRes.parsedBody = this.serializer.deserialize(resultMapper, parsedResponse, 'operationRes.parsedBody');
-          }
-        } catch (error) {
-          let deserializationError = new msRest.RestError(`Error ${error} occurred in deserializing the responseBody - ${operationRes.bodyAsText}`);
-          deserializationError.request = msRest.stripRequest(httpRequest);
-          deserializationError.response = msRest.stripResponse(operationRes);
-          return Promise.reject(deserializationError);
-        }
-      }
-    } catch (err) {
-      return Promise.reject(err);
-    }
-    return Promise.resolve(operationRes);
+  getWithHttpOperationResponse(appId: string, metricId: Models.MetricId, options?: Models.MetricsGetOptionalParams): Promise<msRest.HttpOperationResponse<Models.MetricsResult>> {
+    return this.client.sendOperationRequest(
+      {
+        appId,
+        metricId,
+        options
+      },
+      getOperationSpec);
   }
 
   /**
@@ -268,122 +84,14 @@ export class Metrics {
    *
    * @reject {Error|ServiceError} The error object.
    */
-  async getMultipleWithHttpOperationResponse(appId: string, body: Models.MetricsPostBodySchema[], options?: msRest.RequestOptionsBase): Promise<msRest.HttpOperationResponse<Models.MetricsResultsItem[]>> {
-
-    // Create HTTP transport objects
-    const httpRequest = new WebResource();
-    let operationRes: msRest.HttpOperationResponse;
-    try {
-      const operationArguments: msRest.OperationArguments = msRest.createOperationArguments(
-        {
-          appId,
-          body,
-          "this.client.acceptLanguage": this.client.acceptLanguage
-        },
-        options);
-      operationRes = await this.client.sendOperationRequest(
-        httpRequest,
-        operationArguments,
-        {
-          httpMethod: "POST",
-          baseUrl: this.client.baseUri,
-          path: "v1/apps/{appId}/metrics",
-          urlParameters: [
-            {
-              parameterPath: "appId",
-              mapper: {
-                required: true,
-                serializedName: "appId",
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          headerParameters: [
-            {
-              parameterPath: "this.client.acceptLanguage",
-              mapper: {
-                serializedName: "accept-language",
-                defaultValue: 'en-US',
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          requestBody: {
-            parameterPath: "body",
-            mapper: {
-              required: true,
-              serializedName: "body",
-              type: {
-                name: "Sequence",
-                element: {
-                  serializedName: "MetricsPostBodySchemaElementType",
-                  type: {
-                    name: "Composite",
-                    className: "MetricsPostBodySchema"
-                  }
-                }
-              }
-            }
-          },
-          contentType: "application/json; charset=utf-8",
-          responses: {
-            200: {
-              bodyMapper: {
-                serializedName: "parsedResponse",
-                type: {
-                  name: "Sequence",
-                  element: {
-                    serializedName: "MetricsResultsItemElementType",
-                    type: {
-                      name: "Composite",
-                      className: "MetricsResultsItem"
-                    }
-                  }
-                }
-              }
-            },
-            default: {
-              bodyMapper: Mappers.ErrorResponse
-            }
-          },
-          serializer: this.serializer
-        });
-      // Deserialize Response
-      let statusCode = operationRes.status;
-      if (statusCode === 200) {
-        let parsedResponse = operationRes.parsedBody as { [key: string]: any };
-        try {
-          if (parsedResponse != undefined) {
-            const resultMapper = {
-              serializedName: "parsedResponse",
-              type: {
-                name: "Sequence",
-                element: {
-                  serializedName: "MetricsResultsItemElementType",
-                  type: {
-                    name: "Composite",
-                    className: "MetricsResultsItem"
-                  }
-                }
-              }
-            };
-            operationRes.parsedBody = this.serializer.deserialize(resultMapper, parsedResponse, 'operationRes.parsedBody');
-          }
-        } catch (error) {
-          let deserializationError = new msRest.RestError(`Error ${error} occurred in deserializing the responseBody - ${operationRes.bodyAsText}`);
-          deserializationError.request = msRest.stripRequest(httpRequest);
-          deserializationError.response = msRest.stripResponse(operationRes);
-          return Promise.reject(deserializationError);
-        }
-      }
-    } catch (err) {
-      return Promise.reject(err);
-    }
-    return Promise.resolve(operationRes);
+  getMultipleWithHttpOperationResponse(appId: string, body: Models.MetricsPostBodySchema[], options?: msRest.RequestOptionsBase): Promise<msRest.HttpOperationResponse<Models.MetricsResultsItem[]>> {
+    return this.client.sendOperationRequest(
+      {
+        appId,
+        body,
+        options
+      },
+      getMultipleOperationSpec);
   }
 
   /**
@@ -402,89 +110,13 @@ export class Metrics {
    *
    * @reject {Error|ServiceError} The error object.
    */
-  async getMetadataWithHttpOperationResponse(appId: string, options?: msRest.RequestOptionsBase): Promise<msRest.HttpOperationResponse<any>> {
-
-    // Create HTTP transport objects
-    const httpRequest = new WebResource();
-    let operationRes: msRest.HttpOperationResponse;
-    try {
-      const operationArguments: msRest.OperationArguments = msRest.createOperationArguments(
-        {
-          appId,
-          "this.client.acceptLanguage": this.client.acceptLanguage
-        },
-        options);
-      operationRes = await this.client.sendOperationRequest(
-        httpRequest,
-        operationArguments,
-        {
-          httpMethod: "GET",
-          baseUrl: this.client.baseUri,
-          path: "v1/apps/{appId}/metrics/metadata",
-          urlParameters: [
-            {
-              parameterPath: "appId",
-              mapper: {
-                required: true,
-                serializedName: "appId",
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          headerParameters: [
-            {
-              parameterPath: "this.client.acceptLanguage",
-              mapper: {
-                serializedName: "accept-language",
-                defaultValue: 'en-US',
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          responses: {
-            200: {
-              bodyMapper: {
-                serializedName: "parsedResponse",
-                type: {
-                  name: "Object"
-                }
-              }
-            },
-            default: {
-              bodyMapper: Mappers.ErrorResponse
-            }
-          },
-          serializer: this.serializer
-        });
-      // Deserialize Response
-      let statusCode = operationRes.status;
-      if (statusCode === 200) {
-        let parsedResponse = operationRes.parsedBody as { [key: string]: any };
-        try {
-          if (parsedResponse != undefined) {
-            const resultMapper = {
-              serializedName: "parsedResponse",
-              type: {
-                name: "Object"
-              }
-            };
-            operationRes.parsedBody = this.serializer.deserialize(resultMapper, parsedResponse, 'operationRes.parsedBody');
-          }
-        } catch (error) {
-          let deserializationError = new msRest.RestError(`Error ${error} occurred in deserializing the responseBody - ${operationRes.bodyAsText}`);
-          deserializationError.request = msRest.stripRequest(httpRequest);
-          deserializationError.response = msRest.stripResponse(operationRes);
-          return Promise.reject(deserializationError);
-        }
-      }
-    } catch (err) {
-      return Promise.reject(err);
-    }
-    return Promise.resolve(operationRes);
+  getMetadataWithHttpOperationResponse(appId: string, options?: msRest.RequestOptionsBase): Promise<msRest.HttpOperationResponse<any>> {
+    return this.client.sendOperationRequest(
+      {
+        appId,
+        options
+      },
+      getMetadataOperationSpec);
   }
 
   /**
@@ -525,26 +157,7 @@ export class Metrics {
   get(appId: string, metricId: Models.MetricId, callback: msRest.ServiceCallback<Models.MetricsResult>): void;
   get(appId: string, metricId: Models.MetricId, options: Models.MetricsGetOptionalParams, callback: msRest.ServiceCallback<Models.MetricsResult>): void;
   get(appId: string, metricId: Models.MetricId, options?: Models.MetricsGetOptionalParams, callback?: msRest.ServiceCallback<Models.MetricsResult>): any {
-    if (!callback && typeof options === 'function') {
-      callback = options;
-      options = undefined;
-    }
-    let cb = callback as msRest.ServiceCallback<Models.MetricsResult>;
-    if (!callback) {
-      return this.getWithHttpOperationResponse(appId, metricId, options).then((operationRes: msRest.HttpOperationResponse) => {
-        return Promise.resolve(operationRes.parsedBody as Models.MetricsResult);
-      }).catch((err: Error) => {
-        return Promise.reject(err);
-      });
-    } else {
-      msRest.promiseToCallback(this.getWithHttpOperationResponse(appId, metricId, options))((err: Error, data: msRest.HttpOperationResponse) => {
-        if (err) {
-          return cb(err);
-        }
-        let result = data.parsedBody as Models.MetricsResult;
-        return cb(err, result, data.request, data);
-      });
-    }
+    return msRest.responseToBody(this.getWithHttpOperationResponse.bind(this), appId, metricId, options, callback);
   }
 
   /**
@@ -573,26 +186,7 @@ export class Metrics {
   getMultiple(appId: string, body: Models.MetricsPostBodySchema[], callback: msRest.ServiceCallback<Models.MetricsResultsItem[]>): void;
   getMultiple(appId: string, body: Models.MetricsPostBodySchema[], options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<Models.MetricsResultsItem[]>): void;
   getMultiple(appId: string, body: Models.MetricsPostBodySchema[], options?: msRest.RequestOptionsBase, callback?: msRest.ServiceCallback<Models.MetricsResultsItem[]>): any {
-    if (!callback && typeof options === 'function') {
-      callback = options;
-      options = undefined;
-    }
-    let cb = callback as msRest.ServiceCallback<Models.MetricsResultsItem[]>;
-    if (!callback) {
-      return this.getMultipleWithHttpOperationResponse(appId, body, options).then((operationRes: msRest.HttpOperationResponse) => {
-        return Promise.resolve(operationRes.parsedBody as Models.MetricsResultsItem[]);
-      }).catch((err: Error) => {
-        return Promise.reject(err);
-      });
-    } else {
-      msRest.promiseToCallback(this.getMultipleWithHttpOperationResponse(appId, body, options))((err: Error, data: msRest.HttpOperationResponse) => {
-        if (err) {
-          return cb(err);
-        }
-        let result = data.parsedBody as Models.MetricsResultsItem[];
-        return cb(err, result, data.request, data);
-      });
-    }
+    return msRest.responseToBody(this.getMultipleWithHttpOperationResponse.bind(this), appId, body, options, callback);
   }
 
   /**
@@ -619,26 +213,111 @@ export class Metrics {
   getMetadata(appId: string, callback: msRest.ServiceCallback<any>): void;
   getMetadata(appId: string, options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<any>): void;
   getMetadata(appId: string, options?: msRest.RequestOptionsBase, callback?: msRest.ServiceCallback<any>): any {
-    if (!callback && typeof options === 'function') {
-      callback = options;
-      options = undefined;
-    }
-    let cb = callback as msRest.ServiceCallback<any>;
-    if (!callback) {
-      return this.getMetadataWithHttpOperationResponse(appId, options).then((operationRes: msRest.HttpOperationResponse) => {
-        return Promise.resolve(operationRes.parsedBody as any);
-      }).catch((err: Error) => {
-        return Promise.reject(err);
-      });
-    } else {
-      msRest.promiseToCallback(this.getMetadataWithHttpOperationResponse(appId, options))((err: Error, data: msRest.HttpOperationResponse) => {
-        if (err) {
-          return cb(err);
-        }
-        let result = data.parsedBody as any;
-        return cb(err, result, data.request, data);
-      });
-    }
+    return msRest.responseToBody(this.getMetadataWithHttpOperationResponse.bind(this), appId, options, callback);
   }
 
 }
+
+// Operation Specifications
+const serializer = new msRest.Serializer(Mappers);
+const getOperationSpec: msRest.OperationSpec = {
+  httpMethod: "GET",
+  path: "v1/apps/{appId}/metrics/{metricId}",
+  urlParameters: [
+    Parameters.appId,
+    Parameters.metricId
+  ],
+  queryParameters: [
+    Parameters.timespan,
+    Parameters.interval,
+    Parameters.aggregation,
+    Parameters.segment,
+    Parameters.top0,
+    Parameters.orderby0,
+    Parameters.filter0
+  ],
+  headerParameters: [
+    Parameters.acceptLanguage
+  ],
+  responses: {
+    200: {
+      bodyMapper: Mappers.MetricsResult
+    },
+    default: {
+      bodyMapper: Mappers.ErrorResponse
+    }
+  },
+  serializer
+};
+
+const getMultipleOperationSpec: msRest.OperationSpec = {
+  httpMethod: "POST",
+  path: "v1/apps/{appId}/metrics",
+  urlParameters: [
+    Parameters.appId
+  ],
+  headerParameters: [
+    Parameters.acceptLanguage
+  ],
+  requestBody: {
+    parameterPath: "body",
+    mapper: {
+      required: true,
+      serializedName: "body",
+      type: {
+        name: "Sequence",
+        element: {
+          type: {
+            name: "Composite",
+            className: "MetricsPostBodySchema"
+          }
+        }
+      }
+    }
+  },
+  responses: {
+    200: {
+      bodyMapper: {
+        serializedName: "parsedResponse",
+        type: {
+          name: "Sequence",
+          element: {
+            type: {
+              name: "Composite",
+              className: "MetricsResultsItem"
+            }
+          }
+        }
+      }
+    },
+    default: {
+      bodyMapper: Mappers.ErrorResponse
+    }
+  },
+  serializer
+};
+
+const getMetadataOperationSpec: msRest.OperationSpec = {
+  httpMethod: "GET",
+  path: "v1/apps/{appId}/metrics/metadata",
+  urlParameters: [
+    Parameters.appId
+  ],
+  headerParameters: [
+    Parameters.acceptLanguage
+  ],
+  responses: {
+    200: {
+      bodyMapper: {
+        serializedName: "parsedResponse",
+        type: {
+          name: "Object"
+        }
+      }
+    },
+    default: {
+      bodyMapper: Mappers.ErrorResponse
+    }
+  },
+  serializer
+};

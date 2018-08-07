@@ -1,11 +1,11 @@
 {
-  "name": "azure-applicationinsights-query",
+  "name": "",
   "author": "Microsoft Corporation",
-  "description": "ApplicationInsightsDataClient Library with typescript type definitions and works in node.js and browser javascript.",
-  "version": "1.0.0-Preview-1",
+  "description": "ApplicationInsightsDataClient Library with typescript type definitions for node.js and browser.",
+  "version": "",
   "dependencies": {
-    "ms-rest-azure-js": "~0.8.82",
-    "ms-rest-nodeauth": "^0.2.0"
+    "ms-rest-azure-js": "~0.12.123",
+    "ms-rest-nodeauth": "^0.3.0"
   },
   "keywords": [
     "node",
@@ -18,23 +18,21 @@
   "main": "./dist/lib/applicationInsightsDataClient.js",
   "types": "./typings/lib/applicationInsightsDataClient.d.ts",
   "devDependencies": {
-    "ts-loader": "^2.3.7",
-    "tslib": "^1.9.2",
-    "tslint": "^5.7.0",
-    "typescript": "^2.5.2",
-    "webpack": "^3.6.0",
-    "uglify-es": "^3.1.0"
+    "ts-loader": "^4.4.2",
+    "tslib": "^1.9.3",
+    "typescript": "^2.9.2",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0"
   },
-  "homepage": "http://github.com/azure/azure-sdk-for-javascript",
+  "homepage": "https://github.com/azure/azure-sdk-for-js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/azure/azure-sdk-for-javascript.git"
+    "url": "https://github.com/azure/azure-sdk-for-js.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/azure-sdk-for-javascript/issues"
+    "url": "https://github.com/azure/azure-sdk-for-js/issues"
   },
   "scripts": {
-    "tsc": "tsc -p tsconfig.json",
-    "build": "npm -s run-script tsc && webpack && node node_modules/uglify-es/bin/uglifyjs --source-map -c -m -o applicationInsightsDataClientBundle.min.js applicationInsightsDataClientBundle.js"
+    "build": "tsc && webpack"
   }
 }

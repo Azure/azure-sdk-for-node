@@ -11,8 +11,8 @@
 import * as msRest from "ms-rest-js";
 import * as msRestAzure from "ms-rest-azure-js";
 
-const packageName = "azure-applicationinsights-query";
-const packageVersion = "1.0.0-Preview-1";
+const packageName = "";
+const packageVersion = "";
 
 export class ApplicationInsightsDataClientContext extends msRestAzure.AzureServiceClient {
 
@@ -21,7 +21,6 @@ export class ApplicationInsightsDataClientContext extends msRestAzure.AzureServi
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
-  baseUri: string;
 
   /**
    * @class
@@ -64,6 +63,7 @@ export class ApplicationInsightsDataClientContext extends msRestAzure.AzureServi
     if (!this.baseUri) {
       this.baseUri = 'https://api.applicationinsights.io/v1';
     }
+    this.requestContentType = "application/json; charset=utf-8";
     this.credentials = credentials;
 
     this.addUserAgentInfo(`${packageName}/${packageVersion}`);

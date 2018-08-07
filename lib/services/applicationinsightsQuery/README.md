@@ -7,11 +7,11 @@ This project provides an isomorphic javascript package for accessing Azure. Righ
 
 - nodejs
 ```
-npm install azure-applicationinsights-query
+npm install
 ```
 - browser
 ```html
-<script type="text/javascript" src="https://raw.githubusercontent.com/Azure/azure-sdk-for-js/master/lib/services/azure-applicationinsights-query/applicationInsightsDataClientBundle.js"></script>
+<script type="text/javascript" src="https://raw.githubusercontent.com/Azure/azure-sdk-for-js/master/lib/services//applicationInsightsDataClientBundle.js"></script>
 ```
 
 ## How to use
@@ -22,7 +22,7 @@ npm install azure-applicationinsights-query
 import * as msRest from "ms-rest-js";
 import * as msRestAzure from "ms-rest-azure-js";
 import * as msRestNodeAuth from "ms-rest-nodeauth";
-import { ApplicationInsightsDataClient, ApplicationInsightsDataModels, ApplicationInsightsDataMappers } from "azure-applicationinsights-query";
+import { ApplicationInsightsDataClient, ApplicationInsightsDataModels, ApplicationInsightsDataMappers } from "";
 const subscriptionId = process.env["AZURE_SUBSCRIPTION_ID"];
 
 msRestNodeAuth.interactiveLogin().then((creds) => {
@@ -56,7 +56,7 @@ msRestNodeAuth.interactiveLogin().then((creds) => {
     <title>My Todos</title>
     <script type="text/javascript" src="https://raw.githubusercontent.com/Azure/ms-rest-js/master/msRestBundle.js"></script>
     <script type="text/javascript" src="https://raw.githubusercontent.com/Azure/ms-rest-js/master/msRestAzureBundle.js"></script>
-    <script type="text/javascript" src="https://raw.githubusercontent.com/Azure/azure-sdk-for-js/master/lib/services/azure-applicationinsights-query/applicationInsightsDataClientBundle.js"></script>
+    <script type="text/javascript" src="https://raw.githubusercontent.com/Azure/azure-sdk-for-js/master/lib/services//applicationInsightsDataClientBundle.js"></script>
     <script type="text/javascript">
       document.write('hello world');
       const subscriptionId = "<Subscription_Id>";

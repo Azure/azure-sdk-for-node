@@ -4,7 +4,6 @@ import { ApplicationInsightsDataClientContext } from "../applicationInsightsData
 /** Class representing a Metrics. */
 export declare class Metrics {
     private readonly client;
-    private readonly serializer;
     /**
      * Create a Metrics.
      * @param {ApplicationInsightsDataClientContext} client Reference to the service client.

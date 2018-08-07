@@ -11,14 +11,13 @@
 import * as msRest from "ms-rest-js";
 import * as Models from "../models";
 import * as Mappers from "../models/queryMappers";
+import * as Parameters from "../models/parameters";
 import { ApplicationInsightsDataClientContext } from "../applicationInsightsDataClientContext";
-
-const WebResource = msRest.WebResource;
 
 /** Class representing a Query. */
 export class Query {
   private readonly client: ApplicationInsightsDataClientContext;
-  private readonly serializer = new msRest.Serializer(Mappers);
+
   /**
    * Create a Query.
    * @param {ApplicationInsightsDataClientContext} client Reference to the service client.
@@ -48,88 +47,14 @@ export class Query {
    *
    * @reject {Error|ServiceError} The error object.
    */
-  async executeWithHttpOperationResponse(appId: string, body: Models.QueryBody, options?: msRest.RequestOptionsBase): Promise<msRest.HttpOperationResponse<Models.QueryResults>> {
-
-    // Create HTTP transport objects
-    const httpRequest = new WebResource();
-    let operationRes: msRest.HttpOperationResponse;
-    try {
-      const operationArguments: msRest.OperationArguments = msRest.createOperationArguments(
-        {
-          appId,
-          body,
-          "this.client.acceptLanguage": this.client.acceptLanguage
-        },
-        options);
-      operationRes = await this.client.sendOperationRequest(
-        httpRequest,
-        operationArguments,
-        {
-          httpMethod: "POST",
-          baseUrl: this.client.baseUri,
-          path: "v1/apps/{appId}/query",
-          urlParameters: [
-            {
-              parameterPath: "appId",
-              mapper: {
-                required: true,
-                serializedName: "appId",
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          headerParameters: [
-            {
-              parameterPath: "this.client.acceptLanguage",
-              mapper: {
-                serializedName: "accept-language",
-                defaultValue: 'en-US',
-                type: {
-                  name: "String"
-                }
-              }
-            }
-          ],
-          requestBody: {
-            parameterPath: "body",
-            mapper: {
-              ...Mappers.QueryBody,
-              required: true
-            }
-          },
-          contentType: "application/json; charset=utf-8",
-          responses: {
-            200: {
-              bodyMapper: Mappers.QueryResults
-            },
-            default: {
-              bodyMapper: Mappers.ErrorResponse
-            }
-          },
-          serializer: this.serializer
-        });
-      // Deserialize Response
-      let statusCode = operationRes.status;
-      if (statusCode === 200) {
-        let parsedResponse = operationRes.parsedBody as { [key: string]: any };
-        try {
-          if (parsedResponse != undefined) {
-            const resultMapper = Mappers.QueryResults;
-            operationRes.parsedBody = this.serializer.deserialize(resultMapper, parsedResponse, 'operationRes.parsedBody');
-          }
-        } catch (error) {
-          let deserializationError = new msRest.RestError(`Error ${error} occurred in deserializing the responseBody - ${operationRes.bodyAsText}`);
-          deserializationError.request = msRest.stripRequest(httpRequest);
-          deserializationError.response = msRest.stripResponse(operationRes);
-          return Promise.reject(deserializationError);
-        }
-      }
-    } catch (err) {
-      return Promise.reject(err);
-    }
-    return Promise.resolve(operationRes);
+  executeWithHttpOperationResponse(appId: string, body: Models.QueryBody, options?: msRest.RequestOptionsBase): Promise<msRest.HttpOperationResponse<Models.QueryResults>> {
+    return this.client.sendOperationRequest(
+      {
+        appId,
+        body,
+        options
+      },
+      executeOperationSpec);
   }
 
   /**
@@ -161,26 +86,36 @@ export class Query {
   execute(appId: string, body: Models.QueryBody, callback: msRest.ServiceCallback<Models.QueryResults>): void;
   execute(appId: string, body: Models.QueryBody, options: msRest.RequestOptionsBase, callback: msRest.ServiceCallback<Models.QueryResults>): void;
   execute(appId: string, body: Models.QueryBody, options?: msRest.RequestOptionsBase, callback?: msRest.ServiceCallback<Models.QueryResults>): any {
-    if (!callback && typeof options === 'function') {
-      callback = options;
-      options = undefined;
-    }
-    let cb = callback as msRest.ServiceCallback<Models.QueryResults>;
-    if (!callback) {
-      return this.executeWithHttpOperationResponse(appId, body, options).then((operationRes: msRest.HttpOperationResponse) => {
-        return Promise.resolve(operationRes.parsedBody as Models.QueryResults);
-      }).catch((err: Error) => {
-        return Promise.reject(err);
-      });
-    } else {
-      msRest.promiseToCallback(this.executeWithHttpOperationResponse(appId, body, options))((err: Error, data: msRest.HttpOperationResponse) => {
-        if (err) {
-          return cb(err);
-        }
-        let result = data.parsedBody as Models.QueryResults;
-        return cb(err, result, data.request, data);
-      });
-    }
+    return msRest.responseToBody(this.executeWithHttpOperationResponse.bind(this), appId, body, options, callback);
   }
 
 }
+
+// Operation Specifications
+const serializer = new msRest.Serializer(Mappers);
+const executeOperationSpec: msRest.OperationSpec = {
+  httpMethod: "POST",
+  path: "v1/apps/{appId}/query",
+  urlParameters: [
+    Parameters.appId
+  ],
+  headerParameters: [
+    Parameters.acceptLanguage
+  ],
+  requestBody: {
+    parameterPath: "body",
+    mapper: {
+      ...Mappers.QueryBody,
+      required: true
+    }
+  },
+  responses: {
+    200: {
+      bodyMapper: Mappers.QueryResults
+    },
+    default: {
+      bodyMapper: Mappers.ErrorResponse
+    }
+  },
+  serializer
+};

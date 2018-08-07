@@ -4,7 +4,6 @@ export declare class ApplicationInsightsDataClientContext extends msRestAzure.Az
     credentials: msRest.ServiceClientCredentials;
     acceptLanguage: string;
     longRunningOperationRetryTimeout: number;
-    baseUri: string;
     /**
      * @class
      * Initializes a new instance of the ApplicationInsightsDataClient class.
