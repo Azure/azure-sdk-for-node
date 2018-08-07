@@ -1893,6 +1893,8 @@ export interface ServicePrincipals {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.filter]
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -1902,7 +1904,7 @@ export interface ServicePrincipals {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
+    getWithHttpOperationResponse(objectId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ServicePrincipal>>;
 
     /**
      * Gets service principal information from the directory.
@@ -1910,6 +1912,8 @@ export interface ServicePrincipals {
      * @param {string} objectId The object ID of the service principal to get.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter]
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -1936,9 +1940,9 @@ export interface ServicePrincipals {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(objectId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
+    get(objectId: string, options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ServicePrincipal>;
     get(objectId: string, callback: ServiceCallback<models.ServicePrincipal>): void;
-    get(objectId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
+    get(objectId: string, options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ServicePrincipal>): void;
 
 
     /**
