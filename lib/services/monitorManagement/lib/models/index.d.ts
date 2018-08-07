@@ -2173,8 +2173,11 @@ export interface MetricDimension {
  * @member {string} name Name of the criteria.
  * @member {string} metricName Name of the metric.
  * @member {string} [metricNamespace] Namespace of the metric.
- * @member {object} operator the criteria operator.
- * @member {object} timeAggregation the criteria time aggregation types.
+ * @member {string} operator the criteria operator. Possible values include:
+ * 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqual', 'LessThan',
+ * 'LessThanOrEqual'
+ * @member {string} timeAggregation the criteria time aggregation types.
+ * Possible values include: 'Average', 'Minimum', 'Maximum', 'Total'
  * @member {number} threshold the criteria threshold value that activates the
  * alert.
  * @member {array} [dimensions] List of dimension conditions.
@@ -2183,8 +2186,8 @@ export interface MetricCriteria {
   name: string;
   metricName: string;
   metricNamespace?: string;
-  operator: any;
-  timeAggregation: any;
+  operator: string;
+  timeAggregation: string;
   threshold: number;
   dimensions?: MetricDimension[];
 }
