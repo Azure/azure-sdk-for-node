@@ -924,6 +924,8 @@ export interface UsageDetails {
      * management group scope by current billing period. Usage details are
      * available via this API only for May 1, 2014 or later.
      *
+     * @param {string} managementGroupId Azure Management Group ID.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the
@@ -961,13 +963,15 @@ export interface UsageDetails {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByManagementGroupWithHttpOperationResponse(options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+    listByManagementGroupWithHttpOperationResponse(managementGroupId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
 
     /**
      * Lists the usage detail records for all subscriptions belonging to a
      * management group scope by current billing period. Usage details are
      * available via this API only for May 1, 2014 or later.
      *
+     * @param {string} managementGroupId Azure Management Group ID.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.expand] May be used to expand the
@@ -1022,15 +1026,17 @@ export interface UsageDetails {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByManagementGroup(options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
-    listByManagementGroup(callback: ServiceCallback<models.UsageDetailsListResult>): void;
-    listByManagementGroup(options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByManagementGroup(managementGroupId: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listByManagementGroup(managementGroupId: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listByManagementGroup(managementGroupId: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
 
 
     /**
      * Lists the usage detail records for all subscriptions belonging to a
      * management group scope by specified billing period. Usage details are
      * available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} managementGroupId Azure Management Group ID.
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -1071,12 +1077,14 @@ export interface UsageDetails {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listForBillingPeriodByManagementGroupWithHttpOperationResponse(billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
+    listForBillingPeriodByManagementGroupWithHttpOperationResponse(managementGroupId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.UsageDetailsListResult>>;
 
     /**
      * Lists the usage detail records for all subscriptions belonging to a
      * management group scope by specified billing period. Usage details are
      * available via this API only for May 1, 2014 or later.
+     *
+     * @param {string} managementGroupId Azure Management Group ID.
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -1134,9 +1142,9 @@ export interface UsageDetails {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listForBillingPeriodByManagementGroup(billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
-    listForBillingPeriodByManagementGroup(billingPeriodName: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
-    listForBillingPeriodByManagementGroup(billingPeriodName: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, options?: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }): Promise<models.UsageDetailsListResult>;
+    listForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, callback: ServiceCallback<models.UsageDetailsListResult>): void;
+    listForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, options: { expand? : string, filter? : string, skiptoken? : string, top? : number, queryOptions? : models.QueryOptions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.UsageDetailsListResult>): void;
 
 
     /**
@@ -5069,6 +5077,8 @@ export interface AggregatedCost {
      * Provides the aggregate cost of a management group and all child management
      * groups by current billing period.
      *
+     * @param {string} managementGroupId Azure Management Group ID.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -5080,12 +5090,14 @@ export interface AggregatedCost {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    byManagementGroupWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroupAggregatedCostResult>>;
+    getByManagementGroupWithHttpOperationResponse(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroupAggregatedCostResult>>;
 
     /**
      * Provides the aggregate cost of a management group and all child management
      * groups by current billing period.
      *
+     * @param {string} managementGroupId Azure Management Group ID.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
@@ -5114,14 +5126,16 @@ export interface AggregatedCost {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    byManagementGroup(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroupAggregatedCostResult>;
-    byManagementGroup(callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
-    byManagementGroup(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
+    getByManagementGroup(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroupAggregatedCostResult>;
+    getByManagementGroup(managementGroupId: string, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
+    getByManagementGroup(managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
 
 
     /**
      * Provides the aggregate cost of a management group and all child management
      * groups by specified billing period
+     *
+     * @param {string} managementGroupId Azure Management Group ID.
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -5136,11 +5150,13 @@ export interface AggregatedCost {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    forBillingPeriodByManagementGroupWithHttpOperationResponse(billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroupAggregatedCostResult>>;
+    getForBillingPeriodByManagementGroupWithHttpOperationResponse(managementGroupId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroupAggregatedCostResult>>;
 
     /**
      * Provides the aggregate cost of a management group and all child management
      * groups by specified billing period
+     *
+     * @param {string} managementGroupId Azure Management Group ID.
      *
      * @param {string} billingPeriodName Billing Period Name.
      *
@@ -5172,7 +5188,7 @@ export interface AggregatedCost {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    forBillingPeriodByManagementGroup(billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroupAggregatedCostResult>;
-    forBillingPeriodByManagementGroup(billingPeriodName: string, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
-    forBillingPeriodByManagementGroup(billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
+    getForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroupAggregatedCostResult>;
+    getForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
+    getForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
 }
