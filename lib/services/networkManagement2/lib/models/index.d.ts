@@ -246,9 +246,9 @@ export interface AzureFirewall extends Resource {
  * IP addresses defined in network interfaces.
  * @member {array} [loadBalancingRules] Gets load balancing rules that use this
  * backend address pool.
- * @member {object} [outboundNatRule] Gets outbound rules that use this backend
+ * @member {object} [outboundRule] Gets outbound rules that use this backend
  * address pool.
- * @member {string} [outboundNatRule.id] Resource ID.
+ * @member {string} [outboundRule.id] Resource ID.
  * @member {string} [provisioningState] Get provisioning state of the public IP
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -259,7 +259,7 @@ export interface AzureFirewall extends Resource {
 export interface BackendAddressPool extends SubResource {
   readonly backendIPConfigurations?: NetworkInterfaceIPConfiguration[];
   readonly loadBalancingRules?: SubResource[];
-  readonly outboundNatRule?: SubResource;
+  readonly outboundRule?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -3770,8 +3770,8 @@ export interface LoadBalancerSku {
  * this frontend IP.
  * @member {array} [inboundNatPools] Read only. Inbound pools URIs that use
  * this frontend IP.
- * @member {array} [outboundNatRules] Read only. Outbound rules URIs that use
- * this frontend IP.
+ * @member {array} [outboundRules] Read only. Outbound rules URIs that use this
+ * frontend IP.
  * @member {array} [loadBalancingRules] Gets load balancing rules URIs that use
  * this frontend IP.
  * @member {string} [privateIPAddress] The private IP address of the IP
@@ -3987,7 +3987,7 @@ export interface LoadBalancerSku {
 export interface FrontendIPConfiguration extends SubResource {
   readonly inboundNatRules?: SubResource[];
   readonly inboundNatPools?: SubResource[];
-  readonly outboundNatRules?: SubResource[];
+  readonly outboundRules?: SubResource[];
   readonly loadBalancingRules?: SubResource[];
   privateIPAddress?: string;
   privateIPAllocationMethod?: string;
@@ -4164,9 +4164,9 @@ export interface InboundNatPool extends SubResource {
 
 /**
  * @class
- * Initializes a new instance of the OutboundNatRule class.
+ * Initializes a new instance of the OutboundRule class.
  * @constructor
- * Outbound NAT pool of the load balancer.
+ * Outbound pool of the load balancer.
  *
  * @member {number} [allocatedOutboundPorts] The number of outbound ports to be
  * used for NAT.
@@ -4183,7 +4183,7 @@ export interface InboundNatPool extends SubResource {
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
-export interface OutboundNatRule extends SubResource {
+export interface OutboundRule extends SubResource {
   allocatedOutboundPorts?: number;
   frontendIPConfigurations?: SubResource[];
   backendAddressPool: SubResource;
@@ -4223,7 +4223,7 @@ export interface OutboundNatRule extends SubResource {
  * Nat rules. Inbound NAT pools are referenced from virtual machine scale sets.
  * NICs that are associated with individual virtual machines cannot reference
  * an inbound NAT pool. They have to reference individual inbound NAT rules.
- * @member {array} [outboundNatRules] The outbound NAT rules.
+ * @member {array} [outboundRules] The outbound rules.
  * @member {string} [resourceGuid] The resource GUID property of the load
  * balancer resource.
  * @member {string} [provisioningState] Gets the provisioning state of the
@@ -4240,7 +4240,7 @@ export interface LoadBalancer extends Resource {
   probes?: Probe[];
   inboundNatRules?: InboundNatRule[];
   inboundNatPools?: InboundNatPool[];
-  outboundNatRules?: OutboundNatRule[];
+  outboundRules?: OutboundRule[];
   resourceGuid?: string;
   provisioningState?: string;
   etag?: string;

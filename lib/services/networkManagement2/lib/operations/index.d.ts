@@ -9415,7 +9415,7 @@ export interface LoadBalancers {
      * machines cannot reference an inbound NAT pool. They have to reference
      * individual inbound NAT rules.
      *
-     * @param {array} [parameters.outboundNatRules] The outbound NAT rules.
+     * @param {array} [parameters.outboundRules] The outbound rules.
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * load balancer resource.
@@ -9490,7 +9490,7 @@ export interface LoadBalancers {
      * machines cannot reference an inbound NAT pool. They have to reference
      * individual inbound NAT rules.
      *
-     * @param {array} [parameters.outboundNatRules] The outbound NAT rules.
+     * @param {array} [parameters.outboundRules] The outbound rules.
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * load balancer resource.
@@ -9817,7 +9817,7 @@ export interface LoadBalancers {
      * machines cannot reference an inbound NAT pool. They have to reference
      * individual inbound NAT rules.
      *
-     * @param {array} [parameters.outboundNatRules] The outbound NAT rules.
+     * @param {array} [parameters.outboundRules] The outbound rules.
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * load balancer resource.
@@ -9892,7 +9892,7 @@ export interface LoadBalancers {
      * machines cannot reference an inbound NAT pool. They have to reference
      * individual inbound NAT rules.
      *
-     * @param {array} [parameters.outboundNatRules] The outbound NAT rules.
+     * @param {array} [parameters.outboundRules] The outbound rules.
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * load balancer resource.
