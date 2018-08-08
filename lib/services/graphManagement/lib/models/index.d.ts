@@ -750,7 +750,7 @@ export interface Domain {
 
 /**
  * @class
- * Initializes a new instance of the OAuth2 class.
+ * Initializes a new instance of the Permissions class.
  * @constructor
  * @member {string} [odatatype]
  * Microsoft.DirectoryServices.OAuth2PermissionGrant
@@ -764,7 +764,7 @@ export interface Domain {
  * @member {string} [startTime] Start time for TTL
  * @member {string} [expiryTime] Expiry time for TTL
  */
-export interface OAuth2 {
+export interface Permissions {
   odatatype?: string;
   clientId?: string;
   consentType?: string;

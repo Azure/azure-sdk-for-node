@@ -2985,11 +2985,11 @@ export interface Domains {
 
 /**
  * @class
- * OAuth2Operations
+ * OAuth2
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the GraphRbacManagementClient.
  */
-export interface OAuth2Operations {
+export interface OAuth2 {
 
 
     /**
@@ -2997,25 +2997,27 @@ export interface OAuth2Operations {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter]
+     * @param {string} [options.filter] This is the Service Principal ObjectId
+     * associated with the app
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OAuth2>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Permissions>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OAuth2>>;
+    getWithHttpOperationResponse(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Permissions>>;
 
     /**
      * Queries OAuth2 permissions for the relevant SP ObjectId of an app.
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {string} [options.filter]
+     * @param {string} [options.filter] This is the Service Principal ObjectId
+     * associated with the app
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3027,7 +3029,7 @@ export interface OAuth2Operations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OAuth2} - The deserialized result object.
+     *                      @resolve {Permissions} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3035,16 +3037,16 @@ export interface OAuth2Operations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OAuth2} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OAuth2} for more information.
+     *                      {Permissions} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Permissions} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.OAuth2>;
-    get(callback: ServiceCallback<models.OAuth2>): void;
-    get(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OAuth2>): void;
+    get(options?: { filter? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Permissions>;
+    get(callback: ServiceCallback<models.Permissions>): void;
+    get(options: { filter? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Permissions>): void;
 
 
     /**
@@ -3079,11 +3081,11 @@ export interface OAuth2Operations {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<OAuth2>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<Permissions>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    postWithHttpOperationResponse(options?: { body? : models.OAuth2, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OAuth2>>;
+    postWithHttpOperationResponse(options?: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Permissions>>;
 
     /**
      * Grants OAuth2 permissions for the relevant resource Ids of an app.
@@ -3122,7 +3124,7 @@ export interface OAuth2Operations {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {OAuth2} - The deserialized result object.
+     *                      @resolve {Permissions} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3130,14 +3132,14 @@ export interface OAuth2Operations {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {OAuth2} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link OAuth2} for more information.
+     *                      {Permissions} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Permissions} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    post(options?: { body? : models.OAuth2, customHeaders? : { [headerName: string]: string; } }): Promise<models.OAuth2>;
-    post(callback: ServiceCallback<models.OAuth2>): void;
-    post(options: { body? : models.OAuth2, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OAuth2>): void;
+    post(options?: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }): Promise<models.Permissions>;
+    post(callback: ServiceCallback<models.Permissions>): void;
+    post(options: { body? : models.Permissions, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Permissions>): void;
 }
