@@ -525,6 +525,12 @@ export interface DetectedLanguage {
 export interface ImageListMetadata {
   keyOne?: string;
   keyTwo?: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * MUST be of type "string". Due to valid TS constraints we have modeled this
+   * as a union of `string | any`.
+   */
+  [property: string]: string | any;
 }
 
 /**
@@ -561,6 +567,12 @@ export interface ImageList {
 export interface TermListMetadata {
   keyOne?: string;
   keyTwo?: string;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * MUST be of type "string". Due to valid TS constraints we have modeled this
+   * as a union of `string | any`.
+   */
+  [property: string]: string | any;
 }
 
 /**
