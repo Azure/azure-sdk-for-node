@@ -22,7 +22,8 @@ export interface Profiles {
 
 
     /**
-     * Lists all of the CDN profiles within an Azure subscription.
+     * Dummy Description.   Lists all of the CDN profiles within an Azure
+     * subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -38,7 +39,8 @@ export interface Profiles {
     listWithHttpOperationResponse(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
 
     /**
-     * Lists all of the CDN profiles within an Azure subscription.
+     * Dummy Description.   Lists all of the CDN profiles within an Azure
+     * subscription.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -850,7 +852,8 @@ export interface Profiles {
 
 
     /**
-     * Lists all of the CDN profiles within an Azure subscription.
+     * Dummy Description.   Lists all of the CDN profiles within an Azure
+     * subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -869,7 +872,8 @@ export interface Profiles {
     listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ProfileListResult>>;
 
     /**
-     * Lists all of the CDN profiles within an Azure subscription.
+     * Dummy Description.   Lists all of the CDN profiles within an Azure
+     * subscription.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
