@@ -1868,7 +1868,7 @@ export interface CertificateConfiguration {
   encodedCertificate?: string;
   certificatePassword?: string;
   storeName: string;
-  readonly certificate?: CertificateInformation;
+  certificate?: CertificateInformation;
 }
 
 /**
@@ -2576,7 +2576,7 @@ export interface EmailTemplateUpdateParameters {
  * 'system', 'external'
  * @member {string} [externalId] For external groups, this property contains
  * the id of the group from the external identity provider, e.g. for Azure
- * Active Directory aad://<tenant>.onmicrosoft.com/groups/<group object id>;
+ * Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`;
  * otherwise the value is null.
  */
 export interface GroupContractProperties {
@@ -2602,7 +2602,7 @@ export interface GroupContractProperties {
  * 'custom', 'system', 'external'
  * @member {string} [externalId] For external groups, this property contains
  * the id of the group from the external identity provider, e.g. for Azure
- * Active Directory aad://<tenant>.onmicrosoft.com/groups/<group object id>;
+ * Active Directory `aad://<tenant>.onmicrosoft.com/groups/<group object id>`;
  * otherwise the value is null.
  */
 export interface GroupContract extends Resource {
@@ -2625,8 +2625,9 @@ export interface GroupContract extends Resource {
  * 'system', 'external'
  * @member {string} [externalId] Identifier of the external groups, this
  * property contains the id of the group from the external identity provider,
- * e.g. for Azure Active Directory aad://<tenant>.onmicrosoft.com/groups/<group
- * object id>; otherwise the value is null.
+ * e.g. for Azure Active Directory
+ * `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the
+ * value is null.
  */
 export interface GroupCreateParameters {
   displayName: string;
@@ -2647,8 +2648,9 @@ export interface GroupCreateParameters {
  * 'system', 'external'
  * @member {string} [externalId] Identifier of the external groups, this
  * property contains the id of the group from the external identity provider,
- * e.g. for Azure Active Directory aad://<tenant>.onmicrosoft.com/groups/<group
- * object id>; otherwise the value is null.
+ * e.g. for Azure Active Directory
+ * `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the
+ * value is null.
  */
 export interface GroupUpdateParameters {
   displayName?: string;
