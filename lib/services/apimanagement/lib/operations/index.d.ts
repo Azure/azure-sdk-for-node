@@ -12159,8 +12159,8 @@ export interface Group {
      * @param {string} [parameters.externalId] Identifier of the external groups,
      * this property contains the id of the group from the external identity
      * provider, e.g. for Azure Active Directory
-     * aad://<tenant>.onmicrosoft.com/groups/<group object id>; otherwise the value
-     * is null.
+     * `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the
+     * value is null.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12200,8 +12200,8 @@ export interface Group {
      * @param {string} [parameters.externalId] Identifier of the external groups,
      * this property contains the id of the group from the external identity
      * provider, e.g. for Azure Active Directory
-     * aad://<tenant>.onmicrosoft.com/groups/<group object id>; otherwise the value
-     * is null.
+     * `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the
+     * value is null.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -12260,8 +12260,8 @@ export interface Group {
      * @param {string} [parameters.externalId] Identifier of the external groups,
      * this property contains the id of the group from the external identity
      * provider, e.g. for Azure Active Directory
-     * aad://<tenant>.onmicrosoft.com/groups/<group object id>; otherwise the value
-     * is null.
+     * `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the
+     * value is null.
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -12302,8 +12302,8 @@ export interface Group {
      * @param {string} [parameters.externalId] Identifier of the external groups,
      * this property contains the id of the group from the external identity
      * provider, e.g. for Azure Active Directory
-     * aad://<tenant>.onmicrosoft.com/groups/<group object id>; otherwise the value
-     * is null.
+     * `aad://<tenant>.onmicrosoft.com/groups/<group object id>`; otherwise the
+     * value is null.
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
