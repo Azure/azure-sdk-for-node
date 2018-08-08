@@ -891,10 +891,10 @@ export interface CredentialResult {
  * @constructor
  * The list of credential result response.
  *
- * @member {array} [values]
+ * @member {array} [kubeconfigs]
  */
 export interface CredentialResults {
-  readonly values?: CredentialResult[];
+  readonly kubeconfigs?: CredentialResult[];
 }
 
 /**
