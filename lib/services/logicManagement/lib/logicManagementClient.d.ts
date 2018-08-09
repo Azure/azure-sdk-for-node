@@ -62,12 +62,7 @@ export default class LogicManagementClient extends AzureServiceClient {
   workflowTriggerHistories: operations.WorkflowTriggerHistories;
   workflowRuns: operations.WorkflowRuns;
   workflowRunActions: operations.WorkflowRunActions;
-  workflowRunActionRepetitions: operations.WorkflowRunActionRepetitions;
-  workflowRunActionScopedRepetitions: operations.WorkflowRunActionScopedRepetitions;
-  workflowRunOperations: operations.WorkflowRunOperations;
   integrationAccounts: operations.IntegrationAccounts;
-  integrationAccountAssemblies: operations.IntegrationAccountAssemblies;
-  integrationAccountBatchConfigurations: operations.IntegrationAccountBatchConfigurations;
   schemas: operations.Schemas;
   maps: operations.Maps;
   partners: operations.Partners;
