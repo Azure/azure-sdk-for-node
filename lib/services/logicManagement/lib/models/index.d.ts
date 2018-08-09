@@ -201,7 +201,7 @@ export interface WorkflowVersion extends Resource {
  * @class
  * Initializes a new instance of the RecurrenceScheduleOccurrence class.
  * @constructor
- * The recurrence schedule occurrence.
+ * The recurrence schedule occurence.
  *
  * @member {string} [day] The day of the week. Possible values include:
  * 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
@@ -241,8 +241,8 @@ export interface RecurrenceSchedule {
  * @member {string} [frequency] The frequency. Possible values include:
  * 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Year'
  * @member {number} [interval] The interval.
- * @member {string} [startTime] The start time.
- * @member {string} [endTime] The end time.
+ * @member {date} [startTime] The start time.
+ * @member {date} [endTime] The end time.
  * @member {string} [timeZone] The time zone.
  * @member {object} [schedule] The recurrence schedule.
  * @member {array} [schedule.minutes] The minutes.
@@ -254,8 +254,8 @@ export interface RecurrenceSchedule {
 export interface WorkflowTriggerRecurrence {
   frequency?: string;
   interval?: number;
-  startTime?: string;
-  endTime?: string;
+  startTime?: Date;
+  endTime?: Date;
   timeZone?: string;
   schedule?: RecurrenceSchedule;
 }
@@ -286,8 +286,8 @@ export interface WorkflowTriggerRecurrence {
  * include: 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month',
  * 'Year'
  * @member {number} [recurrence.interval] The interval.
- * @member {string} [recurrence.startTime] The start time.
- * @member {string} [recurrence.endTime] The end time.
+ * @member {date} [recurrence.startTime] The start time.
+ * @member {date} [recurrence.endTime] The end time.
  * @member {string} [recurrence.timeZone] The time zone.
  * @member {object} [recurrence.schedule] The recurrence schedule.
  * @member {array} [recurrence.schedule.minutes] The minutes.
@@ -341,14 +341,12 @@ export interface WorkflowTriggerFilter {
  * @member {string} [sp] The SAS permissions.
  * @member {string} [sv] The SAS version.
  * @member {string} [sig] The SAS signature.
- * @member {string} [se] The SAS timestamp.
  */
 export interface WorkflowTriggerListCallbackUrlQueries {
   apiVersion?: string;
   sp?: string;
   sv?: string;
   sig?: string;
-  se?: string;
 }
 
 /**
@@ -372,7 +370,6 @@ export interface WorkflowTriggerListCallbackUrlQueries {
  * @member {string} [queries.sp] The SAS permissions.
  * @member {string} [queries.sv] The SAS version.
  * @member {string} [queries.sig] The SAS signature.
- * @member {string} [queries.se] The SAS timestamp.
  */
 export interface WorkflowTriggerCallbackUrl {
   readonly value?: string;
@@ -536,7 +533,6 @@ export interface WorkflowTriggerHistoryFilter {
  * @member {string} [outputsLink.contentHash.value] The value of the content
  * hash.
  * @member {object} [outputsLink.metadata] The metadata.
- * @member {date} [scheduledTime] Gets the scheduled time.
  * @member {date} [startTime] Gets the start time.
  * @member {date} [endTime] Gets the end time.
  * @member {string} [trackingId] Gets the tracking id.
@@ -556,7 +552,6 @@ export interface WorkflowRunTrigger {
   readonly inputsLink?: ContentLink;
   readonly outputs?: any;
   readonly outputsLink?: ContentLink;
-  readonly scheduledTime?: Date;
   readonly startTime?: Date;
   readonly endTime?: Date;
   readonly trackingId?: string;
@@ -585,7 +580,6 @@ export interface WorkflowOutputParameter extends WorkflowParameter {
  * @constructor
  * The workflow run.
  *
- * @member {date} [waitEndTime] Gets the wait end time.
  * @member {date} [startTime] Gets the start time.
  * @member {date} [endTime] Gets the end time.
  * @member {string} [status] Gets the status. Possible values include:
@@ -625,7 +619,6 @@ export interface WorkflowOutputParameter extends WorkflowParameter {
  * @member {string} [trigger.outputsLink.contentHash.value] The value of the
  * content hash.
  * @member {object} [trigger.outputsLink.metadata] The metadata.
- * @member {date} [trigger.scheduledTime] Gets the scheduled time.
  * @member {date} [trigger.startTime] Gets the start time.
  * @member {date} [trigger.endTime] Gets the end time.
  * @member {string} [trigger.trackingId] Gets the tracking id.
@@ -664,7 +657,6 @@ export interface WorkflowOutputParameter extends WorkflowParameter {
  * @member {string} [response.outputsLink.contentHash.value] The value of the
  * content hash.
  * @member {object} [response.outputsLink.metadata] The metadata.
- * @member {date} [response.scheduledTime] Gets the scheduled time.
  * @member {date} [response.startTime] Gets the start time.
  * @member {date} [response.endTime] Gets the end time.
  * @member {string} [response.trackingId] Gets the tracking id.
@@ -682,7 +674,6 @@ export interface WorkflowOutputParameter extends WorkflowParameter {
  * @member {string} [type] Gets the workflow run type.
  */
 export interface WorkflowRun extends SubResource {
-  readonly waitEndTime?: Date;
   readonly startTime?: Date;
   readonly endTime?: Date;
   readonly status?: string;
@@ -733,7 +724,7 @@ export interface ErrorProperties {
  * @class
  * Initializes a new instance of the ErrorResponse class.
  * @constructor
- * Error response indicates Logic service is not able to process the incoming
+ * Error reponse indicates Logic service is not able to process the incoming
  * request. The error property contains the error details.
  *
  * @member {object} [error] The error properties.
@@ -1146,7 +1137,7 @@ export interface AS2MessageConnectionSettings {
  * @class
  * Initializes a new instance of the AS2AcknowledgementConnectionSettings class.
  * @constructor
- * The AS2 agreement acknowledgement connection settings.
+ * The AS2 agreement acknowledegment connection settings.
  *
  * @member {boolean} ignoreCertificateNameMismatch The value indicating whether
  * to ignore mismatch in certificate name.
@@ -1446,7 +1437,7 @@ export interface AS2ProtocolSettings {
  * @class
  * Initializes a new instance of the AS2OneWayAgreement class.
  * @constructor
- * The integration account AS2 one-way agreement.
+ * The integration account AS2 oneway agreement.
  *
  * @member {object} senderBusinessIdentity The sender business identity
  * @member {string} [senderBusinessIdentity.qualifier] The business identity
@@ -2512,7 +2503,7 @@ export interface X12ProtocolSettings {
  * @class
  * Initializes a new instance of the X12OneWayAgreement class.
  * @constructor
- * The X12 one-way agreement.
+ * The X12 oneway agreement.
  *
  * @member {object} senderBusinessIdentity The sender business identity
  * @member {string} [senderBusinessIdentity.qualifier] The business identity
@@ -3547,7 +3538,7 @@ export interface EdifactProcessingSettings {
  * @class
  * Initializes a new instance of the EdifactEnvelopeOverride class.
  * @constructor
- * The Edifact envelope override settings.
+ * The Edifact enevlope override settings.
  *
  * @member {string} [messageId] The message id on which this envelope settings
  * has to be applied.
@@ -3670,7 +3661,7 @@ export interface EdifactValidationOverride {
  *
  * @member {string} [messageId] The message id.
  * @member {string} [messageVersion] The message version.
- * @member {string} [messageRelease] The message release.
+ * @member {string} [messageRelease] The message releaseversion.
  * @member {number} dataElementSeparator The data element separator.
  * @member {number} componentSeparator The component separator.
  * @member {number} segmentTerminator The segment terminator.
@@ -7874,597 +7865,6 @@ export interface Operation {
   display?: OperationDisplay;
 }
 
-/**
- * @class
- * Initializes a new instance of the KeyVaultReference class.
- * @constructor
- * The key vault reference.
- *
- */
-export interface KeyVaultReference extends ResourceReference {
-}
-
-/**
- * @class
- * Initializes a new instance of the ListKeyVaultKeysDefinition class.
- * @constructor
- * The list key vault keys definition.
- *
- * @member {object} keyVault The key vault reference.
- * @member {string} [skipToken] The skip token.
- */
-export interface ListKeyVaultKeysDefinition {
-  keyVault: KeyVaultReference;
-  skipToken?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the KeyVaultKeyAttributes class.
- * @constructor
- * The key attributes.
- *
- * @member {boolean} [enabled] Whether the key is enabled or not.
- * @member {number} [created] When the key was created.
- * @member {number} [updated] When the key was updated.
- */
-export interface KeyVaultKeyAttributes {
-  enabled?: boolean;
-  created?: number;
-  updated?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the KeyVaultKey class.
- * @constructor
- * The key vault key.
- *
- * @member {string} [kid] The key id.
- * @member {object} [attributes] The key attributes.
- * @member {boolean} [attributes.enabled] Whether the key is enabled or not.
- * @member {number} [attributes.created] When the key was created.
- * @member {number} [attributes.updated] When the key was updated.
- */
-export interface KeyVaultKey {
-  kid?: string;
-  attributes?: KeyVaultKeyAttributes;
-}
-
-/**
- * @class
- * Initializes a new instance of the TrackingEventErrorInfo class.
- * @constructor
- * @member {string} [message]
- * @member {string} [code]
- */
-export interface TrackingEventErrorInfo {
-  message?: string;
-  code?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TrackingEvent class.
- * @constructor
- * @member {string} eventLevel Possible values include: 'LogAlways',
- * 'Critical', 'Error', 'Warning', 'Informational', 'Verbose'
- * @member {date} eventTime
- * @member {string} recordType Possible values include: 'NotSpecified',
- * 'Custom', 'AS2Message', 'AS2MDN', 'X12Interchange', 'X12FunctionalGroup',
- * 'X12TransactionSet', 'X12InterchangeAcknowledgment',
- * 'X12FunctionalGroupAcknowledgment', 'X12TransactionSetAcknowledgment',
- * 'EdifactInterchange', 'EdifactFunctionalGroup', 'EdifactTransactionSet',
- * 'EdifactInterchangeAcknowledgment', 'EdifactFunctionalGroupAcknowledgment',
- * 'EdifactTransactionSetAcknowledgment'
- * @member {object} [error]
- * @member {string} [error.message]
- * @member {string} [error.code]
- */
-export interface TrackingEvent {
-  eventLevel: string;
-  eventTime: Date;
-  recordType: string;
-  error?: TrackingEventErrorInfo;
-}
-
-/**
- * @class
- * Initializes a new instance of the TrackingEventsDefinition class.
- * @constructor
- * @member {string} sourceType
- * @member {string} [trackEventsOptions] Possible values include: 'None',
- * 'DisableSourceInfoEnrich'
- * @member {array} events
- */
-export interface TrackingEventsDefinition {
-  sourceType: string;
-  trackEventsOptions?: string;
-  events: TrackingEvent[];
-}
-
-/**
- * @class
- * Initializes a new instance of the AccessKeyRegenerateActionDefinition class.
- * @constructor
- * @member {string} keyType Possible values include: 'NotSpecified', 'Primary',
- * 'Secondary'
- */
-export interface AccessKeyRegenerateActionDefinition {
-  keyType: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SetTriggerStateActionDefinition class.
- * @constructor
- * @member {object} source
- * @member {string} [source.provisioningState] Gets the provisioning state.
- * Possible values include: 'NotSpecified', 'Accepted', 'Running', 'Ready',
- * 'Creating', 'Created', 'Deleting', 'Deleted', 'Canceled', 'Failed',
- * 'Succeeded', 'Moving', 'Updating', 'Registering', 'Registered',
- * 'Unregistering', 'Unregistered', 'Completed'
- * @member {date} [source.createdTime] Gets the created time.
- * @member {date} [source.changedTime] Gets the changed time.
- * @member {string} [source.state] Gets the state. Possible values include:
- * 'NotSpecified', 'Completed', 'Enabled', 'Disabled', 'Deleted', 'Suspended'
- * @member {string} [source.status] Gets the status. Possible values include:
- * 'NotSpecified', 'Paused', 'Running', 'Waiting', 'Succeeded', 'Skipped',
- * 'Suspended', 'Cancelled', 'Failed', 'Faulted', 'TimedOut', 'Aborted',
- * 'Ignored'
- * @member {date} [source.lastExecutionTime] Gets the last execution time.
- * @member {date} [source.nextExecutionTime] Gets the next execution time.
- * @member {object} [source.recurrence] Gets the workflow trigger recurrence.
- * @member {string} [source.recurrence.frequency] The frequency. Possible
- * values include: 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week',
- * 'Month', 'Year'
- * @member {number} [source.recurrence.interval] The interval.
- * @member {string} [source.recurrence.startTime] The start time.
- * @member {string} [source.recurrence.endTime] The end time.
- * @member {string} [source.recurrence.timeZone] The time zone.
- * @member {object} [source.recurrence.schedule] The recurrence schedule.
- * @member {array} [source.recurrence.schedule.minutes] The minutes.
- * @member {array} [source.recurrence.schedule.hours] The hours.
- * @member {array} [source.recurrence.schedule.weekDays] The days of the week.
- * @member {array} [source.recurrence.schedule.monthDays] The month days.
- * @member {array} [source.recurrence.schedule.monthlyOccurrences] The monthly
- * occurrences.
- * @member {object} [source.workflow] Gets the reference to workflow.
- * @member {string} [source.workflow.id] The resource id.
- * @member {string} [source.workflow.name] Gets the resource name.
- * @member {string} [source.workflow.type] Gets the resource type.
- * @member {string} [source.name] Gets the workflow trigger name.
- * @member {string} [source.type] Gets the workflow trigger type.
- */
-export interface SetTriggerStateActionDefinition {
-  source: WorkflowTrigger;
-}
-
-/**
- * @class
- * Initializes a new instance of the Expression class.
- * @constructor
- * @member {string} [text]
- * @member {object} [value]
- * @member {array} [subexpressions]
- * @member {object} [error]
- * @member {string} [error.message] The error message.
- * @member {array} [error.details] The error details.
- */
-export interface Expression {
-  text?: string;
-  value?: any;
-  subexpressions?: Expression[];
-  error?: AzureResourceErrorInfo;
-}
-
-/**
- * @class
- * Initializes a new instance of the ExpressionRoot class.
- * @constructor
- * @member {string} [path] The path.
- */
-export interface ExpressionRoot extends Expression {
-  path?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ErrorInfo class.
- * @constructor
- * The error info.
- *
- * @member {string} code The error code.
- */
-export interface ErrorInfo {
-  code: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AzureResourceErrorInfo class.
- * @constructor
- * The azure resource error info.
- *
- * @member {string} message The error message.
- * @member {array} [details] The error details.
- */
-export interface AzureResourceErrorInfo extends ErrorInfo {
-  message: string;
-  details?: AzureResourceErrorInfo[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RepetitionIndex class.
- * @constructor
- * The workflow run action repetition index.
- *
- * @member {string} [scopeName] The scope.
- * @member {number} itemIndex The index.
- */
-export interface RepetitionIndex {
-  scopeName?: string;
-  itemIndex: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkflowRunActionRepetitionDefinition class.
- * @constructor
- * The workflow run action repetition definition.
- *
- * @member {date} [startTime] The start time of the workflow scope repetition.
- * @member {date} [endTime] The end time of the workflow scope repetition.
- * @member {object} [correlation] The correlation properties.
- * @member {string} [correlation.actionTrackingId] The action tracking
- * identifier.
- * @member {string} [status] The status of the workflow scope repetition.
- * Possible values include: 'NotSpecified', 'Paused', 'Running', 'Waiting',
- * 'Succeeded', 'Skipped', 'Suspended', 'Cancelled', 'Failed', 'Faulted',
- * 'TimedOut', 'Aborted', 'Ignored'
- * @member {string} [code] The workflow scope repetition code.
- * @member {object} [error]
- * @member {string} [trackingId] Gets the tracking id.
- * @member {object} [inputs] Gets the inputs.
- * @member {object} [inputsLink] Gets the link to inputs.
- * @member {string} [inputsLink.uri] The content link URI.
- * @member {string} [inputsLink.contentVersion] The content version.
- * @member {number} [inputsLink.contentSize] The content size.
- * @member {object} [inputsLink.contentHash] The content hash.
- * @member {string} [inputsLink.contentHash.algorithm] The algorithm of the
- * content hash.
- * @member {string} [inputsLink.contentHash.value] The value of the content
- * hash.
- * @member {object} [inputsLink.metadata] The metadata.
- * @member {object} [outputs] Gets the outputs.
- * @member {object} [outputsLink] Gets the link to outputs.
- * @member {string} [outputsLink.uri] The content link URI.
- * @member {string} [outputsLink.contentVersion] The content version.
- * @member {number} [outputsLink.contentSize] The content size.
- * @member {object} [outputsLink.contentHash] The content hash.
- * @member {string} [outputsLink.contentHash.algorithm] The algorithm of the
- * content hash.
- * @member {string} [outputsLink.contentHash.value] The value of the content
- * hash.
- * @member {object} [outputsLink.metadata] The metadata.
- * @member {object} [trackedProperties] Gets the tracked properties.
- * @member {array} [retryHistory] Gets the retry histories.
- * @member {number} [iterationCount]
- * @member {array} [repetitionIndexes] The repetition indexes.
- */
-export interface WorkflowRunActionRepetitionDefinition extends Resource {
-  startTime?: Date;
-  endTime?: Date;
-  correlation?: RunActionCorrelation;
-  status?: string;
-  code?: string;
-  error?: any;
-  readonly trackingId?: string;
-  readonly inputs?: any;
-  readonly inputsLink?: ContentLink;
-  readonly outputs?: any;
-  readonly outputsLink?: ContentLink;
-  readonly trackedProperties?: any;
-  retryHistory?: RetryHistory[];
-  iterationCount?: number;
-  repetitionIndexes?: RepetitionIndex[];
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationResultProperties class.
- * @constructor
- * The run operation result properties.
- *
- * @member {date} [startTime] The start time of the workflow scope repetition.
- * @member {date} [endTime] The end time of the workflow scope repetition.
- * @member {object} [correlation] The correlation properties.
- * @member {string} [correlation.actionTrackingId] The action tracking
- * identifier.
- * @member {string} [status] The status of the workflow scope repetition.
- * Possible values include: 'NotSpecified', 'Paused', 'Running', 'Waiting',
- * 'Succeeded', 'Skipped', 'Suspended', 'Cancelled', 'Failed', 'Faulted',
- * 'TimedOut', 'Aborted', 'Ignored'
- * @member {string} [code] The workflow scope repetition code.
- * @member {object} [error]
- */
-export interface OperationResultProperties {
-  startTime?: Date;
-  endTime?: Date;
-  correlation?: RunActionCorrelation;
-  status?: string;
-  code?: string;
-  error?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the OperationResult class.
- * @constructor
- * The operation result definition.
- *
- * @member {string} [trackingId] Gets the tracking id.
- * @member {object} [inputs] Gets the inputs.
- * @member {object} [inputsLink] Gets the link to inputs.
- * @member {string} [inputsLink.uri] The content link URI.
- * @member {string} [inputsLink.contentVersion] The content version.
- * @member {number} [inputsLink.contentSize] The content size.
- * @member {object} [inputsLink.contentHash] The content hash.
- * @member {string} [inputsLink.contentHash.algorithm] The algorithm of the
- * content hash.
- * @member {string} [inputsLink.contentHash.value] The value of the content
- * hash.
- * @member {object} [inputsLink.metadata] The metadata.
- * @member {object} [outputs] Gets the outputs.
- * @member {object} [outputsLink] Gets the link to outputs.
- * @member {string} [outputsLink.uri] The content link URI.
- * @member {string} [outputsLink.contentVersion] The content version.
- * @member {number} [outputsLink.contentSize] The content size.
- * @member {object} [outputsLink.contentHash] The content hash.
- * @member {string} [outputsLink.contentHash.algorithm] The algorithm of the
- * content hash.
- * @member {string} [outputsLink.contentHash.value] The value of the content
- * hash.
- * @member {object} [outputsLink.metadata] The metadata.
- * @member {object} [trackedProperties] Gets the tracked properties.
- * @member {array} [retryHistory] Gets the retry histories.
- * @member {number} [iterationCount]
- */
-export interface OperationResult extends OperationResultProperties {
-  readonly trackingId?: string;
-  readonly inputs?: any;
-  readonly inputsLink?: ContentLink;
-  readonly outputs?: any;
-  readonly outputsLink?: ContentLink;
-  readonly trackedProperties?: any;
-  retryHistory?: RetryHistory[];
-  iterationCount?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the RunCorrelation class.
- * @constructor
- * The correlation properties.
- *
- * @member {string} [clientTrackingId] The client tracking identifier.
- * @member {array} [clientKeywords] The client keywords.
- */
-export interface RunCorrelation {
-  clientTrackingId?: string;
-  clientKeywords?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RunActionCorrelation class.
- * @constructor
- * The workflow run action correlation properties.
- *
- * @member {string} [actionTrackingId] The action tracking identifier.
- */
-export interface RunActionCorrelation extends RunCorrelation {
-  actionTrackingId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the JsonSchema class.
- * @constructor
- * The JSON schema.
- *
- * @member {string} [title] The JSON title.
- * @member {string} [content] The JSON content.
- */
-export interface JsonSchema {
-  title?: string;
-  content?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ArtifactProperties class.
- * @constructor
- * The artifact properties definition.
- *
- * @member {date} [createdTime] The artifact creation time.
- * @member {date} [changedTime] The artifact changed time.
- * @member {object} [metadata]
- */
-export interface ArtifactProperties {
-  createdTime?: Date;
-  changedTime?: Date;
-  metadata?: any;
-}
-
-/**
- * @class
- * Initializes a new instance of the ArtifactContentPropertiesDefinition class.
- * @constructor
- * The artifact content properties definition.
- *
- * @member {object} [content]
- * @member {string} [contentType] The content type.
- * @member {object} [contentLink] The content link.
- * @member {string} [contentLink.uri] The content link URI.
- * @member {string} [contentLink.contentVersion] The content version.
- * @member {number} [contentLink.contentSize] The content size.
- * @member {object} [contentLink.contentHash] The content hash.
- * @member {string} [contentLink.contentHash.algorithm] The algorithm of the
- * content hash.
- * @member {string} [contentLink.contentHash.value] The value of the content
- * hash.
- * @member {object} [contentLink.metadata] The metadata.
- */
-export interface ArtifactContentPropertiesDefinition extends ArtifactProperties {
-  content?: any;
-  contentType?: string;
-  contentLink?: ContentLink;
-}
-
-/**
- * @class
- * Initializes a new instance of the AssemblyProperties class.
- * @constructor
- * The assembly properties definition.
- *
- * @member {string} assemblyName The assembly name.
- * @member {string} [assemblyVersion] The assembly version.
- * @member {string} [assemblyCulture] The assembly culture.
- * @member {string} [assemblyPublicKeyToken] The assembly public key token.
- */
-export interface AssemblyProperties extends ArtifactContentPropertiesDefinition {
-  assemblyName: string;
-  assemblyVersion?: string;
-  assemblyCulture?: string;
-  assemblyPublicKeyToken?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the AssemblyDefinition class.
- * @constructor
- * The assembly definition.
- *
- * @member {object} properties The assembly properties.
- * @member {string} [properties.assemblyName] The assembly name.
- * @member {string} [properties.assemblyVersion] The assembly version.
- * @member {string} [properties.assemblyCulture] The assembly culture.
- * @member {string} [properties.assemblyPublicKeyToken] The assembly public key
- * token.
- */
-export interface AssemblyDefinition extends Resource {
-  properties: AssemblyProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the BatchReleaseCriteria class.
- * @constructor
- * The batch release criteria.
- *
- * @member {number} [messageCount] The message count.
- * @member {number} [batchSize] The batch size in bytes.
- * @member {object} [recurrence] The recurrence.
- * @member {string} [recurrence.frequency] The frequency. Possible values
- * include: 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day', 'Week', 'Month',
- * 'Year'
- * @member {number} [recurrence.interval] The interval.
- * @member {string} [recurrence.startTime] The start time.
- * @member {string} [recurrence.endTime] The end time.
- * @member {string} [recurrence.timeZone] The time zone.
- * @member {object} [recurrence.schedule] The recurrence schedule.
- * @member {array} [recurrence.schedule.minutes] The minutes.
- * @member {array} [recurrence.schedule.hours] The hours.
- * @member {array} [recurrence.schedule.weekDays] The days of the week.
- * @member {array} [recurrence.schedule.monthDays] The month days.
- * @member {array} [recurrence.schedule.monthlyOccurrences] The monthly
- * occurrences.
- */
-export interface BatchReleaseCriteria {
-  messageCount?: number;
-  batchSize?: number;
-  recurrence?: WorkflowTriggerRecurrence;
-}
-
-/**
- * @class
- * Initializes a new instance of the BatchConfigurationProperties class.
- * @constructor
- * The batch configuration properties definition.
- *
- * @member {string} batchGroupName The name of the batch group.
- * @member {object} releaseCriteria The batch release criteria.
- * @member {number} [releaseCriteria.messageCount] The message count.
- * @member {number} [releaseCriteria.batchSize] The batch size in bytes.
- * @member {object} [releaseCriteria.recurrence] The recurrence.
- * @member {string} [releaseCriteria.recurrence.frequency] The frequency.
- * Possible values include: 'NotSpecified', 'Second', 'Minute', 'Hour', 'Day',
- * 'Week', 'Month', 'Year'
- * @member {number} [releaseCriteria.recurrence.interval] The interval.
- * @member {string} [releaseCriteria.recurrence.startTime] The start time.
- * @member {string} [releaseCriteria.recurrence.endTime] The end time.
- * @member {string} [releaseCriteria.recurrence.timeZone] The time zone.
- * @member {object} [releaseCriteria.recurrence.schedule] The recurrence
- * schedule.
- * @member {array} [releaseCriteria.recurrence.schedule.minutes] The minutes.
- * @member {array} [releaseCriteria.recurrence.schedule.hours] The hours.
- * @member {array} [releaseCriteria.recurrence.schedule.weekDays] The days of
- * the week.
- * @member {array} [releaseCriteria.recurrence.schedule.monthDays] The month
- * days.
- * @member {array} [releaseCriteria.recurrence.schedule.monthlyOccurrences] The
- * monthly occurrences.
- */
-export interface BatchConfigurationProperties extends ArtifactProperties {
-  batchGroupName: string;
-  releaseCriteria: BatchReleaseCriteria;
-}
-
-/**
- * @class
- * Initializes a new instance of the BatchConfiguration class.
- * @constructor
- * The batch configuration resource definition.
- *
- * @member {object} properties The batch configuration properties.
- * @member {string} [properties.batchGroupName] The name of the batch group.
- * @member {object} [properties.releaseCriteria] The batch release criteria.
- * @member {number} [properties.releaseCriteria.messageCount] The message
- * count.
- * @member {number} [properties.releaseCriteria.batchSize] The batch size in
- * bytes.
- * @member {object} [properties.releaseCriteria.recurrence] The recurrence.
- * @member {string} [properties.releaseCriteria.recurrence.frequency] The
- * frequency. Possible values include: 'NotSpecified', 'Second', 'Minute',
- * 'Hour', 'Day', 'Week', 'Month', 'Year'
- * @member {number} [properties.releaseCriteria.recurrence.interval] The
- * interval.
- * @member {string} [properties.releaseCriteria.recurrence.startTime] The start
- * time.
- * @member {string} [properties.releaseCriteria.recurrence.endTime] The end
- * time.
- * @member {string} [properties.releaseCriteria.recurrence.timeZone] The time
- * zone.
- * @member {object} [properties.releaseCriteria.recurrence.schedule] The
- * recurrence schedule.
- * @member {array} [properties.releaseCriteria.recurrence.schedule.minutes] The
- * minutes.
- * @member {array} [properties.releaseCriteria.recurrence.schedule.hours] The
- * hours.
- * @member {array} [properties.releaseCriteria.recurrence.schedule.weekDays]
- * The days of the week.
- * @member {array} [properties.releaseCriteria.recurrence.schedule.monthDays]
- * The month days.
- * @member {array}
- * [properties.releaseCriteria.recurrence.schedule.monthlyOccurrences] The
- * monthly occurrences.
- */
-export interface BatchConfiguration extends Resource {
-  properties: BatchConfigurationProperties;
-}
-
 
 /**
  * @class
@@ -8540,25 +7940,6 @@ export interface WorkflowRunActionListResult extends Array<WorkflowRunAction> {
 
 /**
  * @class
- * Initializes a new instance of the ExpressionTraces class.
- * @constructor
- * @member {array} [inputs]
- */
-export interface ExpressionTraces extends Array<ExpressionRoot> {
-}
-
-/**
- * @class
- * Initializes a new instance of the WorkflowRunActionRepetitionDefinitionCollection class.
- * @constructor
- * A collection of workflow run action repetitions.
- *
- */
-export interface WorkflowRunActionRepetitionDefinitionCollection extends Array<WorkflowRunActionRepetitionDefinition> {
-}
-
-/**
- * @class
  * Initializes a new instance of the IntegrationAccountListResult class.
  * @constructor
  * The list of integration accounts.
@@ -8567,37 +7948,6 @@ export interface WorkflowRunActionRepetitionDefinitionCollection extends Array<W
  */
 export interface IntegrationAccountListResult extends Array<IntegrationAccount> {
   nextLink?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the KeyVaultKeyCollection class.
- * @constructor
- * Collection of key vault keys.
- *
- * @member {string} [skipToken] The skip token.
- */
-export interface KeyVaultKeyCollection extends Array<KeyVaultKey> {
-}
-
-/**
- * @class
- * Initializes a new instance of the AssemblyCollection class.
- * @constructor
- * A collection of assembly definitions.
- *
- */
-export interface AssemblyCollection extends Array<AssemblyDefinition> {
-}
-
-/**
- * @class
- * Initializes a new instance of the BatchConfigurationCollection class.
- * @constructor
- * A collection of batch configurations.
- *
- */
-export interface BatchConfigurationCollection extends Array<BatchConfiguration> {
 }
 
 /**
