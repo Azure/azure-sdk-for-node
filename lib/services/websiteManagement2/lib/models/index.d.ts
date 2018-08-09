@@ -4435,9 +4435,12 @@ export interface ContinuousWebJob extends ProxyOnlyResource {
  * FileZilla3
  * WebDeploy -- default
  * Ftp. Possible values include: 'FileZilla3', 'WebDeploy', 'Ftp'
+ * @member {boolean} [includeDisasterRecoveryEndpoints] Include the
+ * DisasterRecover endpoint if true
  */
 export interface CsmPublishingProfileOptions {
   format?: string;
+  includeDisasterRecoveryEndpoints?: boolean;
 }
 
 /**
