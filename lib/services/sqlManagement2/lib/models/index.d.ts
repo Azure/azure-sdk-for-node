@@ -2331,9 +2331,13 @@ export interface VulnerabilityAssessmentRecurringScansProperties {
  *
  * @member {string} storageContainerPath A blob storage container path to hold
  * the scan results (e.g. https://myStorage.blob.core.windows.net/VaScans/).
- * @member {string} storageContainerSasKey A shared access signature (SAS Key)
- * that has write access to the blob container specified in
- * 'storageContainerPath' parameter.
+ * @member {string} [storageContainerSasKey] A shared access signature (SAS
+ * Key) that has write access to the blob container specified in
+ * 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't
+ * specified, StorageContainerSasKey is required.
+ * @member {string} [storageAccountAccessKey] Specifies the identifier key of
+ * the vulnerability assessment storage account. If 'StorageContainerSasKey'
+ * isn't specified, storageAccountAccessKey is required.
  * @member {object} [recurringScans] The recurring scans settings
  * @member {boolean} [recurringScans.isEnabled] Recurring scans state.
  * @member {boolean} [recurringScans.emailSubscriptionAdmins] Specifies that
@@ -2344,7 +2348,8 @@ export interface VulnerabilityAssessmentRecurringScansProperties {
  */
 export interface DatabaseVulnerabilityAssessment extends ProxyResource {
   storageContainerPath: string;
-  storageContainerSasKey: string;
+  storageContainerSasKey?: string;
+  storageAccountAccessKey?: string;
   recurringScans?: VulnerabilityAssessmentRecurringScansProperties;
 }
 
@@ -2860,6 +2865,20 @@ export interface ManagedDatabaseUpdate {
   storageContainerSasToken?: string;
   readonly failoverGroupId?: string;
   tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SensitivityLabel class.
+ * @constructor
+ * A sensitivity label.
+ *
+ * @member {string} [labelName] The label name.
+ * @member {string} [informationType] The information type.
+ */
+export interface SensitivityLabel extends ProxyResource {
+  labelName?: string;
+  informationType?: string;
 }
 
 /**
@@ -4638,6 +4657,18 @@ export interface LongTermRetentionBackupListResult extends Array<LongTermRetenti
  * @member {string} [nextLink] Link to retrieve next page of results.
  */
 export interface ManagedDatabaseListResult extends Array<ManagedDatabase> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SensitivityLabelListResult class.
+ * @constructor
+ * A list of sensitivity labels.
+ *
+ * @member {string} [nextLink] Link to retrieve next page of results.
+ */
+export interface SensitivityLabelListResult extends Array<SensitivityLabel> {
   readonly nextLink?: string;
 }
 
