@@ -1911,7 +1911,7 @@ export interface HostnameConfiguration {
   certificatePassword?: string;
   defaultSslBinding?: boolean;
   negotiateClientCertificate?: boolean;
-  readonly certificate?: CertificateInformation;
+  certificate?: CertificateInformation;
 }
 
 /**
