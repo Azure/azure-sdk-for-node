@@ -4380,9 +4380,6 @@ export interface Tasks {
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
      *
-     * @param {array} [taskCreateParameters.secrets] The collection of secrets for
-     * the task.
-     *
      * @param {string} taskCreateParameters.location The location of the resource.
      * This cannot be changed after the resource is created.
      *
@@ -4463,9 +4460,6 @@ export interface Tasks {
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
-     *
-     * @param {array} [taskCreateParameters.secrets] The collection of secrets for
-     * the task.
      *
      * @param {string} taskCreateParameters.location The location of the resource.
      * This cannot be changed after the resource is created.
@@ -4632,9 +4626,6 @@ export interface Tasks {
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
      *
-     * @param {array} [taskUpdateParameters.secrets] The collection of secrets for
-     * the task.
-     *
      * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
      * @param {object} [options] Optional Parameters.
@@ -4713,9 +4704,6 @@ export interface Tasks {
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
-     *
-     * @param {array} [taskUpdateParameters.secrets] The collection of secrets for
-     * the task.
      *
      * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
@@ -4879,9 +4867,6 @@ export interface Tasks {
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
      *
-     * @param {array} [taskCreateParameters.secrets] The collection of secrets for
-     * the task.
-     *
      * @param {string} taskCreateParameters.location The location of the resource.
      * This cannot be changed after the resource is created.
      *
@@ -4962,9 +4947,6 @@ export interface Tasks {
      *
      * @param {string} taskCreateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
-     *
-     * @param {array} [taskCreateParameters.secrets] The collection of secrets for
-     * the task.
      *
      * @param {string} taskCreateParameters.location The location of the resource.
      * This cannot be changed after the resource is created.
@@ -5131,9 +5113,6 @@ export interface Tasks {
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
      *
-     * @param {array} [taskUpdateParameters.secrets] The collection of secrets for
-     * the task.
-     *
      * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
      * @param {object} [options] Optional Parameters.
@@ -5212,9 +5191,6 @@ export interface Tasks {
      *
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
-     *
-     * @param {array} [taskUpdateParameters.secrets] The collection of secrets for
-     * the task.
      *
      * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *

@@ -1327,20 +1327,6 @@ export interface TriggerProperties {
 
 /**
  * @class
- * Initializes a new instance of the TaskSecret class.
- * @constructor
- * The properties of a task secret object.
- *
- * @member {string} name The name of the secret.
- * @member {string} valueJson The serialized Json value of the secret.
- */
-export interface TaskSecret {
-  name: string;
-  valueJson: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the Task class.
  * @constructor
  * The task that has the ARM resource and task properties.
@@ -1380,7 +1366,6 @@ export interface TaskSecret {
  * @member {string} [trigger.baseImageTrigger.status] The current status of
  * build trigger. Possible values include: 'Disabled', 'Enabled'
  * @member {string} [trigger.baseImageTrigger.name] The name of the trigger.
- * @member {array} [secrets] The collection of secrets for the task.
  */
 export interface Task extends Resource {
   readonly provisioningState?: string;
@@ -1392,7 +1377,6 @@ export interface Task extends Resource {
   timeout?: number;
   step: TaskStepProperties;
   trigger?: TriggerProperties;
-  secrets?: TaskSecret[];
 }
 
 /**
@@ -1443,7 +1427,6 @@ export interface TaskFilter {
  * @member {string} [trigger.baseImageTrigger.status] The current status of
  * build trigger. Possible values include: 'Disabled', 'Enabled'
  * @member {string} [trigger.baseImageTrigger.name] The name of the trigger.
- * @member {array} [secrets] The collection of secrets for the task.
  * @member {object} [tags] The ARM resource tags.
  */
 export interface TaskUpdateParameters {
@@ -1454,24 +1437,7 @@ export interface TaskUpdateParameters {
   timeout?: number;
   step?: TaskStepProperties;
   trigger?: TriggerProperties;
-  secrets?: TaskSecret[];
   tags?: { [propertyName: string]: string };
-}
-
-/**
- * @class
- * Initializes a new instance of the DockerRegistryCredentials class.
- * @constructor
- * The properties of a docker registry credentials.
- *
- * @member {string} [loginServer] The registry login server.
- * @member {string} userName The username of the registry.
- * @member {string} password The password to the registry.
- */
-export interface DockerRegistryCredentials {
-  loginServer?: string;
-  userName: string;
-  password: string;
 }
 
 /**
