@@ -489,41 +489,8 @@ export interface BackendAddressPool extends SubResource {
  * address associated with the public IP address resource.
  * @member {object} [backendIPConfiguration.publicIPAddress.publicIPPrefix] The
  * Public IP Prefix this Public IP Address should be allocated from.
- * @member {object} [backendIPConfiguration.publicIPAddress.publicIPPrefix.sku]
- * The public IP prefix SKU.
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.publicIPPrefix.sku.name] Name of a
- * public IP prefix SKU. Possible values include: 'Standard'
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.publicIPPrefix.publicIPAddressVersion]
- * The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
- * Possible values include: 'IPv4', 'IPv6'
- * @member {array}
- * [backendIPConfiguration.publicIPAddress.publicIPPrefix.ipTags] The list of
- * tags associated with the public IP prefix.
- * @member {number}
- * [backendIPConfiguration.publicIPAddress.publicIPPrefix.prefixLength] The
- * Length of the Public IP Prefix.
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.publicIPPrefix.ipPrefix] The
- * allocated Prefix
- * @member {array}
- * [backendIPConfiguration.publicIPAddress.publicIPPrefix.publicIPAddresses]
- * The list of all referenced PublicIPAddresses
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.publicIPPrefix.resourceGuid] The
- * resource GUID property of the public IP prefix resource.
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.publicIPPrefix.provisioningState]
- * The provisioning state of the Public IP prefix resource. Possible values
- * are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string}
- * [backendIPConfiguration.publicIPAddress.publicIPPrefix.etag] A unique
- * read-only string that changes whenever the resource is updated.
- * @member {array}
- * [backendIPConfiguration.publicIPAddress.publicIPPrefix.zones] A list of
- * availability zones denoting the IP allocated for the resource needs to come
- * from.
+ * @member {string} [backendIPConfiguration.publicIPAddress.publicIPPrefix.id]
+ * Resource ID.
  * @member {number}
  * [backendIPConfiguration.publicIPAddress.idleTimeoutInMinutes] The idle
  * timeout of the public IP address.
@@ -988,69 +955,6 @@ export interface IpTag {
 
 /**
  * @class
- * Initializes a new instance of the PublicIPPrefixSku class.
- * @constructor
- * SKU of a public IP prefix
- *
- * @member {string} [name] Name of a public IP prefix SKU. Possible values
- * include: 'Standard'
- */
-export interface PublicIPPrefixSku {
-  name?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ReferencedPublicIpAddress class.
- * @constructor
- * @member {string} [id] The PublicIPAddress Reference
- */
-export interface ReferencedPublicIpAddress {
-  id?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the PublicIPPrefix class.
- * @constructor
- * Public IP prefix resource.
- *
- * @member {object} [sku] The public IP prefix SKU.
- * @member {string} [sku.name] Name of a public IP prefix SKU. Possible values
- * include: 'Standard'
- * @member {string} [publicIPAddressVersion] The public IP address version.
- * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
- * 'IPv6'
- * @member {array} [ipTags] The list of tags associated with the public IP
- * prefix.
- * @member {number} [prefixLength] The Length of the Public IP Prefix.
- * @member {string} [ipPrefix] The allocated Prefix
- * @member {array} [publicIPAddresses] The list of all referenced
- * PublicIPAddresses
- * @member {string} [resourceGuid] The resource GUID property of the public IP
- * prefix resource.
- * @member {string} [provisioningState] The provisioning state of the Public IP
- * prefix resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [etag] A unique read-only string that changes whenever the
- * resource is updated.
- * @member {array} [zones] A list of availability zones denoting the IP
- * allocated for the resource needs to come from.
- */
-export interface PublicIPPrefix extends Resource {
-  sku?: PublicIPPrefixSku;
-  publicIPAddressVersion?: string;
-  ipTags?: IpTag[];
-  prefixLength?: number;
-  ipPrefix?: string;
-  publicIPAddresses?: ReferencedPublicIpAddress[];
-  resourceGuid?: string;
-  provisioningState?: string;
-  etag?: string;
-  zones?: string[];
-}
-
-/**
- * @class
  * Initializes a new instance of the PublicIPAddress class.
  * @constructor
  * Public IP address resource.
@@ -1155,28 +1059,7 @@ export interface PublicIPPrefix extends Resource {
  * address resource.
  * @member {object} [publicIPPrefix] The Public IP Prefix this Public IP
  * Address should be allocated from.
- * @member {object} [publicIPPrefix.sku] The public IP prefix SKU.
- * @member {string} [publicIPPrefix.sku.name] Name of a public IP prefix SKU.
- * Possible values include: 'Standard'
- * @member {string} [publicIPPrefix.publicIPAddressVersion] The public IP
- * address version. Possible values are: 'IPv4' and 'IPv6'. Possible values
- * include: 'IPv4', 'IPv6'
- * @member {array} [publicIPPrefix.ipTags] The list of tags associated with the
- * public IP prefix.
- * @member {number} [publicIPPrefix.prefixLength] The Length of the Public IP
- * Prefix.
- * @member {string} [publicIPPrefix.ipPrefix] The allocated Prefix
- * @member {array} [publicIPPrefix.publicIPAddresses] The list of all
- * referenced PublicIPAddresses
- * @member {string} [publicIPPrefix.resourceGuid] The resource GUID property of
- * the public IP prefix resource.
- * @member {string} [publicIPPrefix.provisioningState] The provisioning state
- * of the Public IP prefix resource. Possible values are: 'Updating',
- * 'Deleting', and 'Failed'.
- * @member {string} [publicIPPrefix.etag] A unique read-only string that
- * changes whenever the resource is updated.
- * @member {array} [publicIPPrefix.zones] A list of availability zones denoting
- * the IP allocated for the resource needs to come from.
+ * @member {string} [publicIPPrefix.id] Resource ID.
  * @member {number} [idleTimeoutInMinutes] The idle timeout of the public IP
  * address.
  * @member {string} [resourceGuid] The resource GUID property of the public IP
@@ -1196,7 +1079,7 @@ export interface PublicIPAddress extends Resource {
   dnsSettings?: PublicIPAddressDnsSettings;
   ipTags?: IpTag[];
   ipAddress?: string;
-  publicIPPrefix?: PublicIPPrefix;
+  publicIPPrefix?: SubResource;
   idleTimeoutInMinutes?: number;
   resourceGuid?: string;
   provisioningState?: string;
@@ -1295,31 +1178,7 @@ export interface PublicIPAddress extends Resource {
  * the public IP address resource.
  * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
  * Public IP Address should be allocated from.
- * @member {object} [publicIPAddress.publicIPPrefix.sku] The public IP prefix
- * SKU.
- * @member {string} [publicIPAddress.publicIPPrefix.sku.name] Name of a public
- * IP prefix SKU. Possible values include: 'Standard'
- * @member {string} [publicIPAddress.publicIPPrefix.publicIPAddressVersion] The
- * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
- * values include: 'IPv4', 'IPv6'
- * @member {array} [publicIPAddress.publicIPPrefix.ipTags] The list of tags
- * associated with the public IP prefix.
- * @member {number} [publicIPAddress.publicIPPrefix.prefixLength] The Length of
- * the Public IP Prefix.
- * @member {string} [publicIPAddress.publicIPPrefix.ipPrefix] The allocated
- * Prefix
- * @member {array} [publicIPAddress.publicIPPrefix.publicIPAddresses] The list
- * of all referenced PublicIPAddresses
- * @member {string} [publicIPAddress.publicIPPrefix.resourceGuid] The resource
- * GUID property of the public IP prefix resource.
- * @member {string} [publicIPAddress.publicIPPrefix.provisioningState] The
- * provisioning state of the Public IP prefix resource. Possible values are:
- * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [publicIPAddress.publicIPPrefix.etag] A unique read-only
- * string that changes whenever the resource is updated.
- * @member {array} [publicIPAddress.publicIPPrefix.zones] A list of
- * availability zones denoting the IP allocated for the resource needs to come
- * from.
+ * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -1616,31 +1475,7 @@ export interface Subnet extends SubResource {
  * the public IP address resource.
  * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
  * Public IP Address should be allocated from.
- * @member {object} [publicIPAddress.publicIPPrefix.sku] The public IP prefix
- * SKU.
- * @member {string} [publicIPAddress.publicIPPrefix.sku.name] Name of a public
- * IP prefix SKU. Possible values include: 'Standard'
- * @member {string} [publicIPAddress.publicIPPrefix.publicIPAddressVersion] The
- * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
- * values include: 'IPv4', 'IPv6'
- * @member {array} [publicIPAddress.publicIPPrefix.ipTags] The list of tags
- * associated with the public IP prefix.
- * @member {number} [publicIPAddress.publicIPPrefix.prefixLength] The Length of
- * the Public IP Prefix.
- * @member {string} [publicIPAddress.publicIPPrefix.ipPrefix] The allocated
- * Prefix
- * @member {array} [publicIPAddress.publicIPPrefix.publicIPAddresses] The list
- * of all referenced PublicIPAddresses
- * @member {string} [publicIPAddress.publicIPPrefix.resourceGuid] The resource
- * GUID property of the public IP prefix resource.
- * @member {string} [publicIPAddress.publicIPPrefix.provisioningState] The
- * provisioning state of the Public IP prefix resource. Possible values are:
- * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [publicIPAddress.publicIPPrefix.etag] A unique read-only
- * string that changes whenever the resource is updated.
- * @member {array} [publicIPAddress.publicIPPrefix.zones] A list of
- * availability zones denoting the IP allocated for the resource needs to come
- * from.
+ * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -2010,36 +1845,8 @@ export interface ApplicationGatewayBackendHttpSettings extends SubResource {
  * associated with the public IP address resource.
  * @member {object} [ipConfiguration.publicIPAddress.publicIPPrefix] The Public
  * IP Prefix this Public IP Address should be allocated from.
- * @member {object} [ipConfiguration.publicIPAddress.publicIPPrefix.sku] The
- * public IP prefix SKU.
- * @member {string} [ipConfiguration.publicIPAddress.publicIPPrefix.sku.name]
- * Name of a public IP prefix SKU. Possible values include: 'Standard'
- * @member {string}
- * [ipConfiguration.publicIPAddress.publicIPPrefix.publicIPAddressVersion] The
- * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
- * values include: 'IPv4', 'IPv6'
- * @member {array} [ipConfiguration.publicIPAddress.publicIPPrefix.ipTags] The
- * list of tags associated with the public IP prefix.
- * @member {number}
- * [ipConfiguration.publicIPAddress.publicIPPrefix.prefixLength] The Length of
- * the Public IP Prefix.
- * @member {string} [ipConfiguration.publicIPAddress.publicIPPrefix.ipPrefix]
- * The allocated Prefix
- * @member {array}
- * [ipConfiguration.publicIPAddress.publicIPPrefix.publicIPAddresses] The list
- * of all referenced PublicIPAddresses
- * @member {string}
- * [ipConfiguration.publicIPAddress.publicIPPrefix.resourceGuid] The resource
- * GUID property of the public IP prefix resource.
- * @member {string}
- * [ipConfiguration.publicIPAddress.publicIPPrefix.provisioningState] The
- * provisioning state of the Public IP prefix resource. Possible values are:
- * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [ipConfiguration.publicIPAddress.publicIPPrefix.etag] A
- * unique read-only string that changes whenever the resource is updated.
- * @member {array} [ipConfiguration.publicIPAddress.publicIPPrefix.zones] A
- * list of availability zones denoting the IP allocated for the resource needs
- * to come from.
+ * @member {string} [ipConfiguration.publicIPAddress.publicIPPrefix.id]
+ * Resource ID.
  * @member {number} [ipConfiguration.publicIPAddress.idleTimeoutInMinutes] The
  * idle timeout of the public IP address.
  * @member {string} [ipConfiguration.publicIPAddress.resourceGuid] The resource
@@ -3938,31 +3745,7 @@ export interface LoadBalancerSku {
  * the public IP address resource.
  * @member {object} [publicIPAddress.publicIPPrefix] The Public IP Prefix this
  * Public IP Address should be allocated from.
- * @member {object} [publicIPAddress.publicIPPrefix.sku] The public IP prefix
- * SKU.
- * @member {string} [publicIPAddress.publicIPPrefix.sku.name] Name of a public
- * IP prefix SKU. Possible values include: 'Standard'
- * @member {string} [publicIPAddress.publicIPPrefix.publicIPAddressVersion] The
- * public IP address version. Possible values are: 'IPv4' and 'IPv6'. Possible
- * values include: 'IPv4', 'IPv6'
- * @member {array} [publicIPAddress.publicIPPrefix.ipTags] The list of tags
- * associated with the public IP prefix.
- * @member {number} [publicIPAddress.publicIPPrefix.prefixLength] The Length of
- * the Public IP Prefix.
- * @member {string} [publicIPAddress.publicIPPrefix.ipPrefix] The allocated
- * Prefix
- * @member {array} [publicIPAddress.publicIPPrefix.publicIPAddresses] The list
- * of all referenced PublicIPAddresses
- * @member {string} [publicIPAddress.publicIPPrefix.resourceGuid] The resource
- * GUID property of the public IP prefix resource.
- * @member {string} [publicIPAddress.publicIPPrefix.provisioningState] The
- * provisioning state of the Public IP prefix resource. Possible values are:
- * 'Updating', 'Deleting', and 'Failed'.
- * @member {string} [publicIPAddress.publicIPPrefix.etag] A unique read-only
- * string that changes whenever the resource is updated.
- * @member {array} [publicIPAddress.publicIPPrefix.zones] A list of
- * availability zones denoting the IP allocated for the resource needs to come
- * from.
+ * @member {string} [publicIPAddress.publicIPPrefix.id] Resource ID.
  * @member {number} [publicIPAddress.idleTimeoutInMinutes] The idle timeout of
  * the public IP address.
  * @member {string} [publicIPAddress.resourceGuid] The resource GUID property
@@ -5851,6 +5634,69 @@ export interface Operation {
   display?: OperationDisplay;
   origin?: string;
   serviceSpecification?: OperationPropertiesFormatServiceSpecification;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPPrefixSku class.
+ * @constructor
+ * SKU of a public IP prefix
+ *
+ * @member {string} [name] Name of a public IP prefix SKU. Possible values
+ * include: 'Standard'
+ */
+export interface PublicIPPrefixSku {
+  name?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ReferencedPublicIpAddress class.
+ * @constructor
+ * @member {string} [id] The PublicIPAddress Reference
+ */
+export interface ReferencedPublicIpAddress {
+  id?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PublicIPPrefix class.
+ * @constructor
+ * Public IP prefix resource.
+ *
+ * @member {object} [sku] The public IP prefix SKU.
+ * @member {string} [sku.name] Name of a public IP prefix SKU. Possible values
+ * include: 'Standard'
+ * @member {string} [publicIPAddressVersion] The public IP address version.
+ * Possible values are: 'IPv4' and 'IPv6'. Possible values include: 'IPv4',
+ * 'IPv6'
+ * @member {array} [ipTags] The list of tags associated with the public IP
+ * prefix.
+ * @member {number} [prefixLength] The Length of the Public IP Prefix.
+ * @member {string} [ipPrefix] The allocated Prefix
+ * @member {array} [publicIPAddresses] The list of all referenced
+ * PublicIPAddresses
+ * @member {string} [resourceGuid] The resource GUID property of the public IP
+ * prefix resource.
+ * @member {string} [provisioningState] The provisioning state of the Public IP
+ * prefix resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+ * @member {string} [etag] A unique read-only string that changes whenever the
+ * resource is updated.
+ * @member {array} [zones] A list of availability zones denoting the IP
+ * allocated for the resource needs to come from.
+ */
+export interface PublicIPPrefix extends Resource {
+  sku?: PublicIPPrefixSku;
+  publicIPAddressVersion?: string;
+  ipTags?: IpTag[];
+  prefixLength?: number;
+  ipPrefix?: string;
+  publicIPAddresses?: ReferencedPublicIpAddress[];
+  resourceGuid?: string;
+  provisioningState?: string;
+  etag?: string;
+  zones?: string[];
 }
 
 /**
