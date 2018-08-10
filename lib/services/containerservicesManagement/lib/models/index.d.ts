@@ -577,7 +577,7 @@ export interface ManagedClusterServicePrincipalProfile {
  *
  * @member {string} name Unique name of the agent pool profile in the context
  * of the subscription and resource group.
- * @member {number} [count] Number of agents (VMs) to host docker containers.
+ * @member {number} count Number of agents (VMs) to host docker containers.
  * Allowed values must be in the range of 1 to 100 (inclusive). The default
  * value is 1. . Default value: 1 .
  * @member {string} vmSize Size of agent VMs. Possible values include:
@@ -633,25 +633,31 @@ export interface ManagedClusterServicePrincipalProfile {
  * @member {number} [osDiskSizeGB] OS Disk Size in GB to be used to specify the
  * disk size for every machine in this master/agent pool. If you specify 0, it
  * will apply the default osDisk size according to the vmSize specified.
- * @member {string} [storageProfile] Storage profile specifies what kind of
- * storage used. Defaults to ManagedDisks. Possible values include:
- * 'StorageAccount', 'ManagedDisks'
  * @member {string} [vnetSubnetID] VNet SubnetID specifies the vnet's subnet
  * identifier.
  * @member {number} [maxPods] Maximum number of pods that can run on a node.
  * @member {string} [osType] OsType to be used to specify os type. Choose from
  * Linux and Windows. Default to Linux. Possible values include: 'Linux',
  * 'Windows'. Default value: 'Linux' .
+ * @member {number} [maxCount] Maximun number of nodes for auto-scaling
+ * @member {number} [minCount] Minimun number of nodes for auto-scaling
+ * @member {boolean} [enableAutoScaling] Wheter to enable auto-scaler
+ * @member {string} [type] AgentPoolType represents types of agentpool.
+ * Possible values include: 'VirtualMachineScaleSets', 'AvailabilitySet'.
+ * Default value: 'VirtualMachineScaleSets' .
  */
 export interface ManagedClusterAgentPoolProfile {
   name: string;
-  count?: number;
+  count: number;
   vmSize: string;
   osDiskSizeGB?: number;
-  readonly storageProfile?: string;
   vnetSubnetID?: string;
   maxPods?: number;
   osType?: string;
+  maxCount?: number;
+  minCount?: number;
+  enableAutoScaling?: boolean;
+  type?: string;
 }
 
 /**
@@ -806,18 +812,6 @@ export interface ManagedCluster extends Resource {
 export interface OrchestratorProfile {
   orchestratorType: string;
   orchestratorVersion: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ManagedClusterAccessProfile class.
- * @constructor
- * Managed cluster Access Profile.
- *
- * @member {buffer} [kubeConfig] Base64-encoded Kubernetes configuration file.
- */
-export interface ManagedClusterAccessProfile extends Resource {
-  kubeConfig?: Buffer;
 }
 
 /**
