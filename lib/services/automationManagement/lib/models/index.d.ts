@@ -2473,8 +2473,8 @@ export interface SourceControlCreateOrUpdateParameters {
  * Possible values include: 'Completed', 'Failed', 'Running'
  * @member {date} [startTime] The start time of the job.
  * @member {date} [endTime] The end time of the job.
- * @member {string} [startType] The type of start for the sync job. Possible
- * values include: 'AutoSync', 'ManualSync'
+ * @member {string} [syncType] The sync type. Possible values include:
+ * 'PartialSync', 'FullSync'
  */
 export interface SourceControlSyncJob {
   readonly name?: string;
@@ -2485,7 +2485,7 @@ export interface SourceControlSyncJob {
   provisioningState?: string;
   readonly startTime?: Date;
   readonly endTime?: Date;
-  startType?: string;
+  syncType?: string;
 }
 
 /**
@@ -2514,8 +2514,8 @@ export interface SourceControlSyncJobCreateParameters {
  * Possible values include: 'Completed', 'Failed', 'Running'
  * @member {date} [startTime] The start time of the job.
  * @member {date} [endTime] The end time of the job.
- * @member {string} [startType] The type of start for the sync job. Possible
- * values include: 'AutoSync', 'ManualSync'
+ * @member {string} [syncType] The sync type. Possible values include:
+ * 'PartialSync', 'FullSync'
  * @member {string} [exception] The exceptions that occured while running the
  * sync job.
  */
@@ -2526,7 +2526,7 @@ export interface SourceControlSyncJobById {
   provisioningState?: string;
   readonly startTime?: Date;
   readonly endTime?: Date;
-  startType?: string;
+  syncType?: string;
   exception?: string;
 }
 
@@ -2537,7 +2537,7 @@ export interface SourceControlSyncJobById {
  * Definition of the source control sync job stream.
  *
  * @member {string} [id] Resource id.
- * @member {string} [syncJobStreamId] The sync job stream id.
+ * @member {string} [sourceControlSyncJobStreamId] The sync job stream id.
  * @member {string} [summary] The summary of the sync job stream.
  * @member {date} [time] The time of the sync job stream.
  * @member {string} [streamType] The type of the sync job stream. Possible
@@ -2545,7 +2545,7 @@ export interface SourceControlSyncJobById {
  */
 export interface SourceControlSyncJobStream {
   readonly id?: string;
-  syncJobStreamId?: string;
+  sourceControlSyncJobStreamId?: string;
   summary?: string;
   readonly time?: Date;
   streamType?: string;
@@ -2558,7 +2558,7 @@ export interface SourceControlSyncJobStream {
  * Definition of the source control sync job stream by id.
  *
  * @member {string} [id] Resource id.
- * @member {string} [syncJobStreamId] The sync job stream id.
+ * @member {string} [sourceControlSyncJobStreamId] The sync job stream id.
  * @member {string} [summary] The summary of the sync job stream.
  * @member {date} [time] The time of the sync job stream.
  * @member {string} [streamType] The type of the sync job stream. Possible
@@ -2568,7 +2568,7 @@ export interface SourceControlSyncJobStream {
  */
 export interface SourceControlSyncJobStreamById {
   readonly id?: string;
-  syncJobStreamId?: string;
+  sourceControlSyncJobStreamId?: string;
   summary?: string;
   readonly time?: Date;
   streamType?: string;
