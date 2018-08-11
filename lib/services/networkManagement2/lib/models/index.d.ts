@@ -5543,6 +5543,32 @@ export interface NetworkConfigurationDiagnosticResponse {
 
 /**
  * @class
+ * Initializes a new instance of the QueryConnectionMonitorsParameters class.
+ * @constructor
+ * Parameters to query connection monitors.
+ *
+ * @member {array} [connectionMonitorIds] List of connection monitors ID.
+ */
+export interface QueryConnectionMonitorsParameters {
+  connectionMonitorIds?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorsQueryResultItem class.
+ * @constructor
+ * Results of query particular connection monitor.
+ *
+ * @member {string} [resourceId] Connection monitor resource ID.
+ * @member {array} [report] List of connection monitors query results.
+ */
+export interface ConnectionMonitorsQueryResultItem {
+  resourceId?: string;
+  report?: ConnectionMonitorQueryResult[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the OperationDisplay class.
  * @constructor
  * Display metadata associated with the operation.
@@ -7364,6 +7390,18 @@ export interface SecurityRuleListResult extends Array<SecurityRule> {
  *
  */
 export interface NetworkWatcherListResult extends Array<NetworkWatcher> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QueryConnectionMonitorsResponse class.
+ * @constructor
+ * Results of query connection monitors.
+ *
+ * @member {string} [nextLink] URL to get the next set of results.
+ */
+export interface QueryConnectionMonitorsResponse extends Array<ConnectionMonitorsQueryResultItem> {
+  nextLink?: string;
 }
 
 /**
