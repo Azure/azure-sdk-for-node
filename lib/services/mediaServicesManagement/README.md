@@ -1,3 +1,8 @@
+---
+uid: azure-arm-mediaservices
+summary: *content
+
+---
 # Microsoft Azure SDK for Node.js - AzureMediaServices
 This project provides a Node.js package for accessing Azure. Right now it supports:
 - **Node.js version 6.x.x or higher**
