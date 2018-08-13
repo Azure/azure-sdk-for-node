@@ -1,37 +1,25 @@
 {
   "name": "azure-arm-cdn",
   "author": "Microsoft Corporation",
-  "contributors": [
-    "Zarif, Injy <inzarif@microsoft.com>",
-    "Zavery, Amar <amzavery@microsoft.com>",
-    "Wan, Qinyuan <qinwa@microsoft.com>"
-  ],
+  "description": "CdnManagementClient Library with typescript type definitions for node",
   "version": "4.0.0",
-  "description": "Microsoft Azure CDN Resource Provider Management Client Library for Node",
-  "tags": [
-    "azure",
-    "sdk"
-  ],
+  "dependencies": {
+    "ms-rest": "^2.3.3",
+    "ms-rest-azure": "^2.5.5"
+  },
   "keywords": [
     "node",
     "azure"
   ],
+  "license": "MIT",
   "main": "./lib/cdnManagementClient.js",
   "types": "./lib/cdnManagementClient.d.ts",
-  "license": "MIT",
-  "dependencies": {
-    "ms-rest": "^2.3.0",
-    "ms-rest-azure": "^2.5.3"
-  },
-  "homepage": "http://github.com/Azure/azure-sdk-for-node",
+  "homepage": "https://github.com/azure/azure-sdk-for-node",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Azure/azure-sdk-for-node.git"
+    "url": "https://github.com/azure/azure-sdk-for-node.git"
   },
   "bugs": {
-    "url": "http://github.com/Azure/azure-sdk-for-node/issues"
-  },
-  "scripts": {
-    "test": "npm -s run-script jshint"
+    "url": "https://github.com/azure/azure-sdk-for-node/issues"
   }
 }
