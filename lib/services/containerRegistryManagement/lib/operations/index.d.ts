@@ -4570,10 +4570,13 @@ export interface Tasks {
      *
      * @param {object} taskUpdateParameters The parameters for updating a task.
      *
+     * @param {string} [taskUpdateParameters.alias] The alternative updatable name
+     * for a task.
+     *
      * @param {string} [taskUpdateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
-     * @param {object} taskUpdateParameters.platform The platform properties
+     * @param {object} [taskUpdateParameters.platform] The platform properties
      * against which the run has to happen.
      *
      * @param {string} taskUpdateParameters.platform.os The operating system type
@@ -4593,7 +4596,8 @@ export interface Tasks {
      *
      * @param {number} [taskUpdateParameters.timeout] Run timeout in seconds.
      *
-     * @param {object} taskUpdateParameters.step The properties of a task step.
+     * @param {object} [taskUpdateParameters.step] The properties for updating a
+     * task step.
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
@@ -4618,10 +4622,7 @@ export interface Tasks {
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
      *
-     * @param {string} taskUpdateParameters.location The location of the resource.
-     * This cannot be changed after the resource is created.
-     *
-     * @param {object} [taskUpdateParameters.tags] The tags of the resource.
+     * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4634,7 +4635,7 @@ export interface Tasks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    updateWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.Task, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
+    updateWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
 
     /**
      * Updates a task with the specified parameters.
@@ -4648,10 +4649,13 @@ export interface Tasks {
      *
      * @param {object} taskUpdateParameters The parameters for updating a task.
      *
+     * @param {string} [taskUpdateParameters.alias] The alternative updatable name
+     * for a task.
+     *
      * @param {string} [taskUpdateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
-     * @param {object} taskUpdateParameters.platform The platform properties
+     * @param {object} [taskUpdateParameters.platform] The platform properties
      * against which the run has to happen.
      *
      * @param {string} taskUpdateParameters.platform.os The operating system type
@@ -4671,7 +4675,8 @@ export interface Tasks {
      *
      * @param {number} [taskUpdateParameters.timeout] Run timeout in seconds.
      *
-     * @param {object} taskUpdateParameters.step The properties of a task step.
+     * @param {object} [taskUpdateParameters.step] The properties for updating a
+     * task step.
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
@@ -4696,10 +4701,7 @@ export interface Tasks {
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
      *
-     * @param {string} taskUpdateParameters.location The location of the resource.
-     * This cannot be changed after the resource is created.
-     *
-     * @param {object} [taskUpdateParameters.tags] The tags of the resource.
+     * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4728,9 +4730,9 @@ export interface Tasks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    update(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.Task, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
-    update(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.Task, callback: ServiceCallback<models.Task>): void;
-    update(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.Task, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
+    update(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    update(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, callback: ServiceCallback<models.Task>): void;
+    update(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
 
 
     /**
@@ -5049,10 +5051,13 @@ export interface Tasks {
      *
      * @param {object} taskUpdateParameters The parameters for updating a task.
      *
+     * @param {string} [taskUpdateParameters.alias] The alternative updatable name
+     * for a task.
+     *
      * @param {string} [taskUpdateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
-     * @param {object} taskUpdateParameters.platform The platform properties
+     * @param {object} [taskUpdateParameters.platform] The platform properties
      * against which the run has to happen.
      *
      * @param {string} taskUpdateParameters.platform.os The operating system type
@@ -5072,7 +5077,8 @@ export interface Tasks {
      *
      * @param {number} [taskUpdateParameters.timeout] Run timeout in seconds.
      *
-     * @param {object} taskUpdateParameters.step The properties of a task step.
+     * @param {object} [taskUpdateParameters.step] The properties for updating a
+     * task step.
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
@@ -5097,10 +5103,7 @@ export interface Tasks {
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
      *
-     * @param {string} taskUpdateParameters.location The location of the resource.
-     * This cannot be changed after the resource is created.
-     *
-     * @param {object} [taskUpdateParameters.tags] The tags of the resource.
+     * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5113,7 +5116,7 @@ export interface Tasks {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    beginUpdateWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.Task, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
+    beginUpdateWithHttpOperationResponse(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Task>>;
 
     /**
      * Updates a task with the specified parameters.
@@ -5127,10 +5130,13 @@ export interface Tasks {
      *
      * @param {object} taskUpdateParameters The parameters for updating a task.
      *
+     * @param {string} [taskUpdateParameters.alias] The alternative updatable name
+     * for a task.
+     *
      * @param {string} [taskUpdateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
-     * @param {object} taskUpdateParameters.platform The platform properties
+     * @param {object} [taskUpdateParameters.platform] The platform properties
      * against which the run has to happen.
      *
      * @param {string} taskUpdateParameters.platform.os The operating system type
@@ -5150,7 +5156,8 @@ export interface Tasks {
      *
      * @param {number} [taskUpdateParameters.timeout] Run timeout in seconds.
      *
-     * @param {object} taskUpdateParameters.step The properties of a task step.
+     * @param {object} [taskUpdateParameters.step] The properties for updating a
+     * task step.
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
@@ -5175,10 +5182,7 @@ export interface Tasks {
      * @param {string} taskUpdateParameters.trigger.baseImageTrigger.name The name
      * of the trigger.
      *
-     * @param {string} taskUpdateParameters.location The location of the resource.
-     * This cannot be changed after the resource is created.
-     *
-     * @param {object} [taskUpdateParameters.tags] The tags of the resource.
+     * @param {object} [taskUpdateParameters.tags] The ARM resource tags.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -5207,9 +5211,9 @@ export interface Tasks {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    beginUpdate(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.Task, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
-    beginUpdate(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.Task, callback: ServiceCallback<models.Task>): void;
-    beginUpdate(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.Task, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
+    beginUpdate(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Task>;
+    beginUpdate(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, callback: ServiceCallback<models.Task>): void;
+    beginUpdate(resourceGroupName: string, registryName: string, taskName: string, taskUpdateParameters: models.TaskUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Task>): void;
 
 
     /**

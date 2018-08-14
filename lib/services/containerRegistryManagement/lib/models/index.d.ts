@@ -1382,6 +1382,55 @@ export interface Task extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the TaskUpdateParameters class.
+ * @constructor
+ * The parameters for updating a task.
+ *
+ * @member {string} [alias] The alternative updatable name for a task.
+ * @member {string} [status] The current status of task. Possible values
+ * include: 'Disabled', 'Enabled'
+ * @member {object} [platform] The platform properties against which the run
+ * has to happen.
+ * @member {string} [platform.os] The operating system type required for the
+ * run. Possible values include: 'Windows', 'Linux'
+ * @member {string} [platform.architecture] The OS architecture. Possible
+ * values include: 'amd64', 'x86', 'arm'
+ * @member {string} [platform.variant] Variant of the CPU. Possible values
+ * include: 'v6', 'v7', 'v8'
+ * @member {object} [agentConfiguration] The machine configuration of the run
+ * agent.
+ * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
+ * number of cores required for the run.
+ * @member {number} [timeout] Run timeout in seconds.
+ * @member {object} [step] The properties for updating a task step.
+ * @member {string} [step.type] Polymorphic Discriminator
+ * @member {object} [trigger] The properties that describe all triggers for the
+ * task.
+ * @member {array} [trigger.sourceTriggers] The collection of triggers based on
+ * source code repository.
+ * @member {object} [trigger.baseImageTrigger] The trigger based on base image
+ * dependencies.
+ * @member {string} [trigger.baseImageTrigger.baseImageTriggerType] The type of
+ * the auto trigger for base image dependency updates. Possible values include:
+ * 'All', 'Runtime'
+ * @member {string} [trigger.baseImageTrigger.status] The current status of
+ * build trigger. Possible values include: 'Disabled', 'Enabled'
+ * @member {string} [trigger.baseImageTrigger.name] The name of the trigger.
+ * @member {object} [tags] The ARM resource tags.
+ */
+export interface TaskUpdateParameters {
+  alias?: string;
+  status?: string;
+  platform?: PlatformProperties;
+  agentConfiguration?: AgentProperties;
+  timeout?: number;
+  step?: TaskStepProperties;
+  trigger?: TriggerProperties;
+  tags?: { [propertyName: string]: string };
+}
+
+/**
+ * @class
  * Initializes a new instance of the DockerBuildRequest class.
  * @constructor
  * The parameters for a docker quick build.
