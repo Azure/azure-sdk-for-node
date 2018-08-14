@@ -18,6 +18,194 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
+ * Initializes a new instance of the PresentationTimeRange class.
+ * @constructor
+ * The presentation time range, this is asset related and not recommended for
+ * Account Filter.
+ *
+ * @member {number} startTimestamp The absolute start time boundary.
+ * @member {number} endTimestamp The absolute end time boundary.
+ * @member {number} presentationWindowDuration The relative to end sliding
+ * window.
+ * @member {number} liveBackoffDuration The relative to end right edge.
+ * @member {number} timescale The time scale of time stamps.
+ * @member {boolean} forceEndTimestamp The indicator of forcing exsiting of end
+ * time stamp.
+ */
+export interface PresentationTimeRange {
+  startTimestamp: number;
+  endTimestamp: number;
+  presentationWindowDuration: number;
+  liveBackoffDuration: number;
+  timescale: number;
+  forceEndTimestamp: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FilterTrackPropertyCondition class.
+ * @constructor
+ * The class to specify one track property condition.
+ *
+ * @member {string} property The track property type. Possible values include:
+ * 'Unknown', 'Type', 'Name', 'Language', 'FourCC', 'Bitrate'
+ * @member {string} [value] The track proprty value.
+ * @member {string} operation The track property condition operation. Possible
+ * values include: 'Equal', 'NotEqual'
+ */
+export interface FilterTrackPropertyCondition {
+  property: string;
+  value?: string;
+  operation: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FirstQuality class.
+ * @constructor
+ * Filter First Quality
+ *
+ * @member {number} bitrate The first quality bitrate.
+ */
+export interface FirstQuality {
+  bitrate: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the FilterTrackSelection class.
+ * @constructor
+ * Representing a list of FilterTrackPropertyConditions to select a track.  The
+ * filters are combined using a logical AND operation.
+ *
+ * @member {array} [trackSelections] The track selections.
+ */
+export interface FilterTrackSelection {
+  trackSelections?: FilterTrackPropertyCondition[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Resource class.
+ * @constructor
+ * The core properties of ARM resources.
+ *
+ * @member {string} [id] Fully qualified resource ID for the resource.
+ * @member {string} [name] The name of the resource.
+ * @member {string} [type] The type of the resource.
+ */
+export interface Resource extends BaseResource {
+  readonly id?: string;
+  readonly name?: string;
+  readonly type?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ProxyResource class.
+ * @constructor
+ * The resource model definition for a ARM proxy resource.
+ *
+ */
+export interface ProxyResource extends Resource {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AccountFilter class.
+ * @constructor
+ * An Account Filter.
+ *
+ * @member {object} [presentationTimeRange] The presentation time range.
+ * @member {number} [presentationTimeRange.startTimestamp] The absolute start
+ * time boundary.
+ * @member {number} [presentationTimeRange.endTimestamp] The absolute end time
+ * boundary.
+ * @member {number} [presentationTimeRange.presentationWindowDuration] The
+ * relative to end sliding window.
+ * @member {number} [presentationTimeRange.liveBackoffDuration] The relative to
+ * end right edge.
+ * @member {number} [presentationTimeRange.timescale] The time scale of time
+ * stamps.
+ * @member {boolean} [presentationTimeRange.forceEndTimestamp] The indicator of
+ * forcing exsiting of end time stamp.
+ * @member {object} [firstQuality] The first quality.
+ * @member {number} [firstQuality.bitrate] The first quality bitrate.
+ * @member {array} [tracks] The tracks selection conditions.
+ */
+export interface AccountFilter extends ProxyResource {
+  presentationTimeRange?: PresentationTimeRange;
+  firstQuality?: FirstQuality;
+  tracks?: FilterTrackSelection[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ODataError class.
+ * @constructor
+ * Information about an error.
+ *
+ * @member {string} [code] A language-independent error name.
+ * @member {string} [message] The error message.
+ * @member {string} [target] The target of the error (for example, the name of
+ * the property in error).
+ * @member {array} [details] The error details.
+ */
+export interface ODataError {
+  code?: string;
+  message?: string;
+  target?: string;
+  details?: ODataError[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ApiError class.
+ * @constructor
+ * The API error.
+ *
+ * @member {object} [error] ApiError. The error properties.
+ * @member {string} [error.code] A language-independent error name.
+ * @member {string} [error.message] The error message.
+ * @member {string} [error.target] The target of the error (for example, the
+ * name of the property in error).
+ * @member {array} [error.details] The error details.
+ */
+export interface ApiError {
+  error?: ODataError;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AccountFilterCollection class.
+ * @constructor
+ * A collection of AccountFilter items.
+ *
+ * @member {array} [value] A collection of AccountFilter items.
+ * @member {string} [odatanextLink] A link to the next page of the collection
+ * (when the collection contains too many results to return in one response).
+ */
+export interface AccountFilterCollection {
+  value?: AccountFilter[];
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * The resource model definition for a ARM tracked resource.
+ *
+ * @member {object} [tags] Resource tags.
+ * @member {string} [location] The Azure Region of the resource.
+ */
+export interface TrackedResource extends Resource {
+  tags?: { [propertyName: string]: string };
+  location?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Provider class.
  * @constructor
  * A resource provider.
@@ -48,6 +236,73 @@ export interface OperationDisplay {
 
 /**
  * @class
+ * Initializes a new instance of the MetricDimension class.
+ * @constructor
+ * A metric dimension.
+ *
+ * @member {string} [name] The metric dimension name.
+ * @member {string} [displayName] The display name for the dimension.
+ * @member {boolean} toBeExportedForShoebox Whether to export metric to
+ * shoebox.
+ */
+export interface MetricDimension {
+  name?: string;
+  displayName?: string;
+  toBeExportedForShoebox: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Metric class.
+ * @constructor
+ * A metric emitted by service.
+ *
+ * @member {string} [name] The metric name.
+ * @member {string} [displayName] The metric display name.
+ * @member {string} [displayDescription] The metric display description.
+ * @member {string} unit The metric unit. Possible values include: 'Bytes',
+ * 'Count', 'Milliseconds'
+ * @member {string} aggregationType The metric aggregation type. Possible
+ * values include: 'Average', 'Count', 'Total'
+ * @member {array} [dimensions] The metric dimensions.
+ */
+export interface Metric {
+  name?: string;
+  displayName?: string;
+  displayDescription?: string;
+  unit: string;
+  aggregationType: string;
+  dimensions?: MetricDimension[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ServiceSpecification class.
+ * @constructor
+ * The service metric specifications.
+ *
+ * @member {array} [metricSpecifications] List of metric specifications.
+ */
+export interface ServiceSpecification {
+  metricSpecifications?: Metric[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MetricProperties class.
+ * @constructor
+ * Metric properties.
+ *
+ * @member {object} [serviceSpecification] The service specifications.
+ * @member {array} [serviceSpecification.metricSpecifications] List of metric
+ * specifications.
+ */
+export interface MetricProperties {
+  serviceSpecification?: ServiceSpecification;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Operation class.
  * @constructor
  * An operation.
@@ -59,10 +314,18 @@ export interface OperationDisplay {
  * performed.
  * @member {string} [display.operation] The operation type.
  * @member {string} [display.description] The operation description.
+ * @member {string} [origin] Origin of the operation.
+ * @member {object} [properties] Operation properties format.
+ * @member {object} [properties.serviceSpecification] The service
+ * specifications.
+ * @member {array} [properties.serviceSpecification.metricSpecifications] List
+ * of metric specifications.
  */
 export interface Operation {
   name: string;
   display?: OperationDisplay;
+  origin?: string;
+  properties?: MetricProperties;
 }
 
 /**
@@ -125,36 +388,6 @@ export interface SyncStorageKeysInput {
 
 /**
  * @class
- * Initializes a new instance of the Resource class.
- * @constructor
- * The core properties of ARM resources.
- *
- * @member {string} [id] Fully qualified resource ID for the resource.
- * @member {string} [name] The name of the resource.
- * @member {string} [type] The type of the resource.
- */
-export interface Resource extends BaseResource {
-  readonly id?: string;
-  readonly name?: string;
-  readonly type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TrackedResource class.
- * @constructor
- * The resource model definition for a ARM tracked resource.
- *
- * @member {object} [tags] Resource tags.
- * @member {string} [location] The Azure Region of the resource.
- */
-export interface TrackedResource extends Resource {
-  tags?: { [propertyName: string]: string };
-  location?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the MediaService class.
  * @constructor
  * A Media Services account.
@@ -183,42 +416,6 @@ export interface SubscriptionMediaService extends TrackedResource {
 
 /**
  * @class
- * Initializes a new instance of the ODataError class.
- * @constructor
- * Information about an error.
- *
- * @member {string} [code] A language-independent error name.
- * @member {string} [message] The error message.
- * @member {string} [target] The target of the error (for example, the name of
- * the property in error).
- * @member {array} [details] The error details.
- */
-export interface ODataError {
-  code?: string;
-  message?: string;
-  target?: string;
-  details?: ODataError[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ApiError class.
- * @constructor
- * The API error.
- *
- * @member {object} [error] The error properties.
- * @member {string} [error.code] A language-independent error name.
- * @member {string} [error.message] The error message.
- * @member {string} [error.target] The target of the error (for example, the
- * name of the property in error).
- * @member {array} [error.details] The error details.
- */
-export interface ApiError {
-  error?: ODataError;
-}
-
-/**
- * @class
  * Initializes a new instance of the CheckNameAvailabilityInput class.
  * @constructor
  * The input to the check name availability request.
@@ -230,16 +427,6 @@ export interface ApiError {
 export interface CheckNameAvailabilityInput {
   name?: string;
   type?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ProxyResource class.
- * @constructor
- * The resource model definition for a ARM proxy resource.
- *
- */
-export interface ProxyResource extends Resource {
 }
 
 /**
@@ -257,14 +444,74 @@ export interface AssetContainerSas {
 
 /**
  * @class
- * Initializes a new instance of the AssetStorageEncryptionKey class.
+ * Initializes a new instance of the AssetFileEncryptionMetadata class.
  * @constructor
- * The Asset Storage encryption key.
+ * The Asset File Storage encryption metadata.
  *
- * @member {string} [storageEncryptionKey] The Asset storage encryption key.
+ * @member {string} [initializationVector] The Asset File initialization
+ * vector.
+ * @member {string} [assetFileName] The Asset File name.
+ * @member {uuid} assetFileId The Asset File Id.
  */
-export interface AssetStorageEncryptionKey {
-  storageEncryptionKey?: string;
+export interface AssetFileEncryptionMetadata {
+  initializationVector?: string;
+  assetFileName?: string;
+  assetFileId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the StorageEncryptedAssetDecryptionData class.
+ * @constructor
+ * Data needed to decrypt asset files encrypted with legacy storage encryption.
+ *
+ * @member {buffer} [key] The Asset File storage encryption key.
+ * @member {array} [assetFileEncryptionMetadata] Asset File encryption
+ * metadata.
+ */
+export interface StorageEncryptedAssetDecryptionData {
+  key?: Buffer;
+  assetFileEncryptionMetadata?: AssetFileEncryptionMetadata[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AssetStreamingLocator class.
+ * @constructor
+ * Properties of Streaming Locator.
+ *
+ * @member {string} [name] Streaming Locator name.
+ * @member {string} [assetName] Asset Name.
+ * @member {date} [created] Creation time of Streaming Locator.
+ * @member {date} [startTime] StartTime of Streaming Locator.
+ * @member {date} [endTime] EndTime of Streaming Locator.
+ * @member {uuid} [streamingLocatorId] StreamingLocatorId of Streaming Locator.
+ * @member {string} [streamingPolicyName] Streaming policy name used by this
+ * streaming locator.
+ * @member {string} [defaultContentKeyPolicyName] Default ContentKeyPolicy used
+ * by this Streaming Locator
+ */
+export interface AssetStreamingLocator {
+  name?: string;
+  assetName?: string;
+  created?: Date;
+  startTime?: Date;
+  endTime?: Date;
+  streamingLocatorId?: string;
+  streamingPolicyName?: string;
+  defaultContentKeyPolicyName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ListStreamingLocatorsResponse class.
+ * @constructor
+ * The Streaming Locators associated with this asset.
+ *
+ * @member {array} [streamingLocators] The list of Streaming Locators.
+ */
+export interface ListStreamingLocatorsResponse {
+  streamingLocators?: AssetStreamingLocator[];
 }
 
 /**
@@ -297,9 +544,38 @@ export interface Asset extends ProxyResource {
 
 /**
  * @class
+ * Initializes a new instance of the AssetFilter class.
+ * @constructor
+ * An Asset Filter.
+ *
+ * @member {object} [presentationTimeRange] The presentation time range.
+ * @member {number} [presentationTimeRange.startTimestamp] The absolute start
+ * time boundary.
+ * @member {number} [presentationTimeRange.endTimestamp] The absolute end time
+ * boundary.
+ * @member {number} [presentationTimeRange.presentationWindowDuration] The
+ * relative to end sliding window.
+ * @member {number} [presentationTimeRange.liveBackoffDuration] The relative to
+ * end right edge.
+ * @member {number} [presentationTimeRange.timescale] The time scale of time
+ * stamps.
+ * @member {boolean} [presentationTimeRange.forceEndTimestamp] The indicator of
+ * forcing exsiting of end time stamp.
+ * @member {object} [firstQuality] The first quality.
+ * @member {number} [firstQuality.bitrate] The first quality bitrate.
+ * @member {array} [tracks] The tracks selection conditions.
+ */
+export interface AssetFilter extends ProxyResource {
+  presentationTimeRange?: PresentationTimeRange;
+  firstQuality?: FirstQuality;
+  tracks?: FilterTrackSelection[];
+}
+
+/**
+ * @class
  * Initializes a new instance of the ListContainerSasInput class.
  * @constructor
- * The parameters to the list SAS requet.
+ * The parameters to the list SAS request.
  *
  * @member {string} [permissions] The permissions to set on the SAS URL.
  * Possible values include: 'Read', 'ReadWrite', 'ReadWriteDelete'
@@ -842,7 +1118,8 @@ export interface AacAudio extends Audio {
  * @member {string} [audioLanguage] The language for the audio payload in the
  * input using the BCP-47 format of 'language tag-region' (e.g: 'en-US'). The
  * list of supported languages are, 'en-US', 'en-GB', 'es-ES', 'es-MX',
- * 'fr-FR', 'it-IT', 'ja-JP', 'pt-BR', 'zh-CN'.
+ * 'fr-FR', 'it-IT', 'ja-JP', 'pt-BR', 'zh-CN', 'de-DE', 'ar-EG', 'ru-RU',
+ * 'hi-IN'.
  */
 export interface AudioAnalyzerPreset extends Preset {
   audioLanguage?: string;
@@ -1327,9 +1604,10 @@ export interface PngImage extends Image {
  * Encoder.
  *
  * @member {string} presetName The built-in preset to be used for encoding
- * videos. Possible values include: 'AdaptiveStreaming', 'AACGoodQualityAudio',
- * 'H264MultipleBitrate1080p', 'H264MultipleBitrate720p',
- * 'H264MultipleBitrateSD'
+ * videos. Possible values include: 'H264SingleBitrateSD',
+ * 'H264SingleBitrate720p', 'H264SingleBitrate1080p', 'AdaptiveStreaming',
+ * 'AACGoodQualityAudio', 'H264MultipleBitrate1080p',
+ * 'H264MultipleBitrate720p', 'H264MultipleBitrateSD'
  */
 export interface BuiltInStandardEncoderPreset extends Preset {
   presetName: string;
@@ -1504,16 +1782,9 @@ export interface Transform extends ProxyResource {
  * @constructor
  * Base class for inputs to a Job.
  *
- * @member {string} [label] A label that is assigned to a JobInput, that is
- * used to satisfy a reference used in the Transform. For example, a Transform
- * can be authored so as to take an image file with the label 'xyz' and apply
- * it as an overlay onto the input video before it is encoded. When submitting
- * a Job, exactly one of the JobInputs should be the image file, and it should
- * have the label 'xyz'.
  * @member {string} odatatype Polymorphic Discriminator
  */
 export interface JobInput {
-  label?: string;
   odatatype: string;
 }
 
@@ -1524,9 +1795,16 @@ export interface JobInput {
  * Represents input files for a Job.
  *
  * @member {array} [files] List of files. Required for JobInputHttp.
+ * @member {string} [label] A label that is assigned to a JobInputClip, that is
+ * used to satisfy a reference used in the Transform. For example, a Transform
+ * can be authored so as to take an image file with the label 'xyz' and apply
+ * it as an overlay onto the input video before it is encoded. When submitting
+ * a Job, exactly one of the JobInputs should be the image file, and it should
+ * have the label 'xyz'.
  */
 export interface JobInputClip extends JobInput {
   files?: string[];
+  label?: string;
 }
 
 /**
@@ -1636,15 +1914,28 @@ export interface JobError {
  * values include: 'Canceled', 'Canceling', 'Error', 'Finished', 'Processing',
  * 'Queued', 'Scheduled'
  * @member {number} [progress] If the JobOutput is in a Processing state, this
- * contains the job completion percentage.  The value is an estimate and not
- * intended to be used to predict job completion times. To determine if the
+ * contains the Job completion percentage. The value is an estimate and not
+ * intended to be used to predict Job completion times. To determine if the
  * JobOutput is complete, use the State property.
+ * @member {string} [label] A label that is assigned to a JobOutput in order to
+ * help uniquely identify it. This is useful when your Transform has more than
+ * one TransformOutput, whereby your Job has more than one JobOutput. In such
+ * cases, when you submit the Job, you will add two or more JobOutputs, in the
+ * same order as TransformOutputs in the Transform. Subsequently, when you
+ * retrieve the Job, either through events or on a GET request, you can use the
+ * label to easily identify the JobOutput. If a label is not provided, a
+ * default value of '{presetName}_{outputIndex}' will be used, where the preset
+ * name is the name of the preset in the corresponding TransformOutput and the
+ * output index is the relative index of the this JobOutput within the Job.
+ * Note that this index is the same as the relative index of the corresponding
+ * TransformOutput within its Transform.
  * @member {string} odatatype Polymorphic Discriminator
  */
 export interface JobOutput {
   readonly error?: JobError;
   readonly state?: string;
   readonly progress?: number;
+  label?: string;
   odatatype: string;
 }
 
@@ -1675,12 +1966,6 @@ export interface JobOutputAsset extends JobOutput {
  * @member {string} [description] Optional customer supplied description of the
  * Job.
  * @member {object} input The inputs for the Job.
- * @member {string} [input.label] A label that is assigned to a JobInput, that
- * is used to satisfy a reference used in the Transform. For example, a
- * Transform can be authored so as to take an image file with the label 'xyz'
- * and apply it as an overlay onto the input video before it is encoded. When
- * submitting a Job, exactly one of the JobInputs should be the image file, and
- * it should have the label 'xyz'.
  * @member {string} [input.odatatype] Polymorphic Discriminator
  * @member {date} [lastModified] The UTC date and time when the Job was last
  * updated, in 'YYYY-MM-DDThh:mm:ssZ' format.
@@ -1689,7 +1974,7 @@ export interface JobOutputAsset extends JobOutput {
  * Higher priority jobs are processed before lower priority jobs. If not set,
  * the default is normal. Possible values include: 'Low', 'Normal', 'High'
  * @member {object} [correlationData] Customer provided correlation data that
- * will be returned in Job completed events.
+ * will be returned in Job and JobOutput state events.
  */
 export interface Job extends ProxyResource {
   readonly created?: Date;
@@ -2216,7 +2501,7 @@ export interface StreamingLocatorContentKey {
   label?: string;
   value?: string;
   readonly policyName?: string;
-  tracks?: TrackSelection[];
+  readonly tracks?: TrackSelection[];
 }
 
 /**
@@ -2446,11 +2731,8 @@ export interface LiveEventPreviewAccessControl {
  * @member {string} [previewLocator] The preview locator Guid.
  * @member {string} [streamingPolicyName] The name of streaming policy used for
  * LiveEvent preview
- * @member {string} [alternativeMediaId] An Alternative Media Identifier
- * associated with the preview url.  This identifier can be used to distinguish
- * the preview of different live events for authorization purposes in the
- * CustomLicenseAcquisitionUrlTemplate or the CustomKeyAcquisitionUrlTemplate
- * of the StreamingPolicy specified in the StreamingPolicyName field.
+ * @member {string} [alternativeMediaId] The alternative Media-Id associated
+ * with the preview
  */
 export interface LiveEventPreview {
   endpoints?: LiveEventEndpoint[];
@@ -2528,12 +2810,8 @@ export interface LiveEventActionInput {
  * @member {string} [preview.previewLocator] The preview locator Guid.
  * @member {string} [preview.streamingPolicyName] The name of streaming policy
  * used for LiveEvent preview
- * @member {string} [preview.alternativeMediaId] An Alternative Media
- * Identifier associated with the preview url.  This identifier can be used to
- * distinguish the preview of different live events for authorization purposes
- * in the CustomLicenseAcquisitionUrlTemplate or the
- * CustomKeyAcquisitionUrlTemplate of the StreamingPolicy specified in the
- * StreamingPolicyName field.
+ * @member {string} [preview.alternativeMediaId] The alternative Media-Id
+ * associated with the preview
  * @member {object} [encoding] The Live Event encoding.
  * @member {string} [encoding.encodingType] The encoding type for Live Event.
  * Possible values include: 'None', 'Basic'
@@ -2634,7 +2912,7 @@ export interface StreamingEntityScaleUnit {
  * The StreamingEndpoint.
  *
  * @member {string} [description] The StreamingEndpoint description.
- * @member {number} [scaleUnits] The number of scale units.
+ * @member {number} scaleUnits The number of scale units.
  * @member {string} [availabilitySetName] AvailabilitySet name
  * @member {object} [accessControl] The access control definition of the
  * StreamingEndpoint.
@@ -2670,7 +2948,7 @@ export interface StreamingEntityScaleUnit {
  */
 export interface StreamingEndpoint extends TrackedResource {
   description?: string;
-  scaleUnits?: number;
+  scaleUnits: number;
   availabilitySetName?: string;
   accessControl?: StreamingEndpointAccessControl;
   maxCacheAge?: number;
@@ -2737,6 +3015,19 @@ export interface SubscriptionMediaServiceCollection extends Array<SubscriptionMe
  * (when the collection contains too many results to return in one response).
  */
 export interface AssetCollection extends Array<Asset> {
+  odatanextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the AssetFilterCollection class.
+ * @constructor
+ * A collection of AssetFilter items.
+ *
+ * @member {string} [odatanextLink] A link to the next page of the collection
+ * (when the collection contains too many results to return in one response).
+ */
+export interface AssetFilterCollection extends Array<AssetFilter> {
   odatanextLink?: string;
 }
 
