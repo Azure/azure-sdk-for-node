@@ -423,6 +423,18 @@ export interface LinkedServiceResource extends SubResource {
 
 /**
  * @class
+ * Initializes a new instance of the DatasetFolder class.
+ * @constructor
+ * The folder that this Dataset is in.
+ *
+ * @member {string} [name] The name of the folder that this Dataset is in.
+ */
+export interface DatasetFolder {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Dataset class.
  * @constructor
  * The Azure Data Factory nested object which identifies data within different
@@ -439,6 +451,9 @@ export interface LinkedServiceResource extends SubResource {
  * @member {object} [parameters] Parameters for dataset.
  * @member {array} [annotations] List of tags that can be used for describing
  * the Dataset.
+ * @member {object} [folder] The folder that this Dataset is in.
+ * @member {string} [folder.name] The name of the folder that this Dataset is
+ * in.
  * @member {string} type Polymorphic Discriminator
  */
 export interface Dataset {
@@ -447,6 +462,7 @@ export interface Dataset {
   linkedServiceName: LinkedServiceReference;
   parameters?: { [propertyName: string]: ParameterSpecification };
   annotations?: any[];
+  folder?: DatasetFolder;
   type: string;
   /**
    * @property Describes unknown properties. The value of an unknown property
@@ -474,6 +490,9 @@ export interface Dataset {
  * @member {object} [properties.parameters] Parameters for dataset.
  * @member {array} [properties.annotations] List of tags that can be used for
  * describing the Dataset.
+ * @member {object} [properties.folder] The folder that this Dataset is in.
+ * @member {string} [properties.folder.name] The name of the folder that this
+ * Dataset is in.
  * @member {string} [properties.type] Polymorphic Discriminator
  */
 export interface DatasetResource extends SubResource {
@@ -541,6 +560,19 @@ export interface Activity {
 
 /**
  * @class
+ * Initializes a new instance of the PipelineFolder class.
+ * @constructor
+ * The folder that this Pipeline is in. If not specified, Pipeline will appear
+ * at the root level.
+ *
+ * @member {string} [name] The name of the folder that this Pipeline is in.
+ */
+export interface PipelineFolder {
+  name?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the PipelineResource class.
  * @constructor
  * Pipeline resource type.
@@ -552,6 +584,10 @@ export interface Activity {
  * pipeline.
  * @member {array} [annotations] List of tags that can be used for describing
  * the Pipeline.
+ * @member {object} [folder] The folder that this Pipeline is in. If not
+ * specified, Pipeline will appear at the root level.
+ * @member {string} [folder.name] The name of the folder that this Pipeline is
+ * in.
  */
 export interface PipelineResource extends SubResource {
   description?: string;
@@ -559,6 +595,7 @@ export interface PipelineResource extends SubResource {
   parameters?: { [propertyName: string]: ParameterSpecification };
   concurrency?: number;
   annotations?: any[];
+  folder?: PipelineFolder;
   /**
    * @property Describes unknown properties. The value of an unknown property
    * can be of "any" type.

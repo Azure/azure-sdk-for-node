@@ -2722,6 +2722,12 @@ export interface Datasets {
      * @param {array} [dataset.properties.annotations] List of tags that can be
      * used for describing the Dataset.
      *
+     * @param {object} [dataset.properties.folder] The folder that this Dataset is
+     * in.
+     *
+     * @param {string} [dataset.properties.folder.name] The name of the folder that
+     * this Dataset is in.
+     *
      * @param {string} dataset.properties.type Polymorphic Discriminator
      *
      * @param {object} [options] Optional Parameters.
@@ -2773,6 +2779,12 @@ export interface Datasets {
      *
      * @param {array} [dataset.properties.annotations] List of tags that can be
      * used for describing the Dataset.
+     *
+     * @param {object} [dataset.properties.folder] The folder that this Dataset is
+     * in.
+     *
+     * @param {string} [dataset.properties.folder.name] The name of the folder that
+     * this Dataset is in.
      *
      * @param {string} dataset.properties.type Polymorphic Discriminator
      *
@@ -3096,6 +3108,12 @@ export interface Pipelines {
      * @param {array} [pipelineParameter.annotations] List of tags that can be used
      * for describing the Pipeline.
      *
+     * @param {object} [pipelineParameter.folder] The folder that this Pipeline is
+     * in. If not specified, Pipeline will appear at the root level.
+     *
+     * @param {string} [pipelineParameter.folder.name] The name of the folder that
+     * this Pipeline is in.
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.ifMatch] ETag of the pipeline entity.  Should only
@@ -3138,6 +3156,12 @@ export interface Pipelines {
      *
      * @param {array} [pipelineParameter.annotations] List of tags that can be used
      * for describing the Pipeline.
+     *
+     * @param {object} [pipelineParameter.folder] The folder that this Pipeline is
+     * in. If not specified, Pipeline will appear at the root level.
+     *
+     * @param {string} [pipelineParameter.folder.name] The name of the folder that
+     * this Pipeline is in.
      *
      * @param {object} [options] Optional Parameters.
      *
