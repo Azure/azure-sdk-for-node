@@ -2723,7 +2723,7 @@ export interface Datasets {
      * used for describing the Dataset.
      *
      * @param {object} [dataset.properties.folder] The folder that this Dataset is
-     * in.
+     * in. If not specified, Dataset will appear at the root level.
      *
      * @param {string} [dataset.properties.folder.name] The name of the folder that
      * this Dataset is in.
@@ -2781,7 +2781,7 @@ export interface Datasets {
      * used for describing the Dataset.
      *
      * @param {object} [dataset.properties.folder] The folder that this Dataset is
-     * in.
+     * in. If not specified, Dataset will appear at the root level.
      *
      * @param {string} [dataset.properties.folder.name] The name of the folder that
      * this Dataset is in.

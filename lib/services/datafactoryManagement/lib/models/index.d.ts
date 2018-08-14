@@ -425,7 +425,8 @@ export interface LinkedServiceResource extends SubResource {
  * @class
  * Initializes a new instance of the DatasetFolder class.
  * @constructor
- * The folder that this Dataset is in.
+ * The folder that this Dataset is in. If not specified, Dataset will appear at
+ * the root level.
  *
  * @member {string} [name] The name of the folder that this Dataset is in.
  */
@@ -451,7 +452,8 @@ export interface DatasetFolder {
  * @member {object} [parameters] Parameters for dataset.
  * @member {array} [annotations] List of tags that can be used for describing
  * the Dataset.
- * @member {object} [folder] The folder that this Dataset is in.
+ * @member {object} [folder] The folder that this Dataset is in. If not
+ * specified, Dataset will appear at the root level.
  * @member {string} [folder.name] The name of the folder that this Dataset is
  * in.
  * @member {string} type Polymorphic Discriminator
@@ -490,7 +492,8 @@ export interface Dataset {
  * @member {object} [properties.parameters] Parameters for dataset.
  * @member {array} [properties.annotations] List of tags that can be used for
  * describing the Dataset.
- * @member {object} [properties.folder] The folder that this Dataset is in.
+ * @member {object} [properties.folder] The folder that this Dataset is in. If
+ * not specified, Dataset will appear at the root level.
  * @member {string} [properties.folder.name] The name of the folder that this
  * Dataset is in.
  * @member {string} [properties.type] Polymorphic Discriminator
