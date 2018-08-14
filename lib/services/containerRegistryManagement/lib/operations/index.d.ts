@@ -35,8 +35,11 @@ export interface Registries {
      *
      * @param {object} parameters.source The source of the image.
      *
-     * @param {string} parameters.source.resourceId The resource identifier of the
-     * target Azure Container Registry.
+     * @param {string} [parameters.source.resourceId] The resource identifier of
+     * the source Azure Container Registry.
+     *
+     * @param {string} [parameters.source.registryUri] The address of the source
+     * registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -85,8 +88,11 @@ export interface Registries {
      *
      * @param {object} parameters.source The source of the image.
      *
-     * @param {string} parameters.source.resourceId The resource identifier of the
-     * target Azure Container Registry.
+     * @param {string} [parameters.source.resourceId] The resource identifier of
+     * the source Azure Container Registry.
+     *
+     * @param {string} [parameters.source.registryUri] The address of the source
+     * registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -852,6 +858,168 @@ export interface Registries {
 
 
     /**
+     * Lists the policies for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegistryPolicies>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listPoliciesWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegistryPolicies>>;
+
+    /**
+     * Lists the policies for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegistryPolicies} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegistryPolicies} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegistryPolicies} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listPolicies(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryPolicies>;
+    listPolicies(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.RegistryPolicies>): void;
+    listPolicies(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryPolicies>): void;
+
+
+    /**
+     * Updates the policies for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} registryPoliciesUpdateParameters The parameters for updating
+     * policies of a container registry.
+     *
+     * @param {object} [registryPoliciesUpdateParameters.quarantinePolicy] An
+     * object that represents quarantine policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
+     * The value that indicates whether the policy is enabled or not. Possible
+     * values include: 'enabled', 'disabled'
+     *
+     * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
+     * that represents content trust policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
+     * of trust policy. Possible values include: 'Notary'
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
+     * value that indicates whether the policy is enabled or not. Possible values
+     * include: 'enabled', 'disabled'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegistryPolicies>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updatePoliciesWithHttpOperationResponse(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegistryPolicies>>;
+
+    /**
+     * Updates the policies for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} registryPoliciesUpdateParameters The parameters for updating
+     * policies of a container registry.
+     *
+     * @param {object} [registryPoliciesUpdateParameters.quarantinePolicy] An
+     * object that represents quarantine policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
+     * The value that indicates whether the policy is enabled or not. Possible
+     * values include: 'enabled', 'disabled'
+     *
+     * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
+     * that represents content trust policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
+     * of trust policy. Possible values include: 'Notary'
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
+     * value that indicates whether the policy is enabled or not. Possible values
+     * include: 'enabled', 'disabled'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegistryPolicies} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegistryPolicies} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegistryPolicies} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    updatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryPolicies>;
+    updatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, callback: ServiceCallback<models.RegistryPolicies>): void;
+    updatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryPolicies>): void;
+
+
+    /**
      * Creates a new build based on the request parameters and add it to the build
      * queue.
      *
@@ -998,8 +1166,11 @@ export interface Registries {
      *
      * @param {object} parameters.source The source of the image.
      *
-     * @param {string} parameters.source.resourceId The resource identifier of the
-     * target Azure Container Registry.
+     * @param {string} [parameters.source.resourceId] The resource identifier of
+     * the source Azure Container Registry.
+     *
+     * @param {string} [parameters.source.registryUri] The address of the source
+     * registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1048,8 +1219,11 @@ export interface Registries {
      *
      * @param {object} parameters.source The source of the image.
      *
-     * @param {string} parameters.source.resourceId The resource identifier of the
-     * target Azure Container Registry.
+     * @param {string} [parameters.source.resourceId] The resource identifier of
+     * the source Azure Container Registry.
+     *
+     * @param {string} [parameters.source.registryUri] The address of the source
+     * registry.
      *
      * @param {string} parameters.source.sourceImage Repository name of the source
      * image.
@@ -1374,6 +1548,107 @@ export interface Registries {
     beginUpdate(resourceGroupName: string, registryName: string, registryUpdateParameters: models.RegistryUpdateParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Registry>;
     beginUpdate(resourceGroupName: string, registryName: string, registryUpdateParameters: models.RegistryUpdateParameters, callback: ServiceCallback<models.Registry>): void;
     beginUpdate(resourceGroupName: string, registryName: string, registryUpdateParameters: models.RegistryUpdateParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Registry>): void;
+
+
+    /**
+     * Updates the policies for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} registryPoliciesUpdateParameters The parameters for updating
+     * policies of a container registry.
+     *
+     * @param {object} [registryPoliciesUpdateParameters.quarantinePolicy] An
+     * object that represents quarantine policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
+     * The value that indicates whether the policy is enabled or not. Possible
+     * values include: 'enabled', 'disabled'
+     *
+     * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
+     * that represents content trust policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
+     * of trust policy. Possible values include: 'Notary'
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
+     * value that indicates whether the policy is enabled or not. Possible values
+     * include: 'enabled', 'disabled'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<RegistryPolicies>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginUpdatePoliciesWithHttpOperationResponse(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RegistryPolicies>>;
+
+    /**
+     * Updates the policies for the specified container registry.
+     *
+     * @param {string} resourceGroupName The name of the resource group to which
+     * the container registry belongs.
+     *
+     * @param {string} registryName The name of the container registry.
+     *
+     * @param {object} registryPoliciesUpdateParameters The parameters for updating
+     * policies of a container registry.
+     *
+     * @param {object} [registryPoliciesUpdateParameters.quarantinePolicy] An
+     * object that represents quarantine policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.quarantinePolicy.status]
+     * The value that indicates whether the policy is enabled or not. Possible
+     * values include: 'enabled', 'disabled'
+     *
+     * @param {object} [registryPoliciesUpdateParameters.trustPolicy] An object
+     * that represents content trust policy for a container registry.
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.type] The type
+     * of trust policy. Possible values include: 'Notary'
+     *
+     * @param {string} [registryPoliciesUpdateParameters.trustPolicy.status] The
+     * value that indicates whether the policy is enabled or not. Possible values
+     * include: 'enabled', 'disabled'
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {RegistryPolicies} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {RegistryPolicies} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link RegistryPolicies} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginUpdatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RegistryPolicies>;
+    beginUpdatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, callback: ServiceCallback<models.RegistryPolicies>): void;
+    beginUpdatePolicies(resourceGroupName: string, registryName: string, registryPoliciesUpdateParameters: models.RegistryPolicies, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RegistryPolicies>): void;
 
 
     /**
