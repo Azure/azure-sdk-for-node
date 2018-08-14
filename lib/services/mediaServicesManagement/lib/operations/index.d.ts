@@ -477,6 +477,68 @@ export interface AccountFilters {
     update(resourceGroupName: string, accountName: string, filterName: string, parameters: models.AccountFilter, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccountFilter>;
     update(resourceGroupName: string, accountName: string, filterName: string, parameters: models.AccountFilter, callback: ServiceCallback<models.AccountFilter>): void;
     update(resourceGroupName: string, accountName: string, filterName: string, parameters: models.AccountFilter, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountFilter>): void;
+
+
+    /**
+     * @summary List Account Filters
+     *
+     * List Account Filters in the Media Services account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<AccountFilterCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.AccountFilterCollection>>;
+
+    /**
+     * @summary List Account Filters
+     *
+     * List Account Filters in the Media Services account.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {AccountFilterCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {AccountFilterCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link AccountFilterCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AccountFilterCollection>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.AccountFilterCollection>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AccountFilterCollection>): void;
 }
 
 /**

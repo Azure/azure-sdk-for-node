@@ -177,21 +177,6 @@ export interface ApiError {
 
 /**
  * @class
- * Initializes a new instance of the AccountFilterCollection class.
- * @constructor
- * A collection of AccountFilter items.
- *
- * @member {array} [value] A collection of AccountFilter items.
- * @member {string} [odatanextLink] A link to the next page of the collection
- * (when the collection contains too many results to return in one response).
- */
-export interface AccountFilterCollection {
-  value?: AccountFilter[];
-  odatanextLink?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the TrackedResource class.
  * @constructor
  * The resource model definition for a ARM tracked resource.
@@ -2965,6 +2950,19 @@ export interface StreamingEndpoint extends TrackedResource {
   readonly lastModified?: Date;
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the AccountFilterCollection class.
+ * @constructor
+ * A collection of AccountFilter items.
+ *
+ * @member {string} [odatanextLink] A link to the next page of the collection
+ * (when the collection contains too many results to return in one response).
+ */
+export interface AccountFilterCollection extends Array<AccountFilter> {
+  odatanextLink?: string;
+}
 
 /**
  * @class
