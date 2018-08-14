@@ -4139,6 +4139,21 @@ export interface EffectiveRouteListResult {
 
 /**
  * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * The error object.
+ *
+ * @member {object} [error] Error.
+ * @member {string} [error.code]
+ * @member {string} [error.target]
+ * @member {string} [error.message]
+ */
+export interface ErrorResponse {
+  error?: ErrorDetails;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NetworkWatcher class.
  * @constructor
  * Network watcher in a resource group.
