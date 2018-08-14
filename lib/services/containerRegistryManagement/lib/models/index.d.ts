@@ -20,8 +20,9 @@ export { CloudError } from 'ms-rest-azure';
  * @class
  * Initializes a new instance of the ImportSource class.
  * @constructor
- * @member {string} resourceId The resource identifier of the target Azure
+ * @member {string} [resourceId] The resource identifier of the source Azure
  * Container Registry.
+ * @member {string} [registryUri] The address of the source registry.
  * @member {string} sourceImage Repository name of the source image.
  * Specify an image by repository ('hello-world'). This will use the 'latest'
  * tag.
@@ -30,7 +31,8 @@ export { CloudError } from 'ms-rest-azure';
  * ('hello-world@sha256:abc123').
  */
 export interface ImportSource {
-  resourceId: string;
+  resourceId?: string;
+  registryUri?: string;
   sourceImage: string;
 }
 
@@ -39,8 +41,9 @@ export interface ImportSource {
  * Initializes a new instance of the ImportImageParameters class.
  * @constructor
  * @member {object} source The source of the image.
- * @member {string} [source.resourceId] The resource identifier of the target
+ * @member {string} [source.resourceId] The resource identifier of the source
  * Azure Container Registry.
+ * @member {string} [source.registryUri] The address of the source registry.
  * @member {string} [source.sourceImage] Repository name of the source image.
  * Specify an image by repository ('hello-world'). This will use the 'latest'
  * tag.
@@ -1336,7 +1339,6 @@ export interface TriggerProperties {
  * Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
  * 'Failed', 'Canceled'
  * @member {date} [creationDate] The creation date of task.
- * @member {string} alias The alternative updatable name for a task.
  * @member {string} [status] The current status of task. Possible values
  * include: 'Disabled', 'Enabled'
  * @member {object} platform The platform properties against which the run has
@@ -1370,74 +1372,12 @@ export interface TriggerProperties {
 export interface Task extends Resource {
   readonly provisioningState?: string;
   readonly creationDate?: Date;
-  alias: string;
   status?: string;
   platform: PlatformProperties;
   agentConfiguration?: AgentProperties;
   timeout?: number;
   step: TaskStepProperties;
   trigger?: TriggerProperties;
-}
-
-/**
- * @class
- * Initializes a new instance of the TaskFilter class.
- * @constructor
- * The filter that can be used for listing tasks.
- *
- * @member {string} [alias] The alternative name for task.
- */
-export interface TaskFilter {
-  alias?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the TaskUpdateParameters class.
- * @constructor
- * The parameters for updating a task.
- *
- * @member {string} [alias] The alternative updatable name for a task.
- * @member {string} [status] The current status of task. Possible values
- * include: 'Disabled', 'Enabled'
- * @member {object} [platform] The platform properties against which the run
- * has to happen.
- * @member {string} [platform.os] The operating system type required for the
- * run. Possible values include: 'Windows', 'Linux'
- * @member {string} [platform.architecture] The OS architecture. Possible
- * values include: 'amd64', 'x86', 'arm'
- * @member {string} [platform.variant] Variant of the CPU. Possible values
- * include: 'v6', 'v7', 'v8'
- * @member {object} [agentConfiguration] The machine configuration of the run
- * agent.
- * @member {number} [agentConfiguration.cpu] The CPU configuration in terms of
- * number of cores required for the run.
- * @member {number} [timeout] Run timeout in seconds.
- * @member {object} [step] The properties for updating a task step.
- * @member {string} [step.type] Polymorphic Discriminator
- * @member {object} [trigger] The properties that describe all triggers for the
- * task.
- * @member {array} [trigger.sourceTriggers] The collection of triggers based on
- * source code repository.
- * @member {object} [trigger.baseImageTrigger] The trigger based on base image
- * dependencies.
- * @member {string} [trigger.baseImageTrigger.baseImageTriggerType] The type of
- * the auto trigger for base image dependency updates. Possible values include:
- * 'All', 'Runtime'
- * @member {string} [trigger.baseImageTrigger.status] The current status of
- * build trigger. Possible values include: 'Disabled', 'Enabled'
- * @member {string} [trigger.baseImageTrigger.name] The name of the trigger.
- * @member {object} [tags] The ARM resource tags.
- */
-export interface TaskUpdateParameters {
-  alias?: string;
-  status?: string;
-  platform?: PlatformProperties;
-  agentConfiguration?: AgentProperties;
-  timeout?: number;
-  step?: TaskStepProperties;
-  trigger?: TriggerProperties;
-  tags?: { [propertyName: string]: string };
 }
 
 /**
@@ -1629,8 +1569,8 @@ export interface DockerBuildStep extends TaskStepProperties {
  * @constructor
  * The properties of a build task step.
  *
- * @member {string} [definitionFilePath] The build task template/definition
- * file path relative to the source context.
+ * @member {string} definitionFilePath The build task template/definition file
+ * path relative to the source context.
  * @member {string} [valuesFilePath] The task values/parameters file path
  * relative to the source context.
  * @member {string} [contextPath] The URL(absolute or relative) of the source
@@ -1643,7 +1583,7 @@ export interface DockerBuildStep extends TaskStepProperties {
  * a step.
  */
 export interface BuildTaskStep extends TaskStepProperties {
-  definitionFilePath?: string;
+  definitionFilePath: string;
   valuesFilePath?: string;
   contextPath?: string;
   argumentsProperty?: Argument[];
