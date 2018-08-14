@@ -4672,149 +4672,6 @@ export interface PriceSheet {
 
 /**
  * @class
- * CostTags
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ConsumptionManagementClient.
- */
-export interface CostTags {
-
-
-    /**
-     * Get cost tags for a billing account.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<CostTag>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    getWithHttpOperationResponse(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTag>>;
-
-    /**
-     * Get cost tags for a billing account.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {CostTag} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {CostTag} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CostTag} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    get(billingAccountId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTag>;
-    get(billingAccountId: string, callback: ServiceCallback<models.CostTag>): void;
-    get(billingAccountId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTag>): void;
-
-
-    /**
-     * The operation to create or update cost tags assiciated with a billing
-     * account. Update operation requires latest eTag to be set in the request
-     * mandatorily. You may obtain the latest eTag by performing a get operation.
-     * Create operation does not require eTag.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {object} parameters Parameters supplied to the Create cost tags
-     * operation.
-     *
-     * @param {array} [parameters.costTags] Cost tags.
-     *
-     * @param {string} [parameters.eTag] eTag of the resource. To handle concurrent
-     * update scenarion, this field will be used to determine whether the user is
-     * updating the latest version or not.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<CostTag>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(billingAccountId: string, parameters: models.CostTag, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CostTag>>;
-
-    /**
-     * The operation to create or update cost tags assiciated with a billing
-     * account. Update operation requires latest eTag to be set in the request
-     * mandatorily. You may obtain the latest eTag by performing a get operation.
-     * Create operation does not require eTag.
-     *
-     * @param {string} billingAccountId BillingAccount ID
-     *
-     * @param {object} parameters Parameters supplied to the Create cost tags
-     * operation.
-     *
-     * @param {array} [parameters.costTags] Cost tags.
-     *
-     * @param {string} [parameters.eTag] eTag of the resource. To handle concurrent
-     * update scenarion, this field will be used to determine whether the user is
-     * updating the latest version or not.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {CostTag} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {CostTag} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link CostTag} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(billingAccountId: string, parameters: models.CostTag, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.CostTag>;
-    createOrUpdate(billingAccountId: string, parameters: models.CostTag, callback: ServiceCallback<models.CostTag>): void;
-    createOrUpdate(billingAccountId: string, parameters: models.CostTag, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CostTag>): void;
-}
-
-/**
- * @class
  * Tags
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ConsumptionManagementClient.
@@ -5062,6 +4919,135 @@ export interface Operations {
     listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResult>;
     listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResult>): void;
     listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResult>): void;
+}
+
+/**
+ * @class
+ * AggregatedCost
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ConsumptionManagementClient.
+ */
+export interface AggregatedCost {
+
+
+    /**
+     * Provides the aggregate cost of a management group and all child management
+     * groups by current billing period.
+     *
+     * @param {string} managementGroupId Azure Management Group ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagementGroupAggregatedCostResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getByManagementGroupWithHttpOperationResponse(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroupAggregatedCostResult>>;
+
+    /**
+     * Provides the aggregate cost of a management group and all child management
+     * groups by current billing period.
+     *
+     * @param {string} managementGroupId Azure Management Group ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagementGroupAggregatedCostResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagementGroupAggregatedCostResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagementGroupAggregatedCostResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getByManagementGroup(managementGroupId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroupAggregatedCostResult>;
+    getByManagementGroup(managementGroupId: string, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
+    getByManagementGroup(managementGroupId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
+
+
+    /**
+     * Provides the aggregate cost of a management group and all child management
+     * groups by specified billing period
+     *
+     * @param {string} managementGroupId Azure Management Group ID.
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<ManagementGroupAggregatedCostResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getForBillingPeriodByManagementGroupWithHttpOperationResponse(managementGroupId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ManagementGroupAggregatedCostResult>>;
+
+    /**
+     * Provides the aggregate cost of a management group and all child management
+     * groups by specified billing period
+     *
+     * @param {string} managementGroupId Azure Management Group ID.
+     *
+     * @param {string} billingPeriodName Billing Period Name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {ManagementGroupAggregatedCostResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {ManagementGroupAggregatedCostResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ManagementGroupAggregatedCostResult} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ManagementGroupAggregatedCostResult>;
+    getForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
+    getForBillingPeriodByManagementGroup(managementGroupId: string, billingPeriodName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ManagementGroupAggregatedCostResult>): void;
 }
 
 /**
