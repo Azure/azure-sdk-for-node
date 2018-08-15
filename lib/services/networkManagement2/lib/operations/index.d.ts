@@ -16941,6 +16941,156 @@ export interface NetworkWatchers {
 
 
     /**
+     * Get network configuration diagnostic.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkWatcherName The name of the network watcher.
+     *
+     * @param {object} parameters Parameters to get network configuration
+     * diagnostic.
+     *
+     * @param {string} parameters.targetResourceId The ID of the target resource to
+     * perform network configuration diagnostic. Valid options are VM,
+     * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
+     *
+     * @param {array} parameters.queries List of traffic queries.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkConfigurationDiagnosticResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getNetworkConfigurationDiagnosticWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, parameters: models.NetworkConfigurationDiagnosticParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkConfigurationDiagnosticResponse>>;
+
+    /**
+     * Get network configuration diagnostic.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkWatcherName The name of the network watcher.
+     *
+     * @param {object} parameters Parameters to get network configuration
+     * diagnostic.
+     *
+     * @param {string} parameters.targetResourceId The ID of the target resource to
+     * perform network configuration diagnostic. Valid options are VM,
+     * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
+     *
+     * @param {array} parameters.queries List of traffic queries.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkConfigurationDiagnosticResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkConfigurationDiagnosticResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkConfigurationDiagnosticResponse} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getNetworkConfigurationDiagnostic(resourceGroupName: string, networkWatcherName: string, parameters: models.NetworkConfigurationDiagnosticParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkConfigurationDiagnosticResponse>;
+    getNetworkConfigurationDiagnostic(resourceGroupName: string, networkWatcherName: string, parameters: models.NetworkConfigurationDiagnosticParameters, callback: ServiceCallback<models.NetworkConfigurationDiagnosticResponse>): void;
+    getNetworkConfigurationDiagnostic(resourceGroupName: string, networkWatcherName: string, parameters: models.NetworkConfigurationDiagnosticParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkConfigurationDiagnosticResponse>): void;
+
+
+    /**
+     * Query connection monitors.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkWatcherName The name of the network watcher.
+     *
+     * @param {object} parameters Parameters to get network configuration
+     * diagnostic.
+     *
+     * @param {array} [parameters.connectionMonitorIds] List of connection monitors
+     * ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<QueryConnectionMonitorsResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    queryConnectionMonitorsWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, parameters: models.QueryConnectionMonitorsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.QueryConnectionMonitorsResponse>>;
+
+    /**
+     * Query connection monitors.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkWatcherName The name of the network watcher.
+     *
+     * @param {object} parameters Parameters to get network configuration
+     * diagnostic.
+     *
+     * @param {array} [parameters.connectionMonitorIds] List of connection monitors
+     * ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {QueryConnectionMonitorsResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {QueryConnectionMonitorsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link QueryConnectionMonitorsResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    queryConnectionMonitors(resourceGroupName: string, networkWatcherName: string, parameters: models.QueryConnectionMonitorsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.QueryConnectionMonitorsResponse>;
+    queryConnectionMonitors(resourceGroupName: string, networkWatcherName: string, parameters: models.QueryConnectionMonitorsParameters, callback: ServiceCallback<models.QueryConnectionMonitorsResponse>): void;
+    queryConnectionMonitors(resourceGroupName: string, networkWatcherName: string, parameters: models.QueryConnectionMonitorsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.QueryConnectionMonitorsResponse>): void;
+
+
+    /**
      * Deletes the specified network watcher resource.
      *
      * @param {string} resourceGroupName The name of the resource group.
@@ -17989,6 +18139,272 @@ export interface NetworkWatchers {
     beginListAvailableProviders(resourceGroupName: string, networkWatcherName: string, parameters: models.AvailableProvidersListParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.AvailableProvidersList>;
     beginListAvailableProviders(resourceGroupName: string, networkWatcherName: string, parameters: models.AvailableProvidersListParameters, callback: ServiceCallback<models.AvailableProvidersList>): void;
     beginListAvailableProviders(resourceGroupName: string, networkWatcherName: string, parameters: models.AvailableProvidersListParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.AvailableProvidersList>): void;
+
+
+    /**
+     * Get network configuration diagnostic.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkWatcherName The name of the network watcher.
+     *
+     * @param {object} parameters Parameters to get network configuration
+     * diagnostic.
+     *
+     * @param {string} parameters.targetResourceId The ID of the target resource to
+     * perform network configuration diagnostic. Valid options are VM,
+     * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
+     *
+     * @param {array} parameters.queries List of traffic queries.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<NetworkConfigurationDiagnosticResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginGetNetworkConfigurationDiagnosticWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, parameters: models.NetworkConfigurationDiagnosticParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.NetworkConfigurationDiagnosticResponse>>;
+
+    /**
+     * Get network configuration diagnostic.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkWatcherName The name of the network watcher.
+     *
+     * @param {object} parameters Parameters to get network configuration
+     * diagnostic.
+     *
+     * @param {string} parameters.targetResourceId The ID of the target resource to
+     * perform network configuration diagnostic. Valid options are VM,
+     * NetworkInterface, VMSS/NetworkInterface and Application Gateway.
+     *
+     * @param {array} parameters.queries List of traffic queries.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {NetworkConfigurationDiagnosticResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {NetworkConfigurationDiagnosticResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link NetworkConfigurationDiagnosticResponse} for
+     *                      more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginGetNetworkConfigurationDiagnostic(resourceGroupName: string, networkWatcherName: string, parameters: models.NetworkConfigurationDiagnosticParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.NetworkConfigurationDiagnosticResponse>;
+    beginGetNetworkConfigurationDiagnostic(resourceGroupName: string, networkWatcherName: string, parameters: models.NetworkConfigurationDiagnosticParameters, callback: ServiceCallback<models.NetworkConfigurationDiagnosticResponse>): void;
+    beginGetNetworkConfigurationDiagnostic(resourceGroupName: string, networkWatcherName: string, parameters: models.NetworkConfigurationDiagnosticParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.NetworkConfigurationDiagnosticResponse>): void;
+
+
+    /**
+     * Query connection monitors.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkWatcherName The name of the network watcher.
+     *
+     * @param {object} parameters Parameters to get network configuration
+     * diagnostic.
+     *
+     * @param {array} [parameters.connectionMonitorIds] List of connection monitors
+     * ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<QueryConnectionMonitorsResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginQueryConnectionMonitorsWithHttpOperationResponse(resourceGroupName: string, networkWatcherName: string, parameters: models.QueryConnectionMonitorsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.QueryConnectionMonitorsResponse>>;
+
+    /**
+     * Query connection monitors.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} networkWatcherName The name of the network watcher.
+     *
+     * @param {object} parameters Parameters to get network configuration
+     * diagnostic.
+     *
+     * @param {array} [parameters.connectionMonitorIds] List of connection monitors
+     * ID.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {QueryConnectionMonitorsResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {QueryConnectionMonitorsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link QueryConnectionMonitorsResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginQueryConnectionMonitors(resourceGroupName: string, networkWatcherName: string, parameters: models.QueryConnectionMonitorsParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.QueryConnectionMonitorsResponse>;
+    beginQueryConnectionMonitors(resourceGroupName: string, networkWatcherName: string, parameters: models.QueryConnectionMonitorsParameters, callback: ServiceCallback<models.QueryConnectionMonitorsResponse>): void;
+    beginQueryConnectionMonitors(resourceGroupName: string, networkWatcherName: string, parameters: models.QueryConnectionMonitorsParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.QueryConnectionMonitorsResponse>): void;
+
+
+    /**
+     * Query connection monitors.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<QueryConnectionMonitorsResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    queryConnectionMonitorsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.QueryConnectionMonitorsResponse>>;
+
+    /**
+     * Query connection monitors.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {QueryConnectionMonitorsResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {QueryConnectionMonitorsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link QueryConnectionMonitorsResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    queryConnectionMonitorsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.QueryConnectionMonitorsResponse>;
+    queryConnectionMonitorsNext(nextPageLink: string, callback: ServiceCallback<models.QueryConnectionMonitorsResponse>): void;
+    queryConnectionMonitorsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.QueryConnectionMonitorsResponse>): void;
+
+
+    /**
+     * Query connection monitors.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<QueryConnectionMonitorsResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginQueryConnectionMonitorsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.QueryConnectionMonitorsResponse>>;
+
+    /**
+     * Query connection monitors.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {QueryConnectionMonitorsResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {QueryConnectionMonitorsResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link QueryConnectionMonitorsResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginQueryConnectionMonitorsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.QueryConnectionMonitorsResponse>;
+    beginQueryConnectionMonitorsNext(nextPageLink: string, callback: ServiceCallback<models.QueryConnectionMonitorsResponse>): void;
+    beginQueryConnectionMonitorsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.QueryConnectionMonitorsResponse>): void;
 }
 
 /**
