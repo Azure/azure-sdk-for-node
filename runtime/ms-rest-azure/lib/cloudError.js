@@ -124,7 +124,24 @@ class CloudError extends Error {
                 required: false,
                 serializedName: 'AdditionalInfoElementType',
                 type: {
-                  name: 'Object'
+                  name: 'Composite',
+                  className: 'AdditionalInfoElement',
+                  modelProperties: {
+                    type: {
+                      required: true,
+                      serializedName: 'type',
+                      type: {
+                        name: 'String'
+                      }
+                    },
+                    info: {
+                      required: false,
+                      serializedName: 'info',
+                      type: {
+                        name: 'Object'
+                      }
+                    }
+                  }
                 }
               }
             }
