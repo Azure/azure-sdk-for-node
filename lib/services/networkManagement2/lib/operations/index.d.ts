@@ -30257,6 +30257,9 @@ export interface VirtualNetworkGatewayConnections {
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * VirtualNetworkGatewayConnection resource.
      *
+     * @param {boolean} [parameters.expressRouteGatewayBypass] Bypass ExpressRoute
+     * Gateway for data forwarding
+     *
      * @param {string} [parameters.etag] Gets a unique read-only string that
      * changes whenever the resource is updated.
      *
@@ -30450,6 +30453,9 @@ export interface VirtualNetworkGatewayConnections {
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * VirtualNetworkGatewayConnection resource.
+     *
+     * @param {boolean} [parameters.expressRouteGatewayBypass] Bypass ExpressRoute
+     * Gateway for data forwarding
      *
      * @param {string} [parameters.etag] Gets a unique read-only string that
      * changes whenever the resource is updated.
@@ -31149,6 +31155,9 @@ export interface VirtualNetworkGatewayConnections {
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * VirtualNetworkGatewayConnection resource.
      *
+     * @param {boolean} [parameters.expressRouteGatewayBypass] Bypass ExpressRoute
+     * Gateway for data forwarding
+     *
      * @param {string} [parameters.etag] Gets a unique read-only string that
      * changes whenever the resource is updated.
      *
@@ -31342,6 +31351,9 @@ export interface VirtualNetworkGatewayConnections {
      *
      * @param {string} [parameters.resourceGuid] The resource GUID property of the
      * VirtualNetworkGatewayConnection resource.
+     *
+     * @param {boolean} [parameters.expressRouteGatewayBypass] Bypass ExpressRoute
+     * Gateway for data forwarding
      *
      * @param {string} [parameters.etag] Gets a unique read-only string that
      * changes whenever the resource is updated.
