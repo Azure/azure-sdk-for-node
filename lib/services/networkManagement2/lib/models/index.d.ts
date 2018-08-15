@@ -3961,6 +3961,13 @@ export interface InboundNatPool extends SubResource {
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
+ * @member {string} [protocol] Protocol - TCP, UDP or All. Possible values
+ * include: 'Tcp', 'Udp', 'All'
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
+ * @member {number} [idleTimeoutInMinutes] The timeout for the TCP idle
+ * connection
  * @member {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
@@ -3971,6 +3978,9 @@ export interface OutboundRule extends SubResource {
   frontendIPConfigurations?: SubResource[];
   backendAddressPool: SubResource;
   provisioningState?: string;
+  protocol?: string;
+  enableTcpReset?: boolean;
+  idleTimeoutInMinutes?: number;
   name?: string;
   etag?: string;
 }
