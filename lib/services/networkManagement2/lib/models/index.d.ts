@@ -5575,11 +5575,14 @@ export interface QueryConnectionMonitorsParameters {
  * Results of query particular connection monitor.
  *
  * @member {string} [resourceId] Connection monitor resource ID.
- * @member {array} [report] List of connection monitors query results.
+ * @member {object} [report]
+ * @member {string} [report.sourceStatus] Status of connection monitor source.
+ * Possible values include: 'Uknown', 'Active', 'Inactive'
+ * @member {array} [report.states] Information about connection states.
  */
 export interface ConnectionMonitorsQueryResultItem {
   resourceId?: string;
-  report?: ConnectionMonitorQueryResult[];
+  report?: ConnectionMonitorQueryResult;
 }
 
 /**
