@@ -6651,6 +6651,8 @@ export interface LocalNetworkGateway extends Resource {
  * @member {string} [provisioningState] The provisioning state of the
  * VirtualNetworkGatewayConnection resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
+ * @member {boolean} [expressRouteGatewayBypass] Bypass ExpressRoute Gateway
+ * for data forwarding
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -6672,6 +6674,7 @@ export interface VirtualNetworkGatewayConnection extends Resource {
   ipsecPolicies?: IpsecPolicy[];
   resourceGuid?: string;
   readonly provisioningState?: string;
+  expressRouteGatewayBypass?: boolean;
   etag?: string;
 }
 
@@ -6799,6 +6802,8 @@ export interface VirtualNetworkConnectionGatewayReference {
  * @member {string} [provisioningState] The provisioning state of the
  * VirtualNetworkGatewayConnection resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
+ * @member {boolean} [expressRouteGatewayBypass] Bypass ExpressRoute Gateway
+ * for data forwarding
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -6820,6 +6825,7 @@ export interface VirtualNetworkGatewayConnectionListEntity extends Resource {
   ipsecPolicies?: IpsecPolicy[];
   resourceGuid?: string;
   readonly provisioningState?: string;
+  expressRouteGatewayBypass?: boolean;
   etag?: string;
 }
 
