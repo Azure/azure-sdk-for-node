@@ -27124,6 +27124,68 @@ export interface VirtualNetworkGateways {
 
 
     /**
+     * Resets the VPN client shared key of the virtual network gateway in the
+     * specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    resetvpnclientsharedkeyWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resets the VPN client shared key of the virtual network gateway in the
+     * specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    resetvpnclientsharedkey(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    resetvpnclientsharedkey(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<void>): void;
+    resetvpnclientsharedkey(resourceGroupName: string, virtualNetworkGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
      * Generates VPN client package for P2S client of the virtual network gateway
      * in the specified resource group.
      *
@@ -28392,6 +28454,68 @@ export interface VirtualNetworkGateways {
     beginReset(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { gatewayVip? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkGateway>;
     beginReset(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
     beginReset(resourceGroupName: string, virtualNetworkGatewayName: string, options: { gatewayVip? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkGateway>): void;
+
+
+    /**
+     * Resets the VPN client shared key of the virtual network gateway in the
+     * specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginResetvpnclientsharedkeyWithHttpOperationResponse(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Resets the VPN client shared key of the virtual network gateway in the
+     * specified resource group.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} virtualNetworkGatewayName The name of the virtual network
+     * gateway.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginResetvpnclientsharedkey(resourceGroupName: string, virtualNetworkGatewayName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginResetvpnclientsharedkey(resourceGroupName: string, virtualNetworkGatewayName: string, callback: ServiceCallback<void>): void;
+    beginResetvpnclientsharedkey(resourceGroupName: string, virtualNetworkGatewayName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
