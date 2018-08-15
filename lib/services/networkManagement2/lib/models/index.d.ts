@@ -5366,6 +5366,11 @@ export interface ConnectionMonitorResult extends BaseResource {
  * @member {date} [endTime] The end time of the connection snapshot.
  * @member {string} [evaluationState] Connectivity analysis evaluation state.
  * Possible values include: 'NotStarted', 'InProgress', 'Completed'
+ * @member {number} [avgLatencyInMs] Average latency in ms.
+ * @member {number} [minLatencyInMs] Minimum latency in ms.
+ * @member {number} [maxLatencyInMs] Maximum latency in ms.
+ * @member {number} [probesSent] The number of sent probes.
+ * @member {number} [probesFailed] The number of failed probes.
  * @member {array} [hops] List of hops between the source and the destination.
  */
 export interface ConnectionStateSnapshot {
@@ -5373,6 +5378,11 @@ export interface ConnectionStateSnapshot {
   startTime?: Date;
   endTime?: Date;
   evaluationState?: string;
+  avgLatencyInMs?: number;
+  minLatencyInMs?: number;
+  maxLatencyInMs?: number;
+  probesSent?: number;
+  probesFailed?: number;
   readonly hops?: ConnectivityHop[];
 }
 
