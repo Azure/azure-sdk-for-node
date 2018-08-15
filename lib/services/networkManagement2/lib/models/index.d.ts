@@ -4261,6 +4261,21 @@ export interface EffectiveRouteListResult {
 
 /**
  * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * The error object.
+ *
+ * @member {object} [error] Error.
+ * @member {string} [error.code]
+ * @member {string} [error.target]
+ * @member {string} [error.message]
+ */
+export interface ErrorResponse {
+  error?: ErrorDetails;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NetworkWatcher class.
  * @constructor
  * Network watcher in a resource group.
@@ -5473,6 +5488,11 @@ export interface ConnectionMonitorResult extends BaseResource {
  * @member {date} [endTime] The end time of the connection snapshot.
  * @member {string} [evaluationState] Connectivity analysis evaluation state.
  * Possible values include: 'NotStarted', 'InProgress', 'Completed'
+ * @member {number} [avgLatencyInMs] Average latency in ms.
+ * @member {number} [minLatencyInMs] Minimum latency in ms.
+ * @member {number} [maxLatencyInMs] Maximum latency in ms.
+ * @member {number} [probesSent] The number of sent probes.
+ * @member {number} [probesFailed] The number of failed probes.
  * @member {array} [hops] List of hops between the source and the destination.
  */
 export interface ConnectionStateSnapshot {
@@ -5480,6 +5500,11 @@ export interface ConnectionStateSnapshot {
   startTime?: Date;
   endTime?: Date;
   evaluationState?: string;
+  avgLatencyInMs?: number;
+  minLatencyInMs?: number;
+  maxLatencyInMs?: number;
+  probesSent?: number;
+  probesFailed?: number;
   readonly hops?: ConnectivityHop[];
 }
 
@@ -5496,6 +5521,200 @@ export interface ConnectionStateSnapshot {
 export interface ConnectionMonitorQueryResult {
   sourceStatus?: string;
   states?: ConnectionStateSnapshot[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrafficQuery class.
+ * @constructor
+ * Parameters to compare with network configuration.
+ *
+ * @member {string} direction The direction of the traffic. Accepted values are
+ * 'Inbound' and 'Outbound'. Possible values include: 'Inbound', 'Outbound'
+ * @member {string} protocol Protocol to be verified on. Accepted values are
+ * '*', TCP, UDP.
+ * @member {string} source Traffic source. Accepted values are '*', IP
+ * Address/CIDR, Service Tag.
+ * @member {string} destination Traffic destination. Accepted values are: '*',
+ * IP Address/CIDR, Service Tag.
+ * @member {string} destinationPort Traffice destination port. Accepted values
+ * are '*', port (for example, 3389) and port range (for example, 80-100).
+ */
+export interface TrafficQuery {
+  direction: string;
+  protocol: string;
+  source: string;
+  destination: string;
+  destinationPort: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkConfigurationDiagnosticParameters class.
+ * @constructor
+ * Parameters to get network configuration diagnostic.
+ *
+ * @member {string} targetResourceId The ID of the target resource to perform
+ * network configuration diagnostic. Valid options are VM, NetworkInterface,
+ * VMSS/NetworkInterface and Application Gateway.
+ * @member {array} queries List of traffic queries.
+ */
+export interface NetworkConfigurationDiagnosticParameters {
+  targetResourceId: string;
+  queries: TrafficQuery[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the MatchedRule class.
+ * @constructor
+ * Matched rule.
+ *
+ * @member {string} [ruleName] Name of the matched network security rule.
+ * @member {string} [action] The network traffic is allowed or denied. Possible
+ * values are 'Allow' and 'Deny'.
+ */
+export interface MatchedRule {
+  ruleName?: string;
+  action?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkSecurityRulesEvaluationResult class.
+ * @constructor
+ * Network security rules evaluation result.
+ *
+ * @member {string} [name] Name of the network security rule.
+ * @member {boolean} [protocolMatched] Value indicating whether protocol is
+ * matched.
+ * @member {boolean} [sourceMatched] Value indicating whether source is
+ * matched.
+ * @member {boolean} [sourcePortMatched] Value indicating whether source port
+ * is matched.
+ * @member {boolean} [destinationMatched] Value indicating whether destination
+ * is matched.
+ * @member {boolean} [destinationPortMatched] Value indicating whether
+ * destination port is matched.
+ */
+export interface NetworkSecurityRulesEvaluationResult {
+  name?: string;
+  protocolMatched?: boolean;
+  sourceMatched?: boolean;
+  sourcePortMatched?: boolean;
+  destinationMatched?: boolean;
+  destinationPortMatched?: boolean;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the EvaluatedNetworkSecurityGroup class.
+ * @constructor
+ * Results of network security group evaluation.
+ *
+ * @member {string} [networkSecurityGroupId] Network security group ID.
+ * @member {object} [matchedRule]
+ * @member {string} [matchedRule.ruleName] Name of the matched network security
+ * rule.
+ * @member {string} [matchedRule.action] The network traffic is allowed or
+ * denied. Possible values are 'Allow' and 'Deny'.
+ * @member {array} [rulesEvaluationResult] List of network security rules
+ * evaluation results.
+ */
+export interface EvaluatedNetworkSecurityGroup {
+  networkSecurityGroupId?: string;
+  matchedRule?: MatchedRule;
+  readonly rulesEvaluationResult?: NetworkSecurityRulesEvaluationResult[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkSecurityGroupResult class.
+ * @constructor
+ * Network configuration diagnostic result corresponded provided traffic query.
+ *
+ * @member {string} [securityRuleAccessResult] The network traffic is allowed
+ * or denied. Possible values are 'Allow' and 'Deny'. Possible values include:
+ * 'Allow', 'Deny'
+ * @member {array} [evaluatedNetworkSecurityGroups] List of results network
+ * security groups diagnostic.
+ */
+export interface NetworkSecurityGroupResult {
+  securityRuleAccessResult?: string;
+  readonly evaluatedNetworkSecurityGroups?: EvaluatedNetworkSecurityGroup[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkConfigurationDiagnosticResult class.
+ * @constructor
+ * Network configuration diagnostic result corresponded to provided traffic
+ * query.
+ *
+ * @member {object} [trafficQuery]
+ * @member {string} [trafficQuery.direction] The direction of the traffic.
+ * Accepted values are 'Inbound' and 'Outbound'. Possible values include:
+ * 'Inbound', 'Outbound'
+ * @member {string} [trafficQuery.protocol] Protocol to be verified on.
+ * Accepted values are '*', TCP, UDP.
+ * @member {string} [trafficQuery.source] Traffic source. Accepted values are
+ * '*', IP Address/CIDR, Service Tag.
+ * @member {string} [trafficQuery.destination] Traffic destination. Accepted
+ * values are: '*', IP Address/CIDR, Service Tag.
+ * @member {string} [trafficQuery.destinationPort] Traffice destination port.
+ * Accepted values are '*', port (for example, 3389) and port range (for
+ * example, 80-100).
+ * @member {object} [networkSecurityGroupResult]
+ * @member {string} [networkSecurityGroupResult.securityRuleAccessResult] The
+ * network traffic is allowed or denied. Possible values are 'Allow' and
+ * 'Deny'. Possible values include: 'Allow', 'Deny'
+ * @member {array} [networkSecurityGroupResult.evaluatedNetworkSecurityGroups]
+ * List of results network security groups diagnostic.
+ */
+export interface NetworkConfigurationDiagnosticResult {
+  trafficQuery?: TrafficQuery;
+  networkSecurityGroupResult?: NetworkSecurityGroupResult;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the NetworkConfigurationDiagnosticResponse class.
+ * @constructor
+ * Results of network configuration diagnostic on the target resource.
+ *
+ * @member {array} [results] List of network configuration diagnostic results.
+ */
+export interface NetworkConfigurationDiagnosticResponse {
+  readonly results?: NetworkConfigurationDiagnosticResult[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QueryConnectionMonitorsParameters class.
+ * @constructor
+ * Parameters to query connection monitors.
+ *
+ * @member {array} [connectionMonitorIds] List of connection monitors ID.
+ */
+export interface QueryConnectionMonitorsParameters {
+  connectionMonitorIds?: string[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ConnectionMonitorsQueryResultItem class.
+ * @constructor
+ * Results of query particular connection monitor.
+ *
+ * @member {string} [resourceId] Connection monitor resource ID.
+ * @member {object} [report]
+ * @member {string} [report.sourceStatus] Status of connection monitor source.
+ * Possible values include: 'Uknown', 'Active', 'Inactive'
+ * @member {array} [report.states] Information about connection states.
+ */
+export interface ConnectionMonitorsQueryResultItem {
+  resourceId?: string;
+  report?: ConnectionMonitorQueryResult;
 }
 
 /**
@@ -6661,6 +6880,8 @@ export interface LocalNetworkGateway extends Resource {
  * @member {string} [provisioningState] The provisioning state of the
  * VirtualNetworkGatewayConnection resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
+ * @member {boolean} [expressRouteGatewayBypass] Bypass ExpressRoute Gateway
+ * for data forwarding
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -6682,6 +6903,7 @@ export interface VirtualNetworkGatewayConnection extends Resource {
   ipsecPolicies?: IpsecPolicy[];
   resourceGuid?: string;
   readonly provisioningState?: string;
+  expressRouteGatewayBypass?: boolean;
   etag?: string;
 }
 
@@ -6809,6 +7031,8 @@ export interface VirtualNetworkConnectionGatewayReference {
  * @member {string} [provisioningState] The provisioning state of the
  * VirtualNetworkGatewayConnection resource. Possible values are: 'Updating',
  * 'Deleting', and 'Failed'.
+ * @member {boolean} [expressRouteGatewayBypass] Bypass ExpressRoute Gateway
+ * for data forwarding
  * @member {string} [etag] Gets a unique read-only string that changes whenever
  * the resource is updated.
  */
@@ -6830,6 +7054,7 @@ export interface VirtualNetworkGatewayConnectionListEntity extends Resource {
   ipsecPolicies?: IpsecPolicy[];
   resourceGuid?: string;
   readonly provisioningState?: string;
+  expressRouteGatewayBypass?: boolean;
   etag?: string;
 }
 
@@ -7384,6 +7609,18 @@ export interface SecurityRuleListResult extends Array<SecurityRule> {
  *
  */
 export interface NetworkWatcherListResult extends Array<NetworkWatcher> {
+}
+
+/**
+ * @class
+ * Initializes a new instance of the QueryConnectionMonitorsResponse class.
+ * @constructor
+ * Results of query connection monitors.
+ *
+ * @member {string} [nextLink] URL to get the next set of results.
+ */
+export interface QueryConnectionMonitorsResponse extends Array<ConnectionMonitorsQueryResultItem> {
+  nextLink?: string;
 }
 
 /**
