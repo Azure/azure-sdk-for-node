@@ -1115,7 +1115,7 @@ export interface Registries {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getBuildSourceUploadUrlWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceUploadDefinition>>;
+    listBuildSourceUploadUrlWithHttpOperationResponse(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SourceUploadDefinition>>;
 
     /**
      * Get the upload location for the user to be able to upload the source.
@@ -1153,9 +1153,9 @@ export interface Registries {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getBuildSourceUploadUrl(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceUploadDefinition>;
-    getBuildSourceUploadUrl(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.SourceUploadDefinition>): void;
-    getBuildSourceUploadUrl(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceUploadDefinition>): void;
+    listBuildSourceUploadUrl(resourceGroupName: string, registryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SourceUploadDefinition>;
+    listBuildSourceUploadUrl(resourceGroupName: string, registryName: string, callback: ServiceCallback<models.SourceUploadDefinition>): void;
+    listBuildSourceUploadUrl(resourceGroupName: string, registryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SourceUploadDefinition>): void;
 
 
     /**
@@ -3653,6 +3653,8 @@ export interface Runs {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The runs filter to apply on the operation.
+     * Arithmetic operators are not supported. The allowed string function is
+     * 'contains'. All logical operators except 'Not', 'Has', 'All' are allowed.
      *
      * @param {number} [options.top] $top is supported for get list of runs, which
      * limits the maximum number of runs to return.
@@ -3682,6 +3684,8 @@ export interface Runs {
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] The runs filter to apply on the operation.
+     * Arithmetic operators are not supported. The allowed string function is
+     * 'contains'. All logical operators except 'Not', 'Has', 'All' are allowed.
      *
      * @param {number} [options.top] $top is supported for get list of runs, which
      * limits the maximum number of runs to return.
@@ -3880,7 +3884,7 @@ export interface Runs {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getLogSasUrlWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunGetLogResult>>;
+    listLogSasUrlWithHttpOperationResponse(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.RunGetLogResult>>;
 
     /**
      * Gets a link to download the run logs.
@@ -3919,9 +3923,9 @@ export interface Runs {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    getLogSasUrl(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunGetLogResult>;
-    getLogSasUrl(resourceGroupName: string, registryName: string, runId: string, callback: ServiceCallback<models.RunGetLogResult>): void;
-    getLogSasUrl(resourceGroupName: string, registryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunGetLogResult>): void;
+    listLogSasUrl(resourceGroupName: string, registryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.RunGetLogResult>;
+    listLogSasUrl(resourceGroupName: string, registryName: string, runId: string, callback: ServiceCallback<models.RunGetLogResult>): void;
+    listLogSasUrl(resourceGroupName: string, registryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.RunGetLogResult>): void;
 
 
     /**
@@ -4570,19 +4574,16 @@ export interface Tasks {
      *
      * @param {object} taskUpdateParameters The parameters for updating a task.
      *
-     * @param {string} [taskUpdateParameters.alias] The alternative updatable name
-     * for a task.
-     *
      * @param {string} [taskUpdateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
      * @param {object} [taskUpdateParameters.platform] The platform properties
      * against which the run has to happen.
      *
-     * @param {string} taskUpdateParameters.platform.os The operating system type
+     * @param {string} [taskUpdateParameters.platform.os] The operating system type
      * required for the run. Possible values include: 'Windows', 'Linux'
      *
-     * @param {string} taskUpdateParameters.platform.architecture The OS
+     * @param {string} [taskUpdateParameters.platform.architecture] The OS
      * architecture. Possible values include: 'amd64', 'x86', 'arm'
      *
      * @param {string} [taskUpdateParameters.platform.variant] Variant of the CPU.
@@ -4601,8 +4602,8 @@ export interface Tasks {
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
-     * @param {object} [taskUpdateParameters.trigger] The properties that describe
-     * all triggers for the task.
+     * @param {object} [taskUpdateParameters.trigger] The properties for updating
+     * trigger properties.
      *
      * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
      * of triggers based on source code repository.
@@ -4611,8 +4612,8 @@ export interface Tasks {
      * based on base image dependencies.
      *
      * @param {string}
-     * taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType The type
-     * of the auto trigger for base image dependency updates. Possible values
+     * [taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType] The
+     * type of the auto trigger for base image dependency updates. Possible values
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
@@ -4649,19 +4650,16 @@ export interface Tasks {
      *
      * @param {object} taskUpdateParameters The parameters for updating a task.
      *
-     * @param {string} [taskUpdateParameters.alias] The alternative updatable name
-     * for a task.
-     *
      * @param {string} [taskUpdateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
      * @param {object} [taskUpdateParameters.platform] The platform properties
      * against which the run has to happen.
      *
-     * @param {string} taskUpdateParameters.platform.os The operating system type
+     * @param {string} [taskUpdateParameters.platform.os] The operating system type
      * required for the run. Possible values include: 'Windows', 'Linux'
      *
-     * @param {string} taskUpdateParameters.platform.architecture The OS
+     * @param {string} [taskUpdateParameters.platform.architecture] The OS
      * architecture. Possible values include: 'amd64', 'x86', 'arm'
      *
      * @param {string} [taskUpdateParameters.platform.variant] Variant of the CPU.
@@ -4680,8 +4678,8 @@ export interface Tasks {
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
-     * @param {object} [taskUpdateParameters.trigger] The properties that describe
-     * all triggers for the task.
+     * @param {object} [taskUpdateParameters.trigger] The properties for updating
+     * trigger properties.
      *
      * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
      * of triggers based on source code repository.
@@ -4690,8 +4688,8 @@ export interface Tasks {
      * based on base image dependencies.
      *
      * @param {string}
-     * taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType The type
-     * of the auto trigger for base image dependency updates. Possible values
+     * [taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType] The
+     * type of the auto trigger for base image dependency updates. Possible values
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
@@ -5051,19 +5049,16 @@ export interface Tasks {
      *
      * @param {object} taskUpdateParameters The parameters for updating a task.
      *
-     * @param {string} [taskUpdateParameters.alias] The alternative updatable name
-     * for a task.
-     *
      * @param {string} [taskUpdateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
      * @param {object} [taskUpdateParameters.platform] The platform properties
      * against which the run has to happen.
      *
-     * @param {string} taskUpdateParameters.platform.os The operating system type
+     * @param {string} [taskUpdateParameters.platform.os] The operating system type
      * required for the run. Possible values include: 'Windows', 'Linux'
      *
-     * @param {string} taskUpdateParameters.platform.architecture The OS
+     * @param {string} [taskUpdateParameters.platform.architecture] The OS
      * architecture. Possible values include: 'amd64', 'x86', 'arm'
      *
      * @param {string} [taskUpdateParameters.platform.variant] Variant of the CPU.
@@ -5082,8 +5077,8 @@ export interface Tasks {
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
-     * @param {object} [taskUpdateParameters.trigger] The properties that describe
-     * all triggers for the task.
+     * @param {object} [taskUpdateParameters.trigger] The properties for updating
+     * trigger properties.
      *
      * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
      * of triggers based on source code repository.
@@ -5092,8 +5087,8 @@ export interface Tasks {
      * based on base image dependencies.
      *
      * @param {string}
-     * taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType The type
-     * of the auto trigger for base image dependency updates. Possible values
+     * [taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType] The
+     * type of the auto trigger for base image dependency updates. Possible values
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
@@ -5130,19 +5125,16 @@ export interface Tasks {
      *
      * @param {object} taskUpdateParameters The parameters for updating a task.
      *
-     * @param {string} [taskUpdateParameters.alias] The alternative updatable name
-     * for a task.
-     *
      * @param {string} [taskUpdateParameters.status] The current status of task.
      * Possible values include: 'Disabled', 'Enabled'
      *
      * @param {object} [taskUpdateParameters.platform] The platform properties
      * against which the run has to happen.
      *
-     * @param {string} taskUpdateParameters.platform.os The operating system type
+     * @param {string} [taskUpdateParameters.platform.os] The operating system type
      * required for the run. Possible values include: 'Windows', 'Linux'
      *
-     * @param {string} taskUpdateParameters.platform.architecture The OS
+     * @param {string} [taskUpdateParameters.platform.architecture] The OS
      * architecture. Possible values include: 'amd64', 'x86', 'arm'
      *
      * @param {string} [taskUpdateParameters.platform.variant] Variant of the CPU.
@@ -5161,8 +5153,8 @@ export interface Tasks {
      *
      * @param {string} taskUpdateParameters.step.type Polymorphic Discriminator
      *
-     * @param {object} [taskUpdateParameters.trigger] The properties that describe
-     * all triggers for the task.
+     * @param {object} [taskUpdateParameters.trigger] The properties for updating
+     * trigger properties.
      *
      * @param {array} [taskUpdateParameters.trigger.sourceTriggers] The collection
      * of triggers based on source code repository.
@@ -5171,8 +5163,8 @@ export interface Tasks {
      * based on base image dependencies.
      *
      * @param {string}
-     * taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType The type
-     * of the auto trigger for base image dependency updates. Possible values
+     * [taskUpdateParameters.trigger.baseImageTrigger.baseImageTriggerType] The
+     * type of the auto trigger for base image dependency updates. Possible values
      * include: 'All', 'Runtime'
      *
      * @param {string} [taskUpdateParameters.trigger.baseImageTrigger.status] The
