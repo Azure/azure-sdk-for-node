@@ -18,26 +18,9 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the HttpSettingsParameters class.
- * @constructor
- * The payload for a Configure HTTP settings request.
- *
- * @member {string} restAuthCredentialisEnabled Whether HTTP auth is enabled or
- * disabled.
- * @member {string} [restAuthCredentialusername] Http username.
- * @member {string} [restAuthCredentialpassword] Http user password.
- */
-export interface HttpSettingsParameters {
-  restAuthCredentialisEnabled: string;
-  restAuthCredentialusername?: string;
-  restAuthCredentialpassword?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the ClusterDefinition class.
  * @constructor
- * The cluste definition.
+ * The cluster definition.
  *
  * @member {string} [blueprint] The link to the blueprint.
  * @member {string} [kind] The type of cluster.
@@ -61,11 +44,13 @@ export interface ClusterDefinition {
  *
  * @member {string} [directoryType] The directory type. Possible values
  * include: 'ActiveDirectory'
- * @member {string} [domain] domain.
- * @member {string} [organizationalUnitDN] Distinguished Name for
- * organizational unit.
- * @member {array} [ldapsUrls] The LDAP URLs.
- * @member {string} [domainUsername] The domain admin user name.
+ * @member {string} [domain] The organization's active directory domain.
+ * @member {string} [organizationalUnitDN] The organizational unit within the
+ * Active Directory to place the cluster and service accounts.
+ * @member {array} [ldapsUrls] The LDAPS protocol URLs to communicate with the
+ * Active Directory.
+ * @member {string} [domainUsername] The domain user account that will have
+ * admin privileges on the cluster.
  * @member {string} [domainUserPassword] The domain admin password.
  * @member {array} [clusterUsersGroupDNs] Optional. The Distinguished Names for
  * cluster user groups
@@ -84,7 +69,7 @@ export interface SecurityProfile {
  * @class
  * Initializes a new instance of the HardwareProfile class.
  * @constructor
- * Describes the hardware profile.
+ * The hardware profile.
  *
  * @member {string} [vmSize] The size of the VM
  */
@@ -96,7 +81,7 @@ export interface HardwareProfile {
  * @class
  * Initializes a new instance of the VirtualNetworkProfile class.
  * @constructor
- * The Virtual network properties.
+ * The virtual network properties.
  *
  * @member {string} [id] The ID of the virtual network.
  * @member {string} [subnet] The name of the subnet.
@@ -108,40 +93,27 @@ export interface VirtualNetworkProfile {
 
 /**
  * @class
- * Initializes a new instance of the RdpSettings class.
+ * Initializes a new instance of the DataDisksGroups class.
  * @constructor
- * The RDP settings for the windows cluster.
+ * The data disks groups for the role.
  *
- * @member {string} [username] The username for the RDP user.
- * @member {string} [password] The password for the RDP user.
- * @member {date} [expiryDate] The RDP expiry date(YYYY-MM-DD).
+ * @member {number} [disksPerNode] The number of disks per node.
+ * @member {string} [storageAccountType] ReadOnly. The storage account type. Do
+ * not set this value.
+ * @member {number} [diskSizeGB] ReadOnly. The DiskSize in GB. Do not set this
+ * value.
  */
-export interface RdpSettings {
-  username?: string;
-  password?: string;
-  expiryDate?: Date;
-}
-
-/**
- * @class
- * Initializes a new instance of the WindowsOperatingSystemProfile class.
- * @constructor
- * The Windows operation system settings.
- *
- * @member {object} [rdpSettings] The RDP settings.
- * @member {string} [rdpSettings.username] The username for the RDP user.
- * @member {string} [rdpSettings.password] The password for the RDP user.
- * @member {date} [rdpSettings.expiryDate] The RDP expiry date(YYYY-MM-DD).
- */
-export interface WindowsOperatingSystemProfile {
-  rdpSettings?: RdpSettings;
+export interface DataDisksGroups {
+  disksPerNode?: number;
+  readonly storageAccountType?: string;
+  readonly diskSizeGB?: number;
 }
 
 /**
  * @class
  * Initializes a new instance of the SshPublicKey class.
  * @constructor
- * The Ssh public key for the cluster nodes.
+ * The SSH public key for the cluster nodes.
  *
  * @member {string} [certificateData] The certificate for SSH.
  */
@@ -153,7 +125,7 @@ export interface SshPublicKey {
  * @class
  * Initializes a new instance of the SshProfile class.
  * @constructor
- * The list of Ssh public keys.
+ * The list of SSH public keys.
  *
  * @member {array} [publicKeys] The list of SSH public keys.
  */
@@ -182,18 +154,8 @@ export interface LinuxOperatingSystemProfile {
  * @class
  * Initializes a new instance of the OsProfile class.
  * @constructor
- * The Windows operation systems profile, and configure remote desktop
- * settings.
+ * The Linux operation systems profile.
  *
- * @member {object} [windowsOperatingSystemProfile] The Windows OS profile.
- * @member {object} [windowsOperatingSystemProfile.rdpSettings] The RDP
- * settings.
- * @member {string} [windowsOperatingSystemProfile.rdpSettings.username] The
- * username for the RDP user.
- * @member {string} [windowsOperatingSystemProfile.rdpSettings.password] The
- * password for the RDP user.
- * @member {date} [windowsOperatingSystemProfile.rdpSettings.expiryDate] The
- * RDP expiry date(YYYY-MM-DD).
  * @member {object} [linuxOperatingSystemProfile] The Linux OS profile.
  * @member {string} [linuxOperatingSystemProfile.username] The username.
  * @member {string} [linuxOperatingSystemProfile.password] The password.
@@ -202,7 +164,6 @@ export interface LinuxOperatingSystemProfile {
  * of SSH public keys.
  */
 export interface OsProfile {
-  windowsOperatingSystemProfile?: WindowsOperatingSystemProfile;
   linuxOperatingSystemProfile?: LinuxOperatingSystemProfile;
 }
 
@@ -235,19 +196,6 @@ export interface ScriptAction {
  * @member {object} [hardwareProfile] The hardware profile.
  * @member {string} [hardwareProfile.vmSize] The size of the VM
  * @member {object} [osProfile] The operating system profile.
- * @member {object} [osProfile.windowsOperatingSystemProfile] The Windows OS
- * profile.
- * @member {object} [osProfile.windowsOperatingSystemProfile.rdpSettings] The
- * RDP settings.
- * @member {string}
- * [osProfile.windowsOperatingSystemProfile.rdpSettings.username] The username
- * for the RDP user.
- * @member {string}
- * [osProfile.windowsOperatingSystemProfile.rdpSettings.password] The password
- * for the RDP user.
- * @member {date}
- * [osProfile.windowsOperatingSystemProfile.rdpSettings.expiryDate] The RDP
- * expiry date(YYYY-MM-DD).
  * @member {object} [osProfile.linuxOperatingSystemProfile] The Linux OS
  * profile.
  * @member {string} [osProfile.linuxOperatingSystemProfile.username] The
@@ -262,6 +210,7 @@ export interface ScriptAction {
  * @member {object} [virtualNetworkProfile] The virtual network profile.
  * @member {string} [virtualNetworkProfile.id] The ID of the virtual network.
  * @member {string} [virtualNetworkProfile.subnet] The name of the subnet.
+ * @member {array} [dataDisksGroups] The data disks groups for the role.
  * @member {array} [scriptActions] The list of script actions on the role.
  */
 export interface Role {
@@ -271,6 +220,7 @@ export interface Role {
   hardwareProfile?: HardwareProfile;
   osProfile?: OsProfile;
   virtualNetworkProfile?: VirtualNetworkProfile;
+  dataDisksGroups?: DataDisksGroups[];
   scriptActions?: ScriptAction[];
 }
 
@@ -290,18 +240,22 @@ export interface ComputeProfile {
  * @class
  * Initializes a new instance of the StorageAccount class.
  * @constructor
- * Describes the storage Account.
+ * The storage Account.
  *
  * @member {string} [name] The name of the storage account.
- * @member {boolean} [isDefault] Describes is the storage account is the
+ * @member {boolean} [isDefault] Whether or not the storage account is the
  * default storage account.
- * @member {string} [container] The container in the storage account.
+ * @member {string} [container] The container in the storage account, only to
+ * be specified for WASB storage accounts.
+ * @member {string} [fileSystem] The filesystem, only to be specified for Azure
+ * Data Lake Storage type Gen 2.
  * @member {string} [key] The storage account access key.
  */
 export interface StorageAccount {
   name?: string;
   isDefault?: boolean;
   container?: string;
+  fileSystem?: string;
   key?: string;
 }
 
@@ -309,7 +263,7 @@ export interface StorageAccount {
  * @class
  * Initializes a new instance of the StorageProfile class.
  * @constructor
- * Describes the storage profile.
+ * The storage profile.
  *
  * @member {array} [storageaccounts] The list of storage accounts in the
  * cluster.
@@ -339,12 +293,14 @@ export interface StorageProfile {
  * @member {object} [securityProfile] The security profile.
  * @member {string} [securityProfile.directoryType] The directory type.
  * Possible values include: 'ActiveDirectory'
- * @member {string} [securityProfile.domain] domain.
- * @member {string} [securityProfile.organizationalUnitDN] Distinguished Name
- * for organizational unit.
- * @member {array} [securityProfile.ldapsUrls] The LDAP URLs.
- * @member {string} [securityProfile.domainUsername] The domain admin user
- * name.
+ * @member {string} [securityProfile.domain] The organization's active
+ * directory domain.
+ * @member {string} [securityProfile.organizationalUnitDN] The organizational
+ * unit within the Active Directory to place the cluster and service accounts.
+ * @member {array} [securityProfile.ldapsUrls] The LDAPS protocol URLs to
+ * communicate with the Active Directory.
+ * @member {string} [securityProfile.domainUsername] The domain user account
+ * that will have admin privileges on the cluster.
  * @member {string} [securityProfile.domainUserPassword] The domain admin
  * password.
  * @member {array} [securityProfile.clusterUsersGroupDNs] Optional. The
@@ -390,12 +346,15 @@ export interface ClusterCreateProperties {
  * @member {object} [properties.securityProfile] The security profile.
  * @member {string} [properties.securityProfile.directoryType] The directory
  * type. Possible values include: 'ActiveDirectory'
- * @member {string} [properties.securityProfile.domain] domain.
- * @member {string} [properties.securityProfile.organizationalUnitDN]
- * Distinguished Name for organizational unit.
- * @member {array} [properties.securityProfile.ldapsUrls] The LDAP URLs.
- * @member {string} [properties.securityProfile.domainUsername] The domain
- * admin user name.
+ * @member {string} [properties.securityProfile.domain] The organization's
+ * active directory domain.
+ * @member {string} [properties.securityProfile.organizationalUnitDN] The
+ * organizational unit within the Active Directory to place the cluster and
+ * service accounts.
+ * @member {array} [properties.securityProfile.ldapsUrls] The LDAPS protocol
+ * URLs to communicate with the Active Directory.
+ * @member {string} [properties.securityProfile.domainUsername] The domain user
+ * account that will have admin privileges on the cluster.
  * @member {string} [properties.securityProfile.domainUserPassword] The domain
  * admin password.
  * @member {array} [properties.securityProfile.clusterUsersGroupDNs] Optional.
@@ -429,7 +388,7 @@ export interface ClusterPatchParameters {
  * @class
  * Initializes a new instance of the QuotaInfo class.
  * @constructor
- * Gets or sets Quota properties for the cluster.
+ * The quota properties for the cluster.
  *
  * @member {number} [coresUsed] The cores used by the cluster.
  */
@@ -490,12 +449,14 @@ export interface ConnectivityEndpoint {
  * @member {object} [securityProfile] The security profile.
  * @member {string} [securityProfile.directoryType] The directory type.
  * Possible values include: 'ActiveDirectory'
- * @member {string} [securityProfile.domain] domain.
- * @member {string} [securityProfile.organizationalUnitDN] Distinguished Name
- * for organizational unit.
- * @member {array} [securityProfile.ldapsUrls] The LDAP URLs.
- * @member {string} [securityProfile.domainUsername] The domain admin user
- * name.
+ * @member {string} [securityProfile.domain] The organization's active
+ * directory domain.
+ * @member {string} [securityProfile.organizationalUnitDN] The organizational
+ * unit within the Active Directory to place the cluster and service accounts.
+ * @member {array} [securityProfile.ldapsUrls] The LDAPS protocol URLs to
+ * communicate with the Active Directory.
+ * @member {string} [securityProfile.domainUsername] The domain user account
+ * that will have admin privileges on the cluster.
  * @member {string} [securityProfile.domainUserPassword] The domain admin
  * password.
  * @member {array} [securityProfile.clusterUsersGroupDNs] Optional. The
@@ -531,19 +492,29 @@ export interface ClusterGetProperties {
  * @class
  * Initializes a new instance of the Resource class.
  * @constructor
- * The resource definition.
+ * The core properties of ARM resources
  *
- * @member {string} [id] Resource Id
- * @member {string} [name] Resource name
- * @member {string} [type] Resource type
- * @member {string} location Resource location
- * @member {object} [tags] Resource tags
+ * @member {string} [id] Fully qualified resource Id for the resource.
+ * @member {string} [name] The name of the resource
+ * @member {string} [type] The type of the resource.
  */
 export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the TrackedResource class.
+ * @constructor
+ * The resource model definition for a ARM tracked top level resource
+ *
+ * @member {string} [location] The Azure Region where the resource lives
+ * @member {object} [tags] Resource tags.
+ */
+export interface TrackedResource extends Resource {
+  location?: string;
   tags?: { [propertyName: string]: string };
 }
 
@@ -551,7 +522,7 @@ export interface Resource extends BaseResource {
  * @class
  * Initializes a new instance of the Cluster class.
  * @constructor
- * Describes the cluster.
+ * The HDInsight cluster.
  *
  * @member {string} [etag] The ETag for the resource
  * @member {object} [properties] The properties of the cluster.
@@ -571,12 +542,15 @@ export interface Resource extends BaseResource {
  * @member {object} [properties.securityProfile] The security profile.
  * @member {string} [properties.securityProfile.directoryType] The directory
  * type. Possible values include: 'ActiveDirectory'
- * @member {string} [properties.securityProfile.domain] domain.
- * @member {string} [properties.securityProfile.organizationalUnitDN]
- * Distinguished Name for organizational unit.
- * @member {array} [properties.securityProfile.ldapsUrls] The LDAP URLs.
- * @member {string} [properties.securityProfile.domainUsername] The domain
- * admin user name.
+ * @member {string} [properties.securityProfile.domain] The organization's
+ * active directory domain.
+ * @member {string} [properties.securityProfile.organizationalUnitDN] The
+ * organizational unit within the Active Directory to place the cluster and
+ * service accounts.
+ * @member {array} [properties.securityProfile.ldapsUrls] The LDAPS protocol
+ * URLs to communicate with the Active Directory.
+ * @member {string} [properties.securityProfile.domainUsername] The domain user
+ * account that will have admin privileges on the cluster.
  * @member {string} [properties.securityProfile.domainUserPassword] The domain
  * admin password.
  * @member {array} [properties.securityProfile.clusterUsersGroupDNs] Optional.
@@ -597,7 +571,7 @@ export interface Resource extends BaseResource {
  * @member {array} [properties.connectivityEndpoints] The list of connectivity
  * endpoints.
  */
-export interface Cluster extends Resource {
+export interface Cluster extends TrackedResource {
   etag?: string;
   properties?: ClusterGetProperties;
 }
@@ -627,22 +601,22 @@ export interface RuntimeScriptAction {
  * @class
  * Initializes a new instance of the ExecuteScriptActionParameters class.
  * @constructor
- * Describes the script actions on a running cluster.
+ * The parameters for the script actions to execute on a running cluster.
  *
  * @member {array} [scriptActions] The list of run time script actions.
- * @member {string} persistOnSuccess Gets or sets if the scripts needs to be
+ * @member {boolean} persistOnSuccess Gets or sets if the scripts needs to be
  * persisted.
  */
 export interface ExecuteScriptActionParameters {
   scriptActions?: RuntimeScriptAction[];
-  persistOnSuccess: string;
+  persistOnSuccess: boolean;
 }
 
 /**
  * @class
  * Initializes a new instance of the ClusterListPersistedScriptActionsResult class.
  * @constructor
- * List PersistedScriptActions operations response.
+ * The ListPersistedScriptActions operation response.
  *
  * @member {array} [value] The list of Persisted Script Actions.
  * @member {string} [nextLink] The link (url) to the next page of results.
@@ -656,7 +630,7 @@ export interface ClusterListPersistedScriptActionsResult {
  * @class
  * Initializes a new instance of the ScriptActionExecutionSummary class.
  * @constructor
- * Describes the execution summary of a script action.
+ * The execution summary of a script action.
  *
  * @member {string} [status] The status of script action execution.
  * @member {number} [instanceCount] The instance count for a given script
@@ -671,7 +645,7 @@ export interface ScriptActionExecutionSummary {
  * @class
  * Initializes a new instance of the RuntimeScriptActionDetail class.
  * @constructor
- * Describes the execution details of a script action.
+ * The execution details of a script action.
  *
  * @member {number} [scriptExecutionId] The execution id of the script action.
  * @member {string} [startTime] The start time of script action execution.
@@ -682,14 +656,8 @@ export interface ScriptActionExecutionSummary {
  * result.
  * @member {string} [debugInformation] The script action execution debug
  * information.
- * @member {string} name The name of the script action.
- * @member {string} uri The URI to the script.
- * @member {string} [parameters] The parameters for the script
- * @member {array} roles The list of roles where script will be executed.
- * @member {string} [applicationName] The application name of the script
- * action, if any.
  */
-export interface RuntimeScriptActionDetail {
+export interface RuntimeScriptActionDetail extends RuntimeScriptAction {
   readonly scriptExecutionId?: number;
   readonly startTime?: string;
   readonly endTime?: string;
@@ -697,18 +665,13 @@ export interface RuntimeScriptActionDetail {
   readonly operation?: string;
   readonly executionSummary?: ScriptActionExecutionSummary[];
   readonly debugInformation?: string;
-  name: string;
-  uri: string;
-  parameters?: string;
-  roles: string[];
-  readonly applicationName?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the ClusterListRuntimeScriptActionDetailResult class.
  * @constructor
- * The ListScriptExecutionHistory response.
+ * The list runtime script action detail response.
  *
  * @member {array} [value] The list of persisted script action details for the
  * cluster.
@@ -751,82 +714,63 @@ export interface OperationResource {
 
 /**
  * @class
- * Initializes a new instance of the SubResource class.
+ * Initializes a new instance of the ProxyResource class.
  * @constructor
- * The sub resource definition.
+ * The resource model definition for a ARM proxy resource. It will have
+ * everything other than required location and tags
  *
- * @member {string} [id] Resource Id
  */
-export interface SubResource extends BaseResource {
-  id?: string;
+export interface ProxyResource extends Resource {
 }
 
 /**
  * @class
- * Initializes a new instance of the OperationDisplay class.
+ * Initializes a new instance of the ErrorResponse class.
  * @constructor
- * The object that represents the operation.
+ * Describes the format of Error response.
  *
- * @member {string} [provider] Service provider: Microsoft.HDInsight
- * @member {string} [resource] Resource on which the operation is performed:
- * Profile, endpoint, etc.
- * @member {string} [operation] Operation type: Read, write, delete, etc.
+ * @member {string} [code] Error code
+ * @member {string} [message] Error message indicating why the operation
+ * failed.
  */
-export interface OperationDisplay {
-  provider?: string;
-  resource?: string;
-  operation?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the Operation class.
- * @constructor
- * HDInsight REST API operation
- *
- * @member {string} [name] Operation name: {provider}/{resource}/{operation}
- * @member {object} [display] The object that represents the operation.
- * @member {string} [display.provider] Service provider: Microsoft.HDInsight
- * @member {string} [display.resource] Resource on which the operation is
- * performed: Profile, endpoint, etc.
- * @member {string} [display.operation] Operation type: Read, write, delete,
- * etc.
- */
-export interface Operation {
-  name?: string;
-  display?: OperationDisplay;
+export interface ErrorResponse {
+  code?: string;
+  message?: string;
 }
 
 /**
  * @class
  * Initializes a new instance of the ApplicationGetHttpsEndpoint class.
  * @constructor
- * Gets application Http endpoints.
+ * Gets the application HTTP endpoints.
  *
- * @member {object} [additionalProperties] Unmatched properties from the
- * message are deserialized this collection
  * @member {array} [accessModes] The list of access modes for the application.
  * @member {string} [location] The location of the endpoint.
- * @member {number} [destinationPort] The destinationPort to connect to.
- * @member {number} [publicPort] The publicPort to connect to.
+ * @member {number} [destinationPort] The destination port to connect to.
+ * @member {number} [publicPort] The public port to connect to.
  */
 export interface ApplicationGetHttpsEndpoint {
-  additionalProperties?: { [propertyName: string]: string };
   accessModes?: string[];
   location?: string;
   destinationPort?: number;
   publicPort?: number;
+  /**
+   * @property Describes unknown properties. The value of an unknown property
+   * MUST be of type "string". Due to valid TS constraints we have modeled this
+   * as a union of `string | any`.
+   */
+  [property: string]: string | any;
 }
 
 /**
  * @class
  * Initializes a new instance of the ApplicationGetEndpoint class.
  * @constructor
- * Gets Application ssh endpoint
+ * Gets the application SSH endpoint
  *
  * @member {string} [location] The location of the endpoint.
- * @member {number} [destinationPort] The destinationPort to connect to.
- * @member {number} [publicPort] The publicPort to connect to.
+ * @member {number} [destinationPort] The destination port to connect to.
+ * @member {number} [publicPort] The public port to connect to.
  */
 export interface ApplicationGetEndpoint {
   location?: string;
@@ -836,28 +780,28 @@ export interface ApplicationGetEndpoint {
 
 /**
  * @class
- * Initializes a new instance of the ApplicationGetProperties class.
+ * Initializes a new instance of the ApplicationProperties class.
  * @constructor
- * HDInsight cluster application.
+ * The HDInsight cluster application GET response.
  *
  * @member {object} [computeProfile] The list of roles in the cluster.
  * @member {array} [computeProfile.roles] The list of roles in the cluster.
  * @member {array} [installScriptActions] The list of install script actions.
  * @member {array} [uninstallScriptActions] The list of uninstall script
  * actions.
- * @member {array} [httpsEndpoints] The list of application Https endpoints.
- * @member {array} [sshEndpoints] The list of application ssh endpoints.
+ * @member {array} [httpsEndpoints] The list of application HTTPS endpoints.
+ * @member {array} [sshEndpoints] The list of application SSH endpoints.
  * @member {string} [provisioningState] The provisioning state of the
- * application
- * @member {string} [applicationType] The Application type.
- * @member {string} [applicationState] The Application state.
+ * application.
+ * @member {string} [applicationType] The application type.
+ * @member {string} [applicationState] The application state.
  * @member {array} [errors] The list of errors.
  * @member {string} [createdDate] The application create date time.
- * @member {string} [marketplaceIdentifier] The Marketplace identifier.
+ * @member {string} [marketplaceIdentifier] The marketplace identifier.
  * @member {string} [additionalProperties] The additional properties for
  * application.
  */
-export interface ApplicationGetProperties {
+export interface ApplicationProperties {
   computeProfile?: ComputeProfile;
   installScriptActions?: RuntimeScriptAction[];
   uninstallScriptActions?: RuntimeScriptAction[];
@@ -876,16 +820,11 @@ export interface ApplicationGetProperties {
  * @class
  * Initializes a new instance of the Application class.
  * @constructor
- * HDInsight cluster application
+ * The HDInsight cluster application
  *
- * @member {object} [id] The resource id for the application
- * @member {string} [id.id] Resource Id
- * @member {string} [name] The name of the application.
- * @member {string} [type] The type of application.
  * @member {string} [etag] The ETag for the application
  * @member {object} [tags] The tags for the application.
- * @member {object} [properties] Gets or sets the properties of the
- * application.
+ * @member {object} [properties] The properties of the application.
  * @member {object} [properties.computeProfile] The list of roles in the
  * cluster.
  * @member {array} [properties.computeProfile.roles] The list of roles in the
@@ -894,215 +833,73 @@ export interface ApplicationGetProperties {
  * actions.
  * @member {array} [properties.uninstallScriptActions] The list of uninstall
  * script actions.
- * @member {array} [properties.httpsEndpoints] The list of application Https
+ * @member {array} [properties.httpsEndpoints] The list of application HTTPS
  * endpoints.
- * @member {array} [properties.sshEndpoints] The list of application ssh
+ * @member {array} [properties.sshEndpoints] The list of application SSH
  * endpoints.
  * @member {string} [properties.provisioningState] The provisioning state of
- * the application
- * @member {string} [properties.applicationType] The Application type.
- * @member {string} [properties.applicationState] The Application state.
+ * the application.
+ * @member {string} [properties.applicationType] The application type.
+ * @member {string} [properties.applicationState] The application state.
  * @member {array} [properties.errors] The list of errors.
  * @member {string} [properties.createdDate] The application create date time.
- * @member {string} [properties.marketplaceIdentifier] The Marketplace
+ * @member {string} [properties.marketplaceIdentifier] The marketplace
  * identifier.
  * @member {string} [properties.additionalProperties] The additional properties
  * for application.
  */
-export interface Application {
-  readonly id?: SubResource;
-  readonly name?: string;
-  readonly type?: string;
+export interface Application extends ProxyResource {
   etag?: string;
   tags?: { [propertyName: string]: string };
-  properties?: ApplicationGetProperties;
+  properties?: ApplicationProperties;
 }
 
 /**
  * @class
- * Initializes a new instance of the VersionSpec class.
+ * Initializes a new instance of the LocalizedName class.
  * @constructor
- * Gets or sets Version spec properties.
+ * The details about the localizable name of a type of usage.
  *
- * @member {string} [friendlyName] Friendly Name
- * @member {string} [displayName] Display Name
- * @member {string} [isDefault] Value true if the version is the default
- * version.
- * @member {object} [componentVersions] The component version property.
+ * @member {string} [value] The name of the used resource.
+ * @member {string} [localizedValue] The localized name of the used resource.
  */
-export interface VersionSpec {
-  friendlyName?: string;
-  displayName?: string;
-  isDefault?: string;
-  componentVersions?: { [propertyName: string]: string };
+export interface LocalizedName {
+  value?: string;
+  localizedValue?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the VersionsCapability class.
+ * Initializes a new instance of the Usage class.
  * @constructor
- * The version capability.
+ * The details about the usage of a particular limited resource.
  *
- * @member {array} [available] Gets the list of version capabilities.
+ * @member {string} [unit] The type of measurement for usage.
+ * @member {number} [currentValue] The current usage.
+ * @member {number} [limit] The maximum allowed usage.
+ * @member {object} [name] The details about the localizable name of the used
+ * resource.
+ * @member {string} [name.value] The name of the used resource.
+ * @member {string} [name.localizedValue] The localized name of the used
+ * resource.
  */
-export interface VersionsCapability {
-  available?: VersionSpec[];
+export interface Usage {
+  unit?: string;
+  currentValue?: number;
+  limit?: number;
+  name?: LocalizedName;
 }
 
 /**
  * @class
- * Initializes a new instance of the RegionsCapability class.
+ * Initializes a new instance of the UsagesListResult class.
  * @constructor
- * The regions capability.
+ * The response for the operation to get regional usages for a subscription.
  *
- * @member {array} [available] Gets the list of region capabilities.
+ * @member {array} [value] The list of usages.
  */
-export interface RegionsCapability {
-  available?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VmSizesCapability class.
- * @constructor
- * The virtual machine sizes capability.
- *
- * @member {array} [available] Gets the list of virtual machine size
- * capabilities.
- */
-export interface VmSizesCapability {
-  available?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the VmSizeCompatibilityFilter class.
- * @constructor
- * The virtual machine type compatibility filter.
- *
- * @member {string} [filterMode] Gets the mode for the filter.
- * @member {array} [regions] The list of regions.
- * @member {array} [clusterFlavors] The list of cluster types available.
- * @member {array} [nodeTypes] The list of node types.
- * @member {array} [clusterVersions] The list of cluster versions.
- * @member {array} [vmsizes] The list of virtual machine sizes.
- */
-export interface VmSizeCompatibilityFilter {
-  filterMode?: string;
-  regions?: string[];
-  clusterFlavors?: string[];
-  nodeTypes?: string[];
-  clusterVersions?: string[];
-  vmsizes?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the RegionalQuotaCapability class.
- * @constructor
- * The regional quota capacity.
- *
- * @member {string} [regionName] Gets the region name.
- * @member {number} [coresUsed] The number of cores used in the region.
- * @member {number} [coresAvailable] The number of courses available in the
- * region.
- */
-export interface RegionalQuotaCapability {
-  regionName?: string;
-  coresUsed?: number;
-  coresAvailable?: number;
-}
-
-/**
- * @class
- * Initializes a new instance of the QuotaCapability class.
- * @constructor
- * The regional quota capability.
- *
- * @member {array} [regionalQuotas] The list of region quota capabilities.
- */
-export interface QuotaCapability {
-  regionalQuotas?: RegionalQuotaCapability[];
-}
-
-/**
- * @class
- * Initializes a new instance of the CapabilitiesResult class.
- * @constructor
- * The Get Capabilities operation response.
- *
- * @member {object} [versions] The version capability.
- * @member {object} [regions] The virtual machine size compatibilty features.
- * @member {object} [vmsizes] The virtual machine sizes.
- * @member {array} [vmsizeFilters] The virtual machine size compatibilty
- * filters.
- * @member {array} [features] The capabilty features.
- * @member {object} [quota] The quota capability.
- * @member {array} [quota.regionalQuotas] The list of region quota
- * capabilities.
- */
-export interface CapabilitiesResult {
-  versions?: { [propertyName: string]: VersionsCapability };
-  regions?: { [propertyName: string]: RegionsCapability };
-  vmsizes?: { [propertyName: string]: VmSizesCapability };
-  vmsizeFilters?: VmSizeCompatibilityFilter[];
-  features?: string[];
-  quota?: QuotaCapability;
-}
-
-/**
- * @class
- * Initializes a new instance of the RDPSettingsParameters class.
- * @constructor
- * Parameters specifying the data factory gateway definition for a create or
- * update operation.
- *
- * @member {object} osProfile The definition of a data factory gateway to be
- * created or updated.
- * @member {object} [osProfile.windowsOperatingSystemProfile] The Windows OS
- * profile.
- * @member {object} [osProfile.windowsOperatingSystemProfile.rdpSettings] The
- * RDP settings.
- * @member {string}
- * [osProfile.windowsOperatingSystemProfile.rdpSettings.username] The username
- * for the RDP user.
- * @member {string}
- * [osProfile.windowsOperatingSystemProfile.rdpSettings.password] The password
- * for the RDP user.
- * @member {date}
- * [osProfile.windowsOperatingSystemProfile.rdpSettings.expiryDate] The RDP
- * expiry date(YYYY-MM-DD).
- * @member {object} [osProfile.linuxOperatingSystemProfile] The Linux OS
- * profile.
- * @member {string} [osProfile.linuxOperatingSystemProfile.username] The
- * username.
- * @member {string} [osProfile.linuxOperatingSystemProfile.password] The
- * password.
- * @member {object} [osProfile.linuxOperatingSystemProfile.sshProfile] The SSH
- * profile.
- * @member {array}
- * [osProfile.linuxOperatingSystemProfile.sshProfile.publicKeys] The list of
- * SSH public keys.
- */
-export interface RDPSettingsParameters {
-  osProfile: OsProfile;
-}
-
-/**
- * @class
- * Initializes a new instance of the HttpConnectivitySettings class.
- * @constructor
- * The payload for a Configure HTTP settings request.
- *
- * @member {string} [enabledCredential] Describes whether HTTP based
- * authorization is enabled or not.
- * @member {string} [username] The http username.
- * @member {string} [password] The http user password.
- */
-export interface HttpConnectivitySettings {
-  enabledCredential?: string;
-  username?: string;
-  password?: string;
+export interface UsagesListResult {
+  value?: Usage[];
 }
 
 /**
@@ -1111,8 +908,10 @@ export interface HttpConnectivitySettings {
  * @constructor
  * Cluster monitoring extensions
  *
- * @member {string} [workspaceId] Workspace Id for cluster monitoring extension
- * @member {string} [primaryKey] Certificate for monitoring extensions
+ * @member {string} [workspaceId] The workspace ID for the cluster monitoring
+ * extension.
+ * @member {string} [primaryKey] The certificate for the cluster monitoring
+ * extensions.
  */
 export interface Extension {
   workspaceId?: string;
@@ -1121,9 +920,41 @@ export interface Extension {
 
 /**
  * @class
+ * Initializes a new instance of the ClusterMonitoringResponse class.
+ * @constructor
+ * The Operations Management Suite (OMS) status response
+ *
+ * @member {boolean} [clusterMonitoringEnabled] The status of the Operations
+ * Management Suite (OMS) on the HDInsight cluster.
+ * @member {string} [workspaceId] The workspace ID of the Operations Management
+ * Suite (OMS) on the HDInsight cluster.
+ */
+export interface ClusterMonitoringResponse {
+  clusterMonitoringEnabled?: boolean;
+  workspaceId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ClusterMonitoringRequest class.
+ * @constructor
+ * The Operations Management Suite (OMS) parameters.
+ *
+ * @member {string} [workspaceId] The Operations Management Suite (OMS)
+ * workspace ID.
+ * @member {string} [primaryKey] The Operations Management Suite (OMS)
+ * workspace key.
+ */
+export interface ClusterMonitoringRequest {
+  workspaceId?: string;
+  primaryKey?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ScriptActionPersistedGetResponseSpec class.
  * @constructor
- * The persisted script action for cluster
+ * The persisted script action for cluster.
  *
  * @member {string} [name] The name of script action.
  * @member {string} [uri] The URI to the script.
@@ -1138,6 +969,44 @@ export interface ScriptActionPersistedGetResponseSpec {
   parameters?: string;
   roles?: string[];
   applicationName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationDisplay class.
+ * @constructor
+ * The object that represents the operation.
+ *
+ * @member {string} [provider] The service provider: Microsoft.HDInsight
+ * @member {string} [resource] The resource on which the operation is
+ * performed: Cluster, Applications, etc.
+ * @member {string} [operation] The operation type: read, write, delete, etc.
+ */
+export interface OperationDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Operation class.
+ * @constructor
+ * The HDInsight REST API operation.
+ *
+ * @member {string} [name] The operation name:
+ * {provider}/{resource}/{operation}
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] The service provider:
+ * Microsoft.HDInsight
+ * @member {string} [display.resource] The resource on which the operation is
+ * performed: Cluster, Applications, etc.
+ * @member {string} [display.operation] The operation type: read, write,
+ * delete, etc.
+ */
+export interface Operation {
+  name?: string;
+  display?: OperationDisplay;
 }
 
 
@@ -1160,7 +1029,7 @@ export interface ClusterListResult extends Array<Cluster> {
  * Result of the request to list cluster Applications. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @member {string} [nextLink] The URL to get the next set of operation list
  * results if there are any.
  */
 export interface ApplicationListResult extends Array<Application> {
@@ -1171,7 +1040,7 @@ export interface ApplicationListResult extends Array<Application> {
  * @class
  * Initializes a new instance of the ScriptActionsList class.
  * @constructor
- * All persisted script action for the cluster.
+ * The persisted script action for the cluster.
  *
  * @member {string} [nextLink] The link (url) to the next page of results.
  */
@@ -1183,7 +1052,7 @@ export interface ScriptActionsList extends Array<RuntimeScriptActionDetail> {
  * @class
  * Initializes a new instance of the ScriptActionExecutionHistoryList class.
  * @constructor
- * The ListScriptExecutionHistory response.
+ * The list script execution history response.
  *
  * @member {string} [nextLink] The link (url) to the next page of results.
  */
@@ -1198,7 +1067,7 @@ export interface ScriptActionExecutionHistoryList extends Array<RuntimeScriptAct
  * Result of the request to list HDInsight operations. It contains a list of
  * operations and a URL link to get the next set of results.
  *
- * @member {string} [nextLink] URL to get the next set of operation list
+ * @member {string} [nextLink] The URL to get the next set of operation list
  * results if there are any.
  */
 export interface OperationListResult extends Array<Operation> {

@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class ContainerRegistryManagementClient extends AzureServiceClient {
+export default class ContainerRegistryManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the ContainerRegistryManagementClient class.
    * @constructor
@@ -46,8 +47,6 @@ declare class ContainerRegistryManagementClient extends AzureServiceClient {
 
   subscriptionId: string;
 
-  apiVersion: string;
-
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -59,6 +58,9 @@ declare class ContainerRegistryManagementClient extends AzureServiceClient {
   operations: operations.Operations;
   replications: operations.Replications;
   webhooks: operations.Webhooks;
+  builds: operations.Builds;
+  buildSteps: operations.BuildSteps;
+  buildTasks: operations.BuildTasks;
 }
 
-export = ContainerRegistryManagementClient;
+export { ContainerRegistryManagementClient, models as ContainerRegistryManagementModels };

@@ -2052,7 +2052,7 @@ export interface GenerateUploadUriResponse {
  * @class
  * Initializes a new instance of the IdentityProperties class.
  * @constructor
- * IdentityProperties
+ * Properties of a managed identity
  *
  * @member {string} [type] Managed identity.
  * @member {string} [principalId] The principal id of resource identity.
@@ -2867,6 +2867,90 @@ export interface NotifyParameters {
 
 /**
  * @class
+ * Initializes a new instance of the OperationError class.
+ * @constructor
+ * Error details for the operation in case of a failure.
+ *
+ * @member {string} [code] The error code of the operation error.
+ * @member {string} [message] The error message of the operation error.
+ */
+export interface OperationError {
+  code?: string;
+  message?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationMetadataDisplay class.
+ * @constructor
+ * The object that describes the operations
+ *
+ * @member {string} [provider] Friendly name of the resource provider
+ * @member {string} [resource] Resource type on which the operation is
+ * performed.
+ * @member {string} [operation] Operation type: read, write, delete,
+ * listKeys/action, etc.
+ * @member {string} [description] Friendly name of the operation
+ */
+export interface OperationMetadataDisplay {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+  description?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationMetadata class.
+ * @constructor
+ * The REST API operation supported by DevTestLab ResourceProvider.
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] The object that describes the operations
+ * @member {string} [display.provider] Friendly name of the resource provider
+ * @member {string} [display.resource] Resource type on which the operation is
+ * performed.
+ * @member {string} [display.operation] Operation type: read, write, delete,
+ * listKeys/action, etc.
+ * @member {string} [display.description] Friendly name of the operation
+ */
+export interface OperationMetadata {
+  name?: string;
+  display?: OperationMetadataDisplay;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the OperationResult class.
+ * @constructor
+ * An Operation Result
+ *
+ * @member {string} [status] The operation status.
+ * @member {string} [statusCode] The status code for the operation. Possible
+ * values include: 'Continue', 'SwitchingProtocols', 'OK', 'Created',
+ * 'Accepted', 'NonAuthoritativeInformation', 'NoContent', 'ResetContent',
+ * 'PartialContent', 'MultipleChoices', 'MovedPermanently', 'Redirect',
+ * 'SeeOther', 'NotModified', 'UseProxy', 'Unused', 'TemporaryRedirect',
+ * 'BadRequest', 'Unauthorized', 'PaymentRequired', 'Forbidden', 'NotFound',
+ * 'MethodNotAllowed', 'NotAcceptable', 'ProxyAuthenticationRequired',
+ * 'RequestTimeout', 'Conflict', 'Gone', 'LengthRequired',
+ * 'PreconditionFailed', 'RequestEntityTooLarge', 'RequestUriTooLong',
+ * 'UnsupportedMediaType', 'RequestedRangeNotSatisfiable', 'ExpectationFailed',
+ * 'UpgradeRequired', 'InternalServerError', 'NotImplemented', 'BadGateway',
+ * 'ServiceUnavailable', 'GatewayTimeout', 'HttpVersionNotSupported'
+ * @member {object} [error] Error details for the operation in case of a
+ * failure.
+ * @member {string} [error.code] The error code of the operation error.
+ * @member {string} [error.message] The error message of the operation error.
+ */
+export interface OperationResult {
+  status?: string;
+  statusCode?: string;
+  error?: OperationError;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Policy class.
  * @constructor
  * A Policy.
@@ -2971,6 +3055,22 @@ export interface PortFragment {
 
 /**
  * @class
+ * Initializes a new instance of the RetargetScheduleProperties class.
+ * @constructor
+ * Properties for retargeting a virtual machine schedule.
+ *
+ * @member {string} [currentResourceId] The resource Id of the virtual machine
+ * on which the schedule operates
+ * @member {string} [targetResourceId] The resource Id of the virtual machine
+ * that the schedule should be retargeted to
+ */
+export interface RetargetScheduleProperties {
+  currentResourceId?: string;
+  targetResourceId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the Secret class.
  * @constructor
  * A secret.
@@ -3003,6 +3103,165 @@ export interface Secret extends Resource {
  */
 export interface ServiceRunner extends Resource {
   identity?: IdentityProperties;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ShutdownNotificationContent class.
+ * @constructor
+ * The contents of a shutdown notification. Webhooks can use this type to
+ * deserialize the request body when they get notified of an imminent shutdown.
+ *
+ * @member {string} [skipUrl] The URL to skip auto-shutdown.
+ * @member {string} [delayUrl60] The URL to delay shutdown by 60 minutes.
+ * @member {string} [delayUrl120] The URL to delay shutdown by 2 hours.
+ * @member {string} [vmName] The virtual machine to be shut down.
+ * @member {string} [guid] The GUID for the virtual machine to be shut down.
+ * @member {string} [owner] The owner of the virtual machine.
+ * @member {string} [eventType] The event for which a notification will be
+ * sent.
+ * @member {string} [text] The text for the notification.
+ * @member {string} [subscriptionId] The subscription ID for the schedule.
+ * @member {string} [resourceGroupName] The resource group name for the
+ * schedule.
+ * @member {string} [labName] The lab for the schedule.
+ */
+export interface ShutdownNotificationContent {
+  skipUrl?: string;
+  delayUrl60?: string;
+  delayUrl120?: string;
+  vmName?: string;
+  guid?: string;
+  owner?: string;
+  eventType?: string;
+  text?: string;
+  subscriptionId?: string;
+  resourceGroupName?: string;
+  labName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the Subnet class.
+ * @constructor
+ * Subnet information.
+ *
+ * @member {string} [resourceId] The resource ID of the subnet.
+ * @member {string} [labSubnetName] The name of the subnet as seen in the lab.
+ * @member {string} [allowPublicIp] The permission policy of the subnet for
+ * allowing public IP addresses (i.e. Allow, Deny)). Possible values include:
+ * 'Default', 'Deny', 'Allow'
+ */
+export interface Subnet {
+  resourceId?: string;
+  labSubnetName?: string;
+  allowPublicIp?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SubnetFragment class.
+ * @constructor
+ * Subnet information.
+ *
+ * @member {string} [resourceId] The resource ID of the subnet.
+ * @member {string} [labSubnetName] The name of the subnet as seen in the lab.
+ * @member {string} [allowPublicIp] The permission policy of the subnet for
+ * allowing public IP addresses (i.e. Allow, Deny)). Possible values include:
+ * 'Default', 'Deny', 'Allow'
+ */
+export interface SubnetFragment {
+  resourceId?: string;
+  labSubnetName?: string;
+  allowPublicIp?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SubnetSharedPublicIpAddressConfiguration class.
+ * @constructor
+ * Configuration for public IP address sharing.
+ *
+ * @member {array} [allowedPorts] Backend ports that virtual machines on this
+ * subnet are allowed to expose
+ */
+export interface SubnetSharedPublicIpAddressConfiguration {
+  allowedPorts?: Port[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SubnetOverride class.
+ * @constructor
+ * Property overrides on a subnet of a virtual network.
+ *
+ * @member {string} [resourceId] The resource ID of the subnet.
+ * @member {string} [labSubnetName] The name given to the subnet within the
+ * lab.
+ * @member {string} [useInVmCreationPermission] Indicates whether this subnet
+ * can be used during virtual machine creation (i.e. Allow, Deny). Possible
+ * values include: 'Default', 'Deny', 'Allow'
+ * @member {string} [usePublicIpAddressPermission] Indicates whether public IP
+ * addresses can be assigned to virtual machines on this subnet (i.e. Allow,
+ * Deny). Possible values include: 'Default', 'Deny', 'Allow'
+ * @member {object} [sharedPublicIpAddressConfiguration] Properties that
+ * virtual machines on this subnet will share.
+ * @member {array} [sharedPublicIpAddressConfiguration.allowedPorts] Backend
+ * ports that virtual machines on this subnet are allowed to expose
+ * @member {string} [virtualNetworkPoolName] The virtual network pool
+ * associated with this subnet.
+ */
+export interface SubnetOverride {
+  resourceId?: string;
+  labSubnetName?: string;
+  useInVmCreationPermission?: string;
+  usePublicIpAddressPermission?: string;
+  sharedPublicIpAddressConfiguration?: SubnetSharedPublicIpAddressConfiguration;
+  virtualNetworkPoolName?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SubnetSharedPublicIpAddressConfigurationFragment class.
+ * @constructor
+ * Configuration for public IP address sharing.
+ *
+ * @member {array} [allowedPorts] Backend ports that virtual machines on this
+ * subnet are allowed to expose
+ */
+export interface SubnetSharedPublicIpAddressConfigurationFragment {
+  allowedPorts?: PortFragment[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SubnetOverrideFragment class.
+ * @constructor
+ * Property overrides on a subnet of a virtual network.
+ *
+ * @member {string} [resourceId] The resource ID of the subnet.
+ * @member {string} [labSubnetName] The name given to the subnet within the
+ * lab.
+ * @member {string} [useInVmCreationPermission] Indicates whether this subnet
+ * can be used during virtual machine creation (i.e. Allow, Deny). Possible
+ * values include: 'Default', 'Deny', 'Allow'
+ * @member {string} [usePublicIpAddressPermission] Indicates whether public IP
+ * addresses can be assigned to virtual machines on this subnet (i.e. Allow,
+ * Deny). Possible values include: 'Default', 'Deny', 'Allow'
+ * @member {object} [sharedPublicIpAddressConfiguration] Properties that
+ * virtual machines on this subnet will share.
+ * @member {array} [sharedPublicIpAddressConfiguration.allowedPorts] Backend
+ * ports that virtual machines on this subnet are allowed to expose
+ * @member {string} [virtualNetworkPoolName] The virtual network pool
+ * associated with this subnet.
+ */
+export interface SubnetOverrideFragment {
+  resourceId?: string;
+  labSubnetName?: string;
+  useInVmCreationPermission?: string;
+  usePublicIpAddressPermission?: string;
+  sharedPublicIpAddressConfiguration?: SubnetSharedPublicIpAddressConfigurationFragment;
+  virtualNetworkPoolName?: string;
 }
 
 /**
@@ -3083,211 +3342,6 @@ export interface User extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the Subnet class.
- * @constructor
- * Subnet information.
- *
- * @member {string} [resourceId] The resource ID of the subnet.
- * @member {string} [labSubnetName] The name of the subnet as seen in the lab.
- * @member {string} [allowPublicIp] The permission policy of the subnet for
- * allowing public IP addresses (i.e. Allow, Deny)). Possible values include:
- * 'Default', 'Deny', 'Allow'
- */
-export interface Subnet {
-  resourceId?: string;
-  labSubnetName?: string;
-  allowPublicIp?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SubnetSharedPublicIpAddressConfiguration class.
- * @constructor
- * Configuration for public IP address sharing.
- *
- * @member {array} [allowedPorts] Backend ports that virtual machines on this
- * subnet are allowed to expose
- */
-export interface SubnetSharedPublicIpAddressConfiguration {
-  allowedPorts?: Port[];
-}
-
-/**
- * @class
- * Initializes a new instance of the SubnetOverride class.
- * @constructor
- * Property overrides on a subnet of a virtual network.
- *
- * @member {string} [resourceId] The resource ID of the subnet.
- * @member {string} [labSubnetName] The name given to the subnet within the
- * lab.
- * @member {string} [useInVmCreationPermission] Indicates whether this subnet
- * can be used during virtual machine creation (i.e. Allow, Deny). Possible
- * values include: 'Default', 'Deny', 'Allow'
- * @member {string} [usePublicIpAddressPermission] Indicates whether public IP
- * addresses can be assigned to virtual machines on this subnet (i.e. Allow,
- * Deny). Possible values include: 'Default', 'Deny', 'Allow'
- * @member {object} [sharedPublicIpAddressConfiguration] Properties that
- * virtual machines on this subnet will share.
- * @member {array} [sharedPublicIpAddressConfiguration.allowedPorts] Backend
- * ports that virtual machines on this subnet are allowed to expose
- * @member {string} [virtualNetworkPoolName] The virtual network pool
- * associated with this subnet.
- */
-export interface SubnetOverride {
-  resourceId?: string;
-  labSubnetName?: string;
-  useInVmCreationPermission?: string;
-  usePublicIpAddressPermission?: string;
-  sharedPublicIpAddressConfiguration?: SubnetSharedPublicIpAddressConfiguration;
-  virtualNetworkPoolName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the VirtualNetwork class.
- * @constructor
- * A virtual network.
- *
- * @member {array} [allowedSubnets] The allowed subnets of the virtual network.
- * @member {string} [description] The description of the virtual network.
- * @member {string} [externalProviderResourceId] The Microsoft.Network resource
- * identifier of the virtual network.
- * @member {array} [externalSubnets] The external subnet properties.
- * @member {array} [subnetOverrides] The subnet overrides of the virtual
- * network.
- * @member {date} [createdDate] The creation date of the virtual network.
- * @member {string} [provisioningState] The provisioning status of the
- * resource.
- * @member {string} [uniqueIdentifier] The unique immutable identifier of a
- * resource (Guid).
- */
-export interface VirtualNetwork extends Resource {
-  allowedSubnets?: Subnet[];
-  description?: string;
-  externalProviderResourceId?: string;
-  externalSubnets?: ExternalSubnet[];
-  subnetOverrides?: SubnetOverride[];
-  readonly createdDate?: Date;
-  provisioningState?: string;
-  uniqueIdentifier?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the RetargetScheduleProperties class.
- * @constructor
- * Properties for retargeting a virtual machine schedule.
- *
- * @member {string} [currentResourceId] The resource Id of the virtual machine
- * on which the schedule operates
- * @member {string} [targetResourceId] The resource Id of the virtual machine
- * that the schedule should be retargeted to
- */
-export interface RetargetScheduleProperties {
-  currentResourceId?: string;
-  targetResourceId?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the ShutdownNotificationContent class.
- * @constructor
- * The contents of a shutdown notification. Webhooks can use this type to
- * deserialize the request body when they get notified of an imminent shutdown.
- *
- * @member {string} [skipUrl] The URL to skip auto-shutdown.
- * @member {string} [delayUrl60] The URL to delay shutdown by 60 minutes.
- * @member {string} [delayUrl120] The URL to delay shutdown by 2 hours.
- * @member {string} [vmName] The virtual machine to be shut down.
- * @member {string} [guid] The GUID for the virtual machine to be shut down.
- * @member {string} [owner] The owner of the virtual machine.
- * @member {string} [eventType] The event for which a notification will be
- * sent.
- * @member {string} [text] The text for the notification.
- * @member {string} [subscriptionId] The subscription ID for the schedule.
- * @member {string} [resourceGroupName] The resource group name for the
- * schedule.
- * @member {string} [labName] The lab for the schedule.
- */
-export interface ShutdownNotificationContent {
-  skipUrl?: string;
-  delayUrl60?: string;
-  delayUrl120?: string;
-  vmName?: string;
-  guid?: string;
-  owner?: string;
-  eventType?: string;
-  text?: string;
-  subscriptionId?: string;
-  resourceGroupName?: string;
-  labName?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SubnetFragment class.
- * @constructor
- * Subnet information.
- *
- * @member {string} [resourceId] The resource ID of the subnet.
- * @member {string} [labSubnetName] The name of the subnet as seen in the lab.
- * @member {string} [allowPublicIp] The permission policy of the subnet for
- * allowing public IP addresses (i.e. Allow, Deny)). Possible values include:
- * 'Default', 'Deny', 'Allow'
- */
-export interface SubnetFragment {
-  resourceId?: string;
-  labSubnetName?: string;
-  allowPublicIp?: string;
-}
-
-/**
- * @class
- * Initializes a new instance of the SubnetSharedPublicIpAddressConfigurationFragment class.
- * @constructor
- * Configuration for public IP address sharing.
- *
- * @member {array} [allowedPorts] Backend ports that virtual machines on this
- * subnet are allowed to expose
- */
-export interface SubnetSharedPublicIpAddressConfigurationFragment {
-  allowedPorts?: PortFragment[];
-}
-
-/**
- * @class
- * Initializes a new instance of the SubnetOverrideFragment class.
- * @constructor
- * Property overrides on a subnet of a virtual network.
- *
- * @member {string} [resourceId] The resource ID of the subnet.
- * @member {string} [labSubnetName] The name given to the subnet within the
- * lab.
- * @member {string} [useInVmCreationPermission] Indicates whether this subnet
- * can be used during virtual machine creation (i.e. Allow, Deny). Possible
- * values include: 'Default', 'Deny', 'Allow'
- * @member {string} [usePublicIpAddressPermission] Indicates whether public IP
- * addresses can be assigned to virtual machines on this subnet (i.e. Allow,
- * Deny). Possible values include: 'Default', 'Deny', 'Allow'
- * @member {object} [sharedPublicIpAddressConfiguration] Properties that
- * virtual machines on this subnet will share.
- * @member {array} [sharedPublicIpAddressConfiguration.allowedPorts] Backend
- * ports that virtual machines on this subnet are allowed to expose
- * @member {string} [virtualNetworkPoolName] The virtual network pool
- * associated with this subnet.
- */
-export interface SubnetOverrideFragment {
-  resourceId?: string;
-  labSubnetName?: string;
-  useInVmCreationPermission?: string;
-  usePublicIpAddressPermission?: string;
-  sharedPublicIpAddressConfiguration?: SubnetSharedPublicIpAddressConfigurationFragment;
-  virtualNetworkPoolName?: string;
-}
-
-/**
- * @class
  * Initializes a new instance of the UserIdentityFragment class.
  * @constructor
  * Identity attributes of a lab user.
@@ -3362,6 +3416,36 @@ export interface UserFragment extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the VirtualNetwork class.
+ * @constructor
+ * A virtual network.
+ *
+ * @member {array} [allowedSubnets] The allowed subnets of the virtual network.
+ * @member {string} [description] The description of the virtual network.
+ * @member {string} [externalProviderResourceId] The Microsoft.Network resource
+ * identifier of the virtual network.
+ * @member {array} [externalSubnets] The external subnet properties.
+ * @member {array} [subnetOverrides] The subnet overrides of the virtual
+ * network.
+ * @member {date} [createdDate] The creation date of the virtual network.
+ * @member {string} [provisioningState] The provisioning status of the
+ * resource.
+ * @member {string} [uniqueIdentifier] The unique immutable identifier of a
+ * resource (Guid).
+ */
+export interface VirtualNetwork extends Resource {
+  allowedSubnets?: Subnet[];
+  description?: string;
+  externalProviderResourceId?: string;
+  externalSubnets?: ExternalSubnet[];
+  subnetOverrides?: SubnetOverride[];
+  readonly createdDate?: Date;
+  provisioningState?: string;
+  uniqueIdentifier?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the VirtualNetworkFragment class.
  * @constructor
  * A virtual network.
@@ -3388,6 +3472,19 @@ export interface VirtualNetworkFragment extends Resource {
   uniqueIdentifier?: string;
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the ProviderOperationResult class.
+ * @constructor
+ * Result of the request to list REST API operations
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface ProviderOperationResult extends Array<OperationMetadata> {
+  readonly nextLink?: string;
+}
 
 /**
  * @class

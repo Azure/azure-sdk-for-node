@@ -1,7 +1,11 @@
-# Microsoft Azure SDK for Node.js - AutomationManagement
+---
+uid: azure-arm-automation
+summary: *content
 
+---
+# Microsoft Azure SDK for Node.js - AutomationClient
 This project provides a Node.js package for accessing Azure. Right now it supports:
-- **Node.js version: 6.x.x or higher**
+- **Node.js version 6.x.x or higher**
 
 ## Features
 
@@ -12,28 +16,26 @@ This project provides a Node.js package for accessing Azure. Right now it suppor
 npm install azure-arm-automation
 ```
 
-## How to Use
+## How to use
 
-### Authentication, client creation and listing automation accounts as an example
+### Authentication, client creation and get automationAccount as an example.
 
- ```javascript
- const msRestAzure = require('ms-rest-azure');
- const AutomationManagement = require("azure-arm-automation");
- 
- // Interactive Login
- // It provides a url and code that needs to be copied and pasted in a browser and authenticated over there. If successful, 
- // the user will get a DeviceTokenCredentials object.
- msRestAzure.interactiveLogin().then((credentials) => {
-   let client = new AutomationManagement(credentials, 'your-subscription-id');
-   client.automationAccounts.listByResourceGroup('test-rg').then((automationAccounts) => {
-     console.log('List of Automation Accounts:');
-     console.dir(automationAccounts, {depth: null, colors: true});
-   });
- }).catch((err) => {
-   console.log('An error ocurred');
-   console.dir(err, {depth: null, colors: true});
- });
-```
+```javascript
+const msRestAzure = require("ms-rest-azure");
+const AutomationClient = require("azure-arm-automation");
+msRestAzure.interactiveLogin().then((creds) => {
+    const subscriptionId = "<Subscription_Id>";
+    const client = new AutomationClient(creds, subscriptionId);
+    const resourceGroupName = "testresourceGroupName";
+    const automationAccountName = "testautomationAccountName";
+    return client.automationAccount.get(resourceGroupName, automationAccountName).then((result) => {
+      console.log("The result is:");
+      console.log(result);
+    });
+}).catch((err) => {
+  console.log('An error occurred:');
+  console.dir(err, {depth: null, colors: true});
+});
 
 ## Related projects
 

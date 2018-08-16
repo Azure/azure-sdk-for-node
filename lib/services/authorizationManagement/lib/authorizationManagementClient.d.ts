@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class AuthorizationManagementClient extends AzureServiceClient {
+export default class AuthorizationManagementClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the AuthorizationManagementClient class.
    * @constructor
@@ -46,8 +47,6 @@ declare class AuthorizationManagementClient extends AzureServiceClient {
 
   subscriptionId: string;
 
-  apiVersion: string;
-
   acceptLanguage: string;
 
   longRunningOperationRetryTimeout: number;
@@ -56,10 +55,10 @@ declare class AuthorizationManagementClient extends AzureServiceClient {
 
   // Operation groups
   classicAdministrators: operations.ClassicAdministrators;
-  permissions: operations.Permissions;
   providerOperationsMetadataOperations: operations.ProviderOperationsMetadataOperations;
+  permissions: operations.Permissions;
   roleAssignments: operations.RoleAssignments;
   roleDefinitions: operations.RoleDefinitions;
 }
 
-export = AuthorizationManagementClient;
+export { AuthorizationManagementClient, models as AuthorizationManagementModels };

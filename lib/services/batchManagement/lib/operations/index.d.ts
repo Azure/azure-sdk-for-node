@@ -3034,7 +3034,7 @@ export interface PoolOperations {
      *
      * @param {array}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them.
      *
@@ -3059,7 +3059,8 @@ export interface PoolOperations {
      *
      * @param {moment.duration} [parameters.scaleSettings.fixedScale.resizeTimeout]
      * The timeout for allocation of compute nodes to the pool. The default value
-     * is 15 minutes. The minimum value is 5 minutes. If you specify a value less
+     * is 15 minutes. Timeout values use ISO 8601 format. For example, use PT10M
+     * for 10 minutes. The minimum value is 5 minutes. If you specify a value less
      * than 5 minutes, the Batch service rejects the request with an error; if you
      * are calling the REST API directly, the HTTP status code is 400 (Bad
      * Request).
@@ -3412,7 +3413,7 @@ export interface PoolOperations {
      *
      * @param {array}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them.
      *
@@ -3437,7 +3438,8 @@ export interface PoolOperations {
      *
      * @param {moment.duration} [parameters.scaleSettings.fixedScale.resizeTimeout]
      * The timeout for allocation of compute nodes to the pool. The default value
-     * is 15 minutes. The minimum value is 5 minutes. If you specify a value less
+     * is 15 minutes. Timeout values use ISO 8601 format. For example, use PT10M
+     * for 10 minutes. The minimum value is 5 minutes. If you specify a value less
      * than 5 minutes, the Batch service rejects the request with an error; if you
      * are calling the REST API directly, the HTTP status code is 400 (Bad
      * Request).
@@ -3811,7 +3813,7 @@ export interface PoolOperations {
      *
      * @param {array}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them.
      *
@@ -3836,7 +3838,8 @@ export interface PoolOperations {
      *
      * @param {moment.duration} [parameters.scaleSettings.fixedScale.resizeTimeout]
      * The timeout for allocation of compute nodes to the pool. The default value
-     * is 15 minutes. The minimum value is 5 minutes. If you specify a value less
+     * is 15 minutes. Timeout values use ISO 8601 format. For example, use PT10M
+     * for 10 minutes. The minimum value is 5 minutes. If you specify a value less
      * than 5 minutes, the Batch service rejects the request with an error; if you
      * are calling the REST API directly, the HTTP status code is 400 (Bad
      * Request).
@@ -4187,7 +4190,7 @@ export interface PoolOperations {
      *
      * @param {array}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them.
      *
@@ -4212,7 +4215,8 @@ export interface PoolOperations {
      *
      * @param {moment.duration} [parameters.scaleSettings.fixedScale.resizeTimeout]
      * The timeout for allocation of compute nodes to the pool. The default value
-     * is 15 minutes. The minimum value is 5 minutes. If you specify a value less
+     * is 15 minutes. Timeout values use ISO 8601 format. For example, use PT10M
+     * for 10 minutes. The minimum value is 5 minutes. If you specify a value less
      * than 5 minutes, the Batch service rejects the request with an error; if you
      * are calling the REST API directly, the HTTP status code is 400 (Bad
      * Request).
@@ -4865,7 +4869,7 @@ export interface PoolOperations {
      *
      * @param {array}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them.
      *
@@ -4890,7 +4894,8 @@ export interface PoolOperations {
      *
      * @param {moment.duration} [parameters.scaleSettings.fixedScale.resizeTimeout]
      * The timeout for allocation of compute nodes to the pool. The default value
-     * is 15 minutes. The minimum value is 5 minutes. If you specify a value less
+     * is 15 minutes. Timeout values use ISO 8601 format. For example, use PT10M
+     * for 10 minutes. The minimum value is 5 minutes. If you specify a value less
      * than 5 minutes, the Batch service rejects the request with an error; if you
      * are calling the REST API directly, the HTTP status code is 400 (Bad
      * Request).
@@ -5243,7 +5248,7 @@ export interface PoolOperations {
      *
      * @param {array}
      * [parameters.deploymentConfiguration.virtualMachineConfiguration.dataDisks]
-     * The configuration for data disks attached to the comptue nodes in the pool.
+     * The configuration for data disks attached to the compute nodes in the pool.
      * This property must be specified if the compute nodes in the pool need to
      * have empty data disks attached to them.
      *
@@ -5268,7 +5273,8 @@ export interface PoolOperations {
      *
      * @param {moment.duration} [parameters.scaleSettings.fixedScale.resizeTimeout]
      * The timeout for allocation of compute nodes to the pool. The default value
-     * is 15 minutes. The minimum value is 5 minutes. If you specify a value less
+     * is 15 minutes. Timeout values use ISO 8601 format. For example, use PT10M
+     * for 10 minutes. The minimum value is 5 minutes. If you specify a value less
      * than 5 minutes, the Batch service rejects the request with an error; if you
      * are calling the REST API directly, the HTTP status code is 400 (Bad
      * Request).
