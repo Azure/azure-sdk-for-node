@@ -246,9 +246,9 @@ export interface AzureFirewall extends Resource {
  * IP addresses defined in network interfaces.
  * @member {array} [loadBalancingRules] Gets load balancing rules that use this
  * backend address pool.
- * @member {object} [outboundNatRule] Gets outbound rules that use this backend
+ * @member {object} [outboundRule] Gets outbound rules that use this backend
  * address pool.
- * @member {string} [outboundNatRule.id] Resource ID.
+ * @member {string} [outboundRule.id] Resource ID.
  * @member {string} [provisioningState] Get provisioning state of the public IP
  * resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
  * @member {string} [name] Gets name of the resource that is unique within a
@@ -259,7 +259,7 @@ export interface AzureFirewall extends Resource {
 export interface BackendAddressPool extends SubResource {
   readonly backendIPConfigurations?: NetworkInterfaceIPConfiguration[];
   readonly loadBalancingRules?: SubResource[];
-  readonly outboundNatRule?: SubResource;
+  readonly outboundRule?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -3577,8 +3577,8 @@ export interface LoadBalancerSku {
  * this frontend IP.
  * @member {array} [inboundNatPools] Read only. Inbound pools URIs that use
  * this frontend IP.
- * @member {array} [outboundNatRules] Read only. Outbound rules URIs that use
- * this frontend IP.
+ * @member {array} [outboundRules] Read only. Outbound rules URIs that use this
+ * frontend IP.
  * @member {array} [loadBalancingRules] Gets load balancing rules URIs that use
  * this frontend IP.
  * @member {string} [privateIPAddress] The private IP address of the IP
@@ -3757,6 +3757,9 @@ export interface LoadBalancerSku {
  * changes whenever the resource is updated.
  * @member {array} [publicIPAddress.zones] A list of availability zones
  * denoting the IP allocated for the resource needs to come from.
+ * @member {object} [publicIPPrefix] The reference of the Public IP Prefix
+ * resource.
+ * @member {string} [publicIPPrefix.id] Resource ID.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -3770,12 +3773,13 @@ export interface LoadBalancerSku {
 export interface FrontendIPConfiguration extends SubResource {
   readonly inboundNatRules?: SubResource[];
   readonly inboundNatPools?: SubResource[];
-  readonly outboundNatRules?: SubResource[];
+  readonly outboundRules?: SubResource[];
   readonly loadBalancingRules?: SubResource[];
   privateIPAddress?: string;
   privateIPAllocationMethod?: string;
   subnet?: Subnet;
   publicIPAddress?: PublicIPAddress;
+  publicIPPrefix?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
@@ -3947,9 +3951,9 @@ export interface InboundNatPool extends SubResource {
 
 /**
  * @class
- * Initializes a new instance of the OutboundNatRule class.
+ * Initializes a new instance of the OutboundRule class.
  * @constructor
- * Outbound NAT pool of the load balancer.
+ * Outbound pool of the load balancer.
  *
  * @member {number} [allocatedOutboundPorts] The number of outbound ports to be
  * used for NAT.
@@ -3961,16 +3965,26 @@ export interface InboundNatPool extends SubResource {
  * @member {string} [provisioningState] Gets the provisioning state of the
  * PublicIP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
+ * @member {string} [protocol] Protocol - TCP, UDP or All. Possible values
+ * include: 'Tcp', 'Udp', 'All'
+ * @member {boolean} [enableTcpReset] Receive bidirectional TCP Reset on TCP
+ * flow idle timeout or unexpected connection termination. This element is only
+ * used when the protocol is set to TCP.
+ * @member {number} [idleTimeoutInMinutes] The timeout for the TCP idle
+ * connection
  * @member {string} [name] The name of the resource that is unique within a
  * resource group. This name can be used to access the resource.
  * @member {string} [etag] A unique read-only string that changes whenever the
  * resource is updated.
  */
-export interface OutboundNatRule extends SubResource {
+export interface OutboundRule extends SubResource {
   allocatedOutboundPorts?: number;
   frontendIPConfigurations?: SubResource[];
   backendAddressPool: SubResource;
   provisioningState?: string;
+  protocol?: string;
+  enableTcpReset?: boolean;
+  idleTimeoutInMinutes?: number;
   name?: string;
   etag?: string;
 }
@@ -4006,7 +4020,7 @@ export interface OutboundNatRule extends SubResource {
  * Nat rules. Inbound NAT pools are referenced from virtual machine scale sets.
  * NICs that are associated with individual virtual machines cannot reference
  * an inbound NAT pool. They have to reference individual inbound NAT rules.
- * @member {array} [outboundNatRules] The outbound NAT rules.
+ * @member {array} [outboundRules] The outbound rules.
  * @member {string} [resourceGuid] The resource GUID property of the load
  * balancer resource.
  * @member {string} [provisioningState] Gets the provisioning state of the
@@ -4023,7 +4037,7 @@ export interface LoadBalancer extends Resource {
   probes?: Probe[];
   inboundNatRules?: InboundNatRule[];
   inboundNatPools?: InboundNatPool[];
-  outboundNatRules?: OutboundNatRule[];
+  outboundRules?: OutboundRule[];
   resourceGuid?: string;
   provisioningState?: string;
   etag?: string;
@@ -5676,35 +5690,6 @@ export interface NetworkConfigurationDiagnosticResult {
  */
 export interface NetworkConfigurationDiagnosticResponse {
   readonly results?: NetworkConfigurationDiagnosticResult[];
-}
-
-/**
- * @class
- * Initializes a new instance of the QueryConnectionMonitorsParameters class.
- * @constructor
- * Parameters to query connection monitors.
- *
- * @member {array} [connectionMonitorIds] List of connection monitors ID.
- */
-export interface QueryConnectionMonitorsParameters {
-  connectionMonitorIds?: string[];
-}
-
-/**
- * @class
- * Initializes a new instance of the ConnectionMonitorsQueryResultItem class.
- * @constructor
- * Results of query particular connection monitor.
- *
- * @member {string} [resourceId] Connection monitor resource ID.
- * @member {object} [report]
- * @member {string} [report.sourceStatus] Status of connection monitor source.
- * Possible values include: 'Uknown', 'Active', 'Inactive'
- * @member {array} [report.states] Information about connection states.
- */
-export interface ConnectionMonitorsQueryResultItem {
-  resourceId?: string;
-  report?: ConnectionMonitorQueryResult;
 }
 
 /**
@@ -7599,18 +7584,6 @@ export interface SecurityRuleListResult extends Array<SecurityRule> {
  *
  */
 export interface NetworkWatcherListResult extends Array<NetworkWatcher> {
-}
-
-/**
- * @class
- * Initializes a new instance of the QueryConnectionMonitorsResponse class.
- * @constructor
- * Results of query connection monitors.
- *
- * @member {string} [nextLink] URL to get the next set of results.
- */
-export interface QueryConnectionMonitorsResponse extends Array<ConnectionMonitorsQueryResultItem> {
-  nextLink?: string;
 }
 
 /**
