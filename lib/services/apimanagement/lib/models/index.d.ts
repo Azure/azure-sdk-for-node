@@ -35,9 +35,27 @@ export interface ErrorFieldContract {
 
 /**
  * @class
- * Initializes a new instance of the ErrorResponse class.
+ * Initializes a new instance of the ErrorResponseBody class.
  * @constructor
  * Error Body contract.
+ *
+ * @member {string} [code] Service-defined error code. This code serves as a
+ * sub-status for the HTTP error code specified in the response.
+ * @member {string} [message] Human-readable representation of the error.
+ * @member {array} [details] The list of invalid fields send in request, in
+ * case of validation error.
+ */
+export interface ErrorResponseBody {
+  code?: string;
+  message?: string;
+  details?: ErrorFieldContract[];
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Error Response.
  *
  * @member {string} [code] Service-defined error code. This code serves as a
  * sub-status for the HTTP error code specified in the response.
@@ -76,7 +94,8 @@ export interface Resource extends BaseResource {
  * @member {string} policyContent Json escaped Xml Encoded contents of the
  * Policy.
  * @member {string} [contentFormat] Format of the policyContent. Possible
- * values include: 'xml', 'xml-link'. Default value: 'xml' .
+ * values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'. Default value:
+ * 'xml' .
  */
 export interface PolicyContract extends Resource {
   policyContent: string;
@@ -213,6 +232,8 @@ export interface ApiVersionSetContractDetails {
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
  * @member {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  */
@@ -225,6 +246,8 @@ export interface ApiEntityBaseContract {
   apiVersion?: string;
   readonly isCurrent?: boolean;
   readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
   apiVersionSetId?: string;
 }
 
@@ -295,6 +318,8 @@ export interface ApiContractProperties extends ApiEntityBaseContract {
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
  * @member {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  * @member {string} [displayName] API name.
@@ -328,6 +353,8 @@ export interface ApiContract extends Resource {
   apiVersion?: string;
   readonly isCurrent?: boolean;
   readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
   apiVersionSetId?: string;
   displayName?: string;
   serviceUrl?: string;
@@ -382,6 +409,8 @@ export interface ApiCreateOrUpdatePropertiesWsdlSelector {
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
  * @member {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  * @member {string} [displayName] API name.
@@ -429,6 +458,8 @@ export interface ApiCreateOrUpdateParameter {
   apiVersion?: string;
   readonly isCurrent?: boolean;
   readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
   apiVersionSetId?: string;
   displayName?: string;
   serviceUrl?: string;
@@ -472,6 +503,8 @@ export interface ApiCreateOrUpdateParameter {
  * revision.
  * @member {boolean} [isOnline] Indicates if API revision is accessible via the
  * gateway.
+ * @member {string} [apiRevisionDescription] Description of the Api Revision.
+ * @member {string} [apiVersionDescription] Description of the Api Version.
  * @member {string} [apiVersionSetId] A resource identifier for the related
  * ApiVersionSet.
  * @member {string} [displayName] API name.
@@ -493,6 +526,8 @@ export interface ApiUpdateContract {
   apiVersion?: string;
   readonly isCurrent?: boolean;
   readonly isOnline?: boolean;
+  apiRevisionDescription?: string;
+  apiVersionDescription?: string;
   apiVersionSetId?: string;
   displayName?: string;
   serviceUrl?: string;
@@ -835,24 +870,124 @@ export interface SchemaContract extends Resource {
 
 /**
  * @class
- * Initializes a new instance of the LoggerContract class.
+ * Initializes a new instance of the IssueContract class.
  * @constructor
- * Logger details.
+ * Issue Contract details.
  *
- * @member {string} loggerType Logger type. Possible values include:
- * 'azureEventHub', 'applicationInsights'
- * @member {string} [description] Logger description.
- * @member {object} credentials The name and SendRule connection string of the
- * event hub for azureEventHub logger.
- * Instrumentation key for applicationInsights logger.
- * @member {boolean} [isBuffered] Whether records are buffered in the logger
- * before publishing. Default is assumed to be true.
+ * @member {string} title The issue title.
+ * @member {string} description Text describing the issue.
+ * @member {date} [createdDate] Date and time when the issue was created.
+ * @member {string} [state] Status of the issue. Possible values include:
+ * 'proposed', 'open', 'removed', 'resolved', 'closed'
+ * @member {string} userId A resource identifier for the user created the
+ * issue.
+ * @member {string} [apiId] A resource identifier for the API the issue was
+ * created for.
  */
-export interface LoggerContract extends Resource {
-  loggerType: string;
-  description?: string;
-  credentials: { [propertyName: string]: string };
-  isBuffered?: boolean;
+export interface IssueContract extends Resource {
+  title: string;
+  description: string;
+  createdDate?: Date;
+  state?: string;
+  userId: string;
+  apiId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueCommentContract class.
+ * @constructor
+ * Issue Comment Contract details.
+ *
+ * @member {string} text Comment text.
+ * @member {date} [createdDate] Date and time when the comment was created.
+ * @member {string} userId A resource identifier for the user who left the
+ * comment.
+ */
+export interface IssueCommentContract extends Resource {
+  text: string;
+  createdDate?: Date;
+  userId: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueAttachmentContract class.
+ * @constructor
+ * Issue Attachment Contract details.
+ *
+ * @member {string} title Filename by which the binary data will be saved.
+ * @member {string} contentFormat Either 'link' if content is provided via an
+ * HTTP link or the MIME type of the Base64-encoded binary data provided in the
+ * 'content' property.
+ * @member {string} content An HTTP link or Base64-encoded binary data.
+ */
+export interface IssueAttachmentContract extends Resource {
+  title: string;
+  contentFormat: string;
+  content: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the BodyDiagnosticSettings class.
+ * @constructor
+ * Body logging settings.
+ *
+ * @member {number} [bytes] Number of request body bytes to log.
+ */
+export interface BodyDiagnosticSettings {
+  bytes?: number;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the HttpMessageDiagnostic class.
+ * @constructor
+ * Http message diagnostic settings.
+ *
+ * @member {array} [headers] Array of HTTP Headers to log.
+ * @member {object} [body] Body logging settings.
+ * @member {number} [body.bytes] Number of request body bytes to log.
+ */
+export interface HttpMessageDiagnostic {
+  headers?: string[];
+  body?: BodyDiagnosticSettings;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the PipelineDiagnosticSettings class.
+ * @constructor
+ * Diagnostic settings for incoming/outcoming HTTP messages to the Gateway.
+ *
+ * @member {object} [request] Diagnostic settings for request.
+ * @member {array} [request.headers] Array of HTTP Headers to log.
+ * @member {object} [request.body] Body logging settings.
+ * @member {number} [request.body.bytes] Number of request body bytes to log.
+ * @member {object} [response] Diagnostic settings for response.
+ * @member {array} [response.headers] Array of HTTP Headers to log.
+ * @member {object} [response.body] Body logging settings.
+ * @member {number} [response.body.bytes] Number of request body bytes to log.
+ */
+export interface PipelineDiagnosticSettings {
+  request?: HttpMessageDiagnostic;
+  response?: HttpMessageDiagnostic;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the SamplingSettings class.
+ * @constructor
+ * Sampling settings for Diagnostic.
+ *
+ * @member {string} [samplingType] Sampling type. Possible values include:
+ * 'fixed'
+ * @member {number} [percentage] Rate of sampling for fixed-rate sampling.
+ */
+export interface SamplingSettings {
+  samplingType?: string;
+  percentage?: number;
 }
 
 /**
@@ -861,11 +996,45 @@ export interface LoggerContract extends Resource {
  * @constructor
  * Diagnostic details.
  *
- * @member {boolean} enabled Indicates whether a diagnostic should receive data
- * or not.
+ * @member {string} [alwaysLog] Specifies for what type of messages sampling
+ * settings should not apply. Possible values include: 'allErrors'
+ * @member {string} loggerId Resource Id of a target logger.
+ * @member {object} [sampling] Sampling settings for Diagnostic.
+ * @member {string} [sampling.samplingType] Sampling type. Possible values
+ * include: 'fixed'
+ * @member {number} [sampling.percentage] Rate of sampling for fixed-rate
+ * sampling.
+ * @member {object} [frontend] Diagnostic settings for incoming/outcoming HTTP
+ * messages to the Gateway.
+ * @member {object} [frontend.request] Diagnostic settings for request.
+ * @member {array} [frontend.request.headers] Array of HTTP Headers to log.
+ * @member {object} [frontend.request.body] Body logging settings.
+ * @member {number} [frontend.request.body.bytes] Number of request body bytes
+ * to log.
+ * @member {object} [frontend.response] Diagnostic settings for response.
+ * @member {array} [frontend.response.headers] Array of HTTP Headers to log.
+ * @member {object} [frontend.response.body] Body logging settings.
+ * @member {number} [frontend.response.body.bytes] Number of request body bytes
+ * to log.
+ * @member {object} [backend] Diagnostic settings for incoming/outcoming HTTP
+ * messages to the Backend
+ * @member {object} [backend.request] Diagnostic settings for request.
+ * @member {array} [backend.request.headers] Array of HTTP Headers to log.
+ * @member {object} [backend.request.body] Body logging settings.
+ * @member {number} [backend.request.body.bytes] Number of request body bytes
+ * to log.
+ * @member {object} [backend.response] Diagnostic settings for response.
+ * @member {array} [backend.response.headers] Array of HTTP Headers to log.
+ * @member {object} [backend.response.body] Body logging settings.
+ * @member {number} [backend.response.body.bytes] Number of request body bytes
+ * to log.
  */
 export interface DiagnosticContract extends Resource {
-  enabled: boolean;
+  alwaysLog?: string;
+  loggerId: string;
+  sampling?: SamplingSettings;
+  frontend?: PipelineDiagnosticSettings;
+  backend?: PipelineDiagnosticSettings;
 }
 
 /**
@@ -887,13 +1056,13 @@ export interface DiagnosticContract extends Resource {
  * be made without a subscription key. If property is omitted when creating a
  * new product it's value is assumed to be true.
  * @member {boolean} [approvalRequired] whether subscription approval is
- * required. If false, new subscriptions will be approved automatically
+ * required. If false, new subscriptions will be approved automatically
  * enabling developers to call the product’s APIs immediately after
- * subscribing. If true, administrators must manually approve the subscription
+ * subscribing. If true, administrators must manually approve the subscription
  * before the developer can any of the product’s APIs. Can be present only if
  * subscriptionRequired property is present and has a value of false.
  * @member {number} [subscriptionsLimit] Whether the number of subscriptions a
- * user can have to this product at the same time. Set to null or omit to allow
+ * user can have to this product at the same time. Set to null or omit to allow
  * unlimited per user subscriptions. Can be present only if
  * subscriptionRequired property is present and has a value of false.
  * @member {string} [state] whether product is published or not. Published
@@ -1058,13 +1227,13 @@ export interface TagResourceContract {
  * be made without a subscription key. If property is omitted when creating a
  * new product it's value is assumed to be true.
  * @member {boolean} [approvalRequired] whether subscription approval is
- * required. If false, new subscriptions will be approved automatically
+ * required. If false, new subscriptions will be approved automatically
  * enabling developers to call the product’s APIs immediately after
- * subscribing. If true, administrators must manually approve the subscription
+ * subscribing. If true, administrators must manually approve the subscription
  * before the developer can any of the product’s APIs. Can be present only if
  * subscriptionRequired property is present and has a value of false.
  * @member {number} [subscriptionsLimit] Whether the number of subscriptions a
- * user can have to this product at the same time. Set to null or omit to allow
+ * user can have to this product at the same time. Set to null or omit to allow
  * unlimited per user subscriptions. Can be present only if
  * subscriptionRequired property is present and has a value of false.
  * @member {string} [state] whether product is published or not. Published
@@ -1793,8 +1962,13 @@ export interface ApiManagementServiceSkuProperties {
  * 'Developer', 'Standard', 'Premium', 'Basic'
  * @member {number} [sku.capacity] Capacity of the SKU (number of deployed
  * units of the SKU). The default value is 1.
- * @member {array} [publicIPAddresses] Static IP addresses of the location's
- * virtual machines.
+ * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
+ * of the API Management service in the additional location. Available only for
+ * Basic, Standard and Premium SKU.
+ * @member {array} [privateIPAddresses] Private Static Load Balanced IP
+ * addresses of the API Management service which is deployed in an Internal
+ * Virtual Network in a particular additional location. Available only for
+ * Basic, Standard and Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * for the location.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -1811,6 +1985,7 @@ export interface AdditionalLocation {
   location: string;
   sku: ApiManagementServiceSkuProperties;
   readonly publicIPAddresses?: string[];
+  readonly privateIPAddresses?: string[];
   virtualNetworkConfiguration?: VirtualNetworkConfiguration;
   readonly gatewayRegionalUrl?: string;
 }
@@ -1865,11 +2040,12 @@ export interface ApiManagementServiceBackupRestoreParameters {
  * @member {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
  * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service. Available only for Basic, Standard and
- * Premium SKU.
+ * of the API Management service in Primary region. Available only for Basic,
+ * Standard and Premium SKU.
  * @member {array} [privateIPAddresses] Private Static Load Balanced IP
- * addresses of the API Management service which is deployed in an Internal
- * Virtual Network. Available only for Basic, Standard and Premium SKU.
+ * addresses of the API Management service in Primary region which is deployed
+ * in an Internal Virtual Network. Available only for Basic, Standard and
+ * Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * of the API Management service.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -1983,11 +2159,12 @@ export interface ApimResource extends BaseResource {
  * @member {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
  * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service. Available only for Basic, Standard and
- * Premium SKU.
+ * of the API Management service in Primary region. Available only for Basic,
+ * Standard and Premium SKU.
  * @member {array} [privateIPAddresses] Private Static Load Balanced IP
- * addresses of the API Management service which is deployed in an Internal
- * Virtual Network. Available only for Basic, Standard and Premium SKU.
+ * addresses of the API Management service in Primary region which is deployed
+ * in an Internal Virtual Network. Available only for Basic, Standard and
+ * Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * of the API Management service.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -2087,11 +2264,12 @@ export interface ApiManagementServiceResource extends ApimResource {
  * @member {array} [hostnameConfigurations] Custom hostname configuration of
  * the API Management service.
  * @member {array} [publicIPAddresses] Public Static Load Balanced IP addresses
- * of the API Management service. Available only for Basic, Standard and
- * Premium SKU.
+ * of the API Management service in Primary region. Available only for Basic,
+ * Standard and Premium SKU.
  * @member {array} [privateIPAddresses] Private Static Load Balanced IP
- * addresses of the API Management service which is deployed in an Internal
- * Virtual Network. Available only for Basic, Standard and Premium SKU.
+ * addresses of the API Management service in Primary region which is deployed
+ * in an Internal Virtual Network. Available only for Basic, Standard and
+ * Premium SKU.
  * @member {object} [virtualNetworkConfiguration] Virtual network configuration
  * of the API Management service.
  * @member {string} [virtualNetworkConfiguration.vnetid] The virtual network
@@ -2650,6 +2828,31 @@ export interface IdentityProviderBaseParameters {
 
 /**
  * @class
+ * Initializes a new instance of the LoggerContract class.
+ * @constructor
+ * Logger details.
+ *
+ * @member {string} loggerType Logger type. Possible values include:
+ * 'azureEventHub', 'applicationInsights'
+ * @member {string} [description] Logger description.
+ * @member {object} credentials The name and SendRule connection string of the
+ * event hub for azureEventHub logger.
+ * Instrumentation key for applicationInsights logger.
+ * @member {boolean} [isBuffered] Whether records are buffered in the logger
+ * before publishing. Default is assumed to be true.
+ * @member {string} [resourceId] Azure Resource Id of a log target (either
+ * Azure Event Hub resource or Azure Application Insights resource).
+ */
+export interface LoggerContract extends Resource {
+  loggerType: string;
+  description?: string;
+  credentials: { [propertyName: string]: string };
+  isBuffered?: boolean;
+  resourceId?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the LoggerUpdateContract class.
  * @constructor
  * Logger update contract.
@@ -2980,13 +3183,13 @@ export interface PortalDelegationSettings extends Resource {
  * be made without a subscription key. If property is omitted when creating a
  * new product it's value is assumed to be true.
  * @member {boolean} [approvalRequired] whether subscription approval is
- * required. If false, new subscriptions will be approved automatically
+ * required. If false, new subscriptions will be approved automatically
  * enabling developers to call the product’s APIs immediately after
- * subscribing. If true, administrators must manually approve the subscription
+ * subscribing. If true, administrators must manually approve the subscription
  * before the developer can any of the product’s APIs. Can be present only if
  * subscriptionRequired property is present and has a value of false.
  * @member {number} [subscriptionsLimit] Whether the number of subscriptions a
- * user can have to this product at the same time. Set to null or omit to allow
+ * user can have to this product at the same time. Set to null or omit to allow
  * unlimited per user subscriptions. Can be present only if
  * subscriptionRequired property is present and has a value of false.
  * @member {string} [state] whether product is published or not. Published
@@ -3574,7 +3777,7 @@ export interface OperationResultContract {
   started?: Date;
   updated?: Date;
   resultInfo?: string;
-  error?: ErrorResponse;
+  error?: ErrorResponseBody;
   readonly actionLog?: OperationResultLogItemContract[];
 }
 
@@ -3819,7 +4022,7 @@ export interface RegionListResult extends Array<RegionContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface ApiCollection extends Array<ApiContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3844,7 +4047,7 @@ export interface TagResourceCollection extends Array<TagResourceContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface ApiRevisionCollection extends Array<ApiRevisionContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3856,7 +4059,7 @@ export interface ApiRevisionCollection extends Array<ApiRevisionContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface ApiReleaseCollection extends Array<ApiReleaseContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3868,7 +4071,7 @@ export interface ApiReleaseCollection extends Array<ApiReleaseContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface OperationCollection extends Array<OperationContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3892,7 +4095,7 @@ export interface ProductCollection extends Array<ProductContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface SchemaCollection extends Array<SchemaContract> {
-  nextLink?: string;
+  readonly nextLink?: string;
 }
 
 /**
@@ -3909,15 +4112,38 @@ export interface DiagnosticCollection extends Array<DiagnosticContract> {
 
 /**
  * @class
- * Initializes a new instance of the LoggerCollection class.
+ * Initializes a new instance of the IssueCollection class.
  * @constructor
- * Paged Logger list representation.
+ * Paged Issue list representation.
  *
- * @member {number} [count] Total record count number across all pages.
  * @member {string} [nextLink] Next page link if any.
  */
-export interface LoggerCollection extends Array<LoggerContract> {
-  nextLink?: string;
+export interface IssueCollection extends Array<IssueContract> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueCommentCollection class.
+ * @constructor
+ * Paged Issue Comment list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface IssueCommentCollection extends Array<IssueCommentContract> {
+  readonly nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the IssueAttachmentCollection class.
+ * @constructor
+ * Paged Issue Attachment list representation.
+ *
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface IssueAttachmentCollection extends Array<IssueAttachmentContract> {
+  readonly nextLink?: string;
 }
 
 /**
@@ -4029,6 +4255,19 @@ export interface UserCollection extends Array<UserContract> {
  * @member {string} [nextLink] Next page link if any.
  */
 export interface IdentityProviderList extends Array<IdentityProviderContract> {
+  nextLink?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the LoggerCollection class.
+ * @constructor
+ * Paged Logger list representation.
+ *
+ * @member {number} [count] Total record count number across all pages.
+ * @member {string} [nextLink] Next page link if any.
+ */
+export interface LoggerCollection extends Array<LoggerContract> {
   nextLink?: string;
 }
 

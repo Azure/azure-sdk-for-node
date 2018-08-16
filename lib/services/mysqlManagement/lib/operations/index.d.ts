@@ -1382,6 +1382,506 @@ export interface FirewallRules {
 
 /**
  * @class
+ * VirtualNetworkRules
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the MySQLManagementClient.
+ */
+export interface VirtualNetworkRules {
+
+
+    /**
+     * Gets a virtual network rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRule>>;
+
+    /**
+     * Gets a virtual network rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRule>;
+    get(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+    get(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+
+
+    /**
+     * Creates or updates an existing virtual network rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} parameters The requested virtual Network Rule Resource
+     * state.
+     *
+     * @param {string} parameters.virtualNetworkSubnetId The ARM resource id of the
+     * virtual network subnet.
+     *
+     * @param {boolean} [parameters.ignoreMissingVnetServiceEndpoint] Create
+     * firewall rule before the virtual network has vnet service endpoint enabled.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRule>>;
+
+    /**
+     * Creates or updates an existing virtual network rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} parameters The requested virtual Network Rule Resource
+     * state.
+     *
+     * @param {string} parameters.virtualNetworkSubnetId The ARM resource id of the
+     * virtual network subnet.
+     *
+     * @param {boolean} [parameters.ignoreMissingVnetServiceEndpoint] Create
+     * firewall rule before the virtual network has vnet service endpoint enabled.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRule>;
+    createOrUpdate(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+    createOrUpdate(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+
+
+    /**
+     * Deletes the virtual network rule with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the virtual network rule with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a list of virtual network rules in a server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerWithHttpOperationResponse(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRuleListResult>>;
+
+    /**
+     * Gets a list of virtual network rules in a server.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServer(resourceGroupName: string, serverName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRuleListResult>;
+    listByServer(resourceGroupName: string, serverName: string, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
+    listByServer(resourceGroupName: string, serverName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
+
+
+    /**
+     * Creates or updates an existing virtual network rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} parameters The requested virtual Network Rule Resource
+     * state.
+     *
+     * @param {string} parameters.virtualNetworkSubnetId The ARM resource id of the
+     * virtual network subnet.
+     *
+     * @param {boolean} [parameters.ignoreMissingVnetServiceEndpoint] Create
+     * firewall rule before the virtual network has vnet service endpoint enabled.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRule>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginCreateOrUpdateWithHttpOperationResponse(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRule>>;
+
+    /**
+     * Creates or updates an existing virtual network rule.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} parameters The requested virtual Network Rule Resource
+     * state.
+     *
+     * @param {string} parameters.virtualNetworkSubnetId The ARM resource id of the
+     * virtual network subnet.
+     *
+     * @param {boolean} [parameters.ignoreMissingVnetServiceEndpoint] Create
+     * firewall rule before the virtual network has vnet service endpoint enabled.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRule} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRule} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRule} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRule>;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+    beginCreateOrUpdate(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, parameters: models.VirtualNetworkRule, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRule>): void;
+
+
+    /**
+     * Deletes the virtual network rule with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    beginDeleteMethodWithHttpOperationResponse(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the virtual network rule with the given name.
+     *
+     * @param {string} resourceGroupName The name of the resource group that
+     * contains the resource. You can obtain this value from the Azure Resource
+     * Manager API or the portal.
+     *
+     * @param {string} serverName The name of the server.
+     *
+     * @param {string} virtualNetworkRuleName The name of the virtual network rule.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    beginDeleteMethod(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, callback: ServiceCallback<void>): void;
+    beginDeleteMethod(resourceGroupName: string, serverName: string, virtualNetworkRuleName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets a list of virtual network rules in a server.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<VirtualNetworkRuleListResult>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServerNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.VirtualNetworkRuleListResult>>;
+
+    /**
+     * Gets a list of virtual network rules in a server.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {VirtualNetworkRuleListResult} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {VirtualNetworkRuleListResult} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link VirtualNetworkRuleListResult} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServerNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.VirtualNetworkRuleListResult>;
+    listByServerNext(nextPageLink: string, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
+    listByServerNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.VirtualNetworkRuleListResult>): void;
+}
+
+/**
+ * @class
  * Databases
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the MySQLManagementClient.
