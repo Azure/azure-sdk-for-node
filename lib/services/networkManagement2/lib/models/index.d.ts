@@ -3757,6 +3757,9 @@ export interface LoadBalancerSku {
  * changes whenever the resource is updated.
  * @member {array} [publicIPAddress.zones] A list of availability zones
  * denoting the IP allocated for the resource needs to come from.
+ * @member {object} [publicIPPrefix] The reference of the Public IP Prefix
+ * resource.
+ * @member {string} [publicIPPrefix.id] Resource ID.
  * @member {string} [provisioningState] Gets the provisioning state of the
  * public IP resource. Possible values are: 'Updating', 'Deleting', and
  * 'Failed'.
@@ -3776,6 +3779,7 @@ export interface FrontendIPConfiguration extends SubResource {
   privateIPAllocationMethod?: string;
   subnet?: Subnet;
   publicIPAddress?: PublicIPAddress;
+  publicIPPrefix?: SubResource;
   provisioningState?: string;
   name?: string;
   etag?: string;
