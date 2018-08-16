@@ -220,7 +220,7 @@ export interface Policy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -249,7 +249,7 @@ export interface Policy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -830,6 +830,12 @@ export interface Api {
      * @param {string} [parameters.apiVersion] Indicates the Version identifier of
      * the API if the API is versioned
      *
+     * @param {string} [parameters.apiRevisionDescription] Description of the Api
+     * Revision.
+     *
+     * @param {string} [parameters.apiVersionDescription] Description of the Api
+     * Version.
+     *
      * @param {string} [parameters.apiVersionSetId] A resource identifier for the
      * related ApiVersionSet.
      *
@@ -950,6 +956,12 @@ export interface Api {
      *
      * @param {string} [parameters.apiVersion] Indicates the Version identifier of
      * the API if the API is versioned
+     *
+     * @param {string} [parameters.apiRevisionDescription] Description of the Api
+     * Revision.
+     *
+     * @param {string} [parameters.apiVersionDescription] Description of the Api
+     * Version.
      *
      * @param {string} [parameters.apiVersionSetId] A resource identifier for the
      * related ApiVersionSet.
@@ -1090,6 +1102,12 @@ export interface Api {
      * @param {string} [parameters.apiVersion] Indicates the Version identifier of
      * the API if the API is versioned
      *
+     * @param {string} [parameters.apiRevisionDescription] Description of the Api
+     * Revision.
+     *
+     * @param {string} [parameters.apiVersionDescription] Description of the Api
+     * Version.
+     *
      * @param {string} [parameters.apiVersionSetId] A resource identifier for the
      * related ApiVersionSet.
      *
@@ -1169,6 +1187,12 @@ export interface Api {
      *
      * @param {string} [parameters.apiVersion] Indicates the Version identifier of
      * the API if the API is versioned
+     *
+     * @param {string} [parameters.apiRevisionDescription] Description of the Api
+     * Revision.
+     *
+     * @param {string} [parameters.apiVersionDescription] Description of the Api
+     * Version.
      *
      * @param {string} [parameters.apiVersionSetId] A resource identifier for the
      * related ApiVersionSet.
@@ -3168,7 +3192,7 @@ export interface ApiOperationPolicy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3206,7 +3230,7 @@ export interface ApiOperationPolicy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3702,7 +3726,7 @@ export interface ApiPolicy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3737,7 +3761,7 @@ export interface ApiPolicy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4555,8 +4579,38 @@ export interface ApiDiagnostic {
      *
      * @param {object} parameters Create parameters.
      *
-     * @param {boolean} parameters.enabled Indicates whether a diagnostic should
-     * receive data or not.
+     * @param {string} [parameters.alwaysLog] Specifies for what type of messages
+     * sampling settings should not apply. Possible values include: 'allErrors'
+     *
+     * @param {string} parameters.loggerId Resource Id of a target logger.
+     *
+     * @param {object} [parameters.sampling] Sampling settings for Diagnostic.
+     *
+     * @param {string} [parameters.sampling.samplingType] Sampling type. Possible
+     * values include: 'fixed'
+     *
+     * @param {number} [parameters.sampling.percentage] Rate of sampling for
+     * fixed-rate sampling.
+     *
+     * @param {object} [parameters.frontend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Gateway.
+     *
+     * @param {object} [parameters.backend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Backend
+     *
+     * @param {object} [parameters.backend.request] Diagnostic settings for
+     * request.
+     *
+     * @param {object} [parameters.backend.response] Diagnostic settings for
+     * response.
+     *
+     * @param {array} [parameters.backend.response.headers] Array of HTTP Headers
+     * to log.
+     *
+     * @param {object} [parameters.backend.response.body] Body logging settings.
+     *
+     * @param {number} [parameters.backend.response.body.bytes] Number of request
+     * body bytes to log.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4589,8 +4643,38 @@ export interface ApiDiagnostic {
      *
      * @param {object} parameters Create parameters.
      *
-     * @param {boolean} parameters.enabled Indicates whether a diagnostic should
-     * receive data or not.
+     * @param {string} [parameters.alwaysLog] Specifies for what type of messages
+     * sampling settings should not apply. Possible values include: 'allErrors'
+     *
+     * @param {string} parameters.loggerId Resource Id of a target logger.
+     *
+     * @param {object} [parameters.sampling] Sampling settings for Diagnostic.
+     *
+     * @param {string} [parameters.sampling.samplingType] Sampling type. Possible
+     * values include: 'fixed'
+     *
+     * @param {number} [parameters.sampling.percentage] Rate of sampling for
+     * fixed-rate sampling.
+     *
+     * @param {object} [parameters.frontend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Gateway.
+     *
+     * @param {object} [parameters.backend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Backend
+     *
+     * @param {object} [parameters.backend.request] Diagnostic settings for
+     * request.
+     *
+     * @param {object} [parameters.backend.response] Diagnostic settings for
+     * response.
+     *
+     * @param {array} [parameters.backend.response.headers] Array of HTTP Headers
+     * to log.
+     *
+     * @param {object} [parameters.backend.response.body] Body logging settings.
+     *
+     * @param {number} [parameters.backend.response.body.bytes] Number of request
+     * body bytes to log.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4643,8 +4727,38 @@ export interface ApiDiagnostic {
      *
      * @param {object} parameters Diagnostic Update parameters.
      *
-     * @param {boolean} parameters.enabled Indicates whether a diagnostic should
-     * receive data or not.
+     * @param {string} [parameters.alwaysLog] Specifies for what type of messages
+     * sampling settings should not apply. Possible values include: 'allErrors'
+     *
+     * @param {string} parameters.loggerId Resource Id of a target logger.
+     *
+     * @param {object} [parameters.sampling] Sampling settings for Diagnostic.
+     *
+     * @param {string} [parameters.sampling.samplingType] Sampling type. Possible
+     * values include: 'fixed'
+     *
+     * @param {number} [parameters.sampling.percentage] Rate of sampling for
+     * fixed-rate sampling.
+     *
+     * @param {object} [parameters.frontend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Gateway.
+     *
+     * @param {object} [parameters.backend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Backend
+     *
+     * @param {object} [parameters.backend.request] Diagnostic settings for
+     * request.
+     *
+     * @param {object} [parameters.backend.response] Diagnostic settings for
+     * response.
+     *
+     * @param {array} [parameters.backend.response.headers] Array of HTTP Headers
+     * to log.
+     *
+     * @param {object} [parameters.backend.response.body] Body logging settings.
+     *
+     * @param {number} [parameters.backend.response.body.bytes] Number of request
+     * body bytes to log.
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -4679,8 +4793,38 @@ export interface ApiDiagnostic {
      *
      * @param {object} parameters Diagnostic Update parameters.
      *
-     * @param {boolean} parameters.enabled Indicates whether a diagnostic should
-     * receive data or not.
+     * @param {string} [parameters.alwaysLog] Specifies for what type of messages
+     * sampling settings should not apply. Possible values include: 'allErrors'
+     *
+     * @param {string} parameters.loggerId Resource Id of a target logger.
+     *
+     * @param {object} [parameters.sampling] Sampling settings for Diagnostic.
+     *
+     * @param {string} [parameters.sampling.samplingType] Sampling type. Possible
+     * values include: 'fixed'
+     *
+     * @param {number} [parameters.sampling.percentage] Rate of sampling for
+     * fixed-rate sampling.
+     *
+     * @param {object} [parameters.frontend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Gateway.
+     *
+     * @param {object} [parameters.backend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Backend
+     *
+     * @param {object} [parameters.backend.request] Diagnostic settings for
+     * request.
+     *
+     * @param {object} [parameters.backend.response] Diagnostic settings for
+     * response.
+     *
+     * @param {array} [parameters.backend.response.headers] Array of HTTP Headers
+     * to log.
+     *
+     * @param {object} [parameters.backend.response.body] Body logging settings.
+     *
+     * @param {number} [parameters.backend.response.body.bytes] Number of request
+     * body bytes to log.
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -4854,15 +4998,15 @@ export interface ApiDiagnostic {
 
 /**
  * @class
- * ApiDiagnosticLogger
+ * ApiIssue
  * __NOTE__: An instance of this class is automatically created for an
  * instance of the ApiManagementClient.
  */
-export interface ApiDiagnosticLogger {
+export interface ApiIssue {
 
 
     /**
-     * Lists all loggers assosiated with the specified Diagnostic of an API.
+     * Lists all issues assosiated with the specified API.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4871,16 +5015,16 @@ export interface ApiDiagnosticLogger {
      * @param {string} apiId API identifier. Must be unique in the current API
      * Management service instance.
      *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] | Field       | Supported operators    |
      * Supported functions               |
      * |-------------|------------------------|-----------------------------------|
      * | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-     * | type        | eq                     |                                   |
+     * | state        | eq                     |
+     * |
+     * | userId          | ge, le, eq, ne, gt, lt | substringof, startswith,
+     * endswith |
      *
      * @param {number} [options.top] Number of records to return.
      *
@@ -4891,14 +5035,14 @@ export interface ApiDiagnosticLogger {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LoggerCollection>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<IssueCollection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoggerCollection>>;
+    listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCollection>>;
 
     /**
-     * Lists all loggers assosiated with the specified Diagnostic of an API.
+     * Lists all issues assosiated with the specified API.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4907,16 +5051,16 @@ export interface ApiDiagnosticLogger {
      * @param {string} apiId API identifier. Must be unique in the current API
      * Management service instance.
      *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.filter] | Field       | Supported operators    |
      * Supported functions               |
      * |-------------|------------------------|-----------------------------------|
      * | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-     * | type        | eq                     |                                   |
+     * | state        | eq                     |
+     * |
+     * | userId          | ge, le, eq, ne, gt, lt | substringof, startswith,
+     * endswith |
      *
      * @param {number} [options.top] Number of records to return.
      *
@@ -4932,7 +5076,7 @@ export interface ApiDiagnosticLogger {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LoggerCollection} - The deserialized result object.
+     *                      @resolve {IssueCollection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4940,21 +5084,21 @@ export interface ApiDiagnosticLogger {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LoggerCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LoggerCollection} for more information.
+     *                      {IssueCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueCollection} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByService(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.LoggerCollection>;
-    listByService(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, callback: ServiceCallback<models.LoggerCollection>): void;
-    listByService(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, options: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoggerCollection>): void;
+    listByService(resourceGroupName: string, serviceName: string, apiId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueCollection>;
+    listByService(resourceGroupName: string, serviceName: string, apiId: string, callback: ServiceCallback<models.IssueCollection>): void;
+    listByService(resourceGroupName: string, serviceName: string, apiId: string, options: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueCollection>): void;
 
 
     /**
-     * Checks that logger entity specified by identifier is associated with the
-     * diagnostics entity.
+     * Gets the entity state (Etag) version of the Issue for an API specified by
+     * its identifier.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -4963,164 +5107,7 @@ export interface ApiDiagnosticLogger {
      * @param {string} apiId API identifier. Must be unique in the current API
      * Management service instance.
      *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {string} loggerid Logger identifier. Must be unique in the API
-     * Management service instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Boolean>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    checkEntityExistsWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<boolean>>;
-
-    /**
-     * Checks that logger entity specified by identifier is associated with the
-     * diagnostics entity.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
-     *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {string} loggerid Logger identifier. Must be unique in the API
-     * Management service instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Boolean} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Boolean} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    checkEntityExists(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<boolean>;
-    checkEntityExists(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, callback: ServiceCallback<boolean>): void;
-    checkEntityExists(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
-
-
-    /**
-     * Attaches a logger to a dignostic for an API.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
-     *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {string} loggerid Logger identifier. Must be unique in the API
-     * Management service instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<LoggerContract>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoggerContract>>;
-
-    /**
-     * Attaches a logger to a dignostic for an API.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
-     *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {string} loggerid Logger identifier. Must be unique in the API
-     * Management service instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {LoggerContract} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {LoggerContract} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LoggerContract} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoggerContract>;
-    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, callback: ServiceCallback<models.LoggerContract>): void;
-    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoggerContract>): void;
-
-
-    /**
-     * Deletes the specified Logger from Diagnostic for an API.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
-     *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {string} loggerid Logger identifier. Must be unique in the API
+     * @param {string} issueId Issue identifier. Must be unique in the current API
      * Management service instance.
      *
      * @param {object} [options] Optional Parameters.
@@ -5134,10 +5121,11 @@ export interface ApiDiagnosticLogger {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
 
     /**
-     * Deletes the specified Logger from Diagnostic for an API.
+     * Gets the entity state (Etag) version of the Issue for an API specified by
+     * its identifier.
      *
      * @param {string} resourceGroupName The name of the resource group.
      *
@@ -5146,10 +5134,7 @@ export interface ApiDiagnosticLogger {
      * @param {string} apiId API identifier. Must be unique in the current API
      * Management service instance.
      *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {string} loggerid Logger identifier. Must be unique in the API
+     * @param {string} issueId Issue identifier. Must be unique in the current API
      * Management service instance.
      *
      * @param {object} [options] Optional Parameters.
@@ -5178,13 +5163,277 @@ export interface ApiDiagnosticLogger {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, diagnosticId: string, loggerid: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
-     * Lists all loggers assosiated with the specified Diagnostic of an API.
+     * Gets the details of the Issue for an API specified by its identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueContract>>;
+
+    /**
+     * Gets the details of the Issue for an API specified by its identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueContract>;
+    get(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, callback: ServiceCallback<models.IssueContract>): void;
+    get(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueContract>): void;
+
+
+    /**
+     * Creates a new Issue for an API or updates an existing one.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} parameters Create parameters.
+     *
+     * @param {string} parameters.title The issue title.
+     *
+     * @param {string} parameters.description Text describing the issue.
+     *
+     * @param {date} [parameters.createdDate] Date and time when the issue was
+     * created.
+     *
+     * @param {string} [parameters.state] Status of the issue. Possible values
+     * include: 'proposed', 'open', 'removed', 'resolved', 'closed'
+     *
+     * @param {string} parameters.userId A resource identifier for the user created
+     * the issue.
+     *
+     * @param {string} [parameters.apiId] A resource identifier for the API the
+     * issue was created for.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Issue Entity. ETag should
+     * match the current entity state from the header response of the GET request
+     * or it should be * for unconditional update.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, parameters: models.IssueContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueContract>>;
+
+    /**
+     * Creates a new Issue for an API or updates an existing one.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} parameters Create parameters.
+     *
+     * @param {string} parameters.title The issue title.
+     *
+     * @param {string} parameters.description Text describing the issue.
+     *
+     * @param {date} [parameters.createdDate] Date and time when the issue was
+     * created.
+     *
+     * @param {string} [parameters.state] Status of the issue. Possible values
+     * include: 'proposed', 'open', 'removed', 'resolved', 'closed'
+     *
+     * @param {string} parameters.userId A resource identifier for the user created
+     * the issue.
+     *
+     * @param {string} [parameters.apiId] A resource identifier for the API the
+     * issue was created for.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Issue Entity. ETag should
+     * match the current entity state from the header response of the GET request
+     * or it should be * for unconditional update.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, parameters: models.IssueContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, parameters: models.IssueContract, callback: ServiceCallback<models.IssueContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, parameters: models.IssueContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueContract>): void;
+
+
+    /**
+     * Deletes the specified Issue from an API.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} ifMatch ETag of the Issue Entity. ETag should match the
+     * current entity state from the header response of the GET request or it
+     * should be * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified Issue from an API.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} ifMatch ETag of the Issue Entity. ETag should match the
+     * current entity state from the header response of the GET request or it
+     * should be * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, ifMatch: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all issues assosiated with the specified API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -5196,14 +5445,14 @@ export interface ApiDiagnosticLogger {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<LoggerCollection>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<IssueCollection>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoggerCollection>>;
+    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCollection>>;
 
     /**
-     * Lists all loggers assosiated with the specified Diagnostic of an API.
+     * Lists all issues assosiated with the specified API.
      *
      * @param {string} nextPageLink The NextLink from the previous successful call
      * to List operation.
@@ -5220,7 +5469,7 @@ export interface ApiDiagnosticLogger {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {LoggerCollection} - The deserialized result object.
+     *                      @resolve {IssueCollection} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -5228,16 +5477,1036 @@ export interface ApiDiagnosticLogger {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {LoggerCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LoggerCollection} for more information.
+     *                      {IssueCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueCollection} for more information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoggerCollection>;
-    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.LoggerCollection>): void;
-    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoggerCollection>): void;
+    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueCollection>;
+    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.IssueCollection>): void;
+    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueCollection>): void;
+}
+
+/**
+ * @class
+ * ApiIssueComment
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApiManagementClient.
+ */
+export interface ApiIssueComment {
+
+
+    /**
+     * Lists all comments for the Issue assosiated with the specified API.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] | Field       | Supported operators    |
+     * Supported functions               |
+     * |-------------|------------------------|-----------------------------------|
+     * | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+     * | userId          | ge, le, eq, ne, gt, lt | substringof, startswith,
+     * endswith |
+     *
+     * @param {number} [options.top] Number of records to return.
+     *
+     * @param {number} [options.skip] Number of records to skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueCommentCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCommentCollection>>;
+
+    /**
+     * Lists all comments for the Issue assosiated with the specified API.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] | Field       | Supported operators    |
+     * Supported functions               |
+     * |-------------|------------------------|-----------------------------------|
+     * | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+     * | userId          | ge, le, eq, ne, gt, lt | substringof, startswith,
+     * endswith |
+     *
+     * @param {number} [options.top] Number of records to return.
+     *
+     * @param {number} [options.skip] Number of records to skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueCommentCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueCommentCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueCommentCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByService(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueCommentCollection>;
+    listByService(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, callback: ServiceCallback<models.IssueCommentCollection>): void;
+    listByService(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueCommentCollection>): void;
+
+
+    /**
+     * Gets the entity state (Etag) version of the issue Comment for an API
+     * specified by its identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} commentId Comment identifier within an Issue. Must be unique
+     * in the current Issue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Gets the entity state (Etag) version of the issue Comment for an API
+     * specified by its identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} commentId Comment identifier within an Issue. Must be unique
+     * in the current Issue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the details of the issue Comment for an API specified by its
+     * identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} commentId Comment identifier within an Issue. Must be unique
+     * in the current Issue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueCommentContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCommentContract>>;
+
+    /**
+     * Gets the details of the issue Comment for an API specified by its
+     * identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} commentId Comment identifier within an Issue. Must be unique
+     * in the current Issue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueCommentContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueCommentContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueCommentContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueCommentContract>;
+    get(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, callback: ServiceCallback<models.IssueCommentContract>): void;
+    get(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueCommentContract>): void;
+
+
+    /**
+     * Creates a new Comment for the Issue in an API or updates an existing one.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} commentId Comment identifier within an Issue. Must be unique
+     * in the current Issue.
+     *
+     * @param {object} parameters Create parameters.
+     *
+     * @param {string} parameters.text Comment text.
+     *
+     * @param {date} [parameters.createdDate] Date and time when the comment was
+     * created.
+     *
+     * @param {string} parameters.userId A resource identifier for the user who
+     * left the comment.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Issue Entity. ETag should
+     * match the current entity state from the header response of the GET request
+     * or it should be * for unconditional update.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueCommentContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, parameters: models.IssueCommentContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCommentContract>>;
+
+    /**
+     * Creates a new Comment for the Issue in an API or updates an existing one.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} commentId Comment identifier within an Issue. Must be unique
+     * in the current Issue.
+     *
+     * @param {object} parameters Create parameters.
+     *
+     * @param {string} parameters.text Comment text.
+     *
+     * @param {date} [parameters.createdDate] Date and time when the comment was
+     * created.
+     *
+     * @param {string} parameters.userId A resource identifier for the user who
+     * left the comment.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Issue Entity. ETag should
+     * match the current entity state from the header response of the GET request
+     * or it should be * for unconditional update.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueCommentContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueCommentContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueCommentContract} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, parameters: models.IssueCommentContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueCommentContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, parameters: models.IssueCommentContract, callback: ServiceCallback<models.IssueCommentContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, parameters: models.IssueCommentContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueCommentContract>): void;
+
+
+    /**
+     * Deletes the specified comment from an Issue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} commentId Comment identifier within an Issue. Must be unique
+     * in the current Issue.
+     *
+     * @param {string} ifMatch ETag of the Issue Entity. ETag should match the
+     * current entity state from the header response of the GET request or it
+     * should be * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified comment from an Issue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} commentId Comment identifier within an Issue. Must be unique
+     * in the current Issue.
+     *
+     * @param {string} ifMatch ETag of the Issue Entity. ETag should match the
+     * current entity state from the header response of the GET request or it
+     * should be * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, ifMatch: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, commentId: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all comments for the Issue assosiated with the specified API.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueCommentCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueCommentCollection>>;
+
+    /**
+     * Lists all comments for the Issue assosiated with the specified API.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueCommentCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueCommentCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueCommentCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueCommentCollection>;
+    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.IssueCommentCollection>): void;
+    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueCommentCollection>): void;
+}
+
+/**
+ * @class
+ * ApiIssueAttachment
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the ApiManagementClient.
+ */
+export interface ApiIssueAttachment {
+
+
+    /**
+     * Lists all comments for the Issue assosiated with the specified API.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] | Field       | Supported operators    |
+     * Supported functions               |
+     * |-------------|------------------------|-----------------------------------|
+     * | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+     * | userId          | ge, le, eq, ne, gt, lt | substringof, startswith,
+     * endswith |
+     *
+     * @param {number} [options.top] Number of records to return.
+     *
+     * @param {number} [options.skip] Number of records to skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueAttachmentCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueAttachmentCollection>>;
+
+    /**
+     * Lists all comments for the Issue assosiated with the specified API.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.filter] | Field       | Supported operators    |
+     * Supported functions               |
+     * |-------------|------------------------|-----------------------------------|
+     * | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+     * | userId          | ge, le, eq, ne, gt, lt | substringof, startswith,
+     * endswith |
+     *
+     * @param {number} [options.top] Number of records to return.
+     *
+     * @param {number} [options.skip] Number of records to skip.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueAttachmentCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueAttachmentCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueAttachmentCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByService(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueAttachmentCollection>;
+    listByService(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, callback: ServiceCallback<models.IssueAttachmentCollection>): void;
+    listByService(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, options: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueAttachmentCollection>): void;
+
+
+    /**
+     * Gets the entity state (Etag) version of the issue Attachment for an API
+     * specified by its identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} attachmentId Attachment identifier within an Issue. Must be
+     * unique in the current Issue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getEntityTagWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Gets the entity state (Etag) version of the issue Attachment for an API
+     * specified by its identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} attachmentId Attachment identifier within an Issue. Must be
+     * unique in the current Issue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, callback: ServiceCallback<void>): void;
+    getEntityTag(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Gets the details of the issue Attachment for an API specified by its
+     * identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} attachmentId Attachment identifier within an Issue. Must be
+     * unique in the current Issue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueAttachmentContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueAttachmentContract>>;
+
+    /**
+     * Gets the details of the issue Attachment for an API specified by its
+     * identifier.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} attachmentId Attachment identifier within an Issue. Must be
+     * unique in the current Issue.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueAttachmentContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueAttachmentContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueAttachmentContract} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueAttachmentContract>;
+    get(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, callback: ServiceCallback<models.IssueAttachmentContract>): void;
+    get(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueAttachmentContract>): void;
+
+
+    /**
+     * Creates a new Attachment for the Issue in an API or updates an existing one.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} attachmentId Attachment identifier within an Issue. Must be
+     * unique in the current Issue.
+     *
+     * @param {object} parameters Create parameters.
+     *
+     * @param {string} parameters.title Filename by which the binary data will be
+     * saved.
+     *
+     * @param {string} parameters.contentFormat Either 'link' if content is
+     * provided via an HTTP link or the MIME type of the Base64-encoded binary data
+     * provided in the 'content' property.
+     *
+     * @param {string} parameters.content An HTTP link or Base64-encoded binary
+     * data.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Issue Entity. ETag should
+     * match the current entity state from the header response of the GET request
+     * or it should be * for unconditional update.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueAttachmentContract>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, parameters: models.IssueAttachmentContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueAttachmentContract>>;
+
+    /**
+     * Creates a new Attachment for the Issue in an API or updates an existing one.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} attachmentId Attachment identifier within an Issue. Must be
+     * unique in the current Issue.
+     *
+     * @param {object} parameters Create parameters.
+     *
+     * @param {string} parameters.title Filename by which the binary data will be
+     * saved.
+     *
+     * @param {string} parameters.contentFormat Either 'link' if content is
+     * provided via an HTTP link or the MIME type of the Base64-encoded binary data
+     * provided in the 'content' property.
+     *
+     * @param {string} parameters.content An HTTP link or Base64-encoded binary
+     * data.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the Issue Entity. ETag should
+     * match the current entity state from the header response of the GET request
+     * or it should be * for unconditional update.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueAttachmentContract} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueAttachmentContract} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueAttachmentContract} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, parameters: models.IssueAttachmentContract, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueAttachmentContract>;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, parameters: models.IssueAttachmentContract, callback: ServiceCallback<models.IssueAttachmentContract>): void;
+    createOrUpdate(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, parameters: models.IssueAttachmentContract, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueAttachmentContract>): void;
+
+
+    /**
+     * Deletes the specified comment from an Issue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} attachmentId Attachment identifier within an Issue. Must be
+     * unique in the current Issue.
+     *
+     * @param {string} ifMatch ETag of the Issue Entity. ETag should match the
+     * current entity state from the header response of the GET request or it
+     * should be * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Deletes the specified comment from an Issue.
+     *
+     * @param {string} resourceGroupName The name of the resource group.
+     *
+     * @param {string} serviceName The name of the API Management service.
+     *
+     * @param {string} apiId API identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} issueId Issue identifier. Must be unique in the current API
+     * Management service instance.
+     *
+     * @param {string} attachmentId Attachment identifier within an Issue. Must be
+     * unique in the current Issue.
+     *
+     * @param {string} ifMatch ETag of the Issue Entity. ETag should match the
+     * current entity state from the header response of the GET request or it
+     * should be * for unconditional update.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, ifMatch: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, ifMatch: string, callback: ServiceCallback<void>): void;
+    deleteMethod(resourceGroupName: string, serviceName: string, apiId: string, issueId: string, attachmentId: string, ifMatch: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Lists all comments for the Issue assosiated with the specified API.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IssueAttachmentCollection>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IssueAttachmentCollection>>;
+
+    /**
+     * Lists all comments for the Issue assosiated with the specified API.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IssueAttachmentCollection} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IssueAttachmentCollection} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IssueAttachmentCollection} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IssueAttachmentCollection>;
+    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.IssueAttachmentCollection>): void;
+    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IssueAttachmentCollection>): void;
 }
 
 /**
@@ -9640,8 +10909,38 @@ export interface Diagnostic {
      *
      * @param {object} parameters Create parameters.
      *
-     * @param {boolean} parameters.enabled Indicates whether a diagnostic should
-     * receive data or not.
+     * @param {string} [parameters.alwaysLog] Specifies for what type of messages
+     * sampling settings should not apply. Possible values include: 'allErrors'
+     *
+     * @param {string} parameters.loggerId Resource Id of a target logger.
+     *
+     * @param {object} [parameters.sampling] Sampling settings for Diagnostic.
+     *
+     * @param {string} [parameters.sampling.samplingType] Sampling type. Possible
+     * values include: 'fixed'
+     *
+     * @param {number} [parameters.sampling.percentage] Rate of sampling for
+     * fixed-rate sampling.
+     *
+     * @param {object} [parameters.frontend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Gateway.
+     *
+     * @param {object} [parameters.backend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Backend
+     *
+     * @param {object} [parameters.backend.request] Diagnostic settings for
+     * request.
+     *
+     * @param {object} [parameters.backend.response] Diagnostic settings for
+     * response.
+     *
+     * @param {array} [parameters.backend.response.headers] Array of HTTP Headers
+     * to log.
+     *
+     * @param {object} [parameters.backend.response.body] Body logging settings.
+     *
+     * @param {number} [parameters.backend.response.body.bytes] Number of request
+     * body bytes to log.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9671,8 +10970,38 @@ export interface Diagnostic {
      *
      * @param {object} parameters Create parameters.
      *
-     * @param {boolean} parameters.enabled Indicates whether a diagnostic should
-     * receive data or not.
+     * @param {string} [parameters.alwaysLog] Specifies for what type of messages
+     * sampling settings should not apply. Possible values include: 'allErrors'
+     *
+     * @param {string} parameters.loggerId Resource Id of a target logger.
+     *
+     * @param {object} [parameters.sampling] Sampling settings for Diagnostic.
+     *
+     * @param {string} [parameters.sampling.samplingType] Sampling type. Possible
+     * values include: 'fixed'
+     *
+     * @param {number} [parameters.sampling.percentage] Rate of sampling for
+     * fixed-rate sampling.
+     *
+     * @param {object} [parameters.frontend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Gateway.
+     *
+     * @param {object} [parameters.backend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Backend
+     *
+     * @param {object} [parameters.backend.request] Diagnostic settings for
+     * request.
+     *
+     * @param {object} [parameters.backend.response] Diagnostic settings for
+     * response.
+     *
+     * @param {array} [parameters.backend.response.headers] Array of HTTP Headers
+     * to log.
+     *
+     * @param {object} [parameters.backend.response.body] Body logging settings.
+     *
+     * @param {number} [parameters.backend.response.body.bytes] Number of request
+     * body bytes to log.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -9721,8 +11050,38 @@ export interface Diagnostic {
      *
      * @param {object} parameters Diagnostic Update parameters.
      *
-     * @param {boolean} parameters.enabled Indicates whether a diagnostic should
-     * receive data or not.
+     * @param {string} [parameters.alwaysLog] Specifies for what type of messages
+     * sampling settings should not apply. Possible values include: 'allErrors'
+     *
+     * @param {string} parameters.loggerId Resource Id of a target logger.
+     *
+     * @param {object} [parameters.sampling] Sampling settings for Diagnostic.
+     *
+     * @param {string} [parameters.sampling.samplingType] Sampling type. Possible
+     * values include: 'fixed'
+     *
+     * @param {number} [parameters.sampling.percentage] Rate of sampling for
+     * fixed-rate sampling.
+     *
+     * @param {object} [parameters.frontend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Gateway.
+     *
+     * @param {object} [parameters.backend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Backend
+     *
+     * @param {object} [parameters.backend.request] Diagnostic settings for
+     * request.
+     *
+     * @param {object} [parameters.backend.response] Diagnostic settings for
+     * response.
+     *
+     * @param {array} [parameters.backend.response.headers] Array of HTTP Headers
+     * to log.
+     *
+     * @param {object} [parameters.backend.response.body] Body logging settings.
+     *
+     * @param {number} [parameters.backend.response.body.bytes] Number of request
+     * body bytes to log.
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -9753,8 +11112,38 @@ export interface Diagnostic {
      *
      * @param {object} parameters Diagnostic Update parameters.
      *
-     * @param {boolean} parameters.enabled Indicates whether a diagnostic should
-     * receive data or not.
+     * @param {string} [parameters.alwaysLog] Specifies for what type of messages
+     * sampling settings should not apply. Possible values include: 'allErrors'
+     *
+     * @param {string} parameters.loggerId Resource Id of a target logger.
+     *
+     * @param {object} [parameters.sampling] Sampling settings for Diagnostic.
+     *
+     * @param {string} [parameters.sampling.samplingType] Sampling type. Possible
+     * values include: 'fixed'
+     *
+     * @param {number} [parameters.sampling.percentage] Rate of sampling for
+     * fixed-rate sampling.
+     *
+     * @param {object} [parameters.frontend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Gateway.
+     *
+     * @param {object} [parameters.backend] Diagnostic settings for
+     * incoming/outcoming HTTP messages to the Backend
+     *
+     * @param {object} [parameters.backend.request] Diagnostic settings for
+     * request.
+     *
+     * @param {object} [parameters.backend.response] Diagnostic settings for
+     * response.
+     *
+     * @param {array} [parameters.backend.response.headers] Array of HTTP Headers
+     * to log.
+     *
+     * @param {object} [parameters.backend.response.body] Body logging settings.
+     *
+     * @param {number} [parameters.backend.response.body.bytes] Number of request
+     * body bytes to log.
      *
      * @param {string} ifMatch ETag of the Entity. ETag should match the current
      * entity state from the header response of the GET request or it should be *
@@ -9918,374 +11307,6 @@ export interface Diagnostic {
     listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DiagnosticCollection>;
     listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.DiagnosticCollection>): void;
     listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DiagnosticCollection>): void;
-}
-
-/**
- * @class
- * DiagnosticLogger
- * __NOTE__: An instance of this class is automatically created for an
- * instance of the ApiManagementClient.
- */
-export interface DiagnosticLogger {
-
-
-    /**
-     * Lists all loggers assosiated with the specified Diagnostic of the API
-     * Management service instance.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] | Field       | Supported operators    |
-     * Supported functions               |
-     * |-------------|------------------------|-----------------------------------|
-     * | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-     * | type        | eq                     |                                   |
-     *
-     * @param {number} [options.top] Number of records to return.
-     *
-     * @param {number} [options.skip] Number of records to skip.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<LoggerCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServiceWithHttpOperationResponse(resourceGroupName: string, serviceName: string, diagnosticId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoggerCollection>>;
-
-    /**
-     * Lists all loggers assosiated with the specified Diagnostic of the API
-     * Management service instance.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.filter] | Field       | Supported operators    |
-     * Supported functions               |
-     * |-------------|------------------------|-----------------------------------|
-     * | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
-     * | type        | eq                     |                                   |
-     *
-     * @param {number} [options.top] Number of records to return.
-     *
-     * @param {number} [options.skip] Number of records to skip.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {LoggerCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {LoggerCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LoggerCollection} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByService(resourceGroupName: string, serviceName: string, diagnosticId: string, options?: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }): Promise<models.LoggerCollection>;
-    listByService(resourceGroupName: string, serviceName: string, diagnosticId: string, callback: ServiceCallback<models.LoggerCollection>): void;
-    listByService(resourceGroupName: string, serviceName: string, diagnosticId: string, options: { filter? : string, top? : number, skip? : number, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoggerCollection>): void;
-
-
-    /**
-     * Checks that logger entity specified by identifier is associated with the
-     * diagnostics entity.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {string} loggerid Logger identifier. Must be unique in the API
-     * Management service instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<Boolean>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    checkEntityExistsWithHttpOperationResponse(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<boolean>>;
-
-    /**
-     * Checks that logger entity specified by identifier is associated with the
-     * diagnostics entity.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {string} loggerid Logger identifier. Must be unique in the API
-     * Management service instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {Boolean} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {Boolean} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    checkEntityExists(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<boolean>;
-    checkEntityExists(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, callback: ServiceCallback<boolean>): void;
-    checkEntityExists(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<boolean>): void;
-
-
-    /**
-     * Attaches a logger to a dignostic.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {string} loggerid Logger identifier. Must be unique in the API
-     * Management service instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<LoggerContract>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoggerContract>>;
-
-    /**
-     * Attaches a logger to a dignostic.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {string} loggerid Logger identifier. Must be unique in the API
-     * Management service instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {LoggerContract} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {LoggerContract} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LoggerContract} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    createOrUpdate(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoggerContract>;
-    createOrUpdate(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, callback: ServiceCallback<models.LoggerContract>): void;
-    createOrUpdate(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoggerContract>): void;
-
-
-    /**
-     * Deletes the specified Logger from Diagnostic.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {string} loggerid Logger identifier. Must be unique in the API
-     * Management service instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    deleteMethodWithHttpOperationResponse(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Deletes the specified Logger from Diagnostic.
-     *
-     * @param {string} resourceGroupName The name of the resource group.
-     *
-     * @param {string} serviceName The name of the API Management service.
-     *
-     * @param {string} diagnosticId Diagnostic identifier. Must be unique in the
-     * current API Management service instance.
-     *
-     * @param {string} loggerid Logger identifier. Must be unique in the API
-     * Management service instance.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    deleteMethod(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    deleteMethod(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, callback: ServiceCallback<void>): void;
-    deleteMethod(resourceGroupName: string, serviceName: string, diagnosticId: string, loggerid: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Lists all loggers assosiated with the specified Diagnostic of the API
-     * Management service instance.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<LoggerCollection>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByServiceNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LoggerCollection>>;
-
-    /**
-     * Lists all loggers assosiated with the specified Diagnostic of the API
-     * Management service instance.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {LoggerCollection} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {LoggerCollection} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link LoggerCollection} for more information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByServiceNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LoggerCollection>;
-    listByServiceNext(nextPageLink: string, callback: ServiceCallback<models.LoggerCollection>): void;
-    listByServiceNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LoggerCollection>): void;
 }
 
 /**
@@ -12692,6 +13713,9 @@ export interface Logger {
      * @param {boolean} [parameters.isBuffered] Whether records are buffered in the
      * logger before publishing. Default is assumed to be true.
      *
+     * @param {string} [parameters.resourceId] Azure Resource Id of a log target
+     * (either Azure Event Hub resource or Azure Application Insights resource).
+     *
      * @param {object} [options] Optional Parameters.
      *
      * @param {string} [options.ifMatch] ETag of the Entity. Not required when
@@ -12731,6 +13755,9 @@ export interface Logger {
      *
      * @param {boolean} [parameters.isBuffered] Whether records are buffered in the
      * logger before publishing. Default is assumed to be true.
+     *
+     * @param {string} [parameters.resourceId] Azure Resource Id of a log target
+     * (either Azure Event Hub resource or Azure Application Insights resource).
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -15779,14 +16806,14 @@ export interface Product {
      * omitted when creating a new product it's value is assumed to be true.
      *
      * @param {boolean} [parameters.approvalRequired] whether subscription approval
-     * is required. If false, new subscriptions will be approved automatically
+     * is required. If false, new subscriptions will be approved automatically
      * enabling developers to call the product’s APIs immediately after
-     * subscribing. If true, administrators must manually approve the subscription
+     * subscribing. If true, administrators must manually approve the subscription
      * before the developer can any of the product’s APIs. Can be present only if
      * subscriptionRequired property is present and has a value of false.
      *
      * @param {number} [parameters.subscriptionsLimit] Whether the number of
-     * subscriptions a user can have to this product at the same time. Set to null
+     * subscriptions a user can have to this product at the same time. Set to null
      * or omit to allow unlimited per user subscriptions. Can be present only if
      * subscriptionRequired property is present and has a value of false.
      *
@@ -15842,14 +16869,14 @@ export interface Product {
      * omitted when creating a new product it's value is assumed to be true.
      *
      * @param {boolean} [parameters.approvalRequired] whether subscription approval
-     * is required. If false, new subscriptions will be approved automatically
+     * is required. If false, new subscriptions will be approved automatically
      * enabling developers to call the product’s APIs immediately after
-     * subscribing. If true, administrators must manually approve the subscription
+     * subscribing. If true, administrators must manually approve the subscription
      * before the developer can any of the product’s APIs. Can be present only if
      * subscriptionRequired property is present and has a value of false.
      *
      * @param {number} [parameters.subscriptionsLimit] Whether the number of
-     * subscriptions a user can have to this product at the same time. Set to null
+     * subscriptions a user can have to this product at the same time. Set to null
      * or omit to allow unlimited per user subscriptions. Can be present only if
      * subscriptionRequired property is present and has a value of false.
      *
@@ -15924,14 +16951,14 @@ export interface Product {
      * omitted when creating a new product it's value is assumed to be true.
      *
      * @param {boolean} [parameters.approvalRequired] whether subscription approval
-     * is required. If false, new subscriptions will be approved automatically
+     * is required. If false, new subscriptions will be approved automatically
      * enabling developers to call the product’s APIs immediately after
-     * subscribing. If true, administrators must manually approve the subscription
+     * subscribing. If true, administrators must manually approve the subscription
      * before the developer can any of the product’s APIs. Can be present only if
      * subscriptionRequired property is present and has a value of false.
      *
      * @param {number} [parameters.subscriptionsLimit] Whether the number of
-     * subscriptions a user can have to this product at the same time. Set to null
+     * subscriptions a user can have to this product at the same time. Set to null
      * or omit to allow unlimited per user subscriptions. Can be present only if
      * subscriptionRequired property is present and has a value of false.
      *
@@ -15988,14 +17015,14 @@ export interface Product {
      * omitted when creating a new product it's value is assumed to be true.
      *
      * @param {boolean} [parameters.approvalRequired] whether subscription approval
-     * is required. If false, new subscriptions will be approved automatically
+     * is required. If false, new subscriptions will be approved automatically
      * enabling developers to call the product’s APIs immediately after
-     * subscribing. If true, administrators must manually approve the subscription
+     * subscribing. If true, administrators must manually approve the subscription
      * before the developer can any of the product’s APIs. Can be present only if
      * subscriptionRequired property is present and has a value of false.
      *
      * @param {number} [parameters.subscriptionsLimit] Whether the number of
-     * subscriptions a user can have to this product at the same time. Set to null
+     * subscriptions a user can have to this product at the same time. Set to null
      * or omit to allow unlimited per user subscriptions. Can be present only if
      * subscriptionRequired property is present and has a value of false.
      *
@@ -16300,8 +17327,9 @@ export interface ProductApi {
      * @param {string} productId Product identifier. Must be unique in the current
      * API Management service instance.
      *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16327,8 +17355,9 @@ export interface ProductApi {
      * @param {string} productId Product identifier. Must be unique in the current
      * API Management service instance.
      *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16371,8 +17400,9 @@ export interface ProductApi {
      * @param {string} productId Product identifier. Must be unique in the current
      * API Management service instance.
      *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16397,8 +17427,9 @@ export interface ProductApi {
      * @param {string} productId Product identifier. Must be unique in the current
      * API Management service instance.
      *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16442,8 +17473,9 @@ export interface ProductApi {
      * @param {string} productId Product identifier. Must be unique in the current
      * API Management service instance.
      *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -16468,8 +17500,9 @@ export interface ProductApi {
      * @param {string} productId Product identifier. Must be unique in the current
      * API Management service instance.
      *
-     * @param {string} apiId API identifier. Must be unique in the current API
-     * Management service instance.
+     * @param {string} apiId API revision identifier. Must be unique in the current
+     * API Management service instance. Non-current revision has ;rev=n as a suffix
+     * where n is the revision number.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17333,7 +18366,7 @@ export interface ProductPolicy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -17367,7 +18400,7 @@ export interface ProductPolicy {
      * of the Policy.
      *
      * @param {string} [parameters.contentFormat] Format of the policyContent.
-     * Possible values include: 'xml', 'xml-link'
+     * Possible values include: 'xml', 'xml-link', 'rawxml', 'rawxml-link'
      *
      * @param {object} [options] Optional Parameters.
      *
