@@ -10,9 +10,10 @@
 
 import { ServiceClientCredentials } from 'ms-rest';
 import { AzureServiceClient, AzureServiceClientOptions } from 'ms-rest-azure';
+import * as models from "./models";
 import * as operations from "./operations";
 
-declare class RecoveryServicesBackupClient extends AzureServiceClient {
+export default class RecoveryServicesBackupClient extends AzureServiceClient {
   /**
    * Initializes a new instance of the RecoveryServicesBackupClient class.
    * @constructor
@@ -33,11 +34,11 @@ declare class RecoveryServicesBackupClient extends AzureServiceClient {
    *
    * @param {boolean} [options.noRetryPolicy] - If set to true, turn off default retry policy
    *
-   * @param {string} [options.acceptLanguage] - Gets or sets the preferred language for the response.
+   * @param {string} [options.acceptLanguage] - The preferred language for the response.
    *
-   * @param {number} [options.longRunningOperationRetryTimeout] - Gets or sets the retry timeout in seconds for Long Running Operations. Default value is 30.
+   * @param {number} [options.longRunningOperationRetryTimeout] - The retry timeout in seconds for Long Running Operations. Default value is 30.
    *
-   * @param {boolean} [options.generateClientRequestId] - When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
+   * @param {boolean} [options.generateClientRequestId] - Whether a unique x-ms-client-request-id should be generated. When set to true a unique x-ms-client-request-id value is generated and included in each request. Default is true.
    *
    */
   constructor(credentials: ServiceClientCredentials, subscriptionId: string, baseUri?: string, options?: AzureServiceClientOptions);
@@ -53,12 +54,23 @@ declare class RecoveryServicesBackupClient extends AzureServiceClient {
   generateClientRequestId: boolean;
 
   // Operation groups
+  protectionIntentOperations: operations.ProtectionIntentOperations;
+  backupStatus: operations.BackupStatus;
+  featureSupport: operations.FeatureSupport;
   backupJobs: operations.BackupJobs;
   jobDetails: operations.JobDetails;
+  exportJobsOperationResults: operations.ExportJobsOperationResults;
+  jobs: operations.Jobs;
+  backupPolicies: operations.BackupPolicies;
+  backupProtectedItems: operations.BackupProtectedItems;
+  backupUsageSummaries: operations.BackupUsageSummaries;
+  operation: operations.Operation;
   backupResourceVaultConfigs: operations.BackupResourceVaultConfigs;
   backupEngines: operations.BackupEngines;
   protectionContainerRefreshOperationResults: operations.ProtectionContainerRefreshOperationResults;
+  protectableContainers: operations.ProtectableContainers;
   protectionContainers: operations.ProtectionContainers;
+  backupWorkloadItems: operations.BackupWorkloadItems;
   protectionContainerOperationResults: operations.ProtectionContainerOperationResults;
   protectedItems: operations.ProtectedItems;
   backups: operations.Backups;
@@ -69,21 +81,16 @@ declare class RecoveryServicesBackupClient extends AzureServiceClient {
   restores: operations.Restores;
   jobCancellations: operations.JobCancellations;
   jobOperationResults: operations.JobOperationResults;
-  exportJobsOperationResults: operations.ExportJobsOperationResults;
-  jobs: operations.Jobs;
   backupOperationResults: operations.BackupOperationResults;
   backupOperationStatuses: operations.BackupOperationStatuses;
-  backupPolicies: operations.BackupPolicies;
   protectionPolicies: operations.ProtectionPolicies;
   protectionPolicyOperationResults: operations.ProtectionPolicyOperationResults;
   protectionPolicyOperationStatuses: operations.ProtectionPolicyOperationStatuses;
   backupProtectableItems: operations.BackupProtectableItems;
-  backupProtectedItems: operations.BackupProtectedItems;
   backupProtectionContainers: operations.BackupProtectionContainers;
   securityPINs: operations.SecurityPINs;
   backupResourceStorageConfigs: operations.BackupResourceStorageConfigs;
-  backupUsageSummaries: operations.BackupUsageSummaries;
   operations: operations.Operations;
 }
 
-export = RecoveryServicesBackupClient;
+export { RecoveryServicesBackupClient, models as RecoveryServicesBackupModels };
