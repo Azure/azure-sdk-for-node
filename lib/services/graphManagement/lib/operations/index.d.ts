@@ -3054,7 +3054,8 @@ export interface OAuth2 {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.body]
+     * @param {object} [options.body] The relevant app Service Principal Object Id
+     * and the Service Principal Objecit Id you want to grant.
      *
      * @param {string} [options.body.odatatype]
      * Microsoft.DirectoryServices.OAuth2PermissionGrant
@@ -3092,7 +3093,8 @@ export interface OAuth2 {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.body]
+     * @param {object} [options.body] The relevant app Service Principal Object Id
+     * and the Service Principal Objecit Id you want to grant.
      *
      * @param {string} [options.body.odatatype]
      * Microsoft.DirectoryServices.OAuth2PermissionGrant
