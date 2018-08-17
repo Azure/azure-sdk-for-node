@@ -131,6 +131,60 @@ export interface A2AVmManagedDiskInputDetails {
 
 /**
  * @class
+ * Initializes a new instance of the DiskEncryptionKeyInfo class.
+ * @constructor
+ * Disk Encryption Key Information (BitLocker Encryption Key (BEK) on Windows).
+ *
+ * @member {string} [secretIdentifier] The secret url / identifier.
+ * @member {string} [keyVaultResourceArmId] The KeyVault resource ARM id for
+ * secret.
+ */
+export interface DiskEncryptionKeyInfo {
+  secretIdentifier?: string;
+  keyVaultResourceArmId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the KeyEncryptionKeyInfo class.
+ * @constructor
+ * Key Encryption Key (KEK) information.
+ *
+ * @member {string} [keyIdentifier] The key url / identifier.
+ * @member {string} [keyVaultResourceArmId] The KeyVault resource ARM id for
+ * key.
+ */
+export interface KeyEncryptionKeyInfo {
+  keyIdentifier?: string;
+  keyVaultResourceArmId?: string;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DiskEncryptionInfo class.
+ * @constructor
+ * Recovery disk encryption info (BEK and KEK).
+ *
+ * @member {object} [diskEncryptionKeyInfo] The recovery KeyVault reference for
+ * secret.
+ * @member {string} [diskEncryptionKeyInfo.secretIdentifier] The secret url /
+ * identifier.
+ * @member {string} [diskEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * resource ARM id for secret.
+ * @member {object} [keyEncryptionKeyInfo] The recovery KeyVault reference for
+ * key.
+ * @member {string} [keyEncryptionKeyInfo.keyIdentifier] The key url /
+ * identifier.
+ * @member {string} [keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * resource ARM id for key.
+ */
+export interface DiskEncryptionInfo {
+  diskEncryptionKeyInfo?: DiskEncryptionKeyInfo;
+  keyEncryptionKeyInfo?: KeyEncryptionKeyInfo;
+}
+
+/**
+ * @class
  * Initializes a new instance of the EnableProtectionProviderSpecificInput class.
  * @constructor
  * Enable protection provider specific input.
@@ -161,6 +215,22 @@ export interface EnableProtectionProviderSpecificInput {
  * @member {string} [multiVmGroupName] The multi vm group name.
  * @member {string} [recoveryBootDiagStorageAccountId] The boot diagnostic
  * storage account.
+ * @member {object} [diskEncryptionInfo] The recovery disk encryption
+ * information.
+ * @member {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
+ * KeyVault reference for secret.
+ * @member {string} [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier]
+ * The secret url / identifier.
+ * @member {string}
+ * [diskEncryptionInfo.diskEncryptionKeyInfo.keyVaultResourceArmId] The
+ * KeyVault resource ARM id for secret.
+ * @member {object} [diskEncryptionInfo.keyEncryptionKeyInfo] The recovery
+ * KeyVault reference for key.
+ * @member {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier] The
+ * key url / identifier.
+ * @member {string}
+ * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * resource ARM id for key.
  */
 export interface A2AEnableProtectionInput extends EnableProtectionProviderSpecificInput {
   fabricObjectId?: string;
@@ -172,6 +242,7 @@ export interface A2AEnableProtectionInput extends EnableProtectionProviderSpecif
   vmManagedDisks?: A2AVmManagedDiskInputDetails[];
   multiVmGroupName?: string;
   recoveryBootDiagStorageAccountId?: string;
+  diskEncryptionInfo?: DiskEncryptionInfo;
 }
 
 /**
@@ -337,6 +408,15 @@ export interface A2APolicyDetails extends PolicyProviderSpecificDetails {
  * for replication in MB at staging account.
  * @member {number} [dataPendingAtSourceAgentInMB] The data pending at source
  * virtual machine in MB.
+ * @member {boolean} [isDiskEncrypted] A value indicating whether vm has
+ * encrypted os disk or not.
+ * @member {string} [secretIdentifier] The secret URL / identifier (BEK).
+ * @member {string} [dekKeyVaultArmId] The KeyVault resource id for secret
+ * (BEK).
+ * @member {boolean} [isDiskKeyEncrypted] A value indicating whether disk key
+ * got encrypted or not.
+ * @member {string} [keyIdentifier] The key URL / identifier (KEK).
+ * @member {string} [kekKeyVaultArmId] The KeyVault resource id for key (KEK).
  */
 export interface A2AProtectedDiskDetails {
   diskUri?: string;
@@ -352,6 +432,12 @@ export interface A2AProtectedDiskDetails {
   monitoringJobType?: string;
   dataPendingInStagingStorageAccountInMB?: number;
   dataPendingAtSourceAgentInMB?: number;
+  isDiskEncrypted?: boolean;
+  secretIdentifier?: string;
+  dekKeyVaultArmId?: string;
+  isDiskKeyEncrypted?: boolean;
+  keyIdentifier?: string;
+  kekKeyVaultArmId?: string;
 }
 
 /**
@@ -386,6 +472,15 @@ export interface A2AProtectedDiskDetails {
  * for replication in MB at staging account.
  * @member {number} [dataPendingAtSourceAgentInMB] The data pending at source
  * virtual machine in MB.
+ * @member {boolean} [isDiskEncrypted] A value indicating whether vm has
+ * encrypted os disk or not.
+ * @member {string} [secretIdentifier] The secret URL / identifier (BEK).
+ * @member {string} [dekKeyVaultArmId] The KeyVault resource id for secret
+ * (BEK).
+ * @member {boolean} [isDiskKeyEncrypted] A value indicating whether disk key
+ * got encrypted or not.
+ * @member {string} [keyIdentifier] The key URL / identifier (KEK).
+ * @member {string} [kekKeyVaultArmId] The KeyVault resource id for key (KEK).
  */
 export interface A2AProtectedManagedDiskDetails {
   diskId?: string;
@@ -403,6 +498,12 @@ export interface A2AProtectedManagedDiskDetails {
   monitoringJobType?: string;
   dataPendingInStagingStorageAccountInMB?: number;
   dataPendingAtSourceAgentInMB?: number;
+  isDiskEncrypted?: boolean;
+  secretIdentifier?: string;
+  dekKeyVaultArmId?: string;
+  isDiskKeyEncrypted?: boolean;
+  keyIdentifier?: string;
+  kekKeyVaultArmId?: string;
 }
 
 /**
@@ -481,6 +582,8 @@ export interface A2ARecoveryPointDetails extends ProviderSpecificRecoveryPointDe
  * @member {string} [selectionType] Selection type for failover.
  * @member {string} [recoveryNicIpAddressType] IP allocation type for recovery
  * VM.
+ * @member {boolean} [enableAcceleratedNetworkingOnRecovery] A value indicating
+ * whether the NIC has accerated networking enabled.
  */
 export interface VMNicDetails {
   nicId?: string;
@@ -495,6 +598,7 @@ export interface VMNicDetails {
   replicaNicStaticIPAddress?: string;
   selectionType?: string;
   recoveryNicIpAddressType?: string;
+  enableAcceleratedNetworkingOnRecovery?: boolean;
 }
 
 /**
@@ -722,6 +826,22 @@ export interface SwitchProtectionProviderSpecificInput {
  * @member {string} [policyId] The Policy Id.
  * @member {string} [recoveryBootDiagStorageAccountId] The boot diagnostic
  * storage account.
+ * @member {object} [diskEncryptionInfo] The recovery disk encryption
+ * information.
+ * @member {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
+ * KeyVault reference for secret.
+ * @member {string} [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier]
+ * The secret url / identifier.
+ * @member {string}
+ * [diskEncryptionInfo.diskEncryptionKeyInfo.keyVaultResourceArmId] The
+ * KeyVault resource ARM id for secret.
+ * @member {object} [diskEncryptionInfo.keyEncryptionKeyInfo] The recovery
+ * KeyVault reference for key.
+ * @member {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier] The
+ * key url / identifier.
+ * @member {string}
+ * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * resource ARM id for key.
  */
 export interface A2ASwitchProtectionInput extends SwitchProtectionProviderSpecificInput {
   recoveryContainerId?: string;
@@ -732,6 +852,7 @@ export interface A2ASwitchProtectionInput extends SwitchProtectionProviderSpecif
   recoveryAvailabilitySetId?: string;
   policyId?: string;
   recoveryBootDiagStorageAccountId?: string;
+  diskEncryptionInfo?: DiskEncryptionInfo;
 }
 
 /**
@@ -804,12 +925,29 @@ export interface UpdateReplicationProtectedItemProviderInput {
  * @member {array} [managedDiskUpdateDetails] Managed disk update details.
  * @member {string} [recoveryBootDiagStorageAccountId] The boot diagnostic
  * storage account.
+ * @member {object} [diskEncryptionInfo] The recovery os disk encryption
+ * information.
+ * @member {object} [diskEncryptionInfo.diskEncryptionKeyInfo] The recovery
+ * KeyVault reference for secret.
+ * @member {string} [diskEncryptionInfo.diskEncryptionKeyInfo.secretIdentifier]
+ * The secret url / identifier.
+ * @member {string}
+ * [diskEncryptionInfo.diskEncryptionKeyInfo.keyVaultResourceArmId] The
+ * KeyVault resource ARM id for secret.
+ * @member {object} [diskEncryptionInfo.keyEncryptionKeyInfo] The recovery
+ * KeyVault reference for key.
+ * @member {string} [diskEncryptionInfo.keyEncryptionKeyInfo.keyIdentifier] The
+ * key url / identifier.
+ * @member {string}
+ * [diskEncryptionInfo.keyEncryptionKeyInfo.keyVaultResourceArmId] The KeyVault
+ * resource ARM id for key.
  */
 export interface A2AUpdateReplicationProtectedItemInput extends UpdateReplicationProtectedItemProviderInput {
   recoveryCloudServiceId?: string;
   recoveryResourceGroupId?: string;
   managedDiskUpdateDetails?: A2AVmManagedDiskUpdateDetails[];
   recoveryBootDiagStorageAccountId?: string;
+  diskEncryptionInfo?: DiskEncryptionInfo;
 }
 
 /**
@@ -6261,12 +6399,15 @@ export interface UpdateRecoveryPlanInput {
  * @member {string} [recoveryVMSubnetName] Recovery VM subnet name.
  * @member {string} [replicaNicStaticIPAddress] Replica nic static IP address.
  * @member {string} [selectionType] Selection type for failover.
+ * @member {boolean} [enableAcceleratedNetworkingOnRecovery] Whether the NIC
+ * has accerated networking enabled.
  */
 export interface VMNicInputDetails {
   nicId?: string;
   recoveryVMSubnetName?: string;
   replicaNicStaticIPAddress?: string;
   selectionType?: string;
+  enableAcceleratedNetworkingOnRecovery?: boolean;
 }
 
 /**
