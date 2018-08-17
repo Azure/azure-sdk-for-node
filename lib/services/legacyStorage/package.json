@@ -10,7 +10,7 @@
     "Rodrigues, Andre <andrerod@microsoft.com>",
     "Tavares, Chris <ctavares@microsoft.com>"
   ],
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "Microsoft Azure Storage Client Library for node for back compat with older versions of node sdk",
   "tags": [
     "azure",
@@ -24,8 +24,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "azure-common": "^0.9.13",
-    "underscore": "^1.8.3",
-    "mime": "~1.2.4"
+    "mime": "^1.6.0",
+    "underscore": "^1.8.3"
   },
   "homepage": "http://github.com/Azure/azure-sdk-for-node",
   "repository": {
