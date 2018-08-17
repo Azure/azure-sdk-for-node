@@ -1834,6 +1834,102 @@ export interface IntegrationRuntimes {
 
 
     /**
+     * Create a linked integration runtime entry in a shared integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} createLinkedIntegrationRuntimeRequest The linked integration
+     * runtime properties.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.name] The name of the
+     * linked integration runtime.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.subscriptionId] The
+     * subscription ID for which the linked integration runtime belong to.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.dataFactoryName] The
+     * name of the data factory for which the linked integration runtime belong to.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.dataFactoryLocation]
+     * The location of the data factory for which the linked integration runtime
+     * belong to.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IntegrationRuntimeStatusResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    createLinkedIntegrationRuntimeWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, createLinkedIntegrationRuntimeRequest: models.CreateLinkedIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeStatusResponse>>;
+
+    /**
+     * Create a linked integration runtime entry in a shared integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} createLinkedIntegrationRuntimeRequest The linked integration
+     * runtime properties.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.name] The name of the
+     * linked integration runtime.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.subscriptionId] The
+     * subscription ID for which the linked integration runtime belong to.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.dataFactoryName] The
+     * name of the data factory for which the linked integration runtime belong to.
+     *
+     * @param {string} [createLinkedIntegrationRuntimeRequest.dataFactoryLocation]
+     * The location of the data factory for which the linked integration runtime
+     * belong to.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IntegrationRuntimeStatusResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IntegrationRuntimeStatusResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimeStatusResponse} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    createLinkedIntegrationRuntime(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, createLinkedIntegrationRuntimeRequest: models.CreateLinkedIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeStatusResponse>;
+    createLinkedIntegrationRuntime(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, createLinkedIntegrationRuntimeRequest: models.CreateLinkedIntegrationRuntimeRequest, callback: ServiceCallback<models.IntegrationRuntimeStatusResponse>): void;
+    createLinkedIntegrationRuntime(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, createLinkedIntegrationRuntimeRequest: models.CreateLinkedIntegrationRuntimeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeStatusResponse>): void;
+
+
+    /**
      * Starts a ManagedReserved type integration runtime.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -2024,6 +2120,74 @@ export interface IntegrationRuntimes {
  * instance of the DataFactoryManagementClient.
  */
 export interface IntegrationRuntimeNodes {
+
+
+    /**
+     * Gets a self-hosted integration runtime node.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {string} nodeName The integration runtime node name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<SelfHostedIntegrationRuntimeNode>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.SelfHostedIntegrationRuntimeNode>>;
+
+    /**
+     * Gets a self-hosted integration runtime node.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {string} nodeName The integration runtime node name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {SelfHostedIntegrationRuntimeNode} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {SelfHostedIntegrationRuntimeNode} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link SelfHostedIntegrationRuntimeNode} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.SelfHostedIntegrationRuntimeNode>;
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, callback: ServiceCallback<models.SelfHostedIntegrationRuntimeNode>): void;
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, nodeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.SelfHostedIntegrationRuntimeNode>): void;
 
 
     /**

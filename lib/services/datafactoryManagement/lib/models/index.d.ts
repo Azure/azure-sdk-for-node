@@ -355,6 +355,27 @@ export interface LinkedIntegrationRuntimeRequest {
 
 /**
  * @class
+ * Initializes a new instance of the CreateLinkedIntegrationRuntimeRequest class.
+ * @constructor
+ * The linked integration runtime information.
+ *
+ * @member {string} [name] The name of the linked integration runtime.
+ * @member {string} [subscriptionId] The subscription ID for which the linked
+ * integration runtime belong to.
+ * @member {string} [dataFactoryName] The name of the data factory for which
+ * the linked integration runtime belong to.
+ * @member {string} [dataFactoryLocation] The location of the data factory for
+ * which the linked integration runtime belong to.
+ */
+export interface CreateLinkedIntegrationRuntimeRequest {
+  name?: string;
+  subscriptionId?: string;
+  dataFactoryName?: string;
+  dataFactoryLocation?: string;
+}
+
+/**
+ * @class
  * Initializes a new instance of the ParameterSpecification class.
  * @constructor
  * Definition of a single parameter for an entity.
