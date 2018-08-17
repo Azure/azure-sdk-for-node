@@ -18,32 +18,54 @@ export { CloudError } from 'ms-rest-azure';
 
 /**
  * @class
- * Initializes a new instance of the CheckNameAvailabilityRequestParameters class.
+ * Initializes a new instance of the OperationDisplay class.
  * @constructor
- * Parameters supplied to the Check Name Availability for Namespace and
- * NotificationHubs.
+ * The object that represents the operation.
  *
- * @member {string} name Resource name
- * @member {string} [type] Resource type
+ * @member {string} [provider] Service provider: Microsoft.NotificationHubs
+ * @member {string} [resource] Resource on which the operation is performed:
+ * Invoice, etc.
+ * @member {string} [operation] Operation type: Read, write, delete, etc.
  */
-export interface CheckNameAvailabilityRequestParameters {
-  name: string;
-  readonly type?: string;
+export interface OperationDisplay {
+  readonly provider?: string;
+  readonly resource?: string;
+  readonly operation?: string;
 }
 
 /**
  * @class
- * Initializes a new instance of the CheckNameAvailabilityResponse class.
+ * Initializes a new instance of the Operation class.
  * @constructor
- * @member {boolean} [nameAvailable] Checks if the namespace name is available
- * @member {string} [reason] States the reason due to which the namespace name
- * is not available
- * @member {string} [message] The messsage returned when checking for namespace
- * name availability
+ * A NotificationHubs REST API operation
+ *
+ * @member {string} [name] Operation name: {provider}/{resource}/{operation}
+ * @member {object} [display] The object that represents the operation.
+ * @member {string} [display.provider] Service provider:
+ * Microsoft.NotificationHubs
+ * @member {string} [display.resource] Resource on which the operation is
+ * performed: Invoice, etc.
+ * @member {string} [display.operation] Operation type: Read, write, delete,
+ * etc.
  */
-export interface CheckNameAvailabilityResponse {
-  nameAvailable?: boolean;
-  reason?: string;
+export interface Operation {
+  readonly name?: string;
+  display?: OperationDisplay;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the ErrorResponse class.
+ * @constructor
+ * Error reponse indicates NotificationHubs service is not able to process the
+ * incoming request. The reason is provided in the error message.
+ *
+ * @member {string} [code] Error code.
+ * @member {string} [message] Error message indicating why the operation
+ * failed.
+ */
+export interface ErrorResponse {
+  code?: string;
   message?: string;
 }
 
@@ -78,7 +100,7 @@ export interface Sku {
  * @member {string} [id] Resource Id
  * @member {string} name Resource name
  * @member {string} [type] Resource type
- * @member {string} location Resource location
+ * @member {string} [location] Resource location
  * @member {object} [tags] Resource tags
  * @member {object} [sku] The sku of the created namespace
  * @member {string} [sku.name] Name of the notification hub sku. Possible
@@ -94,7 +116,7 @@ export interface CheckAvailabilityParameters {
   readonly id?: string;
   name: string;
   readonly type?: string;
-  location: string;
+  location?: string;
   tags?: { [propertyName: string]: string };
   sku?: Sku;
   isAvailiable?: boolean;
@@ -107,7 +129,7 @@ export interface CheckAvailabilityParameters {
  * @member {string} [id] Resource Id
  * @member {string} [name] Resource name
  * @member {string} [type] Resource type
- * @member {string} location Resource location
+ * @member {string} [location] Resource location
  * @member {object} [tags] Resource tags
  * @member {object} [sku] The sku of the created namespace
  * @member {string} [sku.name] Name of the notification hub sku. Possible
@@ -121,7 +143,7 @@ export interface Resource extends BaseResource {
   readonly id?: string;
   readonly name?: string;
   readonly type?: string;
-  location: string;
+  location?: string;
   tags?: { [propertyName: string]: string };
   sku?: Sku;
 }
@@ -153,9 +175,11 @@ export interface CheckAvailabilityResult extends Resource {
  * Australia EastAustralia SoutheastCentral USEast USEast US 2West USNorth
  * Central USSouth Central USEast AsiaSoutheast AsiaBrazil SouthJapan EastJapan
  * WestNorth EuropeWest Europe
+ * @member {string} [metricId] Identifier for Azure Insights metrics
  * @member {string} [status] Status of the namespace. It can be any of these
  * values:1 = Created/Active2 = Creating3 = Suspended4 = Deleting
  * @member {date} [createdAt] The time the namespace was created.
+ * @member {date} [updatedAt] The time the namespace was updated.
  * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
  * NotificationHub operations.
  * @member {string} [subscriptionId] The Id of the Azure subscription
@@ -165,6 +189,7 @@ export interface CheckAvailabilityResult extends Resource {
  * enabled.
  * @member {boolean} [critical] Whether or not the namespace is set as
  * Critical.
+ * @member {string} [dataCenter] Data center for the namespace
  * @member {string} [namespaceType] The namespace type. Possible values
  * include: 'Messaging', 'NotificationHub'
  */
@@ -172,13 +197,16 @@ export interface NamespaceCreateOrUpdateParameters extends Resource {
   namespaceCreateOrUpdateParametersName?: string;
   provisioningState?: string;
   region?: string;
+  readonly metricId?: string;
   status?: string;
   createdAt?: Date;
+  updatedAt?: Date;
   serviceBusEndpoint?: string;
   subscriptionId?: string;
   scaleUnit?: string;
   enabled?: boolean;
   critical?: boolean;
+  dataCenter?: string;
   namespaceType?: string;
 }
 
@@ -215,9 +243,11 @@ export interface NamespacePatchParameters {
  * Australia EastAustralia SoutheastCentral USEast USEast US 2West USNorth
  * Central USSouth Central USEast AsiaSoutheast AsiaBrazil SouthJapan EastJapan
  * WestNorth EuropeWest Europe
+ * @member {string} [metricId] Identifier for Azure Insights metrics
  * @member {string} [status] Status of the namespace. It can be any of these
  * values:1 = Created/Active2 = Creating3 = Suspended4 = Deleting
  * @member {date} [createdAt] The time the namespace was created.
+ * @member {date} [updatedAt] The time the namespace was updated.
  * @member {string} [serviceBusEndpoint] Endpoint you can use to perform
  * NotificationHub operations.
  * @member {string} [subscriptionId] The Id of the Azure subscription
@@ -227,6 +257,7 @@ export interface NamespacePatchParameters {
  * enabled.
  * @member {boolean} [critical] Whether or not the namespace is set as
  * Critical.
+ * @member {string} [dataCenter] Data center for the namespace
  * @member {string} [namespaceType] The namespace type. Possible values
  * include: 'Messaging', 'NotificationHub'
  */
@@ -234,13 +265,16 @@ export interface NamespaceResource extends Resource {
   namespaceResourceName?: string;
   provisioningState?: string;
   region?: string;
+  readonly metricId?: string;
   status?: string;
   createdAt?: Date;
+  updatedAt?: Date;
   serviceBusEndpoint?: string;
   subscriptionId?: string;
   scaleUnit?: string;
   enabled?: boolean;
   critical?: boolean;
+  dataCenter?: string;
   namespaceType?: string;
 }
 
@@ -251,9 +285,27 @@ export interface NamespaceResource extends Resource {
  * SharedAccessAuthorizationRule properties.
  *
  * @member {array} [rights] The rights associated with the rule.
+ * @member {string} [primaryKey] A base64-encoded 256-bit primary key for
+ * signing and validating the SAS token.
+ * @member {string} [secondaryKey] A base64-encoded 256-bit primary key for
+ * signing and validating the SAS token.
+ * @member {string} [keyName] A string that describes the authorization rule.
+ * @member {string} [claimType] A string that describes the claim type
+ * @member {string} [claimValue] A string that describes the claim value
+ * @member {string} [modifiedTime] The last modified time for this rule
+ * @member {string} [createdTime] The created time for this rule
+ * @member {number} [revision] The revision number for the rule
  */
 export interface SharedAccessAuthorizationRuleProperties {
   rights?: string[];
+  readonly primaryKey?: string;
+  readonly secondaryKey?: string;
+  readonly keyName?: string;
+  readonly claimType?: string;
+  readonly claimValue?: string;
+  readonly modifiedTime?: string;
+  readonly createdTime?: string;
+  readonly revision?: number;
 }
 
 /**
@@ -264,8 +316,22 @@ export interface SharedAccessAuthorizationRuleProperties {
  *
  * @member {object} properties Properties of the Namespace AuthorizationRules.
  * @member {array} [properties.rights] The rights associated with the rule.
+ * @member {string} [properties.primaryKey] A base64-encoded 256-bit primary
+ * key for signing and validating the SAS token.
+ * @member {string} [properties.secondaryKey] A base64-encoded 256-bit primary
+ * key for signing and validating the SAS token.
+ * @member {string} [properties.keyName] A string that describes the
+ * authorization rule.
+ * @member {string} [properties.claimType] A string that describes the claim
+ * type
+ * @member {string} [properties.claimValue] A string that describes the claim
+ * value
+ * @member {string} [properties.modifiedTime] The last modified time for this
+ * rule
+ * @member {string} [properties.createdTime] The created time for this rule
+ * @member {number} [properties.revision] The revision number for the rule
  */
-export interface SharedAccessAuthorizationRuleCreateOrUpdateParameters extends Resource {
+export interface SharedAccessAuthorizationRuleCreateOrUpdateParameters {
   properties: SharedAccessAuthorizationRuleProperties;
 }
 
@@ -276,9 +342,27 @@ export interface SharedAccessAuthorizationRuleCreateOrUpdateParameters extends R
  * Description of a Namespace AuthorizationRules.
  *
  * @member {array} [rights] The rights associated with the rule.
+ * @member {string} [primaryKey] A base64-encoded 256-bit primary key for
+ * signing and validating the SAS token.
+ * @member {string} [secondaryKey] A base64-encoded 256-bit primary key for
+ * signing and validating the SAS token.
+ * @member {string} [keyName] A string that describes the authorization rule.
+ * @member {string} [claimType] A string that describes the claim type
+ * @member {string} [claimValue] A string that describes the claim value
+ * @member {string} [modifiedTime] The last modified time for this rule
+ * @member {string} [createdTime] The created time for this rule
+ * @member {number} [revision] The revision number for the rule
  */
 export interface SharedAccessAuthorizationRuleResource extends Resource {
   rights?: string[];
+  readonly primaryKey?: string;
+  readonly secondaryKey?: string;
+  readonly keyName?: string;
+  readonly claimType?: string;
+  readonly claimValue?: string;
+  readonly modifiedTime?: string;
+  readonly createdTime?: string;
+  readonly revision?: number;
 }
 
 /**
@@ -495,6 +579,74 @@ export interface NotificationHubCreateOrUpdateParameters extends Resource {
 
 /**
  * @class
+ * Initializes a new instance of the NotificationHubPatchParameters class.
+ * @constructor
+ * Parameters supplied to the patch NotificationHub operation.
+ *
+ * @member {string} [notificationHubPatchParametersName] The NotificationHub
+ * name.
+ * @member {string} [registrationTtl] The RegistrationTtl of the created
+ * NotificationHub
+ * @member {array} [authorizationRules] The AuthorizationRules of the created
+ * NotificationHub
+ * @member {object} [apnsCredential] The ApnsCredential of the created
+ * NotificationHub
+ * @member {string} [apnsCredential.apnsCertificate] The APNS certificate.
+ * @member {string} [apnsCredential.certificateKey] The certificate key.
+ * @member {string} [apnsCredential.endpoint] The endpoint of this credential.
+ * @member {string} [apnsCredential.thumbprint] The Apns certificate Thumbprint
+ * @member {string} [apnsCredential.keyId] A 10-character key identifier (kid)
+ * key, obtained from your developer account
+ * @member {string} [apnsCredential.appName] The name of the application
+ * @member {string} [apnsCredential.appId] The issuer (iss) registered claim
+ * key, whose value is your 10-character Team ID, obtained from your developer
+ * account
+ * @member {string} [apnsCredential.token] Provider Authentication Token,
+ * obtained through your developer account
+ * @member {object} [wnsCredential] The WnsCredential of the created
+ * NotificationHub
+ * @member {string} [wnsCredential.packageSid] The package ID for this
+ * credential.
+ * @member {string} [wnsCredential.secretKey] The secret key.
+ * @member {string} [wnsCredential.windowsLiveEndpoint] The Windows Live
+ * endpoint.
+ * @member {object} [gcmCredential] The GcmCredential of the created
+ * NotificationHub
+ * @member {string} [gcmCredential.gcmEndpoint] The GCM endpoint.
+ * @member {string} [gcmCredential.googleApiKey] The Google API key.
+ * @member {object} [mpnsCredential] The MpnsCredential of the created
+ * NotificationHub
+ * @member {string} [mpnsCredential.mpnsCertificate] The MPNS certificate.
+ * @member {string} [mpnsCredential.certificateKey] The certificate key for
+ * this credential.
+ * @member {string} [mpnsCredential.thumbprint] The Mpns certificate Thumbprint
+ * @member {object} [admCredential] The AdmCredential of the created
+ * NotificationHub
+ * @member {string} [admCredential.clientId] The client identifier.
+ * @member {string} [admCredential.clientSecret] The credential secret access
+ * key.
+ * @member {string} [admCredential.authTokenUrl] The URL of the authorization
+ * token.
+ * @member {object} [baiduCredential] The BaiduCredential of the created
+ * NotificationHub
+ * @member {string} [baiduCredential.baiduApiKey] Baidu Api Key.
+ * @member {string} [baiduCredential.baiduEndPoint] Baidu Endpoint.
+ * @member {string} [baiduCredential.baiduSecretKey] Baidu Secret Key
+ */
+export interface NotificationHubPatchParameters extends Resource {
+  notificationHubPatchParametersName?: string;
+  registrationTtl?: string;
+  authorizationRules?: SharedAccessAuthorizationRuleProperties[];
+  apnsCredential?: ApnsCredential;
+  wnsCredential?: WnsCredential;
+  gcmCredential?: GcmCredential;
+  mpnsCredential?: MpnsCredential;
+  admCredential?: AdmCredential;
+  baiduCredential?: BaiduCredential;
+}
+
+/**
+ * @class
  * Initializes a new instance of the NotificationHubResource class.
  * @constructor
  * Description of a NotificationHub Resource.
@@ -558,6 +710,22 @@ export interface NotificationHubResource extends Resource {
   mpnsCredential?: MpnsCredential;
   admCredential?: AdmCredential;
   baiduCredential?: BaiduCredential;
+}
+
+/**
+ * @class
+ * Initializes a new instance of the DebugSendResponse class.
+ * @constructor
+ * Description of a NotificationHub Resource.
+ *
+ * @member {number} [success] successful send
+ * @member {number} [failure] send failure
+ * @member {object} [results] actual failure description
+ */
+export interface DebugSendResponse extends Resource {
+  success?: number;
+  failure?: number;
+  results?: any;
 }
 
 /**
@@ -629,6 +797,20 @@ export interface SubResource extends BaseResource {
   id?: string;
 }
 
+
+/**
+ * @class
+ * Initializes a new instance of the OperationListResult class.
+ * @constructor
+ * Result of the request to list NotificationHubs operations. It contains a
+ * list of operations and a URL link to get the next set of results.
+ *
+ * @member {string} [nextLink] URL to get the next set of operation list
+ * results if there are any.
+ */
+export interface OperationListResult extends Array<Operation> {
+  readonly nextLink?: string;
+}
 
 /**
  * @class
