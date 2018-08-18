@@ -8974,7 +8974,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -9357,7 +9359,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -9839,7 +9843,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -10210,7 +10216,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -22912,7 +22920,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -23298,7 +23308,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -23789,7 +23801,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -24163,7 +24177,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -41669,7 +41685,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -42052,7 +42070,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -43662,7 +43682,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -44048,7 +44070,9 @@ export interface WebApps {
      * @param {boolean} [siteEnvelope.reserved] <code>true</code> if reserved;
      * otherwise, <code>false</code>.
      *
-     * @param {boolean} [siteEnvelope.isXenon] Hyper-V sandbox.
+     * @param {boolean} [siteEnvelope.isXenon] Obsolete: Hyper-V sandbox.
+     *
+     * @param {boolean} [siteEnvelope.hyperV] Hyper-V sandbox.
      *
      * @param {object} [siteEnvelope.siteConfig] Configuration of the app.
      *
@@ -55751,7 +55775,10 @@ export interface AppServicePlans {
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
      *
-     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * @param {boolean} [appServicePlan.isXenon] Obsolete: If Hyper-V container app
+     * service plan <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.hyperV] If Hyper-V container app service
      * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
@@ -55852,7 +55879,10 @@ export interface AppServicePlans {
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
      *
-     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * @param {boolean} [appServicePlan.isXenon] Obsolete: If Hyper-V container app
+     * service plan <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.hyperV] If Hyper-V container app service
      * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
@@ -56036,7 +56066,10 @@ export interface AppServicePlans {
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
      *
-     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * @param {boolean} [appServicePlan.isXenon] Obsolete: If Hyper-V container app
+     * service plan <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.hyperV] If Hyper-V container app service
      * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
@@ -56099,7 +56132,10 @@ export interface AppServicePlans {
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
      *
-     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * @param {boolean} [appServicePlan.isXenon] Obsolete: If Hyper-V container app
+     * service plan <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.hyperV] If Hyper-V container app service
      * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
@@ -57936,7 +57972,10 @@ export interface AppServicePlans {
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
      *
-     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * @param {boolean} [appServicePlan.isXenon] Obsolete: If Hyper-V container app
+     * service plan <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.hyperV] If Hyper-V container app service
      * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
@@ -58037,7 +58076,10 @@ export interface AppServicePlans {
      * @param {boolean} [appServicePlan.reserved] If Linux app service plan
      * <code>true</code>, <code>false</code> otherwise.
      *
-     * @param {boolean} [appServicePlan.isXenon] If Hyper-V container app service
+     * @param {boolean} [appServicePlan.isXenon] Obsolete: If Hyper-V container app
+     * service plan <code>true</code>, <code>false</code> otherwise.
+     *
+     * @param {boolean} [appServicePlan.hyperV] If Hyper-V container app service
      * plan <code>true</code>, <code>false</code> otherwise.
      *
      * @param {number} [appServicePlan.targetWorkerCount] Scaling worker count.
