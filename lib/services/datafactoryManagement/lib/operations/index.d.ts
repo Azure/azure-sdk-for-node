@@ -70,6 +70,63 @@ export interface Operations {
     list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResponse>;
     list(callback: ServiceCallback<models.OperationListResponse>): void;
     list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResponse>): void;
+
+
+    /**
+     * Lists the available Azure Data Factory API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<OperationListResponse>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    listNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.OperationListResponse>>;
+
+    /**
+     * Lists the available Azure Data Factory API operations.
+     *
+     * @param {string} nextPageLink The NextLink from the previous successful call
+     * to List operation.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {OperationListResponse} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {OperationListResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link OperationListResponse} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    listNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.OperationListResponse>;
+    listNext(nextPageLink: string, callback: ServiceCallback<models.OperationListResponse>): void;
+    listNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.OperationListResponse>): void;
 }
 
 /**
@@ -130,6 +187,111 @@ export interface Factories {
     list(options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.FactoryListResponse>;
     list(callback: ServiceCallback<models.FactoryListResponse>): void;
     list(options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.FactoryListResponse>): void;
+
+
+    /**
+     * Updates a factory's repo information.
+     *
+     * @param {string} locationId The location identifier.
+     *
+     * @param {object} factoryRepoUpdate Update factory repo request definition.
+     *
+     * @param {string} [factoryRepoUpdate.factoryResourceId] The factory resource
+     * id.
+     *
+     * @param {object} [factoryRepoUpdate.repoConfiguration] Git repo information
+     * of the factory.
+     *
+     * @param {string} factoryRepoUpdate.repoConfiguration.accountName Account
+     * name.
+     *
+     * @param {string} factoryRepoUpdate.repoConfiguration.repositoryName
+     * Rrepository name.
+     *
+     * @param {string} factoryRepoUpdate.repoConfiguration.collaborationBranch
+     * Collaboration branch.
+     *
+     * @param {string} factoryRepoUpdate.repoConfiguration.rootFolder Root folder.
+     *
+     * @param {string} [factoryRepoUpdate.repoConfiguration.lastCommitId] Last
+     * commit id.
+     *
+     * @param {string} factoryRepoUpdate.repoConfiguration.type Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<Factory>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    configureFactoryRepoWithHttpOperationResponse(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
+
+    /**
+     * Updates a factory's repo information.
+     *
+     * @param {string} locationId The location identifier.
+     *
+     * @param {object} factoryRepoUpdate Update factory repo request definition.
+     *
+     * @param {string} [factoryRepoUpdate.factoryResourceId] The factory resource
+     * id.
+     *
+     * @param {object} [factoryRepoUpdate.repoConfiguration] Git repo information
+     * of the factory.
+     *
+     * @param {string} factoryRepoUpdate.repoConfiguration.accountName Account
+     * name.
+     *
+     * @param {string} factoryRepoUpdate.repoConfiguration.repositoryName
+     * Rrepository name.
+     *
+     * @param {string} factoryRepoUpdate.repoConfiguration.collaborationBranch
+     * Collaboration branch.
+     *
+     * @param {string} factoryRepoUpdate.repoConfiguration.rootFolder Root folder.
+     *
+     * @param {string} [factoryRepoUpdate.repoConfiguration.lastCommitId] Last
+     * commit id.
+     *
+     * @param {string} factoryRepoUpdate.repoConfiguration.type Polymorphic
+     * Discriminator
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {Factory} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {Factory} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link Factory} for more information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    configureFactoryRepo(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
+    configureFactoryRepo(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, callback: ServiceCallback<models.Factory>): void;
+    configureFactoryRepo(locationId: string, factoryRepoUpdate: models.FactoryRepoUpdate, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
 
 
     /**
@@ -198,11 +360,31 @@ export interface Factories {
      *
      * @param {object} [factory.identity] Managed service identity of the factory.
      *
+     * @param {object} [factory.repoConfiguration] Git repo information of the
+     * factory.
+     *
+     * @param {string} factory.repoConfiguration.accountName Account name.
+     *
+     * @param {string} factory.repoConfiguration.repositoryName Rrepository name.
+     *
+     * @param {string} factory.repoConfiguration.collaborationBranch Collaboration
+     * branch.
+     *
+     * @param {string} factory.repoConfiguration.rootFolder Root folder.
+     *
+     * @param {string} [factory.repoConfiguration.lastCommitId] Last commit id.
+     *
+     * @param {string} factory.repoConfiguration.type Polymorphic Discriminator
+     *
      * @param {string} [factory.location] The resource location.
      *
      * @param {object} [factory.tags] The resource tags.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the factory entity. Should only be
+     * specified for update, for which it should match existing entity or can be *
+     * for unconditional update.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -213,7 +395,7 @@ export interface Factories {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, factoryName: string, factory: models.Factory, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
+    createOrUpdateWithHttpOperationResponse(resourceGroupName: string, factoryName: string, factory: models.Factory, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
 
     /**
      * Creates or updates a factory.
@@ -226,11 +408,31 @@ export interface Factories {
      *
      * @param {object} [factory.identity] Managed service identity of the factory.
      *
+     * @param {object} [factory.repoConfiguration] Git repo information of the
+     * factory.
+     *
+     * @param {string} factory.repoConfiguration.accountName Account name.
+     *
+     * @param {string} factory.repoConfiguration.repositoryName Rrepository name.
+     *
+     * @param {string} factory.repoConfiguration.collaborationBranch Collaboration
+     * branch.
+     *
+     * @param {string} factory.repoConfiguration.rootFolder Root folder.
+     *
+     * @param {string} [factory.repoConfiguration.lastCommitId] Last commit id.
+     *
+     * @param {string} factory.repoConfiguration.type Polymorphic Discriminator
+     *
      * @param {string} [factory.location] The resource location.
      *
      * @param {object} [factory.tags] The resource tags.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifMatch] ETag of the factory entity. Should only be
+     * specified for update, for which it should match existing entity or can be *
+     * for unconditional update.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -257,9 +459,9 @@ export interface Factories {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createOrUpdate(resourceGroupName: string, factoryName: string, factory: models.Factory, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
+    createOrUpdate(resourceGroupName: string, factoryName: string, factory: models.Factory, options?: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
     createOrUpdate(resourceGroupName: string, factoryName: string, factory: models.Factory, callback: ServiceCallback<models.Factory>): void;
-    createOrUpdate(resourceGroupName: string, factoryName: string, factory: models.Factory, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
+    createOrUpdate(resourceGroupName: string, factoryName: string, factory: models.Factory, options: { ifMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
 
 
     /**
@@ -346,6 +548,10 @@ export interface Factories {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.ifNoneMatch] ETag of the factory entity. Should
+     * only be specified for get. If the ETag matches the existing entity tag, or
+     * if * was provided, then no content will be returned.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -355,7 +561,7 @@ export interface Factories {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
+    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, options?: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.Factory>>;
 
     /**
      * Gets a factory.
@@ -365,6 +571,10 @@ export interface Factories {
      * @param {string} factoryName The factory name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifNoneMatch] ETag of the factory entity. Should
+     * only be specified for get. If the ETag matches the existing entity tag, or
+     * if * was provided, then no content will be returned.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -391,9 +601,9 @@ export interface Factories {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
+    get(resourceGroupName: string, factoryName: string, options?: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.Factory>;
     get(resourceGroupName: string, factoryName: string, callback: ServiceCallback<models.Factory>): void;
-    get(resourceGroupName: string, factoryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
+    get(resourceGroupName: string, factoryName: string, options: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.Factory>): void;
 
 
     /**
@@ -452,68 +662,6 @@ export interface Factories {
     deleteMethod(resourceGroupName: string, factoryName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     deleteMethod(resourceGroupName: string, factoryName: string, callback: ServiceCallback<void>): void;
     deleteMethod(resourceGroupName: string, factoryName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
-     * Cancel a pipeline run by its run ID.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {string} runId The pipeline run identifier.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    cancelPipelineRunWithHttpOperationResponse(resourceGroupName: string, factoryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Cancel a pipeline run by its run ID.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {string} runId The pipeline run identifier.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    cancelPipelineRun(resourceGroupName: string, factoryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    cancelPipelineRun(resourceGroupName: string, factoryName: string, runId: string, callback: ServiceCallback<void>): void;
-    cancelPipelineRun(resourceGroupName: string, factoryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -802,6 +950,10 @@ export interface IntegrationRuntimes {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.ifNoneMatch] ETag of the integration runtime
+     * entity. Should only be specified for get. If the ETag matches the existing
+     * entity tag, or if * was provided, then no content will be returned.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -811,7 +963,7 @@ export interface IntegrationRuntimes {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeResource>>;
+    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeResource>>;
 
     /**
      * Gets an integration runtime.
@@ -821,6 +973,98 @@ export interface IntegrationRuntimes {
      * @param {string} factoryName The factory name.
      *
      * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifNoneMatch] ETag of the integration runtime
+     * entity. Should only be specified for get. If the ETag matches the existing
+     * entity tag, or if * was provided, then no content will be returned.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {IntegrationRuntimeResource} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {IntegrationRuntimeResource} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link IntegrationRuntimeResource} for more
+     *                      information.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeResource>;
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<models.IntegrationRuntimeResource>): void;
+    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeResource>): void;
+
+
+    /**
+     * Updates an integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} updateIntegrationRuntimeRequest The parameters for updating
+     * an integration runtime.
+     *
+     * @param {string} [updateIntegrationRuntimeRequest.autoUpdate] Enables or
+     * disables the auto-update feature of the self-hosted integration runtime. See
+     * https://go.microsoft.com/fwlink/?linkid=854189. Possible values include:
+     * 'On', 'Off'
+     *
+     * @param {string} [updateIntegrationRuntimeRequest.updateDelayOffset] The time
+     * offset (in hours) in the day, e.g., PT03H is 3 hours. The integration
+     * runtime auto update will happen on that time.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<IntegrationRuntimeResource>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    updateWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeResource>>;
+
+    /**
+     * Updates an integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} updateIntegrationRuntimeRequest The parameters for updating
+     * an integration runtime.
+     *
+     * @param {string} [updateIntegrationRuntimeRequest.autoUpdate] Enables or
+     * disables the auto-update feature of the self-hosted integration runtime. See
+     * https://go.microsoft.com/fwlink/?linkid=854189. Possible values include:
+     * 'On', 'Off'
+     *
+     * @param {string} [updateIntegrationRuntimeRequest.updateDelayOffset] The time
+     * offset (in hours) in the day, e.g., PT03H is 3 hours. The integration
+     * runtime auto update will happen on that time.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -850,97 +1094,9 @@ export interface IntegrationRuntimes {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeResource>;
-    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<models.IntegrationRuntimeResource>): void;
-    get(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeResource>): void;
-
-
-    /**
-     * Updates an integration runtime.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {string} integrationRuntimeName The integration runtime name.
-     *
-     * @param {object} updateIntegrationRuntimeRequest The parameters for updating
-     * an integration runtime.
-     *
-     * @param {string} [updateIntegrationRuntimeRequest.autoUpdate] Enables or
-     * disables the auto-update feature of the self-hosted integration runtime. See
-     * https://go.microsoft.com/fwlink/?linkid=854189. Possible values include:
-     * 'On', 'Off'
-     *
-     * @param {string} [updateIntegrationRuntimeRequest.updateDelayOffset] The time
-     * offset (in hours) in the day, e.g., PT03H is 3 hours. The integration
-     * runtime auto update will happen on that time.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<IntegrationRuntimeStatusResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    updateWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.IntegrationRuntimeStatusResponse>>;
-
-    /**
-     * Updates an integration runtime.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {string} integrationRuntimeName The integration runtime name.
-     *
-     * @param {object} updateIntegrationRuntimeRequest The parameters for updating
-     * an integration runtime.
-     *
-     * @param {string} [updateIntegrationRuntimeRequest.autoUpdate] Enables or
-     * disables the auto-update feature of the self-hosted integration runtime. See
-     * https://go.microsoft.com/fwlink/?linkid=854189. Possible values include:
-     * 'On', 'Off'
-     *
-     * @param {string} [updateIntegrationRuntimeRequest.updateDelayOffset] The time
-     * offset (in hours) in the day, e.g., PT03H is 3 hours. The integration
-     * runtime auto update will happen on that time.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {IntegrationRuntimeStatusResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {IntegrationRuntimeStatusResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link IntegrationRuntimeStatusResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeStatusResponse>;
-    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, callback: ServiceCallback<models.IntegrationRuntimeStatusResponse>): void;
-    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeStatusResponse>): void;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.IntegrationRuntimeResource>;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, callback: ServiceCallback<models.IntegrationRuntimeResource>): void;
+    update(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, updateIntegrationRuntimeRequest: models.UpdateIntegrationRuntimeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.IntegrationRuntimeResource>): void;
 
 
     /**
@@ -1404,80 +1560,6 @@ export interface IntegrationRuntimes {
 
 
     /**
-     * Remove a node from integration runtime.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {string} integrationRuntimeName The integration runtime name.
-     *
-     * @param {object} removeNodeParameters The name of the node to be removed from
-     * an integration runtime.
-     *
-     * @param {string} [removeNodeParameters.nodeName] The name of the node to be
-     * removed.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    removeNodeWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, removeNodeParameters: models.IntegrationRuntimeRemoveNodeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
-
-    /**
-     * Remove a node from integration runtime.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {string} integrationRuntimeName The integration runtime name.
-     *
-     * @param {object} removeNodeParameters The name of the node to be removed from
-     * an integration runtime.
-     *
-     * @param {string} [removeNodeParameters.nodeName] The name of the node to be
-     * removed.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {null} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {null} [result]   - The deserialized result object if an error did not occur.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    removeNode(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, removeNodeParameters: models.IntegrationRuntimeRemoveNodeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
-    removeNode(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, removeNodeParameters: models.IntegrationRuntimeRemoveNodeRequest, callback: ServiceCallback<void>): void;
-    removeNode(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, removeNodeParameters: models.IntegrationRuntimeRemoveNodeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
-
-
-    /**
      * Force the integration runtime to synchronize credentials across integration
      * runtime nodes, and this will override the credentials across all worker
      * nodes with those available on the dispatcher node. If you already have the
@@ -1673,6 +1755,82 @@ export interface IntegrationRuntimes {
     upgrade(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
     upgrade(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, callback: ServiceCallback<void>): void;
     upgrade(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
+
+
+    /**
+     * Remove all linked integration runtimes under specific data factory in a
+     * self-hosted integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} linkedIntegrationRuntimeRequest The data factory name for
+     * the linked integration runtime.
+     *
+     * @param {string} linkedIntegrationRuntimeRequest.linkedFactoryName The data
+     * factory name for linked integration runtime.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    removeLinksWithHttpOperationResponse(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, linkedIntegrationRuntimeRequest: models.LinkedIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Remove all linked integration runtimes under specific data factory in a
+     * self-hosted integration runtime.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} integrationRuntimeName The integration runtime name.
+     *
+     * @param {object} linkedIntegrationRuntimeRequest The data factory name for
+     * the linked integration runtime.
+     *
+     * @param {string} linkedIntegrationRuntimeRequest.linkedFactoryName The data
+     * factory name for linked integration runtime.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    removeLinks(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, linkedIntegrationRuntimeRequest: models.LinkedIntegrationRuntimeRequest, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    removeLinks(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, linkedIntegrationRuntimeRequest: models.LinkedIntegrationRuntimeRequest, callback: ServiceCallback<void>): void;
+    removeLinks(resourceGroupName: string, factoryName: string, integrationRuntimeName: string, linkedIntegrationRuntimeRequest: models.LinkedIntegrationRuntimeRequest, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 
 
     /**
@@ -2283,6 +2441,10 @@ export interface LinkedServices {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.ifNoneMatch] ETag of the linked service entity.
+     * Should only be specified for get. If the ETag matches the existing entity
+     * tag, or if * was provided, then no content will be returned.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2292,7 +2454,7 @@ export interface LinkedServices {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, linkedServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LinkedServiceResource>>;
+    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, linkedServiceName: string, options?: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.LinkedServiceResource>>;
 
     /**
      * Gets a linked service.
@@ -2304,6 +2466,10 @@ export interface LinkedServices {
      * @param {string} linkedServiceName The linked service name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifNoneMatch] ETag of the linked service entity.
+     * Should only be specified for get. If the ETag matches the existing entity
+     * tag, or if * was provided, then no content will be returned.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2330,9 +2496,9 @@ export interface LinkedServices {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, factoryName: string, linkedServiceName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.LinkedServiceResource>;
+    get(resourceGroupName: string, factoryName: string, linkedServiceName: string, options?: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.LinkedServiceResource>;
     get(resourceGroupName: string, factoryName: string, linkedServiceName: string, callback: ServiceCallback<models.LinkedServiceResource>): void;
-    get(resourceGroupName: string, factoryName: string, linkedServiceName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LinkedServiceResource>): void;
+    get(resourceGroupName: string, factoryName: string, linkedServiceName: string, options: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.LinkedServiceResource>): void;
 
 
     /**
@@ -2657,6 +2823,10 @@ export interface Datasets {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.ifNoneMatch] ETag of the dataset entity. Should
+     * only be specified for get. If the ETag matches the existing entity tag, or
+     * if * was provided, then no content will be returned.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -2666,7 +2836,7 @@ export interface Datasets {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, datasetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatasetResource>>;
+    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, datasetName: string, options?: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.DatasetResource>>;
 
     /**
      * Gets a dataset.
@@ -2678,6 +2848,10 @@ export interface Datasets {
      * @param {string} datasetName The dataset name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifNoneMatch] ETag of the dataset entity. Should
+     * only be specified for get. If the ETag matches the existing entity tag, or
+     * if * was provided, then no content will be returned.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -2704,9 +2878,9 @@ export interface Datasets {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, factoryName: string, datasetName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.DatasetResource>;
+    get(resourceGroupName: string, factoryName: string, datasetName: string, options?: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.DatasetResource>;
     get(resourceGroupName: string, factoryName: string, datasetName: string, callback: ServiceCallback<models.DatasetResource>): void;
-    get(resourceGroupName: string, factoryName: string, datasetName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatasetResource>): void;
+    get(resourceGroupName: string, factoryName: string, datasetName: string, options: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.DatasetResource>): void;
 
 
     /**
@@ -3012,6 +3186,10 @@ export interface Pipelines {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.ifNoneMatch] ETag of the pipeline entity. Should
+     * only be specified for get. If the ETag matches the existing entity tag, or
+     * if * was provided, then no content will be returned.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3021,7 +3199,7 @@ export interface Pipelines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PipelineResource>>;
+    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PipelineResource>>;
 
     /**
      * Gets a pipeline.
@@ -3033,6 +3211,10 @@ export interface Pipelines {
      * @param {string} pipelineName The pipeline name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifNoneMatch] ETag of the pipeline entity. Should
+     * only be specified for get. If the ETag matches the existing entity tag, or
+     * if * was provided, then no content will be returned.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3059,9 +3241,9 @@ export interface Pipelines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PipelineResource>;
+    get(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.PipelineResource>;
     get(resourceGroupName: string, factoryName: string, pipelineName: string, callback: ServiceCallback<models.PipelineResource>): void;
-    get(resourceGroupName: string, factoryName: string, pipelineName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PipelineResource>): void;
+    get(resourceGroupName: string, factoryName: string, pipelineName: string, options: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PipelineResource>): void;
 
 
     /**
@@ -3137,7 +3319,12 @@ export interface Pipelines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.parameters] Parameters of the pipeline run.
+     * @param {string} [options.referencePipelineRunId] The pipeline run
+     * identifier. If run ID is specified the parameters of the the specified run
+     * will be used to create a new run.
+     *
+     * @param {object} [options.parameters] Parameters of the pipeline run. These
+     * parameters will be used only if the runId is not specified.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3148,7 +3335,7 @@ export interface Pipelines {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    createRunWithHttpOperationResponse(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreateRunResponse>>;
+    createRunWithHttpOperationResponse(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { referencePipelineRunId? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.CreateRunResponse>>;
 
     /**
      * Creates a run of a pipeline.
@@ -3161,7 +3348,12 @@ export interface Pipelines {
      *
      * @param {object} [options] Optional Parameters.
      *
-     * @param {object} [options.parameters] Parameters of the pipeline run.
+     * @param {string} [options.referencePipelineRunId] The pipeline run
+     * identifier. If run ID is specified the parameters of the the specified run
+     * will be used to create a new run.
+     *
+     * @param {object} [options.parameters] Parameters of the pipeline run. These
+     * parameters will be used only if the runId is not specified.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3188,9 +3380,9 @@ export interface Pipelines {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    createRun(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }): Promise<models.CreateRunResponse>;
+    createRun(resourceGroupName: string, factoryName: string, pipelineName: string, options?: { referencePipelineRunId? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }): Promise<models.CreateRunResponse>;
     createRun(resourceGroupName: string, factoryName: string, pipelineName: string, callback: ServiceCallback<models.CreateRunResponse>): void;
-    createRun(resourceGroupName: string, factoryName: string, pipelineName: string, options: { parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreateRunResponse>): void;
+    createRun(resourceGroupName: string, factoryName: string, pipelineName: string, options: { referencePipelineRunId? : string, parameters? : { [propertyName: string]: any }, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.CreateRunResponse>): void;
 
 
     /**
@@ -3272,10 +3464,10 @@ export interface PipelineRuns {
      * for getting the next page of results. Null for first page.
      *
      * @param {date} filterParameters.lastUpdatedAfter The time at or after which
-     * the pipeline run event was updated in 'ISO 8601' format.
+     * the run event was updated in 'ISO 8601' format.
      *
      * @param {date} filterParameters.lastUpdatedBefore The time at or before which
-     * the pipeline run event was updated in 'ISO 8601' format.
+     * the run event was updated in 'ISO 8601' format.
      *
      * @param {array} [filterParameters.filters] List of filters.
      *
@@ -3288,11 +3480,11 @@ export interface PipelineRuns {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<PipelineRunQueryResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<PipelineRunsQueryResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    queryByFactoryWithHttpOperationResponse(resourceGroupName: string, factoryName: string, filterParameters: models.PipelineRunFilterParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PipelineRunQueryResponse>>;
+    queryByFactoryWithHttpOperationResponse(resourceGroupName: string, factoryName: string, filterParameters: models.RunFilterParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.PipelineRunsQueryResponse>>;
 
     /**
      * Query pipeline runs in the factory based on input filter conditions.
@@ -3307,10 +3499,10 @@ export interface PipelineRuns {
      * for getting the next page of results. Null for first page.
      *
      * @param {date} filterParameters.lastUpdatedAfter The time at or after which
-     * the pipeline run event was updated in 'ISO 8601' format.
+     * the run event was updated in 'ISO 8601' format.
      *
      * @param {date} filterParameters.lastUpdatedBefore The time at or before which
-     * the pipeline run event was updated in 'ISO 8601' format.
+     * the run event was updated in 'ISO 8601' format.
      *
      * @param {array} [filterParameters.filters] List of filters.
      *
@@ -3328,7 +3520,7 @@ export interface PipelineRuns {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {PipelineRunQueryResponse} - The deserialized result object.
+     *                      @resolve {PipelineRunsQueryResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3336,17 +3528,17 @@ export interface PipelineRuns {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {PipelineRunQueryResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link PipelineRunQueryResponse} for more
+     *                      {PipelineRunsQueryResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link PipelineRunsQueryResponse} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    queryByFactory(resourceGroupName: string, factoryName: string, filterParameters: models.PipelineRunFilterParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PipelineRunQueryResponse>;
-    queryByFactory(resourceGroupName: string, factoryName: string, filterParameters: models.PipelineRunFilterParameters, callback: ServiceCallback<models.PipelineRunQueryResponse>): void;
-    queryByFactory(resourceGroupName: string, factoryName: string, filterParameters: models.PipelineRunFilterParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PipelineRunQueryResponse>): void;
+    queryByFactory(resourceGroupName: string, factoryName: string, filterParameters: models.RunFilterParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PipelineRunsQueryResponse>;
+    queryByFactory(resourceGroupName: string, factoryName: string, filterParameters: models.RunFilterParameters, callback: ServiceCallback<models.PipelineRunsQueryResponse>): void;
+    queryByFactory(resourceGroupName: string, factoryName: string, filterParameters: models.RunFilterParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PipelineRunsQueryResponse>): void;
 
 
     /**
@@ -3410,6 +3602,68 @@ export interface PipelineRuns {
     get(resourceGroupName: string, factoryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.PipelineRun>;
     get(resourceGroupName: string, factoryName: string, runId: string, callback: ServiceCallback<models.PipelineRun>): void;
     get(resourceGroupName: string, factoryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.PipelineRun>): void;
+
+
+    /**
+     * Cancel a pipeline run by its run ID.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} runId The pipeline run identifier.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @returns {Promise} A promise is returned
+     *
+     * @resolve {HttpOperationResponse<null>} - The deserialized result object.
+     *
+     * @reject {Error|ServiceError} - The error object.
+     */
+    cancelWithHttpOperationResponse(resourceGroupName: string, factoryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<void>>;
+
+    /**
+     * Cancel a pipeline run by its run ID.
+     *
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} runId The pipeline run identifier.
+     *
+     * @param {object} [options] Optional Parameters.
+     *
+     * @param {object} [options.customHeaders] Headers that will be added to the
+     * request
+     *
+     * @param {ServiceCallback} [optionalCallback] - The optional callback.
+     *
+     * @returns {ServiceCallback|Promise} If a callback was passed as the last
+     * parameter then it returns the callback else returns a Promise.
+     *
+     * {Promise} A promise is returned.
+     *
+     *                      @resolve {null} - The deserialized result object.
+     *
+     *                      @reject {Error|ServiceError} - The error object.
+     *
+     * {ServiceCallback} optionalCallback(err, result, request, response)
+     *
+     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
+     *
+     *                      {null} [result]   - The deserialized result object if an error did not occur.
+     *
+     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
+     *
+     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
+     */
+    cancel(resourceGroupName: string, factoryName: string, runId: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<void>;
+    cancel(resourceGroupName: string, factoryName: string, runId: string, callback: ServiceCallback<void>): void;
+    cancel(resourceGroupName: string, factoryName: string, runId: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<void>): void;
 }
 
 /**
@@ -3422,7 +3676,7 @@ export interface ActivityRuns {
 
 
     /**
-     * List activity runs based on input filter conditions.
+     * Query activity runs based on input filter conditions.
      *
      * @param {string} resourceGroupName The resource group name.
      *
@@ -3430,86 +3684,20 @@ export interface ActivityRuns {
      *
      * @param {string} runId The pipeline run identifier.
      *
-     * @param {date} startTime The start time of activity runs in ISO8601 format.
+     * @param {object} filterParameters Parameters to filter the activity runs.
      *
-     * @param {date} endTime The end time of activity runs in ISO8601 format.
+     * @param {string} [filterParameters.continuationToken] The continuation token
+     * for getting the next page of results. Null for first page.
      *
-     * @param {object} [options] Optional Parameters.
+     * @param {date} filterParameters.lastUpdatedAfter The time at or after which
+     * the run event was updated in 'ISO 8601' format.
      *
-     * @param {string} [options.status] The status of the pipeline run.
+     * @param {date} filterParameters.lastUpdatedBefore The time at or before which
+     * the run event was updated in 'ISO 8601' format.
      *
-     * @param {string} [options.activityName] The name of the activity.
+     * @param {array} [filterParameters.filters] List of filters.
      *
-     * @param {string} [options.linkedServiceName] The linked service name.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<ActivityRunsListResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listByPipelineRunWithHttpOperationResponse(resourceGroupName: string, factoryName: string, runId: string, startTime: Date|string, endTime: Date|string, options?: { status? : string, activityName? : string, linkedServiceName? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActivityRunsListResponse>>;
-
-    /**
-     * List activity runs based on input filter conditions.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {string} runId The pipeline run identifier.
-     *
-     * @param {date} startTime The start time of activity runs in ISO8601 format.
-     *
-     * @param {date} endTime The end time of activity runs in ISO8601 format.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {string} [options.status] The status of the pipeline run.
-     *
-     * @param {string} [options.activityName] The name of the activity.
-     *
-     * @param {string} [options.linkedServiceName] The linked service name.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {ActivityRunsListResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {ActivityRunsListResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ActivityRunsListResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listByPipelineRun(resourceGroupName: string, factoryName: string, runId: string, startTime: Date|string, endTime: Date|string, options?: { status? : string, activityName? : string, linkedServiceName? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.ActivityRunsListResponse>;
-    listByPipelineRun(resourceGroupName: string, factoryName: string, runId: string, startTime: Date|string, endTime: Date|string, callback: ServiceCallback<models.ActivityRunsListResponse>): void;
-    listByPipelineRun(resourceGroupName: string, factoryName: string, runId: string, startTime: Date|string, endTime: Date|string, options: { status? : string, activityName? : string, linkedServiceName? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActivityRunsListResponse>): void;
-
-
-    /**
-     * List activity runs based on input filter conditions.
-     *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * @param {array} [filterParameters.orderBy] List of OrderBy option.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3518,17 +3706,35 @@ export interface ActivityRuns {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<ActivityRunsListResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<ActivityRunsQueryResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listByPipelineRunNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActivityRunsListResponse>>;
+    queryByPipelineRunWithHttpOperationResponse(resourceGroupName: string, factoryName: string, runId: string, filterParameters: models.RunFilterParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.ActivityRunsQueryResponse>>;
 
     /**
-     * List activity runs based on input filter conditions.
+     * Query activity runs based on input filter conditions.
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {string} runId The pipeline run identifier.
+     *
+     * @param {object} filterParameters Parameters to filter the activity runs.
+     *
+     * @param {string} [filterParameters.continuationToken] The continuation token
+     * for getting the next page of results. Null for first page.
+     *
+     * @param {date} filterParameters.lastUpdatedAfter The time at or after which
+     * the run event was updated in 'ISO 8601' format.
+     *
+     * @param {date} filterParameters.lastUpdatedBefore The time at or before which
+     * the run event was updated in 'ISO 8601' format.
+     *
+     * @param {array} [filterParameters.filters] List of filters.
+     *
+     * @param {array} [filterParameters.orderBy] List of OrderBy option.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -3542,7 +3748,7 @@ export interface ActivityRuns {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {ActivityRunsListResponse} - The deserialized result object.
+     *                      @resolve {ActivityRunsQueryResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -3550,17 +3756,17 @@ export interface ActivityRuns {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {ActivityRunsListResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link ActivityRunsListResponse} for more
+     *                      {ActivityRunsQueryResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link ActivityRunsQueryResponse} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listByPipelineRunNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActivityRunsListResponse>;
-    listByPipelineRunNext(nextPageLink: string, callback: ServiceCallback<models.ActivityRunsListResponse>): void;
-    listByPipelineRunNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActivityRunsListResponse>): void;
+    queryByPipelineRun(resourceGroupName: string, factoryName: string, runId: string, filterParameters: models.RunFilterParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.ActivityRunsQueryResponse>;
+    queryByPipelineRun(resourceGroupName: string, factoryName: string, runId: string, filterParameters: models.RunFilterParameters, callback: ServiceCallback<models.ActivityRunsQueryResponse>): void;
+    queryByPipelineRun(resourceGroupName: string, factoryName: string, runId: string, filterParameters: models.RunFilterParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.ActivityRunsQueryResponse>): void;
 }
 
 /**
@@ -3729,6 +3935,10 @@ export interface Triggers {
      *
      * @param {object} [options] Optional Parameters.
      *
+     * @param {string} [options.ifNoneMatch] ETag of the trigger entity. Should
+     * only be specified for get. If the ETag matches the existing entity tag, or
+     * if * was provided, then no content will be returned.
+     *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
      *
@@ -3738,7 +3948,7 @@ export interface Triggers {
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, triggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggerResource>>;
+    getWithHttpOperationResponse(resourceGroupName: string, factoryName: string, triggerName: string, options?: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggerResource>>;
 
     /**
      * Gets a trigger.
@@ -3750,6 +3960,10 @@ export interface Triggers {
      * @param {string} triggerName The trigger name.
      *
      * @param {object} [options] Optional Parameters.
+     *
+     * @param {string} [options.ifNoneMatch] ETag of the trigger entity. Should
+     * only be specified for get. If the ETag matches the existing entity tag, or
+     * if * was provided, then no content will be returned.
      *
      * @param {object} [options.customHeaders] Headers that will be added to the
      * request
@@ -3776,9 +3990,9 @@ export interface Triggers {
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    get(resourceGroupName: string, factoryName: string, triggerName: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggerResource>;
+    get(resourceGroupName: string, factoryName: string, triggerName: string, options?: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggerResource>;
     get(resourceGroupName: string, factoryName: string, triggerName: string, callback: ServiceCallback<models.TriggerResource>): void;
-    get(resourceGroupName: string, factoryName: string, triggerName: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggerResource>): void;
+    get(resourceGroupName: string, factoryName: string, triggerName: string, options: { ifNoneMatch? : string, customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggerResource>): void;
 
 
     /**
@@ -3968,78 +4182,6 @@ export interface Triggers {
 
 
     /**
-     * List trigger runs.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {string} triggerName The trigger name.
-     *
-     * @param {date} startTime Start time for trigger runs.
-     *
-     * @param {date} endTime End time for trigger runs.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @returns {Promise} A promise is returned
-     *
-     * @resolve {HttpOperationResponse<TriggerRunListResponse>} - The deserialized result object.
-     *
-     * @reject {Error|ServiceError} - The error object.
-     */
-    listRunsWithHttpOperationResponse(resourceGroupName: string, factoryName: string, triggerName: string, startTime: Date|string, endTime: Date|string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggerRunListResponse>>;
-
-    /**
-     * List trigger runs.
-     *
-     * @param {string} resourceGroupName The resource group name.
-     *
-     * @param {string} factoryName The factory name.
-     *
-     * @param {string} triggerName The trigger name.
-     *
-     * @param {date} startTime Start time for trigger runs.
-     *
-     * @param {date} endTime End time for trigger runs.
-     *
-     * @param {object} [options] Optional Parameters.
-     *
-     * @param {object} [options.customHeaders] Headers that will be added to the
-     * request
-     *
-     * @param {ServiceCallback} [optionalCallback] - The optional callback.
-     *
-     * @returns {ServiceCallback|Promise} If a callback was passed as the last
-     * parameter then it returns the callback else returns a Promise.
-     *
-     * {Promise} A promise is returned.
-     *
-     *                      @resolve {TriggerRunListResponse} - The deserialized result object.
-     *
-     *                      @reject {Error|ServiceError} - The error object.
-     *
-     * {ServiceCallback} optionalCallback(err, result, request, response)
-     *
-     *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
-     *
-     *                      {TriggerRunListResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link TriggerRunListResponse} for more
-     *                      information.
-     *
-     *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
-     *
-     *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
-     */
-    listRuns(resourceGroupName: string, factoryName: string, triggerName: string, startTime: Date|string, endTime: Date|string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggerRunListResponse>;
-    listRuns(resourceGroupName: string, factoryName: string, triggerName: string, startTime: Date|string, endTime: Date|string, callback: ServiceCallback<models.TriggerRunListResponse>): void;
-    listRuns(resourceGroupName: string, factoryName: string, triggerName: string, startTime: Date|string, endTime: Date|string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggerRunListResponse>): void;
-
-
-    /**
      * Starts a trigger.
      *
      * @param {string} resourceGroupName The resource group name.
@@ -4218,13 +4360,38 @@ export interface Triggers {
     listByFactoryNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggerListResponse>;
     listByFactoryNext(nextPageLink: string, callback: ServiceCallback<models.TriggerListResponse>): void;
     listByFactoryNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggerListResponse>): void;
+}
+
+/**
+ * @class
+ * TriggerRuns
+ * __NOTE__: An instance of this class is automatically created for an
+ * instance of the DataFactoryManagementClient.
+ */
+export interface TriggerRuns {
 
 
     /**
-     * List trigger runs.
+     * Query trigger runs.
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} filterParameters Parameters to filter the pipeline run.
+     *
+     * @param {string} [filterParameters.continuationToken] The continuation token
+     * for getting the next page of results. Null for first page.
+     *
+     * @param {date} filterParameters.lastUpdatedAfter The time at or after which
+     * the run event was updated in 'ISO 8601' format.
+     *
+     * @param {date} filterParameters.lastUpdatedBefore The time at or before which
+     * the run event was updated in 'ISO 8601' format.
+     *
+     * @param {array} [filterParameters.filters] List of filters.
+     *
+     * @param {array} [filterParameters.orderBy] List of OrderBy option.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4233,17 +4400,33 @@ export interface Triggers {
      *
      * @returns {Promise} A promise is returned
      *
-     * @resolve {HttpOperationResponse<TriggerRunListResponse>} - The deserialized result object.
+     * @resolve {HttpOperationResponse<TriggerRunsQueryResponse>} - The deserialized result object.
      *
      * @reject {Error|ServiceError} - The error object.
      */
-    listRunsNextWithHttpOperationResponse(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggerRunListResponse>>;
+    queryByFactoryWithHttpOperationResponse(resourceGroupName: string, factoryName: string, filterParameters: models.RunFilterParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<HttpOperationResponse<models.TriggerRunsQueryResponse>>;
 
     /**
-     * List trigger runs.
+     * Query trigger runs.
      *
-     * @param {string} nextPageLink The NextLink from the previous successful call
-     * to List operation.
+     * @param {string} resourceGroupName The resource group name.
+     *
+     * @param {string} factoryName The factory name.
+     *
+     * @param {object} filterParameters Parameters to filter the pipeline run.
+     *
+     * @param {string} [filterParameters.continuationToken] The continuation token
+     * for getting the next page of results. Null for first page.
+     *
+     * @param {date} filterParameters.lastUpdatedAfter The time at or after which
+     * the run event was updated in 'ISO 8601' format.
+     *
+     * @param {date} filterParameters.lastUpdatedBefore The time at or before which
+     * the run event was updated in 'ISO 8601' format.
+     *
+     * @param {array} [filterParameters.filters] List of filters.
+     *
+     * @param {array} [filterParameters.orderBy] List of OrderBy option.
      *
      * @param {object} [options] Optional Parameters.
      *
@@ -4257,7 +4440,7 @@ export interface Triggers {
      *
      * {Promise} A promise is returned.
      *
-     *                      @resolve {TriggerRunListResponse} - The deserialized result object.
+     *                      @resolve {TriggerRunsQueryResponse} - The deserialized result object.
      *
      *                      @reject {Error|ServiceError} - The error object.
      *
@@ -4265,15 +4448,15 @@ export interface Triggers {
      *
      *                      {Error|ServiceError}  err        - The Error object if an error occurred, null otherwise.
      *
-     *                      {TriggerRunListResponse} [result]   - The deserialized result object if an error did not occur.
-     *                      See {@link TriggerRunListResponse} for more
+     *                      {TriggerRunsQueryResponse} [result]   - The deserialized result object if an error did not occur.
+     *                      See {@link TriggerRunsQueryResponse} for more
      *                      information.
      *
      *                      {WebResource} [request]  - The HTTP Request object if an error did not occur.
      *
      *                      {http.IncomingMessage} [response] - The HTTP Response stream if an error did not occur.
      */
-    listRunsNext(nextPageLink: string, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggerRunListResponse>;
-    listRunsNext(nextPageLink: string, callback: ServiceCallback<models.TriggerRunListResponse>): void;
-    listRunsNext(nextPageLink: string, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggerRunListResponse>): void;
+    queryByFactory(resourceGroupName: string, factoryName: string, filterParameters: models.RunFilterParameters, options?: { customHeaders? : { [headerName: string]: string; } }): Promise<models.TriggerRunsQueryResponse>;
+    queryByFactory(resourceGroupName: string, factoryName: string, filterParameters: models.RunFilterParameters, callback: ServiceCallback<models.TriggerRunsQueryResponse>): void;
+    queryByFactory(resourceGroupName: string, factoryName: string, filterParameters: models.RunFilterParameters, options: { customHeaders? : { [headerName: string]: string; } }, callback: ServiceCallback<models.TriggerRunsQueryResponse>): void;
 }
